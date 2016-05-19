@@ -14,7 +14,7 @@ class ReleaseListModel;
 class Release;
 class ReleaseVersion;
 class ReleaseVariant;
-class Architecture;
+class ReleaseArchitecture;
 
 /*
  * Architecture - singleton (x86, x86_64, etc)
@@ -230,7 +230,7 @@ private:
  */
 class ReleaseVariant : public QObject {
     Q_OBJECT
-    Q_PROPERTY(Architecture* arch READ arch CONSTANT)
+    Q_PROPERTY(ReleaseArchitecture* arch READ arch CONSTANT)
     Q_PROPERTY(ReleaseVariant::Type type READ type CONSTANT)
     Q_PROPERTY(QString name READ name CONSTANT)
 
@@ -247,11 +247,11 @@ public:
     };
     Q_ENUMS(ReleaseVariant::Type)
 
-    ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, Architecture *arch, Type type = LIVE);
+    ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, ReleaseArchitecture *arch, Type type = LIVE);
     ReleaseVersion *releaseVersion();
     Release *release();
 
-    Architecture *arch() const;
+    ReleaseArchitecture *arch() const;
     ReleaseVariant::Type type() const;
     QString name() const;
 
@@ -268,20 +268,21 @@ public slots:
     void download();
 
 private:
-    Architecture *m_arch { nullptr };
+    ReleaseArchitecture *m_arch { nullptr };
     ReleaseVariant::Type m_type { LIVE };
     QString m_url {};
     QString m_shaHash {};
     QString m_iso {};
     int64_t m_size;
+
     Progress *m_progress { nullptr };
 };
 
 
 /**
- * @brief The Architecture class
+ * @brief The ReleaseArchitecture class
  */
-class Architecture : public QObject {
+class ReleaseArchitecture : public QObject {
     Q_OBJECT
     Q_PROPERTY(QStringList abbreviation READ abbreviation CONSTANT)
     Q_PROPERTY(QString description READ description CONSTANT)
@@ -293,9 +294,9 @@ public:
         ARM,
         _ARCHCOUNT,
     };
-    static Architecture *fromId(Id id);
-    static Architecture *fromAbbreviation(const QString &abbr);
-    static QList<Architecture *> listAll();
+    static ReleaseArchitecture *fromId(Id id);
+    static ReleaseArchitecture *fromAbbreviation(const QString &abbr);
+    static QList<ReleaseArchitecture *> listAll();
     static QStringList listAllDescriptions();
 
     QStringList abbreviation() const;
@@ -304,9 +305,9 @@ public:
     int index() const;
 
 private:
-    Architecture(const QStringList &abbreviation, const QString &description, const QString &details);
+    ReleaseArchitecture(const QStringList &abbreviation, const QString &description, const QString &details);
 
-    static Architecture m_all[];
+    static ReleaseArchitecture m_all[];
 
     const QStringList m_abbreviation {};
     const QString m_description {};
