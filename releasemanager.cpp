@@ -424,11 +424,11 @@ Progress *ReleaseVariant::progress() {
 }
 
 ReleaseVariant::Status ReleaseVariant::status() const {
-    return NONE;
+    return m_status;
 }
 
 QString ReleaseVariant::statusString() const {
-    return "";
+    return m_statusStrings[m_status];
 }
 
 void ReleaseVariant::onFileDownloaded(const QString &path) {
@@ -436,6 +436,7 @@ void ReleaseVariant::onFileDownloaded(const QString &path) {
     emit isoChanged();
     if (m_progress)
         m_progress->setValue(size());
+    setStatus(READY);
 }
 
 void ReleaseVariant::onDownloadError() {
@@ -443,14 +444,22 @@ void ReleaseVariant::onDownloadError() {
 }
 
 void ReleaseVariant::download() {
+    setStatus(DOWNLOADING);
     DownloadManager::instance()->downloadFile(this, url(), DownloadManager::dir(), progress());
 }
 
 void ReleaseVariant::resetStatus() {
-    m_status = NONE;
+    setStatus(PREPARING);
     if (m_progress)
         m_progress->setValue(0.0);
     emit statusChanged();
+}
+
+void ReleaseVariant::setStatus(Status s) {
+    if (m_status != s) {
+        m_status = s;
+        emit statusChanged();
+    }
 }
 
 

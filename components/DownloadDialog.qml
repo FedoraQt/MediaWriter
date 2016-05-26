@@ -5,6 +5,8 @@ import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.0
 
+import MediaWriter 1.0
+
 Dialog {
     id: root
     title: qsTranslate("", "Write %1").arg(releases.selected.name)
@@ -192,9 +194,7 @@ Dialog {
                                                      (leftSize < (1024 * 1024)) ? ((leftSize / 1024).toFixed(1) + " KB") :
                                                      (leftSize < (1024 * 1024 * 1024)) ? ((leftSize / 1024 / 1024).toFixed(1) + " MB") :
                                                      ((leftSize / 1024 / 1024 / 1024).toFixed(1) + " GB")
-                            //text: liveUSBData.currentImage.status + (liveUSBData.currentImage.download.maxProgress > 0 ? " (" + leftStr + " left)" : "")
-                            //text: "Download progress: " + releases.selected.version.variant.progress.value + "/" + releases.selected.version.variant.progress.to
-                            text: "Downloading " + (leftStr.length > 0 ? " (" + leftStr + " left)" : "")
+                            text: releases.selected.version.variant.statusString + (leftStr.length > 0 ? " (" + leftStr + " left)" : "")
                         }
                         Item {
                             Layout.fillWidth: true
@@ -217,7 +217,7 @@ Dialog {
                             id: writeImmediately
                             enabled: driveCombo.count && opacity > 0.0
                             //opacity: !liveUSBData.currentImage.readyToWrite && liveUSBData.currentImage.download.running && liveUSBData.currentImage.download.progress / liveUSBData.currentImage.download.maxProgress < 0.95 ? 1.0 : 0.0
-                            opacity: releases.selected.version.variant.ratio > 0.95 ? 0.0 : 1.0
+                            opacity: (releases.selected.version.variant.status == Variant.DOWNLOADING && releases.selected.version.variant.ratio < 0.95) ? 1.0 : 0.0
                             text: qsTranslate("", "Write the image immediately when the download is finished")
                         }
                     }
@@ -337,12 +337,13 @@ Dialog {
                                     top: parent.top
                                     bottom: parent.bottom
                                 }
-                                //color: liveUSBData.currentImage.writer.finished ? "#628fcf" : "red"
-                                color: "red"
+                                color: releases.selected.version.variant.status == Variant.FINISHED ? "#628fcf" : "red"
                                 textColor: enabled ? "white" : palette.text
-                                //enabled: liveUSBData.currentImage.readyToWrite && !liveUSBData.currentImage.writer.running && liveUSBData.usbDrives.length > 0
-                                //text: liveUSBData.currentImage.writer.finished ? qsTranslate("", "Close") : qsTranslate("", "Write to disk")
-                                text: qsTranslate("", "Write to disk")
+                                enabled: (releases.selected.version.variant.status == Variant.READY ||
+                                          releases.selected.version.variant.status == Variant.FINISHED) &&
+                                         drives.length > 0
+                                text: releases.selected.version.variant.status == Variant.FINISHED ? qsTranslate("", "Close") :
+                                                                                                     qsTranslate("", "Write to disk")
                                 onClicked: {
                                     /*
                                     if (liveUSBData.currentImage.writer.finished) {

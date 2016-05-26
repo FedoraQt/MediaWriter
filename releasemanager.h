@@ -248,16 +248,22 @@ public:
         NETINSTALL,
         FULL
     };
-    Q_ENUMS(ReleaseVariant::Type)
+    Q_ENUMS(Type)
     enum Status {
-        NONE = 0,
-        PREPARING,
+        PREPARING = 0,
         DOWNLOADING,
         READY,
         WRITING,
         FINISHED
     };
-    Q_ENUMS(ReleaseVariant::Status)
+    Q_ENUMS(Status)
+    const QStringList m_statusStrings {
+        "Preparing",
+        "Downloading",
+        "Ready to write",
+        "Writing",
+        "Finished!"
+    };
 
     ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, ReleaseArchitecture *arch, Type type = LIVE);
     ReleaseVersion *releaseVersion();
@@ -289,13 +295,16 @@ public slots:
     void resetStatus();
 
 private:
+    void setStatus(Status s);
+
+private:
     ReleaseArchitecture *m_arch { nullptr };
     ReleaseVariant::Type m_type { LIVE };
     QString m_url {};
     QString m_shaHash {};
     QString m_iso {};
     int64_t m_size;
-    Status m_status { NONE };
+    Status m_status { PREPARING };
 
     Progress *m_progress { nullptr };
 };
