@@ -19,7 +19,11 @@ Dialog {
         writeImmediately.checked = false
     }
 
-    onVisibleChanged: reset()
+    onVisibleChanged: {
+        if (!visible)
+            releases.selected.version.variant.resetStatus()
+        reset()
+    }
 
     Connections {
         target: releases
@@ -190,7 +194,7 @@ Dialog {
                                                      ((leftSize / 1024 / 1024 / 1024).toFixed(1) + " GB")
                             //text: liveUSBData.currentImage.status + (liveUSBData.currentImage.download.maxProgress > 0 ? " (" + leftStr + " left)" : "")
                             //text: "Download progress: " + releases.selected.version.variant.progress.value + "/" + releases.selected.version.variant.progress.to
-                            text: "Downloading " + (releases.selected.version.variant.progress.value > 0 ? " (" + leftStr + " left)" : "")
+                            text: "Downloading " + (leftStr.length > 0 ? " (" + leftStr + " left)" : "")
                         }
                         Item {
                             Layout.fillWidth: true

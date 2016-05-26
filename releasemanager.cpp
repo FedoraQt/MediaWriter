@@ -141,8 +141,8 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
     // until there's a downloader
     m_releases.append(new Release {manager(), m_releases.length(), "Fedora Workstation", "This is the Linux workstation you've been waiting for.", "<p>Fedora Workstation is a reliable, user-friendly, and powerful operating system for your laptop or desktop computer. It supports a wide range of developers, from hobbyists and students to professionals in corporate environments.</p><blockquote><p>&#8220;The plethora of tools provided by  Fedora allows me to get the job done.  It just works.&#8221;</p><p align=right> ― <em>Christine Flood, JVM performance engineer</em></p></blockquote><h3>Sleek user interface</h3><p>Focus on your code in the GNOME 3 desktop environment. GNOME is built with developer feedback and minimizes distractions, so you can concentrate on what's important.</p><h3>Complete open source toolbox</h3><p>Skip the drag of trying to find or build the tools you need. With Fedora's complete set of open source languages, tools, and utilities, everything is a click or command line away. There's even project hosting and repositories like COPR to make your code and builds available quickly to the community.</p><h3>GNOME Boxes &amp; other virt tools</h3><p>Get virtual machines up and running quickly to test your code on multiple platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization tools for even more control.</p><h3>Built-in Docker support</h3><p>Containerize your own apps, or deploy containerized apps out of the box on Fedora, using the latest technology like Docker.</p>", Release::PRODUCT, "qrc:/icons/workstation", {}, {} });
     m_releases.last()->addVersion(new ReleaseVersion {m_releases.last(), 24, {}, ReleaseVersion::FINAL, QDateTime::fromString("2016-06-07", "yyyy-MM-dd")});
-    m_releases.last()->versionList().last()->addVariant(new ReleaseVariant {m_releases.last()->versionList().last(), "http://download.fedoraproject.org/pub/fedora/linux/releases/23/Workstation/x86_64/iso/Fedora-Live-Workstation-x86_64-23-10.iso", "a91eca2492ac84909953ef27040f9b61d8525f7ec5e89f6430319f49f9f823fe", 1803238553, ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64)});
-    m_releases.last()->versionList().last()->addVariant(new ReleaseVariant {m_releases.last()->versionList().last(), "http://download.fedoraproject.org/pub/fedora/linux/releases/23/Workstation/i386/iso/Fedora-Live-Workstation-i686-23-10.iso", "1f3fe28a51d0500ac19030b28e4dfb151d4a6368a9c25fb29ac9a3d29d47a838", 1795864371, ReleaseArchitecture::fromId(ReleaseArchitecture::X86)});
+    m_releases.last()->versionList().last()->addVariant(new ReleaseVariant {m_releases.last()->versionList().last(), "http://download.fedoraproject.org/pub/fedora/linux/releases/23/Workstation/x86_64/iso/Fedora-Live-Workstation-x86_64-23-10.iso", "a91eca2492ac84909953ef27040f9b61d8525f7ec5e89f6430319f49f9f823fe", 1503238553, ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64)});
+    m_releases.last()->versionList().last()->addVariant(new ReleaseVariant {m_releases.last()->versionList().last(), "http://download.fedoraproject.org/pub/fedora/linux/releases/23/Workstation/i386/iso/Fedora-Live-Workstation-i686-23-10.iso", "1f3fe28a51d0500ac19030b28e4dfb151d4a6368a9c25fb29ac9a3d29d47a838", 1395864371, ReleaseArchitecture::fromId(ReleaseArchitecture::X86)});
     m_releases.last()->addVersion(new ReleaseVersion {m_releases.last(), 23, {}, ReleaseVersion::FINAL, QDateTime::fromString("2015-11-03", "yyyy-MM-dd")});
     m_releases.last()->versionList().last()->addVariant(new ReleaseVariant {m_releases.last()->versionList().last(), "http://download.fedoraproject.org/pub/fedora/linux/releases/23/Workstation/x86_64/iso/Fedora-Live-Workstation-x86_64-23-10.iso", "a91eca2492ac84909953ef27040f9b61d8525f7ec5e89f6430319f49f9f823fe", 1503238553, ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64)});
     m_releases.last()->versionList().last()->addVariant(new ReleaseVariant {m_releases.last()->versionList().last(), "http://download.fedoraproject.org/pub/fedora/linux/releases/23/Workstation/i386/iso/Fedora-Live-Workstation-i686-23-10.iso", "1f3fe28a51d0500ac19030b28e4dfb151d4a6368a9c25fb29ac9a3d29d47a838", 1395864371, ReleaseArchitecture::fromId(ReleaseArchitecture::X86)});
@@ -434,6 +434,8 @@ QString ReleaseVariant::statusString() const {
 void ReleaseVariant::onFileDownloaded(const QString &path) {
     m_iso = path;
     emit isoChanged();
+    if (m_progress)
+        m_progress->setValue(size());
 }
 
 void ReleaseVariant::onDownloadError() {
@@ -441,9 +443,14 @@ void ReleaseVariant::onDownloadError() {
 }
 
 void ReleaseVariant::download() {
-    qWarning() << "DOWNLOAD";
+    DownloadManager::instance()->downloadFile(this, url(), DownloadManager::dir(), progress());
+}
 
-    DownloadManager::instance()->downloadFile(this, url(), QApplication::applicationDirPath(), progress());
+void ReleaseVariant::resetStatus() {
+    m_status = NONE;
+    if (m_progress)
+        m_progress->setValue(0.0);
+    emit statusChanged();
 }
 
 

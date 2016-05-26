@@ -286,6 +286,7 @@ signals:
 
 public slots:
     void download();
+    void resetStatus();
 
 private:
     ReleaseArchitecture *m_arch { nullptr };
@@ -294,6 +295,7 @@ private:
     QString m_shaHash {};
     QString m_iso {};
     int64_t m_size;
+    Status m_status { NONE };
 
     Progress *m_progress { nullptr };
 };

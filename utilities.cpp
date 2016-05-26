@@ -1,6 +1,7 @@
 #include "utilities.h"
 
 #include <QDebug>
+#include <QStandardPaths>
 
 
 Progress::Progress(QObject *parent, qreal from, qreal to)
@@ -60,14 +61,31 @@ DownloadManager *DownloadManager::instance() {
     return _self;
 }
 
-void DownloadManager::downloadFile(DownloadReceiver *receiver, const QString &url, const QString &folder, Progress *progress) {
+QString DownloadManager::dir() {
+    QString d = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation);
+
+    return d;
+}
+
+void DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder, Progress *progress) {
     QNetworkRequest request;
     request.setUrl(QUrl(url));
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
-    //request.setHeader();
+
+    QString bareFileName = QString("%1/%2").arg(folder).arg(url.fileName());
+    QString partFileName = bareFileName + ".part";
+
+    if (QFile::exists(bareFileName)) {
+        receiver->onFileDownloaded(bareFileName);
+        return;
+    }
+    else if (QFile::exists(partFileName)) {
+        QFile partFile(partFileName);
+        request.setRawHeader("Range", QString("bytes=%1-").arg(partFile.size()).toLocal8Bit());
+    }
+
     auto reply = m_manager.get(request);
-    qWarning() << "Get request for" << url << "created";
-    auto download = new Download(this, reply, receiver, folder, progress);
+    auto download = new Download(this, reply, receiver, bareFileName, progress);
 }
 
 void DownloadManager::fetchPageAsync(DownloadReceiver *receiver, const QString &url) {
@@ -92,36 +110,41 @@ DownloadManager::DownloadManager() {
         [=](QNetworkReply::NetworkError code){ }); */
 
 
+    /*
     connect(&m_manager, &QNetworkAccessManager::encrypted, [=](QNetworkReply *){ qWarning() << "encrypted!";});
     connect(&m_manager, &QNetworkAccessManager::finished, [=](QNetworkReply *){ qWarning() << "finished!";});
     connect(&m_manager, &QNetworkAccessManager::networkAccessibleChanged, [=](QNetworkAccessManager::NetworkAccessibility){ qWarning() << "networkAccessibleChanged!";});
     connect(&m_manager, &QNetworkAccessManager::sslErrors, [=](QNetworkReply*, QList<QSslError>){ qWarning() << "sslErrors!";});
+    */
 }
 
 
-Download::Download(DownloadManager *parent, QNetworkReply *reply, DownloadReceiver *receiver, const QString &folder, Progress *progress)
+Download::Download(DownloadManager *parent, QNetworkReply *reply, DownloadReceiver *receiver, const QString &filePath, Progress *progress)
     : QObject(parent)
     , m_reply(reply)
     , m_receiver(receiver)
-    , m_folder(folder)
+    , m_path(filePath)
     , m_progress(progress)
 {
     connect(reply, &QNetworkReply::readyRead, this, &Download::onReadyRead);
     connect(reply, static_cast<void(QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), this, &Download::onError);
     connect(reply, &QNetworkReply::sslErrors, this, &Download::onSslErrors);
     connect(reply, &QNetworkReply::finished, this, &Download::onFinished);
+
     if (m_progress)
         connect(reply, &QNetworkReply::downloadProgress, this, &Download::onDownloadProgress);
-    qWarning() << "Download: signals connected";
 
-    if (!folder.isEmpty()) {
-        m_file = new QFile(QString("%1/%2").arg(folder).arg(reply->url().fileName()));
-        if (m_file->exists())
+    if (!m_path.isEmpty()) {
+        m_file = new QFile(m_path + ".part");
+
+        if (m_file->exists()) {
+            m_initialSize = m_file->size();
             m_file->open(QIODevice::Append);
-        else
+        }
+        else {
             m_file->open(QIODevice::WriteOnly);
+        }
     }
-    qWarning() << "Download: file opened";
 
     if (reply->bytesAvailable() > 0)
         onReadyRead();
@@ -155,15 +178,16 @@ void Download::onSslErrors(const QList<QSslError> errors) {
 }
 
 void Download::onFinished() {
-    qWarning() << "Download of" << m_reply->url() << "finished with status" << m_reply->errorString();
-    qWarning() << "There is" << m_reply->bytesAvailable() << "bytes left";
-    m_progress->setValue(1.0);
-    if (m_file)
+    if (m_file) {
+        m_file->rename(m_path);  // move the .part file to the final path
         m_receiver->onFileDownloaded(m_file->fileName());
-    else
+    }
+    else {
         m_receiver->onStringDownloaded(m_buf);
+    }
 }
 
 void Download::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) {
-    m_progress->setValue(bytesReceived);
+    Q_UNUSED(bytesTotal);
+    m_progress->setValue(m_initialSize + bytesReceived);
 }

@@ -55,7 +55,7 @@ class Download : public QObject {
     Q_OBJECT
 
 public:
-    Download(DownloadManager *parent, QNetworkReply *reply, DownloadReceiver *receiver, const QString &folder, Progress *progress = nullptr);
+    Download(DownloadManager *parent, QNetworkReply *reply, DownloadReceiver *receiver, const QString &filePath, Progress *progress = nullptr);
     DownloadManager *manager();
 
 private slots:
@@ -66,9 +66,10 @@ private slots:
     void onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal);
 
 private:
+    qint64 m_initialSize { 0 };
     QNetworkReply *m_reply;
     DownloadReceiver *m_receiver;
-    QString m_folder;
+    QString m_path;
     Progress *m_progress;
 
     QFile *m_file;
@@ -79,8 +80,9 @@ class DownloadManager : public QObject, public DownloadReceiver {
     Q_OBJECT
 public:
     static DownloadManager *instance();
+    static QString dir();
 
-    void downloadFile(DownloadReceiver *receiver, const QString &url, const QString &folder = QApplication::applicationDirPath(), Progress *progress = nullptr);
+    void downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder = dir(), Progress *progress = nullptr);
     void fetchPageAsync(DownloadReceiver *receiver, const QString &url);
     QString fetchPage(const QString &url);
 
