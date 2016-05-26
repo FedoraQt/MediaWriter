@@ -189,7 +189,8 @@ Dialog {
                                                      (leftSize < (1024 * 1024 * 1024)) ? ((leftSize / 1024 / 1024).toFixed(1) + " MB") :
                                                      ((leftSize / 1024 / 1024 / 1024).toFixed(1) + " GB")
                             //text: liveUSBData.currentImage.status + (liveUSBData.currentImage.download.maxProgress > 0 ? " (" + leftStr + " left)" : "")
-                            text: "Download progress: " + releases.selected.version.variant.progress.value + "/" + releases.selected.version.variant.progress.value
+                            //text: "Download progress: " + releases.selected.version.variant.progress.value + "/" + releases.selected.version.variant.progress.to
+                            text: "Downloading " + (releases.selected.version.variant.progress.value > 0 ? " (" + leftStr + " left)" : "")
                         }
                         Item {
                             Layout.fillWidth: true

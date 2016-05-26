@@ -228,7 +228,7 @@ private:
 /**
  * @brief The ReleaseVariant class
  */
-class ReleaseVariant : public QObject {
+class ReleaseVariant : public QObject, public DownloadReceiver {
     Q_OBJECT
     Q_PROPERTY(ReleaseArchitecture* arch READ arch CONSTANT)
     Q_PROPERTY(ReleaseVariant::Type type READ type CONSTANT)
@@ -239,6 +239,9 @@ class ReleaseVariant : public QObject {
     Q_PROPERTY(QString iso READ iso NOTIFY isoChanged)
     Q_PROPERTY(qreal size READ size CONSTANT) // stored as a 64b int, UI doesn't need the precision and QML doesn't support long ints
     Q_PROPERTY(Progress* progress READ progress CONSTANT)
+
+    Q_PROPERTY(Status status READ status NOTIFY statusChanged)
+    Q_PROPERTY(QString statusString READ statusString NOTIFY statusChanged)
 public:
     enum Type {
         LIVE = 0,
@@ -246,6 +249,15 @@ public:
         FULL
     };
     Q_ENUMS(ReleaseVariant::Type)
+    enum Status {
+        NONE = 0,
+        PREPARING,
+        DOWNLOADING,
+        READY,
+        WRITING,
+        FINISHED
+    };
+    Q_ENUMS(ReleaseVariant::Status)
 
     ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, ReleaseArchitecture *arch, Type type = LIVE);
     ReleaseVersion *releaseVersion();
@@ -261,8 +273,16 @@ public:
     qreal size() const;
     Progress *progress();
 
+    Status status() const;
+    QString statusString() const;
+
+    // DownloadReceiver interface
+    void onFileDownloaded(const QString &path);
+    void onDownloadError();
+
 signals:
     void isoChanged();
+    void statusChanged();
 
 public slots:
     void download();

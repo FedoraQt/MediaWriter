@@ -26,6 +26,7 @@ QHash<int, QByteArray> DriveManager::roleNames() const {
 }
 
 int DriveManager::rowCount(const QModelIndex &parent) const {
+    Q_UNUSED(parent)
     return m_drives.count();
 }
 
