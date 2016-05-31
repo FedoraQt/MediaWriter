@@ -1,10 +1,14 @@
 #include "drivemanager.h"
+#include "linuxdrivemanager.h"
+
 #include <QtQml>
 
 DriveManager::DriveManager(QObject *parent)
-    : QAbstractListModel(parent), m_drives({new Drive})
+    : QAbstractListModel(parent), m_provider(DriveProvider::create(this))
 {
     qmlRegisterUncreatableType<Drive>("MediaWriter", 1, 0, "Drive", "");
+
+    connect(m_provider, &DriveProvider::driveConnected, this, &DriveManager::onDriveConnected);
 }
 
 QVariant DriveManager::headerData(int section, Qt::Orientation orientation, int role) const {
@@ -67,3 +71,29 @@ int DriveManager::length() const {
 Drive *DriveManager::lastRestoreable() {
     return m_lastRestoreable;
 }
+
+void DriveManager::onDriveConnected(Drive *d) {
+    qCritical() << "DRIVE";
+    m_drives.append(d);
+    emit drivesChanged();
+}
+
+DriveProvider *DriveProvider::create(DriveManager *parent)  {
+#ifdef __APPLE__
+# warning Mac OS X support is not implemented yet
+#endif // APPLE
+
+#ifdef __MINGW32__
+# warning Windows support is not implemented yet
+#endif // MINGW32
+
+#ifdef __linux__
+    return new LinuxDriveProvider(parent);
+#endif // linux
+}
+
+DriveProvider::DriveProvider(DriveManager *parent)
+    : QObject(parent) {
+
+}
+

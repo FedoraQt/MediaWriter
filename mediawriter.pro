@@ -22,4 +22,10 @@ include(deployment.pri)
 HEADERS += \
     drivemanager.h \
     releasemanager.h \
-    utilities.h
+    utilities.h \
+    linuxdrivemanager.h
+
+linux {
+    QT += dbus
+    SOURCES += linuxdrivemanager.cpp
+}

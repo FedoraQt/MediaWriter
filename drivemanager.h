@@ -7,6 +7,7 @@
 #include "releasemanager.h"
 
 class DriveManager;
+class DriveProvider;
 class Drive;
 class UdisksDrive;
 
@@ -34,6 +35,9 @@ public:
 
     Drive *lastRestoreable();
 
+private slots:
+    void onDriveConnected(Drive *d);
+
 signals:
     void drivesChanged();
     void selectedChanged();
@@ -43,6 +47,20 @@ private:
     QList<Drive*> m_drives {};
     int m_selectedIndex {};
     Drive *m_lastRestoreable;
+    DriveProvider *m_provider;
+};
+
+class DriveProvider : public QObject {
+    Q_OBJECT
+public:
+    static DriveProvider *create(DriveManager *parent);
+
+signals:
+    void driveConnected(Drive *d);
+    void driveRemoved(Drive *d);
+
+protected:
+    DriveProvider(DriveManager *parent);
 };
 
 /**
@@ -57,32 +75,18 @@ class Drive : public QObject {
     Q_PROPERTY(bool containsLive READ containsLive NOTIFY containsLiveChanged)
     Q_PROPERTY(bool beingRestored READ beingRestored NOTIFY beingRestoredChanged)
 public:
-    virtual bool beingRestored() const {
-        return false;
-    }
-    virtual bool containsLive() const {
-        return true;
-    }
-    virtual QString name() const {
-        return QStringLiteral("SanDisk Cruzer (8.0 GB)");
-    }
-    virtual uint64_t size() const {
-        return 0;
-    }
+    Drive(DriveProvider *parent) : QObject(parent) {}
 
-    Q_INVOKABLE virtual bool write(ReleaseVariant *data) {
-        qDebug() << "Fake drive writing:" << data->release()->name() << data->releaseVersion()->number() << data->arch()->abbreviation().first() << "contained in" << data->iso();
-        return false;
-    }
+    virtual bool beingRestored() const = 0;
+    virtual bool containsLive() const = 0;
+    virtual QString name() const = 0;
+    virtual uint64_t size() const = 0;
+
+    //Q_INVOKABLE virtual bool write(ReleaseVariant *data) = delete;
+
 signals:
     void beingRestoredChanged();
     void containsLiveChanged();
-};
-
-class UdisksDrive : public Drive {
-    Q_OBJECT
-public:
-
 };
 
 #endif // DRIVEMANAGER_H
