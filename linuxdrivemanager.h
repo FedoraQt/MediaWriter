@@ -6,6 +6,7 @@
 
 #include <QDBusInterface>
 #include <QDBusObjectPath>
+#include <QDBusPendingCall>
 
 class LinuxDriveProvider : public DriveProvider {
     Q_OBJECT
@@ -13,7 +14,12 @@ public:
     LinuxDriveProvider(DriveManager *parent);
 
 private slots:
-    void init();
+    void init(QDBusPendingCallWatcher *w);
+    void interfacesAdded();
+    void interfacesRemoved();
+
+private:
+    QDBusInterface m_objManager;
 };
 
 class LinuxDrive : public Drive {

@@ -3,44 +3,60 @@
 #include <QtDBus/QtDBus>
 #include <QDBusArgument>
 
-typedef QHash<QString, QHash<QString, QHash<QString, QVariant
-             >              >              > DBusIntrospection;
+typedef QHash<QDBusObjectPath, QHash<QString, QHash<QString, QVariant
+             >                      >              > DBusIntrospection;
 
 LinuxDriveProvider::LinuxDriveProvider(DriveManager *parent)
-    : DriveProvider(parent) {
-    QTimer::singleShot(0, this, &LinuxDriveProvider::init);
+    : DriveProvider(parent), m_objManager("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus()) {
+    //QTimer::singleShot(0, this, &LinuxDriveProvider::init);
+
+    qDBusRegisterMetaType<QHash<QString, QVariant>>();
+    qDBusRegisterMetaType<QHash<QString, QHash<QString, QVariant>>>();
+    qDBusRegisterMetaType<DBusIntrospection>();
+
+    QDBusPendingCall pcall = m_objManager.asyncCall("GetManagedObjects");
+    QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(pcall, this);
+    connect(w, &QDBusPendingCallWatcher::finished, this, &LinuxDriveProvider::init);
 }
 
-void LinuxDriveProvider::init() {
-    QDBusInterface interface("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus());
-    QDBusMessage msg = interface.call("GetManagedObjects");
+void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
     QRegExp r("part[0-9]+$");
+    QDBusPendingReply<DBusIntrospection> reply = *w;
 
-    for (auto a : msg.arguments()) {
-        QDBusArgument arg = qvariant_cast<QDBusArgument>(a);
-        DBusIntrospection introspection;
-        arg >> introspection;
-        for (auto i : introspection.keys()) {
-            if (!i.startsWith("/org/freedesktop/UDisks2/block_devices"))
-                continue;
+    if (reply.isError()) {
+        qWarning() << "Could not read drives from UDisks:" << reply.error().name() << reply.error().message();
+        return;
+    }
 
-            QString deviceId = introspection[i]["org.freedesktop.UDisks2.Block"]["Id"].toString();
-            QString driveId = qvariant_cast<QDBusObjectPath>(introspection[i]["org.freedesktop.UDisks2.Block"]["Drive"]).path();
-            QString devicePath = introspection[i]["org.freedesktop.UDisks2.Block"]["Device"].toByteArray();
+    DBusIntrospection introspection = reply.argumentAt<0>();
+    for (auto i : introspection.keys()) {
+        if (!i.path().startsWith("/org/freedesktop/UDisks2/block_devices"))
+            continue;
+
+        QString deviceId = introspection[i]["org.freedesktop.UDisks2.Block"]["Id"].toString();
+        QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(introspection[i]["org.freedesktop.UDisks2.Block"]["Drive"]);
+        QString devicePath = introspection[i]["org.freedesktop.UDisks2.Block"]["Device"].toByteArray();
 
 
-            if (!deviceId.isEmpty() && r.indexIn(deviceId) < 0 && !driveId.isEmpty() && driveId != "/") {
-                bool portable = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Removable"].toBool();
+        if (!deviceId.isEmpty() && r.indexIn(deviceId) < 0 && !driveId.path().isEmpty() && driveId.path() != "/") {
+            bool portable = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Removable"].toBool();
 
-                if (portable) {
-                    QString vendor = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Vendor"].toString();
-                    QString model = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Model"].toString();
-                    uint64_t size = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Size"].toULongLong();
-                    emit DriveProvider::driveConnected(new LinuxDrive(this, devicePath, QString("%1 %2").arg(vendor).arg(model), size));
-                }
+            if (portable) {
+                QString vendor = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Vendor"].toString();
+                QString model = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Model"].toString();
+                uint64_t size = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Size"].toULongLong();
+                emit DriveProvider::driveConnected(new LinuxDrive(this, devicePath, QString("%1 %2").arg(vendor).arg(model), size));
             }
         }
     }
+}
+
+void LinuxDriveProvider::interfacesAdded() {
+
+}
+
+void LinuxDriveProvider::interfacesRemoved() {
+
 }
 
 LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size)
