@@ -37,6 +37,7 @@ public:
 
 private slots:
     void onDriveConnected(Drive *d);
+    void onDriveRemoved(Drive *d);
 
 signals:
     void drivesChanged();

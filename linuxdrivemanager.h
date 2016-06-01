@@ -7,6 +7,17 @@
 #include <QDBusInterface>
 #include <QDBusObjectPath>
 #include <QDBusPendingCall>
+#include <QDBusArgument>
+
+typedef QHash<QString, QVariant> Properties;
+typedef QHash<QString, Properties> InterfacesAndProperties;
+typedef QHash<QDBusObjectPath, InterfacesAndProperties> DBusIntrospection;
+Q_DECLARE_METATYPE(Properties)
+Q_DECLARE_METATYPE(InterfacesAndProperties)
+Q_DECLARE_METATYPE(DBusIntrospection)
+
+class LinuxDriveProvider;
+class LinuxDrive;
 
 class LinuxDriveProvider : public DriveProvider {
     Q_OBJECT
@@ -15,11 +26,12 @@ public:
 
 private slots:
     void init(QDBusPendingCallWatcher *w);
-    void interfacesAdded();
-    void interfacesRemoved();
+    void onInterfacesAdded(QDBusObjectPath object_path, InterfacesAndProperties interfaces_and_properties);
+    void onInterfacesRemoved(QDBusObjectPath object_path, QStringList interfaces);
 
 private:
     QDBusInterface m_objManager;
+    QHash<QDBusObjectPath, LinuxDrive*> m_drives;
 };
 
 class LinuxDrive : public Drive {

@@ -3,20 +3,18 @@
 #include <QtDBus/QtDBus>
 #include <QDBusArgument>
 
-typedef QHash<QDBusObjectPath, QHash<QString, QHash<QString, QVariant
-             >                      >              > DBusIntrospection;
-
 LinuxDriveProvider::LinuxDriveProvider(DriveManager *parent)
     : DriveProvider(parent), m_objManager("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus()) {
-    //QTimer::singleShot(0, this, &LinuxDriveProvider::init);
-
-    qDBusRegisterMetaType<QHash<QString, QVariant>>();
-    qDBusRegisterMetaType<QHash<QString, QHash<QString, QVariant>>>();
+    qDBusRegisterMetaType<Properties>();
+    qDBusRegisterMetaType<InterfacesAndProperties>();
     qDBusRegisterMetaType<DBusIntrospection>();
 
     QDBusPendingCall pcall = m_objManager.asyncCall("GetManagedObjects");
     QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(pcall, this);
+
     connect(w, &QDBusPendingCallWatcher::finished, this, &LinuxDriveProvider::init);
+    QDBusConnection::systemBus().connect("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager" ,"InterfacesAdded", this, SLOT(onInterfacesAdded(QDBusObjectPath,InterfacesAndProperties)));
+    QDBusConnection::systemBus().connect("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager" ,"InterfacesRemoved", this, SLOT(onInterfacesRemoved(QDBusObjectPath,QStringList)));
 }
 
 void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
@@ -45,19 +43,32 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
                 QString vendor = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Vendor"].toString();
                 QString model = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Model"].toString();
                 uint64_t size = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Size"].toULongLong();
-                emit DriveProvider::driveConnected(new LinuxDrive(this, devicePath, QString("%1 %2").arg(vendor).arg(model), size));
+                LinuxDrive *d = new LinuxDrive(this, devicePath, QString("%1 %2").arg(vendor).arg(model), size);
+                m_drives[i] = d;
+                emit DriveProvider::driveConnected(d);
             }
         }
     }
 }
 
-void LinuxDriveProvider::interfacesAdded() {
-
+void LinuxDriveProvider::onInterfacesAdded(QDBusObjectPath object_path, InterfacesAndProperties interfaces_and_properties) {
+    if (interfaces_and_properties.keys().contains("org.freedesktop.UDisks2.Block")) {
+        if (!m_drives.contains(object_path)) {
+            qCritical() << object_path.path() << "connected";
+        }
+    }
 }
 
-void LinuxDriveProvider::interfacesRemoved() {
-
+void LinuxDriveProvider::onInterfacesRemoved(QDBusObjectPath object_path, QStringList interfaces) {
+    if (interfaces.contains("org.freedesktop.UDisks2.Block")) {
+        if (m_drives.contains(object_path)) {
+            emit driveRemoved(m_drives[object_path]);
+            m_drives[object_path]->deleteLater();
+            m_drives.remove(object_path);
+        }
+    }
 }
+
 
 LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size)
     : Drive(parent), m_device(device), m_name(name), m_size(size) {

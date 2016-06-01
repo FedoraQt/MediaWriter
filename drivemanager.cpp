@@ -9,6 +9,7 @@ DriveManager::DriveManager(QObject *parent)
     qmlRegisterUncreatableType<Drive>("MediaWriter", 1, 0, "Drive", "");
 
     connect(m_provider, &DriveProvider::driveConnected, this, &DriveManager::onDriveConnected);
+    connect(m_provider, &DriveProvider::driveRemoved, this, &DriveManager::onDriveRemoved);
 }
 
 QVariant DriveManager::headerData(int section, Qt::Orientation orientation, int role) const {
@@ -77,6 +78,16 @@ void DriveManager::onDriveConnected(Drive *d) {
     m_drives.append(d);
     endInsertRows();
     emit drivesChanged();
+}
+
+void DriveManager::onDriveRemoved(Drive *d) {
+    int i = m_drives.indexOf(d);
+    if (i >= 0) {
+        beginRemoveRows(QModelIndex(), i, i);
+        m_drives.removeAt(i);
+        endRemoveRows();
+        emit drivesChanged();
+    }
 }
 
 DriveProvider *DriveProvider::create(DriveManager *parent)  {
