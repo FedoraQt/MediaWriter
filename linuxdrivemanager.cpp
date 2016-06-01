@@ -43,7 +43,9 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
                 QString vendor = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Vendor"].toString();
                 QString model = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Model"].toString();
                 uint64_t size = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Size"].toULongLong();
-                LinuxDrive *d = new LinuxDrive(this, devicePath, QString("%1 %2").arg(vendor).arg(model), size);
+                bool isoLayout = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["IdType"].toString() == "iso9660";
+
+                LinuxDrive *d = new LinuxDrive(this, devicePath, QString("%1 %2").arg(vendor).arg(model), size, isoLayout);
                 m_drives[i] = d;
                 emit DriveProvider::driveConnected(d);
             }
@@ -69,7 +71,9 @@ void LinuxDriveProvider::onInterfacesAdded(QDBusObjectPath object_path, Interfac
                     QString vendor = driveInterface.property("Vendor").toString();
                     QString model = driveInterface.property("Model").toString();
                     uint64_t size = driveInterface.property("Size").toULongLong();
-                    LinuxDrive *d = new LinuxDrive(this, devicePath, QString("%1 %2").arg(vendor).arg(model), size);
+                    bool isoLayout = driveInterface.property("IdType").toString() == "iso9660";
+
+                    LinuxDrive *d = new LinuxDrive(this, devicePath, QString("%1 %2").arg(vendor).arg(model), size, isoLayout);
                     m_drives[object_path] = d;
                     emit DriveProvider::driveConnected(d);
                 }
@@ -89,8 +93,8 @@ void LinuxDriveProvider::onInterfacesRemoved(QDBusObjectPath object_path, QStrin
 }
 
 
-LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size)
-    : Drive(parent), m_device(device), m_name(name), m_size(size) {
+LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout)
+    : Drive(parent), m_device(device), m_name(name), m_size(size), m_isoLayout(isoLayout) {
 }
 
 bool LinuxDrive::beingRestored() const {
@@ -98,7 +102,7 @@ bool LinuxDrive::beingRestored() const {
 }
 
 bool LinuxDrive::containsLive() const {
-    return false;
+    return m_isoLayout;
 }
 
 QString LinuxDrive::name() const {

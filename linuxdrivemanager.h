@@ -37,7 +37,7 @@ private:
 class LinuxDrive : public Drive {
     Q_OBJECT
 public:
-    LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size);
+    LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout);
 
     virtual bool beingRestored() const override;
     virtual bool containsLive() const override;
@@ -48,6 +48,7 @@ private:
     QString m_device;
     QString m_name;
     uint64_t m_size;
+    bool m_isoLayout;
 };
 
 #endif // linux

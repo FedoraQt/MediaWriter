@@ -78,6 +78,11 @@ void DriveManager::onDriveConnected(Drive *d) {
     m_drives.append(d);
     endInsertRows();
     emit drivesChanged();
+
+    if (d->containsLive()) {
+        m_lastRestoreable = d;
+        emit restoreableDriveChanged();
+    }
 }
 
 void DriveManager::onDriveRemoved(Drive *d) {
@@ -87,6 +92,11 @@ void DriveManager::onDriveRemoved(Drive *d) {
         m_drives.removeAt(i);
         endRemoveRows();
         emit drivesChanged();
+
+        if (d->containsLive()) {
+            m_lastRestoreable = nullptr;
+            emit restoreableDriveChanged();
+        }
     }
 }
 
