@@ -201,9 +201,11 @@ Dialog {
                             height: childrenRect.height
                             AdwaitaProgressBar {
                                 width: parent.width
-                                value: releases.selected.version.variant.progress.to ? releases.selected.version.variant.progress.ratio : 0
+                                //value: releases.selected.version.variant.progress.to ? releases.selected.version.variant.progress.ratio : 0
+                                value: drives && drives.selected && drives.selected.progress.to ? drives.selected.progress.ratio : 0
                                 //visible: !liveUSBData.currentImage.writer.running
                             }
+
                             /*
                             AdwaitaProgressBar {
                                 width: parent.width
@@ -345,6 +347,7 @@ Dialog {
                                 text: releases.selected.version.variant.status == Variant.FINISHED ? qsTranslate("", "Close") :
                                                                                                      qsTranslate("", "Write to disk")
                                 onClicked: {
+                                    drives.selected.write(releases.selected.version.variant)
                                     /*
                                     if (liveUSBData.currentImage.writer.finished) {
                                         liveUSBData.currentImage.download.cancel()

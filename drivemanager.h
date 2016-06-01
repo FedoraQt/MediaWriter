@@ -71,23 +71,33 @@ protected:
  */
 class Drive : public QObject {
     Q_OBJECT
+    Q_PROPERTY(Progress* progress READ progress CONSTANT)
+
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(uint64_t size READ size CONSTANT)
     Q_PROPERTY(bool containsLive READ containsLive NOTIFY containsLiveChanged)
     Q_PROPERTY(bool beingRestored READ beingRestored NOTIFY beingRestoredChanged)
+    Q_PROPERTY(bool beingWrittenTo READ beingWrittenTo NOTIFY beingWrittenToChanged)
 public:
-    Drive(DriveProvider *parent) : QObject(parent) {}
+    Drive(DriveProvider *parent) : QObject(parent), m_progress(new Progress(this)) {}
+    Progress *progress() const { return m_progress; }
 
+    virtual bool beingWrittenTo() const = 0;
     virtual bool beingRestored() const = 0;
     virtual bool containsLive() const = 0;
     virtual QString name() const = 0;
     virtual uint64_t size() const = 0;
 
-    //Q_INVOKABLE virtual bool write(ReleaseVariant *data) = delete;
+    Q_INVOKABLE virtual void write(ReleaseVariant *data) = 0;
+    Q_INVOKABLE virtual void restore() = 0;
 
 signals:
+    void beingWrittenToChanged();
     void beingRestoredChanged();
     void containsLiveChanged();
+
+protected:
+    Progress *m_progress;
 };
 
 #endif // DRIVEMANAGER_H

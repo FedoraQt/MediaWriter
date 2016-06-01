@@ -16,7 +16,7 @@ class DownloadManager;
 class Progress : public QObject {
     Q_OBJECT
     Q_PROPERTY(qreal from READ from CONSTANT)
-    Q_PROPERTY(qreal to READ to CONSTANT)
+    Q_PROPERTY(qreal to READ to NOTIFY toChanged)
     Q_PROPERTY(qreal value READ value NOTIFY valueChanged)
     Q_PROPERTY(qreal ratio READ ratio NOTIFY valueChanged)
 public:
@@ -27,11 +27,13 @@ public:
     qreal value() const;
     qreal ratio() const;
 
+    void setTo(qreal v);
     void setValue(qreal v);
     void setValue(qreal v, qreal to);
 
 signals:
     void valueChanged();
+    void toChanged();
 
 public slots:
     void update(qreal value);

@@ -35,7 +35,6 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
         QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(introspection[i]["org.freedesktop.UDisks2.Block"]["Drive"]);
         QString devicePath = introspection[i]["org.freedesktop.UDisks2.Block"]["Device"].toByteArray();
 
-
         if (!deviceId.isEmpty() && r.indexIn(deviceId) < 0 && !driveId.path().isEmpty() && driveId.path() != "/") {
             bool portable = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Removable"].toBool();
 
@@ -97,6 +96,10 @@ LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name,
     : Drive(parent), m_device(device), m_name(name), m_size(size), m_isoLayout(isoLayout) {
 }
 
+bool LinuxDrive::beingWrittenTo() const {
+    return m_process && m_process->state() == QProcess::Running;
+}
+
 bool LinuxDrive::beingRestored() const {
     return false;
 }
@@ -130,4 +133,53 @@ QString LinuxDrive::name() const {
 
 uint64_t LinuxDrive::size() const {
     return m_size;
+}
+
+void LinuxDrive::write(ReleaseVariant *data) {
+    if (!m_process)
+        m_process = new QProcess(this);
+
+    m_process->setProgram("pkexec");
+    QStringList args;
+    args << "dd";
+    args << QString("if=%1").arg(data->iso());
+    args << QString("of=%1").arg(m_device);
+    args << "bs=1M";
+    args << "iflag=direct";
+    args << "oflag=direct";
+    args << "conv=fdatasync";
+    args << "status=progress";
+    m_process->setArguments(args);
+    QProcessEnvironment env = m_process->processEnvironment();
+    env.insert("LC_ALL", "C");
+    m_process->setProcessEnvironment(env);
+    m_process->setProcessChannelMode(QProcess::MergedChannels);
+
+    connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
+    //connect(m_process, &QProcess::finished, this, &LinuxDrive::onFinished);
+    connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onFinished(int,QProcess::ExitStatus)));
+
+    m_progress->setTo(data->size());
+    m_process->start(QIODevice::ReadOnly);
+}
+
+void LinuxDrive::restore() {
+
+}
+
+void LinuxDrive::onReadyRead() {
+    QRegExp r("^([0-9]+)");
+    while (m_process->bytesAvailable() > 0) {
+        QString line = m_process->readLine().trimmed();
+        if (r.indexIn(line) >= 0) {
+            bool ok = false;
+            uint64_t val = r.cap(0).toULongLong(&ok);
+            if (val > 0 && ok)
+                m_progress->setValue(val);
+        }
+    }
+}
+
+void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
+    qCritical() << "Process finished" << exitCode << status;
 }

@@ -8,6 +8,7 @@
 #include <QDBusObjectPath>
 #include <QDBusPendingCall>
 #include <QDBusArgument>
+#include <QProcess>
 
 typedef QHash<QString, QVariant> Properties;
 typedef QHash<QString, Properties> InterfacesAndProperties;
@@ -39,16 +40,26 @@ class LinuxDrive : public Drive {
 public:
     LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout);
 
+    virtual bool beingWrittenTo() const override;
     virtual bool beingRestored() const override;
     virtual bool containsLive() const override;
     virtual QString name() const override;
     virtual uint64_t size() const override;
+
+    Q_INVOKABLE virtual void write(ReleaseVariant *data) override;
+    Q_INVOKABLE virtual void restore() override;
+
+private slots:
+    void onReadyRead();
+    void onFinished(int exitCode, QProcess::ExitStatus status);
 
 private:
     QString m_device;
     QString m_name;
     uint64_t m_size;
     bool m_isoLayout;
+
+    QProcess *m_process { nullptr };
 };
 
 #endif // linux

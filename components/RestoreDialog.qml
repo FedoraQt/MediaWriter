@@ -112,7 +112,7 @@ Dialog {
                     enabled: root.state != 1
                     onClicked: {
                         if (root.state == 0)
-                            liveUSBData.driveToRestore.restore()
+                            drives.lastRestoreable.restore()
                         else
                             root.visible = false
                     }

@@ -5,9 +5,8 @@
 
 
 Progress::Progress(QObject *parent, qreal from, qreal to)
-    : QObject(parent), m_from(from), m_to(to), m_value(from)
-{
-
+    : QObject(parent), m_from(from), m_to(to), m_value(from) {
+    connect(this, &Progress::toChanged, this, &Progress::valueChanged);
 }
 
 qreal Progress::from() const {
@@ -24,6 +23,13 @@ qreal Progress::value() const {
 
 qreal Progress::ratio() const {
     return (value() - from()) / (to() - from());
+}
+
+void Progress::setTo(qreal v) {
+    if (m_to != v) {
+        m_to = v;
+        emit toChanged();
+    }
 }
 
 void Progress::setValue(qreal v) {
