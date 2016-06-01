@@ -73,8 +73,9 @@ Drive *DriveManager::lastRestoreable() {
 }
 
 void DriveManager::onDriveConnected(Drive *d) {
-    qCritical() << "DRIVE";
+    beginInsertRows(QModelIndex(), m_drives.count(), m_drives.count());
     m_drives.append(d);
+    endInsertRows();
     emit drivesChanged();
 }
 
