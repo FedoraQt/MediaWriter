@@ -52,9 +52,28 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
 }
 
 void LinuxDriveProvider::onInterfacesAdded(QDBusObjectPath object_path, InterfacesAndProperties interfaces_and_properties) {
+    QRegExp r("part[0-9]+$");
+
     if (interfaces_and_properties.keys().contains("org.freedesktop.UDisks2.Block")) {
         if (!m_drives.contains(object_path)) {
-            qCritical() << object_path.path() << "connected";
+            QString deviceId = interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Id"].toString();
+            QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Drive"]);
+            QString devicePath = interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Device"].toByteArray();
+
+            QDBusInterface driveInterface("org.freedesktop.UDisks2", driveId.path(), "org.freedesktop.UDisks2.Drive", QDBusConnection::systemBus());
+
+            if (!deviceId.isEmpty() && r.indexIn(deviceId) < 0 && !driveId.path().isEmpty() && driveId.path() != "/") {
+                bool portable = driveInterface.property("Removable").toBool();
+
+                if (portable) {
+                    QString vendor = driveInterface.property("Vendor").toString();
+                    QString model = driveInterface.property("Model").toString();
+                    uint64_t size = driveInterface.property("Size").toULongLong();
+                    LinuxDrive *d = new LinuxDrive(this, devicePath, QString("%1 %2").arg(vendor).arg(model), size);
+                    m_drives[object_path] = d;
+                    emit DriveProvider::driveConnected(d);
+                }
+            }
         }
     }
 }
