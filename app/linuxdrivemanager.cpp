@@ -141,22 +141,14 @@ void LinuxDrive::write(ReleaseVariant *data) {
 
     m_process->setProgram("pkexec");
     QStringList args;
-    args << "dd";
-    args << QString("if=%1").arg(data->iso());
-    args << QString("of=%1").arg(m_device);
-    args << "bs=1M";
-    args << "iflag=direct";
-    args << "oflag=direct";
-    args << "conv=fdatasync";
-    args << "status=progress";
+    args << qApp->applicationDirPath() + "/helper";
+    args << "write";
+    args << data->iso();
+    args << m_device;
     m_process->setArguments(args);
-    QProcessEnvironment env = m_process->processEnvironment();
-    env.insert("LC_ALL", "C");
-    m_process->setProcessEnvironment(env);
-    m_process->setProcessChannelMode(QProcess::MergedChannels);
+    //m_process->setProcessChannelMode(QProcess::ForwardedChannels);
 
     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
-    //connect(m_process, &QProcess::finished, this, &LinuxDrive::onFinished);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onFinished(int,QProcess::ExitStatus)));
 
     m_progress->setTo(data->size());
@@ -168,18 +160,18 @@ void LinuxDrive::restore() {
 }
 
 void LinuxDrive::onReadyRead() {
-    QRegExp r("^([0-9]+)");
     while (m_process->bytesAvailable() > 0) {
         QString line = m_process->readLine().trimmed();
-        if (r.indexIn(line) >= 0) {
-            bool ok = false;
-            uint64_t val = r.cap(0).toULongLong(&ok);
-            if (val > 0 && ok)
-                m_progress->setValue(val);
-        }
+        //qCritical() << line;
+        bool ok = false;
+        qreal val = line.toULongLong(&ok);
+        qCritical() << val << ok;
+        if (ok && val > 0.0)
+            m_progress->setValue(val);
     }
 }
 
 void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
     qCritical() << "Process finished" << exitCode << status;
+    qCritical() << m_process->readAllStandardError();
 }
