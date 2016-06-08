@@ -1,0 +1,28 @@
+{
+    "id": "org.fedoraproject.MediaWriter",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "master",
+    "sdk": "org.kde.Sdk",
+    "command": "app",
+    "finish-args": [
+        "--socket=x11",
+        "--filesystem=host"
+    ],
+    "modules": [
+        {
+            "name": "MediaWriter",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "http://github.com/MartinBriza/MediaWriter",
+                    "branch": "master"
+                },
+                {
+                    "type": "file",
+                    "path": "mediawriter-configure",
+                    "dest-filename": "configure"
+                }
+            ]
+        }
+    ]
+}
