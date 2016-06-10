@@ -33,7 +33,7 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
 
         QString deviceId = introspection[i]["org.freedesktop.UDisks2.Block"]["Id"].toString();
         QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(introspection[i]["org.freedesktop.UDisks2.Block"]["Drive"]);
-        QString devicePath = introspection[i]["org.freedesktop.UDisks2.Block"]["Device"].toByteArray();
+        QString devicePath = driveId.path();
 
         if (!deviceId.isEmpty() && r.indexIn(deviceId) < 0 && !driveId.path().isEmpty() && driveId.path() != "/") {
             bool portable = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Removable"].toBool();
@@ -59,7 +59,7 @@ void LinuxDriveProvider::onInterfacesAdded(QDBusObjectPath object_path, Interfac
         if (!m_drives.contains(object_path)) {
             QString deviceId = interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Id"].toString();
             QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Drive"]);
-            QString devicePath = interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Device"].toByteArray();
+            QString devicePath = driveId.path();
 
             QDBusInterface driveInterface("org.freedesktop.UDisks2", driveId.path(), "org.freedesktop.UDisks2.Drive", QDBusConnection::systemBus());
 

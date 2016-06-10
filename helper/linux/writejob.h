@@ -11,10 +11,9 @@ class WriteJob : public QObject
 public:
     explicit WriteJob(const QString &what, const QString &where);
 
+    const int BUFFER_SIZE { 1024 * 16 };
 public slots:
     void work();
-    void onReadyRead();
-    void onFinished(int exitCode, QProcess::ExitStatus status);
 private:
     QString what;
     QString where;

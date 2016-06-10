@@ -10,8 +10,6 @@ int main(int argc, char *argv[]) {
         new RestoreJob(app.arguments()[2]);
     }
     else if (app.arguments().count() == 4 && app.arguments()[1] == "write") {
-        QTextStream err(stderr);
-        err << "Args are \"" << app.arguments()[2] << "\", \"" << app.arguments()[3] << "\"\n";
         new WriteJob(app.arguments()[2], app.arguments()[3]);
     }
     else {
