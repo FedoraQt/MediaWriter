@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += qml quick widgets network
+QT += core network dbus
 
 CONFIG += c++11
 CONFIG += console
