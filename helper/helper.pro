@@ -1,3 +1,6 @@
 TEMPLATE = subdirs
-SUBDIRS = linux
+
+linux {
+    SUBDIRS = linux
+}
 
