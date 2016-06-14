@@ -18,7 +18,6 @@ LinuxDriveProvider::LinuxDriveProvider(DriveManager *parent)
 }
 
 void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
-    QRegExp r("part[0-9]+$");
     QDBusPendingReply<DBusIntrospection> reply = *w;
 
     if (reply.isError()) {
@@ -31,11 +30,14 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
         if (!i.path().startsWith("/org/freedesktop/UDisks2/block_devices"))
             continue;
 
+        if (introspection[i].contains("org.freedesktop.UDisks2.Partition"))
+            continue;
+
         QString deviceId = introspection[i]["org.freedesktop.UDisks2.Block"]["Id"].toString();
         QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(introspection[i]["org.freedesktop.UDisks2.Block"]["Drive"]);
         QString devicePath = driveId.path();
 
-        if (!deviceId.isEmpty() && r.indexIn(deviceId) < 0 && !driveId.path().isEmpty() && driveId.path() != "/") {
+        if (!deviceId.isEmpty() && !driveId.path().isEmpty() && driveId.path() != "/") {
             bool portable = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Removable"].toBool();
 
             if (portable) {
@@ -45,6 +47,10 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
                 bool isoLayout = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["IdType"].toString() == "iso9660";
 
                 LinuxDrive *d = new LinuxDrive(this, devicePath, QString("%1 %2").arg(vendor).arg(model), size, isoLayout);
+                if (m_drives.contains(i)) {
+                    LinuxDrive *tmp = m_drives[i];
+                    emit DriveProvider::driveRemoved(tmp);
+                }
                 m_drives[i] = d;
                 emit DriveProvider::driveConnected(d);
             }
@@ -73,6 +79,10 @@ void LinuxDriveProvider::onInterfacesAdded(QDBusObjectPath object_path, Interfac
                     bool isoLayout = driveInterface.property("IdType").toString() == "iso9660";
 
                     LinuxDrive *d = new LinuxDrive(this, devicePath, QString("%1 %2").arg(vendor).arg(model), size, isoLayout);
+                    if (m_drives.contains(object_path)) {
+                        LinuxDrive *tmp = m_drives[object_path];
+                        emit DriveProvider::driveRemoved(tmp);
+                    }
                     m_drives[object_path] = d;
                     emit DriveProvider::driveConnected(d);
                 }
