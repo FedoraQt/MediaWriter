@@ -11,7 +11,7 @@ class WriteJob : public QObject
 public:
     explicit WriteJob(const QString &what, const QString &where);
 
-    const int BUFFER_SIZE { 1024 * 16 };
+    const int BUFFER_SIZE { 1024 * 1024 };
 public slots:
     void work();
 private:

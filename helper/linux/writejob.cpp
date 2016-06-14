@@ -56,6 +56,11 @@ void WriteJob::work()
     QDBusReply<QDBusUnixFileDescriptor> reply = device.call("OpenForRestore", Properties());
     QDBusUnixFileDescriptor fd = reply.value();
 
+    if (!fd.isValid()) {
+        err << reply.error().message();
+        qApp->exit(2);
+    }
+
     QFile outFile;
     outFile.open(fd.fileDescriptor(), QIODevice::WriteOnly, QFileDevice::AutoCloseHandle);
     QFile inFile(what);
@@ -72,7 +77,8 @@ void WriteJob::work()
         out << total << '\n';
         out.flush();
     }
-
+    err << inFile.errorString() << "\n";
+    err << outFile.errorString() << "\n";
     err << "OK\n";
     err.flush();
     qApp->exit(0);
