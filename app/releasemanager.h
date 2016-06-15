@@ -293,6 +293,7 @@ signals:
 public slots:
     void download();
     void resetStatus();
+    void advanceStatus();
 
 private:
     void setStatus(Status s);

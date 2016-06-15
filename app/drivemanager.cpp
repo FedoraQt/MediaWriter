@@ -119,4 +119,7 @@ DriveProvider::DriveProvider(DriveManager *parent)
 
 }
 
-
+void Drive::write(ReleaseVariant *data) {
+    m_image = data;
+    connect(this, &Drive::beingWrittenToChanged, data, &ReleaseVariant::advanceStatus);
+}

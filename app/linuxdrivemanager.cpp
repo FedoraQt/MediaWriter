@@ -146,8 +146,13 @@ uint64_t LinuxDrive::size() const {
 }
 
 void LinuxDrive::write(ReleaseVariant *data) {
+    Drive::write(data);
+
     if (!m_process)
         m_process = new QProcess(this);
+
+    m_beingWrittenTo = true;
+    emit beingWrittenToChanged();
 
     m_process->setProgram("pkexec");
     QStringList args;
@@ -184,4 +189,7 @@ void LinuxDrive::onReadyRead() {
 void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
     qCritical() << "Process finished" << exitCode << status;
     qCritical() << m_process->readAllStandardError();
+
+    m_beingWrittenTo = false;
+    emit beingWrittenToChanged();
 }

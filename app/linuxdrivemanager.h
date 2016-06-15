@@ -60,6 +60,8 @@ private:
     bool m_isoLayout;
 
     QProcess *m_process { nullptr };
+    bool m_beingWrittenTo { false };
+    bool m_beingRestored { false };
 };
 
 #endif // linux
