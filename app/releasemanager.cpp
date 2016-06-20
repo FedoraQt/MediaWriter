@@ -456,8 +456,8 @@ void ReleaseVariant::resetStatus() {
 }
 
 void ReleaseVariant::advanceStatus() {
-    qCritical() << "THEY KNOW";
-    setStatus((Status) (status() + 1));
+    if (status() != FINISHED)
+        setStatus((Status) (status() + 1));
 }
 
 void ReleaseVariant::setStatus(Status s) {
