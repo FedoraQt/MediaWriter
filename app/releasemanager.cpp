@@ -282,6 +282,8 @@ QStringList Release::versionNames() const {
 void Release::addVersion(ReleaseVersion *version) {
     m_versions.append(version);
     emit versionsChanged();
+    if (m_versions.count() == 1)
+        emit selectedVersionChanged();
 }
 
 ReleaseVersion *Release::selectedVersion() const {
@@ -363,6 +365,8 @@ QDateTime ReleaseVersion::releaseDate() const {
 void ReleaseVersion::addVariant(ReleaseVariant *v) {
     m_variants.append(v);
     emit variantsChanged();
+    if (m_variants.count() == 1)
+        emit selectedVariantChanged();
 }
 
 QQmlListProperty<ReleaseVariant> ReleaseVersion::variants() {
