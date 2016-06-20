@@ -201,9 +201,8 @@ Dialog {
                             height: childrenRect.height
                             AdwaitaProgressBar {
                                 width: parent.width
-                                //value: releases.selected.version.variant.progress.to ? releases.selected.version.variant.progress.ratio : 0
-                                value: drives && drives.selected && drives.selected.progress.to ? drives.selected.progress.ratio : 0
-                                //visible: !liveUSBData.currentImage.writer.running
+                                value: releases.selected.version.variant.status == Variant.DOWNLOADING ? releases.selected.version.variant.progress.ratio :
+                                       releases.selected.version.variant.status == Variant.WRITING ? drives.selected.progress.ratio : 0.0
                             }
 
                             /*
@@ -283,8 +282,9 @@ Dialog {
                                     currentIndex = -1
                             }
 
-                            //enabled: !liveUSBData.currentImage.writer.running &&  liveUSBData.usbDriveNames.length > 0
-                            enabled: drives.length > 0
+                            enabled: (releases.selected.version.variant.status == Variant.READY ||
+                                      releases.selected.version.variant.status == Variant.DOWNLOADING) &&
+                                     drives.length > 0
                             Row {
                                 spacing: $(6)
                                 anchors.fill: parent
@@ -323,6 +323,8 @@ Dialog {
                                     rightMargin: $(6)
                                 }
                                 text: qsTranslate("", "Cancel")
+                                enabled: releases.selected.version.variant.status == Variant.READY ||
+                                         releases.selected.version.variant.status == Variant.DOWNLOADING
                                 //enabled: !liveUSBData.currentImage.writer.running && !liveUSBData.currentImage.writer.finished
                                 onClicked: {
                                     //liveUSBData.currentImage.download.cancel()
