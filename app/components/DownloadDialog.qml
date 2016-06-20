@@ -349,19 +349,14 @@ Dialog {
                                 text: releases.selected.version.variant.status == Variant.FINISHED ? qsTranslate("", "Close") :
                                                                                                      qsTranslate("", "Write to disk")
                                 onClicked: {
-                                    drives.selected.write(releases.selected.version.variant)
-                                    /*
-                                    if (liveUSBData.currentImage.writer.finished) {
-                                        liveUSBData.currentImage.download.cancel()
-                                        liveUSBData.currentImage.writer.cancel()
-                                        liveUSBData.currentImage.writer.finished = false
+                                    if (releases.selected.version.variant.status == Variant.READY) {
+                                        drives.selected.write(releases.selected.version.variant)
+                                    }
+                                    else if (releases.selected.version.variant.status == Variant.FINISHED) {
+                                        releases.selected.version.variant.resetStatus()
                                         writeImmediately.checked = false
                                         root.close()
                                     }
-                                    else {
-                                        liveUSBData.currentImage.write()
-                                    }
-                                    */
                                 }
                             }
                         }
