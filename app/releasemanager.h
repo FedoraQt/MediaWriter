@@ -61,6 +61,7 @@ public:
     QString filterText() const;
     void setFilterText(const QString &o);
 
+    Q_INVOKABLE void setLocalFile(const QString &path);
 
     QStringList architectures() const;
     int filterArchitecture() const;
@@ -139,6 +140,7 @@ public:
     Q_INVOKABLE QString sourceString();
 
     Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QString &description, Release::Source source, const QString &icon, const QStringList &screenshots, QList<ReleaseVersion*> versions);
+    void setLocalFile(const QString &path);
 
     int index() const;
     QString name() const;
@@ -198,6 +200,7 @@ public:
     Q_ENUMS(ReleaseVersion::Status)
 
     ReleaseVersion(Release *parent, int number, QList<ReleaseVariant*> variants, ReleaseVersion::Status status = FINAL, QDateTime releaseDate = QDateTime());
+    ReleaseVersion(Release *parent, const QString &file);
     Release *release();
 
     int number() const;
@@ -217,7 +220,7 @@ signals:
     void selectedVariantChanged();
 
 private:
-    int m_number;
+    int m_number { 0 };
     ReleaseVersion::Status m_status { FINAL };
     QDateTime m_releaseDate {};
     QList<ReleaseVariant*> m_variants {};
@@ -266,6 +269,8 @@ public:
     };
 
     ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, ReleaseArchitecture *arch, Type type = LIVE);
+    ReleaseVariant(ReleaseVersion *parent, const QString &file);
+
     ReleaseVersion *releaseVersion();
     Release *release();
 
@@ -304,7 +309,7 @@ private:
     QString m_url {};
     QString m_shaHash {};
     QString m_iso {};
-    int64_t m_size;
+    int64_t m_size { 0 };
     Status m_status { PREPARING };
 
     Progress *m_progress { nullptr };

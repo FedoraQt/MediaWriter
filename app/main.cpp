@@ -12,8 +12,8 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("drives", new DriveManager());
     engine.rootContext()->setContextProperty("releases", new ReleaseManager());
-    //engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-    engine.load(QUrl(QStringLiteral("../../mediawriter/app/main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    //engine.load(QUrl(QStringLiteral("../../mediawriter/app/main.qml")));
 
 
     return app.exec();

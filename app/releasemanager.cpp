@@ -71,6 +71,15 @@ void ReleaseManager::setFilterText(const QString &o) {
     }
 }
 
+void ReleaseManager::setLocalFile(const QString &path) {
+    for (int i = 0; i < m_sourceModel->rowCount(); i++) {
+        Release *r = m_sourceModel->get(i);
+        if (r->source() == Release::LOCAL) {
+            r->setLocalFile(path);
+        }
+    }
+}
+
 int ReleaseManager::filterArchitecture() const {
     return m_filterArchitecture;
 }
@@ -269,6 +278,27 @@ Release::Release(ReleaseManager *parent, int index, const QString &name, const Q
 
 }
 
+void Release::setLocalFile(const QString &path) {
+    if (m_source != LOCAL)
+        return;
+
+    QFileInfo info(QUrl(path).toLocalFile());
+
+    if (!info.exists()) {
+        qCritical() << path << "doesn't exist";
+        return;
+    }
+
+    if (m_versions.count() == 1) {
+        m_versions.first()->deleteLater();
+        m_versions.removeFirst();
+    }
+
+    m_versions.append(new ReleaseVersion(this, QUrl(path).toLocalFile()));
+    emit versionsChanged();
+    emit selectedVersionChanged();
+}
+
 QString Release::name() const {
     return m_name;
 }
@@ -344,6 +374,12 @@ ReleaseVersion::ReleaseVersion(Release *parent, int number, QList<ReleaseVariant
 
 }
 
+ReleaseVersion::ReleaseVersion(Release *parent, const QString &file)
+    : QObject(parent), m_variants({ new ReleaseVariant(this, file) })
+{
+
+}
+
 Release *ReleaseVersion::release() {
     return qobject_cast<Release*>(parent());
 }
@@ -373,7 +409,6 @@ QString ReleaseVersion::name() const {
 ReleaseVariant *ReleaseVersion::selectedVariant() const {
     if (m_selectedVariant >= 0 && m_selectedVariant < m_variants.count())
         return m_variants[m_selectedVariant];
-    qCritical() << "I GOT NUFFIN";
     return nullptr;
 }
 
@@ -416,6 +451,12 @@ ReleaseVariant::ReleaseVariant(ReleaseVersion *parent, QString url, QString shaH
     : QObject(parent), m_arch(arch), m_type(type), m_url(url), m_shaHash(shaHash), m_size(size)
 {
 
+}
+
+ReleaseVariant::ReleaseVariant(ReleaseVersion *parent, const QString &file)
+    : QObject(parent), m_iso(file), m_arch(ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64))
+{
+    m_status = READY;
 }
 
 ReleaseVersion *ReleaseVariant::releaseVersion() {

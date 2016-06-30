@@ -54,7 +54,7 @@ Item {
                 dlDialog.visible = true
                 releases.selected.version.variant.download()
             }
-            enabled: !releases.selected.isLocal
+            enabled: !releases.selected.isLocal || releases.selected.version.variant.iso
             anchors {
                 right: parent.right
                 top: parent.top
@@ -290,7 +290,7 @@ Item {
                                 }
                                 Text {
                                     font.pixelSize: $(12)
-                                    text: "<font color=\"gray\">" + qsTranslate("", "Selected:") + "</font> " + (releases.selected.path ? (((String)(releases.selected.path)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTranslate("", "None") + "</font>"))
+                                    text: "<font color=\"gray\">" + qsTranslate("", "Selected:") + "</font> " + (releases.selected.version.variant.iso ? (((String)(releases.selected.version.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTranslate("", "None") + "</font>"))
                                 }
                             }
                         }
@@ -354,7 +354,7 @@ Item {
         id: fileDialog
         nameFilters: [ qsTranslate("", "Image files (*.iso)"), qsTranslate("", "All files (*)")]
         onAccepted: {
-            releases.selected.path = fileUrl
+            releases.setLocalFile(fileUrl)
         }
     }
 }
