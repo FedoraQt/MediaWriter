@@ -7,7 +7,8 @@ CONFIG += c++11
 SOURCES += main.cpp \
     drivemanager.cpp \
     releasemanager.cpp \
-    utilities.cpp
+    utilities.cpp \
+    macdrivemanager.cpp
 
 RESOURCES += qml.qrc \
     assets.qrc
@@ -22,7 +23,8 @@ HEADERS += \
     drivemanager.h \
     releasemanager.h \
     utilities.h \
-    linuxdrivemanager.h
+    linuxdrivemanager.h \
+    macdrivemanager.h
 
 linux {
     QT += dbus

@@ -1,5 +1,6 @@
 #include "drivemanager.h"
 #include "linuxdrivemanager.h"
+#include "macdrivemanager.h"
 
 #include <QtQml>
 
@@ -103,6 +104,7 @@ void DriveManager::onDriveRemoved(Drive *d) {
 DriveProvider *DriveProvider::create(DriveManager *parent)  {
 #ifdef __APPLE__
 # warning Mac OS X support is not implemented yet
+    return new MacDriveProvider(parent);
 #endif // APPLE
 
 #ifdef __MINGW32__

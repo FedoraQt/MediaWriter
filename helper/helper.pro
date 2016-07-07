@@ -6,4 +6,6 @@ linux {
 win32 {
     SUBDIRS = win
 }
-
+macx {
+    SUBDIRS = mac
+}
