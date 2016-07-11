@@ -7,6 +7,8 @@ CONFIG += console
 
 TARGET = helper
 
+include(deployment.pri)
+
 SOURCES = main.cpp \
     writejob.cpp \
     restorejob.cpp

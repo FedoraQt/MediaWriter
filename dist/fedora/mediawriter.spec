@@ -35,15 +35,8 @@ ls -l %{buildroot}
 
 
 %files
-%defattr(-,root,root,-)
-#%doc README.rst LICENSE.txt
-#%{python_sitelib}/*
 %{_bindir}/mediawriter
-#%{_datadir}/applications/*liveusb-creator.desktop
-#%{_datadir}/pixmaps/fedorausb.png
-#%{_datadir}/appdata/%{name}.appdata.xml
-#%{_datadir}/locale/*/LC_MESSAGES/liveusb-creator.mo
-#%{_datadir}/polkit-1/actions/org.fedoraproject.pkexec.run-liveusb-creator.policy
+%{_libexecdir}/mediawriter/helper
 
 %changelog
 * Mon Apr 1 2016 Martin Bříza <mbriza@redhat.com> 4.0-1
