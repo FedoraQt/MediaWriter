@@ -28,11 +28,6 @@ IndicatedImage {
         id: zoomedImage
         source: root.source
         visible: false
-        //visible: height > parent.height || width > parent.width
-        //x: (parent.width - width) / 2
-        //y: (parent.height - height) / 2
-        //width: root.zoomed ? sourceSize.width : parent.width
-        //height: root.zoomed ? sourceSize.height : parent.height
         SequentialAnimation {
             id: showAnimation
             onStarted: {
@@ -94,36 +89,40 @@ IndicatedImage {
                     to: 0
                     easing.type: Easing.OutCubic
                 }
-                NumberAnimation {
-                    target: zoomedImage; property: "scale"
-                    to: 1.0
-                    easing.type: Easing.OutCubic
-                }
             }
         }
 
-        Behavior on scale {
-            NumberAnimation {
-                easing.type: Easing.OutCubic
-            }
-        }
+        Behavior on height { NumberAnimation { easing.type: Easing.OutCubic } }
+        Behavior on width { NumberAnimation { easing.type: Easing.OutCubic } }
+        Behavior on x { NumberAnimation { easing.type: Easing.OutCubic } }
+        Behavior on y { NumberAnimation { easing.type: Easing.OutCubic } }
 
         MouseArea {
             id: mouse
+            enabled: root.zoomed
             anchors.fill: parent
             onClicked: root.zoomed = false
             onWheel: {
-                if(wheel.angleDelta.y > 0 && parent.scale < 10)
-                    parent.scale *= 1.5
+                if(wheel.angleDelta.y > 0 && zoomedImage.width < 10 * zoomedImage.sourceSize.width) {
+                    zoomedImage.x -= zoomedImage.width * 0.15
+                    zoomedImage.y -= zoomedImage.height * 0.15
+                    zoomedImage.width *= 1.3
+                    zoomedImage.height *= 1.3
+                }
                 else if (wheel.angleDelta.y < 0) {
-                    if (parent.scale / 1.5 < 1.0)
+                    if (zoomedImage.width * 0.7 < root.width) {
                         root.zoomed = false
-                    else
-                        parent.scale /= 1.5
+                    }
+                    else {
+                        zoomedImage.x += zoomedImage.width * 0.15
+                        zoomedImage.y += zoomedImage.height * 0.15
+                        zoomedImage.width *= 0.7
+                        zoomedImage.height *= 0.7
+                    }
                 }
             }
             drag {
-                target: parent
+                target: zoomedImage
                 axis: Drag.XAndYAxis
                 minimumX: - width + 32
                 maximumX: (root.width - 32)
