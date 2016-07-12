@@ -11,74 +11,50 @@ Item {
 
     signal stepForward
 
-    Rectangle {
-        z: 2
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: palette.window }
-            GradientStop { position: 0.1; color: palette.window }
-            GradientStop { position: 0.2; color: Qt.tint(palette.window, "transparent") }
-            GradientStop { position: 1.0; color: "transparent" }
-        }
-        id: tools
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-            leftMargin: mainWindow.margin
-            rightMargin: anchors.leftMargin
-        }
-        height: $(64)
-        BackButton {
-            id: backButton
-            anchors {
-                left: parent.left
-                top: parent.top
-                bottom: parent.bottom
-                topMargin: $(16)
-                bottomMargin: $(16)
-            }
-            onClicked: {
-                archPopover.open = false
-                versionPopover.open = false
-                canGoBack = false
-                contentList.currentIndex--
-            }
-        }
-        AdwaitaButton {
-            text: qsTranslate("", "Create Live USB")
-            color: "#628fcf"
-            textColor: "white"
-            onClicked: {
-                archPopover.open = false
-                versionPopover.open = false
-                dlDialog.visible = true
-                releases.selected.version.variant.download()
-            }
-            enabled: !releases.selected.isLocal || releases.selected.version.variant.iso
-            anchors {
-                right: parent.right
-                top: parent.top
-                bottom: parent.bottom
-                topMargin: $(16)
-                bottomMargin: $(16)
-            }
-        }
-    }
-
     ScrollView {
         anchors {
             fill: parent
             leftMargin: anchors.rightMargin
         }
         contentItem: Item {
-            y: $(72)
             x: mainWindow.margin
             width: root.width - 2 * mainWindow.margin
             height: childrenRect.height + $(64) + $(32)
 
             ColumnLayout {
+                y: $(18)
                 width: parent.width
                 spacing: $(24)
+
+                RowLayout {
+                    id: tools
+                    Layout.fillWidth: true
+                    BackButton {
+                        id: backButton
+                        onClicked: {
+                            archPopover.open = false
+                            versionPopover.open = false
+                            canGoBack = false
+                            contentList.currentIndex--
+                        }
+                    }
+                    Item {
+                        Layout.fillWidth: true
+                    }
+                    AdwaitaButton {
+                        text: qsTranslate("", "Create Live USB")
+                        color: "#628fcf"
+                        textColor: "white"
+                        onClicked: {
+                            archPopover.open = false
+                            versionPopover.open = false
+                            dlDialog.visible = true
+                            releases.selected.version.variant.download()
+                        }
+                        enabled: !releases.selected.isLocal || releases.selected.version.variant.iso
+                    }
+                }
+
                 RowLayout {
                     z: 1 // so the popover stays over the text below
                     anchors.left: parent.left
@@ -307,7 +283,8 @@ Item {
                 Repeater {
                     id: screenshotRepeater
                     model: releases.selected.screenshots
-                    IndicatedImage {
+                    ZoomableImage {
+                        z: 1
                         cache: false
                         Layout.fillWidth: true
                         Layout.preferredHeight: width / sourceSize.width * sourceSize.height

@@ -2,7 +2,7 @@ import QtQuick 2.3
 import QtQuick.Controls 1.2
 
 AdwaitaButton {
-    width: arrow.width + text.width + $(28)
+    implicitWidth: arrow.width + text.width + $(28)
     Item {
         id: arrow
         anchors.left: parent.left
