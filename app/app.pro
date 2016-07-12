@@ -9,14 +9,17 @@ CONFIG += c++11
 SOURCES += main.cpp \
     drivemanager.cpp \
     releasemanager.cpp \
-    utilities.cpp \
-    macdrivemanager.cpp
+    utilities.cpp
 
 RESOURCES += qml.qrc \
     assets.qrc
 
-# Default rules for deployment.
-include(deployment.pri)
+include($$top_srcdir/deployment.pri)
+
+target.path = $$BINDIR
+INSTALLS += target
+
+#DEFINES += HELPER_PATH=\\\"$${HELPER_PATH}\\\"
 
 HEADERS += \
     drivemanager.h \
@@ -28,4 +31,7 @@ HEADERS += \
 linux {
     QT += dbus
     SOURCES += linuxdrivemanager.cpp
+}
+macx {
+    SOURCES += macdrivemanager.cpp
 }

@@ -156,7 +156,10 @@ void LinuxDrive::write(ReleaseVariant *data) {
 
     m_process->setProgram("pkexec");
     QStringList args;
-    args << qApp->applicationDirPath() + "/helper";
+    if (QFile::exists(qApp->applicationDirPath() + "/../linux/helper"))
+        args << qApp->applicationDirPath() + "/../linux/helper";
+    else
+        args << QString("%1/%2").arg(LIBEXECDIR).arg("helper");
     args << "write";
     args << data->iso();
     args << m_device;

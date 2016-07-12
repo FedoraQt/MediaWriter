@@ -4,4 +4,7 @@ isEmpty(target.path) {
 }
 INSTALLS += target
 
+HELPER_PATH = $${PREFIX}/usr/libexec/mediawriter/helper
+export(HELPER_PATH)
+
 export(INSTALLS)

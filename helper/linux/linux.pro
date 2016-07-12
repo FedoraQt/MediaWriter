@@ -7,7 +7,10 @@ CONFIG += console
 
 TARGET = helper
 
-include(deployment.pri)
+include($$top_srcdir/deployment.pri)
+
+target.path = $$LIBEXECDIR
+INSTALLS += target
 
 SOURCES = main.cpp \
     writejob.cpp \
