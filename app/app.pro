@@ -19,8 +19,6 @@ include($$top_srcdir/deployment.pri)
 target.path = $$BINDIR
 INSTALLS += target
 
-#DEFINES += HELPER_PATH=\\\"$${HELPER_PATH}\\\"
-
 HEADERS += \
     drivemanager.h \
     releasemanager.h \

@@ -164,7 +164,6 @@ void LinuxDrive::write(ReleaseVariant *data) {
     args << data->iso();
     args << m_device;
     m_process->setArguments(args);
-    //m_process->setProcessChannelMode(QProcess::ForwardedChannels);
 
     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onFinished(int,QProcess::ExitStatus)));
