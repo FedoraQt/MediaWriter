@@ -14,7 +14,7 @@ IndicatedImage {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: root.zoomed = true
+        onClicked: root.zoomed = !root.zoomed
     }
 
     Rectangle {
