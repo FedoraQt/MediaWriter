@@ -5,9 +5,11 @@ IndicatedImage {
     property bool zoomed: false
     onZoomedChanged: {
         if (zoomed) {
+            z++
             showAnimation.start()
         }
         else {
+            z--
             hideAnimation.start()
         }
     }
