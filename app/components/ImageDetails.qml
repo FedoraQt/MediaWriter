@@ -285,6 +285,7 @@ Item {
                     model: releases.selected.screenshots
                     ZoomableImage {
                         z: 1
+                        smooth: true
                         cache: false
                         Layout.fillWidth: true
                         Layout.preferredHeight: width / sourceSize.width * sourceSize.height
