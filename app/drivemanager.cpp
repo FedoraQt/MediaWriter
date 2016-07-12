@@ -1,6 +1,7 @@
 #include "drivemanager.h"
 #include "linuxdrivemanager.h"
 #include "macdrivemanager.h"
+#include "windrivemanager.h"
 
 #include <QtQml>
 
@@ -109,6 +110,7 @@ DriveProvider *DriveProvider::create(DriveManager *parent)  {
 
 #ifdef __MINGW32__
 # warning Windows support is not implemented yet
+    return new WinDriveProvider(parent);
 #endif // MINGW32
 
 #ifdef __linux__
