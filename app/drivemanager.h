@@ -78,7 +78,15 @@ class Drive : public QObject {
     Q_PROPERTY(bool containsLive READ containsLive NOTIFY containsLiveChanged)
     Q_PROPERTY(bool beingRestored READ beingRestored NOTIFY beingRestoredChanged)
     Q_PROPERTY(bool beingWrittenTo READ beingWrittenTo NOTIFY beingWrittenToChanged)
+    Q_PROPERTY(Status status READ status NOTIFY statusChanged)
 public:
+    enum Status {
+        READY = 0,
+        RESTORING,
+        ERROR
+    };
+    Q_ENUMS(Status)
+
     Drive(DriveProvider *parent) : QObject(parent), m_progress(new Progress(this)) { }
     Progress *progress() const { return m_progress; }
 
@@ -87,6 +95,7 @@ public:
     virtual bool containsLive() const = 0;
     virtual QString name() const = 0;
     virtual uint64_t size() const = 0;
+    virtual Status status() const = 0;
 
     Q_INVOKABLE virtual void write(ReleaseVariant *data);
     Q_INVOKABLE virtual void restore() = 0;
@@ -95,6 +104,7 @@ signals:
     void beingWrittenToChanged();
     void beingRestoredChanged();
     void containsLiveChanged();
+    void statusChanged();
 
 protected:
     ReleaseVariant *m_image { nullptr };

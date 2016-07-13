@@ -145,6 +145,10 @@ uint64_t LinuxDrive::size() const {
     return m_size;
 }
 
+Drive::Status LinuxDrive::status() const {
+    return m_status;
+}
+
 void LinuxDrive::write(ReleaseVariant *data) {
     Drive::write(data);
 
