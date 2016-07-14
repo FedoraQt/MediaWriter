@@ -87,13 +87,14 @@ public:
     };
     Q_ENUMS(RestoreStatus)
 
-    Drive(DriveProvider *parent, bool containsLive = false) : QObject(parent), m_progress(new Progress(this)), m_restoreStatus(containsLive ? CONTAINS_LIVE : CLEAN) { }
-    Progress *progress() const { return m_progress; }
+    Drive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive = false);
+
+    Progress *progress() const;
 
     virtual bool beingWrittenTo() const = 0;
-    virtual QString name() const = 0;
-    virtual uint64_t size() const = 0;
-    virtual RestoreStatus restoreStatus() { return m_restoreStatus; }
+    virtual QString name() const;
+    virtual uint64_t size();
+    virtual RestoreStatus restoreStatus();
 
     Q_INVOKABLE virtual void write(ReleaseVariant *data);
     Q_INVOKABLE virtual void restore() = 0;
@@ -105,6 +106,8 @@ signals:
 protected:
     ReleaseVariant *m_image { nullptr };
     Progress *m_progress { nullptr };
+    QString m_name { };
+    uint64_t m_size { 0 };
     RestoreStatus m_restoreStatus { CLEAN };
 };
 

@@ -103,38 +103,11 @@ void LinuxDriveProvider::onInterfacesRemoved(QDBusObjectPath object_path, QStrin
 
 
 LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout)
-    : Drive(parent, isoLayout), m_device(device), m_name(name), m_size(size) {
+    : Drive(parent, name, size, isoLayout), m_device(device) {
 }
 
 bool LinuxDrive::beingWrittenTo() const {
     return m_process && m_process->state() == QProcess::Running;
-}
-
-QString LinuxDrive::name() const {
-    QString sizeStr;
-    if (m_size < (1000)) {
-        sizeStr = QString(" (%1 B)").arg(m_size);
-    }
-    else if (m_size < (1000L*1000)) {
-        sizeStr = QString(" (%1 KB)").arg(m_size / 1000.0, 0, 'f', 1);
-    }
-    else if (m_size < (1000L*1000*1000)) {
-        sizeStr = QString(" (%1 MB)").arg(m_size / 1000000.0, 0, 'f', 1);
-    }
-    else if (m_size < (1000L*1000*1000*1000)) {
-        sizeStr = QString(" (%1 GB)").arg(m_size / 1000000000.0, 0, 'f', 1);
-    }
-    else if (m_size < (1000L*1000*1000*1000*1000)) {
-        sizeStr = QString(" (%1 TB)").arg(m_size / 1000000000000.0, 0, 'f', 1);
-    }
-    else { // better be ready for exabyte images and drives
-        sizeStr = QString(" (%1 EB)").arg(m_size / 1000000000000000.0, 0, 'f', 1);
-    }
-    return m_name + sizeStr;
-}
-
-uint64_t LinuxDrive::size() const {
-    return m_size;
 }
 
 void LinuxDrive::write(ReleaseVariant *data) {

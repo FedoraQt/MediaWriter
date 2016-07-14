@@ -123,6 +123,51 @@ DriveProvider::DriveProvider(DriveManager *parent)
 
 }
 
+Drive::Drive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive)
+    : QObject(parent),
+      m_progress(new Progress(this)),
+      m_name(name),
+      m_size(size),
+      m_restoreStatus(containsLive ? CONTAINS_LIVE : CLEAN)
+{
+
+}
+
+Progress *Drive::progress() const {
+    return m_progress;
+}
+
+QString Drive::name() const {
+    QString sizeStr;
+    if (m_size < (1000)) {
+        sizeStr = QString(" (%1 B)").arg(m_size);
+    }
+    else if (m_size < (1000L*1000)) {
+        sizeStr = QString(" (%1 KB)").arg(m_size / 1000.0, 0, 'f', 1);
+    }
+    else if (m_size < (1000L*1000*1000)) {
+        sizeStr = QString(" (%1 MB)").arg(m_size / 1000000.0, 0, 'f', 1);
+    }
+    else if (m_size < (1000L*1000*1000*1000)) {
+        sizeStr = QString(" (%1 GB)").arg(m_size / 1000000000.0, 0, 'f', 1);
+    }
+    else if (m_size < (1000L*1000*1000*1000*1000)) {
+        sizeStr = QString(" (%1 TB)").arg(m_size / 1000000000000.0, 0, 'f', 1);
+    }
+    else { // better be ready for exabyte images and drives
+        sizeStr = QString(" (%1 EB)").arg(m_size / 1000000000000000.0, 0, 'f', 1);
+    }
+    return m_name + sizeStr;
+}
+
+uint64_t Drive::size() {
+    return m_size;
+}
+
+Drive::RestoreStatus Drive::restoreStatus() {
+    return m_restoreStatus;
+}
+
 void Drive::write(ReleaseVariant *data) {
     m_image = data;
     connect(this, &Drive::beingWrittenToChanged, data, &ReleaseVariant::advanceStatus);

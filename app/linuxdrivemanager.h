@@ -41,8 +41,6 @@ public:
     LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout);
 
     virtual bool beingWrittenTo() const override;
-    virtual QString name() const override;
-    virtual uint64_t size() const override;
 
     Q_INVOKABLE virtual void write(ReleaseVariant *data) override;
     Q_INVOKABLE virtual void restore() override;
@@ -53,8 +51,6 @@ private slots:
 
 private:
     QString m_device;
-    QString m_name;
-    uint64_t m_size;
 
     QProcess *m_process { nullptr };
     bool m_beingWrittenTo { false };
