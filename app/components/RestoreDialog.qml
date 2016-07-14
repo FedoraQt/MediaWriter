@@ -5,18 +5,11 @@ import QtQuick.Window 2.0
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
 
+import MediaWriter 1.0
+
 Dialog {
     id: root
     title: drives.lastRestoreableDrive ? qsTranslate("", "Restore %1?").arg(liveUSBData.driveToRestore.text) : ""
-
-    property int state: 0
-
-    Connections {
-        target: drives.lastRestoreable
-        onBeingRestoredChanged: root.state++
-    }
-
-    onVisibleChanged: state = 0
 
     contentItem : Rectangle {
         implicitWidth: $(480)
@@ -30,7 +23,9 @@ Dialog {
             Row {
                 id: textItem
                 spacing: $(36)
-                x: root.state == 0 ? 0 : root.state == 1 ? - (parent.width + $(36)) : - (2 * parent.width + $(72))
+                x: !drives.lastRestoreable || drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? 0 :
+                                              drives.lastRestoreable.restoreStatus == Drive.RESTORING     ? - (parent.width + $(36)) :
+                                                                                                            - (2 * parent.width + $(72))
                 height: warningText.height
                 Behavior on x {
                     NumberAnimation {
@@ -78,6 +73,7 @@ Dialog {
                     }
                 }
                 ColumnLayout {
+                    visible: drives.lastRestoreable && drives.lastRestoreable.restoreStatus != Drive.RESTORE_ERROR
                     width: wrapper.width
                     anchors.verticalCenter: parent.verticalCenter
                     CheckMark {
@@ -89,6 +85,23 @@ Dialog {
                         font.pixelSize: $(12)
                     }
                 }
+                ColumnLayout {
+                    visible: drives.lastRestoreable && drives.lastRestoreable.restoreStatus != Drive.RESTORED
+                    width: wrapper.width
+                    anchors.verticalCenter: parent.verticalCenter
+                    Cross {
+                        anchors.centerIn: parent
+                    }
+                    Text {
+                        Layout.alignment: Qt.AlignHCenter
+                        text: qsTranslate("", "Unfortunately, an error occured during the process.<br>Please try restoring the drive using your system tools.")
+                        font.pixelSize: $(12)
+                        Rectangle {
+                            anchors.fill: parent
+                            color: "#440000ff"
+                        }
+                    }
+                }
             }
 
             Row {
@@ -96,22 +109,24 @@ Dialog {
                 anchors.bottom: parent.bottom
                 anchors.right: parent.right
                 spacing: $(12)
+                /*
                 AdwaitaButton {
                     text: qsTranslate("", "Cancel")
-                    enabled: root.state == 0
+                    enabled: drives.lastRestoreable.restoreStatus != Drive.RESTORING
                     visible: opacity > 0.0
                     opacity: root.state == 2 ? 0.0 : 1.0
                     Behavior on opacity { NumberAnimation {} }
                     Behavior on x { NumberAnimation {} }
                     onClicked: root.visible = false
                 }
+                */
                 AdwaitaButton {
-                    text: root.state == 2 ? qsTranslate("", "Close") : qsTranslate("", "Restore")
-                    color: root.state == 2 ? "#628fcf" : "red"
+                    text: drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? qsTranslate("", "Restore") : qsTranslate("", "Close")
+                    color: drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? "red" : "#628fcf"
                     textColor: "white"
-                    enabled: root.state != 1
+                    enabled: !drives.lastRestoreable || drives.lastRestoreable.restoreStatus != Drive.RESTORING
                     onClicked: {
-                        if (root.state == 0)
+                        if (drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE)
                             drives.lastRestoreable.restore()
                         else
                             root.visible = false

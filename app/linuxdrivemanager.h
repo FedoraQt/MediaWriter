@@ -41,11 +41,8 @@ public:
     LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout);
 
     virtual bool beingWrittenTo() const override;
-    virtual bool beingRestored() const override;
-    virtual bool containsLive() const override;
     virtual QString name() const override;
     virtual uint64_t size() const override;
-    virtual Status status() const override;
 
     Q_INVOKABLE virtual void write(ReleaseVariant *data) override;
     Q_INVOKABLE virtual void restore() override;
@@ -58,12 +55,9 @@ private:
     QString m_device;
     QString m_name;
     uint64_t m_size;
-    bool m_isoLayout;
-    Drive::Status m_status { Drive::READY };
 
     QProcess *m_process { nullptr };
     bool m_beingWrittenTo { false };
-    bool m_beingRestored { false };
 };
 
 #endif // linux

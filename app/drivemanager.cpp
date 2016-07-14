@@ -81,7 +81,7 @@ void DriveManager::onDriveConnected(Drive *d) {
     endInsertRows();
     emit drivesChanged();
 
-    if (d->containsLive()) {
+    if (d->restoreStatus() == Drive::CONTAINS_LIVE) {
         m_lastRestoreable = d;
         emit restoreableDriveChanged();
     }
@@ -95,7 +95,7 @@ void DriveManager::onDriveRemoved(Drive *d) {
         endRemoveRows();
         emit drivesChanged();
 
-        if (d->containsLive()) {
+        if (d->restoreStatus() == Drive::CONTAINS_LIVE) {
             m_lastRestoreable = nullptr;
             emit restoreableDriveChanged();
         }

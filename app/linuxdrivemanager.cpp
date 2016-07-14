@@ -44,7 +44,7 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
                 QString vendor = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Vendor"].toString();
                 QString model = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Model"].toString();
                 uint64_t size = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Size"].toULongLong();
-                bool isoLayout = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["IdType"].toString() == "iso9660";
+                bool isoLayout = introspection[i]["org.freedesktop.UDisks2.Block"]["IdType"].toString() == "iso9660";
 
                 LinuxDrive *d = new LinuxDrive(this, i.path(), QString("%1 %2").arg(vendor).arg(model), size, isoLayout);
                 if (m_drives.contains(i)) {
@@ -76,7 +76,7 @@ void LinuxDriveProvider::onInterfacesAdded(QDBusObjectPath object_path, Interfac
                     QString vendor = driveInterface.property("Vendor").toString();
                     QString model = driveInterface.property("Model").toString();
                     uint64_t size = driveInterface.property("Size").toULongLong();
-                    bool isoLayout = driveInterface.property("IdType").toString() == "iso9660";
+                    bool isoLayout = interfaces_and_properties["org.freedesktop.UDisks2.Block"]["IdType"].toString() == "iso9660";
 
                     LinuxDrive *d = new LinuxDrive(this, object_path.path(), QString("%1 %2").arg(vendor).arg(model), size, isoLayout);
                     if (m_drives.contains(object_path)) {
@@ -103,19 +103,11 @@ void LinuxDriveProvider::onInterfacesRemoved(QDBusObjectPath object_path, QStrin
 
 
 LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout)
-    : Drive(parent), m_device(device), m_name(name), m_size(size), m_isoLayout(isoLayout) {
+    : Drive(parent, isoLayout), m_device(device), m_name(name), m_size(size) {
 }
 
 bool LinuxDrive::beingWrittenTo() const {
     return m_process && m_process->state() == QProcess::Running;
-}
-
-bool LinuxDrive::beingRestored() const {
-    return false;
-}
-
-bool LinuxDrive::containsLive() const {
-    return m_isoLayout;
 }
 
 QString LinuxDrive::name() const {
@@ -143,10 +135,6 @@ QString LinuxDrive::name() const {
 
 uint64_t LinuxDrive::size() const {
     return m_size;
-}
-
-Drive::Status LinuxDrive::status() const {
-    return m_status;
 }
 
 void LinuxDrive::write(ReleaseVariant *data) {

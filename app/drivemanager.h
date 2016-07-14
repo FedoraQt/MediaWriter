@@ -75,40 +75,37 @@ class Drive : public QObject {
 
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(uint64_t size READ size CONSTANT)
-    Q_PROPERTY(bool containsLive READ containsLive NOTIFY containsLiveChanged)
-    Q_PROPERTY(bool beingRestored READ beingRestored NOTIFY beingRestoredChanged)
     Q_PROPERTY(bool beingWrittenTo READ beingWrittenTo NOTIFY beingWrittenToChanged)
-    Q_PROPERTY(Status status READ status NOTIFY statusChanged)
+    Q_PROPERTY(RestoreStatus restoreStatus READ restoreStatus NOTIFY restoreStatusChanged)
 public:
-    enum Status {
-        READY = 0,
+    enum RestoreStatus {
+        CLEAN = 0,
+        CONTAINS_LIVE,
         RESTORING,
-        ERROR
+        RESTORE_ERROR,
+        RESTORED,
     };
-    Q_ENUMS(Status)
+    Q_ENUMS(RestoreStatus)
 
-    Drive(DriveProvider *parent) : QObject(parent), m_progress(new Progress(this)) { }
+    Drive(DriveProvider *parent, bool containsLive = false) : QObject(parent), m_progress(new Progress(this)), m_restoreStatus(containsLive ? CONTAINS_LIVE : CLEAN) { }
     Progress *progress() const { return m_progress; }
 
     virtual bool beingWrittenTo() const = 0;
-    virtual bool beingRestored() const = 0;
-    virtual bool containsLive() const = 0;
     virtual QString name() const = 0;
     virtual uint64_t size() const = 0;
-    virtual Status status() const = 0;
+    virtual RestoreStatus restoreStatus() { return m_restoreStatus; }
 
     Q_INVOKABLE virtual void write(ReleaseVariant *data);
     Q_INVOKABLE virtual void restore() = 0;
 
 signals:
     void beingWrittenToChanged();
-    void beingRestoredChanged();
-    void containsLiveChanged();
-    void statusChanged();
+    void restoreStatusChanged();
 
 protected:
     ReleaseVariant *m_image { nullptr };
     Progress *m_progress { nullptr };
+    RestoreStatus m_restoreStatus { CLEAN };
 };
 
 #endif // DRIVEMANAGER_H
