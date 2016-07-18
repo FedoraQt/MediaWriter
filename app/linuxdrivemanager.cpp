@@ -121,8 +121,8 @@ void LinuxDrive::write(ReleaseVariant *data) {
 
     m_process->setProgram("pkexec");
     QStringList args;
-    if (QFile::exists(qApp->applicationDirPath() + "/../linux/helper"))
-        args << qApp->applicationDirPath() + "/../linux/helper";
+    if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper"))
+        args << qApp->applicationDirPath() + "/../helper/linux/helper";
     else
         args << QString("%1/%2").arg(LIBEXECDIR).arg("helper");
     args << "write";
@@ -138,7 +138,28 @@ void LinuxDrive::write(ReleaseVariant *data) {
 }
 
 void LinuxDrive::restore() {
+    qCritical() << "starting to restore";
+    if (!m_process)
+        m_process = new QProcess(this);
 
+    m_restoreStatus = RESTORING;
+    emit restoreStatusChanged();
+
+    m_process->setProgram("pkexec");
+    QStringList args;
+    if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper"))
+        args << qApp->applicationDirPath() + "/../helper/linux/helper";
+    else
+        args << QString("%1/%2").arg(LIBEXECDIR).arg("helper");
+    args << "restore";
+    args << m_device;
+    m_process->setArguments(args);
+    m_process->setProcessChannelMode(QProcess::ForwardedChannels);
+
+    //connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
+    connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
+
+    m_process->start(QIODevice::ReadOnly);
 }
 
 void LinuxDrive::onReadyRead() {
@@ -159,4 +180,12 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
 
     m_beingWrittenTo = false;
     emit beingWrittenToChanged();
+}
+
+void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status) {
+    qCritical() << "Process finished" << exitCode << status;
+    qCritical() << m_process->readAllStandardError();
+
+    m_restoreStatus = RESTORED;
+    emit restoreStatusChanged();
 }

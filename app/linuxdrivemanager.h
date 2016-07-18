@@ -48,6 +48,7 @@ public:
 private slots:
     void onReadyRead();
     void onFinished(int exitCode, QProcess::ExitStatus status);
+    void onRestoreFinished(int exitCode, QProcess::ExitStatus status);
 
 private:
     QString m_device;
