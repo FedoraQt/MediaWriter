@@ -4,10 +4,13 @@
 
 #include "drivemanager.h"
 #include "releasemanager.h"
+#include "options.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
+    options.parse(app.arguments());
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("drives", new DriveManager());

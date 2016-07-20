@@ -12,12 +12,14 @@ HEADERS += \
     utilities.h \
     linuxdrivemanager.h \
     macdrivemanager.h \
-    windrivemanager.h
+    windrivemanager.h \
+    options.h
 
 SOURCES += main.cpp \
     drivemanager.cpp \
     releasemanager.cpp \
-    utilities.cpp
+    utilities.cpp \
+    options.cpp
 
 RESOURCES += qml.qrc \
     assets.qrc
