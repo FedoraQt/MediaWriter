@@ -2,6 +2,9 @@
 #include "linuxdrivemanager.h"
 #include "macdrivemanager.h"
 #include "windrivemanager.h"
+#include "fakedrivemanager.h"
+
+#include "options.h"
 
 #include <QtQml>
 
@@ -103,6 +106,9 @@ void DriveManager::onDriveRemoved(Drive *d) {
 }
 
 DriveProvider *DriveProvider::create(DriveManager *parent)  {
+    if (options.testing)
+        return new FakeDriveProvider(parent);
+
 #ifdef __APPLE__
 # warning Mac OS X support is not implemented yet
     return new MacDriveProvider(parent);

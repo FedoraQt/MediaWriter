@@ -13,12 +13,14 @@ HEADERS += \
     linuxdrivemanager.h \
     macdrivemanager.h \
     windrivemanager.h \
+    fakedrivemanager.h \
     options.h
 
 SOURCES += main.cpp \
     drivemanager.cpp \
     releasemanager.cpp \
     utilities.cpp \
+    fakedrivemanager.cpp \
     options.cpp
 
 RESOURCES += qml.qrc \
