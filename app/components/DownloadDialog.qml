@@ -78,99 +78,73 @@ Dialog {
                         spacing: $(4)
                         width: parent.width
 
-                        Repeater {
-                            //model: liveUSBData.currentImage.error
-                            RowLayout {
-                                width: infoColumn.width
-                                spacing: $(8)
+                        RowLayout {
+                            visible: drives.selected && drives.selected.error.length > 0
+                            width: infoColumn.width
+                            spacing: $(8)
+                            Rectangle {
+                                Layout.fillWidth: false
+                                Layout.alignment: Qt.AlignVCenter
+                                width: $(18)
+                                height: $(18)
+                                radius: width / 2
+                                color: "red"
+                                border {
+                                    width: $(1)
+                                    color: "#a1a1a1"
+                                }
                                 Rectangle {
-                                    Layout.fillWidth: false
-                                    Layout.alignment: Qt.AlignVCenter
-                                    width: $(16)
-                                    height: $(16)
-                                    radius: width / 2
-                                    color: "#88ffffff"
-                                    border {
-                                        width: $(1)
-                                        color: "#a1a1a1"
-                                    }
-                                    Item {
-                                        anchors.fill: parent
-                                        transformOrigin: Item.Center
-                                        rotation: 45
-                                        Rectangle {
-                                            anchors.centerIn: parent
-                                            width: parent.width * 0.6
-                                            height: parent.width * 0.1
-                                            color: "red"
-                                        }
-                                        Rectangle {
-                                            anchors.centerIn: parent
-                                            height: parent.width * 0.6
-                                            width: parent.width * 0.1
-                                            color: "red"
-                                        }
-                                    }
-                                }
-                                Text {
-                                    Layout.fillHeight: true
-                                    Layout.fillWidth: true
-                                    verticalAlignment: Text.AlignVCenter
-                                    wrapMode: Text.Wrap
-                                    font.pixelSize: $(12)
-                                    text: liveUSBData.currentImage.error[index]
+                                    anchors.centerIn: parent
+                                    width: parent.width * 0.65
+                                    height: parent.width * 0.15
+                                    color: "white"
                                 }
                             }
-                        }
-
-
-                        Repeater {
-                            //model: (liveUSBData.currentImage.writer.finished || liveUSBData.currentImage.error.length > 0) ? null : liveUSBData.currentImage.warning
-                            RowLayout {
-                                width: infoColumn.width
-                                spacing: $(8)
-                                Text {
-                                    Layout.fillHeight: true
-                                    verticalAlignment: Text.AlignVCenter
-                                    color: "red"
-                                    text: "!"
-                                    font.pixelSize: $(20)
-                                }
-                                Text {
-                                    Layout.fillHeight: true
-                                    Layout.fillWidth: true
-                                    verticalAlignment: Text.AlignVCenter
-                                    wrapMode: Text.Wrap
-                                    font.pixelSize: $(12)
-                                    text: liveUSBData.currentImage.warning[index]
-                                }
+                            Text {
+                                Layout.fillHeight: true
+                                Layout.fillWidth: true
+                                verticalAlignment: Text.AlignVCenter
+                                wrapMode: Text.Wrap
+                                font.pixelSize: $(12)
+                                text: drives.selected ? drives.selected.error : ""
                             }
                         }
+                        /*
+                        RowLayout {
+                            width: infoColumn.width
+                            spacing: $(8)
 
-                        Repeater {
-                            //model: liveUSBData.currentImage.error.length > 0 ? null : liveUSBData.currentImage.info
-                            RowLayout {
-                                width:  infoColumn.width
-                                spacing: $(8)
-                                // a rotated exclamation mark instead of an 'i' as for information - that's funny, right... right?!
+                            Rectangle {
+                                Layout.fillWidth: false
+                                Layout.alignment: Qt.AlignVCenter
+                                width: $(18)
+                                height: $(18)
+                                radius: width / 2
+                                color: "#729FCF"
+                                border {
+                                    width: $(1)
+                                    color: "#a1a1a1"
+                                }
                                 Text {
-                                    Layout.fillHeight: true
+                                    anchors.centerIn: parent
                                     verticalAlignment: Text.AlignVCenter
-                                    color: "blue"
+                                    color: "white"
                                     text: "!"
                                     rotation: 180
-                                    font.pixelSize: $(18)
-                                }
-                                Text {
-                                    Layout.fillHeight: true
-                                    Layout.fillWidth: true
-                                    verticalAlignment: Text.AlignVCenter
-                                    wrapMode: Text.Wrap
-                                    text: liveUSBData.currentImage.info[index]
-                                    font.pixelSize: $(12)
+                                    font.bold: true
+                                    font.pixelSize: $(16)
                                 }
                             }
+                            Text {
+                                Layout.fillHeight: true
+                                Layout.fillWidth: true
+                                verticalAlignment: Text.AlignVCenter
+                                wrapMode: Text.Wrap
+                                font.pixelSize: $(12)
+                                text: qsTranslate("", "PLACEHOLDER")
+                            }
                         }
+                        */
                     }
 
                     ColumnLayout {
