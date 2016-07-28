@@ -305,7 +305,6 @@ signals:
 public slots:
     void download();
     void resetStatus();
-    void advanceStatus();
 
 private:
     QString m_iso {};

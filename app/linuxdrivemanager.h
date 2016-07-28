@@ -40,8 +40,6 @@ class LinuxDrive : public Drive {
 public:
     LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout);
 
-    virtual bool beingWrittenTo() const override;
-
     Q_INVOKABLE virtual void write(ReleaseVariant *data) override;
     Q_INVOKABLE virtual void restore() override;
 
@@ -54,7 +52,6 @@ private:
     QString m_device;
 
     QProcess *m_process { nullptr };
-    bool m_beingWrittenTo { false };
 };
 
 #endif // linux

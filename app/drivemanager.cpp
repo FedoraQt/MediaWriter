@@ -181,7 +181,6 @@ Drive::RestoreStatus Drive::restoreStatus() {
 
 void Drive::write(ReleaseVariant *data) {
     m_image = data;
-    connect(this, &Drive::beingWrittenToChanged, data, &ReleaseVariant::advanceStatus);
 }
 
 void Drive::setRestoreStatusChanged(Drive::RestoreStatus o) {

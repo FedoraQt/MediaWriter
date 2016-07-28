@@ -540,11 +540,6 @@ void ReleaseVariant::resetStatus() {
     emit statusChanged();
 }
 
-void ReleaseVariant::advanceStatus() {
-    if (status() != FINISHED)
-        setStatus((Status) (status() + 1));
-}
-
 void ReleaseVariant::setStatus(Status s) {
     if (m_status != s) {
         m_status = s;

@@ -29,8 +29,7 @@ void FakeDrive::write(ReleaseVariant *data) {
     Drive::write(data);
 
     m_progress->setValue(0);
-    m_writtenTo = true;
-    emit beingWrittenToChanged();
+    m_image->setStatus(ReleaseVariant::WRITING);
     QTimer::singleShot(100, this, &FakeDrive::writingAdvanced);
 }
 
@@ -43,12 +42,9 @@ void FakeDrive::restore() {
 void FakeDrive::writingAdvanced() {
     m_progress->setValue(m_progress->value() + 12345678);
     if (m_progress->value() >= m_size) {
-        m_writtenTo = false;
-        emit beingWrittenToChanged();
+        m_image->setStatus(ReleaseVariant::FINISHED);
     }
     else if (m_name == "Fails" && m_progress->value() >= m_size / 2) {
-        m_writtenTo = false;
-        emit beingWrittenToChanged();
         m_image->setStatus(ReleaseVariant::FAILED);
         m_image->setErrorString("Some error string.");
     }
@@ -71,8 +67,4 @@ void FakeDrive::selfdestruct() {
     emit qobject_cast<FakeDriveProvider*>(parent())->driveRemoved(this);
     QTimer::singleShot(2000, qobject_cast<FakeDriveProvider*>(parent()), &FakeDriveProvider::createNewRestoreable);
     this->deleteLater();
-}
-
-bool FakeDrive::beingWrittenTo() const {
-    return m_writtenTo;
 }

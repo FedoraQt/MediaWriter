@@ -78,7 +78,6 @@ class Drive : public QObject {
 
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(uint64_t size READ size CONSTANT)
-    Q_PROPERTY(bool beingWrittenTo READ beingWrittenTo NOTIFY beingWrittenToChanged)
     Q_PROPERTY(RestoreStatus restoreStatus READ restoreStatus NOTIFY restoreStatusChanged)
 public:
     enum RestoreStatus {
@@ -94,7 +93,6 @@ public:
 
     Progress *progress() const;
 
-    virtual bool beingWrittenTo() const = 0;
     virtual QString name() const;
     virtual uint64_t size();
     virtual RestoreStatus restoreStatus();
@@ -106,7 +104,6 @@ protected slots:
     void setRestoreStatusChanged(RestoreStatus o);
 
 signals:
-    void beingWrittenToChanged();
     void restoreStatusChanged();
 
 protected:

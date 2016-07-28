@@ -106,18 +106,13 @@ LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name,
     : Drive(parent, name, size, isoLayout), m_device(device) {
 }
 
-bool LinuxDrive::beingWrittenTo() const {
-    return m_process && m_process->state() == QProcess::Running;
-}
-
 void LinuxDrive::write(ReleaseVariant *data) {
     Drive::write(data);
 
+    m_image->setStatus(ReleaseVariant::WRITING);
+
     if (!m_process)
         m_process = new QProcess(this);
-
-    m_beingWrittenTo = true;
-    emit beingWrittenToChanged();
 
     m_process->setProgram("pkexec");
     QStringList args;
@@ -178,8 +173,7 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
     qCritical() << "Process finished" << exitCode << status;
     qCritical() << m_process->readAllStandardError();
 
-    m_beingWrittenTo = false;
-    emit beingWrittenToChanged();
+    m_image->setStatus(ReleaseVariant::FINISHED);
 }
 
 void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status) {
