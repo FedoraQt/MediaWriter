@@ -255,7 +255,9 @@ Dialog {
                                 if (drives.length <= 0)
                                     currentIndex = -1
                             }
-                            enabled: releases.selected.version.variant.status != Variant.WRITING && drives.length > 0
+                            enabled: releases.selected.version.variant.status != Variant.WRITING &&
+                                     releases.selected.version.variant.status != Variant.FAILED_DOWNLOAD &&
+                                     drives.length > 0
                             Row {
                                 spacing: $(6)
                                 anchors.fill: parent
