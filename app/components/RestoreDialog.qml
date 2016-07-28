@@ -9,7 +9,15 @@ import MediaWriter 1.0
 
 Dialog {
     id: root
-    title: drives.lastRestoreableDrive ? qsTranslate("", "Restore %1?").arg(liveUSBData.driveToRestore.text) : ""
+    title: drives.lastRestoreable ? qsTranslate("", "Restore %1?").arg(drives.lastRestoreable.name) : ""
+
+    Connections {
+        target: drives
+        onLastRestoreableChanged: {
+            if (drives.lastRestoreable == null)
+                root.close()
+        }
+    }
 
     contentItem : Rectangle {
         implicitWidth: $(480)
