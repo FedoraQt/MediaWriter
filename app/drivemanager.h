@@ -80,7 +80,6 @@ class Drive : public QObject {
     Q_PROPERTY(uint64_t size READ size CONSTANT)
     Q_PROPERTY(bool beingWrittenTo READ beingWrittenTo NOTIFY beingWrittenToChanged)
     Q_PROPERTY(RestoreStatus restoreStatus READ restoreStatus NOTIFY restoreStatusChanged)
-    Q_PROPERTY(QString error READ error WRITE setError NOTIFY errorChanged)
 public:
     enum RestoreStatus {
         CLEAN = 0,
@@ -99,8 +98,6 @@ public:
     virtual QString name() const;
     virtual uint64_t size();
     virtual RestoreStatus restoreStatus();
-    virtual QString error();
-    void setError(const QString &o);
 
     Q_INVOKABLE virtual void write(ReleaseVariant *data);
     Q_INVOKABLE virtual void restore() = 0;
@@ -111,7 +108,6 @@ protected slots:
 signals:
     void beingWrittenToChanged();
     void restoreStatusChanged();
-    void errorChanged();
 
 protected:
     ReleaseVariant *m_image { nullptr };

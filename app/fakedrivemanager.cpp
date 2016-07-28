@@ -8,7 +8,6 @@ FakeDriveProvider::FakeDriveProvider(DriveManager *parent)
 }
 
 void FakeDriveProvider::createNewRestoreable() {
-    qCritical() << "HYR";
     static uint64_t size = 4444444444;
     emit driveConnected(new FakeDrive(this, "Contains Live", size, true));
     size++;
@@ -50,9 +49,8 @@ void FakeDrive::writingAdvanced() {
     else if (m_name == "Fails" && m_progress->value() >= m_size / 2) {
         m_writtenTo = false;
         emit beingWrittenToChanged();
-        m_error = "Some error string.";
-        emit errorChanged();
         m_image->setStatus(ReleaseVariant::FAILED);
+        m_image->setErrorString("Some error string.");
     }
     else {
         QTimer::singleShot(100, this, &FakeDrive::writingAdvanced);

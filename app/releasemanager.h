@@ -245,6 +245,7 @@ class ReleaseVariant : public QObject, public DownloadReceiver {
 
     Q_PROPERTY(Status status READ status NOTIFY statusChanged)
     Q_PROPERTY(QString statusString READ statusString NOTIFY statusChanged)
+    Q_PROPERTY(QString errorString READ errorString WRITE setErrorString NOTIFY errorStringChanged)
 public:
     enum Type {
         LIVE = 0,
@@ -289,6 +290,8 @@ public:
     Status status() const;
     QString statusString() const;
     void setStatus(Status s);
+    QString errorString() const;
+    void setErrorString(const QString &o);
 
     // DownloadReceiver interface
     void onFileDownloaded(const QString &path);
@@ -297,6 +300,7 @@ public:
 signals:
     void isoChanged();
     void statusChanged();
+    void errorStringChanged();
 
 public slots:
     void download();
@@ -304,13 +308,14 @@ public slots:
     void advanceStatus();
 
 private:
+    QString m_iso {};
     ReleaseArchitecture *m_arch { nullptr };
     ReleaseVariant::Type m_type { LIVE };
     QString m_url {};
     QString m_shaHash {};
-    QString m_iso {};
     int64_t m_size { 0 };
     Status m_status { PREPARING };
+    QString m_error {};
 
     Progress *m_progress { nullptr };
 };

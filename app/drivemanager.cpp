@@ -179,10 +179,6 @@ Drive::RestoreStatus Drive::restoreStatus() {
     return m_restoreStatus;
 }
 
-QString Drive::error() {
-    return m_error;
-}
-
 void Drive::write(ReleaseVariant *data) {
     m_image = data;
     connect(this, &Drive::beingWrittenToChanged, data, &ReleaseVariant::advanceStatus);
@@ -192,12 +188,5 @@ void Drive::setRestoreStatusChanged(Drive::RestoreStatus o) {
     if (m_restoreStatus != o) {
         m_restoreStatus = o;
         emit restoreStatusChanged();
-    }
-}
-
-void Drive::setError(const QString &o) {
-    if (m_error != o) {
-        m_error = o;
-        emit errorChanged();
     }
 }

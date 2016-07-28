@@ -528,7 +528,10 @@ void ReleaseVariant::download() {
 }
 
 void ReleaseVariant::resetStatus() {
-    setStatus(PREPARING);
+    if (!m_iso.isEmpty())
+        setStatus(READY);
+    else
+        setStatus(PREPARING);
     if (m_progress)
         m_progress->setValue(0.0);
     emit statusChanged();
@@ -543,6 +546,17 @@ void ReleaseVariant::setStatus(Status s) {
     if (m_status != s) {
         m_status = s;
         emit statusChanged();
+    }
+}
+
+QString ReleaseVariant::errorString() const {
+    return m_error;
+}
+
+void ReleaseVariant::setErrorString(const QString &o) {
+    if (m_error != o) {
+        m_error = o;
+        emit errorStringChanged();
     }
 }
 

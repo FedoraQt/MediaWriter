@@ -79,7 +79,7 @@ Dialog {
                         width: parent.width
 
                         RowLayout {
-                            visible: drives.selected && drives.selected.error.length > 0
+                            visible: releases.selected.version.variant && releases.selected.version.variant.errorString.length > 0
                             width: infoColumn.width
                             spacing: $(8)
                             Rectangle {
@@ -106,7 +106,7 @@ Dialog {
                                 verticalAlignment: Text.AlignVCenter
                                 wrapMode: Text.Wrap
                                 font.pixelSize: $(12)
-                                text: drives.selected ? drives.selected.error : ""
+                                text: releases.selected.version.variant ? releases.selected.version.variant.errorString : ""
                             }
                         }
                         /*
@@ -256,9 +256,7 @@ Dialog {
                                     currentIndex = -1
                             }
 
-                            enabled: (releases.selected.version.variant.status == Variant.READY ||
-                                      releases.selected.version.variant.status == Variant.DOWNLOADING) &&
-                                     drives.length > 0
+                            enabled: releases.selected.version.variant.status != Variant.WRITING && drives.length > 0
                             Row {
                                 spacing: $(6)
                                 anchors.fill: parent
@@ -298,7 +296,9 @@ Dialog {
                                 }
                                 text: qsTranslate("", "Cancel")
                                 enabled: releases.selected.version.variant.status == Variant.READY ||
-                                         releases.selected.version.variant.status == Variant.DOWNLOADING
+                                         releases.selected.version.variant.status == Variant.WRITING ||
+                                         releases.selected.version.variant.status == Variant.DOWNLOADING ||
+                                         releases.selected.version.variant.status == Variant.FAILED
                                 //enabled: !liveUSBData.currentImage.writer.running && !liveUSBData.currentImage.writer.finished
                                 onClicked: {
                                     //liveUSBData.currentImage.download.cancel()
@@ -318,7 +318,8 @@ Dialog {
                                 color: releases.selected.version.variant.status == Variant.FINISHED ? "#628fcf" : "red"
                                 textColor: enabled ? "white" : palette.text
                                 enabled: (releases.selected.version.variant.status == Variant.READY ||
-                                          releases.selected.version.variant.status == Variant.FINISHED) &&
+                                          releases.selected.version.variant.status == Variant.FINISHED ||
+                                          releases.selected.version.variant.status == Variant.FAILED) &&
                                          drives.length > 0
                                 text: releases.selected.version.variant.status == Variant.FINISHED ? qsTranslate("", "Close") :
                                                                                                      qsTranslate("", "Write to disk")
