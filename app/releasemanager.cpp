@@ -528,12 +528,15 @@ void ReleaseVariant::download() {
 }
 
 void ReleaseVariant::resetStatus() {
-    if (!m_iso.isEmpty())
+    if (!m_iso.isEmpty()) {
         setStatus(READY);
-    else
+    }
+    else {
         setStatus(PREPARING);
-    if (m_progress)
-        m_progress->setValue(0.0);
+        if (m_progress)
+            m_progress->setValue(0.0);
+    }
+    setErrorString(QString());
     emit statusChanged();
 }
 

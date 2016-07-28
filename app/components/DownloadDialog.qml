@@ -248,14 +248,13 @@ Dialog {
                             textRole: "display"
                             currentIndex: drives.selectedIndex
                             onCurrentIndexChanged: {
-                                //liveUSBData.currentImage.writer.finished = false
                                 drives.selectedIndex = currentIndex
+                                releases.selected.version.variant.resetStatus()
                             }
                             onModelChanged: {
                                 if (drives.length <= 0)
                                     currentIndex = -1
                             }
-
                             enabled: releases.selected.version.variant.status != Variant.WRITING && drives.length > 0
                             Row {
                                 spacing: $(6)
@@ -304,6 +303,7 @@ Dialog {
                                     //liveUSBData.currentImage.download.cancel()
                                     //liveUSBData.currentImage.writer.cancel()
                                     //liveUSBData.currentImage.writer.finished = false
+                                    releases.selected.version.variant.resetStatus()
                                     writeImmediately.checked = false
                                     root.close()
                                 }
