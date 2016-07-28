@@ -89,6 +89,7 @@ Dialog {
                     }
                     Text {
                         Layout.alignment: Qt.AlignHCenter
+                        horizontalAlignment: Text.AlignHCenter
                         text: qsTranslate("", "Your drive was successfully restored!")
                         font.pixelSize: $(12)
                     }
@@ -98,16 +99,13 @@ Dialog {
                     width: wrapper.width
                     anchors.verticalCenter: parent.verticalCenter
                     Cross {
-                        anchors.centerIn: parent
+                        Layout.alignment: Qt.AlignHCenter
                     }
                     Text {
                         Layout.alignment: Qt.AlignHCenter
+                        horizontalAlignment: Text.AlignHCenter
                         text: qsTranslate("", "Unfortunately, an error occured during the process.<br>Please try restoring the drive using your system tools.")
                         font.pixelSize: $(12)
-                        Rectangle {
-                            anchors.fill: parent
-                            color: "#440000ff"
-                        }
                     }
                 }
             }
