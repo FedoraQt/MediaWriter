@@ -174,6 +174,7 @@ void Download::onReadyRead() {
 
 void Download::onError(QNetworkReply::NetworkError code) {
     qWarning() << "Error" << code << "reading from" << m_reply->url() << ":" << m_reply->errorString();
+    m_receiver->onDownloadError(m_reply->errorString());
 }
 
 void Download::onSslErrors(const QList<QSslError> errors) {
@@ -181,10 +182,16 @@ void Download::onSslErrors(const QList<QSslError> errors) {
     for (auto i : errors) {
         qWarning() << "SSL error" << i.errorString();
     }
+    m_receiver->onDownloadError(m_reply->errorString());
 }
 
 void Download::onFinished() {
-    if (m_file) {
+    if (m_reply->error() != 0) {
+        if (m_file->size() == 0) {
+            m_file->remove();
+        }
+    }
+    else if (m_file) {
         m_file->rename(m_path);  // move the .part file to the final path
         m_receiver->onFileDownloaded(m_file->fileName());
     }

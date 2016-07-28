@@ -518,11 +518,13 @@ void ReleaseVariant::onFileDownloaded(const QString &path) {
     setStatus(READY);
 }
 
-void ReleaseVariant::onDownloadError() {
-
+void ReleaseVariant::onDownloadError(const QString &message) {
+    setErrorString(message);
+    setStatus(FAILED_DOWNLOAD);
 }
 
 void ReleaseVariant::download() {
+    resetStatus();
     setStatus(DOWNLOADING);
     DownloadManager::instance()->downloadFile(this, url(), DownloadManager::dir(), progress());
 }

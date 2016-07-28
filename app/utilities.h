@@ -50,7 +50,7 @@ class DownloadReceiver {
 public:
     virtual void onFileDownloaded(const QString &path) { Q_UNUSED(path) }
     virtual void onStringDownloaded(const QString &text) { Q_UNUSED(text) }
-    virtual void onDownloadError() {}
+    virtual void onDownloadError(const QString &message) { Q_UNUSED(message) }
 };
 
 class Download : public QObject {

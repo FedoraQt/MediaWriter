@@ -259,6 +259,7 @@ public:
         READY,
         WRITING,
         FINISHED,
+        FAILED_DOWNLOAD,
         FAILED
     };
     Q_ENUMS(Status)
@@ -268,6 +269,7 @@ public:
         "Ready to write",
         "Writing",
         "Finished!",
+        "Download failed",
         "Error"
     };
 
@@ -295,7 +297,7 @@ public:
 
     // DownloadReceiver interface
     void onFileDownloaded(const QString &path);
-    void onDownloadError();
+    void onDownloadError(const QString &message);
 
 signals:
     void isoChanged();

@@ -294,10 +294,7 @@ Dialog {
                                     rightMargin: $(6)
                                 }
                                 text: qsTranslate("", "Cancel")
-                                enabled: releases.selected.version.variant.status == Variant.READY ||
-                                         releases.selected.version.variant.status == Variant.WRITING ||
-                                         releases.selected.version.variant.status == Variant.DOWNLOADING ||
-                                         releases.selected.version.variant.status == Variant.FAILED
+                                enabled: releases.selected.version.variant.status != Variant.FINISHED
                                 //enabled: !liveUSBData.currentImage.writer.running && !liveUSBData.currentImage.writer.finished
                                 onClicked: {
                                     //liveUSBData.currentImage.download.cancel()
@@ -315,14 +312,17 @@ Dialog {
                                     top: parent.top
                                     bottom: parent.bottom
                                 }
-                                color: releases.selected.version.variant.status == Variant.FINISHED ? "#628fcf" : "red"
+                                color: releases.selected.version.variant.status == Variant.FINISHED ||
+                                       releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ? "#628fcf" : "red"
                                 textColor: enabled ? "white" : palette.text
                                 enabled: (releases.selected.version.variant.status == Variant.READY ||
                                           releases.selected.version.variant.status == Variant.FINISHED ||
-                                          releases.selected.version.variant.status == Variant.FAILED) &&
+                                          releases.selected.version.variant.status == Variant.FAILED ||
+                                          releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD) &&
                                          drives.length > 0
-                                text: releases.selected.version.variant.status == Variant.FINISHED ? qsTranslate("", "Close") :
-                                                                                                     qsTranslate("", "Write to disk")
+                                text: releases.selected.version.variant.status == Variant.FINISHED        ? qsTranslate("", "Close") :
+                                      releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ? qsTranslate("", "Retry") :
+                                                                                                            qsTranslate("", "Write to disk")
                                 onClicked: {
                                     if (releases.selected.version.variant.status == Variant.READY) {
                                         drives.selected.write(releases.selected.version.variant)
@@ -331,6 +331,9 @@ Dialog {
                                         releases.selected.version.variant.resetStatus()
                                         writeImmediately.checked = false
                                         root.close()
+                                    }
+                                    else if (releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD) {
+                                        releases.selected.version.variant.download()
                                     }
                                 }
                             }
