@@ -44,6 +44,14 @@ ApplicationWindow {
             top: parent.top
         }
         onAccepted: restoreDialog.visible = true
+
+        Connections {
+            target: drives
+            onLastRestoreableChanged: {
+                if (drives.lastRestoreable != null)
+                    deviceNotification.open = true
+            }
+        }
     }
 
     Rectangle {

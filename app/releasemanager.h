@@ -257,7 +257,8 @@ public:
         DOWNLOADING,
         READY,
         WRITING,
-        FINISHED
+        FINISHED,
+        FAILED
     };
     Q_ENUMS(Status)
     const QStringList m_statusStrings {
@@ -265,7 +266,8 @@ public:
         "Downloading",
         "Ready to write",
         "Writing",
-        "Finished!"
+        "Finished!",
+        "Error"
     };
 
     ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, ReleaseArchitecture *arch, Type type = LIVE);
@@ -286,6 +288,7 @@ public:
 
     Status status() const;
     QString statusString() const;
+    void setStatus(Status s);
 
     // DownloadReceiver interface
     void onFileDownloaded(const QString &path);
@@ -299,9 +302,6 @@ public slots:
     void download();
     void resetStatus();
     void advanceStatus();
-
-private:
-    void setStatus(Status s);
 
 private:
     ReleaseArchitecture *m_arch { nullptr };

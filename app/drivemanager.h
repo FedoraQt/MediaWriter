@@ -35,6 +35,9 @@ public:
 
     Drive *lastRestoreable();
 
+protected:
+    void setLastRestoreable(Drive *d);
+
 private slots:
     void onDriveConnected(Drive *d);
     void onDriveRemoved(Drive *d);
@@ -46,9 +49,9 @@ signals:
 
 private:
     QList<Drive*> m_drives {};
-    int m_selectedIndex {};
-    Drive *m_lastRestoreable;
-    DriveProvider *m_provider;
+    int m_selectedIndex { 0 };
+    Drive *m_lastRestoreable { nullptr };
+    DriveProvider *m_provider { nullptr };
 };
 
 class DriveProvider : public QObject {
@@ -77,7 +80,7 @@ class Drive : public QObject {
     Q_PROPERTY(uint64_t size READ size CONSTANT)
     Q_PROPERTY(bool beingWrittenTo READ beingWrittenTo NOTIFY beingWrittenToChanged)
     Q_PROPERTY(RestoreStatus restoreStatus READ restoreStatus NOTIFY restoreStatusChanged)
-    Q_PROPERTY(QString error READ error NOTIFY errorChanged)
+    Q_PROPERTY(QString error READ error WRITE setError NOTIFY errorChanged)
 public:
     enum RestoreStatus {
         CLEAN = 0,
@@ -97,13 +100,13 @@ public:
     virtual uint64_t size();
     virtual RestoreStatus restoreStatus();
     virtual QString error();
+    void setError(const QString &o);
 
     Q_INVOKABLE virtual void write(ReleaseVariant *data);
     Q_INVOKABLE virtual void restore() = 0;
 
 protected slots:
     void setRestoreStatusChanged(RestoreStatus o);
-    void setError(const QString &o);
 
 signals:
     void beingWrittenToChanged();

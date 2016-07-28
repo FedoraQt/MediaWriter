@@ -78,6 +78,13 @@ Drive *DriveManager::lastRestoreable() {
     return m_lastRestoreable;
 }
 
+void DriveManager::setLastRestoreable(Drive *d) {
+    if (m_lastRestoreable != d) {
+        m_lastRestoreable = d;
+        emit restoreableDriveChanged();
+    }
+}
+
 void DriveManager::onDriveConnected(Drive *d) {
     beginInsertRows(QModelIndex(), m_drives.count(), m_drives.count());
     m_drives.append(d);
@@ -85,8 +92,7 @@ void DriveManager::onDriveConnected(Drive *d) {
     emit drivesChanged();
 
     if (d->restoreStatus() == Drive::CONTAINS_LIVE) {
-        m_lastRestoreable = d;
-        emit restoreableDriveChanged();
+        setLastRestoreable(d);
     }
 }
 
@@ -98,9 +104,8 @@ void DriveManager::onDriveRemoved(Drive *d) {
         endRemoveRows();
         emit drivesChanged();
 
-        if (d->restoreStatus() == Drive::CONTAINS_LIVE) {
-            m_lastRestoreable = nullptr;
-            emit restoreableDriveChanged();
+        if (d == m_lastRestoreable) {
+            setLastRestoreable(nullptr);
         }
     }
 }

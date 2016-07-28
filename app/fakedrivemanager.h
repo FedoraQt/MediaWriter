@@ -10,6 +10,8 @@ class FakeDriveProvider : public DriveProvider {
     Q_OBJECT
 public:
     FakeDriveProvider(DriveManager *parent);
+public slots:
+    void createNewRestoreable();
 private slots:
     void connectDrives();
 };
@@ -32,6 +34,7 @@ public:
 private slots:
     void writingAdvanced();
     void restoringFinished();
+    void selfdestruct();
 
 private:
     bool m_writtenTo { false };
