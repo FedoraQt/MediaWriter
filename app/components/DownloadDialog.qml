@@ -254,6 +254,7 @@ Dialog {
                             onModelChanged: {
                                 if (drives.length <= 0)
                                     currentIndex = -1
+                                currentIndex = drives.selectedIndex
                             }
                             enabled: releases.selected.version.variant.status != Variant.WRITING &&
                                      releases.selected.version.variant.status != Variant.FAILED_DOWNLOAD &&

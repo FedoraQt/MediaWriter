@@ -13,10 +13,15 @@ void FakeDriveProvider::createNewRestoreable() {
     size++;
 }
 
+void FakeDriveProvider::createNewGetsDisconnected() {
+    emit driveConnected(new FakeDrive(this, "Gets Disconnected", 1000000000, false));
+}
+
 void FakeDriveProvider::connectDrives() {
-    emit driveConnected(new FakeDrive(this, "Okay", 1234567890, false));
-    emit driveConnected(new FakeDrive(this, "Fails", 987654321, false));
+    emit driveConnected(new FakeDrive(this, "Okay", 12345678900, false));
+    emit driveConnected(new FakeDrive(this, "Fails", 9876543210, false));
     emit driveConnected(new FakeDrive(this, "Not Large Enough", 10000, false));
+    emit driveConnected(new FakeDrive(this, "Gets Disconnected", 10000000000, false));
     QTimer::singleShot(2000, this, &FakeDriveProvider::createNewRestoreable);
 }
 
@@ -40,13 +45,20 @@ void FakeDrive::restore() {
 }
 
 void FakeDrive::writingAdvanced() {
-    m_progress->setValue(m_progress->value() + 12345678);
+    m_progress->setValue(m_progress->value() + 123456789);
     if (m_progress->value() >= m_size) {
         m_image->setStatus(ReleaseVariant::FINISHED);
     }
     else if (m_name == "Fails" && m_progress->value() >= m_size / 2) {
         m_image->setStatus(ReleaseVariant::FAILED);
         m_image->setErrorString("Some error string.");
+    }
+    else if (m_name == "Gets Disconnected" && m_progress->value() >= m_size / 2) {
+        emit qobject_cast<FakeDriveProvider*>(parent())->driveRemoved(this);
+        QTimer::singleShot(5000, qobject_cast<FakeDriveProvider*>(parent()), &FakeDriveProvider::createNewGetsDisconnected);
+        this->deleteLater();
+        m_image->setStatus(ReleaseVariant::FAILED);
+        m_image->setErrorString(QString("Drive %1 got disconnected.").arg(name()));
     }
     else {
         QTimer::singleShot(100, this, &FakeDrive::writingAdvanced);

@@ -12,6 +12,7 @@ public:
     FakeDriveProvider(DriveManager *parent);
 public slots:
     void createNewRestoreable();
+    void createNewGetsDisconnected();
 private slots:
     void connectDrives();
 };
