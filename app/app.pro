@@ -10,9 +10,6 @@ HEADERS += \
     drivemanager.h \
     releasemanager.h \
     utilities.h \
-    linuxdrivemanager.h \
-    macdrivemanager.h \
-    windrivemanager.h \
     fakedrivemanager.h \
     options.h
 
@@ -33,11 +30,15 @@ linux {
     INSTALLS += target
 
     QT += dbus
+
+    HEADERS += linuxdrivemanager.h
     SOURCES += linuxdrivemanager.cpp
 }
 macx {
+    HEADERS += macdrivemanager.h
     SOURCES += macdrivemanager.cpp
 }
 win32 {
+    HEADERS += windrivemanager.h
     SOURCES += windrivemanager.cpp
 }

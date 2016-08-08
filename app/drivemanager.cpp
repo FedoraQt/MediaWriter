@@ -1,7 +1,17 @@
 #include "drivemanager.h"
-#include "linuxdrivemanager.h"
-#include "macdrivemanager.h"
-#include "windrivemanager.h"
+
+#ifdef __linux__
+# include "linuxdrivemanager.h"
+#endif // __linux__
+
+#ifdef __APPLE__
+# include "macdrivemanager.h"
+#endif // __APPLE__
+
+#ifdef _WIN32
+# include "windrivemanager.h"
+#endif // _WIN32
+
 #include "fakedrivemanager.h"
 
 #include "options.h"
@@ -119,10 +129,10 @@ DriveProvider *DriveProvider::create(DriveManager *parent)  {
     return new MacDriveProvider(parent);
 #endif // APPLE
 
-#ifdef __MINGW32__
+#ifdef _WIN32
 # warning Windows support is not implemented yet
     return new WinDriveProvider(parent);
-#endif // MINGW32
+#endif // _WIN32
 
 #ifdef __linux__
     return new LinuxDriveProvider(parent);
