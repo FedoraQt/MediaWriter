@@ -31,7 +31,7 @@ ComboBox {
             Arrow {
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.rightMargin: $(16)
+                anchors.rightMargin: $(12)
                 scale: $(1.2)
                 rotation: 90
             }
@@ -39,7 +39,7 @@ ComboBox {
         font.pixelSize: $(12)
         label: Text {
             width: control.width
-            x: $(4)
+            x: $(6)
             font.pixelSize: $(12)
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
