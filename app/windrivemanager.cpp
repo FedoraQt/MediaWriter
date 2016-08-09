@@ -153,6 +153,8 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
         productId = QString((char*) pOutBuffer + pDeviceDescriptor->ProductIdOffset).trimmed();
     if (pDeviceDescriptor->VendorIdOffset != 0)
         productVendor = QString((char*) pOutBuffer + pDeviceDescriptor->VendorIdOffset).trimmed();
+    if (pDeviceDescriptor->SerialNumberOffset != 0)
+        serialNumber = QString((char*) pOutBuffer + pDeviceDescriptor->SerialNumberOffset).trimmed();
 
     qDebug() << "Found a drive:";
     qDebug() << "\tProduct vendor:" << productVendor;
