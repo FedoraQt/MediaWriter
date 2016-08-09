@@ -212,7 +212,7 @@ void Drive::write(ReleaseVariant *data) {
     m_image = data;
 }
 
-void Drive::setRestoreStatusChanged(Drive::RestoreStatus o) {
+void Drive::setRestoreStatus(Drive::RestoreStatus o) {
     if (m_restoreStatus != o) {
         m_restoreStatus = o;
         emit restoreStatusChanged();

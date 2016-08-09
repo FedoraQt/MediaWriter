@@ -119,8 +119,8 @@ public:
     Q_INVOKABLE virtual void write(ReleaseVariant *data);
     Q_INVOKABLE virtual void restore() = 0;
 
-protected slots:
-    void setRestoreStatusChanged(RestoreStatus o);
+public slots:
+    void setRestoreStatus(RestoreStatus o);
 
 signals:
     void restoreStatusChanged();
