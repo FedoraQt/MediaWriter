@@ -200,7 +200,7 @@ QString Drive::name() const {
     return m_name + sizeStr;
 }
 
-uint64_t Drive::size() {
+uint64_t Drive::size() const {
     return m_size;
 }
 
@@ -210,6 +210,10 @@ Drive::RestoreStatus Drive::restoreStatus() {
 
 void Drive::write(ReleaseVariant *data) {
     m_image = data;
+}
+
+bool Drive::operator==(const Drive &o) const {
+    return name() == o.name() && size() == o.size();
 }
 
 void Drive::setRestoreStatus(Drive::RestoreStatus o) {

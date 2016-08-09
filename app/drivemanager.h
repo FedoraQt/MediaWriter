@@ -113,11 +113,13 @@ public:
     Progress *progress() const;
 
     virtual QString name() const;
-    virtual uint64_t size();
+    virtual uint64_t size() const;
     virtual RestoreStatus restoreStatus();
 
     Q_INVOKABLE virtual void write(ReleaseVariant *data);
     Q_INVOKABLE virtual void restore() = 0;
+
+    bool operator==(const Drive& o) const;
 
 public slots:
     void setRestoreStatus(RestoreStatus o);
