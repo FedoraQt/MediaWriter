@@ -31,12 +31,59 @@ WinDriveProvider::WinDriveProvider(DriveManager *parent)
 }
 
 void WinDriveProvider::checkDrives() {
+    QSet<int> drivesWithLetters;
+
+    DWORD drives = ::GetLogicalDrives();
+    for (char i = 0; i < 26; i++) {
+        if (drives & (1 << i)) {
+            drivesWithLetters.unite(findPhysicalDrive('A' + i));
+        }
+    }
+
     for (int i = 0; i < 64; i++) {
         WinDrive *drive = describeDrive(i);
         if (drive) {
+            if (!drivesWithLetters.contains(i))
+                drive->setRestoreStatus(Drive::CONTAINS_LIVE);
             emit driveConnected(drive); // no disconnecting is implemented yet
         }
     }
+    //QTimer::singleShot(15000, this, &WinDriveProvider::checkDrives);
+}
+
+QSet<int> WinDriveProvider::findPhysicalDrive(char driveLetter) {
+    QSet<int> ret;
+    qDebug() << "Drive letter" << driveLetter << "is connected, looking for a physical drive.";
+
+    QString drivePath = QString("\\\\.\\%1:").arg(driveLetter);
+
+    HANDLE hDevice = ::CreateFile(drivePath.toStdWString().c_str(), 0, FILE_SHARE_READ|FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
+
+    qDebug() << "Attempted to open" << drivePath << "with the result of" << hDevice;
+
+
+    DWORD bytesReturned;
+    VOLUME_DISK_EXTENTS vde; // TODO FIXME: handle ERROR_MORE_DATA (this is an extending structure)
+    BOOL bResult = DeviceIoControl(hDevice, IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS, NULL, 0, &vde, sizeof(vde), &bytesReturned, NULL);
+
+    qDebug() << "Called ioctl:" << bResult << "Number of extents is" << vde.NumberOfDiskExtents;
+    qDebug() << "Extents:";
+
+    for (int i = 0; i < vde.NumberOfDiskExtents; i++) {
+        qDebug() << "\tExtent" << i << ":" << vde.Extents[i].DiskNumber;
+        qDebug() << "\tExtent" << i << "size:" << vde.Extents[i].ExtentLength.QuadPart;
+        /*
+         * FIXME?
+         * This is a bit more complicated matter.
+         * Windows doesn't seem to provide the complete information about the drive (not just in this API).
+         * That's the reason I chose to detect it by looking at the partition's size.
+         * An even better approach would be to compare it to the size of the drive itself but for now this will have to suffice.
+         */
+        if (vde.Extents[i].ExtentLength.QuadPart > 100 * 1024 * 1024) // only partitions bigger than 100MB
+            ret.insert(vde.Extents[i].DiskNumber);
+    }
+
+    return ret;
 }
 
 WinDrive *WinDriveProvider::describeDrive(int nDriveNumber) {

@@ -34,6 +34,7 @@ public:
 public slots:
     void checkDrives();
 private:
+    QSet<int> findPhysicalDrive(char driveLetter);
     WinDrive *describeDrive(int driveNumber);
 };
 
