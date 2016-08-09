@@ -41,14 +41,15 @@ void WinDriveProvider::checkDrives() {
     }
 
     for (int i = 0; i < 64; i++) {
-        WinDrive *drive = describeDrive(i);
-        if (drive) {
-            if (!drivesWithLetters.contains(i))
-                drive->setRestoreStatus(Drive::CONTAINS_LIVE);
-            emit driveConnected(drive); // no disconnecting is implemented yet
+        bool present = describeDrive(i, drivesWithLetters.contains(i));
+        if (!present && m_drives.contains(i)) {
+            emit driveRemoved(m_drives[i]);
+            m_drives[i]->deleteLater();
+            m_drives.remove(i);
         }
     }
-    //QTimer::singleShot(15000, this, &WinDriveProvider::checkDrives);
+
+    QTimer::singleShot(2500, this, &WinDriveProvider::checkDrives);
 }
 
 QSet<int> WinDriveProvider::findPhysicalDrive(char driveLetter) {
@@ -69,7 +70,7 @@ QSet<int> WinDriveProvider::findPhysicalDrive(char driveLetter) {
     qDebug() << "Called ioctl:" << bResult << "Number of extents is" << vde.NumberOfDiskExtents;
     qDebug() << "Extents:";
 
-    for (int i = 0; i < vde.NumberOfDiskExtents; i++) {
+    for (uint i = 0; i < vde.NumberOfDiskExtents; i++) {
         qDebug() << "\tExtent" << i << ":" << vde.Extents[i].DiskNumber;
         qDebug() << "\tExtent" << i << "size:" << vde.Extents[i].ExtentLength.QuadPart;
         /*
@@ -86,10 +87,11 @@ QSet<int> WinDriveProvider::findPhysicalDrive(char driveLetter) {
     return ret;
 }
 
-WinDrive *WinDriveProvider::describeDrive(int nDriveNumber) {
+bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
     BOOL removable;
     QString productVendor;
     QString productId;
+    QString serialNumber;
     uint64_t deviceBytes;
 
 
@@ -104,7 +106,7 @@ WinDrive *WinDriveProvider::describeDrive(int nDriveNumber) {
         NULL, OPEN_EXISTING, 0, NULL);
 
     if(INVALID_HANDLE_VALUE == hDevice)
-        return nullptr; //::GetLastError();
+        return false; //::GetLastError();
 
     // Set the input data structure
     STORAGE_PROPERTY_QUERY storagePropertyQuery;
@@ -123,7 +125,7 @@ WinDrive *WinDriveProvider::describeDrive(int nDriveNumber) {
     {
         //dwRet = ::GetLastError();
         ::CloseHandle(hDevice);
-        return nullptr; // dwRet;
+        return false; // dwRet;
     }
 
     // Alloc the output buffer
@@ -140,7 +142,7 @@ WinDrive *WinDriveProvider::describeDrive(int nDriveNumber) {
         //dwRet = ::GetLastError();
         delete []pOutBuffer;
         ::CloseHandle(hDevice);
-        return nullptr; // dwRet;
+        return false; // dwRet;
     }
 
     // Now, the output buffer points to a STORAGE_DEVICE_DESCRIPTOR structure
@@ -158,7 +160,7 @@ WinDrive *WinDriveProvider::describeDrive(int nDriveNumber) {
     qDebug() << "\tRemovable:" << removable;
 
     if (!removable)
-        return nullptr;
+        return false;
 
     DISK_GEOMETRY pdg;
     DWORD junk     = 0;                     // discard results
@@ -176,11 +178,26 @@ WinDrive *WinDriveProvider::describeDrive(int nDriveNumber) {
     // Do cleanup and return
     delete []pOutBuffer;
     ::CloseHandle(hDevice);
-    return new WinDrive(this, productVendor + " " + productId, deviceBytes, false); // dwret
+
+
+    WinDrive *currentDrive = new WinDrive(this, productVendor + " " + productId, deviceBytes, !hasLetter, serialNumber);
+    if (m_drives.contains(nDriveNumber) && *m_drives[nDriveNumber] == *currentDrive)
+        return true;
+
+    if (m_drives.contains(nDriveNumber)) {
+        emit driveRemoved(m_drives[nDriveNumber]);
+        m_drives[nDriveNumber]->deleteLater();
+    }
+
+    m_drives[nDriveNumber] = currentDrive;
+    emit driveConnected(currentDrive);
+
+    return true;
 }
 
-WinDrive::WinDrive(WinDriveProvider *parent, const QString &name, uint64_t size, bool containsLive)
+WinDrive::WinDrive(WinDriveProvider *parent, const QString &name, uint64_t size, bool containsLive, const QString &serialNumber)
     : Drive(parent, name, size, containsLive)
+    , m_serialNo(serialNumber)
 {
 
 }
@@ -191,4 +208,12 @@ void WinDrive::write(ReleaseVariant *data) {
 
 void WinDrive::restore() {
 
+}
+
+QString WinDrive::serialNumber() const {
+    return m_serialNo;
+}
+
+bool WinDrive::operator==(const WinDrive &o) const {
+    return (o.serialNumber() == serialNumber()) && Drive::operator==(o);
 }
