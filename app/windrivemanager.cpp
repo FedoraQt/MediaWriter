@@ -181,8 +181,10 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
 
 
     WinDrive *currentDrive = new WinDrive(this, productVendor + " " + productId, deviceBytes, !hasLetter, serialNumber);
-    if (m_drives.contains(nDriveNumber) && *m_drives[nDriveNumber] == *currentDrive)
+    if (m_drives.contains(nDriveNumber) && *m_drives[nDriveNumber] == *currentDrive) {
+        currentDrive->deleteLater();
         return true;
+    }
 
     if (m_drives.contains(nDriveNumber)) {
         emit driveRemoved(m_drives[nDriveNumber]);
