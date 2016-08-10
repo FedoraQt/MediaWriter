@@ -3,41 +3,48 @@ Version:        4.0
 Release:        1%{?dist}
 Summary:        Fedora Media Writer
 
-License:        GPLv2
+License:        GPLv2+
 URL:            https://github.com/MartinBriza/MediaWriter
-Source0:        https://github.com/MartinBriza/MediaWriter/archive/%{version}.tar.gz
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  qt5-qtbase-devel
+BuildRequires:  qt5-qtdeclarative-devel
 BuildRequires:  gettext
-BuildRequires:  libappstream-glib
+#BuildRequires:  libappstream-glib
+BuildRequires:  gcc-c++
 
-Requires:       qt5-qtbase
-Requires:       qt5-qtquickcontrols >= 5.3.0
-Requires:       udisks2
-Requires:       polkit
+Requires:       qt5-qtbase%{?_isa}
+Requires:       qt5-qtquickcontrols%{?_isa} >= 5.3.0
+Requires:       polkit%{?_isa}
+%if 0%{?fedora} && 0%{?fedora} < 25
+Requires: udisks2%{?_isa}
+%else
+Requires: storaged%{?_isa}
+%endif
 
 %description
-A tool to write images of Fedora media to portable drives like flash drives or memory cards.
+A tool to write images of Fedora media to portable drives
+like flash drives or memory cards.
 
 %prep
-%autosetup -p1 -n %{version}
+%autosetup -p1 -n MediaWriter-%{commit}
+mkdir %{_target_platform}
 
 %build
-mkdir %{_target_platform}
 pushd %{_target_platform}
-%{qmake_qt5} ..
+%{qmake_qt5} PREFIX=%{_prefix} ..
 popd
-make %{?_smp_mflags} -C %{_target_platform}
+%make_build -C %{_target_platform}
 
 %install
 make install INSTALL_ROOT=%{buildroot} -C %{_target_platform}
-ls -l %{buildroot}
 
 
 %files
-%{_bindir}/mediawriter
-%{_libexecdir}/mediawriter/helper
+%{_bindir}/%{name}
+%{_libexecdir}/%{name}/
 
 %changelog
-* Mon Apr 1 2016 Martin Bříza <mbriza@redhat.com> 4.0-1
+* Tue Aug 9 2016 Martin Bříza <mbriza@redhat.com> 4.0
 - Initial release
+
