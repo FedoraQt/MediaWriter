@@ -19,7 +19,6 @@
 
 #ifndef LINUXDRIVEMANAGER_H
 #define LINUXDRIVEMANAGER_H
-#ifdef __linux__
 
 #include "drivemanager.h"
 
@@ -73,5 +72,4 @@ private:
     QProcess *m_process { nullptr };
 };
 
-#endif // linux
 #endif // LINUXDRIVEMANAGER_H
