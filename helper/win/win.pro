@@ -15,3 +15,8 @@ SOURCES = main.cpp \
 HEADERS += \
     writejob.h \
     restorejob.h
+
+DISTFILES += \
+    helper.exe.manifest
+
+QMAKE_MANIFEST = $${PWD}/helper.exe.manifest
