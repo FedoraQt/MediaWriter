@@ -132,6 +132,10 @@ void DriveManager::onDriveRemoved(Drive *d) {
         m_drives.removeAt(i);
         endRemoveRows();
         emit drivesChanged();
+        if (i == m_selectedIndex) {
+            m_selectedIndex = 0;
+            emit selectedChanged();
+        }
 
         if (d == m_lastRestoreable) {
             setLastRestoreable(nullptr);

@@ -43,7 +43,7 @@ ComboBox {
             font.pixelSize: $(12)
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
-            text: control.currentText
+            text: control.count > 0 ? control.currentText : ""
         }
     }
 }
