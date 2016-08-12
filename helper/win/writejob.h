@@ -24,18 +24,36 @@
 #include <QTextStream>
 #include <QProcess>
 
+#include <windows.h>
+
 class WriteJob : public QObject
 {
     Q_OBJECT
 public:
     explicit WriteJob(const QString &what, const QString &where);
+
+private:
+    HANDLE openDrive(int physicalDriveNumber);
+    bool lockDrive(HANDLE drive);
+    bool dismountDrive(HANDLE drive);
+
+    bool writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, int size);
+
+    void unlockDrive(HANDLE drive);
+
+
 private slots:
-    void onReadyRead();
+    void work();
 private:
     QString what;
-    QString where;
+    int where;
+
+    QTextStream out { stdout };
+    QTextStream err { stderr };
 
     QProcess *dd;
+
+    const int BLOCK_SIZE { 512 * 128 };
 };
 
 #endif // WRITEJOB_H

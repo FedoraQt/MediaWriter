@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
     }
     else {
         QTextStream err(stderr);
-        err << "Helper: Wrong arguments entered";
+        err << "Helper: Wrong arguments entered\n";
         return 1;
     }
     return app.exec();

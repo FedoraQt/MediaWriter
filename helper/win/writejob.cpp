@@ -23,26 +23,133 @@
 #include <QTimer>
 #include <QTextStream>
 #include <QProcess>
+#include <QFile>
 
 #include <QDebug>
 
+#include <windows.h>
+
 WriteJob::WriteJob(const QString &what, const QString &where)
-    : QObject(nullptr), what(what), where(where), dd(new QProcess(this))
+    : QObject(nullptr), what(what), dd(new QProcess(this))
 {
-    dd->setProgram(qApp->applicationDirPath() + "/dd.exe");
+    bool ok = false;
+    this->where = where.toInt(&ok);
 
-    QStringList args;
-    args << QString("if=%1").arg("/dev/zero");
-    args << QString("of=%1").arg("/dev/null");
-    args << QString("bs=1M");
-    args << QString("count=100000");
-    dd->setArguments(args);
-
-    connect(dd, &QProcess::readyRead, this, &WriteJob::onReadyRead);
+    QTimer::singleShot(0, this, &WriteJob::work);
 }
 
-void WriteJob::onReadyRead() {
-    while (dd->bytesAvailable() > 0) {
-        qDebug() << dd->readLine();
+HANDLE WriteJob::openDrive(int physicalDriveNumber) {
+    HANDLE hVol;
+    QString drivePath = QString("\\\\.\\PhysicalDrive%0").arg(physicalDriveNumber);
+
+    hVol = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, FILE_FLAG_NO_BUFFERING, 0);
+
+    if( hVol == INVALID_HANDLE_VALUE ) {
+        LPTSTR message = L"";
+        FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+        err << "Disk_WriteData() - CreateFile failed (" << message << ")\n";
+        err.flush();
+        return hVol;
     }
+
+    return hVol;
+}
+
+bool WriteJob::lockDrive(HANDLE drive) {
+    DWORD status;
+    if (!DeviceIoControl(drive, FSCTL_LOCK_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
+        LPTSTR message = L"";
+        FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+        err << "Disk_LockVolume() - Error attempting to lock device!  (" << message << ")\n";
+        return false;
+    }
+    return true;
+}
+
+bool WriteJob::dismountDrive(HANDLE drive) {
+    DWORD status;
+    if (!DeviceIoControl(drive, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
+        LPTSTR message = L"";
+        FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+        err << "Disk_LockVolume() - Error attempting to dismount volume.  ("<< message <<")\n";
+        return false;
+    }
+    return true;
+}
+
+bool WriteJob::writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, int size) {
+    DWORD bytesWritten;
+    DWORD status;
+
+    if (!WriteFile(drive, data, size, &bytesWritten, overlap)) {
+        DWORD Errorcode = GetLastError();
+        if (Errorcode == ERROR_IO_PENDING) {
+            WaitForSingleObject(overlap->hEvent, INFINITE);
+        }
+        else {
+            TCHAR message[256];
+            FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+            err << "WriteSector() - WriteFile failed (" << message << ")\n";
+            return false;
+        }
+    }
+
+    if (bytesWritten != size) {
+        err << "WriteSector() - Bytes written did not equal the number of bytes to be written\n";
+        return false;
+    }
+
+    return true;
+}
+
+
+void WriteJob::unlockDrive(HANDLE drive) {
+    DWORD status;
+    if (!DeviceIoControl(drive, FSCTL_UNLOCK_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
+        LPTSTR message = L"";
+        FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+        err << "Disk_LockVolume() - Error attempting to lock device!  (" << message << ")\n";
+        return;
+    }
+    return;
+}
+
+void WriteJob::work() {
+    HANDLE drive = openDrive(where);
+    lockDrive(drive);
+    dismountDrive(drive);
+
+    out << -1 << "\n";
+    out.flush();
+
+    OVERLAPPED osWrite;
+    memset(&osWrite, 0, sizeof(osWrite));
+    osWrite.hEvent = 0;
+
+    QByteArray buffer;
+    QFile isoFile(what);
+    isoFile.open(QIODevice::ReadOnly);
+    uint64_t cnt = 0;
+
+    while (true) {
+        buffer = isoFile.read(BLOCK_SIZE);
+        if (!writeBlock(drive, &osWrite, buffer.data(), buffer.size()))
+            qApp->exit(1);
+
+        if (osWrite.Offset + BLOCK_SIZE < osWrite.Offset)
+            osWrite.OffsetHigh++;
+        osWrite.Offset += BLOCK_SIZE;
+        cnt += buffer.size();
+        out << cnt << "\n";
+        out.flush();
+
+        if (buffer.size() != BLOCK_SIZE || isoFile.atEnd())
+            break;
+    }
+
+    unlockDrive(drive);
+    CloseHandle(drive);
+
+    qApp->exit(0);
+    qApp->quit();
 }
