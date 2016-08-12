@@ -54,25 +54,16 @@ void WinDriveProvider::checkDrives() {
 
 QSet<int> WinDriveProvider::findPhysicalDrive(char driveLetter) {
     QSet<int> ret;
-    qDebug() << "Drive letter" << driveLetter << "is connected, looking for a physical drive.";
 
     QString drivePath = QString("\\\\.\\%1:").arg(driveLetter);
 
     HANDLE hDevice = ::CreateFile(drivePath.toStdWString().c_str(), 0, FILE_SHARE_READ|FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
 
-    qDebug() << "Attempted to open" << drivePath << "with the result of" << hDevice;
-
-
     DWORD bytesReturned;
     VOLUME_DISK_EXTENTS vde; // TODO FIXME: handle ERROR_MORE_DATA (this is an extending structure)
     BOOL bResult = DeviceIoControl(hDevice, IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS, NULL, 0, &vde, sizeof(vde), &bytesReturned, NULL);
 
-    qDebug() << "Called ioctl:" << bResult << "Number of extents is" << vde.NumberOfDiskExtents;
-    qDebug() << "Extents:";
-
     for (uint i = 0; i < vde.NumberOfDiskExtents; i++) {
-        qDebug() << "\tExtent" << i << ":" << vde.Extents[i].DiskNumber;
-        qDebug() << "\tExtent" << i << "size:" << vde.Extents[i].ExtentLength.QuadPart;
         /*
          * FIXME?
          * This is a bit more complicated matter.
@@ -156,11 +147,6 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
     if (pDeviceDescriptor->SerialNumberOffset != 0)
         serialNumber = QString((char*) pOutBuffer + pDeviceDescriptor->SerialNumberOffset).trimmed();
 
-    qDebug() << "Found a drive:";
-    qDebug() << "\tProduct vendor:" << productVendor;
-    qDebug() << "\tProduct ID:" << productId;
-    qDebug() << "\tRemovable:" << removable;
-
     if (!removable)
         return false;
 
@@ -175,12 +161,10 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
                               (LPOVERLAPPED) NULL);          // synchronous I/O
 
     deviceBytes = pdg.Cylinders.QuadPart * pdg.TracksPerCylinder * pdg.SectorsPerTrack * pdg.BytesPerSector;
-    qDebug() << "\tSize:" << deviceBytes;
 
     // Do cleanup and return
     delete []pOutBuffer;
     ::CloseHandle(hDevice);
-
 
     WinDrive *currentDrive = new WinDrive(this, productVendor + " " + productId, deviceBytes, !hasLetter, serialNumber);
     if (m_drives.contains(nDriveNumber) && *m_drives[nDriveNumber] == *currentDrive) {
