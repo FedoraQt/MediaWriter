@@ -223,6 +223,7 @@ void WinDrive::write(ReleaseVariant *data) {
     args << data->iso();
     args << QString("%1").arg(m_device);
     m_child->setArguments(args);
+    m_child->setProcessChannelMode(QProcess::ForwardedErrorChannel);
 
     m_progress->setTo(data->size());
     m_image->setStatus(ReleaseVariant::WRITING);
@@ -255,7 +256,6 @@ void WinDrive::restore() {
     args << "restore";
     args << QString("%1").arg(m_device);
     m_child->setArguments(args);
-    m_child->setProcessChannelMode(QProcess::ForwardedChannels);
 
     //connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
     connect(m_child, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
@@ -274,24 +274,30 @@ bool WinDrive::operator==(const WinDrive &o) const {
 void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
     qDebug() << "Child finished" << exitCode << m_child->errorString();
 
+    if (exitCode == 0) {
+        m_image->setStatus(ReleaseVariant::FINISHED);
+    }
+    else {
+        m_image->setErrorString(m_child->readAllStandardError());
+        m_image->setStatus(ReleaseVariant::FAILED);
+    }
+
     m_child->deleteLater();
     m_child = nullptr;
-
-    m_image->setStatus(ReleaseVariant::FINISHED);
 }
 
 void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) {
     qCritical() << "Process finished" << exitCode << exitStatus;
     qCritical() << m_child->readAllStandardError();
 
-    m_child->deleteLater();
-    m_child = nullptr;
-
     if (exitCode == 0)
         m_restoreStatus = RESTORED;
     else
         m_restoreStatus = RESTORE_ERROR;
     emit restoreStatusChanged();
+
+    m_child->deleteLater();
+    m_child = nullptr;
 }
 
 void WinDrive::onReadyRead() {

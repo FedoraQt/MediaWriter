@@ -61,17 +61,45 @@ bool WriteJob::lockDrive(HANDLE drive) {
         TCHAR message[256];
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
         err << "Disk_LockVolume() - Error attempting to lock device!  (" << message << ")\n";
+        err.flush();
         return false;
     }
     return true;
 }
 
-bool WriteJob::dismountDrive(HANDLE drive) {
+bool WriteJob::dismountDrive(HANDLE drive, int diskNumber) {
     DWORD status;
+    DWORD drives = ::GetLogicalDrives();
+    for (char i = 0; i < 26; i++) {
+        if (drives & (1 << i)) {
+            char currentDrive = 'A' + i;
+            QString drivePath = QString("\\\\.\\%1:").arg(currentDrive);
+
+            HANDLE hDevice = ::CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
+
+            DWORD bytesReturned;
+            VOLUME_DISK_EXTENTS vde; // TODO FIXME: handle ERROR_MORE_DATA (this is an extending structure)
+            BOOL bResult = DeviceIoControl(hDevice, IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS, NULL, 0, &vde, sizeof(vde), &bytesReturned, NULL);
+
+            for (uint j = 0; j < vde.NumberOfDiskExtents; j++) {
+                if (vde.Extents[j].DiskNumber == diskNumber) {
+                    BOOL b = DeviceIoControl(hDevice, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, &status, NULL);
+                    if (!b) {
+                        TCHAR message[256];
+                        FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+                        err << message << "\n";
+                        err.flush();
+                    }
+                }
+            }
+        }
+    }
+
     if (!DeviceIoControl(drive, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
         TCHAR message[256];
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
         err << "Disk_LockVolume() - Error attempting to dismount volume.  ("<< message <<")\n";
+        err.flush();
         return false;
     }
     return true;
@@ -102,13 +130,15 @@ bool WriteJob::cleanDrive(HANDLE drive) {
         if (overlap.Offset + BLOCK_SIZE < overlap.Offset)
             overlap.OffsetHigh++;
         overlap.Offset += BLOCK_SIZE;
-        writeBlock(drive, &overlap, buf, BLOCK_SIZE);
+        if (!writeBlock(drive, &overlap, buf, BLOCK_SIZE))
+            return false;
     }
     for (uint64_t i = deviceBytes - 1024 * 1024; i < deviceBytes; i += BLOCK_SIZE) {
         if (overlap.Offset + BLOCK_SIZE < overlap.Offset)
             overlap.OffsetHigh++;
         overlap.Offset += BLOCK_SIZE;
-        writeBlock(drive, &overlap, buf, BLOCK_SIZE);
+        if (!writeBlock(drive, &overlap, buf, BLOCK_SIZE))
+            return false;
     }
 
     return true;
@@ -127,12 +157,14 @@ bool WriteJob::writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, int siz
             TCHAR message[256];
             FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
             err << "WriteSector() - WriteFile failed (" << message << ")\n";
+            err.flush();
             return false;
         }
     }
 
     if (bytesWritten != size) {
         err << "WriteSector() - Bytes written did not equal the number of bytes to be written\n";
+        err.flush();
         return false;
     }
 
@@ -146,6 +178,7 @@ void WriteJob::unlockDrive(HANDLE drive) {
         LPTSTR message = L"";
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
         err << "Disk_LockVolume() - Error attempting to lock device!  (" << message << ")\n";
+        err.flush();
         return;
     }
     return;
@@ -156,9 +189,18 @@ void WriteJob::work() {
     out.flush();
 
     HANDLE drive = openDrive(where);
-    lockDrive(drive);
-    dismountDrive(drive);
-    cleanDrive(drive);
+    if (!lockDrive(drive)) {
+        qApp->exit(1);
+        return;
+    }
+    if (!dismountDrive(drive, where)) {
+        qApp->exit(1);
+        return;
+    }
+    if (!cleanDrive(drive)) {
+        qApp->exit(1);
+        return;
+    }
 
     OVERLAPPED osWrite;
     memset(&osWrite, 0, sizeof(osWrite));
@@ -171,8 +213,10 @@ void WriteJob::work() {
 
     while (true) {
         buffer = isoFile.read(BLOCK_SIZE);
-        if (!writeBlock(drive, &osWrite, buffer.data(), buffer.size()))
+        if (!writeBlock(drive, &osWrite, buffer.data(), buffer.size())) {
             qApp->exit(1);
+            return;
+        }
 
         if (osWrite.Offset + BLOCK_SIZE < osWrite.Offset)
             osWrite.OffsetHigh++;
@@ -189,5 +233,4 @@ void WriteJob::work() {
     CloseHandle(drive);
 
     qApp->exit(0);
-    qApp->quit();
 }

@@ -35,7 +35,7 @@ public:
 private:
     HANDLE openDrive(int physicalDriveNumber);
     bool lockDrive(HANDLE drive);
-    bool dismountDrive(HANDLE drive);
+    bool dismountDrive(HANDLE drive, int diskNumber);
     bool cleanDrive(HANDLE drive);
 
     bool writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, int size);
