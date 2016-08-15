@@ -44,7 +44,7 @@ BusyIndicator {
         height: root.height
         border {
             color: "#777777"
-            width: $(1)
+            width: 1
         }
         radius: $(3)
         clip: false
@@ -55,12 +55,12 @@ BusyIndicator {
         Rectangle {
             id: flyingBar
             width: $(32)
-            height: root.height - $(2)
-            y: $(1)
+            height: root.height - 2
+            y: 1
             radius: $(3)
             border {
                 color: "#777777"
-                width: $(1)
+                width: 1
             }
             opacity: root.running ? 1.0 : 0.0
             Behavior on opacity { NumberAnimation { } }
@@ -78,7 +78,7 @@ BusyIndicator {
                     target: flyingBar
                     easing.type: Easing.InOutCubic
                     property: "x"
-                    from: $(1)
+                    from: 1
                     to: root.width - flyingBar.width
                 }
                 NumberAnimation {
@@ -87,7 +87,7 @@ BusyIndicator {
                     easing.type: Easing.InOutCubic
                     property: "x"
                     from: root.width - flyingBar.width
-                    to: $(1)
+                    to: 1
                 }
             }
         }

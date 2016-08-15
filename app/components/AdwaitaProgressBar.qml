@@ -34,7 +34,7 @@ Rectangle {
 
     border {
         color: "#777777"
-        width: $(1)
+        width: 1
     }
     radius: $(3)
     clip: true
@@ -45,13 +45,13 @@ Rectangle {
 
     Rectangle {
         clip: true
-        y: $(0.5)
-        x: $(0.5)
-        height: $(5)
+        y: 0.5
+        x: 0.5
+        height: $(6) - 1
         width: (root.value - root.minimumValue) / (root.maximumValue - root.minimumValue) * (parent.width - 1);
         border {
             color: "#777777"
-            width: $(1)
+            width: 1
         }
         radius: $(3)
         gradient: Gradient {
