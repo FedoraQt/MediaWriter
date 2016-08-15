@@ -77,6 +77,43 @@ bool WriteJob::dismountDrive(HANDLE drive) {
     return true;
 }
 
+bool WriteJob::cleanDrive(HANDLE drive) {
+    OVERLAPPED overlap;
+    memset(&overlap, 0, sizeof(overlap));
+    overlap.hEvent = 0;
+
+    char buf[BLOCK_SIZE] = { 0 };
+
+    DISK_GEOMETRY pdg;
+
+    if (!DeviceIoControl(drive,
+                         IOCTL_DISK_GET_DRIVE_GEOMETRY,
+                         NULL, 0,
+                         &pdg, sizeof(pdg),
+                         nullptr,
+                         (LPOVERLAPPED) NULL))
+        return false;
+
+    uint64_t deviceBytes = pdg.Cylinders.QuadPart * pdg.TracksPerCylinder * pdg.SectorsPerTrack * pdg.BytesPerSector;
+
+
+    // erase first and last 1MB on the drive
+    for (uint64_t i = 0; i < 1024 * 1024; i += BLOCK_SIZE) {
+        if (overlap.Offset + BLOCK_SIZE < overlap.Offset)
+            overlap.OffsetHigh++;
+        overlap.Offset += BLOCK_SIZE;
+        writeBlock(drive, &overlap, buf, BLOCK_SIZE);
+    }
+    for (uint64_t i = deviceBytes - 1024 * 1024; i < deviceBytes; i += BLOCK_SIZE) {
+        if (overlap.Offset + BLOCK_SIZE < overlap.Offset)
+            overlap.OffsetHigh++;
+        overlap.Offset += BLOCK_SIZE;
+        writeBlock(drive, &overlap, buf, BLOCK_SIZE);
+    }
+
+    return true;
+}
+
 bool WriteJob::writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, int size) {
     DWORD bytesWritten;
     DWORD status;
@@ -115,12 +152,13 @@ void WriteJob::unlockDrive(HANDLE drive) {
 }
 
 void WriteJob::work() {
+    out << -1 << "\n";
+    out.flush();
+
     HANDLE drive = openDrive(where);
     lockDrive(drive);
     dismountDrive(drive);
-
-    out << -1 << "\n";
-    out.flush();
+    cleanDrive(drive);
 
     OVERLAPPED osWrite;
     memset(&osWrite, 0, sizeof(osWrite));
