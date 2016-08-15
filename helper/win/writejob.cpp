@@ -45,7 +45,7 @@ HANDLE WriteJob::openDrive(int physicalDriveNumber) {
     hVol = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, FILE_FLAG_NO_BUFFERING, 0);
 
     if( hVol == INVALID_HANDLE_VALUE ) {
-        LPTSTR message = L"";
+        TCHAR message[256];
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
         err << "Disk_WriteData() - CreateFile failed (" << message << ")\n";
         err.flush();
@@ -58,7 +58,7 @@ HANDLE WriteJob::openDrive(int physicalDriveNumber) {
 bool WriteJob::lockDrive(HANDLE drive) {
     DWORD status;
     if (!DeviceIoControl(drive, FSCTL_LOCK_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
-        LPTSTR message = L"";
+        TCHAR message[256];
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
         err << "Disk_LockVolume() - Error attempting to lock device!  (" << message << ")\n";
         return false;
@@ -69,7 +69,7 @@ bool WriteJob::lockDrive(HANDLE drive) {
 bool WriteJob::dismountDrive(HANDLE drive) {
     DWORD status;
     if (!DeviceIoControl(drive, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
-        LPTSTR message = L"";
+        TCHAR message[256];
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
         err << "Disk_LockVolume() - Error attempting to dismount volume.  ("<< message <<")\n";
         return false;
