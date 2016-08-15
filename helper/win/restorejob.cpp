@@ -18,10 +18,37 @@
  */
 
 #include "restorejob.h"
+#include <QCoreApplication>
 #include <QTextStream>
+#include <QTimer>
 
 RestoreJob::RestoreJob(const QString &where)
     : QObject(nullptr)
 {
+    bool ok = false;
+    m_where = where.toInt(&ok);
+    if (!ok)
+        qApp->exit(1);
+    else
+        QTimer::singleShot(0, this, &RestoreJob::work);
+}
 
+void RestoreJob::work() {
+    m_diskpart.setProgram("diskpart.exe");
+    m_diskpart.setProcessChannelMode(QProcess::ForwardedChannels);
+
+    m_diskpart.start(QIODevice::ReadWrite);
+
+    m_diskpart.write(qPrintable(QString("select disk %0\r\n").arg(m_where)));
+    m_diskpart.write("clean\r\n");
+    m_diskpart.write("create part pri\r\n");
+    m_diskpart.write("select part 1\r\n");
+    m_diskpart.write("format fs=fat32 quick\r\n");
+    m_diskpart.write("assign\r\n");
+    m_diskpart.write("exit\r\n");
+
+    if (m_diskpart.waitForFinished())
+        qApp->exit(0);
+    else
+        qApp->exit(1);
 }

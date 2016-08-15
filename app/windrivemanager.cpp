@@ -231,7 +231,36 @@ void WinDrive::write(ReleaseVariant *data) {
 }
 
 void WinDrive::restore() {
+    qCritical() << "starting to restore";
+    if (m_child)
+        m_child->deleteLater();
 
+    m_child = new QProcess(this);
+
+    m_restoreStatus = RESTORING;
+    emit restoreStatusChanged();
+
+    if (QFile::exists(qApp->applicationDirPath() + "/helper.exe")) {
+        m_child->setProgram(qApp->applicationDirPath() + "/helper.exe");
+    }
+    else if (QFile::exists(qApp->applicationDirPath() + "/../helper.exe")) {
+        m_child->setProgram(qApp->applicationDirPath() + "/../helper.exe");
+    }
+    else {
+        m_restoreStatus = RESTORE_ERROR;
+        return;
+    }
+
+    QStringList args;
+    args << "restore";
+    args << QString("%1").arg(m_device);
+    m_child->setArguments(args);
+    m_child->setProcessChannelMode(QProcess::ForwardedChannels);
+
+    //connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
+    connect(m_child, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
+
+    m_child->start(QIODevice::ReadOnly);
 }
 
 QString WinDrive::serialNumber() const {
@@ -244,10 +273,25 @@ bool WinDrive::operator==(const WinDrive &o) const {
 
 void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
     qDebug() << "Child finished" << exitCode << m_child->errorString();
+
     m_child->deleteLater();
     m_child = nullptr;
 
     m_image->setStatus(ReleaseVariant::FINISHED);
+}
+
+void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+    qCritical() << "Process finished" << exitCode << exitStatus;
+    qCritical() << m_child->readAllStandardError();
+
+    m_child->deleteLater();
+    m_child = nullptr;
+
+    if (exitCode == 0)
+        m_restoreStatus = RESTORED;
+    else
+        m_restoreStatus = RESTORE_ERROR;
+    emit restoreStatusChanged();
 }
 
 void WinDrive::onReadyRead() {

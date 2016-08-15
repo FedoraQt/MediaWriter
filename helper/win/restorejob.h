@@ -21,6 +21,7 @@
 #define RESTOREJOB_H
 
 #include <QObject>
+#include <QProcess>
 
 class RestoreJob : public QObject
 {
@@ -30,7 +31,12 @@ public:
 
 signals:
 
-public slots:
+private slots:
+    void work();
+
+private:
+    QProcess m_diskpart;
+    int m_where;
 };
 
 #endif // RESTOREJOB_H

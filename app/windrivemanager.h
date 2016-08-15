@@ -57,6 +57,7 @@ public:
 
 private slots:
     void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void onReadyRead();
 
 private:
