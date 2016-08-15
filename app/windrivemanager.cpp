@@ -303,7 +303,7 @@ void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) 
 void WinDrive::onReadyRead() {
     while (m_child->bytesAvailable() > 0) {
         bool ok;
-        uint64_t bytes = m_child->readLine().trimmed().toULongLong(&ok);
+        int64_t bytes = m_child->readLine().trimmed().toULongLong(&ok);
         if (ok)
             m_progress->setValue(bytes);
     }
