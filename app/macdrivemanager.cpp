@@ -18,9 +18,25 @@
  */
 
 #include "macdrivemanager.h"
+#include "macdrivearbiter.h"
+
+#include <QDebug>
+
+static void onDriveAdded(const char *bsdName, const char *vendor, const char *model, unsigned long long size, bool restoreable) {
+    qDebug() << "C++: Drive added" << bsdName << vendor << model << size << restoreable;
+}
+
+static void onDriveRemoved(const char *bsdName) {
+    qDebug() << "C++: Drive removed" << bsdName;
+}
+
 
 MacDriveProvider::MacDriveProvider(DriveManager *parent)
     : DriveProvider(parent)
 {
+    startArbiter(&onDriveAdded, &onDriveRemoved);
+}
 
+MacDriveProvider::~MacDriveProvider() {
+    stopArbiter();
 }

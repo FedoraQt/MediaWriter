@@ -17,16 +17,11 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef MACDRIVEMANAGER_H
-#define MACDRIVEMANAGER_H
+#ifndef MACDRIVEARBITER_H
+#define MACDRIVEARBITER_H
 
-#include "drivemanager.h"
+void startArbiter(void (*addedCallback)(const char *bsdName, const char *vendor, const char *model, unsigned long long size, bool restoreable),
+                  void (*removedCallback)(const char *bsdName));
+void stopArbiter();
 
-class MacDriveProvider : public DriveProvider
-{
-public:
-    MacDriveProvider(DriveManager *parent);
-    ~MacDriveProvider();
-};
-
-#endif // MACDRIVEMANAGER_H
+#endif // MACDRIVEARBITER_H

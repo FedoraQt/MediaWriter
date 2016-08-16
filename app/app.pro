@@ -35,8 +35,15 @@ linux {
     SOURCES += linuxdrivemanager.cpp
 }
 macx {
-    HEADERS += macdrivemanager.h
+    HEADERS += macdrivemanager.h \
+                macdrivearbiter.h
     SOURCES += macdrivemanager.cpp
+    OBJECTIVE_SOURCES += macdrivearbiter.mm
+
+    QMAKE_LFLAGS += -F/System/Library/Frameworks
+    LIBS += -framework Foundation
+    LIBS += -framework DiskArbitration
+    QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.9
 }
 win32 {
     HEADERS += windrivemanager.h
