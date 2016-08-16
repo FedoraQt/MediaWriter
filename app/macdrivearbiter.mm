@@ -75,5 +75,20 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
 }
 
 static void OnDiskDisappeared(DADiskRef disk, void *__attribute__((__unused__)) ctx) {
-    // TODO
+    if (disk) {
+        CFDictionaryRef diskDescription = DADiskCopyDescription(disk);
+
+        NSNumber *isWhole = nil;
+        NSString *bsdName = nil;
+
+        bsdName = [diskDescription objectForKey:(NSString*)kDADiskDescriptionMediaBSDNameKey];
+        isWhole = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaWholeKey];
+
+        // let`s warn about every disk removed regardless of it being removable or not
+        if (isWhole != nil && [isWhole integerValue] != 0) {
+            onRemoved([bsdName UTF8String]);
+        }
+
+        [diskDescription autorelease];
+    }
 }
