@@ -47,7 +47,7 @@ void stopArbiter() {
 
 static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx) {
     if (disk) {
-        CFDictionaryRef diskDescription = DADiskCopyDescription(disk);
+        NSDictionary *diskDescription = (NSDictionary*) DADiskCopyDescription(disk);
 
         NSNumber *isRemovable = nil;
         NSNumber *isWhole = nil;
@@ -76,7 +76,7 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
 
 static void OnDiskDisappeared(DADiskRef disk, void *__attribute__((__unused__)) ctx) {
     if (disk) {
-        CFDictionaryRef diskDescription = DADiskCopyDescription(disk);
+        NSDictionary *diskDescription = (NSDictionary*) DADiskCopyDescription(disk);
 
         NSNumber *isWhole = nil;
         NSString *bsdName = nil;
