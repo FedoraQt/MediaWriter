@@ -27,6 +27,12 @@ class MacDriveProvider : public DriveProvider
 public:
     MacDriveProvider(DriveManager *parent);
     ~MacDriveProvider();
+
+    static MacDriveProvider *instance();
+    static void onDriveAdded(const char *bsdName, const char *vendor, const char *model, unsigned long long size, bool restoreable);
+    static void onDriveRemoved(const char *bsdName);
+private:
+    static MacDriveProvider *_self;
 };
 
 #endif // MACDRIVEMANAGER_H
