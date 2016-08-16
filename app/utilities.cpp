@@ -125,7 +125,7 @@ void DownloadManager::onStringDownloaded(const QString &text) {
 
 }
 
-void DownloadManager::onDownloadError() {
+void DownloadManager::onDownloadError(const QString &message) {
 
 }
 

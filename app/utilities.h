@@ -108,8 +108,8 @@ public:
     QString fetchPage(const QString &url);
 
     // DownloadReceiver interface
-    virtual void onStringDownloaded(const QString &text);
-    virtual void onDownloadError();
+    virtual void onStringDownloaded(const QString &text) override;
+    virtual void onDownloadError(const QString &message) override;
 
 private:
     DownloadManager();
