@@ -21,18 +21,35 @@
 #define MACDRIVEMANAGER_H
 
 #include "drivemanager.h"
+#include <QMap>
 
-class MacDriveProvider : public DriveProvider
-{
+class MacDrive;
+
+class MacDriveProvider : public DriveProvider {
+    Q_OBJECT
 public:
     MacDriveProvider(DriveManager *parent);
     ~MacDriveProvider();
 
     static MacDriveProvider *instance();
     static void onDriveAdded(const char *bsdName, const char *vendor, const char *model, unsigned long long size, bool restoreable);
+    void addDrive(const QString &bsdName, const QString &vendor, const QString &model, uint64_t size, bool restoreable);
     static void onDriveRemoved(const char *bsdName);
+    void removeDrive(const QString &bsdName);
 private:
     static MacDriveProvider *_self;
+    QMap<QString, MacDrive*> m_devices;
+};
+
+class MacDrive : public Drive {
+    Q_OBJECT
+public:
+    MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive, const QString &bsdDevice);
+
+    Q_INVOKABLE virtual void write(ReleaseVariant *data) override;
+    Q_INVOKABLE virtual void restore() override;
+private:
+    QString m_bsdDevice;
 };
 
 #endif // MACDRIVEMANAGER_H

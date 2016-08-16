@@ -40,9 +40,39 @@ MacDriveProvider *MacDriveProvider::instance() {
 }
 
 void MacDriveProvider::onDriveAdded(const char *bsdName, const char *vendor, const char *model, unsigned long long size, bool restoreable) {
-    qDebug() << "C++: Drive added" << bsdName << vendor << model << size << restoreable;
+    MacDriveProvider::instance()->addDrive(bsdName, vendor, model, size, restoreable);
+}
+
+void MacDriveProvider::addDrive(const QString &bsdName, const QString &vendor, const QString &model, uint64_t size, bool restoreable) {
+    removeDrive(bsdName);
+    MacDrive *drive = new MacDrive(this, QString("%1 %2").arg(vendor).arg(model), size, restoreable, bsdName);
+    m_devices[bsdName] = drive;
+    emit driveConnected(drive);
 }
 
 void MacDriveProvider::onDriveRemoved(const char *bsdName) {
-    qDebug() << "C++: Drive removed" << bsdName;
+    MacDriveProvider::instance()->removeDrive(bsdName);
+}
+
+void MacDriveProvider::removeDrive(const QString &bsdName) {
+    if (m_devices.contains(bsdName)) {
+        emit driveRemoved(m_devices[bsdName]);
+        m_devices[bsdName]->deleteLater();
+        m_devices.remove(bsdName);
+    }
+}
+
+
+MacDrive::MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive, const QString &bsdDevice)
+    : Drive(parent, name, size, containsLive), m_bsdDevice(bsdDevice)
+{
+
+}
+
+void MacDrive::write(ReleaseVariant *data) {
+
+}
+
+void MacDrive::restore() {
+
 }
