@@ -46,6 +46,8 @@ void stopArbiter() {
 }
 
 static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx) {
+    static bool lastS1 = false;
+    static NSString *lastPrefix = @"";
     if (disk) {
         NSDictionary *diskDescription = (NSDictionary*) DADiskCopyDescription(disk);
 
@@ -55,6 +57,7 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
         NSString *diskVendor = nil;
         NSString *diskModel = nil;
         NSNumber *diskSize = nil;
+        NSNumber *bsdNumber = nil;
 
         diskSize = [diskDescription objectForKey:(NSString*)kDADiskDescriptionMediaSizeKey];
         diskVendor = [diskDescription objectForKey:(NSString*)kDADiskDescriptionDeviceVendorKey];
@@ -62,12 +65,24 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
         isRemovable = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaRemovableKey];
         bsdName = [diskDescription objectForKey:(NSString*)kDADiskDescriptionMediaBSDNameKey];
         isWhole = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaWholeKey];
+        bsdNumber = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaBSDUnitKey];
+
+        NSLog(@"%@ %@ %@ %@ %@ %@", bsdName,
+                [diskDescription objectForKey:(NSString*)kDADiskDescriptionMediaPathKey],
+                [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionDeviceUnitKey],
+                [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaSizeKey],
+                [diskDescription objectForKey:(NSString*)kDADiskDescriptionMediaContentKey],
+                [diskDescription objectForKey:(NSString*)kDADiskDescriptionVolumeKindKey]);
+
+        if ([bsdName hasSuffix:@"s1"]) {
+            lastPrefix = [bsdName substringToIndex:[bsdName length] - 2];
+            if ([[diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaSizeKey] integerValue] == 8192)
+                lastS1 = true;
+        }
 
         if (isRemovable != nil && [isRemovable integerValue] != 0 && isWhole != nil && [isWhole integerValue] != 0) {
-            // NSLog(@"%@ %@ %@ %@ %@ %@", diskVendor, diskModel, diskSize, isRemovable, bsdName, isWhole);
-
-            // TODO handle restoreable drives
-            onAdded([bsdName UTF8String], [diskVendor UTF8String], [diskModel UTF8String], [diskSize integerValue], false);
+            bool isRestoreable = lastS1 & [bsdName isEqualToString:lastPrefix];
+            onAdded([bsdName UTF8String], [diskVendor UTF8String], [diskModel UTF8String], [diskSize integerValue], isRestoreable);
         }
 
         [diskDescription autorelease];
