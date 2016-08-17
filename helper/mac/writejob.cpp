@@ -23,10 +23,36 @@
 #include <QTimer>
 #include <QTextStream>
 #include <QProcess>
+#include <QFile>
 
 #include <QDebug>
 
 WriteJob::WriteJob(const QString &what, const QString &where)
     : QObject(nullptr), what(what), where(where), dd(new QProcess(this))
 {
+    QTimer::singleShot(0, this, &WriteJob::work);
+}
+
+void WriteJob::work() {
+    qint64 bytesTotal = 0;
+
+    QFile source(what);
+    QFile target(where);
+    QByteArray buffer(1024 * 512, 0);
+
+    out << -1 << "\n";
+    out.flush();
+
+    source.open(QIODevice::ReadOnly);
+    target.open(QIODevice::WriteOnly);
+
+    while (source.isReadable() && !source.atEnd() && target.isWritable()) {
+        qint64 bytes = source.read(buffer.data(), 1024 * 512);
+        bytesTotal += bytes;
+        target.write(buffer.data(), bytes);
+        out << bytesTotal << "\n";
+        out.flush();
+    }
+
+    qApp->exit();
 }

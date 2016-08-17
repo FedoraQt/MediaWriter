@@ -21,6 +21,7 @@
 #include "macdrivearbiter.h"
 
 #include <QDebug>
+#include <QDir>
 
 MacDriveProvider *MacDriveProvider::_self = nullptr;
 
@@ -70,9 +71,63 @@ MacDrive::MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bo
 }
 
 void MacDrive::write(ReleaseVariant *data) {
+    //osascript -e "do shell script \"$*\" with administrator privileges"
+    Drive::write(data);
 
+    if (m_child) {
+        // TODO some handling of an already present process
+        m_child->deleteLater();
+    }
+    m_child = new QProcess(this);
+    connect(m_child, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
+    connect(m_child, &QProcess::readyRead, this, &MacDrive::onReadyRead);
+
+    m_child->setProgram("osascript");
+
+    QString command;
+    command.append("do shell script \"");
+    if (QFile::exists(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper")) {
+        command.append(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper"); // write /dev/null /dev/zero"
+    }
+    else {
+        data->setErrorString("Your installation is broken. Couldn't find the helper program.");
+        return;
+    }
+    command.append(" write ");
+    command.append(QDir::toNativeSeparators(data->iso()));
+    command.append(" ");
+    command.append(m_bsdDevice);
+    command.append("\" with administrator privileges");
+
+    QStringList args;
+    args << "-e";
+    args << command;
+    qCritical() << "The command is" << command;
+    m_child->setArguments(args);
+
+    m_progress->setTo(data->size());
+    m_image->setStatus(ReleaseVariant::WRITING);
+
+    m_child->start();
 }
 
 void MacDrive::restore() {
 
+}
+
+void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+    m_image->setStatus(ReleaseVariant::FINISHED);
+}
+
+void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+
+}
+
+void MacDrive::onReadyRead() {
+    while (m_child->bytesAvailable() > 0) {
+        bool ok;
+        int64_t bytes = m_child->readLine().trimmed().toULongLong(&ok);
+        if (ok)
+            m_progress->setValue(bytes);
+    }
 }

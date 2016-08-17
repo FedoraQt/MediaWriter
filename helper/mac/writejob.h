@@ -29,9 +29,14 @@ class WriteJob : public QObject
     Q_OBJECT
 public:
     explicit WriteJob(const QString &what, const QString &where);
+private slots:
+    void work();
 private:
     QString what;
     QString where;
+
+    QTextStream out { stdout };
+    QTextStream err { stderr };
 
     QProcess *dd;
 };

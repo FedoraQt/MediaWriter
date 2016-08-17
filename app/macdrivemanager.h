@@ -22,6 +22,7 @@
 
 #include "drivemanager.h"
 #include <QMap>
+#include <QProcess>
 
 class MacDrive;
 
@@ -48,8 +49,13 @@ public:
 
     Q_INVOKABLE virtual void write(ReleaseVariant *data) override;
     Q_INVOKABLE virtual void restore() override;
+private slots:
+    void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void onReadyRead();
 private:
     QString m_bsdDevice;
+    QProcess *m_child { nullptr };
 };
 
 #endif // MACDRIVEMANAGER_H
