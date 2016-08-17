@@ -134,17 +134,13 @@ Dialog {
                 anchors.bottom: parent.bottom
                 anchors.right: parent.right
                 spacing: $(12)
-                /*
                 AdwaitaButton {
                     text: qsTranslate("", "Cancel")
-                    enabled: drives.lastRestoreable.restoreStatus != Drive.RESTORING
-                    visible: opacity > 0.0
-                    opacity: root.state == 2 ? 0.0 : 1.0
-                    Behavior on opacity { NumberAnimation {} }
+                    visible: drives.lastRestoreable.restoreStatus != Drive.RESTORED &&
+                             drives.lastRestoreable.restoreStatus != Drive.RESTORE_ERROR ? true : false
                     Behavior on x { NumberAnimation {} }
                     onClicked: root.visible = false
                 }
-                */
                 AdwaitaButton {
                     text: drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? qsTranslate("", "Restore") : qsTranslate("", "Close")
                     color: drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? "red" : "#628fcf"
