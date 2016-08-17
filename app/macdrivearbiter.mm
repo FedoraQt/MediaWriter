@@ -37,8 +37,6 @@ void startArbiter(void (*addedCallback)(const char *bsdName, const char *vendor,
     DARegisterDiskAppearedCallback(session, NULL, OnDiskAppeared, NULL);
     DARegisterDiskDisappearedCallback(session, NULL, OnDiskDisappeared, NULL);
     DASessionScheduleWithRunLoop(session, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
-
-    DASessionSetDispatchQueue(session, dispatch_get_main_queue());
 }
 
 void stopArbiter() {
@@ -66,13 +64,6 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
         bsdName = [diskDescription objectForKey:(NSString*)kDADiskDescriptionMediaBSDNameKey];
         isWhole = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaWholeKey];
         bsdNumber = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaBSDUnitKey];
-
-        NSLog(@"%@ %@ %@ %@ %@ %@", bsdName,
-                [diskDescription objectForKey:(NSString*)kDADiskDescriptionMediaPathKey],
-                [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionDeviceUnitKey],
-                [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaSizeKey],
-                [diskDescription objectForKey:(NSString*)kDADiskDescriptionMediaContentKey],
-                [diskDescription objectForKey:(NSString*)kDADiskDescriptionVolumeKindKey]);
 
         if ([bsdName hasSuffix:@"s1"]) {
             lastPrefix = [bsdName substringToIndex:[bsdName length] - 2];
