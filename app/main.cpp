@@ -20,13 +20,38 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QLoggingCategory>
+#include <QDebug>
 
 #include "drivemanager.h"
 #include "releasemanager.h"
 #include "options.h"
 
-int main(int argc, char *argv[])
+void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
+    QByteArray localMsg = msg.toLocal8Bit();
+    switch (type) {
+    case QtDebugMsg:
+        fprintf(stderr, "Debug: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        break;
+    case QtInfoMsg:
+        fprintf(stderr, "Info: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        break;
+    case QtWarningMsg:
+        fprintf(stderr, "Warning: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        break;
+    case QtCriticalMsg:
+        fprintf(stderr, "Critical: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        break;
+    case QtFatalMsg:
+        fprintf(stderr, "Fatal: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        abort();
+    }
+}
+
+int main(int argc, char **argv)
+{
+    qInstallMessageHandler(myMessageOutput); // Install the handler
     QApplication app(argc, argv);
 
     options.parse(app.arguments());
@@ -34,7 +59,9 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("drives", new DriveManager());
     engine.rootContext()->setContextProperty("releases", new ReleaseManager());
+    engine.setImportPathList(QStringList() << app.applicationDirPath() << app.applicationDirPath() + "/qml");
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    qDebug() << "Import path was" << engine.importPathList();
 
     return app.exec();
 }
