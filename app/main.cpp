@@ -59,7 +59,6 @@ int main(int argc, char **argv)
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("drives", new DriveManager());
     engine.rootContext()->setContextProperty("releases", new ReleaseManager());
-    engine.setImportPathList(QStringList() << app.applicationDirPath() << app.applicationDirPath() + "/qml");
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     qDebug() << "Import path was" << engine.importPathList();
 
