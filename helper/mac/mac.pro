@@ -8,6 +8,12 @@ CONFIG += console
 TARGET = helper
 DESTDIR = ../../app
 
+include($$top_srcdir/deployment.pri)
+
+target.path = $$LIBEXECDIR
+INSTALLS += target
+
+
 SOURCES = main.cpp \
     writejob.cpp \
     restorejob.cpp

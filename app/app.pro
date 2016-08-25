@@ -25,10 +25,10 @@ RESOURCES += qml.qrc \
 
 include($$top_srcdir/deployment.pri)
 
-linux {
-    target.path = $$BINDIR
-    INSTALLS += target
+target.path = $$BINDIR
+INSTALLS += target
 
+linux {
     QT += dbus
 
     HEADERS += linuxdrivemanager.h
