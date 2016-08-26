@@ -153,7 +153,6 @@ DriveProvider *DriveProvider::create(DriveManager *parent)  {
 #endif // APPLE
 
 #ifdef _WIN32
-# warning Windows support is not implemented yet
     return new WinDriveProvider(parent);
 #endif // _WIN32
 
