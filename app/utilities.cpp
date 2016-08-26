@@ -22,6 +22,7 @@
 #include <QDebug>
 #include <QStandardPaths>
 
+// TODO: everything Q_UNUSED
 
 Progress::Progress(QObject *parent, qreal from, qreal to)
     : QObject(parent), m_from(from), m_to(to), m_value(from) {
@@ -111,22 +112,25 @@ void DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &url, 
 
     auto reply = m_manager.get(request);
     auto download = new Download(this, reply, receiver, bareFileName, progress);
+    Q_UNUSED(download)
 }
 
 void DownloadManager::fetchPageAsync(DownloadReceiver *receiver, const QString &url) {
-
+    Q_UNUSED(receiver)
+    Q_UNUSED(url)
 }
 
 QString DownloadManager::fetchPage(const QString &url) {
-
+    Q_UNUSED(url)
+    return QString();
 }
 
 void DownloadManager::onStringDownloaded(const QString &text) {
-
+    Q_UNUSED(text)
 }
 
 void DownloadManager::onDownloadError(const QString &message) {
-
+    Q_UNUSED(message)
 }
 
 DownloadManager::DownloadManager() {
