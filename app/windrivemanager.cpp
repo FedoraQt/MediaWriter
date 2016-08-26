@@ -63,6 +63,10 @@ QSet<int> WinDriveProvider::findPhysicalDrive(char driveLetter) {
     VOLUME_DISK_EXTENTS vde; // TODO FIXME: handle ERROR_MORE_DATA (this is an extending structure)
     BOOL bResult = DeviceIoControl(hDevice, IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS, NULL, 0, &vde, sizeof(vde), &bytesReturned, NULL);
 
+    if (!bResult) {
+        qCritical() << "Could not get disk extents";
+    }
+
     for (uint i = 0; i < vde.NumberOfDiskExtents; i++) {
         /*
          * FIXME?
@@ -272,7 +276,7 @@ bool WinDrive::operator==(const WinDrive &o) const {
 }
 
 void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
-    qDebug() << "Child finished" << exitCode << m_child->errorString();
+    qDebug() << "Child finished" << exitCode << m_child->errorString() << exitStatus;
 
     if (exitCode == 0) {
         m_image->setStatus(ReleaseVariant::FINISHED);
