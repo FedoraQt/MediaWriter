@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Usage
+# ./build.sh - installs all the necessary packages and composes an installer (FMW-setup.exe)
+# ./build.sh local - builds the mediawriter.exe binary itself and then composes the installer
+#
+# The script will try to sign all binaries using your code signing certificate.
+# You can provide the path to it using the $CERTPATH variable, the files then
+# have to be named authenticode.spc and authenticode.pvk
+# You have to provide the $CERTPASS with the passphrase to your certificate
+
+
 pushd $(dirname $0) >/dev/null
 SCRIPTDIR=$(pwd -P)
 popd >/dev/null
@@ -24,6 +34,7 @@ BINARIES="libstdc++-6.dll libwinpthread-1.dll libgcc_s_sjlj-1.dll libpng16-16.dl
 PLUGINS="imageformats/qjpeg.dll imageformats/qsvg.dll platforms/qwindows.dll"
 QMLMODULES="Qt QtQml QtQuick/Controls QtQuick/Dialogs QtQuick/Extras QtQuick/Layouts QtQuick/PrivateWidgets QtQuick/Window.2 QtQuick.2"
 
+INSTALL_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_PREFIX)
 BIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_BINS)
 PLUGIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_PLUGINS)
 QML_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_QML)
@@ -31,11 +42,18 @@ QML_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_QML)
 echo "=== Installing dependencies"
 dnf install $PACKAGES
 
-echo "=== Building"
 mkdir -p "$BUILDPATH"
 pushd "$BUILDPATH" >/dev/null
-mingw32-qmake-qt5 ..
-mingw32-make -j9 >/dev/null
+
+if [ $1 == "local" ]; then
+    echo "=== Building"
+    mingw32-qmake-qt5 ..
+    mingw32-make -j9 >/dev/null
+else
+    echo "=== Getting distribution binary"
+    cp "$BIN_PREFIX/mediawriter.exe" app/release
+    cp "$INSTALL_PREFIX/libexec/mediawriter/helper.exe" app/release
+fi
 
 pushd app/release >/dev/null
 
