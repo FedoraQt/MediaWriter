@@ -43,6 +43,12 @@ void WriteJob::work() {
     out << -1 << "\n";
     out.flush();
 
+    QProcess diskUtil;
+    diskUtil.setProgram("diskutil");
+    diskUtil.setArguments(QStringList() << "unmountDisk" << where);
+    diskUtil.start();
+    diskUtil.waitForFinished();
+
     source.open(QIODevice::ReadOnly);
     target.open(QIODevice::WriteOnly);
 
@@ -54,8 +60,9 @@ void WriteJob::work() {
         out.flush();
     }
 
-    QProcess diskUtil;
-    diskUtil.setProgram("diskutil");
+    target.flush();
+
+
     diskUtil.setArguments(QStringList() << "unmountDisk" << where);
     diskUtil.start();
     diskUtil.waitForFinished();
