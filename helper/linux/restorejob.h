@@ -33,6 +33,8 @@ public slots:
 private:
     QTextStream out { stdout };
     QTextStream err { stderr };
+
+    QString where;
 };
 
 #endif // RESTOREJOB_H

@@ -24,14 +24,53 @@
 #include <QThread>
 #include <QTimer>
 
+#include <QtDBus>
+#include <QDBusInterface>
+#include <QDBusUnixFileDescriptor>
+
+typedef QHash<QString, QVariant> Properties;
+typedef QHash<QString, Properties> InterfacesAndProperties;
+typedef QHash<QDBusObjectPath, InterfacesAndProperties> DBusIntrospection;
+Q_DECLARE_METATYPE(Properties)
+Q_DECLARE_METATYPE(InterfacesAndProperties)
+Q_DECLARE_METATYPE(DBusIntrospection)
+
 RestoreJob::RestoreJob(const QString &where)
-    : QObject(nullptr)
+    : QObject(nullptr), where(where)
 {
     QTimer::singleShot(0, this, &RestoreJob::work);
 }
 
 void RestoreJob::work()
 {
-    QThread::sleep(10);
+    QDBusInterface device("org.freedesktop.UDisks2", where, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus(), this);
+    QString drivePath = qvariant_cast<QDBusObjectPath>(device.property("Drive")).path();
+    QDBusInterface drive("org.freedesktop.UDisks2", drivePath, "org.freedesktop.UDisks2.Drive", QDBusConnection::systemBus(), this);
+    QDBusInterface manager("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus());
+    QDBusMessage message = manager.call("GetManagedObjects");
+
+    if (message.arguments().length() == 1) {
+        QDBusArgument arg = qvariant_cast<QDBusArgument>(message.arguments().first());
+        DBusIntrospection objects;
+        arg >> objects;
+        for (auto i : objects.keys()) {
+            if (objects[i].contains("org.freedesktop.UDisks2.Filesystem")) {
+                QString currentDrivePath = qvariant_cast<QDBusObjectPath>(objects[i]["org.freedesktop.UDisks2.Block"]["Drive"]).path();
+                if (currentDrivePath == drivePath) {
+                    QDBusInterface partition("org.freedesktop.UDisks2", i.path(), "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
+                    message = partition.call("Unmount", Properties { {"force", true} });
+                }
+            }
+        }
+    }
+
+    device.call("Format", "dos", Properties());
+
+    QDBusInterface partitionTable("org.freedesktop.UDisks2", where, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus(), this);
+    QDBusReply<QDBusObjectPath> reply = partitionTable.call("CreatePartition", 0ULL, device.property("Size").toULongLong(), "", "", Properties());
+    QString partitionPath = reply.value().path();
+    QDBusInterface partition("org.freedesktop.UDisks2", partitionPath, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus(), this);
+    partition.call("Format", "vfat", Properties());
+
     qApp->exit(0);
 }
