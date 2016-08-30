@@ -87,7 +87,7 @@ void MacDrive::write(ReleaseVariant *data) {
     QString command;
     command.append("do shell script \"");
     if (QFile::exists(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper")) {
-        command.append(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper"); // write /dev/null /dev/zero"
+        command.append(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper");
     }
     else {
         data->setErrorString("Your installation is broken. Couldn't find the helper program.");
@@ -113,7 +113,40 @@ void MacDrive::write(ReleaseVariant *data) {
 }
 
 void MacDrive::restore() {
+    qCritical() << "starting to restore";
+    if (m_child)
+        m_child->deleteLater();
 
+    m_child = new QProcess(this);
+
+    m_restoreStatus = RESTORING;
+    emit restoreStatusChanged();
+
+    m_child->setProgram("osascript");
+
+    QString command;
+    command.append("do shell script \"");
+    if (QFile::exists(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper")) {
+        command.append(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper");
+    }
+    else {
+        m_restoreStatus = RESTORE_ERROR;
+        return;
+    }
+    command.append(" restore ");
+    command.append(m_bsdDevice);
+    command.append("\" with administrator privileges without altering line endings");
+
+    QStringList args;
+    args << "-e";
+    args << command;
+    qCritical() << "The command is" << command;
+    m_child->setArguments(args);
+
+    //connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
+    connect(m_child, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
+
+    m_child->start(QIODevice::ReadOnly);
 }
 
 void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
@@ -122,7 +155,17 @@ void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
 }
 
 void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+    qCritical() << "Process finished" << exitCode << exitStatus;
+    qCritical() << m_child->readAllStandardError();
 
+    if (exitCode == 0)
+        m_restoreStatus = RESTORED;
+    else
+        m_restoreStatus = RESTORE_ERROR;
+    emit restoreStatusChanged();
+
+    m_child->deleteLater();
+    m_child = nullptr;
 }
 
 void MacDrive::onReadyRead() {

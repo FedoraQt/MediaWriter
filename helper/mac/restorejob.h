@@ -27,10 +27,10 @@ class RestoreJob : public QObject
     Q_OBJECT
 public:
     explicit RestoreJob(const QString &where);
-
-signals:
-
-public slots:
+private slots:
+    void work();
+private:
+    QString where;
 };
 
 #endif // RESTOREJOB_H

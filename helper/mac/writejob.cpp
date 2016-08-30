@@ -62,6 +62,9 @@ void WriteJob::work() {
 
     target.flush();
 
+    diskUtil.setArguments(QStringList() << "disableJournal" << where + "s1");
+    diskUtil.start();
+    diskUtil.waitForFinished();
 
     diskUtil.setArguments(QStringList() << "unmountDisk" << where);
     diskUtil.start();
