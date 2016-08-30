@@ -50,6 +50,7 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
         NSDictionary *diskDescription = (NSDictionary*) DADiskCopyDescription(disk);
 
         NSNumber *isRemovable = nil;
+        NSNumber *isInternal = nil;
         NSNumber *isWhole = nil;
         NSString *bsdName = nil;
         NSString *diskVendor = nil;
@@ -64,6 +65,7 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
         bsdName = [diskDescription objectForKey:(NSString*)kDADiskDescriptionMediaBSDNameKey];
         isWhole = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaWholeKey];
         bsdNumber = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaBSDUnitKey];
+        isInternal = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionDeviceInternalKey];
 
         if ([bsdName hasSuffix:@"s1"]) {
             lastPrefix = [bsdName substringToIndex:[bsdName length] - 2];
@@ -71,7 +73,7 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
                 lastS1 = true;
         }
 
-        if (isRemovable != nil && [isRemovable integerValue] != 0 && isWhole != nil && [isWhole integerValue] != 0) {
+        if (isInternal != nil && [isInternal integerValue] == 0 && isRemovable != nil && [isRemovable integerValue] != 0 && isWhole != nil && [isWhole integerValue] != 0) {
             bool isRestoreable = lastS1 & [bsdName isEqualToString:lastPrefix];
             onAdded([bsdName UTF8String], [diskVendor UTF8String], [diskModel UTF8String], [diskSize integerValue], isRestoreable);
         }
