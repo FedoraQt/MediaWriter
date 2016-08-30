@@ -89,6 +89,9 @@ void MacDrive::write(ReleaseVariant *data) {
     if (QFile::exists(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper")) {
         command.append(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper");
     }
+    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+        command.append(qApp->applicationDirPath() + "/helper");
+    }
     else {
         data->setErrorString("Your installation is broken. Couldn't find the helper program.");
         return;
@@ -128,6 +131,9 @@ void MacDrive::restore() {
     command.append("do shell script \"");
     if (QFile::exists(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper")) {
         command.append(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper");
+    }
+    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+        command.append(qApp->applicationDirPath() + "/helper");
     }
     else {
         m_restoreStatus = RESTORE_ERROR;
