@@ -97,7 +97,7 @@ void MacDrive::write(ReleaseVariant *data) {
     command.append(QDir::toNativeSeparators(data->iso()));
     command.append(" ");
     command.append(m_bsdDevice);
-    command.append("\" with administrator privileges");
+    command.append("\" with administrator privileges without altering line endings");
 
     QStringList args;
     args << "-e";
@@ -108,6 +108,7 @@ void MacDrive::write(ReleaseVariant *data) {
     m_progress->setTo(data->size());
     m_image->setStatus(ReleaseVariant::WRITING);
 
+    m_progress->setValue(0.0/0.0);
     m_child->start();
 }
 
@@ -116,6 +117,7 @@ void MacDrive::restore() {
 }
 
 void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+    m_progress->setValue(m_image->size());
     m_image->setStatus(ReleaseVariant::FINISHED);
 }
 

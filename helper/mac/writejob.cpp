@@ -37,7 +37,7 @@ void WriteJob::work() {
     qint64 bytesTotal = 0;
 
     QFile source(what);
-    QFile target(where);
+    QFile target("/dev/r"+where);
     QByteArray buffer(1024 * 512, 0);
 
     out << -1 << "\n";
@@ -53,6 +53,16 @@ void WriteJob::work() {
         out << bytesTotal << "\n";
         out.flush();
     }
+
+    QProcess diskUtil;
+    diskUtil.setProgram("diskutil");
+    diskUtil.setArguments(QStringList() << "unmountDisk" << where);
+    diskUtil.start();
+    diskUtil.waitForFinished();
+
+    diskUtil.setArguments(QStringList() << "eject" << where);
+    diskUtil.start();
+    diskUtil.waitForFinished();
 
     qApp->exit();
 }
