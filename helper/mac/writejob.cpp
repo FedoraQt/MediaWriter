@@ -61,18 +61,25 @@ void WriteJob::work() {
     }
 
     target.flush();
+    target.close();
 
     diskUtil.setArguments(QStringList() << "disableJournal" << where + "s1");
+    diskUtil.start();
+    diskUtil.waitForFinished();
+    diskUtil.setArguments(QStringList() << "disableJournal" << where + "s2");
+    diskUtil.start();
+    diskUtil.waitForFinished();
+    diskUtil.setArguments(QStringList() << "disableJournal" << where + "s3");
     diskUtil.start();
     diskUtil.waitForFinished();
 
     diskUtil.setArguments(QStringList() << "unmountDisk" << where);
     diskUtil.start();
     diskUtil.waitForFinished();
-
+/*
     diskUtil.setArguments(QStringList() << "eject" << where);
     diskUtil.start();
     diskUtil.waitForFinished();
-
+*/
     qApp->exit();
 }
