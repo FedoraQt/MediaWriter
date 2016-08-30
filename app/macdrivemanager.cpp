@@ -87,17 +87,17 @@ void MacDrive::write(ReleaseVariant *data) {
     QString command;
     command.append("do shell script \"");
     if (QFile::exists(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper")) {
-        command.append(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper");
+        command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
     }
     else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
-        command.append(qApp->applicationDirPath() + "/helper");
+        command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
     }
     else {
         data->setErrorString("Your installation is broken. Couldn't find the helper program.");
         return;
     }
     command.append(" write ");
-    command.append(QDir::toNativeSeparators(data->iso()));
+    command.append(QString("'%1'").arg(data->iso()));
     command.append(" ");
     command.append(m_bsdDevice);
     command.append("\" with administrator privileges without altering line endings");
@@ -130,10 +130,10 @@ void MacDrive::restore() {
     QString command;
     command.append("do shell script \"");
     if (QFile::exists(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper")) {
-        command.append(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper");
+        command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
     }
     else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
-        command.append(qApp->applicationDirPath() + "/helper");
+        command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
     }
     else {
         m_restoreStatus = RESTORE_ERROR;
