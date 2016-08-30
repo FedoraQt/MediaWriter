@@ -85,7 +85,6 @@ for i in $QMLMODULES; do
 done
 
 echo "=== Inserting helper"
-cp "$HELPER" .
 
 #echo "=== Compressing binaries"
 #upx $(find . -name "*.exe")
@@ -99,6 +98,8 @@ signcode  -spc $CERTPATH/authenticode.spc -v $CERTPATH/authenticode.pvk -a sha1 
 rm "$MEDIAWRITER.bak"
 signcode  -spc $CERTPATH/authenticode.spc -v $CERTPATH/authenticode.pvk -a sha1 -$ commercial -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -tr 10 $HELPER >/dev/null <<< "$CERTPASS"
 rm "$HELPER.bak"
+
+cp "$HELPER" .
 
 popd >/dev/null
 popd >/dev/null
