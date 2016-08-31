@@ -148,11 +148,11 @@ void LinuxDrive::write(ReleaseVariant *data) {
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onFinished(int,QProcess::ExitStatus)));
 
     m_progress->setTo(data->size());
+    m_progress->setValue(0.0/0.0);
     m_process->start(QIODevice::ReadOnly);
 }
 
 void LinuxDrive::restore() {
-    qCritical() << "starting to restore";
     if (!m_process)
         m_process = new QProcess(this);
 
@@ -179,25 +179,25 @@ void LinuxDrive::restore() {
 void LinuxDrive::onReadyRead() {
     while (m_process->bytesAvailable() > 0) {
         QString line = m_process->readLine().trimmed();
-        //qCritical() << line;
         bool ok = false;
         qreal val = line.toULongLong(&ok);
-        qCritical() << val << ok;
         if (ok && val > 0.0)
             m_progress->setValue(val);
     }
 }
 
 void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
-    qCritical() << "Process finished" << exitCode << status;
-    qCritical() << m_process->readAllStandardError();
+    if (exitCode != 0) {
+        qCritical() << m_process->readAllStandardError();
+    }
 
     m_image->setStatus(ReleaseVariant::FINISHED);
 }
 
 void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status) {
-    qCritical() << "Process finished" << exitCode << status;
-    qCritical() << m_process->readAllStandardError();
+    if (exitCode != 0) {
+        qCritical() << m_process->readAllStandardError();
+    }
 
     m_restoreStatus = RESTORED;
     emit restoreStatusChanged();
