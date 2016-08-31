@@ -146,6 +146,7 @@ void LinuxDrive::write(ReleaseVariant *data) {
 
     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onFinished(int,QProcess::ExitStatus)));
+    connect(m_process, &QProcess::errorOccurred, this, &LinuxDrive::onErrorOccurred);
 
     m_progress->setTo(data->size());
     m_progress->setValue(0.0/0.0);
@@ -201,4 +202,10 @@ void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status) {
 
     m_restoreStatus = RESTORED;
     emit restoreStatusChanged();
+}
+
+void LinuxDrive::onErrorOccurred(QProcess::ProcessError e) {
+    m_image->setErrorString(m_process->errorString());
+    m_process->deleteLater();
+    m_image->setStatus(ReleaseVariant::FAILED);
 }
