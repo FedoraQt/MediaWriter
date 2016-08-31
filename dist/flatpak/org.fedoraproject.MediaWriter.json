@@ -3,10 +3,14 @@
     "runtime": "org.kde.Platform",
     "runtime-version": "master",
     "sdk": "org.kde.Sdk",
-    "command": "app",
+    "command": "mediawriter",
     "finish-args": [
         "--socket=x11",
-        "--filesystem=host"
+	"--device=dri",
+        "--filesystem=host",
+	"--share=network",
+	"--share=ipc",
+	"--system-talk-name=org.freedesktop.UDisks2"
     ],
     "modules": [
         {
