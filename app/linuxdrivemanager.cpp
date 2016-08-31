@@ -135,10 +135,20 @@ void LinuxDrive::write(ReleaseVariant *data) {
 
     m_process->setProgram("pkexec");
     QStringList args;
-    if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper"))
+    if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper")) {
         args << qApp->applicationDirPath() + "/../helper/linux/helper";
-    else
+    }
+    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+        args << qApp->applicationDirPath() + "/helper";
+    }
+    else if (QFile::exists(QString("%1/%2").arg(LIBEXECDIR).arg("helper"))) {
         args << QString("%1/%2").arg(LIBEXECDIR).arg("helper");
+    }
+    else {
+        data->setErrorString("Could not find the helper binary. Check your installation.");
+        data->setStatus(ReleaseVariant::FAILED);
+        return;
+    }
     args << "write";
     args << data->iso();
     args << m_device;
@@ -162,10 +172,20 @@ void LinuxDrive::restore() {
 
     m_process->setProgram("pkexec");
     QStringList args;
-    if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper"))
+    if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper")) {
         args << qApp->applicationDirPath() + "/../helper/linux/helper";
-    else
+    }
+    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+        args << qApp->applicationDirPath() + "/helper";
+    }
+    else if (QFile::exists(QString("%1/%2").arg(LIBEXECDIR).arg("helper"))) {
         args << QString("%1/%2").arg(LIBEXECDIR).arg("helper");
+    }
+    else {
+        qWarning() << "Couldn't find the helper binary.";
+        setRestoreStatus(RESTORE_ERROR);
+        return;
+    }
     args << "restore";
     args << m_device;
     m_process->setArguments(args);
