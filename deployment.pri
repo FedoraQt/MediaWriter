@@ -5,7 +5,9 @@ isEmpty(PREFIX) {
 }
 BINDIR = $$PREFIX/bin
 DATADIR = $$PREFIX/share
-LIBEXECDIR = $$PREFIX/libexec/mediawriter
+isEmpty(LIBEXECDIR) {
+    LIBEXECDIR = $$PREFIX/libexec/mediawriter
+}
 linux {
     DEFINES += BINDIR=\\\"$$BINDIR\\\"
     DEFINES += DATADIR=\\\"$$DATADIR\\\"
