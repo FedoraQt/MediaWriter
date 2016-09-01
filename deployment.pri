@@ -13,3 +13,5 @@ linux {
     DEFINES += DATADIR=\\\"$$DATADIR\\\"
     DEFINES += LIBEXECDIR=\\\"$$LIBEXECDIR\\\"
 }
+QMAKE_LIBDIR += $$top_builddir/lib
+INCLUDEPATH += $$top_srcdir/lib/

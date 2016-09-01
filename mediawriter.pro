@@ -1,3 +1,6 @@
 TEMPLATE = subdirs
 
-SUBDIRS = app helper
+SUBDIRS = lib app helper
+
+app.depends = lib
+helper.depends = lib

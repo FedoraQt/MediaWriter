@@ -19,8 +19,11 @@
 
 #include "releasemanager.h"
 
-#include <QtQml>
+#include "isomd5/libcheckisomd5.h"
 
+#include <QtQml>
+#include <QApplication>
+#include <QAbstractEventDispatcher>
 
 ReleaseManager::ReleaseManager(QObject *parent)
     : QSortFilterProxyModel(parent), m_sourceModel(new ReleaseListModel(this))
@@ -534,12 +537,30 @@ void ReleaseVariant::onFileDownloaded(const QString &path) {
     emit isoChanged();
     if (m_progress)
         m_progress->setValue(size());
-    setStatus(READY);
+    setStatus(DOWNLOAD_VERIFYING);
+    if (mediaCheckFile(path.toLocal8Bit(), &ReleaseVariant::staticOnMediaCheckAdvanced, this)) {
+        setStatus(READY);
+    }
+    else {
+        setErrorString("The downloaded image is corrupted");
+        setStatus(FAILED_DOWNLOAD);
+    }
 }
 
 void ReleaseVariant::onDownloadError(const QString &message) {
     setErrorString(message);
     setStatus(FAILED_DOWNLOAD);
+}
+
+int ReleaseVariant::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
+    ReleaseVariant *v = static_cast<ReleaseVariant*>(data);
+    return v->onMediaCheckAdvanced(offset, total);
+}
+
+int ReleaseVariant::onMediaCheckAdvanced(long long offset, long long total) {
+    m_progress->setValue(offset, total);
+    qApp->eventDispatcher()->processEvents(QEventLoop::AllEvents);
+    return 0;
 }
 
 void ReleaseVariant::download() {

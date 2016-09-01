@@ -275,6 +275,7 @@ public:
     enum Status {
         PREPARING = 0,
         DOWNLOADING,
+        DOWNLOAD_VERIFYING,
         READY,
         WRITING,
         FINISHED,
@@ -285,6 +286,7 @@ public:
     const QStringList m_statusStrings {
         "Preparing",
         "Downloading",
+        "Checking the download",
         "Ready to write",
         "Writing",
         "Finished!",
@@ -317,6 +319,9 @@ public:
     // DownloadReceiver interface
     void onFileDownloaded(const QString &path);
     void onDownloadError(const QString &message);
+
+    static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
+    int onMediaCheckAdvanced(long long offset, long long total);
 
 signals:
     void isoChanged();

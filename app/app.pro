@@ -4,6 +4,8 @@ TARGET = mediawriter
 
 QT += qml quick widgets network
 
+LIBS += -lisomd5
+
 CONFIG += c++11
 
 HEADERS += \

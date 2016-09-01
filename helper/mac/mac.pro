@@ -2,6 +2,8 @@ TEMPLATE = app
 
 QT += core network
 
+LIBS += -lisomd5
+
 CONFIG += c++11
 CONFIG += console
 
