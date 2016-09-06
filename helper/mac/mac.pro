@@ -8,7 +8,6 @@ CONFIG += c++11
 CONFIG += console
 
 TARGET = helper
-DESTDIR = ../../app
 
 include($$top_srcdir/deployment.pri)
 
