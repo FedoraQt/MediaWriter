@@ -136,7 +136,8 @@ Dialog {
                 spacing: $(12)
                 AdwaitaButton {
                     text: qsTranslate("", "Cancel")
-                    visible: drives.lastRestoreable.restoreStatus != Drive.RESTORED &&
+                    visible: drives.lastRestoreable &&
+                             drives.lastRestoreable.restoreStatus != Drive.RESTORED &&
                              drives.lastRestoreable.restoreStatus != Drive.RESTORE_ERROR ? true : false
                     Behavior on x { NumberAnimation {} }
                     onClicked: root.visible = false
