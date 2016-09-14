@@ -35,6 +35,17 @@ linux {
 
     HEADERS += linuxdrivemanager.h
     SOURCES += linuxdrivemanager.cpp
+
+    icon.path = "$$DATADIR/pixmaps"
+    icon.files = assets/mediawriter.png
+
+    desktopfile.path = "$$DATADIR/applications/"
+    desktopfile.files = "$$top_srcdir/dist/linux/mediawriter.desktop"
+
+    appdatafile.path = "$$DATADIR/appdata/"
+    appdatafile.files = "$$top_srcdir/dist/linux/mediawriter.appdata.xml"
+
+    INSTALLS += icon desktopfile appdatafile
 }
 macx {
     HEADERS += macdrivemanager.h \
@@ -46,6 +57,8 @@ macx {
     LIBS += -framework Foundation
     LIBS += -framework DiskArbitration
     QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.9
+
+    ICON = assets/mediawriter.icns
 }
 win32 {
     HEADERS += windrivemanager.h
@@ -54,4 +67,6 @@ win32 {
     # Until I find out how (or if it's even possible at all) to run a privileged process from an unprivileged one, the main binary will be privileged too
     DISTFILES += windows.manifest
     QMAKE_MANIFEST = $${PWD}/windows.manifest
+
+    RC_ICONS = assets/mediawriter.ico
 }
