@@ -23,12 +23,19 @@
 #include <QDBusArgument>
 
 LinuxDriveProvider::LinuxDriveProvider(DriveManager *parent)
-    : DriveProvider(parent), m_objManager("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus()) {
+    : DriveProvider(parent)
+{
     qDBusRegisterMetaType<Properties>();
     qDBusRegisterMetaType<InterfacesAndProperties>();
     qDBusRegisterMetaType<DBusIntrospection>();
 
-    QDBusPendingCall pcall = m_objManager.asyncCall("GetManagedObjects");
+    QTimer::singleShot(0, this, &LinuxDriveProvider::delayedConstruct);
+}
+
+void LinuxDriveProvider::delayedConstruct() {
+    m_objManager = new QDBusInterface("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus());
+
+    QDBusPendingCall pcall = m_objManager->asyncCall("GetManagedObjects");
     QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(pcall, this);
 
     connect(w, &QDBusPendingCallWatcher::finished, this, &LinuxDriveProvider::init);

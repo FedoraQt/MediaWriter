@@ -44,12 +44,13 @@ public:
     LinuxDriveProvider(DriveManager *parent);
 
 private slots:
+    void delayedConstruct();
     void init(QDBusPendingCallWatcher *w);
     void onInterfacesAdded(QDBusObjectPath object_path, InterfacesAndProperties interfaces_and_properties);
     void onInterfacesRemoved(QDBusObjectPath object_path, QStringList interfaces);
 
 private:
-    QDBusInterface m_objManager;
+    QDBusInterface *m_objManager { nullptr };
     QHash<QDBusObjectPath, LinuxDrive*> m_drives;
 };
 
