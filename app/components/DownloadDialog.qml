@@ -187,7 +187,7 @@ Dialog {
                                                      (leftSize < (1024 * 1024)) ? ((leftSize / 1024).toFixed(1) + " KB") :
                                                      (leftSize < (1024 * 1024 * 1024)) ? ((leftSize / 1024 / 1024).toFixed(1) + " MB") :
                                                      ((leftSize / 1024 / 1024 / 1024).toFixed(1) + " GB")
-                            text: releases.selected.version.variant.statusString + (leftStr.length > 0 ? " (" + leftStr + " left)" : "")
+                            text: releases.selected.version.variant.statusString + ((releases.selected.version.variant.status == Variant.DOWNLOADING && leftStr.length > 0) ? " (" + leftStr + " left)" : "")
                         }
                         Item {
                             Layout.fillWidth: true
