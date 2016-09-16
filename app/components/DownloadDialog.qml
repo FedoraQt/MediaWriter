@@ -226,7 +226,7 @@ Dialog {
                             anchors.verticalCenter: parent.verticalCenter
                             scale: $(1.4)
                             SequentialAnimation {
-                                //running: liveUSBData.currentImage.writer.running
+                                running: releases.selected.version.variant.status == Variant.WRITING
                                 loops: -1
                                 onStopped: {
                                     if (liveUSBData.currentImage.writer.finished)
