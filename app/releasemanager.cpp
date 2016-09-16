@@ -570,7 +570,13 @@ int ReleaseVariant::onMediaCheckAdvanced(long long offset, long long total) {
 void ReleaseVariant::download() {
     resetStatus();
     setStatus(DOWNLOADING);
-    DownloadManager::instance()->downloadFile(this, url(), DownloadManager::dir(), progress());
+    QString ret = DownloadManager::instance()->downloadFile(this, url(), DownloadManager::dir(), progress());
+    if (!ret.isEmpty()) {
+        m_iso = ret;
+        emit isoChanged();
+
+        setStatus(READY);
+    }
 }
 
 void ReleaseVariant::resetStatus() {

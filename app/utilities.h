@@ -103,7 +103,7 @@ public:
     static DownloadManager *instance();
     static QString dir();
 
-    void downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder = dir(), Progress *progress = nullptr);
+    QString downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder = dir(), Progress *progress = nullptr);
     void fetchPageAsync(DownloadReceiver *receiver, const QString &url);
     QString fetchPage(const QString &url);
 

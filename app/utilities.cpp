@@ -93,7 +93,7 @@ QString DownloadManager::dir() {
     return d;
 }
 
-void DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder, Progress *progress) {
+QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder, Progress *progress) {
     QNetworkRequest request;
     request.setUrl(QUrl(url));
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
@@ -102,8 +102,7 @@ void DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &url, 
     QString partFileName = bareFileName + ".part";
 
     if (QFile::exists(bareFileName)) {
-        receiver->onFileDownloaded(bareFileName);
-        return;
+        return bareFileName;
     }
     else if (QFile::exists(partFileName)) {
         QFile partFile(partFileName);
@@ -113,6 +112,8 @@ void DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &url, 
     auto reply = m_manager.get(request);
     auto download = new Download(this, reply, receiver, bareFileName, progress);
     Q_UNUSED(download)
+
+    return QString();
 }
 
 void DownloadManager::fetchPageAsync(DownloadReceiver *receiver, const QString &url) {
