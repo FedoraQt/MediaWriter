@@ -542,6 +542,7 @@ void ReleaseVariant::onFileDownloaded(const QString &path) {
     if (m_progress)
         m_progress->setValue(size());
     setStatus(DOWNLOAD_VERIFYING);
+    m_progress->setValue(0.0/0.0, 1.0);
     if (shaHash().isEmpty() || mediaCheckFile(path.toLocal8Bit(), &ReleaseVariant::staticOnMediaCheckAdvanced, this)) {
         setStatus(READY);
     }

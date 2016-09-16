@@ -194,18 +194,12 @@ Dialog {
                             height: childrenRect.height
                             AdwaitaProgressBar {
                                 width: parent.width
+                                progressColor: releases.selected.version.variant.status == Variant.WRITING ? "red" :
+                                               releases.selected.version.variant.status == Variant.DOWNLOAD_VERIFYING ? Qt.lighter("green") : "#54aada"
                                 value: releases.selected.version.variant.status == Variant.DOWNLOADING ? releases.selected.version.variant.progress.ratio :
-                                       releases.selected.version.variant.status == Variant.WRITING ? drives.selected.progress.ratio : 0.0
+                                       releases.selected.version.variant.status == Variant.WRITING ? drives.selected.progress.ratio :
+                                       releases.selected.version.variant.status == Variant.DOWNLOAD_VERIFYING ? releases.selected.version.variant.progress.ratio : 0.0
                             }
-
-                            /*
-                            AdwaitaProgressBar {
-                                width: parent.width
-                                value: liveUSBData.currentImage.writer.progress
-                                visible: !liveUSBData.currentImage.download.running
-                                progressColor: liveUSBData.currentImage.writer.checking ? Qt.lighter("green") : "red"
-                            }
-                            */
                         }
                         AdwaitaCheckBox {
                             id: writeImmediately
