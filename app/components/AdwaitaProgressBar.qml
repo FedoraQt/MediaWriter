@@ -64,6 +64,7 @@ Rectangle {
     AdwaitaBusyIndicator {
         anchors.fill: parent
         visible: isNaN(root.value)
+        progressColor: root.progressColor
     }
 }
 
