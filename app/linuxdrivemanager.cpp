@@ -59,14 +59,15 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
         if (introspection[i].contains("org.freedesktop.UDisks2.Partition"))
             continue;
 
-        QString deviceId = introspection[i]["org.freedesktop.UDisks2.Block"]["Id"].toString();
         QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(introspection[i]["org.freedesktop.UDisks2.Block"]["Drive"]);
         QString devicePath = driveId.path();
 
-        if (!deviceId.isEmpty() && !driveId.path().isEmpty() && driveId.path() != "/") {
+        if (!driveId.path().isEmpty() && driveId.path() != "/") {
             bool portable = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Removable"].toBool();
+            QStringList mediaCompatibility = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["MediaCompatibility"].toStringList();
 
-            if (portable) {
+            // usb drives should support no inserted media
+            if (portable && mediaCompatibility.isEmpty()) {
                 QString vendor = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Vendor"].toString();
                 QString model = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Model"].toString();
                 uint64_t size = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Size"].toULongLong();
@@ -97,8 +98,9 @@ void LinuxDriveProvider::onInterfacesAdded(QDBusObjectPath object_path, Interfac
 
             if (!deviceId.isEmpty() && r.indexIn(deviceId) < 0 && !driveId.path().isEmpty() && driveId.path() != "/") {
                 bool portable = driveInterface.property("Removable").toBool();
+                QStringList mediaCompatibility = driveInterface.property("MediaCompatibility").toStringList();
 
-                if (portable) {
+                if (portable && mediaCompatibility.isEmpty()) {
                     QString vendor = driveInterface.property("Vendor").toString();
                     QString model = driveInterface.property("Model").toString();
                     uint64_t size = driveInterface.property("Size").toULongLong();
