@@ -2,7 +2,7 @@
 
 Fedora Media Writer is a tool that helps users put Fedora images on their portable drives such as flash disks.
 
-It is able to automatically download the required image for them and write them in a `dd`-like fashion, using either `dd` directly or some other way to access the drive itself directly.
+It is able to automatically download the required image for them and write them in a `dd`-like fashion, using either `dd` itself or some other way to access the drive directly.
 
 This overwrites the drive's partition layout though, so it also provides a way to restore a single-partition layout with a FAT32 partition.
 
@@ -43,3 +43,7 @@ To create a standalone package, use the `windeployqt` tool, included in your Qt 
 Again, you can just run `qmake` and `make`. No requirements so far.
 
 To release a standalone package, use `macdeployqt`, supplied with your Qt installation.
+
+## Translation
+
+If you want to help with translating Fedora Media Writer, please visit our [Zanata project page](https://translate.zanata.org/iteration/view/MediaWriter/4.0).
