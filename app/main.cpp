@@ -21,6 +21,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QLoggingCategory>
+#include <QTranslator>
 #include <QDebug>
 
 #include "drivemanager.h"
@@ -56,6 +57,10 @@ int main(int argc, char **argv)
     QApplication app(argc, argv);
 
     options.parse(app.arguments());
+
+    QTranslator translator;
+    translator.load(QLocale(), QString(), QString(), ":/translations");
+    app.installTranslator(&translator);
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("drives", new DriveManager());

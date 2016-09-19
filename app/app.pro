@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     options.cpp
 
 RESOURCES += qml.qrc \
-    assets.qrc
+    assets.qrc \
+    ../translations/translations.qrc
 
 lupdate_only {
     SOURCES += $$PWD/*.qml \
