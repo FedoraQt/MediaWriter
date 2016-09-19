@@ -28,7 +28,7 @@ import MediaWriter 1.0
 
 Dialog {
     id: root
-    title: qsTranslate("", "Write %1").arg(releases.selected.name)
+    title: qsTr("Write %1").arg(releases.selected.name)
 
     height: layout.height + $(56)
     standardButtons: StandardButton.NoButton
@@ -160,7 +160,7 @@ Dialog {
                                 verticalAlignment: Text.AlignVCenter
                                 wrapMode: Text.Wrap
                                 font.pixelSize: $(12)
-                                text: qsTranslate("", "PLACEHOLDER")
+                                text: qsTr("PLACEHOLDER")
                             }
                         }
                         */
@@ -206,7 +206,7 @@ Dialog {
                             enabled: driveCombo.count && opacity > 0.0
                             //opacity: !liveUSBData.currentImage.readyToWrite && liveUSBData.currentImage.download.running && liveUSBData.currentImage.download.progress / liveUSBData.currentImage.download.maxProgress < 0.95 ? 1.0 : 0.0
                             opacity: (releases.selected.version.variant.status == Variant.DOWNLOADING && releases.selected.version.variant.ratio < 0.95) ? 1.0 : 0.0
-                            text: qsTranslate("", "Write the image immediately when the download is finished")
+                            text: qsTr("Write the image immediately when the download is finished")
                         }
                     }
 
@@ -280,7 +280,7 @@ Dialog {
                                 Text {
                                     height: parent.height
                                     verticalAlignment: Text.AlignVCenter
-                                    text: qsTranslate("", "There are no portable drives connected")
+                                    text: qsTr("There are no portable drives connected")
                                     color: "gray"
                                     font.pixelSize: $(12)
                                 }
@@ -309,7 +309,7 @@ Dialog {
                                     bottom: parent.bottom
                                     rightMargin: $(6)
                                 }
-                                text: qsTranslate("", "Cancel")
+                                text: qsTr("Cancel")
                                 enabled: releases.selected.version.variant.status != Variant.FINISHED
                                 //enabled: !liveUSBData.currentImage.writer.running && !liveUSBData.currentImage.writer.finished
                                 onClicked: {
@@ -336,9 +336,9 @@ Dialog {
                                           releases.selected.version.variant.status == Variant.FAILED ||
                                           releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD) &&
                                          drives.length > 0
-                                text: releases.selected.version.variant.status == Variant.FINISHED        ? qsTranslate("", "Close") :
-                                      releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ? qsTranslate("", "Retry") :
-                                                                                                            qsTranslate("", "Write to disk")
+                                text: releases.selected.version.variant.status == Variant.FINISHED        ? qsTr("Close") :
+                                      releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ? qsTr("Retry") :
+                                                                                                            qsTr("Write to disk")
                                 onClicked: {
                                     if (releases.selected.version.variant.status == Variant.READY) {
                                         drives.selected.write(releases.selected.version.variant)

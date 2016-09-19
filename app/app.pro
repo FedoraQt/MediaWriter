@@ -25,6 +25,11 @@ SOURCES += main.cpp \
 RESOURCES += qml.qrc \
     assets.qrc
 
+lupdate_only {
+    SOURCES += $$PWD/*.qml \
+        $$PWD/components/*.qml
+}
+
 include($$top_srcdir/deployment.pri)
 
 target.path = $$BINDIR

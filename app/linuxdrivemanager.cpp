@@ -153,7 +153,7 @@ void LinuxDrive::write(ReleaseVariant *data) {
         m_process->setProgram(QString("%1/%2").arg(LIBEXECDIR).arg("helper"));
     }
     else {
-        data->setErrorString("Could not find the helper binary. Check your installation.");
+        data->setErrorString(tr("Could not find the helper binary. Check your installation."));
         data->setStatus(ReleaseVariant::FAILED);
         return;
     }

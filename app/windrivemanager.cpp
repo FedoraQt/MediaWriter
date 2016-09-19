@@ -218,7 +218,7 @@ void WinDrive::write(ReleaseVariant *data) {
         m_child->setProgram(qApp->applicationDirPath() + "/../helper.exe");
     }
     else {
-        data->setErrorString("Your installation is broken. Couldn't find the helper program.");
+        data->setErrorString(tr("Could not find the helper binary. Check your installation."));
         return;
     }
 

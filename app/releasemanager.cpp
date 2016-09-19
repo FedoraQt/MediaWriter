@@ -547,7 +547,7 @@ void ReleaseVariant::onFileDownloaded(const QString &path) {
         setStatus(READY);
     }
     else {
-        setErrorString("The downloaded image is corrupted");
+        setErrorString(tr("The downloaded image is corrupted"));
         setStatus(FAILED_DOWNLOAD);
     }
 }
@@ -613,8 +613,8 @@ void ReleaseVariant::setErrorString(const QString &o) {
 
 
 ReleaseArchitecture ReleaseArchitecture::m_all[] = {
-    {{"x86_64"}, "Intel 64bit", "ISO format image for Intel, AMD and other compatible PCs (64-bit)"},
-    {{"x86"}, "Intel 32bit", "ISO format image for Intel, AMD and other compatible PCs (32-bit)"},
+    {{"x86_64"}, "Intel 64bit", tr("ISO format image for Intel, AMD and other compatible PCs (64-bit)")},
+    {{"x86"}, "Intel 32bit", tr("ISO format image for Intel, AMD and other compatible PCs (32-bit)")},
     {{"armv7hl"}, "ARM v7", "ARM PLACEHOLDER TEXT"},
 };
 

@@ -284,14 +284,14 @@ public:
     };
     Q_ENUMS(Status)
     const QStringList m_statusStrings {
-        "Preparing",
-        "Downloading",
-        "Checking the download",
-        "Ready to write",
-        "Writing",
-        "Finished!",
-        "Download failed",
-        "Error"
+        tr("Preparing"),
+        tr("Downloading"),
+        tr("Checking the download"),
+        tr("Ready to write"),
+        tr("Writing"),
+        tr("Finished!"),
+        tr("Download failed"),
+        tr("Error")
     };
 
     ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, ReleaseArchitecture *arch, Type type = LIVE);

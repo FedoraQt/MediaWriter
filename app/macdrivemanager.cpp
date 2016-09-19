@@ -93,7 +93,7 @@ void MacDrive::write(ReleaseVariant *data) {
         command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
     }
     else {
-        data->setErrorString("Your installation is broken. Couldn't find the helper program.");
+        data->setErrorString(tr("Could not find the helper binary. Check your installation."));
         return;
     }
     command.append(" write ");

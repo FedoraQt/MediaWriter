@@ -101,7 +101,7 @@ Item {
                 anchors.fill: parent
                 color: "light gray"
                 font.pixelSize: $(12)
-                text: qsTranslate("", "Find an operating system image")
+                text: qsTr("Find an operating system image")
                 visible: !parent.activeFocus && parent.text.length == 0
                 verticalAlignment: Text.AlignVCenter
             }
@@ -263,7 +263,7 @@ Item {
                         anchors.horizontalCenter: threeDotDots.horizontalCenter
                         Behavior on y { NumberAnimation { duration: 60 } }
                         clip: true
-                        text: qsTranslate("", "Display additional Fedora flavors")
+                        text: qsTr("Display additional Fedora flavors")
                         color: "gray"
                     }
                     Timer {

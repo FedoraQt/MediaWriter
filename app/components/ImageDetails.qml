@@ -61,7 +61,7 @@ Item {
                         Layout.fillWidth: true
                     }
                     AdwaitaButton {
-                        text: qsTranslate("", "Create Live USB")
+                        text: qsTr("Create Live USB")
                         color: "#628fcf"
                         textColor: "white"
                         onClicked: {
@@ -138,7 +138,7 @@ Item {
                                     spacing: 0
                                     width: parent.width
                                     Text {
-                                        text: qsTranslate("", "Version %1").arg(releases.selected.version.number)
+                                        text: qsTr("Version %1").arg(releases.selected.version.number)
                                         font.pixelSize: $(11)
 
                                         color: versionRepeater.count <= 1 ? "gray" : versionMouse.containsPress ? "#284875" : versionMouse.containsMouse ? "#447BC7" : "#315FA0"
@@ -200,8 +200,8 @@ Item {
                                     }
                                     Text {
                                         // I'm sorry, everyone, I can't find a better way to determine if the date is valid
-                                        //text: releases.selected.version.releaseDate.toLocaleDateString().length > 0 ? (qsTranslate("", ", released on %1").arg(releases.selected.version.releaseDate.toLocaleDateString())) : ""
-                                        text: qsTranslate("", ", released on %1").arg(releases.selected.version.releaseDate.toLocaleDateString())
+                                        //text: releases.selected.version.releaseDate.toLocaleDateString().length > 0 ? (qsTr(", released on %1").arg(releases.selected.version.releaseDate.toLocaleDateString())) : ""
+                                        text: qsTr(", released on %1").arg(releases.selected.version.releaseDate.toLocaleDateString())
                                         font.pixelSize: $(11)
                                         color: "gray"
                                     }
@@ -277,7 +277,7 @@ Item {
                                 visible: releases.selected.isLocal
                                 spacing: $(12)
                                 AdwaitaButton {
-                                    text: qsTranslate("", "Select Live ISO")
+                                    text: qsTr("Select Live ISO")
                                     onClicked: {
                                         fileDialog.visible = false // for some reason it got stuck in the closed state once in a while, so ensure it's actually closed
                                         fileDialog.visible = true
@@ -285,7 +285,7 @@ Item {
                                 }
                                 Text {
                                     font.pixelSize: $(12)
-                                    text: "<font color=\"gray\">" + qsTranslate("", "Selected:") + "</font> " + (releases.selected.version.variant.iso ? (((String)(releases.selected.version.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTranslate("", "None") + "</font>"))
+                                    text: "<font color=\"gray\">" + qsTr("Selected:") + "</font> " + (releases.selected.version.variant.iso ? (((String)(releases.selected.version.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
                                 }
                             }
                         }
@@ -349,7 +349,7 @@ Item {
     }
     FileDialog {
         id: fileDialog
-        nameFilters: [ qsTranslate("", "Image files (*.iso)"), qsTranslate("", "All files (*)")]
+        nameFilters: [ qsTr("Image files (*.iso)"), qsTr("All files (*)")]
         onAccepted: {
             releases.setLocalFile(fileUrl)
         }

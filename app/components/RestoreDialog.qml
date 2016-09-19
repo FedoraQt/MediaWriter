@@ -28,7 +28,7 @@ import MediaWriter 1.0
 
 Dialog {
     id: root
-    title: drives.lastRestoreable ? qsTranslate("", "Restore %1?").arg(drives.lastRestoreable.name) : ""
+    title: drives.lastRestoreable ? qsTr("Restore %1?").arg(drives.lastRestoreable.name) : ""
 
     Connections {
         target: drives
@@ -63,7 +63,7 @@ Dialog {
                 Text {
                     id: warningText
                     width: wrapper.width
-                    text: qsTranslate("",  "<p align=\"justify\">
+                    text: qsTr( "<p align=\"justify\">
                                                 To reclaim all space available on the drive, it has to be restored to its factory settings.
                                                 The live system and all saved data will be deleted.
                                             </p>
@@ -95,7 +95,7 @@ Dialog {
                     Text {
                         Layout.alignment: Qt.AlignHCenter
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        text: qsTranslate("", "<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
+                        text: qsTr("<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
                         font.pixelSize: $(12)
                     }
                 }
@@ -109,7 +109,7 @@ Dialog {
                     Text {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: qsTranslate("", "Your drive was successfully restored!")
+                        text: qsTr("Your drive was successfully restored!")
                         font.pixelSize: $(12)
                     }
                 }
@@ -123,7 +123,7 @@ Dialog {
                     Text {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: qsTranslate("", "Unfortunately, an error occured during the process.<br>Please try restoring the drive using your system tools.")
+                        text: qsTr("Unfortunately, an error occured during the process.<br>Please try restoring the drive using your system tools.")
                         font.pixelSize: $(12)
                     }
                 }
@@ -135,7 +135,7 @@ Dialog {
                 anchors.right: parent.right
                 spacing: $(12)
                 AdwaitaButton {
-                    text: qsTranslate("", "Cancel")
+                    text: qsTr("Cancel")
                     visible: drives.lastRestoreable &&
                              drives.lastRestoreable.restoreStatus != Drive.RESTORED &&
                              drives.lastRestoreable.restoreStatus != Drive.RESTORE_ERROR ? true : false
@@ -143,7 +143,7 @@ Dialog {
                     onClicked: root.visible = false
                 }
                 AdwaitaButton {
-                    text: drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? qsTranslate("", "Restore") : qsTranslate("", "Close")
+                    text: drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? qsTr("Restore") : qsTr("Close")
                     color: drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? "red" : "#628fcf"
                     textColor: "white"
                     enabled: !drives.lastRestoreable || drives.lastRestoreable.restoreStatus != Drive.RESTORING

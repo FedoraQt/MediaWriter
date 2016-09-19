@@ -31,7 +31,7 @@ ApplicationWindow {
     visible: true
     minimumWidth: $(800)
     minimumHeight: $(480)
-    title: qsTranslate("", "Fedora Media Writer")
+    title: "Fedora Media Writer"
 
     SystemPalette {
         id: palette
@@ -52,10 +52,10 @@ ApplicationWindow {
 
     AdwaitaNotificationBar {
         id: deviceNotification
-        text: open ? qsTranslate("", "You inserted <b>%1</b> that already contains a live system.<br>Do you want to restore it to factory settings?").arg(drives.lastRestoreable.name) : ""
+        text: open ? qsTr("You inserted <b>%1</b> that already contains a live system.<br>Do you want to restore it to factory settings?").arg(drives.lastRestoreable.name) : ""
         open: drives.lastRestoreable
-        acceptText: qsTranslate("", "Restore")
-        cancelText: qsTranslate("", "Do Nothing")
+        acceptText: qsTr("Restore")
+        cancelText: qsTr("Do Nothing")
         property var disk: null
         anchors {
             left: parent.left
