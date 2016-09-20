@@ -64,14 +64,11 @@ void WriteJob::work()
                 if (currentDrivePath == drivePath) {
                     QDBusInterface partition("org.freedesktop.UDisks2", i.path(), "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
                     message = partition.call("Unmount", Properties { {"force", true} });
-                    err << "Unmounting " << currentDrivePath << ": " << message.errorMessage() << "\n";
-                    err.flush();
                 }
             }
         }
     }
     else {
-        err << "So broken\n";
         err << message.errorMessage();
         err.flush();
         qApp->exit(2);
