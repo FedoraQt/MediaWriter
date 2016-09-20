@@ -229,7 +229,7 @@ Dialog {
                                 running: releases.selected.version.variant.status == Variant.WRITING
                                 loops: -1
                                 onStopped: {
-                                    if (liveUSBData.currentImage.writer.finished)
+                                    if (releases.selected.version.variant.status == Variant.FINISHED)
                                         writeArrow.color = "#00dd00"
                                     else
                                         writeArrow.color = "black"
