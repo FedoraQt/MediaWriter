@@ -547,6 +547,7 @@ void ReleaseVariant::onFileDownloaded(const QString &path) {
         setStatus(READY);
     }
     else {
+        QFile::remove(path);
         setErrorString(tr("The downloaded image is corrupted"));
         setStatus(FAILED_DOWNLOAD);
     }
