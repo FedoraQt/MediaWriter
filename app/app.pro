@@ -42,7 +42,7 @@ linux {
     HEADERS += linuxdrivemanager.h
     SOURCES += linuxdrivemanager.cpp
 
-    icon.path = "$$DATADIR/icons/hicolor/192x192/"
+    icon.path = "$$DATADIR/pixmaps/"
     icon.files = assets/mediawriter.png
 
     desktopfile.path = "$$DATADIR/applications/"
