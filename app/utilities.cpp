@@ -187,11 +187,13 @@ DownloadManager *Download::manager() {
 void Download::onReadyRead() {
     while (m_reply->bytesAvailable()) {
         QByteArray buf = m_reply->read(1024*1024);
-        if (m_file) {
-            m_file->write(buf);
-        }
-        else {
-            m_buf.append(buf);
+        if (m_reply->error() == QNetworkReply::NoError) {
+            if (m_file) {
+                m_file->write(buf);
+            }
+            else {
+                m_buf.append(buf);
+            }
         }
     }
 }
