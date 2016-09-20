@@ -75,8 +75,6 @@ void WriteJob::work()
         return;
     }
 
-    err << device.property("Id").toString();
-    err.flush();
     QDBusReply<QDBusUnixFileDescriptor> reply = device.callWithArgumentList(QDBus::Block, "OpenForRestore", {Properties()} );
     QDBusUnixFileDescriptor fd = reply.value();
 
