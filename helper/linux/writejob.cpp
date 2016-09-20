@@ -64,17 +64,30 @@ void WriteJob::work()
                 if (currentDrivePath == drivePath) {
                     QDBusInterface partition("org.freedesktop.UDisks2", i.path(), "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
                     message = partition.call("Unmount", Properties { {"force", true} });
+                    err << "Unmounting " << currentDrivePath << ": " << message.errorMessage() << "\n";
+                    err.flush();
                 }
             }
         }
     }
+    else {
+        err << "So broken\n";
+        err << message.errorMessage();
+        err.flush();
+        qApp->exit(2);
+        return;
+    }
 
-    QDBusReply<QDBusUnixFileDescriptor> reply = device.call("OpenForRestore", Properties());
+    err << device.property("Id").toString();
+    err.flush();
+    QDBusReply<QDBusUnixFileDescriptor> reply = device.callWithArgumentList(QDBus::Block, "OpenForRestore", {Properties()} );
     QDBusUnixFileDescriptor fd = reply.value();
 
     if (!fd.isValid()) {
         err << reply.error().message();
+        err.flush();
         qApp->exit(2);
+        return;
     }
 
     QFile outFile;
@@ -82,13 +95,32 @@ void WriteJob::work()
     QFile inFile(what);
     inFile.open(QIODevice::ReadOnly);
 
+    if (!outFile.isWritable()) {
+        err << "FD is not writable";
+        err.flush();
+        qApp->exit(2);
+        return;
+    }
+    if (!inFile.isReadable()) {
+        err << "Source image is not readable";
+        err.flush();
+        qApp->exit(2);
+        return;
+    }
+
     QByteArray buffer;
     buffer.resize(BUFFER_SIZE);
     qint64 total = 0;
 
     while(!inFile.atEnd()) {
         qint64 len = inFile.read(buffer.data(), BUFFER_SIZE);
-        outFile.write(buffer.data(), len);
+        qint64 written = outFile.write(buffer.data(), len);
+        if (written != len) {
+            err << "Couldn't write data to the destination";
+            err.flush();
+            qApp->exit(3);
+            return;
+        }
         total += len;
         out << total << '\n';
         out.flush();
