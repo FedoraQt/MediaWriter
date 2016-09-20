@@ -65,9 +65,8 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
         if (!driveId.path().isEmpty() && driveId.path() != "/") {
             bool portable = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Removable"].toBool();
             QStringList mediaCompatibility = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["MediaCompatibility"].toStringList();
-
             // usb drives should support no inserted media
-            if (portable && mediaCompatibility.isEmpty()) {
+            if (portable && (mediaCompatibility.isEmpty() || mediaCompatibility.contains("thumb"))) {
                 QString vendor = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Vendor"].toString();
                 QString model = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Model"].toString();
                 uint64_t size = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Size"].toULongLong();
@@ -100,7 +99,7 @@ void LinuxDriveProvider::onInterfacesAdded(QDBusObjectPath object_path, Interfac
                 bool portable = driveInterface.property("Removable").toBool();
                 QStringList mediaCompatibility = driveInterface.property("MediaCompatibility").toStringList();
 
-                if (portable && mediaCompatibility.isEmpty()) {
+                if (portable && (mediaCompatibility.isEmpty() || mediaCompatibility.contains("thumb"))) {
                     QString vendor = driveInterface.property("Vendor").toString();
                     QString model = driveInterface.property("Model").toString();
                     uint64_t size = driveInterface.property("Size").toULongLong();
