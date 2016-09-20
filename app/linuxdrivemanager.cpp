@@ -215,18 +215,21 @@ void LinuxDrive::onReadyRead() {
 
 void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
     if (exitCode != 0) {
-        qCritical() << m_process->readAllStandardError();
+        m_image->setErrorString(m_process->readAllStandardError());
+        m_image->setStatus(ReleaseVariant::FAILED);
     }
-
-    m_image->setStatus(ReleaseVariant::FINISHED);
+    else {
+        m_image->setStatus(ReleaseVariant::FINISHED);
+    }
 }
 
 void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status) {
     if (exitCode != 0) {
-        qCritical() << m_process->readAllStandardError();
+        m_restoreStatus = RESTORE_ERROR;
     }
-
-    m_restoreStatus = RESTORED;
+    else {
+        m_restoreStatus = RESTORED;
+    }
     emit restoreStatusChanged();
 }
 
