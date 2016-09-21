@@ -26,6 +26,7 @@
 #include <QNetworkReply>
 #include <QObject>
 #include <QFile>
+#include <QTimer>
 
 class Progress;
 class DownloadReceiver;
@@ -69,15 +70,18 @@ class DownloadReceiver {
 public:
     virtual void onFileDownloaded(const QString &path) { Q_UNUSED(path) }
     virtual void onStringDownloaded(const QString &text) { Q_UNUSED(text) }
-    virtual void onDownloadError(const QString &message) { Q_UNUSED(message) }
+    virtual void onDownloadError(const QString &message) = 0;
 };
 
 class Download : public QObject {
     Q_OBJECT
 
 public:
-    Download(DownloadManager *parent, QNetworkReply *reply, DownloadReceiver *receiver, const QString &filePath, Progress *progress = nullptr);
+    Download(DownloadManager *parent, DownloadReceiver *receiver, const QString &filePath, Progress *progress = nullptr);
     DownloadManager *manager();
+
+    void handleNewReply(QNetworkReply *reply);
+    qint64 bytesDownloaded();
 
 private slots:
     void onReadyRead();
@@ -85,16 +89,18 @@ private slots:
     void onSslErrors(const QList<QSslError> errors);
     void onFinished();
     void onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal);
+    void onTimedOut();
 
 private:
-    qint64 m_initialSize { 0 };
-    QNetworkReply *m_reply;
-    DownloadReceiver *m_receiver;
-    QString m_path;
-    Progress *m_progress;
+    qint64 m_bytesDownloaded { 0 };
+    QNetworkReply *m_reply { nullptr };
+    DownloadReceiver *m_receiver { nullptr };
+    QString m_path { };
+    Progress *m_progress { nullptr };
+    QTimer m_timer { };
 
-    QFile *m_file;
-    QByteArray m_buf;
+    QFile *m_file { nullptr };
+    QByteArray m_buf { };
 };
 
 class DownloadManager : public QObject, public DownloadReceiver {
@@ -107,6 +113,8 @@ public:
     void fetchPageAsync(DownloadReceiver *receiver, const QString &url);
     QString fetchPage(const QString &url);
 
+    QNetworkReply *tryAnotherMirror();
+
     // DownloadReceiver interface
     virtual void onStringDownloaded(const QString &text) override;
     virtual void onDownloadError(const QString &message) override;
@@ -114,6 +122,9 @@ public:
 private:
     DownloadManager();
     static DownloadManager *_self;
+
+    Download *m_current { nullptr };
+    QStringList m_mirrorCache { };
 
     QNetworkAccessManager m_manager;
 };

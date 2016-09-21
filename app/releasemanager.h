@@ -317,8 +317,8 @@ public:
     void setErrorString(const QString &o);
 
     // DownloadReceiver interface
-    void onFileDownloaded(const QString &path);
-    void onDownloadError(const QString &message);
+    void onFileDownloaded(const QString &path) override;
+    virtual void onDownloadError(const QString &message) override;
 
     static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
     int onMediaCheckAdvanced(long long offset, long long total);
