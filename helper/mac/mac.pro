@@ -22,3 +22,5 @@ SOURCES = main.cpp \
 HEADERS += \
     writejob.h \
     restorejob.h
+
+RESOURCES += ../../translations/translations.qrc

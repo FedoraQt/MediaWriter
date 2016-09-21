@@ -91,13 +91,13 @@ void WriteJob::work()
     inFile.open(QIODevice::ReadOnly);
 
     if (!outFile.isWritable()) {
-        err << "FD is not writable";
+        err << tr("Destination drive is not writable");
         err.flush();
         qApp->exit(2);
         return;
     }
     if (!inFile.isReadable()) {
-        err << "Source image is not readable";
+        err << tr("Source image is not readable");
         err.flush();
         qApp->exit(2);
         return;
@@ -111,7 +111,7 @@ void WriteJob::work()
         qint64 len = inFile.read(buffer.data(), BUFFER_SIZE);
         qint64 written = outFile.write(buffer.data(), len);
         if (written != len) {
-            err << "Couldn't write data to the destination";
+            err << tr("Destination drive is not writable");
             err.flush();
             qApp->exit(3);
             return;
@@ -120,8 +120,6 @@ void WriteJob::work()
         out << total << '\n';
         out.flush();
     }
-    err << inFile.errorString() << "\n";
-    err << outFile.errorString() << "\n";
     err << "OK\n";
     err.flush();
     qApp->exit(0);

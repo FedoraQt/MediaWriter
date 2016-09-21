@@ -23,6 +23,8 @@ HEADERS += \
     writejob.h \
     restorejob.h
 
+RESOURCES += ../../translations/translations.qrc
+
 DISTFILES += \
     helper.exe.manifest
 

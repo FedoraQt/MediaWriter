@@ -19,12 +19,18 @@
 
 #include <QCoreApplication>
 #include <QTextStream>
+#include <QTranslator>
 
 #include "restorejob.h"
 #include "writejob.h"
 
 int main(int argc, char *argv[]) {
     QCoreApplication app(argc, argv);
+
+    QTranslator translator;
+    translator.load(QLocale(), QString(), QString(), ":/translations");
+    app.installTranslator(&translator);
+
     if (app.arguments().count() == 3 && app.arguments()[1] == "restore") {
         new RestoreJob(app.arguments()[2]);
     }
