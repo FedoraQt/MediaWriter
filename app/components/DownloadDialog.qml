@@ -336,11 +336,12 @@ Dialog {
                                           releases.selected.version.variant.status == Variant.FAILED ||
                                           releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD) &&
                                          drives.length > 0
-                                text: releases.selected.version.variant.status == Variant.FINISHED        ? qsTr("Close") :
-                                      releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ? qsTr("Retry") :
-                                                                                                            qsTr("Write to disk")
+                                text: releases.selected.version.variant.status == Variant.FINISHED          ? qsTr("Close") :
+                                      (releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ||
+                                       releases.selected.version.variant.status == Variant.FAILED         ) ? qsTr("Retry") :
+                                                                                                              qsTr("Write to disk")
                                 onClicked: {
-                                    if (releases.selected.version.variant.status == Variant.READY) {
+                                    if (releases.selected.version.variant.status == Variant.READY || releases.selected.version.variant.status == Variant.FAILED) {
                                         drives.selected.write(releases.selected.version.variant)
                                     }
                                     else if (releases.selected.version.variant.status == Variant.FINISHED) {
