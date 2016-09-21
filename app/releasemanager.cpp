@@ -320,7 +320,7 @@ void Release::setLocalFile(const QString &path) {
         m_versions.removeFirst();
     }
 
-    m_versions.append(new ReleaseVersion(this, QUrl(path).toLocalFile()));
+    m_versions.append(new ReleaseVersion(this, QUrl(path).toLocalFile(), info.size()));
     emit versionsChanged();
     emit selectedVersionChanged();
 }
@@ -400,8 +400,8 @@ ReleaseVersion::ReleaseVersion(Release *parent, int number, QList<ReleaseVariant
 
 }
 
-ReleaseVersion::ReleaseVersion(Release *parent, const QString &file)
-    : QObject(parent), m_variants({ new ReleaseVariant(this, file) })
+ReleaseVersion::ReleaseVersion(Release *parent, const QString &file, int64_t size)
+    : QObject(parent), m_variants({ new ReleaseVariant(this, file, size) })
 {
 
 }
@@ -479,8 +479,8 @@ ReleaseVariant::ReleaseVariant(ReleaseVersion *parent, QString url, QString shaH
 
 }
 
-ReleaseVariant::ReleaseVariant(ReleaseVersion *parent, const QString &file)
-    : QObject(parent), m_iso(file), m_arch(ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64))
+ReleaseVariant::ReleaseVariant(ReleaseVersion *parent, const QString &file, int64_t size)
+    : QObject(parent), m_iso(file), m_arch(ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64)), m_size(size)
 {
     m_status = READY;
 }

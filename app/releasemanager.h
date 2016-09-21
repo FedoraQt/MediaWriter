@@ -219,7 +219,7 @@ public:
     Q_ENUMS(ReleaseVersion::Status)
 
     ReleaseVersion(Release *parent, int number, QList<ReleaseVariant*> variants, ReleaseVersion::Status status = FINAL, QDateTime releaseDate = QDateTime());
-    ReleaseVersion(Release *parent, const QString &file);
+    ReleaseVersion(Release *parent, const QString &file, int64_t size);
     Release *release();
 
     int number() const;
@@ -295,7 +295,7 @@ public:
     };
 
     ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, ReleaseArchitecture *arch, Type type = LIVE);
-    ReleaseVariant(ReleaseVersion *parent, const QString &file);
+    ReleaseVariant(ReleaseVersion *parent, const QString &file, int64_t size);
 
     ReleaseVersion *releaseVersion();
     Release *release();
