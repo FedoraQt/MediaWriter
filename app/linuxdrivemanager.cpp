@@ -197,7 +197,7 @@ void LinuxDrive::restore() {
     m_process->setArguments(args);
     m_process->setProcessChannelMode(QProcess::ForwardedChannels);
 
-    //connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
+    connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
 
     m_process->start(QIODevice::ReadOnly);
