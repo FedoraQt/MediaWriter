@@ -55,6 +55,7 @@ int main(int argc, char **argv)
 {
 #ifdef __linux
     setenv("QSG_RENDER_LOOP", "threaded", 1);
+    setenv("GDK_BACKEND", "x11", 1);
 #endif
 
     qInstallMessageHandler(myMessageOutput); // Install the handler
