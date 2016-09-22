@@ -200,7 +200,7 @@ Item {
                                     }
                                     Text {
                                         // I'm sorry, everyone, I can't find a better way to determine if the date is valid
-                                        //text: releases.selected.version.releaseDate.toLocaleDateString().length > 0 ? (qsTr(", released on %1").arg(releases.selected.version.releaseDate.toLocaleDateString())) : ""
+                                        visible: releases.selected.version.releaseDate.toLocaleDateString().length > 0
                                         text: qsTr(", released on %1").arg(releases.selected.version.releaseDate.toLocaleDateString())
                                         font.pixelSize: $(11)
                                         color: "gray"
