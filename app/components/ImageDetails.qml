@@ -148,7 +148,7 @@ Item {
                                             enabled: versionRepeater.count > 1
                                             anchors.fill: parent
                                             hoverEnabled: true
-                                            cursorShape: Qt.PointingHandCursor
+                                            cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
                                             onClicked: {
                                                 versionPopover.open = !versionPopover.open
                                             }
@@ -220,7 +220,7 @@ Item {
                                             id: archMouse
                                             anchors.fill: parent
                                             hoverEnabled: true
-                                            cursorShape: Qt.PointingHandCursor
+                                            cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
                                             onClicked: {
                                                 if (versionPopover.open)
                                                     versionPopover.open = false
