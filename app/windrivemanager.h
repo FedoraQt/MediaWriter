@@ -49,6 +49,7 @@ public:
     ~WinDrive();
 
     Q_INVOKABLE virtual void write(ReleaseVariant *data) override;
+    Q_INVOKABLE virtual void cancel() override;
     Q_INVOKABLE virtual void restore() override;
 
     QString serialNumber() const;

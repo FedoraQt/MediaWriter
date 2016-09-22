@@ -57,6 +57,10 @@ void FakeDrive::write(ReleaseVariant *data) {
     QTimer::singleShot(100, this, &FakeDrive::writingAdvanced);
 }
 
+void FakeDrive::cancel() {
+
+}
+
 void FakeDrive::restore() {
     m_restoreStatus = Drive::RESTORING;
     emit restoreStatusChanged();

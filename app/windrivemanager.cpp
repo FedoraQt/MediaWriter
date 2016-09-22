@@ -235,6 +235,14 @@ void WinDrive::write(ReleaseVariant *data) {
     m_child->start();
 }
 
+void WinDrive::cancel() {
+    if (m_child) {
+        m_child->kill();
+        m_child->deleteLater();
+        m_child = nullptr;
+    }
+}
+
 void WinDrive::restore() {
     qCritical() << "starting to restore";
     if (m_child)

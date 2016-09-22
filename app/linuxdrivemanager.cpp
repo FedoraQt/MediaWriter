@@ -170,6 +170,14 @@ void LinuxDrive::write(ReleaseVariant *data) {
     m_process->start(QIODevice::ReadOnly);
 }
 
+void LinuxDrive::cancel() {
+    if (m_process) {
+        m_process->kill();
+        m_process->deleteLater();
+        m_process = nullptr;
+    }
+}
+
 void LinuxDrive::restore() {
     if (!m_process)
         m_process = new QProcess(this);
@@ -213,6 +221,9 @@ void LinuxDrive::onReadyRead() {
 }
 
 void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
+    if (!m_process)
+        return;
+
     if (exitCode != 0) {
         m_image->setErrorString(m_process->readAllStandardError());
         m_image->setStatus(ReleaseVariant::FAILED);
@@ -233,6 +244,9 @@ void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status) {
 }
 
 void LinuxDrive::onErrorOccurred(QProcess::ProcessError e) {
+    if (!m_process)
+        return;
+
     m_image->setErrorString(m_process->errorString());
     m_process->deleteLater();
     m_image->setStatus(ReleaseVariant::FAILED);

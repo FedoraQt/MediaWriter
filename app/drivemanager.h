@@ -117,6 +117,7 @@ public:
     virtual RestoreStatus restoreStatus();
 
     Q_INVOKABLE virtual void write(ReleaseVariant *data);
+    Q_INVOKABLE virtual void cancel() = 0;
     Q_INVOKABLE virtual void restore() = 0;
 
     bool operator==(const Drive& o) const;

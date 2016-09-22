@@ -46,8 +46,9 @@ class FakeDrive : public Drive {
 public:
     FakeDrive(FakeDriveProvider *parent, const QString &name, uint64_t size, bool containsLive = false);
 
-    Q_INVOKABLE virtual void write(ReleaseVariant *data);
-    Q_INVOKABLE virtual void restore();
+    Q_INVOKABLE virtual void write(ReleaseVariant *data) override;
+    Q_INVOKABLE virtual void cancel() override;
+    Q_INVOKABLE virtual void restore() override;
 
 private slots:
     void writingAdvanced();

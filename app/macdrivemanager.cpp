@@ -115,6 +115,14 @@ void MacDrive::write(ReleaseVariant *data) {
     m_child->start();
 }
 
+void MacDrive::cancel() {
+    if (m_child) {
+        m_child->kill();
+        m_child->deleteLater();
+        m_child = nullptr;
+    }
+}
+
 void MacDrive::restore() {
     qCritical() << "starting to restore";
     if (m_child)

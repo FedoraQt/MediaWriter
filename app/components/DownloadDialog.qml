@@ -42,6 +42,7 @@ Dialog {
 
     onVisibleChanged: {
         if (!visible) {
+            drives.selected.cancel()
             releases.selected.version.variant.resetStatus()
             downloadManager.cancel()
         }

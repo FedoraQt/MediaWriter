@@ -195,7 +195,8 @@ QString Drive::name() const {
         sizeStr = QString(" (%1 GB)").arg(m_size / 1000000000.0, 0, 'f', 1);
     }
     else if (m_size < (1000000000000000UL)) {
-        sizeStr = QString(" (%1 TB)").arg(m_size / 1000000000000.0, 0, 'f', 1);
+        sizeStr = QString(" (d"
+                          "%1 TB)").arg(m_size / 1000000000000.0, 0, 'f', 1);
     }
     else { // better be ready for exabyte images and drives
         sizeStr = QString(" (%1 EB)").arg(m_size / 1000000000000000.0, 0, 'f', 1);
@@ -213,6 +214,7 @@ Drive::RestoreStatus Drive::restoreStatus() {
 
 void Drive::write(ReleaseVariant *data) {
     m_image = data;
+    m_image->setErrorString(QString());
 }
 
 bool Drive::operator==(const Drive &o) const {
