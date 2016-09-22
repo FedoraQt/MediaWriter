@@ -41,8 +41,10 @@ Dialog {
     }
 
     onVisibleChanged: {
-        if (!visible)
+        if (!visible) {
             releases.selected.version.variant.resetStatus()
+            downloadManager.cancel()
+        }
         reset()
     }
 

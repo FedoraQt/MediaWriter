@@ -143,6 +143,13 @@ QNetworkReply *DownloadManager::tryAnotherMirror() {
     return m_manager.get(request);
 }
 
+void DownloadManager::cancel() {
+    if (m_current) {
+        m_current->deleteLater();
+        m_current = nullptr;
+    }
+}
+
 void DownloadManager::onStringDownloaded(const QString &text) {
     QStringList mirrors;
     for (const QString &i : text.split("\n")) {

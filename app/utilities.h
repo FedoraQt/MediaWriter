@@ -115,6 +115,8 @@ public:
 
     QNetworkReply *tryAnotherMirror();
 
+    Q_INVOKABLE void cancel();
+
     // DownloadReceiver interface
     virtual void onStringDownloaded(const QString &text) override;
     virtual void onDownloadError(const QString &message) override;
