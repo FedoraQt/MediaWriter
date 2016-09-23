@@ -34,6 +34,10 @@
 #include "md5.h"
 #include "libcheckisomd5.h"
 
+#ifdef __APPLE__
+#define lseek64 lseek
+#endif
+
 #define APPDATA_OFFSET 883
 #define SIZE_OFFSET 84
 
@@ -55,7 +59,7 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
     long long offset;
     char *p;
 
-    if (lseek64(isofd, (off64_t)(16LL * 2048LL), SEEK_SET) == -1)
+    if (lseek64(isofd, (16LL * 2048LL), SEEK_SET) == -1)
         return ((long long)-1);
 
     offset = (16LL * 2048LL);

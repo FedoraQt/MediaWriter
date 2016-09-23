@@ -572,6 +572,7 @@ int ReleaseVariant::staticOnMediaCheckAdvanced(void *data, long long offset, lon
 }
 
 int ReleaseVariant::onMediaCheckAdvanced(long long offset, long long total) {
+    qApp->eventDispatcher()->processEvents(QEventLoop::AllEvents);
     m_progress->setValue(offset, total);
     return 0;
 }
