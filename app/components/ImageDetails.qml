@@ -65,6 +65,7 @@ Item {
                         color: "#628fcf"
                         textColor: "white"
                         onClicked: {
+                            deviceNotification.open = false
                             archPopover.open = false
                             versionPopover.open = false
                             dlDialog.visible = true
