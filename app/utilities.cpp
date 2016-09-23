@@ -297,8 +297,11 @@ void Download::onFinished() {
 
 void Download::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) {
     Q_UNUSED(bytesTotal);
-    m_bytesDownloaded += bytesReceived;
-    m_progress->setValue(m_bytesDownloaded);
+    m_bytesDownloaded = bytesReceived;
+    if (bytesTotal > 0)
+        m_progress->setValue(m_bytesDownloaded, bytesTotal);
+    else
+        m_progress->setValue(m_bytesDownloaded);
     m_timer.start(15000);
 }
 

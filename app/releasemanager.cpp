@@ -583,6 +583,8 @@ void ReleaseVariant::download() {
     else {
         resetStatus();
         setStatus(DOWNLOADING);
+        if (m_size)
+            m_progress->setTo(m_size);
         QString ret = DownloadManager::instance()->downloadFile(this, url(), DownloadManager::dir(), progress());
         if (!ret.isEmpty()) {
             m_iso = ret;
