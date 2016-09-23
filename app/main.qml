@@ -67,7 +67,7 @@ ApplicationWindow {
         Connections {
             target: drives
             onLastRestoreableChanged: {
-                if (drives.lastRestoreable != null)
+                if (drives.lastRestoreable != null && !dlDialog.visible)
                     deviceNotification.open = true
             }
         }
@@ -125,6 +125,10 @@ ApplicationWindow {
 
     RestoreDialog {
         id: restoreDialog
+    }
+
+    DownloadDialog {
+        id: dlDialog
     }
 }
 

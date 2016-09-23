@@ -342,14 +342,6 @@ Item {
             minimumHandleLength: $(10)
         }
     }
-
-    DownloadDialog {
-        id: dlDialog
-        onVisibleChanged: {
-            //if (!visible)
-            //    releases.selected.
-        }
-    }
     FileDialog {
         id: fileDialog
         nameFilters: [ qsTr("Image files (*.iso)"), qsTr("All files (*)")]
