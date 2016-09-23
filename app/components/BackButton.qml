@@ -50,7 +50,7 @@ AdwaitaButton {
     }
     Text {
         id: text
-        text: "Back"
+        text: qsTr("Back")
         font.pixelSize: $(12)
         anchors {
             left: arrow.left
