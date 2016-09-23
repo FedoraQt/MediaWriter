@@ -547,6 +547,7 @@ void ReleaseVariant::onFileDownloaded(const QString &path) {
         setStatus(READY);
     }
     else {
+        qApp->eventDispatcher()->processEvents(QEventLoop::AllEvents);
         int checkResult = mediaCheckFile(QDir::toNativeSeparators(path).toLocal8Bit(), &ReleaseVariant::staticOnMediaCheckAdvanced, this);
         if (checkResult != ISOMD5SUM_CHECK_PASSED) {
             qWarning() << "Media check of" << path << "failed with status" << checkResult;
@@ -572,7 +573,6 @@ int ReleaseVariant::staticOnMediaCheckAdvanced(void *data, long long offset, lon
 
 int ReleaseVariant::onMediaCheckAdvanced(long long offset, long long total) {
     m_progress->setValue(offset, total);
-    qApp->eventDispatcher()->processEvents(QEventLoop::AllEvents);
     return 0;
 }
 
