@@ -335,11 +335,10 @@ Dialog {
                                 color: releases.selected.version.variant.status == Variant.FINISHED ||
                                        releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ? "#628fcf" : "red"
                                 textColor: enabled ? "white" : palette.text
-                                enabled: (releases.selected.version.variant.status == Variant.READY ||
+                                enabled: ((releases.selected.version.variant.status == Variant.READY ||
                                           releases.selected.version.variant.status == Variant.FINISHED ||
-                                          releases.selected.version.variant.status == Variant.FAILED ||
-                                          releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD) &&
-                                         drives.length > 0
+                                          releases.selected.version.variant.status == Variant.FAILED) && drives.length > 0)
+                                         || releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD
                                 text: releases.selected.version.variant.status == Variant.FINISHED          ? qsTr("Close") :
                                       (releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ||
                                        releases.selected.version.variant.status == Variant.FAILED         ) ? qsTr("Retry") :
