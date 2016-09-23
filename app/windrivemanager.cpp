@@ -284,7 +284,11 @@ bool WinDrive::operator==(const WinDrive &o) const {
 }
 
 void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
-    qDebug() << "Child finished" << exitCode << m_child->errorString() << exitStatus;
+    if (!m_child)
+        return;
+
+    qDebug() << "Child finished" << exitCode << exitStatus;
+    qDebug() << m_child->errorString();
 
     if (exitCode == 0) {
         m_image->setStatus(ReleaseVariant::FINISHED);
@@ -299,6 +303,9 @@ void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
 }
 
 void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+    if (!m_child)
+        return;
+
     qCritical() << "Process finished" << exitCode << exitStatus;
     qCritical() << m_child->readAllStandardError();
 
@@ -313,6 +320,9 @@ void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) 
 }
 
 void WinDrive::onReadyRead() {
+    if (!m_child)
+        return;
+
     while (m_child->bytesAvailable() > 0) {
         bool ok;
         int64_t bytes = m_child->readLine().trimmed().toULongLong(&ok);

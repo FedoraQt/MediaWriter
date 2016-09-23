@@ -211,6 +211,9 @@ void LinuxDrive::restore() {
 }
 
 void LinuxDrive::onReadyRead() {
+    if (!m_process)
+        return;
+
     while (m_process->bytesAvailable() > 0) {
         QString line = m_process->readLine().trimmed();
         bool ok = false;

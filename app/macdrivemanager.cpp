@@ -169,6 +169,9 @@ void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
 }
 
 void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+    if (!m_child)
+        return;
+
     qCritical() << "Process finished" << exitCode << exitStatus;
     qCritical() << m_child->readAllStandardError();
 
@@ -183,6 +186,9 @@ void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) 
 }
 
 void MacDrive::onReadyRead() {
+    if (!m_child)
+        return;
+
     while (m_child->bytesAvailable() > 0) {
         bool ok;
         int64_t bytes = m_child->readLine().trimmed().toULongLong(&ok);
