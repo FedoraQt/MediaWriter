@@ -54,10 +54,10 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
     long long offset;
     char *p;
 
-    if (lseek(isofd, (off_t)(16L * 2048L), SEEK_SET) == -1)
+    if (lseek64(isofd, (off64_t)(16LL * 2048LL), SEEK_SET) == -1)
         return ((long long)-1);
 
-    offset = (16L * 2048L);
+    offset = (16LL * 2048LL);
     for (;1;) {
         if (read(isofd, buf, 2048) <= 0)
             return ((long long)-1);
@@ -68,7 +68,7 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
         else if (buf[0] == 255)
             /* hit end and didn't find primary volume descriptor */
             return ((long long)-1);
-        offset += 2048L;
+        offset += 2048LL;
     }
 
     /* read out md5sum */
@@ -175,7 +175,7 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
 /* mediasum is the sum encoded in media, computedsum is one we compute   */
 /* both strings must be pre-allocated at least 33 chars in length        */
 static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallback cb, void *cbdata) {
-    int nread;
+    long long nread;
     int i, j;
     int appdata_start_offset, appdata_end_offset;
     int nattempt;
@@ -200,7 +200,7 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
     /*    printf("Mediasum = %s\n",mediasum); */
 
     /* rewind, compute md5sum */
-    lseek(isofd, 0L, SEEK_SET);
+    lseek64(isofd, 0LL, SEEK_SET);
 
     MD5_Init(&md5ctx);
 
@@ -222,7 +222,7 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
 
         if (nread > nattempt) {
             nread = nattempt;
-            lseek(isofd, offset+nread, SEEK_SET);
+            lseek64(isofd, offset+nread, SEEK_SET);
         }
         /* overwrite md5sum we implanted with original data */
         if (offset < apoff && offset+nread >= apoff) {
@@ -254,13 +254,14 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
                 j = (current_fragment-1)*FRAGMENT_SUM_LENGTH/fragmentcount;
                 for (i=0; i<FRAGMENT_SUM_LENGTH/fragmentcount; i++) {
                     char tmpstr[2];
-                    snprintf(tmpstr, 2, "%01x", fragmd5sum[i]);
-                    strncat(computedsum, tmpstr, 2);
+                    snprintf(tmpstr, 1, "%01x", fragmd5sum[i]);
+                    strncat(computedsum, tmpstr, 1);
                     thisfragsum[i] = fragmentsums[j++];
                 }
                 thisfragsum[j] = '\0';
                 previous_fragment = current_fragment;
                 /* Exit immediately if current fragment sum is incorrect */
+                fprintf(stderr, "BOO\n");
                 if (strcmp(thisfragsum, computedsum) != 0) {
                     return ISOMD5SUM_CHECK_FAILED;
                 }
@@ -318,11 +319,12 @@ int mediaCheckFile(const char *file, checkCallback cb, void *cbdata) {
     long long isosize;
     int supported;
 
-    isofd = open(file, O_RDONLY);
+    isofd = open(file, O_RDONLY | O_BINARY);
 
     if (isofd < 0) {
         return ISOMD5SUM_FILE_NOT_FOUND;
     }
+
 
     rc = doMediaCheck(isofd, mediasum, computedsum, &isosize, &supported, cb, cbdata);
 
