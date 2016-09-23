@@ -543,13 +543,20 @@ void ReleaseVariant::onFileDownloaded(const QString &path) {
         m_progress->setValue(size());
     setStatus(DOWNLOAD_VERIFYING);
     m_progress->setValue(0.0/0.0, 1.0);
-    if (shaHash().isEmpty() || mediaCheckFile(path.toLocal8Bit(), &ReleaseVariant::staticOnMediaCheckAdvanced, this)) {
+    if (shaHash().isEmpty()) {
         setStatus(READY);
     }
     else {
-        QFile::remove(path);
-        setErrorString(tr("The downloaded image is corrupted"));
-        setStatus(FAILED_DOWNLOAD);
+        int checkResult = mediaCheckFile(QDir::toNativeSeparators(path).toLocal8Bit(), &ReleaseVariant::staticOnMediaCheckAdvanced, this);
+        if (checkResult != ISOMD5SUM_CHECK_PASSED) {
+            qWarning() << "Media check of" << path << "failed with status" << checkResult;
+            QFile::remove(path);
+            setErrorString(tr("The downloaded image is corrupted"));
+            setStatus(FAILED_DOWNLOAD);
+        }
+        else {
+            setStatus(READY);
+        }
     }
 }
 
