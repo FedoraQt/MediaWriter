@@ -21,6 +21,7 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#define _LARGEFILE64_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -254,14 +255,13 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
                 j = (current_fragment-1)*FRAGMENT_SUM_LENGTH/fragmentcount;
                 for (i=0; i<FRAGMENT_SUM_LENGTH/fragmentcount; i++) {
                     char tmpstr[2];
-                    snprintf(tmpstr, 1, "%01x", fragmd5sum[i]);
+                    snprintf(tmpstr, 2, "%01x", fragmd5sum[i]);
                     strncat(computedsum, tmpstr, 1);
                     thisfragsum[i] = fragmentsums[j++];
                 }
                 thisfragsum[j] = '\0';
                 previous_fragment = current_fragment;
                 /* Exit immediately if current fragment sum is incorrect */
-                fprintf(stderr, "BOO\n");
                 if (strcmp(thisfragsum, computedsum) != 0) {
                     return ISOMD5SUM_CHECK_FAILED;
                 }
@@ -319,7 +319,11 @@ int mediaCheckFile(const char *file, checkCallback cb, void *cbdata) {
     long long isosize;
     int supported;
 
+#ifdef _WIN32
     isofd = open(file, O_RDONLY | O_BINARY);
+#else
+    isofd = open(file, O_RDONLY);
+#endif
 
     if (isofd < 0) {
         return ISOMD5SUM_FILE_NOT_FOUND;
