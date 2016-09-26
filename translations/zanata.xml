@@ -4,5 +4,7 @@
   <project>mediawriter</project>
   <project-version>master</project-version>
   <project-type>gettext</project-type>
-
+  <rules>
+    <rule pattern="**/*.pot">{filename}-{locale}.po</rule>
+  </rules>
 </config>
