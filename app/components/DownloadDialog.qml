@@ -57,24 +57,31 @@ Dialog {
         }
     }
 
-/*
     Connections {
         id: downloadWait
-        target: liveUSBData.currentImage
-        onReadyToWriteChanged: {
-            if (liveUSBData.currentImage.readyToWrite && writeImmediately.checked) {
-                liveUSBData.currentImage.write()
+        target: releases.selected.version.variant
+        onStatusChanged: {
+            if (releases.selected.version.variant.status == Variant.READY && writeImmediately.checked && drives.selected != null) {
+                drives.selected.write(releases.selected.version.variant)
             }
         }
     }
 
     Connections {
-        target: liveUSBData.currentImage.writer
-        onFinishedChanged: {
+        target: drives
+        onSelectedChanged: {
             writeImmediately.checked = false
         }
     }
-*/
+
+    Connections {
+        target: releases.selected.version.variant
+        onStatusChanged: {
+            if (releases.selected.version.variant.status == Variant.FINISHED || releases.selected.version.variant.status == Variant.FAILED)
+                writeImmediately.checked = false
+        }
+    }
+
     contentItem: Rectangle {
         id: contentWrapper
         anchors.fill: parent
@@ -209,7 +216,7 @@ Dialog {
                             id: writeImmediately
                             enabled: driveCombo.count && opacity > 0.0
                             //opacity: !liveUSBData.currentImage.readyToWrite && liveUSBData.currentImage.download.running && liveUSBData.currentImage.download.progress / liveUSBData.currentImage.download.maxProgress < 0.95 ? 1.0 : 0.0
-                            opacity: (releases.selected.version.variant.status == Variant.DOWNLOADING && releases.selected.version.variant.ratio < 0.95) ? 1.0 : 0.0
+                            opacity: (releases.selected.version.variant.status == Variant.DOWNLOADING || (releases.selected.version.variant.status == Variant.DOWNLOAD_VERIFYING && releases.selected.version.variant.progress.ratio < 0.95)) ? 1.0 : 0.0
                             text: qsTr("Write the image immediately when the download is finished")
                         }
                     }
