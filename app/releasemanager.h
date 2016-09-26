@@ -372,13 +372,13 @@ public:
     int index() const;
 
 private:
-    ReleaseArchitecture(const QStringList &abbreviation, const QString &description, const QString &details);
+    ReleaseArchitecture(const QStringList &abbreviation, const char *description, const char *details);
 
     static ReleaseArchitecture m_all[];
 
     const QStringList m_abbreviation {};
-    const QString m_description {};
-    const QString m_details {};
+    const char *m_description {};
+    const char *m_details {};
 };
 
 #endif // RELEASEMANAGER_H
