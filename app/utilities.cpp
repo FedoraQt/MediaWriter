@@ -21,6 +21,7 @@
 
 #include <QDebug>
 #include <QStandardPaths>
+#include <QDir>
 
 // TODO: everything Q_UNUSED
 
@@ -98,6 +99,9 @@ QString DownloadManager::dir() {
  */
 QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder, Progress *progress) {
     QString bareFileName = QString("%1/%2").arg(folder).arg(url.fileName());
+
+    QDir dir;
+    dir.mkpath(folder);
 
     if (QFile::exists(bareFileName))
         return bareFileName;
