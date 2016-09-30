@@ -158,7 +158,7 @@ public:
     Q_ENUMS(Source)
     Q_INVOKABLE QString sourceString();
 
-    Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QString &description, Release::Source source, const QString &icon, const QStringList &screenshots, QList<ReleaseVersion*> versions);
+    Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots, QList<ReleaseVersion*> versions);
     void setLocalFile(const QString &path);
 
     int index() const;
@@ -185,7 +185,7 @@ private:
     int m_index { 0 };
     QString m_name {};
     QString m_summary {};
-    QString m_description {};
+    QStringList m_description {};
     Release::Source m_source { LOCAL };
     QString m_icon {};
     QStringList m_screenshots {};
