@@ -158,6 +158,7 @@ public:
     Q_ENUMS(Source)
     Q_INVOKABLE QString sourceString();
 
+    // constructor is in releasemanager_construct.cpp to not have it translated
     Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots, QList<ReleaseVersion*> versions);
     void setLocalFile(const QString &path);
 
