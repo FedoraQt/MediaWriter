@@ -193,12 +193,12 @@ Dialog {
                             horizontalAlignment: Text.AlignHCenter
                             font.pixelSize: $(12)
                             property double leftSize: releases.selected.version.variant.progress.to - releases.selected.version.variant.progress.value
-                            property string leftStr: leftSize <= 0 ? "" :
-                                                     (leftSize < 1024) ? (leftSize + " B") :
-                                                     (leftSize < (1024 * 1024)) ? ((leftSize / 1024).toFixed(1) + " KB") :
-                                                     (leftSize < (1024 * 1024 * 1024)) ? ((leftSize / 1024 / 1024).toFixed(1) + " MB") :
-                                                     ((leftSize / 1024 / 1024 / 1024).toFixed(1) + " GB")
-                            text: releases.selected.version.variant.statusString + ((releases.selected.version.variant.status == Variant.DOWNLOADING && leftStr.length > 0) ? " (" + qsTr("%1 left").arg(leftStr) + ")" : "")
+                            property string leftStr:  leftSize <= 0                    ? "" :
+                                                     (leftSize < 1024)                 ? qsTr("(%1 B left)").arg(leftSize) :
+                                                     (leftSize < (1024 * 1024))        ? qsTr("(%1 KB left)").arg((leftSize / 1024).toFixed(1)) :
+                                                     (leftSize < (1024 * 1024 * 1024)) ? qsTr("(%1 MB left)").arg((leftSize / 1024 / 1024).toFixed(1)) :
+                                                                                         qsTr("(%1 GB left)").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
+                            text: releases.selected.version.variant.statusString + (releases.selected.version.variant.status == Variant.DOWNLOADING ? (" " + leftStr) : "")
                         }
                         Item {
                             Layout.fillWidth: true
