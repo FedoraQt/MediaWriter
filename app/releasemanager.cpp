@@ -183,7 +183,7 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
     m_releases.last()->addVersion(new ReleaseVersion {m_releases.last(), 23, {}, ReleaseVersion::FINAL, QDateTime::fromString("2015-11-03", "yyyy-MM-dd")});
     m_releases.last()->versionList().last()->addVariant(new ReleaseVariant {m_releases.last()->versionList().last(), "http://download.fedoraproject.org/pub/fedora/linux/releases/23/Server/x86_64/iso/Fedora-Server-DVD-x86_64-23.iso", "30758dc821d1530de427c9e35212bd79b058bd4282e64b7b34ae1a40c87c05ae", 2147483648, ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64)});
     m_releases.last()->versionList().last()->addVariant(new ReleaseVariant {m_releases.last()->versionList().last(), "http://download.fedoraproject.org/pub/fedora/linux/releases/23/Server/i386/iso/Fedora-Server-DVD-i386-23.iso", "aa2125b6351480ce82ace619925d897d0588195a3287ef74fb203b6eb34cbccf", 2254857830, ReleaseArchitecture::fromId(ReleaseArchitecture::X86)});
-    m_releases.append(new Release {manager(), m_releases.length(), tr("Custom image"), QT_TR_NOOP("Pick a file from your drive(s)"), { QT_TR_NOOP("<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/icons/folder", {}, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/icons/folder", {}, {} });
     m_releases.last()->addVersion(new ReleaseVersion {m_releases.last(), 0, {}, ReleaseVersion::FINAL, QDateTime::fromString("")});
     m_releases.last()->versionList().last()->addVariant(new ReleaseVariant {m_releases.last()->versionList().last(), "", "", 0, ReleaseArchitecture::fromId(ReleaseArchitecture::X86)});
     m_releases.append(new Release {manager(), m_releases.length(), "Fedora KDE Plasma Desktop", "A complete, modern desktop built using the KDE Plasma Desktop.", { "<p>", "The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based operating system utilizing the KDE Plasma Desktop as the main user interface.", "</p><p>", "Fedora KDE Plasma Desktop comes with many pre-selected top quality applications that suit all modern desktop use cases - from online communication like web browsing, instant messaging and electronic mail correspondence, through multimedia and entertainment, to an advanced productivity suite, including office applications and enterprise grade personal information management.", "</p><p>", "All KDE applications are well integrated, with a similar look and feel and an easy to use interface, accompanied by an outstanding graphical appearance.", "</p>" }, Release::SPINS, "qrc:/icons/plasma", { "http://spins.stg.fedoraproject.org/en/kde/../static/images/screenshots/screenshot-kde.jpg" }, {} });
@@ -286,9 +286,9 @@ QString Release::sourceString() {
     case PRODUCT:
         return QString();
     case SPINS:
-        return "Fedora Spins";
+        return tr("Fedora Spins");
     case LABS:
-        return "Fedora Labs";
+        return tr("Fedora Labs");
     default:
         return QString();
     }
@@ -330,7 +330,7 @@ QString Release::name() const {
 }
 
 QString Release::summary() const {
-    return tr(m_summary.toLatin1());
+    return tr(m_summary.toLocal8Bit());
 }
 
 QString Release::description() const {
