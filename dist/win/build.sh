@@ -3,6 +3,7 @@
 # Usage
 # ./build.sh - installs all the necessary packages and composes an installer (FMW-setup.exe)
 # ./build.sh local - builds the mediawriter.exe binary itself and then composes the installer
+# ./build.sh install - just installs the necessary packages
 #
 # The script will try to sign all binaries using your code signing certificate.
 # You can provide the path to it using the $CERTPATH variable, the files then
@@ -42,23 +43,28 @@ QML_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_QML)
 echo "=== Installing dependencies"
 dnf install $PACKAGES
 
+if [ "$1" == "install" ]; then
+    exit 0
+fi
+
 mkdir -p "$BUILDPATH"
 pushd "$BUILDPATH" >/dev/null
 
-if [ $1 == "local" ]; then
+if [ "$1" == "local" ]; then
     echo "=== Building"
     mingw32-qmake-qt5 ..
     mingw32-make -j9 >/dev/null
 else
+    mkdir -p "app/release"
     echo "=== Getting distribution binary"
     cp "$BIN_PREFIX/mediawriter.exe" app/release
-    cp "$INSTALL_PREFIX/libexec/mediawriter/helper.exe" app/release
+    cp "$INSTALL_PREFIX/libexec/mediawriter/helper.exe" app/
 fi
 
-pushd app/release >/dev/null
+pushd "app/release" >/dev/null
 
 if [ ! -f "$MEDIAWRITER" ] || [ ! -f "$HELPER" ]; then
-    echo "$MEDIAWRITER doesn't exist." 
+    echo "$MEDIAWRITER or $HELPER doesn't exist."
     exit 1
 fi
 
