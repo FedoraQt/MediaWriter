@@ -51,6 +51,13 @@ mkdir -p "$BUILDPATH"
 pushd "$BUILDPATH" >/dev/null
 
 if [ "$1" == "local" ]; then
+    INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-$(git describe --tags).exe"
+else
+    INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-$(rpm -q mingw32-mediawriter --queryformat '%{VERSION}\n').exe"
+fi
+
+
+if [ "$1" == "local" ]; then
     echo "=== Building"
     mingw32-qmake-qt5 ..
     mingw32-make -j9 >/dev/null
@@ -112,8 +119,9 @@ popd >/dev/null
 
 echo "=== Composing installer"
 makensis "$SCRIPTDIR/mediawriter.nsi" >/dev/null
+mv "$SCRIPTDIR/FMW-setup.exe" "$INSTALLER"
 
-signcode  -spc $CERTPATH/authenticode.spc -v $CERTPATH/authenticode.pvk -a sha1 -$ commercial -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -tr 10 "$SCRIPTDIR/FMW-setup.exe" >/dev/null <<< "$CERTPASS"
-rm "$SCRIPTDIR/FMW-setup.exe.bak"
+signcode  -spc $CERTPATH/authenticode.spc -v $CERTPATH/authenticode.pvk -a sha1 -$ commercial -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -tr 10 "$INSTALLER" >/dev/null <<< "$CERTPASS"
+rm "$INSTALLER.bak"
 
-echo "=== Installer is located in $SCRIPTDIR/FMW-setup.exe"
+echo "=== Installer is located in $INSTALLER"
