@@ -34,7 +34,10 @@ Item {
          (release && release.category !== releases.get(index+1).category)
         )
 
-    readonly property color color: delegateMouse.containsPress ? "#ededed" : delegateMouse.containsMouse ? "#f8f8f8" : "white"
+    property color color: delegateMouse.containsPress ? "#e4e4e4" : delegateMouse.containsMouse ? "#f6f6f6" : "white"
+    Behavior on color { ColorAnimation { duration: 120 } }
+
+    readonly property real animationDuration: 1000
 
     Rectangle {
         width: parent.width - 2
@@ -167,6 +170,7 @@ Item {
         id: delegateMouse
         anchors.fill: parent
         hoverEnabled: true
+        cursorShape: Qt.PointingHandCursor
         onClicked: {
             imageList.currentIndex = index
             imageList.stepForward(release.index)

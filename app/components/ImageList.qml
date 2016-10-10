@@ -275,7 +275,8 @@ Item {
                     Rectangle {
                         anchors.fill: parent
                         anchors.topMargin: $(-10)
-                        color: threeDotMouse.containsPress ? "#ededed" : threeDotMouse.containsMouse ? "#f8f8f8" : "white"
+                        color: threeDotMouse.containsPress ? "#e4e4e4" : threeDotMouse.containsMouse ? "#f6f6f6" : "white"
+                        Behavior on color { ColorAnimation { duration: 120 } }
                         radius: $(5)
                         border {
                             color: "#c3c3c3"
@@ -331,6 +332,7 @@ Item {
                         id: threeDotMouse
                         anchors.fill: parent
                         hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
                         onHoveredChanged: {
                             if (containsMouse && !pressed) {
                                 threeDotTimer.start()
