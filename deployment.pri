@@ -15,3 +15,8 @@ linux {
 }
 QMAKE_LIBDIR += $$top_builddir/lib
 INCLUDEPATH += $$top_srcdir/lib/
+isEmpty(MEDIAWRITER_VERSION) {
+    DEFINES += MEDIAWRITER_VERSION="\\\"$(shell git -C \""$$_PRO_FILE_PWD_"\" describe --tags || echo Unknown)\\\""
+} else {
+    DEFINES += MEDIAWRITER_VERSION="\\\"$$MEDIAWRITER_VERSION\\\""
+}

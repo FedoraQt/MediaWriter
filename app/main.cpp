@@ -71,6 +71,7 @@ int main(int argc, char **argv)
     engine.rootContext()->setContextProperty("drives", new DriveManager());
     engine.rootContext()->setContextProperty("releases", new ReleaseManager());
     engine.rootContext()->setContextProperty("downloadManager", DownloadManager::instance());
+    engine.rootContext()->setContextProperty("mediawriterVersion", MEDIAWRITER_VERSION);
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     return app.exec();

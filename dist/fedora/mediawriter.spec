@@ -32,7 +32,7 @@ mkdir %{_target_platform}
 
 %build
 pushd %{_target_platform}
-%{qmake_qt5} PREFIX=%{_prefix} ..
+%{qmake_qt5} PREFIX=%{_prefix} MEDIAWRITER_VERSION=%{version}-%{dist} ..
 popd
 %make_build -C %{_target_platform}
 

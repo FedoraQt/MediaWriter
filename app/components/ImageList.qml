@@ -209,8 +209,62 @@ Item {
             }
 
             footer: Item {
-                height: !releases.frontPage ? $(54) : $(36)
+                height: !releases.frontPage ? $(192) : $(36)
                 width: osListView.width
+                Column {
+                    width: parent.width
+                    visible: !releases.frontPage
+                    spacing: 0
+                    Item {
+                        width: parent.width
+                        height: $(64)
+
+                        Text {
+                            text: qsTr("About Fedora Media Writer")
+                            font.pixelSize: $(12)
+                            anchors {
+                                bottom: parent.bottom
+                                left: parent.left
+                                leftMargin: $(18)
+                                bottomMargin: $(12)
+                            }
+                        }
+                    }
+                    Rectangle {
+                        width: parent.width
+                        radius: $(5)
+                        color: "#f8f8f8"
+                        border {
+                            color: "#c3c3c3"
+                            width: 1
+                        }
+                        height: childrenRect.height + $(24)
+                        ColumnLayout {
+                            id: aboutLayout
+                            spacing: $(3)
+                            y: $(12)
+                            x: $(32)
+                            Text {
+                                text: qsTr("Version %1").arg(mediawriterVersion)
+                                textFormat: Text.RichText
+                                font.pixelSize: $(12)
+                            }
+                            Text {
+                                text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/MartinBriza/MediaWriter\">https://github.com/MartinBriza/MediaWriter</a>")
+                                textFormat: Text.RichText
+                                font.pixelSize: $(12)
+                                onLinkActivated: Qt.openUrlExternally(link)
+                                color: Qt.darker("light gray")
+                                MouseArea {
+                                    anchors.fill: parent
+                                    acceptedButtons: Qt.NoButton
+                                    cursorShape: parent.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+                                }
+                            }
+                        }
+                    }
+                }
+
                 Rectangle {
                     clip: true
                     visible: releases.frontPage
