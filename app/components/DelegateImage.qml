@@ -29,7 +29,8 @@ Item {
     readonly property bool isBottom:
         typeof release !== 'undefined' &&
         !releases.frontPage &&
-        (typeof releases.get(index+1) == 'undefined' ||
+        (!releases.get(index+1) ||
+         typeof releases.get(index+1) == 'undefined' ||
          (release && release.category !== releases.get(index+1).category)
         )
 
