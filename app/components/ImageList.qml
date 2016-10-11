@@ -41,7 +41,7 @@ Item {
             color: searchInput.activeFocus ? "#4a90d9" : "#c3c3c3"
             width: 1
         }
-        radius: $(6)
+        radius: $(5)
         color: "white"
         anchors {
             top: parent.top
