@@ -72,7 +72,19 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
                 uint64_t size = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Size"].toULongLong();
                 bool isoLayout = introspection[i]["org.freedesktop.UDisks2.Block"]["IdType"].toString() == "iso9660";
 
-                LinuxDrive *d = new LinuxDrive(this, i.path(), QString("%1 %2").arg(vendor).arg(model), size, isoLayout);
+                QString name;
+                if (vendor.isEmpty())
+                    if (model.isEmpty())
+                        name = introspection[i]["org.freedesktop.UDisks2.Block"]["Device"].toByteArray();
+                    else
+                        name = model;
+                else
+                    if (model.isEmpty())
+                        name = vendor;
+                    else
+                        name = QString("%1 %2").arg(vendor).arg(model);
+
+                LinuxDrive *d = new LinuxDrive(this, i.path(), name, size, isoLayout);
                 if (m_drives.contains(i)) {
                     LinuxDrive *tmp = m_drives[i];
                     emit DriveProvider::driveRemoved(tmp);
@@ -105,7 +117,19 @@ void LinuxDriveProvider::onInterfacesAdded(QDBusObjectPath object_path, Interfac
                     uint64_t size = driveInterface.property("Size").toULongLong();
                     bool isoLayout = interfaces_and_properties["org.freedesktop.UDisks2.Block"]["IdType"].toString() == "iso9660";
 
-                    LinuxDrive *d = new LinuxDrive(this, object_path.path(), QString("%1 %2").arg(vendor).arg(model), size, isoLayout);
+                    QString name;
+                    if (vendor.isEmpty())
+                        if (model.isEmpty())
+                            name = interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Device"].toByteArray();
+                        else
+                            name = model;
+                    else
+                        if (model.isEmpty())
+                            name = vendor;
+                        else
+                            name = QString("%1 %2").arg(vendor).arg(model);
+
+                    LinuxDrive *d = new LinuxDrive(this, object_path.path(), name, size, isoLayout);
                     if (m_drives.contains(object_path)) {
                         LinuxDrive *tmp = m_drives[object_path];
                         emit DriveProvider::driveRemoved(tmp);
