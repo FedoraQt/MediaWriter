@@ -148,7 +148,6 @@ DriveProvider *DriveProvider::create(DriveManager *parent)  {
         return new FakeDriveProvider(parent);
 
 #ifdef __APPLE__
-# warning Mac OS X support is not implemented yet
     return new MacDriveProvider(parent);
 #endif // APPLE
 
