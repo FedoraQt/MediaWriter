@@ -377,20 +377,20 @@ Item {
                 implicitHeight: $(11)
             }
             scrollBarBackground: Rectangle {
+                y: $(-1)
                 color: "#dddddd"
-                implicitWidth: $(11)
-                implicitHeight: $(11)
+                implicitWidth: $(12)
+                height: control.height
             }
             handle: Rectangle {
                 color: "#b3b5b6"
-                x: $(2)
-                y: $(2)
+                x: $(3)
                 implicitWidth: $(7)
                 implicitHeight: $(7)
                 radius: $(4)
             }
             transientScrollBars: false
-            handleOverlap: $(1)
+            handleOverlap: $(-2)
             minimumHandleLength: $(10)
         }
     }
