@@ -18,6 +18,7 @@
  */
 
 import QtQuick 2.3
+import QtQuick.Layouts 1.0
 import MediaWriter 1.0
 
 Item {
@@ -66,34 +67,27 @@ Item {
                 sourceSize.width: parent.width
             }
         }
-        Item {
+        ColumnLayout {
             id: textRect
+            spacing: $(4)
             anchors {
                 verticalCenter: parent.verticalCenter
                 left: iconRect.right
                 right: arrow.left
-                bottom: parent.bottom
                 leftMargin: $(28)
                 rightMargin: $(14)
             }
             Text {
+                Layout.fillWidth: true
+                verticalAlignment: Text.AlignBottom
                 font.pixelSize: $(12)
                 text: release.name
-                anchors {
-                    bottom: parent.verticalCenter
-                    left: parent.left
-                    bottomMargin: $(2)
-                }
             }
             Text {
+                Layout.fillWidth: true
+                verticalAlignment: Text.AlignTop
                 font.pixelSize: $(12)
                 text: release.summary
-                anchors {
-                    top: parent.verticalCenter
-                    left: parent.left
-                    right: parent.right
-                    topMargin: $(2)
-                }
                 wrapMode: Text.Wrap
                 color: "#a1a1a1"
             }
