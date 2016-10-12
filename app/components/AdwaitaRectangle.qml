@@ -47,7 +47,6 @@ Item {
             radius: parent.radius - $(1)
             anchors.margins: $(0.5)
             anchors.fill: parent
-            //gradient: control.enabled ? !(control.pressed || control.checked) ? !control.hovered ? regularGradient: hoveredGradient : downGradient : disabledGradient
             gradient: Gradient {
                 GradientStop {
                     position: 0.0

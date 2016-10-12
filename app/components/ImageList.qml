@@ -151,25 +151,13 @@ Item {
                 onStopped: moveUp.enabled = false
             }
         }
-
-        //height: !releases.frontPage ? parent.height - 54 + 4 : parent.height - 108
         height: releases.frontPage ? $(84) * 3 + $(36) : parent.height
-
-        /*Behavior on height {
-            NumberAnimation { duration: imageList.fadeDuration }
-        }*/
         anchors {
             left: parent.left
             right: parent.right
             rightMargin: mainWindow.margin
             leftMargin: anchors.rightMargin
         }
-        /*
-        border {
-            color: "#c3c3c3"
-            width: 1
-        }
-        */
     }
 
     ScrollView {

@@ -41,11 +41,8 @@ Item {
 
     Rectangle {
         width: parent.width - 2
-        //height: index == 0 ? parent.height - $(1) : parent.height
         height: parent.height + 1
         x: 1
-        //y: index == 0 ? $(1) : 0
-        //radius: $(4)
         color: root.color
         border {
             color: "#c3c3c3"
@@ -87,7 +84,6 @@ Item {
                     left: parent.left
                     bottomMargin: $(2)
                 }
-                // font.weight: Font.Bold
             }
             Text {
                 font.pixelSize: $(12)
@@ -100,7 +96,6 @@ Item {
                 }
                 wrapMode: Text.Wrap
                 color: "#a1a1a1"
-                // font.weight: Font.Bold
             }
         }
         Arrow {
