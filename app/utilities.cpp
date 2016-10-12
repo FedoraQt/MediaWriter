@@ -157,6 +157,9 @@ void DownloadManager::cancel() {
 }
 
 void DownloadManager::onStringDownloaded(const QString &text) {
+    if (!m_current)
+        return;
+
     QStringList mirrors;
     for (const QString &i : text.split("\n")) {
         if (!i.trimmed().startsWith("#")) {
