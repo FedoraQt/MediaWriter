@@ -68,7 +68,7 @@ private:
 
 class DownloadReceiver {
 public:
-    virtual void onFileDownloaded(const QString &path) { Q_UNUSED(path) }
+    virtual void onFileDownloaded(const QString &path, const QString &shaHash) { Q_UNUSED(path); Q_UNUSED(shaHash) }
     virtual void onStringDownloaded(const QString &text) { Q_UNUSED(text) }
     virtual void onDownloadError(const QString &message) = 0;
 };
@@ -92,6 +92,7 @@ private slots:
     void onTimedOut();
 
 private:
+    qint64 m_previousSize { 0 };
     qint64 m_bytesDownloaded { 0 };
     QNetworkReply *m_reply { nullptr };
     DownloadReceiver *m_receiver { nullptr };
@@ -101,6 +102,7 @@ private:
 
     QFile *m_file { nullptr };
     QByteArray m_buf { };
+    QCryptographicHash m_hash { QCryptographicHash::Sha256 };
 };
 
 class DownloadManager : public QObject, public DownloadReceiver {

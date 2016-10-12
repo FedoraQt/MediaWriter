@@ -542,28 +542,32 @@ QString ReleaseVariant::statusString() const {
     return m_statusStrings[m_status];
 }
 
-void ReleaseVariant::onFileDownloaded(const QString &path) {
+void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) {
     m_iso = path;
     emit isoChanged();
+
     if (m_progress)
         m_progress->setValue(size());
     setStatus(DOWNLOAD_VERIFYING);
     m_progress->setValue(0.0/0.0, 1.0);
-    if (shaHash().isEmpty()) {
-        setStatus(READY);
+
+    if (!shaHash().isEmpty() && shaHash() != hash) {
+        qWarning() << "Computed SHA256 hash of" << path << " - " << hash << "does not match expected" << shaHash();
+        setErrorString(tr("The downloaded image is corrupted"));
+        setStatus(FAILED_DOWNLOAD);
+    }
+
+    qApp->eventDispatcher()->processEvents(QEventLoop::AllEvents);
+
+    int checkResult = mediaCheckFile(QDir::toNativeSeparators(path).toLocal8Bit(), &ReleaseVariant::staticOnMediaCheckAdvanced, this);
+    if (checkResult == ISOMD5SUM_CHECK_FAILED) {
+        qWarning() << "Internal MD5 media check of" << path << "failed with status" << checkResult;
+        QFile::remove(path);
+        setErrorString(tr("The downloaded image is corrupted"));
+        setStatus(FAILED_DOWNLOAD);
     }
     else {
-        qApp->eventDispatcher()->processEvents(QEventLoop::AllEvents);
-        int checkResult = mediaCheckFile(QDir::toNativeSeparators(path).toLocal8Bit(), &ReleaseVariant::staticOnMediaCheckAdvanced, this);
-        if (checkResult != ISOMD5SUM_CHECK_PASSED) {
-            qWarning() << "Media check of" << path << "failed with status" << checkResult;
-            QFile::remove(path);
-            setErrorString(tr("The downloaded image is corrupted"));
-            setStatus(FAILED_DOWNLOAD);
-        }
-        else {
-            setStatus(READY);
-        }
+        setStatus(READY);
     }
 }
 

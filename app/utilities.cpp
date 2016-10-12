@@ -22,6 +22,8 @@
 #include <QDebug>
 #include <QStandardPaths>
 #include <QDir>
+#include <QApplication>
+#include <QAbstractEventDispatcher>
 
 // TODO: everything Q_UNUSED
 
@@ -210,6 +212,21 @@ Download::Download(DownloadManager *parent, DownloadReceiver *receiver, const QS
 
         if (m_file->exists()) {
             m_bytesDownloaded = m_file->size();
+
+            // first precompute the SHA hash of the already downloaded part
+            m_file->open(QIODevice::ReadOnly);
+
+            m_previousSize = 0;
+            while (!m_file->atEnd()) {
+                QByteArray buffer = m_file->read(1024*1024);
+                m_previousSize += buffer.size();
+                m_hash.addData(buffer);
+                progress->setValue(m_previousSize);
+                m_bytesDownloaded = m_previousSize;
+                qApp->eventDispatcher()->processEvents(QEventLoop::AllEvents);
+            }
+
+            m_file->close();
             m_file->open(QIODevice::Append);
         }
         else {
@@ -250,17 +267,27 @@ qint64 Download::bytesDownloaded() {
 }
 
 void Download::onReadyRead() {
-    while (m_reply->bytesAvailable()) {
-        QByteArray buf = m_reply->read(1024*1024);
-        if (m_reply->error() == QNetworkReply::NoError) {
-            if (m_file) {
-                m_file->write(buf);
-                m_file->flush();
-            }
-            else {
-                m_buf.append(buf);
-            }
+    QByteArray buf = m_reply->read(1024*64);
+    if (m_reply->error() == QNetworkReply::NoError && buf.size() > 0) {
+
+        m_bytesDownloaded += buf.size();
+
+        if (m_progress)
+            m_progress->setValue(m_bytesDownloaded);
+
+        if (m_timer.isActive())
+            m_timer.start(15000);
+
+        if (m_file) {
+            m_hash.addData(buf);
+            m_file->write(buf);
         }
+        else {
+            m_buf.append(buf);
+        }
+    }
+    if (m_reply->bytesAvailable() > 0) {
+        QTimer::singleShot(0, this, &Download::onReadyRead);
     }
 }
 
@@ -289,24 +316,32 @@ void Download::onFinished() {
             m_file->remove();
         }
     }
-    else if (m_file) {
-        m_file->rename(m_path);  // move the .part file to the final path
-        m_receiver->onFileDownloaded(m_file->fileName());
-    }
     else {
-        m_receiver->onStringDownloaded(m_buf);
-        deleteLater();
+        while (m_reply->bytesAvailable() > 0) {
+            onReadyRead();
+            qApp->eventDispatcher()->processEvents(QEventLoop::ExcludeSocketNotifiers);
+        }
+        if (m_file) {
+            m_file->rename(m_path);  // move the .part file to the final path
+            m_receiver->onFileDownloaded(m_file->fileName(), m_hash.result().toHex());
+        }
+        else {
+            m_receiver->onStringDownloaded(m_buf);
+            deleteLater();
+        }
     }
 }
 
 void Download::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) {
     Q_UNUSED(bytesTotal);
-    m_bytesDownloaded = bytesReceived;
+    /*
+    m_bytesDownloaded = m_previousSize + bytesReceived;
     if (bytesTotal > 0)
-        m_progress->setValue(m_bytesDownloaded, bytesTotal);
+        m_progress->setValue(m_bytesDownloaded, m_previousSize + bytesTotal);
     else
         m_progress->setValue(m_bytesDownloaded);
     m_timer.start(15000);
+    */
 }
 
 void Download::onTimedOut() {
