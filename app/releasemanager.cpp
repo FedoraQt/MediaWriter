@@ -435,6 +435,12 @@ QStringList Release::screenshots() const {
     return m_screenshots;
 }
 
+QString Release::prerelease() const {
+    if (m_versions.empty())
+        return "";
+    return m_versions.first()->name();
+}
+
 QQmlListProperty<ReleaseVersion> Release::versions() {
     return QQmlListProperty<ReleaseVersion>(this, m_versions);
 }
@@ -489,7 +495,8 @@ void Release::setSelectedVersionIndex(int o) {
 ReleaseVersion::ReleaseVersion(Release *parent, int number, QList<ReleaseVariant *> variants, ReleaseVersion::Status status, QDateTime releaseDate)
     : QObject(parent), m_number(number), m_status(status), m_releaseDate(releaseDate), m_variants(variants)
 {
-
+    if (status != FINAL)
+        emit parent->prereleaseChanged();
 }
 
 ReleaseVersion::ReleaseVersion(Release *parent, const QString &file, int64_t size)
@@ -507,6 +514,8 @@ bool ReleaseVersion::updateUrl(const QString &status, const QString &architectur
     if (s <= m_status) {
         m_status = s;
         emit statusChanged();
+        if (s == FINAL)
+            emit release()->prereleaseChanged();
     }
     else {
         return false;

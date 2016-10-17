@@ -154,6 +154,8 @@ class Release : public QObject {
     Q_PROPERTY(QString icon READ icon CONSTANT)
     Q_PROPERTY(QStringList screenshots READ screenshots CONSTANT)
 
+    Q_PROPERTY(QString prerelease READ prerelease NOTIFY prereleaseChanged)
+
     Q_PROPERTY(QQmlListProperty<ReleaseVersion> versions READ versions NOTIFY versionsChanged)
     Q_PROPERTY(QStringList versionNames READ versionNames NOTIFY versionsChanged)
     Q_PROPERTY(ReleaseVersion* version READ selectedVersion NOTIFY selectedVersionChanged)
@@ -180,6 +182,7 @@ public:
     bool isLocal() const;
     QString icon() const;
     QStringList screenshots() const;
+    QString prerelease() const;
 
     void addVersion(ReleaseVersion *version);
     QQmlListProperty<ReleaseVersion> versions();
@@ -192,6 +195,7 @@ public:
 signals:
     void versionsChanged();
     void selectedVersionChanged();
+    void prereleaseChanged();
 private:
     int m_index { 0 };
     QString m_name {};
@@ -227,7 +231,7 @@ public:
         BETA,
         ALPHA
     };
-    Q_ENUMS(ReleaseVersion::Status)
+    Q_ENUMS(Status)
 
     ReleaseVersion(Release *parent, int number, QList<ReleaseVariant*> variants, ReleaseVersion::Status status = FINAL, QDateTime releaseDate = QDateTime());
     ReleaseVersion(Release *parent, const QString &file, int64_t size);

@@ -24,9 +24,18 @@ import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 import QtQuick.Window 2.0
 
+import MediaWriter 1.0
+
 Item {
     id: root
     anchors.fill: parent
+
+    property bool focused: contentList.currentIndex === 1
+
+    onFocusedChanged: {
+        if (focused && !prereleaseNotification.wasOpen && releases.selected.prerelease.length > 0)
+            prereleaseTimer.start()
+    }
 
     signal stepForward
 
@@ -196,6 +205,31 @@ Item {
                                                             versionPopover.open = false
                                                         }
                                                     }
+                                                }
+                                            }
+                                        }
+                                        PopNotification {
+                                            id: prereleaseNotification
+                                            property bool wasOpen: false
+                                            anchors {
+                                                left: parent.left
+                                                top: parent.bottom
+                                                topMargin: $(8) + opacity * $(24)
+                                            }
+
+                                            Text {
+                                                text: "Fedora %1 was released! Check it out!".arg(releases.selected.prerelease)
+                                                font.pixelSize: $(11)
+                                                color: "white"
+                                            }
+
+                                            Timer {
+                                                id: prereleaseTimer
+                                                interval: 1000
+                                                repeat: false
+                                                onTriggered: {
+                                                    prereleaseNotification.open = true
+                                                    prereleaseNotification.wasOpen = true
                                                 }
                                             }
                                         }
