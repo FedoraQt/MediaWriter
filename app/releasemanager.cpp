@@ -533,21 +533,16 @@ int ReleaseVersion::number() const {
 }
 
 QString ReleaseVersion::name() const {
-    QString ret = QString("%1").arg(m_number);
     switch (m_status) {
     case ALPHA:
-        ret.append(" Alpha");
-        break;
+        return tr("%1 Alpha").arg(m_number);
     case BETA:
-        ret.append(" Beta");
-        break;
+        return tr("%1 Beta").arg(m_number);
     case RELEASE_CANDIDATE:
-        ret.append(" Release Candidate");
-        break;
+        return tr("%1 Release Candidate").arg(m_number);
     default:
-        break;
+        return ("%1").arg(m_number);
     }
-    return ret;
 }
 
 ReleaseVariant *ReleaseVersion::selectedVariant() const {
