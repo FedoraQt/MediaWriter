@@ -123,7 +123,7 @@ Dialog {
                     Text {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: qsTr("Unfortunately, an error occured during the process.<br>Please try restoring the drive using your system tools.")
+                        text: qsTr("Unfortunately, an error occurred during the process.<br>Please try restoring the drive using your system tools.")
                         font.pixelSize: $(12)
                     }
                 }
