@@ -197,9 +197,10 @@ Item {
             }
 
             footer: Item {
-                height: !releases.frontPage ? $(192) : $(36)
+                height: !releases.frontPage ? aboutColumn.height + $(72) : $(36)
                 width: osListView.width
                 Column {
+                    id: aboutColumn
                     width: parent.width
                     visible: !releases.frontPage
                     spacing: 0
@@ -227,17 +228,39 @@ Item {
                             width: 1
                         }
                         height: childrenRect.height + $(24)
-                        ColumnLayout {
+                        Behavior on height { NumberAnimation {} }
+                        Column {
                             id: aboutLayout
                             spacing: $(3)
                             y: $(12)
                             x: $(32)
+                            width: parent.width
+                            move: Transition { NumberAnimation { properties: "y" } }
+
                             Text {
+                                width: parent.width
+                                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 text: qsTr("Version %1").arg(mediawriterVersion)
                                 textFormat: Text.RichText
                                 font.pixelSize: $(12)
                             }
                             Text {
+                                width: parent.width
+                                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                                visible: releases.beingUpdated
+                                text: qsTr("Fedora Media Writer is now checking for new releases")
+                                font.pixelSize: $(12)
+                                BusyIndicator {
+                                    anchors.right: parent.left
+                                    anchors.rightMargin: $(3)
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    height: parent.height - $(3)
+                                    width: height
+                                }
+                            }
+                            Text {
+                                width: parent.width
+                                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/MartinBriza/MediaWriter\">https://github.com/MartinBriza/MediaWriter</a>")
                                 textFormat: Text.RichText
                                 font.pixelSize: $(12)
@@ -299,6 +322,17 @@ Item {
                             }
                         }
                     }
+                    Text {
+                        text: qsTr("Checking for new releases")
+                        color: "#adadad"
+                        font.pixelSize: $(12)
+                        anchors.verticalCenter: threeDotDots.verticalCenter
+                        anchors.left: threeDotDots.right
+                        anchors.leftMargin: $(6)
+                        opacity: !threeDotDots.hidden && releases.beingUpdated ? 1.0 : 0.0
+                        Behavior on opacity { NumberAnimation { duration: 60 } }
+                    }
+
                     Text {
                         id: threeDotText
                         y: threeDotDots.hidden ? parent.height / 2 - height / 2 : -height
