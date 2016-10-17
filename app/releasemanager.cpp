@@ -541,7 +541,7 @@ QString ReleaseVersion::name() const {
     case RELEASE_CANDIDATE:
         return tr("%1 Release Candidate").arg(m_number);
     default:
-        return ("%1").arg(m_number);
+        return QString("%1").arg(m_number);
     }
 }
 
