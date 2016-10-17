@@ -148,7 +148,7 @@ Item {
                                     spacing: 0
                                     width: parent.width
                                     Text {
-                                        text: qsTr("Version %1").arg(releases.selected.version.number)
+                                        text: qsTr("Version %1").arg(releases.selected.version.name)
                                         font.pixelSize: $(11)
 
                                         color: versionRepeater.count <= 1 ? "gray" : versionMouse.containsPress ? "#284875" : versionMouse.containsMouse ? "#447BC7" : "#315FA0"
