@@ -54,7 +54,7 @@ class ReleaseArchitecture;
 /**
  * @brief The ReleaseManager class
  */
-class ReleaseManager : public QSortFilterProxyModel {
+class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver {
     Q_OBJECT
     Q_PROPERTY(bool frontPage READ frontPage WRITE setFrontPage NOTIFY frontPageChanged)
     Q_PROPERTY(bool beingUpdated READ beingUpdated NOTIFY beingUpdatedChanged)
@@ -82,6 +82,8 @@ public:
 
     Q_INVOKABLE void setLocalFile(const QString &path);
 
+    bool updateUrl(const QString &release, int version, const QString &status, const QString &architecture, const QString &url);
+
     QStringList architectures() const;
     int filterArchitecture() const;
     void setFilterArchitecture(int o);
@@ -89,6 +91,13 @@ public:
     Release *selected() const;
     int selectedIndex() const;
     void setSelectedIndex(int o);
+
+    // DownloadReceiver interface
+    void onStringDownloaded(const QString &text) override;
+    virtual void onDownloadError(const QString &message) override;
+
+public slots:
+    void fetchReleases();
 
 signals:
     void beingUpdatedChanged();
@@ -103,6 +112,7 @@ private:
     QString m_filterText {};
     int m_filterArchitecture { 0 };
     int m_selectedIndex { 0 };
+    bool m_beingUpdated { false };
 };
 
 
@@ -158,9 +168,9 @@ public:
     Q_ENUMS(Source)
     Q_INVOKABLE QString sourceString();
 
-    // constructor is in releasemanager_construct.cpp to not have it translated
     Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots, QList<ReleaseVersion*> versions);
     void setLocalFile(const QString &path);
+    bool updateUrl(int version, const QString &status, const QString &architecture, const QString &url);
 
     int index() const;
     QString name() const;
@@ -203,7 +213,7 @@ class ReleaseVersion : public QObject {
     Q_PROPERTY(int number READ number CONSTANT)
     Q_PROPERTY(QString name READ name CONSTANT)
 
-    Q_PROPERTY(ReleaseVersion::Status status READ status CONSTANT)
+    Q_PROPERTY(ReleaseVersion::Status status READ status NOTIFY statusChanged)
     Q_PROPERTY(QDateTime releaseDate READ releaseDate CONSTANT)
 
     Q_PROPERTY(QQmlListProperty<ReleaseVariant> variants READ variants NOTIFY variantsChanged)
@@ -213,15 +223,17 @@ class ReleaseVersion : public QObject {
 public:
     enum Status {
         FINAL,
-        ALPHA,
+        RELEASE_CANDIDATE,
         BETA,
-        RELEASE_CANDIDATE
+        ALPHA
     };
     Q_ENUMS(ReleaseVersion::Status)
 
     ReleaseVersion(Release *parent, int number, QList<ReleaseVariant*> variants, ReleaseVersion::Status status = FINAL, QDateTime releaseDate = QDateTime());
     ReleaseVersion(Release *parent, const QString &file, int64_t size);
     Release *release();
+
+    bool updateUrl(const QString &status, const QString &architecture, const QString &url);
 
     int number() const;
     QString name() const;
@@ -238,6 +250,7 @@ public:
 signals:
     void variantsChanged();
     void selectedVariantChanged();
+    void statusChanged();
 
 private:
     int m_number { 0 };
@@ -257,7 +270,7 @@ class ReleaseVariant : public QObject, public DownloadReceiver {
     Q_PROPERTY(ReleaseVariant::Type type READ type CONSTANT)
     Q_PROPERTY(QString name READ name CONSTANT)
 
-    Q_PROPERTY(QString url READ url CONSTANT)
+    Q_PROPERTY(QString url READ url NOTIFY urlChanged)
     Q_PROPERTY(QString shaHash READ shaHash CONSTANT)
     Q_PROPERTY(QString iso READ iso NOTIFY isoChanged)
     Q_PROPERTY(qreal size READ size CONSTANT) // stored as a 64b int, UI doesn't need the precision and QML doesn't support long ints
@@ -298,6 +311,8 @@ public:
     ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, ReleaseArchitecture *arch, Type type = LIVE);
     ReleaseVariant(ReleaseVersion *parent, const QString &file, int64_t size);
 
+    bool updateUrl(const QString &url);
+
     ReleaseVersion *releaseVersion();
     Release *release();
 
@@ -328,6 +343,7 @@ signals:
     void isoChanged();
     void statusChanged();
     void errorStringChanged();
+    void urlChanged();
 
 public slots:
     void download();
