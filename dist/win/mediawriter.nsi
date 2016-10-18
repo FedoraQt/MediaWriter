@@ -14,7 +14,7 @@ InstallDirRegKey HKEY_LOCAL_MACHINE "SOFTWARE\Fedora Media Writer" ""
 
 DirText "Select the directory to install Fedora Media Writer in:"
 
-!define MUI_ICON mediawriter.ico
+!define MUI_ICON ../../app/assets/icon/mediawriter.ico
 
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_DIRECTORY
