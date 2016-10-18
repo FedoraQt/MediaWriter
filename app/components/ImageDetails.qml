@@ -220,7 +220,7 @@ Item {
                                             }
 
                                             Text {
-                                                text: qsTr("Fedora %1 was released! Check it out!").arg(releases.selected.prerelease)
+                                                text: qsTr("Fedora %1 was released! Check it out!<br>If you want a stable, finished system, it's better to stay at version %2.").arg(releases.selected.prerelease).arg(releases.selected.version.name)
                                                 font.pixelSize: $(11)
                                                 color: "white"
                                             }

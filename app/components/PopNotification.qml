@@ -60,6 +60,21 @@ Item {
     }
 
     Rectangle {
+        z: -2
+        anchors {
+            fill: frame
+            topMargin: -$(1)
+            bottomMargin: -$(2)
+            leftMargin: -$(2)
+            rightMargin: -$(2)
+        }
+
+        radius: frame.radius + $(2)
+        color: "#10000000"
+    }
+
+    Rectangle {
+        id: frame
         anchors.fill: contents
         anchors.margins: - $(12)
         color: "#729FCF"
