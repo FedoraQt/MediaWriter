@@ -406,7 +406,7 @@ QString Release::name() const {
 }
 
 QString Release::summary() const {
-    return tr(m_summary.toLocal8Bit());
+    return tr(m_summary.toUtf8());
 }
 
 QString Release::description() const {
@@ -414,7 +414,7 @@ QString Release::description() const {
     for (auto i : m_description) {
         // there is a %(rel)s formatting string in the translation texts, get rid of that
         // get rid of in-translation break tags too
-        result.append(tr(i.toLocal8Bit()).replace("\%(rel)s ", "").replace("<br />", ""));
+        result.append(tr(i.toUtf8()).replace("\%(rel)s ", "").replace("<br />", ""));
     }
     return result;
 }
