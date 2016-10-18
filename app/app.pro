@@ -70,7 +70,7 @@ macx {
     LIBS += -framework DiskArbitration
     QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.9
 
-    ICON = assets/mediawriter.icns
+    ICON = assets/icon/mediawriter.icns
 }
 win32 {
     HEADERS += windrivemanager.h
@@ -80,5 +80,5 @@ win32 {
     DISTFILES += windows.manifest
     QMAKE_MANIFEST = $${PWD}/windows.manifest
 
-    RC_ICONS = assets/mediawriter.ico
+    RC_ICONS = assets/icon/mediawriter.ico
 }
