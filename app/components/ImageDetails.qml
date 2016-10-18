@@ -187,6 +187,13 @@ Item {
                                                 topMargin: $(8) + opacity * $(24)
                                             }
 
+                                            onOpenChanged: {
+                                                if (open) {
+                                                    prereleaseNotification.open = false
+                                                    archPopover.open = false
+                                                }
+                                            }
+
                                             ColumnLayout {
                                                 spacing: $(9)
                                                 ExclusiveGroup {
@@ -217,6 +224,13 @@ Item {
                                                 left: parent.left
                                                 top: parent.bottom
                                                 topMargin: $(8) + opacity * $(24)
+                                            }
+
+                                            onOpenChanged: {
+                                                if (open) {
+                                                    versionPopover.open = false
+                                                    archPopover.open = false
+                                                }
                                             }
 
                                             Text {
@@ -285,6 +299,13 @@ Item {
                                                 horizontalCenter: parent.horizontalCenter
                                                 top: parent.bottom
                                                 topMargin: $(8) + opacity * $(24)
+                                            }
+
+                                            onOpenChanged: {
+                                                if (open) {
+                                                    versionPopover.open = false
+                                                    prereleaseNotification.open = false
+                                                }
                                             }
 
                                             ColumnLayout {
