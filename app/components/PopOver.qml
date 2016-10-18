@@ -25,7 +25,6 @@ import QtQuick.Window 2.0
 
 Item {
     id: popover
-    z: -1
     property bool open: false
     visible: opacity > 0.0
     opacity: open ? 1.0 : 0.0
@@ -37,10 +36,10 @@ Item {
     default property alias children: contents.data
 
     MouseArea {
-        x: -mainWindow.widthf
+        x: -mainWindow.width
         y: -mainWindow.height
         width: 2 * mainWindow.width
-        height: 2 * mainWindow.height
+        height: 8 * mainWindow.height
         onClicked: {
             popover.open = false
         }

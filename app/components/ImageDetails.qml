@@ -180,6 +180,7 @@ Item {
 
                                         PopOver {
                                             id: versionPopover
+                                            z: 2
                                             anchors {
                                                 horizontalCenter: parent.horizontalCenter
                                                 top: parent.bottom
@@ -210,6 +211,7 @@ Item {
                                         }
                                         PopNotification {
                                             id: prereleaseNotification
+                                            z: 2
                                             property bool wasOpen: false
                                             anchors {
                                                 left: parent.left
@@ -278,6 +280,7 @@ Item {
 
                                         PopOver {
                                             id: archPopover
+                                            z: 2
                                             anchors {
                                                 horizontalCenter: parent.horizontalCenter
                                                 top: parent.bottom
@@ -340,7 +343,7 @@ Item {
                     id: screenshotRepeater
                     model: releases.selected.screenshots
                     ZoomableImage {
-                        z: 1
+                        z: 0
                         smooth: true
                         cache: false
                         Layout.fillWidth: true

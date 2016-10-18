@@ -25,19 +25,32 @@ import QtQuick.Window 2.0
 
 Item {
     id: root
-    z: -1
     property bool open: false
     visible: opacity > 0.0
     opacity: open ? 1.0 : 0.0
     Behavior on opacity { NumberAnimation { duration: 120 } }
+
+    onOpenChanged: {
+        if (open)
+            hideTimer.start()
+    }
 
     height: contents.height + $(12)
     width: contents.width + $(12)
 
     default property alias children: contents.data
 
+    Timer {
+        id: hideTimer
+        repeat: false
+        interval: 10000
+        onTriggered: {
+            open = false
+        }
+    }
+
     MouseArea {
-        x: -mainWindow.widthf
+        x: -mainWindow.width
         y: -mainWindow.height
         width: 2 * mainWindow.width
         height: 2 * mainWindow.height
