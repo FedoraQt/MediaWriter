@@ -28,6 +28,8 @@
 #include <QDBusInterface>
 #include <QDBusUnixFileDescriptor>
 
+#include "isomd5/libcheckisomd5.h"
+
 #include <QDebug>
 
 typedef QHash<QString, QVariant> Properties;
@@ -44,6 +46,15 @@ WriteJob::WriteJob(const QString &what, const QString &where)
     qDBusRegisterMetaType<InterfacesAndProperties>();
     qDBusRegisterMetaType<DBusIntrospection>();
     QTimer::singleShot(0, this, &WriteJob::work);
+}
+
+int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
+    ((WriteJob*)data)->onMediaCheckAdvanced(offset, total);
+}
+
+int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
+    out << offset << "\n";
+    out.flush();
 }
 
 void WriteJob::work()
@@ -120,7 +131,40 @@ void WriteJob::work()
         out << total << '\n';
         out.flush();
     }
-    err << "OK\n";
-    err.flush();
+
+    outFile.close();
+    inFile.close();
+
+    out << "CHECK\n";
+    out.flush();
+
+    QDBusReply<QDBusUnixFileDescriptor> backupReply = device.callWithArgumentList(QDBus::Block, "OpenForBackup", {Properties()} );
+    QDBusUnixFileDescriptor backupFd = backupReply.value();
+
+    if (!backupReply.isValid() || !backupFd.isValid()) {
+        err << reply.error().message();
+        err.flush();
+        qApp->exit(2);
+        return;
+    }
+
+    switch (mediaCheckFD(backupFd.fileDescriptor(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
+    case ISOMD5SUM_CHECK_PASSED:
+        err << "OK\n";
+        err.flush();
+        qApp->exit(0);
+        break;
+    case ISOMD5SUM_CHECK_FAILED:
+        err << tr("Your drive is probably damaged.") << "\n";
+        err.flush();
+        qApp->exit(1);
+        break;
+    default:
+        err << tr("Unexpected error occurred during media check.") << "\n";
+        err.flush();
+        qApp->exit(1);
+        break;
+    }
+
     qApp->exit(0);
 }
