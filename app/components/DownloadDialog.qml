@@ -205,11 +205,14 @@ Dialog {
                             height: childrenRect.height
                             AdwaitaProgressBar {
                                 width: parent.width
-                                progressColor: releases.selected.version.variant.status == Variant.WRITING ? "red" :
-                                               releases.selected.version.variant.status == Variant.DOWNLOAD_VERIFYING ? Qt.lighter("green") : "#54aada"
+                                progressColor: releases.selected.version.variant.status == Variant.WRITING            ? "red" :
+                                               releases.selected.version.variant.status == Variant.DOWNLOAD_VERIFYING ? Qt.lighter("green") :
+                                               releases.selected.version.variant.status == Variant.WRITE_VERIFYING    ? Qt.lighter("green") :
+                                                                                                                        "#54aada"
                                 value: releases.selected.version.variant.status == Variant.DOWNLOADING ? releases.selected.version.variant.progress.ratio :
                                        releases.selected.version.variant.status == Variant.WRITING ? drives.selected.progress.ratio :
-                                       releases.selected.version.variant.status == Variant.DOWNLOAD_VERIFYING ? releases.selected.version.variant.progress.ratio : 0.0
+                                       releases.selected.version.variant.status == Variant.DOWNLOAD_VERIFYING ? releases.selected.version.variant.progress.ratio :
+                                       releases.selected.version.variant.status == Variant.WRITE_VERIFYING ? drives.selected.progress.ratio : 0.0
                             }
                         }
                         AdwaitaCheckBox {
@@ -280,6 +283,7 @@ Dialog {
                                 currentIndex = drives.selectedIndex
                             }
                             enabled: releases.selected.version.variant.status != Variant.WRITING &&
+                                     releases.selected.version.variant.status != Variant.WRITE_VERIFYING &&
                                      releases.selected.version.variant.status != Variant.FAILED_DOWNLOAD &&
                                      drives.length > 0
                             Row {
@@ -335,18 +339,21 @@ Dialog {
                                     bottom: parent.bottom
                                 }
                                 color: releases.selected.version.variant.status == Variant.FINISHED ||
-                                       releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ? "#628fcf" : "red"
+                                       releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ? "#628fcf" :
+                                       releases.selected.version.variant.status == Variant.FAILED_VERIFICATION ? "#628fcf" : "red"
                                 textColor: enabled ? "white" : palette.text
                                 enabled: ((releases.selected.version.variant.status == Variant.READY ||
                                           releases.selected.version.variant.status == Variant.FINISHED ||
                                           releases.selected.version.variant.status == Variant.FAILED) && drives.length > 0)
                                          || releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD
-                                text: releases.selected.version.variant.status == Variant.FINISHED          ? qsTr("Close") :
+                                         || releases.selected.version.variant.status == Variant.FAILED_VERIFICATION
+                                text: releases.selected.version.variant.status == Variant.FINISHED                ? qsTr("Close") :
                                       (releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ||
-                                       releases.selected.version.variant.status == Variant.FAILED         ) ? qsTr("Retry") :
-                                                                                                              qsTr("Write to disk")
+                                       releases.selected.version.variant.status == Variant.FAILED_VERIFICATION ||
+                                       releases.selected.version.variant.status == Variant.FAILED               ) ? qsTr("Retry") :
+                                                                                                                    qsTr("Write to disk")
                                 onClicked: {
-                                    if (releases.selected.version.variant.status == Variant.READY || releases.selected.version.variant.status == Variant.FAILED) {
+                                    if (releases.selected.version.variant.status == Variant.READY || releases.selected.version.variant.status == Variant.FAILED || releases.selected.version.variant.status == Variant.FAILED_VERIFICATION) {
                                         drives.selected.write(releases.selected.version.variant)
                                     }
                                     else if (releases.selected.version.variant.status == Variant.FINISHED) {

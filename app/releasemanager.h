@@ -296,7 +296,9 @@ public:
         DOWNLOAD_VERIFYING,
         READY,
         WRITING,
+        WRITE_VERIFYING,
         FINISHED,
+        FAILED_VERIFICATION,
         FAILED_DOWNLOAD,
         FAILED
     };
@@ -307,7 +309,9 @@ public:
         tr("Checking the download"),
         tr("Ready to write"),
         tr("Writing"),
+        tr("Checking the written data"),
         tr("Finished!"),
+        tr("The written data is corrupted"),
         tr("Download failed"),
         tr("Error")
     };

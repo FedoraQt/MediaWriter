@@ -324,9 +324,16 @@ void WinDrive::onReadyRead() {
         return;
 
     while (m_child->bytesAvailable() > 0) {
-        bool ok;
-        int64_t bytes = m_child->readLine().trimmed().toULongLong(&ok);
-        if (ok)
-            m_progress->setValue(bytes);
+        QString line = m_child->readLine().trimmed();
+        if (line == "CHECK") {
+            m_progress->setValue(0);
+            m_image->setStatus(ReleaseVariant::WRITE_VERIFYING);
+        }
+        else {
+            bool ok;
+            qreal bytes = line.toULongLong(&ok);
+            if (ok)
+                m_progress->setValue(bytes);
+        }
     }
 }

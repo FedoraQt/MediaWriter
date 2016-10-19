@@ -240,10 +240,16 @@ void LinuxDrive::onReadyRead() {
 
     while (m_process->bytesAvailable() > 0) {
         QString line = m_process->readLine().trimmed();
-        bool ok = false;
-        qreal val = line.toULongLong(&ok);
-        if (ok && val > 0.0)
-            m_progress->setValue(val);
+        if (line == "CHECK") {
+            m_progress->setValue(0);
+            m_image->setStatus(ReleaseVariant::WRITE_VERIFYING);
+        }
+        else {
+            bool ok = false;
+            qreal val = line.toULongLong(&ok);
+            if (ok && val > 0.0)
+                m_progress->setValue(val);
+        }
     }
 }
 
