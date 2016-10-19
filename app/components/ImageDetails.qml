@@ -400,11 +400,4 @@ Item {
             minimumHandleLength: $(10)
         }
     }
-    FileDialog {
-        id: fileDialog
-        nameFilters: [ qsTr("Image files (*.iso *.raw)"), qsTr("All files (*)")]
-        onAccepted: {
-            releases.setLocalFile(fileUrl)
-        }
-    }
 }

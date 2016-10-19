@@ -161,8 +161,14 @@ Item {
         hoverEnabled: true
         cursorShape: Qt.PointingHandCursor
         onClicked: {
-            imageList.currentIndex = index
-            imageList.stepForward(release.index)
+            if (release.isLocal) {
+                releases.selectedIndex = index
+                fileDialog.open()
+            }
+            else {
+                imageList.currentIndex = index
+                imageList.stepForward(release.index)
+            }
         }
     }
 }

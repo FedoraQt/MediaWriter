@@ -139,30 +139,31 @@ Dialog {
                                 text: releases.selected.version.variant ? releases.selected.version.variant.errorString : ""
                             }
                         }
-                        /*
                         RowLayout {
+                            visible: releases.selected.isLocal
                             width: infoColumn.width
-                            spacing: $(8)
-
-                            Rectangle {
+                            spacing: $(12)
+                            Text {
                                 Layout.fillWidth: false
                                 Layout.alignment: Qt.AlignVCenter
-                                width: $(18)
-                                height: $(18)
-                                radius: width / 2
-                                color: "#729FCF"
-                                border {
-                                    width: $(1)
-                                    color: "#a1a1a1"
-                                }
-                                Text {
+                                verticalAlignment: Text.AlignVCenter
+                                color: "white"
+                                text: "!"
+                                rotation: 180
+                                font.bold: true
+                                font.pixelSize: $(13)
+
+                                Rectangle {
+                                    z: -1
                                     anchors.centerIn: parent
-                                    verticalAlignment: Text.AlignVCenter
-                                    color: "white"
-                                    text: "!"
-                                    rotation: 180
-                                    font.bold: true
-                                    font.pixelSize: $(16)
+                                    height: parent.height
+                                    width: height
+                                    radius: width / 2
+                                    color: "#729FCF"
+                                    border {
+                                        width: 1
+                                        color: "#a1a1a1"
+                                    }
                                 }
                             }
                             Text {
@@ -171,10 +172,9 @@ Dialog {
                                 verticalAlignment: Text.AlignVCenter
                                 wrapMode: Text.Wrap
                                 font.pixelSize: $(12)
-                                text: qsTr("PLACEHOLDER")
+                                text: "<font color=\"gray\">" + qsTr("Selected:") + "</font> " + (releases.selected.version.variant.iso ? (((String)(releases.selected.version.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
                             }
                         }
-                        */
                     }
 
                     ColumnLayout {

@@ -130,5 +130,14 @@ ApplicationWindow {
     DownloadDialog {
         id: dlDialog
     }
+
+    FileDialog {
+        id: fileDialog
+        nameFilters: [ qsTr("Image files (*.iso *.raw)"), qsTr("All files (*)")]
+        onAccepted: {
+            releases.setLocalFile(fileUrl)
+            dlDialog.open()
+        }
+    }
 }
 
