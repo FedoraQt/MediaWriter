@@ -15,6 +15,7 @@ extern "C" {
 typedef int (*checkCallback)(void *, long long offset, long long total);
 
 int mediaCheckFile(const char *iso, checkCallback cb, void *cbdata);
+int mediaCheckFD(int fd, checkCallback cb, void *cbdata);
 int printMD5SUM(char *file);
 
 #ifdef __cplusplus

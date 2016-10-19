@@ -345,6 +345,21 @@ int mediaCheckFile(const char *file, checkCallback cb, void *cbdata) {
     return rc;
 }
 
+int mediaCheckFD(int fd, checkCallback cb, void *cbdata) {
+    int rc;
+    char mediasum[33], computedsum[33];
+    long long isosize;
+    int supported;
+
+    if (fd < 0) {
+        return ISOMD5SUM_FILE_NOT_FOUND;
+    }
+
+    rc = doMediaCheck(fd, mediasum, computedsum, &isosize, &supported, cb, cbdata);
+
+    return rc;
+}
+
 int printMD5SUM(char *file) {
     int isofd;
     char mediasum[64];
