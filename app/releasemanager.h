@@ -162,10 +162,11 @@ class Release : public QObject {
     Q_PROPERTY(int versionIndex READ selectedVersionIndex WRITE setSelectedVersionIndex NOTIFY selectedVersionChanged)
 public:
     enum Source {
-        LOCAL,
         PRODUCT,
+        LOCAL,
         SPINS,
-        LABS
+        LABS,
+        OTHER
     };
     Q_ENUMS(Source)
     Q_INVOKABLE QString sourceString();
