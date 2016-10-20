@@ -37,6 +37,14 @@ Item {
             prereleaseTimer.start()
     }
 
+    Connections {
+        target: focused && releases.selected ? releases.selected : null
+        onPrereleaseChanged: {
+            if (releases.selected.prerelease.length > 0)
+                prereleaseTimer.start()
+        }
+    }
+
     signal stepForward
 
     ScrollView {
@@ -237,7 +245,7 @@ Item {
 
                                         Timer {
                                             id: prereleaseTimer
-                                            interval: 1000
+                                            interval: 300
                                             repeat: false
                                             onTriggered: {
                                                 prereleaseNotification.open = true
