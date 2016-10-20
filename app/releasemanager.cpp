@@ -685,6 +685,11 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
     }
     else {
         setStatus(READY);
+
+        if (QFile(m_iso).size() != m_size) {
+            m_size = QFile(m_iso).size();
+            emit sizeChanged();
+        }
     }
 }
 
@@ -719,6 +724,11 @@ void ReleaseVariant::download() {
             emit isoChanged();
 
             setStatus(READY);
+
+            if (QFile(m_iso).size() != m_size) {
+                m_size = QFile(m_iso).size();
+                emit sizeChanged();
+            }
         }
     }
 }

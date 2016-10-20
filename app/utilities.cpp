@@ -224,7 +224,8 @@ Download::Download(DownloadManager *parent, DownloadReceiver *receiver, const QS
                 QByteArray buffer = m_file->read(1024*1024);
                 m_previousSize += buffer.size();
                 m_hash.addData(buffer);
-                progress->setValue(m_previousSize);
+                if (progress && m_previousSize < progress->to())
+                    progress->setValue(m_previousSize);
                 m_bytesDownloaded = m_previousSize;
                 qApp->eventDispatcher()->processEvents(QEventLoop::AllEvents);
             }
@@ -274,6 +275,9 @@ void Download::onReadyRead() {
     if (m_reply->error() == QNetworkReply::NoError && buf.size() > 0) {
 
         m_bytesDownloaded += buf.size();
+
+        if (m_progress && m_reply->header(QNetworkRequest::ContentLengthHeader).isValid())
+            m_progress->setTo(m_reply->header(QNetworkRequest::ContentLengthHeader).toULongLong());
 
         if (m_progress)
             m_progress->setValue(m_bytesDownloaded);

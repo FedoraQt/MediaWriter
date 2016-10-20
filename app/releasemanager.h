@@ -277,7 +277,7 @@ class ReleaseVariant : public QObject, public DownloadReceiver {
     Q_PROPERTY(QString url READ url NOTIFY urlChanged)
     Q_PROPERTY(QString shaHash READ shaHash CONSTANT)
     Q_PROPERTY(QString iso READ iso NOTIFY isoChanged)
-    Q_PROPERTY(qreal size READ size CONSTANT) // stored as a 64b int, UI doesn't need the precision and QML doesn't support long ints
+    Q_PROPERTY(qreal size READ size NOTIFY sizeChanged) // stored as a 64b int, UI doesn't need the precision and QML doesn't support long ints
     Q_PROPERTY(Progress* progress READ progress CONSTANT)
 
     Q_PROPERTY(Status status READ status NOTIFY statusChanged)
@@ -352,6 +352,7 @@ signals:
     void statusChanged();
     void errorStringChanged();
     void urlChanged();
+    void sizeChanged();
 
 public slots:
     void download();
