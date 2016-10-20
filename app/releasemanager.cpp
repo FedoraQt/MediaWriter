@@ -264,13 +264,12 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
             screenshots.append(j.toString());
         }
 
-        int index = m_releases.length() + source == Release::PRODUCT ? 0 : 1;
-        m_releases.append(new Release(manager(), index, name, summary, description, source, "qrc:/logos/"+subvariant, screenshots, {}));
+        m_releases.append(new Release(manager(), m_releases.count(), name, summary, description, source, "qrc:/logos/"+subvariant, screenshots, {}));
+        if (m_releases.count() == 2)
+            m_releases.append(new Release (manager(), 2, tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {}, {}));
     }
 
-    if (m_releases.count() > 2)
-        m_releases.insert(2, new Release (manager(), 2, tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {}, {}));
-    else
+    if (m_releases.count() < 2)
         m_releases.append(new Release (manager(), m_releases.count(), tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {}, {}));
 }
 
