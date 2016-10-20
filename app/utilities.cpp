@@ -168,7 +168,7 @@ void DownloadManager::onStringDownloaded(const QString &text) {
                 break;
         }
     }
-    if (mirrors.isEmpty())
+    if (!mirrors.isEmpty())
         m_mirrorCache = mirrors;
 
     QNetworkRequest request;
