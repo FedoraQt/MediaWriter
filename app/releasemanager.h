@@ -82,7 +82,7 @@ public:
 
     Q_INVOKABLE void setLocalFile(const QString &path);
 
-    bool updateUrl(const QString &release, int version, const QString &status, const QString &architecture, const QString &url);
+    bool updateUrl(const QString &release, int version, const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
 
     QStringList architectures() const;
     int filterArchitecture() const;
@@ -172,7 +172,7 @@ public:
 
     Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots, QList<ReleaseVersion*> versions);
     void setLocalFile(const QString &path);
-    bool updateUrl(int version, const QString &status, const QString &architecture, const QString &url);
+    bool updateUrl(int version, const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
 
     int index() const;
     QString name() const;
@@ -218,7 +218,7 @@ class ReleaseVersion : public QObject {
     Q_PROPERTY(QString name READ name CONSTANT)
 
     Q_PROPERTY(ReleaseVersion::Status status READ status NOTIFY statusChanged)
-    Q_PROPERTY(QDateTime releaseDate READ releaseDate CONSTANT)
+    Q_PROPERTY(QDateTime releaseDate READ releaseDate NOTIFY releaseDateChanged)
 
     Q_PROPERTY(QQmlListProperty<ReleaseVariant> variants READ variants NOTIFY variantsChanged)
     Q_PROPERTY(ReleaseVariant* variant READ selectedVariant NOTIFY selectedVariantChanged)
@@ -237,7 +237,7 @@ public:
     ReleaseVersion(Release *parent, const QString &file, int64_t size);
     Release *release();
 
-    bool updateUrl(const QString &status, const QString &architecture, const QString &url);
+    bool updateUrl(const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
 
     int number() const;
     QString name() const;
@@ -255,6 +255,7 @@ signals:
     void variantsChanged();
     void selectedVariantChanged();
     void statusChanged();
+    void releaseDateChanged();
 
 private:
     int m_number { 0 };
@@ -275,7 +276,7 @@ class ReleaseVariant : public QObject, public DownloadReceiver {
     Q_PROPERTY(QString name READ name CONSTANT)
 
     Q_PROPERTY(QString url READ url NOTIFY urlChanged)
-    Q_PROPERTY(QString shaHash READ shaHash CONSTANT)
+    Q_PROPERTY(QString shaHash READ shaHash NOTIFY shaHashChanged)
     Q_PROPERTY(QString iso READ iso NOTIFY isoChanged)
     Q_PROPERTY(qreal size READ size NOTIFY sizeChanged) // stored as a 64b int, UI doesn't need the precision and QML doesn't support long ints
     Q_PROPERTY(Progress* progress READ progress CONSTANT)
@@ -319,7 +320,7 @@ public:
     ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, ReleaseArchitecture *arch, Type type = LIVE);
     ReleaseVariant(ReleaseVersion *parent, const QString &file, int64_t size);
 
-    bool updateUrl(const QString &url);
+    bool updateUrl(const QString &url, const QString &sha256, int64_t size);
 
     ReleaseVersion *releaseVersion();
     Release *release();
@@ -353,6 +354,7 @@ signals:
     void errorStringChanged();
     void urlChanged();
     void sizeChanged();
+    void shaHashChanged();
 
 public slots:
     void download();

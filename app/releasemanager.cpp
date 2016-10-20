@@ -38,6 +38,11 @@ ReleaseManager::ReleaseManager(QObject *parent)
     qmlRegisterUncreatableType<ReleaseArchitecture>("MediaWriter", 1, 0, "Architecture", "");
     qmlRegisterUncreatableType<Progress>("MediaWriter", 1, 0, "Progress", "");
 
+    QFile releases(":/releases.json");
+    releases.open(QIODevice::ReadOnly);
+    onStringDownloaded(releases.readAll());
+    releases.close();
+
     QTimer::singleShot(0, this, &ReleaseManager::fetchReleases);
 }
 
@@ -113,11 +118,11 @@ void ReleaseManager::setLocalFile(const QString &path) {
     }
 }
 
-bool ReleaseManager::updateUrl(const QString &release, int version, const QString &status, const QString &architecture, const QString &url) {
+bool ReleaseManager::updateUrl(const QString &release, int version, const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = get(i);
         if (r->name().toLower().contains(release))
-            return r->updateUrl(version, status, architecture, url);
+            return r->updateUrl(version, status, releaseDate, architecture, url, sha256, size);
     }
     return false;
 }
@@ -156,10 +161,14 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
     auto doc = QJsonDocument::fromJson(text.toUtf8());
 
     for (auto i : doc.array()) {
-        QString arch = i.toObject()["arch"].toString().toLower();
-        QString url = i.toObject()["link"].toString();
-        QString release = i.toObject()["subvariant"].toString().toLower();
-        QString versionWithStatus = i.toObject()["version"].toString().toLower();
+        QJsonObject obj = i.toObject();
+        QString arch = obj["arch"].toString().toLower();
+        QString url = obj["link"].toString();
+        QString release = obj["subvariant"].toString().toLower();
+        QString versionWithStatus = obj["version"].toString().toLower();
+        QString sha256 = obj["sha256"].toString();
+        QDateTime releaseDate = QDateTime::fromString((obj["releaseDate"].toString()), "yyyy-MM-dd");
+        int64_t size = obj["size"].toString().toLongLong();
         int version;
         QString status;
 
@@ -181,7 +190,7 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         version = re.capturedTexts()[1].toInt();
         status = re.capturedTexts()[2];
 
-        updateUrl(release, version, status, arch, url);
+        updateUrl(release, version, status, releaseDate, arch, url, sha256, size);
     }
 
     m_beingUpdated = false;
@@ -232,7 +241,24 @@ QVariant ReleaseListModel::data(const QModelIndex &index, int role) const {
 
 ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
     : QAbstractListModel(parent) {
-    // until there's a downloader
+    // move this to a separate json too
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora Workstation", "This is the Linux workstation you've been waiting for.", { "<p>", "Fedora Workstation is a reliable, user-friendly, and powerful operating system for your laptop or desktop computer. It supports a wide range of developers, from hobbyists and students to professionals in corporate environments.", "</p><blockquote><p>", "“The plethora of tools provided by<br /> Fedora allows me to get the job done.<br /> It just works.”", "</p><p align=right> ― <em>Christine Flood, ", "JVM performance engineer", "</em></p></blockquote><h3>", "Sleek user interface", "</h3><p>", "Focus on your code in the GNOME 3 desktop environment. GNOME is built with developer feedback and minimizes distractions, so you can concentrate on what's important.", "</p><h3>", "Complete open source toolbox", "</h3><p>", "Skip the drag of trying to find or build the tools you need. With Fedora's complete set of open source languages, tools, and utilities, everything is a click or command line away. There's even project hosting and repositories like COPR to make your code and builds available quickly to the community.", "</p><h3>", "GNOME Boxes & other virt tools", "</h3><p>", "Get virtual machines up and running quickly to test your code on multiple platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization tools for even more control.", "</p><h3>", "Built-in Docker support", "</h3><p>", "Containerize your own apps, or deploy containerized apps out of the box on Fedora, using the latest technology like Docker.", "</p>" }, Release::PRODUCT, "qrc:/logos/workstation", {}, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora Server", "The latest technology. A stable foundation. Together, for your applications and services.", { "<blockquote><p>", "“The simplicity introduced with rolekit and cockpit have made server deployments a breeze. What took me a few days on other operating systems took less than an hour with Fedora %(rel)s Server. It just works.”", "</p><p align=right> ― <em>Dan Mossor, ", "Systems Engineer", "</em></p></blockquote><p>", "Fedora Server is a short-lifecycle, community-supported server operating system that enables seasoned system administrators experienced with any OS to make use of the very latest server-based technologies available in the open source community.", "</p><h3>", "Easy Administration", "</h3><p>", "Manage your system simply with Cockpit's powerful, modern interface. View and monitor system performance and status, and deploy and manage container-based services.", "</p><h3>", "Server Roles", "</h3><p>", "There's no need to set up your server from scratch when you use server roles. Server roles plug into your Fedora Server system, providing a well-integrated service on top of the Fedora Server platform. Deploy and manage these prepared roles simply using the Rolekit tool.", "</p><h3>", "Database Services", "</h3><p>", "Fedora Server brings with it an enterprise-class, scalable database server powered by the open-source PostgreSQL project.", "</p><h3>", "Complete Enterprise Domain Solution", "</h3><p>", "Level up your Linux network with advanced identity management, DNS, certificate services, Windows(TM) domain integration throughout your environment with FreeIPA, the engine that drives Fedora Server's Domain Controller role.", "</p><blockquote><p>", "“The Docker Role for Fedora Server was simple and fast to install so that you can run your Docker images. This makes a great testbed for beginners and experts with docker so that they can develop their applications on the fly.”", "</p><p align=right> ― <em>John Unland, ", "Information Systems Student", "</em></p></blockquote>" }, Release::PRODUCT, "qrc:/logos/server", {}, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {}, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora KDE Plasma Desktop", "A complete, modern desktop built using the KDE Plasma Desktop.", { "<p>", "The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based operating system utilizing the KDE Plasma Desktop as the main user interface.", "</p><p>", "Fedora KDE Plasma Desktop comes with many pre-selected top quality applications that suit all modern desktop use cases - from online communication like web browsing, instant messaging and electronic mail correspondence, through multimedia and entertainment, to an advanced productivity suite, including office applications and enterprise grade personal information management.", "</p><p>", "All KDE applications are well integrated, with a similar look and feel and an easy to use interface, accompanied by an outstanding graphical appearance.", "</p>" }, Release::SPINS, "qrc:/logos/plasma", { "https://spins.stg.fedoraproject.org/en/kde/../static/images/screenshots/screenshot-kde.jpg" }, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora Xfce Desktop", "A complete, well-integrated Xfce Desktop.", { "<p>", "The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast and lightweight, while still being visually appealing and user friendly.", "</p><p>", "Fedora Xfce is a full-fledged desktop using the freedesktop.org standards.", "</p>"} , Release::SPINS, "qrc:/logos/xfce", { "https://spins.stg.fedoraproject.org/en/xfce/../static/images/screenshots/screenshot-xfce.jpg" }, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora LXDE Desktop", "A light, fast, less-resource hungry desktop environment.", { "<p>", "LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, performant, and energy-saving desktop environment. It maintained by an international community of developers and comes with a beautiful interface, multi-language support, standard keyboard shortcuts and additional features like tabbed file browsing.", "</p><p>", "LXDE is not designed to be powerful and bloated, but to be usable and slim. A main goal of LXDE is to keep computer resource usage low. It is especially designed for computers with low hardware specifications like netbooks, mobile devices (e.g. MIDs) or older computers.", "</p>" }, Release::SPINS, "qrc:/logos/lxde", { "https://spins.stg.fedoraproject.org/en/lxde/../static/images/screenshots/screenshot-lxde.jpg" }, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora MATE-Compiz Desktop", "A classic Fedora Desktop with an additional 3D Windows Manager.", { "<p>", "The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE Desktop is a lightweight, powerful desktop designed with productivity and performance in mind. The default windows manager is Marco which is usable for all machines and VMs. Compiz Fusion is a beautiful 3D windowing manager with Emerald and GTK+ theming.", "</p><p>", "If you want a powerful, lightweight Fedora desktop with 3D eyecandy you should definitely try the MATE-Compiz spin.", "</p>" }, Release::SPINS, "qrc:/logos/mate", { "https://spins.stg.fedoraproject.org/en/mate-compiz/../static/images/screenshots/screenshot-matecompiz.jpg" }, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora Cinnamon Desktop", "A modern desktop featuring traditional Gnome user experience.", { "<p>", "Cinnamon is a Linux desktop which provides advanced innovative features and a traditional user experience. The desktop layout is similar to Gnome 2. The underlying technology is forked from Gnome Shell. The emphasis is put on making users feel at home and providing them with an easy to use and comfortable desktop experience.", "</p><p>", "Cinnamon is a popular desktop alternative to Gnome 3 and this spin provides the option to quickly try and install this desktop.", "</p>" }, Release::SPINS, "qrc:/logos/cinnamon", { "https://spins.stg.fedoraproject.org/en/cinnamon/../static/images/screenshots/screenshot-cinnamon.jpg" }, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora SoaS Desktop", "Discover. Reflect. Share. Learn.", { "<p>", "Sugar on a Stick is a Fedora-based operating system featuring the award-winning Sugar Learning Platform and designed to fit on an ordinary USB thumbdrive (\"stick\").", "</p><p>", "Sugar sets aside the traditional “office-desktop” metaphor, presenting a child-friendly graphical environment. Sugar automatically saves your progress to a \"Journal\" on your stick, so teachers and parents can easily pull up \"all collaborative web browsing sessions done in the past week\" or \"papers written with Daniel and Sarah in the last 24 hours\" with a simple query rather than memorizing complex file/folder structures. Applications in Sugar are known as Activities, some of which are described below.", "</p><p>", "It is now deployable for the cost of a stick rather than a laptop; students can take their Sugar on a Stick thumbdrive to any machine - at school, at home, at a library or community center - and boot their customized computing environment without touching the host machine’s hard disk or existing system at all.", "</p>" }, Release::SPINS, "qrc:/logos/soas", { "https://spins.stg.fedoraproject.org/en/soas/../static/images/screenshots/screenshot-soas.jpg" }, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora Astronomy", "Powerful completely open-source and free tool for amateurs and professionals.", { "<p>", "Fedora Astronomy brings a complete open source toolchain to both amateur and professional astronomers.", "</p><p>", "The Spin provides the Fedora KDE desktop enhanced with a complete scientific Python environment and the AstrOmatic software for data analysis. KStars was added to provide a full featured astrophotography tool. As KStars uses the INDI library to control equipment, various telescopes, cameras etc. are supported. Summarized, Fedora Astronomy provides a complete set of software, from the observation planning to the final results.", "</p>" }, Release::LABS, "qrc:/logos/astronomy", { }, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora Design Suite", "Visual design, multimedia production, and publishing suite of free and open source creative tools.", { "<p>", "Looking for a ready-to-go desktop environment brimming with free and open source multimedia production and publishing tools? Try the Design Suite, a Fedora Spin created by designers, for designers.", "</p><p>", "The Design Suite includes the favorite tools of the Fedora Design Team. These are the same programs we use to create all the artwork that you see within the Fedora Project, from desktop backgrounds to CD sleeves, web page designs, application interfaces, flyers, posters and more. From document publication to vector and bitmap editing or 3D modeling to photo management, the Design Suite has an application for you — and you can install thousands more from the Fedora universe of packages.", "</p>" }, Release::LABS, "qrc:/logos/design", { }, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora Games", "A collection and perfect show-case of the best games available in Fedora.", { "<p>", "The Fedora Games spin offers a perfect showcase of the best games available in Fedora. The included games span several genres, from first-person shooters to real-time and turn-based strategy games to puzzle games.", "</p><p>", "Not all the games available in Fedora are included on this spin, but trying out this spin will give you a fair impression of Fedora's ability to run great games.", "</p>" }, Release::LABS, "qrc:/logos/games", {}, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora Robotics Suite", "A wide variety of free and open robotics software packages for beginners and experts in robotics.", { "<p>", "The Fedora Robotics spin provides a wide variety of free and open robotics software packages. These range from hardware accessory libraries for the Hokuyo laser scanners or Katana robotic arm to software frameworks like Fawkes or Player and simulation environments such as Stage and RoboCup Soccer Simulation Server 2D/3D. It also provides a ready to use development environment for robotics including useful libraries such as OpenCV computer vision library, Festival text to speech system and MRPT.", "</p><p>", "The Robotics spin is targeted at people just discovering their interest in robotics as well as experienced roboticists. For the former we provide a readily usable simulation environment with an introductory hands-on demonstration, and for the latter we provide a full development environment, to be used immediately.", "</p>" }, Release::LABS, "qrc:/logos/robotics", {}, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora Scientific", "A bundle of open source scientific and numerical tools used in research.", { "<p>", "Wary of reinstalling all the essential tools for your scientific and numerical work? The answer is here. Fedora Scientific Spin brings together the most useful open source scientific and numerical tools atop the goodness of the KDE desktop environment.", "</p><p>", "Fedora Scientific currently ships with numerous applications and libraries. These range from libraries such as the GNU Scientific library, the SciPy libraries, tools like Octave and xfig to typesetting tools like Kile and graphics programs such as Inkscape. The current set of packages include an IDE, tools and libraries for programming in C, C++, Python, Java and R. Also included along with are libraries for parallel computing such as the OpenMPI and OpenMP. Tools for typesetting, writing and publishing are included.", "</p>" }, Release::LABS, "qrc:/logos/scientific", {}, {} });
+    m_releases.append(new Release {manager(), m_releases.length(), "Fedora Security Lab", "A safe test environment to work on security auditing, forensics, system rescue and teaching security testing methodologies.", { "<p>", "The Fedora Security Lab provides a safe test environment to work on security auditing, forensics, system rescue and teaching security testing methodologies in universities and other organizations.", "</p><p>", "The spin is maintained by a community of security testers and developers. It comes with the clean and fast Xfce Desktop Environment and a customized menu that provides all the instruments needed to follow a proper test path for security testing or to rescue a broken system. The Live image has been crafted to make it possible to install software while running, and if you are running it from a USB stick created with LiveUSB Creator using the overlay feature, you can install and update software and save your test results permanently.", "</p>" }, Release::LABS, "qrc:/logos/security", {}, {} });
+
+    /*
     m_releases.append(new Release {manager(), m_releases.length(), "Fedora Workstation", "This is the Linux workstation you've been waiting for.", { "<p>", "Fedora Workstation is a reliable, user-friendly, and powerful operating system for your laptop or desktop computer. It supports a wide range of developers, from hobbyists and students to professionals in corporate environments.", "</p><blockquote><p>", "“The plethora of tools provided by<br /> Fedora allows me to get the job done.<br /> It just works.”", "</p><p align=right> ― <em>Christine Flood, ", "JVM performance engineer", "</em></p></blockquote><h3>", "Sleek user interface", "</h3><p>", "Focus on your code in the GNOME 3 desktop environment. GNOME is built with developer feedback and minimizes distractions, so you can concentrate on what's important.", "</p><h3>", "Complete open source toolbox", "</h3><p>", "Skip the drag of trying to find or build the tools you need. With Fedora's complete set of open source languages, tools, and utilities, everything is a click or command line away. There's even project hosting and repositories like COPR to make your code and builds available quickly to the community.", "</p><h3>", "GNOME Boxes & other virt tools", "</h3><p>", "Get virtual machines up and running quickly to test your code on multiple platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization tools for even more control.", "</p><h3>", "Built-in Docker support", "</h3><p>", "Containerize your own apps, or deploy containerized apps out of the box on Fedora, using the latest technology like Docker.", "</p>" }, Release::PRODUCT, "qrc:/logos/workstation", {}, {} });
     m_releases.last()->addVersion(new ReleaseVersion {m_releases.last(), 24, {}, ReleaseVersion::FINAL, QDateTime::fromString("2016-06-21", "yyyy-MM-dd")});
     m_releases.last()->versionList().last()->addVariant(new ReleaseVariant {m_releases.last()->versionList().last(), "https://download.fedoraproject.org/pub/fedora/linux/releases/24/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-24-1.2.iso", "8e12d7ba1fcf3328b8514d627788ee0146c0eef75a5e27f0674ee1fe4f1feaf6", 1503238553, ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64)});
@@ -330,6 +356,7 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
     m_releases.last()->addVersion(new ReleaseVersion {m_releases.last(), 23, {}, ReleaseVersion::FINAL, QDateTime::fromString("2015-11-03", "yyyy-MM-dd")});
     m_releases.last()->versionList().last()->addVariant(new ReleaseVariant {m_releases.last()->versionList().last(), "https://download.fedoraproject.org/pub/alt/releases/23/Spins/x86_64/Fedora-Live-Security-x86_64-23-10.iso", "fe712e118b72ac5727196a371dd4bf3472f84cc1b22a6c05d90af7a4cf3abd12", 985661440, ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64)});
     m_releases.last()->versionList().last()->addVariant(new ReleaseVariant {m_releases.last()->versionList().last(), "https://download.fedoraproject.org/pub/alt/releases/23/Spins/i386/Fedora-Live-Security-i686-23-10.iso", "2a41ea039b6bfac18f6e45ca0d474f566fd4f70365ba6377dfaaf488564ffe98", 960495616, ReleaseArchitecture::fromId(ReleaseArchitecture::X86)});
+    */
 }
 
 ReleaseManager *ReleaseListModel::manager() {
@@ -388,14 +415,14 @@ void Release::setLocalFile(const QString &path) {
     emit selectedVersionChanged();
 }
 
-bool Release::updateUrl(int version, const QString &status, const QString &architecture, const QString &url) {
+bool Release::updateUrl(int version, const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
     for (auto i : m_versions) {
         if (i->number() == version)
-            return i->updateUrl(status, architecture, url);
+            return i->updateUrl(status, releaseDate, architecture, url, sha256, size);
     }
     ReleaseVersion::Status s = status == "alpha" ? ReleaseVersion::ALPHA : status == "beta" ? ReleaseVersion::BETA : ReleaseVersion::FINAL;
-    auto ver = new ReleaseVersion(this, version, { }, s);
-    auto variant = new ReleaseVariant(ver, url, "", 0, ReleaseArchitecture::fromAbbreviation(architecture));
+    auto ver = new ReleaseVersion(this, version, { }, s, releaseDate);
+    auto variant = new ReleaseVariant(ver, url, sha256, size, ReleaseArchitecture::fromAbbreviation(architecture));
     ver->addVariant(variant);
     addVersion(ver);
     return true;
@@ -436,7 +463,7 @@ QStringList Release::screenshots() const {
 }
 
 QString Release::prerelease() const {
-    if (m_versions.empty())
+    if (m_versions.empty() || m_versions.first()->status() == ReleaseVersion::FINAL)
         return "";
     return m_versions.first()->name();
 }
@@ -509,7 +536,7 @@ Release *ReleaseVersion::release() {
     return qobject_cast<Release*>(parent());
 }
 
-bool ReleaseVersion::updateUrl(const QString &status, const QString &architecture, const QString &url) {
+bool ReleaseVersion::updateUrl(const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
     Status s = status == "alpha" ? ALPHA : status == "beta" ? BETA : FINAL;
     if (s <= m_status) {
         m_status = s;
@@ -520,11 +547,15 @@ bool ReleaseVersion::updateUrl(const QString &status, const QString &architectur
     else {
         return false;
     }
+    if (m_releaseDate != releaseDate && releaseDate.isValid()) {
+        m_releaseDate = releaseDate;
+        emit releaseDateChanged();
+    }
     for (auto i : m_variants) {
         if (i->arch() == ReleaseArchitecture::fromAbbreviation(architecture))
-            return i->updateUrl(url);
+            return i->updateUrl(url, sha256, size);
     }
-    m_variants.append(new ReleaseVariant(this, url, "", 0, ReleaseArchitecture::fromAbbreviation(architecture)));
+    m_variants.append(new ReleaseVariant(this, url, sha256, size, ReleaseArchitecture::fromAbbreviation(architecture)));
     return true;
 }
 
@@ -598,14 +629,26 @@ ReleaseVariant::ReleaseVariant(ReleaseVersion *parent, const QString &file, int6
     m_status = READY;
 }
 
-bool ReleaseVariant::updateUrl(const QString &url) {
-    if (m_url.toUtf8().trimmed() != url.toUtf8().trimmed()) {
+bool ReleaseVariant::updateUrl(const QString &url, const QString &sha256, int64_t size) {
+    bool changed = false;
+    if (!url.isEmpty() && m_url.toUtf8().trimmed() != url.toUtf8().trimmed()) {
         qWarning() << "Url" << m_url << "changed to" << url;
         m_url = url;
         emit urlChanged();
-        return true;
+        changed = true;
     }
-    return false;
+    if (!sha256.isEmpty() && m_shaHash.trimmed() != sha256.trimmed()) {
+        qWarning() << "SHA256 hash of" << url << "changed from" << m_shaHash << "to" << sha256;
+        m_shaHash = sha256;
+        emit shaHashChanged();
+        changed = true;
+    }
+    if (size != 0 && m_size != size) {
+        m_size = size;
+        emit sizeChanged();
+        changed = true;
+    }
+    return changed;
 }
 
 ReleaseVersion *ReleaseVariant::releaseVersion() {
