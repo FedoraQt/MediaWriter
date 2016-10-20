@@ -247,7 +247,7 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
     auto doc = QJsonDocument::fromJson(metadata.readAll());
     for (auto i : doc.array()) {
         QJsonObject obj = i.toObject();
-        QString variant = obj["variant"].toString();
+        QString subvariant = obj["subvariant"].toString();
         QString sourceString = obj["category"].toString();
         Release::Source source = sourceString == "product" ? Release::PRODUCT :
                                  sourceString == "spins"   ? Release::SPINS :
@@ -265,7 +265,7 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
         }
 
         int index = m_releases.length() + source == Release::PRODUCT ? 0 : 1;
-        m_releases.append(new Release(manager(), index, name, summary, description, source, "qrc:/logos/"+variant, screenshots, {}));
+        m_releases.append(new Release(manager(), index, name, summary, description, source, "qrc:/logos/"+subvariant, screenshots, {}));
     }
 
     if (m_releases.count() > 2)
