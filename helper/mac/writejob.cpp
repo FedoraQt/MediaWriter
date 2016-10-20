@@ -81,5 +81,9 @@ void WriteJob::work() {
     diskUtil.start();
     diskUtil.waitForFinished();
 */
+
+    // to have the strings translated
+    tr("Your drive is probably damaged.");
+    tr("Unexpected error occurred during media check.");
     qApp->exit();
 }

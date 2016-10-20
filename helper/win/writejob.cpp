@@ -232,5 +232,9 @@ void WriteJob::work() {
     unlockDrive(drive);
     CloseHandle(drive);
 
+    // to have the strings translated
+    tr("Your drive is probably damaged.");
+    tr("Unexpected error occurred during media check.");
+
     qApp->exit(0);
 }
