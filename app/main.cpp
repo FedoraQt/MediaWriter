@@ -59,6 +59,11 @@ int main(int argc, char **argv)
 #endif
 
     qInstallMessageHandler(myMessageOutput); // Install the handler
+
+    QApplication::setOrganizationDomain("fedoraproject.org");
+    QApplication::setOrganizationName("fedoraproject.org");
+    QApplication::setApplicationName("MediaWriter");
+
     QApplication app(argc, argv);
 
     options.parse(app.arguments());
