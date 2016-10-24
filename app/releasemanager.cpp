@@ -267,13 +267,13 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
         if (obj.contains("icon"))
             icon = obj["icon"].toString();
 
-        m_releases.append(new Release(manager(), m_releases.count(), name, summary, description, source, icon, screenshots, {}));
+        m_releases.append(new Release(manager(), m_releases.count(), name, summary, description, source, icon, screenshots));
         if (m_releases.count() == 2)
-            m_releases.append(new Release (manager(), 2, tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {}, {}));
+            m_releases.append(new Release (manager(), 2, tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {}));
     }
 
     if (m_releases.count() < 2)
-        m_releases.append(new Release (manager(), m_releases.count(), tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {}, {}));
+        m_releases.append(new Release (manager(), m_releases.count(), tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {}));
 }
 
 ReleaseManager *ReleaseListModel::manager() {
@@ -305,8 +305,8 @@ int Release::index() const {
     return m_index;
 }
 
-Release::Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots, QList<ReleaseVersion *> versions)
-    : QObject(parent), m_index(index), m_name(name), m_summary(summary), m_description(description), m_source(source), m_icon(icon), m_screenshots(screenshots), m_versions(versions)
+Release::Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots)
+    : QObject(parent), m_index(index), m_name(name), m_summary(summary), m_description(description), m_source(source), m_icon(icon), m_screenshots(screenshots)
 {
 
 }
@@ -338,7 +338,7 @@ bool Release::updateUrl(int version, const QString &status, const QDateTime &rel
             return i->updateUrl(status, releaseDate, architecture, url, sha256, size);
     }
     ReleaseVersion::Status s = status == "alpha" ? ReleaseVersion::ALPHA : status == "beta" ? ReleaseVersion::BETA : ReleaseVersion::FINAL;
-    auto ver = new ReleaseVersion(this, version, { }, s, releaseDate);
+    auto ver = new ReleaseVersion(this, version, s, releaseDate);
     auto variant = new ReleaseVariant(ver, url, sha256, size, ReleaseArchitecture::fromAbbreviation(architecture));
     ver->addVariant(variant);
     addVersion(ver);
@@ -436,8 +436,8 @@ void Release::setSelectedVersionIndex(int o) {
 }
 
 
-ReleaseVersion::ReleaseVersion(Release *parent, int number, QList<ReleaseVariant *> variants, ReleaseVersion::Status status, QDateTime releaseDate)
-    : QObject(parent), m_number(number), m_status(status), m_releaseDate(releaseDate), m_variants(variants)
+ReleaseVersion::ReleaseVersion(Release *parent, int number, ReleaseVersion::Status status, QDateTime releaseDate)
+    : QObject(parent), m_number(number), m_status(status), m_releaseDate(releaseDate)
 {
     if (status != FINAL)
         emit parent->prereleaseChanged();

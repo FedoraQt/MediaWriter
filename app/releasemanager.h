@@ -171,7 +171,7 @@ public:
     Q_ENUMS(Source)
     Q_INVOKABLE QString sourceString();
 
-    Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots, QList<ReleaseVersion*> versions);
+    Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots);
     void setLocalFile(const QString &path);
     bool updateUrl(int version, const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
 
@@ -234,7 +234,7 @@ public:
     };
     Q_ENUMS(Status)
 
-    ReleaseVersion(Release *parent, int number, QList<ReleaseVariant*> variants, ReleaseVersion::Status status = FINAL, QDateTime releaseDate = QDateTime());
+    ReleaseVersion(Release *parent, int number, ReleaseVersion::Status status = FINAL, QDateTime releaseDate = QDateTime());
     ReleaseVersion(Release *parent, const QString &file, int64_t size);
     Release *release();
 
