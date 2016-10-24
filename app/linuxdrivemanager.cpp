@@ -45,6 +45,7 @@ void LinuxDriveProvider::delayedConstruct() {
 
 void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
     QDBusPendingReply<DBusIntrospection> reply = *w;
+    QRegExp numberRE("[0-9]$");
 
     if (reply.isError()) {
         qWarning() << "Could not read drives from UDisks:" << reply.error().name() << reply.error().message();
@@ -56,11 +57,10 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
         if (!i.path().startsWith("/org/freedesktop/UDisks2/block_devices"))
             continue;
 
-        if (introspection[i].contains("org.freedesktop.UDisks2.Partition"))
+        if (numberRE.indexIn(i.path()) >= 0)
             continue;
 
         QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(introspection[i]["org.freedesktop.UDisks2.Block"]["Drive"]);
-        QString devicePath = driveId.path();
 
         if (!driveId.path().isEmpty() && driveId.path() != "/") {
             bool portable = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Removable"].toBool();
@@ -97,17 +97,19 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
 }
 
 void LinuxDriveProvider::onInterfacesAdded(QDBusObjectPath object_path, InterfacesAndProperties interfaces_and_properties) {
-    QRegExp r("part[0-9]+$");
+    QRegExp numberRE("[0-9]$");
 
     if (interfaces_and_properties.keys().contains("org.freedesktop.UDisks2.Block")) {
         if (!m_drives.contains(object_path)) {
             QString deviceId = interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Id"].toString();
             QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Drive"]);
-            QString devicePath = driveId.path();
 
             QDBusInterface driveInterface("org.freedesktop.UDisks2", driveId.path(), "org.freedesktop.UDisks2.Drive", QDBusConnection::systemBus());
 
-            if (!deviceId.isEmpty() && r.indexIn(deviceId) < 0 && !driveId.path().isEmpty() && driveId.path() != "/") {
+            if (numberRE.indexIn(object_path.path()) >= 0)
+                return;
+
+            if (!deviceId.isEmpty() && !driveId.path().isEmpty() && driveId.path() != "/") {
                 bool portable = driveInterface.property("Removable").toBool();
                 QStringList mediaCompatibility = driveInterface.property("MediaCompatibility").toStringList();
 
