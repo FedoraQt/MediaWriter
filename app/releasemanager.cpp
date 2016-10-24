@@ -244,6 +244,8 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
     QFile metadata(":/metadata.json");
     metadata.open(QIODevice::ReadOnly);
 
+    Release *custom = nullptr;
+
     auto doc = QJsonDocument::fromJson(metadata.readAll());
     for (auto i : doc.array()) {
         QJsonObject obj = i.toObject();
@@ -268,12 +270,20 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
             icon = obj["icon"].toString();
 
         m_releases.append(new Release(manager(), m_releases.count(), name, summary, description, source, icon, screenshots));
-        if (m_releases.count() == 2)
-            m_releases.append(new Release (manager(), 2, tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {}));
+        if (m_releases.count() == 2) {
+            custom = new Release (manager(), 2, tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {});
+            m_releases.append(custom);
+        }
     }
 
-    if (m_releases.count() < 2)
-        m_releases.append(new Release (manager(), m_releases.count(), tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {}));
+    if (m_releases.count() < 2) {
+        custom = new Release (manager(), m_releases.count(), tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {});
+        m_releases.append(custom);
+    }
+
+    ReleaseVersion *customVersion = new ReleaseVersion(custom, 0);
+    custom->addVersion(customVersion);
+    customVersion->addVariant(new ReleaseVariant(customVersion, QString(), QString(), 0, ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64)));
 }
 
 ReleaseManager *ReleaseListModel::manager() {
