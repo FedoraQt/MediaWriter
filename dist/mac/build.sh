@@ -18,10 +18,10 @@ pushd build >/dev/null
 ${QMAKE} .. >/dev/null
 make -j9 >/dev/null
 
-cp "helper/mac/helper.app/Contents/MacOS/helper" "app/mediawriter.app/Contents/MacOS"
-${MACDEPLOYQT} "app/mediawriter.app" -dmg -qmldir="../app" -executable="app/mediawriter.app/Contents/MacOS/helper" -always-overwrite
+cp "helper/mac/helper.app/Contents/MacOS/helper" "app/Fedora Media Writer.app/Contents/MacOS"
+${MACDEPLOYQT} "app/Fedora Media Writer.app" -dmg -qmldir="../app" -executable="app/Fedora Media Writer.app/Contents/MacOS/helper" -always-overwrite
 
-mv "$PWD/app/mediawriter.dmg" "$INSTALLER"
+mv "$PWD/app/Fedora Media Writer.dmg" "$INSTALLER"
 echo "$INSTALLER"
 
 popd >/dev/null
