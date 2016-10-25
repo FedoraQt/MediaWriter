@@ -47,7 +47,7 @@ HANDLE WriteJob::openDrive(int physicalDriveNumber) {
     if( hVol == INVALID_HANDLE_VALUE ) {
         TCHAR message[256];
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-        err << "Disk_WriteData() - CreateFile failed (" << message << ")\n";
+        err << tr("Couldn't open the drive for writing") << " (" << message << ")\n";
         err.flush();
         return hVol;
     }
@@ -60,7 +60,7 @@ bool WriteJob::lockDrive(HANDLE drive) {
     if (!DeviceIoControl(drive, FSCTL_LOCK_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
         TCHAR message[256];
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-        err << "Disk_LockVolume() - Error attempting to lock device!  (" << message << ")\n";
+        err << tr("Couldn't lock the drive") << " (" << message << ")\n";
         err.flush();
         return false;
     }
@@ -98,7 +98,7 @@ bool WriteJob::dismountDrive(HANDLE drive, int diskNumber) {
     if (!DeviceIoControl(drive, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
         TCHAR message[256];
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-        err << "Disk_LockVolume() - Error attempting to dismount volume.  ("<< message <<")\n";
+        err << tr("Couldn't dismount the drive") << " ("<< message <<")\n";
         err.flush();
         return false;
     }
@@ -156,14 +156,14 @@ bool WriteJob::writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, int siz
         else {
             TCHAR message[256];
             FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-            err << "WriteSector() - WriteFile failed (" << message << ")\n";
+            err << tr("Destination drive is not writable") << " (" << message << ")\n";
             err.flush();
             return false;
         }
     }
 
     if (bytesWritten != size) {
-        err << "WriteSector() - Bytes written did not equal the number of bytes to be written\n";
+        err << tr("Destination drive is not writable") << "\n";
         err.flush();
         return false;
     }
@@ -177,7 +177,7 @@ void WriteJob::unlockDrive(HANDLE drive) {
     if (!DeviceIoControl(drive, FSCTL_UNLOCK_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
         TCHAR message[256];
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-        err << "Disk_LockVolume() - Error attempting to lock device!  (" << message << ")\n";
+        err << tr("Couldn't unlock the drive") << " (" << message << ")\n";
         err.flush();
         return;
     }
