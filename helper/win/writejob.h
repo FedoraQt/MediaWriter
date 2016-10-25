@@ -35,10 +35,10 @@ public:
 private:
     HANDLE openDrive(int physicalDriveNumber);
     bool lockDrive(HANDLE drive);
-    bool dismountDrive(HANDLE drive, int diskNumber);
+    bool dismountDrive(HANDLE drive, uint diskNumber);
     bool cleanDrive(HANDLE drive);
 
-    bool writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, int size);
+    bool writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, uint size);
 
     void unlockDrive(HANDLE drive);
 
@@ -47,7 +47,7 @@ private slots:
     void work();
 private:
     QString what;
-    int where;
+    uint where;
 
     QTextStream out { stdout };
     QTextStream err { stderr };

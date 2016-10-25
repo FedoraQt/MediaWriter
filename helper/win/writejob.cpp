@@ -67,7 +67,7 @@ bool WriteJob::lockDrive(HANDLE drive) {
     return true;
 }
 
-bool WriteJob::dismountDrive(HANDLE drive, int diskNumber) {
+bool WriteJob::dismountDrive(HANDLE drive, uint diskNumber) {
     DWORD status;
     DWORD drives = ::GetLogicalDrives();
     for (char i = 0; i < 26; i++) {
@@ -81,14 +81,16 @@ bool WriteJob::dismountDrive(HANDLE drive, int diskNumber) {
             VOLUME_DISK_EXTENTS vde; // TODO FIXME: handle ERROR_MORE_DATA (this is an extending structure)
             BOOL bResult = DeviceIoControl(hDevice, IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS, NULL, 0, &vde, sizeof(vde), &bytesReturned, NULL);
 
-            for (uint j = 0; j < vde.NumberOfDiskExtents; j++) {
-                if (vde.Extents[j].DiskNumber == diskNumber) {
-                    BOOL b = DeviceIoControl(hDevice, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, &status, NULL);
-                    if (!b) {
-                        TCHAR message[256];
-                        FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-                        err << message << "\n";
-                        err.flush();
+            if (bResult) {
+                for (uint j = 0; j < vde.NumberOfDiskExtents; j++) {
+                    if (vde.Extents[j].DiskNumber == diskNumber) {
+                        BOOL b = DeviceIoControl(hDevice, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, &status, NULL);
+                        if (!b) {
+                            TCHAR message[256];
+                            FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+                            err << message << "\n";
+                            err.flush();
+                        }
                     }
                 }
             }
@@ -144,9 +146,8 @@ bool WriteJob::cleanDrive(HANDLE drive) {
     return true;
 }
 
-bool WriteJob::writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, int size) {
+bool WriteJob::writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, uint size) {
     DWORD bytesWritten;
-    DWORD status;
 
     if (!WriteFile(drive, data, size, &bytesWritten, overlap)) {
         DWORD Errorcode = GetLastError();
