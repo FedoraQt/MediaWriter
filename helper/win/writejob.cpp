@@ -175,7 +175,7 @@ bool WriteJob::writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, int siz
 void WriteJob::unlockDrive(HANDLE drive) {
     DWORD status;
     if (!DeviceIoControl(drive, FSCTL_UNLOCK_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
-        LPTSTR message = L"";
+        TCHAR message[256];
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
         err << "Disk_LockVolume() - Error attempting to lock device!  (" << message << ")\n";
         err.flush();
