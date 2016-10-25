@@ -149,6 +149,7 @@ void WriteJob::work()
     }
 
     switch (mediaCheckFD(backupFd.fileDescriptor(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
+    case ISOMD5SUM_CHECK_NOT_FOUND:
     case ISOMD5SUM_CHECK_PASSED:
         err << "OK\n";
         err.flush();
