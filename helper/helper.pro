@@ -9,3 +9,7 @@ win32 {
 macx {
     SUBDIRS = mac
 }
+
+lupdate_only {
+    SUBDIRS = linux win mac
+}

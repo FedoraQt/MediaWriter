@@ -28,7 +28,13 @@ RESOURCES += qml.qrc \
 
 lupdate_only {
     SOURCES += $$PWD/*.qml \
-        $$PWD/components/*.qml
+        $$PWD/components/*.qml \
+        linuxdrivemanager.cpp \
+        macdrivemanager.cpp \
+        windrivemanager.cpp
+    HEADERS += linuxdrivemanager.h \
+        macdrivemanager.h \
+        windrivemanager.h
 }
 
 include($$top_srcdir/deployment.pri)
