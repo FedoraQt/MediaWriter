@@ -86,8 +86,8 @@ void MacDrive::write(ReleaseVariant *data) {
 
     QString command;
     command.append("do shell script \"");
-    if (QFile::exists(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper")) {
-        command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
+    if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
+        command.append(QString("'%1/../../../../helper/mac/helper.app/Contents/MacOS/helper'").arg(qApp->applicationDirPath()));
     }
     else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
         command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
@@ -137,8 +137,8 @@ void MacDrive::restore() {
 
     QString command;
     command.append("do shell script \"");
-    if (QFile::exists(qApp->applicationDirPath() + "/../../../helper.app/Contents/MacOS/helper")) {
-        command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
+    if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
+        command.append(QString("'%1/../../../../helper/mac/helper.app/Contents/MacOS/helper'").arg(qApp->applicationDirPath()));
     }
     else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
         command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
