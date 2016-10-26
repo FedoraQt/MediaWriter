@@ -29,6 +29,10 @@ class WriteJob : public QObject
     Q_OBJECT
 public:
     explicit WriteJob(const QString &what, const QString &where);
+
+    static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
+    int onMediaCheckAdvanced(long long offset, long long total);
+
 private slots:
     void work();
 private:

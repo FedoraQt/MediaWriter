@@ -27,10 +27,22 @@
 
 #include <QDebug>
 
+#include "isomd5/libcheckisomd5.h"
+
 WriteJob::WriteJob(const QString &what, const QString &where)
     : QObject(nullptr), what(what), where(where), dd(new QProcess(this))
 {
     QTimer::singleShot(0, this, &WriteJob::work);
+}
+
+int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
+    return ((WriteJob*)data)->onMediaCheckAdvanced(offset, total);
+}
+
+int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
+    out << offset << "\n";
+    out.flush();
+    return 0;
 }
 
 void WriteJob::work() {
@@ -55,7 +67,13 @@ void WriteJob::work() {
     while (source.isReadable() && !source.atEnd() && target.isWritable()) {
         qint64 bytes = source.read(buffer.data(), 1024 * 512);
         bytesTotal += bytes;
-        target.write(buffer.data(), bytes);
+        qint64 written = target.write(buffer.data(), bytes);
+        if (written != bytes) {
+            err << tr("Destination drive is not writable") << "\n";
+            err.flush();
+            qApp->exit(1);
+            return;
+        }
         out << bytesTotal << "\n";
         out.flush();
     }
@@ -82,8 +100,25 @@ void WriteJob::work() {
     diskUtil.waitForFinished();
 */
 
-    // to have the strings translated
-    tr("Your drive is probably damaged.");
-    tr("Unexpected error occurred during media check.");
+    target.open(QIODevice::ReadOnly);
+    switch (mediaCheckFD(target.handle(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
+    case ISOMD5SUM_CHECK_NOT_FOUND:
+    case ISOMD5SUM_CHECK_PASSED:
+        err << "OK\n";
+        err.flush();
+        qApp->exit(0);
+        break;
+    case ISOMD5SUM_CHECK_FAILED:
+        err << tr("Your drive is probably damaged.") << "\n";
+        err.flush();
+        qApp->exit(1);
+        break;
+    default:
+        err << tr("Unexpected error occurred during media check.") << "\n";
+        err.flush();
+        qApp->exit(1);
+        break;
+    }
+
     qApp->exit();
 }
