@@ -24,6 +24,7 @@ DASessionRef session = nil;
 
 static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)));
 static void OnDiskDisappeared(DADiskRef disk, void *__attribute__((__unused__)));
+static DADissenterRef OnMountApproval(DADiskRef disk, void *__attribute__((__unused__)));
 
 void (*onAdded)(const char *bsdName, const char *vendor, const char *model, unsigned long long size, bool restoreable);
 void (*onRemoved)(const char *bsdName);
@@ -36,12 +37,19 @@ void startArbiter(void (*addedCallback)(const char *bsdName, const char *vendor,
     session = DASessionCreate(kCFAllocatorDefault);
     DARegisterDiskAppearedCallback(session, NULL, OnDiskAppeared, NULL);
     DARegisterDiskDisappearedCallback(session, NULL, OnDiskDisappeared, NULL);
+    DARegisterDiskMountApprovalCallback(session, NULL, OnMountApproval, NULL);
     DASessionScheduleWithRunLoop(session, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
 }
 
 void stopArbiter() {
     CFRelease(session);
 }
+
+DADissenterRef OnMountApproval(DADiskRef disk, void *context) {
+    return DADissenterCreate(kCFAllocatorDefault, kDAReturnExclusiveAccess, CFSTR("Fedora Media Writer"));
+}
+
+
 
 static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx) {
     static bool lastS1 = false;
