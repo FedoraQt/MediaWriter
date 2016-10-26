@@ -164,8 +164,24 @@ void MacDrive::restore() {
 }
 
 void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
-    m_progress->setValue(m_image->size());
-    m_image->setStatus(ReleaseVariant::FINISHED);
+    Q_UNUSED(exitStatus)
+
+    if (!m_child)
+        return;
+
+    if (exitCode != 0) {
+        QString output = m_child->readAllStandardError();
+        QRegExp re("^.+:.+: ");
+        QStringList lines = output.split('\n');
+        if (lines.length() > 0) {
+            QString line = lines.first().replace(re, "");
+            m_image->setErrorString(line);
+        }
+        m_image->setStatus(ReleaseVariant::FAILED);
+    }
+    else {
+        m_image->setStatus(ReleaseVariant::FINISHED);
+    }
 }
 
 void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) {
