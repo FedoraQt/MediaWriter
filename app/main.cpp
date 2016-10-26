@@ -65,6 +65,7 @@ int main(int argc, char **argv)
     QApplication::setApplicationName("MediaWriter");
 
     QApplication app(argc, argv);
+    app.setAttribute(Qt::AA_EnableHighDpiScaling);
 
     options.parse(app.arguments());
 

@@ -44,7 +44,7 @@ ApplicationWindow {
 
     property real scalingFactor: Math.ceil(Screen.pixelDensity * 25.4) / 96 > 1 ? Math.ceil(Screen.pixelDensity * 25.4) / 96 : 1
     function $(x) {
-        return x * scalingFactor
+        return x
     }
 
     property bool canGoBack: false
