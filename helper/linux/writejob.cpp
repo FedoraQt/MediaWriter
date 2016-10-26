@@ -166,6 +166,4 @@ void WriteJob::work()
         qApp->exit(1);
         break;
     }
-
-    qApp->exit(0);
 }
