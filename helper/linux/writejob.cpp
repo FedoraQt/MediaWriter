@@ -49,12 +49,13 @@ WriteJob::WriteJob(const QString &what, const QString &where)
 }
 
 int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
-    ((WriteJob*)data)->onMediaCheckAdvanced(offset, total);
+    return ((WriteJob*)data)->onMediaCheckAdvanced(offset, total);
 }
 
 int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
     out << offset << "\n";
     out.flush();
+    return 0;
 }
 
 void WriteJob::work()
