@@ -69,6 +69,8 @@ ApplicationWindow {
             onLastRestoreableChanged: {
                 if (drives.lastRestoreable != null && !dlDialog.visible)
                     deviceNotification.open = true
+                if (!drives.lastRestoreable)
+                    deviceNotification.open = false
             }
         }
     }
