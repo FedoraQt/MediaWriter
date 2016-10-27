@@ -227,7 +227,6 @@ void WinDrive::write(ReleaseVariant *data) {
     args << data->iso();
     args << QString("%1").arg(m_device);
     m_child->setArguments(args);
-    m_child->setProcessChannelMode(QProcess::ForwardedErrorChannel);
 
     m_progress->setTo(data->size());
     m_image->setStatus(ReleaseVariant::WRITING);
