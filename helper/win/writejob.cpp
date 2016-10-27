@@ -27,7 +27,10 @@
 
 #include <QDebug>
 
+#include <io.h>
 #include <windows.h>
+
+#include "isomd5/libcheckisomd5.h"
 
 WriteJob::WriteJob(const QString &what, const QString &where)
     : QObject(nullptr), what(what), dd(new QProcess(this))
@@ -36,6 +39,16 @@ WriteJob::WriteJob(const QString &what, const QString &where)
     this->where = where.toInt(&ok);
 
     QTimer::singleShot(0, this, &WriteJob::work);
+}
+
+int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
+    return ((WriteJob*)data)->onMediaCheckAdvanced(offset, total);
+}
+
+int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
+    out << offset << "\n";
+    out.flush();
+    return 0;
 }
 
 HANDLE WriteJob::openDrive(int physicalDriveNumber) {
@@ -230,12 +243,33 @@ void WriteJob::work() {
             break;
     }
 
-    unlockDrive(drive);
     CloseHandle(drive);
 
-    // to have the strings translated
-    tr("Your drive is probably damaged.");
-    tr("Unexpected error occurred during media check.");
+    out << "CHECK\n";
+    out.flush();
+
+    drive = openDrive(where);
+
+    switch (mediaCheckFD(_open_osfhandle(reinterpret_cast<intptr_t>(drive), 0), &WriteJob::staticOnMediaCheckAdvanced, this)) {
+    case ISOMD5SUM_CHECK_NOT_FOUND:
+    case ISOMD5SUM_CHECK_PASSED:
+        err << "OK\n";
+        err.flush();
+        qApp->exit(0);
+        break;
+    case ISOMD5SUM_CHECK_FAILED:
+        err << tr("Your drive is probably damaged.") << "\n";
+        err.flush();
+        qApp->exit(1);
+        break;
+    default:
+        err << tr("Unexpected error occurred during media check.") << "\n";
+        err.flush();
+        qApp->exit(1);
+        break;
+    }
+
+    unlockDrive(drive);
 
     qApp->exit(0);
 }
