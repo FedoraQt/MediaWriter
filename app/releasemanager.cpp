@@ -78,7 +78,7 @@ void ReleaseManager::fetchReleases() {
     m_beingUpdated = true;
     emit beingUpdatedChanged();
 
-    DownloadManager::instance()->fetchPageAsync(this, "https://tmp.elrod.me/script-output.json");
+    DownloadManager::instance()->fetchPageAsync(this, "https://fedoraproject.org/releases.json");
 }
 
 bool ReleaseManager::beingUpdated() const {
