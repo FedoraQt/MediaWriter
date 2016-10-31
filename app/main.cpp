@@ -23,6 +23,7 @@
 #include <QLoggingCategory>
 #include <QTranslator>
 #include <QDebug>
+#include <QScreen>
 
 #include "drivemanager.h"
 #include "releasemanager.h"
@@ -64,8 +65,8 @@ int main(int argc, char **argv)
     QApplication::setOrganizationName("fedoraproject.org");
     QApplication::setApplicationName("MediaWriter");
 
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication app(argc, argv);
-    app.setAttribute(Qt::AA_EnableHighDpiScaling);
 
     options.parse(app.arguments());
 
@@ -79,6 +80,10 @@ int main(int argc, char **argv)
     engine.rootContext()->setContextProperty("downloadManager", DownloadManager::instance());
     engine.rootContext()->setContextProperty("mediawriterVersion", MEDIAWRITER_VERSION);
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+
+    for (auto i : app.screens()) {
+        qCritical() << i->devicePixelRatio();
+    }
 
     return app.exec();
 }
