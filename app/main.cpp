@@ -58,6 +58,8 @@ int main(int argc, char **argv)
     setenv("GDK_BACKEND", "x11", 1);
 #endif
 
+    setenv("QT_AUTO_SCREEN_SCALE_FACTOR", "1", 1);
+
     qInstallMessageHandler(myMessageOutput); // Install the handler
 
     QApplication::setOrganizationDomain("fedoraproject.org");

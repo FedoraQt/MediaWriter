@@ -190,7 +190,8 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         version = re.capturedTexts()[1].toInt();
         status = re.capturedTexts()[2];
 
-        updateUrl(release, version, status, releaseDate, arch, url, sha256, size);
+        if (!release.isEmpty() && !url.isEmpty() && !arch.isEmpty())
+            updateUrl(release, version, status, releaseDate, arch, url, sha256, size);
     }
 
     m_beingUpdated = false;
