@@ -81,9 +81,5 @@ int main(int argc, char **argv)
     engine.rootContext()->setContextProperty("mediawriterVersion", MEDIAWRITER_VERSION);
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
-    for (auto i : app.screens()) {
-        qCritical() << i->devicePixelRatio();
-    }
-
     return app.exec();
 }
