@@ -115,6 +115,7 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &ur
         m_current->deleteLater();
 
     m_current = new Download(this, receiver, bareFileName, progress);
+    connect(m_current, &QObject::destroyed, [&](){ m_current = nullptr; });
     fetchPageAsync(this, "https://mirrors.fedoraproject.org/mirrorlist?path=" + url.path());
 
     return QString();
