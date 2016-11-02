@@ -252,6 +252,8 @@ void Download::handleNewReply(QNetworkReply *reply) {
     if (m_reply)
         m_reply->deleteLater();
     m_reply = reply;
+    // have only a 64MB buffer in case the user is on a very fast network
+    m_reply->setReadBufferSize(64*1024*1024);
 
     connect(m_reply, &QNetworkReply::readyRead, this, &Download::onReadyRead);
     connect(m_reply, static_cast<void(QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), this, &Download::onError);
@@ -331,15 +333,21 @@ void Download::onFinished() {
         if (m_file) {
             m_file->rename(m_path);  // move the .part file to the final path
             m_receiver->onFileDownloaded(m_file->fileName(), m_hash.result().toHex());
+            m_reply->deleteLater();
+            m_reply = nullptr;
+            deleteLater();
         }
         else {
             m_receiver->onStringDownloaded(m_buf);
+            m_reply->deleteLater();
+            m_reply = nullptr;
             deleteLater();
         }
     }
 }
 
 void Download::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) {
+    Q_UNUSED(bytesReceived);
     Q_UNUSED(bytesTotal);
     /*
     m_bytesDownloaded = m_previousSize + bytesReceived;
