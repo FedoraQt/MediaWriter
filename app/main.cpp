@@ -64,8 +64,10 @@ int main(int argc, char **argv)
     QApplication::setOrganizationDomain("fedoraproject.org");
     QApplication::setOrganizationName("fedoraproject.org");
     QApplication::setApplicationName("MediaWriter");
-
+#ifndef __linux
+    // qt x11 scaling is broken
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
     QApplication app(argc, argv);
 
     options.parse(app.arguments());
