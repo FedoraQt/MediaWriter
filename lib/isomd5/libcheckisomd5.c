@@ -272,14 +272,12 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
             }
         }
         offset = offset + nread;
-        if (cb)
+        if (cb && offset / nread % 256 == 0)
           if(cb(cbdata, offset, isosize - skipsectors*2048)) return ISOMD5SUM_CHECK_ABORTED;
     }
 
     if (cb)
         cb(cbdata, isosize, isosize - skipsectors*2048);
-
-    sleep(1);
 
     free(buf);
 
