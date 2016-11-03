@@ -125,12 +125,16 @@ ApplicationWindow {
         }
     }
 
-    RestoreDialog {
-        id: restoreDialog
+    property alias restoreDialog: restoreLoader.item
+    Loader {
+        id: restoreLoader
+        source: Qt.platform.os == "linux" ? "components/LinuxRestoreDialog.qml" : "components/RestoreDialog.qml"
     }
 
-    DownloadDialog {
-        id: dlDialog
+    property alias dlDialog: dlLoader.item
+    Loader {
+        id: dlLoader
+        source: Qt.platform.os == "linux" ? "components/LinuxDownloadDialog.qml" : "components/DownloadDialog.qml"
     }
 
     FileDialog {
@@ -138,7 +142,7 @@ ApplicationWindow {
         nameFilters: [ qsTr("Image files (*.iso *.raw)"), qsTr("All files (*)")]
         onAccepted: {
             releases.setLocalFile(fileUrl)
-            dlDialog.open()
+            dlDialog.visible = true
         }
     }
 }

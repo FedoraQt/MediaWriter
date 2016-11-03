@@ -163,7 +163,7 @@ Item {
         onClicked: {
             if (release.isLocal) {
                 releases.selectedIndex = index
-                fileDialog.open()
+                fileDialog.visible = true
             }
             else {
                 imageList.currentIndex = index

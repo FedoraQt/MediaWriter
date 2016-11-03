@@ -55,7 +55,6 @@ void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QS
 int main(int argc, char **argv)
 {
 #ifdef __linux
-    setenv("QSG_RENDER_LOOP", "threaded", 1);
     setenv("GDK_BACKEND", "x11", 1);
 #endif
 
