@@ -24,6 +24,7 @@
 #include <QDir>
 #include <QApplication>
 #include <QAbstractEventDispatcher>
+#include <QNetworkProxyFactory>
 
 // TODO: everything Q_UNUSED
 
@@ -199,6 +200,7 @@ void DownloadManager::onDownloadError(const QString &message) {
 }
 
 DownloadManager::DownloadManager() {
+    QNetworkProxyFactory::setUseSystemConfiguration (true);
 }
 
 
