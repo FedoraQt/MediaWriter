@@ -221,10 +221,16 @@ void WriteJob::work() {
     memset(&osWrite, 0, sizeof(osWrite));
     osWrite.hEvent = 0;
 
+    uint64_t cnt = 0;
     QByteArray buffer;
     QFile isoFile(what);
     isoFile.open(QIODevice::ReadOnly);
-    uint64_t cnt = 0;
+    if (!isoFile.isOpen()) {
+        err << tr("Source image is not readable");
+        err.flush();
+        qApp->exit(1);
+        return;
+    }
 
     while (true) {
         buffer = isoFile.read(BLOCK_SIZE);
