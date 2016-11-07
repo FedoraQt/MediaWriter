@@ -141,6 +141,8 @@ QString DownloadManager::fetchPage(const QString &url) {
 QNetworkReply *DownloadManager::tryAnotherMirror() {
     if (m_mirrorCache.isEmpty())
         return nullptr;
+    if (!m_current)
+        return nullptr;
 
     QNetworkRequest request;
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
@@ -179,7 +181,8 @@ void DownloadManager::onStringDownloaded(const QString &text) {
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
 
     m_mirrorCache.removeFirst();
-    m_current->handleNewReply(m_manager.get(request));
+    if (m_current->hasCatchedUp())
+        m_current->handleNewReply(m_manager.get(request));
 }
 
 void DownloadManager::onDownloadError(const QString &message) {
@@ -214,32 +217,15 @@ Download::Download(DownloadManager *parent, DownloadReceiver *receiver, const QS
     connect(&m_timer, &QTimer::timeout, this, &Download::onTimedOut);
 
     if (!m_path.isEmpty()) {
-        m_file = new QFile(m_path + ".part");
+        m_file = new QFile(m_path + ".part", this);
 
         if (m_file->exists()) {
             m_bytesDownloaded = m_file->size();
-
-            // first precompute the SHA hash of the already downloaded part
-            m_file->open(QIODevice::ReadOnly);
-
-            m_previousSize = 0;
-            while (!m_file->atEnd()) {
-                QByteArray buffer = m_file->read(1024*1024);
-                m_previousSize += buffer.size();
-                m_hash.addData(buffer);
-                if (progress && m_previousSize < progress->to())
-                    progress->setValue(m_previousSize);
-                m_bytesDownloaded = m_previousSize;
-                qApp->eventDispatcher()->processEvents(QEventLoop::AllEvents);
-            }
-
-            m_file->close();
-            m_file->open(QIODevice::Append);
-        }
-        else {
-            m_file->open(QIODevice::WriteOnly);
+            m_catchingUp = true;
         }
     }
+
+    QTimer::singleShot(0, this, &Download::start);
 }
 
 DownloadManager *Download::manager() {
@@ -257,22 +243,64 @@ void Download::handleNewReply(QNetworkReply *reply) {
     m_reply = reply;
     // have only a 64MB buffer in case the user is on a very fast network
     m_reply->setReadBufferSize(64*1024*1024);
+    m_reply->setParent(this);
 
     connect(m_reply, &QNetworkReply::readyRead, this, &Download::onReadyRead);
     connect(m_reply, static_cast<void(QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), this, &Download::onError);
     connect(m_reply, &QNetworkReply::sslErrors, this, &Download::onSslErrors);
     connect(m_reply, &QNetworkReply::finished, this, &Download::onFinished);
-    if (m_progress)
+    if (m_progress) {
         connect(reply, &QNetworkReply::downloadProgress, this, &Download::onDownloadProgress);
+    }
+
+    m_timer.start(15000);
 
     if (m_reply->bytesAvailable() > 0)
         onReadyRead();
 
-    m_timer.start(15000);
 }
 
 qint64 Download::bytesDownloaded() {
     return m_bytesDownloaded;
+}
+
+bool Download::hasCatchedUp() {
+    return !m_catchingUp;
+}
+
+void Download::start() {
+    if (m_catchingUp) {
+        // first precompute the SHA hash of the already downloaded part
+        m_file->open(QIODevice::ReadOnly);
+        m_previousSize = 0;
+
+        QTimer::singleShot(0, this, &Download::catchUp);
+    }
+    else if (!m_path.isEmpty()) {
+            m_file->open(QIODevice::WriteOnly);
+    }
+}
+
+void Download::catchUp() {
+
+    QByteArray buffer = m_file->read(1024*1024);
+    m_previousSize += buffer.size();
+    m_hash.addData(buffer);
+    if (m_progress && m_previousSize < m_progress->to())
+        m_progress->setValue(m_previousSize);
+    m_bytesDownloaded = m_previousSize;
+
+    if (!m_file->atEnd()) {
+        QTimer::singleShot(0, this, &Download::catchUp);
+    }
+    else {
+        m_file->close();
+        m_file->open(QIODevice::Append);
+        m_catchingUp = false;
+        auto mirror = DownloadManager::instance()->tryAnotherMirror();
+        if (mirror)
+            handleNewReply(mirror);
+    }
 }
 
 void Download::onReadyRead() {
@@ -282,7 +310,7 @@ void Download::onReadyRead() {
         m_bytesDownloaded += buf.size();
 
         if (m_progress && m_reply->header(QNetworkRequest::ContentLengthHeader).isValid())
-            m_progress->setTo(m_reply->header(QNetworkRequest::ContentLengthHeader).toULongLong());
+            m_progress->setTo(m_reply->header(QNetworkRequest::ContentLengthHeader).toULongLong() + m_previousSize);
 
         if (m_progress)
             m_progress->setValue(m_bytesDownloaded);

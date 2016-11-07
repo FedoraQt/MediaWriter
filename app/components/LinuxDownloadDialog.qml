@@ -335,9 +335,9 @@ Rectangle {
                         text: qsTr("Cancel")
                         enabled: releases.selected.version.variant.status != Variant.FINISHED
                         onClicked: {
+                            root.visible = false
                             releases.selected.version.variant.resetStatus()
                             writeImmediately.checked = false
-                            root.visible = false
                         }
                     }
                     AdwaitaButton {

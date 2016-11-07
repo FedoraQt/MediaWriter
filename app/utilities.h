@@ -83,7 +83,12 @@ public:
     void handleNewReply(QNetworkReply *reply);
     qint64 bytesDownloaded();
 
+    bool hasCatchedUp();
+
 private slots:
+    void start();
+    void catchUp();
+
     void onReadyRead();
     void onError(QNetworkReply::NetworkError code);
     void onSslErrors(const QList<QSslError> errors);
@@ -99,6 +104,7 @@ private:
     QString m_path { };
     Progress *m_progress { nullptr };
     QTimer m_timer { };
+    bool m_catchingUp { false };
 
     QFile *m_file { nullptr };
     QByteArray m_buf { };
