@@ -47,8 +47,12 @@ void RestoreJob::work() {
     m_diskpart.write("assign\r\n");
     m_diskpart.write("exit\r\n");
 
-    if (m_diskpart.waitForFinished())
+    if (m_diskpart.waitForFinished()) {
         qApp->exit(0);
-    else
+    }
+    else {
+        err << m_diskpart.readAllStandardError();
+        err.flush();
         qApp->exit(1);
+    }
 }
