@@ -30,6 +30,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
+#include <inttypes.h>
 
 #include "md5.h"
 #include "libcheckisomd5.h"
@@ -382,7 +383,7 @@ int printMD5SUM(char *file) {
     printf("%s:   %s\n", file, mediasum);
     if ( (strlen(fragmentsums) > 0) && (fragmentcount > 0) ) {
         printf("Fragment sums: %s\n", fragmentsums);
-        printf("Fragment count: %lld\n", fragmentcount); 
+        printf("Fragment count: %"PRId64"\n", fragmentcount);
         printf("Supported ISO: %s\n", supported ? "yes" : "no");
     }
 
