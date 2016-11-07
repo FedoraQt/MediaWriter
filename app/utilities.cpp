@@ -175,14 +175,16 @@ void DownloadManager::onStringDownloaded(const QString &text) {
     if (!mirrors.isEmpty())
         m_mirrorCache = mirrors;
 
+    if (!m_current->hasCatchedUp())
+        return;
+
     QNetworkRequest request;
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(m_mirrorCache.first());
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
 
     m_mirrorCache.removeFirst();
-    if (m_current->hasCatchedUp())
-        m_current->handleNewReply(m_manager.get(request));
+    m_current->handleNewReply(m_manager.get(request));
 }
 
 void DownloadManager::onDownloadError(const QString &message) {
@@ -277,7 +279,7 @@ void Download::start() {
         QTimer::singleShot(0, this, &Download::catchUp);
     }
     else if (!m_path.isEmpty()) {
-            m_file->open(QIODevice::WriteOnly);
+        m_file->open(QIODevice::WriteOnly);
     }
 }
 
@@ -333,6 +335,8 @@ void Download::onReadyRead() {
 
 void Download::onError(QNetworkReply::NetworkError code) {
     qWarning() << "Error" << code << "reading from" << m_reply->url() << ":" << m_reply->errorString();
+    if (m_path.isEmpty())
+        return;
 
     QNetworkReply *reply = manager()->tryAnotherMirror();
     if (reply)
@@ -393,6 +397,9 @@ void Download::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) {
 void Download::onTimedOut() {
     qWarning() << m_reply->url() << "timed out. Trying another mirror.";
     m_reply->deleteLater();
+    if (m_path.isEmpty())
+        return;
+
     QNetworkReply *reply = manager()->tryAnotherMirror();
     if (reply)
         handleNewReply(reply);
