@@ -134,9 +134,10 @@ bool WriteJob::cleanDrive(HANDLE drive) {
                          NULL, 0,
                          &pdg, sizeof(pdg),
                          nullptr,
-                         (LPOVERLAPPED) NULL))
+                         &overlap))
         return false;
 
+    memset(&overlap, 0, sizeof(overlap));
     uint64_t deviceBytes = pdg.Cylinders.QuadPart * pdg.TracksPerCylinder * pdg.SectorsPerTrack * pdg.BytesPerSector;
 
 
