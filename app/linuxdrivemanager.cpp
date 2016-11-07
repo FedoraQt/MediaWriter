@@ -260,7 +260,9 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
         return;
 
     if (exitCode != 0) {
-        m_image->setErrorString(m_process->readAllStandardError());
+        QString errorMessage = m_process->readAllStandardError();
+        qWarning() << "Writing failed:" << errorMessage;
+        m_image->setErrorString(errorMessage);
         m_image->setStatus(ReleaseVariant::FAILED);
     }
     else {
@@ -270,6 +272,7 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
 
 void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status) {
     if (exitCode != 0) {
+        qWarning() << "Drive restoration failed:" << m_process->readAllStandardError();
         m_restoreStatus = RESTORE_ERROR;
     }
     else {

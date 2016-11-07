@@ -86,6 +86,7 @@ void RestoreJob::work()
         qApp->exit(1);
         return;
     }
+    err.flush();
 
     qApp->exit(0);
 }
