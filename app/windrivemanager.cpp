@@ -64,7 +64,8 @@ QSet<int> WinDriveProvider::findPhysicalDrive(char driveLetter) {
     BOOL bResult = DeviceIoControl(hDevice, IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS, NULL, 0, &vde, sizeof(vde), &bytesReturned, NULL);
 
     if (!bResult) {
-        qCritical() << "Could not get disk extents";
+        qWarning() << "Could not get disk extents for" << drivePath;
+        return ret;
     }
 
     for (uint i = 0; i < vde.NumberOfDiskExtents; i++) {
