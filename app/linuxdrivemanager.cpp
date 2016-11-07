@@ -256,6 +256,7 @@ void LinuxDrive::onReadyRead() {
 }
 
 void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
+    Q_UNUSED(status);
     if (!m_process)
         return;
 
@@ -271,6 +272,7 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
 }
 
 void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status) {
+    Q_UNUSED(status);
     if (exitCode != 0) {
         qWarning() << "Drive restoration failed:" << m_process->readAllStandardError();
         m_restoreStatus = RESTORE_ERROR;
@@ -282,6 +284,7 @@ void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status) {
 }
 
 void LinuxDrive::onErrorOccurred(QProcess::ProcessError e) {
+    Q_UNUSED(e);
     if (!m_process)
         return;
 

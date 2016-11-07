@@ -53,6 +53,7 @@ int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long
 }
 
 int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
+    Q_UNUSED(total);
     out << offset << "\n";
     out.flush();
     return 0;

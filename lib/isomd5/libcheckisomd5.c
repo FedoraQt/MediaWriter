@@ -383,7 +383,11 @@ int printMD5SUM(char *file) {
     printf("%s:   %s\n", file, mediasum);
     if ( (strlen(fragmentsums) > 0) && (fragmentcount > 0) ) {
         printf("Fragment sums: %s\n", fragmentsums);
+#ifdef _WIN32
         printf("Fragment count: %"PRId64"\n", fragmentcount);
+#else
+        printf("Fragment count: %lld\n", fragmentcount);
+#endif
         printf("Supported ISO: %s\n", supported ? "yes" : "no");
     }
 
