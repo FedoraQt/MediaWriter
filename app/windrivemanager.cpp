@@ -65,6 +65,7 @@ QSet<int> WinDriveProvider::findPhysicalDrive(char driveLetter) {
 
     if (!bResult) {
         qWarning() << "Could not get disk extents for" << drivePath;
+        ::CloseHandle(hDevice);
         return ret;
     }
 
@@ -80,6 +81,7 @@ QSet<int> WinDriveProvider::findPhysicalDrive(char driveLetter) {
             ret.insert(vde.Extents[i].DiskNumber);
     }
 
+    ::CloseHandle(hDevice);
     return ret;
 }
 
