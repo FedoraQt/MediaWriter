@@ -54,6 +54,11 @@ Rectangle {
         width: $(480)
         height: textItem.height + buttonItem.height + $(48)
         color: palette.window
+        radius: $(3)
+        border {
+            width: 1
+            color: "#777777"
+        }
         anchors.centerIn: parent
         clip: true
         Item {
