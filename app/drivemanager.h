@@ -30,6 +30,18 @@ class DriveProvider;
 class Drive;
 class UdisksDrive;
 
+/**
+ * @brief The DriveManager class
+ *
+ * The class providing the list of all available portable drives to the UI
+ *
+ * Platform-independent
+ *
+ * @property length count of the drives
+ * @property selected the selected drive
+ * @property selectedIndex the index of the selected drive
+ * @property lastRestoreable the most recently connected restoreable drive
+ */
 class DriveManager : public QAbstractListModel
 {
     Q_OBJECT
@@ -73,6 +85,15 @@ private:
     DriveProvider *m_provider { nullptr };
 };
 
+/**
+ * @brief The DriveProvider class
+ *
+ * An "abstract" class providing a signal interface to the @ref DriveManager class.
+ *
+ * Should be reimplemented for every platform and the appropriate child class constructor should be added to the @ref create method.
+ *
+ * It reports coming and going drives through the @ref driveConnected and @ref driveRemoved signals.
+ */
 class DriveProvider : public QObject {
     Q_OBJECT
 public:
@@ -89,7 +110,14 @@ protected:
 /**
  * @brief The Drive class
  *
- * Contains a fake drive implementation
+ * Contains a non-drive implementation. The methods can be reimplemented if necessary. Usually the child classes will just need to modify the values of the properties of the class.
+ *
+ * Should be reimplemented for every platform. The child instances should be created and handled by the @ref DriveProvider class.
+ *
+ * @property progress the @ref Progress object reporting the progress of writing the image
+ * @property name name of the drive, should be human-readable, in ideal case the model of the drive and its size
+ * @property size the size of the drive, in bytes
+ * @property restoreStatus the status of restoring the drive
  */
 class Drive : public QObject {
     Q_OBJECT

@@ -48,11 +48,30 @@ class ReleaseArchitecture;
  *                               -> i686
  *                    -> Netinst -> x86_64
  *                               -> i686
+ *
+ * Variant can be downloaded.
+ * Variant can be written to a drive - that's handled by the target drive object itself.
+ *
+ * There should be no platform-dependent code in this file nor in potential child classes.
  */
 
 
 /**
  * @brief The ReleaseManager class
+ *
+ * The main entry point to access all the available releases.
+ *
+ * It is a QSortFilterProxyModel - that means the actual release data has to be provided first by the @ref ReleaseListModel .
+ *
+ * It's also a @ref DownloadReceiver - it tries to fetch the list of current releases when the app is started
+ *
+ * @property frontPage is true if the application is on the front page
+ * @property beingUpdated is true when the background data update is still running (waiting for data)
+ * @property filterArchitecture index of the currently selected architecture
+ * @property filterText user-entered text filter
+ * @property selected the currently selected release
+ * @property selectedIndex the index of the currently selected release
+ * @property architectures the list of the avilable architectures
  */
 class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver {
     Q_OBJECT
@@ -118,6 +137,8 @@ private:
 
 /**
  * @brief The ReleaseListModel class
+ *
+ * The list model containing all available releases without filtering.
  */
 class ReleaseListModel : public QAbstractListModel {
     Q_OBJECT
@@ -139,6 +160,25 @@ private:
 
 /**
  * @brief The Release class
+ *
+ * The class representing a fedora flavor, like for example Workstation or KDE Plasma Desktop spin.
+ *
+ * It can have multiple versions.
+ *
+ * @property index the index in the list
+ * @property name the name of the release, like "Fedora Workstation"
+ * @property summary the summary describing the release - displayed on the main screen
+ * @property description the extensive description of the release - displayed on the detail screen
+ * @property source one of the sources listed in the @ref Source enum
+ * @property isLocal true if @ref source is @ref Source::LOCAL
+ * @property category a string representation of @ref source
+ * @property icon path of the icon of this release
+ * @property screenshots a list of paths to screenshots (typically HTTP URLs)
+ * @property prerelease true if the release contains a prerelease version of a future version
+ * @property versions a list of available versions of the @ref ReleaseVersion class
+ * @property versionNames a list of the names of the available versions
+ * @property version the currently selected @ref ReleaseVersion
+ * @property versionIndex the index of the currently selected @ref ReleaseVersion
  */
 class Release : public QObject {
     Q_OBJECT
@@ -212,6 +252,16 @@ private:
 
 /**
  * @brief The ReleaseVersion class
+ *
+ * Represents the version of the release. It can have multiple variants (like a different architecture or netinst/live)
+ *
+ * @property number the version number (probably should change to string)
+ * @property name the name of the release (version + alpha/beta/etc)
+ * @property status the release status of the version (alpha - beta - release candidate - final)
+ * @property releaseDate the release date
+ * @property variants list of the version's variants, like architectures
+ * @property variant the currently selected variant
+ * @property variantIndex the index of the currently selected variant
  */
 class ReleaseVersion : public QObject {
     Q_OBJECT
@@ -269,6 +319,20 @@ private:
 
 /**
  * @brief The ReleaseVariant class
+ *
+ * The variant of the release version. Usually it represents different architectures. It's possible to differentiate netinst and dvd images here too.
+ *
+ * @property arch architecture of the variant
+ * @property type the type of the variant, like live or netinst
+ * @property name the name of the release, generated from @ref arch and @ref type
+ * @property url the URL pointing to the image
+ * @property shaHash SHA256 hash of the image
+ * @property iso the path to the image on the drive
+ * @property size the size of the image in bytes
+ * @property progress the progress object of the image - reports the progress of download
+ * @property status status of the variant - if it's downloading, being written, etc.
+ * @property statusString string representation of the @ref status
+ * @property errorString a string better describing the current error @ref status of the variant
  */
 class ReleaseVariant : public QObject, public DownloadReceiver {
     Q_OBJECT
@@ -377,6 +441,12 @@ private:
 
 /**
  * @brief The ReleaseArchitecture class
+ *
+ * Class representing the possible architectures of the releases
+ *
+ * @property abbreviation short names for the architecture, like x86_64
+ * @property description a better description what the short stands for, like Intel 64bit
+ * @property details an even longer description of the architecture
  */
 class ReleaseArchitecture : public QObject {
     Q_OBJECT
