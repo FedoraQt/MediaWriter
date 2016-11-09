@@ -28,7 +28,7 @@ import MediaWriter 1.0
 
 Rectangle {
     id: root
-    //title: qsTr("Write %1").arg(releases.selected.name)
+    //title: qsTranslate("DownloadDialog", "Write %1").arg(releases.selected.name)
 
     visible: false
     color: "#66000000"
@@ -181,7 +181,7 @@ Rectangle {
                         verticalAlignment: Text.AlignVCenter
                         wrapMode: Text.Wrap
                         font.pixelSize: $(12)
-                        text: "<font color=\"gray\">" + qsTr("Selected:") + "</font> " + (releases.selected.version.variant.iso ? (((String)(releases.selected.version.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
+                        text: "<font color=\"gray\">" + qsTranslate("DownloadDialog", "Selected:") + "</font> " + (releases.selected.version.variant.iso ? (((String)(releases.selected.version.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTranslate("DownloadDialog", "None") + "</font>"))
                     }
                 }
             }
@@ -203,10 +203,10 @@ Rectangle {
                     font.pixelSize: $(12)
                     property double leftSize: releases.selected.version.variant.progress.to - releases.selected.version.variant.progress.value
                     property string leftStr:  leftSize <= 0                    ? "" :
-                                             (leftSize < 1024)                 ? qsTr("(%1 B left)").arg(leftSize) :
-                                             (leftSize < (1024 * 1024))        ? qsTr("(%1 KB left)").arg((leftSize / 1024).toFixed(1)) :
-                                             (leftSize < (1024 * 1024 * 1024)) ? qsTr("(%1 MB left)").arg((leftSize / 1024 / 1024).toFixed(1)) :
-                                                                                 qsTr("(%1 GB left)").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
+                                             (leftSize < 1024)                 ? qsTranslate("DownloadDialog", "(%1 B left)").arg(leftSize) :
+                                             (leftSize < (1024 * 1024))        ? qsTranslate("DownloadDialog", "(%1 KB left)").arg((leftSize / 1024).toFixed(1)) :
+                                             (leftSize < (1024 * 1024 * 1024)) ? qsTranslate("DownloadDialog", "(%1 MB left)").arg((leftSize / 1024 / 1024).toFixed(1)) :
+                                                                                 qsTranslate("DownloadDialog", "(%1 GB left)").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
                     text: releases.selected.version.variant.statusString + (releases.selected.version.variant.status == Variant.DOWNLOADING ? (" " + leftStr) : "")
                 }
                 Item {
@@ -228,7 +228,7 @@ Rectangle {
                     id: writeImmediately
                     enabled: driveCombo.count && opacity > 0.0
                     opacity: (releases.selected.version.variant.status == Variant.DOWNLOADING || (releases.selected.version.variant.status == Variant.DOWNLOAD_VERIFYING && releases.selected.version.variant.progress.ratio < 0.95)) ? 1.0 : 0.0
-                    text: qsTr("Write the image immediately when the download is finished")
+                    text: qsTranslate("DownloadDialog", "Write the image immediately when the download is finished")
                 }
             }
 
@@ -303,7 +303,7 @@ Rectangle {
                         Text {
                             height: parent.height
                             verticalAlignment: Text.AlignVCenter
-                            text: qsTr("There are no portable drives connected")
+                            text: qsTranslate("DownloadDialog", "There are no portable drives connected")
                             color: "gray"
                             font.pixelSize: $(12)
                         }
@@ -332,7 +332,7 @@ Rectangle {
                             bottom: parent.bottom
                             rightMargin: $(6)
                         }
-                        text: qsTr("Cancel")
+                        text: qsTranslate("DownloadDialog", "Cancel")
                         enabled: releases.selected.version.variant.status != Variant.FINISHED
                         onClicked: {
                             root.visible = false
@@ -356,11 +356,11 @@ Rectangle {
                                   releases.selected.version.variant.status == Variant.FAILED) && drives.length > 0)
                                  || releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD
                                  || releases.selected.version.variant.status == Variant.FAILED_VERIFICATION
-                        text: releases.selected.version.variant.status == Variant.FINISHED                ? qsTr("Close") :
+                        text: releases.selected.version.variant.status == Variant.FINISHED                ? qsTranslate("DownloadDialog", "Close") :
                               (releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ||
                                releases.selected.version.variant.status == Variant.FAILED_VERIFICATION ||
-                               releases.selected.version.variant.status == Variant.FAILED               ) ? qsTr("Retry") :
-                                                                                                            qsTr("Write to disk")
+                               releases.selected.version.variant.status == Variant.FAILED               ) ? qsTranslate("DownloadDialog", "Retry") :
+                                                                                                            qsTranslate("DownloadDialog", "Write to disk")
                         onClicked: {
                             if (releases.selected.version.variant.status == Variant.READY || releases.selected.version.variant.status == Variant.FAILED || releases.selected.version.variant.status == Variant.FAILED_VERIFICATION) {
                                 drives.selected.write(releases.selected.version.variant)

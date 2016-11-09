@@ -28,7 +28,7 @@ import MediaWriter 1.0
 
 Rectangle {
     id: root
-    //title: drives.lastRestoreable ? qsTr("Restore %1?").arg(drives.lastRestoreable.name) : ""
+    //title: drives.lastRestoreable ? qsTranslate("RestoreDialog", "Restore %1?").arg(drives.lastRestoreable.name) : ""
     width: mainWindow.width
     height: mainWindow.height
     visible: false
@@ -76,7 +76,7 @@ Rectangle {
                 Text {
                     id: warningText
                     width: wrapper.width
-                    text: qsTr( "<p align=\"justify\">
+                    text: qsTranslate("RestoreDialog",  "<p align=\"justify\">
                                                 To reclaim all space available on the drive, it has to be restored to its factory settings.
                                                 The live system and all saved data will be deleted.
                                             </p>
@@ -108,7 +108,7 @@ Rectangle {
                     Text {
                         Layout.alignment: Qt.AlignHCenter
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                        text: qsTr("<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
+                        text: qsTranslate("RestoreDialog", "<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
                         font.pixelSize: $(12)
                     }
                 }
@@ -122,7 +122,7 @@ Rectangle {
                     Text {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: qsTr("Your drive was successfully restored!")
+                        text: qsTranslate("RestoreDialog", "Your drive was successfully restored!")
                         font.pixelSize: $(12)
                     }
                 }
@@ -136,7 +136,7 @@ Rectangle {
                     Text {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: qsTr("Unfortunately, an error occurred during the process.<br>Please try restoring the drive using your system tools.")
+                        text: qsTranslate("RestoreDialog", "Unfortunately, an error occurred during the process.<br>Please try restoring the drive using your system tools.")
                         font.pixelSize: $(12)
                     }
                 }
@@ -148,7 +148,7 @@ Rectangle {
                 anchors.right: parent.right
                 spacing: $(12)
                 AdwaitaButton {
-                    text: qsTr("Cancel")
+                    text: qsTranslate("RestoreDialog", "Cancel")
                     visible: drives.lastRestoreable &&
                              drives.lastRestoreable.restoreStatus != Drive.RESTORED &&
                              drives.lastRestoreable.restoreStatus != Drive.RESTORE_ERROR ? true : false
@@ -156,7 +156,7 @@ Rectangle {
                     onClicked: root.visible = false
                 }
                 AdwaitaButton {
-                    text: drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? qsTr("Restore") : qsTr("Close")
+                    text: drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? qsTranslate("RestoreDialog", "Restore") : qsTranslate("RestoreDialog", "Close")
                     color: drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? "red" : "#628fcf"
                     textColor: "white"
                     enabled: !drives.lastRestoreable || drives.lastRestoreable.restoreStatus != Drive.RESTORING
