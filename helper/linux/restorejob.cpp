@@ -65,8 +65,9 @@ void RestoreJob::work()
     }
 
     QDBusReply<void> formatReply = device.call("Format", "dos", Properties());
-    if (!formatReply.isValid()) {
-        err << formatReply.error().message();
+    if (!formatReply.isValid() && formatReply.error().type() != QDBusError::NoReply) {
+        err << formatReply.error().message() << "\n";
+        err.flush();
         qApp->exit(1);
         return;
     }
@@ -75,15 +76,17 @@ void RestoreJob::work()
     QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", 0ULL, device.property("Size").toULongLong(), "", "", Properties());
     if (!partitionReply.isValid()) {
         err << partitionReply.error().message();
-        qApp->exit(1);
+        err.flush();
+        qApp->exit(2);
         return;
     }
     QString partitionPath = partitionReply.value().path();
     QDBusInterface partition("org.freedesktop.UDisks2", partitionPath, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus(), this);
     QDBusReply<void> formatPartitionReply = partition.call("Format", "vfat", Properties());
-    if (!formatPartitionReply.isValid()) {
-        err << formatPartitionReply.error().message();
-        qApp->exit(1);
+    if (!formatPartitionReply.isValid() && formatPartitionReply.error().type() != QDBusError::NoReply) {
+        err << formatPartitionReply.error().message() << "\n";
+        err.flush();
+        qApp->exit(3);
         return;
     }
     err.flush();
