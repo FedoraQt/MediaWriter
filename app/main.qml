@@ -125,16 +125,12 @@ ApplicationWindow {
         }
     }
 
-    property alias restoreDialog: restoreLoader.item
-    Loader {
-        id: restoreLoader
-        source: Qt.platform.os == "linux" ? "components/LinuxRestoreDialog.qml" : "components/RestoreDialog.qml"
+    RestoreDialog {
+        id: restoreDialog
     }
 
-    property alias dlDialog: dlLoader.item
-    Loader {
-        id: dlLoader
-        source: Qt.platform.os == "linux" ? "components/LinuxDownloadDialog.qml" : "components/DownloadDialog.qml"
+    DownloadDialog {
+        id: dlDialog
     }
 
     FileDialog {
