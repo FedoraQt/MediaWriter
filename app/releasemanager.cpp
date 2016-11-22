@@ -78,7 +78,7 @@ void ReleaseManager::fetchReleases() {
     m_beingUpdated = true;
     emit beingUpdatedChanged();
 
-    DownloadManager::instance()->fetchPageAsync(this, "https://getfedora.org/releases.json");
+    DownloadManager::instance()->fetchPageAsync(this, "https://pagure.io/fedora-websites/raw/master/f/getfedora.org/static/releases.json");
 }
 
 bool ReleaseManager::beingUpdated() const {
@@ -419,8 +419,8 @@ void Release::addVersion(ReleaseVersion *version) {
             emit versionsChanged();
             if (version->status() != ReleaseVersion::FINAL && m_selectedVersion >= i) {
                 m_selectedVersion++;
-                emit selectedVersionChanged();
             }
+            emit selectedVersionChanged();
             return;
         }
     }
