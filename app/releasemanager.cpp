@@ -419,8 +419,8 @@ void Release::addVersion(ReleaseVersion *version) {
             emit versionsChanged();
             if (version->status() != ReleaseVersion::FINAL && m_selectedVersion >= i) {
                 m_selectedVersion++;
-                emit selectedVersionChanged();
             }
+            emit selectedVersionChanged();
             return;
         }
     }
