@@ -24,6 +24,8 @@
 
 #include <windows.h>
 
+#include <cmath>
+
 WinDriveProvider::WinDriveProvider(DriveManager *parent)
     : DriveProvider(parent)
 {
