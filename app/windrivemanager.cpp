@@ -91,7 +91,7 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
     QString productId;
     QString serialNumber;
     uint64_t deviceBytes;
-
+    STORAGE_BUS_TYPE storageBus;
 
     BOOL bResult   = FALSE;                 // results flag
     //DWORD dwRet = NO_ERROR;
@@ -153,8 +153,9 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
         productVendor = QString((char*) pOutBuffer + pDeviceDescriptor->VendorIdOffset).trimmed();
     if (pDeviceDescriptor->SerialNumberOffset != 0)
         serialNumber = QString((char*) pOutBuffer + pDeviceDescriptor->SerialNumberOffset).trimmed();
+    storageBus = pDeviceDescriptor->BusType;
 
-    if (!removable)
+    if (!removable && storageBus != BusTypeUsb)
         return false;
 
     DISK_GEOMETRY pdg;
