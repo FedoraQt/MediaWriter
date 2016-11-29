@@ -24,6 +24,7 @@
 #include <QTextStream>
 #include <QProcess>
 #include <QFile>
+#include <QThread>
 
 #include <QDebug>
 
@@ -56,12 +57,12 @@ HANDLE WriteJob::openDrive(int physicalDriveNumber) {
     HANDLE hVol;
     QString drivePath = QString("\\\\.\\PhysicalDrive%0").arg(physicalDriveNumber);
 
-    hVol = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, FILE_FLAG_NO_BUFFERING, 0);
+    hVol = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0);
 
     if( hVol == INVALID_HANDLE_VALUE ) {
         TCHAR message[256];
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-        err << tr("Couldn't open the drive for writing") << " (" << message << ")\n";
+        err << tr("Couldn't open the drive for writing") << " (" << QString::fromWCharArray(message).trimmed() << ")\n";
         err.flush();
         return hVol;
     }
@@ -70,20 +71,35 @@ HANDLE WriteJob::openDrive(int physicalDriveNumber) {
 }
 
 bool WriteJob::lockDrive(HANDLE drive) {
+    int attempts = 0;
     DWORD status;
-    if (!DeviceIoControl(drive, FSCTL_LOCK_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
-        TCHAR message[256];
-        FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-        err << tr("Couldn't lock the drive") << " (" << message << ")\n";
-        err.flush();
-        return false;
+
+    while (true) {
+        if (!DeviceIoControl(drive, FSCTL_LOCK_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
+            attempts++;
+        }
+        else {
+            return true;
+        }
+
+        if (attempts == 10) {
+            TCHAR message[256];
+            FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+
+            err << tr("Couldn't lock the drive") << " (" << QString::fromWCharArray(message).trimmed() << ")\n";
+            err.flush();
+            break;
+        }
+
+        QThread::sleep(2);
     }
-    return true;
+
+    return false;
 }
 
-bool WriteJob::dismountDrive(HANDLE drive, uint diskNumber) {
-    DWORD status;
+bool WriteJob::removeMountPoints(uint diskNumber) {
     DWORD drives = ::GetLogicalDrives();
+
     for (char i = 0; i < 26; i++) {
         if (drives & (1 << i)) {
             char currentDrive = 'A' + i;
@@ -98,15 +114,65 @@ bool WriteJob::dismountDrive(HANDLE drive, uint diskNumber) {
             if (bResult) {
                 for (uint j = 0; j < vde.NumberOfDiskExtents; j++) {
                     if (vde.Extents[j].DiskNumber == diskNumber) {
-                        BOOL b = DeviceIoControl(hDevice, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, &status, NULL);
-                        if (!b) {
+                        QString volumePath = QString("%1:\\").arg(currentDrive);
+
+                        CloseHandle(hDevice);
+                        hDevice = nullptr;
+
+                        if (!DeleteVolumeMountPointA(volumePath.toStdString().c_str())) {
                             TCHAR message[256];
                             FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-                            err << message << "\n";
+                            err << tr("Couldn't remove the drive %1:").arg(currentDrive) << " (" << QString::fromWCharArray(message).trimmed() << "\n";
                             err.flush();
+                            return false;
                         }
+
+                        break;
                     }
                 }
+                if (hDevice)
+                    CloseHandle(hDevice);
+            }
+        }
+    }
+
+    return true;
+}
+
+/*
+bool WriteJob::dismountDrive(HANDLE drive, int diskNumber) {
+    DWORD status;
+    DWORD drives = ::GetLogicalDrives();
+
+    for (char i = 0; i < 26; i++) {
+        if (drives & (1 << i)) {
+            char currentDrive = 'A' + i;
+            QString drivePath = QString("\\\\.\\%1:").arg(currentDrive);
+
+            HANDLE hDevice = ::CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
+
+            DWORD bytesReturned;
+            VOLUME_DISK_EXTENTS vde; // TODO FIXME: handle ERROR_MORE_DATA (this is an extending structure)
+            BOOL bResult = DeviceIoControl(hDevice, IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS, NULL, 0, &vde, sizeof(vde), &bytesReturned, NULL);
+
+            if (bResult) {
+                for (uint j = 0; j < vde.NumberOfDiskExtents; j++) {
+                    if (vde.Extents[j].DiskNumber == diskNumber) {
+                        if (!DeviceIoControl(drive, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
+                            TCHAR message[256];
+                            FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+                            err << tr("Couldn't dismount the drive %1:").arg(currentDrive) << " (" << QString::fromWCharArray(message).trimmed() << "\n";
+                            err.flush();
+                        }
+
+                        CloseHandle(hDevice);
+                        hDevice = nullptr;
+
+                        break;
+                    }
+                }
+                if (hDevice)
+                    CloseHandle(hDevice);
             }
         }
     }
@@ -114,51 +180,32 @@ bool WriteJob::dismountDrive(HANDLE drive, uint diskNumber) {
     if (!DeviceIoControl(drive, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
         TCHAR message[256];
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-        err << tr("Couldn't dismount the drive") << " ("<< message <<")\n";
+        err << tr("Couldn't dismount the drive") << " ("<< QString::fromWCharArray(message).trimmed() <<")\n";
         err.flush();
         return false;
     }
+
     return true;
 }
+*/
 
-bool WriteJob::cleanDrive(HANDLE drive) {
-    OVERLAPPED overlap;
-    memset(&overlap, 0, sizeof(overlap));
-    overlap.hEvent = 0;
+bool WriteJob::cleanDrive(uint driveNumber) {
+    QProcess diskpart;
+    diskpart.setProgram("diskpart.exe");
+    diskpart.setProcessChannelMode(QProcess::ForwardedChannels);
 
-    char buf[BLOCK_SIZE] = { 0 };
+    diskpart.start(QIODevice::ReadWrite);
 
-    DISK_GEOMETRY pdg;
+    diskpart.write(qPrintable(QString("select disk %0\r\n").arg(driveNumber)));
+    diskpart.write("clean\r\n");
+    diskpart.write("exit\r\n");
 
-    if (!DeviceIoControl(drive,
-                         IOCTL_DISK_GET_DRIVE_GEOMETRY,
-                         NULL, 0,
-                         &pdg, sizeof(pdg),
-                         nullptr,
-                         &overlap))
-        return false;
+    diskpart.waitForFinished();
 
-    memset(&overlap, 0, sizeof(overlap));
-    uint64_t deviceBytes = pdg.Cylinders.QuadPart * pdg.TracksPerCylinder * pdg.SectorsPerTrack * pdg.BytesPerSector;
+    if (diskpart.exitCode() == 0)
+        return true;
 
-
-    // erase first and last 1MB on the drive
-    for (uint64_t i = 0; i < 1024 * 1024; i += BLOCK_SIZE) {
-        if (overlap.Offset + BLOCK_SIZE < overlap.Offset)
-            overlap.OffsetHigh++;
-        overlap.Offset += BLOCK_SIZE;
-        if (!writeBlock(drive, &overlap, buf, BLOCK_SIZE))
-            return false;
-    }
-    for (uint64_t i = deviceBytes - 1024 * 1024; i < deviceBytes; i += BLOCK_SIZE) {
-        if (overlap.Offset + BLOCK_SIZE < overlap.Offset)
-            overlap.OffsetHigh++;
-        overlap.Offset += BLOCK_SIZE;
-        if (!writeBlock(drive, &overlap, buf, BLOCK_SIZE))
-            return false;
-    }
-
-    return true;
+    return false;
 }
 
 bool WriteJob::writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, uint size) {
@@ -172,7 +219,7 @@ bool WriteJob::writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, uint si
         else {
             TCHAR message[256];
             FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-            err << tr("Destination drive is not writable") << " (" << message << ")\n";
+            err << tr("Destination drive is not writable") << " (" << QString::fromWCharArray(message).trimmed() << ")\n";
             err.flush();
             return false;
         }
@@ -193,7 +240,7 @@ void WriteJob::unlockDrive(HANDLE drive) {
     if (!DeviceIoControl(drive, FSCTL_UNLOCK_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
         TCHAR message[256];
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-        err << tr("Couldn't unlock the drive") << " (" << message << ")\n";
+        err << tr("Couldn't unlock the drive") << " (" << QString::fromWCharArray(message).trimmed() << ")\n";
         err.flush();
         return;
     }
@@ -201,21 +248,29 @@ void WriteJob::unlockDrive(HANDLE drive) {
 }
 
 void WriteJob::work() {
-    out << -1 << "\n";
-    out.flush();
+    if (!write()) {
+        out << "0\n";
+        out.flush();
+        QThread::sleep(5);
+        if (!write())
+            return;
+    }
+
+    if (!check())
+        return;
+
+    qApp->exit(0);
+}
+
+bool WriteJob::write() {
+
+    removeMountPoints(where);
+    cleanDrive(where);
 
     HANDLE drive = openDrive(where);
     if (!lockDrive(drive)) {
         qApp->exit(1);
-        return;
-    }
-    if (!dismountDrive(drive, where)) {
-        qApp->exit(1);
-        return;
-    }
-    if (!cleanDrive(drive)) {
-        qApp->exit(1);
-        return;
+        return false;
     }
 
     OVERLAPPED osWrite;
@@ -230,14 +285,14 @@ void WriteJob::work() {
         err << tr("Source image is not readable");
         err.flush();
         qApp->exit(1);
-        return;
+        return false;
     }
 
     while (true) {
         buffer = isoFile.read(BLOCK_SIZE);
         if (!writeBlock(drive, &osWrite, buffer.data(), buffer.size())) {
             qApp->exit(1);
-            return;
+            return false;
         }
 
         if (osWrite.Offset + BLOCK_SIZE < osWrite.Offset)
@@ -253,10 +308,14 @@ void WriteJob::work() {
 
     CloseHandle(drive);
 
+    return true;
+}
+
+bool WriteJob::check() {
     out << "CHECK\n";
     out.flush();
 
-    drive = openDrive(where);
+    HANDLE drive = openDrive(where);
 
     switch (mediaCheckFD(_open_osfhandle(reinterpret_cast<intptr_t>(drive), 0), &WriteJob::staticOnMediaCheckAdvanced, this)) {
     case ISOMD5SUM_CHECK_NOT_FOUND:
@@ -269,15 +328,13 @@ void WriteJob::work() {
         err << tr("Your drive is probably damaged.") << "\n";
         err.flush();
         qApp->exit(1);
-        break;
+        return false;
     default:
         err << tr("Unexpected error occurred during media check.") << "\n";
         err.flush();
         qApp->exit(1);
-        break;
+        return false;
     }
 
-    unlockDrive(drive);
-
-    qApp->exit(0);
+    return true;
 }

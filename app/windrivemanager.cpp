@@ -232,6 +232,7 @@ void WinDrive::write(ReleaseVariant *data) {
     m_child->setArguments(args);
 
     m_progress->setTo(data->size());
+    m_progress->setValue(NAN);
     m_image->setStatus(ReleaseVariant::WRITING);
 
     m_child->start();
@@ -296,7 +297,7 @@ void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
         m_image->setStatus(ReleaseVariant::FINISHED);
     }
     else {
-        m_image->setErrorString(m_child->readAllStandardError());
+        m_image->setErrorString(m_child->readAllStandardError().trimmed());
         m_image->setStatus(ReleaseVariant::FAILED);
     }
 
@@ -333,9 +334,13 @@ void WinDrive::onReadyRead() {
         }
         else {
             bool ok;
-            qreal bytes = line.toULongLong(&ok);
-            if (ok)
-                m_progress->setValue(bytes);
+            qreal bytes = line.toLongLong(&ok);
+            if (ok) {
+                if (bytes < 0)
+                    m_progress->setValue(NAN);
+                else
+                    m_progress->setValue(bytes);
+            }
         }
     }
 }

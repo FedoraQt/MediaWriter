@@ -38,8 +38,9 @@ public:
 private:
     HANDLE openDrive(int physicalDriveNumber);
     bool lockDrive(HANDLE drive);
-    bool dismountDrive(HANDLE drive, uint diskNumber);
-    bool cleanDrive(HANDLE drive);
+    bool removeMountPoints(uint diskNumber);
+    // bool dismountDrive(HANDLE drive, int diskNumber);
+    bool cleanDrive(uint diskNumber);
 
     bool writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, uint size);
 
@@ -48,6 +49,9 @@ private:
 
 private slots:
     void work();
+
+    bool write();
+    bool check();
 private:
     QString what;
     uint where;
