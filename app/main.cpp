@@ -75,7 +75,7 @@ int main(int argc, char **argv)
     options.parse(app.arguments());
 
     QTranslator translator;
-    translator.load(QLocale(), QString(), QString(), ":/translations");
+    translator.load(QLocale(QLocale().language()), QString(), QString(), ":/translations");
     app.installTranslator(&translator);
 
     QQmlApplicationEngine engine;
