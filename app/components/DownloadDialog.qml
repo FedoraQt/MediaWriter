@@ -343,8 +343,8 @@ Dialog {
                                        releases.selected.version.variant.status == Variant.FAILED_VERIFICATION ? "#628fcf" : "red"
                                 textColor: enabled ? "white" : palette.text
                                 enabled: ((releases.selected.version.variant.status == Variant.READY ||
-                                          releases.selected.version.variant.status == Variant.FINISHED ||
                                           releases.selected.version.variant.status == Variant.FAILED) && drives.length > 0)
+                                         || releases.selected.version.variant.status == Variant.FINISHED
                                          || releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD
                                          || releases.selected.version.variant.status == Variant.FAILED_VERIFICATION
                                 text: releases.selected.version.variant.status == Variant.FINISHED                ? qsTr("Close") :
