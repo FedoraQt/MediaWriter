@@ -175,6 +175,9 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         if (QStringList{"cloud", "cloud_base", "atomic", "everything", "minimal", "docker", "docker_base"}.contains(release))
             continue;
 
+        release.replace(QRegExp("_kde$"), "");
+        release.replace("_", " ");
+
         if (arch == "armhfp")
             continue;
 
