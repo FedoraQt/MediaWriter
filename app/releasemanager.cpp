@@ -657,6 +657,10 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
         setErrorString(tr("The downloaded image is corrupted"));
         setStatus(FAILED_DOWNLOAD);
     }
+    else if (checkResult == ISOMD5SUM_FILE_NOT_FOUND) {
+        setErrorString(tr("The downloaded file is not readable."));
+        setStatus(FAILED_DOWNLOAD);
+    }
     else {
         setStatus(READY);
 

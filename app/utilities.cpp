@@ -321,8 +321,14 @@ void Download::onReadyRead() {
             m_timer.start(15000);
 
         if (m_file) {
-            m_hash.addData(buf);
-            m_file->write(buf);
+            if (m_file->exists() && m_file->isOpen() && m_file->isWritable()) {
+                m_hash.addData(buf);
+                m_file->write(buf);
+            }
+            else {
+                m_receiver->onDownloadError(tr("The download file is not writable."));
+                deleteLater();
+            }
         }
         else {
             m_buf.append(buf);
