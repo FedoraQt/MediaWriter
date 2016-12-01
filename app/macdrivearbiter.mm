@@ -65,6 +65,7 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
         NSString *diskModel = nil;
         NSNumber *diskSize = nil;
         NSNumber *bsdNumber = nil;
+        NSString *deviceProtocol = nil;
 
         diskSize = [diskDescription objectForKey:(NSString*)kDADiskDescriptionMediaSizeKey];
         diskVendor = [diskDescription objectForKey:(NSString*)kDADiskDescriptionDeviceVendorKey];
@@ -74,6 +75,9 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
         isWhole = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaWholeKey];
         bsdNumber = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaBSDUnitKey];
         isInternal = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionDeviceInternalKey];
+        deviceProtocol = [diskDescription objectForKey:(NSString*)kDADiskDescriptionDeviceProtocolKey];
+
+        //NSLog(@"%@\n", bsdName);
 
         if ([bsdName hasSuffix:@"s1"]) {
             lastPrefix = [bsdName substringToIndex:[bsdName length] - 2];
@@ -81,9 +85,12 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
                 lastS1 = true;
         }
 
-        if (isInternal != nil && [isInternal integerValue] == 0 && isRemovable != nil && [isRemovable integerValue] != 0 && isWhole != nil && [isWhole integerValue] != 0) {
-            bool isRestoreable = lastS1 & [bsdName isEqualToString:lastPrefix];
-            onAdded([bsdName UTF8String], [diskVendor UTF8String], [diskModel UTF8String], [diskSize integerValue], isRestoreable);
+        if (isWhole != nil && [isWhole integerValue] != 0) {
+            if ((isInternal != nil && [isInternal integerValue] == 0 && isRemovable != nil && [isRemovable integerValue] != 0)
+                || (deviceProtocol != nil && [deviceProtocol isEqual:@"USB"])) {
+                    bool isRestoreable = lastS1 & [bsdName isEqualToString:lastPrefix];
+                    onAdded([bsdName UTF8String], [diskVendor UTF8String], [diskModel UTF8String], [diskSize integerValue], isRestoreable);
+            }
         }
 
         [diskDescription autorelease];
