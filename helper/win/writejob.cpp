@@ -130,9 +130,9 @@ bool WriteJob::removeMountPoints(uint diskNumber) {
                         break;
                     }
                 }
-                if (hDevice)
-                    CloseHandle(hDevice);
             }
+            if (hDevice)
+                CloseHandle(hDevice);
         }
     }
 
@@ -198,12 +198,19 @@ bool WriteJob::cleanDrive(uint driveNumber) {
 
     diskpart.write(qPrintable(QString("select disk %0\r\n").arg(driveNumber)));
     diskpart.write("clean\r\n");
+    // for some reason this works (tm)
+    diskpart.write("create part pri\r\n");
+    diskpart.write("clean\r\n");
     diskpart.write("exit\r\n");
 
     diskpart.waitForFinished();
 
-    if (diskpart.exitCode() == 0)
+    if (diskpart.exitCode() == 0) {
+        // as advised in the diskpart documentation
+        QThread::sleep(15);
+
         return true;
+    }
 
     return false;
 }
