@@ -60,7 +60,8 @@ fi
 if [ "$1" == "local" ]; then
     echo "=== Building"
     mingw32-qmake-qt5 ..
-    mingw32-make -j9 >/dev/null
+
+    mingw32-make -j9 
 else
     mkdir -p "app/release"
     echo "=== Getting distribution binary"

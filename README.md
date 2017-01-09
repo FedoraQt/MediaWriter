@@ -49,3 +49,7 @@ To release a standalone package, use `macdeployqt`, supplied with your Qt instal
 If you want to help with translating Fedora Media Writer, please visit our [Zanata project page](https://fedora.zanata.org/iteration/view/mediawriter/master).
 
 Information about the individual Fedora flavors are retrieved from the websites and translated as a separate project.
+
+## Other information
+
+For details about cryptography, see [CRYPTOGRAPHY.md](CRYPTOGRAPHY.md).
