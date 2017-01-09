@@ -18,6 +18,7 @@
  */
 
 #include "releasemanager.h"
+#include "options.h"
 
 #include "isomd5/libcheckisomd5.h"
 
@@ -78,7 +79,7 @@ void ReleaseManager::fetchReleases() {
     m_beingUpdated = true;
     emit beingUpdatedChanged();
 
-    DownloadManager::instance()->fetchPageAsync(this, "https://getfedora.org/releases.json");
+    DownloadManager::instance()->fetchPageAsync(this, options.releasesUrl);
 }
 
 bool ReleaseManager::beingUpdated() const {

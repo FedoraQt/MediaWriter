@@ -26,8 +26,10 @@ struct Options
 {
 public:
     void parse(QStringList argv);
+    void printHelp();
 
     bool testing { false };
+    QString releasesUrl { "https://getfedora.org/releases.json" };
 };
 
 extern Options options;

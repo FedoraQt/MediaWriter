@@ -18,10 +18,29 @@
  */
 
 #include "options.h"
+#include <QTextStream>
 
 Options options;
 
+// this is slowly getting out of hand
+// when adding an another option, please consider using a real argv parser
+
 void Options::parse(QStringList argv) {
+    int index;
     if (argv.contains("--testing"))
         testing = true;
+    if ((index = argv.indexOf("--releasesUrl")) >= 0) {
+        if (index >= argv.length() - 1 || !argv[index + 1].toLower().startsWith("http"))
+            printHelp();
+        else
+            releasesUrl = argv[index + 1];
+    }
+    if (argv.contains("--help")) {
+        printHelp();
+    }
+}
+
+void Options::printHelp() {
+    QTextStream out(stdout);
+    out << "mediawriter [--testing] [--releasesUrl <url>]\n";
 }
