@@ -46,12 +46,14 @@ void LinuxDriveProvider::delayedConstruct() {
 
 QDBusObjectPath LinuxDriveProvider::handleObject(const QDBusObjectPath &object_path, const InterfacesAndProperties &interfaces_and_properties) {
     QRegExp numberRE("[0-9]$");
+    QRegExp mmcRE("[0-9]p[0-9]$");
     QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Drive"]);
 
 
     QDBusInterface driveInterface("org.freedesktop.UDisks2", driveId.path(), "org.freedesktop.UDisks2.Drive", QDBusConnection::systemBus());
 
-    if (numberRE.indexIn(object_path.path()) >= 0 && !object_path.path().startsWith("/org/freedesktop/UDisks2/block_devices/mmcblk"))
+    if ((numberRE.indexIn(object_path.path()) >= 0 && !object_path.path().startsWith("/org/freedesktop/UDisks2/block_devices/mmcblk")) ||
+            mmcRE.indexIn(object_path.path()) >= 0)
         return QDBusObjectPath();
 
     if (!driveId.path().isEmpty() && driveId.path() != "/") {
