@@ -170,6 +170,9 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
                               &junk,                         // # bytes returned
                               (LPOVERLAPPED) NULL);          // synchronous I/O
 
+    if (!bResult || pdg.MediaType == Unknown)
+        return false;
+
     deviceBytes = pdg.Cylinders.QuadPart * pdg.TracksPerCylinder * pdg.SectorsPerTrack * pdg.BytesPerSector;
 
     // Do cleanup and return
