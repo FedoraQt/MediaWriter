@@ -28,10 +28,8 @@
 #include <QDBusArgument>
 #include <QProcess>
 
-typedef QHash<QString, QVariant> Properties;
-typedef QHash<QString, Properties> InterfacesAndProperties;
+typedef QHash<QString, QVariantMap> InterfacesAndProperties;
 typedef QHash<QDBusObjectPath, InterfacesAndProperties> DBusIntrospection;
-Q_DECLARE_METATYPE(Properties)
 Q_DECLARE_METATYPE(InterfacesAndProperties)
 Q_DECLARE_METATYPE(DBusIntrospection)
 
@@ -46,8 +44,12 @@ public:
 private slots:
     void delayedConstruct();
     void init(QDBusPendingCallWatcher *w);
-    void onInterfacesAdded(QDBusObjectPath object_path, InterfacesAndProperties interfaces_and_properties);
-    void onInterfacesRemoved(QDBusObjectPath object_path, QStringList interfaces);
+    void onInterfacesAdded(const QDBusObjectPath &object_path, const InterfacesAndProperties &interfaces_and_properties);
+    void onInterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces);
+    void onPropertiesChanged(const QString &interface_name, const QVariantMap &changed_properties, const QStringList &invalidated_properties);
+
+private:
+    QDBusObjectPath handleObject(const QDBusObjectPath &path, const InterfacesAndProperties &interface);
 
 private:
     QDBusInterface *m_objManager { nullptr };

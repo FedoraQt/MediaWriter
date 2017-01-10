@@ -25,7 +25,6 @@
 LinuxDriveProvider::LinuxDriveProvider(DriveManager *parent)
     : DriveProvider(parent)
 {
-    qDBusRegisterMetaType<Properties>();
     qDBusRegisterMetaType<InterfacesAndProperties>();
     qDBusRegisterMetaType<DBusIntrospection>();
 
@@ -39,13 +38,65 @@ void LinuxDriveProvider::delayedConstruct() {
     QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(pcall, this);
 
     connect(w, &QDBusPendingCallWatcher::finished, this, &LinuxDriveProvider::init);
-    QDBusConnection::systemBus().connect("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager" ,"InterfacesAdded", this, SLOT(onInterfacesAdded(QDBusObjectPath,InterfacesAndProperties)));
-    QDBusConnection::systemBus().connect("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager" ,"InterfacesRemoved", this, SLOT(onInterfacesRemoved(QDBusObjectPath,QStringList)));
+
+    QDBusConnection::systemBus().connect("org.freedesktop.UDisks2", 0, "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(onPropertiesChanged(QString,QVariantMap,QStringList)));
+    QDBusConnection::systemBus().connect("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", "InterfacesAdded", this, SLOT(onInterfacesAdded(QDBusObjectPath,InterfacesAndProperties)));
+    QDBusConnection::systemBus().connect("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", "InterfacesRemoved", this, SLOT(onInterfacesRemoved(QDBusObjectPath,QStringList)));
+}
+
+QDBusObjectPath LinuxDriveProvider::handleObject(const QDBusObjectPath &object_path, const InterfacesAndProperties &interfaces_and_properties) {
+    QRegExp numberRE("[0-9]$");
+    QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Drive"]);
+
+
+    QDBusInterface driveInterface("org.freedesktop.UDisks2", driveId.path(), "org.freedesktop.UDisks2.Drive", QDBusConnection::systemBus());
+
+    if (numberRE.indexIn(object_path.path()) >= 0 && !object_path.path().startsWith("/org/freedesktop/UDisks2/block_devices/mmcblk"))
+        return QDBusObjectPath();
+
+    if (!driveId.path().isEmpty() && driveId.path() != "/") {
+        bool portable = driveInterface.property("Removable").toBool();
+        bool optical = driveInterface.property("Optical").toBool();
+        bool containsMedia = driveInterface.property("MediaAvailable").toBool();
+        QString connectionBus = driveInterface.property("ConnectionBus").toString().toLower();
+
+        if (containsMedia && !optical && (portable || connectionBus == "usb")) {
+            QString vendor = driveInterface.property("Vendor").toString();
+            QString model = driveInterface.property("Model").toString();
+            uint64_t size = driveInterface.property("Size").toULongLong();
+            bool isoLayout = interfaces_and_properties["org.freedesktop.UDisks2.Block"]["IdType"].toString() == "iso9660";
+
+            QString name;
+            if (vendor.isEmpty())
+                if (model.isEmpty())
+                    name = interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Device"].toByteArray();
+                else
+                    name = model;
+            else
+                if (model.isEmpty())
+                    name = vendor;
+                else
+                    name = QString("%1 %2").arg(vendor).arg(model);
+
+            // TODO find out why do I do this
+            if (m_drives.contains(object_path)) {
+                LinuxDrive *tmp = m_drives[object_path];
+                emit DriveProvider::driveRemoved(tmp);
+            }
+            LinuxDrive *d = new LinuxDrive(this, object_path.path(), name, size, isoLayout);
+            m_drives[object_path] = d;
+            emit DriveProvider::driveConnected(d);
+
+            return object_path;
+        }
+    }
+    return QDBusObjectPath();
 }
 
 void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
     QDBusPendingReply<DBusIntrospection> reply = *w;
-    QRegExp numberRE("[0-9]$");
+    QSet<QDBusObjectPath> oldPaths = m_drives.keys().toSet();
+    QSet<QDBusObjectPath> newPaths;
 
     if (reply.isError()) {
         qWarning() << "Could not read drives from UDisks:" << reply.error().name() << reply.error().message();
@@ -57,94 +108,29 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
         if (!i.path().startsWith("/org/freedesktop/UDisks2/block_devices"))
             continue;
 
-        if (numberRE.indexIn(i.path()) >= 0)
-            continue;
+        QDBusObjectPath path = handleObject(i, introspection[i]);
+        if (!path.path().isEmpty())
+            newPaths.insert(path);
+    }
 
-        QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(introspection[i]["org.freedesktop.UDisks2.Block"]["Drive"]);
-
-        if (!driveId.path().isEmpty() && driveId.path() != "/") {
-            bool portable = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Removable"].toBool();
-            QStringList mediaCompatibility = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["MediaCompatibility"].toStringList();
-            // usb drives should support no inserted media
-            if (portable && (mediaCompatibility.isEmpty() || mediaCompatibility.contains("thumb") || mediaCompatibility.contains("flash_sd"))) {
-                QString vendor = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Vendor"].toString();
-                QString model = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Model"].toString();
-                uint64_t size = introspection[driveId]["org.freedesktop.UDisks2.Drive"]["Size"].toULongLong();
-                bool isoLayout = introspection[i]["org.freedesktop.UDisks2.Block"]["IdType"].toString() == "iso9660";
-
-                QString name;
-                if (vendor.isEmpty())
-                    if (model.isEmpty())
-                        name = introspection[i]["org.freedesktop.UDisks2.Block"]["Device"].toByteArray();
-                    else
-                        name = model;
-                else
-                    if (model.isEmpty())
-                        name = vendor;
-                    else
-                        name = QString("%1 %2").arg(vendor).arg(model);
-
-                LinuxDrive *d = new LinuxDrive(this, i.path(), name, size, isoLayout);
-                if (m_drives.contains(i)) {
-                    LinuxDrive *tmp = m_drives[i];
-                    emit DriveProvider::driveRemoved(tmp);
-                }
-                m_drives[i] = d;
-                emit DriveProvider::driveConnected(d);
-            }
-        }
+    for (auto i : oldPaths - newPaths) {
+        emit driveRemoved(m_drives[i]);
+        m_drives[i]->deleteLater();
+        m_drives.remove(i);
     }
 }
 
-void LinuxDriveProvider::onInterfacesAdded(QDBusObjectPath object_path, InterfacesAndProperties interfaces_and_properties) {
+void LinuxDriveProvider::onInterfacesAdded(const QDBusObjectPath &object_path, const InterfacesAndProperties &interfaces_and_properties) {
     QRegExp numberRE("[0-9]$");
 
     if (interfaces_and_properties.keys().contains("org.freedesktop.UDisks2.Block")) {
         if (!m_drives.contains(object_path)) {
-            QString deviceId = interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Id"].toString();
-            QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Drive"]);
-
-            QDBusInterface driveInterface("org.freedesktop.UDisks2", driveId.path(), "org.freedesktop.UDisks2.Drive", QDBusConnection::systemBus());
-
-            if (numberRE.indexIn(object_path.path()) >= 0)
-                return;
-
-            if (!deviceId.isEmpty() && !driveId.path().isEmpty() && driveId.path() != "/") {
-                bool portable = driveInterface.property("Removable").toBool();
-                QStringList mediaCompatibility = driveInterface.property("MediaCompatibility").toStringList();
-
-                if (portable && (mediaCompatibility.isEmpty() || mediaCompatibility.contains("thumb") || mediaCompatibility.contains("flash_sd"))) {
-                    QString vendor = driveInterface.property("Vendor").toString();
-                    QString model = driveInterface.property("Model").toString();
-                    uint64_t size = driveInterface.property("Size").toULongLong();
-                    bool isoLayout = interfaces_and_properties["org.freedesktop.UDisks2.Block"]["IdType"].toString() == "iso9660";
-
-                    QString name;
-                    if (vendor.isEmpty())
-                        if (model.isEmpty())
-                            name = interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Device"].toByteArray();
-                        else
-                            name = model;
-                    else
-                        if (model.isEmpty())
-                            name = vendor;
-                        else
-                            name = QString("%1 %2").arg(vendor).arg(model);
-
-                    LinuxDrive *d = new LinuxDrive(this, object_path.path(), name, size, isoLayout);
-                    if (m_drives.contains(object_path)) {
-                        LinuxDrive *tmp = m_drives[object_path];
-                        emit DriveProvider::driveRemoved(tmp);
-                    }
-                    m_drives[object_path] = d;
-                    emit DriveProvider::driveConnected(d);
-                }
-            }
+            handleObject(object_path, interfaces_and_properties);
         }
     }
 }
 
-void LinuxDriveProvider::onInterfacesRemoved(QDBusObjectPath object_path, QStringList interfaces) {
+void LinuxDriveProvider::onInterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces) {
     if (interfaces.contains("org.freedesktop.UDisks2.Block")) {
         if (m_drives.contains(object_path)) {
             emit driveRemoved(m_drives[object_path]);
@@ -154,6 +140,18 @@ void LinuxDriveProvider::onInterfacesRemoved(QDBusObjectPath object_path, QStrin
     }
 }
 
+void LinuxDriveProvider::onPropertiesChanged(const QString &interface_name, const QVariantMap &changed_properties, const QStringList &invalidated_properties) {
+    const QSet<QString> watchedProperties = { "MediaAvailable", "Size" };
+
+    // not ideal but it works alright without a huge lot of code
+    if (changed_properties.keys().toSet().intersects(watchedProperties) ||
+            invalidated_properties.toSet().intersects(watchedProperties)) {
+        QDBusPendingCall pcall = m_objManager->asyncCall("GetManagedObjects");
+        QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(pcall, this);
+
+        connect(w, &QDBusPendingCallWatcher::finished, this, &LinuxDriveProvider::init);
+    }
+}
 
 LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout)
     : Drive(parent, name, size, isoLayout), m_device(device) {
