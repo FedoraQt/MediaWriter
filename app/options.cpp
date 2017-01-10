@@ -30,7 +30,7 @@ void Options::parse(QStringList argv) {
     if (argv.contains("--testing"))
         testing = true;
     if ((index = argv.indexOf("--releasesUrl")) >= 0) {
-        if (index >= argv.length() - 1 || !argv[index + 1].toLower().startsWith("http"))
+        if (index >= argv.length() - 1)
             printHelp();
         else
             releasesUrl = argv[index + 1];
