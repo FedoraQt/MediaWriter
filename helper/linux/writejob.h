@@ -33,7 +33,8 @@ public:
     static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
     int onMediaCheckAdvanced(long long offset, long long total);
 
-    const int BUFFER_SIZE { 1024 * 1024 };
+    // in pages (1024 * 2048 likely)
+    const int BUFFER_SIZE { 1024 };
 public slots:
     void work();
 private:

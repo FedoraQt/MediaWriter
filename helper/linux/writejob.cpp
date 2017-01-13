@@ -28,6 +28,10 @@
 #include <QDBusInterface>
 #include <QDBusUnixFileDescriptor>
 
+#include <sys/mman.h>
+#include <unistd.h>
+#include <stdlib.h>
+
 #include "isomd5/libcheckisomd5.h"
 
 #include <QDebug>
@@ -88,7 +92,7 @@ void WriteJob::work()
         return;
     }
 
-    QDBusReply<QDBusUnixFileDescriptor> reply = device.callWithArgumentList(QDBus::Block, "OpenForRestore", {Properties()} );
+    QDBusReply<QDBusUnixFileDescriptor> reply = device.callWithArgumentList(QDBus::Block, "OpenForBenchmark", {Properties{{"writable", true}}} );
     QDBusUnixFileDescriptor fd = reply.value();
 
     if (!fd.isValid()) {
@@ -98,17 +102,9 @@ void WriteJob::work()
         return;
     }
 
-    QFile outFile;
-    outFile.open(fd.fileDescriptor(), QIODevice::WriteOnly, QFileDevice::AutoCloseHandle);
     QFile inFile(what);
     inFile.open(QIODevice::ReadOnly);
 
-    if (!outFile.isWritable()) {
-        err << tr("Destination drive is not writable");
-        err.flush();
-        qApp->exit(2);
-        return;
-    }
     if (!inFile.isReadable()) {
         err << tr("Source image is not readable");
         err.flush();
@@ -116,17 +112,28 @@ void WriteJob::work()
         return;
     }
 
-    QByteArray buffer;
-    buffer.resize(BUFFER_SIZE);
+    // get a page-aligned buffer for the data
+    int pagesize = getpagesize();
+    char *unalignedBuffer = new char[BUFFER_SIZE * pagesize + pagesize];
+    char *buffer = (uintptr_t) unalignedBuffer % pagesize ? (unalignedBuffer + (pagesize - (uintptr_t) unalignedBuffer % pagesize)) : unalignedBuffer;
+
     qint64 total = 0;
 
     while(!inFile.atEnd()) {
-        qint64 len = inFile.read(buffer.data(), BUFFER_SIZE);
-        qint64 written = outFile.write(buffer.data(), len);
-        if (written != len) {
-            err << tr("Destination drive is not writable");
+        qint64 len = inFile.read(buffer, BUFFER_SIZE * pagesize);
+        if (len < 0) {
+            err << tr("Source image is not readable");
             err.flush();
             qApp->exit(3);
+            delete unalignedBuffer;
+            return;
+        }
+        qint64 written = write(fd.fileDescriptor(), buffer, len);
+        if (written != len) {
+            err << tr("Destination drive is not writable") << " " << written;
+            err.flush();
+            qApp->exit(3);
+            delete unalignedBuffer;
             return;
         }
         total += len;
@@ -134,23 +141,12 @@ void WriteJob::work()
         out.flush();
     }
 
-    outFile.close();
     inFile.close();
+    sync();
 
     out << "CHECK\n";
     out.flush();
-
-    QDBusReply<QDBusUnixFileDescriptor> backupReply = device.callWithArgumentList(QDBus::Block, "OpenForBackup", {Properties()} );
-    QDBusUnixFileDescriptor backupFd = backupReply.value();
-
-    if (!backupReply.isValid() || !backupFd.isValid()) {
-        err << reply.error().message();
-        err.flush();
-        qApp->exit(2);
-        return;
-    }
-
-    switch (mediaCheckFD(backupFd.fileDescriptor(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
+    switch (mediaCheckFD(fd.fileDescriptor(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
     case ISOMD5SUM_CHECK_NOT_FOUND:
     case ISOMD5SUM_CHECK_PASSED:
         err << "OK\n";
@@ -168,4 +164,6 @@ void WriteJob::work()
         qApp->exit(1);
         break;
     }
+
+    delete unalignedBuffer;
 }
