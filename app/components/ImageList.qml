@@ -160,6 +160,29 @@ Item {
         }
     }
 
+    Row {
+        anchors.top: whiteBackground.bottom
+        anchors.right: whiteBackground.right
+        anchors.topMargin: $(3)
+        anchors.rightMargin: $(5)
+        opacity: releases.beingUpdated ? 0.8 : 0.0
+        visible: opacity > 0.01
+        spacing: $(3)
+        Behavior on opacity { NumberAnimation { } }
+
+        BusyIndicator {
+            anchors.verticalCenter: parent.verticalCenter
+            height: checkingForUpdatesText.height * 0.8
+            width: height
+        }
+        Text {
+            id: checkingForUpdatesText
+            text: qsTr("Checking for new releases")
+            font.pixelSize: $(12)
+            color: "#7a7a7a"
+        }
+    }
+
     ScrollView {
         id: fullList
         anchors.fill: parent
@@ -305,32 +328,6 @@ Item {
                         Rectangle { id: dot1; height: $(4); width: $(4); radius: $(1); color: "#bebebe"; antialiasing: true }
                         Rectangle { id: dot2; height: $(4); width: $(4); radius: $(1); color: "#bebebe"; antialiasing: true }
                         Rectangle { id: dot3; height: $(4); width: $(4); radius: $(1); color: "#bebebe"; antialiasing: true }
-                        SequentialAnimation {
-                            id: updateAnimation
-                            running: releases.beingUpdated
-                            loops: -1
-                            NumberAnimation { target: dot1; property: "scale"; from: 1.0; to: 1.5; duration: 300 }
-                            NumberAnimation { target: dot1; property: "scale"; from: 1.5; to: 1.0; duration: 300 }
-                            NumberAnimation { target: dot2; property: "scale"; from: 1.0; to: 1.5; duration: 300 }
-                            NumberAnimation { target: dot2; property: "scale"; from: 1.5; to: 1.0; duration: 300 }
-                            NumberAnimation { target: dot3; property: "scale"; from: 1.0; to: 1.5; duration: 300 }
-                            NumberAnimation { target: dot3; property: "scale"; from: 1.5; to: 1.0; duration: 300 }
-                            onStopped: {
-                                dot1.scale = 1.0
-                                dot2.scale = 1.0
-                                dot3.scale = 1.0
-                            }
-                        }
-                    }
-                    Text {
-                        text: qsTr("Checking for new releases")
-                        color: "#adadad"
-                        font.pixelSize: $(12)
-                        anchors.verticalCenter: threeDotDots.verticalCenter
-                        anchors.left: threeDotDots.right
-                        anchors.leftMargin: $(6)
-                        opacity: !threeDotDots.hidden && releases.beingUpdated ? 1.0 : 0.0
-                        Behavior on opacity { NumberAnimation { duration: 60 } }
                     }
 
                     Text {

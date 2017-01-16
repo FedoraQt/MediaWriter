@@ -170,6 +170,17 @@ Item {
                                         }
                                     }
 
+                                    BusyIndicator {
+                                        anchors.right: parent.left
+                                        anchors.rightMargin: $(4)
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        height: parent.height * 0.8
+                                        width: height
+                                        opacity: releases.beingUpdated ? 0.6 : 0.0
+                                        visible: opacity > 0.01
+                                        Behavior on opacity { NumberAnimation { } }
+                                    }
+
                                     Rectangle {
                                         visible: versionRepeater.count > 1
                                         anchors {
