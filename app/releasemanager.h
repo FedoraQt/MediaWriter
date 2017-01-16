@@ -393,6 +393,7 @@ public:
     ReleaseArchitecture *arch() const;
     ReleaseVariant::Type type() const;
     QString name() const;
+    QString fullName();
 
     QString url() const;
     QString shaHash() const;

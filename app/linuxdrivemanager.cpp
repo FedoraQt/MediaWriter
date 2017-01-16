@@ -265,12 +265,12 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
     if (exitCode != 0) {
         QString errorMessage = m_process->readAllStandardError();
         qWarning() << "Writing failed:" << errorMessage;
-        Notifications::notify(tr("Error"), tr("Writing %1 failed"));
+        Notifications::notify(tr("Error"), tr("Writing %1 failed").arg(m_image->fullName()));
         m_image->setErrorString(errorMessage);
         m_image->setStatus(ReleaseVariant::FAILED);
     }
     else {
-        Notifications::notify(tr("Finished!"), tr("Writing %1 was successful"));
+        Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
         m_image->setStatus(ReleaseVariant::FINISHED);
     }
 }

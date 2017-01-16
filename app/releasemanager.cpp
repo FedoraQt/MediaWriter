@@ -603,6 +603,10 @@ QString ReleaseVariant::name() const {
     return m_arch->description();
 }
 
+QString ReleaseVariant::fullName() {
+    return QString("%1 %2 %3").arg(release()->name()).arg(releaseVersion()->name()).arg(name());
+}
+
 QString ReleaseVariant::url() const {
     return m_url;
 }
