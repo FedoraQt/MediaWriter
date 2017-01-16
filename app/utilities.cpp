@@ -26,6 +26,8 @@
 #include <QAbstractEventDispatcher>
 #include <QNetworkProxyFactory>
 
+#include "options.h"
+
 // TODO: everything Q_UNUSED
 
 Progress::Progress(QObject *parent, qreal from, qreal to)
@@ -139,7 +141,8 @@ void DownloadManager::fetchPageAsync(DownloadReceiver *receiver, const QString &
     QNetworkRequest request;
     request.setUrl(QUrl(url));
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
-    request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
+    if (!options.noUserAgent)
+        request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
 
     auto reply = m_manager.get(request);
     auto download = new Download(this, receiver, QString());
@@ -162,7 +165,8 @@ QNetworkReply *DownloadManager::tryAnotherMirror() {
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(m_mirrorCache.first());
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
-    request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
+    if (!options.noUserAgent)
+        request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
 
     m_mirrorCache.removeFirst();
     return m_manager.get(request);
@@ -197,7 +201,8 @@ void DownloadManager::onStringDownloaded(const QString &text) {
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(m_mirrorCache.first());
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
-    request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
+    if (!options.noUserAgent)
+        request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
 
 
     m_mirrorCache.removeFirst();
@@ -216,7 +221,8 @@ void DownloadManager::onDownloadError(const QString &message) {
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(m_mirrorCache.first());
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
-    request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
+    if (!options.noUserAgent)
+        request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
 
 
     m_mirrorCache.removeFirst();

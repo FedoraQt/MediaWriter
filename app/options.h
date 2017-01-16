@@ -30,6 +30,7 @@ public:
 
     bool testing { false };
     QString releasesUrl { "https://getfedora.org/releases.json" };
+    bool noUserAgent { false }; // disables sending the custom Fedora Media Writer user agent header
 };
 
 extern Options options;

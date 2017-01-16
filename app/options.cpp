@@ -35,6 +35,9 @@ void Options::parse(QStringList argv) {
         else
             releasesUrl = argv[index + 1];
     }
+    if (argv.contains("--no-user-agent")) {
+        noUserAgent = true;
+    }
     if (argv.contains("--help")) {
         printHelp();
     }
@@ -42,5 +45,5 @@ void Options::parse(QStringList argv) {
 
 void Options::printHelp() {
     QTextStream out(stdout);
-    out << "mediawriter [--testing] [--releasesUrl <url>]\n";
+    out << "mediawriter [--testing] [--no-user-agent] [--releasesUrl <url>]\n";
 }
