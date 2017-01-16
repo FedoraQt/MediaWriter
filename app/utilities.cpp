@@ -97,6 +97,19 @@ QString DownloadManager::dir() {
     return d;
 }
 
+QString DownloadManager::userAgent() {
+    QString ret = QString("FedoraMediaWriter/%1 (").arg(MEDIAWRITER_VERSION);
+    ret.append(QString("%1").arg(QSysInfo::prettyProductName().replace(QRegExp("[()]"), "")));
+    ret.append(QString("; %1").arg(QSysInfo::buildAbi()));
+    ret.append(QString("; %1").arg(QLocale(QLocale().language()).name()));
+#ifdef MEDIAWRITER_PLATFORM_DETAILS
+    ret.append(QString("; %1").arg(MEDIAWRITER_PLATFORM_DETAILS));
+#endif
+    ret.append(")");
+
+    return ret;
+}
+
 /*
  * TODO explain how this works
  */
@@ -126,6 +139,7 @@ void DownloadManager::fetchPageAsync(DownloadReceiver *receiver, const QString &
     QNetworkRequest request;
     request.setUrl(QUrl(url));
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+    request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
 
     auto reply = m_manager.get(request);
     auto download = new Download(this, receiver, QString());
@@ -148,6 +162,7 @@ QNetworkReply *DownloadManager::tryAnotherMirror() {
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(m_mirrorCache.first());
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
+    request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
 
     m_mirrorCache.removeFirst();
     return m_manager.get(request);
@@ -182,6 +197,8 @@ void DownloadManager::onStringDownloaded(const QString &text) {
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(m_mirrorCache.first());
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
+    request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
+
 
     m_mirrorCache.removeFirst();
     m_current->handleNewReply(m_manager.get(request));
@@ -199,6 +216,8 @@ void DownloadManager::onDownloadError(const QString &message) {
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(m_mirrorCache.first());
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
+    request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
+
 
     m_mirrorCache.removeFirst();
     m_current->handleNewReply(m_manager.get(request));

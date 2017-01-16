@@ -187,6 +187,7 @@ class DownloadManager : public QObject, public DownloadReceiver {
 public:
     static DownloadManager *instance();
     static QString dir();
+    static QString userAgent();
 
     QString downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder = dir(), Progress *progress = nullptr);
     void fetchPageAsync(DownloadReceiver *receiver, const QString &url);
