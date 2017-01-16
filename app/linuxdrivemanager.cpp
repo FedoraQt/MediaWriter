@@ -22,6 +22,8 @@
 #include <QtDBus/QtDBus>
 #include <QDBusArgument>
 
+#include "notifications.h"
+
 LinuxDriveProvider::LinuxDriveProvider(DriveManager *parent)
     : DriveProvider(parent)
 {
@@ -263,10 +265,12 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
     if (exitCode != 0) {
         QString errorMessage = m_process->readAllStandardError();
         qWarning() << "Writing failed:" << errorMessage;
+        Notifications::notify(tr("Error"), tr("Writing %1 failed"));
         m_image->setErrorString(errorMessage);
         m_image->setStatus(ReleaseVariant::FAILED);
     }
     else {
+        Notifications::notify(tr("Finished!"), tr("Writing %1 was successful"));
         m_image->setStatus(ReleaseVariant::FINISHED);
     }
 }

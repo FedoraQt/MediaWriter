@@ -13,14 +13,16 @@ HEADERS += \
     releasemanager.h \
     utilities.h \
     fakedrivemanager.h \
-    options.h
+    options.h \
+    notifications.h
 
 SOURCES += main.cpp \
     drivemanager.cpp \
     releasemanager.cpp \
     utilities.cpp \
     fakedrivemanager.cpp \
-    options.cpp
+    options.cpp \
+    notifications.cpp
 
 RESOURCES += qml.qrc \
     assets.qrc \
