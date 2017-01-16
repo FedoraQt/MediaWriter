@@ -25,6 +25,7 @@
 #include <QProcess>
 #include <QFile>
 #include <QDBusUnixFileDescriptor>
+#include <QFileSystemWatcher>
 
 class WriteJob : public QObject
 {
@@ -43,11 +44,14 @@ public:
     const int BUFFER_SIZE { 1024 };
 public slots:
     void work();
+    void onFileChanged(const QString &path);
 private:
     QString what;
     QString where;
     QTextStream out { stdout };
     QTextStream err { stderr };
+    QDBusUnixFileDescriptor fd { -1 };
+    QFileSystemWatcher watcher { };
 
     QProcess *dd { nullptr };
 };

@@ -49,6 +49,7 @@ WriteJob::WriteJob(const QString &what, const QString &where)
     qDBusRegisterMetaType<Properties>();
     qDBusRegisterMetaType<InterfacesAndProperties>();
     qDBusRegisterMetaType<DBusIntrospection>();
+    connect(&watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
     QTimer::singleShot(0, this, &WriteJob::work);
 }
 
@@ -176,9 +177,23 @@ bool WriteJob::check(int fd) {
 
 void WriteJob::work() {
     // have to keep the QDBus wrapper, otherwise the file gets closed
-    QDBusUnixFileDescriptor fd = getDescriptor();
+    fd = getDescriptor();
     if (fd.fileDescriptor() < 0)
         return;
+
+    if (what.endsWith(".part") && QFile::exists(what)) {
+        watcher.addPath(what);
+    }
+    else {
+        if (!write(fd.fileDescriptor()))
+            return;
+
+        check(fd.fileDescriptor());
+    }
+}
+
+void WriteJob::onFileChanged(const QString &path) {
+    what = what.replace(QRegExp(".part$"), "");
 
     if (!write(fd.fileDescriptor()))
         return;
