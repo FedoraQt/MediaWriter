@@ -23,6 +23,8 @@
 #include <QObject>
 #include <QTextStream>
 #include <QProcess>
+#include <QFile>
+#include <QDBusUnixFileDescriptor>
 
 class WriteJob : public QObject
 {
@@ -32,6 +34,10 @@ public:
 
     static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
     int onMediaCheckAdvanced(long long offset, long long total);
+
+    QDBusUnixFileDescriptor getDescriptor();
+    bool write(int fd);
+    bool check(int fd);
 
     // in pages (1024 * 2048 likely)
     const int BUFFER_SIZE { 1024 };

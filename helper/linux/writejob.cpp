@@ -63,11 +63,9 @@ int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
     return 0;
 }
 
-void WriteJob::work()
-{
+QDBusUnixFileDescriptor WriteJob::getDescriptor() {
     QDBusInterface device("org.freedesktop.UDisks2", where, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus(), this);
     QString drivePath = qvariant_cast<QDBusObjectPath>(device.property("Drive")).path();
-    QDBusInterface drive("org.freedesktop.UDisks2", drivePath, "org.freedesktop.UDisks2.Drive", QDBusConnection::systemBus(), this);
     QDBusInterface manager("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus());
     QDBusMessage message = manager.call("GetManagedObjects");
 
@@ -89,7 +87,7 @@ void WriteJob::work()
         err << message.errorMessage();
         err.flush();
         qApp->exit(2);
-        return;
+        return QDBusUnixFileDescriptor(-1);
     }
 
     QDBusReply<QDBusUnixFileDescriptor> reply = device.callWithArgumentList(QDBus::Block, "OpenForBenchmark", {Properties{{"writable", true}}} );
@@ -99,9 +97,13 @@ void WriteJob::work()
         err << reply.error().message();
         err.flush();
         qApp->exit(2);
-        return;
+        return QDBusUnixFileDescriptor(-1);
     }
 
+    return fd;
+}
+
+bool WriteJob::write(int fd) {
     QFile inFile(what);
     inFile.open(QIODevice::ReadOnly);
 
@@ -109,7 +111,7 @@ void WriteJob::work()
         err << tr("Source image is not readable");
         err.flush();
         qApp->exit(2);
-        return;
+        return false;
     }
 
     // get a page-aligned buffer for the data
@@ -126,44 +128,60 @@ void WriteJob::work()
             err.flush();
             qApp->exit(3);
             delete unalignedBuffer;
-            return;
+            return false;
         }
-        qint64 written = write(fd.fileDescriptor(), buffer, len);
+        qint64 written = ::write(fd, buffer, len);
         if (written != len) {
-            err << tr("Destination drive is not writable") << " " << written;
+            err << tr("Destination drive is not writable");
             err.flush();
             qApp->exit(3);
             delete unalignedBuffer;
-            return;
+            return false;
         }
         total += len;
         out << total << '\n';
         out.flush();
     }
 
+    delete unalignedBuffer;
     inFile.close();
     sync();
 
+    return true;
+}
+
+bool WriteJob::check(int fd) {
     out << "CHECK\n";
     out.flush();
-    switch (mediaCheckFD(fd.fileDescriptor(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
+    switch (mediaCheckFD(fd, &WriteJob::staticOnMediaCheckAdvanced, this)) {
     case ISOMD5SUM_CHECK_NOT_FOUND:
     case ISOMD5SUM_CHECK_PASSED:
         err << "OK\n";
         err.flush();
         qApp->exit(0);
-        break;
+        return false;
     case ISOMD5SUM_CHECK_FAILED:
         err << tr("Your drive is probably damaged.") << "\n";
         err.flush();
         qApp->exit(1);
-        break;
+        return false;
     default:
         err << tr("Unexpected error occurred during media check.") << "\n";
         err.flush();
         qApp->exit(1);
-        break;
+        return false;
     }
+    return true;
+}
 
-    delete unalignedBuffer;
+void WriteJob::work() {
+    // have to keep the QDBus wrapper, otherwise the file gets closed
+    QDBusUnixFileDescriptor fd = getDescriptor();
+    if (fd.fileDescriptor() < 0)
+        return;
+
+    if (!write(fd.fileDescriptor()))
+        return;
+
+    check(fd.fileDescriptor());
 }
