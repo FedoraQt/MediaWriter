@@ -18,6 +18,7 @@
  */
 
 #include "fakedrivemanager.h"
+#include "notifications.h"
 
 #include <QTimer>
 
@@ -71,10 +72,12 @@ void FakeDrive::writingAdvanced() {
     m_progress->setValue(m_progress->value() + 123456789);
     if (m_progress->value() >= m_size) {
         m_image->setStatus(ReleaseVariant::FINISHED);
+        Notifications::notify("Success", "Yes!");
     }
     else if (m_name == "Fails" && m_progress->value() >= m_size / 2) {
         m_image->setStatus(ReleaseVariant::FAILED);
         m_image->setErrorString("Some error string.");
+        Notifications::notify("Failed", "FAILED");
     }
     else if (m_name == "Gets Disconnected" && m_progress->value() >= m_size / 2) {
         emit qobject_cast<FakeDriveProvider*>(parent())->driveRemoved(this);
@@ -82,6 +85,7 @@ void FakeDrive::writingAdvanced() {
         this->deleteLater();
         m_image->setStatus(ReleaseVariant::FAILED);
         m_image->setErrorString(QString("Drive %1 got disconnected.").arg(name()));
+        Notifications::notify("Failed", "FAILED");
     }
     else {
         QTimer::singleShot(100, this, &FakeDrive::writingAdvanced);
