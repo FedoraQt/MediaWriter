@@ -42,7 +42,13 @@ WriteJob::WriteJob(const QString &what, const QString &where)
     bool ok = false;
     this->where = where.toInt(&ok);
 
-    QTimer::singleShot(0, this, &WriteJob::work);
+    if (what.endsWith(".part")) {
+        connect(&watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
+        watcher.addPath(what);
+    }
+    else {
+        QTimer::singleShot(0, this, &WriteJob::work);
+    }
 }
 
 int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
@@ -218,6 +224,14 @@ void WriteJob::work() {
         return;
 
     qApp->exit(0);
+}
+
+void WriteJob::onFileChanged(const QString &path) {
+    Q_UNUSED(path);
+
+    what = what.replace(QRegExp("[.]part$"), "");
+
+    work();
 }
 
 bool WriteJob::write() {

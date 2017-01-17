@@ -24,6 +24,8 @@
 #include <QTextStream>
 #include <QProcess>
 
+#include <QFileSystemWatcher>
+
 #include <windows.h>
 
 #ifndef MEDIAWRITER_LZMA_LIMIT
@@ -54,6 +56,7 @@ private:
 
 private slots:
     void work();
+    void onFileChanged(const QString &path);
 
     bool write();
     bool writeCompressed(HANDLE drive);
@@ -65,6 +68,8 @@ private:
 
     QTextStream out { stdout };
     QTextStream err { stderr };
+
+    QFileSystemWatcher watcher { };
 
     QProcess *dd;
 

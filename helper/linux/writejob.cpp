@@ -273,7 +273,7 @@ void WriteJob::work() {
     if (fd.fileDescriptor() < 0)
         return;
 
-    if (what.endsWith(".part") && QFile::exists(what)) {
+    if (what.endsWith(".part")) {
         watcher.addPath(what);
     }
     else {
