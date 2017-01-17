@@ -344,6 +344,7 @@ class ReleaseVariant : public QObject, public DownloadReceiver {
     Q_PROPERTY(QString shaHash READ shaHash NOTIFY shaHashChanged)
     Q_PROPERTY(QString iso READ iso NOTIFY isoChanged)
     Q_PROPERTY(qreal size READ size NOTIFY sizeChanged) // stored as a 64b int, UI doesn't need the precision and QML doesn't support long ints
+    Q_PROPERTY(qreal realSize READ realSize NOTIFY realSizeChanged) // size after decompression
     Q_PROPERTY(Progress* progress READ progress CONSTANT)
 
     Q_PROPERTY(Status status READ status NOTIFY statusChanged)
@@ -399,7 +400,10 @@ public:
     QString shaHash() const;
     QString iso() const;
     qreal size() const;
+    qreal realSize() const;
     Progress *progress();
+
+    void setRealSize(qint64 o);
 
     Status status() const;
     QString statusString() const;
@@ -420,6 +424,7 @@ signals:
     void errorStringChanged();
     void urlChanged();
     void sizeChanged();
+    void realSizeChanged();
     void shaHashChanged();
 
 public slots:
@@ -433,6 +438,7 @@ private:
     QString m_url {};
     QString m_shaHash {};
     int64_t m_size { 0 };
+    int64_t m_realSize { 0 };
     Status m_status { PREPARING };
     QString m_error {};
 

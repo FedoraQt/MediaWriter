@@ -633,11 +633,22 @@ qreal ReleaseVariant::size() const {
     return m_size;
 }
 
+qreal ReleaseVariant::realSize() const {
+    return m_realSize;
+}
+
 Progress *ReleaseVariant::progress() {
     if (!m_progress)
         m_progress = new Progress(this, 0.0, size());
 
     return m_progress;
+}
+
+void ReleaseVariant::setRealSize(qint64 o) {
+    if (m_realSize != o) {
+        m_realSize = o;
+        emit realSizeChanged();
+    }
 }
 
 ReleaseVariant::Status ReleaseVariant::status() const {

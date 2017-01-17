@@ -122,7 +122,6 @@ Item {
                                 text: releases.selected.name
                             }
                             Text {
-                                anchors.right: parent.right
                                 font.pixelSize: $(15)
                                 property double size: releases.selected.version.variant.size
                                 text: size <= 0 ? "" :
@@ -131,6 +130,19 @@ Item {
                                       (size < (1024 * 1024 * 1024)) ? ((size / 1024 / 1024).toFixed(1) + " MB") :
                                       ((size / 1024 / 1024 / 1024).toFixed(1) + " GB")
 
+                                color: "gray"
+                            }
+                            Text {
+                                font.pixelSize: $(15)
+                                visible: releases.selected.version.variant.realSize > 0.1
+                                property double size: releases.selected.version.variant.realSize
+                                property string sizeString: size <= 0 ? "" :
+                                                           (size < 1024) ? (size + " B") :
+                                                           (size < (1024 * 1024)) ? ((size / 1024).toFixed(1) + " KB") :
+                                                           (size < (1024 * 1024 * 1024)) ? ((size / 1024 / 1024).toFixed(1) + " MB") :
+                                                           ((size / 1024 / 1024 / 1024).toFixed(1) + " GB")
+                                //: The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
+                                text: qsTr("(%1 after writing)").arg(sizeString)
                                 color: "gray"
                             }
                         }
