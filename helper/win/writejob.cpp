@@ -31,7 +31,10 @@
 #include <io.h>
 #include <windows.h>
 
+#include <lzma.h>
+
 #include "isomd5/libcheckisomd5.h"
+
 
 WriteJob::WriteJob(const QString &what, const QString &where)
     : QObject(nullptr), what(what), dd(new QProcess(this))
@@ -270,7 +273,6 @@ void WriteJob::work() {
 }
 
 bool WriteJob::write() {
-
     removeMountPoints(where);
     cleanDrive(where);
 
@@ -280,6 +282,102 @@ bool WriteJob::write() {
         return false;
     }
 
+    if (what.endsWith(".xz"))
+        return writeCompressed(drive);
+    else
+        return writePlain(drive);
+}
+
+bool WriteJob::writeCompressed(HANDLE drive) {
+    qint64 totalRead = 0;
+
+    lzma_stream strm = LZMA_STREAM_INIT;
+    lzma_ret ret;
+
+    uint8_t *inBuffer = new uint8_t[BLOCK_SIZE];
+    uint8_t *outBuffer = new uint8_t[BLOCK_SIZE];
+
+    QFile file(what);
+    file.open(QIODevice::ReadOnly);
+
+    ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
+    if (ret != LZMA_OK) {
+        err << tr("Failed to start decompressing.");
+        return false;
+    }
+
+    strm.next_in = inBuffer;
+    strm.avail_in = 0;
+    strm.next_out = outBuffer;
+    strm.avail_out = BLOCK_SIZE;
+
+    OVERLAPPED osWrite;
+    memset(&osWrite, 0, sizeof(osWrite));
+    osWrite.hEvent = 0;
+
+    while (true) {
+        if (strm.avail_in == 0) {
+            qint64 len = file.read((char*) inBuffer, BLOCK_SIZE);
+            totalRead += len;
+
+            strm.next_in = inBuffer;
+            strm.avail_in = len;
+
+            out << totalRead << "\n";
+            out.flush();
+        }
+
+        ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
+        if (ret == LZMA_STREAM_END) {
+            if (!writeBlock(drive, &osWrite, (char *) outBuffer, BLOCK_SIZE - strm.avail_out)) {
+                qApp->exit(1);
+                return false;
+            }
+
+            if (osWrite.Offset + BLOCK_SIZE < osWrite.Offset)
+                osWrite.OffsetHigh++;
+            osWrite.Offset += BLOCK_SIZE;
+
+            return true;
+        }
+        if (ret != LZMA_OK) {
+            switch (ret) {
+            case LZMA_MEM_ERROR:
+                err << tr("There is not enough memory to decompress the file.");
+                break;
+            case LZMA_FORMAT_ERROR:
+            case LZMA_DATA_ERROR:
+            case LZMA_BUF_ERROR:
+                err << tr("The downloaded compressed file is corrupted.");
+                break;
+            case LZMA_OPTIONS_ERROR:
+                err << tr("Unsupported compression options.");
+                break;
+            default:
+                err << tr("Unknown decompression error.");
+                break;
+            }
+            qApp->exit(4);
+            return false;
+        }
+
+        if (strm.avail_out == 0) {
+            if (!writeBlock(drive, &osWrite, (char *) outBuffer, BLOCK_SIZE - strm.avail_out)) {
+                qApp->exit(1);
+                return false;
+            }
+
+            if (osWrite.Offset + BLOCK_SIZE < osWrite.Offset)
+                osWrite.OffsetHigh++;
+            osWrite.Offset += BLOCK_SIZE;
+
+            strm.next_out = outBuffer;
+            strm.avail_out = BLOCK_SIZE;
+        }
+    }
+}
+
+bool WriteJob::writePlain(HANDLE drive) {
     OVERLAPPED osWrite;
     memset(&osWrite, 0, sizeof(osWrite));
     osWrite.hEvent = 0;

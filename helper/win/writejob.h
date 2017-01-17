@@ -26,6 +26,11 @@
 
 #include <windows.h>
 
+#ifndef MEDIAWRITER_LZMA_LIMIT
+// 256MB memory limit for the decompressor
+# define MEDIAWRITER_LZMA_LIMIT (1024*1024*256)
+#endif
+
 class WriteJob : public QObject
 {
     Q_OBJECT
@@ -51,6 +56,8 @@ private slots:
     void work();
 
     bool write();
+    bool writeCompressed(HANDLE drive);
+    bool writePlain(HANDLE drive);
     bool check();
 private:
     QString what;
