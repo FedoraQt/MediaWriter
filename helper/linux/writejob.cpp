@@ -114,6 +114,8 @@ bool WriteJob::write(int fd) {
 }
 
 bool WriteJob::writeCompressed(int fd) {
+    qint64 totalRead = 0;
+
     lzma_stream strm = LZMA_STREAM_INIT;
     lzma_ret ret;
 
@@ -141,8 +143,13 @@ bool WriteJob::writeCompressed(int fd) {
     while (true) {
         if (strm.avail_in == 0) {
             qint64 len = file.read((char*) inBuffer, bufferSize);
+            totalRead += len;
+
             strm.next_in = inBuffer;
             strm.avail_in = len;
+
+            out << totalRead << "\n";
+            out.flush();
         }
 
         ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
