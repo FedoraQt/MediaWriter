@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QTextStream>
 #include <QProcess>
+#include <QFileSystemWatcher>
 
 class WriteJob : public QObject
 {
@@ -35,12 +36,20 @@ public:
 
 private slots:
     void work();
+    void onFileChanged(const QString &path);
+
+    bool writePlain();
+    bool writeCompressed();
+
+    void check();
 private:
     QString what;
     QString where;
 
     QTextStream out { stdout };
     QTextStream err { stderr };
+
+    QFileSystemWatcher watcher { };
 
     QProcess *dd;
 };

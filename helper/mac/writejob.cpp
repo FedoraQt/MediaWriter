@@ -32,7 +32,12 @@
 WriteJob::WriteJob(const QString &what, const QString &where)
     : QObject(nullptr), what(what), where(where), dd(new QProcess(this))
 {
-    QTimer::singleShot(0, this, &WriteJob::work);
+    if (what.endsWith(".part")) {
+        watcher.addPath(what);
+    }
+    else {
+        QTimer::singleShot(0, this, &WriteJob::work);
+    }
 }
 
 int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
@@ -46,6 +51,28 @@ int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
 }
 
 void WriteJob::work() {
+    if (what.endsWith(".xz")) {
+        if (!writePlain()) {
+            return;
+        }
+    }
+    else {
+        if (!writeCompressed()) {
+            return;
+        }
+    }
+    check();
+}
+
+void WriteJob::onFileChanged(const QString &path) {
+    Q_UNUSED(path);
+
+    what = what.replace(QRegExp("[.]part$"), "");
+
+    work();
+}
+
+bool WriteJob::writePlain() {
     qint64 bytesTotal = 0;
 
     QFile source(what);
@@ -81,25 +108,24 @@ void WriteJob::work() {
     target.flush();
     target.close();
 
-    diskUtil.setArguments(QStringList() << "disableJournal" << where + "s1");
-    diskUtil.start();
-    diskUtil.waitForFinished();
-    diskUtil.setArguments(QStringList() << "disableJournal" << where + "s2");
-    diskUtil.start();
-    diskUtil.waitForFinished();
-    diskUtil.setArguments(QStringList() << "disableJournal" << where + "s3");
-    diskUtil.start();
-    diskUtil.waitForFinished();
+    for (int i = 0; i < 5; i++) {
+        diskUtil.setArguments(QStringList() << "disableJournal" << QString("%1s%2").arg(where).arg(i));
+        diskUtil.start();
+        diskUtil.waitForFinished();
+    }
 
     diskUtil.setArguments(QStringList() << "unmountDisk" << where);
     diskUtil.start();
     diskUtil.waitForFinished();
-/*
-    diskUtil.setArguments(QStringList() << "eject" << where);
-    diskUtil.start();
-    diskUtil.waitForFinished();
-*/
+}
 
+bool WriteJob::writeCompressed() {
+    qApp->exit(1);
+    return false;
+}
+
+void WriteJob::check() {
+    QFile target("/dev/r"+where);
     target.open(QIODevice::ReadOnly);
     switch (mediaCheckFD(target.handle(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
     case ISOMD5SUM_CHECK_NOT_FOUND:
