@@ -136,6 +136,19 @@ void ReleaseManager::setFilterArchitecture(int o) {
     if (m_filterArchitecture != o && m_filterArchitecture >= 0 && m_filterArchitecture < ReleaseArchitecture::_ARCHCOUNT) {
         m_filterArchitecture = o;
         emit filterArchitectureChanged();
+        for (int i = 0; i < m_sourceModel->rowCount(); i++) {
+            Release *r = get(i);
+            for (auto v : r->versionList()) {
+                int j = 0;
+                for (auto variant : v->variantList()) {
+                    if (variant->arch()->index() == o) {
+                        v->setSelectedVariantIndex(j);
+                        break;
+                    }
+                    j++;
+                }
+            }
+        }
         invalidateFilter();
     }
 }
