@@ -179,9 +179,6 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         release.replace(QRegExp("_kde$"), "");
         release.replace("_", " ");
 
-        if (arch == "armhfp")
-            continue;
-
         if (re.indexIn(versionWithStatus) < 0)
             continue;
 
