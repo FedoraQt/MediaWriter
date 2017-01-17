@@ -31,18 +31,27 @@ The main binary, `mediawriter`, will be writen to `$PREFIX/bin` and the helper b
 #### Requirements
 
 * `udisks2` or `storaged`
+* `xz-libs`
 
 ### Windows
 
-Building FMW in Windows is just the matter of running `qmake` and `make`. There are no requirements now.
+Building FMW in Windows is just the matter of running `qmake` and `make`.
 
 To create a standalone package, use the `windeployqt` tool, included in your Qt installation. You will probably have to include a bunch of not included DLLs.
 
+#### Requirements
+
+* `xz-libs`
+
 ### macOS
 
-Again, you can just run `qmake` and `make`. No requirements so far.
+Again, you can just run `qmake` and `make`.
 
 To release a standalone package, use `macdeployqt`, supplied with your Qt installation.
+
+#### Requirements
+
+* `xz-libs`
 
 ## Translation
 
