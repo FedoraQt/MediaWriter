@@ -32,6 +32,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+#include <lzma.h>
+
 #include "isomd5/libcheckisomd5.h"
 
 #include <QDebug>
@@ -105,6 +107,79 @@ QDBusUnixFileDescriptor WriteJob::getDescriptor() {
 }
 
 bool WriteJob::write(int fd) {
+    if (what.endsWith(".xz"))
+        return writeCompressed(fd);
+    else
+        return writePlain(fd);
+}
+
+bool WriteJob::writeCompressed(int fd) {
+    lzma_stream strm = LZMA_STREAM_INIT;
+    lzma_ret ret;
+
+    int pagesize = getpagesize();
+    size_t bufferSize = BUFFER_SIZE * pagesize;
+    uint8_t *unalignedInBuffer = new uint8_t[bufferSize + pagesize];
+    uint8_t *inBuffer = (uintptr_t) unalignedInBuffer % pagesize ? (unalignedInBuffer + (pagesize - (uintptr_t) unalignedInBuffer % pagesize)) : unalignedInBuffer;
+    uint8_t *unalignedOutBuffer = new uint8_t[bufferSize + pagesize];
+    uint8_t *outBuffer = (uintptr_t) unalignedOutBuffer % pagesize ? (unalignedOutBuffer + (pagesize - (uintptr_t) unalignedOutBuffer % pagesize)) : unalignedOutBuffer;
+
+    QFile file(what);
+    file.open(QIODevice::ReadOnly);
+
+    ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
+    if (ret != LZMA_OK) {
+        err << tr("Failed to start decompressing.");
+        return false;
+    }
+
+    strm.next_in = inBuffer;
+    strm.avail_in = 0;
+    strm.next_out = outBuffer;
+    strm.avail_out = bufferSize;
+
+    while (true) {
+        if (strm.avail_in == 0) {
+            qint64 len = file.read((char*) inBuffer, bufferSize);
+            strm.next_in = inBuffer;
+            strm.avail_in = len;
+        }
+
+        ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
+        if (ret == LZMA_STREAM_END) {
+            ::write(fd, (char*) outBuffer, bufferSize - strm.avail_out);
+            return true;
+        }
+        if (ret != LZMA_OK) {
+            switch (ret) {
+            case LZMA_MEM_ERROR:
+                err << tr("There is not enough memory to decompress the file.");
+                break;
+            case LZMA_FORMAT_ERROR:
+            case LZMA_DATA_ERROR:
+            case LZMA_BUF_ERROR:
+                err << tr("The downloaded compressed file is corrupted.");
+                break;
+            case LZMA_OPTIONS_ERROR:
+                err << tr("Unsupported compression options.");
+                break;
+            default:
+                err << tr("Unknown decompression error.");
+                break;
+            }
+            qApp->exit(4);
+            return false;
+        }
+
+        if (strm.avail_out == 0) {
+            ::write(fd, (char*) outBuffer, bufferSize - strm.avail_out);
+            strm.next_out = outBuffer;
+            strm.avail_out = bufferSize;
+        }
+    }
+}
+
+bool WriteJob::writePlain(int fd) {
     QFile inFile(what);
     inFile.open(QIODevice::ReadOnly);
 

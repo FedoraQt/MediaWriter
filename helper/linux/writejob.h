@@ -27,6 +27,11 @@
 #include <QDBusUnixFileDescriptor>
 #include <QFileSystemWatcher>
 
+#ifndef MEDIAWRITER_LZMA_LIMIT
+// 256MB memory limit for the decompressor
+# define MEDIAWRITER_LZMA_LIMIT (1024*1024*256)
+#endif
+
 class WriteJob : public QObject
 {
     Q_OBJECT
@@ -38,6 +43,8 @@ public:
 
     QDBusUnixFileDescriptor getDescriptor();
     bool write(int fd);
+    bool writeCompressed(int fd);
+    bool writePlain(int fd);
     bool check(int fd);
 
     // in pages (1024 * 2048 likely)
