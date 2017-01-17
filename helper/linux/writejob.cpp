@@ -285,6 +285,7 @@ void WriteJob::work() {
 }
 
 void WriteJob::onFileChanged(const QString &path) {
+    Q_UNUSED(path);
     what = what.replace(QRegExp(".part$"), "");
 
     if (!write(fd.fileDescriptor()))
