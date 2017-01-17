@@ -39,6 +39,12 @@
 #define lseek64 lseek
 #endif
 
+#ifdef _WIN32
+size_t getpagesize () {
+    return 2048; // not really necessary for Windows
+}
+#endif
+
 #define APPDATA_OFFSET 883
 #define SIZE_OFFSET 84
 
