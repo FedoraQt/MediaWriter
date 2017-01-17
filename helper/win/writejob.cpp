@@ -252,9 +252,7 @@ void WriteJob::unlockDrive(HANDLE drive) {
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
         err << tr("Couldn't unlock the drive") << " (" << QString::fromWCharArray(message).trimmed() << ")\n";
         err.flush();
-        return;
     }
-    return;
 }
 
 void WriteJob::work() {
@@ -331,12 +329,15 @@ bool WriteJob::writeCompressed(HANDLE drive) {
         if (ret == LZMA_STREAM_END) {
             if (!writeBlock(drive, &osWrite, (char *) outBuffer, BLOCK_SIZE - strm.avail_out)) {
                 qApp->exit(1);
+                CloseHandle(drive);
                 return false;
             }
 
             if (osWrite.Offset + BLOCK_SIZE < osWrite.Offset)
                 osWrite.OffsetHigh++;
             osWrite.Offset += BLOCK_SIZE;
+
+            CloseHandle(drive);
 
             return true;
         }
@@ -358,12 +359,14 @@ bool WriteJob::writeCompressed(HANDLE drive) {
                 break;
             }
             qApp->exit(4);
+            CloseHandle(drive);
             return false;
         }
 
         if (strm.avail_out == 0) {
             if (!writeBlock(drive, &osWrite, (char *) outBuffer, BLOCK_SIZE - strm.avail_out)) {
                 qApp->exit(1);
+                CloseHandle(drive);
                 return false;
             }
 
