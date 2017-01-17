@@ -154,7 +154,12 @@ bool WriteJob::writeCompressed(int fd) {
 
         ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
         if (ret == LZMA_STREAM_END) {
-            ::write(fd, (char*) outBuffer, bufferSize - strm.avail_out);
+            quint64 len = ::write(fd, (char*) outBuffer, bufferSize - strm.avail_out);
+            if (len != bufferSize - strm.avail_out) {
+                err << tr("Destination drive is not writable");
+                qApp->exit(3);
+                return false;
+            }
             return true;
         }
         if (ret != LZMA_OK) {
@@ -179,7 +184,12 @@ bool WriteJob::writeCompressed(int fd) {
         }
 
         if (strm.avail_out == 0) {
-            ::write(fd, (char*) outBuffer, bufferSize - strm.avail_out);
+            quint64 len = ::write(fd, (char*) outBuffer, bufferSize - strm.avail_out);
+            if (len != bufferSize - strm.avail_out) {
+                err << tr("Destination drive is not writable");
+                qApp->exit(3);
+                return false;
+            }
             strm.next_out = outBuffer;
             strm.avail_out = bufferSize;
         }
