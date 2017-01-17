@@ -195,7 +195,7 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         if (re.indexIn(versionWithStatus) < 0)
             continue;
 
-        if (release.contains("workstation") && !url.contains("Live"))
+        if (release.contains("workstation") && !url.contains("Live") && !url.contains("armhfp"))
             continue;
 
         if (release.contains("server") && !url.contains("dvd"))
