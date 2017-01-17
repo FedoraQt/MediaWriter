@@ -142,56 +142,6 @@ bool WriteJob::removeMountPoints(uint diskNumber) {
     return true;
 }
 
-/*
-bool WriteJob::dismountDrive(HANDLE drive, int diskNumber) {
-    DWORD status;
-    DWORD drives = ::GetLogicalDrives();
-
-    for (char i = 0; i < 26; i++) {
-        if (drives & (1 << i)) {
-            char currentDrive = 'A' + i;
-            QString drivePath = QString("\\\\.\\%1:").arg(currentDrive);
-
-            HANDLE hDevice = ::CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
-
-            DWORD bytesReturned;
-            VOLUME_DISK_EXTENTS vde; // TODO FIXME: handle ERROR_MORE_DATA (this is an extending structure)
-            BOOL bResult = DeviceIoControl(hDevice, IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS, NULL, 0, &vde, sizeof(vde), &bytesReturned, NULL);
-
-            if (bResult) {
-                for (uint j = 0; j < vde.NumberOfDiskExtents; j++) {
-                    if (vde.Extents[j].DiskNumber == diskNumber) {
-                        if (!DeviceIoControl(drive, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
-                            TCHAR message[256];
-                            FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-                            err << tr("Couldn't dismount the drive %1:").arg(currentDrive) << " (" << QString::fromWCharArray(message).trimmed() << "\n";
-                            err.flush();
-                        }
-
-                        CloseHandle(hDevice);
-                        hDevice = nullptr;
-
-                        break;
-                    }
-                }
-                if (hDevice)
-                    CloseHandle(hDevice);
-            }
-        }
-    }
-
-    if (!DeviceIoControl(drive, FSCTL_DISMOUNT_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
-        TCHAR message[256];
-        FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-        err << tr("Couldn't dismount the drive") << " ("<< QString::fromWCharArray(message).trimmed() <<")\n";
-        err.flush();
-        return false;
-    }
-
-    return true;
-}
-*/
-
 bool WriteJob::cleanDrive(uint driveNumber) {
     QProcess diskpart;
     diskpart.setProgram("diskpart.exe");
