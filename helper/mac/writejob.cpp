@@ -55,12 +55,12 @@ int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
 
 void WriteJob::work() {
     if (what.endsWith(".xz")) {
-        if (!writePlain()) {
+        if (!writeCompressed()) {
             return;
         }
     }
     else {
-        if (!writeCompressed()) {
+        if (!writePlain()) {
             return;
         }
     }
