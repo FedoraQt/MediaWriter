@@ -20,6 +20,7 @@
 #include "notifications.h"
 
 #include <QDebug>
+#include <QSystemTrayIcon>
 
 #ifdef __linux
 
@@ -36,7 +37,10 @@ void Notifications::notify(const QString &title, const QString &body) {
 #ifdef __APPLE__
 
 void Notifications::notify(const QString &title, const QString &body) {
-    Q_UNUSED(title); Q_UNUSED(body);
+    static QSystemTrayIcon *icon = new QSystemTrayIcon();
+    if (!icon->isVisible())
+        icon->show();
+    icon->showMessage(title, body);
 }
 
 #endif // APPLE
