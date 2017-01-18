@@ -45,6 +45,7 @@ int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long
 }
 
 int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
+    Q_UNUSED(total)
     out << offset << "\n";
     out.flush();
     return 0;
@@ -99,7 +100,7 @@ bool WriteJob::writePlain() {
             err << tr("Destination drive is not writable") << "\n";
             err.flush();
             qApp->exit(1);
-            return;
+            return true;
         }
         out << bytesTotal << "\n";
         out.flush();
@@ -117,6 +118,8 @@ bool WriteJob::writePlain() {
     diskUtil.setArguments(QStringList() << "unmountDisk" << where);
     diskUtil.start();
     diskUtil.waitForFinished();
+
+    return true;
 }
 
 bool WriteJob::writeCompressed() {
