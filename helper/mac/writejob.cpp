@@ -27,6 +27,8 @@
 
 #include <QDebug>
 
+#include <lzma.h>
+
 #include "isomd5/libcheckisomd5.h"
 
 WriteJob::WriteJob(const QString &what, const QString &where)
@@ -78,7 +80,7 @@ bool WriteJob::writePlain() {
 
     QFile source(what);
     QFile target("/dev/r"+where);
-    QByteArray buffer(1024 * 512, 0);
+    QByteArray buffer(BLOCK_SIZE, 0);
 
     out << -1 << "\n";
     out.flush();
@@ -93,7 +95,7 @@ bool WriteJob::writePlain() {
     target.open(QIODevice::WriteOnly);
 
     while (source.isReadable() && !source.atEnd() && target.isWritable()) {
-        qint64 bytes = source.read(buffer.data(), 1024 * 512);
+        qint64 bytes = source.read(buffer.data(), BLOCK_SIZE);
         bytesTotal += bytes;
         qint64 written = target.write(buffer.data(), bytes);
         if (written != bytes) {
@@ -123,8 +125,84 @@ bool WriteJob::writePlain() {
 }
 
 bool WriteJob::writeCompressed() {
-    qApp->exit(1);
-    return false;
+    qint64 totalRead = 0;
+
+    lzma_stream strm = LZMA_STREAM_INIT;
+    lzma_ret ret;
+
+    uint8_t *inBuffer = new uint8_t[BLOCK_SIZE];
+    uint8_t *outBuffer = new uint8_t[BLOCK_SIZE];
+
+    QFile source(what);
+    source.open(QIODevice::ReadOnly);
+    QFile target("/dev/r"+where);
+    target.open(QIODevice::WriteOnly);
+
+    ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
+    if (ret != LZMA_OK) {
+        err << tr("Failed to start decompressing.");
+        return false;
+    }
+
+    strm.next_in = inBuffer;
+    strm.avail_in = 0;
+    strm.next_out = outBuffer;
+    strm.avail_out = BLOCK_SIZE;
+
+    while (true) {
+        if (strm.avail_in == 0) {
+            qint64 len = source.read((char*) inBuffer, BLOCK_SIZE);
+            totalRead += len;
+
+            strm.next_in = inBuffer;
+            strm.avail_in = len;
+
+            out << totalRead << "\n";
+            out.flush();
+        }
+
+        ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
+        if (ret == LZMA_STREAM_END) {
+            quint64 len = target.write((char*) outBuffer, BLOCK_SIZE - strm.avail_out);
+            if (len != BLOCK_SIZE - strm.avail_out) {
+                err << tr("Destination drive is not writable");
+                qApp->exit(3);
+                return false;
+            }
+            return true;
+        }
+        if (ret != LZMA_OK) {
+            switch (ret) {
+            case LZMA_MEM_ERROR:
+                err << tr("There is not enough memory to decompress the file.");
+                break;
+            case LZMA_FORMAT_ERROR:
+            case LZMA_DATA_ERROR:
+            case LZMA_BUF_ERROR:
+                err << tr("The downloaded compressed file is corrupted.");
+                break;
+            case LZMA_OPTIONS_ERROR:
+                err << tr("Unsupported compression options.");
+                break;
+            default:
+                err << tr("Unknown decompression error.");
+                break;
+            }
+            qApp->exit(4);
+            return false;
+        }
+
+        if (strm.avail_out == 0) {
+            quint64 len = target.write((char*) outBuffer, BLOCK_SIZE - strm.avail_out);
+            if (len != BLOCK_SIZE - strm.avail_out) {
+                err << tr("Destination drive is not writable");
+                qApp->exit(3);
+                return false;
+            }
+            strm.next_out = outBuffer;
+            strm.avail_out = BLOCK_SIZE;
+        }
+    }
 }
 
 void WriteJob::check() {

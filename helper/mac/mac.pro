@@ -2,7 +2,8 @@ TEMPLATE = app
 
 QT += core network
 
-LIBS += -lisomd5
+INCLUDEPATH += "/usr/local/include" # for brew packages
+LIBS += -lisomd5 -llzma
 
 CONFIG += c++11
 CONFIG += console
