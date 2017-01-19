@@ -90,6 +90,9 @@ Item {
             height: $(14)
             rotation: 45
         }
+        MouseArea { // to stay open when user clicks inside the bubble
+            anchors.fill: parent
+        }
     }
 
     Item {
