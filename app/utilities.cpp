@@ -179,6 +179,12 @@ void DownloadManager::cancel() {
     }
 }
 
+QString DownloadManager::currentTemporaryPath() const {
+    if (m_current)
+        m_current->temporaryPath();
+    return QString();
+}
+
 void DownloadManager::onStringDownloaded(const QString &text) {
     if (!m_current)
         return;
@@ -257,6 +263,10 @@ Download::Download(DownloadManager *parent, DownloadReceiver *receiver, const QS
 
 DownloadManager *Download::manager() {
     return qobject_cast<DownloadManager*>(parent());
+}
+
+QString Download::temporaryPath() const {
+    return m_path + ".part";
 }
 
 void Download::handleNewReply(QNetworkReply *reply) {
@@ -397,7 +407,6 @@ void Download::onFinished() {
             qApp->eventDispatcher()->processEvents(QEventLoop::ExcludeSocketNotifiers);
         }
         if (m_file) {
-            m_file->rename(m_path);  // move the .part file to the final path
             m_receiver->onFileDownloaded(m_file->fileName(), m_hash.result().toHex());
             m_reply->deleteLater();
             m_reply = nullptr;

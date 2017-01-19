@@ -142,6 +142,8 @@ public:
     Download(DownloadManager *parent, DownloadReceiver *receiver, const QString &filePath, Progress *progress = nullptr);
     DownloadManager *manager();
 
+    QString temporaryPath() const;
+
     void handleNewReply(QNetworkReply *reply);
     qint64 bytesDownloaded();
 
@@ -196,6 +198,8 @@ public:
     QNetworkReply *tryAnotherMirror();
 
     Q_INVOKABLE void cancel();
+
+    QString currentTemporaryPath() const;
 
     // DownloadReceiver interface
     virtual void onStringDownloaded(const QString &text) override;

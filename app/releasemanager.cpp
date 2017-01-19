@@ -629,6 +629,10 @@ QString ReleaseVariant::iso() const {
     return m_iso;
 }
 
+QString ReleaseVariant::temporaryPath() const {
+    return m_temporaryIso;
+}
+
 qreal ReleaseVariant::size() const {
     return m_size;
 }
@@ -660,8 +664,7 @@ QString ReleaseVariant::statusString() const {
 }
 
 void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) {
-    m_iso = path;
-    emit isoChanged();
+    m_temporaryIso = QString();
 
     if (m_progress)
         m_progress->setValue(size());
@@ -688,6 +691,19 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
         setStatus(FAILED_DOWNLOAD);
     }
     else {
+        QString finalFilename(path);
+        finalFilename = finalFilename.replace(QRegExp("[.]part$"), "");
+
+        if (finalFilename != path) {
+            if (!QFile::rename(path, finalFilename)) {
+                setErrorString(tr("Unable to rename the temporary file."));
+                setStatus(FAILED_DOWNLOAD);
+            }
+        }
+
+        m_iso = finalFilename;
+        emit isoChanged();
+
         setStatus(READY);
 
         if (QFile(m_iso).size() != m_size) {
@@ -724,6 +740,7 @@ void ReleaseVariant::download() {
             m_progress->setTo(m_size);
         QString ret = DownloadManager::instance()->downloadFile(this, url(), DownloadManager::dir(), progress());
         if (!ret.isEmpty()) {
+            m_temporaryIso = QString();
             m_iso = ret;
             emit isoChanged();
 
@@ -733,6 +750,9 @@ void ReleaseVariant::download() {
                 m_size = QFile(m_iso).size();
                 emit sizeChanged();
             }
+        }
+        else {
+            m_temporaryIso = DownloadManager::instance()->currentTemporaryPath();
         }
     }
 }

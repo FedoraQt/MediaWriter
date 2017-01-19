@@ -399,6 +399,7 @@ public:
     QString url() const;
     QString shaHash() const;
     QString iso() const;
+    QString temporaryPath() const;
     qreal size() const;
     qreal realSize() const;
     Progress *progress();
@@ -432,6 +433,7 @@ public slots:
     void resetStatus();
 
 private:
+    QString m_temporaryIso {};
     QString m_iso {};
     ReleaseArchitecture *m_arch { nullptr };
     ReleaseVariant::Type m_type { LIVE };
