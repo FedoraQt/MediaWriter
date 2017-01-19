@@ -58,16 +58,6 @@ Dialog {
     }
 
     Connections {
-        id: downloadWait
-        target: releases.selected.version.variant
-        onStatusChanged: {
-            if (releases.selected.version.variant.status == Variant.READY && writeImmediately.checked && drives.selected != null) {
-                drives.selected.write(releases.selected.version.variant)
-            }
-        }
-    }
-
-    Connections {
         target: drives
         onSelectedChanged: {
             writeImmediately.checked = false
@@ -77,7 +67,7 @@ Dialog {
     Connections {
         target: releases.selected.version.variant
         onStatusChanged: {
-            if (releases.selected.version.variant.status == Variant.FINISHED || releases.selected.version.variant.status == Variant.FAILED)
+            if (releases.selected.version.variant.status == Variant.FINISHED || releases.selected.version.variant.status == Variant.FAILED || releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD)
                 writeImmediately.checked = false
         }
     }
@@ -291,6 +281,13 @@ Dialog {
                             enabled: driveCombo.count && opacity > 0.0
                             opacity: (releases.selected.version.variant.status == Variant.DOWNLOADING || (releases.selected.version.variant.status == Variant.DOWNLOAD_VERIFYING && releases.selected.version.variant.progress.ratio < 0.95)) ? 1.0 : 0.0
                             text: qsTr("Write the image immediately when the download is finished")
+                            onCheckedChanged: {
+                                if (drives.selected) {
+                                    drives.selected.cancel()
+                                    if (checked)
+                                        drives.selected.write(releases.selected.version.variant)
+                                }
+                            }
                         }
                     }
 

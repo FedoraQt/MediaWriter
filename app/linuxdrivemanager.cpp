@@ -164,7 +164,8 @@ LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name,
 void LinuxDrive::write(ReleaseVariant *data) {
     Drive::write(data);
 
-    m_image->setStatus(ReleaseVariant::WRITING);
+    if (m_image->status() == ReleaseVariant::READY)
+        m_image->setStatus(ReleaseVariant::WRITING);
 
     if (!m_process)
         m_process = new QProcess(this);
@@ -185,7 +186,10 @@ void LinuxDrive::write(ReleaseVariant *data) {
         return;
     }
     args << "write";
-    args << data->iso();
+    if (data->status() == ReleaseVariant::WRITING)
+        args << data->iso();
+    else
+        args << data->temporaryPath();
     args << m_device;
     m_process->setArguments(args);
 
@@ -242,6 +246,9 @@ void LinuxDrive::onReadyRead() {
     if (!m_process)
         return;
 
+    if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
+        m_image->setStatus(ReleaseVariant::WRITING);
+
     while (m_process->bytesAvailable() > 0) {
         QString line = m_process->readLine().trimmed();
         if (line == "CHECK") {
@@ -266,8 +273,10 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
         QString errorMessage = m_process->readAllStandardError();
         qWarning() << "Writing failed:" << errorMessage;
         Notifications::notify(tr("Error"), tr("Writing %1 failed").arg(m_image->fullName()));
-        m_image->setErrorString(errorMessage);
-        m_image->setStatus(ReleaseVariant::FAILED);
+        if (m_image->status() == ReleaseVariant::WRITING) {
+            m_image->setErrorString(errorMessage);
+            m_image->setStatus(ReleaseVariant::FAILED);
+        }
     }
     else {
         Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));

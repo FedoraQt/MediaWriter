@@ -739,7 +739,7 @@ void ReleaseVariant::download() {
         if (m_size)
             m_progress->setTo(m_size);
         QString ret = DownloadManager::instance()->downloadFile(this, url(), DownloadManager::dir(), progress());
-        if (!ret.isEmpty()) {
+        if (!ret.endsWith(".part")) {
             m_temporaryIso = QString();
             m_iso = ret;
             emit isoChanged();
@@ -752,7 +752,7 @@ void ReleaseVariant::download() {
             }
         }
         else {
-            m_temporaryIso = DownloadManager::instance()->currentTemporaryPath();
+            m_temporaryIso = ret;
         }
     }
 }

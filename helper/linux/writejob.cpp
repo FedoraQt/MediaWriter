@@ -201,7 +201,7 @@ bool WriteJob::writePlain(int fd) {
     inFile.open(QIODevice::ReadOnly);
 
     if (!inFile.isReadable()) {
-        err << tr("Source image is not readable");
+        err << "AAAAa" << tr("Source image is not readable") << what;
         err.flush();
         qApp->exit(2);
         return false;
@@ -285,11 +285,23 @@ void WriteJob::work() {
 }
 
 void WriteJob::onFileChanged(const QString &path) {
-    Q_UNUSED(path);
+    if (QFile::exists(path))
+        return;
+
     what = what.replace(QRegExp(".part$"), "");
 
-    if (!write(fd.fileDescriptor()))
+    if (!QFile::exists(what)) {
+        qApp->exit(4);
         return;
+    }
+
+    out << "1\n"; //to immediately trigger the UI into writing mode
+    out.flush();
+
+    if (!write(fd.fileDescriptor())) {
+        qApp->exit(4);
+        return;
+    }
 
     check(fd.fileDescriptor());
 }

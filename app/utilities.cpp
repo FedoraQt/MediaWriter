@@ -134,7 +134,7 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &ur
     connect(m_current, &QObject::destroyed, [&](){ m_current = nullptr; });
     fetchPageAsync(this, "https://mirrors.fedoraproject.org/mirrorlist?path=" + url.path());
 
-    return QString();
+    return bareFileName + ".part";
 }
 
 void DownloadManager::fetchPageAsync(DownloadReceiver *receiver, const QString &url) {
@@ -177,12 +177,6 @@ void DownloadManager::cancel() {
         m_current->deleteLater();
         m_current = nullptr;
     }
-}
-
-QString DownloadManager::currentTemporaryPath() const {
-    if (m_current)
-        m_current->temporaryPath();
-    return QString();
 }
 
 void DownloadManager::onStringDownloaded(const QString &text) {
@@ -263,10 +257,6 @@ Download::Download(DownloadManager *parent, DownloadReceiver *receiver, const QS
 
 DownloadManager *Download::manager() {
     return qobject_cast<DownloadManager*>(parent());
-}
-
-QString Download::temporaryPath() const {
-    return m_path + ".part";
 }
 
 void Download::handleNewReply(QNetworkReply *reply) {
