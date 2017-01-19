@@ -62,3 +62,5 @@ Information about the individual Fedora flavors are retrieved from the websites 
 ## Other information
 
 For details about cryptography, see [CRYPTOGRAPHY.md](CRYPTOGRAPHY.md).
+
+Some brief privacy information (regarding User-Agent strings) is in [PRIVACY.md](PRIVACY.md).
