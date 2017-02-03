@@ -59,6 +59,7 @@ ApplicationWindow {
 
     property bool canGoBack: false
     property real margin: $(64) + (width - $(800)) / 4
+    property real potentialMargin: $(64) + (Screen.width - $(800)) / 4
 
     AdwaitaNotificationBar {
         id: deviceNotification

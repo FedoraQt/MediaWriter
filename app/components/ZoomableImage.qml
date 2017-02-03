@@ -18,16 +18,19 @@
  */
 
 import QtQuick 2.0
+import QtQuick.Window 2.0
 
 IndicatedImage {
     id: root
     property bool zoomed: false
     onZoomedChanged: {
         if (zoomed) {
+            mainWindow.visibility = Window.FullScreen
             z++
             showAnimation.start()
         }
         else {
+            mainWindow.visibility = Window.Windowed
             z--
             hideAnimation.start()
         }
@@ -59,27 +62,26 @@ IndicatedImage {
                 NumberAnimation {
                     target: zoomedImage; property: "width"
                     from: root.width
-                    to: sourceSize.width
+                    to: Screen.width
                     easing.type: Easing.OutCubic
                 }
                 NumberAnimation {
                     target: zoomedImage; property: "height"
                     from: root.height
-                    to: sourceSize.height
+                    to: Screen.height
                     easing.type: Easing.OutCubic
                 }
                 NumberAnimation {
                     target: zoomedImage; property: "x"
                     from: 0
-                    to: (root.width - sourceSize.width) / 2
+                    to: (root.width - Screen.width) / 2 + mainWindow.potentialMargin - mainWindow.margin
                     easing.type: Easing.OutCubic
                 }
-                NumberAnimation {
-                    target: zoomedImage; property: "y"
-                    from: 0
-                    to: (root.height - sourceSize.height) / 2
-                    easing.type: Easing.OutCubic
-                }
+            }
+
+            onStopped: {
+                zoomedImage.x = mapFromItem(null, 0, 0).x - (zoomedImage.width - Screen.width) / 2
+                zoomedImage.y = mapFromItem(null, 0, 0).y - (zoomedImage.height - Screen.height) / 2
             }
         }
 
