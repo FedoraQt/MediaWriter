@@ -36,7 +36,7 @@ Dialog {
     width: $(640)
 
     function reset() {
-        writeArrow.color = "black"
+        writeArrow.color = palette.text
         writeImmediately.checked = false
     }
 
@@ -318,7 +318,7 @@ Dialog {
                                     if (releases.selected.version.variant.status == Variant.FINISHED)
                                         writeArrow.color = "#00dd00"
                                     else
-                                        writeArrow.color = "black"
+                                        writeArrow.color = palette.text
                                 }
                                 ColorAnimation {
                                     duration: 3500
@@ -333,7 +333,7 @@ Dialog {
                                     duration: 3500
                                     target: writeArrow
                                     property: "color"
-                                    to: "black"
+                                    to: palette.text
                                 }
                                 PauseAnimation {
                                     duration: 500
