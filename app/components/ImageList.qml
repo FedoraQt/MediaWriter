@@ -38,7 +38,7 @@ Item {
         opacity: !releases.frontPage ? 1.0 : 0.0
         id: searchBox
         border {
-            color: searchInput.activeFocus ? "#4a90d9" : Qt.darker(palette.button)
+            color: searchInput.activeFocus ? "#4a90d9" : Qt.darker(palette.button, 1.3)
             width: 1
         }
         radius: $(5)
