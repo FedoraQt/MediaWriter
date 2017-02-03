@@ -32,6 +32,6 @@ Item {
         rotation: 45
         width: parent.height
         height: parent.height
-        color: "black"
+        color: palette.text
     }
 }

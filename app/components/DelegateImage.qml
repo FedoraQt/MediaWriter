@@ -35,7 +35,7 @@ Item {
          (release && release.category !== releases.get(index+1).category)
         )
 
-    property color color: delegateMouse.containsPress ? "#e4e4e4" : delegateMouse.containsMouse ? "#f6f6f6" : "white"
+    property color color: delegateMouse.containsPress ? Qt.darker(palette.window, 1.2) : delegateMouse.containsMouse ? palette.window : palette.base
     Behavior on color { ColorAnimation { duration: 120 } }
 
     readonly property real animationDuration: 1000
@@ -46,7 +46,7 @@ Item {
         x: 1
         color: root.color
         border {
-            color: "#c3c3c3"
+            color: Qt.darker(palette.base, 1.3)
             width: 1
         }
         Item {
@@ -82,6 +82,7 @@ Item {
                 verticalAlignment: Text.AlignBottom
                 font.pixelSize: $(12)
                 text: release.name
+                color: palette.text
             }
             Text {
                 Layout.fillWidth: true
@@ -117,7 +118,7 @@ Item {
                 radius: $(5)
                 color: root.color
                 border {
-                    color: "#c3c3c3"
+                    color: Qt.darker(palette.base, 1.3)
                     width: 1
                 }
                 anchors {
@@ -143,7 +144,7 @@ Item {
                 radius: $(5)
                 color: root.color
                 border {
-                    color: "#c3c3c3"
+                    color: Qt.darker(palette.base, 1.3)
                     width: 1
                 }
                 anchors {

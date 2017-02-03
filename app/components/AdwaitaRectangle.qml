@@ -34,16 +34,18 @@ Item {
         radius: $(3)
 
         readonly property int animationDuration: 150
-        color: control.enabled ? root.color : "light gray"
+        color: control.enabled ? root.color : disabledPalette.button
         Behavior on color { ColorAnimation { duration: rect.animationDuration } }
 
         border {
             width: 1
-            color: Qt.colorEqual(root.color, "transparent") ? "#212121" : control.enabled ? "#777777" : "#c2c2c2"
+            //color: Qt.colorEqual(root.color, "transparent") ? "#212121" : control.enabled ? "#777777" : "#c2c2c2"
+            color: Qt.colorEqual(root.color, "transparent") ? Qt.darker(palette.button) : Qt.darker(palette.button, 1.5)
         }
 
         Rectangle {
             id: overlay
+            visible: control.enabled
             radius: parent.radius - $(1)
             anchors.margins: $(0.5)
             anchors.fill: parent

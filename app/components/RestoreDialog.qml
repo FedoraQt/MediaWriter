@@ -76,6 +76,7 @@ Dialog {
                     textFormat: Text.RichText
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     font.pixelSize: $(12)
+                    color: palette.windowText
                 }
                 ColumnLayout {
                     id: progress
@@ -97,6 +98,7 @@ Dialog {
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         text: qsTr("<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
                         font.pixelSize: $(12)
+                        color: palette.windowText
                     }
                 }
                 ColumnLayout {
@@ -111,6 +113,7 @@ Dialog {
                         horizontalAlignment: Text.AlignHCenter
                         text: qsTr("Your drive was successfully restored!")
                         font.pixelSize: $(12)
+                        color: palette.windowText
                     }
                 }
                 ColumnLayout {
@@ -125,6 +128,7 @@ Dialog {
                         horizontalAlignment: Text.AlignHCenter
                         text: qsTr("Unfortunately, an error occurred during the process.<br>Please try restoring the drive using your system tools.")
                         font.pixelSize: $(12)
+                        color: palette.windowText
                     }
                 }
             }

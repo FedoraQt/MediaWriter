@@ -26,7 +26,7 @@ BusyIndicator {
     width: $(148)
     height: $(6)
     property color progressColor: "#54aada"
-    property color backgroundColor: "#c3c3c3"
+    property color backgroundColor: Qt.darker(palette.button, 1.2)
 
     onRunningChanged: {
         if (running) {
@@ -43,7 +43,7 @@ BusyIndicator {
         width: root.width
         height: root.height
         border {
-            color: "#777777"
+            color: Qt.darker(palette.button, 1.7)
             width: 1
         }
         radius: $(3)
@@ -59,7 +59,7 @@ BusyIndicator {
             y: 1
             radius: $(3)
             border {
-                color: "#777777"
+                color: Qt.darker(palette.button, 1.7)
                 width: 1
             }
             opacity: root.running ? 1.0 : 0.0

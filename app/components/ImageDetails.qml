@@ -120,6 +120,7 @@ Item {
                                 anchors.left: parent.left
                                 font.pixelSize: $(17)
                                 text: releases.selected.name
+                                color: palette.windowText
                             }
                             Text {
                                 font.pixelSize: $(15)
@@ -130,7 +131,7 @@ Item {
                                       (size < (1024 * 1024 * 1024)) ? ((size / 1024 / 1024).toFixed(1) + " MB") :
                                       ((size / 1024 / 1024 / 1024).toFixed(1) + " GB")
 
-                                color: "gray"
+                                color: mixColors(palette.window, palette.windowText, 0.3)
                             }
                             Text {
                                 font.pixelSize: $(15)
@@ -143,7 +144,7 @@ Item {
                                                            ((size / 1024 / 1024 / 1024).toFixed(1) + " GB")
                                 //: The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
                                 text: qsTr("(%1 after writing)").arg(sizeString)
-                                color: "gray"
+                                color: mixColors(palette.window, palette.windowText, 0.3)
                             }
                         }
                         ColumnLayout {
@@ -152,13 +153,13 @@ Item {
                             opacity: releases.selected.isLocal ? 0.0 : 1.0
                             Text {
                                 font.pixelSize: $(13)
-                                color: "gray"
+                                color: mixColors(palette.window, palette.windowText, 0.3)
                                 visible: typeof releases.selected.version !== 'undefined'
                                 text: releases.selected.version.variant.arch.description
                             }
                             Text {
                                 font.pixelSize: $(11)
-                                color: "gray"
+                                color: mixColors(palette.window, palette.windowText, 0.3)
                                 visible: releases.selected.version && releases.selected.version.variant
                                 text: releases.selected.version.variant.arch.details
                             }
@@ -169,7 +170,7 @@ Item {
                                     text: qsTr("Version %1").arg(releases.selected.version.name)
                                     font.pixelSize: $(11)
 
-                                    color: versionRepeater.count <= 1 ? "gray" : versionMouse.containsPress ? "#284875" : versionMouse.containsMouse ? "#447BC7" : "#315FA0"
+                                    color: versionRepeater.count <= 1 ? mixColors(palette.window, palette.windowText, 0.3) : versionMouse.containsPress ? "#284875" : versionMouse.containsMouse ? "#447BC7" : palette.highlight
                                     Behavior on color { ColorAnimation { duration: 100 } }
                                     MouseArea {
                                         id: versionMouse
@@ -284,7 +285,7 @@ Item {
                                     visible: releases.selected.version.releaseDate.toLocaleDateString().length > 0
                                     text: qsTr(", released on %1").arg(releases.selected.version.releaseDate.toLocaleDateString())
                                     font.pixelSize: $(11)
-                                    color: "gray"
+                                    color: mixColors(palette.window, palette.windowText, 0.3)
                                 }
                                 Item {
                                     Layout.fillWidth: true
@@ -294,7 +295,7 @@ Item {
                                     visible: releases.selected.version.variants.length > 1
                                     text: qsTr("Other variants...")
                                     font.pixelSize: $(11)
-                                    color: archMouse.containsPress ? "#284875" : archMouse.containsMouse ? "#447BC7" : "#315FA0"
+                                    color: archMouse.containsPress ? "#284875" : archMouse.containsMouse ? "#447BC7" : palette.highlight
                                     Behavior on color { ColorAnimation { duration: 100 } }
                                     MouseArea {
                                         id: archMouse
@@ -370,6 +371,7 @@ Item {
                     text: releases.selected.description
                     textFormat: Text.RichText
                     font.pixelSize: $(12)
+                    color: palette.windowText
                 }
                 Repeater {
                     id: screenshotRepeater
@@ -394,15 +396,15 @@ Item {
                 implicitHeight: $(11)
             }
             scrollBarBackground: Rectangle {
-                color: "#dddddd"
+                color: Qt.darker(palette.window, 1.2)
                 implicitWidth: $(11)
                 implicitHeight: $(11)
             }
             handle: Rectangle {
-                color: "#b3b5b6"
-                x: $(2)
-                y: $(2)
-                implicitWidth: $(7)
+                color: mixColors(palette.window, palette.windowText, 0.5)
+                x: $(3)
+                y: $(3)
+                implicitWidth: $(6)
                 implicitHeight: $(7)
                 radius: $(4)
             }

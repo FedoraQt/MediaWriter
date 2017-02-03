@@ -36,7 +36,7 @@ Button {
                 x: $(8)
                 font.pixelSize: $(12)
                 id: labelText
-                color: control.enabled ? root.textColor : "gray"
+                color: control.enabled ? root.textColor : disabledPalette.buttonText
                 text: control.text
                 height: parent.height
                 horizontalAlignment: Text.AlignHCenter

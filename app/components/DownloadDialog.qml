@@ -130,6 +130,7 @@ Dialog {
                                 verticalAlignment: Text.AlignVCenter
                                 wrapMode: Text.Wrap
                                 font.pixelSize: $(12)
+                                color: palette.windowText
                                 text: qsTr("By writing, you will lose all of the data on %1.").arg(driveCombo.currentText)
                             }
                         }
@@ -166,6 +167,7 @@ Dialog {
                                 wrapMode: Text.Wrap
                                 font.pixelSize: $(12)
                                 text: qsTr("Your computer will now report this drive is much smaller than it really is. Just insert your drive again while Fedora Media Writer is running and you'll be able to restore it back to its full size.")
+                                color: palette.windowText
                             }
                         }
 
@@ -198,6 +200,7 @@ Dialog {
                                 wrapMode: Text.Wrap
                                 font.pixelSize: $(12)
                                 text: releases.selected.version.variant ? releases.selected.version.variant.errorString : ""
+                                color: palette.windowText
                             }
                         }
                         RowLayout {
@@ -233,6 +236,7 @@ Dialog {
                                 verticalAlignment: Text.AlignVCenter
                                 wrapMode: Text.Wrap
                                 font.pixelSize: $(12)
+                                color: palette.windowText
                                 text: "<font color=\"gray\">" + qsTr("Selected:") + "</font> " + (releases.selected.version.variant.iso ? (((String)(releases.selected.version.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
                             }
                         }
@@ -260,6 +264,7 @@ Dialog {
                                                      (leftSize < (1024 * 1024 * 1024)) ? qsTr("(%1 MB left)").arg((leftSize / 1024 / 1024).toFixed(1)) :
                                                                                          qsTr("(%1 GB left)").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
                             text: releases.selected.version.variant.statusString + (releases.selected.version.variant.status == Variant.DOWNLOADING ? (" " + leftStr) : "")
+                            color: palette.windowText
                         }
                         Item {
                             Layout.fillWidth: true

@@ -38,11 +38,11 @@ Item {
         opacity: !releases.frontPage ? 1.0 : 0.0
         id: searchBox
         border {
-            color: searchInput.activeFocus ? "#4a90d9" : "#c3c3c3"
+            color: searchInput.activeFocus ? "#4a90d9" : Qt.darker(palette.button)
             width: 1
         }
         radius: $(5)
-        color: "white"
+        color: palette.base
         anchors {
             top: parent.top
             left: parent.left
@@ -68,13 +68,13 @@ Item {
                 antialiasing: true
                 width: height
                 radius: height / 2
-                color: "black"
+                color: palette.text
                 Rectangle {
                     height: $(7)
                     antialiasing: true
                     width: height
                     radius: height / 2
-                    color: "white"
+                    color: palette.base
                     anchors.centerIn: parent
                 }
                 Rectangle {
@@ -84,7 +84,7 @@ Item {
                     x: $(8)
                     y: $(11)
                     rotation: 45
-                    color: "black"
+                    color: palette.text
                 }
             }
         }
@@ -109,6 +109,7 @@ Item {
             text: releases.filterText
             onTextChanged: releases.filterText = text
             clip: true
+            color: palette.text
         }
     }
 
@@ -209,6 +210,7 @@ Item {
                         text: section
                         textFormat: Text.RichText
                         font.pixelSize: $(12)
+                        color: palette.windowText
                         anchors {
                             left: parent.left
                             bottom: parent.bottom
@@ -234,6 +236,7 @@ Item {
                         Text {
                             text: qsTr("About Fedora Media Writer")
                             font.pixelSize: $(12)
+                            color: palette.windowText
                             anchors {
                                 bottom: parent.bottom
                                 left: parent.left
@@ -245,9 +248,9 @@ Item {
                     Rectangle {
                         width: parent.width
                         radius: $(5)
-                        color: "#f8f8f8"
+                        color: palette.base
                         border {
-                            color: "#c3c3c3"
+                            color: Qt.darker(palette.base)
                             width: 1
                         }
                         height: childrenRect.height + $(24)
@@ -266,6 +269,7 @@ Item {
                                 text: qsTr("Version %1").arg(mediawriterVersion)
                                 textFormat: Text.RichText
                                 font.pixelSize: $(12)
+                                color: palette.text
                             }
                             Text {
                                 width: parent.width
@@ -280,6 +284,7 @@ Item {
                                     height: parent.height - $(3)
                                     width: height
                                 }
+                                color: palette.text
                             }
                             Text {
                                 width: parent.width
@@ -309,11 +314,11 @@ Item {
                     Rectangle {
                         anchors.fill: parent
                         anchors.topMargin: $(-10)
-                        color: threeDotMouse.containsPress ? "#e4e4e4" : threeDotMouse.containsMouse ? "#f6f6f6" : "white"
+                        color: threeDotMouse.containsPress ? Qt.darker(palette.window, 1.2) : threeDotMouse.containsMouse ? palette.window : palette.base
                         Behavior on color { ColorAnimation { duration: 120 } }
                         radius: $(5)
                         border {
-                            color: "#c3c3c3"
+                            color: Qt.darker(palette.base, 1.3)
                             width: 1
                         }
                     }
@@ -396,15 +401,15 @@ Item {
                 implicitHeight: $(11)
             }
             scrollBarBackground: Rectangle {
-                y: $(-1)
-                color: "#dddddd"
-                implicitWidth: $(12)
-                height: control.height
+                color: Qt.darker(palette.window, 1.2)
+                implicitWidth: $(11)
+                implicitHeight: $(11)
             }
             handle: Rectangle {
-                color: "#b3b5b6"
+                color: mixColors(palette.window, palette.windowText, 0.5)
                 x: $(3)
-                implicitWidth: $(7)
+                y: $(3)
+                implicitWidth: $(6)
                 implicitHeight: $(7)
                 radius: $(4)
             }

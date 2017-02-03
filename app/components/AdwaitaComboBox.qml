@@ -44,6 +44,7 @@ ComboBox {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
             text: control.count > 0 ? control.currentText : ""
+            color: palette.buttonText
         }
     }
 }

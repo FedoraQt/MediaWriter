@@ -32,13 +32,14 @@ RadioButton {
                 width: parent.width / 3
                 height: parent.width / 3
                 radius: parent.radius / 3
-                color: "black"
+                color: palette.text
                 visible: control.checked
             }
         }
         label: Text {
             font.pixelSize: $(12)
             text: control.text
+            color: palette.windowText
         }
         spacing: $(6)
     }

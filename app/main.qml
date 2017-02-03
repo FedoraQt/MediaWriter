@@ -36,6 +36,9 @@ ApplicationWindow {
     SystemPalette {
         id: palette
     }
+    SystemPalette {
+        id: disabledPalette
+    }
 
     Component.onCompleted: {
         width = $(800)
@@ -45,6 +48,13 @@ ApplicationWindow {
     property real scalingFactor: Math.ceil(Screen.pixelDensity * 25.4) / 96 > 1 ? Math.ceil(Screen.pixelDensity * 25.4) / 96 : 1
     function $(x) {
         return x
+    }
+
+    function mixColors(color1, color2, ratio) {
+        return Qt.rgba(color1.r * ratio + color2.r * (1.0 - ratio),
+                       color1.g * ratio + color2.g * (1.0 - ratio),
+                       color1.b * ratio + color2.b * (1.0 - ratio),
+                       color1.a * ratio + color2.a * (1.0 - ratio))
     }
 
     property bool canGoBack: false

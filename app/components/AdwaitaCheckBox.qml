@@ -31,7 +31,7 @@ CheckBox {
                 rotation: -45
                 anchors.fill: parent
                 Rectangle {
-                    color: "black"
+                    color: palette.text
                     x: $(5)
                     y: $(4)
                     width: $(3)
@@ -39,7 +39,7 @@ CheckBox {
                     radius: $(4)
                 }
                 Rectangle {
-                    color: "black"
+                    color: palette.text
                     x: $(5)
                     y: $(8)
                     width: $(12)
@@ -51,6 +51,7 @@ CheckBox {
         label: Text {
             font.pixelSize: $(12)
             text: control.text
+            color: control.enabled ? palette.windowText : disabledPalette.windowText
         }
         spacing: $(8)
     }

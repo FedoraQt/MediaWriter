@@ -23,8 +23,8 @@ import QtQuick.Controls.Styles 1.2
 
 Rectangle {
     id: root
-    property color progressColor: "#54aada"
-    property color backgroundColor: "#c3c3c3"
+    property color progressColor: palette.highlight
+    property color backgroundColor: Qt.darker(palette.button, 1.2)
     property real maximumValue: 1.0
     property real minimumValue: 0.0
     property real value: 0
@@ -33,7 +33,7 @@ Rectangle {
     height: $(6)
 
     border {
-        color: "#777777"
+        color: Qt.darker(palette.button, 1.7)
         width: 1
     }
     radius: $(3)
@@ -50,7 +50,7 @@ Rectangle {
         height: $(6) - 1
         width: (root.value - root.minimumValue) / (root.maximumValue - root.minimumValue) * (parent.width - 1);
         border {
-            color: "#777777"
+            color: Qt.darker(palette.button)
             width: 1
         }
         radius: $(3)
