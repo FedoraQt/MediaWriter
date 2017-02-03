@@ -67,15 +67,17 @@ Item {
         antialiasing: true
         border {
             width: 1
-            color: "#b1b1b1"
+            color: Qt.darker(palette.button, 1.5)
         }
         radius: $(6)
         Rectangle {
             z: -1
             y: -$(6.5) - 1
             antialiasing: true
-            border.color: "#b1b1b1"
-            border.width: 1
+            border {
+                width: 1
+                color: Qt.darker(palette.button, 1.5)
+            }
             color: palette.window
             anchors.horizontalCenter: parent.horizontalCenter
             width: $(14)
