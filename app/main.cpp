@@ -24,10 +24,24 @@
 #include <QTranslator>
 #include <QDebug>
 #include <QScreen>
+#include <QtPlugin>
 
 #include "drivemanager.h"
 #include "releasemanager.h"
 #include "options.h"
+
+#ifdef QT_STATIC
+Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
+
+Q_IMPORT_PLUGIN(QtQuick2Plugin);
+Q_IMPORT_PLUGIN(QtQuick2WindowPlugin);
+Q_IMPORT_PLUGIN(QtQuick2DialogsPlugin);
+Q_IMPORT_PLUGIN(QtQuick2DialogsPrivatePlugin);
+Q_IMPORT_PLUGIN(QtQuickControls1Plugin);
+Q_IMPORT_PLUGIN(QtQuickLayoutsPlugin);
+Q_IMPORT_PLUGIN(QmlFolderListModelPlugin);
+Q_IMPORT_PLUGIN(QmlSettingsPlugin);
+#endif
 
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {

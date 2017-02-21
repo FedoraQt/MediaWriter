@@ -90,4 +90,7 @@ win32 {
     QMAKE_MANIFEST = $${PWD}/windows.manifest
 
     RC_ICONS = assets/icon/mediawriter.ico
+    static {
+        QTPLUGIN.platforms = qwindows
+    }
 }
