@@ -20,13 +20,20 @@
 import QtQuick 2.3
 import QtQuick.Controls 1.2
 
-Image {
+Item {
     id: root
-    smooth: false
-    Rectangle {
+    width: image.sourceSize.width
+    height: image.sourceSize.height
+
+    property alias cache: image.cache
+    property alias sourceSize: image.sourceSize
+    property alias fillMode: image.fillMode
+    property alias source: image.source
+    Image {
+        id: image
         anchors.fill: parent
-        opacity: parent.status == Image.Ready ? 0 : 1
-        color: palette.window
+        smooth: false
+        opacity: status == Image.Ready ? 1 : 0
         Behavior on opacity {
             NumberAnimation {
                 easing.type: Easing.OutQuad
@@ -35,13 +42,10 @@ Image {
         }
     }
     BusyIndicator {
-        anchors {
-            top: parent.top
-            horizontalCenter: parent.horizontalCenter
-        }
+        anchors.centerIn: parent
         width: $(implicitWidth)
         height: $(implicitHeight)
-        opacity: parent.status == Image.Ready ? 0 : 1
+        opacity: image.status == Image.Ready ? 0 : 1
         Behavior on opacity {
             NumberAnimation {
                 easing.type: Easing.InQuad
@@ -50,4 +54,3 @@ Image {
         }
     }
 }
-

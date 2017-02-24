@@ -153,5 +153,8 @@ ApplicationWindow {
             dlDialog.visible = true
         }
     }
-}
 
+    FullscreenViewer {
+        id: fullscreenViewer
+    }
+}
