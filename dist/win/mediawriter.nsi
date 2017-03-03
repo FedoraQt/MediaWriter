@@ -1,22 +1,40 @@
-Name "Fedora Media Writer"
-OutFile "FMW-setup.exe"
-
 !include "MUI2.nsh"
 XPStyle on
 
-!include "MUI2.nsh"
-XPStyle on
+# If you change the names "app.exe", "logo.ico", or "license.rtf" you should do a search and replace - they
+# show up in a few places.
+# All the other settings can be tweaked by editing the !defines at the top of this script
+!define APPNAME "Fedora Media Writer"
+!define COMPANYNAME "Fedora Project"
+!define DESCRIPTION "Tool to write Fedora images to flash drives"
+# These three must be defined from command line
+#!define VERSIONMAJOR 4
+#!define VERSIONMINOR 1
+#!define VERSIONBUILD 0
+# These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
+# It is possible to use "mailto:" links in here to open the email client
+!define HELPURL "https://github.com/MartinBriza/MediaWriter" # "Support Information" link
+!define UPDATEURL "https://getfedora.org" # "Product Updates" link
+!define ABOUTURL "https://getfedora.org" # "Publisher" link
+# This is the size (in kB) of all the files copied into "Program Files"
+#!define INSTALLSIZE 7233
 
-SetCompressor lzma
+RequestExecutionLevel admin ;Require admin rights on NT6+ (When UAC is turned on)
 
-InstallDir "$PROGRAMFILES\Fedora Media Writer"
-InstallDirRegKey HKEY_LOCAL_MACHINE "SOFTWARE\Fedora Media Writer" ""
+InstallDir "$PROGRAMFILES\${APPNAME}"
 
-DirText "Select the directory to install Fedora Media Writer in:"
+# rtf or txt file - remember if it is txt, it must be in the DOS text format (\r\n)
+LicenseData "../../build/app/release/LICENSE.txt"
+# This will be in the installer/uninstaller's title bar
+Name "${APPNAME}"
+Icon "../../app/assets/icon/mediawriter.ico"
+outFile "FMW-setup.exe"
+
+!include LogicLib.nsh
 
 !define MUI_ICON ../../app/assets/icon/mediawriter.ico
 
-!insertmacro MUI_PAGE_WELCOME
+!insertmacro MUI_PAGE_LICENSE "../../build/app/release/LICENSE.txt"
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !define MUI_FINISHPAGE_NOAUTOCLOSE
@@ -83,67 +101,79 @@ DirText "Select the directory to install Fedora Media Writer in:"
 !insertmacro MUI_LANGUAGE "Catalan"
 !insertmacro MUI_LANGUAGE "Esperanto"
 
-Section ""
-
-; Install files.
-SetOverwrite on
-
-SetOutPath $INSTDIR
-
-
-File /r ..\..\build\app\release\*
-
-; Create shortcut.
-SetOutPath -
-CreateDirectory "$SMPROGRAMS\Fedora Media Writer"
-CreateShortCut "$SMPROGRAMS\Fedora Media Writer\Fedora Media Writer.lnk" "$INSTDIR\mediawriter.exe"
-CreateShortCut "$SMPROGRAMS\Fedora Media Writer\Uninstall Fedora Media Writer.lnk" "$INSTDIR\uninst.exe" "" "$INSTDIR\uninst.exe" 0
-
-; Create uninstaller.
-WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Fedora Media Writer" "" "$INSTDIR"
-WriteRegStr HKEY_LOCAL_MACHINE "Software\Microsoft\Windows\CurrentVersion\Uninstall\Fedora Media Writer" "DisplayName" "Fedora Media Writer (remove only)"
-WriteRegStr HKEY_LOCAL_MACHINE "Software\Microsoft\Windows\CurrentVersion\Uninstall\Fedora Media Writer" "UninstallString" '"$INSTDIR\uninst.exe"'
-WriteUninstaller "$INSTDIR\uninst.exe"
-
-SectionEnd
-
-UninstallText "This will uninstall Fedora Media Writer from your system."
-
-Section Uninstall
-
-; Delete shortcuts.
-Delete "$SMPROGRAMS\Fedora Media Writer\Fedora Media Writer.lnk"
-Delete "$SMPROGRAMS\Fedora Media Writer\Uninstall Fedora Media Writer.lnk"
-RMDir "$SMPROGRAMS\Fedora Media Writer"
-Delete "$DESKTOP\Fedora Media Writer.lnk"
-
-; Delete registry keys.
-Delete "$INSTDIR\uninst.exe"
-DeleteRegKey HKEY_LOCAL_MACHINE "SOFTWARE\Fedora Media Writer"
-DeleteRegKey HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Fedora Media Writer"
-
-; Delete everything in the installation directory.
-RMDir /R "$INSTDIR"
-
-SectionEnd
-
-!macro SetUILanguage UN
-Function ${UN}SetUILanguage
-  Push $R0
-  ; Call GetUserDefaultUILanguage (available on Windows Me, 2000 and later)
-  ; $R0 = GetUserDefaultUILanguage()
-  System::Call 'kernel32::GetUserDefaultUILanguage() i.r10'
-  StrCpy $LANGUAGE $R0
-  Pop $R0
-FunctionEnd
+!macro VerifyUserIsAdmin
+UserInfo::GetAccountType
+pop $0
+${If} $0 != "admin" ;Require admin rights on NT4+
+        messageBox mb_iconstop "Administrator rights required!"
+        setErrorLevel 740 ;ERROR_ELEVATION_REQUIRED
+        quit
+${EndIf}
 !macroend
-!insertmacro SetUILanguage ""
-!insertmacro SetUILanguage "un."
 
-Function .onInit
-  Call SetUILanguage
-FunctionEnd
- 
-Function un.onInit
-  Call un.SetUILanguage
-FunctionEnd
+function .onInit
+        setShellVarContext all
+        !insertmacro VerifyUserIsAdmin
+functionEnd
+
+section "install"
+        # Files for the install directory - to build the installer, these should be in the same directory as the install script (this file)
+        setOutPath $INSTDIR
+        SetOverwrite on
+        # Files added here should be removed by the uninstaller (see section "uninstall")
+        file /r "../../build/app/release/*"
+        file "../../app/assets/icon/mediawriter.ico"
+        # Add any other files for the install directory (license files, app data, etc) here
+
+        # Uninstaller - See function un.onInit and section "uninstall" for configuration
+        writeUninstaller "$INSTDIR\uninstall.exe"
+
+        # Start Menu
+        createShortCut "$SMPROGRAMS\${APPNAME}.lnk" "$INSTDIR\app.exe" "" "$INSTDIR\logo.ico"
+
+        # Registry information for add/remove programs
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName" "${COMPANYNAME} - ${APPNAME} - ${DESCRIPTION}"
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S"
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "InstallLocation" "$\"$INSTDIR$\""
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayIcon" "$\"$INSTDIR\logo.ico$\""
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "Publisher" "$\"${COMPANYNAME}$\""
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "HelpLink" "$\"${HELPURL}$\""
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLUpdateInfo" "$\"${UPDATEURL}$\""
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLInfoAbout" "$\"${ABOUTURL}$\""
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayVersion" "$\"${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}$\""
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMajor" ${VERSIONMAJOR}
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMinor" ${VERSIONMINOR}
+        # There is no option for modifying or repairing the install
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoModify" 1
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoRepair" 1
+        # Set the INSTALLSIZE constant (!defined at the top of this script) so Add/Remove Programs can accurately report the size
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "EstimatedSize" ${INSTALLSIZE}
+sectionEnd
+
+# Uninstaller
+
+function un.onInit
+        SetShellVarContext all
+
+        #Verify the uninstaller - last chance to back out
+        MessageBox MB_OKCANCEL "Permanantly remove ${APPNAME}?" IDOK next
+                Abort
+        next:
+        !insertmacro VerifyUserIsAdmin
+functionEnd
+
+section "uninstall"
+
+        # Remove Start Menu launcher
+        delete "$SMPROGRAMS\${APPNAME}.lnk"
+
+        # Remove files
+        delete $INSTDIR\*
+
+        # Try to remove the install directory - this will only happen if it is empty
+        rmDir /r $INSTDIR
+
+        # Remove uninstaller information from the registry
+        DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"
+sectionEnd

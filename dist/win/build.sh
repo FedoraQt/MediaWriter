@@ -119,6 +119,7 @@ popd >/dev/null
 popd >/dev/null
 
 echo "=== Composing installer"
+unix2dos < "$ROOTPATH/LICENSE" > "$BUILDPATH/app/release/LICENSE.txt"
 makensis "$SCRIPTDIR/mediawriter.nsi" >/dev/null
 mv "$SCRIPTDIR/FMW-setup.exe" "$INSTALLER"
 
