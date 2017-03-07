@@ -30,7 +30,7 @@ LinuxDriveProvider::LinuxDriveProvider(DriveManager *parent)
     qDBusRegisterMetaType<InterfacesAndProperties>();
     qDBusRegisterMetaType<DBusIntrospection>();
 
-    QTimer::singleShot(0, this, &LinuxDriveProvider::delayedConstruct);
+    QTimer::singleShot(0, this, SLOT(delayedConstruct()));
 }
 
 void LinuxDriveProvider::delayedConstruct() {
@@ -148,8 +148,8 @@ void LinuxDriveProvider::onPropertiesChanged(const QString &interface_name, cons
     const QSet<QString> watchedProperties = { "MediaAvailable", "Size" };
 
     // not ideal but it works alright without a huge lot of code
-    if (changed_properties.keys().toSet().intersects(watchedProperties) ||
-            invalidated_properties.toSet().intersects(watchedProperties)) {
+    if (!changed_properties.keys().toSet().intersect(watchedProperties).isEmpty() ||
+            !invalidated_properties.toSet().intersect(watchedProperties).isEmpty()) {
         QDBusPendingCall pcall = m_objManager->asyncCall("GetManagedObjects");
         QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(pcall, this);
 
@@ -195,7 +195,10 @@ void LinuxDrive::write(ReleaseVariant *data) {
 
     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onFinished(int,QProcess::ExitStatus)));
+#if QT_VERSION >= 0x050600
+    // TODO check if this is actually necessary - it should work just fine even without it
     connect(m_process, &QProcess::errorOccurred, this, &LinuxDrive::onErrorOccurred);
+#endif
 
     m_progress->setTo(data->size());
     m_progress->setValue(0.0/0.0);

@@ -38,7 +38,7 @@ Q_DECLARE_METATYPE(DBusIntrospection)
 RestoreJob::RestoreJob(const QString &where)
     : QObject(nullptr), where(where)
 {
-    QTimer::singleShot(0, this, &RestoreJob::work);
+    QTimer::singleShot(0, this, SLOT(work()));
 }
 
 void RestoreJob::work()

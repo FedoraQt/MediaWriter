@@ -36,7 +36,6 @@ ComboBox {
                 rotation: 90
             }
         }
-        font.pixelSize: $(12)
         label: Text {
             width: control.width
             x: $(6)

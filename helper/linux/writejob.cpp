@@ -52,7 +52,7 @@ WriteJob::WriteJob(const QString &what, const QString &where)
     qDBusRegisterMetaType<InterfacesAndProperties>();
     qDBusRegisterMetaType<DBusIntrospection>();
     connect(&watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
-    QTimer::singleShot(0, this, &WriteJob::work);
+    QTimer::singleShot(0, this, SLOT(work()));
 }
 
 int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {

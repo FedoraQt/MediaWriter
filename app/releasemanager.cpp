@@ -44,7 +44,7 @@ ReleaseManager::ReleaseManager(QObject *parent)
     onStringDownloaded(releases.readAll());
     releases.close();
 
-    QTimer::singleShot(0, this, &ReleaseManager::fetchReleases);
+    QTimer::singleShot(0, this, SLOT(fetchReleases()));
 }
 
 bool ReleaseManager::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const {
@@ -215,7 +215,7 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
 void ReleaseManager::onDownloadError(const QString &message) {
     qWarning() << "Was not able to fetch new releases:" << message << "Retrying in 10 seconds.";
 
-    QTimer::singleShot(10000, this, &ReleaseManager::fetchReleases);
+    QTimer::singleShot(10000, this, SLOT(fetchReleases()));
 }
 
 QStringList ReleaseManager::architectures() const {

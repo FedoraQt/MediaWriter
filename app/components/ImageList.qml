@@ -187,8 +187,6 @@ Item {
     ScrollView {
         id: fullList
         anchors.fill: parent
-        verticalScrollBarPolicy: releases.frontPage ? Qt.ScrollBarAlwaysOff : Qt.ScrollBarAsNeeded
-        horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
         ListView {
             id: osListView
             clip: true

@@ -30,6 +30,10 @@
 #include "releasemanager.h"
 #include "options.h"
 
+#if QT_VERSION < 0x050300
+# error "Minimum supported Qt version is 5.3.0"
+#endif
+
 #ifdef QT_STATIC
 Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
 
@@ -50,9 +54,11 @@ void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QS
     case QtDebugMsg:
         fprintf(stderr, "Debug: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
         break;
+#if QT_VERSION >= 0x050500
     case QtInfoMsg:
         fprintf(stderr, "Info: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
         break;
+#endif
     case QtWarningMsg:
         fprintf(stderr, "Warning: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
         break;

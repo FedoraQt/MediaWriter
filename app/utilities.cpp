@@ -25,6 +25,7 @@
 #include <QApplication>
 #include <QAbstractEventDispatcher>
 #include <QNetworkProxyFactory>
+#include <QSysInfo>
 
 #include "options.h"
 
@@ -101,8 +102,21 @@ QString DownloadManager::dir() {
 
 QString DownloadManager::userAgent() {
     QString ret = QString("FedoraMediaWriter/%1 (").arg(MEDIAWRITER_VERSION);
+#if QT_VERSION >= 0x050400
     ret.append(QString("%1").arg(QSysInfo::prettyProductName().replace(QRegExp("[()]"), "")));
     ret.append(QString("; %1").arg(QSysInfo::buildAbi()));
+#else
+    // TODO probably should follow the format of prettyProductName, however this will be a problem just on Debian it seems
+# ifdef __linux__
+    ret.append("linux");
+# endif // __linux__
+# ifdef __APPLE__
+    ret.append("mac");
+# endif // __APPLE__
+# ifdef _WIN32
+    ret.append("windows");
+# endif // _WIN32
+#endif
     ret.append(QString("; %1").arg(QLocale(QLocale().language()).name()));
 #ifdef MEDIAWRITER_PLATFORM_DETAILS
     ret.append(QString("; %1").arg(MEDIAWRITER_PLATFORM_DETAILS));
@@ -140,7 +154,9 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &ur
 void DownloadManager::fetchPageAsync(DownloadReceiver *receiver, const QString &url) {
     QNetworkRequest request;
     request.setUrl(QUrl(url));
+#if QT_VERSION >= 0x050600
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+#endif
     if (!options.noUserAgent)
         request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
 
@@ -162,7 +178,9 @@ QNetworkReply *DownloadManager::tryAnotherMirror() {
         return nullptr;
 
     QNetworkRequest request;
+#if QT_VERSION >= 0x050600
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+#endif
     request.setUrl(m_mirrorCache.first());
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
     if (!options.noUserAgent)
@@ -198,8 +216,11 @@ void DownloadManager::onStringDownloaded(const QString &text) {
         return;
 
     QNetworkRequest request;
+#if QT_VERSION >= 0x050600
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+#endif
     request.setUrl(m_mirrorCache.first());
+
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
     if (!options.noUserAgent)
         request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
@@ -218,7 +239,9 @@ void DownloadManager::onDownloadError(const QString &message) {
     }
 
     QNetworkRequest request;
+#if QT_VERSION >= 0x050600
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+#endif
     request.setUrl(m_mirrorCache.first());
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
     if (!options.noUserAgent)
@@ -241,7 +264,7 @@ Download::Download(DownloadManager *parent, DownloadReceiver *receiver, const QS
     , m_progress(progress)
 {
     m_timer.setSingleShot(true);
-    connect(&m_timer, &QTimer::timeout, this, &Download::onTimedOut);
+    connect(&m_timer, SIGNAL(timeout()), this, SLOT(onTimedOut()));
 
     if (!m_path.isEmpty()) {
         m_file = new QFile(m_path + ".part", this);
@@ -252,7 +275,7 @@ Download::Download(DownloadManager *parent, DownloadReceiver *receiver, const QS
         }
     }
 
-    QTimer::singleShot(0, this, &Download::start);
+    QTimer::singleShot(0, this, SLOT(start()));
 }
 
 DownloadManager *Download::manager() {
@@ -301,7 +324,7 @@ void Download::start() {
         m_file->open(QIODevice::ReadOnly);
         m_previousSize = 0;
 
-        QTimer::singleShot(0, this, &Download::catchUp);
+        QTimer::singleShot(0, this, SLOT(catchUp()));
     }
     else if (!m_path.isEmpty()) {
         m_file->open(QIODevice::WriteOnly);
@@ -318,7 +341,7 @@ void Download::catchUp() {
     m_bytesDownloaded = m_previousSize;
 
     if (!m_file->atEnd()) {
-        QTimer::singleShot(0, this, &Download::catchUp);
+        QTimer::singleShot(0, this, SLOT(catchUp()));
     }
     else {
         m_file->close();
@@ -360,7 +383,7 @@ void Download::onReadyRead() {
         }
     }
     if (m_reply->bytesAvailable() > 0) {
-        QTimer::singleShot(0, this, &Download::onReadyRead);
+        QTimer::singleShot(0, this, SLOT(onReadyRead()));
     }
 }
 

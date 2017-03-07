@@ -78,7 +78,6 @@ Dialog {
         color: palette.window
         ScrollView {
             anchors.fill: parent
-            horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
             contentItem: Item {
                 width: contentWrapper.width
                 height: layout.height + $(32)
