@@ -51,7 +51,11 @@ mkdir -p "$BUILDPATH"
 pushd "$BUILDPATH" >/dev/null
 
 if [ "$1" == "local" ]; then
-    INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-$(git describe --tags).exe"
+    if [ "$2" == "debug" ]; then
+        INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-$(git describe --tags)-debug.exe"
+    else
+        INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-$(git describe --tags).exe"
+    fi
 else
     INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-$(rpm -q mingw32-mediawriter --queryformat '%{VERSION}\n').exe"
 fi
@@ -85,6 +89,13 @@ for i in $BINARIES; do
     mkdir -p $(dirname $i)
     cp -r "${BIN_PREFIX}/${i}" "$(dirname $i)"
 done
+
+if [ "$2" == "debug" ]; then
+    for i in $BINARIES; do
+        mkdir -p $(dirname $i)
+        cp -r "${BIN_PREFIX}/${i}.debug" "$(dirname $i)"
+    done
+fi
 
 echo "=== Copying plugins"
 for i in $PLUGINS; do
