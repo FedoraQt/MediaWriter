@@ -157,4 +157,31 @@ ApplicationWindow {
     FullscreenViewer {
         id: fullscreenViewer
     }
+
+    Rectangle {
+        id: fatalErrorOverlay
+        opacity: drives.isBroken ? 1.0 : 0.0
+        visible: opacity > 0.1
+        Behavior on opacity { NumberAnimation { } }
+        anchors.fill: parent
+        color: "#cc000000"
+        MouseArea {
+            anchors.fill: parent
+            hoverEnabled: true
+        }
+        ColumnLayout {
+            anchors.centerIn: parent
+            spacing: 9
+            Text {
+                horizontalAlignment: Text.AlignHCenter
+                color: "white"
+                text: qsTr("%1<br>Writing images will not be possible.<br>You can still view Fedora flavors and download images to your hard drive.").arg(drives.errorString)
+            }
+            AdwaitaButton {
+                Layout.alignment: Qt.AlignCenter
+                text: qsTr("Ok")
+                onClicked: fatalErrorOverlay.opacity = 0.0
+            }
+        }
+    }
 }

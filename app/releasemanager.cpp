@@ -19,6 +19,7 @@
 
 #include "releasemanager.h"
 #include "options.h"
+#include "drivemanager.h"
 
 #include "isomd5/libcheckisomd5.h"
 
@@ -656,11 +657,13 @@ void ReleaseVariant::setRealSize(qint64 o) {
 }
 
 ReleaseVariant::Status ReleaseVariant::status() const {
+    if (m_status == READY && DriveManager::instance()->isBackendBroken())
+        return WRITING_NOT_POSSIBLE;
     return m_status;
 }
 
 QString ReleaseVariant::statusString() const {
-    return m_statusStrings[m_status];
+    return m_statusStrings[status()];
 }
 
 void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) {

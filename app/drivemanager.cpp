@@ -37,6 +37,8 @@
 
 #include <QtQml>
 
+DriveManager *DriveManager::_self = nullptr;
+
 DriveManager::DriveManager(QObject *parent)
     : QAbstractListModel(parent), m_provider(DriveProvider::create(this))
 {
@@ -44,6 +46,13 @@ DriveManager::DriveManager(QObject *parent)
 
     connect(m_provider, &DriveProvider::driveConnected, this, &DriveManager::onDriveConnected);
     connect(m_provider, &DriveProvider::driveRemoved, this, &DriveManager::onDriveRemoved);
+    connect(m_provider, &DriveProvider::backendBroken, this, &DriveManager::onBackendBroken);
+}
+
+DriveManager *DriveManager::instance() {
+    if (!_self)
+        _self = new DriveManager();
+    return _self;
 }
 
 QVariant DriveManager::headerData(int section, Qt::Orientation orientation, int role) const {
@@ -107,6 +116,14 @@ Drive *DriveManager::lastRestoreable() {
     return m_lastRestoreable;
 }
 
+bool DriveManager::isBackendBroken() {
+    return !m_errorString.isEmpty();
+}
+
+QString DriveManager::errorString() {
+    return m_errorString;
+}
+
 void DriveManager::setLastRestoreable(Drive *d) {
     if (m_lastRestoreable != d) {
         m_lastRestoreable = d;
@@ -143,6 +160,11 @@ void DriveManager::onDriveRemoved(Drive *d) {
     }
 }
 
+void DriveManager::onBackendBroken(const QString &message) {
+    m_errorString = message;
+    emit isBackendBrokenChanged();
+}
+
 DriveProvider *DriveProvider::create(DriveManager *parent)  {
     if (options.testing)
         return new FakeDriveProvider(parent);
@@ -159,6 +181,7 @@ DriveProvider *DriveProvider::create(DriveManager *parent)  {
     return new LinuxDriveProvider(parent);
 #endif // linux
 }
+
 
 DriveProvider::DriveProvider(DriveManager *parent)
     : QObject(parent) {

@@ -104,6 +104,7 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
 
     if (reply.isError()) {
         qWarning() << "Could not read drives from UDisks:" << reply.error().name() << reply.error().message();
+        emit backendBroken(tr("UDisks2 seems to be unavailable or unaccessible on your system."));
         return;
     }
 

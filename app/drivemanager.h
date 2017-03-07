@@ -48,10 +48,12 @@ class DriveManager : public QAbstractListModel
     Q_PROPERTY(int length READ length NOTIFY drivesChanged)
     Q_PROPERTY(Drive* selected READ selected NOTIFY selectedChanged)
     Q_PROPERTY(int selectedIndex READ selectedIndex WRITE setSelectedIndex NOTIFY selectedChanged)
+    Q_PROPERTY(bool isBroken READ isBackendBroken NOTIFY isBackendBrokenChanged)
+    Q_PROPERTY(QString errorString READ errorString NOTIFY isBackendBrokenChanged)
 
     Q_PROPERTY(Drive* lastRestoreable READ lastRestoreable NOTIFY restoreableDriveChanged)
 public:
-    explicit DriveManager(QObject *parent = 0);
+    static DriveManager *instance();
 
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
@@ -66,23 +68,32 @@ public:
 
     Drive *lastRestoreable();
 
+    bool isBackendBroken();
+    QString errorString();
+
 protected:
     void setLastRestoreable(Drive *d);
 
 private slots:
     void onDriveConnected(Drive *d);
     void onDriveRemoved(Drive *d);
+    void onBackendBroken(const QString &message);
 
 signals:
     void drivesChanged();
     void selectedChanged();
     void restoreableDriveChanged();
+    void isBackendBrokenChanged();
 
 private:
+    explicit DriveManager(QObject *parent = 0);
+
+    static DriveManager *_self;
     QList<Drive*> m_drives {};
     int m_selectedIndex { 0 };
     Drive *m_lastRestoreable { nullptr };
     DriveProvider *m_provider { nullptr };
+    QString m_errorString { };
 };
 
 /**
@@ -102,6 +113,7 @@ public:
 signals:
     void driveConnected(Drive *d);
     void driveRemoved(Drive *d);
+    void backendBroken(const QString &message);
 
 protected:
     DriveProvider(DriveManager *parent);
