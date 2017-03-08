@@ -10,7 +10,7 @@ Homepage: https://github.com/MartinBriza/MediaWriter
 
 Package: mediawriter
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, qtbase5, qtdeclarative5, qml-module-qtquick2, qml-module-qtquick-controls, qml-module-qtquick-dialogs, qml-module-qtquick-layouts, liblzma
 Description: Fedora Media Writer
  Fedora Media Writer is a tool that helps you put a Fedora image on your 
  portable drive (like a flash drive or an SD card). You can then use this 
