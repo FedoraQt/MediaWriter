@@ -420,6 +420,7 @@ void Download::onFinished() {
             qApp->eventDispatcher()->processEvents(QEventLoop::ExcludeSocketNotifiers);
         }
         if (m_file) {
+            m_file->close();
             m_receiver->onFileDownloaded(m_file->fileName(), m_hash.result().toHex());
             m_reply->deleteLater();
             m_reply = nullptr;
