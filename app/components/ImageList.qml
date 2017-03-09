@@ -248,7 +248,7 @@ Item {
                         radius: $(5)
                         color: palette.base
                         border {
-                            color: Qt.darker(palette.base)
+                            color: Qt.darker(palette.base, 1.3)
                             width: 1
                         }
                         height: childrenRect.height + $(24)
