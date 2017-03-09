@@ -48,7 +48,10 @@ void Notifications::notify(const QString &title, const QString &body) {
 #ifdef _WIN32
 
 void Notifications::notify(const QString &title, const QString &body) {
-    Q_UNUSED(title); Q_UNUSED(body);
+    static QSystemTrayIcon *icon = new QSystemTrayIcon(QIcon(":/icon.ico"));
+    if (!icon->isVisible())
+        icon->show();
+    icon->showMessage(title, body);
 }
 
 #endif // _WIN32

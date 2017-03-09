@@ -84,6 +84,7 @@ macx {
 win32 {
     HEADERS += windrivemanager.h
     SOURCES += windrivemanager.cpp
+    RESOURCES += windowsicon.qrc
 
     # Until I find out how (or if it's even possible at all) to run a privileged process from an unprivileged one, the main binary will be privileged too
     DISTFILES += windows.manifest
