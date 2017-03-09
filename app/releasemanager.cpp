@@ -701,6 +701,7 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
             if (!QFile::rename(path, finalFilename)) {
                 setErrorString(tr("Unable to rename the temporary file."));
                 setStatus(FAILED_DOWNLOAD);
+                return;
             }
         }
 
