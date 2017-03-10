@@ -29,7 +29,8 @@
 void Notifications::notify(const QString &title, const QString &body) {
     QDBusInterface notifications("org.freedesktop.Notifications", "/org/freedesktop/Notifications", "org.freedesktop.Notifications", QDBusConnection::sessionBus());
     auto reply = notifications.call("Notify", "Fedora Media Writer", 0U, "mediawriter", title, body, QStringList{}, QVariantMap{}, -1);
-    qCritical() << reply.arguments();
+    if (reply.type() == QDBusMessage::ErrorMessage)
+        qWarning() << "Couldn't send a notification:" << reply.errorName() << "-" << reply.errorMessage();
 }
 
 #endif // __linux
