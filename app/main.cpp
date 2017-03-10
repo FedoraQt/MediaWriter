@@ -25,6 +25,7 @@
 #include <QDebug>
 #include <QScreen>
 #include <QtPlugin>
+#include <QElapsedTimer>
 
 #include "drivemanager.h"
 #include "releasemanager.h"
@@ -47,34 +48,43 @@ Q_IMPORT_PLUGIN(QmlFolderListModelPlugin);
 Q_IMPORT_PLUGIN(QmlSettingsPlugin);
 #endif
 
+QElapsedTimer timer;
+
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     QByteArray localMsg = msg.toLocal8Bit();
     switch (type) {
     case QtDebugMsg:
         if (options.verbose)
-            fprintf(stderr, "Debug: %s (%s:%u)\n", localMsg.constData(), context.file, context.line);
+            fprintf(stderr, "D");
         break;
 #if QT_VERSION >= 0x050500
     case QtInfoMsg:
-        fprintf(stderr, "Info: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        fprintf(stderr, "I");
         break;
 #endif
     case QtWarningMsg:
-        fprintf(stderr, "Warning: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        fprintf(stderr, "W");
         break;
     case QtCriticalMsg:
-        fprintf(stderr, "Critical: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        fprintf(stderr, "C");
         break;
     case QtFatalMsg:
-        fprintf(stderr, "Fatal: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        fprintf(stderr, "F");
         exit(1);
+    }
+    if ((type == QtDebugMsg && options.verbose) || type != QtDebugMsg) {
+        if (context.line >= 0)
+            fprintf(stderr, "@%lldms: %s (%s:%u)\n", timer.elapsed(), localMsg.constData(), context.file, context.line);
+        else
+            fprintf(stderr, "@%lldms: %s\n", timer.elapsed(), localMsg.constData());
     }
     fflush(stderr);
 }
 
 int main(int argc, char **argv)
 {
+    timer.start();
 #ifdef __linux
     char *qsgLoop = getenv("QSG_RENDER_LOOP");
     if (!qsgLoop)
