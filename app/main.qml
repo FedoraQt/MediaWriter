@@ -38,6 +38,7 @@ ApplicationWindow {
     }
     SystemPalette {
         id: disabledPalette
+        colorGroup: SystemPalette.Disabled
     }
 
     Component.onCompleted: {
