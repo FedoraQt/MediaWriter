@@ -29,6 +29,8 @@ void Options::parse(QStringList argv) {
     int index;
     if (argv.contains("--testing"))
         testing = true;
+    if (argv.contains("--verbose") || argv.contains("-v"))
+        verbose = true;
     if ((index = argv.indexOf("--releasesUrl")) >= 0) {
         if (index >= argv.length() - 1)
             printHelp();

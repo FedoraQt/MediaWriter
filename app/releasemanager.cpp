@@ -32,6 +32,7 @@
 ReleaseManager::ReleaseManager(QObject *parent)
     : QSortFilterProxyModel(parent), m_sourceModel(new ReleaseListModel(this))
 {
+    qDebug() << this->metaObject()->className() << "construction";
     setSourceModel(m_sourceModel);
 
     qmlRegisterUncreatableType<Release>("MediaWriter", 1, 0, "Release", "");

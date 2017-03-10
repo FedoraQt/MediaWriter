@@ -77,9 +77,10 @@ Dialog {
         anchors.fill: parent
         color: palette.window
         ScrollView {
+            id: contentScrollView
             anchors.fill: parent
             contentItem: Item {
-                width: contentWrapper.width
+                width: contentScrollView.viewport.width
                 height: layout.height + $(32)
                 Column {
                     id: layout

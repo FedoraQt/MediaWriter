@@ -29,11 +29,15 @@
 WinDriveProvider::WinDriveProvider(DriveManager *parent)
     : DriveProvider(parent)
 {
+    qDebug() << this->metaObject()->className() << "construction";
     QTimer::singleShot(0, this, &WinDriveProvider::checkDrives);
 }
 
 void WinDriveProvider::checkDrives() {
+    static bool firstRun = true;
     QSet<int> drivesWithLetters;
+    if (firstRun)
+        qDebug() << this->metaObject()->className() << "Looking for the drives for the first time";
 
     DWORD drives = ::GetLogicalDrives();
     for (char i = 0; i < 26; i++) {
@@ -42,8 +46,11 @@ void WinDriveProvider::checkDrives() {
         }
     }
 
+    if (firstRun)
+        qDebug() << this->metaObject()->className() << "Finished looking at drive letters";
+
     for (int i = 0; i < 64; i++) {
-        bool present = describeDrive(i, drivesWithLetters.contains(i));
+        bool present = describeDrive(i, drivesWithLetters.contains(i), firstRun);
         if (!present && m_drives.contains(i)) {
             emit driveRemoved(m_drives[i]);
             m_drives[i]->deleteLater();
@@ -51,6 +58,9 @@ void WinDriveProvider::checkDrives() {
         }
     }
 
+    if (firstRun)
+        qDebug() << this->metaObject()->className() << "Finished looking for the drives for the first time";
+    firstRun = false;
     QTimer::singleShot(2500, this, &WinDriveProvider::checkDrives);
 }
 
@@ -87,7 +97,7 @@ QSet<int> WinDriveProvider::findPhysicalDrive(char driveLetter) {
     return ret;
 }
 
-bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
+bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter, bool verbose) {
     BOOL removable;
     QString productVendor;
     QString productId;
@@ -105,8 +115,10 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
     HANDLE hDevice = ::CreateFile(strDrivePath.toStdWString().c_str(), 0, FILE_SHARE_READ|FILE_SHARE_WRITE,
         NULL, OPEN_EXISTING, 0, NULL);
 
-    if(INVALID_HANDLE_VALUE == hDevice)
+    if (hDevice == INVALID_HANDLE_VALUE)
         return false; //::GetLastError();
+
+    qDebug() << this->metaObject()->className() << strDrivePath << "is present";
 
     // Set the input data structure
     STORAGE_PROPERTY_QUERY storagePropertyQuery;
@@ -118,6 +130,7 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
     STORAGE_DESCRIPTOR_HEADER storageDescriptorHeader;
     ZeroMemory(&storageDescriptorHeader, sizeof(STORAGE_DESCRIPTOR_HEADER));
     DWORD dwBytesReturned = 0;
+    qDebug() << this->metaObject()->className() << strDrivePath << "IOCTL_STORAGE_QUERY_PROPERTY";
     if(! ::DeviceIoControl(hDevice, IOCTL_STORAGE_QUERY_PROPERTY,
         &storagePropertyQuery, sizeof(STORAGE_PROPERTY_QUERY),
         &storageDescriptorHeader, sizeof(STORAGE_DESCRIPTOR_HEADER),
@@ -133,6 +146,7 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
     BYTE* pOutBuffer = new BYTE[dwOutBufferSize];
     ZeroMemory(pOutBuffer, dwOutBufferSize);
 
+    qDebug() << this->metaObject()->className() << strDrivePath << "IOCTL_STORAGE_QUERY_PROPERTY with a bigger buffer";
     // Get the storage device descriptor
     if(!(bResult = ::DeviceIoControl(hDevice, IOCTL_STORAGE_QUERY_PROPERTY,
             &storagePropertyQuery, sizeof(STORAGE_PROPERTY_QUERY),
@@ -157,12 +171,15 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
         serialNumber = QString((char*) pOutBuffer + pDeviceDescriptor->SerialNumberOffset).trimmed();
     storageBus = pDeviceDescriptor->BusType;
 
+    qDebug() << this->metaObject()->className() << strDrivePath << "detected:" << productVendor << productId << (removable ? ", removable" : ", nonremovable") << (storageBus == BusTypeUsb ? "USB" : "notUSB");
+
     if (!removable && storageBus != BusTypeUsb)
         return false;
 
     DISK_GEOMETRY pdg;
     DWORD junk     = 0;                     // discard results
 
+    qDebug() << this->metaObject()->className() << strDrivePath << "IOCTL_DISK_GET_DRIVE_GEOMETRY";
     bResult = DeviceIoControl(hDevice,                       // device to be queried
                               IOCTL_DISK_GET_DRIVE_GEOMETRY, // operation to perform
                               NULL, 0,                       // no input buffer
@@ -176,6 +193,7 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter) {
     deviceBytes = pdg.Cylinders.QuadPart * pdg.TracksPerCylinder * pdg.SectorsPerTrack * pdg.BytesPerSector;
 
     // Do cleanup and return
+    qDebug() << this->metaObject()->className() << strDrivePath << "cleanup, adding to the list";
     delete []pOutBuffer;
     ::CloseHandle(hDevice);
 

@@ -52,7 +52,8 @@ void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QS
     QByteArray localMsg = msg.toLocal8Bit();
     switch (type) {
     case QtDebugMsg:
-        fprintf(stderr, "Debug: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+        if (options.verbose)
+            fprintf(stderr, "Debug: %s (%s:%u)\n", localMsg.constData(), context.file, context.line);
         break;
 #if QT_VERSION >= 0x050500
     case QtInfoMsg:
@@ -91,6 +92,7 @@ int main(int argc, char **argv)
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
     QApplication app(argc, argv);
+    qDebug() << "Application constructed";
 
     options.parse(app.arguments());
 
@@ -98,12 +100,16 @@ int main(int argc, char **argv)
     translator.load(QLocale(QLocale().language()), QString(), QString(), ":/translations");
     app.installTranslator(&translator);
 
+    qDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("drives", DriveManager::instance());
     engine.rootContext()->setContextProperty("releases", new ReleaseManager());
     engine.rootContext()->setContextProperty("downloadManager", DownloadManager::instance());
     engine.rootContext()->setContextProperty("mediawriterVersion", MEDIAWRITER_VERSION);
+    qDebug() << "Loading the QML source code";
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
+    qDebug() << "Starting the application";
     return app.exec();
+    qDebug() << "Exiting normally";
 }

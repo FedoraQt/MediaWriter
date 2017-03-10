@@ -130,13 +130,16 @@ QString DownloadManager::userAgent() {
  * TODO explain how this works
  */
 QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder, Progress *progress) {
+    qDebug() << this->metaObject()->className() << "Going to download" << url;
     QString bareFileName = QString("%1/%2").arg(folder).arg(url.fileName());
 
     QDir dir;
     dir.mkpath(folder);
 
-    if (QFile::exists(bareFileName))
+    if (QFile::exists(bareFileName)) {
+        qDebug() << this->metaObject()->className() << "The file already exists on" << bareFileName;
         return bareFileName;
+    }
 
     m_mirrorCache.clear();
     m_mirrorCache << url.toString();
@@ -201,6 +204,8 @@ void DownloadManager::onStringDownloaded(const QString &text) {
     if (!m_current)
         return;
 
+    qDebug() << this->metaObject()->className() << "Received a list of mirrors";
+
     QStringList mirrors;
     for (const QString &i : text.split("\n")) {
         if (!i.trimmed().startsWith("#")) {
@@ -253,7 +258,7 @@ void DownloadManager::onDownloadError(const QString &message) {
 }
 
 DownloadManager::DownloadManager() {
-    QNetworkProxyFactory::setUseSystemConfiguration (true);
+    QNetworkProxyFactory::setUseSystemConfiguration(true);
 }
 
 
@@ -287,6 +292,7 @@ void Download::handleNewReply(QNetworkReply *reply) {
         m_receiver->onDownloadError(tr("Unable to fetch the requested image."));
         return;
     }
+    qDebug() << this->metaObject()->className() << "Trying to download from a mirror:" << reply->url();
 
     if (m_reply)
         m_reply->deleteLater();
@@ -320,6 +326,7 @@ bool Download::hasCatchedUp() {
 
 void Download::start() {
     if (m_catchingUp) {
+        qDebug() << this->metaObject()->className() << "Will need to precompute the hash of the previously downloaded part";
         // first precompute the SHA hash of the already downloaded part
         m_file->open(QIODevice::ReadOnly);
         m_previousSize = 0;
@@ -327,12 +334,12 @@ void Download::start() {
         QTimer::singleShot(0, this, SLOT(catchUp()));
     }
     else if (!m_path.isEmpty()) {
+        qDebug() << this->metaObject()->className() << "Creating a new empty file";
         m_file->open(QIODevice::WriteOnly);
     }
 }
 
 void Download::catchUp() {
-
     QByteArray buffer = m_file->read(1024*1024);
     m_previousSize += buffer.size();
     m_hash.addData(buffer);
@@ -344,6 +351,7 @@ void Download::catchUp() {
         QTimer::singleShot(0, this, SLOT(catchUp()));
     }
     else {
+        qDebug() << this->metaObject()->className() << "Finished computing the hash of the downloaded part";
         m_file->close();
         m_file->open(QIODevice::Append);
         m_catchingUp = false;
@@ -410,6 +418,7 @@ void Download::onSslErrors(const QList<QSslError> errors) {
 void Download::onFinished() {
     m_timer.stop();
     if (m_reply->error() != 0) {
+        qDebug() << this->metaObject()->className() << "An error occured at the end:" << m_reply->errorString();
         if (m_file && m_file->size() == 0) {
             m_file->remove();
         }
@@ -419,6 +428,7 @@ void Download::onFinished() {
             onReadyRead();
             qApp->eventDispatcher()->processEvents(QEventLoop::ExcludeSocketNotifiers);
         }
+        qDebug() << this->metaObject()->className() << "Finished successfully";
         if (m_file) {
             m_file->close();
             m_receiver->onFileDownloaded(m_file->fileName(), m_hash.result().toHex());

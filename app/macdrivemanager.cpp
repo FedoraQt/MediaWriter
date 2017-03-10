@@ -29,6 +29,7 @@ MacDriveProvider *MacDriveProvider::_self = nullptr;
 MacDriveProvider::MacDriveProvider(DriveManager *parent)
     : DriveProvider(parent)
 {
+    qDebug() << this->metaObject()->className() << "construction";
     _self = this;
     startArbiter(&MacDriveProvider::onDriveAdded, &MacDriveProvider::onDriveRemoved);
 }
@@ -46,6 +47,7 @@ void MacDriveProvider::onDriveAdded(const char *bsdName, const char *vendor, con
 }
 
 void MacDriveProvider::addDrive(const QString &bsdName, const QString &vendor, const QString &model, uint64_t size, bool restoreable) {
+    qDebug() << this->metaObject()->className() << "drive added" << bsdName << vendor << model << size << restoreable;
     removeDrive(bsdName);
     MacDrive *drive = new MacDrive(this, QString("%1 %2").arg(vendor).arg(model), size, restoreable, bsdName);
     m_devices[bsdName] = drive;
@@ -58,6 +60,7 @@ void MacDriveProvider::onDriveRemoved(const char *bsdName) {
 
 void MacDriveProvider::removeDrive(const QString &bsdName) {
     if (m_devices.contains(bsdName)) {
+        qDebug() << this->metaObject()->className() << "drive removed" << bsdName;
         emit driveRemoved(m_devices[bsdName]);
         m_devices[bsdName]->deleteLater();
         m_devices.remove(bsdName);
