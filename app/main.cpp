@@ -26,6 +26,7 @@
 #include <QScreen>
 #include <QtPlugin>
 #include <QElapsedTimer>
+#include <QStandardPaths>
 
 #include "drivemanager.h"
 #include "releasemanager.h"
@@ -49,42 +50,45 @@ Q_IMPORT_PLUGIN(QmlSettingsPlugin);
 #endif
 
 QElapsedTimer timer;
+FILE *debugFile;
 
 void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     QByteArray localMsg = msg.toLocal8Bit();
     switch (type) {
     case QtDebugMsg:
-        if (options.verbose)
-            fprintf(stderr, "D");
+        if (options.verbose || options.logging)
+            fprintf(debugFile, "D");
         break;
 #if QT_VERSION >= 0x050500
     case QtInfoMsg:
-        fprintf(stderr, "I");
+        fprintf(debugFile, "I");
         break;
 #endif
     case QtWarningMsg:
-        fprintf(stderr, "W");
+        fprintf(debugFile, "W");
         break;
     case QtCriticalMsg:
-        fprintf(stderr, "C");
+        fprintf(debugFile, "C");
         break;
     case QtFatalMsg:
-        fprintf(stderr, "F");
+        fprintf(debugFile, "F");
         exit(1);
     }
-    if ((type == QtDebugMsg && options.verbose) || type != QtDebugMsg) {
+    if ((type == QtDebugMsg && (options.verbose || options.logging)) || type != QtDebugMsg) {
         if (context.line >= 0)
-            fprintf(stderr, "@%lldms: %s (%s:%u)\n", timer.elapsed(), localMsg.constData(), context.file, context.line);
+            fprintf(debugFile, "@%lldms: %s (%s:%u)\n", timer.elapsed(), localMsg.constData(), context.file, context.line);
         else
-            fprintf(stderr, "@%lldms: %s\n", timer.elapsed(), localMsg.constData());
+            fprintf(debugFile, "@%lldms: %s\n", timer.elapsed(), localMsg.constData());
+        fflush(debugFile);
     }
-    fflush(stderr);
 }
 
 int main(int argc, char **argv)
 {
     timer.start();
+    debugFile = stderr;
+
 #ifdef __linux
     char *qsgLoop = getenv("QSG_RENDER_LOOP");
     if (!qsgLoop)
@@ -102,9 +106,18 @@ int main(int argc, char **argv)
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
     QApplication app(argc, argv);
-    qDebug() << "Application constructed";
-
     options.parse(app.arguments());
+    if (options.logging) {
+        QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/FedoraMediaWriter.log";
+        qDebug() << debugFileName;
+        debugFile = fopen(debugFileName.toStdString().c_str(), "w");
+        if (!debugFile) {
+            debugFile = stderr;
+            qDebug() << "fail";
+        }
+    }
+
+    qDebug() << "Application constructed";
 
     QTranslator translator;
     translator.load(QLocale(QLocale().language()), QString(), QString(), ":/translations");
@@ -120,6 +133,11 @@ int main(int argc, char **argv)
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     qDebug() << "Starting the application";
-    return app.exec();
-    qDebug() << "Exiting normally";
+    int status = app.exec();
+    qDebug() << "Quitting with status" << status;
+
+    if (debugFile != stderr)
+        fclose(debugFile);
+
+    return status;
 }

@@ -197,6 +197,7 @@ void DownloadManager::cancel() {
     if (m_current) {
         m_current->deleteLater();
         m_current = nullptr;
+        qDebug() << this->metaObject()->className() << "Cancelling";
     }
 }
 
