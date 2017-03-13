@@ -98,147 +98,34 @@ Dialog {
                         spacing: $(4)
                         width: parent.width
 
-                        RowLayout {
+                        InfoMessage {
+                            width: infoColumn.width
                             visible: drives.length > 0 &&
                                      (releases.selected.version.variant.status == Variant.READY ||
                                       releases.selected.version.variant.status == Variant.FAILED ||
                                       releases.selected.version.variant.status == Variant.FAILED_VERIFICATION)
-                            width: infoColumn.width
-                            spacing: $(8)
-                            Rectangle {
-                                Layout.fillWidth: false
-                                Layout.alignment: Qt.AlignVCenter
-                                width: $(18)
-                                height: $(18)
-                                radius: width / 2
-                                color: "#628fcf"
-                                border {
-                                    width: $(1)
-                                    color: "#a1a1a1"
-                                }
-                                Text {
-                                    text: "i"
-                                    anchors.centerIn: parent
-                                    font.bold: true
-                                    font.pixelSize: $(12)
-                                    color: "white"
-                                }
-                            }
-                            Text {
-                                Layout.fillHeight: true
-                                Layout.fillWidth: true
-                                verticalAlignment: Text.AlignVCenter
-                                wrapMode: Text.Wrap
-                                font.pixelSize: $(12)
-                                color: palette.windowText
-                                text: qsTr("By writing, you will lose all of the data on %1.").arg(driveCombo.currentText)
-                            }
+                            text: qsTr("By writing, you will lose all of the data on %1.").arg(driveCombo.currentText)
                         }
 
-                        RowLayout {
+                        InfoMessage {
+                            width: infoColumn.width
                             visible: releases.selected.version.variant.status == Variant.WRITING ||
                                      releases.selected.version.variant.status == Variant.WRITE_VERIFYING ||
                                      releases.selected.version.variant.status == Variant.FINISHED
-                            width: infoColumn.width
-                            spacing: $(8)
-                            Rectangle {
-                                Layout.fillWidth: false
-                                Layout.alignment: Qt.AlignVCenter
-                                width: $(18)
-                                height: $(18)
-                                radius: width / 2
-                                color: "#628fcf"
-                                border {
-                                    width: $(1)
-                                    color: "#a1a1a1"
-                                }
-                                Text {
-                                    text: "i"
-                                    anchors.centerIn: parent
-                                    font.bold: true
-                                    font.pixelSize: $(12)
-                                    color: "white"
-                                }
-                            }
-                            Text {
-                                Layout.fillHeight: true
-                                Layout.fillWidth: true
-                                verticalAlignment: Text.AlignVCenter
-                                wrapMode: Text.Wrap
-                                font.pixelSize: $(12)
-                                text: qsTr("Your computer will now report this drive is much smaller than it really is. Just insert your drive again while Fedora Media Writer is running and you'll be able to restore it back to its full size.")
-                                color: palette.windowText
-                            }
+                            text: qsTr("Your computer will now report this drive is much smaller than it really is. Just insert your drive again while Fedora Media Writer is running and you'll be able to restore it back to its full size.")
                         }
 
-                        RowLayout {
-                            visible: releases.selected.version.variant && releases.selected.version.variant.errorString.length > 0
+                        InfoMessage {
                             width: infoColumn.width
-                            spacing: $(8)
-                            Rectangle {
-                                Layout.fillWidth: false
-                                Layout.alignment: Qt.AlignVCenter
-                                width: $(18)
-                                height: $(18)
-                                radius: width / 2
-                                color: "red"
-                                border {
-                                    width: $(1)
-                                    color: "#a1a1a1"
-                                }
-                                Rectangle {
-                                    anchors.centerIn: parent
-                                    width: parent.width * 0.65
-                                    height: parent.width * 0.15
-                                    color: "white"
-                                }
-                            }
-                            Text {
-                                Layout.fillHeight: true
-                                Layout.fillWidth: true
-                                verticalAlignment: Text.AlignVCenter
-                                wrapMode: Text.Wrap
-                                font.pixelSize: $(12)
-                                text: releases.selected.version.variant ? releases.selected.version.variant.errorString : ""
-                                color: palette.windowText
-                            }
-                        }
-                        RowLayout {
                             visible: releases.selected.isLocal
-                            width: infoColumn.width
-                            spacing: $(12)
-                            Text {
-                                Layout.fillWidth: false
-                                Layout.alignment: Qt.AlignVCenter
-                                verticalAlignment: Text.AlignVCenter
-                                color: "white"
-                                text: "!"
-                                rotation: 180
-                                font.bold: true
-                                font.pixelSize: $(13)
+                            text: "<font color=\"gray\">" + qsTr("Selected:") + "</font> " + (releases.selected.version.variant.iso ? (((String)(releases.selected.version.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
+                        }
 
-                                Rectangle {
-                                    z: -1
-                                    anchors.centerIn: parent
-                                    height: parent.height
-                                    width: height
-                                    radius: width / 2
-                                    color: "#729FCF"
-                                    border {
-                                        width: 1
-                                        color: "#a1a1a1"
-                                    }
-                                }
-                            }
-                            Text {
-                                Layout.fillHeight: true
-                                Layout.fillWidth: true
-                                verticalAlignment: Text.AlignVCenter
-                                wrapMode: Text.Wrap
-                                font.pixelSize: $(12)
-                                color: palette.windowText
-                                text: "<font color=\"gray\">" + qsTr("Selected:") + "</font> " + (releases.selected.version.variant.iso ? (((String)(releases.selected.version.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
-                            }
+                        InfoMessage {
+                            error: true
+                            width: infoColumn.width
+                            visible: releases.selected.version.variant && releases.selected.version.variant.errorString.length > 0
+                            text: releases.selected.version.variant ? releases.selected.version.variant.errorString : ""
                         }
                     }
 
