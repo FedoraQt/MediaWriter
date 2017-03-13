@@ -304,17 +304,28 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
         Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
         m_image->setStatus(ReleaseVariant::FINISHED);
     }
+    if (m_process) {
+        m_process->deleteLater();
+        m_process = nullptr;
+    }
 }
 
 void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status) {
     qDebug() << this->metaObject()->className() << "Helper process finished with status" << status;
 
     if (exitCode != 0) {
-        qWarning() << "Drive restoration failed:" << m_process->readAllStandardError();
+        if (m_process)
+            qWarning() << "Drive restoration failed:" << m_process->readAllStandardError();
+        else
+            qWarning() << "Drive restoration failed";
         m_restoreStatus = RESTORE_ERROR;
     }
     else {
         m_restoreStatus = RESTORED;
+    }
+    if (m_process) {
+        m_process->deleteLater();
+        m_process = nullptr;
     }
     emit restoreStatusChanged();
 }
