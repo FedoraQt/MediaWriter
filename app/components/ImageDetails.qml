@@ -292,7 +292,7 @@ Item {
                                 }
                                 Text {
                                     Layout.alignment: Qt.AlignRight
-                                    visible: releases.variants.length > 1
+                                    visible: releases.selected.version.variants.length > 1
                                     text: qsTr("Other variants...")
                                     font.pixelSize: $(11)
                                     color: archMouse.containsPress ? "#284875" : archMouse.containsMouse ? "#447BC7" : palette.highlight
