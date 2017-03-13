@@ -171,6 +171,13 @@ LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name,
     : Drive(parent, name, size, isoLayout), m_device(device) {
 }
 
+LinuxDrive::~LinuxDrive() {
+    if (m_image->status() == ReleaseVariant::WRITING) {
+        m_image->setErrorString(tr("The drive was removed while it was written to."));
+        m_image->setStatus(ReleaseVariant::FAILED);
+    }
+}
+
 void LinuxDrive::write(ReleaseVariant *data) {
     qDebug() << this->metaObject()->className() << "Will now write" << data->iso() << "to" << this->m_device;
 
