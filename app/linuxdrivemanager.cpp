@@ -172,9 +172,12 @@ LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name,
 }
 
 void LinuxDrive::write(ReleaseVariant *data) {
+    qDebug() << this->metaObject()->className() << "Will now write" << data->iso() << "to" << this->m_device;
+
     Drive::write(data);
 
-    if (m_image->status() == ReleaseVariant::READY)
+    if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED ||
+            m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
         m_image->setStatus(ReleaseVariant::WRITING);
 
     if (!m_process)
@@ -201,6 +204,7 @@ void LinuxDrive::write(ReleaseVariant *data) {
     else
         args << data->temporaryPath();
     args << m_device;
+    qDebug() << this->metaObject()->className() << "Helper command will be" << args;
     m_process->setArguments(args);
 
     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
@@ -224,6 +228,8 @@ void LinuxDrive::cancel() {
 }
 
 void LinuxDrive::restore() {
+    qDebug() << this->metaObject()->className() << "Will now restore" << this->m_device;
+
     if (!m_process)
         m_process = new QProcess(this);
 
@@ -247,6 +253,7 @@ void LinuxDrive::restore() {
     }
     args << "restore";
     args << m_device;
+    qDebug() << this->metaObject()->className() << "Helper command will be" << args;
     m_process->setArguments(args);
 
     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
@@ -265,6 +272,7 @@ void LinuxDrive::onReadyRead() {
     while (m_process->bytesAvailable() > 0) {
         QString line = m_process->readLine().trimmed();
         if (line == "CHECK") {
+            qDebug() << this->metaObject()->className() << "Helper finished writing, now it will check the written data";
             m_progress->setValue(0);
             m_image->setStatus(ReleaseVariant::WRITE_VERIFYING);
         }
@@ -278,7 +286,8 @@ void LinuxDrive::onReadyRead() {
 }
 
 void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
-    Q_UNUSED(status);
+    qDebug() << this->metaObject()->className() << "Helper process finished with status" << status;
+
     if (!m_process)
         return;
 
@@ -298,7 +307,8 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
 }
 
 void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status) {
-    Q_UNUSED(status);
+    qDebug() << this->metaObject()->className() << "Helper process finished with status" << status;
+
     if (exitCode != 0) {
         qWarning() << "Drive restoration failed:" << m_process->readAllStandardError();
         m_restoreStatus = RESTORE_ERROR;
@@ -314,7 +324,9 @@ void LinuxDrive::onErrorOccurred(QProcess::ProcessError e) {
     if (!m_process)
         return;
 
-    m_image->setErrorString(m_process->errorString());
+    QString errorMessage = m_process->errorString();
+    qWarning() << "Restoring failed:" << errorMessage;
+    m_image->setErrorString(errorMessage);
     m_process->deleteLater();
     m_image->setStatus(ReleaseVariant::FAILED);
 }

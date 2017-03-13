@@ -201,7 +201,7 @@ bool WriteJob::writePlain(int fd) {
     inFile.open(QIODevice::ReadOnly);
 
     if (!inFile.isReadable()) {
-        err << "AAAAa" << tr("Source image is not readable") << what;
+        err << tr("Source image is not readable") << what;
         err.flush();
         qApp->exit(2);
         return false;

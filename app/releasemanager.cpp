@@ -113,6 +113,7 @@ void ReleaseManager::setFilterText(const QString &o) {
 }
 
 void ReleaseManager::setLocalFile(const QString &path) {
+    qDebug() << this->metaObject()->className() << "Setting local file to" << path;
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = m_sourceModel->get(i);
         if (r->source() == Release::LOCAL) {
@@ -173,6 +174,8 @@ void ReleaseManager::setSelectedIndex(int o) {
 }
 
 void ReleaseManager::onStringDownloaded(const QString &text) {
+    qDebug() << this->metaObject()->className() << "Received a metadata json";
+
     QRegExp re("(\\d+)\\s?(\\S+)?");
     auto doc = QJsonDocument::fromJson(text.toUtf8());
 
@@ -205,6 +208,8 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
 
         version = re.capturedTexts()[1].toInt();
         status = re.capturedTexts()[2];
+
+        qDebug() << this->metaObject()->className() << "Adding" << release << versionWithStatus << arch;
 
         if (!release.isEmpty() && !url.isEmpty() && !arch.isEmpty())
             updateUrl(release, version, status, releaseDate, arch, url, sha256, size);
@@ -679,7 +684,9 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
         qWarning() << "Computed SHA256 hash of" << path << " - " << hash << "does not match expected" << shaHash();
         setErrorString(tr("The downloaded image is corrupted"));
         setStatus(FAILED_DOWNLOAD);
+        return;
     }
+    qDebug() << this->metaObject()->className() << "SHA256 check passed";
 
     qApp->eventDispatcher()->processEvents(QEventLoop::AllEvents);
 
@@ -689,16 +696,20 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
         QFile::remove(path);
         setErrorString(tr("The downloaded image is corrupted"));
         setStatus(FAILED_DOWNLOAD);
+        return;
     }
     else if (checkResult == ISOMD5SUM_FILE_NOT_FOUND) {
         setErrorString(tr("The downloaded file is not readable."));
         setStatus(FAILED_DOWNLOAD);
+        return;
     }
     else {
+        qDebug() << this->metaObject()->className() << "MD5 check passed";
         QString finalFilename(path);
         finalFilename = finalFilename.replace(QRegExp("[.]part$"), "");
 
         if (finalFilename != path) {
+            qDebug() << this->metaObject()->className() << "Renaming from" << path << "to" << finalFilename;
             if (!QFile::rename(path, finalFilename)) {
                 setErrorString(tr("Unable to rename the temporary file."));
                 setStatus(FAILED_DOWNLOAD);
@@ -709,6 +720,7 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
         m_iso = finalFilename;
         emit isoChanged();
 
+        qDebug() << this->metaObject()->className() << "Image is ready";
         setStatus(READY);
 
         if (QFile(m_iso).size() != m_size) {
@@ -749,6 +761,7 @@ void ReleaseVariant::download() {
             m_iso = ret;
             emit isoChanged();
 
+            qDebug() << this->metaObject()->className() << m_iso << "is already downloaded";
             setStatus(READY);
 
             if (QFile(m_iso).size() != m_size) {
