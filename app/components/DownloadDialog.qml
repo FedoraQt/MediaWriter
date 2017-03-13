@@ -80,7 +80,7 @@ Dialog {
             id: contentScrollView
             anchors.fill: parent
             contentItem: Item {
-                width: contentScrollView.viewport.width
+                width: contentScrollView.width
                 height: layout.height + $(32)
                 Column {
                     id: layout
