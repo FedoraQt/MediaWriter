@@ -18,7 +18,6 @@
  */
 
 #include "releasemanager.h"
-#include "options.h"
 #include "drivemanager.h"
 
 #include "isomd5/libcheckisomd5.h"

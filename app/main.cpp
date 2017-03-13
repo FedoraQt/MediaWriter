@@ -28,6 +28,7 @@
 #include <QElapsedTimer>
 #include <QStandardPaths>
 
+#include "crashhandler.h"
 #include "drivemanager.h"
 #include "releasemanager.h"
 
@@ -51,6 +52,7 @@ Q_IMPORT_PLUGIN(QmlSettingsPlugin);
 int main(int argc, char **argv)
 {
     MessageHandler::install();
+    CrashHandler::install();
 
 #ifdef __linux
     char *qsgLoop = getenv("QSG_RENDER_LOOP");
@@ -84,7 +86,6 @@ int main(int argc, char **argv)
     qDebug() << "Loading the QML source code";
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
-    *((int*)0)=1;
     qDebug() << "Starting the application";
     int status = app.exec();
     qDebug() << "Quitting with status" << status;
