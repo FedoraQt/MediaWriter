@@ -33,8 +33,6 @@
 
 #include "fakedrivemanager.h"
 
-#include "options.h"
-
 #include <QtQml>
 
 DriveManager *DriveManager::_self = nullptr;

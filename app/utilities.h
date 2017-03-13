@@ -211,4 +211,28 @@ private:
     QNetworkAccessManager m_manager;
 };
 
+
+struct Options {
+public:
+    void parse(QStringList argv);
+    void printHelp();
+
+    bool testing { false };
+    bool verbose { false };
+#ifdef QT_DEBUG
+    bool logging { true };
+#else
+    bool logging { false };
+#endif
+    QString releasesUrl { "https://getfedora.org/releases.json" };
+    bool noUserAgent { false }; // disables sending the custom Fedora Media Writer user agent header
+};
+
+class MessageHandler {
+public:
+    static void install();
+};
+
+extern Options options;
+
 #endif // UTILITIES_H

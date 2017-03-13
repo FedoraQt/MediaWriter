@@ -28,8 +28,6 @@
 #include <QSysInfo>
 #include <QElapsedTimer>
 
-#include "options.h"
-
 Options options;
 
 static void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg);
