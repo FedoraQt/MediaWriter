@@ -14,7 +14,8 @@ HEADERS += \
     utilities.h \
     fakedrivemanager.h \
     notifications.h \
-    crashhandler.h
+    crashhandler.h \
+    downloadmanager.h
 
 SOURCES += main.cpp \
     drivemanager.cpp \
@@ -22,7 +23,8 @@ SOURCES += main.cpp \
     utilities.cpp \
     fakedrivemanager.cpp \
     notifications.cpp \
-    crashhandler.cpp
+    crashhandler.cpp \
+    downloadmanager.cpp
 
 RESOURCES += qml.qrc \
     assets.qrc \
