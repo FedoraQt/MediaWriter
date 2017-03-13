@@ -45,6 +45,7 @@ ReleaseManager::ReleaseManager(QObject *parent)
     onStringDownloaded(releases.readAll());
     releases.close();
 
+    connect(this, SIGNAL(selectedChanged()), this, SLOT(variantChangedFilter()));
     QTimer::singleShot(0, this, SLOT(fetchReleases()));
 }
 
@@ -81,6 +82,12 @@ void ReleaseManager::fetchReleases() {
     emit beingUpdatedChanged();
 
     DownloadManager::instance()->fetchPageAsync(this, options.releasesUrl);
+}
+
+void ReleaseManager::variantChangedFilter() {
+    // TODO here we could add some filters to help signal/slot performance
+    // TODO otherwise this can just go away and connections can be directly to the signal
+    emit variantChanged();
 }
 
 bool ReleaseManager::beingUpdated() const {
@@ -170,6 +177,17 @@ void ReleaseManager::setSelectedIndex(int o) {
         m_selectedIndex = o;
         emit selectedChanged();
     }
+}
+
+ReleaseVariant *ReleaseManager::variant() {
+    if (selected()) {
+        if (selected()->selectedVersion()) {
+            if (selected()->selectedVersion()->selectedVariant()) {
+                return selected()->selectedVersion()->selectedVariant();
+            }
+        }
+    }
+    return nullptr;
 }
 
 void ReleaseManager::onStringDownloaded(const QString &text) {
@@ -339,7 +357,7 @@ int Release::index() const {
 Release::Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots)
     : QObject(parent), m_index(index), m_name(name), m_summary(summary), m_description(description), m_source(source), m_icon(icon), m_screenshots(screenshots)
 {
-
+    connect(this, SIGNAL(selectedVersionChanged()), parent, SLOT(variantChangedFilter()));
 }
 
 void Release::setLocalFile(const QString &path) {
@@ -374,6 +392,10 @@ bool Release::updateUrl(int version, const QString &status, const QDateTime &rel
     ver->addVariant(variant);
     addVersion(ver);
     return true;
+}
+
+ReleaseManager *Release::manager() {
+    return qobject_cast<ReleaseManager*>(parent());
 }
 
 QString Release::name() const {
@@ -472,12 +494,13 @@ ReleaseVersion::ReleaseVersion(Release *parent, int number, ReleaseVersion::Stat
 {
     if (status != FINAL)
         emit parent->prereleaseChanged();
+    connect(this, SIGNAL(selectedVariantChanged()), parent->manager(), SLOT(variantChangedFilter()));
 }
 
 ReleaseVersion::ReleaseVersion(Release *parent, const QString &file, int64_t size)
     : QObject(parent), m_variants({ new ReleaseVariant(this, file, size) })
 {
-
+    connect(this, SIGNAL(selectedVariantChanged()), parent->manager(), SLOT(variantChangedFilter()));
 }
 
 Release *ReleaseVersion::release() {

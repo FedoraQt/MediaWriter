@@ -84,6 +84,8 @@ class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver {
     Q_PROPERTY(Release* selected READ selected NOTIFY selectedChanged)
     Q_PROPERTY(int selectedIndex READ selectedIndex WRITE setSelectedIndex NOTIFY selectedChanged)
 
+    Q_PROPERTY(ReleaseVariant* variant READ variant NOTIFY variantChanged)
+
     Q_PROPERTY(QStringList architectures READ architectures CONSTANT)
 public:
     explicit ReleaseManager(QObject *parent = 0);
@@ -111,12 +113,15 @@ public:
     int selectedIndex() const;
     void setSelectedIndex(int o);
 
+    ReleaseVariant *variant();
+
     // DownloadReceiver interface
     void onStringDownloaded(const QString &text) override;
     virtual void onDownloadError(const QString &message) override;
 
 public slots:
     void fetchReleases();
+    void variantChangedFilter();
 
 signals:
     void beingUpdatedChanged();
@@ -124,6 +129,7 @@ signals:
     void filterTextChanged();
     void filterArchitectureChanged();
     void selectedChanged();
+    void variantChanged();
 
 private:
     ReleaseListModel *m_sourceModel { nullptr };
@@ -214,6 +220,7 @@ public:
     Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots);
     void setLocalFile(const QString &path);
     bool updateUrl(int version, const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
+    ReleaseManager *manager();
 
     int index() const;
     QString name() const;
