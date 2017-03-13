@@ -67,7 +67,7 @@ Dialog {
     Connections {
         target: releases.variant
         onStatusChanged: {
-            if (releases.variant.status == Variant.FINISHED || releases.variant.status == Variant.FAILED || releases.variant.status == Variant.FAILED_DOWNLOAD)
+            if ([Variant.FINISHED, Variant.FAILED, Variant.FAILED_DOWNLOAD].indexOf(releases.variant.status) >= 0)
                 writeImmediately.checked = false
         }
     }
@@ -101,17 +101,13 @@ Dialog {
                         InfoMessage {
                             width: infoColumn.width
                             visible: drives.length > 0 &&
-                                     (releases.variant.status == Variant.READY ||
-                                      releases.variant.status == Variant.FAILED ||
-                                      releases.variant.status == Variant.FAILED_VERIFICATION)
+                                     [Variant.READY, Variant.FAILED, Variant.FAILED_VERIFICATION].indexOf(releases.variant.status) >= 0
                             text: qsTr("By writing, you will lose all of the data on %1.").arg(driveCombo.currentText)
                         }
 
                         InfoMessage {
                             width: infoColumn.width
-                            visible: releases.variant.status == Variant.WRITING ||
-                                     releases.variant.status == Variant.WRITE_VERIFYING ||
-                                     releases.variant.status == Variant.FINISHED
+                            visible: [Variant.WRITING, Variant.WRITE_VERIFYING, Variant.FINISHED].indexOf(releases.variant.status) >= 0
                             text: qsTr("Your computer will now report this drive is much smaller than it really is. Just insert your drive again while Fedora Media Writer is running and you'll be able to restore it back to its full size.")
                         }
 
@@ -242,9 +238,7 @@ Dialog {
                                     currentIndex = -1
                                 currentIndex = drives.selectedIndex
                             }
-                            enabled: releases.variant.status != Variant.WRITING &&
-                                     releases.variant.status != Variant.WRITE_VERIFYING &&
-                                     releases.variant.status != Variant.FAILED_DOWNLOAD &&
+                            enabled: [Variant.WRITING, Variant.WRITE_VERIFYING, Variant.FAILED_DOWNLOAD].indexOf(releases.variant.status) < 0 &&
                                      drives.length > 0
                             Row {
                                 spacing: $(6)
@@ -304,13 +298,9 @@ Dialog {
                                 textColor: enabled ? "white" : palette.text
                                 enabled: ((releases.variant.status == Variant.READY ||
                                           releases.variant.status == Variant.FAILED) && drives.length > 0)
-                                         || releases.variant.status == Variant.FINISHED
-                                         || releases.variant.status == Variant.FAILED_DOWNLOAD
-                                         || releases.variant.status == Variant.FAILED_VERIFICATION
+                                         ||  [Variant.FINISHED, Variant.FAILED_DOWNLOAD, Variant.FAILED_VERIFICATION].indexOf(releases.variant.status) >= 0
                                 text: releases.variant.status == Variant.FINISHED                ? qsTr("Close") :
-                                      (releases.variant.status == Variant.FAILED_DOWNLOAD ||
-                                       releases.variant.status == Variant.FAILED_VERIFICATION ||
-                                       releases.variant.status == Variant.FAILED               ) ? qsTr("Retry") :
+                                      ([Variant.FAILED_DOWNLOAD, Variant.FAILED_VERIFICATION, Variant.FAILED].indexOf(releases.variant.status) >= 0) ? qsTr("Retry") :
                                                                                                                     qsTr("Write to disk")
                                 onClicked: {
                                     if (releases.variant.status == Variant.READY || releases.variant.status == Variant.FAILED || releases.variant.status == Variant.FAILED_VERIFICATION) {
