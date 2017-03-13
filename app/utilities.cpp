@@ -26,8 +26,15 @@
 #include <QAbstractEventDispatcher>
 #include <QNetworkProxyFactory>
 #include <QSysInfo>
+#include <QElapsedTimer>
 
 #include "options.h"
+
+Options options;
+
+static void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg);
+static QElapsedTimer timer;
+static FILE *debugFile;
 
 // TODO: everything Q_UNUSED
 
@@ -470,4 +477,83 @@ void Download::onTimedOut() {
         handleNewReply(reply);
     else
         m_receiver->onDownloadError(tr("Connection timed out"));
+}
+
+// this is slowly getting out of hand
+// when adding an another option, please consider using a real argv parser
+
+void Options::parse(QStringList argv) {
+    int index;
+    if (argv.contains("--testing"))
+        testing = true;
+    if (argv.contains("--verbose") || argv.contains("-v")) {
+        verbose = true;
+        logging = false;
+    }
+    if (argv.contains("--logging") || argv.contains("-l"))
+        logging = true;
+    if ((index = argv.indexOf("--releasesUrl")) >= 0) {
+        if (index >= argv.length() - 1)
+            printHelp();
+        else
+            releasesUrl = argv[index + 1];
+    }
+    if (argv.contains("--no-user-agent")) {
+        noUserAgent = true;
+    }
+    if (argv.contains("--help")) {
+        printHelp();
+    }
+
+    if (options.logging) {
+        QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/FedoraMediaWriter.log";
+        debugFile = fopen(debugFileName.toStdString().c_str(), "w");
+        if (!debugFile) {
+            debugFile = stderr;
+        }
+    }
+}
+
+void Options::printHelp() {
+    QTextStream out(stdout);
+    out << "mediawriter [--testing] [--no-user-agent] [--releasesUrl <url>]\n";
+}
+
+
+
+static void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg) {
+    QByteArray localMsg = msg.toLocal8Bit();
+    switch (type) {
+    case QtDebugMsg:
+        if (options.verbose || options.logging)
+            fprintf(debugFile, "D");
+        break;
+#if QT_VERSION >= 0x050500
+    case QtInfoMsg:
+        fprintf(debugFile, "I");
+        break;
+#endif
+    case QtWarningMsg:
+        fprintf(debugFile, "W");
+        break;
+    case QtCriticalMsg:
+        fprintf(debugFile, "C");
+        break;
+    case QtFatalMsg:
+        fprintf(debugFile, "F");
+        exit(1);
+    }
+    if ((type == QtDebugMsg && (options.verbose || options.logging)) || type != QtDebugMsg) {
+        if (context.line >= 0)
+            fprintf(debugFile, "@%lldms: %s (%s:%u)\n", timer.elapsed(), localMsg.constData(), context.file, context.line);
+        else
+            fprintf(debugFile, "@%lldms: %s\n", timer.elapsed(), localMsg.constData());
+        fflush(debugFile);
+    }
+}
+
+void MessageHandler::install() {
+    timer.start();
+    debugFile = stderr;
+    qInstallMessageHandler(myMessageOutput); // Install the handler
 }

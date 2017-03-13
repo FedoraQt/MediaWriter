@@ -13,7 +13,6 @@ HEADERS += \
     releasemanager.h \
     utilities.h \
     fakedrivemanager.h \
-    options.h \
     notifications.h
 
 SOURCES += main.cpp \
@@ -21,7 +20,6 @@ SOURCES += main.cpp \
     releasemanager.cpp \
     utilities.cpp \
     fakedrivemanager.cpp \
-    options.cpp \
     notifications.cpp
 
 RESOURCES += qml.qrc \
@@ -89,6 +87,8 @@ win32 {
     HEADERS += windrivemanager.h
     SOURCES += windrivemanager.cpp
     RESOURCES += windowsicon.qrc
+
+    LIBS += -ldbghelp
 
     # Until I find out how (or if it's even possible at all) to run a privileged process from an unprivileged one, the main binary will be privileged too
     DISTFILES += windows.manifest

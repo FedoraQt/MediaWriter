@@ -30,7 +30,6 @@
 
 #include "drivemanager.h"
 #include "releasemanager.h"
-#include "options.h"
 
 #if QT_VERSION < 0x050300
 # error "Minimum supported Qt version is 5.3.0"
@@ -49,45 +48,9 @@ Q_IMPORT_PLUGIN(QmlFolderListModelPlugin);
 Q_IMPORT_PLUGIN(QmlSettingsPlugin);
 #endif
 
-QElapsedTimer timer;
-FILE *debugFile;
-
-void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
-{
-    QByteArray localMsg = msg.toLocal8Bit();
-    switch (type) {
-    case QtDebugMsg:
-        if (options.verbose || options.logging)
-            fprintf(debugFile, "D");
-        break;
-#if QT_VERSION >= 0x050500
-    case QtInfoMsg:
-        fprintf(debugFile, "I");
-        break;
-#endif
-    case QtWarningMsg:
-        fprintf(debugFile, "W");
-        break;
-    case QtCriticalMsg:
-        fprintf(debugFile, "C");
-        break;
-    case QtFatalMsg:
-        fprintf(debugFile, "F");
-        exit(1);
-    }
-    if ((type == QtDebugMsg && (options.verbose || options.logging)) || type != QtDebugMsg) {
-        if (context.line >= 0)
-            fprintf(debugFile, "@%lldms: %s (%s:%u)\n", timer.elapsed(), localMsg.constData(), context.file, context.line);
-        else
-            fprintf(debugFile, "@%lldms: %s\n", timer.elapsed(), localMsg.constData());
-        fflush(debugFile);
-    }
-}
-
 int main(int argc, char **argv)
 {
-    timer.start();
-    debugFile = stderr;
+    MessageHandler::install();
 
 #ifdef __linux
     char *qsgLoop = getenv("QSG_RENDER_LOOP");
@@ -95,8 +58,6 @@ int main(int argc, char **argv)
         setenv("QSG_RENDER_LOOP", "threaded", 1);
     setenv("GDK_BACKEND", "x11", 1);
 #endif
-
-    qInstallMessageHandler(myMessageOutput); // Install the handler
 
     QApplication::setOrganizationDomain("fedoraproject.org");
     QApplication::setOrganizationName("fedoraproject.org");
@@ -107,15 +68,6 @@ int main(int argc, char **argv)
 #endif
     QApplication app(argc, argv);
     options.parse(app.arguments());
-    if (options.logging) {
-        QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/FedoraMediaWriter.log";
-        qDebug() << debugFileName;
-        debugFile = fopen(debugFileName.toStdString().c_str(), "w");
-        if (!debugFile) {
-            debugFile = stderr;
-            qDebug() << "fail";
-        }
-    }
 
     qDebug() << "Application constructed";
 
@@ -132,12 +84,10 @@ int main(int argc, char **argv)
     qDebug() << "Loading the QML source code";
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
+    *((int*)0)=1;
     qDebug() << "Starting the application";
     int status = app.exec();
     qDebug() << "Quitting with status" << status;
-
-    if (debugFile != stderr)
-        fclose(debugFile);
 
     return status;
 }
