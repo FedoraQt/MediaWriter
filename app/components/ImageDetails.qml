@@ -88,9 +88,9 @@ Item {
                             archPopover.open = false
                             versionPopover.open = false
                             dlDialog.visible = true
-                            releases.selected.version.variant.download()
+                            releases.variant.download()
                         }
-                        enabled: !releases.selected.isLocal || releases.selected.version.variant.iso
+                        enabled: !releases.selected.isLocal || releases.variant.iso
                     }
                 }
 
@@ -124,7 +124,7 @@ Item {
                             }
                             Text {
                                 font.pixelSize: $(15)
-                                property double size: releases.selected.version.variant.size
+                                property double size: releases.variant.size
                                 text: size <= 0 ? "" :
                                       (size < 1024) ? (size + " B") :
                                       (size < (1024 * 1024)) ? ((size / 1024).toFixed(1) + " KB") :
@@ -135,8 +135,8 @@ Item {
                             }
                             Text {
                                 font.pixelSize: $(15)
-                                visible: releases.selected.version.variant.realSize > 0.1
-                                property double size: releases.selected.version.variant.realSize
+                                visible: releases.variant.realSize > 0.1
+                                property double size: releases.variant.realSize
                                 property string sizeString: size <= 0 ? "" :
                                                            (size < 1024) ? (size + " B") :
                                                            (size < (1024 * 1024)) ? ((size / 1024).toFixed(1) + " KB") :
@@ -155,13 +155,13 @@ Item {
                                 font.pixelSize: $(13)
                                 color: mixColors(palette.window, palette.windowText, 0.3)
                                 visible: typeof releases.selected.version !== 'undefined'
-                                text: releases.selected.version.variant.arch.description
+                                text: releases.variant.arch.description
                             }
                             Text {
                                 font.pixelSize: $(11)
                                 color: mixColors(palette.window, palette.windowText, 0.3)
-                                visible: releases.selected.version && releases.selected.version.variant
-                                text: releases.selected.version.variant.arch.details
+                                visible: releases.selected.version && releases.variant
+                                text: releases.variant.arch.details
                             }
                             RowLayout {
                                 spacing: 0
@@ -292,7 +292,7 @@ Item {
                                 }
                                 Text {
                                     Layout.alignment: Qt.AlignRight
-                                    visible: releases.selected.version.variants.length > 1
+                                    visible: releases.variants.length > 1
                                     text: qsTr("Other variants...")
                                     font.pixelSize: $(11)
                                     color: archMouse.containsPress ? "#284875" : archMouse.containsMouse ? "#447BC7" : palette.highlight
@@ -344,15 +344,15 @@ Item {
                                                 id: archEG
                                             }
                                             Repeater {
-                                                model: releases.selected.version.variants
+                                                model: releases.variants
                                                 AdwaitaRadioButton {
                                                     text: name
                                                     Layout.alignment: Qt.AlignVCenter
                                                     exclusiveGroup: archEG
-                                                    checked: index == releases.selected.version.variantIndex
+                                                    checked: index == releases.variantIndex
                                                     onCheckedChanged: {
                                                         if (checked)
-                                                            releases.selected.version.variantIndex = index
+                                                            releases.variantIndex = index
                                                         archPopover.open = false
                                                     }
                                                 }

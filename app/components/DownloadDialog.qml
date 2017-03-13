@@ -44,7 +44,7 @@ Dialog {
         if (!visible) {
             if (drives.selected)
                 drives.selected.cancel()
-            releases.selected.version.variant.resetStatus()
+            releases.variant.resetStatus()
             downloadManager.cancel()
         }
         reset()
@@ -65,9 +65,9 @@ Dialog {
     }
 
     Connections {
-        target: releases.selected.version.variant
+        target: releases.variant
         onStatusChanged: {
-            if (releases.selected.version.variant.status == Variant.FINISHED || releases.selected.version.variant.status == Variant.FAILED || releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD)
+            if (releases.variant.status == Variant.FINISHED || releases.variant.status == Variant.FAILED || releases.variant.status == Variant.FAILED_DOWNLOAD)
                 writeImmediately.checked = false
         }
     }
@@ -101,31 +101,31 @@ Dialog {
                         InfoMessage {
                             width: infoColumn.width
                             visible: drives.length > 0 &&
-                                     (releases.selected.version.variant.status == Variant.READY ||
-                                      releases.selected.version.variant.status == Variant.FAILED ||
-                                      releases.selected.version.variant.status == Variant.FAILED_VERIFICATION)
+                                     (releases.variant.status == Variant.READY ||
+                                      releases.variant.status == Variant.FAILED ||
+                                      releases.variant.status == Variant.FAILED_VERIFICATION)
                             text: qsTr("By writing, you will lose all of the data on %1.").arg(driveCombo.currentText)
                         }
 
                         InfoMessage {
                             width: infoColumn.width
-                            visible: releases.selected.version.variant.status == Variant.WRITING ||
-                                     releases.selected.version.variant.status == Variant.WRITE_VERIFYING ||
-                                     releases.selected.version.variant.status == Variant.FINISHED
+                            visible: releases.variant.status == Variant.WRITING ||
+                                     releases.variant.status == Variant.WRITE_VERIFYING ||
+                                     releases.variant.status == Variant.FINISHED
                             text: qsTr("Your computer will now report this drive is much smaller than it really is. Just insert your drive again while Fedora Media Writer is running and you'll be able to restore it back to its full size.")
                         }
 
                         InfoMessage {
                             width: infoColumn.width
                             visible: releases.selected.isLocal
-                            text: "<font color=\"gray\">" + qsTr("Selected:") + "</font> " + (releases.selected.version.variant.iso ? (((String)(releases.selected.version.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
+                            text: "<font color=\"gray\">" + qsTr("Selected:") + "</font> " + (releases.variant.iso ? (((String)(releases.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
                         }
 
                         InfoMessage {
                             error: true
                             width: infoColumn.width
-                            visible: releases.selected.version.variant && releases.selected.version.variant.errorString.length > 0
-                            text: releases.selected.version.variant ? releases.selected.version.variant.errorString : ""
+                            visible: releases.variant && releases.variant.errorString.length > 0
+                            text: releases.variant ? releases.variant.errorString : ""
                         }
                     }
 
@@ -144,13 +144,13 @@ Dialog {
                             Layout.fillHeight: true
                             horizontalAlignment: Text.AlignHCenter
                             font.pixelSize: $(12)
-                            property double leftSize: releases.selected.version.variant.progress.to - releases.selected.version.variant.progress.value
+                            property double leftSize: releases.variant.progress.to - releases.variant.progress.value
                             property string leftStr:  leftSize <= 0                    ? "" :
                                                      (leftSize < 1024)                 ? qsTr("(%1 B left)").arg(leftSize) :
                                                      (leftSize < (1024 * 1024))        ? qsTr("(%1 KB left)").arg((leftSize / 1024).toFixed(1)) :
                                                      (leftSize < (1024 * 1024 * 1024)) ? qsTr("(%1 MB left)").arg((leftSize / 1024 / 1024).toFixed(1)) :
                                                                                          qsTr("(%1 GB left)").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
-                            text: releases.selected.version.variant.statusString + (releases.selected.version.variant.status == Variant.DOWNLOADING ? (" " + leftStr) : "")
+                            text: releases.variant.statusString + (releases.variant.status == Variant.DOWNLOADING ? (" " + leftStr) : "")
                             color: palette.windowText
                         }
                         Item {
@@ -158,26 +158,26 @@ Dialog {
                             height: childrenRect.height
                             AdwaitaProgressBar {
                                 width: parent.width
-                                progressColor: releases.selected.version.variant.status == Variant.WRITING            ? "red" :
-                                               releases.selected.version.variant.status == Variant.DOWNLOAD_VERIFYING ? Qt.lighter("green") :
-                                               releases.selected.version.variant.status == Variant.WRITE_VERIFYING    ? Qt.lighter("green") :
+                                progressColor: releases.variant.status == Variant.WRITING            ? "red" :
+                                               releases.variant.status == Variant.DOWNLOAD_VERIFYING ? Qt.lighter("green") :
+                                               releases.variant.status == Variant.WRITE_VERIFYING    ? Qt.lighter("green") :
                                                                                                                         "#54aada"
-                                value: releases.selected.version.variant.status == Variant.DOWNLOADING ? releases.selected.version.variant.progress.ratio :
-                                       releases.selected.version.variant.status == Variant.WRITING ? drives.selected.progress.ratio :
-                                       releases.selected.version.variant.status == Variant.DOWNLOAD_VERIFYING ? releases.selected.version.variant.progress.ratio :
-                                       releases.selected.version.variant.status == Variant.WRITE_VERIFYING ? drives.selected.progress.ratio : 0.0
+                                value: releases.variant.status == Variant.DOWNLOADING ? releases.variant.progress.ratio :
+                                       releases.variant.status == Variant.WRITING ? drives.selected.progress.ratio :
+                                       releases.variant.status == Variant.DOWNLOAD_VERIFYING ? releases.variant.progress.ratio :
+                                       releases.variant.status == Variant.WRITE_VERIFYING ? drives.selected.progress.ratio : 0.0
                             }
                         }
                         AdwaitaCheckBox {
                             id: writeImmediately
                             enabled: driveCombo.count && opacity > 0.0
-                            opacity: (releases.selected.version.variant.status == Variant.DOWNLOADING || (releases.selected.version.variant.status == Variant.DOWNLOAD_VERIFYING && releases.selected.version.variant.progress.ratio < 0.95)) ? 1.0 : 0.0
+                            opacity: (releases.variant.status == Variant.DOWNLOADING || (releases.variant.status == Variant.DOWNLOAD_VERIFYING && releases.variant.progress.ratio < 0.95)) ? 1.0 : 0.0
                             text: qsTr("Write the image immediately when the download is finished")
                             onCheckedChanged: {
                                 if (drives.selected) {
                                     drives.selected.cancel()
                                     if (checked)
-                                        drives.selected.write(releases.selected.version.variant)
+                                        drives.selected.write(releases.variant)
                                 }
                             }
                         }
@@ -199,10 +199,10 @@ Dialog {
                             anchors.verticalCenter: parent.verticalCenter
                             scale: $(1.4)
                             SequentialAnimation {
-                                running: releases.selected.version.variant.status == Variant.WRITING
+                                running: releases.variant.status == Variant.WRITING
                                 loops: -1
                                 onStopped: {
-                                    if (releases.selected.version.variant.status == Variant.FINISHED)
+                                    if (releases.variant.status == Variant.FINISHED)
                                         writeArrow.color = "#00dd00"
                                     else
                                         writeArrow.color = palette.text
@@ -235,16 +235,16 @@ Dialog {
                             currentIndex: drives.selectedIndex
                             onCurrentIndexChanged: {
                                 drives.selectedIndex = currentIndex
-                                releases.selected.version.variant.resetStatus()
+                                releases.variant.resetStatus()
                             }
                             onModelChanged: {
                                 if (drives.length <= 0)
                                     currentIndex = -1
                                 currentIndex = drives.selectedIndex
                             }
-                            enabled: releases.selected.version.variant.status != Variant.WRITING &&
-                                     releases.selected.version.variant.status != Variant.WRITE_VERIFYING &&
-                                     releases.selected.version.variant.status != Variant.FAILED_DOWNLOAD &&
+                            enabled: releases.variant.status != Variant.WRITING &&
+                                     releases.variant.status != Variant.WRITE_VERIFYING &&
+                                     releases.variant.status != Variant.FAILED_DOWNLOAD &&
                                      drives.length > 0
                             Row {
                                 spacing: $(6)
@@ -284,9 +284,9 @@ Dialog {
                                     rightMargin: $(6)
                                 }
                                 text: qsTr("Cancel")
-                                enabled: releases.selected.version.variant.status != Variant.FINISHED
+                                enabled: releases.variant.status != Variant.FINISHED
                                 onClicked: {
-                                    releases.selected.version.variant.resetStatus()
+                                    releases.variant.resetStatus()
                                     writeImmediately.checked = false
                                     root.close()
                                 }
@@ -298,31 +298,31 @@ Dialog {
                                     top: parent.top
                                     bottom: parent.bottom
                                 }
-                                color: releases.selected.version.variant.status == Variant.FINISHED ||
-                                       releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ? "#628fcf" :
-                                       releases.selected.version.variant.status == Variant.FAILED_VERIFICATION ? "#628fcf" : "red"
+                                color: releases.variant.status == Variant.FINISHED ||
+                                       releases.variant.status == Variant.FAILED_DOWNLOAD ? "#628fcf" :
+                                       releases.variant.status == Variant.FAILED_VERIFICATION ? "#628fcf" : "red"
                                 textColor: enabled ? "white" : palette.text
-                                enabled: ((releases.selected.version.variant.status == Variant.READY ||
-                                          releases.selected.version.variant.status == Variant.FAILED) && drives.length > 0)
-                                         || releases.selected.version.variant.status == Variant.FINISHED
-                                         || releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD
-                                         || releases.selected.version.variant.status == Variant.FAILED_VERIFICATION
-                                text: releases.selected.version.variant.status == Variant.FINISHED                ? qsTr("Close") :
-                                      (releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD ||
-                                       releases.selected.version.variant.status == Variant.FAILED_VERIFICATION ||
-                                       releases.selected.version.variant.status == Variant.FAILED               ) ? qsTr("Retry") :
+                                enabled: ((releases.variant.status == Variant.READY ||
+                                          releases.variant.status == Variant.FAILED) && drives.length > 0)
+                                         || releases.variant.status == Variant.FINISHED
+                                         || releases.variant.status == Variant.FAILED_DOWNLOAD
+                                         || releases.variant.status == Variant.FAILED_VERIFICATION
+                                text: releases.variant.status == Variant.FINISHED                ? qsTr("Close") :
+                                      (releases.variant.status == Variant.FAILED_DOWNLOAD ||
+                                       releases.variant.status == Variant.FAILED_VERIFICATION ||
+                                       releases.variant.status == Variant.FAILED               ) ? qsTr("Retry") :
                                                                                                                     qsTr("Write to disk")
                                 onClicked: {
-                                    if (releases.selected.version.variant.status == Variant.READY || releases.selected.version.variant.status == Variant.FAILED || releases.selected.version.variant.status == Variant.FAILED_VERIFICATION) {
-                                        drives.selected.write(releases.selected.version.variant)
+                                    if (releases.variant.status == Variant.READY || releases.variant.status == Variant.FAILED || releases.variant.status == Variant.FAILED_VERIFICATION) {
+                                        drives.selected.write(releases.variant)
                                     }
-                                    else if (releases.selected.version.variant.status == Variant.FINISHED) {
-                                        releases.selected.version.variant.resetStatus()
+                                    else if (releases.variant.status == Variant.FINISHED) {
+                                        releases.variant.resetStatus()
                                         writeImmediately.checked = false
                                         root.close()
                                     }
-                                    else if (releases.selected.version.variant.status == Variant.FAILED_DOWNLOAD) {
-                                        releases.selected.version.variant.download()
+                                    else if (releases.variant.status == Variant.FAILED_DOWNLOAD) {
+                                        releases.variant.download()
                                     }
                                 }
                             }
