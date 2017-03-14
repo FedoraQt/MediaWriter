@@ -344,12 +344,12 @@ Item {
                                                 id: archEG
                                             }
                                             Repeater {
-                                                model: releases.variants
+                                                model: releases.selected.version.variants
                                                 AdwaitaRadioButton {
                                                     text: name
                                                     Layout.alignment: Qt.AlignVCenter
                                                     exclusiveGroup: archEG
-                                                    checked: index == releases.variantIndex
+                                                    checked: index == releases.selected.version.variantIndex
                                                     onCheckedChanged: {
                                                         if (checked)
                                                             releases.variantIndex = index
