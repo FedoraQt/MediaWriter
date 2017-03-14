@@ -34,6 +34,7 @@
 WriteJob::WriteJob(const QString &what, const QString &where)
     : QObject(nullptr), what(what), where(where), dd(new QProcess(this))
 {
+    connect(&watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
     if (what.endsWith(".part")) {
         watcher.addPath(what);
     }
@@ -68,7 +69,8 @@ void WriteJob::work() {
 }
 
 void WriteJob::onFileChanged(const QString &path) {
-    Q_UNUSED(path);
+    if (QFile::exists(path))
+        return;
 
     what = what.replace(QRegExp("[.]part$"), "");
 

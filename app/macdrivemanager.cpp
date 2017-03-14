@@ -101,7 +101,10 @@ void MacDrive::write(ReleaseVariant *data) {
         return;
     }
     command.append(" write ");
-    command.append(QString("'%1'").arg(data->iso()));
+    if (data->status() == ReleaseVariant::WRITING)
+        command.append(QString("'%1'").arg(data->iso()));
+    else
+        command.append(QString("'%1'").arg(data->temporaryPath()));
     command.append(" ");
     command.append(m_bsdDevice);
     command.append("\" with administrator privileges without altering line endings");
