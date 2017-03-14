@@ -172,7 +172,7 @@ LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name,
 }
 
 LinuxDrive::~LinuxDrive() {
-    if (m_image->status() == ReleaseVariant::WRITING) {
+    if (m_image && m_image->status() == ReleaseVariant::WRITING) {
         m_image->setErrorString(tr("The drive was removed while it was written to."));
         m_image->setStatus(ReleaseVariant::FAILED);
     }
@@ -314,6 +314,7 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
     if (m_process) {
         m_process->deleteLater();
         m_process = nullptr;
+        m_image = nullptr;
     }
 }
 
@@ -346,5 +347,7 @@ void LinuxDrive::onErrorOccurred(QProcess::ProcessError e) {
     qWarning() << "Restoring failed:" << errorMessage;
     m_image->setErrorString(errorMessage);
     m_process->deleteLater();
+    m_process = nullptr;
+    m_image = nullptr;
     m_image->setStatus(ReleaseVariant::FAILED);
 }
