@@ -31,6 +31,7 @@
 #include "crashhandler.h"
 #include "drivemanager.h"
 #include "releasemanager.h"
+#include "versionchecker.h"
 
 #if QT_VERSION < 0x050300
 # error "Minimum supported Qt version is 5.3.0"
@@ -83,6 +84,7 @@ int main(int argc, char **argv)
     engine.rootContext()->setContextProperty("releases", new ReleaseManager());
     engine.rootContext()->setContextProperty("downloadManager", DownloadManager::instance());
     engine.rootContext()->setContextProperty("mediawriterVersion", MEDIAWRITER_VERSION);
+    engine.rootContext()->setContextProperty("versionChecker", new VersionChecker());
     qDebug() << "Loading the QML source code";
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 

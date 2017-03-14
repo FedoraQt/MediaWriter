@@ -139,10 +139,11 @@ ApplicationWindow {
 
     AdwaitaPopup {
         id: newVersionPopup
-        title: qsTr("Fedora Media Writer %1 Released").arg("N/A")
+        open: versionChecker.newerVersion
+        title: qsTr("Fedora Media Writer %1 Released").arg(versionChecker.newerVersion)
         text: qsTr("Update for great new features and bugfixes!")
         buttonText: qsTr("Open Browser")
-        onAccepted: Qt.openUrlExternally("https://getfedora.org")
+        onAccepted: Qt.openUrlExternally(versionChecker.url)
     }
 
     RestoreDialog {

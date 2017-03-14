@@ -23,6 +23,8 @@
 #include <QObject>
 
 class Progress;
+class Options;
+class MessageHandler;
 
 /**
  * @brief The Progress class
@@ -65,7 +67,6 @@ private:
     qreal m_to { 1.0 };
     qreal m_value { 0.0 };
 };
-
 
 struct Options {
 public:
