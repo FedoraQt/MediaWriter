@@ -352,7 +352,7 @@ Item {
                                                     checked: index == releases.selected.version.variantIndex
                                                     onCheckedChanged: {
                                                         if (checked)
-                                                            releases.variantIndex = index
+                                                            releases.selected.version.variantIndex = index
                                                         archPopover.open = false
                                                     }
                                                 }
