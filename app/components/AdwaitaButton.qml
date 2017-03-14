@@ -23,12 +23,14 @@ import QtQuick.Controls.Styles 1.2
 
 Button {
     id: root
+    property bool flat: false
     property color color: palette.button
     property color textColor: palette.buttonText
 
     style: ButtonStyle {
         background: AdwaitaRectangle {
             color: root.color
+            flat: root.flat
         }
         label: Item {
             implicitWidth: labelText.width + $(16)

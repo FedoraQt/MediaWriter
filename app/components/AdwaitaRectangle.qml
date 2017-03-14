@@ -24,9 +24,9 @@ Item {
     implicitHeight: $(36)
     implicitWidth: $(36)
 
+    property bool flat: false
     property alias radius: rect.radius
     property color color: palette.button
-
 
     Rectangle {
         id: rect
@@ -34,18 +34,23 @@ Item {
         radius: $(3)
 
         readonly property int animationDuration: 150
+
         color: control.enabled ? root.color : disabledPalette.button
         Behavior on color { ColorAnimation { duration: rect.animationDuration } }
 
+        property color borderColor: (flat && !control.pressed && !control.checked && !control.hovered) ? "transparent" :
+                                                              Qt.colorEqual(root.color, "transparent") ? Qt.darker(palette.button) :
+                                                                                                         Qt.darker(palette.button, 1.5)
+        Behavior on borderColor { ColorAnimation { duration: rect.animationDuration } }
+
         border {
             width: 1
-            //color: Qt.colorEqual(root.color, "transparent") ? "#212121" : control.enabled ? "#777777" : "#c2c2c2"
-            color: Qt.colorEqual(root.color, "transparent") ? Qt.darker(palette.button) : Qt.darker(palette.button, 1.5)
+            color: rect.borderColor
         }
 
         Rectangle {
             id: overlay
-            visible: control.enabled
+            visible: control.enabled && ((!root.flat && !Qt.colorEqual(root.color, "transparent"))|| control.pressed || control.checked || control.hovered)
             radius: parent.radius - $(1)
             anchors.margins: $(0.5)
             anchors.fill: parent
@@ -53,12 +58,12 @@ Item {
                 GradientStop {
                     position: 0.0
                     color: overlay.topColor
-                    Behavior on color { ColorAnimation { duration: 100 } }
+                    Behavior on color { ColorAnimation { duration: rect.animationDuration } }
                 }
                 GradientStop {
                     position: 1.0
                     color: overlay.bottomColor
-                    Behavior on color { ColorAnimation { duration: 100 } }
+                    Behavior on color { ColorAnimation { duration: rect.animationDuration } }
                 }
             }
 
