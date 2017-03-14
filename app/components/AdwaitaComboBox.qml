@@ -23,6 +23,7 @@ import QtQuick.Controls.Styles 1.2
 import QtQuick.Controls.Private 1.0
 
 ComboBox {
+    id: root
     implicitWidth: $(128)
     implicitHeight: $(32)
     style: ComboBoxStyle {
@@ -43,7 +44,7 @@ ComboBox {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
             text: control.count > 0 ? control.currentText : ""
-            color: palette.buttonText
+            color: root.enabled ? palette.buttonText : disabledPalette.buttonText
         }
     }
 }
