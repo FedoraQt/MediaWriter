@@ -80,7 +80,7 @@ Dialog {
             id: contentScrollView
             anchors.fill: parent
             contentItem: Item {
-                width: contentScrollView.width
+                width: contentScrollView.width - $(48)
                 height: layout.height + $(32)
                 Column {
                     id: layout
@@ -91,7 +91,6 @@ Dialog {
                         right: parent.right
                         topMargin: $(32)
                         leftMargin: $(48)
-                        rightMargin: anchors.leftMargin
                     }
                     Column {
                         id: infoColumn
