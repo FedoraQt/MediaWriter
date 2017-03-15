@@ -78,6 +78,10 @@ void MacDrive::write(ReleaseVariant *data) {
     //osascript -e "do shell script \"$*\" with administrator privileges"
     Drive::write(data);
 
+    if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED ||
+            m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
+        m_image->setStatus(ReleaseVariant::WRITING);
+
     if (m_child) {
         // TODO some handling of an already present process
         m_child->deleteLater();
