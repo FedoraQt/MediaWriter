@@ -68,7 +68,7 @@ private:
     qreal m_value { 0.0 };
 };
 
-struct Options {
+class Options {
 public:
     void parse(QStringList argv);
     void printHelp();
