@@ -40,8 +40,9 @@ find app/Fedora\ Media\ Writer.app -name "*framework" | while read framework;
  done
  
 codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/
- 
- 
+
+
+rm -f ../FedoraMediaWriter-osx-$(git describe --tags).dmg
 hdiutil create -srcfolder app/Fedora\ Media\ Writer.app  -format UDCO -imagekey zlib-level=9 -scrub -volname FedoraMediaWriter-osx ../FedoraMediaWriter-osx-$(git describe --tags).dmg
 
 # mv "$PWD/app/Fedora Media Writer.dmg" "$INSTALLER"
