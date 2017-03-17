@@ -87,6 +87,7 @@ macx {
     LIBS += -framework DiskArbitration
     QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.9
 
+    QMAKE_INFO_PLIST = Info.plist
     ICON = assets/icon/mediawriter.icns
 }
 win32 {
