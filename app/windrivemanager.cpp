@@ -254,6 +254,9 @@ void WinDrive::write(ReleaseVariant *data) {
     connect(m_child, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &WinDrive::onFinished);
     connect(m_child, &QProcess::readyRead, this, &WinDrive::onReadyRead);
 
+    if (data->status() != ReleaseVariant::DOWNLOADING)
+        m_image->setStatus(ReleaseVariant::WRITING);
+
     if (QFile::exists(qApp->applicationDirPath() + "/helper.exe")) {
         m_child->setProgram(qApp->applicationDirPath() + "/helper.exe");
     }
@@ -267,13 +270,15 @@ void WinDrive::write(ReleaseVariant *data) {
 
     QStringList args;
     args << "write";
-    args << data->iso();
+    if (data->status() == ReleaseVariant::WRITING)
+        args << data->iso();
+    else
+        args << data->temporaryPath();
     args << QString("%1").arg(m_device);
     m_child->setArguments(args);
 
     m_progress->setTo(data->size());
     m_progress->setValue(NAN);
-    m_image->setStatus(ReleaseVariant::WRITING);
 
     m_child->start();
 }
@@ -365,6 +370,9 @@ void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) 
 void WinDrive::onReadyRead() {
     if (!m_child)
         return;
+
+    if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
+        m_image->setStatus(ReleaseVariant::WRITING);
 
     while (m_child->bytesAvailable() > 0) {
         QString line = m_child->readLine().trimmed();

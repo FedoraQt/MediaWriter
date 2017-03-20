@@ -227,7 +227,8 @@ void WriteJob::work() {
 }
 
 void WriteJob::onFileChanged(const QString &path) {
-    Q_UNUSED(path);
+    if (QFile::exists(path))
+        return;
 
     what = what.replace(QRegExp("[.]part$"), "");
 

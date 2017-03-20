@@ -218,6 +218,9 @@ void MacDrive::onReadyRead() {
     if (!m_child)
         return;
 
+    if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
+        m_image->setStatus(ReleaseVariant::WRITING);
+
     while (m_child->bytesAvailable() > 0) {
         bool ok;
         int64_t bytes = m_child->readLine().trimmed().toULongLong(&ok);
