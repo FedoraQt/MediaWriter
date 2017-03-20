@@ -170,7 +170,7 @@ Item {
                                     text: qsTr("Version %1").arg(releases.selected.version.name)
                                     font.pixelSize: $(11)
 
-                                    color: versionRepeater.count <= 1 ? mixColors(palette.window, palette.windowText, 0.3) : versionMouse.containsPress ? Qt.lighter("#1a56aa", 1.7) : versionMouse.containsMouse ? Qt.darker("#1a56aa", 1.5) : "#1a56aa"
+                                    color: versionRepeater.count <= 1 ? mixColors(palette.window, palette.windowText, 0.3) : versionMouse.containsPress ? Qt.lighter("#1d61bf", 1.7) : versionMouse.containsMouse ? Qt.darker("#1d61bf", 1.5) : "#1d61bf"
                                     Behavior on color { ColorAnimation { duration: 100 } }
                                     MouseArea {
                                         id: versionMouse
@@ -295,7 +295,7 @@ Item {
                                     visible: releases.selected.version.variants.length > 1
                                     text: qsTr("Other variants...")
                                     font.pixelSize: $(11)
-                                    color: archMouse.containsPress ? Qt.lighter("#1a56aa", 1.7) : archMouse.containsMouse ? Qt.darker("#1a56aa", 1.5) : "#1a56aa"
+                                    color: archMouse.containsPress ? Qt.lighter("#1d61bf", 1.7) : archMouse.containsMouse ? Qt.darker("#1d61bf", 1.5) : "#1d61bf"
                                     Behavior on color { ColorAnimation { duration: 100 } }
                                     MouseArea {
                                         id: archMouse
