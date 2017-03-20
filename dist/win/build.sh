@@ -29,7 +29,7 @@ if [ -z "$CERTPASS" ]; then
     exit 1
 fi
 
-PACKAGES="mingw32-mediawriter mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols mingw32-nsis mono-devel"
+PACKAGES="mingw32-mediawriter mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-nsis mono-devel"
 
 BINARIES="libstdc++-6.dll libwinpthread-1.dll libgcc_s_sjlj-1.dll libcrypto-10.dll libssl-10.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll Qt5Core.dll Qt5Gui.dll Qt5Network.dll Qt5Qml.dll Qt5Quick.dll Qt5Widgets.dll Qt5WinExtras.dll"
 PLUGINS="imageformats/qjpeg.dll platforms/qwindows.dll"
