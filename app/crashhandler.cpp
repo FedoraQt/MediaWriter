@@ -39,7 +39,7 @@ void printStack(void) {
      fprintf(stderr, "Backtrace:\n");
      for(int i = 0; i < frames; i++) {
          SymFromAddr(process, (DWORD64)(stack[i]), 0, symbol);
-         fprintf(stderr, "\t%i: %s - 0x%0X\n", frames - i - 1, symbol->Name, symbol->Address);
+         fprintf(stderr, "\t%i: %s - 0x%p\n", frames - i - 1, symbol->Name, (void*)symbol->Address);
      }
 
      free(symbol);
@@ -61,7 +61,7 @@ LONG faultHandler(struct _EXCEPTION_POINTERS *info) {
     fprintf(stderr, "An unhandled exception occurred:\n");
     fprintf(stderr, "Code: %08X - %s\n", code, faultName);
     fprintf(stderr, "Flags: %08X\n", flags);
-    fprintf(stderr, "Address: %08p\n", address);
+    fprintf(stderr, "Address: %8p\n", address);
 
     printStack();
     fflush(stderr);
