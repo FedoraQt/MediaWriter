@@ -17,12 +17,15 @@ rm -fr "build"
 mkdir -p "build"
 pushd build >/dev/null
 
+echo "=== Building ==="
 ${QMAKE} .. >/dev/null
 make -j9 >/dev/null
 
+echo "=== Inserting Qt deps ==="
 cp "helper/mac/helper.app/Contents/MacOS/helper" "app/Fedora Media Writer.app/Contents/MacOS"
 ${MACDEPLOYQT} "app/Fedora Media Writer.app" -qmldir="../app" -executable="app/Fedora Media Writer.app/Contents/MacOS/helper"
 
+echo "=== Checking unresolved library deps ==="
 # Look at the binaries and search for dynamic library dependencies that are not included on every system
 # So far, this finds only liblzma but in the future it may be necessary for more libs
 for binary in "helper" "Fedora Media Writer"; do 
@@ -30,17 +33,20 @@ for binary in "helper" "Fedora Media Writer"; do
         grep -E "^\s" | grep -Ev "Foundation|OpenGL|AGL|DiskArbitration|IOKit|libc\+\+|libobjc|libSystem|@rpath" |\
         sed -e 's/[[:space:]]\([^[:space:]]*\).*/\1/' |\
         while read library; do
+        echo "Copying $(basename $library)"
         cp $library "app/Fedora Media Writer.app/Contents/Frameworks"
         install_name_tool -change "$library" "@executable_path/../Frameworks/$(basename ${library})" "app/Fedora Media Writer.app/Contents/MacOS/$binary"    
     done
 done
 
+echo "=== Signing the package ==="
 # sign all frameworks and then the package
 find app/Fedora\ Media\ Writer.app -name "*framework" | while read framework; do
     codesign -s "$DEVELOPER_ID" --deep -v -f "$framework/Versions/Current/"
 done
 codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/
 
+echo "=== Creating a disk image ==="
 # create the .dmg package - beware, it won't work while FMW is running (blocks partition mounting)
 rm -f ../FedoraMediaWriter-osx-$(git describe --tags).dmg
 hdiutil create -srcfolder app/Fedora\ Media\ Writer.app  -format UDCO -imagekey zlib-level=9 -scrub -volname FedoraMediaWriter-osx ../FedoraMediaWriter-osx-$(git describe --tags).dmg
