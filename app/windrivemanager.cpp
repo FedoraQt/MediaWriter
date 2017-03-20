@@ -244,6 +244,7 @@ WinDrive::~WinDrive() {
 }
 
 void WinDrive::write(ReleaseVariant *data) {
+    qDebug() << this->metaObject()->className() << "Preparing to write" << data->fullName() << "to drive" << m_device;
     Drive::write(data);
 
     if (m_child) {
@@ -280,6 +281,7 @@ void WinDrive::write(ReleaseVariant *data) {
     m_progress->setTo(data->size());
     m_progress->setValue(NAN);
 
+    qDebug() << this->metaObject()->className() << "Starting" << m_child->program() << args;
     m_child->start();
 }
 
@@ -292,7 +294,7 @@ void WinDrive::cancel() {
 }
 
 void WinDrive::restore() {
-    qCritical() << "starting to restore";
+    qDebug() << this->metaObject()->className() << "Preparing to restore disk" << m_device;
     if (m_child)
         m_child->deleteLater();
 
@@ -319,6 +321,8 @@ void WinDrive::restore() {
 
     //connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
     connect(m_child, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
+
+    qDebug() << this->metaObject()->className() << "Starting" << m_child->program() << args;
 
     m_child->start(QIODevice::ReadOnly);
 }
@@ -377,6 +381,7 @@ void WinDrive::onReadyRead() {
     while (m_child->bytesAvailable() > 0) {
         QString line = m_child->readLine().trimmed();
         if (line == "CHECK") {
+            qDebug() << this->metaObject()->className() << "Written media check starting";
             m_progress->setValue(0);
             m_image->setStatus(ReleaseVariant::WRITE_VERIFYING);
         }
