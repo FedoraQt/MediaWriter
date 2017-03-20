@@ -20,8 +20,7 @@
 #include "crashhandler.h"
 
 #ifdef _WIN32
-// it's not possible to use QDebug here
-# include <stdio.h>
+# include <QDebug>
 # include <windows.h>
 # include <dbghelp.h>
 
@@ -36,10 +35,10 @@ void printStack(void) {
      symbol->MaxNameLen = 255;
      symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
 
-     fprintf(stderr, "Backtrace:\n");
+     qCritical() << "Backtrace:";
      for(int i = 0; i < frames; i++) {
          SymFromAddr(process, (DWORD64)(stack[i]), 0, symbol);
-         fprintf(stderr, "\t%i: %s - 0x%p\n", frames - i - 1, symbol->Name, (void*)symbol->Address);
+         qCritical() << '\t' << frames - i - 1 << ':' << symbol->Name << (void*)symbol->Address;
      }
 
      free(symbol);
@@ -57,11 +56,11 @@ LONG faultHandler(struct _EXCEPTION_POINTERS *info) {
         default:                              faultName = "(N/A)"                ; break;
     }
 
-    fprintf(stderr, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-    fprintf(stderr, "An unhandled exception occurred:\n");
-    fprintf(stderr, "Code: %08X - %s\n", code, faultName);
-    fprintf(stderr, "Flags: %08X\n", flags);
-    fprintf(stderr, "Address: %8p\n", address);
+    qCritical() << "=== CRASH OCCURED ===";
+    qCritical() << "An unhandled exception occurred:";
+    qCritical() << "Code:" << code << "-" << faultName;
+    qCritical() << "Flags:" << flags;
+    qCritical() << "Address" << address;
 
     printStack();
     fflush(stderr);

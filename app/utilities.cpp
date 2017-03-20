@@ -151,7 +151,7 @@ static void myMessageOutput(QtMsgType type, const QMessageLogContext &context, c
         exit(1);
     }
     if ((type == QtDebugMsg && (options.verbose || options.logging)) || type != QtDebugMsg) {
-        if (context.line >= 0)
+        if (context.line > 0)
             fprintf(debugFile, "@%lldms: %s (%s:%u)\n", timer.elapsed(), localMsg.constData(), context.file, context.line);
         else
             fprintf(debugFile, "@%lldms: %s\n", timer.elapsed(), localMsg.constData());
