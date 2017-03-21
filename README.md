@@ -8,11 +8,11 @@ This overwrites the drive's partition layout though, so it also provides a way t
 
 ![Fedora Media Writer running, with expanded image list](/dist/screenshots/linux_main.png)
 
-## Status
+## Troubleshooting
 
-The tool is still in development, features are added to it over time.
+If you experience any problem with the application, like crashes or errors when writing to your drives, please open an issue here on Github.
 
-To view the current development status, visit #1 .
+Please don't forget to attach the FedoraMediaWriter.log file that will appear in your Documents folder ($HOME/Documents on Linux and Mac, C:\Users\<user>\Documents). It contains some non-sensitive information about your system and the log of all events happening the runtime.
 
 ## Building
 
