@@ -42,7 +42,8 @@ Item {
         }
     }
     BusyIndicator {
-        anchors.centerIn: parent
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
         width: $(implicitWidth)
         height: $(implicitHeight)
         opacity: image.status == Image.Ready ? 0 : 1
