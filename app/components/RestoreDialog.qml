@@ -39,10 +39,17 @@ Dialog {
     }
 
     contentItem : Rectangle {
+        focus: true
         implicitWidth: $(480)
         implicitHeight: textItem.height + buttonItem.height + $(48)
         height: textItem.height + buttonItem.height + $(48)
         color: palette.window
+
+        Keys.onEscapePressed: {
+            if (drives.lastRestoreable.restoreStatus != Drive.RESTORING)
+                root.close()
+        }
+
         Item {
             id: wrapper
             anchors.fill: parent

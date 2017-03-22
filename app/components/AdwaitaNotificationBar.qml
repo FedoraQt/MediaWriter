@@ -25,6 +25,7 @@ import QtQuick.Layouts 1.1
 Rectangle {
     id: root
     clip: true
+    focus: open
 
     color: "#729FCF"
     border {
@@ -50,6 +51,8 @@ Rectangle {
 
     signal accepted
     signal cancelled
+
+    Keys.onEscapePressed: open = false
 
     RowLayout {
         anchors {

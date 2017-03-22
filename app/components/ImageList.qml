@@ -27,11 +27,22 @@ Item {
 
     property alias currentIndex: osListView.currentIndex
     property real fadeDuration: 200
+    property int lastIndex: -1
 
     signal stepForward(int index)
+    onStepForward: lastIndex = index
 
     anchors.fill: parent
     clip: true
+
+    MouseArea {
+        anchors.fill: parent
+        acceptedButtons: Qt.ForwardButton
+        onClicked: {
+            if (lastIndex >= 0 && mouse.button == Qt.ForwardButton)
+                stepForward(lastIndex)
+        }
+    }
 
     Rectangle {
         enabled: !releases.frontPage

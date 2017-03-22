@@ -45,7 +45,22 @@ Item {
         }
     }
 
+    function toMainScreen() {
+        archPopover.open = false
+        versionPopover.open = false
+        canGoBack = false
+        contentList.currentIndex--
+    }
+
     signal stepForward
+
+    MouseArea {
+        anchors.fill: parent
+        acceptedButtons: Qt.BackButton
+        onClicked:
+            if (mouse.button == Qt.BackButton)
+                toMainScreen()
+    }
 
     ScrollView {
         anchors {
@@ -67,12 +82,7 @@ Item {
                     Layout.fillWidth: true
                     BackButton {
                         id: backButton
-                        onClicked: {
-                            archPopover.open = false
-                            versionPopover.open = false
-                            canGoBack = false
-                            contentList.currentIndex--
-                        }
+                        onClicked: toMainScreen()
                     }
                     Item {
                         Layout.fillWidth: true

@@ -5,9 +5,13 @@ Item {
     id: fullscreenViewer
     anchors.fill: parent
     visible: false
+    focus: true
+
+    Keys.onEscapePressed: hide()
 
     MouseArea {
         anchors.fill: parent
+        acceptedButtons: Qt.AllButtons
         onClicked: fullscreenViewer.hide()
         cursorShape: Qt.PointingHandCursor
     }
@@ -21,11 +25,13 @@ Item {
         fullscreenViewerImage.source = url
         fullscreenViewer.visible = true
         mainWindow.visibility = Window.FullScreen
+        focus = true
     }
     function hide() {
         fullscreenViewerImage.source = ""
         fullscreenViewer.visible = false
         mainWindow.visibility = Window.Windowed
+        focus = false
     }
     IndicatedImage {
         id: fullscreenViewerImage

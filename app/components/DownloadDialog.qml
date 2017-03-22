@@ -76,6 +76,13 @@ Dialog {
         id: contentWrapper
         anchors.fill: parent
         color: palette.window
+        focus: true
+
+        Keys.onEscapePressed: {
+            if ([Variant.WRITING, Variant.WRITE_VERIFYING].indexOf(releases.variant.status) < 0)
+                root.visible = false
+        }
+
         ScrollView {
             id: contentScrollView
             anchors.fill: parent
