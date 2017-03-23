@@ -59,8 +59,6 @@ private:
     QTextStream err { stderr };
     QDBusUnixFileDescriptor fd { -1 };
     QFileSystemWatcher watcher { };
-
-    QProcess *dd { nullptr };
 };
 
 #endif // WRITEJOB_H

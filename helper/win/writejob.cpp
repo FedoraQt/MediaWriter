@@ -37,7 +37,7 @@
 
 
 WriteJob::WriteJob(const QString &what, const QString &where)
-    : QObject(nullptr), what(what), dd(new QProcess(this))
+    : QObject(nullptr), what(what)
 {
     bool ok = false;
     this->where = where.toInt(&ok);

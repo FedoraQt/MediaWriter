@@ -32,7 +32,7 @@
 #include "isomd5/libcheckisomd5.h"
 
 WriteJob::WriteJob(const QString &what, const QString &where)
-    : QObject(nullptr), what(what), where(where), dd(new QProcess(this))
+    : QObject(nullptr), what(what), where(where)
 {
     connect(&watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
     if (what.endsWith(".part")) {

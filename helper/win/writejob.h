@@ -71,8 +71,6 @@ private:
 
     QFileSystemWatcher watcher { };
 
-    QProcess *dd;
-
     const int BLOCK_SIZE { 512 * 128 };
 };
 
