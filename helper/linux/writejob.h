@@ -27,6 +27,12 @@
 #include <QDBusUnixFileDescriptor>
 #include <QFileSystemWatcher>
 
+#include <unistd.h>
+
+#include <memory>
+#include <tuple>
+#include <utility>
+
 #ifndef MEDIAWRITER_LZMA_LIMIT
 // 256MB memory limit for the decompressor
 # define MEDIAWRITER_LZMA_LIMIT (1024*1024*256)
@@ -46,9 +52,6 @@ public:
     bool writeCompressed(int fd);
     bool writePlain(int fd);
     bool check(int fd);
-
-    // in pages (1024 * 2048 likely)
-    const int BUFFER_SIZE { 1024 };
 public slots:
     void work();
     void onFileChanged(const QString &path);
@@ -60,5 +63,7 @@ private:
     QDBusUnixFileDescriptor fd { -1 };
     QFileSystemWatcher watcher { };
 };
+
+std::tuple<std::unique_ptr<char[]>, char*, std::size_t> pageAlignedBuffer(std::size_t pages = 1024);
 
 #endif // WRITEJOB_H
