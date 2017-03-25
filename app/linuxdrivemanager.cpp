@@ -348,6 +348,6 @@ void LinuxDrive::onErrorOccurred(QProcess::ProcessError e) {
     m_image->setErrorString(errorMessage);
     m_process->deleteLater();
     m_process = nullptr;
-    m_image = nullptr;
     m_image->setStatus(ReleaseVariant::FAILED);
+    m_image = nullptr;
 }
