@@ -48,10 +48,6 @@ include($$top_srcdir/deployment.pri)
 target.path = $$BINDIR
 INSTALLS += target
 
-debug {
-    DEFINES += QT_DEBUG
-}
-
 linux {
     QT += dbus
 

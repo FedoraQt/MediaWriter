@@ -75,10 +75,10 @@ public:
 
     bool testing { false };
     bool verbose { false };
-#ifdef QT_DEBUG
-    bool logging { true };
-#else
+#ifdef QT_NO_DEBUG
     bool logging { false };
+#else
+    bool logging { true };
 #endif
     QString releasesUrl { "https://getfedora.org/releases.json" };
     bool noUserAgent { false }; // disables sending the custom Fedora Media Writer user agent header
