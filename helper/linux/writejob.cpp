@@ -23,14 +23,16 @@
 #include <QTimer>
 #include <QTextStream>
 #include <QProcess>
+#include <QtGlobal>
 
 #include <QtDBus>
 #include <QDBusInterface>
 #include <QDBusUnixFileDescriptor>
 
-#include <sys/mman.h>
 #include <unistd.h>
-#include <stdlib.h>
+
+#include <tuple>
+#include <utility>
 
 #include <lzma.h>
 
@@ -119,12 +121,12 @@ bool WriteJob::writeCompressed(int fd) {
     lzma_stream strm = LZMA_STREAM_INIT;
     lzma_ret ret;
 
-    int pagesize = getpagesize();
-    size_t bufferSize = BUFFER_SIZE * pagesize;
-    uint8_t *unalignedInBuffer = new uint8_t[bufferSize + pagesize];
-    uint8_t *inBuffer = (uintptr_t) unalignedInBuffer % pagesize ? (unalignedInBuffer + (pagesize - (uintptr_t) unalignedInBuffer % pagesize)) : unalignedInBuffer;
-    uint8_t *unalignedOutBuffer = new uint8_t[bufferSize + pagesize];
-    uint8_t *outBuffer = (uintptr_t) unalignedOutBuffer % pagesize ? (unalignedOutBuffer + (pagesize - (uintptr_t) unalignedOutBuffer % pagesize)) : unalignedOutBuffer;
+    auto inBufferOwner = pageAlignedBuffer();
+    char *inBuffer = std::get<1>(inBufferOwner);
+
+    auto outBufferOwner = pageAlignedBuffer();
+    char *outBuffer = std::get<1>(outBufferOwner);
+    std::size_t bufferSize = std::get<2>(outBufferOwner);
 
     QFile file(what);
     file.open(QIODevice::ReadOnly);
@@ -135,17 +137,17 @@ bool WriteJob::writeCompressed(int fd) {
         return false;
     }
 
-    strm.next_in = inBuffer;
+    strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
     strm.avail_in = 0;
-    strm.next_out = outBuffer;
+    strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
     strm.avail_out = bufferSize;
 
     while (true) {
         if (strm.avail_in == 0) {
-            qint64 len = file.read((char*) inBuffer, bufferSize);
+            qint64 len = file.read(inBuffer, bufferSize);
             totalRead += len;
 
-            strm.next_in = inBuffer;
+            strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
             strm.avail_in = len;
 
             out << totalRead << "\n";
@@ -154,7 +156,7 @@ bool WriteJob::writeCompressed(int fd) {
 
         ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
         if (ret == LZMA_STREAM_END) {
-            quint64 len = ::write(fd, (char*) outBuffer, bufferSize - strm.avail_out);
+            quint64 len = ::write(fd, outBuffer, bufferSize - strm.avail_out);
             if (len != bufferSize - strm.avail_out) {
                 err << tr("Destination drive is not writable");
                 qApp->exit(3);
@@ -184,13 +186,13 @@ bool WriteJob::writeCompressed(int fd) {
         }
 
         if (strm.avail_out == 0) {
-            quint64 len = ::write(fd, (char*) outBuffer, bufferSize - strm.avail_out);
+            quint64 len = ::write(fd, outBuffer, bufferSize - strm.avail_out);
             if (len != bufferSize - strm.avail_out) {
                 err << tr("Destination drive is not writable");
                 qApp->exit(3);
                 return false;
             }
-            strm.next_out = outBuffer;
+            strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
             strm.avail_out = bufferSize;
         }
     }
@@ -207,20 +209,18 @@ bool WriteJob::writePlain(int fd) {
         return false;
     }
 
-    // get a page-aligned buffer for the data
-    int pagesize = getpagesize();
-    char *unalignedBuffer = new char[BUFFER_SIZE * pagesize + pagesize];
-    char *buffer = (uintptr_t) unalignedBuffer % pagesize ? (unalignedBuffer + (pagesize - (uintptr_t) unalignedBuffer % pagesize)) : unalignedBuffer;
-
+    // Doing this so that ownership will kept in std::get<0>(bufferOwner).
+    auto bufferOwner = pageAlignedBuffer();
+    char *buffer = std::get<1>(bufferOwner);
+    qint64 size = std::get<2>(bufferOwner);
     qint64 total = 0;
 
     while(!inFile.atEnd()) {
-        qint64 len = inFile.read(buffer, BUFFER_SIZE * pagesize);
+        qint64 len = inFile.read(buffer, size);
         if (len < 0) {
             err << tr("Source image is not readable");
             err.flush();
             qApp->exit(3);
-            delete unalignedBuffer;
             return false;
         }
         qint64 written = ::write(fd, buffer, len);
@@ -228,7 +228,6 @@ bool WriteJob::writePlain(int fd) {
             err << tr("Destination drive is not writable");
             err.flush();
             qApp->exit(3);
-            delete unalignedBuffer;
             return false;
         }
         total += len;
@@ -236,7 +235,6 @@ bool WriteJob::writePlain(int fd) {
         out.flush();
     }
 
-    delete unalignedBuffer;
     inFile.close();
     sync();
 
@@ -305,3 +303,16 @@ void WriteJob::onFileChanged(const QString &path) {
 
     check(fd.fileDescriptor());
 }
+
+std::tuple<std::unique_ptr<char[]>, char*, std::size_t> pageAlignedBuffer(std::size_t pages) {
+    static const std::size_t pagesize = getpagesize();
+    const std::size_t size = pages * pagesize;
+    std::size_t space = size + pagesize;
+    std::unique_ptr<char[]> owner(new char[space]);
+    void *buffer = owner.get();
+    Q_ASSERT(space - size == pagesize);
+    void *ptr = std::align(pagesize, size, buffer, space);
+    // This should never fail since std::align should not return a nullptr if the assertion above passes.
+    Q_CHECK_PTR(ptr);
+    return std::make_tuple(std::move(owner), static_cast<char*>(buffer), size);
+};
