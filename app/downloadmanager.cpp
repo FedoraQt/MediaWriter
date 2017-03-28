@@ -199,6 +199,7 @@ void DownloadManager::onDownloadError(const QString &message) {
 }
 
 DownloadManager::DownloadManager() {
+    qDebug() << this->metaObject()->className() << "User-Agent:" << userAgent();
     QNetworkProxyFactory::setUseSystemConfiguration(true);
 }
 
