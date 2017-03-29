@@ -128,12 +128,12 @@ Item {
                             Text {
                                 Layout.fillWidth: true
                                 anchors.left: parent.left
-                                font.pixelSize: $(17)
+                                font.pointSize: $(14)
                                 text: releases.selected.name
                                 color: palette.windowText
                             }
                             Text {
-                                font.pixelSize: $(15)
+                                font.pointSize: $(12)
                                 property double size: releases.variant.size
                                 text: size <= 0 ? "" :
                                       (size < 1024) ? (size + " B") :
@@ -144,7 +144,7 @@ Item {
                                 color: mixColors(palette.window, palette.windowText, 0.3)
                             }
                             Text {
-                                font.pixelSize: $(15)
+                                font.pointSize: $(12)
                                 visible: releases.variant.realSize > 0.1
                                 property double size: releases.variant.realSize
                                 property string sizeString: size <= 0 ? "" :
@@ -162,13 +162,13 @@ Item {
                             spacing: $(6)
                             opacity: releases.selected.isLocal ? 0.0 : 1.0
                             Text {
-                                font.pixelSize: $(13)
+                                font.pointSize: $(10)
                                 color: mixColors(palette.window, palette.windowText, 0.3)
                                 visible: typeof releases.selected.version !== 'undefined'
                                 text: releases.variant.arch.description
                             }
                             Text {
-                                font.pixelSize: $(11)
+                                font.pointSize: $(8)
                                 color: mixColors(palette.window, palette.windowText, 0.3)
                                 visible: releases.selected.version && releases.variant
                                 text: releases.variant.arch.details
@@ -178,7 +178,7 @@ Item {
                                 width: parent.width
                                 Text {
                                     text: qsTr("Version %1").arg(releases.selected.version.name)
-                                    font.pixelSize: $(11)
+                                    font.pointSize: $(8)
 
                                     color: versionRepeater.count <= 1 ? mixColors(palette.window, palette.windowText, 0.3) : versionMouse.containsPress ? Qt.lighter("#1d61bf", 1.7) : versionMouse.containsMouse ? Qt.darker("#1d61bf", 1.5) : "#1d61bf"
                                     Behavior on color { ColorAnimation { duration: 100 } }
@@ -275,7 +275,7 @@ Item {
 
                                         Text {
                                             text: qsTr("Fedora %1 was released! Check it out!<br>If you want a stable, finished system, it's better to stay at version %2.").arg(releases.selected.prerelease).arg(releases.selected.version.name)
-                                            font.pixelSize: $(11)
+                                            font.pointSize: $(8)
                                             color: "white"
                                         }
 
@@ -294,7 +294,7 @@ Item {
                                     // I'm sorry, everyone, I can't find a better way to determine if the date is valid
                                     visible: releases.selected.version.releaseDate.toLocaleDateString().length > 0
                                     text: qsTr(", released on %1").arg(releases.selected.version.releaseDate.toLocaleDateString())
-                                    font.pixelSize: $(11)
+                                    font.pointSize: $(8)
                                     color: mixColors(palette.window, palette.windowText, 0.3)
                                 }
                                 Item {
@@ -304,7 +304,7 @@ Item {
                                     Layout.alignment: Qt.AlignRight
                                     visible: releases.selected.version.variants.length > 1
                                     text: qsTr("Other variants...")
-                                    font.pixelSize: $(11)
+                                    font.pointSize: $(8)
                                     color: archMouse.containsPress ? Qt.lighter("#1d61bf", 1.7) : archMouse.containsMouse ? Qt.darker("#1d61bf", 1.5) : "#1d61bf"
                                     Behavior on color { ColorAnimation { duration: 100 } }
                                     MouseArea {
@@ -380,7 +380,7 @@ Item {
                     wrapMode: Text.WordWrap
                     text: releases.selected.description
                     textFormat: Text.RichText
-                    font.pixelSize: $(12)
+                    font.pointSize: $(9)
                     color: palette.windowText
                 }
                 Repeater {

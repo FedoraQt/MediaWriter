@@ -40,7 +40,7 @@ ComboBox {
         label: Text {
             width: control.width
             x: $(6)
-            font.pixelSize: $(12)
+            font.pointSize: $(9)
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignLeft
             text: control.count > 0 ? control.currentText : ""

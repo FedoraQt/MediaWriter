@@ -52,7 +52,7 @@ AdwaitaButton {
         id: text
         text: qsTr("Back")
         color: palette.buttonText
-        font.pixelSize: $(12)
+        font.pointSize: $(9)
         anchors {
             left: arrow.left
             leftMargin: $(16)

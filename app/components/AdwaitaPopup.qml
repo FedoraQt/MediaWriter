@@ -69,13 +69,13 @@ Item {
 
         Column {
             Text {
-                font.pixelSize: $(12)
+                font.pointSize: $(9)
                 font.bold: true
                 color: "white"
                 id: title
             }
             Text {
-                font.pixelSize: $(12)
+                font.pointSize: $(9)
                 color: "white"
                 id: description
             }
@@ -100,7 +100,7 @@ Item {
             onClicked: root.open = false
             Text {
                 anchors.centerIn: parent
-                font.pixelSize: $(13.5)
+                font.pointSize: $(10.5)
                 color: "white"
                 text: "✕"
             }

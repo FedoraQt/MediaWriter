@@ -22,10 +22,11 @@ import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.2
 
 RadioButton {
+    id: root
     style: RadioButtonStyle {
         indicator: AdwaitaRectangle {
-            implicitWidth: $(15)
-            implicitHeight: $(15)
+            implicitWidth: root.height - $(1)
+            implicitHeight: root.height - $(1)
             radius: width / 2 + 1
             Rectangle {
                 anchors.centerIn: parent
@@ -37,7 +38,8 @@ RadioButton {
             }
         }
         label: Text {
-            font.pixelSize: $(12)
+            id: text
+            font.pointSize: $(9)
             text: control.text
             color: palette.windowText
         }

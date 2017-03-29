@@ -22,7 +22,7 @@ RowLayout {
             text: "i"
             anchors.centerIn: parent
             font.bold: true
-            font.pixelSize: $(12)
+            font.pointSize: $(9)
             color: "white"
         }
     }
@@ -51,7 +51,7 @@ RowLayout {
         Layout.fillWidth: true
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.Wrap
-        font.pixelSize: $(12)
+        font.pointSize: $(9)
         color: palette.windowText
     }
 }

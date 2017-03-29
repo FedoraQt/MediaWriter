@@ -80,14 +80,14 @@ Item {
             Text {
                 Layout.fillWidth: true
                 verticalAlignment: Text.AlignBottom
-                font.pixelSize: $(12)
+                font.pointSize: $(9)
                 text: release.name
                 color: palette.text
             }
             Text {
                 Layout.fillWidth: true
                 verticalAlignment: Text.AlignTop
-                font.pixelSize: $(12)
+                font.pointSize: $(9)
                 text: release.summary
                 wrapMode: Text.Wrap
                 color: "#a1a1a1"

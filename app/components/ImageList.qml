@@ -111,7 +111,7 @@ Item {
             Text {
                 anchors.fill: parent
                 color: "light gray"
-                font.pixelSize: $(12)
+                font.pointSize: $(9)
                 text: qsTr("Find an operating system image")
                 visible: !parent.activeFocus && parent.text.length == 0
                 verticalAlignment: Text.AlignVCenter
@@ -190,7 +190,7 @@ Item {
         Text {
             id: checkingForUpdatesText
             text: qsTr("Checking for new releases")
-            font.pixelSize: $(12)
+            font.pointSize: $(9)
             color: "#7a7a7a"
         }
     }
@@ -218,7 +218,7 @@ Item {
                     Text {
                         text: section
                         textFormat: Text.RichText
-                        font.pixelSize: $(12)
+                        font.pointSize: $(9)
                         color: palette.windowText
                         anchors {
                             left: parent.left
@@ -244,7 +244,7 @@ Item {
 
                         Text {
                             text: qsTr("About Fedora Media Writer")
-                            font.pixelSize: $(12)
+                            font.pointSize: $(9)
                             color: palette.windowText
                             anchors {
                                 bottom: parent.bottom
@@ -277,7 +277,7 @@ Item {
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 text: qsTr("Version %1").arg(mediawriterVersion)
                                 textFormat: Text.RichText
-                                font.pixelSize: $(12)
+                                font.pointSize: $(9)
                                 color: palette.text
                             }
                             Text {
@@ -285,7 +285,7 @@ Item {
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 visible: releases.beingUpdated
                                 text: qsTr("Fedora Media Writer is now checking for new releases")
-                                font.pixelSize: $(12)
+                                font.pointSize: $(9)
                                 BusyIndicator {
                                     anchors.right: parent.left
                                     anchors.rightMargin: $(3)
@@ -300,7 +300,7 @@ Item {
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/MartinBriza/MediaWriter\">https://github.com/MartinBriza/MediaWriter</a>")
                                 textFormat: Text.RichText
-                                font.pixelSize: $(12)
+                                font.pointSize: $(9)
                                 onLinkActivated: Qt.openUrlExternally(link)
                                 color: Qt.darker("light gray")
                                 MouseArea {
@@ -347,7 +347,7 @@ Item {
                     Text {
                         id: threeDotText
                         y: threeDotDots.hidden ? parent.height / 2 - height / 2 : -height
-                        font.pixelSize: $(12)
+                        font.pointSize: $(9)
                         anchors.horizontalCenter: threeDotDots.horizontalCenter
                         Behavior on y { NumberAnimation { duration: 60 } }
                         clip: true

@@ -68,7 +68,7 @@ Rectangle {
             verticalAlignment: Text.AlignVCenter
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
 
-            font.pixelSize: $(12)
+            font.pointSize: $(9)
             color: "white"
             textFormat: Text.RichText
         }

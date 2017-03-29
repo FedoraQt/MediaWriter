@@ -145,7 +145,7 @@ Dialog {
                             Layout.fillWidth: true
                             Layout.fillHeight: true
                             horizontalAlignment: Text.AlignHCenter
-                            font.pixelSize: $(12)
+                            font.pointSize: $(9)
                             property double leftSize: releases.variant.progress.to - releases.variant.progress.value
                             property string leftStr:  leftSize <= 0                    ? "" :
                                                      (leftSize < 1024)                 ? qsTr("(%1 B left)").arg(leftSize) :
@@ -256,7 +256,7 @@ Dialog {
                                     verticalAlignment: Text.AlignVCenter
                                     text: qsTr("There are no portable drives connected")
                                     color: "gray"
-                                    font.pixelSize: $(12)
+                                    font.pointSize: $(9)
                                 }
                             }
                         }
