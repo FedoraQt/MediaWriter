@@ -643,7 +643,10 @@ QString ReleaseVariant::name() const {
 }
 
 QString ReleaseVariant::fullName() {
-    return QString("%1 %2 %3").arg(release()->name()).arg(releaseVersion()->name()).arg(name());
+    if (release()->isLocal())
+        return QFileInfo(iso()).fileName();
+    else
+        return QString("%1 %2 %3").arg(release()->name()).arg(releaseVersion()->name()).arg(name());
 }
 
 QString ReleaseVariant::url() const {
