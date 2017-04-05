@@ -129,7 +129,7 @@ section "install"
         writeUninstaller "$INSTDIR\uninstall.exe"
 
         # Start Menu
-        createShortCut "$SMPROGRAMS\${APPNAME}.lnk" "$INSTDIR\app.exe" "" "$INSTDIR\logo.ico"
+        createShortCut "$SMPROGRAMS\${APPNAME}.lnk" "$INSTDIR\mediawriter.exe" "" "$INSTDIR\mediawriter.ico"
 
         # Registry information for add/remove programs
         WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName" "${COMPANYNAME} - ${APPNAME} - ${DESCRIPTION}"
