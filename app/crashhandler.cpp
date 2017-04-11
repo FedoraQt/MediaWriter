@@ -56,7 +56,7 @@ LONG faultHandler(struct _EXCEPTION_POINTERS *info) {
         default:                              faultName = "(N/A)"                ; break;
     }
 
-    qCritical() << "=== CRASH OCCURED ===";
+    qCritical() << "=== CRASH OCCURRED ===";
     qCritical() << "An unhandled exception occurred:";
     qCritical() << "Code:" << code << "-" << faultName;
     qCritical() << "Flags:" << flags;
