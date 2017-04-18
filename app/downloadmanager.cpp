@@ -149,7 +149,7 @@ void DownloadManager::onStringDownloaded(const QString &text) {
 
     QStringList mirrors;
     for (const QString &i : text.split("\n")) {
-        if (!i.trimmed().startsWith("#")) {
+        if (!i.trimmed().startsWith("#") && !i.trimmed().isEmpty()) {
             mirrors.append(i.trimmed());
             if (mirrors.count() == 8)
                 break;
