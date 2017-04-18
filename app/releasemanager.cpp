@@ -220,8 +220,13 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         if (release.contains("workstation") && !url.contains("Live") && !url.contains("armhfp"))
             continue;
 
-        if (release.contains("server") && !url.contains("dvd"))
-            continue;
+        if (release.contains("server")) {
+            // we want a DVD for x86 but we don't want it for ARM
+            if (!arch.contains("arm") && !url.contains("dvd"))
+                continue;
+            else if (arch.contains("arm") && url.contains("dvd"))
+                continue;
+        }
 
         version = re.capturedTexts()[1].toInt();
         status = re.capturedTexts()[2];
