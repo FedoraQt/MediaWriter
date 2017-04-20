@@ -148,7 +148,6 @@ static void myMessageOutput(QtMsgType type, const QMessageLogContext &context, c
         break;
     case QtFatalMsg:
         fprintf(debugFile, "F");
-        exit(1);
     }
     if ((type == QtDebugMsg && (options.verbose || options.logging)) || type != QtDebugMsg) {
         if (context.line > 0)
@@ -157,6 +156,8 @@ static void myMessageOutput(QtMsgType type, const QMessageLogContext &context, c
             fprintf(debugFile, "@%lldms: %s\n", timer.elapsed(), localMsg.constData());
         fflush(debugFile);
     }
+    if (type == QtFatalMsg)
+        exit(1);
 }
 
 void MessageHandler::install() {
