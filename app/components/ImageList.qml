@@ -339,9 +339,10 @@ Item {
                         Behavior on opacity { NumberAnimation { duration: 60 } }
                         anchors.centerIn: parent
                         spacing: $(3)
-                        Rectangle { id: dot1; height: $(4); width: $(4); radius: $(1); color: "#bebebe"; antialiasing: true }
-                        Rectangle { id: dot2; height: $(4); width: $(4); radius: $(1); color: "#bebebe"; antialiasing: true }
-                        Rectangle { id: dot3; height: $(4); width: $(4); radius: $(1); color: "#bebebe"; antialiasing: true }
+                        Repeater {
+                            model: 3
+                            Rectangle { height: $(4); width: $(4); radius: $(1); color: mixColors(palette.windowText, palette.window, 0.75); antialiasing: true }
+                        }
                     }
 
                     Text {
