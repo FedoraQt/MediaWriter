@@ -21,30 +21,129 @@ import QtQuick 2.3
 import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.2
 import QtQuick.Controls.Private 1.0
+import QtQuick.Window 2.0
 
-ComboBox {
-    id: root
+AdwaitaRectangle {
+    id: control
+    z: 3
     implicitWidth: $(128)
-    implicitHeight: $(32)
-    style: ComboBoxStyle {
-        background: AdwaitaRectangle {
-            width: control.width
-            Arrow {
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.rightMargin: $(12)
-                scale: $(1.2)
-                rotation: 90
-            }
+    property alias model: options.model
+    property string textRole: ""
+    property alias currentIndex: options.currentIndex
+    property string currentText: options.currentItem ? options.currentItem.text : ""
+    property string placeholderText: ""
+    property alias count: options.count
+
+    property bool hovered: mouse.containsMouse
+    property bool pressed: isOpen
+
+    property bool isOpen: false
+
+    onIsOpenChanged: {
+        container.update()
+    }
+
+    enabled: options.count > 0
+
+    QtObject {
+        id: container
+        property var item: (typeof(dialog) !== 'undefined') ? dialog : (typeof(mainWindow) !== 'undefined') ? mainWindowContainer : null
+        property real x: control.mapFromItem(null, 0, 0).x
+        property real y: control.mapFromItem(null, 0, 0).y
+        property real height: item.height
+        property real width: item.width
+        function update() {
+            container.x = control.mapFromItem(null, 0, 0).x
+            container.y = control.mapFromItem(null, 0, 0).y
         }
-        label: Text {
+    }
+
+    Arrow {
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.rightMargin: $(12)
+        scale: $(1.25)
+        rotation: 90
+    }
+
+    Text {
+        x: $(9)
+        anchors.verticalCenter: parent.verticalCenter
+        text: count > 0 ? options.currentItem.text : placeholderText
+        color: enabled ? palette.buttonText : disabledPalette.buttonText
+        font.pointSize: $(9)
+    }
+
+    MouseArea {
+        id: mouse
+        hoverEnabled: true
+        enabled: !isOpen
+        anchors.fill: parent
+        onClicked: if (count > 0) isOpen = true
+    }
+
+    // area capturing clicks around the open dropdown... a bit hacky
+    MouseArea {
+        enabled: isOpen
+        width: Screen.width * 2
+        height: Screen.height * 2
+        x: -Screen.width
+        y: -Screen.height
+        onClicked: isOpen = false
+    }
+
+    Rectangle {
+        anchors.fill: options
+        color: palette.base
+        border.color: Qt.darker(palette.button, 1.5)
+        border.width: 1
+        visible: options.visible
+    }
+
+    ListView {
+        y: potentialY < container.y ? container.y : potentialY
+        property real potentialY: -currentIndex * control.height - headerItem.height
+        property real potentialHeight: count * control.height + headerItem.height + footerItem.height
+        id: options
+        visible: isOpen
+        width: parent.width
+        height: control.isOpen ? potentialHeight > container.height + y ? container.height + y : potentialHeight : 0
+        clip: true
+
+        header: Item { height: 6; width: 1 }
+        footer: Item { height: 6; width: 1 }
+
+        // an item contains mouse - used to determine if the currently selected item should be highlighted
+        property bool itemContainsMouse: false
+
+        delegate: Rectangle {
+            color: (ListView.isCurrentItem && !options.itemContainsMouse) || itemMouse.containsMouse ? palette.highlight : "transparent"
+            property string text: label.text
+            height: control.height
             width: control.width
-            x: $(6)
-            font.pointSize: $(9)
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignLeft
-            text: control.count > 0 ? control.currentText : ""
-            color: root.enabled ? palette.buttonText : disabledPalette.buttonText
+            Text {
+                color: ListView.isCurrentItem ? palette.highlightedText : palette.text
+                id: label
+                x: $(9)
+                anchors.verticalCenter: parent.verticalCenter
+                text: textRole ? model[textRole] : modelData
+                font.pointSize: $(9)
+            }
+            MouseArea {
+                id: itemMouse
+                hoverEnabled: true
+                anchors.fill: parent
+                onClicked: {
+                    options.currentIndex = index
+                    control.isOpen = false
+                }
+                onContainsMouseChanged: {
+                    if (containsMouse)
+                        options.itemContainsMouse = true
+                    else
+                        options.itemContainsMouse = false
+                }
+            }
         }
     }
 }

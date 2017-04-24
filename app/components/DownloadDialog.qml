@@ -27,7 +27,7 @@ import QtQuick.Window 2.0
 import MediaWriter 1.0
 
 Dialog {
-    id: root
+    id: dialog
     title: qsTr("Write %1").arg(releases.selected.name)
 
     height: layout.height + $(56)
@@ -80,7 +80,7 @@ Dialog {
 
         Keys.onEscapePressed: {
             if ([Variant.WRITING, Variant.WRITE_VERIFYING].indexOf(releases.variant.status) < 0)
-                root.visible = false
+                dialog.visible = false
         }
 
         ScrollView {
@@ -234,35 +234,19 @@ Dialog {
                             Layout.preferredWidth: implicitWidth * 2.5
                             model: drives
                             textRole: "display"
-                            currentIndex: drives.selectedIndex
-                            onCurrentIndexChanged: {
-                                drives.selectedIndex = currentIndex
-                                releases.variant.resetStatus()
-                            }
-                            onModelChanged: {
-                                if (drives.length <= 0)
-                                    currentIndex = -1
-                                currentIndex = drives.selectedIndex
+                            Binding {
+                                target: drives
+                                property: "selectedIndex"
+                                value: driveCombo.currentIndex
                             }
                             enabled: [Variant.WRITING, Variant.WRITE_VERIFYING, Variant.FAILED_DOWNLOAD].indexOf(releases.variant.status) < 0 &&
                                      drives.length > 0
-                            Row {
-                                spacing: $(6)
-                                anchors.fill: parent
-                                anchors.leftMargin: $(12)
-                                visible: drives.length <= 0
-                                Text {
-                                    height: parent.height
-                                    verticalAlignment: Text.AlignVCenter
-                                    text: qsTr("There are no portable drives connected")
-                                    color: "gray"
-                                    font.pointSize: $(9)
-                                }
-                            }
+                            placeholderText: qsTr("There are no portable drives connected")
                         }
                     }
 
                     ColumnLayout {
+                        z: -1
                         width: parent.width
                         spacing: $(12)
                         RowLayout {
@@ -288,7 +272,7 @@ Dialog {
                                 onClicked: {
                                     releases.variant.resetStatus()
                                     writeImmediately.checked = false
-                                    root.close()
+                                    dialog.close()
                                 }
                             }
                             AdwaitaButton {
@@ -315,7 +299,7 @@ Dialog {
                                     else if (releases.variant.status == Variant.FINISHED) {
                                         releases.variant.resetStatus()
                                         writeImmediately.checked = false
-                                        root.close()
+                                        dialog.close()
                                     }
                                     else if (releases.variant.status == Variant.FAILED_DOWNLOAD) {
                                         releases.variant.download()
