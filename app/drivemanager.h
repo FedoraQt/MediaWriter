@@ -156,7 +156,7 @@ public:
     virtual uint64_t size() const;
     virtual RestoreStatus restoreStatus();
 
-    Q_INVOKABLE virtual void write(ReleaseVariant *data);
+    Q_INVOKABLE virtual bool write(ReleaseVariant *data);
     Q_INVOKABLE virtual void cancel() = 0;
     Q_INVOKABLE virtual void restore() = 0;
 

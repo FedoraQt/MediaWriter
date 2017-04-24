@@ -232,9 +232,10 @@ Drive::RestoreStatus Drive::restoreStatus() {
     return m_restoreStatus;
 }
 
-void Drive::write(ReleaseVariant *data) {
+bool Drive::write(ReleaseVariant *data) {
     m_image = data;
     m_image->setErrorString(QString());
+    return true;
 }
 
 bool Drive::operator==(const Drive &o) const {

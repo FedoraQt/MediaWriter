@@ -178,7 +178,7 @@ LinuxDrive::~LinuxDrive() {
     }
 }
 
-void LinuxDrive::write(ReleaseVariant *data) {
+bool LinuxDrive::write(ReleaseVariant *data) {
     qDebug() << this->metaObject()->className() << "Will now write" << data->iso() << "to" << this->m_device;
 
     Drive::write(data);
@@ -203,7 +203,7 @@ void LinuxDrive::write(ReleaseVariant *data) {
     else {
         data->setErrorString(tr("Could not find the helper binary. Check your installation."));
         data->setStatus(ReleaseVariant::FAILED);
-        return;
+        return false;
     }
     args << "write";
     if (data->status() == ReleaseVariant::WRITING)
@@ -224,6 +224,8 @@ void LinuxDrive::write(ReleaseVariant *data) {
     m_progress->setTo(data->size());
     m_progress->setValue(0.0/0.0);
     m_process->start(QIODevice::ReadOnly);
+
+    return true;
 }
 
 void LinuxDrive::cancel() {

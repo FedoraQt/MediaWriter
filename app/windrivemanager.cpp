@@ -243,7 +243,7 @@ WinDrive::~WinDrive() {
         m_child->kill();
 }
 
-void WinDrive::write(ReleaseVariant *data) {
+bool WinDrive::write(ReleaseVariant *data) {
     qDebug() << this->metaObject()->className() << "Preparing to write" << data->fullName() << "to drive" << m_device;
     Drive::write(data);
 
@@ -266,7 +266,7 @@ void WinDrive::write(ReleaseVariant *data) {
     }
     else {
         data->setErrorString(tr("Could not find the helper binary. Check your installation."));
-        return;
+        return false;
     }
 
     QStringList args;
@@ -283,6 +283,7 @@ void WinDrive::write(ReleaseVariant *data) {
 
     qDebug() << this->metaObject()->className() << "Starting" << m_child->program() << args;
     m_child->start();
+    return true;
 }
 
 void WinDrive::cancel() {

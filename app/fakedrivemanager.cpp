@@ -50,12 +50,14 @@ FakeDrive::FakeDrive(FakeDriveProvider *parent, const QString &name, uint64_t si
     m_progress->setTo(size);
 }
 
-void FakeDrive::write(ReleaseVariant *data) {
+bool FakeDrive::write(ReleaseVariant *data) {
     Drive::write(data);
 
     m_progress->setValue(0);
     m_image->setStatus(ReleaseVariant::WRITING);
     QTimer::singleShot(100, this, SLOT(writingAdvanced()));
+
+    return true;
 }
 
 void FakeDrive::cancel() {

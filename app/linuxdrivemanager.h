@@ -62,7 +62,7 @@ public:
     LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout);
     ~LinuxDrive();
 
-    Q_INVOKABLE virtual void write(ReleaseVariant *data) override;
+    Q_INVOKABLE virtual bool write(ReleaseVariant *data) override;
     Q_INVOKABLE virtual void cancel() override;
     Q_INVOKABLE virtual void restore() override;
 

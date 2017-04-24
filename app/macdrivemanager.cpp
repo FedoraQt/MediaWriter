@@ -74,7 +74,7 @@ MacDrive::MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bo
 
 }
 
-void MacDrive::write(ReleaseVariant *data) {
+bool MacDrive::write(ReleaseVariant *data) {
     //osascript -e "do shell script \"$*\" with administrator privileges"
     Drive::write(data);
 
@@ -102,7 +102,7 @@ void MacDrive::write(ReleaseVariant *data) {
     }
     else {
         data->setErrorString(tr("Could not find the helper binary. Check your installation."));
-        return;
+        return false;
     }
     command.append(" write ");
     if (data->status() == ReleaseVariant::WRITING)
@@ -124,6 +124,8 @@ void MacDrive::write(ReleaseVariant *data) {
 
     m_progress->setValue(0.0/0.0);
     m_child->start();
+
+    return true;
 }
 
 void MacDrive::cancel() {
