@@ -78,6 +78,86 @@ Dialog {
         color: palette.window
         focus: true
 
+        states: [
+            State {
+                name: "preparing"
+                when: releases.variant.status === Variant.PREPARING
+            },
+            State {
+                name: "downloading"
+                when: releases.variant.status === Variant.DOWNLOADING
+                PropertyChanges { target: progressBar; value: releases.variant.progress.ratio }
+            },
+            State {
+                name: "download_verifying"
+                when: releases.variant.status === Variant.DOWNLOAD_VERIFYING
+                PropertyChanges { target: progressBar; value: releases.variant.progress.ratio; progressColor: Qt.lighter("green") }
+            },
+            State {
+                name: "ready_no_drives"
+                when: releases.variant.status === Variant.READY && drives.length <= 0
+            },
+            State {
+                name: "ready"
+                when: releases.variant.status === Variant.READY && drives.length > 0
+                PropertyChanges { target: messageLoseData; visible: true }
+                PropertyChanges { target: rightButton; text: qsTr("Write to disk"); enabled: true; color: "red"; onClicked: drives.selected.write(releases.variant) }
+            },
+            State {
+                name: "writing_not_possible"
+                when: releases.variant.status === Variant.WRITING_NOT_POSSIBLE
+                PropertyChanges { target: driveCombo; enabled: false; placeholderText: qsTr("Writing is not possible") }
+            },
+            State {
+                name: "writing"
+                when: releases.variant.status === Variant.WRITING
+                PropertyChanges { target: messageRestore; visible: true }
+                PropertyChanges { target: driveCombo; enabled: false }
+                PropertyChanges { target: progressBar; value: drives.selected.progress.ratio; progressColor: "red" }
+            },
+            State {
+                name: "write_verifying"
+                when: releases.variant.status === Variant.WRITE_VERIFYING
+                PropertyChanges { target: messageRestore; visible: true }
+                PropertyChanges { target: driveCombo; enabled: false }
+                PropertyChanges { target: progressBar; value: drives.selected.progress.ratio; progressColor: Qt.lighter("green") }
+            },
+            State {
+                name: "finished"
+                when: releases.variant.status === Variant.FINISHED
+                PropertyChanges { target: messageRestore; visible: true }
+                PropertyChanges { target: leftButton; text: qsTr("Close"); color: "#628fcf"; textColor: "white" }
+            },
+            State {
+                name: "failed_verification_no_drives"
+                when: releases.variant.status === Variant.FAILED_VERIFICATION && drives.length <= 0
+                PropertyChanges { target: rightButton; text: qsTr("Retry"); enabled: false; color: "red"; onClicked: drives.selected.write(releases.variant) }
+            },
+            State {
+                name: "failed_verification"
+                when: releases.variant.status === Variant.FAILED_VERIFICATION && drives.length > 0
+                PropertyChanges { target: messageLoseData; visible: true }
+                PropertyChanges { target: rightButton; text: qsTr("Retry"); enabled: true; color: "red"; onClicked: drives.selected.write(releases.variant) }
+            },
+            State {
+                name: "failed_download"
+                when: releases.variant.status === Variant.FAILED_DOWNLOAD
+                PropertyChanges { target: driveCombo; enabled: false }
+                PropertyChanges { target: rightButton; text: qsTr("Retry"); enabled: true; color: "#628fcf"; onClicked: releases.variant.download() }
+            },
+            State {
+                name: "failed_no_drives"
+                when: releases.variant.status === Variant.FAILED && drives.length <= 0
+                PropertyChanges { target: rightButton; text: qsTr("Retry"); enabled: false; color: "red"; onClicked: drives.selected.write(releases.variant) }
+            },
+            State {
+                name: "failed"
+                when: releases.variant.status === Variant.FAILED && drives.length > 0
+                PropertyChanges { target: messageLoseData; visible: true }
+                PropertyChanges { target: rightButton; text: qsTr("Retry"); enabled: true; color: "red"; onClicked: drives.selected.write(releases.variant) }
+            }
+        ]
+
         Keys.onEscapePressed: {
             if ([Variant.WRITING, Variant.WRITE_VERIFYING].indexOf(releases.variant.status) < 0)
                 dialog.visible = false
@@ -105,19 +185,21 @@ Dialog {
                         width: parent.width
 
                         InfoMessage {
+                            id: messageLoseData
+                            visible: false
                             width: infoColumn.width
-                            visible: drives.length > 0 &&
-                                     [Variant.READY, Variant.FAILED, Variant.FAILED_VERIFICATION].indexOf(releases.variant.status) >= 0
                             text: qsTr("By writing, you will lose all of the data on %1.").arg(driveCombo.currentText)
                         }
 
                         InfoMessage {
+                            id: messageRestore
+                            visible: false
                             width: infoColumn.width
-                            visible: [Variant.WRITING, Variant.WRITE_VERIFYING, Variant.FINISHED].indexOf(releases.variant.status) >= 0
                             text: qsTr("Your computer will now report this drive is much smaller than it really is. Just insert your drive again while Fedora Media Writer is running and you'll be able to restore it back to its full size.")
                         }
 
                         InfoMessage {
+                            id: messageSelectedImage
                             width: infoColumn.width
                             visible: releases.selected.isLocal
                             text: "<font color=\"gray\">" + qsTr("Selected:") + "</font> " + (releases.variant.iso ? (((String)(releases.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
@@ -159,15 +241,10 @@ Dialog {
                             Layout.fillWidth: true
                             height: childrenRect.height
                             AdwaitaProgressBar {
+                                id: progressBar
                                 width: parent.width
-                                progressColor: releases.variant.status == Variant.WRITING            ? "red" :
-                                               releases.variant.status == Variant.DOWNLOAD_VERIFYING ? Qt.lighter("green") :
-                                               releases.variant.status == Variant.WRITE_VERIFYING    ? Qt.lighter("green") :
-                                                                                                                        "#54aada"
-                                value: releases.variant.status == Variant.DOWNLOADING ? releases.variant.progress.ratio :
-                                       releases.variant.status == Variant.WRITING ? drives.selected.progress.ratio :
-                                       releases.variant.status == Variant.DOWNLOAD_VERIFYING ? releases.variant.progress.ratio :
-                                       releases.variant.status == Variant.WRITE_VERIFYING ? drives.selected.progress.ratio : 0.0
+                                progressColor: "#54aada"
+                                value: 0.0
                             }
                         }
                         AdwaitaCheckBox {
@@ -242,8 +319,7 @@ Dialog {
                                     property: "selectedIndex"
                                     value: driveCombo.currentIndex
                                 }
-                                enabled: [Variant.WRITING, Variant.WRITE_VERIFYING, Variant.FAILED_DOWNLOAD].indexOf(releases.variant.status) < 0 &&
-                                         drives.length > 0
+                                enabled: true
                                 placeholderText: qsTr("There are no portable drives connected")
                             }
                             AdwaitaComboBox {
@@ -259,7 +335,7 @@ Dialog {
                         width: parent.width
                         spacing: $(12)
                         RowLayout {
-                            height: acceptButton.height
+                            height: rightButton.height
                             width: parent.width
                             spacing: $(10)
 
@@ -269,15 +345,15 @@ Dialog {
                             }
 
                             AdwaitaButton {
-                                id: cancelButton
+                                id: leftButton
                                 anchors {
-                                    right: acceptButton.left
+                                    right: rightButton.left
                                     top: parent.top
                                     bottom: parent.bottom
                                     rightMargin: $(6)
                                 }
                                 text: qsTr("Cancel")
-                                enabled: releases.variant.status != Variant.FINISHED
+                                enabled: true
                                 onClicked: {
                                     releases.variant.resetStatus()
                                     writeImmediately.checked = false
@@ -285,35 +361,15 @@ Dialog {
                                 }
                             }
                             AdwaitaButton {
-                                id: acceptButton
+                                id: rightButton
                                 anchors {
                                     right: parent.right
                                     top: parent.top
                                     bottom: parent.bottom
                                 }
-                                color: releases.variant.status == Variant.FINISHED ||
-                                       releases.variant.status == Variant.FAILED_DOWNLOAD ? "#628fcf" :
-                                       releases.variant.status == Variant.FAILED_VERIFICATION ? "#628fcf" : "red"
                                 textColor: enabled ? "white" : palette.text
-                                enabled: ((releases.variant.status == Variant.READY ||
-                                          releases.variant.status == Variant.FAILED) && drives.length > 0)
-                                         ||  [Variant.FINISHED, Variant.FAILED_DOWNLOAD, Variant.FAILED_VERIFICATION].indexOf(releases.variant.status) >= 0
-                                text: releases.variant.status == Variant.FINISHED                ? qsTr("Close") :
-                                      ([Variant.FAILED_DOWNLOAD, Variant.FAILED_VERIFICATION, Variant.FAILED].indexOf(releases.variant.status) >= 0) ? qsTr("Retry") :
-                                                                                                                    qsTr("Write to disk")
-                                onClicked: {
-                                    if (releases.variant.status == Variant.READY || releases.variant.status == Variant.FAILED || releases.variant.status == Variant.FAILED_VERIFICATION) {
-                                        drives.selected.write(releases.variant)
-                                    }
-                                    else if (releases.variant.status == Variant.FINISHED) {
-                                        releases.variant.resetStatus()
-                                        writeImmediately.checked = false
-                                        dialog.close()
-                                    }
-                                    else if (releases.variant.status == Variant.FAILED_DOWNLOAD) {
-                                        releases.variant.download()
-                                    }
-                                }
+                                text: qsTr("Write to disk")
+                                enabled: false
                             }
                         }
                     }
