@@ -23,6 +23,7 @@
 #include <QAbstractEventDispatcher>
 #include <QNetworkProxyFactory>
 #include <QStandardPaths>
+#include <QStorageInfo>
 #include <QSysInfo>
 #include <QDir>
 
@@ -323,7 +324,11 @@ void Download::onReadyRead() {
                 m_hash.addData(buf);
             }
             else {
-                m_receiver->onDownloadError(tr("The download file is not writable."));
+                QStorageInfo storage(m_file->fileName());
+                if (storage.bytesAvailable() < 5L * 1024L * 1024L) // HACK(?): 5MB
+                    m_receiver->onDownloadError(tr("You ran out of space in your Downloads folder."));
+                else
+                    m_receiver->onDownloadError(tr("The download file is not writable."));
                 deleteLater();
             }
         }
