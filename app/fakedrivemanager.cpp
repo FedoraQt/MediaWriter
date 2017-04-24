@@ -51,7 +51,8 @@ FakeDrive::FakeDrive(FakeDriveProvider *parent, const QString &name, uint64_t si
 }
 
 bool FakeDrive::write(ReleaseVariant *data) {
-    Drive::write(data);
+    if (!Drive::write(data))
+        return false;
 
     m_progress->setValue(0);
     m_image->setStatus(ReleaseVariant::WRITING);

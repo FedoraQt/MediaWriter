@@ -245,7 +245,8 @@ WinDrive::~WinDrive() {
 
 bool WinDrive::write(ReleaseVariant *data) {
     qDebug() << this->metaObject()->className() << "Preparing to write" << data->fullName() << "to drive" << m_device;
-    Drive::write(data);
+    if (!Drive::write(data))
+        return false;
 
     if (m_child) {
         // TODO some handling of an already present process

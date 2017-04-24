@@ -181,7 +181,8 @@ LinuxDrive::~LinuxDrive() {
 bool LinuxDrive::write(ReleaseVariant *data) {
     qDebug() << this->metaObject()->className() << "Will now write" << data->iso() << "to" << this->m_device;
 
-    Drive::write(data);
+    if (!Drive::write(data))
+        return false;
 
     if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED ||
             m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)

@@ -76,7 +76,8 @@ MacDrive::MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bo
 
 bool MacDrive::write(ReleaseVariant *data) {
     //osascript -e "do shell script \"$*\" with administrator privileges"
-    Drive::write(data);
+    if (!Drive::write(data))
+        return false;
 
     if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED ||
             m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
