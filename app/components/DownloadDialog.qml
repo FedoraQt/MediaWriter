@@ -247,7 +247,7 @@ Dialog {
                                 placeholderText: qsTr("There are no portable drives connected")
                             }
                             AdwaitaComboBox {
-                                visible: releases.selected.version.variant.arch.id == Architecture.ARM || releases.variant.iso.indexOf(".iso", releases.variant.iso.length - ".iso".length) === -1
+                                visible: releases.selected.version.variant.arch.id == Architecture.ARM || (releases.selected.isLocal && releases.variant.iso.indexOf(".iso", releases.variant.iso.length - ".iso".length) === -1)
                                 width: driveCombo.implicitWidth * 2.5
                                 model: ["Raspberry Pi 2 Model B", "Raspberry Pi 3 Model B"]
                             }
