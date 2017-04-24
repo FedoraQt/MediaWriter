@@ -319,9 +319,8 @@ void Download::onReadyRead() {
             m_timer.start(15000);
 
         if (m_file) {
-            if (m_file->exists() && m_file->isOpen() && m_file->isWritable()) {
+            if (m_file->exists() && m_file->isOpen() && m_file->isWritable() && m_file->write(buf) == buf.size()) {
                 m_hash.addData(buf);
-                m_file->write(buf);
             }
             else {
                 m_receiver->onDownloadError(tr("The download file is not writable."));
