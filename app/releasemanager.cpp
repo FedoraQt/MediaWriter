@@ -894,3 +894,7 @@ QString ReleaseArchitecture::details() const {
 int ReleaseArchitecture::index() const {
     return this - m_all;
 }
+
+ReleaseArchitecture::Id ReleaseArchitecture::id() const {
+    return (Id) index();
+}

@@ -471,6 +471,7 @@ class ReleaseArchitecture : public QObject {
     Q_PROPERTY(QStringList abbreviation READ abbreviation CONSTANT)
     Q_PROPERTY(QString description READ description CONSTANT)
     Q_PROPERTY(QString details READ details CONSTANT)
+    Q_PROPERTY(Id id READ id CONSTANT)
 public:
     enum Id {
         X86_64 = 0,
@@ -478,6 +479,7 @@ public:
         ARM,
         _ARCHCOUNT,
     };
+    Q_ENUMS(Id);
     static ReleaseArchitecture *fromId(Id id);
     static ReleaseArchitecture *fromAbbreviation(const QString &abbr);
     static QList<ReleaseArchitecture *> listAll();
@@ -487,6 +489,7 @@ public:
     QString description() const;
     QString details() const;
     int index() const;
+    Id id() const;
 
 private:
     ReleaseArchitecture(const QStringList &abbreviation, const char *description, const char *details);

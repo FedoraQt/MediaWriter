@@ -229,19 +229,28 @@ Dialog {
                                 }
                             }
                         }
-                        AdwaitaComboBox {
-                            id: driveCombo
-                            Layout.preferredWidth: implicitWidth * 2.5
-                            model: drives
-                            textRole: "display"
-                            Binding {
-                                target: drives
-                                property: "selectedIndex"
-                                value: driveCombo.currentIndex
+                        Column {
+                            spacing: $(6)
+                            Layout.preferredWidth: driveCombo.implicitWidth * 2.5
+                            AdwaitaComboBox {
+                                id: driveCombo
+                                width: driveCombo.implicitWidth * 2.5
+                                model: drives
+                                textRole: "display"
+                                Binding {
+                                    target: drives
+                                    property: "selectedIndex"
+                                    value: driveCombo.currentIndex
+                                }
+                                enabled: [Variant.WRITING, Variant.WRITE_VERIFYING, Variant.FAILED_DOWNLOAD].indexOf(releases.variant.status) < 0 &&
+                                         drives.length > 0
+                                placeholderText: qsTr("There are no portable drives connected")
                             }
-                            enabled: [Variant.WRITING, Variant.WRITE_VERIFYING, Variant.FAILED_DOWNLOAD].indexOf(releases.variant.status) < 0 &&
-                                     drives.length > 0
-                            placeholderText: qsTr("There are no portable drives connected")
+                            AdwaitaComboBox {
+                                visible: releases.selected.version.variant.arch.id == Architecture.ARM || releases.variant.iso.indexOf(".iso", releases.variant.iso.length - ".iso".length) === -1
+                                width: driveCombo.implicitWidth * 2.5
+                                model: ["Raspberry Pi 2 Model B", "Raspberry Pi 3 Model B"]
+                            }
                         }
                     }
 
