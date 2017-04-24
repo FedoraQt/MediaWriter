@@ -145,7 +145,7 @@ Item {
                             }
                             Text {
                                 font.pointSize: $(12)
-                                visible: releases.variant.realSize > 0.1
+                                visible: releases.variant.realSize != releases.variant.size && releases.variant.realSize > 0.1
                                 property double size: releases.variant.realSize
                                 property string sizeString: size <= 0 ? "" :
                                                            (size < 1024) ? (size + " B") :

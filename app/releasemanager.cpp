@@ -596,12 +596,13 @@ QList<ReleaseVariant *> ReleaseVersion::variantList() const {
 ReleaseVariant::ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, ReleaseArchitecture *arch, ReleaseVariant::Type type)
     : QObject(parent), m_arch(arch), m_type(type), m_url(url), m_shaHash(shaHash), m_size(size)
 {
-
+    connect(this, &ReleaseVariant::sizeChanged, this, &ReleaseVariant::realSizeChanged);
 }
 
 ReleaseVariant::ReleaseVariant(ReleaseVersion *parent, const QString &file, int64_t size)
     : QObject(parent), m_iso(file), m_arch(ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64)), m_size(size)
 {
+    connect(this, &ReleaseVariant::sizeChanged, this, &ReleaseVariant::realSizeChanged);
     m_status = READY;
 }
 
@@ -675,6 +676,8 @@ qreal ReleaseVariant::size() const {
 }
 
 qreal ReleaseVariant::realSize() const {
+    if (m_realSize <= 0)
+        return m_size;
     return m_realSize;
 }
 
