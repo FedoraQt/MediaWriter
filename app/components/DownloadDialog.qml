@@ -191,7 +191,7 @@ Dialog {
                 PropertyChanges {
                     target: eraseCheckbox
                     visible: true
-                    checked: true
+                    checked: false
                 }
             },
             State {
