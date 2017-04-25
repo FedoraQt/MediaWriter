@@ -430,7 +430,11 @@ Dialog {
                     ColumnLayout {
                         z: -1
                         width: parent.width
-                        spacing: $(12)
+                        spacing: $(3)
+                        Item {
+                            height: $(3)
+                            width: 1
+                        }
                         RowLayout {
                             height: rightButton.height
                             width: parent.width
