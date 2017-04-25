@@ -86,12 +86,19 @@ Dialog {
             State {
                 name: "downloading"
                 when: releases.variant.status === Variant.DOWNLOADING
-                PropertyChanges { target: progressBar; value: releases.variant.progress.ratio }
+                PropertyChanges {
+                    target: progressBar;
+                    value: releases.variant.progress.ratio
+                }
             },
             State {
                 name: "download_verifying"
                 when: releases.variant.status === Variant.DOWNLOAD_VERIFYING
-                PropertyChanges { target: progressBar; value: releases.variant.progress.ratio; progressColor: Qt.lighter("green") }
+                PropertyChanges {
+                    target: progressBar;
+                    value: releases.variant.progress.ratio;
+                    progressColor: Qt.lighter("green")
+                }
             },
             State {
                 name: "ready_no_drives"
@@ -100,61 +107,141 @@ Dialog {
             State {
                 name: "ready"
                 when: releases.variant.status === Variant.READY && drives.length > 0
-                PropertyChanges { target: messageLoseData; visible: true }
-                PropertyChanges { target: rightButton; text: qsTr("Write to disk"); enabled: true; color: "red"; onClicked: drives.selected.write(releases.variant) }
+                PropertyChanges {
+                    target: messageLoseData;
+                    visible: true
+                }
+                PropertyChanges {
+                    target: rightButton;
+                    text: qsTr("Write to disk");
+                    enabled: true;
+                    color: "red";
+                    onClicked: drives.selected.write(releases.variant)
+                }
             },
             State {
                 name: "writing_not_possible"
                 when: releases.variant.status === Variant.WRITING_NOT_POSSIBLE
-                PropertyChanges { target: driveCombo; enabled: false; placeholderText: qsTr("Writing is not possible") }
+                PropertyChanges {
+                    target: driveCombo;
+                    enabled: false;
+                    placeholderText: qsTr("Writing is not possible")
+                }
             },
             State {
                 name: "writing"
                 when: releases.variant.status === Variant.WRITING
-                PropertyChanges { target: messageRestore; visible: true }
-                PropertyChanges { target: driveCombo; enabled: false }
-                PropertyChanges { target: progressBar; value: drives.selected.progress.ratio; progressColor: "red" }
+                PropertyChanges {
+                    target: messageRestore;
+                    visible: true
+                }
+                PropertyChanges {
+                    target: driveCombo;
+                    enabled: false
+                }
+                PropertyChanges {
+                    target: progressBar;
+                    value: drives.selected.progress.ratio;
+                    progressColor: "red"
+                }
             },
             State {
                 name: "write_verifying"
                 when: releases.variant.status === Variant.WRITE_VERIFYING
-                PropertyChanges { target: messageRestore; visible: true }
-                PropertyChanges { target: driveCombo; enabled: false }
-                PropertyChanges { target: progressBar; value: drives.selected.progress.ratio; progressColor: Qt.lighter("green") }
+                PropertyChanges {
+                    target: messageRestore;
+                    visible: true
+                }
+                PropertyChanges {
+                    target: driveCombo;
+                    enabled: false
+                }
+                PropertyChanges {
+                    target: progressBar;
+                    value: drives.selected.progress.ratio;
+                    progressColor: Qt.lighter("green")
+                }
             },
             State {
                 name: "finished"
                 when: releases.variant.status === Variant.FINISHED
-                PropertyChanges { target: messageRestore; visible: true }
-                PropertyChanges { target: leftButton; text: qsTr("Close"); color: "#628fcf"; textColor: "white" }
+                PropertyChanges {
+                    target: messageRestore;
+                    visible: true
+                }
+                PropertyChanges {
+                    target: leftButton;
+                    text: qsTr("Close");
+                    color: "#628fcf";
+                    textColor: "white"
+                }
             },
             State {
                 name: "failed_verification_no_drives"
                 when: releases.variant.status === Variant.FAILED_VERIFICATION && drives.length <= 0
-                PropertyChanges { target: rightButton; text: qsTr("Retry"); enabled: false; color: "red"; onClicked: drives.selected.write(releases.variant) }
+                PropertyChanges {
+                    target: rightButton;
+                    text: qsTr("Retry");
+                    enabled: false;
+                    color: "red";
+                    onClicked: drives.selected.write(releases.variant)
+                }
             },
             State {
                 name: "failed_verification"
                 when: releases.variant.status === Variant.FAILED_VERIFICATION && drives.length > 0
-                PropertyChanges { target: messageLoseData; visible: true }
-                PropertyChanges { target: rightButton; text: qsTr("Retry"); enabled: true; color: "red"; onClicked: drives.selected.write(releases.variant) }
+                PropertyChanges {
+                    target: messageLoseData;
+                    visible: true
+                }
+                PropertyChanges {
+                    target: rightButton;
+                    text: qsTr("Retry");
+                    enabled: true;
+                    color: "red";
+                    onClicked: drives.selected.write(releases.variant)
+                }
             },
             State {
                 name: "failed_download"
                 when: releases.variant.status === Variant.FAILED_DOWNLOAD
-                PropertyChanges { target: driveCombo; enabled: false }
-                PropertyChanges { target: rightButton; text: qsTr("Retry"); enabled: true; color: "#628fcf"; onClicked: releases.variant.download() }
+                PropertyChanges {
+                    target: driveCombo;
+                    enabled: false
+                }
+                PropertyChanges {
+                    target: rightButton;
+                    text: qsTr("Retry");
+                    enabled: true;
+                    color: "#628fcf";
+                    onClicked: releases.variant.download()
+                }
             },
             State {
                 name: "failed_no_drives"
                 when: releases.variant.status === Variant.FAILED && drives.length <= 0
-                PropertyChanges { target: rightButton; text: qsTr("Retry"); enabled: false; color: "red"; onClicked: drives.selected.write(releases.variant) }
+                PropertyChanges {
+                    target: rightButton;
+                    text: qsTr("Retry");
+                    enabled: false;
+                    color: "red";
+                    onClicked: drives.selected.write(releases.variant)
+                }
             },
             State {
                 name: "failed"
                 when: releases.variant.status === Variant.FAILED && drives.length > 0
-                PropertyChanges { target: messageLoseData; visible: true }
-                PropertyChanges { target: rightButton; text: qsTr("Retry"); enabled: true; color: "red"; onClicked: drives.selected.write(releases.variant) }
+                PropertyChanges {
+                    target: messageLoseData;
+                    visible: true
+                }
+                PropertyChanges {
+                    target: rightButton;
+                    text: qsTr("Retry");
+                    enabled: true;
+                    color: "red";
+                    onClicked: drives.selected.write(releases.variant)
+                }
             }
         ]
 
