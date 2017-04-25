@@ -495,7 +495,7 @@ Dialog {
                                     bottom: parent.bottom
                                 }
                                 textColor: enabled ? "white" : palette.text
-                                text: qsTr("Write to disk")
+                                text: qsTr("Write to Disk")
                                 enabled: false
                             }
                         }
