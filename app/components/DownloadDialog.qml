@@ -87,6 +87,10 @@ Dialog {
                 name: "downloading"
                 when: releases.variant.status === Variant.DOWNLOADING
                 PropertyChanges {
+                    target: messageDownload
+                    visible: true
+                }
+                PropertyChanges {
                     target: progressBar;
                     value: releases.variant.progress.ratio
                 }
@@ -94,6 +98,10 @@ Dialog {
             State {
                 name: "download_verifying"
                 when: releases.variant.status === Variant.DOWNLOAD_VERIFYING
+                PropertyChanges {
+                    target: messageDownload
+                    visible: true
+                }
                 PropertyChanges {
                     target: progressBar;
                     value: releases.variant.progress.ratio;
@@ -280,6 +288,13 @@ Dialog {
                         id: infoColumn
                         spacing: $(4)
                         width: parent.width
+
+                        InfoMessage {
+                            id: messageDownload
+                            visible: false
+                            width: infoColumn.width
+                            text: qsTr("The file will be saved to your Downloads folder.")
+                        }
 
                         InfoMessage {
                             id: messageLoseData
