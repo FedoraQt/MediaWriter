@@ -440,6 +440,7 @@ signals:
 public slots:
     void download();
     void resetStatus();
+    void erase();
 
 private:
     QString m_temporaryIso {};

@@ -174,6 +174,16 @@ Dialog {
                     text: qsTr("Close");
                     color: "#628fcf";
                     textColor: "white"
+                    onClicked: {
+                        if (eraseCheckbox.checked)
+                            releases.variant.erase()
+                        dialog.close()
+                    }
+                }
+                PropertyChanges {
+                    target: eraseCheckbox
+                    visible: true
+                    checked: true
                 }
             },
             State {
@@ -445,6 +455,17 @@ Dialog {
                                     releases.variant.resetStatus()
                                     writeImmediately.checked = false
                                     dialog.close()
+                                }
+                                AdwaitaCheckBox {
+                                    id: eraseCheckbox
+                                    visible: false
+                                    opacity: visible ? 1.0 : 0.0
+                                    Behavior on opacity { NumberAnimation { duration: 120 } }
+                                    text: "Erase the saved image"
+                                    anchors {
+                                        bottom: parent.top
+                                        margins: $(6)
+                                    }
                                 }
                             }
                             AdwaitaButton {

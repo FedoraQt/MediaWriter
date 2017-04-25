@@ -821,6 +821,17 @@ void ReleaseVariant::resetStatus() {
     emit statusChanged();
 }
 
+void ReleaseVariant::erase() {
+    if (QFile(m_iso).remove()) {
+        qDebug() << this->metaObject()->className() << "Deleted" << m_iso;
+        m_iso = QString();
+        emit isoChanged();
+    }
+    else {
+        qWarning() << this->metaObject()->className() << "An attempt to delete" << m_iso << "failed!";
+    }
+}
+
 void ReleaseVariant::setStatus(Status s) {
     if (m_status != s) {
         m_status = s;
