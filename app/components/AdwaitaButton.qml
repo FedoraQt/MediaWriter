@@ -33,6 +33,7 @@ Button {
             flat: root.flat
         }
         label: Item {
+            clip: true
             implicitWidth: labelText.width + $(16)
             Text {
                 anchors.horizontalCenter: parent.horizontalCenter
