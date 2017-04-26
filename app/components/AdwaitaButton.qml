@@ -35,7 +35,7 @@ Button {
         label: Item {
             implicitWidth: labelText.width + $(16)
             Text {
-                x: $(8)
+                anchors.horizontalCenter: parent.horizontalCenter
                 font.pointSize: $(9)
                 id: labelText
                 color: root.enabled ? root.textColor : disabledPalette.buttonText

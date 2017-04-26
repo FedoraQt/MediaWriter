@@ -474,6 +474,8 @@ Dialog {
                                     bottom: parent.bottom
                                     rightMargin: $(6)
                                 }
+                                clip: true
+                                Behavior on implicitWidth { NumberAnimation { duration: 80 } }
                                 text: qsTr("Cancel")
                                 enabled: true
                                 onClicked: {
@@ -502,6 +504,8 @@ Dialog {
                                     top: parent.top
                                     bottom: parent.bottom
                                 }
+                                clip: true
+                                Behavior on implicitWidth { NumberAnimation { duration: 80 } }
                                 textColor: enabled ? "white" : palette.text
                                 text: qsTr("Write to Disk")
                                 enabled: false
