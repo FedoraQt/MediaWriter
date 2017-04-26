@@ -121,7 +121,6 @@ Dialog {
                 }
                 PropertyChanges {
                     target: rightButton;
-                    text: qsTr("Write to disk");
                     enabled: true;
                     color: "red";
                     onClicked: drives.selected.write(releases.variant)
@@ -168,6 +167,13 @@ Dialog {
                     target: progressBar;
                     value: drives.selected.progress.ratio;
                     progressColor: Qt.lighter("green")
+                }
+                PropertyChanges {
+                    target: rightButton
+                    enabled: true
+                    textColor: palette.buttonText
+                    text: qsTr("Stop")
+                    onClicked: drives.selected.cancel()
                 }
             },
             State {
@@ -471,6 +477,8 @@ Dialog {
                                 text: qsTr("Cancel")
                                 enabled: true
                                 onClicked: {
+                                    if (drives.selected)
+                                        drives.selected.cancel()
                                     releases.variant.resetStatus()
                                     writeImmediately.checked = false
                                     dialog.close()
