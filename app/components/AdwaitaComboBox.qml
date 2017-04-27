@@ -39,6 +39,8 @@ AdwaitaRectangle {
 
     property bool isOpen: false
 
+    signal activated(int index)
+
     onIsOpenChanged: {
         container.update()
     }
@@ -136,6 +138,7 @@ AdwaitaRectangle {
                 onClicked: {
                     options.currentIndex = index
                     control.isOpen = false
+                    activated(index)
                 }
                 onContainsMouseChanged: {
                     if (containsMouse)

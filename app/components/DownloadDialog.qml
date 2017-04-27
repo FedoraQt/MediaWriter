@@ -437,6 +437,7 @@ Dialog {
                                     property: "selectedIndex"
                                     value: driveCombo.currentIndex
                                 }
+                                onActivated: releases.variant.resetStatus()
                                 placeholderText: qsTr("There are no portable drives connected")
                             }
                             AdwaitaComboBox {
