@@ -25,8 +25,8 @@ RadioButton {
     id: root
     style: RadioButtonStyle {
         indicator: AdwaitaRectangle {
-            implicitWidth: root.height - $(1)
-            implicitHeight: root.height - $(1)
+            implicitWidth: root.height
+            implicitHeight: root.height
             radius: width / 2 + 1
             Rectangle {
                 anchors.centerIn: parent
