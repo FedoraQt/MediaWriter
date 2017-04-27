@@ -438,7 +438,10 @@ Dialog {
                                     property: "selectedIndex"
                                     value: driveCombo.currentIndex
                                 }
-                                onActivated: releases.variant.resetStatus()
+                                onActivated: {
+                                    if ([Variant.FINISHED, Variant.FAILED, Variant.FAILED_VERIFICATION].indexOf(releases.variant.status) >= 0)
+                                        releases.variant.resetStatus()
+                                }
                                 placeholderText: qsTr("There are no portable drives connected")
                             }
                             AdwaitaComboBox {
