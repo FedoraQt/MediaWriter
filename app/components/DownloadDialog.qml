@@ -428,6 +428,7 @@ Dialog {
                             spacing: $(6)
                             Layout.preferredWidth: driveCombo.implicitWidth * 2.5
                             AdwaitaComboBox {
+                                z: pressed ? 1 : 0
                                 id: driveCombo
                                 width: driveCombo.implicitWidth * 2.5
                                 model: drives
@@ -441,6 +442,7 @@ Dialog {
                                 placeholderText: qsTr("There are no portable drives connected")
                             }
                             AdwaitaComboBox {
+                                z: pressed ? 1 : 0
                                 visible: releases.selected.version.variant.arch.id == Architecture.ARM || (releases.selected.isLocal && releases.variant.iso.indexOf(".iso", releases.variant.iso.length - ".iso".length) === -1)
                                 width: driveCombo.implicitWidth * 2.5
                                 model: ["Raspberry Pi 2 Model B", "Raspberry Pi 3 Model B"]
