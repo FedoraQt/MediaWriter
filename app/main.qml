@@ -62,140 +62,136 @@ ApplicationWindow {
     property real margin: $(64) + (width - $(800)) / 4
     property real potentialMargin: $(64) + (Screen.width - $(800)) / 4
 
-    Item {
+    AdwaitaNotificationBar {
+        id: deviceNotification
+        text: open ? qsTr("You inserted <b>%1</b> that already contains a live system.<br>Do you want to restore it to factory settings?").arg(drives.lastRestoreable.name) : ""
+        open: drives.lastRestoreable
+        acceptText: qsTr("Restore")
+        cancelText: qsTr("Do Nothing")
+        property var disk: null
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+        }
+        onAccepted: restoreDialog.visible = true
+
+        Connections {
+            target: drives
+            onLastRestoreableChanged: {
+                if (drives.lastRestoreable != null && !dlDialog.visible)
+                    deviceNotification.open = true
+                if (!drives.lastRestoreable)
+                    deviceNotification.open = false
+            }
+        }
+    }
+
+    Rectangle {
         id: mainWindowContainer
-        anchors.fill: parent
+        anchors {
+            top: deviceNotification.bottom
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
 
-        AdwaitaNotificationBar {
-            id: deviceNotification
-            text: open ? qsTr("You inserted <b>%1</b> that already contains a live system.<br>Do you want to restore it to factory settings?").arg(drives.lastRestoreable.name) : ""
-            open: drives.lastRestoreable
-            acceptText: qsTr("Restore")
-            cancelText: qsTr("Do Nothing")
-            property var disk: null
-            anchors {
-                left: parent.left
-                right: parent.right
+        color: palette.window
+        //radius: 8
+        clip: true
+
+        ListView {
+            id: contentList
+            anchors{
                 top: parent.top
-            }
-            onAccepted: restoreDialog.visible = true
-
-            Connections {
-                target: drives
-                onLastRestoreableChanged: {
-                    if (drives.lastRestoreable != null && !dlDialog.visible)
-                        deviceNotification.open = true
-                    if (!drives.lastRestoreable)
-                        deviceNotification.open = false
-                }
-            }
-        }
-
-        Rectangle {
-            anchors {
-                top: deviceNotification.bottom
+                bottom: parent.bottom
                 left: parent.left
                 right: parent.right
-                bottom: parent.bottom
             }
-
-            color: palette.window
-            //radius: 8
-            clip: true
-
-            ListView {
-                id: contentList
-                anchors{
-                    top: parent.top
-                    bottom: parent.bottom
-                    left: parent.left
-                    right: parent.right
+            model: ["components/ImageList.qml", "components/ImageDetails.qml"]
+            orientation: ListView.Horizontal
+            snapMode: ListView.SnapToItem
+            highlightFollowsCurrentItem: true
+            highlightRangeMode: ListView.StrictlyEnforceRange
+            interactive: false
+            highlightMoveVelocity: 3 * contentList.width
+            highlightResizeDuration: 0
+            cacheBuffer: 2*width
+            delegate: Item {
+                id: contentComponent
+                width: contentList.width
+                height: contentList.height
+                Loader {
+                    id: contentLoader
+                    source: contentList.model[index]
+                    anchors.fill: parent
                 }
-                model: ["components/ImageList.qml", "components/ImageDetails.qml"]
-                orientation: ListView.Horizontal
-                snapMode: ListView.SnapToItem
-                highlightFollowsCurrentItem: true
-                highlightRangeMode: ListView.StrictlyEnforceRange
-                interactive: false
-                highlightMoveVelocity: 3 * contentList.width
-                highlightResizeDuration: 0
-                cacheBuffer: 2*width
-                delegate: Item {
-                    id: contentComponent
-                    width: contentList.width
-                    height: contentList.height
-                    Loader {
-                        id: contentLoader
-                        source: contentList.model[index]
-                        anchors.fill: parent
-                    }
-                    Connections {
-                        target: contentLoader.item
-                        onStepForward: {
-                            contentList.currentIndex++
-                            canGoBack = true
-                            releases.selectedIndex = index
-                        }
+                Connections {
+                    target: contentLoader.item
+                    onStepForward: {
+                        contentList.currentIndex++
+                        canGoBack = true
+                        releases.selectedIndex = index
                     }
                 }
             }
         }
+    }
 
-        AdwaitaPopup {
-            id: newVersionPopup
-            open: versionChecker.newerVersion
-            title: qsTr("Fedora Media Writer %1 Released").arg(versionChecker.newerVersion)
-            text: qsTr("Update for great new features and bugfixes!")
-            buttonText: qsTr("Open Browser")
-            onAccepted: Qt.openUrlExternally(versionChecker.url)
+    AdwaitaPopup {
+        id: newVersionPopup
+        open: versionChecker.newerVersion
+        title: qsTr("Fedora Media Writer %1 Released").arg(versionChecker.newerVersion)
+        text: qsTr("Update for great new features and bugfixes!")
+        buttonText: qsTr("Open Browser")
+        onAccepted: Qt.openUrlExternally(versionChecker.url)
+    }
+
+    RestoreDialog {
+        id: restoreDialog
+    }
+
+    DownloadDialog {
+        id: dlDialog
+    }
+
+    FileDialog {
+        id: fileDialog
+        folder: shortcuts.home
+        nameFilters: [ qsTr("Image files") + " (*.iso *.raw *.xz)", qsTr("All files (*)")]
+        onAccepted: {
+            releases.setLocalFile(fileUrl)
+            dlDialog.visible = true
         }
+    }
 
-        RestoreDialog {
-            id: restoreDialog
-        }
+    FullscreenViewer {
+        id: fullscreenViewer
+    }
 
-        DownloadDialog {
-            id: dlDialog
-        }
-
-        FileDialog {
-            id: fileDialog
-            folder: shortcuts.home
-            nameFilters: [ qsTr("Image files") + " (*.iso *.raw *.xz)", qsTr("All files (*)")]
-            onAccepted: {
-                releases.setLocalFile(fileUrl)
-                dlDialog.visible = true
-            }
-        }
-
-        FullscreenViewer {
-            id: fullscreenViewer
-        }
-
-        Rectangle {
-            id: fatalErrorOverlay
-            opacity: drives.isBroken ? 1.0 : 0.0
-            visible: opacity > 0.1
-            Behavior on opacity { NumberAnimation { } }
+    Rectangle {
+        id: fatalErrorOverlay
+        opacity: drives.isBroken ? 1.0 : 0.0
+        visible: opacity > 0.1
+        Behavior on opacity { NumberAnimation { } }
+        anchors.fill: parent
+        color: "#cc000000"
+        MouseArea {
             anchors.fill: parent
-            color: "#cc000000"
-            MouseArea {
-                anchors.fill: parent
-                hoverEnabled: true
+            hoverEnabled: true
+        }
+        ColumnLayout {
+            anchors.centerIn: parent
+            spacing: 9
+            Text {
+                horizontalAlignment: Text.AlignHCenter
+                color: "white"
+                text: qsTr("%1<br>Writing images will not be possible.<br>You can still view Fedora flavors and download images to your hard drive.").arg(drives.errorString)
             }
-            ColumnLayout {
-                anchors.centerIn: parent
-                spacing: 9
-                Text {
-                    horizontalAlignment: Text.AlignHCenter
-                    color: "white"
-                    text: qsTr("%1<br>Writing images will not be possible.<br>You can still view Fedora flavors and download images to your hard drive.").arg(drives.errorString)
-                }
-                AdwaitaButton {
-                    Layout.alignment: Qt.AlignCenter
-                    text: qsTr("Ok")
-                    onClicked: fatalErrorOverlay.opacity = 0.0
-                }
+            AdwaitaButton {
+                Layout.alignment: Qt.AlignCenter
+                text: qsTr("Ok")
+                onClicked: fatalErrorOverlay.opacity = 0.0
             }
         }
     }

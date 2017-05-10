@@ -49,14 +49,14 @@ AdwaitaRectangle {
 
     QtObject {
         id: container
-        property var item: (typeof(dialog) !== 'undefined') ? dialog : (typeof(mainWindow) !== 'undefined') ? mainWindowContainer : null
-        property real x: control.mapFromItem(null, 0, 0).x
-        property real y: control.mapFromItem(null, 0, 0).y
+        property var item: (typeof(dialog) !== 'undefined') ? dialogContainer : (typeof(mainWindow) !== 'undefined') ? mainWindowContainer : null
+        property real x: control.mapFromItem(item, 0, 0).x
+        property real y: control.mapFromItem(item, 0, 0).y
         property real height: item.height
         property real width: item.width
         function update() {
-            container.x = control.mapFromItem(null, 0, 0).x
-            container.y = control.mapFromItem(null, 0, 0).y
+            container.x = control.mapFromItem(item, 0, 0).x
+            container.y = control.mapFromItem(item, 0, 0).y
         }
     }
 
@@ -103,13 +103,14 @@ AdwaitaRectangle {
     }
 
     ListView {
-        y: potentialY < container.y ? container.y : potentialY
+        property real potentialHeight: Math.min(count * control.height + headerItem.height + footerItem.height, container.height)
         property real potentialY: -currentIndex * control.height - headerItem.height
-        property real potentialHeight: count * control.height + headerItem.height + footerItem.height
+        property real potentialOverflow: potentialY + potentialHeight > container.y + container.height ? potentialY + potentialHeight - container.y - container.height : 0
+        height: control.isOpen ? potentialHeight : 0
+        y: (potentialY - potentialOverflow) < container.y ? container.y : (potentialY - potentialOverflow)
         id: options
         visible: isOpen
         width: parent.width
-        height: control.isOpen ? potentialHeight > container.height + y ? container.height + y : potentialHeight : 0
         clip: true
 
         header: Item { height: 6; width: 1 }

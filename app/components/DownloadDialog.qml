@@ -73,7 +73,7 @@ Dialog {
     }
 
     contentItem: Rectangle {
-        id: contentWrapper
+        id: dialogContainer
         anchors.fill: parent
         color: palette.window
         focus: true
