@@ -1,14 +1,16 @@
 #!/bin/bash
 
+
 # Usage
 # ./build.sh - installs all the necessary packages and composes an installer (FMW-setup.exe)
 # ./build.sh local - builds the mediawriter.exe binary itself and then composes the installer
 # ./build.sh install - just installs the necessary packages
 #
 # The script will try to sign all binaries using your code signing certificate.
-# You can provide the path to it using the $CERTPATH variable, the files then
-# have to be named authenticode.spc and authenticode.pvk
-# You have to provide the $CERTPASS with the passphrase to your certificate
+# You can provide the path to it using the $CERTPATH variable, the file then
+# has to be named authenticode.pfx
+# You have to provide the $CERTPASS with the path to a file containing the passphrase to your
+# certificate (beware of the trailing last new line symbol)
 
 
 pushd $(dirname $0) >/dev/null
@@ -25,8 +27,7 @@ if [ -z "$CERTPATH" ]; then
     CERTPATH=~
 fi
 if [ -z "$CERTPASS" ]; then
-    echo "You have not provided your certificate passphrase."
-    exit 1
+    CERTPASS="$CERTPATH/authenticode.pass"
 fi
 
 PACKAGES="mingw32-qt5-qmake mingw32-mediawriter mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-nsis mono-devel"
@@ -120,16 +121,17 @@ echo "=== Inserting helper"
 #upx $(find . -name "*.exe")
 #upx $(find . -name "*.dll")
 
-#zip -r mediawriter.zip * >/dev/null
-
 # See http://stackoverflow.com/questions/18287960/signing-windows-application-on-linux-based-distros for details
 echo "=== Signing binaries"
-signcode  -spc $CERTPATH/authenticode.spc -v $CERTPATH/authenticode.pvk -a sha1 -$ commercial -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -tr 10 $MEDIAWRITER >/dev/null <<< "$CERTPASS"
-rm "$MEDIAWRITER.bak"
-signcode  -spc $CERTPATH/authenticode.spc -v $CERTPATH/authenticode.pvk -a sha1 -$ commercial -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -tr 10 $HELPER >/dev/null <<< "$CERTPASS"
-rm "$HELPER.bak"
+
+osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "$MEDIAWRITER" -out "$MEDIAWRITER.signed" >/dev/null
+mv "$MEDIAWRITER.signed" "$MEDIAWRITER"
+
+osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "$HELPER" -out "$HELPER.signed" >/dev/null
+mv "$HELPER.signed" "$HELPER"
 
 cp "$HELPER" .
+
 
 popd >/dev/null
 popd >/dev/null
@@ -139,7 +141,7 @@ unix2dos < "$ROOTPATH/LICENSE" > "$BUILDPATH/app/release/LICENSE.txt"
 makensis "$SCRIPTDIR/mediawriter.nsi" >/dev/null
 mv "$SCRIPTDIR/FMW-setup.exe" "$INSTALLER"
 
-signcode  -spc $CERTPATH/authenticode.spc -v $CERTPATH/authenticode.pvk -a sha1 -$ commercial -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -tr 10 "$INSTALLER" >/dev/null <<< "$CERTPASS"
-rm "$INSTALLER.bak"
+osslsigncode sign -pkcs12 $CERTPATH//authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "$INSTALLER" -out "$INSTALLER.signed" >/dev/null
+mv "$INSTALLER.signed" "$INSTALLER"
 
 echo "=== Installer is located in $INSTALLER"
