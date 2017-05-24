@@ -100,7 +100,7 @@ Item {
             onClicked: root.open = false
             Text {
                 anchors.centerIn: parent
-                font.pointSize: $(10.5)
+                font.pointSize: $(11)
                 color: "white"
                 text: "✕"
             }
