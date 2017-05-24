@@ -89,6 +89,8 @@ bool VersionChecker::isVersionHigher(QString currentVersion, QString newVersion)
             return true;
         if (currentSplit[i] < newSplit[i])
             return true;
+        if (currentSplit[i] > newSplit[i])
+            return false;
     }
     return false;
 }
