@@ -1,15 +1,35 @@
-TEMPLATE = subdirs
+TEMPLATE = app
+
+QT += core
+
+LIBS += -lisomd5
+
+CONFIG += c++11
+CONFIG += console
+
+TARGET = helper
+
+include($$top_srcdir/deployment.pri)
+
+target.path = $$LIBEXECDIR
+INSTALLS += target
+
+SOURCES = main.cpp \
+    writejob.cpp \
+    restorejob.cpp
+
+HEADERS += \
+    writejob.h \
+    restorejob.h
 
 linux {
-    SUBDIRS = linux
+    include(linux/linux.pri)
 }
 win32 {
-    SUBDIRS = win
+    include(win/win.pri)
 }
 macx {
-    SUBDIRS = mac
+    include(mac/mac.pri)
 }
 
-lupdate_only {
-    SUBDIRS = linux win mac
-}
+RESOURCES += ../translations/translations.qrc

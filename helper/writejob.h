@@ -17,24 +17,46 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef RESTOREJOB_H
-#define RESTOREJOB_H
+#ifndef WRITEJOB_H
+#define WRITEJOB_H
 
+#include <memory>
+
+#include <QFileSystemWatcher>
 #include <QObject>
+#include <QString>
 #include <QTextStream>
 
-class RestoreJob : public QObject
-{
+// Platform specific drive handler.
+#include "drive.h"
+
+#ifndef MEDIAWRITER_LZMA_LIMIT
+// 256MB memory limit for the decompressor
+#define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
+#endif
+
+class WriteJob : public QObject {
     Q_OBJECT
 public:
-    explicit RestoreJob(const QString &where);
-public slots:
-    void work();
-private:
-    QTextStream out { stdout };
-    QTextStream err { stderr };
+    WriteJob(const QString &what, const QString &where);
 
-    QString where;
+    static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
+    int onMediaCheckAdvanced(long long offset, long long total);
+    bool work();
+    bool write();
+    bool writeCompressed();
+    bool writePlain();
+    bool check();
+public slots:
+    void boot();
+    void onFileChanged(const QString &path);
+
+private:
+    QString what;
+    QTextStream out;
+    QTextStream err;
+    std::unique_ptr<Drive> drive;
+    QFileSystemWatcher watcher;
 };
 
-#endif // RESTOREJOB_H
+#endif // WRITEJOB_H

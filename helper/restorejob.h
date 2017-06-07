@@ -17,30 +17,24 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include <QCoreApplication>
-#include <QTextStream>
-#include <QTranslator>
+#ifndef RESTOREJOB_H
+#define RESTOREJOB_H
 
-#include "restorejob.h"
-#include "writejob.h"
+#include <memory>
 
-int main(int argc, char *argv[]) {
-    QCoreApplication app(argc, argv);
+#include <QObject>
 
-    QTranslator translator;
-    translator.load(QLocale(), QString(), QString(), ":/translations");
-    app.installTranslator(&translator);
+#include "drive.h"
 
-    if (app.arguments().count() == 3 && app.arguments()[1] == "restore") {
-        new RestoreJob(app.arguments()[2]);
-    }
-    else if (app.arguments().count() == 4 && app.arguments()[1] == "write") {
-        new WriteJob(app.arguments()[2], app.arguments()[3]);
-    }
-    else {
-        QTextStream err(stderr);
-        err << "Helper: Wrong arguments entered";
-        return 1;
-    }
-    return app.exec();
-}
+class RestoreJob : public QObject {
+    Q_OBJECT
+public:
+    explicit RestoreJob(const QString &where);
+public slots:
+    void work();
+
+private:
+    std::unique_ptr<Drive> drive;
+};
+
+#endif // RESTOREJOB_H
