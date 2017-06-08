@@ -21,6 +21,7 @@
 
 #include <algorithm>
 #include <memory>
+#include <stdexcept>
 
 #include <QCoreApplication>
 #include <QString>
@@ -29,10 +30,20 @@
 #include "drive.h"
 
 RestoreJob::RestoreJob(const QString &where)
-    : QObject(nullptr), drive(std::move(std::unique_ptr<Drive>(new Drive(where)))) {
+    : QObject(nullptr), err(stderr), drive(std::move(std::unique_ptr<Drive>(new Drive(where)))) {
     QTimer::singleShot(0, this, SLOT(work()));
 }
 
 void RestoreJob::work() {
-    qApp->exit(drive->umount() || drive->wipe() || drive->addPartition());
+    try {
+        drive->umount();
+        drive->wipe();
+        drive->addPartition();
+    } catch (std::runtime_error &error) {
+        err << error.what() << '\n';
+        err.flush();
+        qApp->exit(1);
+        return;
+    }
+    qApp->exit(0);
 }

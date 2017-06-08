@@ -23,6 +23,7 @@
 #include <memory>
 #include <random>
 #include <tuple>
+#include <stdexcept>
 
 #include <QCoreApplication>
 #include <QFile>
@@ -64,8 +65,17 @@ void WriteJob::boot() {
     work();
 }
 
-bool WriteJob::work() {
-    return write() && check();
+void WriteJob::work() {
+    try {
+        write();
+        check();
+    } catch (std::runtime_error &error) {
+        err << error.what() << '\n';
+        err.flush();
+        qApp->exit(1);
+        return;
+    }
+    qApp->exit(0);
 }
 
 void WriteJob::onFileChanged(const QString &path) {
@@ -85,14 +95,14 @@ void WriteJob::onFileChanged(const QString &path) {
     work();
 }
 
-bool WriteJob::write() {
+void WriteJob::write() {
     if (what.endsWith(".xz"))
-        return writeCompressed();
+        writeCompressed();
     else
-        return writePlain();
+        writePlain();
 }
 
-bool WriteJob::writeCompressed() {
+void WriteJob::writeCompressed() {
     qint64 totalRead = 0;
 
     lzma_stream strm = LZMA_STREAM_INIT;
@@ -108,8 +118,7 @@ bool WriteJob::writeCompressed() {
 
     ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
     if (ret != LZMA_OK) {
-        err << tr("Failed to start decompressing.");
-        return false;
+        throw std::runtime_error(tr("Failed to start decompressing.").toStdString());
     }
 
     strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
@@ -133,36 +142,30 @@ bool WriteJob::writeCompressed() {
 
         ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
         if (ret == LZMA_STREAM_END) {
-            if (!drive->write(outBuffer, bufferSize - strm.avail_out)) {
-                return false;
-            }
-            return true;
+            drive->write(outBuffer, bufferSize - strm.avail_out);
+            return;
         }
         if (ret != LZMA_OK) {
             switch (ret) {
             case LZMA_MEM_ERROR:
-                err << tr("There is not enough memory to decompress the file.");
+                throw std::runtime_error(tr("There is not enough memory to decompress the file.").toStdString());
                 break;
             case LZMA_FORMAT_ERROR:
             case LZMA_DATA_ERROR:
             case LZMA_BUF_ERROR:
-                err << tr("The downloaded compressed file is corrupted.");
+                throw std::runtime_error(tr("The downloaded compressed file is corrupted.").toStdString());
                 break;
             case LZMA_OPTIONS_ERROR:
-                err << tr("Unsupported compression options.");
+                throw std::runtime_error(tr("Unsupported compression options.").toStdString());
                 break;
             default:
-                err << tr("Unknown decompression error.");
+                throw std::runtime_error(tr("Unknown decompression error.").toStdString());
                 break;
             }
-            qApp->exit(4);
-            return false;
         }
 
         if (strm.avail_out == 0) {
-            if (!drive->write(outBuffer, bufferSize - strm.avail_out)) {
-                return false;
-            }
+            drive->write(outBuffer, bufferSize - strm.avail_out);
 
             strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
             strm.avail_out = bufferSize;
@@ -170,16 +173,14 @@ bool WriteJob::writeCompressed() {
     }
 }
 
-bool WriteJob::writePlain() {
+void WriteJob::writePlain() {
 
     QFile inFile(what);
     inFile.open(QIODevice::ReadOnly);
 
     if (!inFile.isReadable()) {
-        err << tr("Source image is not readable") << what;
-        err.flush();
-        qApp->exit(2);
-        return false;
+        QString error = tr("Source image is not readable") + " " + what;
+        throw std::runtime_error(error.toStdString());
     }
 
     PageAlignedBuffer<2> buffers;
@@ -192,46 +193,28 @@ bool WriteJob::writePlain() {
     while (!inFile.atEnd()) {
         qint64 len = inFile.read(buffer, bufferSize);
         if (len < 0) {
-            err << tr("Source image is not readable");
-            err.flush();
-            qApp->exit(3);
-            return false;
+            throw std::runtime_error(tr("Source image is not readable").toStdString());
         }
-        if (!drive->write(buffer, len)) {
-            err << tr("Destination drive is not writable");
-            err.flush();
-            qApp->exit(3);
-            return false;
-        }
+        drive->write(buffer, len);
         total += len;
         out << total << '\n';
         out.flush();
     }
-    return true;
 }
 
-bool WriteJob::check() {
+void WriteJob::check() {
     out << "CHECK\n";
     out.flush();
 
     switch (mediaCheckFD(drive->getDescriptor(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
     case ISOMD5SUM_CHECK_NOT_FOUND:
     case ISOMD5SUM_CHECK_PASSED:
-        err << "OK\n";
-        err.flush();
-        qApp->exit(0);
+        out << "OK\n";
+        out.flush();
         break;
     case ISOMD5SUM_CHECK_FAILED:
-        err << tr("Your drive is probably damaged.") << "\n";
-        err.flush();
-        qApp->exit(1);
-        return false;
+        throw std::runtime_error(tr("Your drive is probably damaged.").toStdString());
     default:
-        err << tr("Unexpected error occurred during media check.") << "\n";
-        err.flush();
-        qApp->exit(1);
-        return false;
+        throw std::runtime_error(tr("Unexpected error occurred during media check.").toStdString());
     }
-
-    return true;
 }

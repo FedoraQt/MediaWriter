@@ -42,11 +42,11 @@ public:
 
     static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
     int onMediaCheckAdvanced(long long offset, long long total);
-    bool work();
-    bool write();
-    bool writeCompressed();
-    bool writePlain();
-    bool check();
+    void work();
+    void write();
+    void writeCompressed();
+    void writePlain();
+    void check();
 public slots:
     void boot();
     void onFileChanged(const QString &path);

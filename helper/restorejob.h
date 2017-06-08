@@ -23,6 +23,7 @@
 #include <memory>
 
 #include <QObject>
+#include <QTextStream>
 
 #include "drive.h"
 
@@ -34,6 +35,7 @@ public slots:
     void work();
 
 private:
+    QTextStream err;
     std::unique_ptr<Drive> drive;
 };
 

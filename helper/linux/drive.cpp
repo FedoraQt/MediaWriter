@@ -23,9 +23,11 @@
 
 #include <algorithm>
 #include <memory>
+#include <stdexcept>
 
 #include <QDBusInterface>
 #include <QDBusUnixFileDescriptor>
+#include <QObject>
 #include <QtDBus>
 
 typedef QHash<QString, QVariant> Properties;
@@ -45,32 +47,30 @@ Drive::Drive(const QString &identifier)
 /**
  * Open drive for writing.
  */
-int Drive::open() {
+void Drive::open() {
     QDBusReply<QDBusUnixFileDescriptor> reply = device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
     fileDescriptor = reply.value();
     if (!fileDescriptor.isValid()) {
-        err << reply.error().message();
-        err.flush();
+        throw std::runtime_error(reply.error().message().toStdString());
         fileDescriptor = QDBusUnixFileDescriptor(-1);
-        return 2;
     }
-    return 0;
 }
 
 /**
  * Close drive for writing.
  */
-int Drive::close() {
+void Drive::close() {
     fileDescriptor = QDBusUnixFileDescriptor(-1);
-    return 0;
 }
 
 /**
  * Write buffer directly to drive.
  */
-bool Drive::write(const void *buffer, std::size_t size) {
+void Drive::write(const void *buffer, std::size_t size) {
     int fd = getDescriptor();
-    return static_cast<std::size_t>(::write(fd, buffer, size)) == size;
+    if (static_cast<std::size_t>(::write(fd, buffer, size)) != size) {
+        throw std::runtime_error(QObject::tr("Destination drive is not writable").toStdString());
+    }
 }
 
 /**
@@ -84,37 +84,29 @@ int Drive::getDescriptor() {
  * Create a new dos label on the partition. This essentially wipes all
  * existing information about partitions.
  */
-int Drive::wipe() {
+void Drive::wipe() {
     QDBusReply<void> formatReply = device->call("Format", "dos", Properties());
     if (!formatReply.isValid() && formatReply.error().type() != QDBusError::NoReply) {
-        err << formatReply.error().message() << "\n";
-        err.flush();
-        return 1;
+        throw std::runtime_error(formatReply.error().message().toStdString());
     }
-    return 0;
 }
 
 /**
  * Fill the rest of the drive with a primary partition that uses the fat
  * filesystem.
  */
-int Drive::addPartition(const QString &label) {
+void Drive::addPartition(const QString &label) {
     QDBusInterface partitionTable("org.freedesktop.UDisks2", identifier, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus());
     QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", 0ULL, device->property("Size").toULongLong(), "", "", Properties());
     if (!partitionReply.isValid()) {
-        err << partitionReply.error().message();
-        err.flush();
-        return 2;
+        throw std::runtime_error(partitionReply.error().message().toStdString());
     }
     QString partitionPath = partitionReply.value().path();
     QDBusInterface partition("org.freedesktop.UDisks2", partitionPath, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus());
     QDBusReply<void> formatPartitionReply = partition.call("Format", "vfat", Properties{ { "update-partition-type", true }, { "label", label } });
     if (!formatPartitionReply.isValid() && formatPartitionReply.error().type() != QDBusError::NoReply) {
-        err << formatPartitionReply.error().message() << "\n";
-        err.flush();
-        return 3;
+        throw std::runtime_error(formatPartitionReply.error().message().toStdString());
     }
-    return 0;
 }
 
 /**
@@ -122,14 +114,17 @@ int Drive::addPartition(const QString &label) {
  */
 QString Drive::mount(const QString &partitionIdentifier) {
     QDBusInterface partition("org.freedesktop.UDisks2", partitionIdentifier, "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
-    QDBusMessage reply = partition.call("Mount", Properties{});
-    return reply.arguments().first().toString();
+    QDBusReply<QString> reply = partition.call("Mount", Properties{});
+    if (!reply.isValid()) {
+        throw std::runtime_error(reply.error().message().toStdString());
+    }
+    return reply;
 }
 
 /**
  * Unmount all partitions managed by udisks.
  */
-int Drive::umount() {
+void Drive::umount() {
     QDBusInterface manager("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus());
     QDBusMessage message = manager.call("GetManagedObjects");
 
@@ -147,5 +142,4 @@ int Drive::umount() {
             }
         }
     }
-    return 0;
 }

@@ -33,14 +33,14 @@ public:
      * Shared public interface across platforms.
      */
     Drive(const QString &driveIdentifier);
-    int open();
-    int close();
-    bool write(const void *buffer, std::size_t size);
+    void open();
+    void close();
+    void write(const void *buffer, std::size_t size);
     int getDescriptor();
-    int wipe();
-    int addPartition(const QString &label = "");
+    void wipe();
+    void addPartition(const QString &label = "");
     QString mount(const QString &partitionIdentifier);
-    int umount();
+    void umount();
 
 private:
     QTextStream err;
