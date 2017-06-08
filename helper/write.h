@@ -17,33 +17,19 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "restorejob.h"
+#ifndef WRITE_H
+#define WRITE_H
 
-#include <algorithm>
-#include <memory>
-#include <stdexcept>
-
-#include <QCoreApplication>
 #include <QString>
-#include <QTimer>
 
+// Platform specific drive handler.
 #include "drive.h"
 
-RestoreJob::RestoreJob(const QString &where)
-    : QObject(nullptr), err(stderr), drive(std::move(std::unique_ptr<Drive>(new Drive(where)))) {
-    QTimer::singleShot(0, this, SLOT(work()));
-}
+#ifndef MEDIAWRITER_LZMA_LIMIT
+// 256MB memory limit for the decompressor
+#define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
+#endif
 
-void RestoreJob::work() {
-    try {
-        drive->umount();
-        drive->wipe();
-        drive->addPartition();
-    } catch (std::runtime_error &error) {
-        err << error.what() << '\n';
-        err.flush();
-        qApp->exit(1);
-        return;
-    }
-    qApp->exit(0);
-}
+void write(const QString &source, Drive *const drive);
+
+#endif // WRITE_H

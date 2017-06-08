@@ -14,13 +14,9 @@ include($$top_srcdir/deployment.pri)
 target.path = $$LIBEXECDIR
 INSTALLS += target
 
-SOURCES = main.cpp \
-    writejob.cpp \
-    restorejob.cpp
+SOURCES = main.cpp write.cpp
 
-HEADERS += \
-    writejob.h \
-    restorejob.h
+HEADERS += write.h
 
 linux {
     include(linux/linux.pri)

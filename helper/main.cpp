@@ -17,31 +17,55 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include <QCoreApplication>
+#include <stdexcept>
+
 #include <QString>
 #include <QTextStream>
 #include <QTranslator>
 
-#include "restorejob.h"
-#include "writejob.h"
+// Platform specific drive handler.
+#include "drive.h"
+#include "write.h"
+
+void restore(Drive *const drive) {
+    drive->umount();
+    drive->wipe();
+    drive->addPartition();
+}
 
 int main(int argc, char *argv[]) {
-    QCoreApplication app(argc, argv);
+    const QString action = argv[1];
+    bool isRestore = argc == 3 && action == "restore";
+    bool isWrite = argc == 4 && action == "write";
+    QTextStream err(stderr);
+    if (!isRestore && !isWrite) {
+        err << "Helper: Wrong arguments entered\n";
+        err.flush();
+        return 1;
+    }
 
     QTranslator translator;
     translator.load(QLocale(), QString(), QString(), ":/translations");
-    app.installTranslator(&translator);
 
-    if (app.arguments().count() == 3 && app.arguments()[1] == "restore") {
-        new RestoreJob(app.arguments()[2]);
-    }
-    else if (app.arguments().count() == 4 && app.arguments()[1] == "write") {
-        new WriteJob(app.arguments()[2], app.arguments()[3]);
-    }
-    else {
-        QTextStream err(stderr);
-        err << "Helper: Wrong arguments entered";
+    QString driveIdentifier = isRestore ? argv[2] : argv[3];
+    Drive drive(driveIdentifier);
+    try {
+        if (isRestore) {
+            restore(&drive);
+        }
+        else {
+            write(argv[2], &drive);
+        }
+    } catch (std::runtime_error &error) {
+        auto errorMessage = error.what();
+        QString translatedMessage = translator.translate(nullptr, errorMessage);
+        if (translatedMessage.isNull()) {
+            err << errorMessage << '\n';
+        }
+        else {
+            err << translatedMessage << '\n';
+        }
+        err.flush();
         return 1;
     }
-    return app.exec();
 }

@@ -17,92 +17,23 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include "writejob.h"
+#include "write.h"
 
-#include <algorithm>
-#include <memory>
-#include <random>
-#include <tuple>
 #include <stdexcept>
 
-#include <QCoreApplication>
 #include <QFile>
 #include <QObject>
 #include <QString>
-#include <QTimer>
+#include <QTextStream>
 #include <QtGlobal>
 
 #include <lzma.h>
 
 #include "isomd5/libcheckisomd5.h"
-// Platform specific drive handler.
-#include "drive.h"
+
 #include "page_aligned_buffer.h"
 
-WriteJob::WriteJob(const QString &what, const QString &where)
-    : QObject(nullptr), what(what), out(stdout), err(stderr),
-      drive(std::move(std::unique_ptr<Drive>(new Drive(where)))) {
-    connect(&watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
-    QTimer::singleShot(0, this, SLOT(boot()));
-}
-
-int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
-    return ((WriteJob *) data)->onMediaCheckAdvanced(offset, total);
-}
-
-int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
-    Q_UNUSED(total);
-    out << offset << "\n";
-    out.flush();
-    return 0;
-}
-
-void WriteJob::boot() {
-    if (what.endsWith(".part")) {
-        watcher.addPath(what);
-        return;
-    }
-    work();
-}
-
-void WriteJob::work() {
-    try {
-        write();
-        check();
-    } catch (std::runtime_error &error) {
-        err << error.what() << '\n';
-        err.flush();
-        qApp->exit(1);
-        return;
-    }
-    qApp->exit(0);
-}
-
-void WriteJob::onFileChanged(const QString &path) {
-    if (QFile::exists(path))
-        return;
-
-    what = what.replace(QRegExp("[.]part$"), "");
-
-    if (!QFile::exists(what)) {
-        qApp->exit(4);
-        return;
-    }
-    // Immediately trigger the UI into writing mode.
-    out << "1\n";
-    out.flush();
-
-    work();
-}
-
-void WriteJob::write() {
-    if (what.endsWith(".xz"))
-        writeCompressed();
-    else
-        writePlain();
-}
-
-void WriteJob::writeCompressed() {
+static void writeCompressed(const QString &source, Drive* const drive) {
     qint64 totalRead = 0;
 
     lzma_stream strm = LZMA_STREAM_INIT;
@@ -113,12 +44,12 @@ void WriteJob::writeCompressed() {
     char *inBuffer = static_cast<char*>(buffers.get(0));
     char *outBuffer = static_cast<char*>(buffers.get(1));
 
-    QFile file(what);
+    QFile file(source);
     file.open(QIODevice::ReadOnly);
 
     ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
     if (ret != LZMA_OK) {
-        throw std::runtime_error(tr("Failed to start decompressing.").toStdString());
+        throw std::runtime_error("Failed to start decompressing.");
     }
 
     strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
@@ -128,6 +59,7 @@ void WriteJob::writeCompressed() {
 
     drive->open();
 
+    QTextStream out(stdout);
     while (true) {
         if (strm.avail_in == 0) {
             qint64 len = file.read(inBuffer, bufferSize);
@@ -148,18 +80,18 @@ void WriteJob::writeCompressed() {
         if (ret != LZMA_OK) {
             switch (ret) {
             case LZMA_MEM_ERROR:
-                throw std::runtime_error(tr("There is not enough memory to decompress the file.").toStdString());
+                throw std::runtime_error("There is not enough memory to decompress the file.");
                 break;
             case LZMA_FORMAT_ERROR:
             case LZMA_DATA_ERROR:
             case LZMA_BUF_ERROR:
-                throw std::runtime_error(tr("The downloaded compressed file is corrupted.").toStdString());
+                throw std::runtime_error("The downloaded compressed file is corrupted.");
                 break;
             case LZMA_OPTIONS_ERROR:
-                throw std::runtime_error(tr("Unsupported compression options.").toStdString());
+                throw std::runtime_error("Unsupported compression options.");
                 break;
             default:
-                throw std::runtime_error(tr("Unknown decompression error.").toStdString());
+                throw std::runtime_error("Unknown decompression error.");
                 break;
             }
         }
@@ -173,14 +105,12 @@ void WriteJob::writeCompressed() {
     }
 }
 
-void WriteJob::writePlain() {
-
-    QFile inFile(what);
+static void writePlain(const QString &source, Drive* const drive) {
+    QFile inFile(source);
     inFile.open(QIODevice::ReadOnly);
 
     if (!inFile.isReadable()) {
-        QString error = tr("Source image is not readable") + " " + what;
-        throw std::runtime_error(error.toStdString());
+        throw std::runtime_error("Source image is not readable");
     }
 
     PageAlignedBuffer<2> buffers;
@@ -193,28 +123,51 @@ void WriteJob::writePlain() {
     while (!inFile.atEnd()) {
         qint64 len = inFile.read(buffer, bufferSize);
         if (len < 0) {
-            throw std::runtime_error(tr("Source image is not readable").toStdString());
+            throw std::runtime_error("Source image is not readable");
         }
         drive->write(buffer, len);
         total += len;
+        QTextStream out(stdout);
         out << total << '\n';
         out.flush();
     }
 }
 
-void WriteJob::check() {
+static int onMediaCheckAdvanced(void *data, long long offset, long long total) {
+    Q_UNUSED(data);
+    Q_UNUSED(total);
+    QTextStream out(stdout);
+    out << offset << "\n";
+    out.flush();
+    return 0;
+}
+
+static void check(int fd) {
+    QTextStream out(stdout);
     out << "CHECK\n";
     out.flush();
 
-    switch (mediaCheckFD(drive->getDescriptor(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
+    switch (mediaCheckFD(fd, &onMediaCheckAdvanced, nullptr)) {
     case ISOMD5SUM_CHECK_NOT_FOUND:
     case ISOMD5SUM_CHECK_PASSED:
         out << "OK\n";
         out.flush();
         break;
     case ISOMD5SUM_CHECK_FAILED:
-        throw std::runtime_error(tr("Your drive is probably damaged.").toStdString());
+        throw std::runtime_error("Your drive is probably damaged.");
     default:
-        throw std::runtime_error(tr("Unexpected error occurred during media check.").toStdString());
+        throw std::runtime_error("Unexpected error occurred during media check.");
     }
+}
+
+void write(const QString &source, Drive *const drive) {
+    // Immediately trigger the UI into writing mode.
+    QTextStream out(stdout);
+    out << "1\n";
+    out.flush();
+    if (source.endsWith(".xz"))
+        writeCompressed(source, drive);
+    else
+        writePlain(source, drive);
+    check(drive->getDescriptor());
 }
