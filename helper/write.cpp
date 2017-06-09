@@ -165,6 +165,7 @@ void write(const QString &source, Drive *const drive) {
     QTextStream out(stdout);
     out << "1\n";
     out.flush();
+    drive->umount();
     if (source.endsWith(".xz"))
         writeCompressed(source, drive);
     else

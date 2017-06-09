@@ -72,6 +72,8 @@ Dialog {
         onStatusChanged: {
             if ([Variant.FINISHED, Variant.FAILED, Variant.FAILED_DOWNLOAD].indexOf(releases.variant.status) >= 0)
                 writeImmediately.checked = false
+            else if (drives.selected && writeImmediately.checked && releases.variant.status === Variant.READY)
+                drives.selected.write(releases.variant)
         }
     }
 
@@ -368,8 +370,6 @@ Dialog {
                             onCheckedChanged: {
                                 if (drives.selected) {
                                     drives.selected.cancel()
-                                    if (checked)
-                                        drives.selected.write(releases.variant)
                                 }
                             }
                         }
