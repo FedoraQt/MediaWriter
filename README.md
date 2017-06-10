@@ -32,6 +32,7 @@ The main binary, `mediawriter`, will be writen to `$PREFIX/bin` and the helper b
 
 * `udisks2` or `storaged`
 * `xz-libs`
+* `isomd5sum-devel`
 
 ### Windows
 

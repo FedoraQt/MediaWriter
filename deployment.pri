@@ -13,8 +13,6 @@ linux {
     DEFINES += DATADIR=\\\"$$DATADIR\\\"
     DEFINES += LIBEXECDIR=\\\"$$LIBEXECDIR\\\"
 }
-QMAKE_LIBDIR += $$top_builddir/lib
-INCLUDEPATH += $$top_srcdir/lib/
 isEmpty(MEDIAWRITER_VERSION) {
     DEFINES += MEDIAWRITER_VERSION="\\\"$(shell git -C \""$$_PRO_FILE_PWD_"\" describe --tags || echo N/A)\\\""
 } else {

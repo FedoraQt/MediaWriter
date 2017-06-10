@@ -29,7 +29,10 @@
 
 #include <lzma.h>
 
-#include "isomd5/libcheckisomd5.h"
+extern "C" {
+#include <libcheckisomd5.h>
+#include <libimplantisomd5.h>
+}
 
 #include "page_aligned_buffer.h"
 
