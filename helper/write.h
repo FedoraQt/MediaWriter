@@ -30,6 +30,6 @@
 #define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
 #endif
 
-void write(const QString &source, Drive *const drive);
+void write(const QString &source, Drive *const drive, bool persistentStorage = false);
 
 #endif // WRITE_H

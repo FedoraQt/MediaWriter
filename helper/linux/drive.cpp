@@ -24,11 +24,14 @@
 #include <algorithm>
 #include <memory>
 #include <stdexcept>
+#include <utility>
 
 #include <QDBusInterface>
 #include <QDBusUnixFileDescriptor>
 #include <QObject>
+#include <QPair>
 #include <QtDBus>
+#include <QtGlobal>
 
 typedef QHash<QString, QVariant> Properties;
 typedef QHash<QString, Properties> InterfacesAndProperties;
@@ -48,11 +51,13 @@ Drive::Drive(const QString &identifier)
  * Open drive for writing.
  */
 void Drive::open() {
-    QDBusReply<QDBusUnixFileDescriptor> reply = device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
-    fileDescriptor = reply.value();
-    if (!fileDescriptor.isValid()) {
-        throw std::runtime_error(reply.error().message().toStdString());
-        fileDescriptor = QDBusUnixFileDescriptor(-1);
+    if (getDescriptor() == -1) {
+        QDBusReply<QDBusUnixFileDescriptor> reply = device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
+        fileDescriptor = reply.value();
+        if (!fileDescriptor.isValid()) {
+            throw std::runtime_error(reply.error().message().toStdString());
+            fileDescriptor = QDBusUnixFileDescriptor(-1);
+        }
     }
 }
 
@@ -95,9 +100,10 @@ void Drive::wipe() {
  * Fill the rest of the drive with a primary partition that uses the fat
  * filesystem.
  */
-void Drive::addPartition(const QString &label) {
+QPair<QString, qint64> Drive::addPartition(quint64 offset, const QString &label) {
     QDBusInterface partitionTable("org.freedesktop.UDisks2", identifier, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus());
-    QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", 0ULL, device->property("Size").toULongLong(), "", "", Properties());
+    const quint64 proposedSize = device->property("Size").toULongLong() - offset;
+    QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", offset, proposedSize, "", "", Properties());
     if (!partitionReply.isValid()) {
         throw std::runtime_error(partitionReply.error().message().toStdString());
     }
@@ -107,6 +113,8 @@ void Drive::addPartition(const QString &label) {
     if (!formatPartitionReply.isValid() && formatPartitionReply.error().type() != QDBusError::NoReply) {
         throw std::runtime_error(formatPartitionReply.error().message().toStdString());
     }
+    const qint64 size = partition.property("Size").toULongLong();
+    return qMakePair(partitionPath, size);
 }
 
 /**

@@ -2,7 +2,7 @@ TEMPLATE = app
 
 QT += core
 
-LIBS += -lcheckisomd5 -limplantisomd5
+LIBS += -lcheckisomd5 -limplantisomd5 -liso9660io
 
 CONFIG += c++11
 CONFIG += console

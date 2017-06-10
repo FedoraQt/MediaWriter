@@ -21,11 +21,13 @@
 #define DRIVE_H
 
 #include <memory>
+#include <utility>
 
-#include <QString>
-#include <QTextStream>
 #include <QDBusInterface>
 #include <QDBusUnixFileDescriptor>
+#include <QString>
+#include <QTextStream>
+#include <QtGlobal>
 
 class Drive {
 public:
@@ -38,7 +40,7 @@ public:
     void write(const void *buffer, std::size_t size);
     int getDescriptor();
     void wipe();
-    void addPartition(const QString &label = "");
+    QPair<QString, qint64> addPartition(quint64 offset = 0ULL, const QString &label = "");
     QString mount(const QString &partitionIdentifier);
     void umount();
 
