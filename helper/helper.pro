@@ -3,9 +3,11 @@ TEMPLATE = app
 QT += core
 
 LIBS += -lcheckisomd5 -limplantisomd5 -liso9660io
+PKGCONFIG += isomd5sum iso9660io
 
 CONFIG += c++11
 CONFIG += console
+CONFIG += link_pkgconfig
 
 TARGET = helper
 

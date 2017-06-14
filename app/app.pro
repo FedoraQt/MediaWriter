@@ -5,8 +5,10 @@ TARGET = mediawriter
 QT += qml quick widgets network
 
 LIBS += -lcheckisomd5
+PKGCONFIG += isomd5sum
 
 CONFIG += c++11
+CONFIG += link_pkgconfig
 
 HEADERS += \
     drivemanager.h \
