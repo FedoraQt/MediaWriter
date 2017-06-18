@@ -343,20 +343,21 @@ void write(const QString &source, Drive *const drive, bool persistentStorage) {
         writeCompressed(source, drive);
     else
         writePlain(source, drive);
+    drive->open();
     check(drive->getDescriptor());
+    drive->close();
+    drive->umount();
+    auto size = QFileInfo(source).size();
+    auto partitionInfo = drive->addPartition(size, partitionLabel);
     if (persistentStorage) {
-        drive->umount();
-        auto size = QFileInfo(source).size();
-        auto partitionInfo = drive->addPartition(size, partitionLabel);
         QString mountpoint = drive->mount(partitionInfo.first);
         zeroFile(mountpoint + overlayFilename, partitionInfo.second);
         drive->umount();
-        drive->open();
-        out.flush();
-        char *errstr;
-        if (implantISOFD(drive->getDescriptor(), false, true, true, &errstr) != 0) {
-            throw std::runtime_error(errstr);
-        }
-        drive->close();
     }
+    drive->open();
+    char *errstr;
+    if (implantISOFD(drive->getDescriptor(), false, true, true, &errstr) != 0) {
+        throw std::runtime_error(std::string(errstr));
+    }
+    drive->close();
 }
