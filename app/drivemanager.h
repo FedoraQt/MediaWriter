@@ -156,6 +156,7 @@ public:
     virtual uint64_t size() const;
     virtual RestoreStatus restoreStatus();
 
+    Q_INVOKABLE virtual void persistentStorage(bool enabled);
     Q_INVOKABLE virtual bool write(ReleaseVariant *data);
     Q_INVOKABLE virtual void cancel() = 0;
     Q_INVOKABLE virtual void restore() = 0;
@@ -175,6 +176,7 @@ protected:
     uint64_t m_size { 0 };
     RestoreStatus m_restoreStatus { CLEAN };
     QString m_error { };
+    bool m_persistentStorage { false };
 };
 
 #endif // DRIVEMANAGER_H

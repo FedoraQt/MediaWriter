@@ -232,6 +232,10 @@ Drive::RestoreStatus Drive::restoreStatus() {
     return m_restoreStatus;
 }
 
+void Drive::persistentStorage(bool enabled) {
+    m_persistentStorage = enabled;
+}
+
 bool Drive::write(ReleaseVariant *data) {
     m_image = data;
     m_image->setErrorString(QString());

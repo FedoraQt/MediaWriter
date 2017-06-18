@@ -212,6 +212,9 @@ bool LinuxDrive::write(ReleaseVariant *data) {
     else
         args << data->temporaryPath();
     args << m_device;
+    if (m_persistentStorage) {
+        args << "true";
+    }
     qDebug() << this->metaObject()->className() << "Helper command will be" << args;
     m_process->setArguments(args);
 
