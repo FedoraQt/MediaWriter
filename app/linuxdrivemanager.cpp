@@ -231,12 +231,14 @@ bool LinuxDrive::write(ReleaseVariant *data) {
 
 void LinuxDrive::cancel() {
     if (m_process) {
-        if (m_image->status() == ReleaseVariant::WRITE_VERIFYING) {
-            m_image->setStatus(ReleaseVariant::FINISHED);
-        }
-        else {
-            m_image->setErrorString(tr("Stopped before writing has finished."));
-            m_image->setStatus(ReleaseVariant::FAILED);
+        if (m_image) {
+            if (m_image->status() == ReleaseVariant::WRITE_VERIFYING) {
+                m_image->setStatus(ReleaseVariant::FINISHED);
+            }
+            else {
+                m_image->setErrorString(tr("Stopped before writing has finished."));
+                m_image->setStatus(ReleaseVariant::FAILED);
+            }
         }
         m_process->kill();
         m_process->deleteLater();
