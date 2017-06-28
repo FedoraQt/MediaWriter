@@ -41,23 +41,22 @@ Q_DECLARE_METATYPE(InterfacesAndProperties)
 Q_DECLARE_METATYPE(DBusIntrospection)
 
 Drive::Drive(const QString &identifier)
-    : err(stderr), fileDescriptor(QDBusUnixFileDescriptor(-1)), identifier(identifier),
-      device(std::move(std::unique_ptr<QDBusInterface>(new QDBusInterface("org.freedesktop.UDisks2", identifier, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus())))),
-      path(qvariant_cast<QDBusObjectPath>(device->property("Drive")).path()),
-      drive(std::move(std::unique_ptr<QDBusInterface>(new QDBusInterface("org.freedesktop.UDisks2", path, "org.freedesktop.UDisks2.Drive", QDBusConnection::systemBus())))) {
+    : m_fileDescriptor(QDBusUnixFileDescriptor(-1)), m_identifier(identifier),
+      m_device(new QDBusInterface("org.freedesktop.UDisks2", m_identifier, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus())),
+      m_path(qvariant_cast<QDBusObjectPath>(m_device->property("Drive")).path()) {
 }
 
 /**
  * Open drive for writing.
  */
 void Drive::open() {
-    if (getDescriptor() == -1) {
-        QDBusReply<QDBusUnixFileDescriptor> reply = device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
-        fileDescriptor = reply.value();
-        if (!fileDescriptor.isValid()) {
-            throw std::runtime_error(reply.error().message().toStdString());
-            fileDescriptor = QDBusUnixFileDescriptor(-1);
-        }
+    if (getDescriptor() != -1)
+        return;
+    QDBusReply<QDBusUnixFileDescriptor> reply = m_device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
+    m_fileDescriptor = reply.value();
+    if (!m_fileDescriptor.isValid()) {
+        throw std::runtime_error(reply.error().message().toStdString());
+        m_fileDescriptor = QDBusUnixFileDescriptor(-1);
     }
 }
 
@@ -65,7 +64,7 @@ void Drive::open() {
  * Close drive for writing.
  */
 void Drive::close() {
-    fileDescriptor = QDBusUnixFileDescriptor(-1);
+    m_fileDescriptor = QDBusUnixFileDescriptor(-1);
 }
 
 /**
@@ -81,8 +80,8 @@ void Drive::write(const void *buffer, std::size_t size) {
 /**
  * Grab file descriptor.
  */
-int Drive::getDescriptor() {
-    return fileDescriptor.fileDescriptor();
+int Drive::getDescriptor() const {
+    return m_fileDescriptor.fileDescriptor();
 }
 
 /**
@@ -90,7 +89,7 @@ int Drive::getDescriptor() {
  * existing information about partitions.
  */
 void Drive::wipe() {
-    QDBusReply<void> formatReply = device->call("Format", "dos", Properties());
+    QDBusReply<void> formatReply = m_device->call("Format", "dos", Properties());
     if (!formatReply.isValid() && formatReply.error().type() != QDBusError::NoReply) {
         throw std::runtime_error(formatReply.error().message().toStdString());
     }
@@ -101,9 +100,9 @@ void Drive::wipe() {
  * filesystem.
  */
 QPair<QString, qint64> Drive::addPartition(quint64 offset, const QString &label) {
-    QDBusInterface partitionTable("org.freedesktop.UDisks2", identifier, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus());
-    const quint64 proposedSize = device->property("Size").toULongLong() - offset;
-    QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", offset, proposedSize, "", "", Properties());
+    QDBusInterface partitionTable("org.freedesktop.UDisks2", m_identifier, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus());
+    const quint64 proposedSize = m_device->property("Size").toULongLong() - offset;
+    QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", offset, proposedSize, "0xb", "", Properties{ { "partition-type", "primary" } });
     if (!partitionReply.isValid()) {
         throw std::runtime_error(partitionReply.error().message().toStdString());
     }
@@ -135,19 +134,18 @@ QString Drive::mount(const QString &partitionIdentifier) {
 void Drive::umount() {
     QDBusInterface manager("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus());
     QDBusMessage message = manager.call("GetManagedObjects");
-
-    if (message.arguments().length() == 1) {
-        QDBusArgument arg = qvariant_cast<QDBusArgument>(message.arguments().first());
-        DBusIntrospection objects;
-        arg >> objects;
-        for (auto i : objects.keys()) {
-            if (objects[i].contains("org.freedesktop.UDisks2.Filesystem")) {
-                QString currentDrivePath = qvariant_cast<QDBusObjectPath>(objects[i]["org.freedesktop.UDisks2.Block"]["Drive"]).path();
-                if (currentDrivePath == path) {
-                    QDBusInterface partition("org.freedesktop.UDisks2", i.path(), "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
-                    message = partition.call("Unmount", Properties{ { "force", true } });
-                }
-            }
+    if (message.arguments().length() != 1)
+        return;
+    QDBusArgument arg = qvariant_cast<QDBusArgument>(message.arguments().first());
+    DBusIntrospection objects;
+    arg >> objects;
+    for (auto i : objects.keys()) {
+        if (!objects[i].contains("org.freedesktop.UDisks2.Filesystem"))
+            continue;
+        QString currentDrivePath = qvariant_cast<QDBusObjectPath>(objects[i]["org.freedesktop.UDisks2.Block"]["Drive"]).path();
+        if (currentDrivePath == m_path) {
+            QDBusInterface partition("org.freedesktop.UDisks2", i.path(), "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
+            message = partition.call("Unmount", Properties{ { "force", true } });
         }
     }
 }

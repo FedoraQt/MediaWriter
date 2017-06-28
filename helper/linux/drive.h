@@ -38,19 +38,17 @@ public:
     void open();
     void close();
     void write(const void *buffer, std::size_t size);
-    int getDescriptor();
+    int getDescriptor() const;
     void wipe();
     QPair<QString, qint64> addPartition(quint64 offset = 0ULL, const QString &label = "");
     QString mount(const QString &partitionIdentifier);
     void umount();
 
 private:
-    QTextStream err;
-    QDBusUnixFileDescriptor fileDescriptor;
-    QString identifier;
-    std::unique_ptr<QDBusInterface> device;
-    QString path;
-    std::unique_ptr<QDBusInterface> drive;
+    QDBusUnixFileDescriptor m_fileDescriptor;
+    QString m_identifier;
+    std::unique_ptr<QDBusInterface> m_device;
+    QString m_path;
 };
 
 #endif // DRIVE_H
