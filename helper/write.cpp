@@ -36,12 +36,9 @@
 #include <QtGlobal>
 
 #include <iso9660io.h>
-#include <lzma.h>
-
-extern "C" {
 #include <libcheckisomd5.h>
 #include <libimplantisomd5.h>
-}
+#include <lzma.h>
 
 #include "page_aligned_buffer.h"
 
