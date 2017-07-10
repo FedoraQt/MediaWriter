@@ -1,5 +1,4 @@
 INCLUDEPATH += $$top_srcdir/helper/linux/
-DESTDIR = $$top_srcdir/helper/linux/
 
 QT += dbus
 

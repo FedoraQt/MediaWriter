@@ -182,7 +182,7 @@ static bool modifyIso(const std::string &filename, bool persistentStorage) {
 }
 
 static void zeroFile(const QString &filename, qint64 size) {
-    constexpr int FOURKB = 4096;
+    constexpr qint64 FOURKB = 4096;
     constexpr qint64 MAX_FILE_SIZE = FOURKB * 1024L * 1024L - 1;
     size = std::max(MAX_FILE_SIZE, size);
     QByteArray zeros(FOURKB, '\0');
@@ -222,8 +222,6 @@ static void writeCompressed(const QString &source, Drive *const drive) {
     strm.avail_in = 0;
     strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
     strm.avail_out = bufferSize;
-
-    drive->open();
 
     QTextStream out(stdout);
     while (true) {
@@ -283,8 +281,6 @@ static void writePlain(const QString &source, Drive *const drive) {
     const std::size_t bufferSize = buffers.size;
     char *buffer = static_cast<char*>(buffers.get(0));
 
-    drive->open();
-
     qint64 total = 0;
     while (!inFile.atEnd()) {
         qint64 len = inFile.read(buffer, bufferSize);
@@ -343,9 +339,7 @@ void write(const QString &source, Drive *const drive, bool persistentStorage) {
         writeCompressed(source, drive);
     else
         writePlain(source, drive);
-    drive->open();
     check(drive->getDescriptor());
-    drive->close();
     drive->umount();
     auto size = QFileInfo(source).size();
     auto partitionInfo = drive->addPartition(size, partitionLabel);
@@ -354,10 +348,8 @@ void write(const QString &source, Drive *const drive, bool persistentStorage) {
         zeroFile(mountpoint + overlayFilename, partitionInfo.second);
         drive->umount();
     }
-    drive->open();
     char *errstr;
     if (implantISOFD(drive->getDescriptor(), false, true, true, &errstr) != 0) {
         throw std::runtime_error(std::string(errstr));
     }
-    drive->close();
 }

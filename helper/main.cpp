@@ -19,8 +19,10 @@
 
 #include <stdexcept>
 
+#include <QCoreApplication>
 #include <QString>
 #include <QTextStream>
+#include <QTimer>
 #include <QTranslator>
 
 // Platform specific drive handler.
@@ -45,28 +47,28 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    QCoreApplication app(argc, argv);
     QTranslator translator;
     translator.load(QLocale(), QString(), QString(), ":/translations");
+    app.installTranslator(&translator);
 
     QString driveIdentifier = isRestore ? argv[2] : argv[3];
-    Drive drive(driveIdentifier);
-    try {
-        if (isRestore) {
-            restore(&drive);
+    QTimer::singleShot(0, [&]() {
+        Drive *drive = new Drive(driveIdentifier);
+        try {
+            drive->init();
+            if (isRestore) {
+                restore(drive);
+            }
+            else {
+                write(argv[2], drive, persistentStorage);
+            }
+            qApp->exit(0);
+        } catch (std::runtime_error &error) {
+            err << error.what() << '\n';
+            err.flush();
+            qApp->exit(1);
         }
-        else {
-            write(argv[2], &drive, persistentStorage);
-        }
-    } catch (std::runtime_error &error) {
-        auto errorMessage = error.what();
-        QString translatedMessage = translator.translate(nullptr, errorMessage);
-        if (translatedMessage.isNull()) {
-            err << errorMessage << '\n';
-        }
-        else {
-            err << translatedMessage << '\n';
-        }
-        err.flush();
-        return 1;
-    }
+    });
+    return app.exec();
 }

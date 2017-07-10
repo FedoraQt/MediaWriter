@@ -41,15 +41,16 @@ Q_DECLARE_METATYPE(InterfacesAndProperties)
 Q_DECLARE_METATYPE(DBusIntrospection)
 
 Drive::Drive(const QString &identifier)
-    : m_fileDescriptor(QDBusUnixFileDescriptor(-1)), m_identifier(identifier),
+    : QObject(nullptr), m_fileDescriptor(QDBusUnixFileDescriptor(-1)), m_identifier(identifier),
       m_device(new QDBusInterface("org.freedesktop.UDisks2", m_identifier, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus())),
       m_path(qvariant_cast<QDBusObjectPath>(m_device->property("Drive")).path()) {
 }
 
-/**
- * Open drive for writing.
- */
-void Drive::open() {
+Drive::~Drive() {
+    m_fileDescriptor = QDBusUnixFileDescriptor(-1);
+}
+
+void Drive::init() {
     if (getDescriptor() != -1)
         return;
     QDBusReply<QDBusUnixFileDescriptor> reply = m_device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
@@ -61,19 +62,12 @@ void Drive::open() {
 }
 
 /**
- * Close drive for writing.
- */
-void Drive::close() {
-    m_fileDescriptor = QDBusUnixFileDescriptor(-1);
-}
-
-/**
  * Write buffer directly to drive.
  */
 void Drive::write(const void *buffer, std::size_t size) {
     int fd = getDescriptor();
     if (static_cast<std::size_t>(::write(fd, buffer, size)) != size) {
-        throw std::runtime_error(QObject::tr("Destination drive is not writable").toStdString());
+        throw std::runtime_error("Destination drive is not writable.");
     }
 }
 

@@ -20,34 +20,36 @@
 #ifndef DRIVE_H
 #define DRIVE_H
 
-#include <memory>
 #include <utility>
 
 #include <QDBusInterface>
 #include <QDBusUnixFileDescriptor>
+#include <QObject>
+#include <QScopedPointer>
 #include <QString>
 #include <QTextStream>
 #include <QtGlobal>
 
-class Drive {
+class Drive : public QObject {
+    Q_OBJECT
 public:
     /**
      * Shared public interface across platforms.
      */
-    Drive(const QString &driveIdentifier);
-    void open();
-    void close();
+    explicit Drive(const QString &driveIdentifier);
+    ~Drive();
+    void init();
     void write(const void *buffer, std::size_t size);
     int getDescriptor() const;
     void wipe();
-    QPair<QString, qint64> addPartition(quint64 offset = 0ULL, const QString &label = "");
+    QPair<QString, qint64> addPartition(quint64 offset = 1024ULL * 1024ULL, const QString &label = "");
     QString mount(const QString &partitionIdentifier);
     void umount();
 
 private:
     QDBusUnixFileDescriptor m_fileDescriptor;
     QString m_identifier;
-    std::unique_ptr<QDBusInterface> m_device;
+    QScopedPointer<QDBusInterface> m_device;
     QString m_path;
 };
 

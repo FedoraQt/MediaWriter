@@ -10,6 +10,7 @@ CONFIG += console
 CONFIG += link_pkgconfig
 
 TARGET = helper
+DESTDIR = ../app/
 
 include($$top_srcdir/deployment.pri)
 
