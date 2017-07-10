@@ -26,13 +26,14 @@
 
 #ifdef Q_OS_WIN
 #include <windows.h>
-/**
- * This should be more reliable than the MinGW version.
- */
 std::size_t getpagesize() {
-    SYSTEM_INFO systemInfo;
-    GetSystemInfo(&systemInfo);
-    return static_cast<std::size_t>(systemInfo.dwPageSize);
+    static std::size_t pageSize = 0;
+    if (pageSize == 0) {
+        SYSTEM_INFO systemInfo;
+        GetSystemInfo(&systemInfo);
+        pageSize = static_cast<std::size_t>(systemInfo.dwPageSize);
+    }
+    return pageSize;
 }
 #else
 #include <unistd.h>

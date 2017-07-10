@@ -196,6 +196,19 @@ static void zeroFile(const QString &filename, qint64 size) {
     }
 }
 
+static int onProgress(void *data, long long offset, long long total) {
+    constexpr long long MAGIC = 234;
+    long long &previousProgress = *static_cast<long long*>(data);
+    const long long progress = (offset * MAGIC) / total;
+    if (progress > previousProgress) {
+        previousProgress = progress;
+        QTextStream out(stdout);
+        out << offset << "\n";
+        out.flush();
+    }
+    return 0;
+}
+
 static void writeCompressed(const QString &source, Drive *const drive) {
     qint64 totalRead = 0;
 
@@ -206,6 +219,8 @@ static void writeCompressed(const QString &source, Drive *const drive) {
     const std::size_t bufferSize = buffers.size;
     char *inBuffer = static_cast<char*>(buffers.get(0));
     char *outBuffer = static_cast<char*>(buffers.get(1));
+    auto total = QFileInfo(source).size();
+    qint64 previousProgress = 0LL;
 
     QFile file(source);
     file.open(QIODevice::ReadOnly);
@@ -220,7 +235,6 @@ static void writeCompressed(const QString &source, Drive *const drive) {
     strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
     strm.avail_out = bufferSize;
 
-    QTextStream out(stdout);
     while (true) {
         if (strm.avail_in == 0) {
             qint64 len = file.read(inBuffer, bufferSize);
@@ -229,8 +243,7 @@ static void writeCompressed(const QString &source, Drive *const drive) {
             strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
             strm.avail_in = len;
 
-            out << totalRead << "\n";
-            out.flush();
+            onProgress(&previousProgress, totalRead, total);
         }
 
         ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
@@ -277,28 +290,21 @@ static void writePlain(const QString &source, Drive *const drive) {
     PageAlignedBuffer<2> buffers;
     const std::size_t bufferSize = buffers.size;
     char *buffer = static_cast<char*>(buffers.get(0));
+    auto total = QFileInfo(source).size();
+    qint64 previousProgress = 0LL;
 
-    qint64 total = 0;
+    QTextStream out(stdout);
+    qint64 bytesWritten = 0;
     while (!inFile.atEnd()) {
         qint64 len = inFile.read(buffer, bufferSize);
         if (len < 0) {
             throw std::runtime_error("Source image is not readable");
         }
         drive->write(buffer, len);
-        total += len;
-        QTextStream out(stdout);
-        out << total << '\n';
-        out.flush();
-    }
-}
+        bytesWritten += len;
 
-static int onMediaCheckAdvanced(void *data, long long offset, long long total) {
-    Q_UNUSED(data);
-    Q_UNUSED(total);
-    QTextStream out(stdout);
-    out << offset << "\n";
-    out.flush();
-    return 0;
+        onProgress(&previousProgress, bytesWritten, total);
+    }
 }
 
 static void check(int fd) {
@@ -306,7 +312,8 @@ static void check(int fd) {
     out << "CHECK\n";
     out.flush();
 
-    switch (mediaCheckFD(fd, &onMediaCheckAdvanced, nullptr)) {
+    long long previous = 0LL;
+    switch (mediaCheckFD(fd, &onProgress, &previous)) {
     case ISOMD5SUM_CHECK_NOT_FOUND:
     case ISOMD5SUM_CHECK_PASSED:
         out << "OK\n";
