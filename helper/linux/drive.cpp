@@ -20,10 +20,12 @@
 #include "drive.h"
 
 #include <unistd.h>
+#include <fcntl.h>
 
 #include <algorithm>
 #include <memory>
 #include <stdexcept>
+#include <string>
 #include <utility>
 
 #include <QDBusInterface>
@@ -32,6 +34,11 @@
 #include <QPair>
 #include <QtDBus>
 #include <QtGlobal>
+
+#include <libimplantisomd5.h>
+
+#include "write.h"
+#include "partition.h"
 
 typedef QHash<QString, QVariant> Properties;
 typedef QHash<QString, Properties> InterfacesAndProperties;
@@ -47,18 +54,44 @@ Drive::Drive(const QString &identifier)
 }
 
 Drive::~Drive() {
-    m_fileDescriptor = QDBusUnixFileDescriptor(-1);
 }
 
-void Drive::init() {
+void Drive::init() {}
+
+/**
+ * Opens drive for reading and writing directly if not already open.
+ */
+void Drive::open() {
     if (getDescriptor() != -1)
         return;
+    /*
+     * Most I/O will go to cache but it's still way faster than with O_DIRECT
+     * or O_SYNC.
+     */
+    int fd = ::open(qPrintable(m_device->property("Device").toString()), O_RDWR);
+    if (fd < 0) {
+        throw std::runtime_error("Failed to open block device.");
+    }
+    m_fileDescriptor = QDBusUnixFileDescriptor(fd);
+    /*
+     * Not using udisks to open the partition at the moment because some
+     * operations don't work with O_DIRECT or O_EXCL.
+     * TODO(squimrel): Use OpenDevice which apperntly will be introduced in
+     * udisks 2.7.3.
+     */
+    /*
     QDBusReply<QDBusUnixFileDescriptor> reply = m_device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
     m_fileDescriptor = reply.value();
     if (!m_fileDescriptor.isValid()) {
         throw std::runtime_error(reply.error().message().toStdString());
         m_fileDescriptor = QDBusUnixFileDescriptor(-1);
     }
+    */
+}
+
+void Drive::close() {
+    m_fileDescriptor = QDBusUnixFileDescriptor(-1);
+    ::sync();
 }
 
 /**
@@ -93,20 +126,49 @@ void Drive::wipe() {
  * Fill the rest of the drive with a primary partition that uses the fat
  * filesystem.
  */
-QPair<QString, qint64> Drive::addPartition(quint64 offset, const QString &label) {
+QPair<QString, quint64> Drive::addPartition(quint64 offset, const QString &label) {
+    open();
+    PartitionTable table(getDescriptor());
+    table.read();
+    const quint64 size = m_device->property("Size").toULongLong() - offset;
+    int number = table.addPartition(offset, size);
+    close();
+    /*
+     * Not using udisks to add partition at the moment because parted detects
+     * drive as mac even if the apple partition header is wiped before this
+     * call.
+     */
+    /*
     QDBusInterface partitionTable("org.freedesktop.UDisks2", m_identifier, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus());
-    const quint64 proposedSize = m_device->property("Size").toULongLong() - offset;
-    QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", offset, proposedSize, "0xb", "", Properties{ { "partition-type", "primary" } });
+    QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", offset, size, "0xb", "", Properties{ { "partition-type", "primary" } });
     if (!partitionReply.isValid()) {
         throw std::runtime_error(partitionReply.error().message().toStdString());
     }
     QString partitionPath = partitionReply.value().path();
+    */
+    // Path is not as reliable as the one that would be provided by udisks.
+    QString partitionPath = QString("%0%1").arg(m_identifier).arg(number);
+    QProcess process;
+    process.setProgram("mkfs.vfat");
+    process.setArguments(QStringList() << "-n" << label << QString("%0%1").arg(m_device->property("Device").toString()).arg(number));
+    process.start();
+    process.waitForFinished();
+    if (process.exitCode() != 0) {
+        throw std::runtime_error("Couldn't format disk");
+    }
+    /*
+     * Not using udisks to format at the moment because of the following error:
+     * Error synchronizing after initial wipe: Timed out waiting for object
+     * FIXME(squimrel)
+     */
+    /*
     QDBusInterface partition("org.freedesktop.UDisks2", partitionPath, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus());
     QDBusReply<void> formatPartitionReply = partition.call("Format", "vfat", Properties{ { "update-partition-type", true }, { "label", label } });
     if (!formatPartitionReply.isValid() && formatPartitionReply.error().type() != QDBusError::NoReply) {
         throw std::runtime_error(formatPartitionReply.error().message().toStdString());
     }
-    const qint64 size = partition.property("Size").toULongLong();
+    size = partition.property("Size").toULongLong();
+    */
     return qMakePair(partitionPath, size);
 }
 
@@ -141,5 +203,26 @@ void Drive::umount() {
             QDBusInterface partition("org.freedesktop.UDisks2", i.path(), "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
             message = partition.call("Unmount", Properties{ { "force", true } });
         }
+    }
+}
+
+void Drive::writeFile(const QString &source) {
+    open();
+    if (source.endsWith(".xz"))
+        ::writeCompressed(source, this);
+    else
+        ::writePlain(source, this);
+}
+
+void Drive::checkChecksum() {
+    open();
+    ::check(getDescriptor());
+}
+
+void Drive::implantChecksum() {
+    open();
+    char *errstr;
+    if (::implantISOFD(getDescriptor(), false, true, true, &errstr) != 0) {
+        throw std::runtime_error(std::string(errstr));
     }
 }

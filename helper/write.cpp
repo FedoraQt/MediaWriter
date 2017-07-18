@@ -209,7 +209,7 @@ static int onProgress(void *data, long long offset, long long total) {
     return 0;
 }
 
-static void writeCompressed(const QString &source, Drive *const drive) {
+void writeCompressed(const QString &source, Drive *const drive) {
     qint64 totalRead = 0;
 
     lzma_stream strm = LZMA_STREAM_INIT;
@@ -279,7 +279,7 @@ static void writeCompressed(const QString &source, Drive *const drive) {
     }
 }
 
-static void writePlain(const QString &source, Drive *const drive) {
+void writePlain(const QString &source, Drive *const drive) {
     QFile inFile(source);
     inFile.open(QIODevice::ReadOnly);
 
@@ -307,7 +307,7 @@ static void writePlain(const QString &source, Drive *const drive) {
     }
 }
 
-static void check(int fd) {
+void check(int fd) {
     QTextStream out(stdout);
     out << "CHECK\n";
     out.flush();
@@ -339,21 +339,15 @@ void write(const QString &source, Drive *const drive, bool persistentStorage) {
         }
     }
     drive->umount();
-    if (source.endsWith(".xz"))
-        writeCompressed(source, drive);
-    else
-        writePlain(source, drive);
-    check(drive->getDescriptor());
+    drive->writeFile(source);
+    drive->checkChecksum();
     drive->umount();
     auto size = QFileInfo(source).size();
     auto partitionInfo = drive->addPartition(size, partitionLabel);
     if (persistentStorage) {
         QString mountpoint = drive->mount(partitionInfo.first);
-        zeroFile(mountpoint + overlayFilename, partitionInfo.second);
+        zeroFile(mountpoint + "/" + overlayFilename, partitionInfo.second);
         drive->umount();
     }
-    char *errstr;
-    if (implantISOFD(drive->getDescriptor(), false, true, true, &errstr) != 0) {
-        throw std::runtime_error(std::string(errstr));
-    }
+    drive->implantChecksum();
 }

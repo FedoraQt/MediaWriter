@@ -70,7 +70,7 @@ public:
     void write(const void *buffer, std::size_t size);
     int getDescriptor() const;
     void wipe();
-    QPair<QString, qint64> addPartition(quint64 offset = 1024ULL * 1024ULL, const QString &label = "");
+    QPair<QString, quint64> addPartition(quint64 offset = 1024ULL * 1024ULL, const QString &label = "");
     QString mount(const QString &partitionIdentifier);
     void umount();
 
