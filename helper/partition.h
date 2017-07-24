@@ -52,13 +52,18 @@ private:
 
     quint64 diskSize();
     void fillChs(char *chs, quint64 position);
-    void seek(std::size_t index = 0);
+    void seekEntry(std::size_t index = 0);
+    void seekto(std::size_t position);
+    template <class T>
+    void writeBytes(const T buffer);
+    void writeZeros(std::size_t size);
 
 public:
     PartitionTable(int fd);
     void setFileDescriptor(int fd);
     void read();
     int addPartition(quint64 offset = 1024ULL * 1024ULL, quint64 size = 0);
+    void formatPartition(quint64 offset, quint64 size);
     void wipeMac();
     void restoreMac();
 
@@ -67,5 +72,19 @@ private:
     QVector<PartitionEntry> m_entries;
     std::unique_ptr<std::array<char, APM_SIZE>> m_apmHeader;
 };
+
+/**
+ * Originally the idea of having this template was so that one does not have to
+ * pass in the size.
+ * Poorly when type auto deduction is done type information is lost and the
+ * resulting type is a pointer.
+ * Therefore the user has to explicitly pass in the type.
+ */
+template <class T>
+void PartitionTable::writeBytes(const T buffer) {
+    if (::write(m_fd, buffer, std::extent<T>::value) < 0) {
+        throw std::runtime_error("Failed to write buffer to block device.");
+    }
+}
 
 #endif // PARTITION_H

@@ -127,11 +127,18 @@ void Drive::wipe() {
  * filesystem.
  */
 QPair<QString, quint64> Drive::addPartition(quint64 offset, const QString &label) {
+    /**
+     * Currently unused because the label "OVERLAY    " is hardcoded into
+     * formatPartition at the moment.
+     * TODO(squimrel): Fix this.
+     */
+    Q_UNUSED(label);
     open();
     PartitionTable table(getDescriptor());
     table.read();
     const quint64 size = m_device->property("Size").toULongLong() - offset;
     int number = table.addPartition(offset, size);
+    table.formatPartition(offset, size);
     close();
     /*
      * Not using udisks to add partition at the moment because parted detects
@@ -148,14 +155,6 @@ QPair<QString, quint64> Drive::addPartition(quint64 offset, const QString &label
     */
     // Path is not as reliable as the one that would be provided by udisks.
     QString partitionPath = QString("%0%1").arg(m_identifier).arg(number);
-    QProcess process;
-    process.setProgram("mkfs.vfat");
-    process.setArguments(QStringList() << "-n" << label << QString("%0%1").arg(m_device->property("Device").toString()).arg(number));
-    process.start();
-    process.waitForFinished();
-    if (process.exitCode() != 0) {
-        throw std::runtime_error("Couldn't format disk");
-    }
     /*
      * Not using udisks to format at the moment because of the following error:
      * Error synchronizing after initial wipe: Timed out waiting for object
