@@ -127,18 +127,11 @@ void Drive::wipe() {
  * filesystem.
  */
 QPair<QString, quint64> Drive::addPartition(quint64 offset, const QString &label) {
-    /**
-     * Currently unused because the label "OVERLAY    " is hardcoded into
-     * formatPartition at the moment.
-     * TODO(squimrel): Fix this.
-     */
-    Q_UNUSED(label);
     open();
     PartitionTable table(getDescriptor());
     table.read();
     const quint64 size = m_device->property("Size").toULongLong() - offset;
-    int number = table.addPartition(offset, size);
-    table.formatPartition(offset, size);
+    table.formatPartition(offset, label, size);
     close();
     /*
      * Not using udisks to add partition at the moment because parted detects

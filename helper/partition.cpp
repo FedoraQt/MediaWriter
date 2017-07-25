@@ -158,7 +158,14 @@ int PartitionTable::addPartition(quint64 offset, quint64 size) {
     return num;
 }
 
-void PartitionTable::formatPartition(quint64 offset, quint64 size) {
+#include <iostream>
+void PartitionTable::formatPartition(quint64 offset, const QString &label, quint64 size) {
+    /**
+     * Currently unused because the label "OVERLAY    " is hardcoded into
+     * formatPartition at the moment.
+     * TODO(squimrel): Fix this.
+     */
+    Q_UNUSED(label);
     constexpr int RESERVED_SECTORS = 32;
     constexpr int NR_FATS = 2;
     auto getbyte = [](int number, int i) -> quint8 {
@@ -181,16 +188,8 @@ void PartitionTable::formatPartition(quint64 offset, quint64 size) {
     quint64 sizeMb = size / (1024 * 1024);
     const std::array<int, 4> ranges = { 260, 1024 * 8, 1024 * 16, 1024 * 32 };
     auto found = qLowerBound(ranges.begin(), ranges.end(), sizeMb);
-    quint8 sectorsPerCluster = (found - ranges.begin()) * 8 + 8;
-    if (sectorsPerCluster == 0)
-        sectorsPerCluster = 1;
-
+    const int sectorsPerCluster = found == ranges.begin() ? 1 : (found - ranges.begin()) * 8;
     const int num_sectors = size / SECTOR_SIZE;
-    /*
-     * FIXME(squimrel): Math from FAT version 1.03 page 21 did not work for me
-     * at all. The math below (from dosfstools) does not give the right result
-     * either though. I'm obviously doing something wrong.
-     */
     const quint64 fatdata = num_sectors - RESERVED_SECTORS;
     const int clusters = (fatdata * SECTOR_SIZE + NR_FATS * 8) / (sectorsPerCluster * SECTOR_SIZE + NR_FATS * 4);
     const int fatlength = align(divCeil((clusters + 2) * 4, SECTOR_SIZE), sectorsPerCluster);
@@ -205,7 +204,7 @@ void PartitionTable::formatPartition(quint64 offset, quint64 size) {
     constexpr quint8 fat[] = {
         0xf8, 0xff, 0xff, 0x0f, 0xff, 0xff, 0xff, 0x0f, 0xf8, 0xff, 0xff, 0x0f
     };
-    const auto clsz = sectorsPerCluster;
+    const quint8 clsz = sectorsPerCluster;
     const quint8 bootSector[] = { 0xeb, 0x58, 0x90, 0x6d, 0x6b, 0x66, 0x73,
         0x2e, 0x66, 0x61, 0x74, 0x00, 0x02, clsz, 0x20, 0x00, 0x02, 0x00, 0x00,
         0x00, 0x00, 0xf8, 0x00, 0x00, 0x3e, 0x00, 0xf7, 0x00, 0x00, 0x98, 0x2e,
@@ -267,6 +266,7 @@ void PartitionTable::formatPartition(quint64 offset, quint64 size) {
     writeZeros(SECTOR_SIZE - std::extent<decltype(fat)>::value);
     writeZeros(SECTOR_SIZE * fatlength);
     writeBytes<decltype(rootDir)>(rootDir);
+    writeZeros(SECTOR_SIZE * sectorsPerCluster - std::extent<decltype(rootDir)>::value);
 }
 
 quint64 PartitionTable::diskSize() {

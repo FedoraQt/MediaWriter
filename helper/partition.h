@@ -30,6 +30,7 @@
 #include <memory>
 #include <utility>
 
+#include <QString>
 #include <QVector>
 #include <QtGlobal>
 
@@ -63,7 +64,7 @@ public:
     void setFileDescriptor(int fd);
     void read();
     int addPartition(quint64 offset = 1024ULL * 1024ULL, quint64 size = 0);
-    void formatPartition(quint64 offset, quint64 size);
+    void formatPartition(quint64 offset, const QString &label, quint64 size);
     void wipeMac();
     void restoreMac();
 
