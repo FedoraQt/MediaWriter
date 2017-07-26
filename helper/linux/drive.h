@@ -45,8 +45,7 @@ public:
     void write(const void *buffer, std::size_t size);
     int getDescriptor() const;
     void wipe();
-    QPair<QString, quint64> addPartition(quint64 offset = 1024ULL * 1024ULL, const QString &label = "");
-    QString mount(const QString &partitionIdentifier);
+    void addOverlayPartition(quint64 offset);
     void umount();
     void writeFile(const QString& source);
     void checkChecksum();

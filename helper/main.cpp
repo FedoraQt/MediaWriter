@@ -32,7 +32,6 @@
 void restore(Drive *const drive) {
     drive->umount();
     drive->wipe();
-    drive->addPartition();
 }
 
 int main(int argc, char *argv[]) {

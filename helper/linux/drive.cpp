@@ -38,7 +38,7 @@
 #include <libimplantisomd5.h>
 
 #include "write.h"
-#include "partition.h"
+#include "blockdevice.h"
 
 typedef QHash<QString, QVariant> Properties;
 typedef QHash<QString, Properties> InterfacesAndProperties;
@@ -120,60 +120,24 @@ void Drive::wipe() {
     if (!formatReply.isValid() && formatReply.error().type() != QDBusError::NoReply) {
         throw std::runtime_error(formatReply.error().message().toStdString());
     }
+    QDBusInterface partitionTable("org.freedesktop.UDisks2", m_identifier, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus());
+    QDBusReply<QDBusObjectPath> reply = partitionTable.call("CreatePartitionAndFormat", 0, m_device->property("Size").toULongLong(), "0xb", "", Properties{}, "vfat", Properties{});
+    if (!reply.isValid()) {
+        throw std::runtime_error(reply.error().message().toStdString());
+    }
 }
 
 /**
  * Fill the rest of the drive with a primary partition that uses the fat
  * filesystem.
  */
-QPair<QString, quint64> Drive::addPartition(quint64 offset, const QString &label) {
+void Drive::addOverlayPartition(quint64 offset) {
     open();
-    PartitionTable table(getDescriptor());
-    table.read();
+    BlockDevice device(getDescriptor());
+    device.read();
     const quint64 size = m_device->property("Size").toULongLong() - offset;
-    table.formatPartition(offset, label, size);
-    close();
-    /*
-     * Not using udisks to add partition at the moment because parted detects
-     * drive as mac even if the apple partition header is wiped before this
-     * call.
-     */
-    /*
-    QDBusInterface partitionTable("org.freedesktop.UDisks2", m_identifier, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus());
-    QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", offset, size, "0xb", "", Properties{ { "partition-type", "primary" } });
-    if (!partitionReply.isValid()) {
-        throw std::runtime_error(partitionReply.error().message().toStdString());
-    }
-    QString partitionPath = partitionReply.value().path();
-    */
-    // Path is not as reliable as the one that would be provided by udisks.
-    QString partitionPath = QString("%0%1").arg(m_identifier).arg(number);
-    /*
-     * Not using udisks to format at the moment because of the following error:
-     * Error synchronizing after initial wipe: Timed out waiting for object
-     * FIXME(squimrel)
-     */
-    /*
-    QDBusInterface partition("org.freedesktop.UDisks2", partitionPath, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus());
-    QDBusReply<void> formatPartitionReply = partition.call("Format", "vfat", Properties{ { "update-partition-type", true }, { "label", label } });
-    if (!formatPartitionReply.isValid() && formatPartitionReply.error().type() != QDBusError::NoReply) {
-        throw std::runtime_error(formatPartitionReply.error().message().toStdString());
-    }
-    size = partition.property("Size").toULongLong();
-    */
-    return qMakePair(partitionPath, size);
-}
-
-/**
- * Mount specified partition.
- */
-QString Drive::mount(const QString &partitionIdentifier) {
-    QDBusInterface partition("org.freedesktop.UDisks2", partitionIdentifier, "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
-    QDBusReply<QString> reply = partition.call("Mount", Properties{});
-    if (!reply.isValid()) {
-        throw std::runtime_error(reply.error().message().toStdString());
-    }
-    return reply;
+    device.addPartition(offset, size);
+    device.formatOverlayPartition(offset, size);
 }
 
 /**

@@ -16,7 +16,8 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-#include "partition.h"
+
+#include "blockdevice.h"
 
 #include <sys/stat.h>
 #include <unistd.h>
@@ -32,14 +33,14 @@
 #include <QtEndian>
 #include <QtGlobal>
 
-PartitionTable::PartitionTable(int fd) : m_fd(fd) {
+BlockDevice::BlockDevice(int fd) : m_fd(fd) {
 }
 
-void PartitionTable::setFileDescriptor(int fd) {
+void BlockDevice::setFileDescriptor(int fd) {
     m_fd = fd;
 }
 
-void PartitionTable::read() {
+void BlockDevice::read() {
     seekEntry();
     for (std::size_t i = 0; i < MAX_PARTITIONS; ++i) {
         PartitionEntry entry;
@@ -54,19 +55,19 @@ void PartitionTable::read() {
     }
 }
 
-void PartitionTable::seekEntry(std::size_t index) {
+void BlockDevice::seekEntry(std::size_t index) {
     if (::lseek(m_fd, PARTITION_ENTRY_OFFSET + PARTITION_ENTRY_SIZE * index, SEEK_SET) < 0) {
         throw std::runtime_error("Failed to seek to partition table.");
     }
 }
 
-void PartitionTable::seekto(std::size_t position) {
+void BlockDevice::seekto(std::size_t position) {
     if (::lseek(m_fd, position, SEEK_SET) < 0) {
         throw std::runtime_error("Failed to seek on block device.");
     }
 }
 
-void PartitionTable::writeZeros(std::size_t size) {
+void BlockDevice::writeZeros(std::size_t size) {
     constexpr std::size_t CHUNK_SIZE = 512;
     constexpr char zeros[CHUNK_SIZE]{};
     for (std::size_t i = 0; i < size; i += CHUNK_SIZE) {
@@ -76,40 +77,7 @@ void PartitionTable::writeZeros(std::size_t size) {
     }
 }
 
-void PartitionTable::wipeMac() {
-    if (m_apmHeader == nullptr) {
-        m_apmHeader = std::unique_ptr<std::array<char, APM_SIZE>>(new std::array<char, APM_SIZE>());
-    }
-    if (::lseek(m_fd, APM_OFFSET, SEEK_SET) < 0) {
-        throw std::runtime_error("Failed to seek to apple partition header.");
-    }
-    auto bytes = ::read(m_fd, m_apmHeader->data(), m_apmHeader->size());
-    if (bytes != static_cast<decltype(bytes)>(m_apmHeader->size())) {
-        throw std::runtime_error("Failed to read apple partition header.");
-    }
-    {
-        const std::array<char, APM_SIZE> zeros{};
-        auto bytes = ::write(m_fd, zeros.data(), zeros.size());
-        if (bytes != static_cast<decltype(bytes)>(zeros.size())) {
-            throw std::runtime_error("Failed to wipe apple partition header.");
-        }
-    }
-}
-
-void PartitionTable::restoreMac() {
-    if (m_apmHeader == nullptr)
-        return;
-    if (::lseek(m_fd, APM_OFFSET, SEEK_SET) < 0) {
-        throw std::runtime_error("Failed to seek to apple partition header.");
-    }
-    auto bytes = ::write(m_fd, m_apmHeader->data(), m_apmHeader->size());
-    if (bytes != static_cast<decltype(bytes)>(m_apmHeader->size())) {
-        throw std::runtime_error("Failed to add partition.");
-    }
-    m_apmHeader = nullptr;
-}
-
-void PartitionTable::fillChs(char *chs, quint64 position) {
+void BlockDevice::fillChs(char *chs, quint64 position) {
     Q_UNUSED(position);
     /**
      * It's guessed that the calculates values are correct but chs might as
@@ -129,10 +97,7 @@ void PartitionTable::fillChs(char *chs, quint64 position) {
     chs[2] = cylinder & 0xff;
 }
 
-int PartitionTable::addPartition(quint64 offset, quint64 size) {
-    if (size == 0) {
-        size = diskSize() - offset;
-    }
+int BlockDevice::addPartition(quint64 offset, quint64 size) {
     const quint32 lba = offset / SECTOR_SIZE;
     const quint32 count = size / SECTOR_SIZE;
     PartitionEntry entry;
@@ -158,14 +123,10 @@ int PartitionTable::addPartition(quint64 offset, quint64 size) {
     return num;
 }
 
-#include <iostream>
-void PartitionTable::formatPartition(quint64 offset, const QString &label, quint64 size) {
-    /**
-     * Currently unused because the label "OVERLAY    " is hardcoded into
-     * formatPartition at the moment.
-     * TODO(squimrel): Fix this.
-     */
-    Q_UNUSED(label);
+/**
+ * Format a partition with FAT32 and add an OVERLAY.IMG file that's zeroed out.
+ */
+void BlockDevice::formatOverlayPartition(quint64 offset, quint64 size) {
     constexpr int RESERVED_SECTORS = 32;
     constexpr int NR_FATS = 2;
     auto getbyte = [](int number, int i) -> quint8 {
@@ -189,29 +150,36 @@ void PartitionTable::formatPartition(quint64 offset, const QString &label, quint
     const std::array<int, 4> ranges = { 260, 1024 * 8, 1024 * 16, 1024 * 32 };
     auto found = qLowerBound(ranges.begin(), ranges.end(), sizeMb);
     const int sectorsPerCluster = found == ranges.begin() ? 1 : (found - ranges.begin()) * 8;
-    const int num_sectors = size / SECTOR_SIZE;
-    const quint64 fatdata = num_sectors - RESERVED_SECTORS;
+    const int numSectors = size / SECTOR_SIZE;
+    const quint64 fatdata = numSectors - RESERVED_SECTORS;
     const int clusters = (fatdata * SECTOR_SIZE + NR_FATS * 8) / (sectorsPerCluster * SECTOR_SIZE + NR_FATS * 4);
     const int fatlength = align(divCeil((clusters + 2) * 4, SECTOR_SIZE), sectorsPerCluster);
     /**
      * Magic values were generated by mkfs.fat (dosfstools).
      */
     constexpr quint8 bootSign[] = { 0x55, 0xaa };
-    constexpr quint8 infoSector[] = { 0x52, 0x52, 0x61, 0x61 };
-    constexpr std::size_t fsinfoOffset = 0x1e0;
-    const quint8 fsinfo[] = { 0x00, 0x00, 0x00, 0x00, 0x72, 0x72, 0x41, 0x61,
-        0x8a, 0x7f, 0x03, 0x00, 0x02, 0x00, 0x00, 0x00 };
+    constexpr quint8 infoSector[] = { 0x52, 0x52, 0x61, 0x41 };
+    constexpr std::size_t fsinfoOffset = 480;
+    const quint8 fsinfo[] = { 0x72, 0x72, 0x41, 0x61, 0x8a, 0x7f, 0x03, 0x00,
+        0x02, 0x00, 0x00, 0x00 };
     constexpr quint8 fat[] = {
-        0xf8, 0xff, 0xff, 0x0f, 0xff, 0xff, 0xff, 0x0f, 0xf8, 0xff, 0xff, 0x0f
+        0xf8, 0xff, 0xff, 0x0f, 0xff, 0xff, 0xff, 0x0f, 0xf8, 0xff, 0xff, 0x0f,
+        0xff, 0xff, 0xff, 0x0f
+    };
+    auto t = [&numSectors, &getbyte](int i) {
+        return getbyte(numSectors, i);
+    };
+    auto f = [&fatlength, &getbyte](int i) {
+        return getbyte(fatlength, i);
     };
     const quint8 clsz = sectorsPerCluster;
     const quint8 bootSector[] = { 0xeb, 0x58, 0x90, 0x6d, 0x6b, 0x66, 0x73,
         0x2e, 0x66, 0x61, 0x74, 0x00, 0x02, clsz, 0x20, 0x00, 0x02, 0x00, 0x00,
-        0x00, 0x00, 0xf8, 0x00, 0x00, 0x3e, 0x00, 0xf7, 0x00, 0x00, 0x98, 0x2e,
-        0x00, 0x00, 0x28, 0xc0, 0x00, 0xf8, 0x2f, 0x00, 0x00, 0x00, 0x00, 0x00,
+        0x00, 0x00, 0xf8, 0x00, 0x00, 0x3e, 0x00, 0xf7, 0x00, 0x00, 0x00, 0x00,
+        0x00, t(0), t(1), t(2), t(3), f(0), f(1), f(2), f(3), 0x00, 0x00, 0x00,
         0x00, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00,
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x29,
-        u(3), u(2), u(1), u(0), 0x4f, 0x56, 0x45, 0x52, 0x4c, 0x41, 0x59, 0x20,
+        u(0), u(1), u(2), u(3), 0x4f, 0x56, 0x45, 0x52, 0x4c, 0x41, 0x59, 0x20,
         0x20, 0x20, 0x20, 0x46, 0x41, 0x54, 0x33, 0x32, 0x20, 0x20, 0x20 };
     const quint8 bootCode[] = { 0x0e, 0x1f, 0xbe, 0x77, 0x7c, 0xac, 0x22, 0xc0,
         0x74, 0x0b, 0x56, 0xb4, 0x0e, 0xbb, 0x07, 0x00, 0xcd, 0x10, 0x5e, 0xeb,
@@ -246,7 +214,7 @@ void PartitionTable::formatPartition(quint64 offset, const QString &label, quint
     writeBytes<decltype(bootSign)>(bootSign);
 
     writeBytes<decltype(infoSector)>(infoSector);
-    writeZeros(fsinfoOffset - std::extent<decltype(infoSector)>::value);
+    writeZeros(fsinfoOffset);
     writeBytes<decltype(fsinfo)>(fsinfo);
     writeZeros(14);
     writeBytes<decltype(bootSign)>(bootSign);
@@ -261,20 +229,23 @@ void PartitionTable::formatPartition(quint64 offset, const QString &label, quint
     writeZeros(SECTOR_SIZE * 25);
     writeBytes<decltype(fat)>(fat);
     writeZeros(SECTOR_SIZE - std::extent<decltype(fat)>::value);
-    writeZeros(SECTOR_SIZE * fatlength);
+    writeZeros(SECTOR_SIZE * (fatlength - 1));
     writeBytes<decltype(fat)>(fat);
     writeZeros(SECTOR_SIZE - std::extent<decltype(fat)>::value);
-    writeZeros(SECTOR_SIZE * fatlength);
-    writeBytes<decltype(rootDir)>(rootDir);
-    writeZeros(SECTOR_SIZE * sectorsPerCluster - std::extent<decltype(rootDir)>::value);
-}
+    writeZeros(SECTOR_SIZE * (fatlength - 1));
 
-quint64 PartitionTable::diskSize() {
-    static quint64 size = 0;
-    if (size != 0)
-        return size;
-    struct stat buf;
-    ::fstat(m_fd, &buf);
-    size = buf.st_size;
-    return size;
+    quint64 maxFileSize = size;
+    maxFileSize -= (RESERVED_SECTORS + fatlength * 2 + 2) * SECTOR_SIZE;
+    maxFileSize = std::min(maxFileSize, 0xffffffffULL);
+    auto s = [&maxFileSize, &getbyte](int i) {
+        return getbyte(maxFileSize, i);
+    };
+    const quint8 fileEntry[] = { 0x4f, 0x56, 0x45, 0x52, 0x4c, 0x41, 0x59, 0x20,
+        0x49, 0x4d, 0x47, 0x20, 0x00, 0x00, tlo, thi, dlo, dhi, dlo, dhi, 0x00,
+        0x00, tlo, thi, dlo, dhi, 0x03, 0x00, s(0), s(1), s(2), s(3) };
+
+    writeBytes<decltype(rootDir)>(rootDir);
+    writeBytes<decltype(fileEntry)>(fileEntry);
+    writeZeros(SECTOR_SIZE * sectorsPerCluster - std::extent<decltype(rootDir)>::value - std::extent<decltype(fileEntry)>::value);
+    writeZeros(maxFileSize);
 }

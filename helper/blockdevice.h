@@ -17,8 +17,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef PARTITION_H
-#define PARTITION_H
+#ifndef BLOCKDEVICE_H
+#define BLOCKDEVICE_H
 
 #ifndef _LARGEFILE64_SOURCE
 #define _LARGEFILE64_SOURCE
@@ -34,7 +34,7 @@
 #include <QVector>
 #include <QtGlobal>
 
-class PartitionTable {
+class BlockDevice {
 private:
     static constexpr std::size_t APM_OFFSET = 2048;
     static constexpr std::size_t APM_SIZE = 2048 * 3;
@@ -60,18 +60,15 @@ private:
     void writeZeros(std::size_t size);
 
 public:
-    PartitionTable(int fd);
+    BlockDevice(int fd);
     void setFileDescriptor(int fd);
     void read();
-    int addPartition(quint64 offset = 1024ULL * 1024ULL, quint64 size = 0);
-    void formatPartition(quint64 offset, const QString &label, quint64 size);
-    void wipeMac();
-    void restoreMac();
+    int addPartition(quint64 offset, quint64);
+    void formatOverlayPartition(quint64 offset, quint64 size);
 
 private:
     int m_fd;
     QVector<PartitionEntry> m_entries;
-    std::unique_ptr<std::array<char, APM_SIZE>> m_apmHeader;
 };
 
 /**
@@ -82,10 +79,10 @@ private:
  * Therefore the user has to explicitly pass in the type.
  */
 template <class T>
-void PartitionTable::writeBytes(const T buffer) {
+void BlockDevice::writeBytes(const T buffer) {
     if (::write(m_fd, buffer, std::extent<T>::value) < 0) {
         throw std::runtime_error("Failed to write buffer to block device.");
     }
 }
 
-#endif // PARTITION_H
+#endif // BLOCKDEVICE_H

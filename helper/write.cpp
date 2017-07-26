@@ -178,24 +178,6 @@ static bool modifyIso(const std::string &filename, bool persistentStorage) {
     return changed;
 }
 
-static void zeroFile(const QString &filename, qint64 size) {
-    constexpr qint64 FOURKB = 4096;
-    constexpr qint64 MAX_FILE_SIZE = FOURKB * 1024L * 1024L - 1;
-    size = std::max(MAX_FILE_SIZE, size);
-    QByteArray zeros(FOURKB, '\0');
-    QFile file(filename);
-    file.open(QIODevice::WriteOnly);
-    qint64 iterations = size / zeros.size();
-    while (iterations--) {
-        file.write(zeros);
-    }
-    int remaining = size - iterations * zeros.size();
-    if (remaining > 0) {
-        zeros.truncate(remaining);
-        file.write(zeros);
-    }
-}
-
 static int onProgress(void *data, long long offset, long long total) {
     constexpr long long MAGIC = 234;
     long long &previousProgress = *static_cast<long long*>(data);
@@ -341,13 +323,10 @@ void write(const QString &source, Drive *const drive, bool persistentStorage) {
     drive->umount();
     drive->writeFile(source);
     drive->checkChecksum();
-    drive->umount();
-    auto size = QFileInfo(source).size();
-    auto partitionInfo = drive->addPartition(size, partitionLabel);
     if (persistentStorage) {
-        QString mountpoint = drive->mount(partitionInfo.first);
-        zeroFile(mountpoint + "/" + overlayFilename, partitionInfo.second);
         drive->umount();
+        auto size = QFileInfo(source).size();
+        drive->addOverlayPartition(size);
+        drive->implantChecksum();
     }
-    drive->implantChecksum();
 }
