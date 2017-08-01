@@ -17,41 +17,38 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef DRIVE_H
-#define DRIVE_H
-
-#include <utility>
-
-#include <QDBusInterface>
-#include <QDBusUnixFileDescriptor>
-#include <QObject>
-#include <QScopedPointer>
-#include <QString>
-#include <QTextStream>
-#include <QtGlobal>
-
 #include "genericdrive.h"
 
-class Drive : public GenericDrive {
-    Q_OBJECT
-public:
-    /**
-     * Shared public interface across platforms.
-     */
-    explicit Drive(const QString &driveIdentifier);
-    ~Drive();
-    void init();
-    void write(const void *buffer, std::size_t size);
-    int getDescriptor() const;
-    void wipe();
-    void addOverlayPartition(quint64 offset);
-    void umount();
+#include <string>
 
-private:
-    QDBusUnixFileDescriptor m_fileDescriptor;
-    QString m_identifier;
-    QScopedPointer<QDBusInterface> m_device;
-    QString m_path;
-};
+#include <QString>
 
-#endif // DRIVE_H
+#include <libimplantisomd5.h>
+
+#include "blockdevice.h"
+#include "write.h"
+
+void GenericDrive::writeFile(const QString &source) {
+    if (source.endsWith(".xz"))
+        ::writeCompressed(source, this);
+    else
+        ::writePlain(source, this);
+}
+
+void GenericDrive::checkChecksum() {
+    ::check(getDescriptor());
+}
+
+void GenericDrive::implantChecksum() {
+    char *errstr;
+    if (::implantISOFD(getDescriptor(), false, true, true, &errstr) != 0) {
+        throw std::runtime_error(std::string(errstr));
+    }
+}
+
+void GenericDrive::addOverlay(quint64 offset, quint64 size) {
+    BlockDevice device(getDescriptor());
+    device.read();
+    device.addPartition(offset, size);
+    device.formatOverlayPartition(offset, size);
+}

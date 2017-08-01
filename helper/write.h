@@ -21,19 +21,21 @@
 #define WRITE_H
 
 #include <QString>
+#include <QtGlobal>
 
 // Platform specific drive handler.
-#include "drive.h"
+#include "genericdrive.h"
 
 #ifndef MEDIAWRITER_LZMA_LIMIT
 // 256MB memory limit for the decompressor
 #define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
 #endif
 
+int onProgress(void *data, long long offset, long long total);
 void check(int fd);
-void writePlain(const QString &source, Drive *const drive);
-void writeCompressed(const QString &source, Drive *const drive);
+void writePlain(const QString &source, GenericDrive *const drive);
+void writeCompressed(const QString &source, GenericDrive *const drive);
 
-void write(const QString &source, Drive *const drive, bool persistentStorage = false);
+void write(const QString &source, GenericDrive *const drive, bool persistentStorage = false);
 
 #endif // WRITE_H

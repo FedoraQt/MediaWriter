@@ -34,6 +34,8 @@
 #include <QVector>
 #include <QtGlobal>
 
+#include "write.h"
+
 class BlockDevice {
 private:
     static constexpr std::size_t APM_OFFSET = 2048;
@@ -61,13 +63,15 @@ private:
 
 public:
     BlockDevice(int fd);
-    void setFileDescriptor(int fd);
     void read();
-    int addPartition(quint64 offset, quint64);
+    int addPartition(quint64 offset, quint64 size);
     void formatOverlayPartition(quint64 offset, quint64 size);
 
 private:
     int m_fd;
+    std::size_t m_bytesWritten;
+    std::size_t m_totalBytes;
+    std::size_t m_progress;
     QVector<PartitionEntry> m_entries;
 };
 
@@ -80,9 +84,12 @@ private:
  */
 template <class T>
 void BlockDevice::writeBytes(const T buffer) {
-    if (::write(m_fd, buffer, std::extent<T>::value) < 0) {
+    const auto len = ::write(m_fd, buffer, std::extent<T>::value);
+    if (len < 0) {
         throw std::runtime_error("Failed to write buffer to block device.");
     }
+    m_bytesWritten += len;
+    ::onProgress(&m_progress, m_bytesWritten, m_totalBytes);
 }
 
 #endif // BLOCKDEVICE_H

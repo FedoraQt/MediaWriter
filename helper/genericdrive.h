@@ -17,41 +17,26 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef DRIVE_H
-#define DRIVE_H
+#ifndef GENERICDRIVE_H
+#define GENERICDRIVE_H
 
-#include <utility>
-
-#include <QDBusInterface>
-#include <QDBusUnixFileDescriptor>
 #include <QObject>
-#include <QScopedPointer>
 #include <QString>
-#include <QTextStream>
-#include <QtGlobal>
 
-#include "genericdrive.h"
-
-class Drive : public GenericDrive {
+class GenericDrive : public QObject {
     Q_OBJECT
 public:
-    /**
-     * Shared public interface across platforms.
-     */
-    explicit Drive(const QString &driveIdentifier);
-    ~Drive();
-    void init();
-    void write(const void *buffer, std::size_t size);
-    int getDescriptor() const;
-    void wipe();
-    void addOverlayPartition(quint64 offset);
-    void umount();
-
-private:
-    QDBusUnixFileDescriptor m_fileDescriptor;
-    QString m_identifier;
-    QScopedPointer<QDBusInterface> m_device;
-    QString m_path;
+    virtual void init() = 0;
+    virtual void write(const void *buffer, std::size_t size) = 0;
+    virtual int getDescriptor() const = 0;
+    virtual void wipe() = 0;
+    virtual void addOverlayPartition(quint64 offset) = 0;
+    virtual void umount() = 0;
+    void writeFile(const QString& source);
+    void checkChecksum();
+    void implantChecksum();
+protected:
+    void addOverlay(quint64 offset, quint64 size);
 };
 
-#endif // DRIVE_H
+#endif // GENERICDRIVE_H

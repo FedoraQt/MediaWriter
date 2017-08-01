@@ -17,9 +17,9 @@ include($$top_srcdir/deployment.pri)
 target.path = $$LIBEXECDIR
 INSTALLS += target
 
-SOURCES = main.cpp write.cpp blockdevice.cpp
+SOURCES = main.cpp write.cpp blockdevice.cpp genericdrive.cpp
 
-HEADERS += write.h blockdevice.h
+HEADERS += write.h blockdevice.h genericdrive.h
 
 linux {
     include(linux/linux.pri)

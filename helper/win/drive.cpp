@@ -34,7 +34,9 @@
 #include <io.h>
 #include <windows.h>
 
-Drive::Drive(const QString &identifier) : QObject(nullptr), m_handle(nullptr) {
+#include "blockdevice.h"
+
+Drive::Drive(const QString &identifier) : m_handle(nullptr) {
     m_driveNumber = identifier.toInt();
 }
 
@@ -134,89 +136,21 @@ void Drive::wipe() {
     if (!deviceIoControlCode(IOCTL_DISK_UPDATE_PROPERTIES)) {
         throwError(message);
     }
-}
-
-/**
- * Fill the rest of the drive with a primary partition that uses the fat
- * filesystem.
- */
-QPair<QString, qint64> Drive::addPartition(quint64 offset, const QString &label) {
-    const QString message = "Couldn't add partition.";
-    LayoutInfo layout = deviceIoControl<decltype(layout)>(message);
-    std::size_t partition_idx = 0;
-    for (; partition_idx < layout.PartitionCount; ++partition_idx) {
-        if (layout.PartitionEntry[partition_idx].PartitionNumber == 0) {
-            break;
-        }
-    }
-    if (partition_idx == layout.PartitionCount) {
-        ++layout.PartitionCount;
-    }
-    const std::size_t partition_num = partition_idx + 1;
-    if (layout.PartitionStyle != PARTITION_STYLE_MBR || layout.PartitionCount > MAX_PARTITIONS) {
-        throw std::runtime_error(message.toStdString());
-    }
-    PARTITION_INFORMATION_EX &partition = layout.PartitionEntry[partition_idx];
-    partition.PartitionStyle = PARTITION_STYLE_MBR;
-    partition.StartingOffset.QuadPart = offset;
-    partition.PartitionLength.QuadPart = m_geometry.DiskSize.QuadPart - offset;
-    partition.PartitionNumber = partition_num;
-    partition.RewritePartition = TRUE;
-    partition.Mbr.PartitionType = PARTITION_FAT32;
-    partition.Mbr.BootIndicator = FALSE;
-    partition.Mbr.RecognizedPartition = FALSE;
-    partition.Mbr.HiddenSectors = offset / m_geometry.Geometry.BytesPerSector;
-
-    PARTITION_INFORMATION_EX empty{};
-    empty.RewritePartition = TRUE;
-    for (std::size_t i = partition_num; i < layout.PartitionCount; ++i) {
-        layout.PartitionEntry[i] = empty;
-    }
-
-    deviceIoControl(message, &layout);
-    if (!deviceIoControlCode(IOCTL_DISK_UPDATE_PROPERTIES)) {
-        throwError(message);
-    }
-    /*
-     * Same as IOCTL_DISK_VERIFY with the difference that I know how to use it.
-     * This is important because sometimes there's simply no change.
-     */
-    layout = deviceIoControl<decltype(layout)>(message);
-    const PARTITION_INFORMATION_EX &target = layout.PartitionEntry[partition_idx];
-    if (target.PartitionNumber != partition_num ||
-            target.StartingOffset.QuadPart != partition.StartingOffset.QuadPart ||
-            target.PartitionLength.QuadPart != partition.PartitionLength.QuadPart) {
-        throw std::runtime_error(message.toStdString());
-    }
-    /*
-     * Shared pointer owned by parent chain. Don't die. You know that already
-     * since this is Qt.
-     */
-    QProcess *process = new QProcess(this);
-    /**
-     * Would love to use the Virtual Disk Service via COM but MinGW doesn't
-     * have the ability to do so out of the box and to do so requires linking
-     * against a static library which can't be included because of licensing
-     * issues and guidelines.
-     *
-     * Note that running diskpart is still slow but since it's only used for
-     * formating there does not seem to be a need to wait 15 seconds also it
-     * doesn't seem to get in the way of locking.
-     */
-    QProcess &diskpart = *process;
-    /* QProcess diskpart; */
+    QProcess diskpart;
     diskpart.setProgram("diskpart.exe");
     diskpart.setProcessChannelMode(QProcess::ForwardedChannels);
     diskpart.start(QIODevice::ReadWrite);
     diskpart.write(qPrintable(QString("select disk %0\r\n").arg(m_driveNumber)));
-    diskpart.write(qPrintable(QString("select partition %0\r\n").arg(partition.PartitionNumber)));
-    diskpart.write(qPrintable(QString("format fs=fat32 label=\"%0\" quick\r\n").arg(label)));
+    diskpart.write("create partition primary\r\n");
+    diskpart.write("format fs=fat32 quick\r\n");
     diskpart.write("exit\r\n");
     diskpart.waitForFinished();
     if (diskpart.exitCode() != 0)
         throw std::runtime_error(message.toStdString());
+}
 
-    return qMakePair(guidOfPartition(partition.PartitionNumber), partition.PartitionLength.QuadPart);
+void Drive::addOverlayPartition(quint64 offset) {
+    addOverlay(offset, m_geometry.DiskSize.QuadPart - offset);
 }
 
 /**
@@ -254,57 +188,6 @@ char Drive::unusedDriveLetter() {
         }
     }
     throw std::runtime_error("All drive letters have been used.");
-}
-
-QString Drive::guidOfPartition(int partitionNumber) const {
-    const QString message = "Couldn't get volume GUID path of partition.";
-    /*
-     * A volume GUID path looks like this:
-     * \\?\Volume{00000000-0000-0000-0000-000000000000}\
-     */
-    constexpr std::size_t GUID_SIZE = 50;
-    WCHAR guid[GUID_SIZE] = L"";
-    HANDLE volume = FindFirstVolume(guid, GUID_SIZE);
-    if (volume == INVALID_HANDLE_VALUE)
-        throwError(message);
-    do {
-        QString identifier = QString::fromStdWString(guid);
-        identifier.chop(1);
-        HANDLE handle = openBlockDevice(identifier);
-        if (handle == INVALID_HANDLE_VALUE) {
-            CloseHandle(handle);
-            continue;
-        }
-
-        STORAGE_DEVICE_NUMBER device;
-        try {
-            device = deviceIoControl<decltype(device)>(handle);
-        } catch (std::runtime_error &) {
-            CloseHandle(handle);
-            continue;
-        }
-        CloseHandle(handle);
-        if (device.DeviceType == FILE_DEVICE_DISK && device.DeviceNumber == m_driveNumber && device.PartitionNumber == static_cast<decltype(device.PartitionNumber)>(partitionNumber)) {
-            FindVolumeClose(volume);
-            return identifier + "\\";
-        }
-    } while (FindNextVolume(volume, guid, GUID_SIZE));
-    FindVolumeClose(volume);
-    throw std::runtime_error(message.toStdString());
-}
-
-/**
- * Mount specified partition.
- */
-QString Drive::mount(const QString &partitionIdentifier) {
-    QDir dir = QDir::temp();
-    dir.mkdir("fmwmountpoint");
-    QString mountpoint = dir.absolutePath() + "/fmwmountpoint/";
-    if (!SetVolumeMountPointA(qPrintable(QDir::toNativeSeparators(mountpoint)),
-                qPrintable(partitionIdentifier))) {
-        throwError("Couldn't mount partititon.");
-    }
-    return mountpoint;
 }
 
 /**
@@ -351,14 +234,6 @@ void Drive::umount() {
 }
 
 template <>
-DWORD Drive::controlCodeOf<Drive::LayoutInfo>() {
-    return IOCTL_DISK_GET_DRIVE_LAYOUT_EX;
-}
-template <>
-DWORD Drive::controlCodeOf<std::nullptr_t, Drive::LayoutInfo>() {
-    return IOCTL_DISK_SET_DRIVE_LAYOUT_EX;
-}
-template <>
 DWORD Drive::controlCodeOf<std::nullptr_t, CREATE_DISK>() {
     return IOCTL_DISK_CREATE_DISK;
 }
@@ -369,8 +244,4 @@ DWORD Drive::controlCodeOf<VOLUME_DISK_EXTENTS>() {
 template <>
 DWORD Drive::controlCodeOf<DISK_GEOMETRY_EX>() {
     return IOCTL_DISK_GET_DRIVE_GEOMETRY_EX;
-}
-template <>
-DWORD Drive::controlCodeOf<STORAGE_DEVICE_NUMBER>() {
-    return IOCTL_STORAGE_GET_DEVICE_NUMBER;
 }

@@ -33,11 +33,9 @@
 #include <QtEndian>
 #include <QtGlobal>
 
-BlockDevice::BlockDevice(int fd) : m_fd(fd) {
-}
+#include "write.h"
 
-void BlockDevice::setFileDescriptor(int fd) {
-    m_fd = fd;
+BlockDevice::BlockDevice(int fd) : m_fd(fd), m_bytesWritten(0), m_totalBytes(0), m_progress(0) {
 }
 
 void BlockDevice::read() {
@@ -71,9 +69,12 @@ void BlockDevice::writeZeros(std::size_t size) {
     constexpr std::size_t CHUNK_SIZE = 512;
     constexpr char zeros[CHUNK_SIZE]{};
     for (std::size_t i = 0; i < size; i += CHUNK_SIZE) {
-        if (::write(m_fd, zeros, std::min(CHUNK_SIZE, size - i)) < 0) {
+        const auto len = ::write(m_fd, zeros, std::min(CHUNK_SIZE, size - i));
+        if (len < 0) {
             throw std::runtime_error("Failed to write zeros to block device.");
         }
+        m_bytesWritten += len;
+        ::onProgress(&m_progress, m_bytesWritten, m_totalBytes);
     }
 }
 
@@ -139,15 +140,8 @@ void BlockDevice::formatOverlayPartition(quint64 offset, quint64 size) {
         return (a + b - 1) / b;
     };
 
-    const quint32 volumeId = QDateTime::currentMSecsSinceEpoch() & 0xffffffff;
-    auto u = [&volumeId, &getbyte](int i) {
-        return getbyte(volumeId, i);
-    };
-    /*
-     * Determine the number of sectors per cluster.
-     */
-    quint64 sizeMb = size / (1024 * 1024);
-    const std::array<int, 4> ranges = { 260, 1024 * 8, 1024 * 16, 1024 * 32 };
+    const int sizeMb = size / (1024 * 1024);
+    const std::array<int, 4> ranges = { { 260, 1024 * 8, 1024 * 16, 1024 * 32 } };
     auto found = qLowerBound(ranges.begin(), ranges.end(), sizeMb);
     const int sectorsPerCluster = found == ranges.begin() ? 1 : (found - ranges.begin()) * 8;
     const int numSectors = size / SECTOR_SIZE;
@@ -171,6 +165,10 @@ void BlockDevice::formatOverlayPartition(quint64 offset, quint64 size) {
     };
     auto f = [&fatlength, &getbyte](int i) {
         return getbyte(fatlength, i);
+    };
+    const quint32 volumeId = QDateTime::currentMSecsSinceEpoch() & 0xffffffff;
+    auto u = [&volumeId, &getbyte](int i) {
+        return getbyte(volumeId, i);
     };
     const quint8 clsz = sectorsPerCluster;
     const quint8 bootSector[] = { 0xeb, 0x58, 0x90, 0x6d, 0x6b, 0x66, 0x73,
@@ -207,6 +205,10 @@ void BlockDevice::formatOverlayPartition(quint64 offset, quint64 size) {
         0x20, 0x20, 0x20, 0x08, 0x00, 0x00, tlo, thi, dlo, dhi, dlo, dhi, 0x00,
         0x00, tlo, thi, dlo, dhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
     seekto(offset);
+    quint64 headerSize = (RESERVED_SECTORS + fatlength * 2 + sectorsPerCluster) * SECTOR_SIZE;
+    quint64 maxFileSize = std::min(size - headerSize, 0xffffffffULL);
+    m_bytesWritten = 0;
+    m_totalBytes = headerSize + maxFileSize;
 
     writeBytes<decltype(bootSector)>(bootSector);
     writeBytes<decltype(bootCode)>(bootCode);
@@ -234,9 +236,6 @@ void BlockDevice::formatOverlayPartition(quint64 offset, quint64 size) {
     writeZeros(SECTOR_SIZE - std::extent<decltype(fat)>::value);
     writeZeros(SECTOR_SIZE * (fatlength - 1));
 
-    quint64 maxFileSize = size;
-    maxFileSize -= (RESERVED_SECTORS + fatlength * 2 + 2) * SECTOR_SIZE;
-    maxFileSize = std::min(maxFileSize, 0xffffffffULL);
     auto s = [&maxFileSize, &getbyte](int i) {
         return getbyte(maxFileSize, i);
     };

@@ -32,14 +32,11 @@
 #include <io.h>
 #include <windows.h>
 
-class Drive : public QObject {
+#include "genericdrive.h"
+
+class Drive : public GenericDrive {
     Q_OBJECT
 private:
-    static constexpr std::size_t MAX_PARTITIONS = 4;
-    struct LayoutInfo : DRIVE_LAYOUT_INFORMATION_EX {
-        PARTITION_INFORMATION_EX PartitionEntry[MAX_PARTITIONS];
-    };
-
     static void throwError(const QString &error);
     static HANDLE openBlockDevice(const QString &device);
     static char unusedDriveLetter();
@@ -58,7 +55,6 @@ private:
     void lock();
     void unlock();
     bool hasDriveLetter(const char driveLetter) const;
-    QString guidOfPartition(int partitionNumber) const;
 
 public:
     /**
@@ -70,8 +66,7 @@ public:
     void write(const void *buffer, std::size_t size);
     int getDescriptor() const;
     void wipe();
-    QPair<QString, quint64> addPartition(quint64 offset = 1024ULL * 1024ULL, const QString &label = "");
-    QString mount(const QString &partitionIdentifier);
+    void addOverlayPartition(quint64 offset);
     void umount();
 
 private:

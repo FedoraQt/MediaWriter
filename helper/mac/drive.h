@@ -20,20 +20,22 @@
 #ifndef DRIVE_H
 #define DRIVE_H
 
+#include <memory>
 #include <utility>
 
-#include <QDBusInterface>
-#include <QDBusUnixFileDescriptor>
+#include <QFile>
 #include <QObject>
-#include <QScopedPointer>
 #include <QString>
-#include <QTextStream>
+#include <QStringList>
 #include <QtGlobal>
 
 #include "genericdrive.h"
 
 class Drive : public GenericDrive {
     Q_OBJECT
+private:
+    bool diskutil(const QStringList &arguments);
+
 public:
     /**
      * Shared public interface across platforms.
@@ -48,10 +50,9 @@ public:
     void umount();
 
 private:
-    QDBusUnixFileDescriptor m_fileDescriptor;
     QString m_identifier;
-    QScopedPointer<QDBusInterface> m_device;
-    QString m_path;
+    QFile *m_device;
 };
 
 #endif // DRIVE_H
+

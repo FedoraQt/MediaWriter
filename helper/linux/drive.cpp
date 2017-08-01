@@ -48,7 +48,7 @@ Q_DECLARE_METATYPE(InterfacesAndProperties)
 Q_DECLARE_METATYPE(DBusIntrospection)
 
 Drive::Drive(const QString &identifier)
-    : QObject(nullptr), m_fileDescriptor(QDBusUnixFileDescriptor(-1)), m_identifier(identifier),
+    : m_fileDescriptor(QDBusUnixFileDescriptor(-1)), m_identifier(identifier),
       m_device(new QDBusInterface("org.freedesktop.UDisks2", m_identifier, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus())),
       m_path(qvariant_cast<QDBusObjectPath>(m_device->property("Drive")).path()) {
 }
@@ -56,14 +56,7 @@ Drive::Drive(const QString &identifier)
 Drive::~Drive() {
 }
 
-void Drive::init() {}
-
-/**
- * Opens drive for reading and writing directly if not already open.
- */
-void Drive::open() {
-    if (getDescriptor() != -1)
-        return;
+void Drive::init() {
     /*
      * Most I/O will go to cache but it's still way faster than with O_DIRECT
      * or O_SYNC.
@@ -89,11 +82,6 @@ void Drive::open() {
     */
 }
 
-void Drive::close() {
-    m_fileDescriptor = QDBusUnixFileDescriptor(-1);
-    ::sync();
-}
-
 /**
  * Write buffer directly to drive.
  */
@@ -111,10 +99,6 @@ int Drive::getDescriptor() const {
     return m_fileDescriptor.fileDescriptor();
 }
 
-/**
- * Create a new dos label on the partition. This essentially wipes all
- * existing information about partitions.
- */
 void Drive::wipe() {
     QDBusReply<void> formatReply = m_device->call("Format", "dos", Properties());
     if (!formatReply.isValid() && formatReply.error().type() != QDBusError::NoReply) {
@@ -127,17 +111,8 @@ void Drive::wipe() {
     }
 }
 
-/**
- * Fill the rest of the drive with a primary partition that uses the fat
- * filesystem.
- */
 void Drive::addOverlayPartition(quint64 offset) {
-    open();
-    BlockDevice device(getDescriptor());
-    device.read();
-    const quint64 size = m_device->property("Size").toULongLong() - offset;
-    device.addPartition(offset, size);
-    device.formatOverlayPartition(offset, size);
+    addOverlay(offset, m_device->property("Size").toULongLong() - offset);
 }
 
 /**
@@ -159,26 +134,5 @@ void Drive::umount() {
             QDBusInterface partition("org.freedesktop.UDisks2", i.path(), "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
             message = partition.call("Unmount", Properties{ { "force", true } });
         }
-    }
-}
-
-void Drive::writeFile(const QString &source) {
-    open();
-    if (source.endsWith(".xz"))
-        ::writeCompressed(source, this);
-    else
-        ::writePlain(source, this);
-}
-
-void Drive::checkChecksum() {
-    open();
-    ::check(getDescriptor());
-}
-
-void Drive::implantChecksum() {
-    open();
-    char *errstr;
-    if (::implantISOFD(getDescriptor(), false, true, true, &errstr) != 0) {
-        throw std::runtime_error(std::string(errstr));
     }
 }

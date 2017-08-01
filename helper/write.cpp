@@ -178,7 +178,7 @@ static bool modifyIso(const std::string &filename, bool persistentStorage) {
     return changed;
 }
 
-static int onProgress(void *data, long long offset, long long total) {
+int onProgress(void *data, long long offset, long long total) {
     constexpr long long MAGIC = 234;
     long long &previousProgress = *static_cast<long long*>(data);
     const long long progress = (offset * MAGIC) / total;
@@ -191,7 +191,7 @@ static int onProgress(void *data, long long offset, long long total) {
     return 0;
 }
 
-void writeCompressed(const QString &source, Drive *const drive) {
+void writeCompressed(const QString &source, GenericDrive *const drive) {
     qint64 totalRead = 0;
 
     lzma_stream strm = LZMA_STREAM_INIT;
@@ -261,7 +261,7 @@ void writeCompressed(const QString &source, Drive *const drive) {
     }
 }
 
-void writePlain(const QString &source, Drive *const drive) {
+void writePlain(const QString &source, GenericDrive *const drive) {
     QFile inFile(source);
     inFile.open(QIODevice::ReadOnly);
 
@@ -308,7 +308,7 @@ void check(int fd) {
     }
 }
 
-void write(const QString &source, Drive *const drive, bool persistentStorage) {
+void write(const QString &source, GenericDrive *const drive, bool persistentStorage) {
     // Immediately trigger the UI into writing mode.
     QTextStream out(stdout);
     out << "1\n";
@@ -325,8 +325,12 @@ void write(const QString &source, Drive *const drive, bool persistentStorage) {
     drive->checkChecksum();
     if (persistentStorage) {
         drive->umount();
+        out << "OVERLAY\n";
+        out.flush();
         auto size = QFileInfo(source).size();
         drive->addOverlayPartition(size);
         drive->implantChecksum();
+        out << "DONE\n";
+        out.flush();
     }
 }

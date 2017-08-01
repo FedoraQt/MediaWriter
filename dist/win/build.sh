@@ -65,7 +65,7 @@ fi
 
 if [ "$1" == "local" ]; then
     echo "=== Building"
-    if [ "2" == "debug" ]; then
+    if [ "$2" == "debug" ]; then
         mingw32-qmake-qt5 .. CONFIG+=debug
     else
         mingw32-qmake-qt5 ..
