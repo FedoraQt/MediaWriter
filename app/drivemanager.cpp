@@ -187,9 +187,10 @@ DriveProvider::DriveProvider(DriveManager *parent)
 
 }
 
-Drive::Drive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive)
+Drive::Drive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive)
     : QObject(parent),
       m_progress(new Progress(this)),
+      m_device(device),
       m_name(name),
       m_size(size),
       m_restoreStatus(containsLive ? CONTAINS_LIVE : CLEAN)
@@ -236,6 +237,13 @@ void Drive::persistentStorage(bool enabled) {
     m_persistentStorage = enabled;
 }
 
+QString Drive::helperBinary() {
+    if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+        return qApp->applicationDirPath() + "/helper";
+    }
+    return "";
+}
+
 bool Drive::write(ReleaseVariant *data) {
     m_image = data;
     m_image->setErrorString(QString());
@@ -245,6 +253,17 @@ bool Drive::write(ReleaseVariant *data) {
         return false;
     }
 
+    switch (m_image->status()) {
+        case ReleaseVariant::READY:
+        case ReleaseVariant::FAILED:
+        case ReleaseVariant::FAILED_VERIFICATION:
+        case ReleaseVariant::FINISHED:
+            m_image->setStatus(ReleaseVariant::WRITING);
+            break;
+
+        default:
+            return false;
+    }
     return true;
 }
 
@@ -257,4 +276,20 @@ void Drive::setRestoreStatus(Drive::RestoreStatus o) {
         m_restoreStatus = o;
         emit restoreStatusChanged();
     }
+}
+
+QStringList Drive::writeArgs(const ReleaseVariant &releaseVariant) {
+    QStringList args;
+    auto iso = releaseVariant.status() == ReleaseVariant::WRITING ? releaseVariant.iso() : releaseVariant.temporaryPath();
+    args << iso << m_device;
+    if (m_persistentStorage) {
+        args << "true";
+    }
+    return args;
+}
+
+QStringList Drive::restoreArgs() {
+    QStringList args;
+    args << "restore" << m_device;
+    return args;
 }

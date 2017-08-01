@@ -167,8 +167,10 @@ void LinuxDriveProvider::onPropertiesChanged(const QString &interface_name, cons
     }
 }
 
-LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout)
-    : Drive(parent, name, size, isoLayout), m_device(device) {
+LinuxDrive::LinuxDrive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive)
+    : Drive(parent, device, name, size, containsLive)
+{
+
 }
 
 LinuxDrive::~LinuxDrive() {
@@ -178,45 +180,34 @@ LinuxDrive::~LinuxDrive() {
     }
 }
 
-bool LinuxDrive::write(ReleaseVariant *data) {
-    qDebug() << this->metaObject()->className() << "Will now write" << data->iso() << "to" << this->m_device;
+QString LinuxDrive::helperBinary() {
+    if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper")) {
+        return qApp->applicationDirPath() + "/../helper/linux/helper";
+    }
+    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+        return qApp->applicationDirPath() + "/helper";
+    }
+    else if (QFile::exists(QString("%1/%2").arg(LIBEXECDIR).arg("helper"))) {
+        return QString("%1/%2").arg(LIBEXECDIR).arg("helper");
+    }
+    return "";
+}
 
+bool LinuxDrive::write(ReleaseVariant *data) {
     if (!Drive::write(data))
         return false;
-
-    if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED ||
-            m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
-        m_image->setStatus(ReleaseVariant::WRITING);
 
     if (!m_process)
         m_process = new QProcess(this);
 
-    QStringList args;
-    if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper")) {
-        m_process->setProgram(qApp->applicationDirPath() + "/../helper/linux/helper");
-    }
-    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
-        m_process->setProgram(qApp->applicationDirPath() + "/helper");
-    }
-    else if (QFile::exists(QString("%1/%2").arg(LIBEXECDIR).arg("helper"))) {
-        m_process->setProgram(QString("%1/%2").arg(LIBEXECDIR).arg("helper"));
-    }
-    else {
+    QString binary = helperBinary();
+    if (binary == "") {
         data->setErrorString(tr("Could not find the helper binary. Check your installation."));
         data->setStatus(ReleaseVariant::FAILED);
         return false;
     }
-    args << "write";
-    if (data->status() == ReleaseVariant::WRITING)
-        args << data->iso();
-    else
-        args << data->temporaryPath();
-    args << m_device;
-    if (m_persistentStorage) {
-        args << "true";
-    }
-    qDebug() << this->metaObject()->className() << "Helper command will be" << args;
-    m_process->setArguments(args);
+    m_process->setProgram(binary);
+    m_process->setArguments(writeArgs(*data));
 
     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onFinished(int,QProcess::ExitStatus)));
@@ -225,8 +216,6 @@ bool LinuxDrive::write(ReleaseVariant *data) {
     connect(m_process, &QProcess::errorOccurred, this, &LinuxDrive::onErrorOccurred);
 #endif
 
-    m_progress->setTo(data->size());
-    m_progress->setValue(0.0/0.0);
     m_process->start(QIODevice::ReadOnly);
 
     return true;
@@ -250,33 +239,20 @@ void LinuxDrive::cancel() {
 }
 
 void LinuxDrive::restore() {
-    qDebug() << this->metaObject()->className() << "Will now restore" << this->m_device;
-
     if (!m_process)
         m_process = new QProcess(this);
 
     m_restoreStatus = RESTORING;
     emit restoreStatusChanged();
 
-    QStringList args;
-    if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper")) {
-        m_process->setProgram(qApp->applicationDirPath() + "/../helper/linux/helper");
-    }
-    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
-        m_process->setProgram(qApp->applicationDirPath() + "/helper");
-    }
-    else if (QFile::exists(QString("%1/%2").arg(LIBEXECDIR).arg("helper"))) {
-        m_process->setProgram(QString("%1/%2").arg(LIBEXECDIR).arg("helper"));
-    }
-    else {
+    QString binary = helperBinary();
+    if (binary == "") {
         qWarning() << "Couldn't find the helper binary.";
         setRestoreStatus(RESTORE_ERROR);
         return;
     }
-    args << "restore";
-    args << m_device;
-    qDebug() << this->metaObject()->className() << "Helper command will be" << args;
-    m_process->setArguments(args);
+    m_process->setProgram(binary);
+    m_process->setArguments(restoreArgs());
 
     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));

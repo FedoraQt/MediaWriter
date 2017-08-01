@@ -22,6 +22,9 @@
 
 #include <QDebug>
 #include <QAbstractListModel>
+#include <QProcess>
+#include <QString>
+#include <QStringList>
 
 #include "releasemanager.h"
 
@@ -148,7 +151,7 @@ public:
     };
     Q_ENUMS(RestoreStatus)
 
-    Drive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive = false);
+    Drive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive = false);
 
     Progress *progress() const;
 
@@ -170,13 +173,20 @@ signals:
     void restoreStatusChanged();
 
 protected:
+    QStringList writeArgs(const ReleaseVariant &releaseVariant);
+    QStringList restoreArgs();
+    virtual QString helperBinary();
+
+protected:
     ReleaseVariant *m_image { nullptr };
     Progress *m_progress { nullptr };
+    QString m_device { };
     QString m_name { };
     uint64_t m_size { 0 };
     RestoreStatus m_restoreStatus { CLEAN };
     QString m_error { };
     bool m_persistentStorage { false };
+    QProcess *m_process { nullptr };
 };
 
 #endif // DRIVEMANAGER_H

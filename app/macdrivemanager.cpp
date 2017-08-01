@@ -68,123 +68,101 @@ void MacDriveProvider::removeDrive(const QString &bsdName) {
 }
 
 
-MacDrive::MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive, const QString &bsdDevice)
-    : Drive(parent, name, size, containsLive), m_bsdDevice(bsdDevice)
+MacDrive::MacDrive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive)
+    : Drive(parent, device, name, size, containsLive)
 {
 
 }
 
+QString MacDrive::helperBinary() {
+    if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
+        return qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper";
+    }
+    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+        return qApp->applicationDirPath() + "/helper";
+    }
+    return "";
+}
+
+void MacDrive::prepareProcess(const QString &binary, const QStringList &arguments) {
+    if (m_process) {
+        // TODO some handling of an already present process
+        m_process->deleteLater();
+    }
+    m_process = new QProcess(this);
+
+    QStringList helperCommand;
+    helperCommand << binary << arguments;
+    for (QString& argument : helperCommand) {
+        argument = argument.normalized(QString::NormalizationForm_D);
+    }
+    QString command;
+    command.append("do shell script \"");
+    command.append(args.join(" "));
+    command.append("\" with administrator privileges without altering line endings");
+
+    /*
+     * TODO: Somehow gain privileges differently so that process interaction
+     * can be done.
+     */
+    m_process->setProgram("osascript");
+    QStringList args;
+    args << "-e" << command;
+    m_process->setArguments(args);
+
+}
+
 bool MacDrive::write(ReleaseVariant *data) {
-    //osascript -e "do shell script \"$*\" with administrator privileges"
     if (!Drive::write(data))
         return false;
 
-    if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED ||
-            m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
-        m_image->setStatus(ReleaseVariant::WRITING);
-
-    if (m_child) {
-        // TODO some handling of an already present process
-        m_child->deleteLater();
-    }
-    m_child = new QProcess(this);
-    connect(m_child, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
-    connect(m_child, &QProcess::readyRead, this, &MacDrive::onReadyRead);
-
-    m_child->setProgram("osascript");
-
-    QString command;
-    command.append("do shell script \"");
-    if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
-        command.append(QString("'%1/../../../../helper/mac/helper.app/Contents/MacOS/helper'").arg(qApp->applicationDirPath()));
-    }
-    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
-        command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
-    }
-    else {
+    QString binary = helperBinary();
+    if (binary == "") {
         data->setErrorString(tr("Could not find the helper binary. Check your installation."));
+        data->setStatus(ReleaseVariant::FAILED);
         return false;
     }
-    command.append(" write ");
-    if (data->status() == ReleaseVariant::WRITING)
-        command.append(QString("'%1'").arg(data->iso()));
-    else
-        command.append(QString("'%1'").arg(data->temporaryPath()));
-    command.append(" ");
-    command.append(m_bsdDevice);
-    command.append("\" with administrator privileges without altering line endings");
 
-    QStringList args;
-    args << "-e";
-    args << command;
-    qCritical() << "The command is" << command;
-    m_child->setArguments(args);
-
-    m_progress->setTo(data->size());
-    m_image->setStatus(ReleaseVariant::WRITING);
-
-    m_progress->setValue(0.0/0.0);
-    m_child->start();
+    prepareProcess(binary, writeArgs(*data));
+    connect(m_process, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
+    connect(m_process, &QProcess::readyRead, this, &MacDrive::onReadyRead);
+    m_process->start(QIODevice::ReadOnly);
 
     return true;
 }
 
 void MacDrive::cancel() {
-    if (m_child) {
-        m_child->kill();
-        m_child->deleteLater();
-        m_child = nullptr;
+    if (m_process) {
+        m_process->kill();
+        m_process->deleteLater();
+        m_process = nullptr;
     }
 }
 
 void MacDrive::restore() {
-    qCritical() << "starting to restore";
-    if (m_child)
-        m_child->deleteLater();
-
-    m_child = new QProcess(this);
-
     m_restoreStatus = RESTORING;
     emit restoreStatusChanged();
 
-    m_child->setProgram("osascript");
-
-    QString command;
-    command.append("do shell script \"");
-    if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
-        command.append(QString("'%1/../../../../helper/mac/helper.app/Contents/MacOS/helper'").arg(qApp->applicationDirPath()));
-    }
-    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
-        command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
-    }
-    else {
-        m_restoreStatus = RESTORE_ERROR;
+    QString binary = helperBinary();
+    if (binary == "") {
+        qWarning() << "Couldn't find the helper binary.";
+        setRestoreStatus(RESTORE_ERROR);
         return;
     }
-    command.append(" restore ");
-    command.append(m_bsdDevice);
-    command.append("\" with administrator privileges without altering line endings");
 
-    QStringList args;
-    args << "-e";
-    args << command;
-    qCritical() << "The command is" << command;
-    m_child->setArguments(args);
-
-    //connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
-    connect(m_child, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
-
-    m_child->start(QIODevice::ReadOnly);
+    prepareProcess(binary, restoreArgs());
+    connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
+    m_process->start(QIODevice::ReadOnly);
 }
 
 void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
     Q_UNUSED(exitStatus)
 
-    if (!m_child)
+    if (!m_process)
         return;
 
     if (exitCode != 0) {
-        QString output = m_child->readAllStandardError();
+        QString output = m_process->readAllStandardError();
         QRegExp re("^.+:.+: ");
         QStringList lines = output.split('\n');
         if (lines.length() > 0) {
@@ -201,11 +179,11 @@ void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
 }
 
 void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) {
-    if (!m_child)
+    if (!m_process)
         return;
 
     qCritical() << "Process finished" << exitCode << exitStatus;
-    qCritical() << m_child->readAllStandardError();
+    qCritical() << m_process->readAllStandardError();
 
     if (exitCode == 0)
         m_restoreStatus = RESTORED;
@@ -213,20 +191,20 @@ void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) 
         m_restoreStatus = RESTORE_ERROR;
     emit restoreStatusChanged();
 
-    m_child->deleteLater();
-    m_child = nullptr;
+    m_process->deleteLater();
+    m_process = nullptr;
 }
 
 void MacDrive::onReadyRead() {
-    if (!m_child)
+    if (!m_process)
         return;
 
     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
         m_image->setStatus(ReleaseVariant::WRITING);
 
-    while (m_child->bytesAvailable() > 0) {
+    while (m_process->bytesAvailable() > 0) {
         bool ok;
-        int64_t bytes = m_child->readLine().trimmed().toULongLong(&ok);
+        int64_t bytes = m_process->readLine().trimmed().toULongLong(&ok);
         if (ok)
             m_progress->setValue(bytes);
     }

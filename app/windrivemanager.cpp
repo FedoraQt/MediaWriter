@@ -213,7 +213,7 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter, bool verb
     delete []pOutBuffer;
     ::CloseHandle(hDevice);
 
-    WinDrive *currentDrive = new WinDrive(this, productVendor + " " + productId, deviceBytes, !hasLetter, nDriveNumber, serialNumber);
+    WinDrive *currentDrive = new WinDrive(this, QString("%0").arg(nDriveNumber), productVendor + " " + productId, deviceBytes, !hasLetter, serialNumber);
     if (m_drives.contains(nDriveNumber) && *m_drives[nDriveNumber] == *currentDrive) {
         currentDrive->deleteLater();
         return true;
@@ -230,103 +230,84 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter, bool verb
     return true;
 }
 
-WinDrive::WinDrive(WinDriveProvider *parent, const QString &name, uint64_t size, bool containsLive, int device, const QString &serialNumber)
-    : Drive(parent, name, size, containsLive)
-    , m_device(device)
+WinDrive::WinDrive(WinDriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive, const QString &serialNumber)
+    : Drive(parent, device, name, size, containsLive)
     , m_serialNo(serialNumber)
 {
 
 }
 
 WinDrive::~WinDrive() {
-    if (m_child)
-        m_child->kill();
+    if (m_process)
+        m_process->kill();
+}
+
+QString WinDrive::helperBinary() {
+    if (QFile::exists(qApp->applicationDirPath() + "/helper.exe")) {
+        return qApp->applicationDirPath() + "/helper.exe";
+    }
+    else if (QFile::exists(qApp->applicationDirPath() + "/../helper.exe")) {
+        return qApp->applicationDirPath() + "/../helper.exe";
+    }
+    return "";
 }
 
 bool WinDrive::write(ReleaseVariant *data) {
-    qDebug() << this->metaObject()->className() << "Preparing to write" << data->fullName() << "to drive" << m_device;
     if (!Drive::write(data))
         return false;
 
-    if (m_child) {
+    if (m_process) {
         // TODO some handling of an already present process
-        m_child->deleteLater();
+        m_process->deleteLater();
     }
-    m_child = new QProcess(this);
-    connect(m_child, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &WinDrive::onFinished);
-    connect(m_child, &QProcess::readyRead, this, &WinDrive::onReadyRead);
+    m_process = new QProcess(this);
 
-    if (data->status() != ReleaseVariant::DOWNLOADING)
-        m_image->setStatus(ReleaseVariant::WRITING);
-
-    if (QFile::exists(qApp->applicationDirPath() + "/helper.exe")) {
-        m_child->setProgram(qApp->applicationDirPath() + "/helper.exe");
-    }
-    else if (QFile::exists(qApp->applicationDirPath() + "/../helper.exe")) {
-        m_child->setProgram(qApp->applicationDirPath() + "/../helper.exe");
-    }
-    else {
+    QString binary = helperBinary();
+    if (binary == "") {
         data->setErrorString(tr("Could not find the helper binary. Check your installation."));
+        data->setStatus(ReleaseVariant::FAILED);
         return false;
     }
+    m_process->setProgram(binary);
+    m_process->setArguments(writeArgs(*data));
 
-    QStringList args;
-    args << "write";
-    if (data->status() == ReleaseVariant::WRITING)
-        args << data->iso();
-    else
-        args << data->temporaryPath();
-    args << QString("%1").arg(m_device);
-    m_child->setArguments(args);
+    connect(m_process, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &WinDrive::onFinished);
+    connect(m_process, &QProcess::readyRead, this, &WinDrive::onReadyRead);
 
-    m_progress->setTo(data->size());
-    m_progress->setValue(NAN);
+    m_process->start(QIODevice::ReadOnly);
 
-    qDebug() << this->metaObject()->className() << "Starting" << m_child->program() << args;
-    m_child->start();
     return true;
 }
 
 void WinDrive::cancel() {
-    if (m_child) {
-        m_child->kill();
-        m_child->deleteLater();
-        m_child = nullptr;
+    if (m_process) {
+        m_process->kill();
+        m_process->deleteLater();
+        m_process = nullptr;
     }
 }
 
 void WinDrive::restore() {
-    qDebug() << this->metaObject()->className() << "Preparing to restore disk" << m_device;
-    if (m_child)
-        m_child->deleteLater();
-
-    m_child = new QProcess(this);
+    if (m_process)
+        m_process->deleteLater();
+    m_process = new QProcess(this);
 
     m_restoreStatus = RESTORING;
     emit restoreStatusChanged();
 
-    if (QFile::exists(qApp->applicationDirPath() + "/helper.exe")) {
-        m_child->setProgram(qApp->applicationDirPath() + "/helper.exe");
-    }
-    else if (QFile::exists(qApp->applicationDirPath() + "/../helper.exe")) {
-        m_child->setProgram(qApp->applicationDirPath() + "/../helper.exe");
-    }
-    else {
-        m_restoreStatus = RESTORE_ERROR;
+    QString binary = helperBinary();
+    if (binary == "") {
+        qWarning() << "Couldn't find the helper binary.";
+        setRestoreStatus(RESTORE_ERROR);
         return;
     }
-
-    QStringList args;
-    args << "restore";
-    args << QString("%1").arg(m_device);
-    m_child->setArguments(args);
+    m_process->setProgram(binary);
+    m_process->setArguments(restoreArgs());
 
     //connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
-    connect(m_child, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
+    connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
 
-    qDebug() << this->metaObject()->className() << "Starting" << m_child->program() << args;
-
-    m_child->start(QIODevice::ReadOnly);
+    m_process->start(QIODevice::ReadOnly);
 }
 
 QString WinDrive::serialNumber() const {
@@ -338,30 +319,30 @@ bool WinDrive::operator==(const WinDrive &o) const {
 }
 
 void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
-    if (!m_child)
+    if (!m_process)
         return;
 
     qDebug() << "Child finished" << exitCode << exitStatus;
-    qDebug() << m_child->errorString();
+    qDebug() << m_process->errorString();
 
     if (exitCode == 0) {
         m_image->setStatus(ReleaseVariant::FINISHED);
     }
     else {
-        m_image->setErrorString(m_child->readAllStandardError().trimmed());
+        m_image->setErrorString(m_process->readAllStandardError().trimmed());
         m_image->setStatus(ReleaseVariant::FAILED);
     }
 
-    m_child->deleteLater();
-    m_child = nullptr;
+    m_process->deleteLater();
+    m_process = nullptr;
 }
 
 void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) {
-    if (!m_child)
+    if (!m_process)
         return;
 
     qCritical() << "Process finished" << exitCode << exitStatus;
-    qCritical() << m_child->readAllStandardError();
+    qCritical() << m_process->readAllStandardError();
 
     if (exitCode == 0)
         m_restoreStatus = RESTORED;
@@ -369,19 +350,19 @@ void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) 
         m_restoreStatus = RESTORE_ERROR;
     emit restoreStatusChanged();
 
-    m_child->deleteLater();
-    m_child = nullptr;
+    m_process->deleteLater();
+    m_process = nullptr;
 }
 
 void WinDrive::onReadyRead() {
-    if (!m_child)
+    if (!m_process)
         return;
 
     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
         m_image->setStatus(ReleaseVariant::WRITING);
 
-    while (m_child->bytesAvailable() > 0) {
-        QString line = m_child->readLine().trimmed();
+    while (m_process->bytesAvailable() > 0) {
+        QString line = m_process->readLine().trimmed();
         if (line == "CHECK") {
             qDebug() << this->metaObject()->className() << "Written media check starting";
             m_progress->setValue(0);

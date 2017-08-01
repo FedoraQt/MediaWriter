@@ -46,7 +46,7 @@ void FakeDriveProvider::connectDrives() {
 }
 
 FakeDrive::FakeDrive(FakeDriveProvider *parent, const QString &name, uint64_t size, bool containsLive)
-    : Drive(parent, name, size, containsLive) {
+    : Drive(parent, "", name, size, containsLive) {
     m_progress->setTo(size);
 }
 
