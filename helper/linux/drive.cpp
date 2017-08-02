@@ -105,7 +105,7 @@ void Drive::wipe() {
         throw std::runtime_error(formatReply.error().message().toStdString());
     }
     QDBusInterface partitionTable("org.freedesktop.UDisks2", m_identifier, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus());
-    QDBusReply<QDBusObjectPath> reply = partitionTable.call("CreatePartitionAndFormat", 0, m_device->property("Size").toULongLong(), "0xb", "", Properties{}, "vfat", Properties{});
+    QDBusReply<QDBusObjectPath> reply = partitionTable.call("CreatePartitionAndFormat", 0ULL, m_device->property("Size").toULongLong(), "0xb", "", Properties{}, "vfat", Properties{});
     if (!reply.isValid()) {
         throw std::runtime_error(reply.error().message().toStdString());
     }

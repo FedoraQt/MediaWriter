@@ -184,8 +184,10 @@ int onProgress(void *data, long long offset, long long total) {
     const long long progress = (offset * MAGIC) / total;
     if (progress > previousProgress) {
         previousProgress = progress;
+        if (offset > total)
+            offset = total;
         QTextStream out(stdout);
-        out << offset << "\n";
+        out << ((offset * 10000) / total) << "\n";
         out.flush();
     }
     return 0;

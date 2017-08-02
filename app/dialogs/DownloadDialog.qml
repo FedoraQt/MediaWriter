@@ -178,6 +178,23 @@ Dialog {
                 }
             },
             State {
+                name: "writing_overlay"
+                when: releases.variant.status === Variant.WRITING_OVERLAY
+                PropertyChanges {
+                    target: messageRestore;
+                    visible: true
+                }
+                PropertyChanges {
+                    target: driveCombo;
+                    enabled: false
+                }
+                PropertyChanges {
+                    target: progressBar;
+                    value: drives.selected.progress.ratio;
+                    progressColor: "yellow"
+                }
+            },
+            State {
                 name: "finished"
                 when: releases.variant.status === Variant.FINISHED
                 PropertyChanges {
@@ -268,7 +285,7 @@ Dialog {
         ]
 
         Keys.onEscapePressed: {
-            if ([Variant.WRITING, Variant.WRITE_VERIFYING].indexOf(releases.variant.status) < 0)
+            if ([Variant.WRITING, Variant.WRITE_VERIFYING, Variant.WRITING_OVERLAY].indexOf(releases.variant.status) < 0)
                 dialog.visible = false
         }
 
@@ -367,7 +384,7 @@ Dialog {
                         }
                         AdwaitaCheckBox {
                             id: persistentStorage
-                            enabled: [Variant.WRITING, Variant.WRITE_VERIFYING].indexOf(releases.variant.status) < 0
+                            enabled: [Variant.WRITING, Variant.WRITE_VERIFYING, Variant.WRITING_OVERLAY].indexOf(releases.variant.status) < 0
                             checked: false
                             text: qsTr("Enable persistent storage")
                             tooltip: qsTr("May take a lot longer")

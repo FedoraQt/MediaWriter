@@ -49,17 +49,9 @@ class MacDrive : public Drive {
 public:
     MacDrive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive);
 
-    Q_INVOKABLE virtual bool write(ReleaseVariant *data) override;
-    Q_INVOKABLE virtual void cancel() override;
-    Q_INVOKABLE virtual void restore() override;
-private slots:
-    void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
-    void onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus);
-    void onReadyRead();
-
 private:
-    void prepareProcess(const QString &binary, const QStringList& arguments);
-    QString helperBinary();
+    void prepareProcess(const QString &binary, const QStringList& arguments) override;
+    QString helperBinary() override;
 };
 
 #endif // MACDRIVEMANAGER_H

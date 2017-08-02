@@ -159,15 +159,21 @@ public:
     virtual uint64_t size() const;
     virtual RestoreStatus restoreStatus();
 
-    Q_INVOKABLE virtual void persistentStorage(bool enabled);
+    Q_INVOKABLE void persistentStorage(bool enabled);
     Q_INVOKABLE virtual bool write(ReleaseVariant *data);
-    Q_INVOKABLE virtual void cancel() = 0;
-    Q_INVOKABLE virtual void restore() = 0;
+    Q_INVOKABLE virtual void cancel();
+    Q_INVOKABLE virtual void restore();
 
     bool operator==(const Drive& o) const;
 
 public slots:
     void setRestoreStatus(RestoreStatus o);
+
+private slots:
+    void onReadyRead();
+    void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void onErrorOccurred(QProcess::ProcessError e);
 
 signals:
     void restoreStatusChanged();
@@ -175,6 +181,8 @@ signals:
 protected:
     QStringList writeArgs(const ReleaseVariant &releaseVariant);
     QStringList restoreArgs();
+    void prepareHelper(const QString &binary, const QStringList& arguments);
+    virtual void prepareProcess(const QString &binary, const QStringList& arguments);
     virtual QString helperBinary();
 
 protected:

@@ -62,18 +62,8 @@ public:
     LinuxDrive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive);
     ~LinuxDrive();
 
-    Q_INVOKABLE virtual bool write(ReleaseVariant *data) override;
-    Q_INVOKABLE virtual void cancel() override;
-    Q_INVOKABLE virtual void restore() override;
-
-private slots:
-    void onReadyRead();
-    void onFinished(int exitCode, QProcess::ExitStatus status);
-    void onRestoreFinished(int exitCode, QProcess::ExitStatus status);
-    void onErrorOccurred(QProcess::ProcessError e);
-
 private:
-    QString helperBinary();
+    QString helperBinary() override;
 
 };
 

@@ -43,7 +43,6 @@ ${QMAKE} .. >/dev/null
 make -j9 >/dev/null
 
 echo "=== Inserting Qt deps ==="
-ls -la "app/Fedora Media Writer.app/Contents"
 mv "app/helper.app/Contents/MacOS/helper" "app/Fedora Media Writer.app/Contents/MacOS/helper"
 ${MACDEPLOYQT} "app/Fedora Media Writer.app" -qmldir="../app" -executable="app/Fedora Media Writer.app/Contents/MacOS/helper"
 
