@@ -419,7 +419,7 @@ void Drive::onReadyRead() {
     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING && m_image->status() != ReleaseVariant::WRITING_OVERLAY)
         m_image->setStatus(ReleaseVariant::WRITING);
 
-    m_progress->setTo(10000);
+    m_progress->setTo(10100);
     m_progress->setValue(0);
     while (m_process->bytesAvailable() > 0) {
         QString line = m_process->readLine().trimmed();
