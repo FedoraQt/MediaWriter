@@ -93,11 +93,11 @@ void MacDrive::prepareProcess(const QString &binary, const QStringList &argument
     QStringList helperCommand;
     helperCommand << binary << arguments;
     for (QString& argument : helperCommand) {
-        argument = argument.normalized(QString::NormalizationForm_D);
+        argument = "'" + argument.replace("'", "\\'") + "'"
     }
     QString command;
     command.append("do shell script \"");
-    command.append(helperCommand.join(" "));
+    command.append(helperCommand.join(" ").replace("\"", "\\\"");
     command.append("\" with administrator privileges without altering line endings");
 
     /*
