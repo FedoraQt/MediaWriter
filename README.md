@@ -33,6 +33,7 @@ The main binary, `mediawriter`, will be writen to `$PREFIX/bin` and the helper b
 * `udisks2` or `storaged`
 * `xz-libs`
 * `isomd5sum-devel`
+* `iso9660io`
 
 ### Windows
 
@@ -43,6 +44,8 @@ To create a standalone package, use the `windeployqt` tool, included in your Qt 
 #### Requirements
 
 * `xz-libs`
+* `mingw-libisomd5sum`
+* `mingw-iso9660io`
 
 ### macOS
 

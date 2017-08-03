@@ -19,7 +19,7 @@ pushd build >/dev/null
 
 echo "=== Building dependency [iso9660io] ==="
 # TODO(squimrel): Use latest release once available.
-git clone --depth 1 -b cooking https://github.com/squimrel/iso9660io
+git clone --depth 1 https://github.com/squimrel/iso9660io
 pushd iso9660io >/dev/null
 cmake "-DCMAKE_INSTALL_PREFIX:PATH=${PWD}" -DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 .
 make install
