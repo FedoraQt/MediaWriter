@@ -415,24 +415,29 @@ void Drive::onReadyRead() {
     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING && m_image->status() != ReleaseVariant::WRITING_OVERLAY)
         m_image->setStatus(ReleaseVariant::WRITING);
 
-    m_progress->setTo(10100);
-    m_progress->setValue(0);
+    m_progress->setTo(10000);
+    m_progress->setValue(0.0 / 0.0);
     while (m_process->bytesAvailable() > 0) {
         QString line = m_process->readLine().trimmed();
         if (line == "CHECK") {
             qDebug() << metaObject()->className() << "Written media check starting";
-            m_progress->setValue(0);
+            m_progress->setValue(0.0 / 0.0);
             m_image->setStatus(ReleaseVariant::WRITE_VERIFYING);
         }
         else if (line == "OVERLAY") {
             qDebug() << metaObject()->className() << "Starting to create the overlay partition";
-            m_progress->setValue(0);
+            m_progress->setValue(0.0 / 0.0);
             m_image->setStatus(ReleaseVariant::WRITING_OVERLAY);
         }
         else {
             bool ok;
             qreal percentage = line.toLongLong(&ok);
-            if (ok && percentage >= 0) {
+            if (!ok || percentage < 0)
+                continue;
+            if (percentage >= m_progress->to()) {
+                m_progress->setValue(0.0 / 0.0);
+            }
+            else {
                 m_progress->setValue(percentage);
             }
         }
