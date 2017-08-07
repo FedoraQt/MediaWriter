@@ -235,10 +235,6 @@ Drive::RestoreStatus Drive::restoreStatus() {
     return m_restoreStatus;
 }
 
-void Drive::persistentStorage(bool enabled) {
-    m_persistentStorage = enabled;
-}
-
 QString Drive::helperBinary() {
     if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
         return qApp->applicationDirPath() + "/helper";

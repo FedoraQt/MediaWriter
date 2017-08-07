@@ -65,7 +65,7 @@ Dialog {
         onSelectedChanged: {
             writeImmediately.checked = false
             if (drives.selected) {
-                drives.selected.persistentStorage(persistentStorage.checked)
+                drives.selected.persistentStorage = persistentStorage.checked
             }
         }
     }
@@ -390,7 +390,7 @@ Dialog {
                             tooltip: qsTr("May take a lot longer")
                             onCheckedChanged: {
                                 if (drives.selected) {
-                                    drives.selected.persistentStorage(checked)
+                                    drives.selected.persistentStorage = checked
                                 }
                             }
                         }

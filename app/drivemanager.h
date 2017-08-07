@@ -141,6 +141,7 @@ class Drive : public QObject {
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(uint64_t size READ size CONSTANT)
     Q_PROPERTY(RestoreStatus restoreStatus READ restoreStatus NOTIFY restoreStatusChanged)
+    Q_PROPERTY(bool persistentStorage MEMBER m_persistentStorage);
 public:
     enum RestoreStatus {
         CLEAN = 0,
@@ -159,7 +160,6 @@ public:
     virtual uint64_t size() const;
     virtual RestoreStatus restoreStatus();
 
-    Q_INVOKABLE void persistentStorage(bool enabled);
     Q_INVOKABLE virtual bool write(ReleaseVariant *data);
     Q_INVOKABLE virtual void cancel();
     Q_INVOKABLE virtual void restore();
