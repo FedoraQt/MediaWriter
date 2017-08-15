@@ -173,14 +173,17 @@ static std::streamsize manipulateFatImage(std::fstream *iofile, const iso9660::F
     quint32 filesize = 0;
     auto &file = *iofile;
     while (file.read(buffer, SECTOR_SIZE)) {
+        std::size_t offset = 0;
+        for (; offset < SECTOR_SIZE; offset += 0x20) {
+            if (std::strncmp(buffer + offset, configfile, std::extent<decltype(configfile)>::value - 1) == 0) {
+                break;
+            }
+        }
         // Figure out position of grub.cfg entry.
-        char *entry = static_cast<char *>(
-                memmem(buffer, SECTOR_SIZE, configfile,
-                        std::extent<decltype(configfile)>::value - 1));
-        if (entry != nullptr) {
-            entrypos = (file.tellg() - static_cast<std::streamoff>(SECTOR_SIZE)) +
-                       (entry - buffer);
-            std::memcpy(&filesize, entry + FILESIZE_OFFSET, sizeof(filesize));
+        if (offset < SECTOR_SIZE) {
+            entrypos = (file.tellg() - static_cast<std::streamoff>(SECTOR_SIZE));
+            entrypos += offset;
+            std::memcpy(&filesize, buffer + offset + FILESIZE_OFFSET, sizeof(filesize));
             filesize = qFromLittleEndian(filesize);
             break;
         }
