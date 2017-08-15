@@ -387,7 +387,6 @@ Dialog {
                             enabled: [Variant.WRITING, Variant.WRITE_VERIFYING, Variant.WRITING_OVERLAY].indexOf(releases.variant.status) < 0
                             checked: false
                             text: qsTr("Enable persistent storage")
-                            tooltip: qsTr("May take a lot longer")
                             onCheckedChanged: {
                                 if (drives.selected) {
                                     drives.selected.persistentStorage = checked
