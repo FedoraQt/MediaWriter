@@ -4,7 +4,7 @@ Fedora Media Writer is a tool that helps users put Fedora images on their portab
 
 It is able to automatically download the required image for them and write them in a `dd`-like fashion, using either `dd` itself or some other way to access the drive directly.
 
-This overwrites the drive's partition layout though, so it also provides a way to restore a single-partition layout with a FAT32 partition.
+This overwrites the drive's partition layout though so it also provides a way to restore a single-partition layout with a FAT32 partition.
 
 ![Fedora Media Writer running, with expanded image list](/dist/screenshots/linux_main.png)
 
@@ -12,7 +12,7 @@ This overwrites the drive's partition layout though, so it also provides a way t
 
 If you experience any problem with the application, like crashes or errors when writing to your drives, please open an issue here on Github.
 
-Please don't forget to attach the FedoraMediaWriter.log file that will appear in your Documents folder ($HOME/Documents on Linux and Mac, C:\Users\<user>\Documents). It contains some non-sensitive information about your system and the log of all events happening the runtime.
+Please don't forget to attach the FedoraMediaWriter.log file that will appear in your Documents folder ($HOME/Documents on Linux and Mac, C:\Users\<user>\Documents). It contains some non-sensitive information about your system and the log of all events happening during the runtime.
 
 ## Building
 
@@ -57,7 +57,7 @@ To release a standalone package, use `macdeployqt`, supplied with your Qt instal
 
 If you want to help with translating Fedora Media Writer, please visit our [Zanata project page](https://fedora.zanata.org/iteration/view/mediawriter/master).
 
-Information about the individual Fedora flavors are retrieved from the websites and translated as a separate project.
+Information about the individual Fedora flavors is retrieved from the websites and translated as a separate project.
 
 ## Other information
 
