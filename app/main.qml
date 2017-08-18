@@ -67,7 +67,6 @@ ApplicationWindow {
         text: open ? qsTr("You inserted <b>%1</b> that already contains a live system.<br>Do you want to restore it to factory settings?").arg(drives.lastRestoreable.name) : ""
         open: drives.lastRestoreable
         acceptText: qsTr("Restore")
-        cancelText: qsTr("Do Nothing")
         property var disk: null
         anchors {
             left: parent.left

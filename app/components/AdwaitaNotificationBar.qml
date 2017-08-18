@@ -47,7 +47,6 @@ Rectangle {
 
     property alias text: label.text
     property alias acceptText: buttonAccept.text
-    property alias cancelText: buttonCancel.text
 
     signal accepted
     signal cancelled
@@ -74,25 +73,33 @@ Rectangle {
         }
 
         AdwaitaButton {
-            id: buttonCancel
-            visible: text.length
-            color: "transparent"
-
-            onClicked: {
-                root.open = false
-                root.cancelled()
-            }
-
-            Layout.alignment: Qt.AlignVCenter
-        }
-
-        AdwaitaButton {
             id: buttonAccept
             visible: text.length
 
             onClicked: {
                 root.open = false
                 root.accepted()
+            }
+
+            Layout.alignment: Qt.AlignVCenter
+        }
+
+        AdwaitaButton {
+            id: buttonCancel
+            flat: true
+            color: "transparent"
+            implicitWidth: $(20)
+            implicitHeight: $(20)
+            Text {
+                anchors.centerIn: parent
+                font.pointSize: $(10)
+                color: Qt.lighter(palette.buttonText, 1.8)
+                text: "✕"
+            }
+
+            onClicked: {
+                root.open = false
+                root.cancelled()
             }
 
             Layout.alignment: Qt.AlignVCenter
