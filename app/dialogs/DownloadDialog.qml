@@ -185,8 +185,6 @@ Dialog {
                     color: "#628fcf";
                     textColor: "white"
                     onClicked: {
-                        if (eraseCheckbox.checked)
-                            releases.variant.erase()
                         dialog.close()
                     }
                 }
