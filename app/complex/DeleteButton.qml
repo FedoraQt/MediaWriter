@@ -58,6 +58,14 @@ RowLayout {
     ]
 
     Timer {
+        id: workTimer
+        interval: 800
+        onTriggered: {
+            started()
+        }
+    }
+
+    Timer {
         id: hideTimer
         interval: 5000
         onTriggered: {
@@ -92,7 +100,7 @@ RowLayout {
         Behavior on implicitWidth { NumberAnimation { duration: deleteButtonRoot.state == "working" ? 120 : 240 } }
         onClicked: {
             deleteButtonRoot.state = "working"
-            started()
+            workTimer.start()
         }
         BusyIndicator {
             id: eraseIndicator
