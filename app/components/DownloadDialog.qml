@@ -459,21 +459,78 @@ Dialog {
                         RowLayout {
                             height: rightButton.height
                             width: parent.width
-                            spacing: $(10)
+                            spacing: $(6)
 
                             Item {
                                 Layout.fillWidth: true
                                 height: $(1)
                             }
+                            Text {
+                                id: eraseText
+                                font.pointSize: $(9)
+                                color: palette.windowText
+                                Behavior on opacity { NumberAnimation { duration: 120 } }
+                            }
+                            AdwaitaButton {
+                                id: eraseButton
+                                visible: opacity > 0.0
+                                opacity: 0.0
+                                color: "red"
+                                textColor: "white"
+                                Behavior on opacity { NumberAnimation { duration: 120 } }
+                                Behavior on implicitWidth { NumberAnimation { duration: 120 } }
+                                text: qsTr("Delete the Downloaded Image")
+                                onClicked: {
+                                    enabled = false
+                                    text = ""
+                                    eraseIndicator.opacity = 1.0
+                                    eraseTimer.start()
+                                }
+                                Timer {
+                                    id: eraseTimer
+                                    interval: 3000
+                                    onTriggered: {
+                                        eraseIndicator.opacity = 0.0
+                                        eraseCross.opacity = 1.0
+                                        eraseTimer2.start()
+                                    }
+                                }
+                                Timer {
+                                    id: eraseTimer2
+                                    interval: 3000
+                                    onTriggered: {
+                                        eraseText.opacity = 0
+                                        eraseButton.opacity = 0
+                                    }
+                                }
 
+                                BusyIndicator {
+                                    id: eraseIndicator
+                                    anchors.fill: parent
+                                    anchors.margins: $(9)
+                                    opacity: 0.0
+                                    visible: opacity > 0.0
+                                    Behavior on opacity { NumberAnimation { duration: 120 } }
+                                }
+                                CheckMark {
+                                    id: eraseCheckmark
+                                    anchors.fill: parent
+                                    anchors.margins: $(9)
+                                    opacity: 0.0
+                                    visible: opacity > 0.0
+                                    Behavior on opacity { NumberAnimation { duration: 120 } }
+                                }
+                                Cross {
+                                    id: eraseCross
+                                    anchors.fill: parent
+                                    anchors.margins: $(9)
+                                    opacity: 0.0
+                                    visible: opacity > 0.0
+                                    Behavior on opacity { NumberAnimation { duration: 120 } }
+                                }
+                            }
                             AdwaitaButton {
                                 id: leftButton
-                                anchors {
-                                    right: rightButton.left
-                                    top: parent.top
-                                    bottom: parent.bottom
-                                    rightMargin: $(6)
-                                }
                                 Behavior on implicitWidth { NumberAnimation { duration: 80 } }
                                 text: qsTr("Cancel")
                                 enabled: true
@@ -484,25 +541,9 @@ Dialog {
                                     writeImmediately.checked = false
                                     dialog.close()
                                 }
-                                AdwaitaCheckBox {
-                                    id: eraseCheckbox
-                                    visible: false
-                                    opacity: visible ? 1.0 : 0.0
-                                    Behavior on opacity { NumberAnimation { duration: 120 } }
-                                    text: "Erase the saved image"
-                                    anchors {
-                                        bottom: parent.top
-                                        margins: $(6)
-                                    }
-                                }
                             }
                             AdwaitaButton {
                                 id: rightButton
-                                anchors {
-                                    right: parent.right
-                                    top: parent.top
-                                    bottom: parent.bottom
-                                }
                                 Behavior on implicitWidth { NumberAnimation { duration: 80 } }
                                 textColor: enabled ? "white" : palette.text
                                 text: qsTr("Write to Disk")
