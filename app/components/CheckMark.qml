@@ -20,23 +20,23 @@
 import QtQuick 2.3
 
 Item {
-    width: childrenRect.width
-    height: $(58)
+    width: $(64)
+    height: $(64)
+    property real shorterSide: width < height ? width : height
     Rectangle {
         rotation: 45
-        x: $(2)
-        y: $(25)
-        width: $(33)
-        height: $(18)
+        x: shorterSide * 0.025
+        y: shorterSide * 0.45
+        width: shorterSide * 0.45
+        height: shorterSide * 0.25
         color: Qt.tint("light green", "green")
     }
-
     Rectangle {
         rotation: -45
-        x: $(13)
-        y: $(20)
-        width: $(60)
-        height: $(18)
+        x: shorterSide * 0.19
+        y: shorterSide * 0.39
+        width: shorterSide * 0.845
+        height: shorterSide * 0.25
         color: Qt.tint("light green", "green")
     }
 }

@@ -20,20 +20,23 @@
 import QtQuick 2.0
 
 Item {
-    width: childrenRect.width
-    height: $(58)
+    width: $(64)
+    height: $(64)
+    property real shorterSide: width < height ? width : height
     Rectangle {
+        transformOrigin: Item.TopLeft
         rotation: 45
-        y: $(20)
-        width: $(60)
-        height: $(18)
+        x: shorterSide * 0.18
+        width: shorterSide * 1.16
+        height: shorterSide * 0.25
         color: "red"
     }
     Rectangle {
+        transformOrigin: Item.TopRight
         rotation: -45
-        y: $(20)
-        width: $(60)
-        height: $(18)
+        x: shorterSide * -0.34
+        width: shorterSide * 1.16
+        height: shorterSide * 0.25
         color: "red"
     }
 }
