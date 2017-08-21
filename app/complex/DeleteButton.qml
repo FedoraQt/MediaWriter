@@ -8,6 +8,7 @@ RowLayout {
     id: deleteButtonRoot
 
     property string errorText: ""
+    signal started
 
     states: [
         State {
@@ -91,6 +92,7 @@ RowLayout {
         Behavior on implicitWidth { NumberAnimation { duration: deleteButtonRoot.state == "working" ? 120 : 240 } }
         onClicked: {
             deleteButtonRoot.state = "working"
+            started()
         }
         BusyIndicator {
             id: eraseIndicator

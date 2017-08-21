@@ -474,6 +474,12 @@ Dialog {
                                 Layout.maximumWidth: parent.width - leftButton.width - rightButton.width - parent.spacing * 2
                                 state: "hidden"
                                 errorText: qsTr("It was not possible to delete<br>\"<a href=\"%1\">%2</a>\".").arg(releases.variant.iso.match(".*/")).arg(releases.variant.iso)
+                                onStarted: {
+                                    if (releases.variant.erase())
+                                        state = "success"
+                                    else
+                                        state = "error"
+                                }
                             }
                             AdwaitaButton {
                                 id: leftButton

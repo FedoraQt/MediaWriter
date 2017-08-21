@@ -428,6 +428,8 @@ public:
     static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
     int onMediaCheckAdvanced(long long offset, long long total);
 
+    Q_INVOKABLE bool erase();
+
 signals:
     void isoChanged();
     void statusChanged();
@@ -440,7 +442,6 @@ signals:
 public slots:
     void download();
     void resetStatus();
-    void erase();
 
 private:
     QString m_temporaryIso {};
