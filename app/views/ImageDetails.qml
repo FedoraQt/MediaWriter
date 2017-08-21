@@ -26,6 +26,9 @@ import QtQuick.Window 2.0
 
 import MediaWriter 1.0
 
+import "../simple"
+import "../complex"
+
 Item {
     id: root
     anchors.fill: parent
@@ -220,7 +223,7 @@ Item {
                                     }
 
 
-                                    PopOver {
+                                    AdwaitaPopOver {
                                         id: versionPopover
                                         z: 2
                                         anchors {
@@ -258,7 +261,7 @@ Item {
                                             }
                                         }
                                     }
-                                    PopNotification {
+                                    AdwaitaPopNotification {
                                         id: prereleaseNotification
                                         z: 2
                                         property bool wasOpen: false
@@ -334,7 +337,7 @@ Item {
                                         height: $(1.2)
                                     }
 
-                                    PopOver {
+                                    AdwaitaPopOver {
                                         id: archPopover
                                         z: 2
                                         anchors {

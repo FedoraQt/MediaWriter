@@ -21,6 +21,8 @@ import QtQuick 2.3
 import QtQuick.Layouts 1.0
 import MediaWriter 1.0
 
+import "../simple"
+
 Item {
     id: root
     width: parent.width

@@ -22,6 +22,9 @@ import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.2
 import QtQuick.Layouts 1.1
 
+import "../simple"
+import "../complex"
+
 Item {
     id: imageList
 

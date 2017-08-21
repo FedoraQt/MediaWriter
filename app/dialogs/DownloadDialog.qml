@@ -26,6 +26,9 @@ import QtQuick.Window 2.0
 
 import MediaWriter 1.0
 
+import "../simple"
+import "../complex"
+
 Dialog {
     id: dialog
     title: qsTr("Write %1").arg(releases.selected.name)

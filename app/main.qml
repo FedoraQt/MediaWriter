@@ -24,7 +24,10 @@ import QtQuick.Window 2.0
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
 
-import "components"
+import "dialogs"
+import "simple"
+import "complex"
+import "views"
 
 ApplicationWindow {
     id: mainWindow
@@ -107,7 +110,7 @@ ApplicationWindow {
                 left: parent.left
                 right: parent.right
             }
-            model: ["components/ImageList.qml", "components/ImageDetails.qml"]
+            model: ["views/ImageList.qml", "views/ImageDetails.qml"]
             orientation: ListView.Horizontal
             snapMode: ListView.SnapToItem
             highlightFollowsCurrentItem: true
