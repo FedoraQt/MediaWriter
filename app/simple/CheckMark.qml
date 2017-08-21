@@ -23,13 +23,14 @@ Item {
     width: $(64)
     height: $(64)
     property real shorterSide: width < height ? width : height
+    property color color: Qt.tint("light green", "green")
     Rectangle {
         rotation: 45
         x: shorterSide * 0.025
         y: shorterSide * 0.45
         width: shorterSide * 0.45
         height: shorterSide * 0.25
-        color: Qt.tint("light green", "green")
+        color: parent.color
     }
     Rectangle {
         rotation: -45
@@ -37,6 +38,6 @@ Item {
         y: shorterSide * 0.39
         width: shorterSide * 0.845
         height: shorterSide * 0.25
-        color: Qt.tint("light green", "green")
+        color: parent.color
     }
 }

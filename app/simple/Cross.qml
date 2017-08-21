@@ -23,13 +23,14 @@ Item {
     width: $(64)
     height: $(64)
     property real shorterSide: width < height ? width : height
+    property color color: "red"
     Rectangle {
         transformOrigin: Item.TopLeft
         rotation: 45
         x: shorterSide * 0.18
         width: shorterSide * 1.16
         height: shorterSide * 0.25
-        color: "red"
+        color: parent.color
     }
     Rectangle {
         transformOrigin: Item.TopRight
@@ -37,6 +38,6 @@ Item {
         x: shorterSide * -0.34
         width: shorterSide * 1.16
         height: shorterSide * 0.25
-        color: "red"
+        color: parent.color
     }
 }
