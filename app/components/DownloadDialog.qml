@@ -30,7 +30,7 @@ Dialog {
     id: dialog
     title: qsTr("Write %1").arg(releases.selected.name)
 
-    height: layout.height + $(56)
+    height: layout.height + $(36)
     standardButtons: StandardButton.NoButton
 
     width: $(640)
@@ -168,13 +168,6 @@ Dialog {
                     value: drives.selected.progress.ratio;
                     progressColor: Qt.lighter("green")
                 }
-                PropertyChanges {
-                    target: rightButton
-                    enabled: true
-                    textColor: palette.buttonText
-                    text: qsTr("Stop")
-                    onClicked: drives.selected.cancel()
-                }
             },
             State {
                 name: "finished"
@@ -277,18 +270,20 @@ Dialog {
         ScrollView {
             id: contentScrollView
             anchors.fill: parent
+            horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
+            flickableItem.flickableDirection: Flickable.VerticalFlick
             contentItem: Item {
-                width: contentScrollView.width - $(48)
-                height: layout.height + $(32)
+                width: contentScrollView.width - $(18)
+                height: layout.height + $(18)
                 Column {
                     id: layout
-                    spacing: $(24)
+                    spacing: $(18)
                     anchors {
                         top: parent.top
                         left: parent.left
                         right: parent.right
-                        topMargin: $(32)
-                        leftMargin: $(48)
+                        topMargin: $(18)
+                        leftMargin: $(18)
                     }
                     Column {
                         id: infoColumn
@@ -313,7 +308,7 @@ Dialog {
                             id: messageRestore
                             visible: false
                             width: infoColumn.width
-                            text: qsTr("Your computer will now report this drive is much smaller than it really is. Just insert your drive again while Fedora Media Writer is running and you'll be able to restore it back to its full size.")
+                            text: qsTr("Your computer will now most likely report this drive as much smaller than it really is. To fix that after trying or installing Fedora, insert your drive again while Fedora Media Writer is running. You will be able to restore it back to its full size.")
                         }
 
                         InfoMessage {
