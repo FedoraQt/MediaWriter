@@ -67,6 +67,8 @@ Item {
             fill: parent
             leftMargin: anchors.rightMargin
         }
+        horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
+        flickableItem.flickableDirection: Flickable.VerticalFlick
         contentItem: Item {
             x: mainWindow.margin
             width: root.width - 2 * mainWindow.margin
