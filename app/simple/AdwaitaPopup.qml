@@ -98,11 +98,11 @@ Item {
             implicitWidth: $(21)
             implicitHeight: $(21)
             onClicked: root.open = false
-            Text {
+            Cross {
+                color: palette.windowText
                 anchors.centerIn: parent
-                font.pointSize: $(11)
-                color: "white"
-                text: "✕"
+                width: $(8)
+                height: $(8)
             }
         }
     }

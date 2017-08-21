@@ -90,11 +90,11 @@ Rectangle {
             color: "transparent"
             implicitWidth: $(20)
             implicitHeight: $(20)
-            Text {
+            Cross {
+                color: palette.windowText
                 anchors.centerIn: parent
-                font.pointSize: $(10)
-                color: Qt.lighter(palette.buttonText, 1.8)
-                text: "✕"
+                width: $(8)
+                height: $(8)
             }
 
             onClicked: {
