@@ -189,9 +189,8 @@ Dialog {
                     }
                 }
                 PropertyChanges {
-                    target: eraseCheckbox
-                    visible: true
-                    checked: false
+                    target: deleteButton
+                    state: "ready"
                 }
             },
             State {
@@ -276,7 +275,7 @@ Dialog {
             contentItem: Item {
                 width: contentScrollView.width - $(18)
                 height: layout.height + $(18)
-                Column {
+                ColumnLayout {
                     id: layout
                     spacing: $(18)
                     anchors {
@@ -286,10 +285,10 @@ Dialog {
                         topMargin: $(18)
                         leftMargin: $(18)
                     }
-                    Column {
+                    ColumnLayout {
                         id: infoColumn
                         spacing: $(4)
-                        width: parent.width
+                        Layout.fillWidth: true
 
                         InfoMessage {
                             id: messageDownload
@@ -451,7 +450,7 @@ Dialog {
 
                     ColumnLayout {
                         z: -1
-                        width: parent.width
+                        Layout.maximumWidth: parent.width
                         spacing: $(3)
                         Item {
                             height: $(3)
@@ -459,79 +458,26 @@ Dialog {
                         }
                         RowLayout {
                             height: rightButton.height
-                            width: parent.width
+                            Layout.minimumWidth: parent.width
+                            Layout.maximumWidth: parent.width
                             spacing: $(6)
 
                             Item {
                                 Layout.fillWidth: true
-                                height: $(1)
+                                Layout.fillHeight: true
                             }
-                            Text {
-                                id: eraseText
-                                font.pointSize: $(9)
-                                color: palette.windowText
-                                Behavior on opacity { NumberAnimation { duration: 120 } }
-                            }
-                            AdwaitaButton {
-                                id: eraseButton
-                                visible: opacity > 0.0
-                                opacity: 0.0
-                                color: "red"
-                                textColor: "white"
-                                Behavior on opacity { NumberAnimation { duration: 120 } }
-                                Behavior on implicitWidth { NumberAnimation { duration: 120 } }
-                                text: qsTr("Delete the Downloaded Image")
-                                onClicked: {
-                                    enabled = false
-                                    text = ""
-                                    eraseIndicator.opacity = 1.0
-                                    eraseTimer.start()
-                                }
-                                Timer {
-                                    id: eraseTimer
-                                    interval: 3000
-                                    onTriggered: {
-                                        eraseIndicator.opacity = 0.0
-                                        eraseCross.opacity = 1.0
-                                        eraseTimer2.start()
-                                    }
-                                }
-                                Timer {
-                                    id: eraseTimer2
-                                    interval: 3000
-                                    onTriggered: {
-                                        eraseText.opacity = 0
-                                        eraseButton.opacity = 0
-                                    }
-                                }
 
-                                BusyIndicator {
-                                    id: eraseIndicator
-                                    anchors.fill: parent
-                                    anchors.margins: $(9)
-                                    opacity: 0.0
-                                    visible: opacity > 0.0
-                                    Behavior on opacity { NumberAnimation { duration: 120 } }
-                                }
-                                CheckMark {
-                                    id: eraseCheckmark
-                                    anchors.fill: parent
-                                    anchors.margins: $(9)
-                                    opacity: 0.0
-                                    visible: opacity > 0.0
-                                    Behavior on opacity { NumberAnimation { duration: 120 } }
-                                }
-                                Cross {
-                                    id: eraseCross
-                                    anchors.fill: parent
-                                    anchors.margins: $(9)
-                                    opacity: 0.0
-                                    visible: opacity > 0.0
-                                    Behavior on opacity { NumberAnimation { duration: 120 } }
-                                }
+                            DeleteButton {
+                                id: deleteButton
+                                Layout.fillWidth: true
+                                Layout.fillHeight: true
+                                Layout.maximumWidth: parent.width - leftButton.width - rightButton.width - parent.spacing * 2
+                                state: "hidden"
+                                errorText: qsTr("It was not possible to delete<br>\"<a href=\"%1\">%2</a>\".").arg(releases.variant.iso.match(".*/")).arg(releases.variant.iso)
                             }
                             AdwaitaButton {
                                 id: leftButton
+                                Layout.alignment: Qt.AlignRight
                                 Behavior on implicitWidth { NumberAnimation { duration: 80 } }
                                 text: qsTr("Cancel")
                                 enabled: true
@@ -545,6 +491,7 @@ Dialog {
                             }
                             AdwaitaButton {
                                 id: rightButton
+                                Layout.alignment: Qt.AlignRight
                                 Behavior on implicitWidth { NumberAnimation { duration: 80 } }
                                 textColor: enabled ? "white" : palette.text
                                 text: qsTr("Write to Disk")
