@@ -304,33 +304,32 @@ static std::streamsize manipulateHfsImage(std::fstream *iofile, const iso9660::F
         }
     }
     return 0;
-#endif  // Q_OS_WIN
+#endif // Q_OS_WIN
 }
 
-static bool modifyFatImage(iso9660::Image *const image, const char *const filename, bool persistentStorage) {
+static void modifyFatImage(iso9660::Image *const image, const char *const filename, bool persistentStorage) {
     using namespace std::placeholders;
     auto file = image->find(filename);
-    if (file == nullptr) {
-        return false;
-    }
-    return image->modify_file(*file, std::bind(manipulateFatImage, _1, _2, persistentStorage));
+    if (file == nullptr)
+        return;
+
+    image->modify_file(*file, std::bind(manipulateFatImage, _1, _2, persistentStorage));
 }
 
-static bool modifyHfsImage(iso9660::Image *const image, const char *const filename, bool persistentStorage) {
+static void modifyHfsImage(iso9660::Image *const image, const char *const filename, bool persistentStorage) {
     using namespace std::placeholders;
     auto file = image->find(filename);
-    if (file == nullptr) {
-        return false;
-    }
-    return image->modify_file(*file, std::bind(manipulateHfsImage, _1, _2, persistentStorage));
-    return false;
+    if (file == nullptr)
+        return;
+
+    image->modify_file(*file, std::bind(manipulateHfsImage, _1, _2, persistentStorage));
 }
 
 static bool modifyIso(iso9660::Image *const image, const char *const filename, bool persistentStorage) {
     auto file = image->find(filename);
-    if (file == nullptr) {
+    if (file == nullptr)
         return false;
-    }
+
     if (persistentStorage) {
         return image->modify_file(*file, addOverlay);
     }
@@ -348,12 +347,8 @@ static bool modifyIso(const std::string &filename, bool persistentStorage) {
             changed = true;
         }
     }
-    if (modifyFatImage(&image, "efiboot.img", persistentStorage)) {
-        changed = true;
-    }
-    if (modifyHfsImage(&image, "macboot.img", persistentStorage)) {
-        changed = true;
-    }
+    modifyFatImage(&image, "efiboot.img", persistentStorage);
+    modifyHfsImage(&image, "macboot.img", persistentStorage);
     image.write();
     return changed;
 }
@@ -491,10 +486,6 @@ void check(int fd) {
 }
 
 void write(const QString &source, GenericDrive *const drive, bool persistentStorage) {
-    // Immediately trigger the UI into writing mode.
-    QTextStream out(stdout);
-    out << "1\n";
-    out.flush();
     auto sourceFile = source.toStdString();
     if (modifyIso(sourceFile, persistentStorage)) {
         char *errstr;
@@ -507,6 +498,7 @@ void write(const QString &source, GenericDrive *const drive, bool persistentStor
     drive->checkChecksum();
     if (persistentStorage) {
         drive->umount();
+        QTextStream out(stdout);
         out << "OVERLAY\n";
         out.flush();
         auto size = QFileInfo(source).size();

@@ -22,6 +22,7 @@
 #include <string>
 
 #include <QString>
+#include <QTextStream>
 
 #include <libimplantisomd5.h>
 
@@ -29,6 +30,10 @@
 #include "write.h"
 
 void GenericDrive::writeFile(const QString &source) {
+    // Immediately trigger the UI into writing mode.
+    QTextStream out(stdout);
+    out << "1\n";
+    out.flush();
     if (source.endsWith(".xz"))
         ::writeCompressed(source, this);
     else

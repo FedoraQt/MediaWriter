@@ -28,6 +28,7 @@
 
 #include <array>
 #include <memory>
+#include <type_traits>
 #include <utility>
 
 #include <QString>
@@ -84,7 +85,8 @@ private:
  */
 template <class T>
 void BlockDevice::writeBytes(const T buffer) {
-    const auto len = ::write(m_fd, buffer, std::extent<T>::value);
+    const auto bytes = std::is_array<T>::value ? std::extent<T>::value : sizeof(typename std::remove_pointer<T>::type);
+    const auto len = ::write(m_fd, buffer, bytes);
     if (len < 0) {
         throw std::runtime_error("Failed to write buffer to block device.");
     }
