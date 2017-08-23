@@ -363,11 +363,13 @@ int onProgress(void *data, long long offset, long long total) {
             offset = total;
         QTextStream out(stdout);
         int percentage = (offset * 10000) / total;
+#ifndef Q_OS_WIN
         // Sync every 10 percent of progress.
         if (percentage >= (1000 * (stats.syncs + 1))) {
             ++stats.syncs;
             ::fsync(stats.fd);
         }
+#endif // Q_OS_WIN
         out << percentage << "\n";
         out.flush();
     }
