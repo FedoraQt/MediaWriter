@@ -27,12 +27,6 @@
 
 // Platform specific drive handler.
 #include "drive.h"
-#include "write.h"
-
-void restore(Drive *const drive) {
-    drive->umount();
-    drive->wipe();
-}
 
 int main(int argc, char *argv[]) {
     const QString action = argv[1];
@@ -57,10 +51,11 @@ int main(int argc, char *argv[]) {
         try {
             drive->init();
             if (isRestore) {
-                restore(drive);
+                drive->umount();
+                drive->wipe();
             }
             else {
-                write(argv[2], drive, persistentStorage);
+                drive->writeIso(argv[2], persistentStorage);
             }
             qApp->exit(0);
         } catch (std::runtime_error &error) {

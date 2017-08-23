@@ -23,14 +23,6 @@
 #include <QString>
 #include <QtGlobal>
 
-// Platform specific drive handler.
-#include "genericdrive.h"
-
-#ifndef MEDIAWRITER_LZMA_LIMIT
-// 256MB memory limit for the decompressor
-#define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
-#endif
-
 struct ProgressStats {
     qint64 progress{ 0LL };
     int syncs{ 0 };
@@ -38,10 +30,6 @@ struct ProgressStats {
 };
 
 int onProgress(void *data, long long offset, long long total);
-void check(int fd);
-void writePlain(const QString &source, GenericDrive *const drive);
-void writeCompressed(const QString &source, GenericDrive *const drive);
-
-void write(const QString &source, GenericDrive *const drive, bool persistentStorage = false);
+bool changePersistentStorage(const std::string &filename, bool persistentStorage);
 
 #endif // WRITE_H

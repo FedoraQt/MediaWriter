@@ -20,7 +20,9 @@
 #include "write.h"
 
 #include <cstring>
+#include <unistd.h>
 
+#include <iostream>
 #include <array>
 #include <algorithm>
 #include <fstream>
@@ -31,8 +33,6 @@
 #include <utility>
 #include <vector>
 
-#include <QFile>
-#include <QFileInfo>
 #include <QObject>
 #include <QString>
 #include <QTextStream>
@@ -40,11 +40,6 @@
 #include <QtEndian>
 
 #include <iso9660io.h>
-#include <libcheckisomd5.h>
-#include <libimplantisomd5.h>
-#include <lzma.h>
-
-#include "page_aligned_buffer.h"
 
 constexpr char partitionLabel[] = "OVERLAY";
 constexpr char overlayFilename[] = "OVERLAY.IMG";
@@ -336,7 +331,7 @@ static bool modifyIso(iso9660::Image *const image, const char *const filename, b
     return image->modify_file(*file, removeOverlay);
 }
 
-static bool modifyIso(const std::string &filename, bool persistentStorage) {
+bool changePersistentStorage(const std::string &filename, bool persistentStorage) {
     constexpr const char *const configfiles[] = { "isolinux.cfg", "grub.cfg", "grub.conf" };
     std::fstream isofile(filename, std::ios::binary | std::ios::in | std::ios::out);
     iso9660::Image image(&isofile);
@@ -374,147 +369,4 @@ int onProgress(void *data, long long offset, long long total) {
         out.flush();
     }
     return 0;
-}
-
-void writeCompressed(const QString &source, GenericDrive *const drive) {
-    qint64 totalRead = 0;
-
-    lzma_stream strm = LZMA_STREAM_INIT;
-    lzma_ret ret;
-
-    PageAlignedBuffer<2> buffers;
-    const std::size_t bufferSize = buffers.size;
-    char *inBuffer = static_cast<char *>(buffers.get(0));
-    char *outBuffer = static_cast<char *>(buffers.get(1));
-    auto total = QFileInfo(source).size();
-    ProgressStats progress;
-    progress.fd = drive->getDescriptor();
-
-    QFile file(source);
-    file.open(QIODevice::ReadOnly);
-
-    ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
-    if (ret != LZMA_OK) {
-        throw std::runtime_error("Failed to start decompressing.");
-    }
-
-    strm.next_in = reinterpret_cast<uint8_t *>(inBuffer);
-    strm.avail_in = 0;
-    strm.next_out = reinterpret_cast<uint8_t *>(outBuffer);
-    strm.avail_out = bufferSize;
-
-    while (true) {
-        if (strm.avail_in == 0) {
-            qint64 len = file.read(inBuffer, bufferSize);
-            totalRead += len;
-
-            strm.next_in = reinterpret_cast<uint8_t *>(inBuffer);
-            strm.avail_in = len;
-
-            onProgress(&progress, totalRead, total);
-        }
-
-        ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
-        if (ret == LZMA_STREAM_END) {
-            drive->write(outBuffer, bufferSize - strm.avail_out);
-            return;
-        }
-        if (ret != LZMA_OK) {
-            switch (ret) {
-            case LZMA_MEM_ERROR:
-                throw std::runtime_error("There is not enough memory to decompress the file.");
-                break;
-            case LZMA_FORMAT_ERROR:
-            case LZMA_DATA_ERROR:
-            case LZMA_BUF_ERROR:
-                throw std::runtime_error("The downloaded compressed file is corrupted.");
-                break;
-            case LZMA_OPTIONS_ERROR:
-                throw std::runtime_error("Unsupported compression options.");
-                break;
-            default:
-                throw std::runtime_error("Unknown decompression error.");
-                break;
-            }
-        }
-
-        if (strm.avail_out == 0) {
-            drive->write(outBuffer, bufferSize - strm.avail_out);
-
-            strm.next_out = reinterpret_cast<uint8_t *>(outBuffer);
-            strm.avail_out = bufferSize;
-        }
-    }
-}
-
-void writePlain(const QString &source, GenericDrive *const drive) {
-    QFile inFile(source);
-    inFile.open(QIODevice::ReadOnly);
-
-    if (!inFile.isReadable()) {
-        throw std::runtime_error("Source image is not readable");
-    }
-
-    PageAlignedBuffer<2> buffers;
-    const std::size_t bufferSize = buffers.size;
-    char *buffer = static_cast<char *>(buffers.get(0));
-    auto total = QFileInfo(source).size();
-    ProgressStats progress;
-    progress.fd = drive->getDescriptor();
-
-    QTextStream out(stdout);
-    qint64 bytesWritten = 0;
-    while (!inFile.atEnd()) {
-        qint64 len = inFile.read(buffer, bufferSize);
-        if (len < 0) {
-            throw std::runtime_error("Source image is not readable");
-        }
-        drive->write(buffer, len);
-        bytesWritten += len;
-
-        onProgress(&progress, bytesWritten, total);
-    }
-}
-
-void check(int fd) {
-    QTextStream out(stdout);
-    out << "CHECK\n";
-    out.flush();
-
-    long long previous = 0LL;
-    switch (mediaCheckFD(fd, &onProgress, &previous)) {
-    case ISOMD5SUM_CHECK_NOT_FOUND:
-    case ISOMD5SUM_CHECK_PASSED:
-        out << "OK\n";
-        out.flush();
-        break;
-    case ISOMD5SUM_CHECK_FAILED:
-        throw std::runtime_error("Your drive is probably damaged.");
-    default:
-        throw std::runtime_error("Unexpected error occurred during media check.");
-    }
-}
-
-void write(const QString &source, GenericDrive *const drive, bool persistentStorage) {
-    auto sourceFile = source.toStdString();
-    if (modifyIso(sourceFile, persistentStorage)) {
-        char *errstr;
-        if (implantISOFile(sourceFile.c_str(), false, true, true, &errstr) != 0) {
-            throw std::runtime_error(std::string(errstr));
-        }
-    }
-    drive->umount();
-    drive->writeFile(source);
-    drive->checkChecksum();
-    if (persistentStorage) {
-        drive->umount();
-        QTextStream out(stdout);
-        out << "OVERLAY\n";
-        out.flush();
-        auto size = QFileInfo(source).size();
-        drive->addOverlayPartition(size);
-        drive->implantChecksum();
-        out << "DONE\n";
-        out.flush();
-    }
 }

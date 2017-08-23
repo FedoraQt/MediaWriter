@@ -32,7 +32,10 @@ public:
     virtual void wipe() = 0;
     virtual void addOverlayPartition(quint64 offset) = 0;
     virtual void umount() = 0;
+    void writePlain(const QString &source);
+    void writeCompressed(const QString &source);
     void writeFile(const QString& source);
+    void writeIso(const QString& source, bool persistentStorage);
     void checkChecksum();
     void implantChecksum();
 protected:
