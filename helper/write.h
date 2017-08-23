@@ -31,6 +31,12 @@
 #define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
 #endif
 
+struct ProgressStats {
+    qint64 progress{ 0LL };
+    int syncs{ 0 };
+    int fd{ -1 };
+};
+
 int onProgress(void *data, long long offset, long long total);
 void check(int fd);
 void writePlain(const QString &source, GenericDrive *const drive);

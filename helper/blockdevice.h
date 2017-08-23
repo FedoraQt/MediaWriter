@@ -72,7 +72,7 @@ private:
     int m_fd;
     std::size_t m_bytesWritten;
     std::size_t m_totalBytes;
-    std::size_t m_progress;
+    ProgressStats m_progress;
     QVector<PartitionEntry> m_entries;
 };
 

@@ -355,14 +355,20 @@ static bool modifyIso(const std::string &filename, bool persistentStorage) {
 
 int onProgress(void *data, long long offset, long long total) {
     constexpr long long MAGIC = 234;
-    long long &previousProgress = *static_cast<long long *>(data);
+    ProgressStats &stats = *static_cast<ProgressStats *>(data);
     const long long progress = (offset * MAGIC) / total;
-    if (progress > previousProgress) {
-        previousProgress = progress;
+    if (progress > stats.progress) {
+        stats.progress = progress;
         if (offset > total)
             offset = total;
         QTextStream out(stdout);
-        out << ((offset * 10000) / total) << "\n";
+        int percentage = (offset * 10000) / total;
+        // Sync every 10 percent of progress.
+        if (percentage >= (1000 * (stats.syncs + 1))) {
+            ++stats.syncs;
+            ::fsync(stats.fd);
+        }
+        out << percentage << "\n";
         out.flush();
     }
     return 0;
@@ -379,7 +385,8 @@ void writeCompressed(const QString &source, GenericDrive *const drive) {
     char *inBuffer = static_cast<char *>(buffers.get(0));
     char *outBuffer = static_cast<char *>(buffers.get(1));
     auto total = QFileInfo(source).size();
-    qint64 previousProgress = 0LL;
+    ProgressStats progress;
+    progress.fd = drive->getDescriptor();
 
     QFile file(source);
     file.open(QIODevice::ReadOnly);
@@ -402,7 +409,7 @@ void writeCompressed(const QString &source, GenericDrive *const drive) {
             strm.next_in = reinterpret_cast<uint8_t *>(inBuffer);
             strm.avail_in = len;
 
-            onProgress(&previousProgress, totalRead, total);
+            onProgress(&progress, totalRead, total);
         }
 
         ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
@@ -450,7 +457,8 @@ void writePlain(const QString &source, GenericDrive *const drive) {
     const std::size_t bufferSize = buffers.size;
     char *buffer = static_cast<char *>(buffers.get(0));
     auto total = QFileInfo(source).size();
-    qint64 previousProgress = 0LL;
+    ProgressStats progress;
+    progress.fd = drive->getDescriptor();
 
     QTextStream out(stdout);
     qint64 bytesWritten = 0;
@@ -462,7 +470,7 @@ void writePlain(const QString &source, GenericDrive *const drive) {
         drive->write(buffer, len);
         bytesWritten += len;
 
-        onProgress(&previousProgress, bytesWritten, total);
+        onProgress(&progress, bytesWritten, total);
     }
 }
 

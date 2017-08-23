@@ -35,7 +35,8 @@
 
 #include "write.h"
 
-BlockDevice::BlockDevice(int fd) : m_fd(fd), m_bytesWritten(0), m_totalBytes(0), m_progress(0) {
+BlockDevice::BlockDevice(int fd) : m_fd(fd), m_bytesWritten(0), m_totalBytes(0) {
+    m_progress.fd = fd;
 }
 
 void BlockDevice::read() {
