@@ -72,7 +72,6 @@ public:
 private:
     HANDLE m_handle;
     DWORD m_driveNumber;
-    OVERLAPPED m_overlap;
     DISK_GEOMETRY_EX m_geometry;
 };
 

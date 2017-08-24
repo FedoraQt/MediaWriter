@@ -19,6 +19,8 @@
 
 #include "drive.h"
 
+#include <unistd.h>
+
 #include <algorithm>
 #include <stdexcept>
 #include <type_traits>
@@ -104,19 +106,8 @@ void Drive::init() {
  * Write buffer directly to drive.
  */
 void Drive::write(const void *buffer, std::size_t size) {
-    DWORD bytesWritten;
-    OVERLAPPED overlap{};
-
-    if (!WriteFile(m_handle, buffer, size, &bytesWritten, &overlap)) {
-        if (GetLastError() == ERROR_IO_PENDING) {
-            WaitForSingleObject(overlap.hEvent, INFINITE);
-        }
-        else {
-            throwError("Destination drive is not writable.");
-        }
-    }
-
-    if (bytesWritten != size) {
+    int fd = getDescriptor();
+    if (static_cast<std::size_t>(::write(fd, buffer, size)) != size) {
         throw std::runtime_error("Destination drive is not writable.");
     }
 }
@@ -125,7 +116,11 @@ void Drive::write(const void *buffer, std::size_t size) {
  * Grab file descriptor.
  */
 int Drive::getDescriptor() const {
-    return _open_osfhandle(reinterpret_cast<intptr_t>(m_handle), 0);
+    static int fd = -1;
+    if (fd == -1) {
+        fd = _open_osfhandle(reinterpret_cast<intptr_t>(m_handle), 0);
+    }
+    return fd;
 }
 
 void Drive::wipe() {
