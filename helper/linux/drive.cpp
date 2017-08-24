@@ -67,13 +67,7 @@ void Drive::init() {
     }
     m_fileDescriptor = QDBusUnixFileDescriptor(fd);
     /*
-     * Not using udisks to open the partition at the moment because some
-     * operations don't work with O_DIRECT or O_EXCL.
-     * TODO(squimrel): Use OpenDevice which apperntly will be introduced in
-     * udisks 2.7.3.
-     */
-    /*
-    QDBusReply<QDBusUnixFileDescriptor> reply = m_device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
+    QDBusReply<QDBusUnixFileDescriptor> reply = m_device->callWithArgumentList(QDBus::Block, "OpenDevice", "rw", 0, Properties{});
     m_fileDescriptor = reply.value();
     if (!m_fileDescriptor.isValid()) {
         throw std::runtime_error(reply.error().message().toStdString());
