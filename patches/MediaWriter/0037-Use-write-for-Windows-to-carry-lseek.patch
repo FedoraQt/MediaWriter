@@ -1,0 +1,77 @@
+From 3ff1f703b888d4bb91ea1dbccf4f9ec0df1d767a Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 24 Aug 2017 11:22:04 +0000
+Subject: [PATCH 37/40] Use ::write for Windows to carry lseek
+
+With the msdn writeFile one would have to maintain the seek position
+with the so called overlap parameter which is a pain since then a
+Drive::write call would have to lseek to find the current position and
+then update it again for third party programs that use ::write anayways.
+---
+ helper/win/drive.cpp | 23 +++++++++--------------
+ helper/win/drive.h   |  1 -
+ 2 files changed, 9 insertions(+), 15 deletions(-)
+
+diff --git a/helper/win/drive.cpp b/helper/win/drive.cpp
+index 85f2765..a1d4420 100644
+--- a/helper/win/drive.cpp
++++ b/helper/win/drive.cpp
+@@ -19,6 +19,8 @@
+ 
+ #include "drive.h"
+ 
++#include <unistd.h>
++
+ #include <algorithm>
+ #include <stdexcept>
+ #include <type_traits>
+@@ -104,19 +106,8 @@ void Drive::init() {
+  * Write buffer directly to drive.
+  */
+ void Drive::write(const void *buffer, std::size_t size) {
+-    DWORD bytesWritten;
+-    OVERLAPPED overlap{};
+-
+-    if (!WriteFile(m_handle, buffer, size, &bytesWritten, &overlap)) {
+-        if (GetLastError() == ERROR_IO_PENDING) {
+-            WaitForSingleObject(overlap.hEvent, INFINITE);
+-        }
+-        else {
+-            throwError("Destination drive is not writable.");
+-        }
+-    }
+-
+-    if (bytesWritten != size) {
++    int fd = getDescriptor();
++    if (static_cast<std::size_t>(::write(fd, buffer, size)) != size) {
+         throw std::runtime_error("Destination drive is not writable.");
+     }
+ }
+@@ -125,7 +116,11 @@ void Drive::write(const void *buffer, std::size_t size) {
+  * Grab file descriptor.
+  */
+ int Drive::getDescriptor() const {
+-    return _open_osfhandle(reinterpret_cast<intptr_t>(m_handle), 0);
++    static int fd = -1;
++    if (fd == -1) {
++        fd = _open_osfhandle(reinterpret_cast<intptr_t>(m_handle), 0);
++    }
++    return fd;
+ }
+ 
+ void Drive::wipe() {
+diff --git a/helper/win/drive.h b/helper/win/drive.h
+index 7aac99b..592d937 100644
+--- a/helper/win/drive.h
++++ b/helper/win/drive.h
+@@ -72,7 +72,6 @@ public:
+ private:
+     HANDLE m_handle;
+     DWORD m_driveNumber;
+-    OVERLAPPED m_overlap;
+     DISK_GEOMETRY_EX m_geometry;
+ };
+ 
+-- 
+2.14.1
+

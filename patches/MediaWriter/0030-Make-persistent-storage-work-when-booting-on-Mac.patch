@@ -1,0 +1,143 @@
+From cdf0cd80ae65640ae2c894834a5346bb35334a11 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Fri, 18 Aug 2017 01:50:44 +0000
+Subject: [PATCH 30/40] Make persistent storage work when booting on Mac
+
+except if it's the drive was created using Windows.
+---
+ helper/write.cpp | 105 ++++++++++++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 101 insertions(+), 4 deletions(-)
+
+diff --git a/helper/write.cpp b/helper/write.cpp
+index ec222b9..fbaaee9 100644
+--- a/helper/write.cpp
++++ b/helper/write.cpp
+@@ -21,6 +21,7 @@
+ 
+ #include <cstring>
+ 
++#include <array>
+ #include <algorithm>
+ #include <fstream>
+ #include <functional>
+@@ -210,7 +211,100 @@ static std::streamsize manipulateFatImage(std::fstream *iofile, const iso9660::F
+         filesize = qToLittleEndian(filesize);
+         file.write(reinterpret_cast<char *>(&filesize), sizeof(filesize));
+     }
+-    return growth;
++    return 0;
++}
++
++/*
++ * This solution is so much worse than the one for fat. It's surprising that it
++ * works considering how ugly it is.
++ */
++static std::streamsize manipulateHfsImage(std::fstream *iofile, const iso9660::File &fileinfo, bool persistentStorage) {
++    Q_UNUSED(fileinfo);
++#ifdef Q_OS_WIN
++    Q_UNUSED(iofile);
++    Q_UNUSED(persistentStorage);
++    return 0;
++#else
++    constexpr std::size_t SECTOR_SIZE = 512;
++    auto sector_align = [SECTOR_SIZE](std::size_t size) {
++        return (size + (SECTOR_SIZE - 1)) & -SECTOR_SIZE;
++    };
++    /*
++     * Assume that there're two grub.cfg files are on this image and that they
++     * have equal content.
++     * If there're less than two files nothing will be modified.
++     * If they don't have equal content the image might get corrupted if we're
++     * unlucky.
++     */
++    constexpr std::size_t NUM_FILES = 2;
++    std::array<std::streamsize, NUM_FILES> entrypos = { -1, -1 };
++    std::array<quint32, NUM_FILES> filesize = { 0, 0 };
++    // Depends on configfile length.
++    constexpr std::size_t FILESIZE_OFFSET = 108;
++    constexpr std::size_t SKIP = FILESIZE_OFFSET + sizeof(filesize[0]);
++    constexpr std::size_t MAGIC_OFFSET = 0x40;
++    constexpr char MAGIC_VALUE = '\x3f';
++    constexpr char configfile[] = "\0g\0r\0u\0b\0.\0c\0f\0g";
++    std::size_t file_index = 0;
++    char buffer[SECTOR_SIZE];
++    auto &file = *iofile;
++    while (file.read(buffer, SECTOR_SIZE)) {
++        char *entry = static_cast<char *>(
++                memmem(buffer, SECTOR_SIZE - SKIP, configfile,
++                        std::extent<decltype(configfile)>::value - 1));
++        if (entry != nullptr && entry[MAGIC_OFFSET] == MAGIC_VALUE) {
++            entrypos[file_index] =
++                    (file.tellg() - static_cast<std::streamoff>(SECTOR_SIZE)) +
++                    (entry - buffer);
++            std::memcpy(&filesize[file_index], entry + FILESIZE_OFFSET,
++                    sizeof(filesize[file_index]));
++            filesize[file_index] = qFromBigEndian(filesize[file_index]);
++            if (file_index < NUM_FILES - 1) {
++                ++file_index;
++            }
++            else {
++                // Make sure we're aligned for the grub.cfg signature search.
++                file.seekg(sector_align(file.tellg()));
++                file_index = 0;
++                break;
++            }
++        }
++        file.seekg(-SKIP, std::ios::cur);
++    }
++    while (file.read(buffer, SECTOR_SIZE)) {
++        constexpr char grub_signature[] = "set default";
++        // Modify overlay switches of grub.cfg.
++        if (std::strncmp(buffer, grub_signature,
++                    std::extent<decltype(grub_signature)>::value - 1) == 0) {
++            file.seekg(-SECTOR_SIZE, std::ios::cur);
++            iso9660::File fileinfo;
++            fileinfo.size = filesize[file_index];
++            if (persistentStorage) {
++                filesize[file_index] += addOverlay(iofile, fileinfo);
++            }
++            else {
++                filesize[file_index] += removeOverlay(iofile, fileinfo);
++            }
++            if (file_index < NUM_FILES - 1) {
++                // Make sure we're aligned for the next grub.cfg signature search.
++                file.seekg(sector_align(file.tellg()));
++                ++file_index;
++            }
++            else {
++                break;
++            }
++        }
++    }
++    for (file_index = 0; file_index < NUM_FILES; ++file_index) {
++        if (entrypos[file_index] >= 0) {
++            file.seekg(entrypos[file_index] + FILESIZE_OFFSET);
++            filesize[file_index] = qToBigEndian(filesize[file_index]);
++            file.write(reinterpret_cast<char *>(&filesize[file_index]),
++                    sizeof(filesize[file_index]));
++        }
++    }
++    return 0;
++#endif  // Q_OS_WIN
+ }
+ 
+ static bool modifyFatImage(iso9660::Image *const image, const char *const filename, bool persistentStorage) {
+@@ -223,9 +317,12 @@ static bool modifyFatImage(iso9660::Image *const image, const char *const filena
+ }
+ 
+ static bool modifyHfsImage(iso9660::Image *const image, const char *const filename, bool persistentStorage) {
+-    Q_UNUSED(image);
+-    Q_UNUSED(filename);
+-    Q_UNUSED(persistentStorage);
++    using namespace std::placeholders;
++    auto file = image->find(filename);
++    if (file == nullptr) {
++        return false;
++    }
++    return image->modify_file(*file, std::bind(manipulateHfsImage, _1, _2, persistentStorage));
+     return false;
+ }
+ 
+-- 
+2.14.1
+

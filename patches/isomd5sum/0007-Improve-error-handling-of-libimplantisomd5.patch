@@ -1,0 +1,182 @@
+From eefe389b574e4440d0088224bc79fc901ea72937 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Mon, 5 Jun 2017 20:59:13 +0000
+Subject: [PATCH 07/21] Improve error handling of libimplantisomd5
+
+* Don't exit.
+* Convert warnings to errors.
+* Make sure that the file descriptor will be closed.
+---
+ libimplantisomd5.c | 93 +++++++++++++++++++++++++++++++++++-------------------
+ 1 file changed, 60 insertions(+), 33 deletions(-)
+
+diff --git a/libimplantisomd5.c b/libimplantisomd5.c
+index 86b049b..72e8cfb 100644
+--- a/libimplantisomd5.c
++++ b/libimplantisomd5.c
+@@ -21,6 +21,7 @@
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+  */
+ 
++#include <errno.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <sys/types.h>
+@@ -33,15 +34,17 @@
+ #include "libimplantisomd5.h"
+ #include "utilities.h"
+ 
+-static size_t writeAppData(unsigned char *const appdata, const char *const valstr, const size_t loc) {
+-    if (loc + strlen(valstr) >= APPDATA_SIZE) {
+-        printf("Attempted to write too much appdata, exiting...\n");
+-        exit(-1);
++static int writeAppData(unsigned char *const appdata, const char *const valstr, size_t *loc, char **errstr) {
++    size_t vallen = strlen(valstr);
++    if (*loc + vallen >= APPDATA_SIZE) {
++        *errstr = "Attempted to write too much appdata.\n\n";
++        return -1;
+     }
+ 
+-    memcpy(appdata + loc, valstr, strlen(valstr));
++    memcpy(appdata + *loc, valstr, vallen);
+ 
+-    return loc + strlen(valstr);
++    *loc += vallen;
++    return 0;
+ }
+ 
+ int implantISOFile(char *fname, int supported, int forceit, int quiet, char **errstr) {
+@@ -51,22 +54,27 @@ int implantISOFile(char *fname, int supported, int forceit, int quiet, char **er
+         return -1;
+     }
+ 
++    int errcode = -1;
+     off_t pvd_offset;
+     const off_t isosize = primary_volume_size(isofd, &pvd_offset);
+     if (isosize == 0) {
+-        *errstr = "Could not find primary volumne!\n\n";
+-        return -1;
++        *errstr = "Could not find primary volume!\n\n";
++        goto fail;
+     }
+ 
+     lseek(isofd, pvd_offset + APPDATA_OFFSET, SEEK_SET);
+     unsigned char appdata[APPDATA_SIZE];
+-    read(isofd, appdata, APPDATA_SIZE);
++    if (read(isofd, appdata, APPDATA_SIZE) <= 0) {
++        errcode = -errno;
++        *errstr = "Failed to read application data from file.\n\n";
++        goto fail;
++    }
+ 
+     if (!forceit) {
+         for (size_t i = 0; i < APPDATA_SIZE; i++) {
+             if (appdata[i] != ' ') {
+-                *errstr = "Application data has been used - not implanting md5sum!\n";
+-                return -1;
++                *errstr = "Application data has been used - not implanting md5sum!\n\n";
++                goto fail;
+             }
+         }
+     } else {
+@@ -75,8 +83,9 @@ int implantISOFile(char *fname, int supported, int forceit, int quiet, char **er
+         memset(appdata, ' ', APPDATA_SIZE);
+         ssize_t error = write(isofd, appdata, APPDATA_SIZE);
+         if (error < 0) {
+-            printf("write failed %ld\n", error);
+-            perror("");
++            *errstr = "Write failed.\n\n";
++            errcode = error;
++            goto fail;
+         }
+     }
+ 
+@@ -127,47 +136,65 @@ int implantISOFile(char *fname, int supported, int forceit, int quiet, char **er
+     memset(appdata, ' ', APPDATA_SIZE);
+ 
+     size_t loc = 0;
+-    loc = writeAppData(appdata, "ISO MD5SUM = ", loc);
+-    loc = writeAppData(appdata, hashsum, loc);
+-    loc = writeAppData(appdata, ";", loc);
++    if (writeAppData(appdata, "ISO MD5SUM = ", &loc, errstr))
++        goto fail;
++    if (writeAppData(appdata, hashsum, &loc, errstr))
++        goto fail;
++    if (writeAppData(appdata, ";", &loc, errstr))
++        goto fail;
+ 
+     char *appdata_buffer;
+     appdata_buffer = aligned_alloc(pagesize, APPDATA_SIZE * sizeof(*appdata_buffer));
+     snprintf(appdata_buffer, APPDATA_SIZE, "SKIPSECTORS = %lld", SKIPSECTORS);
+ 
+-    loc = writeAppData(appdata, appdata_buffer, loc);
+-    loc = writeAppData(appdata, ";", loc);
++    if (writeAppData(appdata, appdata_buffer, &loc, errstr))
++        goto fail;
++    if (writeAppData(appdata, ";", &loc, errstr))
++        goto fail;
+ 
+     if (!quiet)
+         printf("Setting supported flag to %d\n", supported);
+     static const char status[] = "RHLISOSTATUS=%d";
+     char tmp[sizeof(status) / sizeof(*status)];
+     snprintf(tmp, sizeof(status) / sizeof(*status), status, supported);
+-    loc = writeAppData(appdata, tmp, loc);
++    if (writeAppData(appdata, tmp, &loc, errstr))
++        goto fail;
+ 
+-    loc = writeAppData(appdata, ";", loc);
++    if (writeAppData(appdata, ";", &loc, errstr))
++        goto fail;
+ 
+-    loc = writeAppData(appdata, "FRAGMENT SUMS = ", loc);
+-    loc = writeAppData(appdata, fragmentsums, loc);
+-    loc = writeAppData(appdata, ";", loc);
++    if (writeAppData(appdata, "FRAGMENT SUMS = ", &loc, errstr))
++        goto fail;
++    if (writeAppData(appdata, fragmentsums, &loc, errstr))
++        goto fail;
++    if (writeAppData(appdata, ";", &loc, errstr))
++        goto fail;
+ 
+     snprintf(appdata_buffer, APPDATA_SIZE, "FRAGMENT COUNT = %ld", FRAGMENT_COUNT);
+-    loc = writeAppData(appdata, appdata_buffer, loc);
+-    loc = writeAppData(appdata, ";", loc);
+-
+-    loc = writeAppData(
+-        appdata, "THIS IS NOT THE SAME AS RUNNING MD5SUM ON THIS ISO!!", loc);
+-
+-    if (lseek(isofd, pvd_offset + APPDATA_OFFSET, SEEK_SET) < 0)
+-        printf("seek failed\n");
++    if (writeAppData(appdata, appdata_buffer, &loc, errstr))
++        goto fail;
++    if (writeAppData(appdata, ";", &loc, errstr))
++        goto fail;
++
++    if (writeAppData(
++            appdata, "THIS IS NOT THE SAME AS RUNNING MD5SUM ON THIS ISO!!", &loc, errstr))
++        goto fail;
++
++    if (lseek(isofd, pvd_offset + APPDATA_OFFSET, SEEK_SET) < 0) {
++        *errstr = "Seek failed.\n\n";
++        goto fail;
++    }
+ 
+     ssize_t error = write(isofd, appdata, APPDATA_SIZE);
+     if (error < 0) {
+-        printf("write failed %ld\n", error);
+-        perror("");
++        *errstr = "Write failed.\n\n";
++        goto fail;
+     }
+ 
+     close(isofd);
+     errstr = NULL;
+     return 0;
++fail:
++    close(isofd);
++    return errcode;
+ }
+-- 
+2.14.1
+

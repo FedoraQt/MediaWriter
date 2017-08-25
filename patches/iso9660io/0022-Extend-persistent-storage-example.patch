@@ -1,0 +1,423 @@
+From aec51be1ee92108eeb240f679435d8c9bf620147 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Sat, 12 Aug 2017 18:00:27 +0000
+Subject: [PATCH 22/28] Extend persistent storage example
+
+Add switch into file inside of FAT image on ISO9660 image.
+---
+ CMakeLists.txt                |   2 +-
+ example/file-manipulation.cc  | 158 ++++++++++++++++++++++++++++++++++++++++++
+ example/file-manipulation.h   |  32 +++++++++
+ example/persistent-storage.cc |  91 ++++--------------------
+ example/persistent-storage.h  |  36 ++++++++++
+ include/file.h                |   1 +
+ src/file.cc                   |  11 +++
+ 7 files changed, 251 insertions(+), 80 deletions(-)
+ create mode 100644 example/file-manipulation.cc
+ create mode 100644 example/file-manipulation.h
+ create mode 100644 example/persistent-storage.h
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 63ea6e1..85afad1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -65,5 +65,5 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.pc
+   DESTINATION ${DATADIR}/pkgconfig)
+ 
+ # Build example.
+-add_executable(persistent-storage EXCLUDE_FROM_ALL example/persistent-storage.cc)
++add_executable(persistent-storage EXCLUDE_FROM_ALL example/persistent-storage.cc example/persistent-storage.h example/file-manipulation.h example/file-manipulation.cc)
+ target_link_libraries(persistent-storage ${CMAKE_PROJECT_NAME})
+diff --git a/example/file-manipulation.cc b/example/file-manipulation.cc
+new file mode 100644
+index 0000000..3999880
+--- /dev/null
++++ b/example/file-manipulation.cc
+@@ -0,0 +1,158 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++/**
++ * TODO(squimrel): Use a library that helps me with file manipulation and
++ * delivers beautiful solutions.
++ */
++
++#include "./example/file-manipulation.h"
++
++#include <cstring>
++
++#include <algorithm>
++#include <fstream>
++#include <ios>
++#include <iostream>
++#include <iterator>
++#include <string>
++#include <utility>
++#include <vector>
++
++#include "./include/iso9660.h"
++#include "./include/utility.h"
++
++std::streamsize add_overlay_switch_to_grub_on_fat_image(
++    std::fstream *iofile, const iso9660::File &fileinfo) {
++  auto swap_byte_order = [](std::uint32_t num) {
++    return (num >> 24) | ((num << 8) & 0x00ff0000) | ((num >> 8) & 0x0000ff00) |
++           (num << 24);
++  };
++  constexpr char configfile[] = "GRUB    CFG";
++  /*
++   * FIXME(squimrel): Find the location of the grub.cfg file content more
++   * reliably by reading the cluster number of its directory entry and
++   * locating it with the help of fatlength, sectors per cluster and
++   * number of reserved sectors which also have to be read.
++   */
++  constexpr char grub_signature[] = "set default";
++  constexpr int SECTOR_SIZE = 512;
++  constexpr int FILESIZE_OFFSET = 28;
++  char buffer[SECTOR_SIZE];
++  std::streamsize entrypos = -1;
++  std::streamsize growth = 0;
++  std::uint32_t filesize = 0;
++  auto &file = *iofile;
++  while (file.read(buffer, SECTOR_SIZE)) {
++    // Figure out position of grub.cfg entry.
++    char *entry = static_cast<char *>(
++        memmem(buffer, SECTOR_SIZE, configfile,
++               std::extent<decltype(configfile)>::value - 1));
++    if (entry != nullptr) {
++      entrypos = (file.tellg() - static_cast<std::streamoff>(SECTOR_SIZE)) +
++                 (entry - buffer);
++      std::memcpy(&filesize, entry + FILESIZE_OFFSET, sizeof(filesize));
++      if (ENDIANNESS == utility::Endian::BIG) {
++        filesize = swap_byte_order(filesize);
++      }
++      break;
++    }
++  }
++  while (file.read(buffer, SECTOR_SIZE)) {
++    // Modify overlay switches of grub.cfg.
++    if (std::strncmp(buffer, grub_signature,
++                     std::extent<decltype(grub_signature)>::value - 1) == 0) {
++      file.seekg(-SECTOR_SIZE, std::ios::cur);
++      iso9660::File fileinfo;
++      fileinfo.size = filesize;
++      growth = insert_overlay_switch(iofile, fileinfo);
++      filesize += growth;
++      break;
++    }
++  }
++  if (entrypos >= 0) {
++    file.seekg(entrypos + FILESIZE_OFFSET);
++    if (ENDIANNESS == utility::Endian::BIG) {
++      filesize = swap_byte_order(filesize);
++    }
++    file.write(reinterpret_cast<char *>(&filesize), sizeof(filesize));
++  }
++  return growth;
++}
++
++std::streamsize insert_overlay_switch(std::fstream *iofile,
++                                      const iso9660::File &fileinfo) {
++  auto &file = *iofile;
++  const std::string needle = "rd.live.image";
++  const std::string overlay_switch =
++      " rd.live.overlay=LABEL=OVERLAY:/persistent-overlay.img";
++  const std::size_t max_growth = fileinfo.max_growth();
++  std::cout << "File has a size of " << fileinfo.size
++            << " bytes and can grow by " << max_growth << " bytes.\n"
++            << std::flush;
++  /*
++   * The size by which the file has grown due to added overlay switches.
++   */
++  std::size_t growth = 0;
++  std::size_t insert_position = 0;
++  std::size_t read_bytes = 0;
++  /*
++   * Simply keep the entire modified file section in memory. Could be done
++   * smarter.
++   */
++  std::vector<char> file_content;
++  for (std::string line; std::getline(file, line);) {
++    line += '\n';
++    read_bytes += line.size();
++    if (read_bytes > fileinfo.size) {
++      throw iso9660::CorruptFileException("Unexpected end of file at byte " +
++                                          std::to_string(read_bytes) + " of " +
++                                          std::to_string(fileinfo.size) + ".");
++    }
++    const auto position = line.find(needle);
++    if (position != std::string::npos) {
++      growth += overlay_switch.size();
++      if (growth > max_growth) {
++        throw iso9660::NotImplementedException(
++            "Bad luck! The file has grown too much. It does not fit into the "
++            "ISO 9660 image anymore without some serious modification.");
++      }
++      const std::size_t line_size = line.size();
++      const std::size_t line_offset = position + needle.size();
++      line.insert(line_offset, overlay_switch);
++      if (insert_position == 0) {
++        insert_position = file.tellg();
++        insert_position -= line_size - line_offset;
++        file_content.reserve((fileinfo.size + max_growth) - read_bytes);
++        std::move(line.begin() + line_offset, line.end(),
++                  std::back_inserter(file_content));
++      } else {
++        std::move(line.begin(), line.end(), std::back_inserter(file_content));
++      }
++    } else if (insert_position != 0) {
++      std::move(line.begin(), line.end(), std::back_inserter(file_content));
++    }
++    if (read_bytes == fileinfo.size) break;
++  }
++  file.clear();
++  file.seekp(insert_position);
++  file.write(file_content.data(), file_content.size());
++  std::cout << "Grown by " << growth << " of " << max_growth << " bytes.\n"
++            << std::flush;
++  return growth;
++}
+diff --git a/example/file-manipulation.h b/example/file-manipulation.h
+new file mode 100644
+index 0000000..db48700
+--- /dev/null
++++ b/example/file-manipulation.h
+@@ -0,0 +1,32 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++
++#include <fstream>
++#include <ios>
++
++#include "./include/iso9660.h"
++
++/**
++ * Note: A better name for this would be much appreciated.
++ */
++std::streamsize add_overlay_switch_to_grub_on_fat_image(
++    std::fstream* iofile, const iso9660::File& fileinfo);
++
++std::streamsize insert_overlay_switch(std::fstream* iofile,
++                                      const iso9660::File& fileinfo);
+diff --git a/example/persistent-storage.cc b/example/persistent-storage.cc
+index 4f66050..f73476c 100644
+--- a/example/persistent-storage.cc
++++ b/example/persistent-storage.cc
+@@ -17,87 +17,15 @@
+  * USA.
+  */
+ 
+-#include <algorithm>
++#include "./example/persistent-storage.h"
++
+ #include <fstream>
+ #include <ios>
+ #include <iostream>
+-#include <string>
+-#include <vector>
+ 
+-#include "./include/exception.h"
+-#include "./include/file.h"
+-#include "./include/image.h"
++#include "./include/iso9660.h"
+ 
+-std::streamsize insert_overlay_switch(std::fstream* iofile,
+-                                      const iso9660::File& fileinfo) {
+-  auto& file = *iofile;
+-  const std::string needle = "rd.live.image";
+-  const std::string overlay_switch =
+-      " rd.live.overlay=LABEL=OVERLAY:/persistent-overlay.img";
+-  const std::size_t max_growth = fileinfo.max_growth();
+-  std::cout << "File has a size of " << fileinfo.size
+-            << " bytes and can grow by " << max_growth << " bytes.\n"
+-            << std::flush;
+-  /*
+-   * The size by which the file has grown due to added overlay switches.
+-   */
+-  std::size_t growth = 0;
+-  std::size_t insert_position = 0;
+-  std::size_t read_bytes = 0;
+-  /*
+-   * Simply keep the entire modified file section in memory. Could be done
+-   * smarter.
+-   */
+-  std::vector<char> file_content;
+-  for (std::string line; std::getline(file, line);) {
+-    line += '\n';
+-    read_bytes += line.size();
+-    if (read_bytes > fileinfo.size) {
+-      throw iso9660::CorruptFileException("Unexpected end of file at byte " +
+-                                          std::to_string(read_bytes) + " of " +
+-                                          std::to_string(fileinfo.size) + ".");
+-    }
+-    const auto position = line.find(needle);
+-    if (position != std::string::npos) {
+-      growth += overlay_switch.size();
+-      if (growth > max_growth) {
+-        throw iso9660::NotImplementedException(
+-            "Bad luck! The file has grown too much. It does not fit into the "
+-            "ISO 9660 image anymore without some serious modification.");
+-      }
+-      const std::size_t line_size = line.size();
+-      const std::size_t line_offset = position + needle.size();
+-      line.insert(line_offset, overlay_switch);
+-      if (insert_position == 0) {
+-        insert_position = file.tellg();
+-        insert_position -= line_size - line_offset;
+-        file_content.reserve((fileinfo.size + max_growth) - read_bytes);
+-        std::move(line.begin() + line_offset, line.end(),
+-                  std::back_inserter(file_content));
+-      } else {
+-        std::move(line.begin(), line.end(), std::back_inserter(file_content));
+-      }
+-    } else if (insert_position != 0) {
+-      std::move(line.begin(), line.end(), std::back_inserter(file_content));
+-    }
+-    if (read_bytes == fileinfo.size) break;
+-  }
+-  file.clear();
+-  file.seekp(insert_position);
+-  file.write(file_content.data(), file_content.size());
+-  std::cout << "Grown by " << growth << " of " << max_growth << " bytes.\n"
+-            << std::flush;
+-  return growth;
+-}
+-
+-void add_overlay(iso9660::Image* const isoimage, const std::string& filename) {
+-  auto file = isoimage->find(filename);
+-  if (file == nullptr) {
+-    std::cout << "Can't find " + filename + ". Skipping..\n" << std::flush;
+-    return;
+-  }
+-  isoimage->modify_file(*file, insert_overlay_switch);
+-}
++#include "./example/file-manipulation.h"
+ 
+ int main(int argc, const char* argv[]) {
+   if (argc != 2) {
+@@ -111,7 +39,12 @@ int main(int argc, const char* argv[]) {
+   }
+   iso9660::Image isoimage(&isofile);
+   isoimage.read();
+-  add_overlay(&isoimage, "isolinux.cfg");
+-  add_overlay(&isoimage, "grub.cfg");
+-  add_overlay(&isoimage, "grub.conf");
++  constexpr const char* const configfiles[] = {"isolinux.cfg", "grub.cfg",
++                                               "grub.conf"};
++  for (const char* const configfile : configfiles) {
++    add_overlay(&isoimage, configfile, insert_overlay_switch);
++  }
++  add_overlay(&isoimage, "efiboot.img",
++              add_overlay_switch_to_grub_on_fat_image);
++  isoimage.write();
+ }
+diff --git a/example/persistent-storage.h b/example/persistent-storage.h
+new file mode 100644
+index 0000000..d21f1d4
+--- /dev/null
++++ b/example/persistent-storage.h
+@@ -0,0 +1,36 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++
++#include <iostream>
++#include <string>
++
++#include "./include/iso9660.h"
++
++#include "./example/file-manipulation.h"
++
++template <class F>
++static void add_overlay(iso9660::Image* const isoimage,
++                        const std::string& filename, F func) {
++  auto file = isoimage->find(filename);
++  if (file == nullptr) {
++    std::cout << "Can't find " + filename + ". Skipping..\n" << std::flush;
++    return;
++  }
++  isoimage->modify_file(*file, func);
++}
+diff --git a/include/file.h b/include/file.h
+index d7db5fa..dcc01c5 100644
+--- a/include/file.h
++++ b/include/file.h
+@@ -73,6 +73,7 @@ class File {
+   int volume_sequence_number;
+   std::string name;
+ 
++  EXPORT File();
+   File(iso9660::Buffer::const_iterator first,
+        iso9660::Buffer::const_iterator last);
+   File(iso9660::Buffer::const_iterator first, std::size_t size);
+diff --git a/src/file.cc b/src/file.cc
+index a3bfa07..31c4bb6 100644
+--- a/src/file.cc
++++ b/src/file.cc
+@@ -26,6 +26,17 @@
+ #include "./include/read.h"
+ #include "./include/utility.h"
+ 
++iso9660::File::File()
++    : length(0),
++      extended_length(0),
++      location(0),
++      size(0),
++      datetime(0),
++      flags(0),
++      file_unit_size(0),
++      interleave_gap_size(0),
++      volume_sequence_number(0) {}
++
+ /**
+  * Read directory record according to ECMA-119. Note that in ECMA-167
+  * information control block tags are used instead.
+-- 
+2.14.1
+

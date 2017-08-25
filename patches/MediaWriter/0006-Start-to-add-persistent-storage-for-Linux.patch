@@ -1,0 +1,398 @@
+From 22ebd110c8dbdf0b9f549b29281e23d110da2d03 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Sat, 10 Jun 2017 22:31:08 +0000
+Subject: [PATCH 06/40] Start to add persistent storage for Linux
+
+* Guard Drive::open.
+* Change Drive::addPartition signature to a format that doesn't look
+very portable.
+* Make it possible to modify configuration files on the image.
+* Try to add overlay partition and file. (Doesn't work yet.)
+---
+ helper/helper.pro      |   2 +-
+ helper/linux/drive.cpp |  22 ++++--
+ helper/linux/drive.h   |   8 ++-
+ helper/main.cpp        |   5 +-
+ helper/write.cpp       | 191 ++++++++++++++++++++++++++++++++++++++++++++++++-
+ helper/write.h         |   2 +-
+ 6 files changed, 213 insertions(+), 17 deletions(-)
+
+diff --git a/helper/helper.pro b/helper/helper.pro
+index 89459e4..88ae7db 100644
+--- a/helper/helper.pro
++++ b/helper/helper.pro
+@@ -2,7 +2,7 @@ TEMPLATE = app
+ 
+ QT += core
+ 
+-LIBS += -lcheckisomd5 -limplantisomd5
++LIBS += -lcheckisomd5 -limplantisomd5 -liso9660io
+ 
+ CONFIG += c++11
+ CONFIG += console
+diff --git a/helper/linux/drive.cpp b/helper/linux/drive.cpp
+index 590e79b..5718b40 100644
+--- a/helper/linux/drive.cpp
++++ b/helper/linux/drive.cpp
+@@ -24,11 +24,14 @@
+ #include <algorithm>
+ #include <memory>
+ #include <stdexcept>
++#include <utility>
+ 
+ #include <QDBusInterface>
+ #include <QDBusUnixFileDescriptor>
+ #include <QObject>
++#include <QPair>
+ #include <QtDBus>
++#include <QtGlobal>
+ 
+ typedef QHash<QString, QVariant> Properties;
+ typedef QHash<QString, Properties> InterfacesAndProperties;
+@@ -48,11 +51,13 @@ Drive::Drive(const QString &identifier)
+  * Open drive for writing.
+  */
+ void Drive::open() {
+-    QDBusReply<QDBusUnixFileDescriptor> reply = device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
+-    fileDescriptor = reply.value();
+-    if (!fileDescriptor.isValid()) {
+-        throw std::runtime_error(reply.error().message().toStdString());
+-        fileDescriptor = QDBusUnixFileDescriptor(-1);
++    if (getDescriptor() == -1) {
++        QDBusReply<QDBusUnixFileDescriptor> reply = device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
++        fileDescriptor = reply.value();
++        if (!fileDescriptor.isValid()) {
++            throw std::runtime_error(reply.error().message().toStdString());
++            fileDescriptor = QDBusUnixFileDescriptor(-1);
++        }
+     }
+ }
+ 
+@@ -95,9 +100,10 @@ void Drive::wipe() {
+  * Fill the rest of the drive with a primary partition that uses the fat
+  * filesystem.
+  */
+-void Drive::addPartition(const QString &label) {
++QPair<QString, qint64> Drive::addPartition(quint64 offset, const QString &label) {
+     QDBusInterface partitionTable("org.freedesktop.UDisks2", identifier, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus());
+-    QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", 0ULL, device->property("Size").toULongLong(), "", "", Properties());
++    const quint64 proposedSize = device->property("Size").toULongLong() - offset;
++    QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", offset, proposedSize, "", "", Properties());
+     if (!partitionReply.isValid()) {
+         throw std::runtime_error(partitionReply.error().message().toStdString());
+     }
+@@ -107,6 +113,8 @@ void Drive::addPartition(const QString &label) {
+     if (!formatPartitionReply.isValid() && formatPartitionReply.error().type() != QDBusError::NoReply) {
+         throw std::runtime_error(formatPartitionReply.error().message().toStdString());
+     }
++    const qint64 size = partition.property("Size").toULongLong();
++    return qMakePair(partitionPath, size);
+ }
+ 
+ /**
+diff --git a/helper/linux/drive.h b/helper/linux/drive.h
+index c3f1515..f0d3247 100644
+--- a/helper/linux/drive.h
++++ b/helper/linux/drive.h
+@@ -21,11 +21,13 @@
+ #define DRIVE_H
+ 
+ #include <memory>
++#include <utility>
+ 
+-#include <QString>
+-#include <QTextStream>
+ #include <QDBusInterface>
+ #include <QDBusUnixFileDescriptor>
++#include <QString>
++#include <QTextStream>
++#include <QtGlobal>
+ 
+ class Drive {
+ public:
+@@ -38,7 +40,7 @@ public:
+     void write(const void *buffer, std::size_t size);
+     int getDescriptor();
+     void wipe();
+-    void addPartition(const QString &label = "");
++    QPair<QString, qint64> addPartition(quint64 offset = 0ULL, const QString &label = "");
+     QString mount(const QString &partitionIdentifier);
+     void umount();
+ 
+diff --git a/helper/main.cpp b/helper/main.cpp
+index e41be8d..9eff523 100644
+--- a/helper/main.cpp
++++ b/helper/main.cpp
+@@ -36,7 +36,8 @@ void restore(Drive *const drive) {
+ int main(int argc, char *argv[]) {
+     const QString action = argv[1];
+     bool isRestore = argc == 3 && action == "restore";
+-    bool isWrite = argc == 4 && action == "write";
++    bool persistentStorage = argc == 5;
++    bool isWrite = (argc == 4 || persistentStorage) && action == "write";
+     QTextStream err(stderr);
+     if (!isRestore && !isWrite) {
+         err << "Helper: Wrong arguments entered\n";
+@@ -54,7 +55,7 @@ int main(int argc, char *argv[]) {
+             restore(&drive);
+         }
+         else {
+-            write(argv[2], &drive);
++            write(argv[2], &drive, persistentStorage);
+         }
+     } catch (std::runtime_error &error) {
+         auto errorMessage = error.what();
+diff --git a/helper/write.cpp b/helper/write.cpp
+index 74df6a8..0cf563b 100644
+--- a/helper/write.cpp
++++ b/helper/write.cpp
+@@ -19,14 +19,23 @@
+ 
+ #include "write.h"
+ 
++#include <algorithm>
++#include <fstream>
++#include <ios>
+ #include <stdexcept>
++#include <string>
++#include <utility>
++#include <utility>
++#include <vector>
+ 
+ #include <QFile>
++#include <QFileInfo>
+ #include <QObject>
+ #include <QString>
+ #include <QTextStream>
+ #include <QtGlobal>
+ 
++#include <iso9660io.h>
+ #include <lzma.h>
+ 
+ extern "C" {
+@@ -36,7 +45,161 @@ extern "C" {
+ 
+ #include "page_aligned_buffer.h"
+ 
+-static void writeCompressed(const QString &source, Drive* const drive) {
++constexpr char partitionLabel[] = "OVERLAY";
++constexpr char overlayFilename[] = "OVERLAY.IMG";
++
++static std::streamsize addOverlay(std::fstream *iofile, const iso9660::File &fileinfo) {
++    static const std::string needle = "rd.live.image";
++    static const std::string overlaySwitch = QString(" rd.live.overlay=LABEL=%1:/%2")
++                                                     .arg(partitionLabel)
++                                                     .arg(overlayFilename)
++                                                     .toStdString();
++    const std::size_t maxGrowth = fileinfo.max_growth();
++    std::size_t growth = 0;
++    std::size_t insertPosition = 0;
++    std::size_t readBytes = 0;
++    auto &file = *iofile;
++    std::vector<char> fileContent;
++    for (std::string line; std::getline(file, line);) {
++        line += '\n';
++        readBytes += line.size();
++        if (readBytes > fileinfo.size) {
++            throw std::runtime_error("Source image is corrupt.");
++        }
++        if (growth == 0 && line.find(overlaySwitch) != std::string::npos) {
++            return 0;
++        }
++        const auto position = line.find(needle);
++        if (position != std::string::npos) {
++            growth += overlaySwitch.size();
++            if (growth > maxGrowth) {
++                throw std::runtime_error("Source image is unusable.");
++            }
++            const std::size_t lineSize = line.size();
++            const std::size_t lineOffset = position + needle.size();
++            line.insert(lineOffset, overlaySwitch);
++            if (insertPosition == 0) {
++                insertPosition = file.tellg();
++                insertPosition -= lineSize - lineOffset;
++                fileContent.reserve((fileinfo.size + maxGrowth) - readBytes);
++                std::move(line.begin() + lineOffset, line.end(), std::back_inserter(fileContent));
++            }
++            else {
++                std::move(line.begin(), line.end(), std::back_inserter(fileContent));
++            }
++        }
++        else if (insertPosition != 0) {
++            std::move(line.begin(), line.end(), std::back_inserter(fileContent));
++        }
++        if (readBytes == fileinfo.size)
++            break;
++    }
++    file.clear();
++    file.seekp(insertPosition);
++    file.write(fileContent.data(), fileContent.size());
++    return growth;
++}
++
++/**
++ * It's probably be a bad idea to copy the entire image just so that there's
++ * one version that has persistent storage and one that doesn't therefore it
++ * needs to be possible to remove the overlay switches from the image again.
++ */
++static std::streamsize removeOverlay(std::fstream *iofile, const iso9660::File &fileinfo) {
++    std::string needle = QString(" rd.live.overlay=LABEL=%1:/%2")
++                                 .arg(partitionLabel)
++                                 .arg(overlayFilename)
++                                 .toStdString();
++    std::size_t numSwitches = 0;
++    std::size_t insertPosition = 0;
++    std::size_t readBytes = 0;
++    std::string line;
++    auto &file = *iofile;
++    while (std::getline(file, line)) {
++        line += '\n';
++        readBytes += line.size();
++        if (readBytes > fileinfo.size) {
++            throw std::runtime_error("Source image is corrupt.");
++        }
++        const auto position = line.find(needle);
++        if (position != std::string::npos) {
++            ++numSwitches;
++            if (insertPosition == 0) {
++                line = line.substr(position + needle.size());
++                insertPosition = static_cast<std::size_t>(file.tellg()) - line.size() - needle.size();
++            }
++            else {
++                line = line.substr(0, position) + line.substr(position + needle.size());
++            }
++        }
++        if (insertPosition != 0) {
++            auto readPosition = file.tellg();
++            file.clear();
++            file.seekp(insertPosition);
++            file.write(line.data(), line.size());
++            file.seekg(readPosition);
++            insertPosition += line.size();
++        }
++        if (readBytes == fileinfo.size)
++            break;
++    }
++    if (insertPosition != 0) {
++        std::fill(needle.begin(), needle.end(), '\0');
++        file.clear();
++        file.seekp(insertPosition);
++        for (std::size_t i = 0; i < numSwitches; ++i) {
++            file.write(needle.data(), needle.size());
++        }
++        return -(numSwitches * needle.size());
++    }
++    return 0;
++}
++
++static bool modifyIso(iso9660::Image *const image, const char *const filename, bool persistentStorage) {
++    auto file = image->find(filename);
++    if (file == nullptr) {
++        return false;
++    }
++    if (persistentStorage) {
++        return image->modify_file(*file, addOverlay);
++    }
++    return image->modify_file(*file, removeOverlay);
++}
++
++static bool modifyIso(const std::string &filename, bool persistentStorage) {
++    constexpr const char *const configfiles[] = { "isolinux.cfg", "grub.cfg", "grub.conf" };
++    std::fstream isofile(filename, std::ios::binary | std::ios::in | std::ios::out);
++    iso9660::Image image(&isofile);
++    image.read();
++    bool changed = false;
++    for (const char *const configfile : configfiles) {
++        if (modifyIso(&image, configfile, persistentStorage)) {
++            changed = true;
++        }
++    }
++    image.write();
++    return changed;
++}
++
++static void zeroFile(const QString &filename, qint64 size) {
++    constexpr int FOURKB = 4096;
++    constexpr qint64 MAX_FILE_SIZE = FOURKB * 1024L * 1024L - 1;
++    size = std::max(MAX_FILE_SIZE, size);
++    QByteArray zeros(FOURKB, '\0');
++    QFile file(filename);
++    file.open(QIODevice::WriteOnly);
++    qint64 iterations = size / zeros.size();
++    while (iterations--) {
++        file.write(zeros);
++    }
++    int remaining = size - iterations * zeros.size();
++    if (remaining > 0) {
++        zeros.truncate(remaining);
++        file.write(zeros);
++    }
++}
++
++static void writeCompressed(const QString &source, Drive *const drive) {
+     qint64 totalRead = 0;
+ 
+     lzma_stream strm = LZMA_STREAM_INIT;
+@@ -108,7 +271,7 @@ static void writeCompressed(const QString &source, Drive* const drive) {
+     }
+ }
+ 
+-static void writePlain(const QString &source, Drive* const drive) {
++static void writePlain(const QString &source, Drive *const drive) {
+     QFile inFile(source);
+     inFile.open(QIODevice::ReadOnly);
+ 
+@@ -163,15 +326,37 @@ static void check(int fd) {
+     }
+ }
+ 
+-void write(const QString &source, Drive *const drive) {
++void write(const QString &source, Drive *const drive, bool persistentStorage) {
+     // Immediately trigger the UI into writing mode.
+     QTextStream out(stdout);
+     out << "1\n";
+     out.flush();
++    auto sourceFile = source.toStdString();
++    if (modifyIso(sourceFile, persistentStorage)) {
++        char *errstr;
++        if (implantISOFile(sourceFile.c_str(), false, true, true, &errstr) != 0) {
++            throw std::runtime_error(std::string(errstr));
++        }
++    }
+     drive->umount();
+     if (source.endsWith(".xz"))
+         writeCompressed(source, drive);
+     else
+         writePlain(source, drive);
+     check(drive->getDescriptor());
++    if (persistentStorage) {
++        drive->umount();
++        auto size = QFileInfo(source).size();
++        auto partitionInfo = drive->addPartition(size, partitionLabel);
++        QString mountpoint = drive->mount(partitionInfo.first);
++        zeroFile(mountpoint + overlayFilename, partitionInfo.second);
++        drive->umount();
++        drive->open();
++        out.flush();
++        char *errstr;
++        if (implantISOFD(drive->getDescriptor(), false, true, true, &errstr) != 0) {
++            throw std::runtime_error(errstr);
++        }
++        drive->close();
++    }
+ }
+diff --git a/helper/write.h b/helper/write.h
+index b85a361..a55bb4f 100644
+--- a/helper/write.h
++++ b/helper/write.h
+@@ -30,6 +30,6 @@
+ #define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
+ #endif
+ 
+-void write(const QString &source, Drive *const drive);
++void write(const QString &source, Drive *const drive, bool persistentStorage = false);
+ 
+ #endif // WRITE_H
+-- 
+2.14.1
+

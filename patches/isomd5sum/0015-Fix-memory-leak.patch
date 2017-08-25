@@ -1,0 +1,26 @@
+From 69dc036d20761715b734ca9cc59ecc6dc8145026 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Fri, 30 Jun 2017 21:06:50 +0000
+Subject: [PATCH 15/21] Fix memory leak
+
+---
+ libimplantisomd5.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/libimplantisomd5.c b/libimplantisomd5.c
+index 0688b1c..98f8152 100644
+--- a/libimplantisomd5.c
++++ b/libimplantisomd5.c
+@@ -146,8 +146,7 @@ int implantISOFD(int isofd, int supported, int forceit, int quiet, char **errstr
+     if (writeAppData(appdata, ";", &loc, errstr))
+         return -1;
+ 
+-    char *appdata_buffer;
+-    appdata_buffer = aligned_alloc(pagesize, APPDATA_SIZE * sizeof(*appdata_buffer));
++    char appdata_buffer[APPDATA_SIZE];
+     snprintf(appdata_buffer, APPDATA_SIZE, "SKIPSECTORS = %lld", SKIPSECTORS);
+ 
+     if (writeAppData(appdata, appdata_buffer, &loc, errstr))
+-- 
+2.14.1
+

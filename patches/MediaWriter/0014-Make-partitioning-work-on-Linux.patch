@@ -1,0 +1,541 @@
+From 2e19766b61a5e12696401437ce60c7ee2efd7bdc Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Tue, 18 Jul 2017 17:45:22 +0000
+Subject: [PATCH 14/40] Make partitioning work on Linux
+
+* Temporarly work around udisks.
+* Prepare to do this on Mac and Windows too.
+---
+ helper/helper.pro      |   4 +-
+ helper/linux/drive.cpp |  95 +++++++++++++++++++++++++++++--
+ helper/linux/drive.h   |   8 ++-
+ helper/partition.cpp   | 151 +++++++++++++++++++++++++++++++++++++++++++++++++
+ helper/partition.h     |  71 +++++++++++++++++++++++
+ helper/win/drive.h     |   2 +-
+ helper/write.cpp       |  20 +++----
+ helper/write.h         |   4 ++
+ 8 files changed, 332 insertions(+), 23 deletions(-)
+ create mode 100644 helper/partition.cpp
+ create mode 100644 helper/partition.h
+
+diff --git a/helper/helper.pro b/helper/helper.pro
+index 7addde3..0967ac8 100644
+--- a/helper/helper.pro
++++ b/helper/helper.pro
+@@ -17,9 +17,9 @@ include($$top_srcdir/deployment.pri)
+ target.path = $$LIBEXECDIR
+ INSTALLS += target
+ 
+-SOURCES = main.cpp write.cpp
++SOURCES = main.cpp write.cpp partition.cpp
+ 
+-HEADERS += write.h
++HEADERS += write.h partition.h
+ 
+ linux {
+     include(linux/linux.pri)
+diff --git a/helper/linux/drive.cpp b/helper/linux/drive.cpp
+index 99b0365..6b224a5 100644
+--- a/helper/linux/drive.cpp
++++ b/helper/linux/drive.cpp
+@@ -20,10 +20,12 @@
+ #include "drive.h"
+ 
+ #include <unistd.h>
++#include <fcntl.h>
+ 
+ #include <algorithm>
+ #include <memory>
+ #include <stdexcept>
++#include <string>
+ #include <utility>
+ 
+ #include <QDBusInterface>
+@@ -33,6 +35,11 @@
+ #include <QtDBus>
+ #include <QtGlobal>
+ 
++#include <libimplantisomd5.h>
++
++#include "write.h"
++#include "partition.h"
++
+ typedef QHash<QString, QVariant> Properties;
+ typedef QHash<QString, Properties> InterfacesAndProperties;
+ typedef QHash<QDBusObjectPath, InterfacesAndProperties> DBusIntrospection;
+@@ -47,18 +54,44 @@ Drive::Drive(const QString &identifier)
+ }
+ 
+ Drive::~Drive() {
+-    m_fileDescriptor = QDBusUnixFileDescriptor(-1);
+ }
+ 
+-void Drive::init() {
++void Drive::init() {}
++
++/**
++ * Opens drive for reading and writing directly if not already open.
++ */
++void Drive::open() {
+     if (getDescriptor() != -1)
+         return;
++    /*
++     * Most I/O will go to cache but it's still way faster than with O_DIRECT
++     * or O_SYNC.
++     */
++    int fd = ::open(qPrintable(m_device->property("Device").toString()), O_RDWR);
++    if (fd < 0) {
++        throw std::runtime_error("Failed to open block device.");
++    }
++    m_fileDescriptor = QDBusUnixFileDescriptor(fd);
++    /*
++     * Not using udisks to open the partition at the moment because some
++     * operations don't work with O_DIRECT or O_EXCL.
++     * TODO(squimrel): Use OpenDevice which apperntly will be introduced in
++     * udisks 2.7.3.
++     */
++    /*
+     QDBusReply<QDBusUnixFileDescriptor> reply = m_device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
+     m_fileDescriptor = reply.value();
+     if (!m_fileDescriptor.isValid()) {
+         throw std::runtime_error(reply.error().message().toStdString());
+         m_fileDescriptor = QDBusUnixFileDescriptor(-1);
+     }
++    */
++}
++
++void Drive::close() {
++    m_fileDescriptor = QDBusUnixFileDescriptor(-1);
++    ::sync();
+ }
+ 
+ /**
+@@ -93,20 +126,49 @@ void Drive::wipe() {
+  * Fill the rest of the drive with a primary partition that uses the fat
+  * filesystem.
+  */
+-QPair<QString, qint64> Drive::addPartition(quint64 offset, const QString &label) {
++QPair<QString, quint64> Drive::addPartition(quint64 offset, const QString &label) {
++    open();
++    PartitionTable table(getDescriptor());
++    table.read();
++    const quint64 size = m_device->property("Size").toULongLong() - offset;
++    int number = table.addPartition(offset, size);
++    close();
++    /*
++     * Not using udisks to add partition at the moment because parted detects
++     * drive as mac even if the apple partition header is wiped before this
++     * call.
++     */
++    /*
+     QDBusInterface partitionTable("org.freedesktop.UDisks2", m_identifier, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus());
+-    const quint64 proposedSize = m_device->property("Size").toULongLong() - offset;
+-    QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", offset, proposedSize, "0xb", "", Properties{ { "partition-type", "primary" } });
++    QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", offset, size, "0xb", "", Properties{ { "partition-type", "primary" } });
+     if (!partitionReply.isValid()) {
+         throw std::runtime_error(partitionReply.error().message().toStdString());
+     }
+     QString partitionPath = partitionReply.value().path();
++    */
++    // Path is not as reliable as the one that would be provided by udisks.
++    QString partitionPath = QString("%0%1").arg(m_identifier).arg(number);
++    QProcess process;
++    process.setProgram("mkfs.vfat");
++    process.setArguments(QStringList() << "-n" << label << QString("%0%1").arg(m_device->property("Device").toString()).arg(number));
++    process.start();
++    process.waitForFinished();
++    if (process.exitCode() != 0) {
++        throw std::runtime_error("Couldn't format disk");
++    }
++    /*
++     * Not using udisks to format at the moment because of the following error:
++     * Error synchronizing after initial wipe: Timed out waiting for object
++     * FIXME(squimrel)
++     */
++    /*
+     QDBusInterface partition("org.freedesktop.UDisks2", partitionPath, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus());
+     QDBusReply<void> formatPartitionReply = partition.call("Format", "vfat", Properties{ { "update-partition-type", true }, { "label", label } });
+     if (!formatPartitionReply.isValid() && formatPartitionReply.error().type() != QDBusError::NoReply) {
+         throw std::runtime_error(formatPartitionReply.error().message().toStdString());
+     }
+-    const qint64 size = partition.property("Size").toULongLong();
++    size = partition.property("Size").toULongLong();
++    */
+     return qMakePair(partitionPath, size);
+ }
+ 
+@@ -143,3 +205,24 @@ void Drive::umount() {
+         }
+     }
+ }
++
++void Drive::writeFile(const QString &source) {
++    open();
++    if (source.endsWith(".xz"))
++        ::writeCompressed(source, this);
++    else
++        ::writePlain(source, this);
++}
++
++void Drive::checkChecksum() {
++    open();
++    ::check(getDescriptor());
++}
++
++void Drive::implantChecksum() {
++    open();
++    char *errstr;
++    if (::implantISOFD(getDescriptor(), false, true, true, &errstr) != 0) {
++        throw std::runtime_error(std::string(errstr));
++    }
++}
+diff --git a/helper/linux/drive.h b/helper/linux/drive.h
+index 779b348..16b0efe 100644
+--- a/helper/linux/drive.h
++++ b/helper/linux/drive.h
+@@ -32,6 +32,9 @@
+ 
+ class Drive : public QObject {
+     Q_OBJECT
++private:
++    void open();
++    void close();
+ public:
+     /**
+      * Shared public interface across platforms.
+@@ -42,9 +45,12 @@ public:
+     void write(const void *buffer, std::size_t size);
+     int getDescriptor() const;
+     void wipe();
+-    QPair<QString, qint64> addPartition(quint64 offset = 1024ULL * 1024ULL, const QString &label = "");
++    QPair<QString, quint64> addPartition(quint64 offset = 1024ULL * 1024ULL, const QString &label = "");
+     QString mount(const QString &partitionIdentifier);
+     void umount();
++    void writeFile(const QString& source);
++    void checkChecksum();
++    void implantChecksum();
+ 
+ private:
+     QDBusUnixFileDescriptor m_fileDescriptor;
+diff --git a/helper/partition.cpp b/helper/partition.cpp
+new file mode 100644
+index 0000000..6ee9a14
+--- /dev/null
++++ b/helper/partition.cpp
+@@ -0,0 +1,151 @@
++/*
++ * Fedora Media Writer
++ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++ */
++#include "partition.h"
++
++#include <sys/stat.h>
++#include <unistd.h>
++
++#include <cstring>
++
++#include <algorithm>
++#include <array>
++#include <utility>
++
++#include <QtGlobal>
++#include <QtEndian>
++
++PartitionTable::PartitionTable(int fd) : m_fd(fd) {
++}
++
++void PartitionTable::setFileDescriptor(int fd) {
++    m_fd = fd;
++}
++
++void PartitionTable::read() {
++    seek();
++    for (std::size_t i = 0; i < MAX_PARTITIONS; ++i) {
++        PartitionEntry entry;
++        if (::read(m_fd, entry.data(), entry.size()) != entry.size()) {
++            throw std::runtime_error("Failed to read partition table.");
++        }
++        const bool isEmtpy = std::all_of(entry.cbegin(), entry.cend(), [](const char c) { return c == '\0'; });
++        if (isEmtpy) {
++            continue;
++        }
++        m_entries.append(std::move(entry));
++    }
++}
++
++void PartitionTable::seek(std::size_t index) {
++    if (::lseek(m_fd, PARTITION_ENTRY_OFFSET + PARTITION_ENTRY_SIZE * index, SEEK_SET) < 0) {
++        throw std::runtime_error("Failed to seek to partition table.");
++    }
++}
++
++void PartitionTable::wipeMac() {
++    if (m_apmHeader == nullptr) {
++        m_apmHeader = std::unique_ptr<std::array<char, APM_SIZE>>(new std::array<char, APM_SIZE>());
++    }
++    if (::lseek(m_fd, APM_OFFSET, SEEK_SET) < 0) {
++        throw std::runtime_error("Failed to seek to apple partition header.");
++    }
++    auto bytes = ::read(m_fd, m_apmHeader->data(), m_apmHeader->size());
++    if (bytes != static_cast<decltype(bytes)>(m_apmHeader->size())) {
++        throw std::runtime_error("Failed to read apple partition header.");
++    }
++    {
++        const std::array<char, APM_SIZE> zeros{};
++        auto bytes = ::write(m_fd, zeros.data(), zeros.size());
++        if (bytes != static_cast<decltype(bytes)>(zeros.size())) {
++            throw std::runtime_error("Failed to wipe apple partition header.");
++        }
++    }
++}
++
++void PartitionTable::restoreMac() {
++    if (m_apmHeader == nullptr)
++        return;
++    if (::lseek(m_fd, APM_OFFSET, SEEK_SET) < 0) {
++        throw std::runtime_error("Failed to seek to apple partition header.");
++    }
++    auto bytes = ::write(m_fd, m_apmHeader->data(), m_apmHeader->size());
++    if (bytes != static_cast<decltype(bytes)>(m_apmHeader->size())) {
++        throw std::runtime_error("Failed to add partition.");
++    }
++    m_apmHeader = nullptr;
++}
++
++void PartitionTable::fillChs(char *chs, quint64 position) {
++    Q_UNUSED(position);
++    /**
++     * It's guessed that the calculates values are correct but chs might as
++     * well set to unused like so:
++     */
++    /*
++    chs[0] = 0xff;
++    chs[1] = 0xff;
++    chs[2] = 0xef;
++    */
++    const int head = (position / NUM_SECTORS) % NUM_HEADS;
++    const int sector = (position % NUM_SECTORS) + 1;
++    const int cylinder = position / (NUM_HEADS * NUM_SECTORS);
++    chs[0] = head & 0xff;
++    // ccssssss
++    chs[1] = ((cylinder >> 2) & 0xc0) | (sector & 0x3f);
++    chs[2] = cylinder & 0xff;
++}
++
++int PartitionTable::addPartition(quint64 offset, quint64 size) {
++    if (size == 0) {
++        size = diskSize() - offset;
++    }
++    const quint32 lba = offset / SECTOR_SIZE;
++    const quint32 count = size / SECTOR_SIZE;
++    PartitionEntry entry;
++    entry[0] = 0x0;
++    fillChs(entry.data() + 1, offset);
++    entry[4] = 0xb; // fat32
++    fillChs(entry.data() + 5, offset + size);
++    quint32 tmp = qToLittleEndian(lba);
++    std::memcpy(entry.data() + 8, &tmp, sizeof(tmp));
++    tmp = qToLittleEndian(count);
++    std::memcpy(entry.data() + 12, &tmp, sizeof(tmp));
++
++    const int num = m_entries.size() + 1;
++    if (num > MAX_PARTITIONS) {
++        throw std::runtime_error("Partition table is full.");
++    }
++    m_entries.append(std::move(entry));
++    seek(num - 1);
++    auto bytes = ::write(m_fd, entry.data(), entry.size());
++    if (bytes != static_cast<decltype(bytes)>(entry.size())) {
++        throw std::runtime_error("Failed to add partition.");
++    }
++    return num;
++}
++
++quint64 PartitionTable::diskSize() {
++    static quint64 size = 0;
++    if (size != 0)
++        return size;
++    struct stat buf;
++    ::fstat(m_fd, &buf);
++    size = buf.st_size;
++    return size;
++}
+diff --git a/helper/partition.h b/helper/partition.h
+new file mode 100644
+index 0000000..bfdeb24
+--- /dev/null
++++ b/helper/partition.h
+@@ -0,0 +1,71 @@
++/*
++ * Fedora Media Writer
++ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++ */
++
++#ifndef PARTITION_H
++#define PARTITION_H
++
++#ifndef _LARGEFILE64_SOURCE
++#define _LARGEFILE64_SOURCE
++#endif
++
++#include <unistd.h>
++
++#include <array>
++#include <memory>
++#include <utility>
++
++#include <QVector>
++#include <QtGlobal>
++
++class PartitionTable {
++private:
++    static constexpr std::size_t APM_OFFSET = 2048;
++    static constexpr std::size_t APM_SIZE = 2048 * 3;
++    /*
++     * Not doing fancy guessing and simply using the same values as isohybrid
++     * uses.
++     */
++    static constexpr int NUM_HEADS = 64;
++    static constexpr int NUM_SECTORS = 32;
++    static constexpr int SECTOR_SIZE = 512;
++    static constexpr int MAX_PARTITIONS = 4;
++    static constexpr off_t PARTITION_ENTRY_OFFSET = 0x1be;
++    static constexpr std::size_t PARTITION_ENTRY_SIZE = 16;
++    static constexpr std::size_t PARTITION_TABLE_SIZE = MAX_PARTITIONS * PARTITION_ENTRY_SIZE;
++    using PartitionEntry = std::array<char, PARTITION_ENTRY_SIZE>;
++
++    quint64 diskSize();
++    void fillChs(char *chs, quint64 position);
++    void seek(std::size_t index = 0);
++
++public:
++    PartitionTable(int fd);
++    void setFileDescriptor(int fd);
++    void read();
++    int addPartition(quint64 offset = 1024ULL * 1024ULL, quint64 size = 0);
++    void wipeMac();
++    void restoreMac();
++
++private:
++    int m_fd;
++    QVector<PartitionEntry> m_entries;
++    std::unique_ptr<std::array<char, APM_SIZE>> m_apmHeader;
++};
++
++#endif // PARTITION_H
+diff --git a/helper/win/drive.h b/helper/win/drive.h
+index de0d148..01142d1 100644
+--- a/helper/win/drive.h
++++ b/helper/win/drive.h
+@@ -70,7 +70,7 @@ public:
+     void write(const void *buffer, std::size_t size);
+     int getDescriptor() const;
+     void wipe();
+-    QPair<QString, qint64> addPartition(quint64 offset = 1024ULL * 1024ULL, const QString &label = "");
++    QPair<QString, quint64> addPartition(quint64 offset = 1024ULL * 1024ULL, const QString &label = "");
+     QString mount(const QString &partitionIdentifier);
+     void umount();
+ 
+diff --git a/helper/write.cpp b/helper/write.cpp
+index d1291e5..c43e650 100644
+--- a/helper/write.cpp
++++ b/helper/write.cpp
+@@ -209,7 +209,7 @@ static int onProgress(void *data, long long offset, long long total) {
+     return 0;
+ }
+ 
+-static void writeCompressed(const QString &source, Drive *const drive) {
++void writeCompressed(const QString &source, Drive *const drive) {
+     qint64 totalRead = 0;
+ 
+     lzma_stream strm = LZMA_STREAM_INIT;
+@@ -279,7 +279,7 @@ static void writeCompressed(const QString &source, Drive *const drive) {
+     }
+ }
+ 
+-static void writePlain(const QString &source, Drive *const drive) {
++void writePlain(const QString &source, Drive *const drive) {
+     QFile inFile(source);
+     inFile.open(QIODevice::ReadOnly);
+ 
+@@ -307,7 +307,7 @@ static void writePlain(const QString &source, Drive *const drive) {
+     }
+ }
+ 
+-static void check(int fd) {
++void check(int fd) {
+     QTextStream out(stdout);
+     out << "CHECK\n";
+     out.flush();
+@@ -339,21 +339,15 @@ void write(const QString &source, Drive *const drive, bool persistentStorage) {
+         }
+     }
+     drive->umount();
+-    if (source.endsWith(".xz"))
+-        writeCompressed(source, drive);
+-    else
+-        writePlain(source, drive);
+-    check(drive->getDescriptor());
++    drive->writeFile(source);
++    drive->checkChecksum();
+     drive->umount();
+     auto size = QFileInfo(source).size();
+     auto partitionInfo = drive->addPartition(size, partitionLabel);
+     if (persistentStorage) {
+         QString mountpoint = drive->mount(partitionInfo.first);
+-        zeroFile(mountpoint + overlayFilename, partitionInfo.second);
++        zeroFile(mountpoint + "/" + overlayFilename, partitionInfo.second);
+         drive->umount();
+     }
+-    char *errstr;
+-    if (implantISOFD(drive->getDescriptor(), false, true, true, &errstr) != 0) {
+-        throw std::runtime_error(std::string(errstr));
+-    }
++    drive->implantChecksum();
+ }
+diff --git a/helper/write.h b/helper/write.h
+index a55bb4f..b0e5dc5 100644
+--- a/helper/write.h
++++ b/helper/write.h
+@@ -30,6 +30,10 @@
+ #define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
+ #endif
+ 
++void check(int fd);
++void writePlain(const QString &source, Drive *const drive);
++void writeCompressed(const QString &source, Drive *const drive);
++
+ void write(const QString &source, Drive *const drive, bool persistentStorage = false);
+ 
+ #endif // WRITE_H
+-- 
+2.14.1
+

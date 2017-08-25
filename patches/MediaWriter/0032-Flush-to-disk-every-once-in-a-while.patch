@@ -1,0 +1,126 @@
+From 2dd49b4f01d2d1b31a18f5019e9c34252ff2e267 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Wed, 23 Aug 2017 11:38:59 +0000
+Subject: [PATCH 32/40] Flush to disk every once in a while
+
+---
+ helper/blockdevice.cpp |  3 ++-
+ helper/blockdevice.h   |  2 +-
+ helper/write.cpp       | 24 ++++++++++++++++--------
+ helper/write.h         |  6 ++++++
+ 4 files changed, 25 insertions(+), 10 deletions(-)
+
+diff --git a/helper/blockdevice.cpp b/helper/blockdevice.cpp
+index 944c976..e9ca1ce 100644
+--- a/helper/blockdevice.cpp
++++ b/helper/blockdevice.cpp
+@@ -35,7 +35,8 @@
+ 
+ #include "write.h"
+ 
+-BlockDevice::BlockDevice(int fd) : m_fd(fd), m_bytesWritten(0), m_totalBytes(0), m_progress(0) {
++BlockDevice::BlockDevice(int fd) : m_fd(fd), m_bytesWritten(0), m_totalBytes(0) {
++    m_progress.fd = fd;
+ }
+ 
+ void BlockDevice::read() {
+diff --git a/helper/blockdevice.h b/helper/blockdevice.h
+index 863387a..702bee5 100644
+--- a/helper/blockdevice.h
++++ b/helper/blockdevice.h
+@@ -72,7 +72,7 @@ private:
+     int m_fd;
+     std::size_t m_bytesWritten;
+     std::size_t m_totalBytes;
+-    std::size_t m_progress;
++    ProgressStats m_progress;
+     QVector<PartitionEntry> m_entries;
+ };
+ 
+diff --git a/helper/write.cpp b/helper/write.cpp
+index e3d3183..2db1afe 100644
+--- a/helper/write.cpp
++++ b/helper/write.cpp
+@@ -355,14 +355,20 @@ static bool modifyIso(const std::string &filename, bool persistentStorage) {
+ 
+ int onProgress(void *data, long long offset, long long total) {
+     constexpr long long MAGIC = 234;
+-    long long &previousProgress = *static_cast<long long *>(data);
++    ProgressStats &stats = *static_cast<ProgressStats *>(data);
+     const long long progress = (offset * MAGIC) / total;
+-    if (progress > previousProgress) {
+-        previousProgress = progress;
++    if (progress > stats.progress) {
++        stats.progress = progress;
+         if (offset > total)
+             offset = total;
+         QTextStream out(stdout);
+-        out << ((offset * 10000) / total) << "\n";
++        int percentage = (offset * 10000) / total;
++        // Sync every 10 percent of progress.
++        if (percentage >= (1000 * (stats.syncs + 1))) {
++            ++stats.syncs;
++            ::fsync(stats.fd);
++        }
++        out << percentage << "\n";
+         out.flush();
+     }
+     return 0;
+@@ -379,7 +385,8 @@ void writeCompressed(const QString &source, GenericDrive *const drive) {
+     char *inBuffer = static_cast<char *>(buffers.get(0));
+     char *outBuffer = static_cast<char *>(buffers.get(1));
+     auto total = QFileInfo(source).size();
+-    qint64 previousProgress = 0LL;
++    ProgressStats progress;
++    progress.fd = drive->getDescriptor();
+ 
+     QFile file(source);
+     file.open(QIODevice::ReadOnly);
+@@ -402,7 +409,7 @@ void writeCompressed(const QString &source, GenericDrive *const drive) {
+             strm.next_in = reinterpret_cast<uint8_t *>(inBuffer);
+             strm.avail_in = len;
+ 
+-            onProgress(&previousProgress, totalRead, total);
++            onProgress(&progress, totalRead, total);
+         }
+ 
+         ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
+@@ -450,7 +457,8 @@ void writePlain(const QString &source, GenericDrive *const drive) {
+     const std::size_t bufferSize = buffers.size;
+     char *buffer = static_cast<char *>(buffers.get(0));
+     auto total = QFileInfo(source).size();
+-    qint64 previousProgress = 0LL;
++    ProgressStats progress;
++    progress.fd = drive->getDescriptor();
+ 
+     QTextStream out(stdout);
+     qint64 bytesWritten = 0;
+@@ -462,7 +470,7 @@ void writePlain(const QString &source, GenericDrive *const drive) {
+         drive->write(buffer, len);
+         bytesWritten += len;
+ 
+-        onProgress(&previousProgress, bytesWritten, total);
++        onProgress(&progress, bytesWritten, total);
+     }
+ }
+ 
+diff --git a/helper/write.h b/helper/write.h
+index 8687c02..f5cb6f4 100644
+--- a/helper/write.h
++++ b/helper/write.h
+@@ -31,6 +31,12 @@
+ #define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
+ #endif
+ 
++struct ProgressStats {
++    qint64 progress{ 0LL };
++    int syncs{ 0 };
++    int fd{ -1 };
++};
++
+ int onProgress(void *data, long long offset, long long total);
+ void check(int fd);
+ void writePlain(const QString &source, GenericDrive *const drive);
+-- 
+2.14.1
+

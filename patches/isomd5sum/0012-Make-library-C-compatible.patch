@@ -1,0 +1,58 @@
+From e4167042bbf9a1086229939d3b9d38752cf2d43c Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Sat, 10 Jun 2017 02:11:17 +0000
+Subject: [PATCH 12/21] Make library C++ compatible
+
+---
+ libcheckisomd5.h   |  8 ++++++++
+ libimplantisomd5.h | 10 ++++++++++
+ 2 files changed, 18 insertions(+)
+
+diff --git a/libcheckisomd5.h b/libcheckisomd5.h
+index 1017d83..f0c2582 100644
+--- a/libcheckisomd5.h
++++ b/libcheckisomd5.h
+@@ -1,6 +1,10 @@
+ #ifndef __LIBCHECKISOMD5_H__
+ #define __LIBCHECKISOMD5_H__
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ enum isomd5sum_status {
+     ISOMD5SUM_FILE_NOT_FOUND = -2,
+     ISOMD5SUM_CHECK_NOT_FOUND = -1,
+@@ -16,4 +20,8 @@ int mediaCheckFile(const char *file, checkCallback cb, void *cbdata);
+ int mediaCheckFD(int isofd, checkCallback cb, void *cbdata);
+ int printMD5SUM(const char *file);
+ 
++#ifdef __cplusplus
++}
++#endif
++
+ #endif
+diff --git a/libimplantisomd5.h b/libimplantisomd5.h
+index 8565a7b..35812ae 100644
+--- a/libimplantisomd5.h
++++ b/libimplantisomd5.h
+@@ -1,6 +1,16 @@
+ #ifndef __LIBIMPLANTISOMD5_H__
+ #define __LIBIMPLANTISOMD5_H__
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ int implantISOFile(const char *iso, int supported, int forceit, int quiet, char **errstr);
+ int implantISOFD(int isofd, int supported, int forceit, int quiet, char **errstr);
++
++#ifdef __cplusplus
++}
++#endif
++
+ #endif
+ 
+-- 
+2.14.1
+

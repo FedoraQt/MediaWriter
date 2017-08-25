@@ -1,0 +1,24 @@
+From f92df6ab7b5f0a05dc055b7a436f52227fe67cf1 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Tue, 15 Aug 2017 22:02:26 +0000
+Subject: [PATCH 28/40] Remove property that throws an error on Windows
+
+---
+ app/dialogs/DownloadDialog.qml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/app/dialogs/DownloadDialog.qml b/app/dialogs/DownloadDialog.qml
+index bb7e3dd..e4738de 100644
+--- a/app/dialogs/DownloadDialog.qml
++++ b/app/dialogs/DownloadDialog.qml
+@@ -387,7 +387,6 @@ Dialog {
+                             enabled: [Variant.WRITING, Variant.WRITE_VERIFYING, Variant.WRITING_OVERLAY].indexOf(releases.variant.status) < 0
+                             checked: false
+                             text: qsTr("Enable persistent storage")
+-                            tooltip: qsTr("May take a lot longer")
+                             onCheckedChanged: {
+                                 if (drives.selected) {
+                                     drives.selected.persistentStorage = checked
+-- 
+2.14.1
+

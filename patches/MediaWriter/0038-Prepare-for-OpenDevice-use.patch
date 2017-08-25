@@ -1,0 +1,31 @@
+From 77e37ee18e4f2ea8091b106bb5d79f16f7cd75da Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 24 Aug 2017 16:22:27 +0000
+Subject: [PATCH 38/40] Prepare for OpenDevice use
+
+---
+ helper/linux/drive.cpp | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/helper/linux/drive.cpp b/helper/linux/drive.cpp
+index c8d91dd..59521f4 100644
+--- a/helper/linux/drive.cpp
++++ b/helper/linux/drive.cpp
+@@ -67,13 +67,7 @@ void Drive::init() {
+     }
+     m_fileDescriptor = QDBusUnixFileDescriptor(fd);
+     /*
+-     * Not using udisks to open the partition at the moment because some
+-     * operations don't work with O_DIRECT or O_EXCL.
+-     * TODO(squimrel): Use OpenDevice which apperntly will be introduced in
+-     * udisks 2.7.3.
+-     */
+-    /*
+-    QDBusReply<QDBusUnixFileDescriptor> reply = m_device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
++    QDBusReply<QDBusUnixFileDescriptor> reply = m_device->callWithArgumentList(QDBus::Block, "OpenDevice", "rw", 0, Properties{});
+     m_fileDescriptor = reply.value();
+     if (!m_fileDescriptor.isValid()) {
+         throw std::runtime_error(reply.error().message().toStdString());
+-- 
+2.14.1
+

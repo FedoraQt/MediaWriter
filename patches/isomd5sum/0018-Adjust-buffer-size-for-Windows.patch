@@ -1,0 +1,51 @@
+From 1553188f856cbc39158d6d3cc6b1389c05a1e93a Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Tue, 11 Jul 2017 01:30:31 +0000
+Subject: [PATCH 18/21] Adjust buffer size for Windows
+
+---
+ src/libcheckisomd5.c   | 8 +++++++-
+ src/libimplantisomd5.c | 5 +++++
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/src/libcheckisomd5.c b/src/libcheckisomd5.c
+index 6270fe2..2e739cb 100644
+--- a/src/libcheckisomd5.c
++++ b/src/libcheckisomd5.c
+@@ -58,9 +58,15 @@ static enum isomd5sum_status checkmd5sum(int isofd, checkCallback cb, void *cbda
+     MD5_CTX hashctx;
+     MD5_Init(&hashctx);
+ 
++    const size_t pagesize = (size_t) getpagesize();
++#ifdef _WIN32
++    // Allocating ~32 kB of memory sometimes fails on Windows.
++    const size_t buffer_size = MAX(SECTOR_SIZE, pagesize);
++#else
+     const size_t buffer_size = NUM_SYSTEM_SECTORS * SECTOR_SIZE;
++#endif
+     unsigned char *buffer;
+-    buffer = aligned_alloc((size_t) getpagesize(), buffer_size * sizeof(*buffer));
++    buffer = aligned_alloc(pagesize, buffer_size * sizeof(*buffer));
+ 
+     size_t previous_fragment = 0UL;
+     off_t offset = 0LL;
+diff --git a/src/libimplantisomd5.c b/src/libimplantisomd5.c
+index 1c728ef..d2e62da 100644
+--- a/src/libimplantisomd5.c
++++ b/src/libimplantisomd5.c
+@@ -101,7 +101,12 @@ int implantISOFD(int isofd, int supported, int forceit, int quiet, char **errstr
+     *fragmentsums = '\0';
+ 
+     const size_t pagesize = (size_t) getpagesize();
++#ifdef _WIN32
++    // Allocating ~32 kB of memory sometimes fails on Windows.
++    const size_t buffer_size = MAX(SECTOR_SIZE, pagesize);
++#else
+     const size_t buffer_size = NUM_SYSTEM_SECTORS * SECTOR_SIZE;
++#endif
+     unsigned char *buffer;
+     buffer = aligned_alloc(pagesize, buffer_size * sizeof(*buffer));
+ 
+-- 
+2.14.1
+

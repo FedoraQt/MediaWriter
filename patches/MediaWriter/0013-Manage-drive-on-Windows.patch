@@ -1,0 +1,1387 @@
+From 84c0e7cd23c9ed08c86e74658b09ac5124917b37 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Mon, 10 Jul 2017 20:53:00 +0000
+Subject: [PATCH 13/40] Manage drive on Windows
+
+---
+ helper/page_aligned_buffer.h |  13 +-
+ helper/win/drive.cpp         | 376 +++++++++++++++++++++++++++++++++++++++
+ helper/win/drive.h           | 120 +++++++++++++
+ helper/win/main.cpp          |  46 -----
+ helper/win/restorejob.cpp    |  61 -------
+ helper/win/restorejob.h      |  46 -----
+ helper/win/win.pri           |  10 ++
+ helper/win/win.pro           |  31 ----
+ helper/win/writejob.cpp      | 413 -------------------------------------------
+ helper/win/writejob.h        |  77 --------
+ helper/write.cpp             |  43 +++--
+ 11 files changed, 538 insertions(+), 698 deletions(-)
+ create mode 100644 helper/win/drive.cpp
+ create mode 100644 helper/win/drive.h
+ delete mode 100644 helper/win/main.cpp
+ delete mode 100644 helper/win/restorejob.cpp
+ delete mode 100644 helper/win/restorejob.h
+ create mode 100644 helper/win/win.pri
+ delete mode 100644 helper/win/win.pro
+ delete mode 100644 helper/win/writejob.cpp
+ delete mode 100644 helper/win/writejob.h
+
+diff --git a/helper/page_aligned_buffer.h b/helper/page_aligned_buffer.h
+index 19f25b6..d5b092a 100644
+--- a/helper/page_aligned_buffer.h
++++ b/helper/page_aligned_buffer.h
+@@ -26,13 +26,14 @@
+ 
+ #ifdef Q_OS_WIN
+ #include <windows.h>
+-/**
+- * This should be more reliable than the MinGW version.
+- */
+ std::size_t getpagesize() {
+-    SYSTEM_INFO systemInfo;
+-    GetSystemInfo(&systemInfo);
+-    return static_cast<std::size_t>(systemInfo.dwPageSize);
++    static std::size_t pageSize = 0;
++    if (pageSize == 0) {
++        SYSTEM_INFO systemInfo;
++        GetSystemInfo(&systemInfo);
++        pageSize = static_cast<std::size_t>(systemInfo.dwPageSize);
++    }
++    return pageSize;
+ }
+ #else
+ #include <unistd.h>
+diff --git a/helper/win/drive.cpp b/helper/win/drive.cpp
+new file mode 100644
+index 0000000..da55d76
+--- /dev/null
++++ b/helper/win/drive.cpp
+@@ -0,0 +1,376 @@
++/*
++ * Fedora Media Writer
++ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++ */
++
++#include "drive.h"
++
++#include <algorithm>
++#include <stdexcept>
++#include <type_traits>
++#include <utility>
++
++#include <QDir>
++#include <QObject>
++#include <QPair>
++#include <QTextStream>
++#include <QThread>
++#include <QtGlobal>
++
++#include <io.h>
++#include <windows.h>
++
++Drive::Drive(const QString &identifier) : QObject(nullptr), m_handle(nullptr) {
++    m_driveNumber = identifier.toInt();
++}
++
++Drive::~Drive() {
++    try {
++        unlock();
++    } catch (std::runtime_error &e) {
++        QTextStream err(stderr);
++        err << e.what() << '\n';
++        err.flush();
++    }
++    ::CloseHandle(m_handle);
++    m_handle = nullptr;
++}
++
++void Drive::throwError(const QString &error) {
++    constexpr std::size_t MESSAGE_SIZE = 256;
++    TCHAR message[MESSAGE_SIZE];
++    FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, nullptr, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, MESSAGE_SIZE - 1, nullptr);
++    auto error_message = error + " (" + QString::fromWCharArray(message).trimmed() + ")";
++    throw std::runtime_error(error_message.toStdString());
++}
++
++HANDLE Drive::openBlockDevice(const QString &device) {
++    return ::CreateFileA(qPrintable(device), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, nullptr, OPEN_EXISTING, 0, nullptr);
++}
++
++bool Drive::deviceIoControlCode(DWORD controlCode) const {
++    DWORD bytesReturned;
++    return ::DeviceIoControl(m_handle, controlCode, nullptr, 0, nullptr, 0, &bytesReturned, nullptr);
++}
++
++void Drive::lock() {
++    constexpr int MAX_ATTEMPTS = 10;
++    for (int attempts = 0; !deviceIoControlCode(FSCTL_LOCK_VOLUME); ++attempts) {
++        if (attempts == MAX_ATTEMPTS) {
++            throwError("Couldn't lock the drive.");
++            break;
++        }
++        Sleep(2000);
++    }
++}
++
++void Drive::unlock() {
++    if (deviceIoControlCode(FSCTL_UNLOCK_VOLUME)) {
++        throwError("Couldn't unlock the drive.");
++    }
++}
++
++void Drive::init() {
++    if (m_handle != nullptr)
++        return;
++    QString drivePath = QString("\\\\.\\PhysicalDrive%0").arg(m_driveNumber);
++    m_handle = openBlockDevice(drivePath);
++    if (m_handle == INVALID_HANDLE_VALUE) {
++        m_handle = nullptr;
++        throwError("Couldn't open the drive for writing.");
++    }
++
++    lock();
++    m_geometry = deviceIoControl<decltype(m_geometry)>("Couldn't get disk info.");
++}
++
++/**
++ * Write buffer directly to drive.
++ */
++void Drive::write(const void *buffer, std::size_t size) {
++    DWORD bytesWritten;
++    OVERLAPPED overlap{};
++
++    if (!WriteFile(m_handle, buffer, size, &bytesWritten, &overlap)) {
++        if (GetLastError() == ERROR_IO_PENDING) {
++            WaitForSingleObject(overlap.hEvent, INFINITE);
++        }
++        else {
++            throwError("Destination drive is not writable.");
++        }
++    }
++
++    if (bytesWritten != size) {
++        throw std::runtime_error("Destination drive is not writable.");
++    }
++}
++
++/**
++ * Grab file descriptor.
++ */
++int Drive::getDescriptor() const {
++    return _open_osfhandle(reinterpret_cast<intptr_t>(m_handle), 0);
++}
++
++void Drive::wipe() {
++    const QString message = "Couldn't wipe partition.";
++    CREATE_DISK disk;
++    disk.PartitionStyle = PARTITION_STYLE_MBR;
++    deviceIoControl(message, &disk);
++    if (!deviceIoControlCode(IOCTL_DISK_UPDATE_PROPERTIES)) {
++        throwError(message);
++    }
++}
++
++/**
++ * Fill the rest of the drive with a primary partition that uses the fat
++ * filesystem.
++ */
++QPair<QString, qint64> Drive::addPartition(quint64 offset, const QString &label) {
++    const QString message = "Couldn't add partition.";
++    LayoutInfo layout = deviceIoControl<decltype(layout)>(message);
++    std::size_t partition_idx = 0;
++    for (; partition_idx < layout.PartitionCount; ++partition_idx) {
++        if (layout.PartitionEntry[partition_idx].PartitionNumber == 0) {
++            break;
++        }
++    }
++    if (partition_idx == layout.PartitionCount) {
++        ++layout.PartitionCount;
++    }
++    const std::size_t partition_num = partition_idx + 1;
++    if (layout.PartitionStyle != PARTITION_STYLE_MBR || layout.PartitionCount > MAX_PARTITIONS) {
++        throw std::runtime_error(message.toStdString());
++    }
++    PARTITION_INFORMATION_EX &partition = layout.PartitionEntry[partition_idx];
++    partition.PartitionStyle = PARTITION_STYLE_MBR;
++    partition.StartingOffset.QuadPart = offset;
++    partition.PartitionLength.QuadPart = m_geometry.DiskSize.QuadPart - offset;
++    partition.PartitionNumber = partition_num;
++    partition.RewritePartition = TRUE;
++    partition.Mbr.PartitionType = PARTITION_FAT32;
++    partition.Mbr.BootIndicator = FALSE;
++    partition.Mbr.RecognizedPartition = FALSE;
++    partition.Mbr.HiddenSectors = offset / m_geometry.Geometry.BytesPerSector;
++
++    PARTITION_INFORMATION_EX empty{};
++    empty.RewritePartition = TRUE;
++    for (std::size_t i = partition_num; i < layout.PartitionCount; ++i) {
++        layout.PartitionEntry[i] = empty;
++    }
++
++    deviceIoControl(message, &layout);
++    if (!deviceIoControlCode(IOCTL_DISK_UPDATE_PROPERTIES)) {
++        throwError(message);
++    }
++    /*
++     * Same as IOCTL_DISK_VERIFY with the difference that I know how to use it.
++     * This is important because sometimes there's simply no change.
++     */
++    layout = deviceIoControl<decltype(layout)>(message);
++    const PARTITION_INFORMATION_EX &target = layout.PartitionEntry[partition_idx];
++    if (target.PartitionNumber != partition_num ||
++            target.StartingOffset.QuadPart != partition.StartingOffset.QuadPart ||
++            target.PartitionLength.QuadPart != partition.PartitionLength.QuadPart) {
++        throw std::runtime_error(message.toStdString());
++    }
++    /*
++     * Shared pointer owned by parent chain. Don't die. You know that already
++     * since this is Qt.
++     */
++    QProcess *process = new QProcess(this);
++    /**
++     * Would love to use the Virtual Disk Service via COM but MinGW doesn't
++     * have the ability to do so out of the box and to do so requires linking
++     * against a static library which can't be included because of licensing
++     * issues and guidelines.
++     *
++     * Note that running diskpart is still slow but since it's only used for
++     * formating there does not seem to be a need to wait 15 seconds also it
++     * doesn't seem to get in the way of locking.
++     */
++    QProcess &diskpart = *process;
++    /* QProcess diskpart; */
++    diskpart.setProgram("diskpart.exe");
++    diskpart.setProcessChannelMode(QProcess::ForwardedChannels);
++    diskpart.start(QIODevice::ReadWrite);
++    diskpart.write(qPrintable(QString("select disk %0\r\n").arg(m_driveNumber)));
++    diskpart.write(qPrintable(QString("select partition %0\r\n").arg(partition.PartitionNumber)));
++    diskpart.write(qPrintable(QString("format fs=fat32 label=\"%0\" quick\r\n").arg(label)));
++    diskpart.write("exit\r\n");
++    diskpart.waitForFinished();
++    if (diskpart.exitCode() != 0)
++        throw std::runtime_error(message.toStdString());
++
++    return qMakePair(guidOfPartition(partition.PartitionNumber), partition.PartitionLength.QuadPart);
++}
++
++/**
++ * Currently unused because it doesn't work correctly.
++ */
++char Drive::unusedDriveLetter() {
++    constexpr char ALPHABET[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
++    // This does not include mounted network drives, etc.
++    DWORD drives = ::GetLogicalDrives();
++    /*
++     * It's safe to start at D because people hard-code C in their source code
++     * so Windows will never switch away from that and A and B are legacy drive
++     * letters.
++     */
++    for (std::size_t i = 3; i < std::extent<decltype(ALPHABET)>::value; ++i) {
++        if (drives & (1 << i))
++            continue;
++        const char driveLetter = ALPHABET[i];
++        /*
++         * DRIVE_NO_ROOT_DIR should be returned if the root directory is
++         * invalid or if the slot is unused.
++         *
++         * FIXME: For some reason the expression below evaluates to true even
++         * though a network drive is mounted at the specified path.
++         *
++         * Note: What's crazy is that mounting to it a drive letter at which a
++         * network drive is already monted works without any error but both
++         * drives are then mounted on the same drive letter and the network
++         * drive shadows the actual disk in the explorer visually but
++         * essentially the network drive cannot be used from that mountpoint
++         * anymore.
++         */
++        if (::GetDriveTypeA(qPrintable(QString("%0:\\").arg(driveLetter))) == DRIVE_NO_ROOT_DIR) {
++            return driveLetter;
++        }
++    }
++    throw std::runtime_error("All drive letters have been used.");
++}
++
++QString Drive::guidOfPartition(int partitionNumber) const {
++    const QString message = "Couldn't get volume GUID path of partition.";
++    /*
++     * A volume GUID path looks like this:
++     * \\?\Volume{00000000-0000-0000-0000-000000000000}\
++     */
++    constexpr std::size_t GUID_SIZE = 50;
++    WCHAR guid[GUID_SIZE] = L"";
++    HANDLE volume = FindFirstVolume(guid, GUID_SIZE);
++    if (volume == INVALID_HANDLE_VALUE)
++        throwError(message);
++    do {
++        QString identifier = QString::fromStdWString(guid);
++        identifier.chop(1);
++        HANDLE handle = openBlockDevice(identifier);
++        if (handle == INVALID_HANDLE_VALUE) {
++            CloseHandle(handle);
++            continue;
++        }
++
++        STORAGE_DEVICE_NUMBER device;
++        try {
++            device = deviceIoControl<decltype(device)>(handle);
++        } catch (std::runtime_error &) {
++            CloseHandle(handle);
++            continue;
++        }
++        CloseHandle(handle);
++        if (device.DeviceType == FILE_DEVICE_DISK && device.DeviceNumber == m_driveNumber && device.PartitionNumber == static_cast<decltype(device.PartitionNumber)>(partitionNumber)) {
++            FindVolumeClose(volume);
++            return identifier + "\\";
++        }
++    } while (FindNextVolume(volume, guid, GUID_SIZE));
++    FindVolumeClose(volume);
++    throw std::runtime_error(message.toStdString());
++}
++
++/**
++ * Mount specified partition.
++ */
++QString Drive::mount(const QString &partitionIdentifier) {
++    QDir dir = QDir::temp();
++    dir.mkdir("fmwmountpoint");
++    QString mountpoint = dir.absolutePath() + "/fmwmountpoint/";
++    if (!SetVolumeMountPointA(qPrintable(QDir::toNativeSeparators(mountpoint)),
++                qPrintable(partitionIdentifier))) {
++        throwError("Couldn't mount partititon.");
++    }
++    return mountpoint;
++}
++
++/**
++ * Check whether the drive letter belongs to this drive.
++ */
++bool Drive::hasDriveLetter(const char driveLetter) const {
++    HANDLE handle = openBlockDevice(QString("\\\\.\\%1:").arg(driveLetter));
++    try {
++        VOLUME_DISK_EXTENTS vde = deviceIoControl<decltype(vde)>(handle);
++        for (std::size_t i = 0; i < vde.NumberOfDiskExtents; ++i) {
++            if (vde.Extents[i].DiskNumber == m_driveNumber) {
++                CloseHandle(handle);
++                handle = nullptr;
++                return true;
++            }
++        }
++    } catch (std::runtime_error &) {
++    }
++    if (handle)
++        CloseHandle(handle);
++    return false;
++}
++
++/**
++ * Unmount all partitions of a disk from drive letters.
++ * TODO: Unmount more reliably.
++ */
++void Drive::umount() {
++    constexpr char ALPHABET[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
++    DWORD drives = ::GetLogicalDrives();
++
++    for (std::size_t i = 0; i < std::extent<decltype(ALPHABET)>::value; ++i) {
++        const bool hasDrive = drives & (1 << i);
++        if (!hasDrive)
++            continue;
++        const char driveLetter = ALPHABET[i];
++        if (hasDriveLetter(driveLetter)) {
++            QString volumePath = QString("%1:\\").arg(driveLetter);
++            if (!DeleteVolumeMountPointA(qPrintable(volumePath))) {
++                throwError(QString("Couldn't remove the drive %1:").arg(driveLetter));
++            }
++        }
++    }
++}
++
++template <>
++DWORD Drive::controlCodeOf<Drive::LayoutInfo>() {
++    return IOCTL_DISK_GET_DRIVE_LAYOUT_EX;
++}
++template <>
++DWORD Drive::controlCodeOf<std::nullptr_t, Drive::LayoutInfo>() {
++    return IOCTL_DISK_SET_DRIVE_LAYOUT_EX;
++}
++template <>
++DWORD Drive::controlCodeOf<std::nullptr_t, CREATE_DISK>() {
++    return IOCTL_DISK_CREATE_DISK;
++}
++template <>
++DWORD Drive::controlCodeOf<VOLUME_DISK_EXTENTS>() {
++    return IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS;
++}
++template <>
++DWORD Drive::controlCodeOf<DISK_GEOMETRY_EX>() {
++    return IOCTL_DISK_GET_DRIVE_GEOMETRY_EX;
++}
++template <>
++DWORD Drive::controlCodeOf<STORAGE_DEVICE_NUMBER>() {
++    return IOCTL_STORAGE_GET_DEVICE_NUMBER;
++}
+diff --git a/helper/win/drive.h b/helper/win/drive.h
+new file mode 100644
+index 0000000..de0d148
+--- /dev/null
++++ b/helper/win/drive.h
+@@ -0,0 +1,120 @@
++/*
++ * Fedora Media Writer
++ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++ */
++
++#ifndef DRIVE_H
++#define DRIVE_H
++
++#include <type_traits>
++#include <stdexcept>
++#include <utility>
++
++#include <QObject>
++#include <QProcess>
++#include <QString>
++#include <QtGlobal>
++
++#include <io.h>
++#include <windows.h>
++
++class Drive : public QObject {
++    Q_OBJECT
++private:
++    static constexpr std::size_t MAX_PARTITIONS = 4;
++    struct LayoutInfo : DRIVE_LAYOUT_INFORMATION_EX {
++        PARTITION_INFORMATION_EX PartitionEntry[MAX_PARTITIONS];
++    };
++
++    static void throwError(const QString &error);
++    static HANDLE openBlockDevice(const QString &device);
++    static char unusedDriveLetter();
++    template <class OutBuffer, class InBuffer = std::nullptr_t>
++    static DWORD controlCodeOf();
++    template <class T>
++    static T *addressOf(T &variable);
++    template <class T>
++    static std::size_t sizeOf();
++    template <class OutBuffer = std::nullptr_t, class InBuffer = std::nullptr_t>
++    static OutBuffer deviceIoControl(HANDLE handle, const QString &message = "Failed", InBuffer *inbuffer = nullptr);
++
++    template <class OutBuffer = std::nullptr_t, class InBuffer = std::nullptr_t>
++    OutBuffer deviceIoControl(const QString &message = "Failed", InBuffer *inbuffer = nullptr) const;
++    bool deviceIoControlCode(DWORD controlCode) const;
++    void lock();
++    void unlock();
++    bool hasDriveLetter(const char driveLetter) const;
++    QString guidOfPartition(int partitionNumber) const;
++
++public:
++    /**
++     * Shared public interface across platforms.
++     */
++    explicit Drive(const QString &driveIdentifier);
++    ~Drive();
++    void init();
++    void write(const void *buffer, std::size_t size);
++    int getDescriptor() const;
++    void wipe();
++    QPair<QString, qint64> addPartition(quint64 offset = 1024ULL * 1024ULL, const QString &label = "");
++    QString mount(const QString &partitionIdentifier);
++    void umount();
++
++private:
++    HANDLE m_handle;
++    DWORD m_driveNumber;
++    OVERLAPPED m_overlap;
++    DISK_GEOMETRY_EX m_geometry;
++};
++
++template <class T>
++std::size_t Drive::sizeOf() {
++    if (std::is_same<T, std::nullptr_t>::value)
++        return 0;
++    return sizeof(T);
++}
++
++template <class T>
++T *Drive::addressOf(T &variable) {
++    if (std::is_same<T, std::nullptr_t>::value)
++        return nullptr;
++    return &variable;
++}
++
++/**
++ * The design of the DeviceIoControl is evil partially because it does too many
++ * things.
++ * This wrapper does not fix that but it makes the interface easier to use
++ * since the user does not need to specify the control code or provide unused
++ * arguments when calling the wrapper.
++ */
++template <class OutBuffer, class InBuffer>
++OutBuffer Drive::deviceIoControl(HANDLE handle, const QString &message, InBuffer *inbuffer) {
++    OutBuffer outbuffer;
++    DWORD bytesReturned;
++    if (!::DeviceIoControl(handle, controlCodeOf<OutBuffer, InBuffer>(), inbuffer, sizeOf<InBuffer>(), addressOf(outbuffer), sizeOf<OutBuffer>(), &bytesReturned, nullptr)) {
++        throwError(message);
++    }
++    return outbuffer;
++}
++
++template <class OutBuffer, class InBuffer>
++OutBuffer Drive::deviceIoControl(const QString &message, InBuffer *inbuffer) const {
++    return deviceIoControl<OutBuffer, InBuffer>(m_handle, message, inbuffer);
++}
++
++#endif // DRIVE_H
+diff --git a/helper/win/main.cpp b/helper/win/main.cpp
+deleted file mode 100644
+index 37c0174..0000000
+--- a/helper/win/main.cpp
++++ /dev/null
+@@ -1,46 +0,0 @@
+-/*
+- * Fedora Media Writer
+- * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License
+- * as published by the Free Software Foundation; either version 2
+- * of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+- */
+-
+-#include <QCoreApplication>
+-#include <QTextStream>
+-#include <QTranslator>
+-
+-#include "restorejob.h"
+-#include "writejob.h"
+-
+-int main(int argc, char *argv[]) {
+-    QCoreApplication app(argc, argv);
+-
+-    QTranslator translator;
+-    translator.load(QLocale(), QString(), QString(), ":/translations");
+-    app.installTranslator(&translator);
+-
+-    if (app.arguments().count() == 3 && app.arguments()[1] == "restore") {
+-        new RestoreJob(app.arguments()[2]);
+-    }
+-    else if (app.arguments().count() == 4 && app.arguments()[1] == "write") {
+-        new WriteJob(app.arguments()[2], app.arguments()[3]);
+-    }
+-    else {
+-        QTextStream err(stderr);
+-        err << "Helper: Wrong arguments entered\n";
+-        return 1;
+-    }
+-    return app.exec();
+-}
+diff --git a/helper/win/restorejob.cpp b/helper/win/restorejob.cpp
+deleted file mode 100644
+index 0acff3f..0000000
+--- a/helper/win/restorejob.cpp
++++ /dev/null
+@@ -1,61 +0,0 @@
+-/*
+- * Fedora Media Writer
+- * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License
+- * as published by the Free Software Foundation; either version 2
+- * of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+- */
+-
+-#include "restorejob.h"
+-#include <QCoreApplication>
+-#include <QTextStream>
+-#include <QTimer>
+-
+-RestoreJob::RestoreJob(const QString &where)
+-    : QObject(nullptr)
+-{
+-    bool ok = false;
+-    m_where = where.toInt(&ok);
+-    if (!ok)
+-        qApp->exit(1);
+-    else
+-        QTimer::singleShot(0, this, &RestoreJob::work);
+-}
+-
+-void RestoreJob::work() {
+-    m_diskpart.setProgram("diskpart.exe");
+-    m_diskpart.setProcessChannelMode(QProcess::ForwardedChannels);
+-
+-    m_diskpart.start(QIODevice::ReadWrite);
+-
+-    m_diskpart.write(qPrintable(QString("select disk %0\r\n").arg(m_where)));
+-    m_diskpart.write("clean\r\n");
+-    m_diskpart.write("create part pri\r\n");
+-    // again, for some reason this works, doing it once does not
+-    m_diskpart.write("clean\r\n");
+-    m_diskpart.write("create part pri\r\n");
+-    m_diskpart.write("select part 1\r\n");
+-    m_diskpart.write("format fs=fat32 quick\r\n");
+-    m_diskpart.write("assign\r\n");
+-    m_diskpart.write("exit\r\n");
+-
+-    if (m_diskpart.waitForFinished()) {
+-        qApp->exit(0);
+-    }
+-    else {
+-        err << m_diskpart.readAllStandardError();
+-        err.flush();
+-        qApp->exit(1);
+-    }
+-}
+diff --git a/helper/win/restorejob.h b/helper/win/restorejob.h
+deleted file mode 100644
+index a46ada9..0000000
+--- a/helper/win/restorejob.h
++++ /dev/null
+@@ -1,46 +0,0 @@
+-/*
+- * Fedora Media Writer
+- * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License
+- * as published by the Free Software Foundation; either version 2
+- * of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+- */
+-
+-#ifndef RESTOREJOB_H
+-#define RESTOREJOB_H
+-
+-#include <QObject>
+-#include <QProcess>
+-#include <QTextStream>
+-
+-class RestoreJob : public QObject
+-{
+-    Q_OBJECT
+-public:
+-    explicit RestoreJob(const QString &where);
+-
+-signals:
+-
+-private slots:
+-    void work();
+-
+-private:
+-    QTextStream out { stdout };
+-    QTextStream err { stderr };
+-
+-    QProcess m_diskpart;
+-    int m_where;
+-};
+-
+-#endif // RESTOREJOB_H
+diff --git a/helper/win/win.pri b/helper/win/win.pri
+new file mode 100644
+index 0000000..b49a7d2
+--- /dev/null
++++ b/helper/win/win.pri
+@@ -0,0 +1,10 @@
++INCLUDEPATH += $$top_srcdir/helper/win/
++
++LIBS += -lliblzma
++
++SOURCES += win/drive.cpp
++HEADERS += win/drive.h
++
++DISTFILES += helper.exe.manifest
++
++QMAKE_MANIFEST = $${PWD}/helper.exe.manifest
+diff --git a/helper/win/win.pro b/helper/win/win.pro
+deleted file mode 100644
+index 2812f9b..0000000
+--- a/helper/win/win.pro
++++ /dev/null
+@@ -1,31 +0,0 @@
+-TEMPLATE = app
+-
+-QT += core network
+-
+-LIBS += -lisomd5 -lliblzma
+-
+-CONFIG += c++11
+-CONFIG += console
+-
+-TARGET = helper
+-DESTDIR = ../../app
+-
+-include($$top_srcdir/deployment.pri)
+-
+-target.path = $$LIBEXECDIR
+-INSTALLS += target
+-
+-SOURCES = main.cpp \
+-    writejob.cpp \
+-    restorejob.cpp
+-
+-HEADERS += \
+-    writejob.h \
+-    restorejob.h
+-
+-RESOURCES += ../../translations/translations.qrc
+-
+-DISTFILES += \
+-    helper.exe.manifest
+-
+-QMAKE_MANIFEST = $${PWD}/helper.exe.manifest
+diff --git a/helper/win/writejob.cpp b/helper/win/writejob.cpp
+deleted file mode 100644
+index f5979b9..0000000
+--- a/helper/win/writejob.cpp
++++ /dev/null
+@@ -1,413 +0,0 @@
+-/*
+- * Fedora Media Writer
+- * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License
+- * as published by the Free Software Foundation; either version 2
+- * of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+- */
+-
+-#include "writejob.h"
+-
+-#include <QCoreApplication>
+-#include <QTimer>
+-#include <QTextStream>
+-#include <QProcess>
+-#include <QFile>
+-#include <QThread>
+-
+-#include <QDebug>
+-
+-#include <io.h>
+-#include <windows.h>
+-
+-#include <lzma.h>
+-
+-#include "isomd5/libcheckisomd5.h"
+-
+-
+-WriteJob::WriteJob(const QString &what, const QString &where)
+-    : QObject(nullptr), what(what)
+-{
+-    bool ok = false;
+-    this->where = where.toInt(&ok);
+-
+-    if (what.endsWith(".part")) {
+-        connect(&watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
+-        watcher.addPath(what);
+-    }
+-    else {
+-        QTimer::singleShot(0, this, &WriteJob::work);
+-    }
+-}
+-
+-int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
+-    return ((WriteJob*)data)->onMediaCheckAdvanced(offset, total);
+-}
+-
+-int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
+-    Q_UNUSED(total);
+-    out << offset << "\n";
+-    out.flush();
+-    return 0;
+-}
+-
+-HANDLE WriteJob::openDrive(int physicalDriveNumber) {
+-    HANDLE hVol;
+-    QString drivePath = QString("\\\\.\\PhysicalDrive%0").arg(physicalDriveNumber);
+-
+-    hVol = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0);
+-
+-    if( hVol == INVALID_HANDLE_VALUE ) {
+-        TCHAR message[256];
+-        FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+-        err << tr("Couldn't open the drive for writing") << " (" << QString::fromWCharArray(message).trimmed() << ")\n";
+-        err.flush();
+-        return hVol;
+-    }
+-
+-    return hVol;
+-}
+-
+-bool WriteJob::lockDrive(HANDLE drive) {
+-    int attempts = 0;
+-    DWORD status;
+-
+-    while (true) {
+-        if (!DeviceIoControl(drive, FSCTL_LOCK_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
+-            attempts++;
+-        }
+-        else {
+-            return true;
+-        }
+-
+-        if (attempts == 10) {
+-            TCHAR message[256];
+-            FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+-
+-            err << tr("Couldn't lock the drive") << " (" << QString::fromWCharArray(message).trimmed() << ")\n";
+-            err.flush();
+-            break;
+-        }
+-
+-        QThread::sleep(2);
+-    }
+-
+-    return false;
+-}
+-
+-bool WriteJob::removeMountPoints(uint diskNumber) {
+-    DWORD drives = ::GetLogicalDrives();
+-
+-    for (char i = 0; i < 26; i++) {
+-        if (drives & (1 << i)) {
+-            char currentDrive = 'A' + i;
+-            QString drivePath = QString("\\\\.\\%1:").arg(currentDrive);
+-
+-            HANDLE hDevice = ::CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
+-
+-            DWORD bytesReturned;
+-            VOLUME_DISK_EXTENTS vde; // TODO FIXME: handle ERROR_MORE_DATA (this is an extending structure)
+-            BOOL bResult = DeviceIoControl(hDevice, IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS, NULL, 0, &vde, sizeof(vde), &bytesReturned, NULL);
+-
+-            if (bResult) {
+-                for (uint j = 0; j < vde.NumberOfDiskExtents; j++) {
+-                    if (vde.Extents[j].DiskNumber == diskNumber) {
+-                        QString volumePath = QString("%1:\\").arg(currentDrive);
+-
+-                        CloseHandle(hDevice);
+-                        hDevice = nullptr;
+-
+-                        if (!DeleteVolumeMountPointA(volumePath.toStdString().c_str())) {
+-                            TCHAR message[256];
+-                            FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+-                            err << tr("Couldn't remove the drive %1:").arg(currentDrive) << " (" << QString::fromWCharArray(message).trimmed() << "\n";
+-                            err.flush();
+-                            return false;
+-                        }
+-
+-                        break;
+-                    }
+-                }
+-            }
+-            if (hDevice)
+-                CloseHandle(hDevice);
+-        }
+-    }
+-
+-    return true;
+-}
+-
+-bool WriteJob::cleanDrive(uint driveNumber) {
+-    QProcess diskpart;
+-    diskpart.setProgram("diskpart.exe");
+-    diskpart.setProcessChannelMode(QProcess::ForwardedChannels);
+-
+-    diskpart.start(QIODevice::ReadWrite);
+-
+-    diskpart.write(qPrintable(QString("select disk %0\r\n").arg(driveNumber)));
+-    diskpart.write("clean\r\n");
+-    // for some reason this works (tm)
+-    diskpart.write("create part pri\r\n");
+-    diskpart.write("clean\r\n");
+-    diskpart.write("exit\r\n");
+-
+-    diskpart.waitForFinished();
+-
+-    if (diskpart.exitCode() == 0) {
+-        // as advised in the diskpart documentation
+-        QThread::sleep(15);
+-
+-        return true;
+-    }
+-
+-    return false;
+-}
+-
+-bool WriteJob::writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, uint size) {
+-    DWORD bytesWritten;
+-
+-    if (!WriteFile(drive, data, size, &bytesWritten, overlap)) {
+-        DWORD Errorcode = GetLastError();
+-        if (Errorcode == ERROR_IO_PENDING) {
+-            WaitForSingleObject(overlap->hEvent, INFINITE);
+-        }
+-        else {
+-            TCHAR message[256];
+-            FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+-            err << tr("Destination drive is not writable") << " (" << QString::fromWCharArray(message).trimmed() << ")\n";
+-            err.flush();
+-            return false;
+-        }
+-    }
+-
+-    if (bytesWritten != size) {
+-        err << tr("Destination drive is not writable") << "\n";
+-        err.flush();
+-        return false;
+-    }
+-
+-    return true;
+-}
+-
+-
+-void WriteJob::unlockDrive(HANDLE drive) {
+-    DWORD status;
+-    if (!DeviceIoControl(drive, FSCTL_UNLOCK_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
+-        TCHAR message[256];
+-        FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+-        err << tr("Couldn't unlock the drive") << " (" << QString::fromWCharArray(message).trimmed() << ")\n";
+-        err.flush();
+-    }
+-}
+-
+-void WriteJob::work() {
+-    if (!write()) {
+-        out << "0\n";
+-        out.flush();
+-        QThread::sleep(5);
+-        if (!write())
+-            return;
+-    }
+-
+-    if (!check())
+-        return;
+-
+-    qApp->exit(0);
+-}
+-
+-void WriteJob::onFileChanged(const QString &path) {
+-    if (QFile::exists(path))
+-        return;
+-
+-    what = what.replace(QRegExp("[.]part$"), "");
+-
+-    work();
+-}
+-
+-bool WriteJob::write() {
+-    removeMountPoints(where);
+-    cleanDrive(where);
+-
+-    HANDLE drive = openDrive(where);
+-    if (!lockDrive(drive)) {
+-        qApp->exit(1);
+-        return false;
+-    }
+-
+-    if (what.endsWith(".xz"))
+-        return writeCompressed(drive);
+-    else
+-        return writePlain(drive);
+-}
+-
+-bool WriteJob::writeCompressed(HANDLE drive) {
+-    qint64 totalRead = 0;
+-
+-    lzma_stream strm = LZMA_STREAM_INIT;
+-    lzma_ret ret;
+-
+-    uint8_t *inBuffer = new uint8_t[BLOCK_SIZE];
+-    uint8_t *outBuffer = new uint8_t[BLOCK_SIZE];
+-
+-    QFile file(what);
+-    file.open(QIODevice::ReadOnly);
+-
+-    ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
+-    if (ret != LZMA_OK) {
+-        err << tr("Failed to start decompressing.");
+-        return false;
+-    }
+-
+-    strm.next_in = inBuffer;
+-    strm.avail_in = 0;
+-    strm.next_out = outBuffer;
+-    strm.avail_out = BLOCK_SIZE;
+-
+-    OVERLAPPED osWrite;
+-    memset(&osWrite, 0, sizeof(osWrite));
+-    osWrite.hEvent = 0;
+-
+-    while (true) {
+-        if (strm.avail_in == 0) {
+-            qint64 len = file.read((char*) inBuffer, BLOCK_SIZE);
+-            totalRead += len;
+-
+-            strm.next_in = inBuffer;
+-            strm.avail_in = len;
+-
+-            out << totalRead << "\n";
+-            out.flush();
+-        }
+-
+-        ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
+-        if (ret == LZMA_STREAM_END) {
+-            if (!writeBlock(drive, &osWrite, (char *) outBuffer, BLOCK_SIZE - strm.avail_out)) {
+-                qApp->exit(1);
+-                CloseHandle(drive);
+-                return false;
+-            }
+-
+-            if (osWrite.Offset + BLOCK_SIZE < osWrite.Offset)
+-                osWrite.OffsetHigh++;
+-            osWrite.Offset += BLOCK_SIZE;
+-
+-            CloseHandle(drive);
+-
+-            return true;
+-        }
+-        if (ret != LZMA_OK) {
+-            switch (ret) {
+-            case LZMA_MEM_ERROR:
+-                err << tr("There is not enough memory to decompress the file.");
+-                break;
+-            case LZMA_FORMAT_ERROR:
+-            case LZMA_DATA_ERROR:
+-            case LZMA_BUF_ERROR:
+-                err << tr("The downloaded compressed file is corrupted.");
+-                break;
+-            case LZMA_OPTIONS_ERROR:
+-                err << tr("Unsupported compression options.");
+-                break;
+-            default:
+-                err << tr("Unknown decompression error.");
+-                break;
+-            }
+-            qApp->exit(4);
+-            CloseHandle(drive);
+-            return false;
+-        }
+-
+-        if (strm.avail_out == 0) {
+-            if (!writeBlock(drive, &osWrite, (char *) outBuffer, BLOCK_SIZE - strm.avail_out)) {
+-                qApp->exit(1);
+-                CloseHandle(drive);
+-                return false;
+-            }
+-
+-            if (osWrite.Offset + BLOCK_SIZE < osWrite.Offset)
+-                osWrite.OffsetHigh++;
+-            osWrite.Offset += BLOCK_SIZE;
+-
+-            strm.next_out = outBuffer;
+-            strm.avail_out = BLOCK_SIZE;
+-        }
+-    }
+-}
+-
+-bool WriteJob::writePlain(HANDLE drive) {
+-    OVERLAPPED osWrite;
+-    memset(&osWrite, 0, sizeof(osWrite));
+-    osWrite.hEvent = 0;
+-
+-    uint64_t cnt = 0;
+-    QByteArray buffer;
+-    QFile isoFile(what);
+-    isoFile.open(QIODevice::ReadOnly);
+-    if (!isoFile.isOpen()) {
+-        err << tr("Source image is not readable");
+-        err.flush();
+-        qApp->exit(1);
+-        return false;
+-    }
+-
+-    while (true) {
+-        buffer = isoFile.read(BLOCK_SIZE);
+-        if (!writeBlock(drive, &osWrite, buffer.data(), buffer.size())) {
+-            qApp->exit(1);
+-            return false;
+-        }
+-
+-        if (osWrite.Offset + BLOCK_SIZE < osWrite.Offset)
+-            osWrite.OffsetHigh++;
+-        osWrite.Offset += BLOCK_SIZE;
+-        cnt += buffer.size();
+-        out << cnt << "\n";
+-        out.flush();
+-
+-        if (buffer.size() != BLOCK_SIZE || isoFile.atEnd())
+-            break;
+-    }
+-
+-    CloseHandle(drive);
+-
+-    return true;
+-}
+-
+-bool WriteJob::check() {
+-    out << "CHECK\n";
+-    out.flush();
+-
+-    HANDLE drive = openDrive(where);
+-
+-    switch (mediaCheckFD(_open_osfhandle(reinterpret_cast<intptr_t>(drive), 0), &WriteJob::staticOnMediaCheckAdvanced, this)) {
+-    case ISOMD5SUM_CHECK_NOT_FOUND:
+-    case ISOMD5SUM_CHECK_PASSED:
+-        err << "OK\n";
+-        err.flush();
+-        qApp->exit(0);
+-        break;
+-    case ISOMD5SUM_CHECK_FAILED:
+-        err << tr("Your drive is probably damaged.") << "\n";
+-        err.flush();
+-        qApp->exit(1);
+-        return false;
+-    default:
+-        err << tr("Unexpected error occurred during media check.") << "\n";
+-        err.flush();
+-        qApp->exit(1);
+-        return false;
+-    }
+-
+-    return true;
+-}
+diff --git a/helper/win/writejob.h b/helper/win/writejob.h
+deleted file mode 100644
+index a5aa222..0000000
+--- a/helper/win/writejob.h
++++ /dev/null
+@@ -1,77 +0,0 @@
+-/*
+- * Fedora Media Writer
+- * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License
+- * as published by the Free Software Foundation; either version 2
+- * of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+- */
+-
+-#ifndef WRITEJOB_H
+-#define WRITEJOB_H
+-
+-#include <QObject>
+-#include <QTextStream>
+-#include <QProcess>
+-
+-#include <QFileSystemWatcher>
+-
+-#include <windows.h>
+-
+-#ifndef MEDIAWRITER_LZMA_LIMIT
+-// 256MB memory limit for the decompressor
+-# define MEDIAWRITER_LZMA_LIMIT (1024*1024*256)
+-#endif
+-
+-class WriteJob : public QObject
+-{
+-    Q_OBJECT
+-public:
+-    explicit WriteJob(const QString &what, const QString &where);
+-
+-    static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
+-    int onMediaCheckAdvanced(long long offset, long long total);
+-
+-private:
+-    HANDLE openDrive(int physicalDriveNumber);
+-    bool lockDrive(HANDLE drive);
+-    bool removeMountPoints(uint diskNumber);
+-    // bool dismountDrive(HANDLE drive, int diskNumber);
+-    bool cleanDrive(uint diskNumber);
+-
+-    bool writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, uint size);
+-
+-    void unlockDrive(HANDLE drive);
+-
+-
+-private slots:
+-    void work();
+-    void onFileChanged(const QString &path);
+-
+-    bool write();
+-    bool writeCompressed(HANDLE drive);
+-    bool writePlain(HANDLE drive);
+-    bool check();
+-private:
+-    QString what;
+-    uint where;
+-
+-    QTextStream out { stdout };
+-    QTextStream err { stderr };
+-
+-    QFileSystemWatcher watcher { };
+-
+-    const int BLOCK_SIZE { 512 * 128 };
+-};
+-
+-#endif // WRITEJOB_H
+diff --git a/helper/write.cpp b/helper/write.cpp
+index c8b5faf..d1291e5 100644
+--- a/helper/write.cpp
++++ b/helper/write.cpp
+@@ -196,6 +196,19 @@ static void zeroFile(const QString &filename, qint64 size) {
+     }
+ }
+ 
++static int onProgress(void *data, long long offset, long long total) {
++    constexpr long long MAGIC = 234;
++    long long &previousProgress = *static_cast<long long*>(data);
++    const long long progress = (offset * MAGIC) / total;
++    if (progress > previousProgress) {
++        previousProgress = progress;
++        QTextStream out(stdout);
++        out << offset << "\n";
++        out.flush();
++    }
++    return 0;
++}
++
+ static void writeCompressed(const QString &source, Drive *const drive) {
+     qint64 totalRead = 0;
+ 
+@@ -206,6 +219,8 @@ static void writeCompressed(const QString &source, Drive *const drive) {
+     const std::size_t bufferSize = buffers.size;
+     char *inBuffer = static_cast<char*>(buffers.get(0));
+     char *outBuffer = static_cast<char*>(buffers.get(1));
++    auto total = QFileInfo(source).size();
++    qint64 previousProgress = 0LL;
+ 
+     QFile file(source);
+     file.open(QIODevice::ReadOnly);
+@@ -220,7 +235,6 @@ static void writeCompressed(const QString &source, Drive *const drive) {
+     strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
+     strm.avail_out = bufferSize;
+ 
+-    QTextStream out(stdout);
+     while (true) {
+         if (strm.avail_in == 0) {
+             qint64 len = file.read(inBuffer, bufferSize);
+@@ -229,8 +243,7 @@ static void writeCompressed(const QString &source, Drive *const drive) {
+             strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
+             strm.avail_in = len;
+ 
+-            out << totalRead << "\n";
+-            out.flush();
++            onProgress(&previousProgress, totalRead, total);
+         }
+ 
+         ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
+@@ -277,28 +290,21 @@ static void writePlain(const QString &source, Drive *const drive) {
+     PageAlignedBuffer<2> buffers;
+     const std::size_t bufferSize = buffers.size;
+     char *buffer = static_cast<char*>(buffers.get(0));
++    auto total = QFileInfo(source).size();
++    qint64 previousProgress = 0LL;
+ 
+-    qint64 total = 0;
++    QTextStream out(stdout);
++    qint64 bytesWritten = 0;
+     while (!inFile.atEnd()) {
+         qint64 len = inFile.read(buffer, bufferSize);
+         if (len < 0) {
+             throw std::runtime_error("Source image is not readable");
+         }
+         drive->write(buffer, len);
+-        total += len;
+-        QTextStream out(stdout);
+-        out << total << '\n';
+-        out.flush();
+-    }
+-}
++        bytesWritten += len;
+ 
+-static int onMediaCheckAdvanced(void *data, long long offset, long long total) {
+-    Q_UNUSED(data);
+-    Q_UNUSED(total);
+-    QTextStream out(stdout);
+-    out << offset << "\n";
+-    out.flush();
+-    return 0;
++        onProgress(&previousProgress, bytesWritten, total);
++    }
+ }
+ 
+ static void check(int fd) {
+@@ -306,7 +312,8 @@ static void check(int fd) {
+     out << "CHECK\n";
+     out.flush();
+ 
+-    switch (mediaCheckFD(fd, &onMediaCheckAdvanced, nullptr)) {
++    long long previous = 0LL;
++    switch (mediaCheckFD(fd, &onProgress, &previous)) {
+     case ISOMD5SUM_CHECK_NOT_FOUND:
+     case ISOMD5SUM_CHECK_PASSED:
+         out << "OK\n";
+-- 
+2.14.1
+

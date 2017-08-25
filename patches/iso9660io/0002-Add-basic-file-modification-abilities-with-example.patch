@@ -1,0 +1,401 @@
+From 49d11ab1b5e75ea7afb99b9c963ed68768dcbf2a Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 1 Jun 2017 06:44:47 +0000
+Subject: [PATCH 02/28] Add basic file modification abilities with example
+
+---
+ BUILD                         |   6 +++
+ example/persistent-storage.cc | 115 ++++++++++++++++++++++++++++++++++++++++++
+ include/iso9660.h             |  16 ++++++
+ include/utility.h             |  15 ++++++
+ include/write.h               |  54 ++++++++++++++++++++
+ src/iso9660.cc                |  78 ++++++++++++++++++++++++++++
+ 6 files changed, 284 insertions(+)
+ create mode 100644 example/persistent-storage.cc
+ create mode 100644 include/write.h
+
+diff --git a/BUILD b/BUILD
+index 6c14ddf..c24115e 100644
+--- a/BUILD
++++ b/BUILD
+@@ -4,3 +4,9 @@ cc_library(
+     hdrs=glob(["include/*.h"]),
+     copts=["-std=c++11", "-Wall", "-O3"],
+     visibility=["//visibility:public"], )
++
++cc_binary(
++    name="persistent-storage",
++    srcs=["example/persistent-storage.cc"],
++    copts=["-std=c++11", "-Wall", "-O3"],
++    deps=[":iso9660"], )
+diff --git a/example/persistent-storage.cc b/example/persistent-storage.cc
+new file mode 100644
+index 0000000..ca48ad9
+--- /dev/null
++++ b/example/persistent-storage.cc
+@@ -0,0 +1,115 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++
++#include <algorithm>
++#include <fstream>
++#include <ios>
++#include <iostream>
++#include <stdexcept>
++#include <string>
++#include <vector>
++
++#include "./include/iso9660.h"
++
++std::streamsize insert_overlay_switch(std::fstream* iofile,
++                                      const iso9660::File& fileinfo) {
++  auto& file = *iofile;
++  const std::string needle = "rd.live.image";
++  const std::string overlay_switch =
++      " rd.live.overlay=LABEL=OVERLAY:/persistent-overlay.img";
++  const std::size_t max_growth = fileinfo.max_growth();
++  std::cout << "File has a size of " << fileinfo.size
++            << " bytes and can grow by " << max_growth << " bytes.\n"
++            << std::flush;
++  /*
++   * The size by which the file has grown due to added overlay switches.
++   */
++  std::size_t growth = 0;
++  std::size_t insert_position = 0;
++  std::size_t read_bytes = 0;
++  /*
++   * Simply keep the entire modified file section in memory. Could be done
++   * smarter.
++   */
++  std::vector<char> file_content;
++  for (std::string line; std::getline(file, line);) {
++    line += '\n';
++    read_bytes += line.size();
++    if (read_bytes > fileinfo.size) {
++      throw std::runtime_error("Unexpected end of file at byte " +
++                               std::to_string(read_bytes) + " of " +
++                               std::to_string(fileinfo.size) + ".");
++    }
++    const auto position = line.find(needle);
++    if (position != std::string::npos) {
++      growth += overlay_switch.size();
++      if (growth > max_growth) {
++        throw std::runtime_error(
++            "Bad luck! The file has grown too much. It does not fit into the "
++            "ISO 9660 image anymore without some serious modification.");
++      }
++      const std::size_t line_size = line.size();
++      const std::size_t line_offset = position + needle.size();
++      line.insert(line_offset, overlay_switch);
++      if (insert_position == 0) {
++        insert_position = file.tellg();
++        insert_position -= line_size - line_offset;
++        file_content.reserve((fileinfo.size + max_growth) - read_bytes);
++        std::move(line.begin() + line_offset, line.end(),
++                  std::back_inserter(file_content));
++      } else {
++        std::move(line.begin(), line.end(), std::back_inserter(file_content));
++      }
++    } else if (insert_position != 0) {
++      std::move(line.begin(), line.end(), std::back_inserter(file_content));
++    }
++    if (read_bytes == fileinfo.size) break;
++  }
++  file.clear();
++  file.seekp(insert_position);
++  file.write(file_content.data(), file_content.size());
++  std::cout << "Grown by " << growth << " of " << max_growth << " bytes.\n"
++            << std::flush;
++  return growth;
++}
++
++void add_overlay(iso9660::Image* const isoimage, const std::string& filename) {
++  auto file = isoimage->find(filename);
++  if (file == nullptr) {
++    throw std::runtime_error("Can't find " + filename);
++  }
++  isoimage->modify_file(*file, insert_overlay_switch);
++}
++
++int main(int argc, const char* argv[]) {
++  if (argc != 2) {
++    std::cerr << "Usage: " << argv[0] << " <boot.iso>\n" << std::flush;
++    return 1;
++  }
++  std::fstream isofile(argv[1],
++                       std::ios::binary | std::ios::in | std::ios::out);
++  if (!isofile.is_open()) {
++    return 1;
++  }
++  iso9660::Image isoimage(&isofile);
++  isoimage.read();
++  add_overlay(&isoimage, "isolinux.cfg");
++  add_overlay(&isoimage, "grub.cfg");
++  add_overlay(&isoimage, "grub.conf");
++}
+diff --git a/include/iso9660.h b/include/iso9660.h
+index b4bf544..ddbb320 100644
+--- a/include/iso9660.h
++++ b/include/iso9660.h
+@@ -30,6 +30,7 @@
+ 
+ #include <array>
+ #include <fstream>
++#include <functional>
+ #include <memory>
+ #include <string>
+ #include <unordered_map>
+@@ -92,6 +93,7 @@ struct File {
+ 
+   bool has(Flag flag) const;
+   bool isdir() const;
++  std::size_t max_growth() const;
+ };
+ 
+ /**
+@@ -157,6 +159,10 @@ struct VolumeDescriptor {
+   std::string application_use;
+   // The path table specifies the directory hierarchy.
+   std::vector<Directory> path_table;
++  // A lookup table that can be used to quickly find files.
++  std::unordered_multimap<std::string, const iso9660::File*> filenames;
++
++  void build_file_lookup();
+ };
+ 
+ struct VolumeDescriptors {
+@@ -203,11 +209,21 @@ class Image {
+  public:
+   explicit Image(std::fstream* file);
+   void read();
++  const iso9660::File* find(const std::string& filename);
++  void modify_file(
++      const iso9660::File& file,
++      std::function<std::streamsize(std::fstream*, const File&)> modify);
+ 
+  private:
+   std::fstream& file_;
+   Buffer buffer_;
+   VolumeDescriptors volume_descriptors_;
++  /**
++   * In case only a minor change happened, i.e. the position of the file does
++   * not need to be changed. It's convenient to know where the file information
++   * is stored on the image.
++   */
++  std::unordered_map<std::size_t, std::vector<std::size_t>> file_positions_;
+ };
+ 
+ }  // namespace iso9660
+diff --git a/include/utility.h b/include/utility.h
+index 0fcc728..8645621 100644
+--- a/include/utility.h
++++ b/include/utility.h
+@@ -72,6 +72,21 @@ T integer(iso9660::Buffer::const_iterator first,
+       });
+ }
+ 
++template <std::size_t SIZE, Endian ENDIAN, class T>
++std::array<char, SIZE> integer(const T number) {
++  constexpr std::size_t BITS_IN_BYTE = 8;
++  constexpr std::size_t bits = (SIZE - 1) * BITS_IN_BYTE;
++  std::array<char, SIZE> result;
++  for (std::size_t i = 0; i < SIZE; ++i) {
++    if (ENDIAN == ENDIANNESS) {
++      result[i] = (number >> (bits - i * BITS_IN_BYTE)) & 0xff;
++    } else {
++      result[i] = (number >> (bits - (SIZE - i - 1) * BITS_IN_BYTE)) & 0xff;
++    }
++  }
++  return result;
++}
++
+ template <class T>
+ void integer(T* const number, iso9660::Buffer::const_iterator big_endian,
+              iso9660::Buffer::const_iterator little_endian, std::size_t size) {
+diff --git a/include/write.h b/include/write.h
+new file mode 100644
+index 0000000..b63bfa6
+--- /dev/null
++++ b/include/write.h
+@@ -0,0 +1,54 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++
++#ifndef ISO9660_WRITE_H_
++#define ISO9660_WRITE_H_
++
++#include <cstdlib>
++
++#include <algorithm>
++#include <ostream>
++#include <utility>
++
++#include "./include/utility.h"
++
++namespace iso9660 {
++namespace write {
++
++template <class ForwardIt>
++void resize_file(std::ostream* const file, ForwardIt first, ForwardIt last,
++                 std::size_t size) {
++  constexpr std::size_t DIRECTORY_RECORD_SIZE_OFFSET = 10;
++  const auto big_endian_size = utility::integer<4, utility::Endian::BIG>(size);
++  const auto little_endian_size =
++      utility::integer<4, utility::Endian::LITTLE>(size);
++  std::for_each(
++      first, last,
++      [file, &little_endian_size, &big_endian_size](std::size_t position) {
++        file->clear();
++        file->seekp(position + DIRECTORY_RECORD_SIZE_OFFSET);
++        file->write(big_endian_size.data(), big_endian_size.size());
++        file->write(little_endian_size.data(), little_endian_size.size());
++      });
++}
++
++}  // namespace write
++}  // namespace iso9660
++
++#endif  // ISO9660_WRITE_H_
+diff --git a/src/iso9660.cc b/src/iso9660.cc
+index 5dd7101..6a95c76 100644
+--- a/src/iso9660.cc
++++ b/src/iso9660.cc
+@@ -28,6 +28,20 @@
+ #include <vector>
+ 
+ #include "./include/read.h"
++#include "./include/write.h"
++
++/**
++ * Initialize lookup table so that files can be quickly found by name.
++ */
++void iso9660::VolumeDescriptor::build_file_lookup() {
++  for (const auto& directory : path_table) {
++    for (const auto& file : directory.files) {
++      if (!file.isdir()) {
++        filenames.emplace(file.name, &file);
++      }
++    }
++  }
++}
+ 
+ bool iso9660::File::has(iso9660::File::Flag flag) const {
+   return (flags & static_cast<int>(flag)) != 0;
+@@ -41,6 +55,10 @@ bool iso9660::File::isdir() const {
+   return has(iso9660::File::Flag::DIRECTORY);
+ }
+ 
++std::size_t iso9660::File::max_growth() const {
++  return iso9660::sector_align(size) - size - extended_length;
++}
++
+ iso9660::Identifier iso9660::identifier_of(const std::string& identifier) {
+   static const std::unordered_map<std::string, iso9660::Identifier>
+       identifiers = {{"CD001", iso9660::Identifier::ECMA_119},
+@@ -74,6 +92,13 @@ std::vector<iso9660::File> iso9660::Image::read_directory(
+   while (record_length > 0) {
+     auto file = iso9660::read::directory_record(buffer_.begin() + offset,
+                                                 buffer_.end());
++    auto result = file_positions_.find(file.location);
++    if (result == file_positions_.end()) {
++      file_positions_.emplace(file.location,
++                              std::vector<std::size_t>({position + offset}));
++    } else {
++      result->second.emplace_back(position + offset);
++    }
+     offset += file.length;
+     record_length = static_cast<std::size_t>(buffer_[offset]);
+     /*
+@@ -143,4 +168,57 @@ void iso9660::Image::read() {
+     throw std::runtime_error(
+         "Couldn't find a primary or supplementary volume descriptor.");
+   }
++  read_path_table(volume_descriptors_.primary.get());
++  read_path_table(volume_descriptors_.supplementary.get());
++}
++
++/**
++ * Find the first file matching by name.
++ */
++const iso9660::File* iso9660::Image::find(const std::string& filename) {
++  bool has_supplementary = volume_descriptors_.supplementary != nullptr;
++  auto& volume = has_supplementary ? *volume_descriptors_.supplementary
++                                   : *volume_descriptors_.primary;
++  if (volume.filenames.empty()) {
++    if (has_supplementary) {
++      iso9660::read::joliet(&(volume.path_table));
++    }
++    volume.build_file_lookup();
++  }
++  auto result = volume.filenames.find(filename);
++  if (result == volume.filenames.end()) {
++    return nullptr;
++  }
++  return result->second;
++}
++
++/**
++ * An unsafe way to modify a file.
++ * Unsafe because the fstream that is exposed to the user has power over the
++ * entire ISO 9660 image at the moment even though it should only have power
++ * over a tiny file section.
++ *
++ * TODO: Create an abstraction that provides a specially crafted fstream to the
++ * user which can even grow an arbitrary amount.
++ *
++ * An easier solution would be to have a remove_file and add_file function.
++ * Where the add_file function will be given an ifstream that will have to live
++ * until write. Especially if the modified file will exceed the maximum allowed
++ * growth such an solution would most likely be preferable.
++ *
++ * Note: Maybe a template should be used instead of std::function.
++ */
++void iso9660::Image::modify_file(
++    const iso9660::File& file,
++    std::function<std::streamsize(std::fstream*, const File&)> modify) {
++  file_.seekg(file.location * iso9660::SECTOR_SIZE + file.extended_length);
++  std::streamsize growth = modify(&file_, file);
++  if (growth == 0) return;
++  auto result = file_positions_.find(file.location);
++  if (result == file_positions_.end()) {
++    throw std::runtime_error(
++        "Could not find file location. ISO image is corrupt.");
++  }
++  iso9660::write::resize_file(&file_, result->second.begin(),
++                              result->second.end(), file.size + growth);
+ }
+-- 
+2.14.1
+

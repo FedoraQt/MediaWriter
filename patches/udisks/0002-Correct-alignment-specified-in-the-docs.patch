@@ -1,0 +1,29 @@
+From 44a564ac225a6aa822a19208822fdbb13d9552a5 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Mon, 3 Jul 2017 18:48:55 +0000
+Subject: [PATCH 2/2] Correct alignment specified in the docs
+
+I/O needs to be block-aligned because of the O_DIRECT flag. There was no
+reason for page-alignment found.
+
+Reference: 0139855348ae204311b12b0d80c48d98a6bc9d51
+---
+ data/org.freedesktop.UDisks2.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/org.freedesktop.UDisks2.xml b/data/org.freedesktop.UDisks2.xml
+index d604bad..db3f332 100644
+--- a/data/org.freedesktop.UDisks2.xml
++++ b/data/org.freedesktop.UDisks2.xml
+@@ -1345,7 +1345,7 @@
+         used for benchmarking the device (transfer rate, access time
+         etc.). Note that the file descriptor may be opened with the
+         <literal>O_DIRECT</literal> and <literal>O_SYNC</literal>
+-        flags so care must be taken to only perform page-aligned I/O.
++        flags so care must be taken to only perform block-aligned I/O.
+ 
+         If the <parameter>writable</parameter> in @options is %TRUE
+         then the returned file descriptor will be writable. This only
+-- 
+2.14.1
+

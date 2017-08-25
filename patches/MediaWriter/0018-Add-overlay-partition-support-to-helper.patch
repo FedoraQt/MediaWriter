@@ -1,0 +1,954 @@
+From 77eeb8427284af809aa29db7eab280cc42d04551 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Tue, 1 Aug 2017 03:59:19 +0000
+Subject: [PATCH 18/40] Add overlay partition support to helper
+
+* For all supported platforms.
+* Restructure.
+* Build mac dependencies.
+---
+ dist/mac/build.sh       |  24 +++++++-
+ dist/win/build.sh       |   2 +-
+ helper/blockdevice.cpp  |  33 ++++++-----
+ helper/blockdevice.h    |  13 ++++-
+ helper/genericdrive.cpp |  54 ++++++++++++++++++
+ helper/genericdrive.h   |  42 ++++++++++++++
+ helper/helper.pro       |   4 +-
+ helper/linux/drive.cpp  |  52 +----------------
+ helper/linux/drive.h    |  10 +---
+ helper/mac/drive.cpp    |  92 ++++++++++++++++++++++++++++++
+ helper/mac/drive.h      |  58 +++++++++++++++++++
+ helper/mac/mac.pri      |   7 +++
+ helper/win/drive.cpp    | 147 +++---------------------------------------------
+ helper/win/drive.h      |  13 ++---
+ helper/write.cpp        |  12 ++--
+ helper/write.h          |  10 ++--
+ 16 files changed, 338 insertions(+), 235 deletions(-)
+ create mode 100644 helper/genericdrive.cpp
+ create mode 100644 helper/genericdrive.h
+ create mode 100644 helper/mac/drive.cpp
+ create mode 100644 helper/mac/drive.h
+ create mode 100644 helper/mac/mac.pri
+
+diff --git a/dist/mac/build.sh b/dist/mac/build.sh
+index 13315ca..a89e97c 100644
+--- a/dist/mac/build.sh
++++ b/dist/mac/build.sh
+@@ -17,12 +17,34 @@ rm -fr "build"
+ mkdir -p "build"
+ pushd build >/dev/null
+ 
++echo "=== Building dependency [iso9660io] ==="
++# TODO(squimrel): Use latest release once available.
++git clone --depth 1 -b cooking https://github.com/squimrel/iso9660io
++pushd iso9660io >/dev/null
++cmake "-DCMAKE_INSTALL_PREFIX:PATH=${PWD}" -DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 .
++make install
++export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:${PWD}"
++mkdir -p "../app/Fedora Media Writer.app/Contents/Frameworks/"
++mv "$(ls libiso9660io.*.dylib | tail -n 1)" "../app/Fedora Media Writer.app/Contents/Frameworks/"
++popd >/dev/null
++
++echo "=== Building dependency [isomd5sum] ==="
++# TODO(squimrel): Use latest release once PRs are merged and released.
++git clone --depth 1 -b cooking https://github.com/squimrel/isomd5sum
++pushd isomd5sum >/dev/null
++cmake "-DCMAKE_INSTALL_PREFIX:PATH=${PWD}" -DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 .
++make install
++export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:${PWD}"
++popd >/dev/null
++
++
+ echo "=== Building ==="
+ ${QMAKE} .. >/dev/null
+ make -j9 >/dev/null
+ 
+ echo "=== Inserting Qt deps ==="
+-cp "helper/mac/helper.app/Contents/MacOS/helper" "app/Fedora Media Writer.app/Contents/MacOS"
++ls -la "app/Fedora Media Writer.app/Contents"
++mv "app/helper.app/Contents/MacOS/helper" "app/Fedora Media Writer.app/Contents/MacOS/helper"
+ ${MACDEPLOYQT} "app/Fedora Media Writer.app" -qmldir="../app" -executable="app/Fedora Media Writer.app/Contents/MacOS/helper"
+ 
+ echo "=== Checking unresolved library deps ==="
+diff --git a/dist/win/build.sh b/dist/win/build.sh
+index a13b82c..1270705 100755
+--- a/dist/win/build.sh
++++ b/dist/win/build.sh
+@@ -65,7 +65,7 @@ fi
+ 
+ if [ "$1" == "local" ]; then
+     echo "=== Building"
+-    if [ "2" == "debug" ]; then
++    if [ "$2" == "debug" ]; then
+         mingw32-qmake-qt5 .. CONFIG+=debug
+     else
+         mingw32-qmake-qt5 ..
+diff --git a/helper/blockdevice.cpp b/helper/blockdevice.cpp
+index 348f1ef..f3f902a 100644
+--- a/helper/blockdevice.cpp
++++ b/helper/blockdevice.cpp
+@@ -33,11 +33,9 @@
+ #include <QtEndian>
+ #include <QtGlobal>
+ 
+-BlockDevice::BlockDevice(int fd) : m_fd(fd) {
+-}
++#include "write.h"
+ 
+-void BlockDevice::setFileDescriptor(int fd) {
+-    m_fd = fd;
++BlockDevice::BlockDevice(int fd) : m_fd(fd), m_bytesWritten(0), m_totalBytes(0), m_progress(0) {
+ }
+ 
+ void BlockDevice::read() {
+@@ -71,9 +69,12 @@ void BlockDevice::writeZeros(std::size_t size) {
+     constexpr std::size_t CHUNK_SIZE = 512;
+     constexpr char zeros[CHUNK_SIZE]{};
+     for (std::size_t i = 0; i < size; i += CHUNK_SIZE) {
+-        if (::write(m_fd, zeros, std::min(CHUNK_SIZE, size - i)) < 0) {
++        const auto len = ::write(m_fd, zeros, std::min(CHUNK_SIZE, size - i));
++        if (len < 0) {
+             throw std::runtime_error("Failed to write zeros to block device.");
+         }
++        m_bytesWritten += len;
++        ::onProgress(&m_progress, m_bytesWritten, m_totalBytes);
+     }
+ }
+ 
+@@ -139,15 +140,8 @@ void BlockDevice::formatOverlayPartition(quint64 offset, quint64 size) {
+         return (a + b - 1) / b;
+     };
+ 
+-    const quint32 volumeId = QDateTime::currentMSecsSinceEpoch() & 0xffffffff;
+-    auto u = [&volumeId, &getbyte](int i) {
+-        return getbyte(volumeId, i);
+-    };
+-    /*
+-     * Determine the number of sectors per cluster.
+-     */
+-    quint64 sizeMb = size / (1024 * 1024);
+-    const std::array<int, 4> ranges = { 260, 1024 * 8, 1024 * 16, 1024 * 32 };
++    const int sizeMb = size / (1024 * 1024);
++    const std::array<int, 4> ranges = { { 260, 1024 * 8, 1024 * 16, 1024 * 32 } };
+     auto found = qLowerBound(ranges.begin(), ranges.end(), sizeMb);
+     const int sectorsPerCluster = found == ranges.begin() ? 1 : (found - ranges.begin()) * 8;
+     const int numSectors = size / SECTOR_SIZE;
+@@ -172,6 +166,10 @@ void BlockDevice::formatOverlayPartition(quint64 offset, quint64 size) {
+     auto f = [&fatlength, &getbyte](int i) {
+         return getbyte(fatlength, i);
+     };
++    const quint32 volumeId = QDateTime::currentMSecsSinceEpoch() & 0xffffffff;
++    auto u = [&volumeId, &getbyte](int i) {
++        return getbyte(volumeId, i);
++    };
+     const quint8 clsz = sectorsPerCluster;
+     const quint8 bootSector[] = { 0xeb, 0x58, 0x90, 0x6d, 0x6b, 0x66, 0x73,
+         0x2e, 0x66, 0x61, 0x74, 0x00, 0x02, clsz, 0x20, 0x00, 0x02, 0x00, 0x00,
+@@ -207,6 +205,10 @@ void BlockDevice::formatOverlayPartition(quint64 offset, quint64 size) {
+         0x20, 0x20, 0x20, 0x08, 0x00, 0x00, tlo, thi, dlo, dhi, dlo, dhi, 0x00,
+         0x00, tlo, thi, dlo, dhi, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+     seekto(offset);
++    quint64 headerSize = (RESERVED_SECTORS + fatlength * 2 + sectorsPerCluster) * SECTOR_SIZE;
++    quint64 maxFileSize = std::min(size - headerSize, 0xffffffffULL);
++    m_bytesWritten = 0;
++    m_totalBytes = headerSize + maxFileSize;
+ 
+     writeBytes<decltype(bootSector)>(bootSector);
+     writeBytes<decltype(bootCode)>(bootCode);
+@@ -234,9 +236,6 @@ void BlockDevice::formatOverlayPartition(quint64 offset, quint64 size) {
+     writeZeros(SECTOR_SIZE - std::extent<decltype(fat)>::value);
+     writeZeros(SECTOR_SIZE * (fatlength - 1));
+ 
+-    quint64 maxFileSize = size;
+-    maxFileSize -= (RESERVED_SECTORS + fatlength * 2 + 2) * SECTOR_SIZE;
+-    maxFileSize = std::min(maxFileSize, 0xffffffffULL);
+     auto s = [&maxFileSize, &getbyte](int i) {
+         return getbyte(maxFileSize, i);
+     };
+diff --git a/helper/blockdevice.h b/helper/blockdevice.h
+index 56b2888..b3113d2 100644
+--- a/helper/blockdevice.h
++++ b/helper/blockdevice.h
+@@ -34,6 +34,8 @@
+ #include <QVector>
+ #include <QtGlobal>
+ 
++#include "write.h"
++
+ class BlockDevice {
+ private:
+     static constexpr std::size_t APM_OFFSET = 2048;
+@@ -61,13 +63,15 @@ private:
+ 
+ public:
+     BlockDevice(int fd);
+-    void setFileDescriptor(int fd);
+     void read();
+-    int addPartition(quint64 offset, quint64);
++    int addPartition(quint64 offset, quint64 size);
+     void formatOverlayPartition(quint64 offset, quint64 size);
+ 
+ private:
+     int m_fd;
++    std::size_t m_bytesWritten;
++    std::size_t m_totalBytes;
++    std::size_t m_progress;
+     QVector<PartitionEntry> m_entries;
+ };
+ 
+@@ -80,9 +84,12 @@ private:
+  */
+ template <class T>
+ void BlockDevice::writeBytes(const T buffer) {
+-    if (::write(m_fd, buffer, std::extent<T>::value) < 0) {
++    const auto len = ::write(m_fd, buffer, std::extent<T>::value);
++    if (len < 0) {
+         throw std::runtime_error("Failed to write buffer to block device.");
+     }
++    m_bytesWritten += len;
++    ::onProgress(&m_progress, m_bytesWritten, m_totalBytes);
+ }
+ 
+ #endif // BLOCKDEVICE_H
+diff --git a/helper/genericdrive.cpp b/helper/genericdrive.cpp
+new file mode 100644
+index 0000000..6e1e586
+--- /dev/null
++++ b/helper/genericdrive.cpp
+@@ -0,0 +1,54 @@
++/*
++ * Fedora Media Writer
++ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++ */
++
++#include "genericdrive.h"
++
++#include <string>
++
++#include <QString>
++
++#include <libimplantisomd5.h>
++
++#include "blockdevice.h"
++#include "write.h"
++
++void GenericDrive::writeFile(const QString &source) {
++    if (source.endsWith(".xz"))
++        ::writeCompressed(source, this);
++    else
++        ::writePlain(source, this);
++}
++
++void GenericDrive::checkChecksum() {
++    ::check(getDescriptor());
++}
++
++void GenericDrive::implantChecksum() {
++    char *errstr;
++    if (::implantISOFD(getDescriptor(), false, true, true, &errstr) != 0) {
++        throw std::runtime_error(std::string(errstr));
++    }
++}
++
++void GenericDrive::addOverlay(quint64 offset, quint64 size) {
++    BlockDevice device(getDescriptor());
++    device.read();
++    device.addPartition(offset, size);
++    device.formatOverlayPartition(offset, size);
++}
+diff --git a/helper/genericdrive.h b/helper/genericdrive.h
+new file mode 100644
+index 0000000..c9c84c0
+--- /dev/null
++++ b/helper/genericdrive.h
+@@ -0,0 +1,42 @@
++/*
++ * Fedora Media Writer
++ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++ */
++
++#ifndef GENERICDRIVE_H
++#define GENERICDRIVE_H
++
++#include <QObject>
++#include <QString>
++
++class GenericDrive : public QObject {
++    Q_OBJECT
++public:
++    virtual void init() = 0;
++    virtual void write(const void *buffer, std::size_t size) = 0;
++    virtual int getDescriptor() const = 0;
++    virtual void wipe() = 0;
++    virtual void addOverlayPartition(quint64 offset) = 0;
++    virtual void umount() = 0;
++    void writeFile(const QString& source);
++    void checkChecksum();
++    void implantChecksum();
++protected:
++    void addOverlay(quint64 offset, quint64 size);
++};
++
++#endif // GENERICDRIVE_H
+diff --git a/helper/helper.pro b/helper/helper.pro
+index cfee241..81b379e 100644
+--- a/helper/helper.pro
++++ b/helper/helper.pro
+@@ -17,9 +17,9 @@ include($$top_srcdir/deployment.pri)
+ target.path = $$LIBEXECDIR
+ INSTALLS += target
+ 
+-SOURCES = main.cpp write.cpp blockdevice.cpp
++SOURCES = main.cpp write.cpp blockdevice.cpp genericdrive.cpp
+ 
+-HEADERS += write.h blockdevice.h
++HEADERS += write.h blockdevice.h genericdrive.h
+ 
+ linux {
+     include(linux/linux.pri)
+diff --git a/helper/linux/drive.cpp b/helper/linux/drive.cpp
+index 439fb0a..a1ac52b 100644
+--- a/helper/linux/drive.cpp
++++ b/helper/linux/drive.cpp
+@@ -48,7 +48,7 @@ Q_DECLARE_METATYPE(InterfacesAndProperties)
+ Q_DECLARE_METATYPE(DBusIntrospection)
+ 
+ Drive::Drive(const QString &identifier)
+-    : QObject(nullptr), m_fileDescriptor(QDBusUnixFileDescriptor(-1)), m_identifier(identifier),
++    : m_fileDescriptor(QDBusUnixFileDescriptor(-1)), m_identifier(identifier),
+       m_device(new QDBusInterface("org.freedesktop.UDisks2", m_identifier, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus())),
+       m_path(qvariant_cast<QDBusObjectPath>(m_device->property("Drive")).path()) {
+ }
+@@ -56,14 +56,7 @@ Drive::Drive(const QString &identifier)
+ Drive::~Drive() {
+ }
+ 
+-void Drive::init() {}
+-
+-/**
+- * Opens drive for reading and writing directly if not already open.
+- */
+-void Drive::open() {
+-    if (getDescriptor() != -1)
+-        return;
++void Drive::init() {
+     /*
+      * Most I/O will go to cache but it's still way faster than with O_DIRECT
+      * or O_SYNC.
+@@ -89,11 +82,6 @@ void Drive::open() {
+     */
+ }
+ 
+-void Drive::close() {
+-    m_fileDescriptor = QDBusUnixFileDescriptor(-1);
+-    ::sync();
+-}
+-
+ /**
+  * Write buffer directly to drive.
+  */
+@@ -111,10 +99,6 @@ int Drive::getDescriptor() const {
+     return m_fileDescriptor.fileDescriptor();
+ }
+ 
+-/**
+- * Create a new dos label on the partition. This essentially wipes all
+- * existing information about partitions.
+- */
+ void Drive::wipe() {
+     QDBusReply<void> formatReply = m_device->call("Format", "dos", Properties());
+     if (!formatReply.isValid() && formatReply.error().type() != QDBusError::NoReply) {
+@@ -127,17 +111,8 @@ void Drive::wipe() {
+     }
+ }
+ 
+-/**
+- * Fill the rest of the drive with a primary partition that uses the fat
+- * filesystem.
+- */
+ void Drive::addOverlayPartition(quint64 offset) {
+-    open();
+-    BlockDevice device(getDescriptor());
+-    device.read();
+-    const quint64 size = m_device->property("Size").toULongLong() - offset;
+-    device.addPartition(offset, size);
+-    device.formatOverlayPartition(offset, size);
++    addOverlay(offset, m_device->property("Size").toULongLong() - offset);
+ }
+ 
+ /**
+@@ -161,24 +136,3 @@ void Drive::umount() {
+         }
+     }
+ }
+-
+-void Drive::writeFile(const QString &source) {
+-    open();
+-    if (source.endsWith(".xz"))
+-        ::writeCompressed(source, this);
+-    else
+-        ::writePlain(source, this);
+-}
+-
+-void Drive::checkChecksum() {
+-    open();
+-    ::check(getDescriptor());
+-}
+-
+-void Drive::implantChecksum() {
+-    open();
+-    char *errstr;
+-    if (::implantISOFD(getDescriptor(), false, true, true, &errstr) != 0) {
+-        throw std::runtime_error(std::string(errstr));
+-    }
+-}
+diff --git a/helper/linux/drive.h b/helper/linux/drive.h
+index 6ef705e..6369e97 100644
+--- a/helper/linux/drive.h
++++ b/helper/linux/drive.h
+@@ -30,11 +30,10 @@
+ #include <QTextStream>
+ #include <QtGlobal>
+ 
+-class Drive : public QObject {
++#include "genericdrive.h"
++
++class Drive : public GenericDrive {
+     Q_OBJECT
+-private:
+-    void open();
+-    void close();
+ public:
+     /**
+      * Shared public interface across platforms.
+@@ -47,9 +46,6 @@ public:
+     void wipe();
+     void addOverlayPartition(quint64 offset);
+     void umount();
+-    void writeFile(const QString& source);
+-    void checkChecksum();
+-    void implantChecksum();
+ 
+ private:
+     QDBusUnixFileDescriptor m_fileDescriptor;
+diff --git a/helper/mac/drive.cpp b/helper/mac/drive.cpp
+new file mode 100644
+index 0000000..043a730
+--- /dev/null
++++ b/helper/mac/drive.cpp
+@@ -0,0 +1,92 @@
++/*
++ * Fedora Media Writer
++ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++ */
++
++#include "drive.h"
++
++#include <algorithm>
++#include <stdexcept>
++#include <utility>
++
++#include <QProcess>
++#include <QStringList>
++#include <QtGlobal>
++
++Drive::Drive(const QString &identifier)
++    : m_identifier(identifier), m_device(nullptr) {
++}
++
++Drive::~Drive() {
++}
++
++void Drive::init() {
++    if (m_device != nullptr)
++        return;
++    m_device = new QFile("/dev/r" + m_identifier, this);
++    m_device->open(QIODevice::ReadWrite);
++}
++
++bool Drive::diskutil(const QStringList &arguments) {
++    QProcess process;
++    process.setProgram("diskutil");
++    process.setArguments(arguments);
++    process.start();
++    process.waitForFinished();
++    return process.exitCode() == 0;
++}
++
++/**
++ * Write buffer directly to drive.
++ */
++void Drive::write(const void *buffer, std::size_t size) {
++    if (m_device->write(static_cast<const char *>(buffer), size) != static_cast<qint64>(size)) {
++        throw std::runtime_error("Destination drive is not writable.");
++    }
++}
++
++/**
++ * Grab file descriptor.
++ */
++int Drive::getDescriptor() const {
++    return m_device->handle();
++}
++
++void Drive::wipe() {
++    if (!diskutil(QStringList() << "eraseDisk" << m_identifier) ||
++            !diskutil(QStringList() << "partitionDisk" << m_identifier << "1"
++                                    << "MBR"
++                                    << "fat32"
++                                    << "FLASHDISK"
++                                    << "R")) {
++        throw std::runtime_error("Couldn't wipe disk.");
++    }
++}
++
++void Drive::addOverlayPartition(quint64 offset) {
++    addOverlay(offset, m_device->size() - offset);
++}
++
++/**
++ * Unmount all partitions of drive.
++ */
++void Drive::umount() {
++    if (!diskutil(QStringList() << "unmountDisk"
++                                << "force" << m_identifier)) {
++        throw std::runtime_error("Couldn't unmount disk.");
++    }
++}
+diff --git a/helper/mac/drive.h b/helper/mac/drive.h
+new file mode 100644
+index 0000000..1ce48e4
+--- /dev/null
++++ b/helper/mac/drive.h
+@@ -0,0 +1,58 @@
++/*
++ * Fedora Media Writer
++ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++ */
++
++#ifndef DRIVE_H
++#define DRIVE_H
++
++#include <memory>
++#include <utility>
++
++#include <QFile>
++#include <QObject>
++#include <QString>
++#include <QStringList>
++#include <QtGlobal>
++
++#include "genericdrive.h"
++
++class Drive : public GenericDrive {
++    Q_OBJECT
++private:
++    bool diskutil(const QStringList &arguments);
++
++public:
++    /**
++     * Shared public interface across platforms.
++     */
++    explicit Drive(const QString &driveIdentifier);
++    ~Drive();
++    void init();
++    void write(const void *buffer, std::size_t size);
++    int getDescriptor() const;
++    void wipe();
++    void addOverlayPartition(quint64 offset);
++    void umount();
++
++private:
++    QString m_identifier;
++    QFile *m_device;
++};
++
++#endif // DRIVE_H
++
+diff --git a/helper/mac/mac.pri b/helper/mac/mac.pri
+new file mode 100644
+index 0000000..68348b2
+--- /dev/null
++++ b/helper/mac/mac.pri
+@@ -0,0 +1,7 @@
++INCLUDEPATH += $$top_srcdir/helper/mac/
++
++CONFIG += link_pkgconfig
++PKGCONFIG += liblzma
++
++SOURCES += mac/drive.cpp
++HEADERS += mac/drive.h
+diff --git a/helper/win/drive.cpp b/helper/win/drive.cpp
+index da55d76..85f2765 100644
+--- a/helper/win/drive.cpp
++++ b/helper/win/drive.cpp
+@@ -34,7 +34,9 @@
+ #include <io.h>
+ #include <windows.h>
+ 
+-Drive::Drive(const QString &identifier) : QObject(nullptr), m_handle(nullptr) {
++#include "blockdevice.h"
++
++Drive::Drive(const QString &identifier) : m_handle(nullptr) {
+     m_driveNumber = identifier.toInt();
+ }
+ 
+@@ -134,89 +136,21 @@ void Drive::wipe() {
+     if (!deviceIoControlCode(IOCTL_DISK_UPDATE_PROPERTIES)) {
+         throwError(message);
+     }
+-}
+-
+-/**
+- * Fill the rest of the drive with a primary partition that uses the fat
+- * filesystem.
+- */
+-QPair<QString, qint64> Drive::addPartition(quint64 offset, const QString &label) {
+-    const QString message = "Couldn't add partition.";
+-    LayoutInfo layout = deviceIoControl<decltype(layout)>(message);
+-    std::size_t partition_idx = 0;
+-    for (; partition_idx < layout.PartitionCount; ++partition_idx) {
+-        if (layout.PartitionEntry[partition_idx].PartitionNumber == 0) {
+-            break;
+-        }
+-    }
+-    if (partition_idx == layout.PartitionCount) {
+-        ++layout.PartitionCount;
+-    }
+-    const std::size_t partition_num = partition_idx + 1;
+-    if (layout.PartitionStyle != PARTITION_STYLE_MBR || layout.PartitionCount > MAX_PARTITIONS) {
+-        throw std::runtime_error(message.toStdString());
+-    }
+-    PARTITION_INFORMATION_EX &partition = layout.PartitionEntry[partition_idx];
+-    partition.PartitionStyle = PARTITION_STYLE_MBR;
+-    partition.StartingOffset.QuadPart = offset;
+-    partition.PartitionLength.QuadPart = m_geometry.DiskSize.QuadPart - offset;
+-    partition.PartitionNumber = partition_num;
+-    partition.RewritePartition = TRUE;
+-    partition.Mbr.PartitionType = PARTITION_FAT32;
+-    partition.Mbr.BootIndicator = FALSE;
+-    partition.Mbr.RecognizedPartition = FALSE;
+-    partition.Mbr.HiddenSectors = offset / m_geometry.Geometry.BytesPerSector;
+-
+-    PARTITION_INFORMATION_EX empty{};
+-    empty.RewritePartition = TRUE;
+-    for (std::size_t i = partition_num; i < layout.PartitionCount; ++i) {
+-        layout.PartitionEntry[i] = empty;
+-    }
+-
+-    deviceIoControl(message, &layout);
+-    if (!deviceIoControlCode(IOCTL_DISK_UPDATE_PROPERTIES)) {
+-        throwError(message);
+-    }
+-    /*
+-     * Same as IOCTL_DISK_VERIFY with the difference that I know how to use it.
+-     * This is important because sometimes there's simply no change.
+-     */
+-    layout = deviceIoControl<decltype(layout)>(message);
+-    const PARTITION_INFORMATION_EX &target = layout.PartitionEntry[partition_idx];
+-    if (target.PartitionNumber != partition_num ||
+-            target.StartingOffset.QuadPart != partition.StartingOffset.QuadPart ||
+-            target.PartitionLength.QuadPart != partition.PartitionLength.QuadPart) {
+-        throw std::runtime_error(message.toStdString());
+-    }
+-    /*
+-     * Shared pointer owned by parent chain. Don't die. You know that already
+-     * since this is Qt.
+-     */
+-    QProcess *process = new QProcess(this);
+-    /**
+-     * Would love to use the Virtual Disk Service via COM but MinGW doesn't
+-     * have the ability to do so out of the box and to do so requires linking
+-     * against a static library which can't be included because of licensing
+-     * issues and guidelines.
+-     *
+-     * Note that running diskpart is still slow but since it's only used for
+-     * formating there does not seem to be a need to wait 15 seconds also it
+-     * doesn't seem to get in the way of locking.
+-     */
+-    QProcess &diskpart = *process;
+-    /* QProcess diskpart; */
++    QProcess diskpart;
+     diskpart.setProgram("diskpart.exe");
+     diskpart.setProcessChannelMode(QProcess::ForwardedChannels);
+     diskpart.start(QIODevice::ReadWrite);
+     diskpart.write(qPrintable(QString("select disk %0\r\n").arg(m_driveNumber)));
+-    diskpart.write(qPrintable(QString("select partition %0\r\n").arg(partition.PartitionNumber)));
+-    diskpart.write(qPrintable(QString("format fs=fat32 label=\"%0\" quick\r\n").arg(label)));
++    diskpart.write("create partition primary\r\n");
++    diskpart.write("format fs=fat32 quick\r\n");
+     diskpart.write("exit\r\n");
+     diskpart.waitForFinished();
+     if (diskpart.exitCode() != 0)
+         throw std::runtime_error(message.toStdString());
++}
+ 
+-    return qMakePair(guidOfPartition(partition.PartitionNumber), partition.PartitionLength.QuadPart);
++void Drive::addOverlayPartition(quint64 offset) {
++    addOverlay(offset, m_geometry.DiskSize.QuadPart - offset);
+ }
+ 
+ /**
+@@ -256,57 +190,6 @@ char Drive::unusedDriveLetter() {
+     throw std::runtime_error("All drive letters have been used.");
+ }
+ 
+-QString Drive::guidOfPartition(int partitionNumber) const {
+-    const QString message = "Couldn't get volume GUID path of partition.";
+-    /*
+-     * A volume GUID path looks like this:
+-     * \\?\Volume{00000000-0000-0000-0000-000000000000}\
+-     */
+-    constexpr std::size_t GUID_SIZE = 50;
+-    WCHAR guid[GUID_SIZE] = L"";
+-    HANDLE volume = FindFirstVolume(guid, GUID_SIZE);
+-    if (volume == INVALID_HANDLE_VALUE)
+-        throwError(message);
+-    do {
+-        QString identifier = QString::fromStdWString(guid);
+-        identifier.chop(1);
+-        HANDLE handle = openBlockDevice(identifier);
+-        if (handle == INVALID_HANDLE_VALUE) {
+-            CloseHandle(handle);
+-            continue;
+-        }
+-
+-        STORAGE_DEVICE_NUMBER device;
+-        try {
+-            device = deviceIoControl<decltype(device)>(handle);
+-        } catch (std::runtime_error &) {
+-            CloseHandle(handle);
+-            continue;
+-        }
+-        CloseHandle(handle);
+-        if (device.DeviceType == FILE_DEVICE_DISK && device.DeviceNumber == m_driveNumber && device.PartitionNumber == static_cast<decltype(device.PartitionNumber)>(partitionNumber)) {
+-            FindVolumeClose(volume);
+-            return identifier + "\\";
+-        }
+-    } while (FindNextVolume(volume, guid, GUID_SIZE));
+-    FindVolumeClose(volume);
+-    throw std::runtime_error(message.toStdString());
+-}
+-
+-/**
+- * Mount specified partition.
+- */
+-QString Drive::mount(const QString &partitionIdentifier) {
+-    QDir dir = QDir::temp();
+-    dir.mkdir("fmwmountpoint");
+-    QString mountpoint = dir.absolutePath() + "/fmwmountpoint/";
+-    if (!SetVolumeMountPointA(qPrintable(QDir::toNativeSeparators(mountpoint)),
+-                qPrintable(partitionIdentifier))) {
+-        throwError("Couldn't mount partititon.");
+-    }
+-    return mountpoint;
+-}
+-
+ /**
+  * Check whether the drive letter belongs to this drive.
+  */
+@@ -350,14 +233,6 @@ void Drive::umount() {
+     }
+ }
+ 
+-template <>
+-DWORD Drive::controlCodeOf<Drive::LayoutInfo>() {
+-    return IOCTL_DISK_GET_DRIVE_LAYOUT_EX;
+-}
+-template <>
+-DWORD Drive::controlCodeOf<std::nullptr_t, Drive::LayoutInfo>() {
+-    return IOCTL_DISK_SET_DRIVE_LAYOUT_EX;
+-}
+ template <>
+ DWORD Drive::controlCodeOf<std::nullptr_t, CREATE_DISK>() {
+     return IOCTL_DISK_CREATE_DISK;
+@@ -370,7 +245,3 @@ template <>
+ DWORD Drive::controlCodeOf<DISK_GEOMETRY_EX>() {
+     return IOCTL_DISK_GET_DRIVE_GEOMETRY_EX;
+ }
+-template <>
+-DWORD Drive::controlCodeOf<STORAGE_DEVICE_NUMBER>() {
+-    return IOCTL_STORAGE_GET_DEVICE_NUMBER;
+-}
+diff --git a/helper/win/drive.h b/helper/win/drive.h
+index 01142d1..7aac99b 100644
+--- a/helper/win/drive.h
++++ b/helper/win/drive.h
+@@ -32,14 +32,11 @@
+ #include <io.h>
+ #include <windows.h>
+ 
+-class Drive : public QObject {
++#include "genericdrive.h"
++
++class Drive : public GenericDrive {
+     Q_OBJECT
+ private:
+-    static constexpr std::size_t MAX_PARTITIONS = 4;
+-    struct LayoutInfo : DRIVE_LAYOUT_INFORMATION_EX {
+-        PARTITION_INFORMATION_EX PartitionEntry[MAX_PARTITIONS];
+-    };
+-
+     static void throwError(const QString &error);
+     static HANDLE openBlockDevice(const QString &device);
+     static char unusedDriveLetter();
+@@ -58,7 +55,6 @@ private:
+     void lock();
+     void unlock();
+     bool hasDriveLetter(const char driveLetter) const;
+-    QString guidOfPartition(int partitionNumber) const;
+ 
+ public:
+     /**
+@@ -70,8 +66,7 @@ public:
+     void write(const void *buffer, std::size_t size);
+     int getDescriptor() const;
+     void wipe();
+-    QPair<QString, quint64> addPartition(quint64 offset = 1024ULL * 1024ULL, const QString &label = "");
+-    QString mount(const QString &partitionIdentifier);
++    void addOverlayPartition(quint64 offset);
+     void umount();
+ 
+ private:
+diff --git a/helper/write.cpp b/helper/write.cpp
+index 833a0bb..96e327e 100644
+--- a/helper/write.cpp
++++ b/helper/write.cpp
+@@ -178,7 +178,7 @@ static bool modifyIso(const std::string &filename, bool persistentStorage) {
+     return changed;
+ }
+ 
+-static int onProgress(void *data, long long offset, long long total) {
++int onProgress(void *data, long long offset, long long total) {
+     constexpr long long MAGIC = 234;
+     long long &previousProgress = *static_cast<long long*>(data);
+     const long long progress = (offset * MAGIC) / total;
+@@ -191,7 +191,7 @@ static int onProgress(void *data, long long offset, long long total) {
+     return 0;
+ }
+ 
+-void writeCompressed(const QString &source, Drive *const drive) {
++void writeCompressed(const QString &source, GenericDrive *const drive) {
+     qint64 totalRead = 0;
+ 
+     lzma_stream strm = LZMA_STREAM_INIT;
+@@ -261,7 +261,7 @@ void writeCompressed(const QString &source, Drive *const drive) {
+     }
+ }
+ 
+-void writePlain(const QString &source, Drive *const drive) {
++void writePlain(const QString &source, GenericDrive *const drive) {
+     QFile inFile(source);
+     inFile.open(QIODevice::ReadOnly);
+ 
+@@ -308,7 +308,7 @@ void check(int fd) {
+     }
+ }
+ 
+-void write(const QString &source, Drive *const drive, bool persistentStorage) {
++void write(const QString &source, GenericDrive *const drive, bool persistentStorage) {
+     // Immediately trigger the UI into writing mode.
+     QTextStream out(stdout);
+     out << "1\n";
+@@ -325,8 +325,12 @@ void write(const QString &source, Drive *const drive, bool persistentStorage) {
+     drive->checkChecksum();
+     if (persistentStorage) {
+         drive->umount();
++        out << "OVERLAY\n";
++        out.flush();
+         auto size = QFileInfo(source).size();
+         drive->addOverlayPartition(size);
+         drive->implantChecksum();
++        out << "DONE\n";
++        out.flush();
+     }
+ }
+diff --git a/helper/write.h b/helper/write.h
+index b0e5dc5..8687c02 100644
+--- a/helper/write.h
++++ b/helper/write.h
+@@ -21,19 +21,21 @@
+ #define WRITE_H
+ 
+ #include <QString>
++#include <QtGlobal>
+ 
+ // Platform specific drive handler.
+-#include "drive.h"
++#include "genericdrive.h"
+ 
+ #ifndef MEDIAWRITER_LZMA_LIMIT
+ // 256MB memory limit for the decompressor
+ #define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
+ #endif
+ 
++int onProgress(void *data, long long offset, long long total);
+ void check(int fd);
+-void writePlain(const QString &source, Drive *const drive);
+-void writeCompressed(const QString &source, Drive *const drive);
++void writePlain(const QString &source, GenericDrive *const drive);
++void writeCompressed(const QString &source, GenericDrive *const drive);
+ 
+-void write(const QString &source, Drive *const drive, bool persistentStorage = false);
++void write(const QString &source, GenericDrive *const drive, bool persistentStorage = false);
+ 
+ #endif // WRITE_H
+-- 
+2.14.1
+

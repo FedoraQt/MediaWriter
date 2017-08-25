@@ -1,0 +1,190 @@
+From ee7ece13e6b6f552c6a257cd7728a23bde3f0d1d Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Mon, 14 Aug 2017 11:05:53 +0000
+Subject: [PATCH 26/40] Make persistent storage work for EFI
+
+---
+ helper/write.cpp | 98 ++++++++++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 89 insertions(+), 9 deletions(-)
+
+diff --git a/helper/write.cpp b/helper/write.cpp
+index 0184998..236f858 100644
+--- a/helper/write.cpp
++++ b/helper/write.cpp
+@@ -19,13 +19,15 @@
+ 
+ #include "write.h"
+ 
++#include <cstring>
++
+ #include <algorithm>
+ #include <fstream>
++#include <functional>
+ #include <ios>
+ #include <stdexcept>
+ #include <string>
+ #include <utility>
+-#include <utility>
+ #include <vector>
+ 
+ #include <QFile>
+@@ -34,6 +36,7 @@
+ #include <QString>
+ #include <QTextStream>
+ #include <QtGlobal>
++#include <QtEndian>
+ 
+ #include <iso9660io.h>
+ #include <libcheckisomd5.h>
+@@ -152,6 +155,77 @@ static std::streamsize removeOverlay(std::fstream *iofile, const iso9660::File &
+     return 0;
+ }
+ 
++static std::streamsize manipulateFatImage(std::fstream *iofile, const iso9660::File &fileinfo, bool persistentStorage) {
++    Q_UNUSED(fileinfo);
++    constexpr char configfile[] = "GRUB    CFG";
++    /*
++     * FIXME(squimrel): Find the location of the grub.cfg file content more
++     * reliably by reading the cluster number of its directory entry and
++     * locating it with the help of fatlength, sectors per cluster and
++     * number of reserved sectors which also have to be read.
++     */
++    constexpr char grub_signature[] = "set default";
++    constexpr int SECTOR_SIZE = 512;
++    constexpr int FILESIZE_OFFSET = 28;
++    char buffer[SECTOR_SIZE];
++    std::streamsize entrypos = -1;
++    std::streamsize growth = 0;
++    quint32 filesize = 0;
++    auto &file = *iofile;
++    while (file.read(buffer, SECTOR_SIZE)) {
++        // Figure out position of grub.cfg entry.
++        char *entry = static_cast<char *>(
++                memmem(buffer, SECTOR_SIZE, configfile,
++                        std::extent<decltype(configfile)>::value - 1));
++        if (entry != nullptr) {
++            entrypos = (file.tellg() - static_cast<std::streamoff>(SECTOR_SIZE)) +
++                       (entry - buffer);
++            std::memcpy(&filesize, entry + FILESIZE_OFFSET, sizeof(filesize));
++            filesize = qFromLittleEndian(filesize);
++            break;
++        }
++    }
++    while (file.read(buffer, SECTOR_SIZE)) {
++        // Modify overlay switches of grub.cfg.
++        if (std::strncmp(buffer, grub_signature,
++                    std::extent<decltype(grub_signature)>::value - 1) == 0) {
++            file.seekg(-SECTOR_SIZE, std::ios::cur);
++            iso9660::File fileinfo;
++            fileinfo.size = filesize;
++            if (persistentStorage) {
++                growth = addOverlay(iofile, fileinfo);
++            }
++            else {
++                growth = removeOverlay(iofile, fileinfo);
++            }
++            filesize += growth;
++            break;
++        }
++    }
++    if (entrypos >= 0) {
++        file.seekg(entrypos + FILESIZE_OFFSET);
++        filesize = qToLittleEndian(filesize);
++        file.write(reinterpret_cast<char *>(&filesize), sizeof(filesize));
++    }
++    return growth;
++}
++
++static bool modifyFatImage(iso9660::Image *const image, const char *const filename, bool persistentStorage) {
++    using namespace std::placeholders;
++    auto file = image->find(filename);
++    if (file == nullptr) {
++        return false;
++    }
++    return image->modify_file(*file, std::bind(manipulateFatImage, _1, _2, persistentStorage));
++}
++
++static bool modifyHfsImage(iso9660::Image *const image, const char *const filename, bool persistentStorage) {
++    Q_UNUSED(image);
++    Q_UNUSED(filename);
++    Q_UNUSED(persistentStorage);
++    return false;
++}
++
+ static bool modifyIso(iso9660::Image *const image, const char *const filename, bool persistentStorage) {
+     auto file = image->find(filename);
+     if (file == nullptr) {
+@@ -174,13 +248,19 @@ static bool modifyIso(const std::string &filename, bool persistentStorage) {
+             changed = true;
+         }
+     }
++    if (modifyFatImage(&image, "efiboot.img", persistentStorage)) {
++        changed = true;
++    }
++    if (modifyHfsImage(&image, "macboot.img", persistentStorage)) {
++        changed = true;
++    }
+     image.write();
+     return changed;
+ }
+ 
+ int onProgress(void *data, long long offset, long long total) {
+     constexpr long long MAGIC = 234;
+-    long long &previousProgress = *static_cast<long long*>(data);
++    long long &previousProgress = *static_cast<long long *>(data);
+     const long long progress = (offset * MAGIC) / total;
+     if (progress > previousProgress) {
+         previousProgress = progress;
+@@ -201,8 +281,8 @@ void writeCompressed(const QString &source, GenericDrive *const drive) {
+ 
+     PageAlignedBuffer<2> buffers;
+     const std::size_t bufferSize = buffers.size;
+-    char *inBuffer = static_cast<char*>(buffers.get(0));
+-    char *outBuffer = static_cast<char*>(buffers.get(1));
++    char *inBuffer = static_cast<char *>(buffers.get(0));
++    char *outBuffer = static_cast<char *>(buffers.get(1));
+     auto total = QFileInfo(source).size();
+     qint64 previousProgress = 0LL;
+ 
+@@ -214,9 +294,9 @@ void writeCompressed(const QString &source, GenericDrive *const drive) {
+         throw std::runtime_error("Failed to start decompressing.");
+     }
+ 
+-    strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
++    strm.next_in = reinterpret_cast<uint8_t *>(inBuffer);
+     strm.avail_in = 0;
+-    strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
++    strm.next_out = reinterpret_cast<uint8_t *>(outBuffer);
+     strm.avail_out = bufferSize;
+ 
+     while (true) {
+@@ -224,7 +304,7 @@ void writeCompressed(const QString &source, GenericDrive *const drive) {
+             qint64 len = file.read(inBuffer, bufferSize);
+             totalRead += len;
+ 
+-            strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
++            strm.next_in = reinterpret_cast<uint8_t *>(inBuffer);
+             strm.avail_in = len;
+ 
+             onProgress(&previousProgress, totalRead, total);
+@@ -257,7 +337,7 @@ void writeCompressed(const QString &source, GenericDrive *const drive) {
+         if (strm.avail_out == 0) {
+             drive->write(outBuffer, bufferSize - strm.avail_out);
+ 
+-            strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
++            strm.next_out = reinterpret_cast<uint8_t *>(outBuffer);
+             strm.avail_out = bufferSize;
+         }
+     }
+@@ -273,7 +353,7 @@ void writePlain(const QString &source, GenericDrive *const drive) {
+ 
+     PageAlignedBuffer<2> buffers;
+     const std::size_t bufferSize = buffers.size;
+-    char *buffer = static_cast<char*>(buffers.get(0));
++    char *buffer = static_cast<char *>(buffers.get(0));
+     auto total = QFileInfo(source).size();
+     qint64 previousProgress = 0LL;
+ 
+-- 
+2.14.1
+

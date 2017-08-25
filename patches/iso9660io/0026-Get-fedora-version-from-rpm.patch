@@ -1,0 +1,27 @@
+From 5f20c3498e322530e607f169586440025048fdf8 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Fri, 25 Aug 2017 19:03:39 +0000
+Subject: [PATCH 26/28] Get fedora version from rpm
+
+---
+ scripts/package.sh | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/scripts/package.sh b/scripts/package.sh
+index 1dfdcc1..9c297e7 100755
+--- a/scripts/package.sh
++++ b/scripts/package.sh
+@@ -3,9 +3,7 @@
+ # In any case it packages the project at revision specified as if it's a
+ # package of the latest version.
+ 
+-source /etc/os-release
+-readonly RELEASE="$(echo "$(echo "${ID}" | cut -c1)${VERSION_ID}")"
+-
++readonly RELEASE="f$(rpm -E "%fedora")"
+ readonly ROOT="$(git rev-parse --show-toplevel)"
+ cd "${ROOT}"
+ 
+-- 
+2.14.1
+

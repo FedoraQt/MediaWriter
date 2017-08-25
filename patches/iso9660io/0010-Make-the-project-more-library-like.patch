@@ -1,0 +1,642 @@
+From 31480d5b424da748165db072dc4e8a91599e26e7 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Fri, 9 Jun 2017 03:00:28 +0000
+Subject: [PATCH 10/28] Make the project more library like
+
+---
+ CMakeLists.txt              |  2 +-
+ include/buffer.h            | 37 +++++++++++++++++++++++++
+ include/exception.h         | 15 ++++------
+ include/file.h              |  7 +++--
+ include/image.h             | 26 +++++++++++++-----
+ include/iso9660.h           | 67 +++------------------------------------------
+ include/path-table.h        |  2 +-
+ include/read.h              |  2 +-
+ include/utility.h           |  2 +-
+ include/volume-descriptor.h | 27 +++++++++++++++++-
+ src/exception.cc            |  8 +-----
+ src/file.cc                 | 11 ++++++--
+ src/image.cc                | 24 ++++++++++++++--
+ src/iso9660.cc              | 50 ---------------------------------
+ src/path-table.cc           |  2 +-
+ src/read.cc                 |  2 +-
+ src/utility.cc              |  2 +-
+ src/volume-descriptor.cc    | 42 ++++++++++++++--------------
+ 18 files changed, 155 insertions(+), 173 deletions(-)
+ create mode 100644 include/buffer.h
+ delete mode 100644 src/iso9660.cc
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a6eb951..8e92119 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 2.6)
+ project(iso9660)
+ 
+-set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -O3 -DNDEBUG")
++set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -O3 -DNDEBUG -fvisibility=hidden")
+ 
+ include_directories(.)
+ file(GLOB FILES src/*.cc include/*.h)
+diff --git a/include/buffer.h b/include/buffer.h
+new file mode 100644
+index 0000000..85ea6ac
+--- /dev/null
++++ b/include/buffer.h
+@@ -0,0 +1,37 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++
++#ifndef ISO9660_BUFFER_H_
++#define ISO9660_BUFFER_H_
++
++#include <array>
++#include <utility>
++
++#define EXPORT __attribute__ ((visibility ("default")))
++
++namespace iso9660 {
++
++constexpr std::size_t SECTOR_SIZE = 2048;
++constexpr std::size_t NUM_SYSTEM_SECTORS = 16;
++constexpr std::size_t SYSTEM_AREA_SIZE = NUM_SYSTEM_SECTORS * SECTOR_SIZE;
++using Buffer = std::array<unsigned char, iso9660::SECTOR_SIZE>;
++
++}  // namespace iso9660
++
++#endif  // ISO9660_BUFFER_H_
+diff --git a/include/exception.h b/include/exception.h
+index 9a54147..1cb8eb0 100644
+--- a/include/exception.h
++++ b/include/exception.h
+@@ -20,26 +20,23 @@
+ #ifndef ISO9660_EXCEPTION_H_
+ #define ISO9660_EXCEPTION_H_
+ 
+-#include <exception>
++#include <stdexcept>
+ #include <string>
+ 
++#include "./include/buffer.h"
++
+ namespace iso9660 {
+ 
+-class Exception : public std::exception {
++class EXPORT Exception : public std::runtime_error {
+  public:
+   explicit Exception(const std::string& what_arg);
+-  virtual ~Exception();
+-  virtual const char* what() const noexcept(true);
+-
+- private:
+-  std::string what_arg_;
+ };
+ 
+-class NotImplementedException : public Exception {
++class EXPORT NotImplementedException : public Exception {
+   using Exception::Exception;
+ };
+ 
+-class CorruptFileException : public Exception {
++class EXPORT CorruptFileException : public Exception {
+   using Exception::Exception;
+ };
+ 
+diff --git a/include/file.h b/include/file.h
+index ed1c896..d7db5fa 100644
+--- a/include/file.h
++++ b/include/file.h
+@@ -23,7 +23,7 @@
+ #include <string>
+ #include <utility>
+ 
+-#include "./include/iso9660.h"
++#include "./include/buffer.h"
+ 
+ namespace iso9660 {
+ 
+@@ -78,7 +78,10 @@ class File {
+   File(iso9660::Buffer::const_iterator first, std::size_t size);
+   bool has(Flag flag) const;
+   bool isdir() const;
+-  std::size_t max_growth() const;
++  EXPORT std::size_t max_growth() const;
++
++ private:
++  static std::size_t sector_align(std::size_t size);
+ };
+ 
+ }  // namespace iso9660
+diff --git a/include/image.h b/include/image.h
+index da4564b..aa96025 100644
+--- a/include/image.h
++++ b/include/image.h
+@@ -17,7 +17,6 @@
+  * USA.
+  */
+ 
+-#include <cstdint>
+ #include <fstream>
+ #include <functional>
+ #include <string>
+@@ -26,7 +25,7 @@
+ #include <vector>
+ 
+ #include "./include/file.h"
+-#include "./include/iso9660.h"
++#include "./include/buffer.h"
+ #include "./include/path-table.h"
+ #include "./include/volume-descriptor.h"
+ 
+@@ -37,17 +36,30 @@ namespace iso9660 {
+ 
+ class Image {
+  private:
++  enum class Identifier {
++    ECMA_119,
++    ECMA_168,
++    // ECMA-167 Edition 2
++    ECMA_167_PREVIOUS,
++    // ECMA-167 has a different identifiers for nearly each volume descriptor.
++    ECMA_167,
++    ECMA_167_EXTENDED,
++    ECMA_167_BOOT,
++    ECMO_167_TERMINATOR,
++    UNKNOWN
++  };
++  static Identifier identifier_of(const std::string& identifier);
+   void read_directories(iso9660::PathTable* const path_table);
+   std::vector<iso9660::File> read_directory(std::size_t location);
+   void read_path_table(iso9660::VolumeDescriptor* const volume_descriptor);
+   iso9660::SectorType read_volume_descriptor();
+ 
+  public:
+-  explicit Image(std::fstream* file);
+-  void read();
+-  void write();
+-  const iso9660::File* find(const std::string& filename);
+-  void modify_file(
++  EXPORT explicit Image(std::fstream* file);
++  EXPORT void read();
++  EXPORT void write();
++  EXPORT const iso9660::File* find(const std::string& filename);
++  EXPORT void modify_file(
+       const iso9660::File& file,
+       std::function<std::streamsize(std::fstream*, const iso9660::File&)>
+           modify);
+diff --git a/include/iso9660.h b/include/iso9660.h
+index c8b9bf1..371a3d8 100644
+--- a/include/iso9660.h
++++ b/include/iso9660.h
+@@ -18,73 +18,14 @@
+  */
+ 
+ /**
+- * Collection of utility functions that are deticated specifically to reading
+- * an ISO 9660 image.
++ * Exposed ABI of the library.
+  */
+ 
+ #ifndef ISO9660_ISO9660_H_
+ #define ISO9660_ISO9660_H_
+ 
+-#include <array>
+-#include <string>
+-#include <utility>
+-
+-namespace iso9660 {
+-
+-enum class SectorType {
+-  BOOT_RECORD = 0,
+-  PRIMARY = 1,
+-  SUPPLEMENTARY = 2,
+-  PARTITION = 3,
+-  SET_TERMINATOR = 255
+-};
+-
+-struct VolumeDescriptorHeader {
+-  SectorType type;
+-  /*
+-   * Identifier specifies according to what specification the following data
+-   * was recorded.  The following information was taken from ECMA-167/3:
+-   * BEA01: 2/9.2 Beginning extended area descriptor.
+-   * BOOT2: 2/9.4 Boot descriptor.
+-   * CD001: ECMA-119
+-   * CDW02: ECMA-168
+-   * NSR02: ECMA-167/2
+-   * NSR03: ECMA-167/3
+-   * TEA01: 2/9.3 Terminating extended area descriptor.
+-   */
+-  std::string identifier;
+-  int version;
+-};
+-
+-constexpr std::size_t LONG_DATETIME_SIZE = 17;
+-constexpr std::size_t SHORT_DATETIME_SIZE = 7;
+-constexpr std::size_t DIRECTORY_RECORD_SIZE = 34;
+-constexpr std::size_t IDENTIFIER_SIZE = 128;
+-constexpr std::size_t APPLICATION_USE_SIZE = 512;
+-constexpr std::size_t FILE_IDENTIFIER_SIZE = 37;
+-constexpr std::size_t SECTOR_SIZE = 2048;
+-constexpr std::size_t NUM_SYSTEM_SECTORS = 16;
+-constexpr std::size_t SYSTEM_AREA_SIZE = NUM_SYSTEM_SECTORS * SECTOR_SIZE;
+-
+-enum class Identifier {
+-  ECMA_119,
+-  ECMA_168,
+-  // ECMA-167 Edition 2
+-  ECMA_167_PREVIOUS,
+-  // ECMA-167 has a different identifiers for nearly each volume descriptor.
+-  ECMA_167,
+-  ECMA_167_EXTENDED,
+-  ECMA_167_BOOT,
+-  ECMO_167_TERMINATOR,
+-  UNKNOWN
+-};
+-
+-Identifier identifier_of(const std::string& identifier);
+-
+-std::size_t sector_align(std::size_t size);
+-
+-using Buffer = std::array<unsigned char, iso9660::SECTOR_SIZE>;
+-
+-}  // namespace iso9660
++#include "./include/image.h"
++#include "./include/file.h"
++#include "./include/exception.h"
+ 
+ #endif  // ISO9660_ISO9660_H_
+diff --git a/include/path-table.h b/include/path-table.h
+index ff5ae38..f4e27ab 100644
+--- a/include/path-table.h
++++ b/include/path-table.h
+@@ -25,7 +25,7 @@
+ #include <vector>
+ 
+ #include "./include/file.h"
+-#include "./include/iso9660.h"
++#include "./include/buffer.h"
+ 
+ namespace iso9660 {
+ 
+diff --git a/include/read.h b/include/read.h
+index ee334ff..c469635 100644
+--- a/include/read.h
++++ b/include/read.h
+@@ -27,7 +27,7 @@
+ 
+ #include <utility>
+ 
+-#include "./include/iso9660.h"
++#include "./include/buffer.h"
+ 
+ namespace iso9660 {
+ namespace read {
+diff --git a/include/utility.h b/include/utility.h
+index 4d8ece4..6731403 100644
+--- a/include/utility.h
++++ b/include/utility.h
+@@ -25,7 +25,7 @@
+ #include <string>
+ #include <utility>
+ 
+-#include "./include/iso9660.h"
++#include "./include/buffer.h"
+ 
+ namespace utility {
+ 
+diff --git a/include/volume-descriptor.h b/include/volume-descriptor.h
+index 3c80350..45e561f 100644
+--- a/include/volume-descriptor.h
++++ b/include/volume-descriptor.h
+@@ -27,11 +27,36 @@
+ #include <vector>
+ 
+ #include "./include/file.h"
+-#include "./include/iso9660.h"
++#include "./include/buffer.h"
+ #include "./include/path-table.h"
+ 
+ namespace iso9660 {
+ 
++enum class SectorType {
++  BOOT_RECORD = 0,
++  PRIMARY = 1,
++  SUPPLEMENTARY = 2,
++  PARTITION = 3,
++  SET_TERMINATOR = 255
++};
++
++struct VolumeDescriptorHeader {
++  SectorType type;
++  /*
++   * Identifier specifies according to what specification the following data
++   * was recorded.  The following information was taken from ECMA-167/3:
++   * BEA01: 2/9.2 Beginning extended area descriptor.
++   * BOOT2: 2/9.4 Boot descriptor.
++   * CD001: ECMA-119
++   * CDW02: ECMA-168
++   * NSR02: ECMA-167/2
++   * NSR03: ECMA-167/3
++   * TEA01: 2/9.3 Terminating extended area descriptor.
++   */
++  std::string identifier;
++  int version;
++};
++
+ /**
+  * The "generic" ECMA-119 volume descriptor for the primary and supplementary
+  * volume descriptor.
+diff --git a/src/exception.cc b/src/exception.cc
+index 7519541..bc861cb 100644
+--- a/src/exception.cc
++++ b/src/exception.cc
+@@ -20,10 +20,4 @@
+ #include "./include/exception.h"
+ 
+ iso9660::Exception::Exception(const std::string& what_arg)
+-    : what_arg_(what_arg) {}
+-
+-iso9660::Exception::~Exception() {}
+-
+-const char* iso9660::Exception::what() const noexcept(true) {
+-  return what_arg_.c_str();
+-};
++    : std::runtime_error(what_arg) {}
+diff --git a/src/file.cc b/src/file.cc
+index 0cb4059..a3bfa07 100644
+--- a/src/file.cc
++++ b/src/file.cc
+@@ -22,7 +22,7 @@
+ #include <algorithm>
+ #include <utility>
+ 
+-#include "./include/iso9660.h"
++#include "./include/buffer.h"
+ #include "./include/read.h"
+ #include "./include/utility.h"
+ 
+@@ -32,11 +32,12 @@
+  */
+ iso9660::File::File(iso9660::Buffer::const_iterator first,
+                     iso9660::Buffer::const_iterator last) {
++  constexpr std::size_t SHORT_DATETIME_SIZE = 7;
+   using utility::integer;
+   utility::at(first, last, &length, 0);
+   // + length + (length % 2 == 0 ? 0 : 1);
+   utility::at(first, last, &extended_length, 1);
+-  extended_length = std::move(iso9660::sector_align(extended_length));
++  extended_length = std::move(sector_align(extended_length));
+   integer(&location, first + 2, first + 6, 4);
+   integer(&size, first + 10, first + 14, 4);
+   datetime = iso9660::read::short_datetime(first + 18, SHORT_DATETIME_SIZE);
+@@ -66,5 +67,9 @@ bool iso9660::File::isdir() const {
+ }
+ 
+ std::size_t iso9660::File::max_growth() const {
+-  return iso9660::sector_align(size) - size - extended_length;
++  return sector_align(size) - size - extended_length;
++}
++
++std::size_t iso9660::File::sector_align(std::size_t size) {
++  return (size + (iso9660::SECTOR_SIZE - 1)) & -iso9660::SECTOR_SIZE;
+ }
+diff --git a/src/image.cc b/src/image.cc
+index 400862f..38451c2 100644
+--- a/src/image.cc
++++ b/src/image.cc
+@@ -30,7 +30,7 @@
+ 
+ #include "./include/exception.h"
+ #include "./include/file.h"
+-#include "./include/iso9660.h"
++#include "./include/buffer.h"
+ #include "./include/path-table.h"
+ #include "./include/volume-descriptor.h"
+ #include "./include/write.h"
+@@ -114,9 +114,9 @@ iso9660::SectorType iso9660::Image::read_volume_descriptor() {
+   header.type = type;
+   header.identifier = utility::substr(first, last, 1, 5);
+   utility::at(first, last, &header.version, 6);
+-  auto identifier = iso9660::identifier_of(header.identifier);
++  auto identifier = identifier_of(header.identifier);
+   // Currently only ECMA 119 is understood.
+-  if (identifier != iso9660::Identifier::ECMA_119) {
++  if (identifier != iso9660::Image::Identifier::ECMA_119) {
+     throw iso9660::NotImplementedException("Unknown identifier: " +
+                                            header.identifier);
+   }
+@@ -237,3 +237,21 @@ void iso9660::Image::modify_file(
+   iso9660::write::resize_file(&file_, result->second.begin(),
+                               result->second.end(), file.size + growth);
+ }
++
++iso9660::Image::Identifier iso9660::Image::identifier_of(
++    const std::string& identifier) {
++  static const std::unordered_map<std::string, iso9660::Image::Identifier>
++      identifiers = {
++          {"CD001", iso9660::Image::Identifier::ECMA_119},
++          {"CDW02", iso9660::Image::Identifier::ECMA_168},
++          {"NSR03", iso9660::Image::Identifier::ECMA_167},
++          {"NSR02", iso9660::Image::Identifier::ECMA_167_PREVIOUS},
++          {"BEA01", iso9660::Image::Identifier::ECMA_167_EXTENDED},
++          {"BOOT2", iso9660::Image::Identifier::ECMA_167_BOOT},
++          {"TEA01", iso9660::Image::Identifier::ECMO_167_TERMINATOR}};
++  auto result = identifiers.find(identifier);
++  if (result != identifiers.end()) {
++    return result->second;
++  }
++  return iso9660::Image::Identifier::UNKNOWN;
++}
+diff --git a/src/iso9660.cc b/src/iso9660.cc
+deleted file mode 100644
+index b0b39de..0000000
+--- a/src/iso9660.cc
++++ /dev/null
+@@ -1,50 +0,0 @@
+-/*
+- * Copyright (C) 2017 squimrel
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License
+- * as published by the Free Software Foundation; either version 2
+- * of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
+- * USA.
+-*/
+-
+-#include "./include/iso9660.h"
+-
+-#include <fstream>
+-#include <string>
+-#include <unordered_map>
+-#include <utility>
+-
+-#include "./include/file.h"
+-#include "./include/read.h"
+-#include "./include/volume-descriptor.h"
+-#include "./include/write.h"
+-
+-iso9660::Identifier iso9660::identifier_of(const std::string& identifier) {
+-  static const std::unordered_map<std::string, iso9660::Identifier>
+-      identifiers = {{"CD001", iso9660::Identifier::ECMA_119},
+-                     {"CDW02", iso9660::Identifier::ECMA_168},
+-                     {"NSR03", iso9660::Identifier::ECMA_167},
+-                     {"NSR02", iso9660::Identifier::ECMA_167_PREVIOUS},
+-                     {"BEA01", iso9660::Identifier::ECMA_167_EXTENDED},
+-                     {"BOOT2", iso9660::Identifier::ECMA_167_BOOT},
+-                     {"TEA01", iso9660::Identifier::ECMO_167_TERMINATOR}};
+-  auto result = identifiers.find(identifier);
+-  if (result != identifiers.end()) {
+-    return result->second;
+-  }
+-  return iso9660::Identifier::UNKNOWN;
+-}
+-
+-std::size_t iso9660::sector_align(std::size_t size) {
+-  return (size + (iso9660::SECTOR_SIZE - 1)) & -iso9660::SECTOR_SIZE;
+-}
+diff --git a/src/path-table.cc b/src/path-table.cc
+index 69732d3..675ec68 100644
+--- a/src/path-table.cc
++++ b/src/path-table.cc
+@@ -22,7 +22,7 @@
+ #include <algorithm>
+ #include <iterator>
+ 
+-#include "./include/iso9660.h"
++#include "./include/buffer.h"
+ #include "./include/utility.h"
+ 
+ /**
+diff --git a/src/read.cc b/src/read.cc
+index 26dfcda..1b215bc 100644
+--- a/src/read.cc
++++ b/src/read.cc
+@@ -22,7 +22,7 @@
+ #include <cstdint>
+ #include <ctime>
+ 
+-#include "./include/iso9660.h"
++#include "./include/buffer.h"
+ #include "./include/utility.h"
+ 
+ /**
+diff --git a/src/utility.cc b/src/utility.cc
+index d5d6168..9e11496 100644
+--- a/src/utility.cc
++++ b/src/utility.cc
+@@ -25,7 +25,7 @@
+ #include <locale>
+ #include <string>
+ 
+-#include "./include/iso9660.h"
++#include "./include/buffer.h"
+ 
+ /**
+  * Convert from UCS-2 to UTF-8 string.
+diff --git a/src/volume-descriptor.cc b/src/volume-descriptor.cc
+index 0db12a9..0fa6a8c 100644
+--- a/src/volume-descriptor.cc
++++ b/src/volume-descriptor.cc
+@@ -19,11 +19,13 @@
+ 
+ #include "./include/volume-descriptor.h"
+ 
++#include <algorithm>
+ #include <memory>
+ #include <unordered_map>
++#include <utility>
+ 
+ #include "./include/file.h"
+-#include "./include/iso9660.h"
++#include "./include/buffer.h"
+ #include "./include/read.h"
+ #include "./include/utility.h"
+ 
+@@ -33,6 +35,11 @@
+ iso9660::VolumeDescriptor::VolumeDescriptor(
+     iso9660::Buffer::const_iterator first, iso9660::Buffer::const_iterator last,
+     iso9660::VolumeDescriptorHeader generic_header) {
++  constexpr std::size_t APPLICATION_USE_SIZE = 512;
++  constexpr std::size_t DIRECTORY_RECORD_SIZE = 34;
++  constexpr std::size_t FILE_IDENTIFIER_SIZE = 37;
++  constexpr std::size_t IDENTIFIER_SIZE = 128;
++  constexpr std::size_t LONG_DATETIME_SIZE = 17;
+   using utility::integer;
+   namespace read = iso9660::read;
+ 
+@@ -56,32 +63,25 @@ iso9660::VolumeDescriptor::VolumeDescriptor(
+   integer(&optional_path_table_location, first + 144, first + 152, 4);
+ 
+   root_directory = std::unique_ptr<iso9660::File>(
+-      new iso9660::File(first + 156, iso9660::DIRECTORY_RECORD_SIZE));
+-  volume_set_identifier =
+-      utility::substr(first, last, 190, iso9660::IDENTIFIER_SIZE);
+-  publisher_identifier =
+-      utility::substr(first, last, 318, iso9660::IDENTIFIER_SIZE);
+-  data_preparer_identifier =
+-      utility::substr(first, last, 446, iso9660::IDENTIFIER_SIZE);
+-  application_identifier =
+-      utility::substr(first, last, 574, iso9660::IDENTIFIER_SIZE);
++      new iso9660::File(first + 156, DIRECTORY_RECORD_SIZE));
++  volume_set_identifier = utility::substr(first, last, 190, IDENTIFIER_SIZE);
++  publisher_identifier = utility::substr(first, last, 318, IDENTIFIER_SIZE);
++  data_preparer_identifier = utility::substr(first, last, 446, IDENTIFIER_SIZE);
++  application_identifier = utility::substr(first, last, 574, IDENTIFIER_SIZE);
+   copyright_file_identifier =
+-      utility::substr(first, last, 702, iso9660::FILE_IDENTIFIER_SIZE);
++      utility::substr(first, last, 702, FILE_IDENTIFIER_SIZE);
+   abstract_file_identifier =
+-      utility::substr(first, last, 739, iso9660::FILE_IDENTIFIER_SIZE);
++      utility::substr(first, last, 739, FILE_IDENTIFIER_SIZE);
+   bibliographic_file_identifier =
+-      utility::substr(first, last, 776, iso9660::FILE_IDENTIFIER_SIZE);
+-  volume_create_datetime =
+-      read::long_datetime(first + 813, iso9660::LONG_DATETIME_SIZE);
+-  volume_modify_datetime =
+-      read::long_datetime(first + 830, iso9660::LONG_DATETIME_SIZE);
++      utility::substr(first, last, 776, FILE_IDENTIFIER_SIZE);
++  volume_create_datetime = read::long_datetime(first + 813, LONG_DATETIME_SIZE);
++  volume_modify_datetime = read::long_datetime(first + 830, LONG_DATETIME_SIZE);
+   volume_expiration_datetime =
+-      read::long_datetime(first + 847, iso9660::LONG_DATETIME_SIZE);
++      read::long_datetime(first + 847, LONG_DATETIME_SIZE);
+   volume_effective_datetime =
+-      read::long_datetime(first + 864, iso9660::LONG_DATETIME_SIZE);
++      read::long_datetime(first + 864, LONG_DATETIME_SIZE);
+   utility::at(first, last, &file_structure_version, 881);
+-  application_use =
+-      utility::substr(first, last, 883, iso9660::APPLICATION_USE_SIZE);
++  application_use = utility::substr(first, last, 883, APPLICATION_USE_SIZE);
+ }
+ 
+ /**
+-- 
+2.14.1
+

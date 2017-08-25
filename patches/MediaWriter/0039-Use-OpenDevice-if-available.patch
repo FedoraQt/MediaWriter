@@ -1,0 +1,49 @@
+From a8255d1c4a8c07a1b9a436936ca5b448554079a3 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Fri, 25 Aug 2017 23:14:10 +0000
+Subject: [PATCH 39/40] Use OpenDevice if available
+
+---
+ helper/linux/drive.cpp | 20 +++++++++-----------
+ 1 file changed, 9 insertions(+), 11 deletions(-)
+
+diff --git a/helper/linux/drive.cpp b/helper/linux/drive.cpp
+index 59521f4..665c4db 100644
+--- a/helper/linux/drive.cpp
++++ b/helper/linux/drive.cpp
+@@ -57,23 +57,21 @@ Drive::~Drive() {
+ }
+ 
+ void Drive::init() {
+-    /*
+-     * Most I/O will go to cache but it's still way faster than with O_DIRECT
+-     * or O_SYNC.
++    /**
++     * Simply try to use OpenDevice which is introduced in udisks 2.7.3 and
++     * otherwise use open directly which requires privileges.
+      */
++    QDBusReply<QDBusUnixFileDescriptor> reply = m_device->call(QDBus::Block, "OpenDevice", "rw", Properties{});
++    m_fileDescriptor = reply.value();
++    if (m_fileDescriptor.isValid())
++        return;
++    m_fileDescriptor = QDBusUnixFileDescriptor(-1);
++
+     int fd = ::open(qPrintable(m_device->property("Device").toString()), O_RDWR);
+     if (fd < 0) {
+         throw std::runtime_error("Failed to open block device.");
+     }
+     m_fileDescriptor = QDBusUnixFileDescriptor(fd);
+-    /*
+-    QDBusReply<QDBusUnixFileDescriptor> reply = m_device->callWithArgumentList(QDBus::Block, "OpenDevice", "rw", 0, Properties{});
+-    m_fileDescriptor = reply.value();
+-    if (!m_fileDescriptor.isValid()) {
+-        throw std::runtime_error(reply.error().message().toStdString());
+-        m_fileDescriptor = QDBusUnixFileDescriptor(-1);
+-    }
+-    */
+ }
+ 
+ /**
+-- 
+2.14.1
+

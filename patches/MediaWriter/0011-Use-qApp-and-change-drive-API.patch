@@ -1,0 +1,250 @@
+From 1aa9ffb1fc3b6b224854dabe1488ed8d2822e4ec Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Mon, 10 Jul 2017 20:50:29 +0000
+Subject: [PATCH 11/40] Use qApp and change drive API
+
+---
+ helper/helper.pro      |  1 +
+ helper/linux/drive.cpp | 20 +++++++-------------
+ helper/linux/drive.h   | 16 +++++++++-------
+ helper/linux/linux.pri |  1 -
+ helper/main.cpp        | 40 +++++++++++++++++++++-------------------
+ helper/write.cpp       | 10 +---------
+ 6 files changed, 39 insertions(+), 49 deletions(-)
+
+diff --git a/helper/helper.pro b/helper/helper.pro
+index c450530..7addde3 100644
+--- a/helper/helper.pro
++++ b/helper/helper.pro
+@@ -10,6 +10,7 @@ CONFIG += console
+ CONFIG += link_pkgconfig
+ 
+ TARGET = helper
++DESTDIR = ../app/
+ 
+ include($$top_srcdir/deployment.pri)
+ 
+diff --git a/helper/linux/drive.cpp b/helper/linux/drive.cpp
+index 94bfaa5..99b0365 100644
+--- a/helper/linux/drive.cpp
++++ b/helper/linux/drive.cpp
+@@ -41,15 +41,16 @@ Q_DECLARE_METATYPE(InterfacesAndProperties)
+ Q_DECLARE_METATYPE(DBusIntrospection)
+ 
+ Drive::Drive(const QString &identifier)
+-    : m_fileDescriptor(QDBusUnixFileDescriptor(-1)), m_identifier(identifier),
++    : QObject(nullptr), m_fileDescriptor(QDBusUnixFileDescriptor(-1)), m_identifier(identifier),
+       m_device(new QDBusInterface("org.freedesktop.UDisks2", m_identifier, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus())),
+       m_path(qvariant_cast<QDBusObjectPath>(m_device->property("Drive")).path()) {
+ }
+ 
+-/**
+- * Open drive for writing.
+- */
+-void Drive::open() {
++Drive::~Drive() {
++    m_fileDescriptor = QDBusUnixFileDescriptor(-1);
++}
++
++void Drive::init() {
+     if (getDescriptor() != -1)
+         return;
+     QDBusReply<QDBusUnixFileDescriptor> reply = m_device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
+@@ -60,20 +61,13 @@ void Drive::open() {
+     }
+ }
+ 
+-/**
+- * Close drive for writing.
+- */
+-void Drive::close() {
+-    m_fileDescriptor = QDBusUnixFileDescriptor(-1);
+-}
+-
+ /**
+  * Write buffer directly to drive.
+  */
+ void Drive::write(const void *buffer, std::size_t size) {
+     int fd = getDescriptor();
+     if (static_cast<std::size_t>(::write(fd, buffer, size)) != size) {
+-        throw std::runtime_error(QObject::tr("Destination drive is not writable").toStdString());
++        throw std::runtime_error("Destination drive is not writable.");
+     }
+ }
+ 
+diff --git a/helper/linux/drive.h b/helper/linux/drive.h
+index 2e397ae..779b348 100644
+--- a/helper/linux/drive.h
++++ b/helper/linux/drive.h
+@@ -20,34 +20,36 @@
+ #ifndef DRIVE_H
+ #define DRIVE_H
+ 
+-#include <memory>
+ #include <utility>
+ 
+ #include <QDBusInterface>
+ #include <QDBusUnixFileDescriptor>
++#include <QObject>
++#include <QScopedPointer>
+ #include <QString>
+ #include <QTextStream>
+ #include <QtGlobal>
+ 
+-class Drive {
++class Drive : public QObject {
++    Q_OBJECT
+ public:
+     /**
+      * Shared public interface across platforms.
+      */
+-    Drive(const QString &driveIdentifier);
+-    void open();
+-    void close();
++    explicit Drive(const QString &driveIdentifier);
++    ~Drive();
++    void init();
+     void write(const void *buffer, std::size_t size);
+     int getDescriptor() const;
+     void wipe();
+-    QPair<QString, qint64> addPartition(quint64 offset = 0ULL, const QString &label = "");
++    QPair<QString, qint64> addPartition(quint64 offset = 1024ULL * 1024ULL, const QString &label = "");
+     QString mount(const QString &partitionIdentifier);
+     void umount();
+ 
+ private:
+     QDBusUnixFileDescriptor m_fileDescriptor;
+     QString m_identifier;
+-    std::unique_ptr<QDBusInterface> m_device;
++    QScopedPointer<QDBusInterface> m_device;
+     QString m_path;
+ };
+ 
+diff --git a/helper/linux/linux.pri b/helper/linux/linux.pri
+index cf72ad3..196c47a 100644
+--- a/helper/linux/linux.pri
++++ b/helper/linux/linux.pri
+@@ -1,5 +1,4 @@
+ INCLUDEPATH += $$top_srcdir/helper/linux/
+-DESTDIR = $$top_srcdir/helper/linux/
+ 
+ QT += dbus
+ 
+diff --git a/helper/main.cpp b/helper/main.cpp
+index 9eff523..278f85a 100644
+--- a/helper/main.cpp
++++ b/helper/main.cpp
+@@ -19,8 +19,10 @@
+ 
+ #include <stdexcept>
+ 
++#include <QCoreApplication>
+ #include <QString>
+ #include <QTextStream>
++#include <QTimer>
+ #include <QTranslator>
+ 
+ // Platform specific drive handler.
+@@ -45,28 +47,28 @@ int main(int argc, char *argv[]) {
+         return 1;
+     }
+ 
++    QCoreApplication app(argc, argv);
+     QTranslator translator;
+     translator.load(QLocale(), QString(), QString(), ":/translations");
++    app.installTranslator(&translator);
+ 
+     QString driveIdentifier = isRestore ? argv[2] : argv[3];
+-    Drive drive(driveIdentifier);
+-    try {
+-        if (isRestore) {
+-            restore(&drive);
++    QTimer::singleShot(0, [&]() {
++        Drive *drive = new Drive(driveIdentifier);
++        try {
++            drive->init();
++            if (isRestore) {
++                restore(drive);
++            }
++            else {
++                write(argv[2], drive, persistentStorage);
++            }
++            qApp->exit(0);
++        } catch (std::runtime_error &error) {
++            err << error.what() << '\n';
++            err.flush();
++            qApp->exit(1);
+         }
+-        else {
+-            write(argv[2], &drive, persistentStorage);
+-        }
+-    } catch (std::runtime_error &error) {
+-        auto errorMessage = error.what();
+-        QString translatedMessage = translator.translate(nullptr, errorMessage);
+-        if (translatedMessage.isNull()) {
+-            err << errorMessage << '\n';
+-        }
+-        else {
+-            err << translatedMessage << '\n';
+-        }
+-        err.flush();
+-        return 1;
+-    }
++    });
++    return app.exec();
+ }
+diff --git a/helper/write.cpp b/helper/write.cpp
+index 3116f38..80e7866 100644
+--- a/helper/write.cpp
++++ b/helper/write.cpp
+@@ -182,7 +182,7 @@ static bool modifyIso(const std::string &filename, bool persistentStorage) {
+ }
+ 
+ static void zeroFile(const QString &filename, qint64 size) {
+-    constexpr int FOURKB = 4096;
++    constexpr qint64 FOURKB = 4096;
+     constexpr qint64 MAX_FILE_SIZE = FOURKB * 1024L * 1024L - 1;
+     size = std::max(MAX_FILE_SIZE, size);
+     QByteArray zeros(FOURKB, '\0');
+@@ -223,8 +223,6 @@ static void writeCompressed(const QString &source, Drive *const drive) {
+     strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
+     strm.avail_out = bufferSize;
+ 
+-    drive->open();
+-
+     QTextStream out(stdout);
+     while (true) {
+         if (strm.avail_in == 0) {
+@@ -283,8 +281,6 @@ static void writePlain(const QString &source, Drive *const drive) {
+     const std::size_t bufferSize = buffers.size;
+     char *buffer = static_cast<char*>(buffers.get(0));
+ 
+-    drive->open();
+-
+     qint64 total = 0;
+     while (!inFile.atEnd()) {
+         qint64 len = inFile.read(buffer, bufferSize);
+@@ -343,9 +339,7 @@ void write(const QString &source, Drive *const drive, bool persistentStorage) {
+         writeCompressed(source, drive);
+     else
+         writePlain(source, drive);
+-    drive->open();
+     check(drive->getDescriptor());
+-    drive->close();
+     drive->umount();
+     auto size = QFileInfo(source).size();
+     auto partitionInfo = drive->addPartition(size, partitionLabel);
+@@ -354,10 +348,8 @@ void write(const QString &source, Drive *const drive, bool persistentStorage) {
+         zeroFile(mountpoint + overlayFilename, partitionInfo.second);
+         drive->umount();
+     }
+-    drive->open();
+     char *errstr;
+     if (implantISOFD(drive->getDescriptor(), false, true, true, &errstr) != 0) {
+         throw std::runtime_error(std::string(errstr));
+     }
+-    drive->close();
+ }
+-- 
+2.14.1
+

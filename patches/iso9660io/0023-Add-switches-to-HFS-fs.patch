@@ -1,0 +1,180 @@
+From 9008dde993e0999bacca83488d199198777dc8da Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Wed, 16 Aug 2017 22:55:47 +0000
+Subject: [PATCH 23/28] Add switches to HFS+ fs
+
+Add a lot of ugly code.
+---
+ example/file-manipulation.cc  | 111 +++++++++++++++++++++++++++++++++++++-----
+ example/file-manipulation.h   |   3 ++
+ example/persistent-storage.cc |   2 +
+ 3 files changed, 105 insertions(+), 11 deletions(-)
+
+diff --git a/example/file-manipulation.cc b/example/file-manipulation.cc
+index 3999880..11e5e66 100644
+--- a/example/file-manipulation.cc
++++ b/example/file-manipulation.cc
+@@ -55,18 +55,23 @@ std::streamsize add_overlay_switch_to_grub_on_fat_image(
+   constexpr int FILESIZE_OFFSET = 28;
+   char buffer[SECTOR_SIZE];
+   std::streamsize entrypos = -1;
+-  std::streamsize growth = 0;
+   std::uint32_t filesize = 0;
+   auto &file = *iofile;
+   while (file.read(buffer, SECTOR_SIZE)) {
++    std::size_t offset = 0;
++    for (; offset < SECTOR_SIZE; offset += 0x20) {
++      if (std::strncmp(buffer + offset, configfile,
++                       std::extent<decltype(configfile)>::value - 1) == 0) {
++        break;
++      }
++    }
+     // Figure out position of grub.cfg entry.
+-    char *entry = static_cast<char *>(
+-        memmem(buffer, SECTOR_SIZE, configfile,
+-               std::extent<decltype(configfile)>::value - 1));
+-    if (entry != nullptr) {
+-      entrypos = (file.tellg() - static_cast<std::streamoff>(SECTOR_SIZE)) +
+-                 (entry - buffer);
+-      std::memcpy(&filesize, entry + FILESIZE_OFFSET, sizeof(filesize));
++    if (offset < SECTOR_SIZE) {
++      entrypos = file.tellg() - static_cast<std::streamoff>(SECTOR_SIZE);
++      entrypos += offset;
++
++      std::memcpy(&filesize, buffer + offset + FILESIZE_OFFSET,
++                  sizeof(filesize));
+       if (ENDIANNESS == utility::Endian::BIG) {
+         filesize = swap_byte_order(filesize);
+       }
+@@ -80,8 +85,7 @@ std::streamsize add_overlay_switch_to_grub_on_fat_image(
+       file.seekg(-SECTOR_SIZE, std::ios::cur);
+       iso9660::File fileinfo;
+       fileinfo.size = filesize;
+-      growth = insert_overlay_switch(iofile, fileinfo);
+-      filesize += growth;
++      filesize += insert_overlay_switch(iofile, fileinfo);
+       break;
+     }
+   }
+@@ -92,7 +96,92 @@ std::streamsize add_overlay_switch_to_grub_on_fat_image(
+     }
+     file.write(reinterpret_cast<char *>(&filesize), sizeof(filesize));
+   }
+-  return growth;
++  return 0;
++}
++
++std::streamsize add_overlay_switch_to_grub_on_hfsplus_image(
++    std::fstream *iofile, const iso9660::File &fileinfo) {
++  auto swap_byte_order = [](std::uint32_t num) {
++    return (num >> 24) | ((num << 8) & 0x00ff0000) | ((num >> 8) & 0x0000ff00) |
++           (num << 24);
++  };
++  constexpr std::size_t SECTOR_SIZE = 512;
++  auto sector_align = [SECTOR_SIZE](std::size_t size) {
++    return (size + (SECTOR_SIZE - 1)) & -SECTOR_SIZE;
++  };
++  /*
++   * Assume that there're two grub.cfg files are on this image and that they
++   * have equal content.
++   * If there're less than two files nothing will be modified.
++   * If they don't have equal content the image might get corrupted if we're
++   * unlucky.
++   */
++  constexpr std::size_t NUM_FILES = 2;
++  std::array<std::streamsize, NUM_FILES> entrypos = {-1, -1};
++  std::array<std::uint32_t, NUM_FILES> filesize = {0, 0};
++  // Depends on configfile length.
++  constexpr std::size_t FILESIZE_OFFSET = 108;
++  constexpr std::size_t SKIP = FILESIZE_OFFSET + sizeof(filesize[0]);
++  constexpr std::size_t MAGIC_OFFSET = 0x40;
++  constexpr char MAGIC_VALUE = '\x3f';
++  constexpr char configfile[] = "\0g\0r\0u\0b\0.\0c\0f\0g";
++  std::size_t file_index = 0;
++  char buffer[SECTOR_SIZE];
++  auto &file = *iofile;
++  // Either byte fiddling is ugly or it's done incorrectly in here. Maybe both.
++  while (file.read(buffer, SECTOR_SIZE)) {
++    char *entry = static_cast<char *>(
++        memmem(buffer, SECTOR_SIZE - SKIP, configfile,
++               std::extent<decltype(configfile)>::value - 1));
++    if (entry != nullptr && entry[MAGIC_OFFSET] == MAGIC_VALUE) {
++      entrypos[file_index] =
++          (file.tellg() - static_cast<std::streamoff>(SECTOR_SIZE)) +
++          (entry - buffer);
++      std::memcpy(&filesize[file_index], entry + FILESIZE_OFFSET,
++                  sizeof(filesize[file_index]));
++      if (ENDIANNESS == utility::Endian::LITTLE) {
++        filesize[file_index] = swap_byte_order(filesize[file_index]);
++      }
++      if (file_index < NUM_FILES - 1) {
++        ++file_index;
++      } else {
++        // Make sure we're aligned for the grub.cfg signature search.
++        file.seekg(sector_align(file.tellg()));
++        file_index = 0;
++        break;
++      }
++    }
++    file.seekg(-SKIP, std::ios::cur);
++  }
++  while (file.read(buffer, SECTOR_SIZE)) {
++    constexpr char grub_signature[] = "set default";
++    // Modify overlay switches of grub.cfg.
++    if (std::strncmp(buffer, grub_signature,
++                     std::extent<decltype(grub_signature)>::value - 1) == 0) {
++      file.seekg(-SECTOR_SIZE, std::ios::cur);
++      iso9660::File fileinfo;
++      fileinfo.size = filesize[file_index];
++      filesize[file_index] += insert_overlay_switch(iofile, fileinfo);
++      if (file_index < NUM_FILES - 1) {
++        // Make sure we're aligned for the next grub.cfg signature search.
++        file.seekg(sector_align(file.tellg()));
++        ++file_index;
++      } else {
++        break;
++      }
++    }
++  }
++  for (file_index = 0; file_index < NUM_FILES; ++file_index) {
++    if (entrypos[file_index] >= 0) {
++      file.seekg(entrypos[file_index] + FILESIZE_OFFSET);
++      if (ENDIANNESS == utility::Endian::LITTLE) {
++        filesize[file_index] = swap_byte_order(filesize[file_index]);
++      }
++      file.write(reinterpret_cast<char *>(&filesize[file_index]),
++                 sizeof(filesize[file_index]));
++    }
++  }
++  return 0;
+ }
+ 
+ std::streamsize insert_overlay_switch(std::fstream *iofile,
+diff --git a/example/file-manipulation.h b/example/file-manipulation.h
+index db48700..e873637 100644
+--- a/example/file-manipulation.h
++++ b/example/file-manipulation.h
+@@ -28,5 +28,8 @@
+ std::streamsize add_overlay_switch_to_grub_on_fat_image(
+     std::fstream* iofile, const iso9660::File& fileinfo);
+ 
++std::streamsize add_overlay_switch_to_grub_on_hfsplus_image(
++    std::fstream* iofile, const iso9660::File& fileinfo);
++
+ std::streamsize insert_overlay_switch(std::fstream* iofile,
+                                       const iso9660::File& fileinfo);
+diff --git a/example/persistent-storage.cc b/example/persistent-storage.cc
+index f73476c..909f202 100644
+--- a/example/persistent-storage.cc
++++ b/example/persistent-storage.cc
+@@ -46,5 +46,7 @@ int main(int argc, const char* argv[]) {
+   }
+   add_overlay(&isoimage, "efiboot.img",
+               add_overlay_switch_to_grub_on_fat_image);
++  add_overlay(&isoimage, "macboot.img",
++              add_overlay_switch_to_grub_on_hfsplus_image);
+   isoimage.write();
+ }
+-- 
+2.14.1
+

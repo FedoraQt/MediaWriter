@@ -1,0 +1,195 @@
+From 33b07a4c86f15cfe0fc5997db2f82c54bf7fa909 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Wed, 7 Jun 2017 01:48:51 +0000
+Subject: [PATCH 08/28] Use utility instead of cstdlib
+
+---
+ include/file.h              | 3 +--
+ include/image.h             | 3 +--
+ include/iso9660.h           | 3 +--
+ include/path-table.h        | 3 +--
+ include/read.h              | 2 +-
+ include/utility.h           | 3 +--
+ include/volume-descriptor.h | 3 +--
+ include/write.h             | 2 --
+ src/file.cc                 | 3 +--
+ src/image.cc                | 3 +--
+ src/iso9660.cc              | 3 +--
+ 11 files changed, 10 insertions(+), 21 deletions(-)
+
+diff --git a/include/file.h b/include/file.h
+index f489c5c..ed1c896 100644
+--- a/include/file.h
++++ b/include/file.h
+@@ -20,9 +20,8 @@
+ #ifndef ISO9660_FILE_H_
+ #define ISO9660_FILE_H_
+ 
+-#include <cstdlib>
+-
+ #include <string>
++#include <utility>
+ 
+ #include "./include/iso9660.h"
+ 
+diff --git a/include/image.h b/include/image.h
+index c113b78..b3fa6de 100644
+--- a/include/image.h
++++ b/include/image.h
+@@ -18,12 +18,11 @@
+  */
+ 
+ #include <cstdint>
+-#include <cstdlib>
+-
+ #include <fstream>
+ #include <functional>
+ #include <string>
+ #include <unordered_map>
++#include <utility>
+ #include <vector>
+ 
+ #include "./include/file.h"
+diff --git a/include/iso9660.h b/include/iso9660.h
+index 4e0992d..c8b9bf1 100644
+--- a/include/iso9660.h
++++ b/include/iso9660.h
+@@ -25,10 +25,9 @@
+ #ifndef ISO9660_ISO9660_H_
+ #define ISO9660_ISO9660_H_
+ 
+-#include <cstdlib>
+-
+ #include <array>
+ #include <string>
++#include <utility>
+ 
+ namespace iso9660 {
+ 
+diff --git a/include/path-table.h b/include/path-table.h
+index 7f29330..ff5ae38 100644
+--- a/include/path-table.h
++++ b/include/path-table.h
+@@ -20,9 +20,8 @@
+ #ifndef ISO9660_PATH_TABLE_H_
+ #define ISO9660_PATH_TABLE_H_
+ 
+-#include <cstdlib>
+-
+ #include <string>
++#include <utility>
+ #include <vector>
+ 
+ #include "./include/file.h"
+diff --git a/include/read.h b/include/read.h
+index 7069a06..ee334ff 100644
+--- a/include/read.h
++++ b/include/read.h
+@@ -25,7 +25,7 @@
+ #ifndef ISO9660_READ_H_
+ #define ISO9660_READ_H_
+ 
+-#include <cstdlib>
++#include <utility>
+ 
+ #include "./include/iso9660.h"
+ 
+diff --git a/include/utility.h b/include/utility.h
+index 8645621..4d8ece4 100644
+--- a/include/utility.h
++++ b/include/utility.h
+@@ -20,11 +20,10 @@
+ #ifndef ISO9660_UTILITY_H_
+ #define ISO9660_UTILITY_H_
+ 
+-#include <cstdlib>
+-
+ #include <iterator>
+ #include <numeric>
+ #include <string>
++#include <utility>
+ 
+ #include "./include/iso9660.h"
+ 
+diff --git a/include/volume-descriptor.h b/include/volume-descriptor.h
+index e00f9e3..3c80350 100644
+--- a/include/volume-descriptor.h
++++ b/include/volume-descriptor.h
+@@ -20,11 +20,10 @@
+ #ifndef ISO9660_VOLUME_DESCRIPTOR_H_
+ #define ISO9660_VOLUME_DESCRIPTOR_H_
+ 
+-#include <cstdlib>
+-
+ #include <memory>
+ #include <string>
+ #include <unordered_map>
++#include <utility>
+ #include <vector>
+ 
+ #include "./include/file.h"
+diff --git a/include/write.h b/include/write.h
+index b63bfa6..d6c77d2 100644
+--- a/include/write.h
++++ b/include/write.h
+@@ -20,8 +20,6 @@
+ #ifndef ISO9660_WRITE_H_
+ #define ISO9660_WRITE_H_
+ 
+-#include <cstdlib>
+-
+ #include <algorithm>
+ #include <ostream>
+ #include <utility>
+diff --git a/src/file.cc b/src/file.cc
+index 674f077..0cb4059 100644
+--- a/src/file.cc
++++ b/src/file.cc
+@@ -19,9 +19,8 @@
+ 
+ #include "./include/file.h"
+ 
+-#include <cstdlib>
+-
+ #include <algorithm>
++#include <utility>
+ 
+ #include "./include/iso9660.h"
+ #include "./include/read.h"
+diff --git a/src/image.cc b/src/image.cc
+index d39332c..86836da 100644
+--- a/src/image.cc
++++ b/src/image.cc
+@@ -19,11 +19,10 @@
+ 
+ #include "./include/image.h"
+ 
+-#include <cstdlib>
+-
+ #include <algorithm>
+ #include <fstream>
+ #include <string>
++#include <utility>
+ #include <vector>
+ #ifndef NDEBUG
+ #include <iostream>
+diff --git a/src/iso9660.cc b/src/iso9660.cc
+index 0983d7c..b0b39de 100644
+--- a/src/iso9660.cc
++++ b/src/iso9660.cc
+@@ -19,11 +19,10 @@
+ 
+ #include "./include/iso9660.h"
+ 
+-#include <cstdlib>
+-
+ #include <fstream>
+ #include <string>
+ #include <unordered_map>
++#include <utility>
+ 
+ #include "./include/file.h"
+ #include "./include/read.h"
+-- 
+2.14.1
+

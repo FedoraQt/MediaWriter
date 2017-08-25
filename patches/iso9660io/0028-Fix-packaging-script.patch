@@ -1,0 +1,71 @@
+From f26745c30ea028ddc492f2cc60cc701a8a2a87e6 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Mon, 28 Aug 2017 10:27:16 +0000
+Subject: [PATCH 28/28] Fix packaging script
+
+---
+ scripts/package.sh | 25 +++++++++++++------------
+ scripts/version.sh |  2 +-
+ 2 files changed, 14 insertions(+), 13 deletions(-)
+
+diff --git a/scripts/package.sh b/scripts/package.sh
+index 7190f25..f6085ae 100755
+--- a/scripts/package.sh
++++ b/scripts/package.sh
+@@ -9,31 +9,32 @@ cd "${ROOT}"
+ 
+ readonly NAME="iso9660io"
+ readonly SUMMARY="ISO 9660 manipulation using C++11"
+-VERSION="${1}"
+-REVISION="${NAME}-${VERSION}"
++TAG="${1}"
++REVISION="${TAG}"
+ 
+-if [ -n "${VERSION}" ] && ! git rev-parse "${REVISION}" &>/dev/null; then
+-  readonly VERSION
++if [ -n "${TAG}" ] && ! git rev-parse "${TAG}" &>/dev/null; then
++  readonly TAG
++  readonly REVISION
+   if [ "${2}" != "release" ]; then
+-    read  -n 1 -p "Press enter to release version ${VERSION}.."
+-    echo "Press Ctrl-C in the next two seconds to abort the release of version ${VERSION}."
++    read  -n 1 -p "Press enter to release version ${TAG}.."
++    echo "Press Ctrl-C in the next two seconds to abort the release of version ${TAG}."
+     sleep 2
+   fi
+-  git tag -s "${REVISION}" -m "Sign ${VERSION}" &&
++  git tag -s "${TAG}" -m "Sign ${VERSION}" &&
+   git push --tags || exit 1
+ else
+-  readonly VERSION="$(sh ./scripts/version.sh)"
+-  if [ -z "${REVISION}" ]; then
++  readonly TAG="$(sh ./scripts/version.sh)"
++  if [ -z "${TAG}" ]; then
+     REVISION="HEAD"
+   fi
+   readonly REVISION
+ fi
+-readonly TARBALL="${NAME}-${VERSION}.tar.gz"
++readonly VERSION="$(echo "${TAG}" | cut -d "-" -f2-)"
++readonly TARBALL="${TAG}.tar.gz"
+ readonly ARCHIVE="${ROOT}/build/${TARBALL}"
+-git archive --format=tar.gz "--prefix=${NAME}-${VERSION}/" "${REVISION}" \
++git archive --format=tar.gz "--prefix=${TAG}/" "${REVISION}" \
+   > "${ARCHIVE}"
+ 
+-
+ update_spec() {
+   package="${1}"
+   sed -e "/@DESCRIPTION@/{r${ROOT}/description.txt" -e "d}" \
+diff --git a/scripts/version.sh b/scripts/version.sh
+index 60199b0..01712e0 100644
+--- a/scripts/version.sh
++++ b/scripts/version.sh
+@@ -1,3 +1,3 @@
+ #!/bin/sh
+ readonly VERSION="$(git describe --abbrev=0 --tags 2>/dev/null || echo 0)"
+-echo "${VERSION}" | cut -d "-" -f2 | tr -d "\n"
++echo "${VERSION}" | tr -d "\n"
+-- 
+2.14.1
+

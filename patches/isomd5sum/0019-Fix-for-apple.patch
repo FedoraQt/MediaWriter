@@ -1,0 +1,93 @@
+From 311655090045856f6af77efa34b273885fe8abf7 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 13 Jul 2017 04:19:07 +0000
+Subject: [PATCH 19/21] Fix for apple
+
+---
+ CMakeLists.txt      | 13 +++++++------
+ include/utilities.h |  2 ++
+ src/utilities.c     |  6 ++++++
+ 3 files changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index eedd8eb..78fa041 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.0)
+ project(isomd5sum)
+ 
+ if(NOT DEFINED BINDIR)
+@@ -36,14 +36,14 @@ add_library(libimplantisomd5 STATIC
+   src/md5.c src/utilities.c src/libimplantisomd5.c
+   include/md5.h include/utilities.h include/libimplantisomd5.h)
+ set_target_properties(libimplantisomd5 PROPERTIES
+-  OUTPUT_NAME implantisomd5
++  PREFIX ""
+   PUBLIC_HEADER include/libimplantisomd5.h)
+ 
+ add_library(libcheckisomd5 STATIC
+   src/md5.c src/utilities.c src/libcheckisomd5.c
+   include/md5.h include/utilities.h include/libcheckisomd5.h)
+ set_target_properties(libcheckisomd5 PROPERTIES
+-  OUTPUT_NAME checkisomd5
++  PREFIX ""
+   PUBLIC_HEADER include/libcheckisomd5.h)
+ 
+ # Check if popt exists because it doesn't exist in mingw.
+@@ -71,10 +71,9 @@ endif()
+ find_package(PythonLibs ${PYTHON_VERSION})
+ if(PythonLibs_FOUND)
+   include_directories(${PYTHON_INCLUDE_DIRS})
+-  # FIXME(squimrel): Library should be named pyisomd5sum.so insteead of libpyisomd5sum.so.
+   add_library(pyisomd5sum SHARED src/pyisomd5sum.c)
+-  set_target_properties(pyisomd5sum PROPERTIES LIBRARY_OUTPUT_NAME pyisomd5sum)
+-  target_link_libraries(pyisomd5sum libimplantisomd5 libcheckisomd5)
++  set_target_properties(pyisomd5sum PROPERTIES PREFIX "")
++  target_link_libraries(pyisomd5sum libimplantisomd5 libcheckisomd5 ${PYTHON_LIBRARIES})
+ 
+   find_package(PythonInterp ${PYTHON_VERSION})
+   if(PythonInterp_FOUND)
+@@ -85,6 +84,8 @@ import site\n\
+ sitepackages = site.getsitepackages()[0][1:]\n\
+ if sitepackages.startswith('usr/'):\n\
+   sitepackages = sitepackages.split('/', 1)[1]\n\
++if sitepackages.startswith('local/'):\n\
++  sitepackages = sitepackages.split('/', 1)[1]\n\
+ sys.stdout.write(sitepackages)"
+       OUTPUT_VARIABLE PYTHON_SITE_PACKAGES)
+ 
+diff --git a/include/utilities.h b/include/utilities.h
+index 41315db..7e716d5 100644
+--- a/include/utilities.h
++++ b/include/utilities.h
+@@ -31,6 +31,8 @@
+ #ifdef _WIN32
+ size_t getpagesize();
+ 
++void *aligned_alloc(size_t size, size_t alignment);
++#elif __APPLE__
+ void *aligned_alloc(size_t size, size_t alignment);
+ #endif
+ 
+diff --git a/src/utilities.c b/src/utilities.c
+index 63b1858..1b3a047 100644
+--- a/src/utilities.c
++++ b/src/utilities.c
+@@ -42,6 +42,12 @@ size_t getpagesize() {
+ void *aligned_alloc(size_t size, size_t alignment) {
+     return _aligned_malloc(size, alignment);
+ }
++#elif __APPLE__
++void *aligned_alloc(size_t size, size_t alignment) {
++    void *buffer = NULL;
++    posix_memalign(&buffer, alignment, size);
++    return buffer;
++}
+ #endif
+ 
+ static unsigned char *read_primary_volume_descriptor(const int fd, off_t *const offset) {
+-- 
+2.14.1
+

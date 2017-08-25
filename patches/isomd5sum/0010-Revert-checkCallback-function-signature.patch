@@ -1,0 +1,97 @@
+From dddd3717e564df6b6c5aa70e0c52d6efc8093e08 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Fri, 9 Jun 2017 21:39:52 +0000
+Subject: [PATCH 10/21] Revert checkCallback function signature
+
+Some idiot changed this signature in 367fb48224fe709bc19fa2fe43f88006e1927474.
+Revert this because off_t is not the same as long long and the callback
+signature has to be matched explicitly in C.
+---
+ checkisomd5.c    | 2 +-
+ libcheckisomd5.c | 6 +++---
+ libcheckisomd5.h | 4 +---
+ pyisomd5sum.c    | 2 +-
+ 4 files changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/checkisomd5.c b/checkisomd5.c
+index 1527442..724891b 100644
+--- a/checkisomd5.c
++++ b/checkisomd5.c
+@@ -49,7 +49,7 @@ int user_bailing_out(void) {
+     return 0;
+ }
+ 
+-static int outputCB(void *const co, const off_t offset, const off_t total) {
++static int outputCB(void *const co, const long long offset, const long long total) {
+     struct progressCBData *const data = co;
+     int gaugeval = -1;
+ 
+diff --git a/libcheckisomd5.c b/libcheckisomd5.c
+index b190959..7c0bb52 100644
+--- a/libcheckisomd5.c
++++ b/libcheckisomd5.c
+@@ -50,7 +50,7 @@ static enum isomd5sum_status checkmd5sum(int isofd, checkCallback cb, void *cbda
+ 
+     const off_t total_size = info->isosize - info->skipsectors * SECTOR_SIZE;
+     if (cb)
+-        cb(cbdata, 0, total_size);
++        cb(cbdata, 0LL, (long long) total_size);
+ 
+     /* Rewind, compute md5sum. */
+     lseek(isofd, 0LL, SEEK_SET);
+@@ -101,7 +101,7 @@ static enum isomd5sum_status checkmd5sum(int isofd, checkCallback cb, void *cbda
+         }
+         offset += nread;
+         if (cb)
+-            if (cb(cbdata, offset, total_size)) {
++            if (cb(cbdata, (long long) offset, (long long) total_size)) {
+                 free(info);
+                 free(buffer);
+                 return ISOMD5SUM_CHECK_ABORTED;
+@@ -110,7 +110,7 @@ static enum isomd5sum_status checkmd5sum(int isofd, checkCallback cb, void *cbda
+     free(buffer);
+ 
+     if (cb)
+-        cb(cbdata, info->isosize, total_size);
++        cb(cbdata, (long long) info->isosize, (long long) total_size);
+ 
+     char hashsum[HASH_SIZE + 1];
+     md5sum(hashsum, &hashctx);
+diff --git a/libcheckisomd5.h b/libcheckisomd5.h
+index cd5c5c3..260df98 100644
+--- a/libcheckisomd5.h
++++ b/libcheckisomd5.h
+@@ -1,8 +1,6 @@
+ #ifndef __LIBCHECKISOMD5_H__
+ #define __LIBCHECKISOMD5_H__
+ 
+-#include <sys/types.h>
+-
+ enum isomd5sum_status {
+     ISOMD5SUM_FILE_NOT_FOUND = -2,
+     ISOMD5SUM_CHECK_NOT_FOUND = -1,
+@@ -12,7 +10,7 @@ enum isomd5sum_status {
+ };
+ 
+ /* For non-zero return value, check is aborted. */
+-typedef int (*checkCallback)(void *, off_t offset, off_t total);
++typedef int (*checkCallback)(void *, long long offset, long long total);
+ 
+ int mediaCheckFile(char *iso, checkCallback cb, void *cbdata);
+ int mediaCheckFD(int isofd, checkCallback cb, void *cbdata);
+diff --git a/pyisomd5sum.c b/pyisomd5sum.c
+index 55f25ab..b5134b9 100644
+--- a/pyisomd5sum.c
++++ b/pyisomd5sum.c
+@@ -35,7 +35,7 @@ static PyMethodDef isomd5sumMethods[] = {
+ /* Call python object with offset and total
+  * If the object returns true return 1 to abort the check
+  */
+-int pythonCB(void *cbdata, off_t offset, off_t total) {
++int pythonCB(void *cbdata, long long offset, long long total) {
+     PyObject *arglist, *result;
+     int rc;
+ 
+-- 
+2.14.1
+

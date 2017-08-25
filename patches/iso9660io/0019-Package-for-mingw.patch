@@ -1,0 +1,292 @@
+From 6e6b6f561d756bc1eece92e0ef1491767e5d3288 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 29 Jun 2017 18:46:06 +0000
+Subject: [PATCH 19/28] Package for mingw
+
+Add ability to package development builds.
+---
+ README.md               |   6 +++
+ iso9660io.spec.in       |   2 +-
+ mingw-iso9660io.spec.in |  59 ++++++++++++++++++++++++++
+ scripts/package.sh      | 108 ++++++++++++++++++++++++++++++++++++++++++++++++
+ scripts/release.sh      |  60 ---------------------------
+ 5 files changed, 174 insertions(+), 61 deletions(-)
+ create mode 100644 mingw-iso9660io.spec.in
+ create mode 100755 scripts/package.sh
+ delete mode 100644 scripts/release.sh
+
+diff --git a/README.md b/README.md
+index b3a1780..3500cae 100644
+--- a/README.md
++++ b/README.md
+@@ -11,3 +11,9 @@ cmake -DMAKE_INSTALL_PREFIX:PATH=$PWD ..
+ make
+ make install
+ ```
++
++## Development packaging
++
++```
++sh scripts/package.sh HEAD
++```
+diff --git a/iso9660io.spec.in b/iso9660io.spec.in
+index e6a0c94..1eecda4 100644
+--- a/iso9660io.spec.in
++++ b/iso9660io.spec.in
+@@ -1,7 +1,7 @@
+ Name:    iso9660io
+ Version: @VERSION@
+ Release: 1%{?dist}
+-Summary: ISO 9660 manipulation using C++11
++Summary: @SUMMARY@
+ URL:     https://github.com/squimrel/iso9660io
+ License: GPLv2+
+ 
+diff --git a/mingw-iso9660io.spec.in b/mingw-iso9660io.spec.in
+new file mode 100644
+index 0000000..66e3452
+--- /dev/null
++++ b/mingw-iso9660io.spec.in
+@@ -0,0 +1,59 @@
++%{?mingw_package_header}
++
++Name:    mingw-iso9660io
++Version: @VERSION@
++Release: 1%{?dist}
++Summary: @SUMMARY@
++URL:     https://github.com/squimrel/iso9660io
++License: GPLv2+
++
++Source0: https://github.com/squimrel/iso9660io/archive/%{version}.tar.gz
++
++BuildArch: noarch
++
++BuildRequires: mingw32-filesystem >= 95
++BuildRequires: mingw32-gcc-c++
++
++BuildRequires: mingw64-filesystem >= 95
++BuildRequires: mingw64-gcc-c++
++
++%description
++@DESCRIPTION@
++
++%package -n mingw32-%{shortname}
++Summary: @SUMMARY@
++
++%description -n mingw32-%{shortname}
++@DESCRIPTION@
++
++%package -n mingw64-%{shortname}
++Summary: @SUMMARY@
++
++%description -n mingw64-%{shortname}
++@DESCRIPTION@
++
++%{?mingw_debug_package}
++
++%prep
++%autosetup -n %{shortname}-%{version}
++
++%build
++%mingw_cmake .
++%mingw_make %{?_smp_mflags}
++
++%install
++%mingw_make_install DESTDIR=%{buildroot}
++
++%files -n mingw32-%{shortname}
++%{mingw32_libdir}/pkgconfig/%{shortname}.pc
++%{mingw32_includedir}/%{shortname}.h
++%{mingw32_bindir}/lib%{shortname}.dll
++%{mingw32_libdir}/lib%{shortname}.dll.a
++
++%files -n mingw64-%{shortname}
++%{mingw64_libdir}/pkgconfig/%{shortname}.pc
++%{mingw64_includedir}/%{shortname}.h
++%{mingw64_bindir}/lib%{shortname}.dll
++%{mingw64_libdir}/lib%{shortname}.dll.a
++
++%changelog
+diff --git a/scripts/package.sh b/scripts/package.sh
+new file mode 100755
+index 0000000..1dfdcc1
+--- /dev/null
++++ b/scripts/package.sh
+@@ -0,0 +1,108 @@
++#!/bin/sh
++# If the first argument is not a revision it'll release a new version.
++# In any case it packages the project at revision specified as if it's a
++# package of the latest version.
++
++source /etc/os-release
++readonly RELEASE="$(echo "$(echo "${ID}" | cut -c1)${VERSION_ID}")"
++
++readonly ROOT="$(git rev-parse --show-toplevel)"
++cd "${ROOT}"
++
++readonly NAME="iso9660io"
++readonly SUMMARY="ISO 9660 manipulation using C++11"
++VERSION="${1}"
++
++if [ -n "${VERSION}" ] && ! git rev-parse "${VERSION}" &>/dev/null; then
++  readonly VERSION
++  if [ "${2}" != "release" ]; then
++    read  -n 1 -p "Press enter to release version ${VERSION}.."
++    echo "Press Ctrl-C in the next two seconds to abort the release of version ${VERSION}."
++    sleep 2
++  fi
++  git tag -s "${VERSION}" -m "Sign ${VERSION}" &&
++  git push --tags || exit 1
++else
++  REVISION="${VERSION}"
++  readonly VERSION="$(sh ./scripts/version.sh)"
++  if [ -z "${REVISION}" ]; then
++    REVISION="HEAD"
++  fi
++  readonly REVISION
++  readonly ARCHIVE="${ROOT}/build/${VERSION}.tar.gz"
++  git archive --format=tar.gz "--prefix=${NAME}-${VERSION}/" "${REVISION}" \
++    > "${ARCHIVE}"
++fi
++
++readonly TARBALL="${VERSION}.tar.gz"
++
++update_spec() {
++  package="${1}"
++  sed -e "/@DESCRIPTION@/{r${ROOT}/description.txt" -e "d}" \
++    "${ROOT}/${package}.spec.in" | sed "s/@VERSION@/${VERSION}/g" | \
++    sed "s/@SUMMARY@/${SUMMARY}/g" | sed "s/%{shortname}/${NAME}/g"
++
++  pushd "${package}" >/dev/null
++  echo "* $(date +"%a %b %d %Y") $(git config user.name) <$(git config user.email)> ${VERSION}-1"
++  echo "- Update to version ${VERSION}"
++  echo
++  popd >/dev/null
++  if [ -n "${changelog}" ]; then
++    echo "${changelog}"
++  fi
++}
++
++update_package() {
++  package="${1}"
++  if [ -d "${package}" ]; then
++    pushd "${package}" >/dev/null
++    fedpkg pull 2>/dev/null || echo "pull failed."
++    popd >/dev/null
++  else
++    echo
++    if ! fedpkg clone "${package}" 2>/dev/null; then
++      mkdir -p "${package}"
++      pushd "${package}" >/dev/null
++      git init
++      popd >/dev/null
++      echo "clone failed."
++    fi
++  fi
++
++  specfile="./${package}/${package}.spec"
++  if [ -f "${specfile}" ]; then
++    if grep -q "^Version: ${VERSION}$" "${specfile}"; then
++      (>&2 echo "${package}.spec file uses the up-to-date version of ${NAME}.")
++      return
++    fi
++    changelog="$(sed "1,/^%changelog$/d" "${specfile}")"
++  fi
++
++  update_spec "${package}" > "${specfile}"
++
++  if [ ! -f "${TARBALL}" ]; then
++    spectool -g "${specfile}" || cp "${ARCHIVE}" "${TARBALL}"
++    ls
++  fi
++  sha256sum --tag "${TARBALL}" > ./${package}/sources
++  fedpkg commit -F clog 2>/dev/null || echo "commit failed."
++}
++
++build_package() {
++  package="${1}"
++  pushd "${package}" >/dev/null
++  # Use local archive for build.
++  cp "${ARCHIVE}" .
++  sha256sum --tag "${TARBALL}" > sources
++  fedpkg --release "${RELEASE}" local
++  popd >/dev/null
++}
++
++mkdir -p ./package/
++cd ./package/
++
++update_package "${NAME}"
++update_package "mingw-${NAME}"
++
++build_package "${NAME}"
++build_package "mingw-${NAME}"
+diff --git a/scripts/release.sh b/scripts/release.sh
+deleted file mode 100644
+index 8dabb23..0000000
+--- a/scripts/release.sh
++++ /dev/null
+@@ -1,60 +0,0 @@
+-#!/bin/sh
+-
+-cd "$(git rev-parse --show-toplevel)"
+-
+-readonly NAME="iso9660io"
+-readonly USER="$(git config user.name)"
+-VERSION="${1}"
+-if [ -n "${VERSION}" ]; then
+-  readonly VERSION
+-  git tag -s "${VERSION}" -m "Sign ${VERSION}" &&
+-  git push --tags ||
+-  exit 1
+-else
+-  readonly VERSION="$(sh ./scripts/version.sh)"
+-fi
+-
+-if [ -d ./spec/ ]; then
+-  cd ./spec/
+-  fedpkg pull
+-  cd -
+-else
+-  fedpkg clone "${NAME}" ./spec/
+-fi
+-
+-readonly SPECFILE="./spec/${NAME}.spec"
+-if [ -f "${SPECFILE}" ]; then
+-  if grep -q "^Version: ${VERSION}$" "${SPECFILE}"; then
+-    (>&2 echo ".spec file uses the up-to-date version of ${NAME}.")
+-    exit 1
+-  fi
+-
+-  readonly CHANGELOG="$(sed "1,/^%changelog$/d" "${SPECFILE}")"
+-fi
+-
+-update_spec() {
+-  sed -e "/@DESCRIPTION@/{r./description.txt" -e "d}" ./iso9660io.spec.in | \
+-    sed "s/@VERSION@/${VERSION}/g"
+-
+-  pushd ./spec/ >/dev/null
+-  echo "* $(date +"%a %b %d %Y") ${USER} <$(git config user.email)> ${VERSION}-1"
+-  echo "- Update to version ${VERSION}"
+-  echo
+-  popd >/dev/null
+-  if [ -n "${CHANGELOG}" ]; then
+-    echo "${CHANGELOG}"
+-  fi
+-}
+-
+-update_spec > "${SPECFILE}"
+-
+-readonly TARBALL="${VERSION}.tar.gz"
+-if [ ! -f "${TARBALL}" ]; then
+-  spectool -g "${SPECFILE}"
+-fi
+-sha256sum --tag "${TARBALL}" > ./spec/sources
+-
+-cd ./spec/
+-fedpkg commit -F clog
+-fedpkg mockbuild
+-# Let the user double-check and then push everything himself.
+-- 
+2.14.1
+
