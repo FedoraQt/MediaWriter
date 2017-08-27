@@ -44,25 +44,3 @@ make
 ### Crosscompilation
 
 There is also the [build.sh](/dist/win/build.sh) script included that I use for building a the installer for distribution on this site. It should do everything automatically if you're in Fedora. There are instructions on how to use it inside at the top of the file
-
-### Build using development version of dependencies
-
-The easiest way is to build and install an rpm package and then run the install
-script.
-
-```
-# TODO(squimrel): Use https://github.com/rhinstaller/isomd5sum master branch once PR is merged.
-git clone -b cooking https://github.com/squimrel/isomd5sum
-cd isomd5sum/
-sh scripts/package.sh HEAD
-sudo dnf install package/mingw-isomd5sum/noarch/mingw32-isomd5sum-*.noarch.rpm
-cd ..
-
-git clone https://github.com/squimrel/iso9660io
-cd iso9660io/
-sh scripts/package.sh HEAD
-sudo dnf install package/mingw-iso9660io/noarch/mingw32-iso9660io-*.noarch.rpm
-cd ..
-
-bash dist/win/build.sh local
-```
