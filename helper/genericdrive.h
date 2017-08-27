@@ -17,30 +17,25 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include <QCoreApplication>
-#include <QTextStream>
-#include <QTranslator>
+#ifndef GENERICDRIVE_H
+#define GENERICDRIVE_H
 
-#include "restorejob.h"
-#include "writejob.h"
+#include <QObject>
+#include <QString>
 
-int main(int argc, char *argv[]) {
-    QCoreApplication app(argc, argv);
+class GenericDrive : public QObject {
+    Q_OBJECT
+public:
+    virtual void init() = 0;
+    virtual void write(const void *buffer, std::size_t size) = 0;
+    virtual int getDescriptor() const = 0;
+    virtual void wipe() = 0;
+    virtual void umount() = 0;
+    void writePlain(const QString &source);
+    void writeCompressed(const QString &source);
+    void writeFile(const QString& source);
+    void writeIso(const QString& source);
+    void checkChecksum();
+};
 
-    QTranslator translator;
-    translator.load(QLocale(), QString(), QString(), ":/translations");
-    app.installTranslator(&translator);
-
-    if (app.arguments().count() == 3 && app.arguments()[1] == "restore") {
-        new RestoreJob(app.arguments()[2]);
-    }
-    else if (app.arguments().count() == 4 && app.arguments()[1] == "write") {
-        new WriteJob(app.arguments()[2], app.arguments()[3]);
-    }
-    else {
-        QTextStream err(stderr);
-        err << "Helper: Wrong arguments entered";
-        return 1;
-    }
-    return app.exec();
-}
+#endif // GENERICDRIVE_H

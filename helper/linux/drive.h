@@ -17,24 +17,40 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef RESTOREJOB_H
-#define RESTOREJOB_H
+#ifndef DRIVE_H
+#define DRIVE_H
 
+#include <utility>
+
+#include <QDBusInterface>
+#include <QDBusUnixFileDescriptor>
 #include <QObject>
+#include <QScopedPointer>
+#include <QString>
 #include <QTextStream>
+#include <QtGlobal>
 
-class RestoreJob : public QObject
-{
+#include "genericdrive.h"
+
+class Drive : public GenericDrive {
     Q_OBJECT
 public:
-    explicit RestoreJob(const QString &where);
-public slots:
-    void work();
-private:
-    QTextStream out { stdout };
-    QTextStream err { stderr };
+    /**
+     * Shared public interface across platforms.
+     */
+    explicit Drive(const QString &driveIdentifier);
+    ~Drive();
+    void init();
+    void write(const void *buffer, std::size_t size);
+    int getDescriptor() const;
+    void wipe();
+    void umount();
 
-    QString where;
+private:
+    QDBusUnixFileDescriptor m_fileDescriptor;
+    QString m_identifier;
+    QScopedPointer<QDBusInterface> m_device;
+    QString m_path;
 };
 
-#endif // RESTOREJOB_H
+#endif // DRIVE_H

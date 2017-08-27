@@ -17,30 +17,18 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef RESTOREJOB_H
-#define RESTOREJOB_H
+#ifndef WRITE_H
+#define WRITE_H
 
-#include <QObject>
-#include <QProcess>
-#include <QTextStream>
+#include <QString>
+#include <QtGlobal>
 
-class RestoreJob : public QObject
-{
-    Q_OBJECT
-public:
-    explicit RestoreJob(const QString &where);
-
-signals:
-
-private slots:
-    void work();
-
-private:
-    QTextStream out { stdout };
-    QTextStream err { stderr };
-
-    QProcess m_diskpart;
-    int m_where;
+struct ProgressStats {
+    qint64 progress{ 0LL };
+    int syncs{ 0 };
+    int fd{ -1 };
 };
 
-#endif // RESTOREJOB_H
+int onProgress(void *data, long long offset, long long total);
+
+#endif // WRITE_H

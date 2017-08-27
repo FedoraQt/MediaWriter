@@ -17,30 +17,40 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include <QCoreApplication>
-#include <QTextStream>
-#include <QTranslator>
+#ifndef DRIVE_H
+#define DRIVE_H
 
-#include "restorejob.h"
-#include "writejob.h"
+#include <utility>
 
-int main(int argc, char *argv[]) {
-    QCoreApplication app(argc, argv);
+#include <QFile>
+#include <QObject>
+#include <QString>
+#include <QStringList>
+#include <QtGlobal>
 
-    QTranslator translator;
-    translator.load(QLocale(), QString(), QString(), ":/translations");
-    app.installTranslator(&translator);
+#include "genericdrive.h"
 
-    if (app.arguments().count() == 3 && app.arguments()[1] == "restore") {
-        new RestoreJob(app.arguments()[2]);
-    }
-    else if (app.arguments().count() == 4 && app.arguments()[1] == "write") {
-        new WriteJob(app.arguments()[2], app.arguments()[3]);
-    }
-    else {
-        QTextStream err(stderr);
-        err << "Helper: Wrong arguments entered\n";
-        return 1;
-    }
-    return app.exec();
-}
+class Drive : public GenericDrive {
+    Q_OBJECT
+private:
+    bool diskutil(const QStringList &arguments);
+
+public:
+    /**
+     * Shared public interface across platforms.
+     */
+    explicit Drive(const QString &driveIdentifier);
+    ~Drive();
+    void init();
+    void write(const void *buffer, std::size_t size);
+    int getDescriptor() const;
+    void wipe();
+    void umount();
+
+private:
+    QString m_identifier;
+    QFile *m_device;
+};
+
+#endif // DRIVE_H
+
