@@ -1,0 +1,45 @@
+From d0ce90e629f114bd2ec4a405e768933a2b17d121 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Mon, 10 Jul 2017 21:04:32 +0000
+Subject: [PATCH 12/40] Remove extern "C" from isomd5sum
+
+---
+ app/releasemanager.cpp | 2 --
+ helper/write.cpp       | 5 +----
+ 2 files changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/app/releasemanager.cpp b/app/releasemanager.cpp
+index 5635e70..f7412f1 100644
+--- a/app/releasemanager.cpp
++++ b/app/releasemanager.cpp
+@@ -20,9 +20,7 @@
+ #include "releasemanager.h"
+ #include "drivemanager.h"
+ 
+-extern "C" {
+ #include <libcheckisomd5.h>
+-}
+ 
+ #include <QtQml>
+ #include <QApplication>
+diff --git a/helper/write.cpp b/helper/write.cpp
+index 80e7866..c8b5faf 100644
+--- a/helper/write.cpp
++++ b/helper/write.cpp
+@@ -36,12 +36,9 @@
+ #include <QtGlobal>
+ 
+ #include <iso9660io.h>
+-#include <lzma.h>
+-
+-extern "C" {
+ #include <libcheckisomd5.h>
+ #include <libimplantisomd5.h>
+-}
++#include <lzma.h>
+ 
+ #include "page_aligned_buffer.h"
+ 
+-- 
+2.14.1
+

@@ -1,0 +1,75 @@
+From 9c429dfdb836a3f59d81d0c2ac0d946c8d7d4ef7 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Sat, 10 Jun 2017 16:17:23 +0000
+Subject: [PATCH 13/28] Make modify_file report whether the file got modified
+
+---
+ include/image.h | 4 ++--
+ src/image.cc    | 7 ++++---
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/include/image.h b/include/image.h
+index aa96025..733ccf2 100644
+--- a/include/image.h
++++ b/include/image.h
+@@ -24,8 +24,8 @@
+ #include <utility>
+ #include <vector>
+ 
+-#include "./include/file.h"
+ #include "./include/buffer.h"
++#include "./include/file.h"
+ #include "./include/path-table.h"
+ #include "./include/volume-descriptor.h"
+ 
+@@ -59,7 +59,7 @@ class Image {
+   EXPORT void read();
+   EXPORT void write();
+   EXPORT const iso9660::File* find(const std::string& filename);
+-  EXPORT void modify_file(
++  EXPORT bool modify_file(
+       const iso9660::File& file,
+       std::function<std::streamsize(std::fstream*, const iso9660::File&)>
+           modify);
+diff --git a/src/image.cc b/src/image.cc
+index 38451c2..14bbd0d 100644
+--- a/src/image.cc
++++ b/src/image.cc
+@@ -28,9 +28,9 @@
+ #include <iostream>
+ #endif
+ 
++#include "./include/buffer.h"
+ #include "./include/exception.h"
+ #include "./include/file.h"
+-#include "./include/buffer.h"
+ #include "./include/path-table.h"
+ #include "./include/volume-descriptor.h"
+ #include "./include/write.h"
+@@ -217,13 +217,13 @@ const iso9660::File* iso9660::Image::find(const std::string& filename) {
+  *
+  * Note: Maybe a template should be used instead of std::function.
+  */
+-void iso9660::Image::modify_file(
++bool iso9660::Image::modify_file(
+     const iso9660::File& file,
+     std::function<std::streamsize(std::fstream*, const iso9660::File&)>
+         modify) {
+   file_.seekg(file.location * iso9660::SECTOR_SIZE + file.extended_length);
+   std::streamsize growth = modify(&file_, file);
+-  if (growth == 0) return;
++  if (growth == 0) return false;
+   auto result = file_positions_.find(file.location);
+   if (result == file_positions_.end()) {
+     throw iso9660::CorruptFileException("Could not find file location.");
+@@ -236,6 +236,7 @@ void iso9660::Image::modify_file(
+    */
+   iso9660::write::resize_file(&file_, result->second.begin(),
+                               result->second.end(), file.size + growth);
++  return true;
+ }
+ 
+ iso9660::Image::Identifier iso9660::Image::identifier_of(
+-- 
+2.14.1
+

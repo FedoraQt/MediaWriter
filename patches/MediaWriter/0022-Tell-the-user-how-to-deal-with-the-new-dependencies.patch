@@ -1,0 +1,133 @@
+From 9416ab175ba8cb2fdb4128bcc2de1011b18337e6 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 3 Aug 2017 07:44:00 +0000
+Subject: [PATCH 22/40] Tell the user how to deal with the new dependencies
+
+---
+ DEVELOPMENT.md    | 31 +++++++++++++++++++++++++++++++
+ MAC.md            |  1 +
+ README.md         |  3 +++
+ WINDOWS.md        | 23 +++++++++++++++++++----
+ dist/mac/build.sh |  2 +-
+ 5 files changed, 55 insertions(+), 5 deletions(-)
+ create mode 100644 DEVELOPMENT.md
+
+diff --git a/DEVELOPMENT.md b/DEVELOPMENT.md
+new file mode 100644
+index 0000000..0a96143
+--- /dev/null
++++ b/DEVELOPMENT.md
+@@ -0,0 +1,31 @@
++# Development
++
++During development you might want to use a development build of isomd5sum or
++iso9660io.
++
++## Using development version of dependencies
++
++```
++# TODO(squimrel): Use https://github.com/rhinstaller/isomd5sum master branch
++# once PR is merged.
++git clone -b cooking https://github.com/squimrel/isomd5sum
++cd isomd5sum/
++# Uses fedpkg to build the package.
++sh scripts/package.sh HEAD
++
++# If the spec file was updated in the development version either a new version
++# has to be released or the previous spec file should be deleted manually. If
++# it's deleted the changelog will be lost.
++rm package/isomd5sum/isomd5sum.spec
++sh scripts/package.sh HEAD
++
++sudo dnf install package/isomd5sum/x86_64/isomd5sum-devel-*.rpm
++cd ..
++
++git clone https://github.com/squimrel/iso9660io
++cd iso9660io/
++# Uses fedpkg to build the package.
++sh scripts/package.sh HEAD
++sudo dnf install package/iso9660io/x86_64/iso9660io-*.rpm
++cd ..
++```
+diff --git a/MAC.md b/MAC.md
+index a2e9bf7..722623c 100644
+--- a/MAC.md
++++ b/MAC.md
+@@ -37,6 +37,7 @@ You can build Fedora Media Writer yourself. It has just a few dependencies and b
+ ### Dependencies
+ 
+ * `Qt5` (`qtbase`, `qtdeclarative` and `qtquickcontrols`)
++* `coreutils` - Provides `gtac` which is required to build `iso9660io`.
+ 
+ ### Steps
+ 
+diff --git a/README.md b/README.md
+index 05a8092..fef0801 100644
+--- a/README.md
++++ b/README.md
+@@ -33,6 +33,7 @@ The main binary, `mediawriter`, will be writen to `$PREFIX/bin` and the helper b
+ * `udisks2` or `storaged`
+ * `xz-libs`
+ * `isomd5sum-devel`
++* `iso9660io`
+ 
+ ### Windows
+ 
+@@ -43,6 +44,8 @@ To create a standalone package, use the `windeployqt` tool, included in your Qt
+ #### Requirements
+ 
+ * `xz-libs`
++* `mingw-libisomd5sum`
++* `mingw-iso9660io`
+ 
+ ### macOS
+ 
+diff --git a/WINDOWS.md b/WINDOWS.md
+index 6f9601e..381b268 100644
+--- a/WINDOWS.md
++++ b/WINDOWS.md
+@@ -45,9 +45,24 @@ make
+ 
+ There is also the [build.sh](/dist/win/build.sh) script included that I use for building a the installer for distribution on this site. It should do everything automatically if you're in Fedora. There are instructions on how to use it inside at the top of the file
+ 
++### Build using development version of dependencies
+ 
++The easiest way is to build and install an rpm package and then run the install
++script.
+ 
+-
+-
+-
+-0
++```
++# TODO(squimrel): Use https://github.com/rhinstaller/isomd5sum master branch once PR is merged.
++git clone -b cooking https://github.com/squimrel/isomd5sum
++cd isomd5sum/
++sh scripts/package.sh HEAD
++sudo dnf install package/mingw-isomd5sum/noarch/mingw32-isomd5sum-*.noarch.rpm
++cd ..
++
++git clone https://github.com/squimrel/iso9660io
++cd iso9660io/
++sh scripts/package.sh HEAD
++sudo dnf install package/mingw-iso9660io/noarch/mingw32-iso9660io-*.noarch.rpm
++cd ..
++
++bash dist/win/build.sh local
++```
+diff --git a/dist/mac/build.sh b/dist/mac/build.sh
+index 33d25b9..6e15156 100644
+--- a/dist/mac/build.sh
++++ b/dist/mac/build.sh
+@@ -19,7 +19,7 @@ pushd build >/dev/null
+ 
+ echo "=== Building dependency [iso9660io] ==="
+ # TODO(squimrel): Use latest release once available.
+-git clone --depth 1 -b cooking https://github.com/squimrel/iso9660io
++git clone --depth 1 https://github.com/squimrel/iso9660io
+ pushd iso9660io >/dev/null
+ cmake "-DCMAKE_INSTALL_PREFIX:PATH=${PWD}" -DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 .
+ make install
+-- 
+2.14.1
+

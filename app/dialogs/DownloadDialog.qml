@@ -64,6 +64,9 @@ Dialog {
         target: drives
         onSelectedChanged: {
             writeImmediately.checked = false
+            if (drives.selected) {
+                drives.selected.persistentStorage = persistentStorage.checked
+            }
         }
     }
 
@@ -72,6 +75,8 @@ Dialog {
         onStatusChanged: {
             if ([Variant.FINISHED, Variant.FAILED, Variant.FAILED_DOWNLOAD].indexOf(releases.variant.status) >= 0)
                 writeImmediately.checked = false
+            else if (drives.selected && writeImmediately.checked && releases.variant.status === Variant.READY)
+                drives.selected.write(releases.variant)
         }
     }
 
@@ -173,6 +178,23 @@ Dialog {
                 }
             },
             State {
+                name: "writing_overlay"
+                when: releases.variant.status === Variant.WRITING_OVERLAY
+                PropertyChanges {
+                    target: messageRestore;
+                    visible: true
+                }
+                PropertyChanges {
+                    target: driveCombo;
+                    enabled: false
+                }
+                PropertyChanges {
+                    target: progressBar;
+                    value: drives.selected.progress.ratio;
+                    progressColor: "yellow"
+                }
+            },
+            State {
                 name: "finished"
                 when: releases.variant.status === Variant.FINISHED
                 PropertyChanges {
@@ -263,7 +285,7 @@ Dialog {
         ]
 
         Keys.onEscapePressed: {
-            if ([Variant.WRITING, Variant.WRITE_VERIFYING].indexOf(releases.variant.status) < 0)
+            if ([Variant.WRITING, Variant.WRITE_VERIFYING, Variant.WRITING_OVERLAY].indexOf(releases.variant.status) < 0)
                 dialog.visible = false
         }
 
@@ -361,6 +383,17 @@ Dialog {
                             }
                         }
                         AdwaitaCheckBox {
+                            id: persistentStorage
+                            enabled: [Variant.WRITING, Variant.WRITE_VERIFYING, Variant.WRITING_OVERLAY].indexOf(releases.variant.status) < 0
+                            checked: false
+                            text: qsTr("Enable persistent storage")
+                            onCheckedChanged: {
+                                if (drives.selected) {
+                                    drives.selected.persistentStorage = checked
+                                }
+                            }
+                        }
+                        AdwaitaCheckBox {
                             id: writeImmediately
                             enabled: driveCombo.count && opacity > 0.0
                             opacity: (releases.variant.status == Variant.DOWNLOADING || (releases.variant.status == Variant.DOWNLOAD_VERIFYING && releases.variant.progress.ratio < 0.95)) ? 1.0 : 0.0
@@ -368,8 +401,6 @@ Dialog {
                             onCheckedChanged: {
                                 if (drives.selected) {
                                     drives.selected.cancel()
-                                    if (checked)
-                                        drives.selected.write(releases.variant)
                                 }
                             }
                         }

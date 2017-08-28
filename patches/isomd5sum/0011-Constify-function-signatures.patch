@@ -1,0 +1,155 @@
+From f57d4e13b18711e235337438cb004cf9069615d2 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Fri, 9 Jun 2017 21:32:43 +0000
+Subject: [PATCH 11/21] Constify function signatures
+
+Should not hurt any user and avoids casting const away.
+---
+ checkisomd5.c      | 8 ++++----
+ implantisomd5.c    | 8 ++++----
+ libcheckisomd5.c   | 4 ++--
+ libcheckisomd5.h   | 4 ++--
+ libimplantisomd5.c | 2 +-
+ libimplantisomd5.h | 2 +-
+ 6 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/checkisomd5.c b/checkisomd5.c
+index 724891b..a1656c3 100644
+--- a/checkisomd5.c
++++ b/checkisomd5.c
+@@ -113,7 +113,7 @@ int processExitStatus(const int rc) {
+     return exit_rc;
+ }
+ 
+-int main(int argc, char **argv) {
++int main(int argc, const char **argv) {
+     struct progressCBData data;
+     memset(&data, 0, sizeof(data));
+     data.verbose = 0;
+@@ -130,7 +130,7 @@ int main(int argc, char **argv) {
+         { 0, 0, 0, 0, 0 }
+     };
+ 
+-    poptContext optCon = poptGetContext("checkisomd5", argc, (const char **) argv, options, 0);
++    poptContext optCon = poptGetContext("checkisomd5", argc, argv, options, 0);
+ 
+     int rc = poptGetNextOpt(optCon);
+     if (rc < -1) {
+@@ -153,7 +153,7 @@ int main(int argc, char **argv) {
+     }
+ 
+     if (md5only | data.verbose) {
+-        rc = printMD5SUM((char *) args[0]);
++        rc = printMD5SUM(args[0]);
+         if (rc < 0) {
+             poptFreeContext(optCon);
+             return processExitStatus(rc);
+@@ -173,7 +173,7 @@ int main(int argc, char **argv) {
+     newt = oldt;
+     newt.c_lflag &= ~(ICANON | ECHO | ECHONL | ISIG | IEXTEN);
+     tcsetattr(0, TCSANOW, &newt);
+-    rc = mediaCheckFile((char *) args[0], outputCB, &data);
++    rc = mediaCheckFile(args[0], outputCB, &data);
+     tcsetattr(0, TCSANOW, &oldt);
+ 
+     if (data.verbose)
+diff --git a/implantisomd5.c b/implantisomd5.c
+index 41834d7..fe492fe 100644
+--- a/implantisomd5.c
++++ b/implantisomd5.c
+@@ -30,7 +30,7 @@ static int usage(void) {
+     return 1;
+ }
+ 
+-int main(int argc, char **argv) {
++int main(int argc, const char **argv) {
+     char *errstr;
+ 
+     int forceit = 0;
+@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
+         { 0, 0, 0, 0, 0 }
+     };
+ 
+-    poptContext optCon = poptGetContext("implantisomd5", argc, (const char **) argv, options, 0);
++    poptContext optCon = poptGetContext("implantisomd5", argc, argv, options, 0);
+ 
+     int rc;
+     if ((rc = poptGetNextOpt(optCon)) < -1) {
+@@ -66,10 +66,10 @@ int main(int argc, char **argv) {
+         return usage();
+     }
+ 
+-    rc = implantISOFile((char *) args[0], supported, forceit, 0, &errstr);
++    rc = implantISOFile(args[0], supported, forceit, 0, &errstr);
+     if (rc) {
+         fprintf(stderr, "ERROR: ");
+-        fprintf(stderr, errstr, (char *) args[0]);
++        fprintf(stderr, errstr, args[0]);
+         rc = 1;
+     }
+     poptFreeContext(optCon);
+diff --git a/libcheckisomd5.c b/libcheckisomd5.c
+index 7c0bb52..bd7b86f 100644
+--- a/libcheckisomd5.c
++++ b/libcheckisomd5.c
+@@ -120,7 +120,7 @@ static enum isomd5sum_status checkmd5sum(int isofd, checkCallback cb, void *cbda
+     return failed ? ISOMD5SUM_CHECK_FAILED : ISOMD5SUM_CHECK_PASSED;
+ }
+ 
+-int mediaCheckFile(char *file, checkCallback cb, void *cbdata) {
++int mediaCheckFile(const char *file, checkCallback cb, void *cbdata) {
+     int isofd = open(file, O_RDONLY | O_BINARY);
+     if (isofd < 0) {
+         return ISOMD5SUM_FILE_NOT_FOUND;
+@@ -134,7 +134,7 @@ int mediaCheckFD(int isofd, checkCallback cb, void *cbdata) {
+     return checkmd5sum(isofd, cb, cbdata);
+ }
+ 
+-int printMD5SUM(char *file) {
++int printMD5SUM(const char *file) {
+     int isofd = open(file, O_RDONLY | O_BINARY);
+     if (isofd < 0) {
+         return ISOMD5SUM_FILE_NOT_FOUND;
+diff --git a/libcheckisomd5.h b/libcheckisomd5.h
+index 260df98..1017d83 100644
+--- a/libcheckisomd5.h
++++ b/libcheckisomd5.h
+@@ -12,8 +12,8 @@ enum isomd5sum_status {
+ /* For non-zero return value, check is aborted. */
+ typedef int (*checkCallback)(void *, long long offset, long long total);
+ 
+-int mediaCheckFile(char *iso, checkCallback cb, void *cbdata);
++int mediaCheckFile(const char *file, checkCallback cb, void *cbdata);
+ int mediaCheckFD(int isofd, checkCallback cb, void *cbdata);
+-int printMD5SUM(char *file);
++int printMD5SUM(const char *file);
+ 
+ #endif
+diff --git a/libimplantisomd5.c b/libimplantisomd5.c
+index 53801c8..5ac4cbd 100644
+--- a/libimplantisomd5.c
++++ b/libimplantisomd5.c
+@@ -47,7 +47,7 @@ static int writeAppData(unsigned char *const appdata, const char *const valstr,
+     return 0;
+ }
+ 
+-int implantISOFile(char *iso, int supported, int forceit, int quiet, char **errstr) {
++int implantISOFile(const char *iso, int supported, int forceit, int quiet, char **errstr) {
+     int isofd = open(iso, O_RDWR | O_BINARY);
+     if (isofd < 0) {
+         *errstr = "Error - Unable to open file %s\n\n";
+diff --git a/libimplantisomd5.h b/libimplantisomd5.h
+index 4523d7a..8565a7b 100644
+--- a/libimplantisomd5.h
++++ b/libimplantisomd5.h
+@@ -1,6 +1,6 @@
+ #ifndef __LIBIMPLANTISOMD5_H__
+ #define __LIBIMPLANTISOMD5_H__
+-int implantISOFile(char *iso, int supported, int forceit, int quiet, char **errstr);
++int implantISOFile(const char *iso, int supported, int forceit, int quiet, char **errstr);
+ int implantISOFD(int isofd, int supported, int forceit, int quiet, char **errstr);
+ #endif
+ 
+-- 
+2.14.1
+

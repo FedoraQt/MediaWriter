@@ -1,0 +1,41 @@
+From 1f388cf32555e43a03a4bf979caf13af09f49f61 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 8 Jun 2017 04:08:29 +0000
+Subject: [PATCH 09/28] Add final write step
+
+---
+ include/image.h | 1 +
+ src/image.cc    | 5 +++++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/include/image.h b/include/image.h
+index b3fa6de..da4564b 100644
+--- a/include/image.h
++++ b/include/image.h
+@@ -45,6 +45,7 @@ class Image {
+  public:
+   explicit Image(std::fstream* file);
+   void read();
++  void write();
+   const iso9660::File* find(const std::string& filename);
+   void modify_file(
+       const iso9660::File& file,
+diff --git a/src/image.cc b/src/image.cc
+index 86836da..400862f 100644
+--- a/src/image.cc
++++ b/src/image.cc
+@@ -177,6 +177,11 @@ void iso9660::Image::read() {
+   read_path_table(supplementary_.get());
+ }
+ 
++/**
++ * After staging modifications one must always write.
++ */
++void iso9660::Image::write() {}
++
+ /**
+  * Find the first file matching by name.
+  */
+-- 
+2.14.1
+

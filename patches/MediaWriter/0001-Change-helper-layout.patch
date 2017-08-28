@@ -1,0 +1,1228 @@
+From 023bf0823bbad55f4e5c37fb9b28bc941e5e50d4 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Wed, 7 Jun 2017 22:07:30 +0000
+Subject: [PATCH 01/40] Change helper layout
+
+* Only use platform specific code for drive operations.
+* Break windows and mac builds.
+* Make linux code obey the new layout.
+* Add mount option.
+---
+ helper/helper.pro                          |  34 ++-
+ helper/linux/deployment.pri                |  10 -
+ helper/linux/{restorejob.cpp => drive.cpp} | 144 +++++++++----
+ helper/linux/drive.h                       |  54 +++++
+ helper/linux/linux.pri                     |  10 +
+ helper/linux/linux.pro                     |  28 ---
+ helper/linux/writejob.cpp                  | 318 -----------------------------
+ helper/{linux => }/main.cpp                |   1 +
+ helper/page_aligned_buffer.h               |  83 ++++++++
+ helper/restorejob.cpp                      |  38 ++++
+ helper/{linux => }/restorejob.h            |  14 +-
+ helper/writejob.cpp                        | 237 +++++++++++++++++++++
+ helper/{linux => }/writejob.h              |  47 ++---
+ 13 files changed, 577 insertions(+), 441 deletions(-)
+ delete mode 100644 helper/linux/deployment.pri
+ rename helper/linux/{restorejob.cpp => drive.cpp} (50%)
+ create mode 100644 helper/linux/drive.h
+ create mode 100644 helper/linux/linux.pri
+ delete mode 100644 helper/linux/linux.pro
+ delete mode 100644 helper/linux/writejob.cpp
+ rename helper/{linux => }/main.cpp (98%)
+ create mode 100644 helper/page_aligned_buffer.h
+ create mode 100644 helper/restorejob.cpp
+ rename helper/{linux => }/restorejob.h (87%)
+ create mode 100644 helper/writejob.cpp
+ rename helper/{linux => }/writejob.h (64%)
+
+diff --git a/helper/helper.pro b/helper/helper.pro
+index 33b6b81..8f655e2 100644
+--- a/helper/helper.pro
++++ b/helper/helper.pro
+@@ -1,15 +1,35 @@
+-TEMPLATE = subdirs
++TEMPLATE = app
++
++QT += core
++
++LIBS += -lisomd5
++
++CONFIG += c++11
++CONFIG += console
++
++TARGET = helper
++
++include($$top_srcdir/deployment.pri)
++
++target.path = $$LIBEXECDIR
++INSTALLS += target
++
++SOURCES = main.cpp \
++    writejob.cpp \
++    restorejob.cpp
++
++HEADERS += \
++    writejob.h \
++    restorejob.h
+ 
+ linux {
+-    SUBDIRS = linux
++    include(linux/linux.pri)
+ }
+ win32 {
+-    SUBDIRS = win
++    include(win/win.pri)
+ }
+ macx {
+-    SUBDIRS = mac
++    include(mac/mac.pri)
+ }
+ 
+-lupdate_only {
+-    SUBDIRS = linux win mac
+-}
++RESOURCES += ../translations/translations.qrc
+diff --git a/helper/linux/deployment.pri b/helper/linux/deployment.pri
+deleted file mode 100644
+index 828bde9..0000000
+--- a/helper/linux/deployment.pri
++++ /dev/null
+@@ -1,10 +0,0 @@
+-isEmpty(target.path) {
+-    target.path = $${PREFIX}/usr/libexec/mediawriter
+-    export(target.path)
+-}
+-INSTALLS += target
+-
+-HELPER_PATH = $${PREFIX}/usr/libexec/mediawriter/helper
+-export(HELPER_PATH)
+-
+-export(INSTALLS)
+diff --git a/helper/linux/restorejob.cpp b/helper/linux/drive.cpp
+similarity index 50%
+rename from helper/linux/restorejob.cpp
+rename to helper/linux/drive.cpp
+index b43c608..5727f5e 100644
+--- a/helper/linux/restorejob.cpp
++++ b/helper/linux/drive.cpp
+@@ -17,16 +17,16 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  */
+ 
+-#include "restorejob.h"
++#include "drive.h"
+ 
+-#include <QCoreApplication>
+-#include <QTextStream>
+-#include <QThread>
+-#include <QTimer>
++#include <unistd.h>
++
++#include <algorithm>
++#include <memory>
+ 
+-#include <QtDBus>
+ #include <QDBusInterface>
+ #include <QDBusUnixFileDescriptor>
++#include <QtDBus>
+ 
+ typedef QHash<QString, QVariant> Properties;
+ typedef QHash<QString, Properties> InterfacesAndProperties;
+@@ -35,61 +35,117 @@ Q_DECLARE_METATYPE(Properties)
+ Q_DECLARE_METATYPE(InterfacesAndProperties)
+ Q_DECLARE_METATYPE(DBusIntrospection)
+ 
+-RestoreJob::RestoreJob(const QString &where)
+-    : QObject(nullptr), where(where)
+-{
+-    QTimer::singleShot(0, this, SLOT(work()));
++Drive::Drive(const QString &identifier)
++    : err(stderr), fileDescriptor(QDBusUnixFileDescriptor(-1)), identifier(identifier),
++      device(std::move(std::unique_ptr<QDBusInterface>(new QDBusInterface("org.freedesktop.UDisks2", identifier, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus())))),
++      path(qvariant_cast<QDBusObjectPath>(device->property("Drive")).path()),
++      drive(std::move(std::unique_ptr<QDBusInterface>(new QDBusInterface("org.freedesktop.UDisks2", path, "org.freedesktop.UDisks2.Drive", QDBusConnection::systemBus())))) {
+ }
+ 
+-void RestoreJob::work()
+-{
+-    QDBusInterface device("org.freedesktop.UDisks2", where, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus(), this);
+-    QString drivePath = qvariant_cast<QDBusObjectPath>(device.property("Drive")).path();
+-    QDBusInterface drive("org.freedesktop.UDisks2", drivePath, "org.freedesktop.UDisks2.Drive", QDBusConnection::systemBus(), this);
+-    QDBusInterface manager("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus());
+-    QDBusMessage message = manager.call("GetManagedObjects");
+-
+-    if (message.arguments().length() == 1) {
+-        QDBusArgument arg = qvariant_cast<QDBusArgument>(message.arguments().first());
+-        DBusIntrospection objects;
+-        arg >> objects;
+-        for (auto i : objects.keys()) {
+-            if (objects[i].contains("org.freedesktop.UDisks2.Filesystem")) {
+-                QString currentDrivePath = qvariant_cast<QDBusObjectPath>(objects[i]["org.freedesktop.UDisks2.Block"]["Drive"]).path();
+-                if (currentDrivePath == drivePath) {
+-                    QDBusInterface partition("org.freedesktop.UDisks2", i.path(), "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
+-                    message = partition.call("Unmount", Properties { {"force", true} });
+-                }
+-            }
+-        }
++/**
++ * Open drive for writing.
++ */
++int Drive::open() {
++    QDBusReply<QDBusUnixFileDescriptor> reply = device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
++    fileDescriptor = reply.value();
++    if (!fileDescriptor.isValid()) {
++        err << reply.error().message();
++        err.flush();
++        fileDescriptor = QDBusUnixFileDescriptor(-1);
++        return 2;
+     }
++    return 0;
++}
++
++/**
++ * Close drive for writing.
++ */
++int Drive::close() {
++    fileDescriptor = QDBusUnixFileDescriptor(-1);
++    return 0;
++}
++
++/**
++ * Write buffer directly to drive.
++ */
++bool Drive::write(const void *buffer, std::size_t size) {
++    int fd = getDescriptor();
++    return static_cast<std::size_t>(::write(fd, buffer, size)) == size;
++}
+ 
+-    QDBusReply<void> formatReply = device.call("Format", "dos", Properties());
++/**
++ * Grab file descriptor.
++ */
++int Drive::getDescriptor() {
++    return fileDescriptor.fileDescriptor();
++}
++
++/**
++ * Create a new dos label on the partition. This essentially wipes all
++ * existing information about partitions.
++ */
++int Drive::wipe() {
++    QDBusReply<void> formatReply = device->call("Format", "dos", Properties());
+     if (!formatReply.isValid() && formatReply.error().type() != QDBusError::NoReply) {
+         err << formatReply.error().message() << "\n";
+         err.flush();
+-        qApp->exit(1);
+-        return;
++        return 1;
+     }
++    return 0;
++}
+ 
+-    QDBusInterface partitionTable("org.freedesktop.UDisks2", where, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus(), this);
+-    QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", 0ULL, device.property("Size").toULongLong(), "", "", Properties());
++/**
++ * Fill the rest of the drive with a primary partition that uses the fat
++ * filesystem.
++ */
++int Drive::addPartition(const QString &label) {
++    QDBusInterface partitionTable("org.freedesktop.UDisks2", identifier, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus());
++    QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", 0ULL, device->property("Size").toULongLong(), "", "", Properties());
+     if (!partitionReply.isValid()) {
+         err << partitionReply.error().message();
+         err.flush();
+-        qApp->exit(2);
+-        return;
++        return 2;
+     }
+     QString partitionPath = partitionReply.value().path();
+-    QDBusInterface partition("org.freedesktop.UDisks2", partitionPath, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus(), this);
+-    QDBusReply<void> formatPartitionReply = partition.call("Format", "vfat", Properties { {"update-partition-type", true} });
++    QDBusInterface partition("org.freedesktop.UDisks2", partitionPath, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus());
++    QDBusReply<void> formatPartitionReply = partition.call("Format", "vfat", Properties{ { "update-partition-type", true }, { "label", label } });
+     if (!formatPartitionReply.isValid() && formatPartitionReply.error().type() != QDBusError::NoReply) {
+         err << formatPartitionReply.error().message() << "\n";
+         err.flush();
+-        qApp->exit(3);
+-        return;
++        return 3;
+     }
+-    err.flush();
++    return 0;
++}
++
++/**
++ * Mount specified partition.
++ */
++QString Drive::mount(const QString &partitionIdentifier) {
++    QDBusInterface partition("org.freedesktop.UDisks2", partitionIdentifier, "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
++    QDBusMessage reply = partition.call("Mount", Properties{});
++    return reply.arguments().first().toString();
++}
++
++/**
++ * Unmount all partitions managed by udisks.
++ */
++int Drive::umount() {
++    QDBusInterface manager("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus());
++    QDBusMessage message = manager.call("GetManagedObjects");
+ 
+-    qApp->exit(0);
++    if (message.arguments().length() == 1) {
++        QDBusArgument arg = qvariant_cast<QDBusArgument>(message.arguments().first());
++        DBusIntrospection objects;
++        arg >> objects;
++        for (auto i : objects.keys()) {
++            if (objects[i].contains("org.freedesktop.UDisks2.Filesystem")) {
++                QString currentDrivePath = qvariant_cast<QDBusObjectPath>(objects[i]["org.freedesktop.UDisks2.Block"]["Drive"]).path();
++                if (currentDrivePath == path) {
++                    QDBusInterface partition("org.freedesktop.UDisks2", i.path(), "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
++                    message = partition.call("Unmount", Properties{ { "force", true } });
++                }
++            }
++        }
++    }
++    return 0;
+ }
+diff --git a/helper/linux/drive.h b/helper/linux/drive.h
+new file mode 100644
+index 0000000..b24798d
+--- /dev/null
++++ b/helper/linux/drive.h
+@@ -0,0 +1,54 @@
++/*
++ * Fedora Media Writer
++ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++ */
++
++#ifndef DRIVE_H
++#define DRIVE_H
++
++#include <memory>
++
++#include <QString>
++#include <QTextStream>
++#include <QDBusInterface>
++#include <QDBusUnixFileDescriptor>
++
++class Drive {
++public:
++    /**
++     * Shared public interface across platforms.
++     */
++    Drive(const QString &driveIdentifier);
++    int open();
++    int close();
++    bool write(const void *buffer, std::size_t size);
++    int getDescriptor();
++    int wipe();
++    int addPartition(const QString &label = "");
++    QString mount(const QString &partitionIdentifier);
++    int umount();
++
++private:
++    QTextStream err;
++    QDBusUnixFileDescriptor fileDescriptor;
++    QString identifier;
++    std::unique_ptr<QDBusInterface> device;
++    QString path;
++    std::unique_ptr<QDBusInterface> drive;
++};
++
++#endif // DRIVE_H
+diff --git a/helper/linux/linux.pri b/helper/linux/linux.pri
+new file mode 100644
+index 0000000..cf72ad3
+--- /dev/null
++++ b/helper/linux/linux.pri
+@@ -0,0 +1,10 @@
++INCLUDEPATH += $$top_srcdir/helper/linux/
++DESTDIR = $$top_srcdir/helper/linux/
++
++QT += dbus
++
++CONFIG += link_pkgconfig
++PKGCONFIG += liblzma
++
++SOURCES += linux/drive.cpp
++HEADERS += linux/drive.h
+diff --git a/helper/linux/linux.pro b/helper/linux/linux.pro
+deleted file mode 100644
+index fab3235..0000000
+--- a/helper/linux/linux.pro
++++ /dev/null
+@@ -1,28 +0,0 @@
+-TEMPLATE = app
+-
+-QT += core network dbus
+-
+-LIBS += -lisomd5
+-
+-CONFIG += link_pkgconfig
+-PKGCONFIG += liblzma
+-
+-CONFIG += c++11
+-CONFIG += console
+-
+-TARGET = helper
+-
+-include($$top_srcdir/deployment.pri)
+-
+-target.path = $$LIBEXECDIR
+-INSTALLS += target
+-
+-SOURCES = main.cpp \
+-    writejob.cpp \
+-    restorejob.cpp
+-
+-HEADERS += \
+-    writejob.h \
+-    restorejob.h
+-
+-RESOURCES += ../../translations/translations.qrc
+diff --git a/helper/linux/writejob.cpp b/helper/linux/writejob.cpp
+deleted file mode 100644
+index 61d48db..0000000
+--- a/helper/linux/writejob.cpp
++++ /dev/null
+@@ -1,318 +0,0 @@
+-/*
+- * Fedora Media Writer
+- * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License
+- * as published by the Free Software Foundation; either version 2
+- * of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+- */
+-
+-#include "writejob.h"
+-
+-#include <QCoreApplication>
+-#include <QTimer>
+-#include <QTextStream>
+-#include <QProcess>
+-#include <QtGlobal>
+-
+-#include <QtDBus>
+-#include <QDBusInterface>
+-#include <QDBusUnixFileDescriptor>
+-
+-#include <unistd.h>
+-
+-#include <tuple>
+-#include <utility>
+-
+-#include <lzma.h>
+-
+-#include "isomd5/libcheckisomd5.h"
+-
+-#include <QDebug>
+-
+-typedef QHash<QString, QVariant> Properties;
+-typedef QHash<QString, Properties> InterfacesAndProperties;
+-typedef QHash<QDBusObjectPath, InterfacesAndProperties> DBusIntrospection;
+-Q_DECLARE_METATYPE(Properties)
+-Q_DECLARE_METATYPE(InterfacesAndProperties)
+-Q_DECLARE_METATYPE(DBusIntrospection)
+-
+-WriteJob::WriteJob(const QString &what, const QString &where)
+-    : QObject(nullptr), what(what), where(where)
+-{
+-    qDBusRegisterMetaType<Properties>();
+-    qDBusRegisterMetaType<InterfacesAndProperties>();
+-    qDBusRegisterMetaType<DBusIntrospection>();
+-    connect(&watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
+-    QTimer::singleShot(0, this, SLOT(work()));
+-}
+-
+-int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
+-    return ((WriteJob*)data)->onMediaCheckAdvanced(offset, total);
+-}
+-
+-int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
+-    Q_UNUSED(total);
+-    out << offset << "\n";
+-    out.flush();
+-    return 0;
+-}
+-
+-QDBusUnixFileDescriptor WriteJob::getDescriptor() {
+-    QDBusInterface device("org.freedesktop.UDisks2", where, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus(), this);
+-    QString drivePath = qvariant_cast<QDBusObjectPath>(device.property("Drive")).path();
+-    QDBusInterface manager("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus());
+-    QDBusMessage message = manager.call("GetManagedObjects");
+-
+-    if (message.arguments().length() == 1) {
+-        QDBusArgument arg = qvariant_cast<QDBusArgument>(message.arguments().first());
+-        DBusIntrospection objects;
+-        arg >> objects;
+-        for (auto i : objects.keys()) {
+-            if (objects[i].contains("org.freedesktop.UDisks2.Filesystem")) {
+-                QString currentDrivePath = qvariant_cast<QDBusObjectPath>(objects[i]["org.freedesktop.UDisks2.Block"]["Drive"]).path();
+-                if (currentDrivePath == drivePath) {
+-                    QDBusInterface partition("org.freedesktop.UDisks2", i.path(), "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
+-                    message = partition.call("Unmount", Properties { {"force", true} });
+-                }
+-            }
+-        }
+-    }
+-    else {
+-        err << message.errorMessage();
+-        err.flush();
+-        qApp->exit(2);
+-        return QDBusUnixFileDescriptor(-1);
+-    }
+-
+-    QDBusReply<QDBusUnixFileDescriptor> reply = device.callWithArgumentList(QDBus::Block, "OpenForBenchmark", {Properties{{"writable", true}}} );
+-    QDBusUnixFileDescriptor fd = reply.value();
+-
+-    if (!fd.isValid()) {
+-        err << reply.error().message();
+-        err.flush();
+-        qApp->exit(2);
+-        return QDBusUnixFileDescriptor(-1);
+-    }
+-
+-    return fd;
+-}
+-
+-bool WriteJob::write(int fd) {
+-    if (what.endsWith(".xz"))
+-        return writeCompressed(fd);
+-    else
+-        return writePlain(fd);
+-}
+-
+-bool WriteJob::writeCompressed(int fd) {
+-    qint64 totalRead = 0;
+-
+-    lzma_stream strm = LZMA_STREAM_INIT;
+-    lzma_ret ret;
+-
+-    auto inBufferOwner = pageAlignedBuffer();
+-    char *inBuffer = std::get<1>(inBufferOwner);
+-
+-    auto outBufferOwner = pageAlignedBuffer();
+-    char *outBuffer = std::get<1>(outBufferOwner);
+-    std::size_t bufferSize = std::get<2>(outBufferOwner);
+-
+-    QFile file(what);
+-    file.open(QIODevice::ReadOnly);
+-
+-    ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
+-    if (ret != LZMA_OK) {
+-        err << tr("Failed to start decompressing.");
+-        return false;
+-    }
+-
+-    strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
+-    strm.avail_in = 0;
+-    strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
+-    strm.avail_out = bufferSize;
+-
+-    while (true) {
+-        if (strm.avail_in == 0) {
+-            qint64 len = file.read(inBuffer, bufferSize);
+-            totalRead += len;
+-
+-            strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
+-            strm.avail_in = len;
+-
+-            out << totalRead << "\n";
+-            out.flush();
+-        }
+-
+-        ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
+-        if (ret == LZMA_STREAM_END) {
+-            quint64 len = ::write(fd, outBuffer, bufferSize - strm.avail_out);
+-            if (len != bufferSize - strm.avail_out) {
+-                err << tr("Destination drive is not writable");
+-                qApp->exit(3);
+-                return false;
+-            }
+-            return true;
+-        }
+-        if (ret != LZMA_OK) {
+-            switch (ret) {
+-            case LZMA_MEM_ERROR:
+-                err << tr("There is not enough memory to decompress the file.");
+-                break;
+-            case LZMA_FORMAT_ERROR:
+-            case LZMA_DATA_ERROR:
+-            case LZMA_BUF_ERROR:
+-                err << tr("The downloaded compressed file is corrupted.");
+-                break;
+-            case LZMA_OPTIONS_ERROR:
+-                err << tr("Unsupported compression options.");
+-                break;
+-            default:
+-                err << tr("Unknown decompression error.");
+-                break;
+-            }
+-            qApp->exit(4);
+-            return false;
+-        }
+-
+-        if (strm.avail_out == 0) {
+-            quint64 len = ::write(fd, outBuffer, bufferSize - strm.avail_out);
+-            if (len != bufferSize - strm.avail_out) {
+-                err << tr("Destination drive is not writable");
+-                qApp->exit(3);
+-                return false;
+-            }
+-            strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
+-            strm.avail_out = bufferSize;
+-        }
+-    }
+-}
+-
+-bool WriteJob::writePlain(int fd) {
+-    QFile inFile(what);
+-    inFile.open(QIODevice::ReadOnly);
+-
+-    if (!inFile.isReadable()) {
+-        err << tr("Source image is not readable") << what;
+-        err.flush();
+-        qApp->exit(2);
+-        return false;
+-    }
+-
+-    // Doing this so that ownership will kept in std::get<0>(bufferOwner).
+-    auto bufferOwner = pageAlignedBuffer();
+-    char *buffer = std::get<1>(bufferOwner);
+-    qint64 size = std::get<2>(bufferOwner);
+-    qint64 total = 0;
+-
+-    while(!inFile.atEnd()) {
+-        qint64 len = inFile.read(buffer, size);
+-        if (len < 0) {
+-            err << tr("Source image is not readable");
+-            err.flush();
+-            qApp->exit(3);
+-            return false;
+-        }
+-        qint64 written = ::write(fd, buffer, len);
+-        if (written != len) {
+-            err << tr("Destination drive is not writable");
+-            err.flush();
+-            qApp->exit(3);
+-            return false;
+-        }
+-        total += len;
+-        out << total << '\n';
+-        out.flush();
+-    }
+-
+-    inFile.close();
+-    sync();
+-
+-    return true;
+-}
+-
+-bool WriteJob::check(int fd) {
+-    out << "CHECK\n";
+-    out.flush();
+-    switch (mediaCheckFD(fd, &WriteJob::staticOnMediaCheckAdvanced, this)) {
+-    case ISOMD5SUM_CHECK_NOT_FOUND:
+-    case ISOMD5SUM_CHECK_PASSED:
+-        err << "OK\n";
+-        err.flush();
+-        qApp->exit(0);
+-        return false;
+-    case ISOMD5SUM_CHECK_FAILED:
+-        err << tr("Your drive is probably damaged.") << "\n";
+-        err.flush();
+-        qApp->exit(1);
+-        return false;
+-    default:
+-        err << tr("Unexpected error occurred during media check.") << "\n";
+-        err.flush();
+-        qApp->exit(1);
+-        return false;
+-    }
+-    return true;
+-}
+-
+-void WriteJob::work() {
+-    // have to keep the QDBus wrapper, otherwise the file gets closed
+-    fd = getDescriptor();
+-    if (fd.fileDescriptor() < 0)
+-        return;
+-
+-    if (what.endsWith(".part")) {
+-        watcher.addPath(what);
+-    }
+-    else {
+-        if (!write(fd.fileDescriptor()))
+-            return;
+-
+-        check(fd.fileDescriptor());
+-    }
+-}
+-
+-void WriteJob::onFileChanged(const QString &path) {
+-    if (QFile::exists(path))
+-        return;
+-
+-    what = what.replace(QRegExp(".part$"), "");
+-
+-    if (!QFile::exists(what)) {
+-        qApp->exit(4);
+-        return;
+-    }
+-
+-    out << "1\n"; //to immediately trigger the UI into writing mode
+-    out.flush();
+-
+-    if (!write(fd.fileDescriptor())) {
+-        qApp->exit(4);
+-        return;
+-    }
+-
+-    check(fd.fileDescriptor());
+-}
+-
+-std::tuple<std::unique_ptr<char[]>, char*, std::size_t> pageAlignedBuffer(std::size_t pages) {
+-    static const std::size_t pagesize = getpagesize();
+-    const std::size_t size = pages * pagesize;
+-    std::size_t space = size + pagesize;
+-    std::unique_ptr<char[]> owner(new char[space]);
+-    void *buffer = owner.get();
+-    Q_ASSERT(space - size == pagesize);
+-    void *ptr = std::align(pagesize, size, buffer, space);
+-    // This should never fail since std::align should not return a nullptr if the assertion above passes.
+-    Q_CHECK_PTR(ptr);
+-    return std::make_tuple(std::move(owner), static_cast<char*>(buffer), size);
+-};
+diff --git a/helper/linux/main.cpp b/helper/main.cpp
+similarity index 98%
+rename from helper/linux/main.cpp
+rename to helper/main.cpp
+index 106483b..b0410b8 100644
+--- a/helper/linux/main.cpp
++++ b/helper/main.cpp
+@@ -18,6 +18,7 @@
+  */
+ 
+ #include <QCoreApplication>
++#include <QString>
+ #include <QTextStream>
+ #include <QTranslator>
+ 
+diff --git a/helper/page_aligned_buffer.h b/helper/page_aligned_buffer.h
+new file mode 100644
+index 0000000..19f25b6
+--- /dev/null
++++ b/helper/page_aligned_buffer.h
+@@ -0,0 +1,83 @@
++/*
++ * Fedora Media Writer
++ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++ */
++
++#ifndef PAGE_ALIGNED_BUFFER_H
++#define PAGE_ALIGNED_BUFFER_H
++
++#include <memory>
++#include <tuple>
++#include <utility>
++
++#ifdef Q_OS_WIN
++#include <windows.h>
++/**
++ * This should be more reliable than the MinGW version.
++ */
++std::size_t getpagesize() {
++    SYSTEM_INFO systemInfo;
++    GetSystemInfo(&systemInfo);
++    return static_cast<std::size_t>(systemInfo.dwPageSize);
++}
++#else
++#include <unistd.h>
++#endif
++
++/**
++ * If the page cache size would be known at compile-time this would be much
++ * easier to solve since std::aligned_alloc could simply be used.
++ *
++ * This class owns the memory used by the page aligned buffers.
++ */
++template <std::size_t NUM_BUFFERS>
++class PageAlignedBuffer {
++public:
++    std::size_t size;
++    /**
++     * Since the size is provided in pages only all following buffers are
++     * guaranteed to be aligned.
++     */
++    PageAlignedBuffer(const std::size_t pages = 1);
++    void *get(const std::size_t num);
++
++private:
++    std::unique_ptr<char[]> owner;
++    void *alignedBuffer;
++};
++
++template <std::size_t NUM_BUFFERS>
++PageAlignedBuffer<NUM_BUFFERS>::PageAlignedBuffer(const std::size_t pages) {
++    static const std::size_t pagesize = getpagesize();
++    size = pages * pagesize;
++    const std::size_t bufferSize = size * NUM_BUFFERS;
++    std::size_t space = bufferSize + pagesize;
++    owner = std::unique_ptr<char[]>(new char[space]);
++    alignedBuffer = owner.get();
++    std::align(pagesize, bufferSize, alignedBuffer, space);
++}
++
++/**
++ * The caller must use this method and the returned buffer with care since
++ * it won't do bounds checks.
++ */
++template <std::size_t NUM_BUFFERS>
++void *PageAlignedBuffer<NUM_BUFFERS>::get(const std::size_t num) {
++    return static_cast<char*>(alignedBuffer) + num * size;
++}
++
++#endif // PAGE_ALIGNED_BUFFER_H
+diff --git a/helper/restorejob.cpp b/helper/restorejob.cpp
+new file mode 100644
+index 0000000..cf8c526
+--- /dev/null
++++ b/helper/restorejob.cpp
+@@ -0,0 +1,38 @@
++/*
++ * Fedora Media Writer
++ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++ */
++
++#include "restorejob.h"
++
++#include <algorithm>
++#include <memory>
++
++#include <QCoreApplication>
++#include <QString>
++#include <QTimer>
++
++#include "drive.h"
++
++RestoreJob::RestoreJob(const QString &where)
++    : QObject(nullptr), drive(std::move(std::unique_ptr<Drive>(new Drive(where)))) {
++    QTimer::singleShot(0, this, SLOT(work()));
++}
++
++void RestoreJob::work() {
++    qApp->exit(drive->umount() || drive->wipe() || drive->addPartition());
++}
+diff --git a/helper/linux/restorejob.h b/helper/restorejob.h
+similarity index 87%
+rename from helper/linux/restorejob.h
+rename to helper/restorejob.h
+index 890cd52..2fdb2c7 100644
+--- a/helper/linux/restorejob.h
++++ b/helper/restorejob.h
+@@ -20,21 +20,21 @@
+ #ifndef RESTOREJOB_H
+ #define RESTOREJOB_H
+ 
++#include <memory>
++
+ #include <QObject>
+-#include <QTextStream>
+ 
+-class RestoreJob : public QObject
+-{
++#include "drive.h"
++
++class RestoreJob : public QObject {
+     Q_OBJECT
+ public:
+     explicit RestoreJob(const QString &where);
+ public slots:
+     void work();
+-private:
+-    QTextStream out { stdout };
+-    QTextStream err { stderr };
+ 
+-    QString where;
++private:
++    std::unique_ptr<Drive> drive;
+ };
+ 
+ #endif // RESTOREJOB_H
+diff --git a/helper/writejob.cpp b/helper/writejob.cpp
+new file mode 100644
+index 0000000..a13f448
+--- /dev/null
++++ b/helper/writejob.cpp
+@@ -0,0 +1,237 @@
++/*
++ * Fedora Media Writer
++ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++ */
++
++#include "writejob.h"
++
++#include <algorithm>
++#include <memory>
++#include <random>
++#include <tuple>
++
++#include <QCoreApplication>
++#include <QFile>
++#include <QObject>
++#include <QString>
++#include <QTimer>
++#include <QtGlobal>
++
++#include <lzma.h>
++
++#include "isomd5/libcheckisomd5.h"
++// Platform specific drive handler.
++#include "drive.h"
++#include "page_aligned_buffer.h"
++
++WriteJob::WriteJob(const QString &what, const QString &where)
++    : QObject(nullptr), what(what), out(stdout), err(stderr),
++      drive(std::move(std::unique_ptr<Drive>(new Drive(where)))) {
++    connect(&watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
++    QTimer::singleShot(0, this, SLOT(boot()));
++}
++
++int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
++    return ((WriteJob *) data)->onMediaCheckAdvanced(offset, total);
++}
++
++int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
++    Q_UNUSED(total);
++    out << offset << "\n";
++    out.flush();
++    return 0;
++}
++
++void WriteJob::boot() {
++    if (what.endsWith(".part")) {
++        watcher.addPath(what);
++        return;
++    }
++    work();
++}
++
++bool WriteJob::work() {
++    return write() && check();
++}
++
++void WriteJob::onFileChanged(const QString &path) {
++    if (QFile::exists(path))
++        return;
++
++    what = what.replace(QRegExp("[.]part$"), "");
++
++    if (!QFile::exists(what)) {
++        qApp->exit(4);
++        return;
++    }
++    // Immediately trigger the UI into writing mode.
++    out << "1\n";
++    out.flush();
++
++    work();
++}
++
++bool WriteJob::write() {
++    if (what.endsWith(".xz"))
++        return writeCompressed();
++    else
++        return writePlain();
++}
++
++bool WriteJob::writeCompressed() {
++    qint64 totalRead = 0;
++
++    lzma_stream strm = LZMA_STREAM_INIT;
++    lzma_ret ret;
++
++    PageAlignedBuffer<2> buffers;
++    const std::size_t bufferSize = buffers.size;
++    char *inBuffer = static_cast<char*>(buffers.get(0));
++    char *outBuffer = static_cast<char*>(buffers.get(1));
++
++    QFile file(what);
++    file.open(QIODevice::ReadOnly);
++
++    ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
++    if (ret != LZMA_OK) {
++        err << tr("Failed to start decompressing.");
++        return false;
++    }
++
++    strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
++    strm.avail_in = 0;
++    strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
++    strm.avail_out = bufferSize;
++
++    drive->open();
++
++    while (true) {
++        if (strm.avail_in == 0) {
++            qint64 len = file.read(inBuffer, bufferSize);
++            totalRead += len;
++
++            strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
++            strm.avail_in = len;
++
++            out << totalRead << "\n";
++            out.flush();
++        }
++
++        ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
++        if (ret == LZMA_STREAM_END) {
++            if (!drive->write(outBuffer, bufferSize - strm.avail_out)) {
++                return false;
++            }
++            return true;
++        }
++        if (ret != LZMA_OK) {
++            switch (ret) {
++            case LZMA_MEM_ERROR:
++                err << tr("There is not enough memory to decompress the file.");
++                break;
++            case LZMA_FORMAT_ERROR:
++            case LZMA_DATA_ERROR:
++            case LZMA_BUF_ERROR:
++                err << tr("The downloaded compressed file is corrupted.");
++                break;
++            case LZMA_OPTIONS_ERROR:
++                err << tr("Unsupported compression options.");
++                break;
++            default:
++                err << tr("Unknown decompression error.");
++                break;
++            }
++            qApp->exit(4);
++            return false;
++        }
++
++        if (strm.avail_out == 0) {
++            if (!drive->write(outBuffer, bufferSize - strm.avail_out)) {
++                return false;
++            }
++
++            strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
++            strm.avail_out = bufferSize;
++        }
++    }
++}
++
++bool WriteJob::writePlain() {
++
++    QFile inFile(what);
++    inFile.open(QIODevice::ReadOnly);
++
++    if (!inFile.isReadable()) {
++        err << tr("Source image is not readable") << what;
++        err.flush();
++        qApp->exit(2);
++        return false;
++    }
++
++    PageAlignedBuffer<2> buffers;
++    const std::size_t bufferSize = buffers.size;
++    char *buffer = static_cast<char*>(buffers.get(0));
++
++    drive->open();
++
++    qint64 total = 0;
++    while (!inFile.atEnd()) {
++        qint64 len = inFile.read(buffer, bufferSize);
++        if (len < 0) {
++            err << tr("Source image is not readable");
++            err.flush();
++            qApp->exit(3);
++            return false;
++        }
++        if (!drive->write(buffer, len)) {
++            err << tr("Destination drive is not writable");
++            err.flush();
++            qApp->exit(3);
++            return false;
++        }
++        total += len;
++        out << total << '\n';
++        out.flush();
++    }
++    return true;
++}
++
++bool WriteJob::check() {
++    out << "CHECK\n";
++    out.flush();
++
++    switch (mediaCheckFD(drive->getDescriptor(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
++    case ISOMD5SUM_CHECK_NOT_FOUND:
++    case ISOMD5SUM_CHECK_PASSED:
++        err << "OK\n";
++        err.flush();
++        qApp->exit(0);
++        break;
++    case ISOMD5SUM_CHECK_FAILED:
++        err << tr("Your drive is probably damaged.") << "\n";
++        err.flush();
++        qApp->exit(1);
++        return false;
++    default:
++        err << tr("Unexpected error occurred during media check.") << "\n";
++        err.flush();
++        qApp->exit(1);
++        return false;
++    }
++
++    return true;
++}
+diff --git a/helper/linux/writejob.h b/helper/writejob.h
+similarity index 64%
+rename from helper/linux/writejob.h
+rename to helper/writejob.h
+index d519043..216aa1e 100644
+--- a/helper/linux/writejob.h
++++ b/helper/writejob.h
+@@ -20,50 +20,43 @@
+ #ifndef WRITEJOB_H
+ #define WRITEJOB_H
+ 
++#include <memory>
++
++#include <QFileSystemWatcher>
+ #include <QObject>
++#include <QString>
+ #include <QTextStream>
+-#include <QProcess>
+-#include <QFile>
+-#include <QDBusUnixFileDescriptor>
+-#include <QFileSystemWatcher>
+ 
+-#include <unistd.h>
+-
+-#include <memory>
+-#include <tuple>
+-#include <utility>
++// Platform specific drive handler.
++#include "drive.h"
+ 
+ #ifndef MEDIAWRITER_LZMA_LIMIT
+ // 256MB memory limit for the decompressor
+-# define MEDIAWRITER_LZMA_LIMIT (1024*1024*256)
++#define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
+ #endif
+ 
+-class WriteJob : public QObject
+-{
++class WriteJob : public QObject {
+     Q_OBJECT
+ public:
+-    explicit WriteJob(const QString &what, const QString &where);
++    WriteJob(const QString &what, const QString &where);
+ 
+     static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
+     int onMediaCheckAdvanced(long long offset, long long total);
+-
+-    QDBusUnixFileDescriptor getDescriptor();
+-    bool write(int fd);
+-    bool writeCompressed(int fd);
+-    bool writePlain(int fd);
+-    bool check(int fd);
++    bool work();
++    bool write();
++    bool writeCompressed();
++    bool writePlain();
++    bool check();
+ public slots:
+-    void work();
++    void boot();
+     void onFileChanged(const QString &path);
++
+ private:
+     QString what;
+-    QString where;
+-    QTextStream out { stdout };
+-    QTextStream err { stderr };
+-    QDBusUnixFileDescriptor fd { -1 };
+-    QFileSystemWatcher watcher { };
++    QTextStream out;
++    QTextStream err;
++    std::unique_ptr<Drive> drive;
++    QFileSystemWatcher watcher;
+ };
+ 
+-std::tuple<std::unique_ptr<char[]>, char*, std::size_t> pageAlignedBuffer(std::size_t pages = 1024);
+-
+ #endif // WRITEJOB_H
+-- 
+2.14.1
+

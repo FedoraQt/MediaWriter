@@ -1,0 +1,827 @@
+From a900cc782b0c6599276917856391d385cca04bb4 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Tue, 1 Aug 2017 23:17:12 +0000
+Subject: [PATCH 19/40] Deduplicate some drivemanager code
+
+to get a better overview of process interaction.
+
+Break progress bar.
+---
+ app/drivemanager.cpp      |  37 +++++++++++-
+ app/drivemanager.h        |  12 +++-
+ app/fakedrivemanager.cpp  |   2 +-
+ app/linuxdrivemanager.cpp |  74 ++++++++---------------
+ app/linuxdrivemanager.h   |   5 +-
+ app/macdrivemanager.cpp   | 150 ++++++++++++++++++++--------------------------
+ app/macdrivemanager.h     |   9 ++-
+ app/releasemanager.h      |   2 +
+ app/windrivemanager.cpp   | 125 ++++++++++++++++----------------------
+ app/windrivemanager.h     |   7 ++-
+ 10 files changed, 204 insertions(+), 219 deletions(-)
+
+diff --git a/app/drivemanager.cpp b/app/drivemanager.cpp
+index ead129f..4b79946 100644
+--- a/app/drivemanager.cpp
++++ b/app/drivemanager.cpp
+@@ -187,9 +187,10 @@ DriveProvider::DriveProvider(DriveManager *parent)
+ 
+ }
+ 
+-Drive::Drive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive)
++Drive::Drive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive)
+     : QObject(parent),
+       m_progress(new Progress(this)),
++      m_device(device),
+       m_name(name),
+       m_size(size),
+       m_restoreStatus(containsLive ? CONTAINS_LIVE : CLEAN)
+@@ -236,6 +237,13 @@ void Drive::persistentStorage(bool enabled) {
+     m_persistentStorage = enabled;
+ }
+ 
++QString Drive::helperBinary() {
++    if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
++        return qApp->applicationDirPath() + "/helper";
++    }
++    return "";
++}
++
+ bool Drive::write(ReleaseVariant *data) {
+     m_image = data;
+     m_image->setErrorString(QString());
+@@ -245,6 +253,17 @@ bool Drive::write(ReleaseVariant *data) {
+         return false;
+     }
+ 
++    switch (m_image->status()) {
++        case ReleaseVariant::READY:
++        case ReleaseVariant::FAILED:
++        case ReleaseVariant::FAILED_VERIFICATION:
++        case ReleaseVariant::FINISHED:
++            m_image->setStatus(ReleaseVariant::WRITING);
++            break;
++
++        default:
++            return false;
++    }
+     return true;
+ }
+ 
+@@ -258,3 +277,19 @@ void Drive::setRestoreStatus(Drive::RestoreStatus o) {
+         emit restoreStatusChanged();
+     }
+ }
++
++QStringList Drive::writeArgs(const ReleaseVariant &releaseVariant) {
++    QStringList args;
++    auto iso = releaseVariant.status() == ReleaseVariant::WRITING ? releaseVariant.iso() : releaseVariant.temporaryPath();
++    args << iso << m_device;
++    if (m_persistentStorage) {
++        args << "true";
++    }
++    return args;
++}
++
++QStringList Drive::restoreArgs() {
++    QStringList args;
++    args << "restore" << m_device;
++    return args;
++}
+diff --git a/app/drivemanager.h b/app/drivemanager.h
+index a45336e..e485d27 100644
+--- a/app/drivemanager.h
++++ b/app/drivemanager.h
+@@ -22,6 +22,9 @@
+ 
+ #include <QDebug>
+ #include <QAbstractListModel>
++#include <QProcess>
++#include <QString>
++#include <QStringList>
+ 
+ #include "releasemanager.h"
+ 
+@@ -148,7 +151,7 @@ public:
+     };
+     Q_ENUMS(RestoreStatus)
+ 
+-    Drive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive = false);
++    Drive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive = false);
+ 
+     Progress *progress() const;
+ 
+@@ -169,14 +172,21 @@ public slots:
+ signals:
+     void restoreStatusChanged();
+ 
++protected:
++    QStringList writeArgs(const ReleaseVariant &releaseVariant);
++    QStringList restoreArgs();
++    virtual QString helperBinary();
++
+ protected:
+     ReleaseVariant *m_image { nullptr };
+     Progress *m_progress { nullptr };
++    QString m_device { };
+     QString m_name { };
+     uint64_t m_size { 0 };
+     RestoreStatus m_restoreStatus { CLEAN };
+     QString m_error { };
+     bool m_persistentStorage { false };
++    QProcess *m_process { nullptr };
+ };
+ 
+ #endif // DRIVEMANAGER_H
+diff --git a/app/fakedrivemanager.cpp b/app/fakedrivemanager.cpp
+index c497f1b..c4685c4 100644
+--- a/app/fakedrivemanager.cpp
++++ b/app/fakedrivemanager.cpp
+@@ -46,7 +46,7 @@ void FakeDriveProvider::connectDrives() {
+ }
+ 
+ FakeDrive::FakeDrive(FakeDriveProvider *parent, const QString &name, uint64_t size, bool containsLive)
+-    : Drive(parent, name, size, containsLive) {
++    : Drive(parent, "", name, size, containsLive) {
+     m_progress->setTo(size);
+ }
+ 
+diff --git a/app/linuxdrivemanager.cpp b/app/linuxdrivemanager.cpp
+index e6fa634..51d186c 100644
+--- a/app/linuxdrivemanager.cpp
++++ b/app/linuxdrivemanager.cpp
+@@ -167,8 +167,10 @@ void LinuxDriveProvider::onPropertiesChanged(const QString &interface_name, cons
+     }
+ }
+ 
+-LinuxDrive::LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout)
+-    : Drive(parent, name, size, isoLayout), m_device(device) {
++LinuxDrive::LinuxDrive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive)
++    : Drive(parent, device, name, size, containsLive)
++{
++
+ }
+ 
+ LinuxDrive::~LinuxDrive() {
+@@ -178,45 +180,34 @@ LinuxDrive::~LinuxDrive() {
+     }
+ }
+ 
+-bool LinuxDrive::write(ReleaseVariant *data) {
+-    qDebug() << this->metaObject()->className() << "Will now write" << data->iso() << "to" << this->m_device;
++QString LinuxDrive::helperBinary() {
++    if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper")) {
++        return qApp->applicationDirPath() + "/../helper/linux/helper";
++    }
++    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
++        return qApp->applicationDirPath() + "/helper";
++    }
++    else if (QFile::exists(QString("%1/%2").arg(LIBEXECDIR).arg("helper"))) {
++        return QString("%1/%2").arg(LIBEXECDIR).arg("helper");
++    }
++    return "";
++}
+ 
++bool LinuxDrive::write(ReleaseVariant *data) {
+     if (!Drive::write(data))
+         return false;
+ 
+-    if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED ||
+-            m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
+-        m_image->setStatus(ReleaseVariant::WRITING);
+-
+     if (!m_process)
+         m_process = new QProcess(this);
+ 
+-    QStringList args;
+-    if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper")) {
+-        m_process->setProgram(qApp->applicationDirPath() + "/../helper/linux/helper");
+-    }
+-    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+-        m_process->setProgram(qApp->applicationDirPath() + "/helper");
+-    }
+-    else if (QFile::exists(QString("%1/%2").arg(LIBEXECDIR).arg("helper"))) {
+-        m_process->setProgram(QString("%1/%2").arg(LIBEXECDIR).arg("helper"));
+-    }
+-    else {
++    QString binary = helperBinary();
++    if (binary == "") {
+         data->setErrorString(tr("Could not find the helper binary. Check your installation."));
+         data->setStatus(ReleaseVariant::FAILED);
+         return false;
+     }
+-    args << "write";
+-    if (data->status() == ReleaseVariant::WRITING)
+-        args << data->iso();
+-    else
+-        args << data->temporaryPath();
+-    args << m_device;
+-    if (m_persistentStorage) {
+-        args << "true";
+-    }
+-    qDebug() << this->metaObject()->className() << "Helper command will be" << args;
+-    m_process->setArguments(args);
++    m_process->setProgram(binary);
++    m_process->setArguments(writeArgs(*data));
+ 
+     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
+     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onFinished(int,QProcess::ExitStatus)));
+@@ -225,8 +216,6 @@ bool LinuxDrive::write(ReleaseVariant *data) {
+     connect(m_process, &QProcess::errorOccurred, this, &LinuxDrive::onErrorOccurred);
+ #endif
+ 
+-    m_progress->setTo(data->size());
+-    m_progress->setValue(0.0/0.0);
+     m_process->start(QIODevice::ReadOnly);
+ 
+     return true;
+@@ -250,33 +239,20 @@ void LinuxDrive::cancel() {
+ }
+ 
+ void LinuxDrive::restore() {
+-    qDebug() << this->metaObject()->className() << "Will now restore" << this->m_device;
+-
+     if (!m_process)
+         m_process = new QProcess(this);
+ 
+     m_restoreStatus = RESTORING;
+     emit restoreStatusChanged();
+ 
+-    QStringList args;
+-    if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper")) {
+-        m_process->setProgram(qApp->applicationDirPath() + "/../helper/linux/helper");
+-    }
+-    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+-        m_process->setProgram(qApp->applicationDirPath() + "/helper");
+-    }
+-    else if (QFile::exists(QString("%1/%2").arg(LIBEXECDIR).arg("helper"))) {
+-        m_process->setProgram(QString("%1/%2").arg(LIBEXECDIR).arg("helper"));
+-    }
+-    else {
++    QString binary = helperBinary();
++    if (binary == "") {
+         qWarning() << "Couldn't find the helper binary.";
+         setRestoreStatus(RESTORE_ERROR);
+         return;
+     }
+-    args << "restore";
+-    args << m_device;
+-    qDebug() << this->metaObject()->className() << "Helper command will be" << args;
+-    m_process->setArguments(args);
++    m_process->setProgram(binary);
++    m_process->setArguments(restoreArgs());
+ 
+     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
+     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
+diff --git a/app/linuxdrivemanager.h b/app/linuxdrivemanager.h
+index 6d1513a..92b7c83 100644
+--- a/app/linuxdrivemanager.h
++++ b/app/linuxdrivemanager.h
+@@ -59,7 +59,7 @@ private:
+ class LinuxDrive : public Drive {
+     Q_OBJECT
+ public:
+-    LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout);
++    LinuxDrive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive);
+     ~LinuxDrive();
+ 
+     Q_INVOKABLE virtual bool write(ReleaseVariant *data) override;
+@@ -73,9 +73,8 @@ private slots:
+     void onErrorOccurred(QProcess::ProcessError e);
+ 
+ private:
+-    QString m_device;
++    QString helperBinary();
+ 
+-    QProcess *m_process { nullptr };
+ };
+ 
+ #endif // LINUXDRIVEMANAGER_H
+diff --git a/app/macdrivemanager.cpp b/app/macdrivemanager.cpp
+index 4008351..c2319bb 100644
+--- a/app/macdrivemanager.cpp
++++ b/app/macdrivemanager.cpp
+@@ -68,123 +68,101 @@ void MacDriveProvider::removeDrive(const QString &bsdName) {
+ }
+ 
+ 
+-MacDrive::MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive, const QString &bsdDevice)
+-    : Drive(parent, name, size, containsLive), m_bsdDevice(bsdDevice)
++MacDrive::MacDrive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive)
++    : Drive(parent, device, name, size, containsLive)
+ {
+ 
+ }
+ 
+-bool MacDrive::write(ReleaseVariant *data) {
+-    //osascript -e "do shell script \"$*\" with administrator privileges"
+-    if (!Drive::write(data))
+-        return false;
+-
+-    if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED ||
+-            m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
+-        m_image->setStatus(ReleaseVariant::WRITING);
++QString MacDrive::helperBinary() {
++    if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
++        return qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper";
++    }
++    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
++        return qApp->applicationDirPath() + "/helper";
++    }
++    return "";
++}
+ 
+-    if (m_child) {
++void MacDrive::prepareProcess(const QString &binary, const QStringList &arguments) {
++    if (m_process) {
+         // TODO some handling of an already present process
+-        m_child->deleteLater();
++        m_process->deleteLater();
+     }
+-    m_child = new QProcess(this);
+-    connect(m_child, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
+-    connect(m_child, &QProcess::readyRead, this, &MacDrive::onReadyRead);
+-
+-    m_child->setProgram("osascript");
++    m_process = new QProcess(this);
+ 
++    QStringList helperCommand;
++    helperCommand << binary << arguments;
++    for (QString& argument : helperCommand) {
++        argument = argument.normalized(QString::NormalizationForm_D);
++    }
+     QString command;
+     command.append("do shell script \"");
+-    if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
+-        command.append(QString("'%1/../../../../helper/mac/helper.app/Contents/MacOS/helper'").arg(qApp->applicationDirPath()));
+-    }
+-    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+-        command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
+-    }
+-    else {
+-        data->setErrorString(tr("Could not find the helper binary. Check your installation."));
+-        return false;
+-    }
+-    command.append(" write ");
+-    if (data->status() == ReleaseVariant::WRITING)
+-        command.append(QString("'%1'").arg(data->iso()));
+-    else
+-        command.append(QString("'%1'").arg(data->temporaryPath()));
+-    command.append(" ");
+-    command.append(m_bsdDevice);
++    command.append(args.join(" "));
+     command.append("\" with administrator privileges without altering line endings");
+ 
++    /*
++     * TODO: Somehow gain privileges differently so that process interaction
++     * can be done.
++     */
++    m_process->setProgram("osascript");
+     QStringList args;
+-    args << "-e";
+-    args << command;
+-    qCritical() << "The command is" << command;
+-    m_child->setArguments(args);
++    args << "-e" << command;
++    m_process->setArguments(args);
+ 
+-    m_progress->setTo(data->size());
+-    m_image->setStatus(ReleaseVariant::WRITING);
++}
+ 
+-    m_progress->setValue(0.0/0.0);
+-    m_child->start();
++bool MacDrive::write(ReleaseVariant *data) {
++    if (!Drive::write(data))
++        return false;
++
++    QString binary = helperBinary();
++    if (binary == "") {
++        data->setErrorString(tr("Could not find the helper binary. Check your installation."));
++        data->setStatus(ReleaseVariant::FAILED);
++        return false;
++    }
++
++    prepareProcess(binary, writeArgs(*data));
++    connect(m_process, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
++    connect(m_process, &QProcess::readyRead, this, &MacDrive::onReadyRead);
++    m_process->start(QIODevice::ReadOnly);
+ 
+     return true;
+ }
+ 
+ void MacDrive::cancel() {
+-    if (m_child) {
+-        m_child->kill();
+-        m_child->deleteLater();
+-        m_child = nullptr;
++    if (m_process) {
++        m_process->kill();
++        m_process->deleteLater();
++        m_process = nullptr;
+     }
+ }
+ 
+ void MacDrive::restore() {
+-    qCritical() << "starting to restore";
+-    if (m_child)
+-        m_child->deleteLater();
+-
+-    m_child = new QProcess(this);
+-
+     m_restoreStatus = RESTORING;
+     emit restoreStatusChanged();
+ 
+-    m_child->setProgram("osascript");
+-
+-    QString command;
+-    command.append("do shell script \"");
+-    if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
+-        command.append(QString("'%1/../../../../helper/mac/helper.app/Contents/MacOS/helper'").arg(qApp->applicationDirPath()));
+-    }
+-    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+-        command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
+-    }
+-    else {
+-        m_restoreStatus = RESTORE_ERROR;
++    QString binary = helperBinary();
++    if (binary == "") {
++        qWarning() << "Couldn't find the helper binary.";
++        setRestoreStatus(RESTORE_ERROR);
+         return;
+     }
+-    command.append(" restore ");
+-    command.append(m_bsdDevice);
+-    command.append("\" with administrator privileges without altering line endings");
+-
+-    QStringList args;
+-    args << "-e";
+-    args << command;
+-    qCritical() << "The command is" << command;
+-    m_child->setArguments(args);
+-
+-    //connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
+-    connect(m_child, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
+ 
+-    m_child->start(QIODevice::ReadOnly);
++    prepareProcess(binary, restoreArgs());
++    connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
++    m_process->start(QIODevice::ReadOnly);
+ }
+ 
+ void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+     Q_UNUSED(exitStatus)
+ 
+-    if (!m_child)
++    if (!m_process)
+         return;
+ 
+     if (exitCode != 0) {
+-        QString output = m_child->readAllStandardError();
++        QString output = m_process->readAllStandardError();
+         QRegExp re("^.+:.+: ");
+         QStringList lines = output.split('\n');
+         if (lines.length() > 0) {
+@@ -201,11 +179,11 @@ void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+ }
+ 
+ void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+-    if (!m_child)
++    if (!m_process)
+         return;
+ 
+     qCritical() << "Process finished" << exitCode << exitStatus;
+-    qCritical() << m_child->readAllStandardError();
++    qCritical() << m_process->readAllStandardError();
+ 
+     if (exitCode == 0)
+         m_restoreStatus = RESTORED;
+@@ -213,20 +191,20 @@ void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
+         m_restoreStatus = RESTORE_ERROR;
+     emit restoreStatusChanged();
+ 
+-    m_child->deleteLater();
+-    m_child = nullptr;
++    m_process->deleteLater();
++    m_process = nullptr;
+ }
+ 
+ void MacDrive::onReadyRead() {
+-    if (!m_child)
++    if (!m_process)
+         return;
+ 
+     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
+         m_image->setStatus(ReleaseVariant::WRITING);
+ 
+-    while (m_child->bytesAvailable() > 0) {
++    while (m_process->bytesAvailable() > 0) {
+         bool ok;
+-        int64_t bytes = m_child->readLine().trimmed().toULongLong(&ok);
++        int64_t bytes = m_process->readLine().trimmed().toULongLong(&ok);
+         if (ok)
+             m_progress->setValue(bytes);
+     }
+diff --git a/app/macdrivemanager.h b/app/macdrivemanager.h
+index db776a9..0dcf907 100644
+--- a/app/macdrivemanager.h
++++ b/app/macdrivemanager.h
+@@ -23,6 +23,8 @@
+ #include "drivemanager.h"
+ #include <QMap>
+ #include <QProcess>
++#include <QString>
++#include <QStringList>
+ 
+ class MacDrive;
+ 
+@@ -45,7 +47,7 @@ private:
+ class MacDrive : public Drive {
+     Q_OBJECT
+ public:
+-    MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive, const QString &bsdDevice);
++    MacDrive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive);
+ 
+     Q_INVOKABLE virtual bool write(ReleaseVariant *data) override;
+     Q_INVOKABLE virtual void cancel() override;
+@@ -54,9 +56,10 @@ private slots:
+     void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
+     void onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus);
+     void onReadyRead();
++
+ private:
+-    QString m_bsdDevice;
+-    QProcess *m_child { nullptr };
++    void prepareProcess(const QString &binary, const QStringList& arguments);
++    QString helperBinary();
+ };
+ 
+ #endif // MACDRIVEMANAGER_H
+diff --git a/app/releasemanager.h b/app/releasemanager.h
+index 517c45b..2c8800f 100644
+--- a/app/releasemanager.h
++++ b/app/releasemanager.h
+@@ -372,6 +372,7 @@ public:
+         WRITING_NOT_POSSIBLE,
+         WRITING,
+         WRITE_VERIFYING,
++        WRITING_OVERLAY,
+         FINISHED,
+         FAILED_VERIFICATION,
+         FAILED_DOWNLOAD,
+@@ -386,6 +387,7 @@ public:
+         tr("Image file was saved to your downloads folder. Writing is not possible"),
+         tr("Writing"),
+         tr("Checking the written data"),
++        tr("Enabling persistent storage"),
+         tr("Finished!"),
+         tr("The written data is corrupted"),
+         tr("Download failed"),
+diff --git a/app/windrivemanager.cpp b/app/windrivemanager.cpp
+index a6e348b..7358671 100644
+--- a/app/windrivemanager.cpp
++++ b/app/windrivemanager.cpp
+@@ -213,7 +213,7 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter, bool verb
+     delete []pOutBuffer;
+     ::CloseHandle(hDevice);
+ 
+-    WinDrive *currentDrive = new WinDrive(this, productVendor + " " + productId, deviceBytes, !hasLetter, nDriveNumber, serialNumber);
++    WinDrive *currentDrive = new WinDrive(this, QString("%0").arg(nDriveNumber), productVendor + " " + productId, deviceBytes, !hasLetter, serialNumber);
+     if (m_drives.contains(nDriveNumber) && *m_drives[nDriveNumber] == *currentDrive) {
+         currentDrive->deleteLater();
+         return true;
+@@ -230,103 +230,84 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter, bool verb
+     return true;
+ }
+ 
+-WinDrive::WinDrive(WinDriveProvider *parent, const QString &name, uint64_t size, bool containsLive, int device, const QString &serialNumber)
+-    : Drive(parent, name, size, containsLive)
+-    , m_device(device)
++WinDrive::WinDrive(WinDriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive, const QString &serialNumber)
++    : Drive(parent, device, name, size, containsLive)
+     , m_serialNo(serialNumber)
+ {
+ 
+ }
+ 
+ WinDrive::~WinDrive() {
+-    if (m_child)
+-        m_child->kill();
++    if (m_process)
++        m_process->kill();
++}
++
++QString WinDrive::helperBinary() {
++    if (QFile::exists(qApp->applicationDirPath() + "/helper.exe")) {
++        return qApp->applicationDirPath() + "/helper.exe";
++    }
++    else if (QFile::exists(qApp->applicationDirPath() + "/../helper.exe")) {
++        return qApp->applicationDirPath() + "/../helper.exe";
++    }
++    return "";
+ }
+ 
+ bool WinDrive::write(ReleaseVariant *data) {
+-    qDebug() << this->metaObject()->className() << "Preparing to write" << data->fullName() << "to drive" << m_device;
+     if (!Drive::write(data))
+         return false;
+ 
+-    if (m_child) {
++    if (m_process) {
+         // TODO some handling of an already present process
+-        m_child->deleteLater();
++        m_process->deleteLater();
+     }
+-    m_child = new QProcess(this);
+-    connect(m_child, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &WinDrive::onFinished);
+-    connect(m_child, &QProcess::readyRead, this, &WinDrive::onReadyRead);
++    m_process = new QProcess(this);
+ 
+-    if (data->status() != ReleaseVariant::DOWNLOADING)
+-        m_image->setStatus(ReleaseVariant::WRITING);
+-
+-    if (QFile::exists(qApp->applicationDirPath() + "/helper.exe")) {
+-        m_child->setProgram(qApp->applicationDirPath() + "/helper.exe");
+-    }
+-    else if (QFile::exists(qApp->applicationDirPath() + "/../helper.exe")) {
+-        m_child->setProgram(qApp->applicationDirPath() + "/../helper.exe");
+-    }
+-    else {
++    QString binary = helperBinary();
++    if (binary == "") {
+         data->setErrorString(tr("Could not find the helper binary. Check your installation."));
++        data->setStatus(ReleaseVariant::FAILED);
+         return false;
+     }
++    m_process->setProgram(binary);
++    m_process->setArguments(writeArgs(*data));
+ 
+-    QStringList args;
+-    args << "write";
+-    if (data->status() == ReleaseVariant::WRITING)
+-        args << data->iso();
+-    else
+-        args << data->temporaryPath();
+-    args << QString("%1").arg(m_device);
+-    m_child->setArguments(args);
++    connect(m_process, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &WinDrive::onFinished);
++    connect(m_process, &QProcess::readyRead, this, &WinDrive::onReadyRead);
+ 
+-    m_progress->setTo(data->size());
+-    m_progress->setValue(NAN);
++    m_process->start(QIODevice::ReadOnly);
+ 
+-    qDebug() << this->metaObject()->className() << "Starting" << m_child->program() << args;
+-    m_child->start();
+     return true;
+ }
+ 
+ void WinDrive::cancel() {
+-    if (m_child) {
+-        m_child->kill();
+-        m_child->deleteLater();
+-        m_child = nullptr;
++    if (m_process) {
++        m_process->kill();
++        m_process->deleteLater();
++        m_process = nullptr;
+     }
+ }
+ 
+ void WinDrive::restore() {
+-    qDebug() << this->metaObject()->className() << "Preparing to restore disk" << m_device;
+-    if (m_child)
+-        m_child->deleteLater();
+-
+-    m_child = new QProcess(this);
++    if (m_process)
++        m_process->deleteLater();
++    m_process = new QProcess(this);
+ 
+     m_restoreStatus = RESTORING;
+     emit restoreStatusChanged();
+ 
+-    if (QFile::exists(qApp->applicationDirPath() + "/helper.exe")) {
+-        m_child->setProgram(qApp->applicationDirPath() + "/helper.exe");
+-    }
+-    else if (QFile::exists(qApp->applicationDirPath() + "/../helper.exe")) {
+-        m_child->setProgram(qApp->applicationDirPath() + "/../helper.exe");
+-    }
+-    else {
+-        m_restoreStatus = RESTORE_ERROR;
++    QString binary = helperBinary();
++    if (binary == "") {
++        qWarning() << "Couldn't find the helper binary.";
++        setRestoreStatus(RESTORE_ERROR);
+         return;
+     }
+-
+-    QStringList args;
+-    args << "restore";
+-    args << QString("%1").arg(m_device);
+-    m_child->setArguments(args);
++    m_process->setProgram(binary);
++    m_process->setArguments(restoreArgs());
+ 
+     //connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
+-    connect(m_child, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
+-
+-    qDebug() << this->metaObject()->className() << "Starting" << m_child->program() << args;
++    connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
+ 
+-    m_child->start(QIODevice::ReadOnly);
++    m_process->start(QIODevice::ReadOnly);
+ }
+ 
+ QString WinDrive::serialNumber() const {
+@@ -338,30 +319,30 @@ bool WinDrive::operator==(const WinDrive &o) const {
+ }
+ 
+ void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+-    if (!m_child)
++    if (!m_process)
+         return;
+ 
+     qDebug() << "Child finished" << exitCode << exitStatus;
+-    qDebug() << m_child->errorString();
++    qDebug() << m_process->errorString();
+ 
+     if (exitCode == 0) {
+         m_image->setStatus(ReleaseVariant::FINISHED);
+     }
+     else {
+-        m_image->setErrorString(m_child->readAllStandardError().trimmed());
++        m_image->setErrorString(m_process->readAllStandardError().trimmed());
+         m_image->setStatus(ReleaseVariant::FAILED);
+     }
+ 
+-    m_child->deleteLater();
+-    m_child = nullptr;
++    m_process->deleteLater();
++    m_process = nullptr;
+ }
+ 
+ void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+-    if (!m_child)
++    if (!m_process)
+         return;
+ 
+     qCritical() << "Process finished" << exitCode << exitStatus;
+-    qCritical() << m_child->readAllStandardError();
++    qCritical() << m_process->readAllStandardError();
+ 
+     if (exitCode == 0)
+         m_restoreStatus = RESTORED;
+@@ -369,19 +350,19 @@ void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
+         m_restoreStatus = RESTORE_ERROR;
+     emit restoreStatusChanged();
+ 
+-    m_child->deleteLater();
+-    m_child = nullptr;
++    m_process->deleteLater();
++    m_process = nullptr;
+ }
+ 
+ void WinDrive::onReadyRead() {
+-    if (!m_child)
++    if (!m_process)
+         return;
+ 
+     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
+         m_image->setStatus(ReleaseVariant::WRITING);
+ 
+-    while (m_child->bytesAvailable() > 0) {
+-        QString line = m_child->readLine().trimmed();
++    while (m_process->bytesAvailable() > 0) {
++        QString line = m_process->readLine().trimmed();
+         if (line == "CHECK") {
+             qDebug() << this->metaObject()->className() << "Written media check starting";
+             m_progress->setValue(0);
+diff --git a/app/windrivemanager.h b/app/windrivemanager.h
+index 3522667..0b6f72d 100644
+--- a/app/windrivemanager.h
++++ b/app/windrivemanager.h
+@@ -45,7 +45,7 @@ private:
+ class WinDrive : public Drive {
+     Q_OBJECT
+ public:
+-    WinDrive(WinDriveProvider *parent, const QString &name, uint64_t size, bool containsLive, int device, const QString &serialNumber);
++    WinDrive(WinDriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive, const QString &serialNumber);
+     ~WinDrive();
+ 
+     Q_INVOKABLE virtual bool write(ReleaseVariant *data) override;
+@@ -62,9 +62,10 @@ private slots:
+     void onReadyRead();
+ 
+ private:
+-    int m_device;
++    QString helperBinary();
++
++private:
+     QString m_serialNo;
+-    QProcess *m_child { nullptr };
+ };
+ 
+ #endif // WINDRIVEMANAGER_H
+-- 
+2.14.1
+

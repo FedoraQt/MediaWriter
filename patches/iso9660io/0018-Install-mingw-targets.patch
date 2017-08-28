@@ -1,0 +1,82 @@
+From 90fbea69a9b7e867829b80eb81d6d2c1ee55d63e Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 29 Jun 2017 16:07:04 +0000
+Subject: [PATCH 18/28] Install mingw targets
+
+---
+ CMakeLists.txt  | 32 ++++++++++++++++++++++++++++----
+ iso9660io.pc.in |  2 +-
+ 2 files changed, 29 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f5acfe1..6d74919 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,8 +2,27 @@ cmake_minimum_required(VERSION 2.6)
+ # Don't confuse it with the libcdio-devel which provides a libiso9660.so.
+ project(iso9660io)
+ 
+-# Provides CMAKE_INSTALL_LIBDIR.
+-include(GNUInstallDirs)
++if(NOT DEFINED BINDIR)
++  set(BINDIR bin)
++endif()
++
++if(MINGW)
++  if(NOT DEFINED LIBDIR)
++    set(LIBDIR lib)
++  endif()
++  if(NOT DEFINED DATADIR)
++    set(DATADIR ${LIBDIR})
++  endif()
++else()
++  if(NOT DEFINED LIBDIR)
++    # Provides CMAKE_INSTALL_LIBDIR.
++    include(GNUInstallDirs)
++    set(LIBDIR ${CMAKE_INSTALL_LIBDIR})
++  endif()
++  if(NOT DEFINED DATADIR)
++    set(DATADIR share)
++  endif()
++endif()
+ 
+ execute_process(COMMAND sh ${CMAKE_SOURCE_DIR}/scripts/version.sh
+   OUTPUT_VARIABLE VERSION)
+@@ -31,14 +50,19 @@ set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
+ 
+ install(TARGETS ${CMAKE_PROJECT_NAME}
+   EXPORT ${CMAKE_PROJECT_NAME}
+-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++  # .so
++  LIBRARY DESTINATION ${LIBDIR}
++  # .dll
++  RUNTIME DESTINATION ${BINDIR}
++  # .dll.a
++  ARCHIVE DESTINATION ${LIBDIR}
+   PUBLIC_HEADER DESTINATION include)
+ 
+ configure_file(${CMAKE_PROJECT_NAME}.pc.in
+   ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.pc @ONLY)
+ 
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.pc
+-  DESTINATION share/pkgconfig)
++  DESTINATION ${DATADIR}/pkgconfig)
+ 
+ # Build example.
+ add_executable(persistent-storage EXCLUDE_FROM_ALL example/persistent-storage.cc)
+diff --git a/iso9660io.pc.in b/iso9660io.pc.in
+index 28c58b4..9a31250 100644
+--- a/iso9660io.pc.in
++++ b/iso9660io.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+ includedir=${prefix}/include
+-libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++libdir=${exec_prefix}/@LIBDIR@
+ 
+ Name: @CMAKE_PROJECT_NAME@
+ Version: @VERSION@
+-- 
+2.14.1
+

@@ -1,0 +1,63 @@
+From edd66895632a4f84a8920187d1a8208b617d181d Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 8 Jun 2017 21:49:50 +0000
+Subject: [PATCH 08/21] Correct format specifiers
+
+and don't fail builds due to warnings.
+---
+ Makefile           | 2 +-
+ libcheckisomd5.c   | 2 +-
+ libimplantisomd5.c | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 35454e4..82b36f0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,7 +10,7 @@ else
+ LIBDIR = lib
+ endif
+ 
+-CFLAGS += -std=gnu11 -Wall -Werror -D_GNU_SOURCE=1 -fPIC $(PYTHONINCLUDE)
++CFLAGS += -std=gnu11 -Wall -D_GNU_SOURCE=1 -fPIC $(PYTHONINCLUDE)
+ 
+ OBJECTS = md5.o libimplantisomd5.o checkisomd5.o implantisomd5
+ SOURCES = $(patsubst %.o,%.c,$(OBJECTS))
+diff --git a/libcheckisomd5.c b/libcheckisomd5.c
+index 3aa0b68..e4045a5 100644
+--- a/libcheckisomd5.c
++++ b/libcheckisomd5.c
+@@ -142,7 +142,7 @@ int printMD5SUM(char *file) {
+     printf("%s:   %s\n", file, info->hashsum);
+     if (strlen(info->fragmentsums) > 0 && info->fragmentcount > 0) {
+         printf("Fragment sums: %s\n", info->fragmentsums);
+-        printf("Fragment count: %ld\n", info->fragmentcount);
++        printf("Fragment count: %zu\n", info->fragmentcount);
+         printf("Supported ISO: %s\n", info->supported ? "yes" : "no");
+     }
+     free(info);
+diff --git a/libimplantisomd5.c b/libimplantisomd5.c
+index 72e8cfb..10f26d1 100644
+--- a/libimplantisomd5.c
++++ b/libimplantisomd5.c
+@@ -131,7 +131,7 @@ int implantISOFile(char *fname, int supported, int forceit, int quiet, char **er
+         printf("md5 = %s\n", hashsum);
+         printf("Inserting fragment md5sums into iso image...\n");
+         printf("fragmd5 = %s\n", fragmentsums);
+-        printf("frags = %ld\n", FRAGMENT_COUNT);
++        printf("frags = %lu\n", FRAGMENT_COUNT);
+     }
+     memset(appdata, ' ', APPDATA_SIZE);
+ 
+@@ -170,7 +170,7 @@ int implantISOFile(char *fname, int supported, int forceit, int quiet, char **er
+     if (writeAppData(appdata, ";", &loc, errstr))
+         goto fail;
+ 
+-    snprintf(appdata_buffer, APPDATA_SIZE, "FRAGMENT COUNT = %ld", FRAGMENT_COUNT);
++    snprintf(appdata_buffer, APPDATA_SIZE, "FRAGMENT COUNT = %lu", FRAGMENT_COUNT);
+     if (writeAppData(appdata, appdata_buffer, &loc, errstr))
+         goto fail;
+     if (writeAppData(appdata, ";", &loc, errstr))
+-- 
+2.14.1
+

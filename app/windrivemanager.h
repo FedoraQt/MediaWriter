@@ -45,26 +45,18 @@ private:
 class WinDrive : public Drive {
     Q_OBJECT
 public:
-    WinDrive(WinDriveProvider *parent, const QString &name, uint64_t size, bool containsLive, int device, const QString &serialNumber);
+    WinDrive(WinDriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive, const QString &serialNumber);
     ~WinDrive();
-
-    Q_INVOKABLE virtual bool write(ReleaseVariant *data) override;
-    Q_INVOKABLE virtual void cancel() override;
-    Q_INVOKABLE virtual void restore() override;
 
     QString serialNumber() const;
 
     bool operator==(const WinDrive &o) const;
 
-private slots:
-    void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
-    void onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus);
-    void onReadyRead();
+private:
+    QString helperBinary() override;
 
 private:
-    int m_device;
     QString m_serialNo;
-    QProcess *m_child { nullptr };
 };
 
 #endif // WINDRIVEMANAGER_H

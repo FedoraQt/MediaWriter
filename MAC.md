@@ -37,6 +37,7 @@ You can build Fedora Media Writer yourself. It has just a few dependencies and b
 ### Dependencies
 
 * `Qt5` (`qtbase`, `qtdeclarative` and `qtquickcontrols`)
+* `coreutils` - Provides `gtac` which is required to build `iso9660io`.
 
 ### Steps
 

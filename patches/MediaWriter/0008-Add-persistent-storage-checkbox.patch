@@ -1,0 +1,97 @@
+From c702e8f9df985a600b115829ee11c6b34d069630 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Sun, 18 Jun 2017 23:05:19 +0000
+Subject: [PATCH 08/40] Add persistent storage checkbox
+
+---
+ app/dialogs/DownloadDialog.qml | 15 +++++++++++++++
+ app/drivemanager.cpp           |  4 ++++
+ app/drivemanager.h             |  2 ++
+ app/linuxdrivemanager.cpp      |  3 +++
+ 4 files changed, 24 insertions(+)
+
+diff --git a/app/dialogs/DownloadDialog.qml b/app/dialogs/DownloadDialog.qml
+index 86076ba..9865e6d 100644
+--- a/app/dialogs/DownloadDialog.qml
++++ b/app/dialogs/DownloadDialog.qml
+@@ -64,6 +64,9 @@ Dialog {
+         target: drives
+         onSelectedChanged: {
+             writeImmediately.checked = false
++            if (drives.selected) {
++                drives.selected.persistentStorage(persistentStorage.checked)
++            }
+         }
+     }
+ 
+@@ -362,6 +365,18 @@ Dialog {
+                                 value: 0.0
+                             }
+                         }
++                        AdwaitaCheckBox {
++                            id: persistentStorage
++                            enabled: [Variant.WRITING, Variant.WRITE_VERIFYING].indexOf(releases.variant.status) < 0
++                            checked: false
++                            text: qsTr("Enable persistent storage")
++                            tooltip: qsTr("May take a lot longer")
++                            onCheckedChanged: {
++                                if (drives.selected) {
++                                    drives.selected.persistentStorage(checked)
++                                }
++                            }
++                        }
+                         AdwaitaCheckBox {
+                             id: writeImmediately
+                             enabled: driveCombo.count && opacity > 0.0
+diff --git a/app/drivemanager.cpp b/app/drivemanager.cpp
+index ebd482c..ead129f 100644
+--- a/app/drivemanager.cpp
++++ b/app/drivemanager.cpp
+@@ -232,6 +232,10 @@ Drive::RestoreStatus Drive::restoreStatus() {
+     return m_restoreStatus;
+ }
+ 
++void Drive::persistentStorage(bool enabled) {
++    m_persistentStorage = enabled;
++}
++
+ bool Drive::write(ReleaseVariant *data) {
+     m_image = data;
+     m_image->setErrorString(QString());
+diff --git a/app/drivemanager.h b/app/drivemanager.h
+index be2e20f..a45336e 100644
+--- a/app/drivemanager.h
++++ b/app/drivemanager.h
+@@ -156,6 +156,7 @@ public:
+     virtual uint64_t size() const;
+     virtual RestoreStatus restoreStatus();
+ 
++    Q_INVOKABLE virtual void persistentStorage(bool enabled);
+     Q_INVOKABLE virtual bool write(ReleaseVariant *data);
+     Q_INVOKABLE virtual void cancel() = 0;
+     Q_INVOKABLE virtual void restore() = 0;
+@@ -175,6 +176,7 @@ protected:
+     uint64_t m_size { 0 };
+     RestoreStatus m_restoreStatus { CLEAN };
+     QString m_error { };
++    bool m_persistentStorage { false };
+ };
+ 
+ #endif // DRIVEMANAGER_H
+diff --git a/app/linuxdrivemanager.cpp b/app/linuxdrivemanager.cpp
+index 141f23b..e6fa634 100644
+--- a/app/linuxdrivemanager.cpp
++++ b/app/linuxdrivemanager.cpp
+@@ -212,6 +212,9 @@ bool LinuxDrive::write(ReleaseVariant *data) {
+     else
+         args << data->temporaryPath();
+     args << m_device;
++    if (m_persistentStorage) {
++        args << "true";
++    }
+     qDebug() << this->metaObject()->className() << "Helper command will be" << args;
+     m_process->setArguments(args);
+ 
+-- 
+2.14.1
+

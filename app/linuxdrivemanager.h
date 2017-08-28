@@ -59,23 +59,12 @@ private:
 class LinuxDrive : public Drive {
     Q_OBJECT
 public:
-    LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout);
+    LinuxDrive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive);
     ~LinuxDrive();
 
-    Q_INVOKABLE virtual bool write(ReleaseVariant *data) override;
-    Q_INVOKABLE virtual void cancel() override;
-    Q_INVOKABLE virtual void restore() override;
-
-private slots:
-    void onReadyRead();
-    void onFinished(int exitCode, QProcess::ExitStatus status);
-    void onRestoreFinished(int exitCode, QProcess::ExitStatus status);
-    void onErrorOccurred(QProcess::ProcessError e);
-
 private:
-    QString m_device;
+    QString helperBinary() override;
 
-    QProcess *m_process { nullptr };
 };
 
 #endif // LINUXDRIVEMANAGER_H

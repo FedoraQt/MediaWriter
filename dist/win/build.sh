@@ -39,7 +39,7 @@ if [ "$1" == "install" ]; then
     exit 0
 fi
 
-BINARIES="libstdc++-6.dll libwinpthread-1.dll libgcc_s_sjlj-1.dll libcrypto-10.dll libssl-10.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll Qt5Core.dll Qt5Gui.dll Qt5Network.dll Qt5Qml.dll Qt5Quick.dll Qt5Widgets.dll Qt5WinExtras.dll"
+BINARIES="libstdc++-6.dll libwinpthread-1.dll libgcc_s_sjlj-1.dll libcrypto-10.dll libssl-10.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll Qt5Core.dll Qt5Gui.dll Qt5Network.dll Qt5Qml.dll Qt5Quick.dll Qt5Widgets.dll Qt5WinExtras.dll libiso9660io.dll"
 PLUGINS="imageformats/qjpeg.dll platforms/qwindows.dll"
 QMLMODULES="Qt QtQml QtQuick/Controls QtQuick/Dialogs QtQuick/Extras QtQuick/Layouts QtQuick/PrivateWidgets QtQuick/Window.2 QtQuick.2"
 
@@ -65,7 +65,7 @@ fi
 
 if [ "$1" == "local" ]; then
     echo "=== Building"
-    if [ "2" == "debug" ]; then
+    if [ "$2" == "debug" ]; then
         mingw32-qmake-qt5 .. CONFIG+=debug
     else
         mingw32-qmake-qt5 ..

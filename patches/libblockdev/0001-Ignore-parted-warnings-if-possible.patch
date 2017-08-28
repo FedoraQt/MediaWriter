@@ -1,0 +1,37 @@
+From 21533094acf7050e67fccae46cb80b2277d9fd55 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Tue, 13 Jun 2017 12:21:48 +0000
+Subject: [PATCH] Ignore parted warnings if possible
+
+Ignore parted exceptions of type warning or information if parted marks
+them as ignorable.
+---
+ src/plugins/part_err.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/plugins/part_err.c b/src/plugins/part_err.c
+index 7cf029e..87d6c2e 100644
+--- a/src/plugins/part_err.c
++++ b/src/plugins/part_err.c
+@@ -17,6 +17,7 @@
+  * Author: Vojtech Trefny <vtrefny@redhat.com>
+  */
+ 
++#include <glib.h>
+ #include <parted/parted.h>
+ 
+ #include "part_err.h"
+@@ -24,6 +25,10 @@
+ static __thread gchar *error_msg = NULL;
+ 
+ PedExceptionOption bd_exc_handler (PedException *ex) {
++    if (ex->type <= PED_EXCEPTION_WARNING && (ex->options & PED_EXCEPTION_IGNORE) != 0) {
++      g_warning ("[parted] %s", ex->message);
++      return PED_EXCEPTION_IGNORE;
++    }
+     error_msg = g_strdup (ex->message);
+     return PED_EXCEPTION_UNHANDLED;
+ }
+-- 
+2.14.1
+

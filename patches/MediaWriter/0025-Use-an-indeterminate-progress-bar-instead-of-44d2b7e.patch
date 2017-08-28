@@ -1,0 +1,52 @@
+From 8652734f07902b434a047fef6c8e3d24ff13cb98 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Mon, 7 Aug 2017 19:25:19 +0000
+Subject: [PATCH 25/40] Use an indeterminate progress bar instead of 44d2b7e
+
+As recommended by @MartinBriza.
+---
+ app/drivemanager.cpp | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/app/drivemanager.cpp b/app/drivemanager.cpp
+index 542db37..bd8fa59 100644
+--- a/app/drivemanager.cpp
++++ b/app/drivemanager.cpp
+@@ -415,24 +415,29 @@ void Drive::onReadyRead() {
+     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING && m_image->status() != ReleaseVariant::WRITING_OVERLAY)
+         m_image->setStatus(ReleaseVariant::WRITING);
+ 
+-    m_progress->setTo(10100);
+-    m_progress->setValue(0);
++    m_progress->setTo(10000);
++    m_progress->setValue(0.0 / 0.0);
+     while (m_process->bytesAvailable() > 0) {
+         QString line = m_process->readLine().trimmed();
+         if (line == "CHECK") {
+             qDebug() << metaObject()->className() << "Written media check starting";
+-            m_progress->setValue(0);
++            m_progress->setValue(0.0 / 0.0);
+             m_image->setStatus(ReleaseVariant::WRITE_VERIFYING);
+         }
+         else if (line == "OVERLAY") {
+             qDebug() << metaObject()->className() << "Starting to create the overlay partition";
+-            m_progress->setValue(0);
++            m_progress->setValue(0.0 / 0.0);
+             m_image->setStatus(ReleaseVariant::WRITING_OVERLAY);
+         }
+         else {
+             bool ok;
+             qreal percentage = line.toLongLong(&ok);
+-            if (ok && percentage >= 0) {
++            if (!ok || percentage < 0)
++                continue;
++            if (percentage >= m_progress->to()) {
++                m_progress->setValue(0.0 / 0.0);
++            }
++            else {
+                 m_progress->setValue(percentage);
+             }
+         }
+-- 
+2.14.1
+

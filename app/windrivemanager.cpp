@@ -213,7 +213,7 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter, bool verb
     delete []pOutBuffer;
     ::CloseHandle(hDevice);
 
-    WinDrive *currentDrive = new WinDrive(this, productVendor + " " + productId, deviceBytes, !hasLetter, nDriveNumber, serialNumber);
+    WinDrive *currentDrive = new WinDrive(this, QString("%0").arg(nDriveNumber), productVendor + " " + productId, deviceBytes, !hasLetter, serialNumber);
     if (m_drives.contains(nDriveNumber) && *m_drives[nDriveNumber] == *currentDrive) {
         currentDrive->deleteLater();
         return true;
@@ -230,103 +230,26 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter, bool verb
     return true;
 }
 
-WinDrive::WinDrive(WinDriveProvider *parent, const QString &name, uint64_t size, bool containsLive, int device, const QString &serialNumber)
-    : Drive(parent, name, size, containsLive)
-    , m_device(device)
+WinDrive::WinDrive(WinDriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive, const QString &serialNumber)
+    : Drive(parent, device, name, size, containsLive)
     , m_serialNo(serialNumber)
 {
 
 }
 
 WinDrive::~WinDrive() {
-    if (m_child)
-        m_child->kill();
+    if (m_process)
+        m_process->kill();
 }
 
-bool WinDrive::write(ReleaseVariant *data) {
-    qDebug() << this->metaObject()->className() << "Preparing to write" << data->fullName() << "to drive" << m_device;
-    if (!Drive::write(data))
-        return false;
-
-    if (m_child) {
-        // TODO some handling of an already present process
-        m_child->deleteLater();
-    }
-    m_child = new QProcess(this);
-    connect(m_child, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &WinDrive::onFinished);
-    connect(m_child, &QProcess::readyRead, this, &WinDrive::onReadyRead);
-
-    if (data->status() != ReleaseVariant::DOWNLOADING)
-        m_image->setStatus(ReleaseVariant::WRITING);
-
+QString WinDrive::helperBinary() {
     if (QFile::exists(qApp->applicationDirPath() + "/helper.exe")) {
-        m_child->setProgram(qApp->applicationDirPath() + "/helper.exe");
+        return qApp->applicationDirPath() + "/helper.exe";
     }
     else if (QFile::exists(qApp->applicationDirPath() + "/../helper.exe")) {
-        m_child->setProgram(qApp->applicationDirPath() + "/../helper.exe");
+        return qApp->applicationDirPath() + "/../helper.exe";
     }
-    else {
-        data->setErrorString(tr("Could not find the helper binary. Check your installation."));
-        return false;
-    }
-
-    QStringList args;
-    args << "write";
-    if (data->status() == ReleaseVariant::WRITING)
-        args << data->iso();
-    else
-        args << data->temporaryPath();
-    args << QString("%1").arg(m_device);
-    m_child->setArguments(args);
-
-    m_progress->setTo(data->size());
-    m_progress->setValue(NAN);
-
-    qDebug() << this->metaObject()->className() << "Starting" << m_child->program() << args;
-    m_child->start();
-    return true;
-}
-
-void WinDrive::cancel() {
-    if (m_child) {
-        m_child->kill();
-        m_child->deleteLater();
-        m_child = nullptr;
-    }
-}
-
-void WinDrive::restore() {
-    qDebug() << this->metaObject()->className() << "Preparing to restore disk" << m_device;
-    if (m_child)
-        m_child->deleteLater();
-
-    m_child = new QProcess(this);
-
-    m_restoreStatus = RESTORING;
-    emit restoreStatusChanged();
-
-    if (QFile::exists(qApp->applicationDirPath() + "/helper.exe")) {
-        m_child->setProgram(qApp->applicationDirPath() + "/helper.exe");
-    }
-    else if (QFile::exists(qApp->applicationDirPath() + "/../helper.exe")) {
-        m_child->setProgram(qApp->applicationDirPath() + "/../helper.exe");
-    }
-    else {
-        m_restoreStatus = RESTORE_ERROR;
-        return;
-    }
-
-    QStringList args;
-    args << "restore";
-    args << QString("%1").arg(m_device);
-    m_child->setArguments(args);
-
-    //connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
-    connect(m_child, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
-
-    qDebug() << this->metaObject()->className() << "Starting" << m_child->program() << args;
-
-    m_child->start(QIODevice::ReadOnly);
+    return "";
 }
 
 QString WinDrive::serialNumber() const {
@@ -335,67 +258,4 @@ QString WinDrive::serialNumber() const {
 
 bool WinDrive::operator==(const WinDrive &o) const {
     return (o.serialNumber() == serialNumber()) && Drive::operator==(o);
-}
-
-void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
-    if (!m_child)
-        return;
-
-    qDebug() << "Child finished" << exitCode << exitStatus;
-    qDebug() << m_child->errorString();
-
-    if (exitCode == 0) {
-        m_image->setStatus(ReleaseVariant::FINISHED);
-    }
-    else {
-        m_image->setErrorString(m_child->readAllStandardError().trimmed());
-        m_image->setStatus(ReleaseVariant::FAILED);
-    }
-
-    m_child->deleteLater();
-    m_child = nullptr;
-}
-
-void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) {
-    if (!m_child)
-        return;
-
-    qCritical() << "Process finished" << exitCode << exitStatus;
-    qCritical() << m_child->readAllStandardError();
-
-    if (exitCode == 0)
-        m_restoreStatus = RESTORED;
-    else
-        m_restoreStatus = RESTORE_ERROR;
-    emit restoreStatusChanged();
-
-    m_child->deleteLater();
-    m_child = nullptr;
-}
-
-void WinDrive::onReadyRead() {
-    if (!m_child)
-        return;
-
-    if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
-        m_image->setStatus(ReleaseVariant::WRITING);
-
-    while (m_child->bytesAvailable() > 0) {
-        QString line = m_child->readLine().trimmed();
-        if (line == "CHECK") {
-            qDebug() << this->metaObject()->className() << "Written media check starting";
-            m_progress->setValue(0);
-            m_image->setStatus(ReleaseVariant::WRITE_VERIFYING);
-        }
-        else {
-            bool ok;
-            qreal bytes = line.toLongLong(&ok);
-            if (ok) {
-                if (bytes < 0)
-                    m_progress->setValue(NAN);
-                else
-                    m_progress->setValue(bytes);
-            }
-        }
-    }
 }

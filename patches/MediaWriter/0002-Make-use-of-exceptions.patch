@@ -1,0 +1,429 @@
+From 84e2eb4e9019a3fb20fda1a636467022a36ee976 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 8 Jun 2017 01:06:50 +0000
+Subject: [PATCH 02/40] Make use of exceptions
+
+Interrupt the control-flow using exceptions so that there's no need to
+check if there was an error after each function call.
+
+This is important because otherwise future code would get very messy.
+
+Always return 1 if an error occurred.
+---
+ helper/linux/drive.cpp | 46 ++++++++++++---------------
+ helper/linux/drive.h   | 12 +++----
+ helper/restorejob.cpp  | 15 +++++++--
+ helper/restorejob.h    |  2 ++
+ helper/writejob.cpp    | 85 ++++++++++++++++++++------------------------------
+ helper/writejob.h      | 10 +++---
+ 6 files changed, 80 insertions(+), 90 deletions(-)
+
+diff --git a/helper/linux/drive.cpp b/helper/linux/drive.cpp
+index 5727f5e..590e79b 100644
+--- a/helper/linux/drive.cpp
++++ b/helper/linux/drive.cpp
+@@ -23,9 +23,11 @@
+ 
+ #include <algorithm>
+ #include <memory>
++#include <stdexcept>
+ 
+ #include <QDBusInterface>
+ #include <QDBusUnixFileDescriptor>
++#include <QObject>
+ #include <QtDBus>
+ 
+ typedef QHash<QString, QVariant> Properties;
+@@ -45,32 +47,30 @@ Drive::Drive(const QString &identifier)
+ /**
+  * Open drive for writing.
+  */
+-int Drive::open() {
++void Drive::open() {
+     QDBusReply<QDBusUnixFileDescriptor> reply = device->callWithArgumentList(QDBus::Block, "OpenForBenchmark", { Properties{ { "writable", true } } });
+     fileDescriptor = reply.value();
+     if (!fileDescriptor.isValid()) {
+-        err << reply.error().message();
+-        err.flush();
++        throw std::runtime_error(reply.error().message().toStdString());
+         fileDescriptor = QDBusUnixFileDescriptor(-1);
+-        return 2;
+     }
+-    return 0;
+ }
+ 
+ /**
+  * Close drive for writing.
+  */
+-int Drive::close() {
++void Drive::close() {
+     fileDescriptor = QDBusUnixFileDescriptor(-1);
+-    return 0;
+ }
+ 
+ /**
+  * Write buffer directly to drive.
+  */
+-bool Drive::write(const void *buffer, std::size_t size) {
++void Drive::write(const void *buffer, std::size_t size) {
+     int fd = getDescriptor();
+-    return static_cast<std::size_t>(::write(fd, buffer, size)) == size;
++    if (static_cast<std::size_t>(::write(fd, buffer, size)) != size) {
++        throw std::runtime_error(QObject::tr("Destination drive is not writable").toStdString());
++    }
+ }
+ 
+ /**
+@@ -84,37 +84,29 @@ int Drive::getDescriptor() {
+  * Create a new dos label on the partition. This essentially wipes all
+  * existing information about partitions.
+  */
+-int Drive::wipe() {
++void Drive::wipe() {
+     QDBusReply<void> formatReply = device->call("Format", "dos", Properties());
+     if (!formatReply.isValid() && formatReply.error().type() != QDBusError::NoReply) {
+-        err << formatReply.error().message() << "\n";
+-        err.flush();
+-        return 1;
++        throw std::runtime_error(formatReply.error().message().toStdString());
+     }
+-    return 0;
+ }
+ 
+ /**
+  * Fill the rest of the drive with a primary partition that uses the fat
+  * filesystem.
+  */
+-int Drive::addPartition(const QString &label) {
++void Drive::addPartition(const QString &label) {
+     QDBusInterface partitionTable("org.freedesktop.UDisks2", identifier, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus());
+     QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", 0ULL, device->property("Size").toULongLong(), "", "", Properties());
+     if (!partitionReply.isValid()) {
+-        err << partitionReply.error().message();
+-        err.flush();
+-        return 2;
++        throw std::runtime_error(partitionReply.error().message().toStdString());
+     }
+     QString partitionPath = partitionReply.value().path();
+     QDBusInterface partition("org.freedesktop.UDisks2", partitionPath, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus());
+     QDBusReply<void> formatPartitionReply = partition.call("Format", "vfat", Properties{ { "update-partition-type", true }, { "label", label } });
+     if (!formatPartitionReply.isValid() && formatPartitionReply.error().type() != QDBusError::NoReply) {
+-        err << formatPartitionReply.error().message() << "\n";
+-        err.flush();
+-        return 3;
++        throw std::runtime_error(formatPartitionReply.error().message().toStdString());
+     }
+-    return 0;
+ }
+ 
+ /**
+@@ -122,14 +114,17 @@ int Drive::addPartition(const QString &label) {
+  */
+ QString Drive::mount(const QString &partitionIdentifier) {
+     QDBusInterface partition("org.freedesktop.UDisks2", partitionIdentifier, "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
+-    QDBusMessage reply = partition.call("Mount", Properties{});
+-    return reply.arguments().first().toString();
++    QDBusReply<QString> reply = partition.call("Mount", Properties{});
++    if (!reply.isValid()) {
++        throw std::runtime_error(reply.error().message().toStdString());
++    }
++    return reply;
+ }
+ 
+ /**
+  * Unmount all partitions managed by udisks.
+  */
+-int Drive::umount() {
++void Drive::umount() {
+     QDBusInterface manager("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus());
+     QDBusMessage message = manager.call("GetManagedObjects");
+ 
+@@ -147,5 +142,4 @@ int Drive::umount() {
+             }
+         }
+     }
+-    return 0;
+ }
+diff --git a/helper/linux/drive.h b/helper/linux/drive.h
+index b24798d..c3f1515 100644
+--- a/helper/linux/drive.h
++++ b/helper/linux/drive.h
+@@ -33,14 +33,14 @@ public:
+      * Shared public interface across platforms.
+      */
+     Drive(const QString &driveIdentifier);
+-    int open();
+-    int close();
+-    bool write(const void *buffer, std::size_t size);
++    void open();
++    void close();
++    void write(const void *buffer, std::size_t size);
+     int getDescriptor();
+-    int wipe();
+-    int addPartition(const QString &label = "");
++    void wipe();
++    void addPartition(const QString &label = "");
+     QString mount(const QString &partitionIdentifier);
+-    int umount();
++    void umount();
+ 
+ private:
+     QTextStream err;
+diff --git a/helper/restorejob.cpp b/helper/restorejob.cpp
+index cf8c526..238b11f 100644
+--- a/helper/restorejob.cpp
++++ b/helper/restorejob.cpp
+@@ -21,6 +21,7 @@
+ 
+ #include <algorithm>
+ #include <memory>
++#include <stdexcept>
+ 
+ #include <QCoreApplication>
+ #include <QString>
+@@ -29,10 +30,20 @@
+ #include "drive.h"
+ 
+ RestoreJob::RestoreJob(const QString &where)
+-    : QObject(nullptr), drive(std::move(std::unique_ptr<Drive>(new Drive(where)))) {
++    : QObject(nullptr), err(stderr), drive(std::move(std::unique_ptr<Drive>(new Drive(where)))) {
+     QTimer::singleShot(0, this, SLOT(work()));
+ }
+ 
+ void RestoreJob::work() {
+-    qApp->exit(drive->umount() || drive->wipe() || drive->addPartition());
++    try {
++        drive->umount();
++        drive->wipe();
++        drive->addPartition();
++    } catch (std::runtime_error &error) {
++        err << error.what() << '\n';
++        err.flush();
++        qApp->exit(1);
++        return;
++    }
++    qApp->exit(0);
+ }
+diff --git a/helper/restorejob.h b/helper/restorejob.h
+index 2fdb2c7..3836e4f 100644
+--- a/helper/restorejob.h
++++ b/helper/restorejob.h
+@@ -23,6 +23,7 @@
+ #include <memory>
+ 
+ #include <QObject>
++#include <QTextStream>
+ 
+ #include "drive.h"
+ 
+@@ -34,6 +35,7 @@ public slots:
+     void work();
+ 
+ private:
++    QTextStream err;
+     std::unique_ptr<Drive> drive;
+ };
+ 
+diff --git a/helper/writejob.cpp b/helper/writejob.cpp
+index a13f448..0058136 100644
+--- a/helper/writejob.cpp
++++ b/helper/writejob.cpp
+@@ -23,6 +23,7 @@
+ #include <memory>
+ #include <random>
+ #include <tuple>
++#include <stdexcept>
+ 
+ #include <QCoreApplication>
+ #include <QFile>
+@@ -64,8 +65,17 @@ void WriteJob::boot() {
+     work();
+ }
+ 
+-bool WriteJob::work() {
+-    return write() && check();
++void WriteJob::work() {
++    try {
++        write();
++        check();
++    } catch (std::runtime_error &error) {
++        err << error.what() << '\n';
++        err.flush();
++        qApp->exit(1);
++        return;
++    }
++    qApp->exit(0);
+ }
+ 
+ void WriteJob::onFileChanged(const QString &path) {
+@@ -85,14 +95,14 @@ void WriteJob::onFileChanged(const QString &path) {
+     work();
+ }
+ 
+-bool WriteJob::write() {
++void WriteJob::write() {
+     if (what.endsWith(".xz"))
+-        return writeCompressed();
++        writeCompressed();
+     else
+-        return writePlain();
++        writePlain();
+ }
+ 
+-bool WriteJob::writeCompressed() {
++void WriteJob::writeCompressed() {
+     qint64 totalRead = 0;
+ 
+     lzma_stream strm = LZMA_STREAM_INIT;
+@@ -108,8 +118,7 @@ bool WriteJob::writeCompressed() {
+ 
+     ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
+     if (ret != LZMA_OK) {
+-        err << tr("Failed to start decompressing.");
+-        return false;
++        throw std::runtime_error(tr("Failed to start decompressing.").toStdString());
+     }
+ 
+     strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
+@@ -133,36 +142,30 @@ bool WriteJob::writeCompressed() {
+ 
+         ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
+         if (ret == LZMA_STREAM_END) {
+-            if (!drive->write(outBuffer, bufferSize - strm.avail_out)) {
+-                return false;
+-            }
+-            return true;
++            drive->write(outBuffer, bufferSize - strm.avail_out);
++            return;
+         }
+         if (ret != LZMA_OK) {
+             switch (ret) {
+             case LZMA_MEM_ERROR:
+-                err << tr("There is not enough memory to decompress the file.");
++                throw std::runtime_error(tr("There is not enough memory to decompress the file.").toStdString());
+                 break;
+             case LZMA_FORMAT_ERROR:
+             case LZMA_DATA_ERROR:
+             case LZMA_BUF_ERROR:
+-                err << tr("The downloaded compressed file is corrupted.");
++                throw std::runtime_error(tr("The downloaded compressed file is corrupted.").toStdString());
+                 break;
+             case LZMA_OPTIONS_ERROR:
+-                err << tr("Unsupported compression options.");
++                throw std::runtime_error(tr("Unsupported compression options.").toStdString());
+                 break;
+             default:
+-                err << tr("Unknown decompression error.");
++                throw std::runtime_error(tr("Unknown decompression error.").toStdString());
+                 break;
+             }
+-            qApp->exit(4);
+-            return false;
+         }
+ 
+         if (strm.avail_out == 0) {
+-            if (!drive->write(outBuffer, bufferSize - strm.avail_out)) {
+-                return false;
+-            }
++            drive->write(outBuffer, bufferSize - strm.avail_out);
+ 
+             strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
+             strm.avail_out = bufferSize;
+@@ -170,16 +173,14 @@ bool WriteJob::writeCompressed() {
+     }
+ }
+ 
+-bool WriteJob::writePlain() {
++void WriteJob::writePlain() {
+ 
+     QFile inFile(what);
+     inFile.open(QIODevice::ReadOnly);
+ 
+     if (!inFile.isReadable()) {
+-        err << tr("Source image is not readable") << what;
+-        err.flush();
+-        qApp->exit(2);
+-        return false;
++        QString error = tr("Source image is not readable") + " " + what;
++        throw std::runtime_error(error.toStdString());
+     }
+ 
+     PageAlignedBuffer<2> buffers;
+@@ -192,46 +193,28 @@ bool WriteJob::writePlain() {
+     while (!inFile.atEnd()) {
+         qint64 len = inFile.read(buffer, bufferSize);
+         if (len < 0) {
+-            err << tr("Source image is not readable");
+-            err.flush();
+-            qApp->exit(3);
+-            return false;
+-        }
+-        if (!drive->write(buffer, len)) {
+-            err << tr("Destination drive is not writable");
+-            err.flush();
+-            qApp->exit(3);
+-            return false;
++            throw std::runtime_error(tr("Source image is not readable").toStdString());
+         }
++        drive->write(buffer, len);
+         total += len;
+         out << total << '\n';
+         out.flush();
+     }
+-    return true;
+ }
+ 
+-bool WriteJob::check() {
++void WriteJob::check() {
+     out << "CHECK\n";
+     out.flush();
+ 
+     switch (mediaCheckFD(drive->getDescriptor(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
+     case ISOMD5SUM_CHECK_NOT_FOUND:
+     case ISOMD5SUM_CHECK_PASSED:
+-        err << "OK\n";
+-        err.flush();
+-        qApp->exit(0);
++        out << "OK\n";
++        out.flush();
+         break;
+     case ISOMD5SUM_CHECK_FAILED:
+-        err << tr("Your drive is probably damaged.") << "\n";
+-        err.flush();
+-        qApp->exit(1);
+-        return false;
++        throw std::runtime_error(tr("Your drive is probably damaged.").toStdString());
+     default:
+-        err << tr("Unexpected error occurred during media check.") << "\n";
+-        err.flush();
+-        qApp->exit(1);
+-        return false;
++        throw std::runtime_error(tr("Unexpected error occurred during media check.").toStdString());
+     }
+-
+-    return true;
+ }
+diff --git a/helper/writejob.h b/helper/writejob.h
+index 216aa1e..334023f 100644
+--- a/helper/writejob.h
++++ b/helper/writejob.h
+@@ -42,11 +42,11 @@ public:
+ 
+     static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
+     int onMediaCheckAdvanced(long long offset, long long total);
+-    bool work();
+-    bool write();
+-    bool writeCompressed();
+-    bool writePlain();
+-    bool check();
++    void work();
++    void write();
++    void writeCompressed();
++    void writePlain();
++    void check();
+ public slots:
+     void boot();
+     void onFileChanged(const QString &path);
+-- 
+2.14.1
+

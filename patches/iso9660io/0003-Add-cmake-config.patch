@@ -1,0 +1,30 @@
+From 3f5a0253bbb9b5fad3a80dc7039e75cb705ed651 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 1 Jun 2017 06:45:19 +0000
+Subject: [PATCH 03/28] Add cmake config
+
+---
+ CMakeLists.txt | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+ create mode 100644 CMakeLists.txt
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+new file mode 100644
+index 0000000..ed4921d
+--- /dev/null
++++ b/CMakeLists.txt
+@@ -0,0 +1,11 @@
++cmake_minimum_required(VERSION 2.6)
++project(iso9660)
++
++set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -O3")
++
++include_directories(.)
++add_library(iso9660 SHARED include/iso9660.h include/read.h include/write.h
++  include/utility.h src/iso9660.cc src/read.cc src/utility.cc)
++
++add_executable(persistent-storage example/persistent-storage.cc)
++target_link_libraries(persistent-storage iso9660)
+-- 
+2.14.1
+

@@ -1,0 +1,44 @@
+From e08cbbcd8e2d73fec519004bb480b5db2ec95c65 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Wed, 14 Jun 2017 15:20:15 +0000
+Subject: [PATCH 07/40] Use pkgconfig
+
+---
+ app/app.pro       | 2 ++
+ helper/helper.pro | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/app/app.pro b/app/app.pro
+index ca6b304..cfd6c43 100644
+--- a/app/app.pro
++++ b/app/app.pro
+@@ -5,8 +5,10 @@ TARGET = mediawriter
+ QT += qml quick widgets network
+ 
+ LIBS += -lcheckisomd5
++PKGCONFIG += isomd5sum
+ 
+ CONFIG += c++11
++CONFIG += link_pkgconfig
+ 
+ HEADERS += \
+     drivemanager.h \
+diff --git a/helper/helper.pro b/helper/helper.pro
+index 88ae7db..c450530 100644
+--- a/helper/helper.pro
++++ b/helper/helper.pro
+@@ -3,9 +3,11 @@ TEMPLATE = app
+ QT += core
+ 
+ LIBS += -lcheckisomd5 -limplantisomd5 -liso9660io
++PKGCONFIG += isomd5sum iso9660io
+ 
+ CONFIG += c++11
+ CONFIG += console
++CONFIG += link_pkgconfig
+ 
+ TARGET = helper
+ 
+-- 
+2.14.1
+

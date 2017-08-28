@@ -1,0 +1,55 @@
+From d1e6cf2cccb0b43219fcb5cb5120d84392b8e559 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Tue, 16 May 2017 10:58:00 +0000
+Subject: [PATCH 05/21] Add derived clang format and editorconfig
+
+---
+ .clang-format | 18 ++++++++++++++++++
+ .editorconfig | 10 ++++++++++
+ 2 files changed, 28 insertions(+)
+ create mode 100644 .clang-format
+ create mode 100644 .editorconfig
+
+diff --git a/.clang-format b/.clang-format
+new file mode 100644
+index 0000000..c80020e
+--- /dev/null
++++ b/.clang-format
+@@ -0,0 +1,18 @@
++---
++Language: Cpp
++Standard: Cpp11
++IndentCaseLabels: true
++UseTab: Never
++IndentWidth: 4
++AlignAfterOpenBracket: Align
++PointerAlignment: Right
++DerivePointerAlignment: false
++AllowShortIfStatementsOnASingleLine: false
++AllowShortBlocksOnASingleLine: false
++AllowShortCaseLabelsOnASingleLine: false
++ColumnLimit: 0
++BreakBeforeBraces: Attach
++SpaceAfterCStyleCast: true
++Cpp11BracedListStyle: false
++SortIncludes: false
++MaxEmptyLinesToKeep: 1
+diff --git a/.editorconfig b/.editorconfig
+new file mode 100644
+index 0000000..224534b
+--- /dev/null
++++ b/.editorconfig
+@@ -0,0 +1,10 @@
++root = true
++
++[*]
++end_of_file = lf
++insert_final_newline = true
++charset = utf-8
++
++[*.{c,h}]
++indent_style = space
++indent_size = 4
+-- 
+2.14.1
+

@@ -1,0 +1,541 @@
+From d6a5cebe8000d1be9ef3537270ceb1b741822b8a Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Tue, 4 Jul 2017 00:53:50 +0000
+Subject: [PATCH 16/21] Use cmake with project layout
+
+Make the project buildable using MinGW.
+---
+ CMakeLists.txt                                   | 104 +++++++++++++++++++++++
+ Makefile                                         |  76 -----------------
+ libcheckisomd5.h => include/libcheckisomd5.h     |   0
+ libimplantisomd5.h => include/libimplantisomd5.h |   0
+ md5.h => include/md5.h                           |   4 +-
+ utilities.h => include/utilities.h               |  12 +--
+ isomd5sum.pc.in                                  |  13 +--
+ checkisomd5.1 => man/checkisomd5.1               |   0
+ implantisomd5.1 => man/implantisomd5.1           |   0
+ scripts/version.sh                               |   3 +
+ checkisomd5.c => src/checkisomd5.c               |   4 +-
+ implantisomd5.c => src/implantisomd5.c           |   4 +-
+ libcheckisomd5.c => src/libcheckisomd5.c         |   8 +-
+ libimplantisomd5.c => src/libimplantisomd5.c     |   8 +-
+ md5.c => src/md5.c                               |  25 ++++--
+ pyisomd5sum.c => src/pyisomd5sum.c               |   4 +-
+ utilities.c => src/utilities.c                   |  22 ++++-
+ testpyisomd5sum.py => test/pyisomd5sum.py        |   0
+ 18 files changed, 177 insertions(+), 110 deletions(-)
+ create mode 100644 CMakeLists.txt
+ delete mode 100644 Makefile
+ rename libcheckisomd5.h => include/libcheckisomd5.h (100%)
+ rename libimplantisomd5.h => include/libimplantisomd5.h (100%)
+ rename md5.h => include/md5.h (89%)
+ rename utilities.h => include/utilities.h (92%)
+ rename checkisomd5.1 => man/checkisomd5.1 (100%)
+ rename implantisomd5.1 => man/implantisomd5.1 (100%)
+ create mode 100644 scripts/version.sh
+ rename checkisomd5.c => src/checkisomd5.c (98%)
+ rename implantisomd5.c => src/implantisomd5.c (97%)
+ rename libcheckisomd5.c => src/libcheckisomd5.c (96%)
+ rename libimplantisomd5.c => src/libimplantisomd5.c (97%)
+ rename md5.c => src/md5.c (93%)
+ rename pyisomd5sum.c => src/pyisomd5sum.c (97%)
+ rename utilities.c => src/utilities.c (94%)
+ rename testpyisomd5sum.py => test/pyisomd5sum.py (100%)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+new file mode 100644
+index 0000000..eedd8eb
+--- /dev/null
++++ b/CMakeLists.txt
+@@ -0,0 +1,104 @@
++cmake_minimum_required(VERSION 2.6)
++project(isomd5sum)
++
++if(NOT DEFINED BINDIR)
++  set(BINDIR bin)
++endif()
++
++if(MINGW)
++  if(NOT DEFINED LIBDIR)
++    set(LIBDIR lib)
++  endif()
++  if(NOT DEFINED DATADIR)
++    set(DATADIR ${LIBDIR})
++  endif()
++else()
++  if(NOT DEFINED LIBDIR)
++    # Provides CMAKE_INSTALL_LIBDIR.
++    include(GNUInstallDirs)
++    set(LIBDIR ${CMAKE_INSTALL_LIBDIR})
++  endif()
++  if(NOT DEFINED DATADIR)
++    set(DATADIR share)
++  endif()
++endif()
++
++execute_process(COMMAND sh ${CMAKE_SOURCE_DIR}/scripts/version.sh
++  OUTPUT_VARIABLE VERSION)
++set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -std=gnu11 -Wall -fPIC")
++
++configure_file(${CMAKE_PROJECT_NAME}.pc.in
++  ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.pc @ONLY)
++
++include_directories(.)
++
++add_library(libimplantisomd5 STATIC
++  src/md5.c src/utilities.c src/libimplantisomd5.c
++  include/md5.h include/utilities.h include/libimplantisomd5.h)
++set_target_properties(libimplantisomd5 PROPERTIES
++  OUTPUT_NAME implantisomd5
++  PUBLIC_HEADER include/libimplantisomd5.h)
++
++add_library(libcheckisomd5 STATIC
++  src/md5.c src/utilities.c src/libcheckisomd5.c
++  include/md5.h include/utilities.h include/libcheckisomd5.h)
++set_target_properties(libcheckisomd5 PROPERTIES
++  OUTPUT_NAME checkisomd5
++  PUBLIC_HEADER include/libcheckisomd5.h)
++
++# Check if popt exists because it doesn't exist in mingw.
++find_path(POPT_INCLUDE_DIR NAMES popt.h)
++find_library(POPT_LIBRARY NAMES popt)
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(popt DEFAULT_MSG
++  POPT_LIBRARY POPT_INCLUDE_DIR)
++if(popt_FOUND)
++  add_executable(implantisomd5 src/implantisomd5.c)
++  target_link_libraries(implantisomd5 libimplantisomd5 popt)
++
++  add_executable(checkisomd5 src/checkisomd5.c)
++  target_link_libraries(checkisomd5 libcheckisomd5 popt)
++
++  install(TARGETS implantisomd5 checkisomd5
++    EXPORT bin
++    RUNTIME DESTINATION ${BINDIR})
++
++  install(FILES ${CMAKE_SOURCE_DIR}/man/implantisomd5.1
++    ${CMAKE_SOURCE_DIR}/man/checkisomd5.1
++    DESTINATION ${DATADIR}/man/man1)
++endif()
++
++find_package(PythonLibs ${PYTHON_VERSION})
++if(PythonLibs_FOUND)
++  include_directories(${PYTHON_INCLUDE_DIRS})
++  # FIXME(squimrel): Library should be named pyisomd5sum.so insteead of libpyisomd5sum.so.
++  add_library(pyisomd5sum SHARED src/pyisomd5sum.c)
++  set_target_properties(pyisomd5sum PROPERTIES LIBRARY_OUTPUT_NAME pyisomd5sum)
++  target_link_libraries(pyisomd5sum libimplantisomd5 libcheckisomd5)
++
++  find_package(PythonInterp ${PYTHON_VERSION})
++  if(PythonInterp_FOUND)
++    execute_process(COMMAND
++      ${PYTHON_EXECUTABLE} -c "\
++import sys\n\
++import site\n\
++sitepackages = site.getsitepackages()[0][1:]\n\
++if sitepackages.startswith('usr/'):\n\
++  sitepackages = sitepackages.split('/', 1)[1]\n\
++sys.stdout.write(sitepackages)"
++      OUTPUT_VARIABLE PYTHON_SITE_PACKAGES)
++
++    install(TARGETS pyisomd5sum
++      EXPORT python
++      LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/${PYTHON_SITE_PACKAGES}
++      RUNTIME DESTINATION ${BINDIR})
++  endif()
++endif()
++
++install(TARGETS libimplantisomd5 libcheckisomd5
++  EXPORT devel
++  ARCHIVE DESTINATION ${LIBDIR}
++  PUBLIC_HEADER DESTINATION include)
++
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.pc
++  DESTINATION ${DATADIR}/pkgconfig)
+diff --git a/Makefile b/Makefile
+deleted file mode 100644
+index df16a3b..0000000
+--- a/Makefile
++++ /dev/null
+@@ -1,76 +0,0 @@
+-PYTHON ?= python3
+-PYTHONSITEPACKAGES := $(shell $(PYTHON) -c 'import site; print(site.getsitepackages()[0])')
+-PYTHONINCLUDE := $(shell $(PYTHON)-config --includes)
+-
+-VERSION=1.2.1
+-
+-ifneq (,$(filter sparc64 ppc64 ppc64le x86_64 s390x aarch64,$(shell uname -m)))
+-LIBDIR = lib64
+-else
+-LIBDIR = lib
+-endif
+-
+-CFLAGS += -std=gnu11 -Wall -D_GNU_SOURCE=1 -fPIC $(PYTHONINCLUDE)
+-
+-OBJECTS = md5.o libimplantisomd5.o checkisomd5.o implantisomd5
+-SOURCES = $(patsubst %.o,%.c,$(OBJECTS))
+-LDFLAGS += -fPIC
+-
+-PYOBJS = pyisomd5sum.o libcheckisomd5.a libimplantisomd5.a
+-
+-all: implantisomd5 checkisomd5 pyisomd5sum.so libimplantisomd5.a libcheckisomd5.a
+-
+-%.o: %.c
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -c -O3 -o $@ $<
+-
+-implantisomd5: implantisomd5.o libimplantisomd5.a
+-	$(CC) $(CPPFLAGS) $(CFLAGS) implantisomd5.o libimplantisomd5.a -lpopt $(LDFLAGS) -o implantisomd5
+-
+-checkisomd5: checkisomd5.o libcheckisomd5.a
+-	$(CC) $(CPPFLAGS) $(CFLAGS) checkisomd5.o libcheckisomd5.a -lpopt $(LDFLAGS) -o checkisomd5
+-
+-libimplantisomd5.a: libimplantisomd5.a(libimplantisomd5.o md5.o utilities.o)
+-
+-libcheckisomd5.a: libcheckisomd5.a(libcheckisomd5.o md5.o utilities.o)
+-
+-pyisomd5sum.so: $(PYOBJS)
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -shared -g -fpic $(PYOBJS) $(LDFLAGS) -o pyisomd5sum.so
+-
+-install: all install-bin install-python install-devel
+-
+-install-bin:
+-	install -d -m 0755 $(DESTDIR)/usr/bin
+-	install -d -m 0755 $(DESTDIR)/usr/share/man/man1
+-	install -m 0755 implantisomd5 $(DESTDIR)/usr/bin
+-	install -m 0755 checkisomd5 $(DESTDIR)/usr/bin
+-	install -m 0644 implantisomd5.1 $(DESTDIR)/usr/share/man/man1
+-	install -m 0644 checkisomd5.1 $(DESTDIR)/usr/share/man/man1
+-
+-install-python:
+-	install -d -m 0755 $(DESTDIR)$(PYTHONSITEPACKAGES)
+-	install -m 0755 pyisomd5sum.so $(DESTDIR)$(PYTHONSITEPACKAGES)
+-
+-install-devel:
+-	install -d -m 0755 $(DESTDIR)/usr/include
+-	install -d -m 0755 $(DESTDIR)/usr/$(LIBDIR)
+-	install -d -m 0755 $(DESTDIR)/usr/share/pkgconfig
+-	install -m 0644 libimplantisomd5.h $(DESTDIR)/usr/include/
+-	install -m 0644 libcheckisomd5.h $(DESTDIR)/usr/include/
+-	install -m 0644 libimplantisomd5.a $(DESTDIR)/usr/$(LIBDIR)
+-	install -m 0644 libcheckisomd5.a $(DESTDIR)/usr/$(LIBDIR)
+-	sed "s#@VERSION@#${VERSION}#g; s#@includedir@#${DESTDIR}/usr/include#g; s#@libdir@#${DESTDIR}/usr/${LIBDIR}#g" isomd5sum.pc.in > ${DESTDIR}/usr/share/pkgconfig/isomd5sum.pc
+-
+-clean:
+-	rm -f *.o *.so *.pyc *.a .depend *~
+-	rm -f implantisomd5 checkisomd5 
+-
+-tag:
+-	@git tag -a -m "Tag as $(VERSION)" -f $(VERSION)
+-	@echo "Tagged as $(VERSION)"
+-
+-archive:
+-	@git archive --format=tar --prefix=isomd5sum-$(VERSION)/ HEAD |bzip2 > isomd5sum-$(VERSION).tar.bz2
+-	@echo "The final archive is in isomd5sum-$(VERSION).tar.bz2"
+-
+-test:
+-	./testpyisomd5sum.py
+diff --git a/libcheckisomd5.h b/include/libcheckisomd5.h
+similarity index 100%
+rename from libcheckisomd5.h
+rename to include/libcheckisomd5.h
+diff --git a/libimplantisomd5.h b/include/libimplantisomd5.h
+similarity index 100%
+rename from libimplantisomd5.h
+rename to include/libimplantisomd5.h
+diff --git a/md5.h b/include/md5.h
+similarity index 89%
+rename from md5.h
+rename to include/md5.h
+index fd4ea0e..3427cd3 100644
+--- a/md5.h
++++ b/include/md5.h
+@@ -2,9 +2,9 @@
+ #ifndef MD5_H
+ #define MD5_H
+ 
+-#include <sys/types.h>
++#include <stdint.h>
+ 
+-typedef u_int32_t uint32;
++typedef uint32_t uint32;
+ 
+ struct MD5Context {
+ 	uint32 buf[4];
+diff --git a/utilities.h b/include/utilities.h
+similarity index 92%
+rename from utilities.h
+rename to include/utilities.h
+index 909696a..41315db 100644
+--- a/utilities.h
++++ b/include/utilities.h
+@@ -29,7 +29,9 @@
+ #include "md5.h"
+ 
+ #ifdef _WIN32
+-int getpagesize() { return 2048; }
++size_t getpagesize();
++
++void *aligned_alloc(size_t size, size_t alignment);
+ #endif
+ 
+ #ifndef O_BINARY
+@@ -50,12 +52,12 @@ int getpagesize() { return 2048; }
+ #define SIZE_OFFSET 84
+ /* Number of sectors to ignore at end of iso when computing sum. These are
+  * ignored due to problems reading last few sectors on burned CDs. */
+-#define SKIPSECTORS 15LL
+-#define SECTOR_SIZE 2048LL
+-#define NUM_SYSTEM_SECTORS 16LL
++#define SKIPSECTORS 15L
++#define SECTOR_SIZE 2048L
++#define NUM_SYSTEM_SECTORS 16L
+ #define SYSTEM_AREA_SIZE (NUM_SYSTEM_SECTORS * SECTOR_SIZE)
+ /* According to ECMA-119 8.4.32 */
+-#define APPDATA_OFFSET 883LL
++#define APPDATA_OFFSET 883L
+ #define APPDATA_SIZE 512
+ 
+ struct volume_info {
+diff --git a/isomd5sum.pc.in b/isomd5sum.pc.in
+index f68ad60..a27597d 100644
+--- a/isomd5sum.pc.in
++++ b/isomd5sum.pc.in
+@@ -1,9 +1,12 @@
+-includedir=@includedir@
+-libdir=@libdir@
++prefix=@CMAKE_INSTALL_PREFIX@
++exec_prefix=@CMAKE_INSTALL_PREFIX@
++includedir=${prefix}/include
++libdir=${exec_prefix}/@LIBDIR@
+ 
+-Name: isomd5sum
+-Description: Utilities for working with md5sum implanted in ISO images
+-URL: https://github.com/rhinstaller/isomd5sum
++Name: @CMAKE_PROJECT_NAME@
+ Version: @VERSION@
++Description: The isomd5sum package contains utilities for implanting and
++verifying an md5sum implanted into an ISO9660 image.
++URL: https://github.com/rhinstaller/isomd5sum
+ Cflags: -I${includedir}
+ Libs: -L${libdir}
+diff --git a/checkisomd5.1 b/man/checkisomd5.1
+similarity index 100%
+rename from checkisomd5.1
+rename to man/checkisomd5.1
+diff --git a/implantisomd5.1 b/man/implantisomd5.1
+similarity index 100%
+rename from implantisomd5.1
+rename to man/implantisomd5.1
+diff --git a/scripts/version.sh b/scripts/version.sh
+new file mode 100644
+index 0000000..232cacc
+--- /dev/null
++++ b/scripts/version.sh
+@@ -0,0 +1,3 @@
++#!/bin/sh
++echo "$(git describe --abbrev=0 --tags 2>/dev/null || echo 0)" | \
++  cut -d "-" -f1 | tr -d "\n"
+diff --git a/checkisomd5.c b/src/checkisomd5.c
+similarity index 98%
+rename from checkisomd5.c
+rename to src/checkisomd5.c
+index a1656c3..0ebee7e 100644
+--- a/checkisomd5.c
++++ b/src/checkisomd5.c
+@@ -24,8 +24,8 @@
+ #include <popt.h>
+ #include <termios.h>
+ 
+-#include "md5.h"
+-#include "libcheckisomd5.h"
++#include "./include/libcheckisomd5.h"
++#include "./include/md5.h"
+ 
+ struct progressCBData {
+     int verbose;
+diff --git a/implantisomd5.c b/src/implantisomd5.c
+similarity index 97%
+rename from implantisomd5.c
+rename to src/implantisomd5.c
+index d55cdc5..bc162f2 100644
+--- a/implantisomd5.c
++++ b/src/implantisomd5.c
+@@ -22,8 +22,8 @@
+ #include <stdlib.h>
+ #include <popt.h>
+ 
+-#include "md5.h"
+-#include "libimplantisomd5.h"
++#include "./include/libimplantisomd5.h"
++#include "./include/md5.h"
+ 
+ static int usage(void) {
+     fprintf(stderr, "implantisomd5:         implantisomd5 [--force] [--supported-iso] <isofilename>\n");
+diff --git a/libcheckisomd5.c b/src/libcheckisomd5.c
+similarity index 96%
+rename from libcheckisomd5.c
+rename to src/libcheckisomd5.c
+index bd7b86f..6270fe2 100644
+--- a/libcheckisomd5.c
++++ b/src/libcheckisomd5.c
+@@ -29,9 +29,9 @@
+ #include <fcntl.h>
+ #include <string.h>
+ 
+-#include "md5.h"
+-#include "libcheckisomd5.h"
+-#include "utilities.h"
++#include "./include/libcheckisomd5.h"
++#include "./include/md5.h"
++#include "./include/utilities.h"
+ 
+ static void clear_appdata(unsigned char *const buffer, const size_t size, const off_t appdata_offset, const off_t offset) {
+     static const ssize_t buffer_start = 0;
+@@ -148,7 +148,7 @@ int printMD5SUM(const char *file) {
+     printf("%s:   %s\n", file, info->hashsum);
+     if (strlen(info->fragmentsums) > 0 && info->fragmentcount > 0) {
+         printf("Fragment sums: %s\n", info->fragmentsums);
+-        printf("Fragment count: %zu\n", info->fragmentcount);
++        printf("Fragment count: %lu\n", (unsigned long) (info->fragmentcount));
+         printf("Supported ISO: %s\n", info->supported ? "yes" : "no");
+     }
+     free(info);
+diff --git a/libimplantisomd5.c b/src/libimplantisomd5.c
+similarity index 97%
+rename from libimplantisomd5.c
+rename to src/libimplantisomd5.c
+index 98f8152..1c728ef 100644
+--- a/libimplantisomd5.c
++++ b/src/libimplantisomd5.c
+@@ -30,9 +30,9 @@
+ #include <string.h>
+ #include <unistd.h>
+ 
+-#include "md5.h"
+-#include "libimplantisomd5.h"
+-#include "utilities.h"
++#include "./include/libimplantisomd5.h"
++#include "./include/md5.h"
++#include "./include/utilities.h"
+ 
+ static int writeAppData(unsigned char *const appdata, const char *const valstr, size_t *loc, char **errstr) {
+     size_t vallen = strlen(valstr);
+@@ -147,7 +147,7 @@ int implantISOFD(int isofd, int supported, int forceit, int quiet, char **errstr
+         return -1;
+ 
+     char appdata_buffer[APPDATA_SIZE];
+-    snprintf(appdata_buffer, APPDATA_SIZE, "SKIPSECTORS = %lld", SKIPSECTORS);
++    snprintf(appdata_buffer, APPDATA_SIZE, "SKIPSECTORS = %ld", SKIPSECTORS);
+ 
+     if (writeAppData(appdata, appdata_buffer, &loc, errstr))
+         return -1;
+diff --git a/md5.c b/src/md5.c
+similarity index 93%
+rename from md5.c
+rename to src/md5.c
+index ca6bf50..4acd9fb 100644
+--- a/md5.c
++++ b/src/md5.c
+@@ -20,13 +20,26 @@
+  */
+ 
+ #include <string.h>
+-#include <endian.h>
+-#include "md5.h"
+ 
+-void MD5_Transform(uint32 *buf, uint32 const *in);
++#include "./include/md5.h"
++
+ 
+-#define IS_BIG_ENDIAN() (__BYTE_ORDER == __BIG_ENDIAN)
+-#define IS_LITTLE_ENDIAN() (__BYTE_ORDER == __LITTLE_ENDIAN)
++enum Endian { BIG_ENDIAN = 0, LITTLE_ENDIAN = 1 };
++
++/**
++ * Any detection will always be compile-time and not conform to the standards
++ * plus little endian is more popular these days so this should be just fine.
++ */
++#if defined(__BYTE_ORDER) && __BYTE_ORDER == __BIG_ENDIAN ||                 \
++    defined(__BIG_ENDIAN__) || defined(__ARMEB__) || defined(__THUMBEB__) || \
++    defined(__AARCH64EB__) || defined(_MIBSEB) || defined(__MIBSEB) ||       \
++    defined(__MIBSEB__)
++#define ENDIANNESS BIG_ENDIAN
++#else
++#define ENDIANNESS LITTLE_ENDIAN
++#endif
++
++void MD5_Transform(uint32 *buf, uint32 const *in);
+ 
+ static void byteReverse(unsigned char *buf, unsigned longs);
+ 
+@@ -61,7 +74,7 @@ void MD5_Init(struct MD5Context *ctx)
+         ctx->bits[1] = 0;
+ 
+ 
+-        if (IS_BIG_ENDIAN())
++        if (ENDIANNESS == BIG_ENDIAN)
+              ctx->doByteReverse = 1;
+         else 
+              ctx->doByteReverse = 0;
+diff --git a/pyisomd5sum.c b/src/pyisomd5sum.c
+similarity index 97%
+rename from pyisomd5sum.c
+rename to src/pyisomd5sum.c
+index b5134b9..6923df5 100644
+--- a/pyisomd5sum.c
++++ b/src/pyisomd5sum.c
+@@ -20,8 +20,8 @@
+ #include <stdio.h>
+ #include <sys/types.h>
+ 
+-#include "libcheckisomd5.h"
+-#include "libimplantisomd5.h"
++#include "./include/libcheckisomd5.h"
++#include "./include/libimplantisomd5.h"
+ 
+ static PyObject *doCheckIsoMD5Sum(PyObject *s, PyObject *args);
+ static PyObject *doImplantIsoMD5Sum(PyObject *s, PyObject *args);
+diff --git a/utilities.c b/src/utilities.c
+similarity index 94%
+rename from utilities.c
+rename to src/utilities.c
+index b00337f..63b1858 100644
+--- a/utilities.c
++++ b/src/utilities.c
+@@ -22,9 +22,27 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ 
+-#include "md5.h"
++#include "./include/md5.h"
++#include "./include/utilities.h"
+ 
+-#include "utilities.h"
++#ifdef _WIN32
++#include <windows.h>
++#include <malloc.h>
++
++size_t getpagesize() {
++    static size_t page_size = 0;
++    if (page_size == 0) {
++        SYSTEM_INFO system_info;
++        GetSystemInfo(&system_info);
++        page_size = (size_t)(system_info.dwPageSize);
++    }
++    return page_size;
++}
++
++void *aligned_alloc(size_t size, size_t alignment) {
++    return _aligned_malloc(size, alignment);
++}
++#endif
+ 
+ static unsigned char *read_primary_volume_descriptor(const int fd, off_t *const offset) {
+     /*
+diff --git a/testpyisomd5sum.py b/test/pyisomd5sum.py
+similarity index 100%
+rename from testpyisomd5sum.py
+rename to test/pyisomd5sum.py
+-- 
+2.14.1
+

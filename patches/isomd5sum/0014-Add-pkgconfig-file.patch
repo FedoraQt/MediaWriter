@@ -1,0 +1,46 @@
+From 4c0585782e1136b204edc1605fe53e7c35e54a02 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Wed, 14 Jun 2017 15:13:33 +0000
+Subject: [PATCH 14/21] Add pkgconfig file
+
+---
+ Makefile        | 2 ++
+ isomd5sum.pc.in | 9 +++++++++
+ 2 files changed, 11 insertions(+)
+ create mode 100644 isomd5sum.pc.in
+
+diff --git a/Makefile b/Makefile
+index 8441291..df16a3b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -53,10 +53,12 @@ install-python:
+ install-devel:
+ 	install -d -m 0755 $(DESTDIR)/usr/include
+ 	install -d -m 0755 $(DESTDIR)/usr/$(LIBDIR)
++	install -d -m 0755 $(DESTDIR)/usr/share/pkgconfig
+ 	install -m 0644 libimplantisomd5.h $(DESTDIR)/usr/include/
+ 	install -m 0644 libcheckisomd5.h $(DESTDIR)/usr/include/
+ 	install -m 0644 libimplantisomd5.a $(DESTDIR)/usr/$(LIBDIR)
+ 	install -m 0644 libcheckisomd5.a $(DESTDIR)/usr/$(LIBDIR)
++	sed "s#@VERSION@#${VERSION}#g; s#@includedir@#${DESTDIR}/usr/include#g; s#@libdir@#${DESTDIR}/usr/${LIBDIR}#g" isomd5sum.pc.in > ${DESTDIR}/usr/share/pkgconfig/isomd5sum.pc
+ 
+ clean:
+ 	rm -f *.o *.so *.pyc *.a .depend *~
+diff --git a/isomd5sum.pc.in b/isomd5sum.pc.in
+new file mode 100644
+index 0000000..f68ad60
+--- /dev/null
++++ b/isomd5sum.pc.in
+@@ -0,0 +1,9 @@
++includedir=@includedir@
++libdir=@libdir@
++
++Name: isomd5sum
++Description: Utilities for working with md5sum implanted in ISO images
++URL: https://github.com/rhinstaller/isomd5sum
++Version: @VERSION@
++Cflags: -I${includedir}
++Libs: -L${libdir}
+-- 
+2.14.1
+

@@ -1,0 +1,78 @@
+From f39bd6f9ffb0728d6786a8c48418d17beedcd105 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Fri, 2 Jun 2017 16:42:43 +0000
+Subject: [PATCH 04/28] Add explicit joliet detection
+
+---
+ include/iso9660.h |  1 +
+ src/iso9660.cc    | 17 +++++++++++++++++
+ src/read.cc       |  5 ++++-
+ 3 files changed, 22 insertions(+), 1 deletion(-)
+
+diff --git a/include/iso9660.h b/include/iso9660.h
+index ddbb320..447bb15 100644
+--- a/include/iso9660.h
++++ b/include/iso9660.h
+@@ -163,6 +163,7 @@ struct VolumeDescriptor {
+   std::unordered_multimap<std::string, const iso9660::File*> filenames;
+ 
+   void build_file_lookup();
++  int joliet_level() const;
+ };
+ 
+ struct VolumeDescriptors {
+diff --git a/src/iso9660.cc b/src/iso9660.cc
+index 6a95c76..dbf40c5 100644
+--- a/src/iso9660.cc
++++ b/src/iso9660.cc
+@@ -25,6 +25,7 @@
+ #include <fstream>
+ #include <stdexcept>
+ #include <string>
++#include <unordered_map>
+ #include <vector>
+ 
+ #include "./include/read.h"
+@@ -43,6 +44,22 @@ void iso9660::VolumeDescriptor::build_file_lookup() {
+   }
+ }
+ 
++int iso9660::VolumeDescriptor::joliet_level() const {
++  /*
++   * The Joliet specification does not specify what the difference between the
++   * different levels is. Level 1-3 all specifiy the use of UCS-2 stored in the
++   * big endian format.
++   */
++  static std::unordered_map<char, int> joliet_level{
++      {'@', 1}, {'C', 2}, {'E', 3}};
++  if (escape_sequences[0] == '%' && escape_sequences[1] == '/' &&
++      escape_sequences[3] == '\0') {
++    auto level = joliet_level.find(escape_sequences[2]);
++    if (level != joliet_level.end()) return level->second;
++  }
++  return 0;
++}
++
+ bool iso9660::File::has(iso9660::File::Flag flag) const {
+   return (flags & static_cast<int>(flag)) != 0;
+ }
+diff --git a/src/read.cc b/src/read.cc
+index d986af4..b19eb65 100644
+--- a/src/read.cc
++++ b/src/read.cc
+@@ -238,8 +238,11 @@ iso9660::SectorType iso9660::read::volume_descriptor(
+           iso9660::read::volume_descriptor(first, last, std::move(header));
+       if (type == SectorType::PRIMARY) {
+         volume_descriptors->primary = std::move(tmp);
+-      } else {
++      } else if (tmp->joliet_level() > 0) {
+         volume_descriptors->supplementary = std::move(tmp);
++      } else {
++        std::cout << "Warning: Skipping non-joliet supplementary volume "
++                  << "descriptor record." << std::endl;
+       }
+     } break;
+     // ECMA 119 - 9.3
+-- 
+2.14.1
+

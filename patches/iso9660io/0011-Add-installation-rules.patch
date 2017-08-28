@@ -1,0 +1,80 @@
+From 8f08c667c8ab52390541cd8d0e4bde6f120fa358 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Fri, 9 Jun 2017 07:08:38 +0000
+Subject: [PATCH 11/28] Add installation rules
+
+---
+ CMakeLists.txt         | 27 +++++++++++++++++++++++++--
+ scripts/make_header.sh | 19 +++++++++++++++++++
+ 2 files changed, 44 insertions(+), 2 deletions(-)
+ create mode 100644 scripts/make_header.sh
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8e92119..a6bc532 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,11 +1,34 @@
+ cmake_minimum_required(VERSION 2.6)
+ project(iso9660)
+ 
++set (EXPORT_HEADER include/${CMAKE_PROJECT_NAME}.h)
++set (PUBLIC_HEADER ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.h)
+ set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -O3 -DNDEBUG -fvisibility=hidden")
+ 
++add_custom_command(POST_BUILD
++  OUTPUT ${PUBLIC_HEADER}
++  COMMAND sh scripts/make_header.sh ARGS ${EXPORT_HEADER} ${PUBLIC_HEADER}
++  DEPENDS ${EXPORT_HEADER}
++  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
++
++# Build library.
+ include_directories(.)
+-file(GLOB FILES src/*.cc include/*.h)
+-add_library(iso9660 SHARED ${FILES})
++file(GLOB FILES src/*.cc)
++add_library(${CMAKE_PROJECT_NAME} SHARED ${FILES} ${PUBLIC_HEADER})
++
++set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
++  VERSION 0
++  SOVERSION 0
++  PUBLIC_HEADER ${PUBLIC_HEADER})
++
++install(TARGETS ${CMAKE_PROJECT_NAME}
++  EXPORT ${CMAKE_PROJECT_NAME}
++  LIBRARY DESTINATION lib
++  PUBLIC_HEADER DESTINATION include)
++
++install(EXPORT ${CMAKE_PROJECT_NAME} DESTINATION share/${CMAKE_PROJECT_NAME}/cmake)
++export(TARGETS ${CMAKE_PROJECT_NAME} FILE ${CMAKE_PROJECT_NAME}.cmake)
+ 
++# Build example.
+ add_executable(persistent-storage example/persistent-storage.cc)
+ target_link_libraries(persistent-storage iso9660)
+diff --git a/scripts/make_header.sh b/scripts/make_header.sh
+new file mode 100644
+index 0000000..9e854cb
+--- /dev/null
++++ b/scripts/make_header.sh
+@@ -0,0 +1,19 @@
++#!/bin/sh
++# Inline all local includes to create a single header file.
++readonly SOURCE="${1}"
++readonly DESTINATION="${2}"
++readonly INCLUDE='^#include "./include/'
++
++include_files() {
++  filename="${1}"
++  echo "${filename}"
++  includes=$(cat "${filename}" | grep "${INCLUDE}" | cut -d '"' -f2 | tr "\n" " ")
++  for header in ${includes}; do
++    include_files "${header}"
++  done
++}
++order_uniq() {
++  tac | cat -n | sort -k2 -k1n  | uniq -f1 | sort -nk1,1 | cut -f2-
++}
++cat $(include_files "${SOURCE}" | order_uniq) | grep -v "${INCLUDE}" \
++  > "${DESTINATION}"
+-- 
+2.14.1
+

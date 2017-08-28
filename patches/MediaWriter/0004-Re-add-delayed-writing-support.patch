@@ -1,0 +1,47 @@
+From ef4ca283453f20691641f6da4c9a46a2c3870219 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Fri, 9 Jun 2017 00:23:10 +0000
+Subject: [PATCH 04/40] Re-add delayed writing support
+
+---
+ app/dialogs/DownloadDialog.qml | 4 ++--
+ helper/write.cpp               | 1 +
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/app/dialogs/DownloadDialog.qml b/app/dialogs/DownloadDialog.qml
+index d20f6f7..86076ba 100644
+--- a/app/dialogs/DownloadDialog.qml
++++ b/app/dialogs/DownloadDialog.qml
+@@ -72,6 +72,8 @@ Dialog {
+         onStatusChanged: {
+             if ([Variant.FINISHED, Variant.FAILED, Variant.FAILED_DOWNLOAD].indexOf(releases.variant.status) >= 0)
+                 writeImmediately.checked = false
++            else if (drives.selected && writeImmediately.checked && releases.variant.status === Variant.READY)
++                drives.selected.write(releases.variant)
+         }
+     }
+ 
+@@ -368,8 +370,6 @@ Dialog {
+                             onCheckedChanged: {
+                                 if (drives.selected) {
+                                     drives.selected.cancel()
+-                                    if (checked)
+-                                        drives.selected.write(releases.variant)
+                                 }
+                             }
+                         }
+diff --git a/helper/write.cpp b/helper/write.cpp
+index 4280eba..2ab5958 100644
+--- a/helper/write.cpp
++++ b/helper/write.cpp
+@@ -165,6 +165,7 @@ void write(const QString &source, Drive *const drive) {
+     QTextStream out(stdout);
+     out << "1\n";
+     out.flush();
++    drive->umount();
+     if (source.endsWith(".xz"))
+         writeCompressed(source, drive);
+     else
+-- 
+2.14.1
+

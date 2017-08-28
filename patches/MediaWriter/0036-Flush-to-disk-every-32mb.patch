@@ -1,0 +1,28 @@
+From 5272795a74ca4598acb61216788e93b52801ace9 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 24 Aug 2017 09:05:09 +0000
+Subject: [PATCH 36/40] Flush to disk every 32mb
+
+because otherwise it'll be stuck at 10% forever for large files.
+---
+ helper/write.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/helper/write.cpp b/helper/write.cpp
+index 32861dd..2c62e3b 100644
+--- a/helper/write.cpp
++++ b/helper/write.cpp
+@@ -359,8 +359,8 @@ int onProgress(void *data, long long offset, long long total) {
+         QTextStream out(stdout);
+         int percentage = (offset * 10000) / total;
+ #ifndef Q_OS_WIN
+-        // Sync every 10 percent of progress.
+-        if (percentage >= (1000 * (stats.syncs + 1))) {
++        // Flush every 32mb of progress to disk.
++        if (offset >= 32 * 1024 * 1024 * (stats.syncs + 1)) {
+             ++stats.syncs;
+             ::fsync(stats.fd);
+         }
+-- 
+2.14.1
+

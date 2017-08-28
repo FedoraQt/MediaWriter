@@ -20,7 +20,7 @@
 #include "releasemanager.h"
 #include "drivemanager.h"
 
-#include "isomd5/libcheckisomd5.h"
+#include <libcheckisomd5.h>
 
 #include <QtQml>
 #include <QApplication>

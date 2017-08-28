@@ -1,0 +1,66 @@
+From f2faf8952a53eb2a3793fed1126cbd8b480c58f6 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Wed, 23 Aug 2017 04:29:42 +0000
+Subject: [PATCH 21/21] Fix the actual Windows heap memory error
+
+---
+ src/libcheckisomd5.c   | 5 -----
+ src/libimplantisomd5.c | 5 -----
+ src/utilities.c        | 7 ++++++-
+ 3 files changed, 6 insertions(+), 11 deletions(-)
+
+diff --git a/src/libcheckisomd5.c b/src/libcheckisomd5.c
+index a8ce40e..5e5872c 100644
+--- a/src/libcheckisomd5.c
++++ b/src/libcheckisomd5.c
+@@ -60,12 +60,7 @@ static enum isomd5sum_status checkmd5sum(int isofd, checkCallback cb, void *cbda
+     MD5_Init(&hashctx);
+ 
+     const size_t pagesize = (size_t) getpagesize();
+-#ifdef _WIN32
+-    // Allocating ~32 kB of memory sometimes fails on Windows.
+-    const size_t buffer_size = MAX(SECTOR_SIZE, pagesize);
+-#else
+     const size_t buffer_size = NUM_SYSTEM_SECTORS * SECTOR_SIZE;
+-#endif
+     unsigned char *buffer;
+     buffer = aligned_alloc(pagesize, buffer_size * sizeof(*buffer));
+ 
+diff --git a/src/libimplantisomd5.c b/src/libimplantisomd5.c
+index 0323a4b..9408cfb 100644
+--- a/src/libimplantisomd5.c
++++ b/src/libimplantisomd5.c
+@@ -101,12 +101,7 @@ int implantISOFD(int isofd, int supported, int forceit, int quiet, char **errstr
+     *fragmentsums = '\0';
+ 
+     const size_t pagesize = (size_t) getpagesize();
+-#ifdef _WIN32
+-    // Allocating ~32 kB of memory sometimes fails on Windows.
+-    const size_t buffer_size = MAX(SECTOR_SIZE, pagesize);
+-#else
+     const size_t buffer_size = NUM_SYSTEM_SECTORS * SECTOR_SIZE;
+-#endif
+     unsigned char *buffer;
+     buffer = aligned_alloc(pagesize, buffer_size * sizeof(*buffer));
+ 
+diff --git a/src/utilities.c b/src/utilities.c
+index 45002e5..45e633c 100644
+--- a/src/utilities.c
++++ b/src/utilities.c
+@@ -40,7 +40,12 @@ size_t getpagesize() {
+ }
+ 
+ void *aligned_alloc(size_t alignment, size_t size) {
+-    return _aligned_malloc(size, alignment);
++    /*
++     * Windows throws "Invalid address specified to RtlFreeHeap" warnings so
++     * let's not do this for now.
++     * return _aligned_malloc(size, alignment);
++     */
++    return malloc(size);
+ }
+ #elif __APPLE__
+ void *aligned_alloc(size_t alignment, size_t size) {
+-- 
+2.14.1
+

@@ -17,12 +17,33 @@ rm -fr "build"
 mkdir -p "build"
 pushd build >/dev/null
 
+echo "=== Building dependency [iso9660io] ==="
+# TODO(squimrel): Use latest release once available.
+git clone --depth 1 https://github.com/squimrel/iso9660io
+pushd iso9660io >/dev/null
+cmake "-DCMAKE_INSTALL_PREFIX:PATH=${PWD}" -DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 .
+make install
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:${PWD}"
+mkdir -p "../app/Fedora Media Writer.app/Contents/Frameworks/"
+mv "$(ls libiso9660io.*.dylib | tail -n 1)" "../app/Fedora Media Writer.app/Contents/Frameworks/"
+popd >/dev/null
+
+echo "=== Building dependency [isomd5sum] ==="
+# TODO(squimrel): Use latest release once PRs are merged and released.
+git clone --depth 1 -b cooking https://github.com/squimrel/isomd5sum
+pushd isomd5sum >/dev/null
+cmake "-DCMAKE_INSTALL_PREFIX:PATH=${PWD}" -DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 .
+make install
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:${PWD}"
+popd >/dev/null
+
+
 echo "=== Building ==="
 ${QMAKE} .. >/dev/null
 make -j9 >/dev/null
 
 echo "=== Inserting Qt deps ==="
-cp "helper/mac/helper.app/Contents/MacOS/helper" "app/Fedora Media Writer.app/Contents/MacOS"
+mv "app/helper.app/Contents/MacOS/helper" "app/Fedora Media Writer.app/Contents/MacOS/helper"
 ${MACDEPLOYQT} "app/Fedora Media Writer.app" -qmldir="../app" -executable="app/Fedora Media Writer.app/Contents/MacOS/helper"
 
 echo "=== Checking unresolved library deps ==="

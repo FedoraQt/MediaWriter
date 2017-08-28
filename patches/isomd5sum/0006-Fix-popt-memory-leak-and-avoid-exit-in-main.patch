@@ -1,0 +1,135 @@
+From 6b71ea46eb547c79da1f6eacde838e59a31063ad Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Tue, 16 May 2017 13:27:13 +0000
+Subject: [PATCH 06/21] Fix popt memory leak and avoid exit in main
+
+---
+ checkisomd5.c   | 32 ++++++++++++++++++++------------
+ implantisomd5.c | 25 +++++++++++++++----------
+ 2 files changed, 35 insertions(+), 22 deletions(-)
+
+diff --git a/checkisomd5.c b/checkisomd5.c
+index bce31b4..1527442 100644
+--- a/checkisomd5.c
++++ b/checkisomd5.c
+@@ -68,9 +68,9 @@ static int outputCB(void *const co, const off_t offset, const off_t total) {
+     return user_bailing_out();
+ }
+ 
+-static void usage(void) {
++static int usage(void) {
+     fprintf(stderr, "Usage: checkisomd5 [--md5sumonly] [--verbose] [--gauge] <isofilename>|<blockdevice>\n\n");
+-    exit(1);
++    return 1;
+ }
+ 
+ /* Process the result code and return the proper exit status value
+@@ -137,29 +137,36 @@ int main(int argc, char **argv) {
+         fprintf(stderr, "bad option %s: %s\n",
+                 poptBadOption(optCon, POPT_BADOPTION_NOALIAS),
+                 poptStrerror(rc));
+-        exit(1);
++        poptFreeContext(optCon);
++        return 1;
+     }
+ 
+-    if (help)
+-        usage();
++    if (help) {
++        poptFreeContext(optCon);
++        return usage();
++    }
+ 
+     const char **args = poptGetArgs(optCon);
+-    if (!args || !args[0] || !args[0][0])
+-        usage();
++    if (!args || !args[0] || !args[0][0]) {
++        poptFreeContext(optCon);
++        return usage();
++    }
+ 
+     if (md5only | data.verbose) {
+         rc = printMD5SUM((char *) args[0]);
+         if (rc < 0) {
+-            exit(processExitStatus(rc));
++            poptFreeContext(optCon);
++            return processExitStatus(rc);
+         }
+     }
+ 
+-    if (md5only)
+-        exit(0);
++    if (md5only) {
++        poptFreeContext(optCon);
++        return 0;
++    }
+ 
+     printf("Press [Esc] to abort check.\n");
+ 
+-
+     static struct termios oldt;
+     struct termios newt;
+     tcgetattr(0, &oldt);
+@@ -172,5 +179,6 @@ int main(int argc, char **argv) {
+     if (data.verbose)
+         printf("\n");
+ 
+-    exit(processExitStatus(rc));
++    poptFreeContext(optCon);
++    return processExitStatus(rc);
+ }
+diff --git a/implantisomd5.c b/implantisomd5.c
+index fdf9839..41834d7 100644
+--- a/implantisomd5.c
++++ b/implantisomd5.c
+@@ -25,9 +25,9 @@
+ #include "md5.h"
+ #include "libimplantisomd5.h"
+ 
+-static void usage(void) {
++static int usage(void) {
+     fprintf(stderr, "implantisomd5:         implantisomd5 [--force] [--supported-iso] <isofilename>\n");
+-    exit(1);
++    return 1;
+ }
+ 
+ int main(int argc, char **argv) {
+@@ -51,22 +51,27 @@ int main(int argc, char **argv) {
+         fprintf(stderr, "bad option %s: %s\n",
+                 poptBadOption(optCon, POPT_BADOPTION_NOALIAS),
+                 poptStrerror(rc));
+-        exit(1);
++        poptFreeContext(optCon);
++        return 1;
+     }
+ 
+-    if (help)
+-        usage();
++    if (help) {
++        poptFreeContext(optCon);
++        return usage();
++    }
+ 
+     const char **args = poptGetArgs(optCon);
+-    if (!args || !args[0] || !args[0][0])
+-        usage();
++    if (!args || !args[0] || !args[0][0]) {
++        poptFreeContext(optCon);
++        return usage();
++    }
+ 
+     rc = implantISOFile((char *) args[0], supported, forceit, 0, &errstr);
+     if (rc) {
+         fprintf(stderr, "ERROR: ");
+         fprintf(stderr, errstr, (char *) args[0]);
+-        exit(1);
+-    } else {
+-        exit(0);
++        rc = 1;
+     }
++    poptFreeContext(optCon);
++    return rc;
+ }
+-- 
+2.14.1
+

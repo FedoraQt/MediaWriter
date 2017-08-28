@@ -1,0 +1,104 @@
+From 8484343dd354ef8f874d3633128fed2b78bd3e55 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Wed, 23 Aug 2017 04:21:14 +0000
+Subject: [PATCH 20/21] Fix aligned alloc parameters and overflow on 32bit
+ size_t
+
+---
+ include/utilities.h    | 4 ++--
+ src/libcheckisomd5.c   | 3 ++-
+ src/libimplantisomd5.c | 3 ++-
+ src/utilities.c        | 8 ++++----
+ 4 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/include/utilities.h b/include/utilities.h
+index 7e716d5..ac8235b 100644
+--- a/include/utilities.h
++++ b/include/utilities.h
+@@ -31,9 +31,9 @@
+ #ifdef _WIN32
+ size_t getpagesize();
+ 
+-void *aligned_alloc(size_t size, size_t alignment);
++void *aligned_alloc(size_t alignment, size_t size);
+ #elif __APPLE__
+-void *aligned_alloc(size_t size, size_t alignment);
++void *aligned_alloc(size_t alignment, size_t size);
+ #endif
+ 
+ #ifndef O_BINARY
+diff --git a/src/libcheckisomd5.c b/src/libcheckisomd5.c
+index 2e739cb..a8ce40e 100644
+--- a/src/libcheckisomd5.c
++++ b/src/libcheckisomd5.c
+@@ -49,6 +49,7 @@ static enum isomd5sum_status checkmd5sum(int isofd, checkCallback cb, void *cbda
+         return ISOMD5SUM_CHECK_NOT_FOUND;
+ 
+     const off_t total_size = info->isosize - info->skipsectors * SECTOR_SIZE;
++    const off_t fragment_size = total_size / (info->fragmentcount + 1);
+     if (cb)
+         cb(cbdata, 0LL, (long long) total_size);
+ 
+@@ -91,7 +92,7 @@ static enum isomd5sum_status checkmd5sum(int isofd, checkCallback cb, void *cbda
+ 
+         MD5_Update(&hashctx, buffer, (unsigned int) nread);
+         if (info->fragmentcount) {
+-            const size_t current_fragment = (size_t)(offset * (off_t)(info->fragmentcount + 1) / total_size);
++            const size_t current_fragment = offset / fragment_size;
+             const size_t fragmentsize = FRAGMENT_SUM_SIZE / info->fragmentcount;
+             /* If we're onto the next fragment, calculate the previous sum and check. */
+             if (current_fragment != previous_fragment) {
+diff --git a/src/libimplantisomd5.c b/src/libimplantisomd5.c
+index d2e62da..0323a4b 100644
+--- a/src/libimplantisomd5.c
++++ b/src/libimplantisomd5.c
+@@ -111,6 +111,7 @@ int implantISOFD(int isofd, int supported, int forceit, int quiet, char **errstr
+     buffer = aligned_alloc(pagesize, buffer_size * sizeof(*buffer));
+ 
+     const off_t total_size = isosize - SKIPSECTORS * SECTOR_SIZE;
++    const off_t fragment_size = total_size / (FRAGMENT_COUNT + 1);
+     size_t previous_fragment = 0UL;
+     off_t offset = 0LL;
+     while (offset < total_size) {
+@@ -120,7 +121,7 @@ int implantISOFD(int isofd, int supported, int forceit, int quiet, char **errstr
+             break;
+ 
+         MD5_Update(&hashctx, buffer, (unsigned int) nread);
+-        const size_t current_fragment = (size_t) offset * (FRAGMENT_COUNT + 1) / (size_t) total_size;
++        const size_t current_fragment = offset / fragment_size;
+         const size_t fragmentsize = FRAGMENT_SUM_SIZE / FRAGMENT_COUNT;
+         /* If we're onto the next fragment, calculate the previous sum and check. */
+         if (current_fragment != previous_fragment) {
+diff --git a/src/utilities.c b/src/utilities.c
+index 1b3a047..45002e5 100644
+--- a/src/utilities.c
++++ b/src/utilities.c
+@@ -39,11 +39,11 @@ size_t getpagesize() {
+     return page_size;
+ }
+ 
+-void *aligned_alloc(size_t size, size_t alignment) {
++void *aligned_alloc(size_t alignment, size_t size) {
+     return _aligned_malloc(size, alignment);
+ }
+ #elif __APPLE__
+-void *aligned_alloc(size_t size, size_t alignment) {
++void *aligned_alloc(size_t alignment, size_t size) {
+     void *buffer = NULL;
+     posix_memalign(&buffer, alignment, size);
+     return buffer;
+@@ -155,9 +155,9 @@ struct volume_info *const parsepvd(const int isofd) {
+     buffer[APPDATA_SIZE - 1] = '\0';
+ 
+     struct volume_info *result = malloc(sizeof(struct volume_info));
+-    result->skipsectors = 20;
++    result->skipsectors = SKIPSECTORS;
+     result->supported = 0;
+-    result->fragmentcount = 20;
++    result->fragmentcount = FRAGMENT_COUNT;
+     result->offset = offset;
+     result->isosize = isosize(aligned_buffer);
+ 
+-- 
+2.14.1
+

@@ -1,0 +1,25 @@
+From e9bd6ea1ba13f4e519fd26f6a879e5f6409a62db Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Wed, 2 Aug 2017 06:43:20 +0000
+Subject: [PATCH 21/28] Remove critical out of range access
+
+---
+ src/utility.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/utility.cc b/src/utility.cc
+index f80a1ee..fab03b6 100644
+--- a/src/utility.cc
++++ b/src/utility.cc
+@@ -42,7 +42,7 @@ std::string utility::from_ucs2(std::string&& raw) {
+   utility::big_endian(&raw);
+   raw += '\0';
+   std::u16string result(reinterpret_cast<const char16_t*>(raw.c_str()),
+-                        raw.size());
++                        raw.size() / 2);
+   return utility::from_ucs2(std::move(result));
+ }
+ 
+-- 
+2.14.1
+

@@ -46,13 +46,18 @@ void FakeDriveProvider::connectDrives() {
 }
 
 FakeDrive::FakeDrive(FakeDriveProvider *parent, const QString &name, uint64_t size, bool containsLive)
-    : Drive(parent, name, size, containsLive) {
+    : Drive(parent, "", name, size, containsLive) {
     m_progress->setTo(size);
 }
 
 bool FakeDrive::write(ReleaseVariant *data) {
-    if (!Drive::write(data))
+    m_image = data;
+    m_image->setErrorString(QString());
+
+    if (data && data->size() > 0 && size() > 0 && data->realSize() > size()) {
+        m_image->setErrorString(tr("This drive is not large enough."));
         return false;
+    }
 
     m_progress->setValue(0);
     m_image->setStatus(ReleaseVariant::WRITING);

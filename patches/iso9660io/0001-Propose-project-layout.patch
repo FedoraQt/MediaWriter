@@ -1,0 +1,1017 @@
+From c17fbb47ce413ee4533ad0338b3e10b7230e8d03 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 1 Jun 2017 05:31:28 +0000
+Subject: [PATCH 01/28] Propose project layout
+
+Add primary and supplementary volume descriptor read functionality
+according to ECMA-119.
+---
+ BUILD             |   6 ++
+ WORKSPACE         |   0
+ include/iso9660.h | 215 +++++++++++++++++++++++++++++++++++++
+ include/read.h    |  67 ++++++++++++
+ include/utility.h | 108 +++++++++++++++++++
+ src/iso9660.cc    | 146 +++++++++++++++++++++++++
+ src/read.cc       | 316 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ src/utility.cc    |  85 +++++++++++++++
+ 8 files changed, 943 insertions(+)
+ create mode 100644 BUILD
+ create mode 100644 WORKSPACE
+ create mode 100644 include/iso9660.h
+ create mode 100644 include/read.h
+ create mode 100644 include/utility.h
+ create mode 100644 src/iso9660.cc
+ create mode 100644 src/read.cc
+ create mode 100644 src/utility.cc
+
+diff --git a/BUILD b/BUILD
+new file mode 100644
+index 0000000..6c14ddf
+--- /dev/null
++++ b/BUILD
+@@ -0,0 +1,6 @@
++cc_library(
++    name="iso9660",
++    srcs=glob(["src/*.cc"]),
++    hdrs=glob(["include/*.h"]),
++    copts=["-std=c++11", "-Wall", "-O3"],
++    visibility=["//visibility:public"], )
+diff --git a/WORKSPACE b/WORKSPACE
+new file mode 100644
+index 0000000..e69de29
+diff --git a/include/iso9660.h b/include/iso9660.h
+new file mode 100644
+index 0000000..b4bf544
+--- /dev/null
++++ b/include/iso9660.h
+@@ -0,0 +1,215 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++
++/**
++ * Collection of utility functions that are deticated specifically to reading
++ * an ISO 9660 image.
++ */
++
++#ifndef ISO9660_ISO9660_H_
++#define ISO9660_ISO9660_H_
++
++#include <cstdint>
++#include <cstdlib>
++
++#include <array>
++#include <fstream>
++#include <memory>
++#include <string>
++#include <unordered_map>
++#include <vector>
++
++namespace iso9660 {
++
++enum class SectorType {
++  BOOT_RECORD = 0,
++  PRIMARY = 1,
++  SUPPLEMENTARY = 2,
++  PARTITION = 3,
++  SET_TERMINATOR = 255
++};
++
++/**
++ * ECMA-119 calls this a directory record but it's actually either a file or a
++ * directory so it's a file.
++ */
++struct File {
++  enum class Flag {
++    /*
++     * Set if file is hidden.
++     */
++    HIDDEN = 1,
++    /*
++     * Set if entry is a directory.
++     */
++    DIRECTORY = 1 << 1,
++    /*
++     * Set if entry is an associated file.
++     */
++    ASSOCIATED = 1 << 2,
++    /*
++     * Set if information is structured according to the extended attribute
++     * record.
++     */
++    EXTENDED_STRUCTURE = 1 << 3,
++    /*
++     * Set if owner, group and permissions are specified in the extended
++     * attribute.
++     */
++    EXTENDED_PERMISSIONS = 1 << 4,
++    /*
++     * Set if file has more than one directory record.
++     */
++    MULTIPLE_RECORDS = 1 << 7
++  };
++
++  std::size_t length;
++  std::size_t extended_length;
++  std::size_t location;
++  std::size_t size;
++  int datetime;
++  int flags;
++  int file_unit_size;
++  int interleave_gap_size;
++  int volume_sequence_number;
++  std::string name;
++
++  bool has(Flag flag) const;
++  bool isdir() const;
++};
++
++/**
++ * ECMA-119 calls this a path table record which is basically a directory.
++ */
++struct Directory {
++  std::size_t size;
++  std::size_t extended_length;
++  std::size_t location;
++  int parent;
++  std::string name;
++  std::vector<File> files;
++};
++
++struct VolumeDescriptorHeader {
++  SectorType type;
++  /*
++   * Identifier specifies according to what specification the following data
++   * was recorded.  The following information was taken from ECMA-167/3:
++   * BEA01: 2/9.2 Beginning extended area descriptor.
++   * BOOT2: 2/9.4 Boot descriptor.
++   * CD001: ECMA-119
++   * CDW02: ECMA-168
++   * NSR02: ECMA-167/2
++   * NSR03: ECMA-167/3
++   * TEA01: 2/9.3 Terminating extended area descriptor.
++   */
++  std::string identifier;
++  int version;
++};
++
++/**
++ * The "generic" volume descriptor for the primary and supplementary volume
++ * descriptor.
++ */
++struct VolumeDescriptor {
++  struct VolumeDescriptorHeader header;
++  // Only used in the supplementary volume descriptor.
++  int flags;
++  std::string system_identifier;
++  std::string volume_identifier;
++  std::size_t volume_space_size;
++  // Only used in the supplementary volume descriptor.
++  std::string escape_sequences;
++  std::size_t volume_sequence_number;
++  std::size_t logical_block_size;
++  std::size_t path_table_size;
++  std::size_t path_table_location;
++  std::size_t optional_path_table_location;
++  File root_directory;
++  std::string volume_set_identifier;
++  std::string publisher_identifier;
++  std::string data_preparer_identifier;
++  std::string application_identifier;
++  std::string copyright_file_identifier;
++  std::string abstract_file_identifier;
++  std::string bibliographic_file_identifier;
++  std::int64_t volume_create_datetime;
++  std::int64_t volume_modify_datetime;
++  std::int64_t volume_expiration_datetime;
++  std::int64_t volume_effective_datetime;
++  int file_structure_version;
++  std::string application_use;
++  // The path table specifies the directory hierarchy.
++  std::vector<Directory> path_table;
++};
++
++struct VolumeDescriptors {
++  VolumeDescriptors() : primary(nullptr), supplementary(nullptr) {}
++  std::unique_ptr<VolumeDescriptor> primary;
++  std::unique_ptr<VolumeDescriptor> supplementary;
++};
++
++constexpr std::size_t LONG_DATETIME_SIZE = 17;
++constexpr std::size_t SHORT_DATETIME_SIZE = 7;
++constexpr std::size_t DIRECTORY_RECORD_SIZE = 34;
++constexpr std::size_t IDENTIFIER_SIZE = 128;
++constexpr std::size_t APPLICATION_USE_SIZE = 512;
++constexpr std::size_t FILE_IDENTIFIER_SIZE = 37;
++constexpr std::size_t SECTOR_SIZE = 2048;
++constexpr std::size_t NUM_SYSTEM_SECTORS = 16;
++constexpr std::size_t SYSTEM_AREA_SIZE = NUM_SYSTEM_SECTORS * SECTOR_SIZE;
++
++enum class Identifier {
++  ECMA_119,
++  ECMA_168,
++  // ECMA-167 Edition 2
++  ECMA_167_PREVIOUS,
++  // ECMA-167 has a different identifiers for nearly each volume descriptor.
++  ECMA_167,
++  ECMA_167_EXTENDED,
++  ECMA_167_BOOT,
++  ECMO_167_TERMINATOR,
++  UNKNOWN
++};
++
++Identifier identifier_of(const std::string& identifier);
++
++std::size_t sector_align(std::size_t size);
++
++using Buffer = std::array<unsigned char, iso9660::SECTOR_SIZE>;
++
++class Image {
++ private:
++  void read_directories(std::vector<iso9660::Directory>* const directories);
++  std::vector<iso9660::File> read_directory(std::size_t location);
++  void read_path_table(VolumeDescriptor* const volume_descriptor);
++
++ public:
++  explicit Image(std::fstream* file);
++  void read();
++
++ private:
++  std::fstream& file_;
++  Buffer buffer_;
++  VolumeDescriptors volume_descriptors_;
++};
++
++}  // namespace iso9660
++
++#endif  // ISO9660_ISO9660_H_
+diff --git a/include/read.h b/include/read.h
+new file mode 100644
+index 0000000..3df1f99
+--- /dev/null
++++ b/include/read.h
+@@ -0,0 +1,67 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++
++/**
++ * Collection of utility functions that are deticated specifically to reading
++ * an ISO 9660 image.
++ */
++
++#ifndef ISO9660_READ_H_
++#define ISO9660_READ_H_
++
++#include <cstdint>
++#include <cstdlib>
++
++#include <memory>
++
++#include "./include/iso9660.h"
++
++namespace iso9660 {
++namespace read {
++
++std::int64_t long_datetime(iso9660::Buffer::const_iterator first,
++                           iso9660::Buffer::const_iterator last);
++std::int64_t long_datetime(iso9660::Buffer::const_iterator first,
++                           std::size_t size);
++int short_datetime(iso9660::Buffer::const_iterator first,
++                   iso9660::Buffer::const_iterator last);
++int short_datetime(iso9660::Buffer::const_iterator first, std::size_t size);
++
++iso9660::SectorType volume_descriptor(
++    iso9660::Buffer::const_iterator first, iso9660::Buffer::const_iterator last,
++    iso9660::VolumeDescriptors* volume_descriptors);
++std::unique_ptr<iso9660::VolumeDescriptor> volume_descriptor(
++    iso9660::Buffer::const_iterator first, iso9660::Buffer::const_iterator last,
++    iso9660::VolumeDescriptorHeader header);
++
++iso9660::File directory_record(iso9660::Buffer::const_iterator first,
++                               iso9660::Buffer::const_iterator last);
++iso9660::File directory_record(iso9660::Buffer::const_iterator first,
++                               std::size_t size);
++iso9660::Directory directory(iso9660::Buffer::const_iterator first,
++                             iso9660::Buffer::const_iterator last);
++std::vector<iso9660::Directory> path_table(
++    iso9660::Buffer::const_iterator first,
++    iso9660::Buffer::const_iterator last);
++void joliet(std::vector<iso9660::Directory>* path_table);
++
++}  // namespace read
++}  // namespace iso9660
++
++#endif  // ISO9660_READ_H_
+diff --git a/include/utility.h b/include/utility.h
+new file mode 100644
+index 0000000..0fcc728
+--- /dev/null
++++ b/include/utility.h
+@@ -0,0 +1,108 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++
++#ifndef ISO9660_UTILITY_H_
++#define ISO9660_UTILITY_H_
++
++#include <cstdlib>
++
++#include <iterator>
++#include <numeric>
++#include <string>
++
++#include "./include/iso9660.h"
++
++namespace utility {
++
++enum class Endian { BIG = 0, LITTLE = 1 };
++
++/*
++ * No matter how it tries to detect endieness it'll not be conform to the
++ * standard anyways so this should be just fine.
++ */
++#undef ENDIANNESS
++#if defined(__BYTE_ORDER) && __BYTE_ORDER == __BIG_ENDIAN ||                 \
++    defined(__BIG_ENDIAN__) || defined(__ARMEB__) || defined(__THUMBEB__) || \
++    defined(__AARCH64EB__) || defined(_MIBSEB) || defined(__MIBSEB) ||       \
++    defined(__MIBSEB__)
++#define ENDIANNESS utility::Endian::BIG
++#else
++#define ENDIANNESS utility::Endian::LITTLE
++#endif
++
++void big_endian(std::string* const raw);
++std::string from_ucs2(const std::u16string& from);
++std::string from_ucs2(std::string&& raw);
++
++std::string substr(iso9660::Buffer::const_iterator first,
++                   iso9660::Buffer::const_iterator last, std::size_t at,
++                   std::size_t size = 0);
++
++template <class T>
++T integer(iso9660::Buffer::const_iterator first,
++          iso9660::Buffer::const_iterator last) {
++  constexpr std::size_t BITS_IN_BYTE = 8;
++  const std::size_t bytes = std::distance(first, last);
++  const std::size_t bits = (bytes - 1) * BITS_IN_BYTE;
++
++  std::size_t i = 0;
++  return std::accumulate(
++      std::make_move_iterator(first), std::make_move_iterator(last),
++      static_cast<T>(0),
++      [&i, bits](T result, iso9660::Buffer::value_type byte) {
++        result |= static_cast<T>(byte) << (bits - i * BITS_IN_BYTE);
++        ++i;
++        return result;
++      });
++}
++
++template <class T>
++void integer(T* const number, iso9660::Buffer::const_iterator big_endian,
++             iso9660::Buffer::const_iterator little_endian, std::size_t size) {
++  if (ENDIANNESS == utility::Endian::LITTLE) {
++    *number = integer<T>(little_endian, little_endian + size);
++  } else {
++    *number = integer<T>(big_endian, big_endian + size);
++  }
++}
++
++/**
++ * The caller has to guarantee that the passed characters store the number in
++ * the users system endian.
++ */
++template <class T>
++void integer(T* const number, iso9660::Buffer::const_iterator first,
++             std::size_t size) {
++  *number = integer<T>(first, first + size);
++}
++
++iso9660::Buffer::value_type at(iso9660::Buffer::const_iterator first,
++                               iso9660::Buffer::const_iterator last,
++                               std::size_t index);
++
++template <class T>
++void at(iso9660::Buffer::const_iterator first,
++        iso9660::Buffer::const_iterator last, T* const result,
++        std::size_t index) {
++  *result = static_cast<T>(at(first, last, index));
++}
++
++}  // namespace utility
++
++#endif  // ISO9660_UTILITY_H_
+diff --git a/src/iso9660.cc b/src/iso9660.cc
+new file mode 100644
+index 0000000..5dd7101
+--- /dev/null
++++ b/src/iso9660.cc
+@@ -0,0 +1,146 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++
++#include "./include/iso9660.h"
++
++#include <cstdlib>
++
++#include <algorithm>
++#include <fstream>
++#include <stdexcept>
++#include <string>
++#include <vector>
++
++#include "./include/read.h"
++
++bool iso9660::File::has(iso9660::File::Flag flag) const {
++  return (flags & static_cast<int>(flag)) != 0;
++}
++
++/**
++ * Check if file is a directory. There's an extra function for this since this
++ * is most likely the most common operation.
++ */
++bool iso9660::File::isdir() const {
++  return has(iso9660::File::Flag::DIRECTORY);
++}
++
++iso9660::Identifier iso9660::identifier_of(const std::string& identifier) {
++  static const std::unordered_map<std::string, iso9660::Identifier>
++      identifiers = {{"CD001", iso9660::Identifier::ECMA_119},
++                     {"CDW02", iso9660::Identifier::ECMA_168},
++                     {"NSR03", iso9660::Identifier::ECMA_167},
++                     {"NSR02", iso9660::Identifier::ECMA_167_PREVIOUS},
++                     {"BEA01", iso9660::Identifier::ECMA_167_EXTENDED},
++                     {"BOOT2", iso9660::Identifier::ECMA_167_BOOT},
++                     {"TEA01", iso9660::Identifier::ECMO_167_TERMINATOR}};
++  auto result = identifiers.find(identifier);
++  if (result != identifiers.end()) {
++    return result->second;
++  }
++  return iso9660::Identifier::UNKNOWN;
++}
++
++std::size_t iso9660::sector_align(std::size_t size) {
++  return (size + (iso9660::SECTOR_SIZE - 1)) & -iso9660::SECTOR_SIZE;
++}
++
++iso9660::Image::Image(std::fstream* file) : file_(*file) {}
++
++std::vector<iso9660::File> iso9660::Image::read_directory(
++    std::size_t location) {
++  std::size_t position = location * iso9660::SECTOR_SIZE;
++  std::size_t offset = 0;
++  file_.seekg(position);
++  file_.read(reinterpret_cast<char*>(buffer_.data()), iso9660::SECTOR_SIZE);
++  auto record_length = static_cast<std::size_t>(buffer_[offset]);
++  std::vector<iso9660::File> files;
++  while (record_length > 0) {
++    auto file = iso9660::read::directory_record(buffer_.begin() + offset,
++                                                buffer_.end());
++    offset += file.length;
++    record_length = static_cast<std::size_t>(buffer_[offset]);
++    /*
++     * Currently this implementation does not make use of the extra information
++     * that is stored in directory record. Extra in the sense that all
++     * information this implementation needs to know about directories is
++     * already provided by the path table.
++     */
++    if (!file.isdir()) {
++      files.emplace_back(std::move(file));
++    }
++    if (offset + record_length >= iso9660::SECTOR_SIZE) {
++      /*
++       * Ignore issue silently. This implementation does not yet allow the sum
++       * of the size of all directory records to be greater than the size of a
++       * sector. Maybe this should throw or at least warn.
++       */
++      break;
++    }
++  }
++  return files;
++}
++
++void iso9660::Image::read_directories(
++    std::vector<iso9660::Directory>* const directories) {
++  for (auto& directory : *directories) {
++    directory.files = read_directory(directory.location);
++  }
++}
++
++void iso9660::Image::read_path_table(
++    VolumeDescriptor* const volume_descriptor) {
++  if (volume_descriptor == nullptr) return;
++  auto& volume = *volume_descriptor;
++  if (volume.path_table_size > iso9660::SECTOR_SIZE) {
++    throw std::runtime_error(
++        "This implementation can't handle path tables that have a size greater "
++        "than the size of one sector.");
++  }
++  std::size_t begin = volume.path_table_location * iso9660::SECTOR_SIZE;
++  std::size_t end = begin + volume.path_table_size;
++  std::size_t maxsize = std::min(iso9660::SECTOR_SIZE, end - begin);
++  file_.seekg(begin);
++  file_.read(reinterpret_cast<char*>(buffer_.data()), maxsize);
++  volume.path_table =
++      iso9660::read::path_table(buffer_.begin(), buffer_.begin() + maxsize);
++  read_directories(&volume.path_table);
++}
++
++void iso9660::Image::read() {
++  // Skip system area.
++  file_.seekg(iso9660::SYSTEM_AREA_SIZE);
++  for (;;) {
++    file_.read(reinterpret_cast<char*>(buffer_.data()), iso9660::SECTOR_SIZE);
++    if (iso9660::read::volume_descriptor(buffer_.begin(), buffer_.end(),
++                                         &volume_descriptors_) ==
++        iso9660::SectorType::SET_TERMINATOR) {
++      break;
++    }
++  }
++  /*
++   * Joliet uses the supplementary volume descriptor. It's alright if there's
++   * only one
++   */
++  if (volume_descriptors_.primary.get() == nullptr &&
++      volume_descriptors_.supplementary.get() == nullptr) {
++    throw std::runtime_error(
++        "Couldn't find a primary or supplementary volume descriptor.");
++  }
++}
+diff --git a/src/read.cc b/src/read.cc
+new file mode 100644
+index 0000000..d986af4
+--- /dev/null
++++ b/src/read.cc
+@@ -0,0 +1,316 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++
++#include "./include/read.h"
++
++#include <cstdint>
++#include <ctime>
++
++#include <algorithm>
++#include <iostream>
++#include <iterator>
++#include <memory>
++#include <stdexcept>
++#include <vector>
++
++#include "./include/iso9660.h"
++#include "./include/utility.h"
++
++/**
++ * @return Datetime in milliseconds since epoch with up-to centisecond
++ * precision. Therefore the timezone offset will be discarded but taken into
++ * account.
++ */
++std::int64_t iso9660::read::long_datetime(
++    iso9660::Buffer::const_iterator first,
++    iso9660::Buffer::const_iterator last) {
++  auto toint = [first, last](int pos, int count) {
++    /**
++     * The potential overhead of copying to string could be avoided by
++     * implementing an stoi function that accepts an iterator range.
++     */
++    return std::stoi(utility::substr(first, last, pos, count));
++  };
++  // Year from 1 to 9999.
++  int year = toint(0, 4);
++  /*
++   * The specification says that the date and time are not specified if all
++   * digits and the offset byte are zero.
++   * This implementation quickly aborts if it the year is zero since the
++   * specification requires the year to be in the range from 1 to 9999 this
++   * seems reasonable.
++   */
++  if (year == 0) return 0;
++  struct tm datetime;
++  datetime.tm_year = year - 1900;
++  // Month of the year from 1 to 12.
++  datetime.tm_mon = toint(4, 2) - 1;
++  // Day of the month from 1 to 31.
++  datetime.tm_mday = toint(6, 2);
++  // Hour of the day from 0 to 23.
++  datetime.tm_hour = toint(8, 2);
++  // Minute of the hour from 0 to 59.
++  datetime.tm_min = toint(10, 2);
++  // Second of the minute from 0 to 59.
++  datetime.tm_sec = toint(12, 2);
++  datetime.tm_isdst = 0;
++  // Hundredths of a second.
++  std::int64_t milliseconds = toint(14, 2) * 10;
++  // Offset from UTC in number of 15 minute intervals from -48 (West) to +52
++  // (East).
++  int offset = static_cast<int>(
++                   static_cast<std::uint8_t>(utility::at(first, last, 16))) *
++               15;
++  std::int64_t seconds = mktime(&datetime) - offset * 60;
++  milliseconds += seconds * 1000;
++  return milliseconds;
++}
++
++std::int64_t iso9660::read::long_datetime(iso9660::Buffer::const_iterator first,
++                                          std::size_t size) {
++  return iso9660::read::long_datetime(first, first + size);
++}
++
++/**
++ * The datetime that will be parsed is supposed to be in the following format:
++ * 1. byte: Number of years since 1900.
++ * 2. byte: Month of the year from 1 to 12.
++ * 3. byte: Day of the month from 1 to 31.
++ * 4. byte: Hour of the day from 0 to 23.
++ * 5. byte: Minute of hour from 0 to 59.
++ * 6. byte: Second of minute from 0 to 59.
++ * 7. byte: Offset from Greenwich mean time in number for 15 minute intervales
++ * from -48 (West) to +52 (East).
++ *
++ * @return Datetime in seconds since epoch. Therefore the timezone offset will
++ * be discarded but taken into * account.
++ */
++int iso9660::read::short_datetime(iso9660::Buffer::const_iterator first,
++                                  iso9660::Buffer::const_iterator last) {
++  struct tm datetime;
++  utility::at(first, last, &datetime.tm_year, 0);
++  if (datetime.tm_year == 0) return 0;
++  utility::at(first, last, &datetime.tm_mon, 1);
++  datetime.tm_mon -= 1;
++  utility::at(first, last, &datetime.tm_mday, 2);
++  utility::at(first, last, &datetime.tm_hour, 3);
++  utility::at(first, last, &datetime.tm_min, 4);
++  utility::at(first, last, &datetime.tm_sec, 5);
++  datetime.tm_isdst = 0;
++  int offset =
++      static_cast<int>(static_cast<std::uint8_t>(utility::at(first, last, 6))) *
++      15;
++  return mktime(&datetime) - offset * 60;
++}
++
++int iso9660::read::short_datetime(iso9660::Buffer::const_iterator first,
++                                  std::size_t size) {
++  return iso9660::read::short_datetime(first, first + size);
++}
++
++/**
++ * Read directory record according to ECMA-119. Note that in ECMA-167
++ * information control block tags are used instead.
++ */
++iso9660::File iso9660::read::directory_record(
++    iso9660::Buffer::const_iterator first,
++    iso9660::Buffer::const_iterator last) {
++  using utility::integer;
++  iso9660::File file;
++  utility::at(first, last, &file.length, 0);
++  // + length + (length % 2 == 0 ? 0 : 1);
++  utility::at(first, last, &file.extended_length, 1);
++  file.extended_length = std::move(iso9660::sector_align(file.extended_length));
++  integer(&file.location, first + 2, first + 6, 4);
++  integer(&file.size, first + 10, first + 14, 4);
++  file.datetime =
++      iso9660::read::short_datetime(first + 18, SHORT_DATETIME_SIZE);
++  utility::at(first, last, &file.flags, 25);
++  utility::at(first, last, &file.file_unit_size, 26);
++  utility::at(first, last, &file.interleave_gap_size, 27);
++  integer(&file.volume_sequence_number, first + 28, first + 30, 2);
++  std::size_t length = utility::at(first, last, 32);
++  file.name = utility::substr(first, last, 33, length);
++  // TODO(squimrel): Read rock ridge attributes.
++  return file;
++}
++
++iso9660::File iso9660::read::directory_record(
++    iso9660::Buffer::const_iterator first, std::size_t size) {
++  return iso9660::read::directory_record(first, first + size);
++}
++
++/**
++ * Read path table according to ECMA-119. Note that the path table is not used
++ * anymore in ECMA-167.
++ */
++iso9660::Directory iso9660::read::directory(
++    iso9660::Buffer::const_iterator first,
++    iso9660::Buffer::const_iterator last) {
++  using utility::integer;
++  iso9660::Directory directory;
++  const auto length = static_cast<int>(utility::at(first, last, 0));
++  // 8 byte + length of name + padding.
++  directory.size = 8 + length + (length % 2 == 0 ? 0 : 1);
++  utility::at(first, last, &directory.extended_length, 1);
++  integer(&directory.location, first + 2, 4);
++  integer(&directory.parent, first + 6, 2);
++  directory.name = utility::substr(first, last, 8, length);
++  return directory;
++}
++
++/**
++ * Read path table record according to ECMA-119. Note that the path table is
++ * not used anymore in ECMA-167.
++ */
++std::vector<iso9660::Directory> iso9660::read::path_table(
++    iso9660::Buffer::const_iterator first,
++    iso9660::Buffer::const_iterator last) {
++  std::vector<iso9660::Directory> records;
++  std::size_t size = std::distance(first, last);
++  for (std::size_t record_position = 0; record_position < size;) {
++    auto directory = iso9660::read::directory(first + record_position, last);
++    record_position += directory.size;
++    records.emplace_back(std::move(directory));
++  }
++  return records;
++}
++
++/**
++ * Post-process supplementary volume descriptor that uses joliet.
++ */
++void iso9660::read::joliet(std::vector<iso9660::Directory>* path_table) {
++  for (auto& directory : *path_table) {
++    directory.name = utility::from_ucs2(std::move(directory.name));
++    for (auto& file : directory.files) {
++      if (!file.isdir()) {
++        file.name = utility::from_ucs2(std::move(file.name));
++      }
++    }
++  }
++}
++
++/**
++ * Read any volume descriptor.
++ */
++iso9660::SectorType iso9660::read::volume_descriptor(
++    iso9660::Buffer::const_iterator first, iso9660::Buffer::const_iterator last,
++    iso9660::VolumeDescriptors* volume_descriptors) {
++  using iso9660::SectorType;
++  auto type = static_cast<iso9660::SectorType>(utility::at(first, last, 0));
++  iso9660::VolumeDescriptorHeader header;
++  header.type = type;
++  header.identifier = utility::substr(first, last, 1, 5);
++  utility::at(first, last, &header.version, 6);
++  auto identifier = iso9660::identifier_of(header.identifier);
++  // Currently only ECMA 119 is understood.
++  if (identifier != iso9660::Identifier::ECMA_119) {
++    throw std::runtime_error("Unknown identifier: " + header.identifier);
++  }
++  switch (type) {
++    // ECMA 119 - 8.2
++    case SectorType::BOOT_RECORD:
++      break;
++    // ECMA 119 - 8.3
++    case SectorType::SET_TERMINATOR:
++      break;
++    // ECMA 119 - 8.4
++    case SectorType::PRIMARY:
++    // ECMA 119 - 8.5
++    case SectorType::SUPPLEMENTARY: {
++      auto tmp =
++          iso9660::read::volume_descriptor(first, last, std::move(header));
++      if (type == SectorType::PRIMARY) {
++        volume_descriptors->primary = std::move(tmp);
++      } else {
++        volume_descriptors->supplementary = std::move(tmp);
++      }
++    } break;
++    // ECMA 119 - 9.3
++    case SectorType::PARTITION:
++    default:
++      std::cout << "Unknown type: " << static_cast<int>(header.type)
++                << std::endl;
++      break;
++  }
++  return type;
++}
++
++/**
++ * Read primary or supplementary volume descriptor according to ECMA-119.
++ */
++std::unique_ptr<iso9660::VolumeDescriptor> iso9660::read::volume_descriptor(
++    iso9660::Buffer::const_iterator first, iso9660::Buffer::const_iterator last,
++    iso9660::VolumeDescriptorHeader header) {
++  using utility::integer;
++  namespace read = iso9660::read;
++
++  /*
++   * FIXME: Use C++14. By the way there's no reason to have this managed by a
++   * unique_ptr. std::optional could be used but there's no C++17 anyways.
++   */
++  std::unique_ptr<iso9660::VolumeDescriptor> vd(new iso9660::VolumeDescriptor);
++  vd->header = std::move(header);
++  if (vd->header.type == iso9660::SectorType::SUPPLEMENTARY)
++    utility::at(first, last, &vd->flags, 7);
++  vd->system_identifier = utility::substr(first, last, 8, 32);
++  vd->volume_identifier = utility::substr(first, last, 40, 32);
++  if (vd->header.type == iso9660::SectorType::SUPPLEMENTARY)
++    vd->escape_sequences = utility::substr(first, last, 88, 32);
++
++  integer(&vd->volume_space_size, first + 80, first + 84, 4);
++  integer(&vd->volume_sequence_number, first + 124, first + 126, 2);
++  integer(&vd->logical_block_size, first + 128, first + 130, 2);
++  integer(&vd->path_table_size, first + 132, first + 136, 4);
++  /*
++   * As specified in 6.9.2 there're actually two path tables which store the
++   * same information but using different endianness.
++   */
++  integer(&vd->path_table_location, first + 140, first + 148, 4);
++  integer(&vd->optional_path_table_location, first + 144, first + 152, 4);
++
++  vd->root_directory =
++      read::directory_record(first + 156, iso9660::DIRECTORY_RECORD_SIZE);
++  vd->volume_set_identifier =
++      utility::substr(first, last, 190, iso9660::IDENTIFIER_SIZE);
++  vd->publisher_identifier =
++      utility::substr(first, last, 318, iso9660::IDENTIFIER_SIZE);
++  vd->data_preparer_identifier =
++      utility::substr(first, last, 446, iso9660::IDENTIFIER_SIZE);
++  vd->application_identifier =
++      utility::substr(first, last, 574, iso9660::IDENTIFIER_SIZE);
++  vd->copyright_file_identifier =
++      utility::substr(first, last, 702, iso9660::FILE_IDENTIFIER_SIZE);
++  vd->abstract_file_identifier =
++      utility::substr(first, last, 739, iso9660::FILE_IDENTIFIER_SIZE);
++  vd->bibliographic_file_identifier =
++      utility::substr(first, last, 776, iso9660::FILE_IDENTIFIER_SIZE);
++  vd->volume_create_datetime =
++      read::long_datetime(first + 813, iso9660::LONG_DATETIME_SIZE);
++  vd->volume_modify_datetime =
++      read::long_datetime(first + 830, iso9660::LONG_DATETIME_SIZE);
++  vd->volume_expiration_datetime =
++      read::long_datetime(first + 847, iso9660::LONG_DATETIME_SIZE);
++  vd->volume_effective_datetime =
++      read::long_datetime(first + 864, iso9660::LONG_DATETIME_SIZE);
++  utility::at(first, last, &vd->file_structure_version, 881);
++  vd->application_use =
++      utility::substr(first, last, 883, iso9660::APPLICATION_USE_SIZE);
++  return vd;
++}
+diff --git a/src/utility.cc b/src/utility.cc
+new file mode 100644
+index 0000000..d5d6168
+--- /dev/null
++++ b/src/utility.cc
+@@ -0,0 +1,85 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++
++#include "./include/utility.h"
++
++#include <algorithm>
++#include <codecvt>
++#include <iterator>
++#include <locale>
++#include <string>
++
++#include "./include/iso9660.h"
++
++/**
++ * Convert from UCS-2 to UTF-8 string.
++ */
++std::string utility::from_ucs2(const std::u16string& from) {
++  static std::wstring_convert<std::codecvt_utf8<char16_t>, char16_t> convert;
++  return convert.to_bytes(from.c_str());
++}
++
++/**
++ * Convert a raw string that actually uses UCS-2 big endian to UTF-8 string.
++ */
++std::string utility::from_ucs2(std::string&& raw) {
++  utility::big_endian(&raw);
++  raw += '\0';
++  std::u16string result(reinterpret_cast<const char16_t*>(raw.c_str()),
++                        raw.size());
++  return utility::from_ucs2(std::move(result));
++}
++
++/**
++ * Correct byte order for our target system assuming that the current byte
++ * order is big endian.
++ */
++void utility::big_endian(std::string* const raw) {
++  if (ENDIANNESS == utility::Endian::BIG) return;
++  for (auto first = raw->begin(); first < raw->end(); first += 2) {
++    std::swap(*first, *(first + 1));
++  }
++}
++
++/**
++ * Move a part of an array to a string.
++ *
++ * Since the ISO 9660 standard sometimes refers to values higher than 127 an
++ * unsigned char is used to work directly with the read data so that the values
++ * provided by ISO 9660 do not have to be converted to its signed 8 bit
++ * equivalent by the user.
++ *
++ * When human readable data is stored we need to convert it back to char and
++ * we'll copy it into a string so that it won't change if the data in the view
++ * changes.
++ */
++std::string utility::substr(iso9660::Buffer::const_iterator first,
++                            iso9660::Buffer::const_iterator last,
++                            std::size_t at, std::size_t size) {
++  return std::string(
++      std::make_move_iterator(first + at),
++      std::make_move_iterator(size == 0 ? last : (first + at + size)));
++}
++
++iso9660::Buffer::value_type utility::at(iso9660::Buffer::const_iterator first,
++                                        iso9660::Buffer::const_iterator last,
++                                        std::size_t index) {
++  // Could do out of bounds check here.
++  return std::move(*(first + index));
++}
+-- 
+2.14.1
+

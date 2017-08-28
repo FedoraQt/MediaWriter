@@ -1,0 +1,192 @@
+From 0680231f2d60f97fb0b50d15a551d62f6acda40d Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Mon, 26 Jun 2017 21:55:43 +0000
+Subject: [PATCH 1/2] Allow the user to specify the partition type
+
+Implement feature requested in #318.
+
+Allow the user to specify the "partition-type" option in
+"CreatePartition" to explicitly specify whether the partition should be
+a primary, extended or logical partition.
+---
+ data/org.freedesktop.UDisks2.xml             |  8 ++++--
+ src/tests/dbus-tests/test_60_partitioning.py | 43 ++++++++++++++++++++++------
+ src/udiskslinuxpartitiontable.c              | 33 +++++++++++++++++++--
+ 3 files changed, 70 insertions(+), 14 deletions(-)
+
+diff --git a/data/org.freedesktop.UDisks2.xml b/data/org.freedesktop.UDisks2.xml
+index ffa9f05..d38f086 100644
+--- a/data/org.freedesktop.UDisks2.xml
++++ b/data/org.freedesktop.UDisks2.xml
+@@ -1406,7 +1406,7 @@
+         @size: The desired size of the partition, in bytes.
+         @type: The type of partition to create (cf. the #org.freedesktop.UDisks2.Partition:Type property) or blank to use the default for the partition table type and OS.
+         @name: The name for the new partition or blank if the partition table do not support names.
+-        @options: Options (currently unused except for <link linkend="udisks-std-options">standard options</link>).
++        @options: Options - known options (in addition to <link linkend="udisks-std-options">standard options</link>) include <parameter>partition-type</parameter> (of type 's').
+         @created_partition: An object path to the created block device object implementing the #org.freedesktop.UDisks2.Partition interface.
+ 
+         Creates a new partition.
+@@ -1419,6 +1419,10 @@
+         larger or smaller than the requested @size bytes for the same
+         reasons.
+ 
++        For <literal>dos</literal> partition tables, the partition type can be
++        set with the @partition-type option. Possible values are: "primary",
++        "extended" or "logical".
++
+         The newly created partition will be wiped of known filesystem
+         signatures using the
+         <citerefentry><refentrytitle>wipefs</refentrytitle><manvolnum>8</manvolnum></citerefentry>
+@@ -1439,7 +1443,7 @@
+         @size: The desired size of the partition, in bytes.
+         @type: The type of partition to create (cf. the #org.freedesktop.UDisks2.Partition:Type property) or blank to use the default for the partition table type and OS.
+         @name: The name for the new partition or blank if the partition table do not support names.
+-        @options: Options (currently unused except for <link linkend="udisks-std-options">standard options</link>).
++        @options: Options - known options (in addition to <link linkend="udisks-std-options">standard options</link>) include <parameter>partition-type</parameter> (of type 's').
+         @created_partition: An object path to the created block device object implementing the #org.freedesktop.UDisks2.Partition interface.
+         @format_type: The type to use for Format.
+         @format_options: Options for Format.
+diff --git a/src/tests/dbus-tests/test_60_partitioning.py b/src/tests/dbus-tests/test_60_partitioning.py
+index 55f7821..856c4d3 100644
+--- a/src/tests/dbus-tests/test_60_partitioning.py
++++ b/src/tests/dbus-tests/test_60_partitioning.py
+@@ -115,7 +115,7 @@ class UdisksPartitionTableTest(udiskstestcase.UdisksTestCase):
+ 
+         self.addCleanup(self._remove_partition, part)
+ 
+-    def test_create_extended_partition(self):
++    def create_extended_partition(self, ext_options, log_options, part_type=''):
+ 
+         disk = self.get_object('/block_devices/' + os.path.basename(self.vdevs[0]))
+         self.assertIsNotNone(disk)
+@@ -125,8 +125,8 @@ class UdisksPartitionTableTest(udiskstestcase.UdisksTestCase):
+         self.addCleanup(self._remove_format, disk)
+ 
+         # create extended partition
+-        ext_path = disk.CreatePartition(dbus.UInt64(1024**2), dbus.UInt64(150 * 1024**2), '0x05', '',
+-                                        self.no_options, dbus_interface=self.iface_prefix + '.PartitionTable')
++        ext_path = disk.CreatePartition(dbus.UInt64(1024**2), dbus.UInt64(150 * 1024**2), part_type, '',
++                                        ext_options, dbus_interface=self.iface_prefix + '.PartitionTable')
+         self.udev_settle()
+ 
+         ext_part = self.bus.get_object(self.iface_prefix, ext_path)
+@@ -149,7 +149,7 @@ class UdisksPartitionTableTest(udiskstestcase.UdisksTestCase):
+ 
+         # create logical partition
+         log_path = disk.CreatePartition(dbus.UInt64(1024**2), dbus.UInt64(50 * 1024**2), '', '',
+-                                        self.no_options, dbus_interface=self.iface_prefix + '.PartitionTable')
++                                        log_options, dbus_interface=self.iface_prefix + '.PartitionTable')
+         self.udev_settle()
+ 
+         log_part = self.bus.get_object(self.iface_prefix, log_path)
+@@ -163,17 +163,42 @@ class UdisksPartitionTableTest(udiskstestcase.UdisksTestCase):
+ 
+         # create one more logical partition
+         log_path2 = disk.CreatePartition(dbus.UInt64(51 * 1024**2), dbus.UInt64(50 * 1024**2), '', '',
+-                                         self.no_options, dbus_interface=self.iface_prefix + '.PartitionTable')
++                                         log_options, dbus_interface=self.iface_prefix + '.PartitionTable')
+         self.udev_settle()
+ 
+         log_part2 = self.bus.get_object(self.iface_prefix, log_path2)
+         self.assertIsNotNone(log_part2)
+ 
+-        self.addCleanup(self._remove_partition, log_part)
++        self.addCleanup(self._remove_partition, log_part2)
+ 
+-        # check if its a 'contained'
+-        dbus_cont = self.get_property(log_part2, '.Partition', 'IsContained')
+-        dbus_cont.assertTrue()
++    def test_create_extended_partition(self):
++        self.create_extended_partition(self.no_options, self.no_options, '0x05')
++
++    def test_create_explicit_extended_partition(self):
++        ext_options = dbus.Dictionary({'partition-type': 'extended'}, signature='sv')
++        log_options = dbus.Dictionary({'partition-type': 'logical'}, signature='sv')
++        self.create_extended_partition(ext_options, log_options)
++
++    def test_fill_with_primary_partitions(self):
++        disk = self.get_object('/block_devices/' + os.path.basename(self.vdevs[0]))
++        self.assertIsNotNone(disk)
++
++        # create msdos partition table
++        self._create_format(disk, 'dos')
++        self.addCleanup(self._remove_format, disk)
++
++        options = dbus.Dictionary({'partition-type': 'primary'}, signature='sv')
++        offset = 1024**2
++        size = 10 * 1024**2
++        for i in range(4):
++            # create primary partition
++            path = disk.CreatePartition(dbus.UInt64(offset + i * (offset + size)), dbus.UInt64(size), '', '',
++                                            options, dbus_interface=self.iface_prefix + '.PartitionTable')
++            self.udev_settle()
++
++            part = self.bus.get_object(self.iface_prefix, path)
++            self.assertIsNotNone(part)
++            self.addCleanup(self._remove_partition, part)
+ 
+     def test_create_gpt_partition(self):
+         disk = self.get_object('/block_devices/' + os.path.basename(self.vdevs[0]))
+diff --git a/src/udiskslinuxpartitiontable.c b/src/udiskslinuxpartitiontable.c
+index de313c4..e7f4c7c 100644
+--- a/src/udiskslinuxpartitiontable.c
++++ b/src/udiskslinuxpartitiontable.c
+@@ -206,6 +206,7 @@ udisks_linux_partition_table_handle_create_partition (UDisksPartitionTable   *ta
+   gid_t caller_gid;
+   GError *error = NULL;
+   UDisksBaseJob *job = NULL;
++  gchar *partition_type = NULL;
+ 
+   object = udisks_daemon_util_dup_object (table, &error);
+   if (object == NULL)
+@@ -215,6 +216,9 @@ udisks_linux_partition_table_handle_create_partition (UDisksPartitionTable   *ta
+     }
+ 
+   daemon = udisks_linux_block_object_get_daemon (UDISKS_LINUX_BLOCK_OBJECT (object));
++
++  g_variant_lookup (options, "partition-type", "s", &partition_type);
++
+   block = udisks_object_get_block (object);
+   if (block == NULL)
+     {
+@@ -281,10 +285,33 @@ udisks_linux_partition_table_handle_create_partition (UDisksPartitionTable   *ta
+           goto out;
+         }
+ 
+-      /* Determine whether we are creating a primary, extended or logical partition */
+       type_as_int = strtol (type, &endp, 0);
+-      if (type[0] != '\0' && *endp == '\0' &&
+-          (type_as_int == 0x05 || type_as_int == 0x0f || type_as_int == 0x85))
++
++      /* Determine whether we are creating a primary, extended or logical partition */
++      if (partition_type != NULL)
++        {
++          if (g_strcmp0 (partition_type, "primary") == 0)
++            {
++              part_type = BD_PART_TYPE_REQ_NORMAL;
++            }
++          else if (g_strcmp0 (partition_type, "extended") == 0)
++            {
++              part_type = BD_PART_TYPE_REQ_EXTENDED;
++            }
++          else if (g_strcmp0 (partition_type, "logical") == 0)
++            {
++              part_type = BD_PART_TYPE_REQ_LOGICAL;
++            }
++          else
++            {
++              g_dbus_method_invocation_return_error (invocation, UDISKS_ERROR, UDISKS_ERROR_FAILED,
++                                                     "Don't know how to create partition of type `%s'",
++                                                     partition_type);
++              goto out;
++            }
++        }
++      else if (type[0] != '\0' && *endp == '\0' &&
++               (type_as_int == 0x05 || type_as_int == 0x0f || type_as_int == 0x85))
+         {
+           part_type = BD_PART_TYPE_REQ_EXTENDED;
+         }
+-- 
+2.14.1
+

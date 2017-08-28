@@ -1,0 +1,295 @@
+From ff22a29682a84c794590021df6ebb0d3b6a5cdfd Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Tue, 16 May 2017 10:52:21 +0000
+Subject: [PATCH 04/21] Format, constify, castify, decl-at-use code
+
+---
+ checkisomd5.c   | 75 ++++++++++++++++++++++++---------------------------------
+ implantisomd5.c | 25 ++++++++-----------
+ pyisomd5sum.c   | 14 +++++------
+ 3 files changed, 49 insertions(+), 65 deletions(-)
+
+diff --git a/checkisomd5.c b/checkisomd5.c
+index 17c13b8..bce31b4 100644
+--- a/checkisomd5.c
++++ b/checkisomd5.c
+@@ -33,23 +33,20 @@ struct progressCBData {
+     int gaugeat;
+ };
+ 
+-int user_bailing_out() {
+-  int retval = 0;
+-  struct timeval timev;
+-  fd_set rfds;
+-  char ch;
++int user_bailing_out(void) {
++    struct timeval timev;
++    fd_set rfds;
+ 
+-  FD_ZERO(&rfds);
+-  FD_SET(0,&rfds);
++    FD_ZERO(&rfds);
++    FD_SET(0, &rfds);
+ 
+-  timev.tv_sec = 0;
+-  timev.tv_usec = 0;
++    timev.tv_sec = 0;
++    timev.tv_usec = 0;
+ 
+-  if (select(1, &rfds, NULL, NULL, &timev))
+-    if ((ch = getchar()) == 27)
+-      retval = 1;
++    if (select(1, &rfds, NULL, NULL, &timev) && getchar() == 27)
++        return 1;
+ 
+-  return retval;
++    return 0;
+ }
+ 
+ static int outputCB(void *const co, const off_t offset, const off_t total) {
+@@ -57,18 +54,17 @@ static int outputCB(void *const co, const off_t offset, const off_t total) {
+     int gaugeval = -1;
+ 
+     if (data->verbose) {
+-        printf("\rChecking: %05.1f%%", (100.0*offset)/(total));
++        printf("\rChecking: %05.1f%%", (100.0 * (double) offset) / (double) total);
+         fflush(stdout);
+     }
+     if (data->gauge) {
+-        gaugeval = (100.0*offset)/(total);
++        gaugeval = (int) ((100.0 * (double) offset) / (double) total);
+         if (gaugeval != data->gaugeat) {
+             printf("%d\n", gaugeval);
+             fflush(stdout);
+             data->gaugeat = gaugeval;
+         }
+     }
+-
+     return user_bailing_out();
+ }
+ 
+@@ -77,13 +73,12 @@ static void usage(void) {
+     exit(1);
+ }
+ 
+-
+ /* Process the result code and return the proper exit status value
+  *
+  * return 1 for failures, 0 for good checksum and 2 if aborted.
+  */
+-int processExitStatus(int rc) {
+-    char * result;
++int processExitStatus(const int rc) {
++    char *result;
+     int exit_rc;
+ 
+     switch (rc) {
+@@ -115,38 +110,30 @@ int processExitStatus(int rc) {
+ 
+     fprintf(stderr, "\nThe media check is complete, the result is: %s\n", result);
+ 
+-    return(exit_rc);
++    return exit_rc;
+ }
+ 
+-
+ int main(int argc, char **argv) {
+-    int rc;
+-    const char **args;
+-    int md5only;
+-    int help;
+     struct progressCBData data;
+-    poptContext optCon;
+-
+-    memset(&data, 0, sizeof(struct progressCBData));
+-
+-    md5only = 0;
+-    help = 0;
++    memset(&data, 0, sizeof(data));
+     data.verbose = 0;
+     data.gauge = 0;
+ 
++    int md5only = 0;
++    int help = 0;
++
+     struct poptOption options[] = {
+         { "md5sumonly", 'o', POPT_ARG_NONE, &md5only, 0 },
+         { "verbose", 'v', POPT_ARG_NONE, &data.verbose, 0 },
+-        { "gauge", 'g', POPT_ARG_NONE, &data.gauge, 0},
+-        { "help", 'h', POPT_ARG_NONE, &help, 0},
+-        { 0, 0, 0, 0, 0}
++        { "gauge", 'g', POPT_ARG_NONE, &data.gauge, 0 },
++        { "help", 'h', POPT_ARG_NONE, &help, 0 },
++        { 0, 0, 0, 0, 0 }
+     };
+ 
+-    static struct termios oldt, newt;
++    poptContext optCon = poptGetContext("checkisomd5", argc, (const char **) argv, options, 0);
+ 
+-    optCon = poptGetContext("checkisomd5", argc, (const char **)argv, options, 0);
+-
+-    if ((rc = poptGetNextOpt(optCon)) < -1) {
++    int rc = poptGetNextOpt(optCon);
++    if (rc < -1) {
+         fprintf(stderr, "bad option %s: %s\n",
+                 poptBadOption(optCon, POPT_BADOPTION_NOALIAS),
+                 poptStrerror(rc));
+@@ -156,12 +143,12 @@ int main(int argc, char **argv) {
+     if (help)
+         usage();
+ 
+-    args = poptGetArgs(optCon);
++    const char **args = poptGetArgs(optCon);
+     if (!args || !args[0] || !args[0][0])
+         usage();
+ 
+-    if (md5only|data.verbose) {
+-        rc = printMD5SUM((char *)args[0]);
++    if (md5only | data.verbose) {
++        rc = printMD5SUM((char *) args[0]);
+         if (rc < 0) {
+             exit(processExitStatus(rc));
+         }
+@@ -172,11 +159,14 @@ int main(int argc, char **argv) {
+ 
+     printf("Press [Esc] to abort check.\n");
+ 
++
++    static struct termios oldt;
++    struct termios newt;
+     tcgetattr(0, &oldt);
+     newt = oldt;
+     newt.c_lflag &= ~(ICANON | ECHO | ECHONL | ISIG | IEXTEN);
+     tcsetattr(0, TCSANOW, &newt);
+-    rc = mediaCheckFile((char *)args[0], outputCB, &data);
++    rc = mediaCheckFile((char *) args[0], outputCB, &data);
+     tcsetattr(0, TCSANOW, &oldt);
+ 
+     if (data.verbose)
+@@ -184,4 +174,3 @@ int main(int argc, char **argv) {
+ 
+     exit(processExitStatus(rc));
+ }
+- 
+diff --git a/implantisomd5.c b/implantisomd5.c
+index f116f8c..fdf9839 100644
+--- a/implantisomd5.c
++++ b/implantisomd5.c
+@@ -25,33 +25,28 @@
+ #include "md5.h"
+ #include "libimplantisomd5.h"
+ 
+-
+ static void usage(void) {
+     fprintf(stderr, "implantisomd5:         implantisomd5 [--force] [--supported-iso] <isofilename>\n");
+     exit(1);
+ }
+ 
+-
+ int main(int argc, char **argv) {
+-    int rc;
+     char *errstr;
+-    const char **args;
+ 
+-    int forceit=0;
+-    int supported=0;
+-    int help=0;
++    int forceit = 0;
++    int supported = 0;
++    int help = 0;
+ 
+-    poptContext optCon;
+     struct poptOption options[] = {
+         { "force", 'f', POPT_ARG_NONE, &forceit, 0 },
+         { "supported-iso", 'S', POPT_ARG_NONE, &supported, 0 },
+-        { "help", 'h', POPT_ARG_NONE, &help, 0},
+-        { 0, 0, 0, 0, 0}
++        { "help", 'h', POPT_ARG_NONE, &help, 0 },
++        { 0, 0, 0, 0, 0 }
+     };
+ 
++    poptContext optCon = poptGetContext("implantisomd5", argc, (const char **) argv, options, 0);
+ 
+-    optCon = poptGetContext("implantisomd5", argc, (const char **)argv, options, 0);
+-
++    int rc;
+     if ((rc = poptGetNextOpt(optCon)) < -1) {
+         fprintf(stderr, "bad option %s: %s\n",
+                 poptBadOption(optCon, POPT_BADOPTION_NOALIAS),
+@@ -62,14 +57,14 @@ int main(int argc, char **argv) {
+     if (help)
+         usage();
+ 
+-    args = poptGetArgs(optCon);
++    const char **args = poptGetArgs(optCon);
+     if (!args || !args[0] || !args[0][0])
+         usage();
+ 
+-    rc = implantISOFile((char *)args[0], supported, forceit, 0, &errstr);
++    rc = implantISOFile((char *) args[0], supported, forceit, 0, &errstr);
+     if (rc) {
+         fprintf(stderr, "ERROR: ");
+-        fprintf(stderr, errstr, (char *)args[0]);
++        fprintf(stderr, errstr, (char *) args[0]);
+         exit(1);
+     } else {
+         exit(0);
+diff --git a/pyisomd5sum.c b/pyisomd5sum.c
+index 1425472..55f25ab 100644
+--- a/pyisomd5sum.c
++++ b/pyisomd5sum.c
+@@ -23,14 +23,14 @@
+ #include "libcheckisomd5.h"
+ #include "libimplantisomd5.h"
+ 
+-static PyObject * doCheckIsoMD5Sum(PyObject * s, PyObject * args);
+-static PyObject * doImplantIsoMD5Sum(PyObject * s, PyObject * args);
++static PyObject *doCheckIsoMD5Sum(PyObject *s, PyObject *args);
++static PyObject *doImplantIsoMD5Sum(PyObject *s, PyObject *args);
+ 
+ static PyMethodDef isomd5sumMethods[] = {
+     { "checkisomd5sum", (PyCFunction) doCheckIsoMD5Sum, METH_VARARGS, NULL },
+     { "implantisomd5sum", (PyCFunction) doImplantIsoMD5Sum, METH_VARARGS, NULL },
+     { NULL }
+-} ;
++};
+ 
+ /* Call python object with offset and total
+  * If the object returns true return 1 to abort the check
+@@ -44,14 +44,14 @@ int pythonCB(void *cbdata, off_t offset, off_t total) {
+     Py_DECREF(arglist);
+ 
+     if (result == NULL)
+-       return 1;
++        return 1;
+ 
+     rc = PyObject_IsTrue(result);
+     Py_DECREF(result);
+     return (rc > 0);
+ }
+ 
+-static PyObject * doCheckIsoMD5Sum(PyObject * s, PyObject * args) {
++static PyObject *doCheckIsoMD5Sum(PyObject *s, PyObject *args) {
+     PyObject *callback = NULL;
+     char *isofile;
+     int rc;
+@@ -74,7 +74,7 @@ static PyObject * doCheckIsoMD5Sum(PyObject * s, PyObject * args) {
+     return Py_BuildValue("i", rc);
+ }
+ 
+-static PyObject * doImplantIsoMD5Sum(PyObject * s, PyObject * args) {
++static PyObject *doImplantIsoMD5Sum(PyObject *s, PyObject *args) {
+     char *isofile, *errstr;
+     int forceit, supported;
+     int rc;
+@@ -101,6 +101,6 @@ PyMODINIT_FUNC PyInit_pyisomd5sum(void) {
+ }
+ #else
+ void initpyisomd5sum(void) {
+-    (void)Py_InitModule("pyisomd5sum", isomd5sumMethods);
++    (void) Py_InitModule("pyisomd5sum", isomd5sumMethods);
+ }
+ #endif
+-- 
+2.14.1
+

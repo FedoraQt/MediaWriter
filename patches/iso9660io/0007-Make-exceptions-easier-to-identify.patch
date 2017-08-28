@@ -1,0 +1,209 @@
+From b1729256329851cb004c55a854c889372c2ac795 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Mon, 5 Jun 2017 18:42:11 +0000
+Subject: [PATCH 07/28] Make exceptions easier to identify
+
+---
+ example/persistent-storage.cc | 13 ++++++------
+ include/exception.h           | 48 +++++++++++++++++++++++++++++++++++++++++++
+ src/exception.cc              | 29 ++++++++++++++++++++++++++
+ src/image.cc                  | 12 +++++------
+ 4 files changed, 90 insertions(+), 12 deletions(-)
+ create mode 100644 include/exception.h
+ create mode 100644 src/exception.cc
+
+diff --git a/example/persistent-storage.cc b/example/persistent-storage.cc
+index 3355324..4f66050 100644
+--- a/example/persistent-storage.cc
++++ b/example/persistent-storage.cc
+@@ -21,10 +21,10 @@
+ #include <fstream>
+ #include <ios>
+ #include <iostream>
+-#include <stdexcept>
+ #include <string>
+ #include <vector>
+ 
++#include "./include/exception.h"
+ #include "./include/file.h"
+ #include "./include/image.h"
+ 
+@@ -53,15 +53,15 @@ std::streamsize insert_overlay_switch(std::fstream* iofile,
+     line += '\n';
+     read_bytes += line.size();
+     if (read_bytes > fileinfo.size) {
+-      throw std::runtime_error("Unexpected end of file at byte " +
+-                               std::to_string(read_bytes) + " of " +
+-                               std::to_string(fileinfo.size) + ".");
++      throw iso9660::CorruptFileException("Unexpected end of file at byte " +
++                                          std::to_string(read_bytes) + " of " +
++                                          std::to_string(fileinfo.size) + ".");
+     }
+     const auto position = line.find(needle);
+     if (position != std::string::npos) {
+       growth += overlay_switch.size();
+       if (growth > max_growth) {
+-        throw std::runtime_error(
++        throw iso9660::NotImplementedException(
+             "Bad luck! The file has grown too much. It does not fit into the "
+             "ISO 9660 image anymore without some serious modification.");
+       }
+@@ -93,7 +93,8 @@ std::streamsize insert_overlay_switch(std::fstream* iofile,
+ void add_overlay(iso9660::Image* const isoimage, const std::string& filename) {
+   auto file = isoimage->find(filename);
+   if (file == nullptr) {
+-    throw std::runtime_error("Can't find " + filename);
++    std::cout << "Can't find " + filename + ". Skipping..\n" << std::flush;
++    return;
+   }
+   isoimage->modify_file(*file, insert_overlay_switch);
+ }
+diff --git a/include/exception.h b/include/exception.h
+new file mode 100644
+index 0000000..9a54147
+--- /dev/null
++++ b/include/exception.h
+@@ -0,0 +1,48 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++
++#ifndef ISO9660_EXCEPTION_H_
++#define ISO9660_EXCEPTION_H_
++
++#include <exception>
++#include <string>
++
++namespace iso9660 {
++
++class Exception : public std::exception {
++ public:
++  explicit Exception(const std::string& what_arg);
++  virtual ~Exception();
++  virtual const char* what() const noexcept(true);
++
++ private:
++  std::string what_arg_;
++};
++
++class NotImplementedException : public Exception {
++  using Exception::Exception;
++};
++
++class CorruptFileException : public Exception {
++  using Exception::Exception;
++};
++
++}  // namespace iso9660
++
++#endif  // ISO9660_EXCEPTION_H_
+diff --git a/src/exception.cc b/src/exception.cc
+new file mode 100644
+index 0000000..7519541
+--- /dev/null
++++ b/src/exception.cc
+@@ -0,0 +1,29 @@
++/*
++ * Copyright (C) 2017 squimrel
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * as published by the Free Software Foundation; either version 2
++ * of the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
++ * USA.
++ */
++
++#include "./include/exception.h"
++
++iso9660::Exception::Exception(const std::string& what_arg)
++    : what_arg_(what_arg) {}
++
++iso9660::Exception::~Exception() {}
++
++const char* iso9660::Exception::what() const noexcept(true) {
++  return what_arg_.c_str();
++};
+diff --git a/src/image.cc b/src/image.cc
+index 8fc1593..d39332c 100644
+--- a/src/image.cc
++++ b/src/image.cc
+@@ -23,13 +23,13 @@
+ 
+ #include <algorithm>
+ #include <fstream>
+-#include <stdexcept>
+ #include <string>
+ #include <vector>
+ #ifndef NDEBUG
+ #include <iostream>
+ #endif
+ 
++#include "./include/exception.h"
+ #include "./include/file.h"
+ #include "./include/iso9660.h"
+ #include "./include/path-table.h"
+@@ -89,7 +89,7 @@ void iso9660::Image::read_path_table(
+   if (volume_descriptor == nullptr) return;
+   auto& volume = *volume_descriptor;
+   if (volume.path_table_size > iso9660::SECTOR_SIZE) {
+-    throw std::runtime_error(
++    throw iso9660::NotImplementedException(
+         "This implementation can't handle path tables that have a size greater "
+         "than the size of one sector.");
+   }
+@@ -118,7 +118,8 @@ iso9660::SectorType iso9660::Image::read_volume_descriptor() {
+   auto identifier = iso9660::identifier_of(header.identifier);
+   // Currently only ECMA 119 is understood.
+   if (identifier != iso9660::Identifier::ECMA_119) {
+-    throw std::runtime_error("Unknown identifier: " + header.identifier);
++    throw iso9660::NotImplementedException("Unknown identifier: " +
++                                           header.identifier);
+   }
+   switch (type) {
+     // ECMA 119 - 8.2
+@@ -170,7 +171,7 @@ void iso9660::Image::read() {
+    * only one
+    */
+   if (primary_.get() == nullptr && supplementary_.get() == nullptr) {
+-    throw std::runtime_error(
++    throw iso9660::CorruptFileException(
+         "Couldn't find a primary or supplementary volume descriptor.");
+   }
+   read_path_table(primary_.get());
+@@ -221,8 +222,7 @@ void iso9660::Image::modify_file(
+   if (growth == 0) return;
+   auto result = file_positions_.find(file.location);
+   if (result == file_positions_.end()) {
+-    throw std::runtime_error(
+-        "Could not find file location. ISO image is corrupt.");
++    throw iso9660::CorruptFileException("Could not find file location.");
+   }
+   /*
+    * FIXME: This is messy. In the future the supplementary and primary files
+-- 
+2.14.1
+

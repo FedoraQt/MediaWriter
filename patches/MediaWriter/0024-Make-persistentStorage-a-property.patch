@@ -1,0 +1,72 @@
+From bd146b6310fa71211c430bd366656803b109f54a Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Mon, 7 Aug 2017 19:11:46 +0000
+Subject: [PATCH 24/40] Make persistentStorage a property
+
+instead of an invokable method that acts as a setter.
+---
+ app/dialogs/DownloadDialog.qml | 4 ++--
+ app/drivemanager.cpp           | 4 ----
+ app/drivemanager.h             | 2 +-
+ 3 files changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/app/dialogs/DownloadDialog.qml b/app/dialogs/DownloadDialog.qml
+index 982c321..bb7e3dd 100644
+--- a/app/dialogs/DownloadDialog.qml
++++ b/app/dialogs/DownloadDialog.qml
+@@ -65,7 +65,7 @@ Dialog {
+         onSelectedChanged: {
+             writeImmediately.checked = false
+             if (drives.selected) {
+-                drives.selected.persistentStorage(persistentStorage.checked)
++                drives.selected.persistentStorage = persistentStorage.checked
+             }
+         }
+     }
+@@ -390,7 +390,7 @@ Dialog {
+                             tooltip: qsTr("May take a lot longer")
+                             onCheckedChanged: {
+                                 if (drives.selected) {
+-                                    drives.selected.persistentStorage(checked)
++                                    drives.selected.persistentStorage = checked
+                                 }
+                             }
+                         }
+diff --git a/app/drivemanager.cpp b/app/drivemanager.cpp
+index 22ce0ef..542db37 100644
+--- a/app/drivemanager.cpp
++++ b/app/drivemanager.cpp
+@@ -235,10 +235,6 @@ Drive::RestoreStatus Drive::restoreStatus() {
+     return m_restoreStatus;
+ }
+ 
+-void Drive::persistentStorage(bool enabled) {
+-    m_persistentStorage = enabled;
+-}
+-
+ QString Drive::helperBinary() {
+     if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+         return qApp->applicationDirPath() + "/helper";
+diff --git a/app/drivemanager.h b/app/drivemanager.h
+index a1e3e6b..ac33445 100644
+--- a/app/drivemanager.h
++++ b/app/drivemanager.h
+@@ -141,6 +141,7 @@ class Drive : public QObject {
+     Q_PROPERTY(QString name READ name CONSTANT)
+     Q_PROPERTY(uint64_t size READ size CONSTANT)
+     Q_PROPERTY(RestoreStatus restoreStatus READ restoreStatus NOTIFY restoreStatusChanged)
++    Q_PROPERTY(bool persistentStorage MEMBER m_persistentStorage);
+ public:
+     enum RestoreStatus {
+         CLEAN = 0,
+@@ -159,7 +160,6 @@ public:
+     virtual uint64_t size() const;
+     virtual RestoreStatus restoreStatus();
+ 
+-    Q_INVOKABLE void persistentStorage(bool enabled);
+     Q_INVOKABLE virtual bool write(ReleaseVariant *data);
+     Q_INVOKABLE virtual void cancel();
+     Q_INVOKABLE virtual void restore();
+-- 
+2.14.1
+

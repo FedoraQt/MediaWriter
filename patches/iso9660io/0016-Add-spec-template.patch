@@ -1,0 +1,101 @@
+From 654f343178f496d1de03ecb40df1fdbede0fe206 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Fri, 16 Jun 2017 02:24:54 +0000
+Subject: [PATCH 16/28] Add spec template
+
+---
+ CMakeLists.txt    | 10 +++++-----
+ iso9660io.pc.in   |  2 +-
+ iso9660io.spec.in | 32 ++++++++++++++++++++++++++++++++
+ 3 files changed, 38 insertions(+), 6 deletions(-)
+ create mode 100644 iso9660io.spec.in
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 268c586..f5acfe1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 2.6)
+ # Don't confuse it with the libcdio-devel which provides a libiso9660.so.
+ project(iso9660io)
+ 
++# Provides CMAKE_INSTALL_LIBDIR.
++include(GNUInstallDirs)
++
+ execute_process(COMMAND sh ${CMAKE_SOURCE_DIR}/scripts/version.sh
+   OUTPUT_VARIABLE VERSION)
+ execute_process(COMMAND cat ${CMAKE_SOURCE_DIR}/description.txt
+@@ -28,12 +31,9 @@ set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
+ 
+ install(TARGETS ${CMAKE_PROJECT_NAME}
+   EXPORT ${CMAKE_PROJECT_NAME}
+-  LIBRARY DESTINATION lib
++  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+   PUBLIC_HEADER DESTINATION include)
+ 
+-install(EXPORT ${CMAKE_PROJECT_NAME} DESTINATION share/${CMAKE_PROJECT_NAME}/cmake)
+-export(TARGETS ${CMAKE_PROJECT_NAME} FILE ${CMAKE_PROJECT_NAME}.cmake)
+-
+ configure_file(${CMAKE_PROJECT_NAME}.pc.in
+   ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.pc @ONLY)
+ 
+@@ -41,5 +41,5 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.pc
+   DESTINATION share/pkgconfig)
+ 
+ # Build example.
+-add_executable(persistent-storage example/persistent-storage.cc)
++add_executable(persistent-storage EXCLUDE_FROM_ALL example/persistent-storage.cc)
+ target_link_libraries(persistent-storage ${CMAKE_PROJECT_NAME})
+diff --git a/iso9660io.pc.in b/iso9660io.pc.in
+index 225f043..28c58b4 100644
+--- a/iso9660io.pc.in
++++ b/iso9660io.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+ includedir=${prefix}/include
+-libdir=${exec_prefix}/lib
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
+ 
+ Name: @CMAKE_PROJECT_NAME@
+ Version: @VERSION@
+diff --git a/iso9660io.spec.in b/iso9660io.spec.in
+new file mode 100644
+index 0000000..e6a0c94
+--- /dev/null
++++ b/iso9660io.spec.in
+@@ -0,0 +1,32 @@
++Name:    iso9660io
++Version: @VERSION@
++Release: 1%{?dist}
++Summary: ISO 9660 manipulation using C++11
++URL:     https://github.com/squimrel/iso9660io
++License: GPLv2+
++
++Source0: https://github.com/squimrel/iso9660io/archive/%{version}.tar.gz
++
++BuildRequires: gcc-c++
++BuildRequires: cmake
++BuildRequires: make
++
++%description
++@DESCRIPTION@
++
++%prep
++%autosetup -n %{name}-%{version}
++
++%build
++%cmake .
++%make_build
++
++%install
++%make_install
++
++%files
++%{_datarootdir}/pkgconfig/%{name}.pc
++%{_includedir}/%{name}.h
++%{_libdir}/lib%{name}.so*
++
++%changelog
+-- 
+2.14.1
+

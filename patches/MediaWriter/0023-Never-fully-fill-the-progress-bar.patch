@@ -1,0 +1,31 @@
+From 196be0dca01ad03f9391378e727a1cf9f5f2baf0 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 3 Aug 2017 15:52:30 +0000
+Subject: [PATCH 23/40] Never fully fill the progress bar
+
+so the user doesn't wonder why it shows him that it has finished writing
+when it hasn't.
+The bigger issue is that bytes written to the kernel cache report as
+being written but actually aren't yet flushed to the disk.
+There are ways to avoid this issue but it has a huge impact on the
+actual writing speed so it's really not worth fixing.
+---
+ app/drivemanager.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/drivemanager.cpp b/app/drivemanager.cpp
+index 22cee0d..22ce0ef 100644
+--- a/app/drivemanager.cpp
++++ b/app/drivemanager.cpp
+@@ -419,7 +419,7 @@ void Drive::onReadyRead() {
+     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING && m_image->status() != ReleaseVariant::WRITING_OVERLAY)
+         m_image->setStatus(ReleaseVariant::WRITING);
+ 
+-    m_progress->setTo(10000);
++    m_progress->setTo(10100);
+     m_progress->setValue(0);
+     while (m_process->bytesAvailable() > 0) {
+         QString line = m_process->readLine().trimmed();
+-- 
+2.14.1
+

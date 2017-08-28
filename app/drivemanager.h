@@ -22,6 +22,9 @@
 
 #include <QDebug>
 #include <QAbstractListModel>
+#include <QProcess>
+#include <QString>
+#include <QStringList>
 
 #include "releasemanager.h"
 
@@ -138,6 +141,7 @@ class Drive : public QObject {
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(uint64_t size READ size CONSTANT)
     Q_PROPERTY(RestoreStatus restoreStatus READ restoreStatus NOTIFY restoreStatusChanged)
+    Q_PROPERTY(bool persistentStorage MEMBER m_persistentStorage);
 public:
     enum RestoreStatus {
         CLEAN = 0,
@@ -148,7 +152,7 @@ public:
     };
     Q_ENUMS(RestoreStatus)
 
-    Drive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive = false);
+    Drive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive = false);
 
     Progress *progress() const;
 
@@ -157,24 +161,40 @@ public:
     virtual RestoreStatus restoreStatus();
 
     Q_INVOKABLE virtual bool write(ReleaseVariant *data);
-    Q_INVOKABLE virtual void cancel() = 0;
-    Q_INVOKABLE virtual void restore() = 0;
+    Q_INVOKABLE virtual void cancel();
+    Q_INVOKABLE virtual void restore();
 
     bool operator==(const Drive& o) const;
 
 public slots:
     void setRestoreStatus(RestoreStatus o);
 
+private slots:
+    void onReadyRead();
+    void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void onErrorOccurred(QProcess::ProcessError e);
+
 signals:
     void restoreStatusChanged();
 
 protected:
+    QStringList writeArgs(const ReleaseVariant &releaseVariant);
+    QStringList restoreArgs();
+    void prepareHelper(const QString &binary, const QStringList& arguments);
+    virtual void prepareProcess(const QString &binary, const QStringList& arguments);
+    virtual QString helperBinary();
+
+protected:
     ReleaseVariant *m_image { nullptr };
     Progress *m_progress { nullptr };
+    QString m_device { };
     QString m_name { };
     uint64_t m_size { 0 };
     RestoreStatus m_restoreStatus { CLEAN };
     QString m_error { };
+    bool m_persistentStorage { false };
+    QProcess *m_process { nullptr };
 };
 
 #endif // DRIVEMANAGER_H

@@ -1,0 +1,33 @@
+From af225c3ed78c36869f687127b4eed53f73cde9e6 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Sat, 10 Jun 2017 17:27:25 +0000
+Subject: [PATCH 14/28] Change target library name
+
+---
+ CMakeLists.txt | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a6bc532..78ad2f9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,8 @@
+ cmake_minimum_required(VERSION 2.6)
+-project(iso9660)
++# Don't confuse it with the libcdio-devel which provides a libiso9660.so.
++project(iso9660io)
+ 
+-set (EXPORT_HEADER include/${CMAKE_PROJECT_NAME}.h)
++set (EXPORT_HEADER include/iso9660.h)
+ set (PUBLIC_HEADER ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.h)
+ set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -O3 -DNDEBUG -fvisibility=hidden")
+ 
+@@ -31,4 +32,4 @@ export(TARGETS ${CMAKE_PROJECT_NAME} FILE ${CMAKE_PROJECT_NAME}.cmake)
+ 
+ # Build example.
+ add_executable(persistent-storage example/persistent-storage.cc)
+-target_link_libraries(persistent-storage iso9660)
++target_link_libraries(persistent-storage ${CMAKE_PROJECT_NAME})
+-- 
+2.14.1
+

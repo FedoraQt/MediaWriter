@@ -35,6 +35,8 @@
 
 #include <QtQml>
 
+#include "notifications.h"
+
 DriveManager *DriveManager::_self = nullptr;
 
 DriveManager::DriveManager(QObject *parent)
@@ -187,9 +189,10 @@ DriveProvider::DriveProvider(DriveManager *parent)
 
 }
 
-Drive::Drive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive)
+Drive::Drive(DriveProvider *parent, const QString &device, const QString &name, uint64_t size, bool containsLive)
     : QObject(parent),
       m_progress(new Progress(this)),
+      m_device(device),
       m_name(name),
       m_size(size),
       m_restoreStatus(containsLive ? CONTAINS_LIVE : CLEAN)
@@ -232,6 +235,36 @@ Drive::RestoreStatus Drive::restoreStatus() {
     return m_restoreStatus;
 }
 
+QString Drive::helperBinary() {
+    if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+        return qApp->applicationDirPath() + "/helper";
+    }
+    return "";
+}
+
+void Drive::prepareProcess(const QString &binary, const QStringList &arguments) {
+    m_process->setProgram(binary);
+    m_process->setArguments(arguments);
+}
+
+void Drive::prepareHelper(const QString &binary, const QStringList &arguments) {
+    if (m_process) {
+        // TODO some handling of an already present process
+        m_process->deleteLater();
+    }
+    m_process = new QProcess(this);
+
+    prepareProcess(binary, arguments);
+
+    qDebug() << metaObject()->className() << "Helper command will be" << m_process->program() << m_process->arguments();
+
+    connect(m_process, &QProcess::readyRead, this, &Drive::onReadyRead);
+#if QT_VERSION >= 0x050600
+    // TODO check if this is actually necessary - it should work just fine even without it
+    connect(m_process, &QProcess::errorOccurred, this, &Drive::onErrorOccurred);
+#endif
+}
+
 bool Drive::write(ReleaseVariant *data) {
     m_image = data;
     m_image->setErrorString(QString());
@@ -241,7 +274,112 @@ bool Drive::write(ReleaseVariant *data) {
         return false;
     }
 
+    QString binary = helperBinary();
+    if (binary == "") {
+        data->setErrorString(tr("Could not find the helper binary. Check your installation."));
+        data->setStatus(ReleaseVariant::FAILED);
+        return false;
+    }
+    prepareHelper(binary, writeArgs(*data));
+    connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onFinished(int,QProcess::ExitStatus)));
+    m_process->start(QIODevice::ReadOnly);
     return true;
+}
+
+void Drive::restore() {
+    m_restoreStatus = RESTORING;
+    emit restoreStatusChanged();
+
+    QString binary = helperBinary();
+    if (binary == "") {
+        qWarning() << "Couldn't find the helper binary.";
+        setRestoreStatus(RESTORE_ERROR);
+        return;
+    }
+    prepareHelper(binary, restoreArgs());
+    connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
+    m_process->start(QIODevice::ReadOnly);
+}
+
+void Drive::cancel() {
+    if (m_process) {
+        if (!m_persistentStorage && m_image->status() == ReleaseVariant::WRITE_VERIFYING) {
+            m_image->setStatus(ReleaseVariant::FINISHED);
+        }
+        else {
+            m_image->setErrorString(tr("Stopped before writing has finished."));
+            m_image->setStatus(ReleaseVariant::FAILED);
+        }
+        m_process->kill();
+        m_process->deleteLater();
+        m_process = nullptr;
+    }
+}
+
+void Drive::onFinished(int exitCode, QProcess::ExitStatus status) {
+    qDebug() << metaObject()->className() << "Helper process finished with status" << status;
+
+    if (!m_process)
+        return;
+
+    if (exitCode != 0) {
+        QString errorMessage = m_process->readAllStandardError();
+        /* QRegExp re("^.+:.+: "); */
+        /* QStringList lines = errorMessage.split('\n'); */
+        /* if (lines.length() > 0) { */
+        /*     QString line = lines.first().replace(re, ""); */
+        /*     m_image->setErrorString(line); */
+        /* } */
+        qWarning() << "Writing failed:" << errorMessage;
+        Notifications::notify(tr("Error"), tr("Writing %1 failed").arg(m_image->fullName()));
+        if (m_image->status() == ReleaseVariant::WRITING) {
+            m_image->setErrorString(errorMessage);
+            m_image->setStatus(ReleaseVariant::FAILED);
+        }
+    }
+    else {
+        Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
+        m_image->setStatus(ReleaseVariant::FINISHED);
+    }
+    if (m_process) {
+        m_process->deleteLater();
+        m_process = nullptr;
+        m_image = nullptr;
+    }
+}
+
+void Drive::onRestoreFinished(int exitCode, QProcess::ExitStatus status) {
+    qDebug() << metaObject()->className() << "Helper process finished with status" << status;
+
+    if (exitCode == 0) {
+        m_restoreStatus = RESTORED;
+    }
+    else {
+        if (m_process)
+            qWarning() << "Drive restoration failed:" << m_process->readAllStandardError();
+        else
+            qWarning() << "Drive restoration failed";
+        m_restoreStatus = RESTORE_ERROR;
+    }
+    if (m_process) {
+        m_process->deleteLater();
+        m_process = nullptr;
+    }
+    emit restoreStatusChanged();
+}
+
+void Drive::onErrorOccurred(QProcess::ProcessError e) {
+    Q_UNUSED(e);
+    if (!m_process)
+        return;
+
+    QString errorMessage = m_process->errorString();
+    qWarning() << "Restoring failed:" << errorMessage;
+    m_image->setErrorString(errorMessage);
+    m_process->deleteLater();
+    m_process = nullptr;
+    m_image->setStatus(ReleaseVariant::FAILED);
+    m_image = nullptr;
 }
 
 bool Drive::operator==(const Drive &o) const {
@@ -252,5 +390,56 @@ void Drive::setRestoreStatus(Drive::RestoreStatus o) {
     if (m_restoreStatus != o) {
         m_restoreStatus = o;
         emit restoreStatusChanged();
+    }
+}
+
+QStringList Drive::writeArgs(const ReleaseVariant &releaseVariant) {
+    QStringList args;
+    args << "write" << releaseVariant.iso() << m_device;
+    if (m_persistentStorage) {
+        args << "true";
+    }
+    return args;
+}
+
+QStringList Drive::restoreArgs() {
+    QStringList args;
+    args << "restore" << m_device;
+    return args;
+}
+
+void Drive::onReadyRead() {
+    if (!m_process)
+        return;
+
+    if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING && m_image->status() != ReleaseVariant::WRITING_OVERLAY)
+        m_image->setStatus(ReleaseVariant::WRITING);
+
+    m_progress->setTo(10000);
+    m_progress->setValue(0.0 / 0.0);
+    while (m_process->bytesAvailable() > 0) {
+        QString line = m_process->readLine().trimmed();
+        if (line == "CHECK") {
+            qDebug() << metaObject()->className() << "Written media check starting";
+            m_progress->setValue(0.0 / 0.0);
+            m_image->setStatus(ReleaseVariant::WRITE_VERIFYING);
+        }
+        else if (line == "OVERLAY") {
+            qDebug() << metaObject()->className() << "Starting to create the overlay partition";
+            m_progress->setValue(0.0 / 0.0);
+            m_image->setStatus(ReleaseVariant::WRITING_OVERLAY);
+        }
+        else {
+            bool ok;
+            qreal percentage = line.toLongLong(&ok);
+            if (!ok || percentage < 0)
+                continue;
+            if (percentage >= m_progress->to()) {
+                m_progress->setValue(0.0 / 0.0);
+            }
+            else {
+                m_progress->setValue(percentage);
+            }
+        }
     }
 }

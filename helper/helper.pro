@@ -1,15 +1,34 @@
-TEMPLATE = subdirs
+TEMPLATE = app
+
+QT += core
+
+LIBS += -lcheckisomd5 -limplantisomd5 -liso9660io
+PKGCONFIG += isomd5sum iso9660io
+
+CONFIG += c++11
+CONFIG += console
+CONFIG += link_pkgconfig
+
+TARGET = helper
+DESTDIR = ../app/
+
+include($$top_srcdir/deployment.pri)
+
+target.path = $$LIBEXECDIR
+INSTALLS += target
+
+SOURCES = main.cpp write.cpp blockdevice.cpp genericdrive.cpp
+
+HEADERS += write.h blockdevice.h genericdrive.h
 
 linux {
-    SUBDIRS = linux
+    include(linux/linux.pri)
 }
 win32 {
-    SUBDIRS = win
+    include(win/win.pri)
 }
 macx {
-    SUBDIRS = mac
+    include(mac/mac.pri)
 }
 
-lupdate_only {
-    SUBDIRS = linux win mac
-}
+RESOURCES += ../translations/translations.qrc

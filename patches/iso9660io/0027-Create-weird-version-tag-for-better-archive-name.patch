@@ -1,0 +1,63 @@
+From ac0154e6998b7708077ef2898e6a07aacebc2946 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Fri, 25 Aug 2017 19:13:46 +0000
+Subject: [PATCH 27/28] Create weird version tag for better archive name
+
+---
+ scripts/package.sh | 14 +++++++-------
+ scripts/version.sh |  2 +-
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/scripts/package.sh b/scripts/package.sh
+index 9c297e7..7190f25 100755
+--- a/scripts/package.sh
++++ b/scripts/package.sh
+@@ -10,29 +10,29 @@ cd "${ROOT}"
+ readonly NAME="iso9660io"
+ readonly SUMMARY="ISO 9660 manipulation using C++11"
+ VERSION="${1}"
++REVISION="${NAME}-${VERSION}"
+ 
+-if [ -n "${VERSION}" ] && ! git rev-parse "${VERSION}" &>/dev/null; then
++if [ -n "${VERSION}" ] && ! git rev-parse "${REVISION}" &>/dev/null; then
+   readonly VERSION
+   if [ "${2}" != "release" ]; then
+     read  -n 1 -p "Press enter to release version ${VERSION}.."
+     echo "Press Ctrl-C in the next two seconds to abort the release of version ${VERSION}."
+     sleep 2
+   fi
+-  git tag -s "${VERSION}" -m "Sign ${VERSION}" &&
++  git tag -s "${REVISION}" -m "Sign ${VERSION}" &&
+   git push --tags || exit 1
+ else
+-  REVISION="${VERSION}"
+   readonly VERSION="$(sh ./scripts/version.sh)"
+   if [ -z "${REVISION}" ]; then
+     REVISION="HEAD"
+   fi
+   readonly REVISION
+-  readonly ARCHIVE="${ROOT}/build/${VERSION}.tar.gz"
+-  git archive --format=tar.gz "--prefix=${NAME}-${VERSION}/" "${REVISION}" \
+-    > "${ARCHIVE}"
+ fi
++readonly TARBALL="${NAME}-${VERSION}.tar.gz"
++readonly ARCHIVE="${ROOT}/build/${TARBALL}"
++git archive --format=tar.gz "--prefix=${NAME}-${VERSION}/" "${REVISION}" \
++  > "${ARCHIVE}"
+ 
+-readonly TARBALL="${VERSION}.tar.gz"
+ 
+ update_spec() {
+   package="${1}"
+diff --git a/scripts/version.sh b/scripts/version.sh
+index 01712e0..60199b0 100644
+--- a/scripts/version.sh
++++ b/scripts/version.sh
+@@ -1,3 +1,3 @@
+ #!/bin/sh
+ readonly VERSION="$(git describe --abbrev=0 --tags 2>/dev/null || echo 0)"
+-echo "${VERSION}" | tr -d "\n"
++echo "${VERSION}" | cut -d "-" -f2 | tr -d "\n"
+-- 
+2.14.1
+

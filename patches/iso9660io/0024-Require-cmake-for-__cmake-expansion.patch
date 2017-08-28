@@ -1,0 +1,25 @@
+From fa321e143afb6268b14a52b3ce9c9d5421f533a5 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Fri, 25 Aug 2017 12:09:04 +0000
+Subject: [PATCH 24/28] Require cmake for %__cmake expansion
+
+---
+ mingw-iso9660io.spec.in | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/mingw-iso9660io.spec.in b/mingw-iso9660io.spec.in
+index 66e3452..09a8fb6 100644
+--- a/mingw-iso9660io.spec.in
++++ b/mingw-iso9660io.spec.in
+@@ -11,6 +11,8 @@ Source0: https://github.com/squimrel/iso9660io/archive/%{version}.tar.gz
+ 
+ BuildArch: noarch
+ 
++BuildRequires: cmake
++
+ BuildRequires: mingw32-filesystem >= 95
+ BuildRequires: mingw32-gcc-c++
+ 
+-- 
+2.14.1
+

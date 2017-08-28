@@ -1,0 +1,30 @@
+From 0b310b2f4a0daa9084735c9fb494f4e9b6025f7b Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Wed, 23 Aug 2017 12:22:50 +0000
+Subject: [PATCH 34/40] Don't use fsync on Windows
+
+---
+ helper/write.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/helper/write.cpp b/helper/write.cpp
+index 2db1afe..84ce7d2 100644
+--- a/helper/write.cpp
++++ b/helper/write.cpp
+@@ -363,11 +363,13 @@ int onProgress(void *data, long long offset, long long total) {
+             offset = total;
+         QTextStream out(stdout);
+         int percentage = (offset * 10000) / total;
++#ifndef Q_OS_WIN
+         // Sync every 10 percent of progress.
+         if (percentage >= (1000 * (stats.syncs + 1))) {
+             ++stats.syncs;
+             ::fsync(stats.fd);
+         }
++#endif // Q_OS_WIN
+         out << percentage << "\n";
+         out.flush();
+     }
+-- 
+2.14.1
+

@@ -1,0 +1,30 @@
+From cad0573393bca62c1b84312d749e6a7fd5f854b9 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 3 Aug 2017 06:54:59 +0000
+Subject: [PATCH 21/40] Add quotes back in
+
+---
+ app/macdrivemanager.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/app/macdrivemanager.cpp b/app/macdrivemanager.cpp
+index 29731ad..683ba1d 100644
+--- a/app/macdrivemanager.cpp
++++ b/app/macdrivemanager.cpp
+@@ -93,11 +93,11 @@ void MacDrive::prepareProcess(const QString &binary, const QStringList &argument
+     QStringList helperCommand;
+     helperCommand << binary << arguments;
+     for (QString& argument : helperCommand) {
+-        argument = argument.normalized(QString::NormalizationForm_D);
++        argument = "'" + argument.replace("'", "\\'") + "'"
+     }
+     QString command;
+     command.append("do shell script \"");
+-    command.append(helperCommand.join(" "));
++    command.append(helperCommand.join(" ").replace("\"", "\\\"");
+     command.append("\" with administrator privileges without altering line endings");
+ 
+     /*
+-- 
+2.14.1
+

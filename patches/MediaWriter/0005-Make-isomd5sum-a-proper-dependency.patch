@@ -1,0 +1,914 @@
+From 44a42b7a4a0bc50d22035b60e97766c67b9fce7d Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Sat, 10 Jun 2017 22:27:13 +0000
+Subject: [PATCH 05/40] Make isomd5sum a proper dependency
+
+---
+ README.md                   |   1 +
+ app/app.pro                 |   2 +-
+ app/releasemanager.cpp      |   4 +-
+ deployment.pri              |   2 -
+ helper/helper.pro           |   2 +-
+ helper/write.cpp            |   5 +-
+ lib/isomd5/isomd5.pro       |  11 --
+ lib/isomd5/libcheckisomd5.c | 418 --------------------------------------------
+ lib/isomd5/libcheckisomd5.h |  24 ---
+ lib/isomd5/md5.c            | 270 ----------------------------
+ lib/isomd5/md5.h            |  28 ---
+ lib/lib.pro                 |   3 -
+ mediawriter.pro             |   5 +-
+ 13 files changed, 11 insertions(+), 764 deletions(-)
+ delete mode 100644 lib/isomd5/isomd5.pro
+ delete mode 100644 lib/isomd5/libcheckisomd5.c
+ delete mode 100644 lib/isomd5/libcheckisomd5.h
+ delete mode 100644 lib/isomd5/md5.c
+ delete mode 100644 lib/isomd5/md5.h
+ delete mode 100644 lib/lib.pro
+
+diff --git a/README.md b/README.md
+index 480f78e..05a8092 100644
+--- a/README.md
++++ b/README.md
+@@ -32,6 +32,7 @@ The main binary, `mediawriter`, will be writen to `$PREFIX/bin` and the helper b
+ 
+ * `udisks2` or `storaged`
+ * `xz-libs`
++* `isomd5sum-devel`
+ 
+ ### Windows
+ 
+diff --git a/app/app.pro b/app/app.pro
+index a8545f7..ca6b304 100644
+--- a/app/app.pro
++++ b/app/app.pro
+@@ -4,7 +4,7 @@ TARGET = mediawriter
+ 
+ QT += qml quick widgets network
+ 
+-LIBS += -lisomd5
++LIBS += -lcheckisomd5
+ 
+ CONFIG += c++11
+ 
+diff --git a/app/releasemanager.cpp b/app/releasemanager.cpp
+index 1ba784c..5635e70 100644
+--- a/app/releasemanager.cpp
++++ b/app/releasemanager.cpp
+@@ -20,7 +20,9 @@
+ #include "releasemanager.h"
+ #include "drivemanager.h"
+ 
+-#include "isomd5/libcheckisomd5.h"
++extern "C" {
++#include <libcheckisomd5.h>
++}
+ 
+ #include <QtQml>
+ #include <QApplication>
+diff --git a/deployment.pri b/deployment.pri
+index 0d81b53..53b7bf6 100644
+--- a/deployment.pri
++++ b/deployment.pri
+@@ -13,8 +13,6 @@ linux {
+     DEFINES += DATADIR=\\\"$$DATADIR\\\"
+     DEFINES += LIBEXECDIR=\\\"$$LIBEXECDIR\\\"
+ }
+-QMAKE_LIBDIR += $$top_builddir/lib
+-INCLUDEPATH += $$top_srcdir/lib/
+ isEmpty(MEDIAWRITER_VERSION) {
+     DEFINES += MEDIAWRITER_VERSION="\\\"$(shell git -C \""$$_PRO_FILE_PWD_"\" describe --tags || echo N/A)\\\""
+ } else {
+diff --git a/helper/helper.pro b/helper/helper.pro
+index 1e72809..89459e4 100644
+--- a/helper/helper.pro
++++ b/helper/helper.pro
+@@ -2,7 +2,7 @@ TEMPLATE = app
+ 
+ QT += core
+ 
+-LIBS += -lisomd5
++LIBS += -lcheckisomd5 -limplantisomd5
+ 
+ CONFIG += c++11
+ CONFIG += console
+diff --git a/helper/write.cpp b/helper/write.cpp
+index 2ab5958..74df6a8 100644
+--- a/helper/write.cpp
++++ b/helper/write.cpp
+@@ -29,7 +29,10 @@
+ 
+ #include <lzma.h>
+ 
+-#include "isomd5/libcheckisomd5.h"
++extern "C" {
++#include <libcheckisomd5.h>
++#include <libimplantisomd5.h>
++}
+ 
+ #include "page_aligned_buffer.h"
+ 
+diff --git a/lib/isomd5/isomd5.pro b/lib/isomd5/isomd5.pro
+deleted file mode 100644
+index bd3cd32..0000000
+--- a/lib/isomd5/isomd5.pro
++++ /dev/null
+@@ -1,11 +0,0 @@
+-TEMPLATE = lib
+-
+-CONFIG += staticlib
+-
+-DESTDIR = ../
+-
+-HEADERS += libcheckisomd5.h \
+-        md5.h
+-
+-SOURCES += libcheckisomd5.c \
+-        md5.c
+diff --git a/lib/isomd5/libcheckisomd5.c b/lib/isomd5/libcheckisomd5.c
+deleted file mode 100644
+index 1edb0d7..0000000
+--- a/lib/isomd5/libcheckisomd5.c
++++ /dev/null
+@@ -1,418 +0,0 @@
+-/*
+- * Copyright (C) 2001-2013 Red Hat, Inc.
+- *
+- * Michael Fulbright <msf@redhat.com>
+- * Dustin Kirkland  <dustin.dirkland@gmail.com>
+- *      Added support for checkpoint fragment sums;
+- *      Exits media check as soon as bad fragment md5sum'ed
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License
+- * as published by the Free Software Foundation; either version 2
+- * of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+- */
+-
+-#define _LARGEFILE64_SOURCE
+-
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <sys/types.h>
+-#include <sys/stat.h>
+-#include <unistd.h>
+-#include <fcntl.h>
+-#include <string.h>
+-#include <inttypes.h>
+-
+-#include "md5.h"
+-#include "libcheckisomd5.h"
+-
+-#ifdef __APPLE__
+-#define lseek64 lseek
+-#endif
+-
+-#ifdef _WIN32
+-size_t getpagesize () {
+-    return 2048; // not really necessary for Windows
+-}
+-#endif
+-
+-#define APPDATA_OFFSET 883
+-#define SIZE_OFFSET 84
+-
+-/* Length in characters of string used for fragment md5sum checking */
+-#define FRAGMENT_SUM_LENGTH 60
+-
+-#define MAX(x, y)  ((x > y) ? x : y)
+-#define MIN(x, y)  ((x < y) ? x : y)
+-
+-/* finds primary volume descriptor and returns info from it */
+-/* mediasum must be a preallocated buffer at least 33 bytes long */
+-/* fragmentsums must be a preallocated buffer at least FRAGMENT_SUM_LENGTH+1 bytes long */
+-static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isosize, int *supported, char *fragmentsums, long long *fragmentcount) {
+-    int pagesize = getpagesize();
+-    unsigned char *buf_unaligned = (unsigned char *) malloc((2048LL + pagesize) * sizeof(unsigned char));
+-    unsigned char *buf = (buf_unaligned + (pagesize - ((uintptr_t) buf_unaligned % pagesize)));
+-    char buf2[512];
+-    char tmpbuf[512];
+-    int skipfnd, md5fnd, supportedfnd, fragsumfnd, fragcntfnd;
+-    unsigned int loc;
+-    long long offset;
+-    char *p;
+-
+-    if (lseek64(isofd, (16LL * 2048LL), SEEK_SET) == -1)
+-        goto fail;
+-
+-    offset = (16LL * 2048LL);
+-    for (;1;) {
+-        if (read(isofd, buf, 2048) <= 0)
+-            goto fail;
+-
+-        if (buf[0] == 1)
+-            /* found primary volume descriptor */
+-            break;
+-        else if (buf[0] == 255)
+-            /* hit end and didn't find primary volume descriptor */
+-            goto fail;
+-        offset += 2048LL;
+-    }
+-
+-    /* read out md5sum */
+-    memcpy(buf2, buf + APPDATA_OFFSET, 512);
+-    buf2[511] = '\0';
+-
+-    *supported = 0;
+-
+-    md5fnd = 0;
+-    skipfnd = 0;
+-    fragsumfnd = 0;
+-    fragcntfnd = 0;
+-    supportedfnd = 0;
+-    loc = 0;
+-    while (loc < 512) {
+-        if (!strncmp(buf2 + loc, "ISO MD5SUM = ", 13)) {
+-
+-            /* make sure we dont walk off end */
+-            if ((loc + 32 + 13) > 511)
+-                goto fail;
+-
+-            memcpy(mediasum, buf2 + loc + 13, 32);
+-            mediasum[32] = '\0';
+-            md5fnd = 1;
+-            loc += 45;
+-            for (p=buf2+loc; loc < 512 && *p != ';'; p++, loc++);
+-        } else if (!strncmp(buf2 + loc, "SKIPSECTORS = ", 14)) {
+-            char *errptr;
+-
+-            /* make sure we dont walk off end */
+-            if ((loc + 14) > 511)
+-                goto fail;
+-
+-            loc = loc + 14;
+-            for (p=tmpbuf; loc < 512 && buf2[loc] != ';'; p++, loc++)
+-                *p = buf2[loc];
+-
+-            *p = '\0';
+-
+-            *skipsectors = strtol(tmpbuf, &errptr, 10);
+-            if (errptr && *errptr) {
+-                goto fail;
+-            } else {
+-                skipfnd = 1;
+-            }
+-
+-            for (p=buf2+loc; loc < 512 && *p != ';'; p++, loc++);
+-        } else if (!strncmp(buf2 + loc, "RHLISOSTATUS=1", 14)) {
+-            *supported = 1;
+-            supportedfnd = 1;
+-            for (p=buf2+loc; loc < 512 && *p != ';'; p++, loc++);
+-        } else if (!strncmp(buf2 + loc, "RHLISOSTATUS=0", 14)) {
+-            *supported = 0;
+-            supportedfnd = 1;
+-            for (p=buf2+loc; loc < 512 && *p != ';'; p++, loc++);
+-        } else if (!strncmp(buf2 + loc, "FRAGMENT SUMS = ", 16)) {
+-            /* make sure we dont walk off end */
+-            if ((loc + FRAGMENT_SUM_LENGTH) > 511)
+-                goto fail;
+-
+-            memcpy(fragmentsums, buf2 + loc + 16, FRAGMENT_SUM_LENGTH);
+-            fragmentsums[FRAGMENT_SUM_LENGTH] = '\0';
+-            fragsumfnd = 1;
+-            loc += FRAGMENT_SUM_LENGTH + 16;
+-            for (p=buf2+loc; loc < 512 && *p != ';'; p++, loc++);
+-        } else if (!strncmp(buf2 + loc, "FRAGMENT COUNT = ", 17)) {
+-            char *errptr;
+-            /* make sure we dont walk off end */
+-            if ((loc + 17) > 511)
+-                goto fail;
+-
+-            loc = loc + 17;
+-            for (p=tmpbuf; loc < 512 && buf2[loc] != ';'; p++, loc++)
+-                *p = buf2[loc];
+-
+-            *p = '\0';
+-
+-            *fragmentcount = strtol(tmpbuf, &errptr, 10);
+-            if (errptr && *errptr) {
+-                goto fail;
+-            } else {
+-                fragcntfnd = 1;
+-            }
+-
+-            for (p=buf2+loc; loc < 512 && *p != ';'; p++, loc++);
+-        } else {
+-            loc++;
+-        }
+-
+-        if ((skipfnd & md5fnd & fragsumfnd & fragcntfnd) & supportedfnd)
+-            break;
+-    }
+-
+-    if (!(skipfnd & md5fnd))
+-        goto fail;
+-
+-    /* get isosize */
+-    *isosize = (buf[SIZE_OFFSET]*0x1000000+buf[SIZE_OFFSET+1]*0x10000 +
+-                buf[SIZE_OFFSET+2]*0x100 + buf[SIZE_OFFSET+3]) * 2048LL;
+-
+-    free(buf_unaligned);
+-    return offset;
+-
+-fail:
+-    free(buf_unaligned);
+-    return -1LL;
+-
+-}
+-
+-/* mediasum is the sum encoded in media, computedsum is one we compute   */
+-/* both strings must be pre-allocated at least 33 chars in length        */
+-static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallback cb, void *cbdata) {
+-    long long nread;
+-    int i, j;
+-    int appdata_start_offset, appdata_end_offset;
+-    int nattempt;
+-    int skipsectors;
+-    int supported;
+-    int current_fragment = 0;
+-    int previous_fragment = 0;
+-    int pagesize = getpagesize();
+-    unsigned int bufsize = 32768;
+-    unsigned char md5sum[16];
+-    unsigned char fragmd5sum[16];
+-    unsigned int len;
+-    unsigned char *buf_unaligned = (unsigned char *) malloc((bufsize + pagesize) * sizeof(unsigned char));
+-    unsigned char *buf = (buf_unaligned + (pagesize - ((uintptr_t) buf_unaligned % pagesize)));
+-    long long isosize, offset, pvd_offset, apoff;
+-    char fragmentsums[FRAGMENT_SUM_LENGTH+1];
+-    char thisfragsum[FRAGMENT_SUM_LENGTH+1];
+-    long long fragmentcount = 0;
+-    MD5_CTX md5ctx, fragmd5ctx;
+-
+-    if ((pvd_offset = parsepvd(isofd, mediasum, &skipsectors, &isosize, &supported, fragmentsums, &fragmentcount)) < 0) {
+-        free(buf_unaligned);
+-        return ISOMD5SUM_CHECK_NOT_FOUND;
+-    }
+-
+-    /*    printf("Mediasum = %s\n",mediasum); */
+-
+-    /* rewind, compute md5sum */
+-    lseek64(isofd, 0LL, SEEK_SET);
+-
+-    MD5_Init(&md5ctx);
+-
+-    offset = 0;
+-    apoff = pvd_offset + APPDATA_OFFSET;
+-
+-
+-    if (cb)
+-        cb(cbdata, 0, isosize - skipsectors*2048);
+-
+-    while (offset < isosize - skipsectors*2048) {
+-        nattempt = MIN(isosize - skipsectors*2048 - offset, bufsize);
+-
+-        /*      printf("%lld %lld %lld %d\n", offset, isosize, isosize-SKIPSECTORS*2048, nattempt); */
+-
+-        nread = read(isofd, buf, nattempt);
+-        if (nread <= 0)
+-            break;
+-
+-        if (nread > nattempt) {
+-            nread = nattempt;
+-            lseek64(isofd, offset+nread, SEEK_SET);
+-        }
+-        /* overwrite md5sum we implanted with original data */
+-        if (offset < apoff && offset+nread >= apoff) {
+-            appdata_start_offset = apoff - offset;
+-            appdata_end_offset = MIN(appdata_start_offset+MIN(nread, 512),
+-                                     offset + nread - apoff);
+-            len = appdata_end_offset - appdata_start_offset;
+-            memset(buf+appdata_start_offset, ' ', len);
+-        } else if (offset >= apoff && offset+nread < apoff + 512) {
+-            appdata_start_offset = 0;
+-            appdata_end_offset = nread;
+-            len = appdata_end_offset - appdata_start_offset;
+-            memset(buf+appdata_start_offset, ' ', len);
+-        } else if (offset < apoff + 512 && offset+nread >= apoff + 512) {
+-            appdata_start_offset = 0;
+-            appdata_end_offset = apoff + 512 - offset;
+-            len = appdata_end_offset - appdata_start_offset;
+-            memset(buf+appdata_start_offset, ' ', len);
+-        }
+-
+-        MD5_Update(&md5ctx, buf, nread);
+-        if (fragmentcount) {
+-            current_fragment = offset * (fragmentcount+1) / (isosize - skipsectors*2048);
+-            /* if we're onto the next fragment, calculate the previous sum and check */
+-            if ( current_fragment != previous_fragment ) {
+-                memcpy(&fragmd5ctx, &md5ctx, sizeof(MD5_CTX));
+-                MD5_Final(fragmd5sum, &fragmd5ctx);
+-                *computedsum = '\0';
+-                j = (current_fragment-1)*FRAGMENT_SUM_LENGTH/fragmentcount;
+-                for (i=0; i<FRAGMENT_SUM_LENGTH/fragmentcount; i++) {
+-                    char tmpstr[2];
+-                    snprintf(tmpstr, 2, "%01x", fragmd5sum[i]);
+-                    strncat(computedsum, tmpstr, 1);
+-                    thisfragsum[i] = fragmentsums[j++];
+-                }
+-                thisfragsum[j] = '\0';
+-                previous_fragment = current_fragment;
+-                /* Exit immediately if current fragment sum is incorrect */
+-                if (strcmp(thisfragsum, computedsum) != 0) {
+-                    free (buf_unaligned);
+-                    return ISOMD5SUM_CHECK_FAILED;
+-                }
+-            }
+-        }
+-        offset = offset + nread;
+-        if (cb && offset / nread % 256 == 0) {
+-            if(cb(cbdata, offset, isosize - skipsectors*2048)) {
+-                free(buf_unaligned);
+-                return ISOMD5SUM_CHECK_ABORTED;
+-            }
+-        }
+-    }
+-
+-    if (cb)
+-        cb(cbdata, isosize, isosize - skipsectors*2048);
+-
+-    free(buf_unaligned);
+-
+-    MD5_Final(md5sum, &md5ctx);
+-
+-    *computedsum = '\0';
+-    for (i=0; i<16; i++) {
+-        char tmpstr[4];
+-        snprintf (tmpstr, 4, "%02x", md5sum[i]);
+-        strncat(computedsum, tmpstr, 2);
+-    }
+-
+-    /*    printf("mediasum, computedsum = %s %s\n", mediasum, computedsum); */
+-
+-    if (strcmp(mediasum, computedsum))
+-        return ISOMD5SUM_CHECK_FAILED;
+-    else
+-        return ISOMD5SUM_CHECK_PASSED;
+-}
+-
+-
+-static int doMediaCheck(int isofd, char *mediasum, char *computedsum, long long *isosize, int *supported, checkCallback cb, void *cbdata) {
+-    int rc;
+-    int skipsectors;
+-    long long fragmentcount = 0;
+-    char fragmentsums[FRAGMENT_SUM_LENGTH+1];
+-
+-    if (parsepvd(isofd, mediasum, &skipsectors, isosize, supported, fragmentsums, &fragmentcount) < 0) {
+-        return ISOMD5SUM_CHECK_NOT_FOUND;
+-    }
+-
+-    rc = checkmd5sum(isofd, mediasum, computedsum, cb, cbdata);
+-
+-    return rc;
+-}
+-
+-int mediaCheckFile(const char *file, checkCallback cb, void *cbdata) {
+-    int isofd;
+-    int rc;
+-    char mediasum[33], computedsum[33];
+-    long long isosize;
+-    int supported;
+-
+-#ifdef _WIN32
+-    isofd = open(file, O_RDONLY | O_BINARY);
+-#else
+-    isofd = open(file, O_RDONLY);
+-#endif
+-
+-    if (isofd < 0) {
+-        return ISOMD5SUM_FILE_NOT_FOUND;
+-    }
+-
+-
+-    rc = doMediaCheck(isofd, mediasum, computedsum, &isosize, &supported, cb, cbdata);
+-
+-    close(isofd);
+-
+-    /*    printf("isosize = %lld\n", isosize); 
+-     *    printf("%s\n%s\n", mediasum, computedsum);
+-     */
+-
+-    return rc;
+-}
+-
+-int mediaCheckFD(int fd, checkCallback cb, void *cbdata) {
+-    int rc;
+-    char mediasum[33], computedsum[33];
+-    long long isosize;
+-    int supported;
+-
+-    if (fd < 0) {
+-        return ISOMD5SUM_FILE_NOT_FOUND;
+-    }
+-
+-    rc = doMediaCheck(fd, mediasum, computedsum, &isosize, &supported, cb, cbdata);
+-
+-    return rc;
+-}
+-
+-int printMD5SUM(char *file) {
+-    int isofd;
+-    char mediasum[64];
+-    long long isosize;
+-    char fragmentsums[FRAGMENT_SUM_LENGTH+1];
+-    long long fragmentcount = 0;
+-    int supported;
+-    int skipsectors;
+-
+-    isofd = open(file, O_RDONLY);
+-
+-    if (isofd < 0) {
+-        return ISOMD5SUM_FILE_NOT_FOUND;
+-    }
+-
+-    if (parsepvd(isofd, mediasum, &skipsectors, &isosize, &supported, fragmentsums, &fragmentcount) < 0) {
+-        return ISOMD5SUM_CHECK_NOT_FOUND;
+-    }
+-
+-    close(isofd);
+-
+-    printf("%s:   %s\n", file, mediasum);
+-    if ( (strlen(fragmentsums) > 0) && (fragmentcount > 0) ) {
+-        printf("Fragment sums: %s\n", fragmentsums);
+-#ifdef _WIN32
+-        printf("Fragment count: %"PRId64"\n", fragmentcount);
+-#else
+-        printf("Fragment count: %lld\n", fragmentcount);
+-#endif
+-        printf("Supported ISO: %s\n", supported ? "yes" : "no");
+-    }
+-
+-    return 0;
+-}
+diff --git a/lib/isomd5/libcheckisomd5.h b/lib/isomd5/libcheckisomd5.h
+deleted file mode 100644
+index 87a3b7f..0000000
+--- a/lib/isomd5/libcheckisomd5.h
++++ /dev/null
+@@ -1,24 +0,0 @@
+-#ifndef __LIBCHECKISOMD5_H__
+-#define  __LIBCHECKISOMD5_H__
+-
+-#ifdef __cplusplus
+-extern "C" {
+-#endif
+-
+-#define ISOMD5SUM_CHECK_PASSED          1
+-#define ISOMD5SUM_CHECK_FAILED          0
+-#define ISOMD5SUM_CHECK_ABORTED         2
+-#define ISOMD5SUM_CHECK_NOT_FOUND       -1
+-#define ISOMD5SUM_FILE_NOT_FOUND        -2
+-
+-/* for non-zero return value, check is aborted */
+-typedef int (*checkCallback)(void *, long long offset, long long total);
+-
+-int mediaCheckFile(const char *iso, checkCallback cb, void *cbdata);
+-int mediaCheckFD(int fd, checkCallback cb, void *cbdata);
+-int printMD5SUM(char *file);
+-
+-#ifdef __cplusplus
+-}
+-#endif
+-#endif
+diff --git a/lib/isomd5/md5.c b/lib/isomd5/md5.c
+deleted file mode 100644
+index 4fba281..0000000
+--- a/lib/isomd5/md5.c
++++ /dev/null
+@@ -1,270 +0,0 @@
+-/*
+- * This code implements the MD5 message-digest algorithm.
+- * The algorithm is due to Ron Rivest.  This code was
+- * written by Colin Plumb in 1993, no copyright is claimed.
+- * This code is in the public domain; do with it what you wish.
+- *
+- * Equivalent code is available from RSA Data Security, Inc.
+- * This code has been tested against that, and is equivalent,
+- * except that you don't need to include two pages of legalese
+- * with every copy.
+- *
+- * To compute the message digest of a chunk of bytes, declare an
+- * MD5Context structure, pass it to MD5Init, call MD5Update as
+- * needed on buffers full of bytes, and then call MD5Final, which
+- * will fill a supplied 16-byte array with the digest.
+- *
+- * Modified 12 June 2003 Jeremy Katz <katzj@redhat.com> to handle 
+- *    endianness better
+- * Modified Sep 01 Martin Bříza <mbriza@redhat.com> to handle
+- *    endianness in a portable manner
+- *
+- */
+-
+-#include <string.h>
+-#include "md5.h"
+-
+-void MD5_Transform(uint32 *buf, uint32 const *in);
+-
+-volatile union {
+-    uint32_t i;
+-    char c[4];
+-} endianTest = { 0x01000000 };
+-
+-#define IS_BIG_ENDIAN() (endianTest.c[0])
+-#define IS_LITTLE_ENDIAN() (endianTest.c[3])
+-
+-static void byteReverse(unsigned char *buf, unsigned longs);
+-
+-#ifndef ASM_MD5
+-/*
+- * Note: this code is harmless on little-endian machines.
+- */
+-static void byteReverse(unsigned char *buf, unsigned longs)
+-{
+-        uint32 t;
+-        do {
+-                t = (uint32) ((unsigned) buf[3] << 8 | buf[2]) << 16 |
+-                    ((unsigned) buf[1] << 8 | buf[0]);
+-                *(uint32 *) buf = t;
+-                buf += 4;
+-        } while (--longs);
+-}
+-#endif
+-
+-/*
+- * Start MD5 accumulation.  Set bit count to 0 and buffer to mysterious
+- * initialization constants.
+- */
+-void MD5_Init(struct MD5Context *ctx)
+-{
+-        ctx->buf[0] = 0x67452301U;
+-        ctx->buf[1] = 0xefcdab89U;
+-        ctx->buf[2] = 0x98badcfeU;
+-        ctx->buf[3] = 0x10325476U;
+-
+-        ctx->bits[0] = 0;
+-        ctx->bits[1] = 0;
+-
+-
+-        if (IS_BIG_ENDIAN())
+-             ctx->doByteReverse = 1;
+-        else 
+-             ctx->doByteReverse = 0;
+-}
+-
+-/*
+- * Update context to reflect the concatenation of another buffer full
+- * of bytes.
+- */
+-void MD5_Update(struct MD5Context *ctx, unsigned const char *buf, unsigned len)
+-{
+-        uint32 t;
+-
+-        /* Update bitcount */
+-
+-        t = ctx->bits[0];
+-        if ((ctx->bits[0] = t + ((uint32) len << 3)) < t)
+-                ctx->bits[1]++; /* Carry from low to high */
+-        ctx->bits[1] += len >> 29;
+-
+-        t = (t >> 3) & 0x3f;    /* Bytes already in shsInfo->data */
+-
+-        /* Handle any leading odd-sized chunks */
+-
+-        if (t) {
+-                unsigned char *p = (unsigned char *) ctx->in + t;
+-
+-                t = 64 - t;
+-                if (len < t) {
+-                        memcpy(p, buf, len);
+-                        return;
+-                }
+-                memcpy(p, buf, t);
+-                if (ctx->doByteReverse) byteReverse(ctx->in, 16);
+-                MD5_Transform(ctx->buf, (uint32 *) ctx->in);
+-                buf += t;
+-                len -= t;
+-        }
+-        /* Process data in 64-byte chunks */
+-
+-        while (len >= 64) {
+-                memcpy(ctx->in, buf, 64);
+-                if (ctx->doByteReverse) byteReverse(ctx->in, 16);
+-                MD5_Transform(ctx->buf, (uint32 *) ctx->in);
+-                buf += 64;
+-                len -= 64;
+-        }
+-
+-        /* Handle any remaining bytes of data. */
+-
+-        memcpy(ctx->in, buf, len);
+-}
+-
+-/*
+- * Final wrapup - pad to 64-byte boundary with the bit pattern 
+- * 1 0* (64-bit count of bits processed, MSB-first)
+- */
+-void MD5_Final(unsigned char digest[16], struct MD5Context *ctx)
+-{
+-        unsigned count;
+-        unsigned char *p;
+-
+-        /* Compute number of bytes mod 64 */
+-        count = (ctx->bits[0] >> 3) & 0x3F;
+-
+-        /* Set the first char of padding to 0x80.  This is safe since there is
+-           always at least one byte free */
+-        p = ctx->in + count;
+-        *p++ = 0x80;
+-
+-        /* Bytes of padding needed to make 64 bytes */
+-        count = 64 - 1 - count;
+-
+-        /* Pad out to 56 mod 64 */
+-        if (count < 8) {
+-                /* Two lots of padding:  Pad the first block to 64 bytes */
+-                memset(p, 0, count);
+-                if (ctx->doByteReverse) byteReverse(ctx->in, 16);
+-                MD5_Transform(ctx->buf, (uint32 *) ctx->in);
+-
+-                /* Now fill the next block with 56 bytes */
+-                memset(ctx->in, 0, 56);
+-        } else {
+-                /* Pad block to 56 bytes */
+-                memset(p, 0, count - 8);
+-        }
+-        if (ctx->doByteReverse) byteReverse(ctx->in, 14);
+-
+-        /* Append length in bits and transform */
+-        memcpy(ctx->in+56, ctx->bits, sizeof(ctx->bits));
+-
+-        MD5_Transform(ctx->buf, (uint32 *) ctx->in);
+-        if (ctx->doByteReverse) byteReverse((unsigned char *) ctx->buf, 4);
+-        memcpy(digest, ctx->buf, 16);
+-        memset(ctx, 0, sizeof(*ctx));    /* In case it's sensitive */
+-}
+-
+-#ifndef ASM_MD5
+-
+-/* The four core functions - F1 is optimized somewhat */
+-
+-/* #define F1(x, y, z) (x & y | ~x & z) */
+-#define F1(x, y, z) (z ^ (x & (y ^ z)))
+-#define F2(x, y, z) F1(z, x, y)
+-#define F3(x, y, z) (x ^ y ^ z)
+-#define F4(x, y, z) (y ^ (x | ~z))
+-
+-/* This is the central step in the MD5 algorithm. */
+-#define MD5STEP(f, w, x, y, z, data, s) \
+-        ( w += f(x, y, z) + data,  w = w<<s | w>>(32-s),  w += x )
+-
+-/*
+- * The core of the MD5 algorithm, this alters an existing MD5 hash to
+- * reflect the addition of 16 longwords of new data.  MD5Update blocks
+- * the data and converts bytes into longwords for this routine.
+- */
+-void MD5_Transform(uint32 buf[4], uint32 const in[16])
+-{
+-        register uint32 a, b, c, d;
+-
+-        a = buf[0];
+-        b = buf[1];
+-        c = buf[2];
+-        d = buf[3];
+-
+-        MD5STEP(F1, a, b, c, d, in[0] + 0xd76aa478U, 7);
+-        MD5STEP(F1, d, a, b, c, in[1] + 0xe8c7b756U, 12);
+-        MD5STEP(F1, c, d, a, b, in[2] + 0x242070dbU, 17);
+-        MD5STEP(F1, b, c, d, a, in[3] + 0xc1bdceeeU, 22);
+-        MD5STEP(F1, a, b, c, d, in[4] + 0xf57c0fafU, 7);
+-        MD5STEP(F1, d, a, b, c, in[5] + 0x4787c62aU, 12);
+-        MD5STEP(F1, c, d, a, b, in[6] + 0xa8304613U, 17);
+-        MD5STEP(F1, b, c, d, a, in[7] + 0xfd469501U, 22);
+-        MD5STEP(F1, a, b, c, d, in[8] + 0x698098d8U, 7);
+-        MD5STEP(F1, d, a, b, c, in[9] + 0x8b44f7afU, 12);
+-        MD5STEP(F1, c, d, a, b, in[10] + 0xffff5bb1U, 17);
+-        MD5STEP(F1, b, c, d, a, in[11] + 0x895cd7beU, 22);
+-        MD5STEP(F1, a, b, c, d, in[12] + 0x6b901122U, 7);
+-        MD5STEP(F1, d, a, b, c, in[13] + 0xfd987193U, 12);
+-        MD5STEP(F1, c, d, a, b, in[14] + 0xa679438eU, 17);
+-        MD5STEP(F1, b, c, d, a, in[15] + 0x49b40821U, 22);
+-
+-        MD5STEP(F2, a, b, c, d, in[1] + 0xf61e2562U, 5);
+-        MD5STEP(F2, d, a, b, c, in[6] + 0xc040b340U, 9);
+-        MD5STEP(F2, c, d, a, b, in[11] + 0x265e5a51U, 14);
+-        MD5STEP(F2, b, c, d, a, in[0] + 0xe9b6c7aaU, 20);
+-        MD5STEP(F2, a, b, c, d, in[5] + 0xd62f105dU, 5);
+-        MD5STEP(F2, d, a, b, c, in[10] + 0x02441453U, 9);
+-        MD5STEP(F2, c, d, a, b, in[15] + 0xd8a1e681U, 14);
+-        MD5STEP(F2, b, c, d, a, in[4] + 0xe7d3fbc8U, 20);
+-        MD5STEP(F2, a, b, c, d, in[9] + 0x21e1cde6U, 5);
+-        MD5STEP(F2, d, a, b, c, in[14] + 0xc33707d6U, 9);
+-        MD5STEP(F2, c, d, a, b, in[3] + 0xf4d50d87U, 14);
+-        MD5STEP(F2, b, c, d, a, in[8] + 0x455a14edU, 20);
+-        MD5STEP(F2, a, b, c, d, in[13] + 0xa9e3e905U, 5);
+-        MD5STEP(F2, d, a, b, c, in[2] + 0xfcefa3f8U, 9);
+-        MD5STEP(F2, c, d, a, b, in[7] + 0x676f02d9U, 14);
+-        MD5STEP(F2, b, c, d, a, in[12] + 0x8d2a4c8aU, 20);
+-
+-        MD5STEP(F3, a, b, c, d, in[5] + 0xfffa3942U, 4);
+-        MD5STEP(F3, d, a, b, c, in[8] + 0x8771f681U, 11);
+-        MD5STEP(F3, c, d, a, b, in[11] + 0x6d9d6122U, 16);
+-        MD5STEP(F3, b, c, d, a, in[14] + 0xfde5380cU, 23);
+-        MD5STEP(F3, a, b, c, d, in[1] + 0xa4beea44U, 4);
+-        MD5STEP(F3, d, a, b, c, in[4] + 0x4bdecfa9U, 11);
+-        MD5STEP(F3, c, d, a, b, in[7] + 0xf6bb4b60U, 16);
+-        MD5STEP(F3, b, c, d, a, in[10] + 0xbebfbc70U, 23);
+-        MD5STEP(F3, a, b, c, d, in[13] + 0x289b7ec6U, 4);
+-        MD5STEP(F3, d, a, b, c, in[0] + 0xeaa127faU, 11);
+-        MD5STEP(F3, c, d, a, b, in[3] + 0xd4ef3085U, 16);
+-        MD5STEP(F3, b, c, d, a, in[6] + 0x04881d05U, 23);
+-        MD5STEP(F3, a, b, c, d, in[9] + 0xd9d4d039U, 4);
+-        MD5STEP(F3, d, a, b, c, in[12] + 0xe6db99e5U, 11);
+-        MD5STEP(F3, c, d, a, b, in[15] + 0x1fa27cf8U, 16);
+-        MD5STEP(F3, b, c, d, a, in[2] + 0xc4ac5665U, 23);
+-
+-        MD5STEP(F4, a, b, c, d, in[0] + 0xf4292244U, 6);
+-        MD5STEP(F4, d, a, b, c, in[7] + 0x432aff97U, 10);
+-        MD5STEP(F4, c, d, a, b, in[14] + 0xab9423a7U, 15);
+-        MD5STEP(F4, b, c, d, a, in[5] + 0xfc93a039U, 21);
+-        MD5STEP(F4, a, b, c, d, in[12] + 0x655b59c3U, 6);
+-        MD5STEP(F4, d, a, b, c, in[3] + 0x8f0ccc92U, 10);
+-        MD5STEP(F4, c, d, a, b, in[10] + 0xffeff47dU, 15);
+-        MD5STEP(F4, b, c, d, a, in[1] + 0x85845dd1U, 21);
+-        MD5STEP(F4, a, b, c, d, in[8] + 0x6fa87e4fU, 6);
+-        MD5STEP(F4, d, a, b, c, in[15] + 0xfe2ce6e0U, 10);
+-        MD5STEP(F4, c, d, a, b, in[6] + 0xa3014314U, 15);
+-        MD5STEP(F4, b, c, d, a, in[13] + 0x4e0811a1U, 21);
+-        MD5STEP(F4, a, b, c, d, in[4] + 0xf7537e82U, 6);
+-        MD5STEP(F4, d, a, b, c, in[11] + 0xbd3af235U, 10);
+-        MD5STEP(F4, c, d, a, b, in[2] + 0x2ad7d2bbU, 15);
+-        MD5STEP(F4, b, c, d, a, in[9] + 0xeb86d391U, 21);
+-
+-        buf[0] += a;
+-        buf[1] += b;
+-        buf[2] += c;
+-        buf[3] += d;
+-}
+-
+-#endif
+diff --git a/lib/isomd5/md5.h b/lib/isomd5/md5.h
+deleted file mode 100644
+index 64161e8..0000000
+--- a/lib/isomd5/md5.h
++++ /dev/null
+@@ -1,28 +0,0 @@
+-
+-#ifndef MD5_H
+-#define MD5_H
+-
+-#include <stdint.h>
+-#include <sys/types.h>
+-
+-typedef uint32_t u_int32_t;
+-typedef u_int32_t uint32;
+-
+-struct MD5Context {
+-	uint32 buf[4];
+-	uint32 bits[2];
+-	unsigned char in[64];
+-	int doByteReverse;
+-};
+-
+-void MD5_Init(struct MD5Context *);
+-void MD5_Update(struct MD5Context *, unsigned const char *, unsigned);
+-void MD5_Final(unsigned char digest[16], struct MD5Context *);
+-
+-/*
+- * This is needed to make RSAREF happy on some MS-DOS compilers.
+- */
+-
+-typedef struct MD5Context MD5_CTX;
+-
+-#endif				/* MD5_H */
+diff --git a/lib/lib.pro b/lib/lib.pro
+deleted file mode 100644
+index 6160dd5..0000000
+--- a/lib/lib.pro
++++ /dev/null
+@@ -1,3 +0,0 @@
+-TEMPLATE = subdirs
+-
+-SUBDIRS = isomd5
+diff --git a/mediawriter.pro b/mediawriter.pro
+index cb225fb..1622b82 100644
+--- a/mediawriter.pro
++++ b/mediawriter.pro
+@@ -1,6 +1,3 @@
+ TEMPLATE = subdirs
+ 
+-SUBDIRS = lib app helper
+-
+-app.depends = lib
+-helper.depends = lib
++SUBDIRS = app helper
+-- 
+2.14.1
+

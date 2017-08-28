@@ -1,0 +1,508 @@
+From ff140e915e952bdfc7c2c4e6d0b02987726aeac9 Mon Sep 17 00:00:00 2001
+From: squimrel <squimrel@users.noreply.github.com>
+Date: Thu, 8 Jun 2017 21:30:23 +0000
+Subject: [PATCH 03/40] Remove delayed writing support from helper
+
+---
+ helper/helper.pro                  |   8 +--
+ helper/main.cpp                    |  54 ++++++++++-----
+ helper/restorejob.cpp              |  49 --------------
+ helper/{writejob.cpp => write.cpp} | 131 ++++++++++++-------------------------
+ helper/{restorejob.h => write.h}   |  27 +++-----
+ helper/writejob.h                  |  62 ------------------
+ 6 files changed, 93 insertions(+), 238 deletions(-)
+ delete mode 100644 helper/restorejob.cpp
+ rename helper/{writejob.cpp => write.cpp} (58%)
+ rename helper/{restorejob.h => write.h} (71%)
+ delete mode 100644 helper/writejob.h
+
+diff --git a/helper/helper.pro b/helper/helper.pro
+index 8f655e2..1e72809 100644
+--- a/helper/helper.pro
++++ b/helper/helper.pro
+@@ -14,13 +14,9 @@ include($$top_srcdir/deployment.pri)
+ target.path = $$LIBEXECDIR
+ INSTALLS += target
+ 
+-SOURCES = main.cpp \
+-    writejob.cpp \
+-    restorejob.cpp
++SOURCES = main.cpp write.cpp
+ 
+-HEADERS += \
+-    writejob.h \
+-    restorejob.h
++HEADERS += write.h
+ 
+ linux {
+     include(linux/linux.pri)
+diff --git a/helper/main.cpp b/helper/main.cpp
+index b0410b8..e41be8d 100644
+--- a/helper/main.cpp
++++ b/helper/main.cpp
+@@ -17,31 +17,55 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  */
+ 
+-#include <QCoreApplication>
++#include <stdexcept>
++
+ #include <QString>
+ #include <QTextStream>
+ #include <QTranslator>
+ 
+-#include "restorejob.h"
+-#include "writejob.h"
++// Platform specific drive handler.
++#include "drive.h"
++#include "write.h"
++
++void restore(Drive *const drive) {
++    drive->umount();
++    drive->wipe();
++    drive->addPartition();
++}
+ 
+ int main(int argc, char *argv[]) {
+-    QCoreApplication app(argc, argv);
++    const QString action = argv[1];
++    bool isRestore = argc == 3 && action == "restore";
++    bool isWrite = argc == 4 && action == "write";
++    QTextStream err(stderr);
++    if (!isRestore && !isWrite) {
++        err << "Helper: Wrong arguments entered\n";
++        err.flush();
++        return 1;
++    }
+ 
+     QTranslator translator;
+     translator.load(QLocale(), QString(), QString(), ":/translations");
+-    app.installTranslator(&translator);
+ 
+-    if (app.arguments().count() == 3 && app.arguments()[1] == "restore") {
+-        new RestoreJob(app.arguments()[2]);
+-    }
+-    else if (app.arguments().count() == 4 && app.arguments()[1] == "write") {
+-        new WriteJob(app.arguments()[2], app.arguments()[3]);
+-    }
+-    else {
+-        QTextStream err(stderr);
+-        err << "Helper: Wrong arguments entered";
++    QString driveIdentifier = isRestore ? argv[2] : argv[3];
++    Drive drive(driveIdentifier);
++    try {
++        if (isRestore) {
++            restore(&drive);
++        }
++        else {
++            write(argv[2], &drive);
++        }
++    } catch (std::runtime_error &error) {
++        auto errorMessage = error.what();
++        QString translatedMessage = translator.translate(nullptr, errorMessage);
++        if (translatedMessage.isNull()) {
++            err << errorMessage << '\n';
++        }
++        else {
++            err << translatedMessage << '\n';
++        }
++        err.flush();
+         return 1;
+     }
+-    return app.exec();
+ }
+diff --git a/helper/restorejob.cpp b/helper/restorejob.cpp
+deleted file mode 100644
+index 238b11f..0000000
+--- a/helper/restorejob.cpp
++++ /dev/null
+@@ -1,49 +0,0 @@
+-/*
+- * Fedora Media Writer
+- * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License
+- * as published by the Free Software Foundation; either version 2
+- * of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+- */
+-
+-#include "restorejob.h"
+-
+-#include <algorithm>
+-#include <memory>
+-#include <stdexcept>
+-
+-#include <QCoreApplication>
+-#include <QString>
+-#include <QTimer>
+-
+-#include "drive.h"
+-
+-RestoreJob::RestoreJob(const QString &where)
+-    : QObject(nullptr), err(stderr), drive(std::move(std::unique_ptr<Drive>(new Drive(where)))) {
+-    QTimer::singleShot(0, this, SLOT(work()));
+-}
+-
+-void RestoreJob::work() {
+-    try {
+-        drive->umount();
+-        drive->wipe();
+-        drive->addPartition();
+-    } catch (std::runtime_error &error) {
+-        err << error.what() << '\n';
+-        err.flush();
+-        qApp->exit(1);
+-        return;
+-    }
+-    qApp->exit(0);
+-}
+diff --git a/helper/writejob.cpp b/helper/write.cpp
+similarity index 58%
+rename from helper/writejob.cpp
+rename to helper/write.cpp
+index 0058136..4280eba 100644
+--- a/helper/writejob.cpp
++++ b/helper/write.cpp
+@@ -17,92 +17,23 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  */
+ 
+-#include "writejob.h"
++#include "write.h"
+ 
+-#include <algorithm>
+-#include <memory>
+-#include <random>
+-#include <tuple>
+ #include <stdexcept>
+ 
+-#include <QCoreApplication>
+ #include <QFile>
+ #include <QObject>
+ #include <QString>
+-#include <QTimer>
++#include <QTextStream>
+ #include <QtGlobal>
+ 
+ #include <lzma.h>
+ 
+ #include "isomd5/libcheckisomd5.h"
+-// Platform specific drive handler.
+-#include "drive.h"
+-#include "page_aligned_buffer.h"
+-
+-WriteJob::WriteJob(const QString &what, const QString &where)
+-    : QObject(nullptr), what(what), out(stdout), err(stderr),
+-      drive(std::move(std::unique_ptr<Drive>(new Drive(where)))) {
+-    connect(&watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
+-    QTimer::singleShot(0, this, SLOT(boot()));
+-}
+-
+-int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
+-    return ((WriteJob *) data)->onMediaCheckAdvanced(offset, total);
+-}
+-
+-int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
+-    Q_UNUSED(total);
+-    out << offset << "\n";
+-    out.flush();
+-    return 0;
+-}
+-
+-void WriteJob::boot() {
+-    if (what.endsWith(".part")) {
+-        watcher.addPath(what);
+-        return;
+-    }
+-    work();
+-}
+-
+-void WriteJob::work() {
+-    try {
+-        write();
+-        check();
+-    } catch (std::runtime_error &error) {
+-        err << error.what() << '\n';
+-        err.flush();
+-        qApp->exit(1);
+-        return;
+-    }
+-    qApp->exit(0);
+-}
+-
+-void WriteJob::onFileChanged(const QString &path) {
+-    if (QFile::exists(path))
+-        return;
+-
+-    what = what.replace(QRegExp("[.]part$"), "");
+-
+-    if (!QFile::exists(what)) {
+-        qApp->exit(4);
+-        return;
+-    }
+-    // Immediately trigger the UI into writing mode.
+-    out << "1\n";
+-    out.flush();
+ 
+-    work();
+-}
+-
+-void WriteJob::write() {
+-    if (what.endsWith(".xz"))
+-        writeCompressed();
+-    else
+-        writePlain();
+-}
++#include "page_aligned_buffer.h"
+ 
+-void WriteJob::writeCompressed() {
++static void writeCompressed(const QString &source, Drive* const drive) {
+     qint64 totalRead = 0;
+ 
+     lzma_stream strm = LZMA_STREAM_INIT;
+@@ -113,12 +44,12 @@ void WriteJob::writeCompressed() {
+     char *inBuffer = static_cast<char*>(buffers.get(0));
+     char *outBuffer = static_cast<char*>(buffers.get(1));
+ 
+-    QFile file(what);
++    QFile file(source);
+     file.open(QIODevice::ReadOnly);
+ 
+     ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
+     if (ret != LZMA_OK) {
+-        throw std::runtime_error(tr("Failed to start decompressing.").toStdString());
++        throw std::runtime_error("Failed to start decompressing.");
+     }
+ 
+     strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
+@@ -128,6 +59,7 @@ void WriteJob::writeCompressed() {
+ 
+     drive->open();
+ 
++    QTextStream out(stdout);
+     while (true) {
+         if (strm.avail_in == 0) {
+             qint64 len = file.read(inBuffer, bufferSize);
+@@ -148,18 +80,18 @@ void WriteJob::writeCompressed() {
+         if (ret != LZMA_OK) {
+             switch (ret) {
+             case LZMA_MEM_ERROR:
+-                throw std::runtime_error(tr("There is not enough memory to decompress the file.").toStdString());
++                throw std::runtime_error("There is not enough memory to decompress the file.");
+                 break;
+             case LZMA_FORMAT_ERROR:
+             case LZMA_DATA_ERROR:
+             case LZMA_BUF_ERROR:
+-                throw std::runtime_error(tr("The downloaded compressed file is corrupted.").toStdString());
++                throw std::runtime_error("The downloaded compressed file is corrupted.");
+                 break;
+             case LZMA_OPTIONS_ERROR:
+-                throw std::runtime_error(tr("Unsupported compression options.").toStdString());
++                throw std::runtime_error("Unsupported compression options.");
+                 break;
+             default:
+-                throw std::runtime_error(tr("Unknown decompression error.").toStdString());
++                throw std::runtime_error("Unknown decompression error.");
+                 break;
+             }
+         }
+@@ -173,14 +105,12 @@ void WriteJob::writeCompressed() {
+     }
+ }
+ 
+-void WriteJob::writePlain() {
+-
+-    QFile inFile(what);
++static void writePlain(const QString &source, Drive* const drive) {
++    QFile inFile(source);
+     inFile.open(QIODevice::ReadOnly);
+ 
+     if (!inFile.isReadable()) {
+-        QString error = tr("Source image is not readable") + " " + what;
+-        throw std::runtime_error(error.toStdString());
++        throw std::runtime_error("Source image is not readable");
+     }
+ 
+     PageAlignedBuffer<2> buffers;
+@@ -193,28 +123,51 @@ void WriteJob::writePlain() {
+     while (!inFile.atEnd()) {
+         qint64 len = inFile.read(buffer, bufferSize);
+         if (len < 0) {
+-            throw std::runtime_error(tr("Source image is not readable").toStdString());
++            throw std::runtime_error("Source image is not readable");
+         }
+         drive->write(buffer, len);
+         total += len;
++        QTextStream out(stdout);
+         out << total << '\n';
+         out.flush();
+     }
+ }
+ 
+-void WriteJob::check() {
++static int onMediaCheckAdvanced(void *data, long long offset, long long total) {
++    Q_UNUSED(data);
++    Q_UNUSED(total);
++    QTextStream out(stdout);
++    out << offset << "\n";
++    out.flush();
++    return 0;
++}
++
++static void check(int fd) {
++    QTextStream out(stdout);
+     out << "CHECK\n";
+     out.flush();
+ 
+-    switch (mediaCheckFD(drive->getDescriptor(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
++    switch (mediaCheckFD(fd, &onMediaCheckAdvanced, nullptr)) {
+     case ISOMD5SUM_CHECK_NOT_FOUND:
+     case ISOMD5SUM_CHECK_PASSED:
+         out << "OK\n";
+         out.flush();
+         break;
+     case ISOMD5SUM_CHECK_FAILED:
+-        throw std::runtime_error(tr("Your drive is probably damaged.").toStdString());
++        throw std::runtime_error("Your drive is probably damaged.");
+     default:
+-        throw std::runtime_error(tr("Unexpected error occurred during media check.").toStdString());
++        throw std::runtime_error("Unexpected error occurred during media check.");
+     }
+ }
++
++void write(const QString &source, Drive *const drive) {
++    // Immediately trigger the UI into writing mode.
++    QTextStream out(stdout);
++    out << "1\n";
++    out.flush();
++    if (source.endsWith(".xz"))
++        writeCompressed(source, drive);
++    else
++        writePlain(source, drive);
++    check(drive->getDescriptor());
++}
+diff --git a/helper/restorejob.h b/helper/write.h
+similarity index 71%
+rename from helper/restorejob.h
+rename to helper/write.h
+index 3836e4f..b85a361 100644
+--- a/helper/restorejob.h
++++ b/helper/write.h
+@@ -17,26 +17,19 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+  */
+ 
+-#ifndef RESTOREJOB_H
+-#define RESTOREJOB_H
++#ifndef WRITE_H
++#define WRITE_H
+ 
+-#include <memory>
+-
+-#include <QObject>
+-#include <QTextStream>
++#include <QString>
+ 
++// Platform specific drive handler.
+ #include "drive.h"
+ 
+-class RestoreJob : public QObject {
+-    Q_OBJECT
+-public:
+-    explicit RestoreJob(const QString &where);
+-public slots:
+-    void work();
++#ifndef MEDIAWRITER_LZMA_LIMIT
++// 256MB memory limit for the decompressor
++#define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
++#endif
+ 
+-private:
+-    QTextStream err;
+-    std::unique_ptr<Drive> drive;
+-};
++void write(const QString &source, Drive *const drive);
+ 
+-#endif // RESTOREJOB_H
++#endif // WRITE_H
+diff --git a/helper/writejob.h b/helper/writejob.h
+deleted file mode 100644
+index 334023f..0000000
+--- a/helper/writejob.h
++++ /dev/null
+@@ -1,62 +0,0 @@
+-/*
+- * Fedora Media Writer
+- * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License
+- * as published by the Free Software Foundation; either version 2
+- * of the License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+- */
+-
+-#ifndef WRITEJOB_H
+-#define WRITEJOB_H
+-
+-#include <memory>
+-
+-#include <QFileSystemWatcher>
+-#include <QObject>
+-#include <QString>
+-#include <QTextStream>
+-
+-// Platform specific drive handler.
+-#include "drive.h"
+-
+-#ifndef MEDIAWRITER_LZMA_LIMIT
+-// 256MB memory limit for the decompressor
+-#define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
+-#endif
+-
+-class WriteJob : public QObject {
+-    Q_OBJECT
+-public:
+-    WriteJob(const QString &what, const QString &where);
+-
+-    static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
+-    int onMediaCheckAdvanced(long long offset, long long total);
+-    void work();
+-    void write();
+-    void writeCompressed();
+-    void writePlain();
+-    void check();
+-public slots:
+-    void boot();
+-    void onFileChanged(const QString &path);
+-
+-private:
+-    QString what;
+-    QTextStream out;
+-    QTextStream err;
+-    std::unique_ptr<Drive> drive;
+-    QFileSystemWatcher watcher;
+-};
+-
+-#endif // WRITEJOB_H
+-- 
+2.14.1
+
