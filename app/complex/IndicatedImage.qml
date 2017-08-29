@@ -32,7 +32,8 @@ Item {
     Image {
         id: image
         anchors.fill: parent
-        smooth: false
+        smooth: true
+        mipmap: true
         opacity: status == Image.Ready ? 1 : 0
         Behavior on opacity {
             NumberAnimation {
