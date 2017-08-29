@@ -47,6 +47,18 @@ Item {
         }
     }
 
+    // this has to be here for softwarecontext (clipping is a bit broken)
+    Rectangle {
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+            bottom: searchBox.bottom
+        }
+        z: 1
+        color: palette.window
+    }
+
     Rectangle {
         enabled: !releases.frontPage
         opacity: !releases.frontPage ? 1.0 : 0.0
@@ -66,6 +78,7 @@ Item {
             rightMargin: $(4)
         }
         height: $(36)
+        z: 2
 
         Item {
             id: magnifyingGlass
@@ -140,7 +153,7 @@ Item {
         anchors {
             right: parent.right
             top: parent.top
-            rightMargin: mainWindow.margin
+            rightMargin: mainWindow.margin + $(1)
             topMargin: $(12)
         }
         height: $(36)

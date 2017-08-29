@@ -71,6 +71,7 @@ ApplicationWindow {
         open: drives.lastRestoreable
         acceptText: qsTr("Restore")
         property var disk: null
+        z: 1
         anchors {
             left: parent.left
             right: parent.right
