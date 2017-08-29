@@ -215,11 +215,11 @@ Item {
                                             left: parent.left
                                             right: parent.right
                                             top: parent.bottom
-                                            topMargin: $(1)
                                         }
                                         radius: height / 2
                                         color: parent.color
-                                        height: $(1.2)
+                                        antialiasing: true
+                                        height: $(1)
                                     }
 
 
@@ -330,11 +330,10 @@ Item {
                                             left: parent.left
                                             right: parent.right
                                             top: parent.bottom
-                                            topMargin: $(1)
                                         }
                                         radius: height / 2
                                         color: parent.color
-                                        height: $(1.2)
+                                        height: $(1)
                                     }
 
                                     AdwaitaPopOver {
