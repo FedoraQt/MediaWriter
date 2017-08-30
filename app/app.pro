@@ -34,7 +34,10 @@ RESOURCES += qml.qrc \
 
 lupdate_only {
     SOURCES += $$PWD/*.qml \
-        $$PWD/components/*.qml \
+        $$PWD/complex/*.qml \
+        $$PWD/dialogs/*.qml \
+        $$PWD/simple/*.qml \
+        $$PWD/views/*.qml \
         linuxdrivemanager.cpp \
         macdrivemanager.cpp \
         windrivemanager.cpp
