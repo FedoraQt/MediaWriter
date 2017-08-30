@@ -56,10 +56,9 @@ int main(int argc, char **argv)
     CrashHandler::install();
 
 #ifdef __linux
-    char *qsgLoop = getenv("QSG_RENDER_LOOP");
-    if (!qsgLoop)
-        setenv("QSG_RENDER_LOOP", "threaded", 1);
-    setenv("GDK_BACKEND", "x11", 1);
+    if (qEnvironmentVariableIsEmpty("QSG_RENDER_LOOP"))
+        qputenv("QSG_RENDER_LOOP", "threaded");
+    qputenv("GDK_BACKEND", "x11");
 #endif
 
     QApplication::setOrganizationDomain("fedoraproject.org");
