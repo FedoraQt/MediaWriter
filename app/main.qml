@@ -143,6 +143,7 @@ ApplicationWindow {
 
     AdwaitaPopup {
         id: newVersionPopup
+        enabled: open
         open: versionChecker.newerVersion
         title: qsTr("Fedora Media Writer %1 Released").arg(versionChecker.newerVersion)
         text: qsTr("Update for great new features and bugfixes!")
@@ -175,6 +176,7 @@ ApplicationWindow {
     Rectangle {
         id: fatalErrorOverlay
         opacity: drives.isBroken ? 1.0 : 0.0
+        enabled: visible
         visible: opacity > 0.1
         Behavior on opacity { NumberAnimation { } }
         anchors.fill: parent

@@ -34,6 +34,7 @@ Item {
     anchors.fill: parent
 
     property bool focused: contentList.currentIndex === 1
+    enabled: focused
 
     onFocusedChanged: {
         if (focused && !prereleaseNotification.wasOpen && releases.selected.prerelease.length > 0)
@@ -66,6 +67,8 @@ Item {
     }
 
     ScrollView {
+        activeFocusOnTab: false
+        focus: true
         anchors {
             fill: parent
             leftMargin: anchors.rightMargin
@@ -189,12 +192,22 @@ Item {
                                     Behavior on color { ColorAnimation { duration: 100 } }
                                     MouseArea {
                                         id: versionMouse
+                                        activeFocusOnTab: true
                                         enabled: versionRepeater.count > 1
                                         anchors.fill: parent
                                         hoverEnabled: true
                                         cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
-                                        onClicked: {
+                                        function action() {
                                             versionPopover.open = !versionPopover.open
+                                        }
+                                        onClicked: {
+                                            action()
+                                        }
+                                        Keys.onSpacePressed: action()
+                                        FocusRectangle {
+                                            anchors.fill: parent
+                                            anchors.margins: $(-2)
+                                            visible: parent.activeFocus
                                         }
                                     }
 
@@ -314,14 +327,26 @@ Item {
                                     Behavior on color { ColorAnimation { duration: 100 } }
                                     MouseArea {
                                         id: archMouse
+                                        activeFocusOnTab: parent.visible
                                         anchors.fill: parent
                                         hoverEnabled: true
                                         cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
-                                        onClicked: {
-                                            if (versionPopover.open)
+                                        function action() {
+                                            if (versionPopover.open) {
                                                 versionPopover.open = false
-                                            else
+                                            }
+                                            else {
                                                 archPopover.open = !archPopover.open
+                                            }
+                                        }
+                                        Keys.onSpacePressed: action()
+                                        onClicked: {
+                                            action()
+                                        }
+                                        FocusRectangle {
+                                            anchors.fill: parent
+                                            anchors.margins: $(-2)
+                                            visible: parent.activeFocus
                                         }
                                     }
 

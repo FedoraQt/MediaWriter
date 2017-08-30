@@ -27,6 +27,7 @@ Item {
     id: root
     width: parent.width
     height: $(84)
+    activeFocusOnTab: true
 
     readonly property bool isTop: !releases.get(index-1) || (release.category !== releases.get(index-1).category)
     readonly property bool isBottom:
@@ -156,14 +157,20 @@ Item {
                 }
             }
         }
+        FocusRectangle {
+            visible: root.activeFocus
+            anchors.fill: parent
+            anchors.margins: $(3)
+        }
     }
 
+    Keys.onSpacePressed: delegateMouse.action()
     MouseArea {
         id: delegateMouse
         anchors.fill: parent
         hoverEnabled: true
         cursorShape: Qt.PointingHandCursor
-        onClicked: {
+        function action() {
             if (release.isLocal) {
                 releases.selectedIndex = index
                 fileDialog.visible = true
@@ -172,6 +179,9 @@ Item {
                 imageList.currentIndex = index
                 imageList.stepForward(release.index)
             }
+        }
+        onClicked: {
+            action()
         }
     }
 }

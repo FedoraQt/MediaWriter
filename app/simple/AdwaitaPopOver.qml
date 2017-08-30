@@ -23,7 +23,7 @@ import QtQuick.Controls.Styles 1.2
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.0
 
-Item {
+FocusScope {
     id: popover
     property bool open: false
     visible: opacity > 0.0

@@ -38,6 +38,7 @@ AdwaitaRectangle {
     property bool pressed: isOpen
 
     property bool isOpen: false
+    activeFocusOnTab: true
 
     signal activated(int index)
 
@@ -76,12 +77,28 @@ AdwaitaRectangle {
         font.pointSize: $(9)
     }
 
+    Keys.onUpPressed: {
+        if (currentIndex > 0)
+            currentIndex--
+    }
+    Keys.onDownPressed: {
+        if (currentIndex < count - 1)
+            currentIndex++
+    }
+    Keys.onSpacePressed: mouse.action()
+
     MouseArea {
         id: mouse
         hoverEnabled: true
         enabled: !isOpen
         anchors.fill: parent
-        onClicked: if (count > 0) isOpen = true
+        function action() {
+            if (count > 0) {
+                isOpen = true
+                options.focus = true
+            }
+        }
+        onClicked: action()
     }
 
     // area capturing clicks around the open dropdown... a bit hacky
@@ -132,14 +149,19 @@ AdwaitaRectangle {
                 text: textRole ? model[textRole] : modelData
                 font.pointSize: $(9)
             }
+            Keys.onSpacePressed: itemMouse.action()
             MouseArea {
                 id: itemMouse
                 hoverEnabled: true
                 anchors.fill: parent
-                onClicked: {
+                function action() {
                     options.currentIndex = index
                     control.isOpen = false
                     activated(index)
+                }
+
+                onClicked: {
+                    action()
                 }
                 onContainsMouseChanged: {
                     if (containsMouse)

@@ -70,6 +70,12 @@ Item {
             property color topColor: control.enabled ? !(control.pressed || control.checked) ? !control.hovered ?  "#14ffffff" : "#14ffffff" : "#1e000000" : "transparent"
             property color bottomColor: control.enabled ? !(control.pressed || control.checked) ? !control.hovered ? "#14000000" : "#05ffffff" : "#14000000" : "transparent"
         }
+        FocusRectangle {
+            id: focusRect
+            visible: control.activeFocus
+            anchors.fill: parent
+            anchors.margins: $(2)
+        }
     }
 
     SystemPalette {

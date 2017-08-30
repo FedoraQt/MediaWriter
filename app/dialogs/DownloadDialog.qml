@@ -272,6 +272,8 @@ Dialog {
             anchors.fill: parent
             horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
             flickableItem.flickableDirection: Flickable.VerticalFlick
+            activeFocusOnTab: false
+
             contentItem: Item {
                 width: contentScrollView.width - $(18)
                 height: layout.height + $(18)
@@ -441,6 +443,7 @@ Dialog {
                             }
                             AdwaitaComboBox {
                                 z: pressed ? 1 : 0
+                                enabled: visible
                                 visible: releases.selected.version.variant.arch.id == Architecture.ARM || (releases.selected.isLocal && releases.variant.iso.indexOf(".iso", releases.variant.iso.length - ".iso".length) === -1)
                                 width: driveCombo.implicitWidth * 2.5
                                 model: ["Raspberry Pi 2 Model B", "Raspberry Pi 3 Model B"]

@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.3
+import QtQuick 2.4
 import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.2
 import QtQuick.Layouts 1.1
@@ -25,15 +25,17 @@ import QtQuick.Layouts 1.1
 import "../simple"
 import "../complex"
 
-Item {
+FocusScope {
     id: imageList
 
     property alias currentIndex: osListView.currentIndex
     property real fadeDuration: 200
     property int lastIndex: -1
 
+    property bool focused: contentList.currentIndex === 0
     signal stepForward(int index)
     onStepForward: lastIndex = index
+    enabled: focused
 
     anchors.fill: parent
     clip: true
@@ -62,6 +64,7 @@ Item {
     Rectangle {
         enabled: !releases.frontPage
         opacity: !releases.frontPage ? 1.0 : 0.0
+        visible: opacity > 0.0
         id: searchBox
         border {
             color: searchInput.activeFocus ? "#4a90d9" : Qt.darker(palette.button, 1.3)
@@ -117,6 +120,7 @@ Item {
         }
         TextInput {
             id: searchInput
+            activeFocusOnTab: searchBox.visible
             anchors {
                 left: magnifyingGlass.right
                 top: parent.top
@@ -150,6 +154,8 @@ Item {
         }
 
         id: archSelect
+        activeFocusOnTab: visible
+        visible: opacity > 0.0
         anchors {
             right: parent.right
             top: parent.top
@@ -217,11 +223,32 @@ Item {
         ListView {
             id: osListView
             clip: true
+            focus: true
             anchors {
                 fill: parent
                 leftMargin: mainWindow.margin
                 rightMargin: anchors.leftMargin - (fullList.width - fullList.viewport.width)
                 topMargin: whiteBackground.y
+            }
+
+            model: releases
+
+            delegate: DelegateImage {
+                width: parent.width
+                focus: true
+            }
+
+            remove: Transition {
+                NumberAnimation { properties: "x"; to: width; duration: 300 }
+            }
+            removeDisplaced: Transition {
+                NumberAnimation { properties: "x,y"; duration: 300 }
+            }
+            add: Transition {
+                NumberAnimation { properties: releases.frontPage ? "y" : "x"; from: releases.frontPage ? 0 : -width; duration: 300 }
+            }
+            addDisplaced: Transition {
+                NumberAnimation { properties: "x,y"; duration: 300 }
             }
 
             section {
@@ -247,8 +274,10 @@ Item {
             }
 
             footer: Item {
+                id: footerRoot
                 height: !releases.frontPage ? aboutColumn.height + $(72) : $(36)
                 width: osListView.width
+                z: 0
                 Column {
                     id: aboutColumn
                     width: parent.width
@@ -328,95 +357,94 @@ Item {
                         }
                     }
                 }
+            }
 
+            Rectangle {
+                id: threeDotWrapper
+                clip: true
+                visible: releases.frontPage
+                enabled: visible
+                activeFocusOnTab: true
+                radius: $(3)
+                color: palette.window
+                width: osListView.width - $(2)
+                height: $(32)
+                anchors.horizontalCenter: parent.horizontalCenter
+                y: $(84)*3 + 1
+                z: -1
                 Rectangle {
-                    clip: true
-                    visible: releases.frontPage
                     anchors.fill: parent
-                    anchors.margins: 1
-                    radius: $(3)
-                    color: palette.window
-                    Rectangle {
-                        anchors.fill: parent
-                        anchors.topMargin: $(-10)
-                        color: threeDotMouse.containsPress ? Qt.darker(palette.window, 1.2) : threeDotMouse.containsMouse ? palette.window : palette.base
-                        Behavior on color { ColorAnimation { duration: 120 } }
-                        radius: $(5)
-                        border {
-                            color: Qt.darker(palette.base, 1.3)
-                            width: 1
-                        }
-                    }
-
-                    Column {
-                        id: threeDotDots
-                        property bool hidden: false
-                        opacity: hidden ? 0.0 : 1.0
-                        Behavior on opacity { NumberAnimation { duration: 60 } }
-                        anchors.centerIn: parent
-                        spacing: $(3)
-                        Repeater {
-                            model: 3
-                            Rectangle { height: $(4); width: $(4); radius: $(1); color: mixColors(palette.windowText, palette.window, 0.75); antialiasing: true }
-                        }
-                    }
-
-                    Text {
-                        id: threeDotText
-                        y: threeDotDots.hidden ? parent.height / 2 - height / 2 : -height
-                        font.pointSize: $(9)
-                        anchors.horizontalCenter: threeDotDots.horizontalCenter
-                        Behavior on y { NumberAnimation { duration: 60 } }
-                        clip: true
-                        text: qsTr("Display additional Fedora flavors")
-                        color: "gray"
-                    }
-                    Timer {
-                        id: threeDotTimer
-                        interval: 200
-                        onTriggered: {
-                            threeDotDots.hidden = true
-                        }
-                    }
-                    MouseArea {
-                        id: threeDotMouse
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        cursorShape: Qt.PointingHandCursor
-                        onHoveredChanged: {
-                            if (containsMouse && !pressed) {
-                                threeDotTimer.start()
-                            }
-                            if (!containsMouse) {
-                                threeDotTimer.stop()
-                                threeDotDots.hidden = false
-                            }
-                        }
-                        onClicked: {
-                            moveUp.enabled = true
-                            releases.frontPage = false
-                        }
+                    anchors.topMargin: $(-10)
+                    color: threeDotMouse.containsPress ? Qt.darker(palette.window, 1.2) : threeDotMouse.containsMouse ? palette.window : palette.base
+                    Behavior on color { ColorAnimation { duration: 120 } }
+                    radius: $(5)
+                    border {
+                        color: Qt.darker(palette.base, 1.3)
+                        width: 1
                     }
                 }
-            }
 
-            model: releases
+                Column {
+                    id: threeDotDots
+                    property bool hidden: false
+                    opacity: hidden ? 0.0 : 1.0
+                    Behavior on opacity { NumberAnimation { duration: 60 } }
+                    anchors.centerIn: parent
+                    spacing: $(3)
+                    Repeater {
+                        model: 3
+                        Rectangle { height: $(4); width: $(4); radius: $(1); color: mixColors(palette.windowText, palette.window, 0.75); antialiasing: true }
+                    }
+                }
 
-            delegate: DelegateImage {
-                width: parent.width
-            }
+                Text {
+                    id: threeDotText
+                    y: threeDotDots.hidden ? parent.height / 2 - height / 2 : -height
+                    font.pointSize: $(9)
+                    anchors.horizontalCenter: threeDotDots.horizontalCenter
+                    Behavior on y { NumberAnimation { duration: 60 } }
+                    clip: true
+                    text: qsTr("Display additional Fedora flavors")
+                    color: "gray"
+                }
 
-            remove: Transition {
-                NumberAnimation { properties: "x"; to: width; duration: 300 }
-            }
-            removeDisplaced: Transition {
-                NumberAnimation { properties: "x,y"; duration: 300 }
-            }
-            add: Transition {
-                NumberAnimation { properties: releases.frontPage ? "y" : "x"; from: releases.frontPage ? 0 : -width; duration: 300 }
-            }
-            addDisplaced: Transition {
-                NumberAnimation { properties: "x,y"; duration: 300 }
+                FocusRectangle {
+                    visible: threeDotWrapper.activeFocus
+                    anchors.fill: parent
+                    anchors.margins: $(2)
+                }
+
+                Timer {
+                    id: threeDotTimer
+                    interval: 200
+                    onTriggered: {
+                        threeDotDots.hidden = true
+                    }
+                }
+
+                Keys.onSpacePressed: threeDotMouse.action()
+                MouseArea {
+                    id: threeDotMouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onHoveredChanged: {
+                        if (containsMouse && !pressed) {
+                            threeDotTimer.start()
+                        }
+                        if (!containsMouse) {
+                            threeDotTimer.stop()
+                            threeDotDots.hidden = false
+                        }
+                    }
+                    function action() {
+                        moveUp.enabled = true
+                        releases.frontPage = false
+                    }
+                    onClicked: {
+                        action()
+                    }
+                }
             }
         }
         style: ScrollViewStyle {

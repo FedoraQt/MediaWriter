@@ -19,13 +19,21 @@
 
 import QtQuick 2.0
 import QtQuick.Window 2.0
+import "../simple"
 
 IndicatedImage {
     id: root
+    activeFocusOnTab: true
+
+    Keys.onSpacePressed: mouse.action()
 
     MouseArea {
+        id: mouse
         anchors.fill: parent
-        onClicked: fullscreenViewer.show(root.source)
+        function action() {
+            fullscreenViewer.show(root.source)
+        }
+        onClicked: action()
         cursorShape: Qt.PointingHandCursor
     }
 
@@ -34,6 +42,12 @@ IndicatedImage {
         color: "white"
         opacity: root.zoomed ? 0.8 : 0.0
         Behavior on opacity { NumberAnimation { duration: 160 } }
+    }
+
+    FocusRectangle {
+        anchors.fill: parent
+        anchors.margins: $(-3)
+        visible: parent.activeFocus
     }
 
     Behavior on scale {

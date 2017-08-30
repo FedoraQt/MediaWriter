@@ -25,6 +25,7 @@ import QtQuick.Layouts 1.1
 Rectangle {
     id: root
     clip: true
+    enabled: open
     focus: open
 
     color: "#729FCF"

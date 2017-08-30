@@ -23,10 +23,11 @@ import QtQuick.Controls.Styles 1.2
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.0
 
-Item {
+FocusScope {
     id: root
     property bool open: false
     visible: opacity > 0.0
+    enabled: open
     opacity: open ? 1.0 : 0.0
     Behavior on opacity { NumberAnimation { duration: 120 } }
 
