@@ -52,15 +52,24 @@ QML_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_QML)
 mkdir -p "$BUILDPATH"
 pushd "$BUILDPATH" >/dev/null
 
+VERSION_FULL=''
+
 if [ "$1" == "local" ]; then
+    VERSION_FULL=$(git describe --tags)
     if [ "$2" == "debug" ]; then
-        INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-$(git describe --tags)-debug.exe"
+        INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-${VERSION_FULL}-debug.exe"
     else
-        INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-$(git describe --tags).exe"
+        INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-${VERSION_FULL}.exe"
     fi
 else
-    INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-$(rpm -q mingw32-mediawriter --queryformat '%{VERSION}\n').exe"
+    VERSION_FULL=$(rpm -q mingw32-mediawriter --queryformat '%{VERSION}\n')
+    INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-${VERSION_FULL}.exe"
 fi
+
+VERSION_STRIPPED=$(sed "s/-.*//" <<< "${VERSION_FULL}")
+VERSION_MAJOR=$(cut -d. -f1 <<< "${VERSION_STRIPPED}")
+VERSION_MINOR=$(cut -d. -f1 <<< "${VERSION_STRIPPED}")
+VERSION_BUILD=$(cut -d. -f1 <<< "${VERSION_STRIPPED}")
 
 
 if [ "$1" == "local" ]; then
@@ -138,7 +147,14 @@ popd >/dev/null
 
 echo "=== Composing installer"
 unix2dos < "$ROOTPATH/LICENSE" > "$BUILDPATH/app/release/LICENSE.txt"
+INSTALLED_SIZE=$(du -k -d0 "$BUILDPATH/app/release" | cut -f1)
+cp "$SCRIPTDIR/mediawriter.nsi" "$SCRIPTDIR/mediawriter.tmp.nsi"
+sed -i "s/#!define VERSIONMAJOR/!define VERSIONMAJOR ${VERSION_MAJOR}/" "$SCRIPTDIR/mediawriter.tmp.nsi"
+sed -i "s/#!define VERSIONMINOR/!define VERSIONMINOR ${VERSION_MINOR}/" "$SCRIPTDIR/mediawriter.tmp.nsi"
+sed -i "s/#!define VERSIONBUILD/!define VERSIONBUILD ${VERSION_BUILD}/" "$SCRIPTDIR/mediawriter.tmp.nsi"
+sed -i "s/#!define INSTALLSIZE/!define INSTALLSIZE ${INSTALLED_SIZE}/" "$SCRIPTDIR/mediawriter.tmp.nsi"
 makensis "$SCRIPTDIR/mediawriter.nsi" >/dev/null
+rm "$SCRIPTDIR/mediawriter.tmp.nsi"
 mv "$SCRIPTDIR/FMW-setup.exe" "$INSTALLER"
 
 osslsigncode sign -pkcs12 $CERTPATH//authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "$INSTALLER" -out "$INSTALLER.signed" >/dev/null

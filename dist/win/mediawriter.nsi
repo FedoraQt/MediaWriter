@@ -8,16 +8,16 @@ XPStyle on
 !define COMPANYNAME "Fedora Project"
 !define DESCRIPTION "Tool to write Fedora images to flash drives"
 # These three must be defined from command line
-#!define VERSIONMAJOR 4
-#!define VERSIONMINOR 1
-#!define VERSIONBUILD 0
+#!define VERSIONMAJOR
+#!define VERSIONMINOR
+#!define VERSIONBUILD
 # These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
 # It is possible to use "mailto:" links in here to open the email client
 !define HELPURL "https://github.com/MartinBriza/MediaWriter" # "Support Information" link
 !define UPDATEURL "https://getfedora.org" # "Product Updates" link
 !define ABOUTURL "https://getfedora.org" # "Publisher" link
 # This is the size (in kB) of all the files copied into "Program Files"
-#!define INSTALLSIZE 7233
+#!define INSTALLSIZE
 
 RequestExecutionLevel admin ;Require admin rights on NT6+ (When UAC is turned on)
 
