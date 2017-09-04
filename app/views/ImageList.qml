@@ -56,6 +56,7 @@ FocusScope {
             left: parent.left
             right: parent.right
             bottom: searchBox.bottom
+            rightMargin: fullList.viewport ? fullList.width - fullList.viewport.width : 0
         }
         z: 1
         color: palette.window
