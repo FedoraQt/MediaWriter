@@ -1,11 +1,14 @@
 import QtQuick 2.0
 
 // TODO use a BorderImage or something else to draw a dashed rectangle, this is ugly
-Rectangle {
-    color: "transparent"
-    radius: $(2)
+BorderImage {
     border {
-        width: $(1)
-        color: mixColors(palette.windowText, palette.button, 0.4)
+        left: 2
+        right: 2
+        top: 2
+        bottom: 2
     }
+    source: "qrc:/focusRect"
+    horizontalTileMode: BorderImage.Repeat
+    verticalTileMode: BorderImage.Repeat
 }
