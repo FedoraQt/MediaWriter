@@ -102,17 +102,15 @@
         ]
     },
     {
-        "subvariant": "lxde",
+        "subvariant": "lxqt",
         "category": "spins",
-        "name": "Fedora LXDE Desktop",
-        "summary": "A light, fast, less-resource hungry desktop environment.",
-        "icon": "qrc:/logos/lxde",
-        "screenshots": [ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-lxde.jpg" ],
+        "name": "Fedora LXQt Desktop",
+        "summary": "A lightweight, well-integrated LXQt desktop environment.",
+        "icon": "qrc:/logos/lxqt",
+        "screenshots": [ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-lxqt.jpg" ],
         "description": [
             "<p>",
-            "LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, performant, and energy-saving desktop environment. It maintained by an international community of developers and comes with a beautiful interface, multi-language support, standard keyboard shortcuts and additional features like tabbed file browsing.",
-            "</p><p>",
-            "LXDE is not designed to be powerful and bloated, but to be usable and slim. A main goal of LXDE is to keep computer resource usage low. It is especially designed for computers with low hardware specifications like netbooks, mobile devices (e.g. MIDs) or older computers.",
+            "Fedora LXQt provides a lightweight, well-integrated LXQt desktop environment. In addition to LXQt itself it provides a small, well selected collection of applications like the QupZilla browser, which combines Chromium's rendering engine with a nice Qt experience. Other applications include the Trojita mail client, the qBittorrent client, the Yarock music player and a set of some more commonly used applications. As all applications use the same Qt5 toolkit and the Breeze theme known from KDE, the desktop provides a unified and well-integrated style and theming. In addition breeze-gtk is provided to allow the user to integrate GTK applications too.",
             "</p>"
         ]
     },
@@ -144,6 +142,21 @@
             "</p><p>",
             "Cinnamon is a popular desktop alternative to Gnome 3 and this spin provides the option to quickly try and install this desktop.",
             "</p>" 
+        ]
+    },
+    {
+        "subvariant": "lxde",
+        "category": "spins",
+        "name": "Fedora LXDE Desktop",
+        "summary": "A light, fast, less-resource hungry desktop environment.",
+        "icon": "qrc:/logos/lxde",
+        "screenshots": [ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-lxde.jpg" ],
+        "description": [
+            "<p>",
+            "LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, performant, and energy-saving desktop environment. It maintained by an international community of developers and comes with a beautiful interface, multi-language support, standard keyboard shortcuts and additional features like tabbed file browsing.",
+            "</p><p>",
+            "LXDE is not designed to be powerful and bloated, but to be usable and slim. A main goal of LXDE is to keep computer resource usage low. It is especially designed for computers with low hardware specifications like netbooks, mobile devices (e.g. MIDs) or older computers.",
+            "</p>"
         ]
     },
     {
@@ -209,6 +222,21 @@
         ]
     },
     {
+        "subvariant": "python",
+        "category": "labs",
+        "name": "Fedora Python Classroom",
+        "summary": "A classroom lab for teaching the Python programming language to students",
+        "icon": "qrc:/logos/scientific",
+        "screenshots": [ "https://labs.fedoraproject.org/static/images/python-classroom/screenshot1.png", "https://labs.fedoraproject.org/static/images/python-classroom/screenshot2.png", "https://labs.fedoraproject.org/static/images/python-classroom/screenshot3.png" ],
+        "description": [
+            "<p>",
+            "One of the benefits of Fedora for Python developers is the ease of setting up Python development. The Fedora Python Classroom Lab makes it even easier for teachers and instructors to use Fedora in their classrooms or workshops. Ready to use operating system with important stuff pre-installed - either with GNOME or as a headless environment for Docker or Vagrant. Teach Python on Fedora, with Fedora, using the stuff you love: IPython, Jupyter Notebook, multiple Pythons, virtualenvs, tox, git and more",
+            "</p><p>",
+            "The Fedora Python Classroom Lab comes in 3 variants. Either you can run it in graphical mode with GNOME, or you can virtualize it with Vagrant or run it in a Docker container. You choose what fits your teaching environment the best.",
+            "</p>"
+        ]
+    },
+    {
         "subvariant": "robotics",
         "category": "labs",
         "name": "Fedora Robotics Suite",
@@ -235,7 +263,7 @@
             "Wary of reinstalling all the essential tools for your scientific and numerical work? The answer is here. Fedora Scientific Spin brings together the most useful open source scientific and numerical tools atop the goodness of the KDE desktop environment.",
             "</p><p>",
             "Fedora Scientific currently ships with numerous applications and libraries. These range from libraries such as the GNU Scientific library, the SciPy libraries, tools like Octave and xfig to typesetting tools like Kile and graphics programs such as Inkscape. The current set of packages include an IDE, tools and libraries for programming in C, C++, Python, Java and R. Also included along with are libraries for parallel computing such as the OpenMPI and OpenMP. Tools for typesetting, writing and publishing are included.",
-            "</p>" 
+            "</p>"
         ]
     },
     {
