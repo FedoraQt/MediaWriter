@@ -26,7 +26,7 @@ It can be done like this:
 
 `qmake PREFIX=/usr .`
 
-The main binary, `mediawriter`, will be writen to `$PREFIX/bin` and the helper binary can be found on the path `$PREFIX/libexec/mediawriter/helper`.
+The main binary, `mediawriter`, will be written to `$PREFIX/bin` and the helper binary can be found on the path `$PREFIX/libexec/mediawriter/helper`.
 
 #### Requirements
 

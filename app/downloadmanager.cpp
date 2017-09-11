@@ -364,7 +364,7 @@ void Download::onSslErrors(const QList<QSslError> errors) {
 void Download::onFinished() {
     m_timer.stop();
     if (m_reply->error() != 0) {
-        qDebug() << this->metaObject()->className() << "An error occured at the end:" << m_reply->errorString();
+        qDebug() << this->metaObject()->className() << "An error occurred at the end:" << m_reply->errorString();
         if (m_file && m_file->size() == 0) {
             m_file->remove();
         }
