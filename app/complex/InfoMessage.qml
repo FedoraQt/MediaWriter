@@ -56,10 +56,9 @@ RowLayout {
         color: palette.windowText
         onLinkActivated: Qt.openUrlExternally(link)
         MouseArea {
+            acceptedButtons: Qt.NoButton
             anchors.fill: parent
-            hoverEnabled: true
             cursorShape: infoMessageText.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
-            onPositionChanged: mouse.accepted = false
         }
     }
 }
