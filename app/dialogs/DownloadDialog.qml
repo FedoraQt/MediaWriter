@@ -321,6 +321,13 @@ Dialog {
                         }
 
                         InfoMessage {
+                            id: messageArmBoard
+                            width: infoColumn.width
+                            visible: boardCombo.otherSelected
+                            text: qsTr("Your board or device is not supported by Fedora Media Writer yet. Please check <a href=%1>this page</a> for more information about its compatibility with Fedora and how to create bootable media for it.").arg("https://fedoraproject.org/wiki/Architectures/ARM")
+                        }
+
+                        InfoMessage {
                             error: true
                             width: infoColumn.width
                             visible: releases.variant && releases.variant.errorString.length > 0
@@ -442,11 +449,13 @@ Dialog {
                                 placeholderText: qsTr("There are no portable drives connected")
                             }
                             AdwaitaComboBox {
+                                id: boardCombo
                                 z: pressed ? 1 : 0
                                 enabled: visible
                                 visible: releases.selected.version.variant.arch.id == Architecture.ARM || (releases.selected.isLocal && releases.variant.iso.indexOf(".iso", releases.variant.iso.length - ".iso".length) === -1)
                                 width: driveCombo.implicitWidth * 2.5
-                                model: ["Raspberry Pi 2 Model B", "Raspberry Pi 3 Model B"]
+                                property bool otherSelected: currentIndex === (count - 1)
+                                model: ["Raspberry Pi 2 Model B", "Raspberry Pi 3 Model B", qsTr("Other")]
                             }
                         }
                     }

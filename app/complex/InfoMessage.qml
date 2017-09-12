@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.4
 import QtQuick.Layouts 1.0
 
 RowLayout {
@@ -51,7 +51,15 @@ RowLayout {
         Layout.fillWidth: true
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.Wrap
+        textFormat: Text.RichText
         font.pointSize: $(9)
         color: palette.windowText
+        onLinkActivated: Qt.openUrlExternally(link)
+        MouseArea {
+            anchors.fill: parent
+            hoverEnabled: true
+            cursorShape: infoMessageText.hoveredLink ? Qt.PointingHandCursor : Qt.ArrowCursor
+            onPositionChanged: mouse.accepted = false
+        }
     }
 }
