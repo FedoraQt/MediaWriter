@@ -20,24 +20,30 @@
 import QtQuick 2.0
 
 Item {
+    id: root
     width: $(64)
     height: $(64)
-    property real shorterSide: width < height ? width : height
+
+    property real shorterSide: Math.floor(width < height ? width : height)
     property color color: "red"
-    Rectangle {
-        transformOrigin: Item.TopLeft
+
+    Item {
+        width: parent.shorterSide
+        height: parent.shorterSide
+        anchors.centerIn: parent
         rotation: 45
-        x: shorterSide * 0.18
-        width: shorterSide * 1.16
-        height: shorterSide * 0.25
-        color: parent.color
-    }
-    Rectangle {
-        transformOrigin: Item.TopRight
-        rotation: -45
-        x: shorterSide * -0.34
-        width: shorterSide * 1.16
-        height: shorterSide * 0.25
-        color: parent.color
+        transformOrigin: Item.Center
+        Rectangle {
+            anchors.centerIn: parent
+            width: parent.width * 1.15
+            height: parent.width * 0.25
+            color: root.color
+        }
+        Rectangle {
+            anchors.centerIn: parent
+            width: parent.width * 0.25
+            height: parent.width * 1.15
+            color: root.color
+        }
     }
 }
