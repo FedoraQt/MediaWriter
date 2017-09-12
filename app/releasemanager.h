@@ -71,7 +71,7 @@ class ReleaseArchitecture;
  * @property filterText user-entered text filter
  * @property selected the currently selected release
  * @property selectedIndex the index of the currently selected release
- * @property architectures the list of the avilable architectures
+ * @property architectures the list of the available architectures
  */
 class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver {
     Q_OBJECT
