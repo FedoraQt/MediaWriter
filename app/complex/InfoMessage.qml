@@ -10,20 +10,33 @@ RowLayout {
         visible: !root.error
         Layout.fillWidth: false
         Layout.alignment: Qt.AlignVCenter
-        width: $(18)
-        height: $(18)
+        width: $(17)
+        height: $(17)
         radius: width / 2
         color: "#628fcf"
         border {
             width: $(1)
             color: "#a1a1a1"
         }
-        Text {
-            text: "i"
-            anchors.centerIn: parent
-            font.bold: true
-            font.pointSize: $(9)
-            color: "white"
+        Rectangle {
+            width: $(1)
+            height: $(6)
+            anchors {
+                bottom: parent.bottom
+                bottomMargin: (parent.height - height) / 3
+                horizontalCenter: parent.horizontalCenter
+            }
+            color: "#cce3e3e3"
+        }
+        Rectangle {
+            width: $(1)
+            height: $(1)
+            anchors {
+                top: parent.top
+                topMargin: (parent.height - height) / 4
+                horizontalCenter: parent.horizontalCenter
+            }
+            color: "#cce3e3e3"
         }
     }
     Rectangle {
