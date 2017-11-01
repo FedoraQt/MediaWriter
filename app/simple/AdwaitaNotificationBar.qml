@@ -34,8 +34,10 @@ Rectangle {
         width: 1
     }
 
-    height: open ? $(70) : 0
-    Behavior on height {
+    height: $(70)
+    property real margin: open ? 0 : $(-70)
+    anchors.topMargin: margin
+    Behavior on margin {
         NumberAnimation {
             duration: 300
             easing.type: Easing.OutElastic
