@@ -142,6 +142,10 @@ Dialog {
                 name: "writing"
                 when: releases.variant.status === Variant.WRITING
                 PropertyChanges {
+                    target: messageDriveSize
+                    enabled: false
+                }
+                PropertyChanges {
                     target: messageRestore;
                     visible: true
                 }
@@ -159,6 +163,10 @@ Dialog {
                 name: "write_verifying"
                 when: releases.variant.status === Variant.WRITE_VERIFYING
                 PropertyChanges {
+                    target: messageDriveSize
+                    enabled: false
+                }
+                PropertyChanges {
                     target: messageRestore;
                     visible: true
                 }
@@ -175,6 +183,10 @@ Dialog {
             State {
                 name: "finished"
                 when: releases.variant.status === Variant.FINISHED
+                PropertyChanges {
+                    target: messageDriveSize
+                    enabled: false
+                }
                 PropertyChanges {
                     target: messageRestore;
                     visible: true
@@ -325,6 +337,14 @@ Dialog {
                             width: infoColumn.width
                             visible: boardCombo.otherSelected
                             text: qsTr("Your board or device is not supported by Fedora Media Writer yet. Please check <a href=%1>this page</a> for more information about its compatibility with Fedora and how to create bootable media for it.").arg("https://fedoraproject.org/wiki/Architectures/ARM")
+                        }
+
+                        InfoMessage {
+                            id: messageDriveSize
+                            width: infoColumn.width
+                            enabled: true
+                            visible: enabled && drives.selected && drives.selected.size > 160 * 1024 * 1024 * 1024 // warn when it's more than 160GB
+                            text: qsTr("The selected drive's size is %1. It's possible you have selected an external drive by accident!").arg(drives.selected ? drives.selected.readableSize : "N/A")
                         }
 
                         InfoMessage {
