@@ -143,7 +143,8 @@ class Drive : public QObject {
     Q_PROPERTY(Progress* progress READ progress CONSTANT)
 
     Q_PROPERTY(QString name READ name CONSTANT)
-    Q_PROPERTY(uint64_t size READ size CONSTANT)
+    Q_PROPERTY(QString readableSize READ readableSize CONSTANT)
+    Q_PROPERTY(qreal size READ size CONSTANT)
     Q_PROPERTY(RestoreStatus restoreStatus READ restoreStatus NOTIFY restoreStatusChanged)
     Q_PROPERTY(bool delayedWrite READ delayedWrite WRITE setDelayedWrite NOTIFY delayedWriteChanged)
 public:
@@ -161,7 +162,8 @@ public:
     Progress *progress() const;
 
     virtual QString name() const;
-    virtual uint64_t size() const;
+    virtual QString readableSize() const;
+    virtual qreal size() const;
     virtual RestoreStatus restoreStatus();
     virtual bool delayedWrite() const;
 
