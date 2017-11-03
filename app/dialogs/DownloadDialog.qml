@@ -40,7 +40,6 @@ Dialog {
 
     function reset() {
         writeArrow.color = palette.text
-        writeImmediately.checked = false
     }
 
     onVisibleChanged: {
@@ -63,15 +62,7 @@ Dialog {
     Connections {
         target: drives
         onSelectedChanged: {
-            writeImmediately.checked = false
-        }
-    }
-
-    Connections {
-        target: releases.variant
-        onStatusChanged: {
-            if ([Variant.FINISHED, Variant.FAILED, Variant.FAILED_DOWNLOAD].indexOf(releases.variant.status) >= 0)
-                writeImmediately.checked = false
+            drives.selected.delayedWrite = false
         }
     }
 
@@ -394,7 +385,9 @@ Dialog {
                             enabled: driveCombo.count && opacity > 0.0
                             opacity: (releases.variant.status == Variant.DOWNLOADING || (releases.variant.status == Variant.DOWNLOAD_VERIFYING && releases.variant.progress.ratio < 0.95)) ? 1.0 : 0.0
                             text: qsTr("Write the image immediately when the download is finished")
-                            checked: drives.selected ? drives.selected.delayedWrite : false
+                            Binding on checked {
+                                value: drives.selected ? drives.selected.delayedWrite : false
+                            }
                             Binding {
                                 target: drives.selected
                                 property: "delayedWrite"
@@ -530,7 +523,6 @@ Dialog {
                                     if (drives.selected)
                                         drives.selected.cancel()
                                     releases.variant.resetStatus()
-                                    writeImmediately.checked = false
                                     dialog.close()
                                 }
                             }

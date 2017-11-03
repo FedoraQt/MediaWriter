@@ -260,15 +260,16 @@ bool Drive::delayedWrite() const {
 }
 
 void Drive::setDelayedWrite(const bool &o) {
+    qCritical() << "HYR" << o;
     if (m_delayedWrite != o) {
         m_delayedWrite = o;
         emit delayedWriteChanged();
-    }
-    if (m_delayedWrite) {
-        write(m_image);
-    }
-    else {
-        cancel();
+        if (m_delayedWrite) {
+            write(m_image);
+        }
+        else {
+            cancel();
+        }
     }
 }
 
@@ -284,6 +285,7 @@ bool Drive::write(ReleaseVariant *data) {
 
     if (data && data->size() > 0 && size() > 0 && data->realSize() > size()) {
         m_image->setErrorString(tr("This drive is not large enough."));
+        setDelayedWrite(false);
         return false;
     }
 

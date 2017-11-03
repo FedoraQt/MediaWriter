@@ -103,6 +103,7 @@ bool MacDrive::write(ReleaseVariant *data) {
     }
     else {
         data->setErrorString(tr("Could not find the helper binary. Check your installation."));
+        setDelayedWrite(false);
         return false;
     }
     command.append(" write ");
@@ -180,6 +181,8 @@ void MacDrive::restore() {
 
 void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
     Q_UNUSED(exitStatus)
+
+    setDelayedWrite(false);
 
     if (!m_child)
         return;
