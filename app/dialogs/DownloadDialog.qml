@@ -310,7 +310,7 @@ Dialog {
                             id: messageRestore
                             visible: false
                             width: infoColumn.width
-                            text: qsTr("Your computer will now most likely report this drive as much smaller than it really is. To fix that after trying or installing Fedora, insert your drive again while Fedora Media Writer is running. You will be able to restore it back to its full size.")
+                            text: qsTr("Your drive will be resized to a smaller capacity. You may resize it back to normal by using Fedora Media Writer; this will remove installation media from your drive.")
                         }
 
                         InfoMessage {
