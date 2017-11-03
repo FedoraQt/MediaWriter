@@ -305,6 +305,8 @@ void Download::catchUp() {
 }
 
 void Download::onReadyRead() {
+    if (!m_reply)
+        return;
     QByteArray buf = m_reply->read(1024*64);
     if (m_reply->error() == QNetworkReply::NoError && buf.size() > 0) {
 
