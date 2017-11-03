@@ -437,10 +437,8 @@ Dialog {
                                 width: driveCombo.implicitWidth * 2.5
                                 model: drives
                                 textRole: "display"
-                                Binding {
-                                    target: drives
-                                    property: "selectedIndex"
-                                    value: driveCombo.currentIndex
+                                Binding on currentIndex {
+                                    value: drives.selectedIndex
                                 }
                                 onActivated: {
                                     if ([Variant.FINISHED, Variant.FAILED, Variant.FAILED_VERIFICATION].indexOf(releases.variant.status) >= 0)

@@ -131,10 +131,25 @@ void DriveManager::setLastRestoreable(Drive *d) {
 }
 
 void DriveManager::onDriveConnected(Drive *d) {
-    beginInsertRows(QModelIndex(), m_drives.count(), m_drives.count());
-    m_drives.append(d);
+    int position = 0;
+    for (auto i : m_drives) {
+        if (d->size() < i->size())
+            break;
+        position++;
+    }
+    beginInsertRows(QModelIndex(), position, position);
+    m_drives.insert(position, d);
     endInsertRows();
     emit drivesChanged();
+
+    if (m_provider->initialized()) {
+        m_selectedIndex = position;
+        emit selectedChanged();
+    }
+    else {
+        m_selectedIndex = 0;
+        emit selectedChanged();
+    }
 
     if (d->restoreStatus() == Drive::CONTAINS_LIVE) {
         setLastRestoreable(d);
@@ -179,6 +194,10 @@ DriveProvider *DriveProvider::create(DriveManager *parent)  {
 #ifdef __linux__
     return new LinuxDriveProvider(parent);
 #endif // linux
+}
+
+bool DriveProvider::initialized() const {
+    return m_initialized;
 }
 
 
@@ -230,6 +249,17 @@ uint64_t Drive::size() const {
 
 Drive::RestoreStatus Drive::restoreStatus() {
     return m_restoreStatus;
+}
+
+bool Drive::delayedWrite() const {
+    return m_delayedWrite;
+}
+
+void Drive::setDelayedWrite(const bool &o) {
+    if (m_delayedWrite != o) {
+        m_delayedWrite = o;
+        emit delayedWriteChanged();
+    }
 }
 
 bool Drive::write(ReleaseVariant *data) {

@@ -107,16 +107,23 @@ private:
  */
 class DriveProvider : public QObject {
     Q_OBJECT
+    Q_PROPERTY(bool initialized READ initialized NOTIFY initializedChanged)
 public:
     static DriveProvider *create(DriveManager *parent);
+
+    bool initialized() const;
 
 signals:
     void driveConnected(Drive *d);
     void driveRemoved(Drive *d);
     void backendBroken(const QString &message);
 
+    void initializedChanged();
+
 protected:
     DriveProvider(DriveManager *parent);
+
+    bool m_initialized { true };
 };
 
 /**
@@ -138,6 +145,7 @@ class Drive : public QObject {
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(uint64_t size READ size CONSTANT)
     Q_PROPERTY(RestoreStatus restoreStatus READ restoreStatus NOTIFY restoreStatusChanged)
+    Q_PROPERTY(bool delayedWrite READ delayedWrite WRITE setDelayedWrite NOTIFY delayedWriteChanged)
 public:
     enum RestoreStatus {
         CLEAN = 0,
@@ -155,6 +163,9 @@ public:
     virtual QString name() const;
     virtual uint64_t size() const;
     virtual RestoreStatus restoreStatus();
+    virtual bool delayedWrite() const;
+
+    virtual void setDelayedWrite(const bool &o);
 
     Q_INVOKABLE virtual bool write(ReleaseVariant *data);
     Q_INVOKABLE virtual void cancel() = 0;
@@ -167,6 +178,7 @@ public slots:
 
 signals:
     void restoreStatusChanged();
+    void delayedWriteChanged();
 
 protected:
     ReleaseVariant *m_image { nullptr };
@@ -175,6 +187,7 @@ protected:
     uint64_t m_size { 0 };
     RestoreStatus m_restoreStatus { CLEAN };
     QString m_error { };
+    bool m_delayedWrite { false };
 };
 
 #endif // DRIVEMANAGER_H

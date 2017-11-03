@@ -31,6 +31,8 @@ LinuxDriveProvider::LinuxDriveProvider(DriveManager *parent)
     qDBusRegisterMetaType<InterfacesAndProperties>();
     qDBusRegisterMetaType<DBusIntrospection>();
 
+    m_initialized = false;
+
     QTimer::singleShot(0, this, SLOT(delayedConstruct()));
 }
 
@@ -130,6 +132,9 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
         m_drives[i]->deleteLater();
         m_drives.remove(i);
     }
+
+    m_initialized = true;
+    emit initializedChanged();
 }
 
 void LinuxDriveProvider::onInterfacesAdded(const QDBusObjectPath &object_path, const InterfacesAndProperties &interfaces_and_properties) {
@@ -230,12 +235,15 @@ bool LinuxDrive::write(ReleaseVariant *data) {
 }
 
 void LinuxDrive::cancel() {
-    if (m_process) {
+    static bool beingCancelled = false;
+    if (m_process != nullptr && !beingCancelled) {
+        beingCancelled = true;
         if (m_image) {
             if (m_image->status() == ReleaseVariant::WRITE_VERIFYING) {
                 m_image->setStatus(ReleaseVariant::FINISHED);
             }
-            else {
+            else if (m_image->status() != ReleaseVariant::DOWNLOADING &&
+                     m_image->status() != ReleaseVariant::DOWNLOAD_VERIFYING) {
                 m_image->setErrorString(tr("Stopped before writing has finished."));
                 m_image->setStatus(ReleaseVariant::FAILED);
             }
@@ -243,6 +251,7 @@ void LinuxDrive::cancel() {
         m_process->kill();
         m_process->deleteLater();
         m_process = nullptr;
+        beingCancelled = false;
     }
 }
 
