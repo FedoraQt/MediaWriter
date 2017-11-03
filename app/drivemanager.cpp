@@ -260,7 +260,6 @@ bool Drive::delayedWrite() const {
 }
 
 void Drive::setDelayedWrite(const bool &o) {
-    qCritical() << "HYR" << o;
     if (m_delayedWrite != o) {
         m_delayedWrite = o;
         emit delayedWriteChanged();
