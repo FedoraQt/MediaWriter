@@ -130,6 +130,7 @@ bool MacDrive::write(ReleaseVariant *data) {
 }
 
 void MacDrive::cancel() {
+    Drive::cancel();
     if (m_child) {
         m_child->kill();
         m_child->deleteLater();

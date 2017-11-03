@@ -235,6 +235,7 @@ bool LinuxDrive::write(ReleaseVariant *data) {
 }
 
 void LinuxDrive::cancel() {
+    Drive::cancel();
     static bool beingCancelled = false;
     if (m_process != nullptr && !beingCancelled) {
         beingCancelled = true;

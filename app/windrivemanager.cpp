@@ -288,6 +288,7 @@ bool WinDrive::write(ReleaseVariant *data) {
 }
 
 void WinDrive::cancel() {
+    Drive::cancel();
     if (m_child) {
         m_child->kill();
         m_child->deleteLater();

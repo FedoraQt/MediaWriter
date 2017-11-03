@@ -394,11 +394,20 @@ Dialog {
                             enabled: driveCombo.count && opacity > 0.0
                             opacity: (releases.variant.status == Variant.DOWNLOADING || (releases.variant.status == Variant.DOWNLOAD_VERIFYING && releases.variant.progress.ratio < 0.95)) ? 1.0 : 0.0
                             text: qsTr("Write the image immediately when the download is finished")
+                            checked: drives.selected ? drives.selected.delayedWrite : false
+                            Binding {
+                                target: drives.selected
+                                property: "delayedWrite"
+                                value: writeImmediately.checked
+                            }
                             onCheckedChanged: {
-                                if (drives.selected) {
-                                    drives.selected.cancel()
-                                    if (checked)
-                                        drives.selected.write(releases.variant)
+                                if (checked) {
+                                    if (drives.selected)
+                                        drives.selected.setImage(releases.variant)
+                                }
+                                else {
+                                    if (drives.selected)
+                                        drives.selected.setImage(false)
                                 }
                             }
                         }

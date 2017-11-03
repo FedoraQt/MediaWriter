@@ -264,6 +264,18 @@ void Drive::setDelayedWrite(const bool &o) {
         m_delayedWrite = o;
         emit delayedWriteChanged();
     }
+    if (m_delayedWrite) {
+        write(m_image);
+    }
+    else {
+        cancel();
+    }
+}
+
+void Drive::setImage(ReleaseVariant *data) {
+    m_image = data;
+    if (m_image)
+        m_image->setErrorString(QString());
 }
 
 bool Drive::write(ReleaseVariant *data) {
@@ -276,6 +288,14 @@ bool Drive::write(ReleaseVariant *data) {
     }
 
     return true;
+}
+
+void Drive::cancel() {
+    m_delayedWrite = false;
+    emit delayedWriteChanged();
+    m_error = QString();
+    m_restoreStatus = CLEAN;
+    emit restoreStatusChanged();
 }
 
 bool Drive::operator==(const Drive &o) const {

@@ -169,8 +169,9 @@ public:
 
     virtual void setDelayedWrite(const bool &o);
 
+    Q_INVOKABLE virtual void setImage(ReleaseVariant *data);
     Q_INVOKABLE virtual bool write(ReleaseVariant *data);
-    Q_INVOKABLE virtual void cancel() = 0;
+    Q_INVOKABLE virtual void cancel();
     Q_INVOKABLE virtual void restore() = 0;
 
     bool operator==(const Drive& o) const;
