@@ -460,7 +460,13 @@ Dialog {
                                 model: drives
                                 textRole: "display"
                                 Binding on currentIndex {
+                                    when: drives
                                     value: drives.selectedIndex
+                                }
+                                Binding {
+                                    target: drives
+                                    property: "selectedIndex"
+                                    value: driveCombo.currentIndex
                                 }
                                 onActivated: {
                                     if ([Variant.FINISHED, Variant.FAILED, Variant.FAILED_VERIFICATION].indexOf(releases.variant.status) >= 0)
