@@ -80,12 +80,24 @@ Item {
                 leftMargin: $(28)
                 rightMargin: $(14)
             }
-            Text {
-                Layout.fillWidth: true
-                verticalAlignment: Text.AlignBottom
-                font.pointSize: $(9)
-                text: release.name
-                color: palette.text
+            RowLayout {
+                spacing: 0
+                Text {
+                    verticalAlignment: Text.AlignBottom
+                    font.pointSize: $(9)
+                    text: release.name
+                    color: palette.text
+                }
+                Text {
+                    text: " " + release.version.name
+                    visible: !release.isLocal
+                    font.pointSize: $(9)
+                    color: palette.text
+                }
+                Item {
+                    Layout.fillWidth: true
+                    height: 1
+                }
             }
             Text {
                 Layout.fillWidth: true
