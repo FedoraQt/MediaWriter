@@ -387,15 +387,31 @@ void Release::setLocalFile(const QString &path) {
 }
 
 bool Release::updateUrl(int version, const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
+    int finalVersions = 0;
     for (auto i : m_versions) {
         if (i->number() == version)
             return i->updateUrl(status, releaseDate, architecture, url, sha256, size);
+        if (i->status() == ReleaseVersion::FINAL)
+            finalVersions++;
     }
     ReleaseVersion::Status s = status == "alpha" ? ReleaseVersion::ALPHA : status == "beta" ? ReleaseVersion::BETA : ReleaseVersion::FINAL;
     auto ver = new ReleaseVersion(this, version, s, releaseDate);
     auto variant = new ReleaseVariant(ver, url, sha256, size, ReleaseArchitecture::fromAbbreviation(architecture));
     ver->addVariant(variant);
     addVersion(ver);
+    if (ver->status() == ReleaseVersion::FINAL)
+        finalVersions++;
+    if (finalVersions > 2) {
+        int min = INT32_MAX;
+        ReleaseVersion *oldVer = nullptr;
+        for (auto i : m_versions) {
+            if (i->number() < min) {
+                min = i->number();
+                oldVer = i;
+            }
+        }
+        removeVersion(oldVer);
+    }
     return true;
 }
 
@@ -474,6 +490,20 @@ void Release::addVersion(ReleaseVersion *version) {
     m_versions.append(version);
     emit versionsChanged();
     emit selectedVersionChanged();
+}
+
+void Release::removeVersion(ReleaseVersion *version) {
+    int idx = m_versions.indexOf(version);
+    if (!version || idx < 0)
+        return;
+
+    if (m_selectedVersion == idx) {
+        m_selectedVersion = 0;
+        emit selectedVersionChanged();
+    }
+    m_versions.removeAt(idx);
+    version->deleteLater();
+    emit versionsChanged();
 }
 
 ReleaseVersion *Release::selectedVersion() const {

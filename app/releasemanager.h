@@ -233,6 +233,7 @@ public:
     QString prerelease() const;
 
     void addVersion(ReleaseVersion *version);
+    void removeVersion(ReleaseVersion *version);
     QQmlListProperty<ReleaseVersion> versions();
     QList<ReleaseVersion*> versionList() const;
     QStringList versionNames() const;
