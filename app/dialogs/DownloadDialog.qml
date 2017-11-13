@@ -383,6 +383,7 @@ Dialog {
                         AdwaitaCheckBox {
                             id: writeImmediately
                             enabled: driveCombo.count && opacity > 0.0
+                            visible: platformSupportsDelayedWriting
                             opacity: (releases.variant.status == Variant.DOWNLOADING || (releases.variant.status == Variant.DOWNLOAD_VERIFYING && releases.variant.progress.ratio < 0.95)) ? 1.0 : 0.0
                             text: qsTr("Write the image immediately when the download is finished")
                             Binding on checked {

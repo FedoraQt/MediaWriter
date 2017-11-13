@@ -107,10 +107,14 @@ bool MacDrive::write(ReleaseVariant *data) {
         return false;
     }
     command.append(" write ");
-    if (data->status() == ReleaseVariant::WRITING)
+    if (data->status() == ReleaseVariant::WRITING) {
         command.append(QString("'%1'").arg(data->iso()));
-    else
+        m_progress->setTo(data->size());
+        m_progress->setValue(0.0/0.0);
+    }
+    else {
         command.append(QString("'%1'").arg(data->temporaryPath()));
+    }
     command.append(" ");
     command.append(m_bsdDevice);
     command.append("\" with administrator privileges without altering line endings");
@@ -121,10 +125,6 @@ bool MacDrive::write(ReleaseVariant *data) {
     qCritical() << "The command is" << command;
     m_child->setArguments(args);
 
-    m_progress->setTo(data->size());
-    m_image->setStatus(ReleaseVariant::WRITING);
-
-    m_progress->setValue(0.0/0.0);
     m_child->start();
 
     return true;

@@ -91,6 +91,11 @@ int main(int argc, char **argv)
     engine.rootContext()->setContextProperty("downloadManager", DownloadManager::instance());
     engine.rootContext()->setContextProperty("mediawriterVersion", MEDIAWRITER_VERSION);
     engine.rootContext()->setContextProperty("versionChecker", new VersionChecker());
+#if (defined(__linux) || defined(_WIN32))
+    engine.rootContext()->setContextProperty("platformSupportsDelayedWriting", true);
+#else
+    engine.rootContext()->setContextProperty("platformSupportsDelayedWriting", false);
+#endif
     qDebug() << "Loading the QML source code";
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
