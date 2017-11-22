@@ -1,6 +1,6 @@
 # Privacy information
 
-Fedora Media Writer uses a custom User-Agent header for the Fedora project to have a clear statistic of how prevalent download method it is. 
+Fedora Media Writer uses a custom User-Agent header for the Fedora project to have a clear statistic of how prevalent of a download method it is. 
 
 This User-Agent string is in the following format: `FedoraMediaWriter/$VERSION ($OS $OSVERSION; $BUILDARCH; $LOCALE; $DETAILS)`.
 
