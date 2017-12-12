@@ -28,146 +28,188 @@
 #include <QNetworkReply>
 #include <QFile>
 #include <QTimer>
+#include <QElapsedTimer>
+#include <QThread>
 
 #include "utilities.h"
 
-class DownloadReceiver;
 class Download;
+class AccessManager;
 class DownloadManager;
 
-/*
- * How this (Downloader stuff) works:
- * not very well
- *
- * All of this should be rewritten at some point (and I admit it's possible it never will be - for
- *  reference, today is Nov 9 2016)
- *
- * There are three classes:
- * Download, DownloadManager and DownloadReceiver
- *
- * DownloadReceiver is just an abstract class you should inherit in a class that you want to receive
- *  notifications about finished downloads.
- * I should have probably done that using a signal. Nothing wrong with this so far though.
- *
- * DownloadManager is the entry point where you request a download and provide your
- *  DownloadReceiver implementation that will be notified about it having finished at some point in the future.
- * You're able to either request a string containing whatever it found at the URL
- *  or you can get a path to a file where all the data from the link will be stored.
- * Getting strings is pretty straightforward while downloading files is not easy at all.
- *
- * When downloading a file, the Manager asks the Fedora mirror service for a list of mirrors first.
- * At the same time, it creates a Download object (there can be only one at a time) and waits.
- * After getting the mirrosr, it inserts a new QNetworkReply inside the Download which starts
- *  crunching the incoming data. That means it stores it to a .part file while also computing a SHA256 hash.
- * If the mirror stops supplying data or the network breaks, it tries accessing another repo from the list.
- * If there is no list provided by the server, it tries to just download from the metadata URL directly.
- *
- * This all would work well if we didn't have to support download resuming.
- * If you have to resume a download, the newly-created Download object starts to compute the SHA256 hash
- *  while the Manager waits for the mirror list.
- * When the mirror list is delivered, a new QNetworkReply is created and inserted into the Download if
- *  (and only if) it's done computing the hash of the part already on the drive (hasCatchedUp() method).
- * Otherwise, it lets the Download finish with its business of computing the hash. It will ask for a new mirror
- *  when it's done. From this point, everything continues exactly as if it wasn't continuing.
- * For this reason I think there's a slight (really very small) possibility of getting stuck, forcing the user
- *  to reset the process.
- *
- */
-
-/**
- * @brief The DownloadReceiver class
- *
- * A virtual class for getting the results of a download
- */
-class DownloadReceiver {
+class DownloadWorker : public QObject {
+    Q_OBJECT
 public:
-    virtual void onFileDownloaded(const QString &path, const QString &shaHash) { Q_UNUSED(path); Q_UNUSED(shaHash) }
-    virtual void onStringDownloaded(const QString &text) { Q_UNUSED(text) }
-    virtual void onDownloadError(const QString &message) = 0;
+    void injectReply(QNetworkReply *reply);
+    qint64 contentLength() const;
+    qint64 receivedBytes() const;
+    bool isFinished() const;
+
+signals:
+    void finished();
+    void progress(qint64 current, qint64 total);
+    void error(QString reason);
+
+private slots:
+    virtual void onReadyRead() = 0;
+    virtual void onDownloadProgress(qint64 received, qint64 total);
+    void onError(QNetworkReply::NetworkError code);
+    void onSslErrors(const QList<QSslError> &errors);
+
+protected:
+    DownloadWorker(QNetworkReply *parent = nullptr);
+
+    void checkContentLength(qint64 received, qint64 total);
+
+    QNetworkReply *reply() const;
+    qint64 m_contentLength { -1 };
+    qint64 m_received { -1 };
+};
+
+class DownloadString : public DownloadWorker {
+    Q_OBJECT
+public:
+    QByteArray data();
+
+private slots:
+    void onReadyRead() override;
+
+private:
+    friend class AccessManager;
+    DownloadString(QNetworkReply *parent = nullptr);
+
+    QByteArray m_buffer;
+};
+
+class DownloadFile : public DownloadWorker {
+    Q_OBJECT
+public:
+    QString path() const;
+    QString hash() const;
+
+private slots:
+    void onReadyRead() override;
+    void onDownloadProgress(qint64 received, qint64 total) override;
+    void init();
+
+private:
+    friend class AccessManager;
+    DownloadFile(const QString &path = QString(), QNetworkReply *parent = nullptr);
+    DownloadFile(const QString &directory, const QString &file);
+
+    QFile m_file { nullptr };
+    QByteArray m_buffer;
+    QCryptographicHash m_hash;
+    qint64 m_originalSize { 0 };
 };
 
 
-/**
- * @brief The Download class
- *
- * The download handler itself
- *
- * It processes the incoming data, computes its checksum and tracks the amount of data downloaded/required
- */
 class Download : public QObject {
     Q_OBJECT
-
+    Q_PROPERTY(Status status READ status NOTIFY statusChanged)
 public:
-    Download(DownloadManager *parent, DownloadReceiver *receiver, const QString &filePath, Progress *progress = nullptr);
-    DownloadManager *manager();
+    enum Status {
+        CREATED = 0,
+        PRECOMPUTING,
+        RUNNING,
+        FINISHED,
+        CANCELLED,
+        ERROR
+    };
+    Q_ENUMS(Status)
 
-    void handleNewReply(QNetworkReply *reply);
-    qint64 bytesDownloaded();
+    Status status() const;
 
-    bool hasCatchedUp();
+    QByteArray data() const;
+    QString path() const;
+    QString hash() const;
+
+    bool isFinished() const;
+
+    qreal secondsRemaining() const;
+    qreal bytesPerSecond() const;
+
+public slots:
+    void cancel();
 
 private slots:
-    void start();
-    void catchUp();
-
-    void onReadyRead();
-    void onError(QNetworkReply::NetworkError code);
-    void onSslErrors(const QList<QSslError> errors);
+    void injectWorker(DownloadWorker *worker);
     void onFinished();
-    void onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal);
-    void onTimedOut();
+    void onError(QString reason);
+    void onProgress(qint64 current, qint64 total);
+
+signals:
+    void statusChanged();
+
+    void finished();
+    void error(QString reason);
+    void progress(qreal current, qreal total);
+    void timeRemaining(qreal seconds);
 
 private:
-    qint64 m_previousSize { 0 };
-    qint64 m_bytesDownloaded { 0 };
-    QNetworkReply *m_reply { nullptr };
-    DownloadReceiver *m_receiver { nullptr };
-    QString m_path { };
-    Progress *m_progress { nullptr };
-    QTimer m_timer { };
-    bool m_catchingUp { false };
+    friend class DownloadManager;
+    Download(QObject *parent = nullptr, const QString &path = QString(), bool finished = false);
 
-    QFile *m_file { nullptr };
-    QByteArray m_buf { };
-    QCryptographicHash m_hash { QCryptographicHash::Sha256 };
+    DownloadWorker *m_worker { nullptr };
+    QString m_path;
+    Status m_status { CREATED };
+    QElapsedTimer m_timer;
+};
+
+/**
+ * @brief The AccessManager class
+ *
+ * Not accessible from the outside.
+ * Exists in a thread dedicated to downloads.
+ * All downloads are running in parallel in this thread to not block UI.
+ */
+class AccessManager : public QObject {
+    Q_OBJECT
+public:
+    AccessManager(QObject *parent = nullptr);
+
+signals:
+    void downloadStarted(int seq, DownloadWorker *w);
+
+public slots:
+    void fetch(int seq, const QString &url);
+    void download(int seq, const QString &url, const QString &folder);
+
+private:
+    QNetworkAccessManager *m_manager { nullptr };
 };
 
 /**
  * @brief The DownloadManager class
  *
- * The class to use as an entry point to downloading some data
+ * The only directly accessible class.
+ * Lives in the main thread - all members all callable directly without any special measures.
  *
- * You can either get a string of the data cointained at an URL or save the data as a file on your hard drive.
- *
- * For files hosted on Fedora servers, it also tries to get a list of mirrors to download the file from.
  */
-class DownloadManager : public QObject, public DownloadReceiver {
+class DownloadManager : public QObject {
     Q_OBJECT
 public:
+    DownloadManager(QObject *parent = nullptr);
     static DownloadManager *instance();
-    static QString dir();
+
+    Download *download(const QString &url, const QString &folder = defaultDirectory());
+    Download *fetch(const QString &url);
+    QString fetchSync(const QString &url);
+
+    static QString defaultDirectory();
     static QString userAgent();
 
-    QString downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder = dir(), Progress *progress = nullptr);
-    void fetchPageAsync(DownloadReceiver *receiver, const QString &url);
-    QString fetchPage(const QString &url);
-
-    QNetworkReply *tryAnotherMirror();
-
-    Q_INVOKABLE void cancel();
-
-    // DownloadReceiver interface
-    virtual void onStringDownloaded(const QString &text) override;
-    virtual void onDownloadError(const QString &message) override;
+private slots:
+    void onDownloadStarted(int seq, DownloadWorker *worker);
 
 private:
-    DownloadManager();
     static DownloadManager *_self;
 
-    Download *m_current { nullptr };
-    QStringList m_mirrorCache { };
+    AccessManager *m_manager;
+    QThread *m_thread;
 
-    QNetworkAccessManager m_manager;
+    int m_sequence { 0 };
+    QMap<int, Download*> m_downloads;
 };
 
 #endif // DOWNLOADMANAGER_H

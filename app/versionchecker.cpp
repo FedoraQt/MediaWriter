@@ -31,7 +31,7 @@ VersionChecker::VersionChecker(QObject *parent)
     qDebug() << this->metaObject()->className() << "This platform doesn't need to ask about new FMW versions";
 #endif
 }
-
+/*
 void VersionChecker::onStringDownloaded(const QString &text) {
     auto doc = QJsonDocument::fromJson(text.toUtf8());
     QJsonObject obj = doc.object();
@@ -72,6 +72,7 @@ void VersionChecker::onStringDownloaded(const QString &text) {
 void VersionChecker::onDownloadError(const QString &message) {
     qWarning() << this->metaObject()->className() << "It was impossible to fetch info about a new FMW version:" << message;
 }
+*/
 
 QString VersionChecker::newerVersion() const {
     return m_newerVersion;

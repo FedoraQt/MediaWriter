@@ -40,10 +40,15 @@ ReleaseManager::ReleaseManager(QObject *parent)
     qmlRegisterUncreatableType<ReleaseArchitecture>("MediaWriter", 1, 0, "Architecture", "");
     qmlRegisterUncreatableType<Progress>("MediaWriter", 1, 0, "Progress", "");
 
-    QFile releases(":/releases.json");
-    releases.open(QIODevice::ReadOnly);
-    onStringDownloaded(releases.readAll());
-    releases.close();
+    fillReleases(DownloadManager::instance()->fetchSync("qrc:///releases.json"));
+    auto download = DownloadManager::instance()->fetch(options.releasesUrl);
+    if (download) {
+        connect(download, &Download::finished, this, &ReleaseManager::onDownloadFinished);
+        connect(download, &Download::error, this, &ReleaseManager::onDownloadError);
+    }
+    else {
+        // TODO
+    }
 
     connect(this, SIGNAL(selectedChanged()), this, SLOT(variantChangedFilter()));
     QTimer::singleShot(0, this, SLOT(fetchReleases()));
@@ -80,14 +85,23 @@ Release *ReleaseManager::get(int index) const {
 void ReleaseManager::fetchReleases() {
     m_beingUpdated = true;
     emit beingUpdatedChanged();
-
-    DownloadManager::instance()->fetchPageAsync(this, options.releasesUrl);
 }
 
 void ReleaseManager::variantChangedFilter() {
     // TODO here we could add some filters to help signal/slot performance
     // TODO otherwise this can just go away and connections can be directly to the signal
     emit variantChanged();
+}
+
+void ReleaseManager::onDownloadFinished() {
+    fillReleases(qobject_cast<Download*>(sender())->data());
+    m_beingUpdated = false;
+    emit beingUpdatedChanged();
+    sender()->deleteLater();
+}
+
+void ReleaseManager::onDownloadError(QString message) {
+    qWarning() << message;
 }
 
 bool ReleaseManager::beingUpdated() const {
@@ -190,7 +204,7 @@ ReleaseVariant *ReleaseManager::variant() {
     return nullptr;
 }
 
-void ReleaseManager::onStringDownloaded(const QString &text) {
+void ReleaseManager::fillReleases(const QString &text) {
     qDebug() << this->metaObject()->className() << "Received a metadata json";
 
     QRegExp re("(\\d+)\\s?(\\S+)?");
@@ -240,13 +254,13 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
     m_beingUpdated = false;
     emit beingUpdatedChanged();
 }
-
+/*
 void ReleaseManager::onDownloadError(const QString &message) {
     qWarning() << "Was not able to fetch new releases:" << message << "Retrying in 10 seconds.";
 
     QTimer::singleShot(10000, this, SLOT(fetchReleases()));
 }
-
+*/
 QStringList ReleaseManager::architectures() const {
     return ReleaseArchitecture::listAllDescriptions();
 }
@@ -734,7 +748,7 @@ ReleaseVariant::Status ReleaseVariant::status() const {
 QString ReleaseVariant::statusString() const {
     return m_statusStrings[status()];
 }
-
+/*
 void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) {
     m_temporaryIso = QString();
 
@@ -792,12 +806,13 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
         }
     }
 }
-
+*/
+/*
 void ReleaseVariant::onDownloadError(const QString &message) {
     setErrorString(message);
     setStatus(FAILED_DOWNLOAD);
 }
-
+*/
 int ReleaseVariant::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
     ReleaseVariant *v = static_cast<ReleaseVariant*>(data);
     return v->onMediaCheckAdvanced(offset, total);
@@ -818,6 +833,31 @@ void ReleaseVariant::download() {
         setStatus(DOWNLOADING);
         if (m_size)
             m_progress->setTo(m_size);
+        m_progress->setValue(0.0 / 0.0);
+
+        m_download = DownloadManager::instance()->download(url());
+        connect(m_download, &Download::statusChanged, [&](){
+            if (m_download->status() == Download::PRECOMPUTING)
+                setStatus(DOWNLOAD_CATCHING_UP);
+            else if (m_download->status() == Download::RUNNING)
+                setStatus(DOWNLOADING);
+        });
+        connect(m_download, &Download::finished, [&](){
+            qCritical() << "Download finished with hash" << m_download->hash() << ":" << shaHash();
+            setStatus(ReleaseVariant::READY);
+        });
+        connect(m_download, &Download::error, [&](QString reason) {
+            qCritical() << "Download failed" << reason;
+            setErrorString(reason);
+            setStatus(ReleaseVariant::FAILED_DOWNLOAD);
+        });
+        connect(m_download, &Download::progress, [&](qreal current, qreal total) {
+            //qCritical() << "Download progress" << current << total;
+            m_progress->setValue(current);
+            if (total > 0)
+                m_progress->setTo(total);
+        });
+        /*
         QString ret = DownloadManager::instance()->downloadFile(this, url(), DownloadManager::dir(), progress());
         if (!ret.endsWith(".part")) {
             m_temporaryIso = QString();
@@ -835,6 +875,14 @@ void ReleaseVariant::download() {
         else {
             m_temporaryIso = ret;
         }
+        */
+    }
+}
+
+void ReleaseVariant::cancelDownload() {
+    if (m_download) {
+        m_download->deleteLater();
+        m_download = nullptr;
     }
 }
 

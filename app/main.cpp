@@ -61,6 +61,12 @@ int main(int argc, char **argv)
     qputenv("GDK_BACKEND", "x11");
 #endif
 
+    for (int i = 1024; i < 2048; i++) {
+        if (QMetaType(i).isRegistered()) {
+            qCritical() << QMetaType::typeName(i);
+        }
+    }
+
     QApplication::setOrganizationDomain("fedoraproject.org");
     QApplication::setOrganizationName("fedoraproject.org");
     QApplication::setApplicationName("MediaWriter");

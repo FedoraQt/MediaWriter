@@ -73,7 +73,7 @@ class ReleaseArchitecture;
  * @property selectedIndex the index of the currently selected release
  * @property architectures the list of the available architectures
  */
-class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver {
+class ReleaseManager : public QSortFilterProxyModel {
     Q_OBJECT
     Q_PROPERTY(bool frontPage READ frontPage WRITE setFrontPage NOTIFY frontPageChanged)
     Q_PROPERTY(bool beingUpdated READ beingUpdated NOTIFY beingUpdatedChanged)
@@ -89,6 +89,7 @@ class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver {
     Q_PROPERTY(QStringList architectures READ architectures CONSTANT)
 public:
     explicit ReleaseManager(QObject *parent = 0);
+    void fillReleases(const QString &text);
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
 
     Q_INVOKABLE Release *get(int index) const;
@@ -115,13 +116,13 @@ public:
 
     ReleaseVariant *variant();
 
-    // DownloadReceiver interface
-    void onStringDownloaded(const QString &text) override;
-    virtual void onDownloadError(const QString &message) override;
-
 public slots:
     void fetchReleases();
     void variantChangedFilter();
+
+private slots:
+    void onDownloadFinished();
+    void onDownloadError(QString message);
 
 signals:
     void beingUpdatedChanged();
@@ -342,7 +343,7 @@ private:
  * @property statusString string representation of the @ref status
  * @property errorString a string better describing the current error @ref status of the variant
  */
-class ReleaseVariant : public QObject, public DownloadReceiver {
+class ReleaseVariant : public QObject {
     Q_OBJECT
     Q_PROPERTY(ReleaseArchitecture* arch READ arch CONSTANT)
     Q_PROPERTY(ReleaseVariant::Type type READ type CONSTANT)
@@ -368,6 +369,7 @@ public:
     enum Status {
         PREPARING = 0,
         DOWNLOADING,
+        DOWNLOAD_CATCHING_UP,
         DOWNLOAD_VERIFYING,
         READY,
         WRITING_NOT_POSSIBLE,
@@ -382,6 +384,7 @@ public:
     const QStringList m_statusStrings {
         tr("Preparing"),
         tr("Downloading"),
+        tr("Checking the partially downloaded part of the file"),
         tr("Checking the download"),
         tr("Ready to write"),
         tr("Image file was saved to your downloads folder. Writing is not possible"),
@@ -422,10 +425,6 @@ public:
     QString errorString() const;
     void setErrorString(const QString &o);
 
-    // DownloadReceiver interface
-    void onFileDownloaded(const QString &path, const QString &shaHash) override;
-    virtual void onDownloadError(const QString &message) override;
-
     static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
     int onMediaCheckAdvanced(long long offset, long long total);
 
@@ -442,6 +441,7 @@ signals:
 
 public slots:
     void download();
+    void cancelDownload();
     void resetStatus();
 
 private:
@@ -456,6 +456,7 @@ private:
     Status m_status { PREPARING };
     QString m_error {};
 
+    Download *m_download { nullptr };
     Progress *m_progress { nullptr };
 };
 

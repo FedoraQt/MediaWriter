@@ -27,14 +27,12 @@
 
 class VersionChecker;
 
-class VersionChecker : public QObject, protected DownloadReceiver {
+class VersionChecker : public QObject {
     Q_OBJECT
     Q_PROPERTY(QString newerVersion READ newerVersion NOTIFY newerVersionChanged)
     Q_PROPERTY(QUrl url READ url NOTIFY newerVersionChanged)
 public:
     VersionChecker(QObject *parent = nullptr);
-    void onStringDownloaded(const QString &text) override;
-    void onDownloadError(const QString &message) override;
 
     QString newerVersion() const;
     QUrl url() const;

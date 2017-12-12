@@ -47,7 +47,7 @@ Dialog {
             if (drives.selected)
                 drives.selected.cancel()
             releases.variant.resetStatus()
-            downloadManager.cancel()
+            releases.variant.cancelDownload()
         }
         reset()
     }
@@ -87,6 +87,19 @@ Dialog {
                 PropertyChanges {
                     target: progressBar;
                     value: releases.variant.progress.ratio
+                }
+            },
+            State {
+                name: "download_catching_up"
+                when: releases.variant.status === Variant.DOWNLOAD_CATCHING_UP
+                PropertyChanges {
+                    target: messageDownload
+                    visible: true
+                }
+                PropertyChanges {
+                    target: progressBar;
+                    value: releases.variant.progress.ratio
+                    progressColor: Qt.lighter("green")
                 }
             },
             State {
@@ -362,7 +375,8 @@ Dialog {
                             horizontalAlignment: Text.AlignHCenter
                             font.pointSize: $(9)
                             property double leftSize: releases.variant.progress.to - releases.variant.progress.value
-                            property string leftStr:  leftSize <= 0                    ? "" :
+                            property string leftStr:  isNaN(leftSize)                  ? qsTr("(Waiting for network)") :
+                                                      leftSize <= 0                    ? "" :
                                                      (leftSize < 1024)                 ? qsTr("(%1 B left)").arg(leftSize) :
                                                      (leftSize < (1024 * 1024))        ? qsTr("(%1 KB left)").arg((leftSize / 1024).toFixed(1)) :
                                                      (leftSize < (1024 * 1024 * 1024)) ? qsTr("(%1 MB left)").arg((leftSize / 1024 / 1024).toFixed(1)) :
