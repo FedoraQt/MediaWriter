@@ -24,6 +24,7 @@
 #include <utility>
 
 #include <QProcess>
+#include <QString>
 #include <QStringList>
 #include <QtGlobal>
 
@@ -55,7 +56,7 @@ bool Drive::diskutil(const QStringList &arguments) {
  */
 void Drive::write(const void *buffer, std::size_t size) {
     if (m_device->write(static_cast<const char *>(buffer), size) != static_cast<qint64>(size)) {
-        throw std::runtime_error("Destination drive is not writable.");
+        throw HelperError("Destination drive is not writable.");
     }
 }
 
@@ -66,14 +67,14 @@ int Drive::getDescriptor() const {
     return m_device->handle();
 }
 
+QString Drive::drive() const {
+    return m_identifier;
+}
+
 void Drive::wipe() {
-    if (!diskutil(QStringList() << "eraseDisk" << m_identifier) ||
-            !diskutil(QStringList() << "partitionDisk" << m_identifier << "1"
-                                    << "MBR"
-                                    << "fat32"
-                                    << "FLASHDISK"
-                                    << "R")) {
-        throw std::runtime_error("Couldn't wipe disk.");
+    if (!diskutil({"eraseDisk", m_identifier}) ||
+            !diskutil({"partitionDisk", m_identifier, "1", "MBR", "fat32", "FLASHDISK" , "R"})) {
+        throw HelperError(Error::DRIVE_USE);
     }
 }
 
@@ -81,8 +82,7 @@ void Drive::wipe() {
  * Unmount all partitions of drive.
  */
 void Drive::umount() {
-    if (!diskutil(QStringList() << "unmountDisk"
-                                << "force" << m_identifier)) {
-        throw std::runtime_error("Couldn't unmount disk.");
+    if (!diskutil({QStringList(), "unmountDisk", "force", m_identifier})) {
+        throw HelperError(Error::DRIVE_USE);
     }
 }

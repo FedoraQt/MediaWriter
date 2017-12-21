@@ -30,13 +30,9 @@
 #include "isomd5/libcheckisomd5.h"
 #include <lzma.h>
 
+#include "error.h"
 #include "page_aligned_buffer.h"
 #include "write.h"
-
-#ifndef MEDIAWRITER_LZMA_LIMIT
-// 256MB memory limit for the decompressor
-#define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
-#endif
 
 void GenericDrive::writeCompressed(const QString &source) {
     qint64 totalRead = 0;
@@ -57,7 +53,7 @@ void GenericDrive::writeCompressed(const QString &source) {
 
     ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
     if (ret != LZMA_OK) {
-        throw std::runtime_error("Failed to start decompressing.");
+        throw HelperError(Error::DECOMPRESS_INIT, source);
     }
 
     strm.next_in = reinterpret_cast<uint8_t *>(inBuffer);
@@ -84,18 +80,18 @@ void GenericDrive::writeCompressed(const QString &source) {
         if (ret != LZMA_OK) {
             switch (ret) {
             case LZMA_MEM_ERROR:
-                throw std::runtime_error("There is not enough memory to decompress the file.");
+                throw HelperError(Error::DECOMPRESS_MEM, source);
                 break;
             case LZMA_FORMAT_ERROR:
             case LZMA_DATA_ERROR:
             case LZMA_BUF_ERROR:
-                throw std::runtime_error("The downloaded compressed file is corrupted.");
+                throw HelperError(Error::FILE_CORRUPT, source);
                 break;
             case LZMA_OPTIONS_ERROR:
-                throw std::runtime_error("Unsupported compression options.");
+                throw HelperError(Error::DECOMPRESS_OPTIONS, source);
                 break;
             default:
-                throw std::runtime_error("Unknown decompression error.");
+                throw HelperError(Error::DECOMPRESS_UNKNOWN, source);
                 break;
             }
         }
@@ -114,7 +110,7 @@ void GenericDrive::writePlain(const QString &source) {
     inFile.open(QIODevice::ReadOnly);
 
     if (!inFile.isReadable()) {
-        throw std::runtime_error("Source image is not readable");
+        throw HelperError(Error::FILE_READ, source);
     }
 
     PageAlignedBuffer<2> buffers;
@@ -129,7 +125,7 @@ void GenericDrive::writePlain(const QString &source) {
     while (!inFile.atEnd()) {
         qint64 len = inFile.read(buffer, bufferSize);
         if (len < 0) {
-            throw std::runtime_error("Source image is not readable");
+            throw HelperError(Error::FILE_READ, source);
         }
         write(buffer, len);
         bytesWritten += len;
@@ -162,9 +158,9 @@ void GenericDrive::checkChecksum() {
         out.flush();
         break;
     case ISOMD5SUM_CHECK_FAILED:
-        throw std::runtime_error("Your drive is probably damaged.");
+        throw HelperError(Error::DRIVE_DAMAGED, drive());
     default:
-        throw std::runtime_error("Unexpected error occurred during media check.");
+        throw HelperError(Error::UNEXPECTED);
     }
 }
 

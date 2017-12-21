@@ -44,6 +44,7 @@ public:
     void init();
     void write(const void *buffer, std::size_t size);
     int getDescriptor() const;
+    QString drive() const;
     void wipe();
     void umount();
 

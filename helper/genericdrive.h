@@ -20,6 +20,12 @@
 #ifndef GENERICDRIVE_H
 #define GENERICDRIVE_H
 
+#ifndef MEDIAWRITER_LZMA_LIMIT
+// 256MB memory limit for the decompressor.
+// Is used when lzma.h is included.
+#define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
+#endif
+
 #include <QObject>
 #include <QString>
 
@@ -29,6 +35,7 @@ public:
     virtual void init() = 0;
     virtual void write(const void *buffer, std::size_t size) = 0;
     virtual int getDescriptor() const = 0;
+    virtual QString drive() const = 0;
     virtual void wipe() = 0;
     virtual void umount() = 0;
     void writePlain(const QString &source);

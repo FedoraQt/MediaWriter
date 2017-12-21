@@ -26,19 +26,19 @@
 
 int onProgress(void *data, long long offset, long long total) {
     constexpr long long MAGIC = 234;
-    ProgressStats &stats = *static_cast<ProgressStats *>(data);
+    ProgressStats *stats = static_cast<ProgressStats *>(data);
     const long long progress = (offset * MAGIC) / total;
-    if (progress > stats.progress) {
-        stats.progress = progress;
+    if (progress > stats->progress) {
+        stats->progress = progress;
         if (offset > total)
             offset = total;
         QTextStream out(stdout);
         int percentage = (offset * 10000) / total;
 #ifndef Q_OS_WIN
         // Flush every 32mb of progress to disk.
-        if (offset >= 32 * 1024 * 1024 * (stats.syncs + 1)) {
-            ++stats.syncs;
-            ::fsync(stats.fd);
+        if (offset >= 32 * 1024 * 1024 * (stats->syncs + 1)) {
+            ++stats->syncs;
+            ::fsync(stats->fd);
         }
 #endif // Q_OS_WIN
         out << percentage << "\n";

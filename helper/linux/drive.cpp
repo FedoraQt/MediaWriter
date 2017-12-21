@@ -34,6 +34,8 @@
 #include <QtDBus>
 #include <QtGlobal>
 
+#include "error.h"
+
 typedef QHash<QString, QVariant> Properties;
 typedef QHash<QString, Properties> InterfacesAndProperties;
 typedef QHash<QDBusObjectPath, InterfacesAndProperties> DBusIntrospection;
@@ -63,7 +65,7 @@ void Drive::init() {
 
     int fd = ::open(qPrintable(m_device->property("Device").toString()), O_RDWR);
     if (fd < 0) {
-        throw std::runtime_error("Failed to open block device.");
+        throw HelperError(Error::DRIVE_USE, drive());
     }
     m_fileDescriptor = QDBusUnixFileDescriptor(fd);
 }
@@ -74,7 +76,7 @@ void Drive::init() {
 void Drive::write(const void *buffer, std::size_t size) {
     int fd = getDescriptor();
     if (static_cast<std::size_t>(::write(fd, buffer, size)) != size) {
-        throw std::runtime_error("Destination drive is not writable.");
+        throw HelperError(Error::DRIVE_WRITE, drive());
     }
 }
 
@@ -85,15 +87,19 @@ int Drive::getDescriptor() const {
     return m_fileDescriptor.fileDescriptor();
 }
 
+QString Drive::drive() const {
+    return m_identifier;
+}
+
 void Drive::wipe() {
     QDBusReply<void> formatReply = m_device->call("Format", "dos", Properties());
     if (!formatReply.isValid() && formatReply.error().type() != QDBusError::NoReply) {
-        throw std::runtime_error(formatReply.error().message().toStdString());
+        throw HelperError(Error::DRIVE_WRITE, drive(), formatReply.error().message());
     }
     QDBusInterface partitionTable("org.freedesktop.UDisks2", m_identifier, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus());
     QDBusReply<QDBusObjectPath> reply = partitionTable.call("CreatePartitionAndFormat", 0ULL, m_device->property("Size").toULongLong(), "0xb", "", Properties{}, "vfat", Properties{});
     if (!reply.isValid()) {
-        throw std::runtime_error(reply.error().message().toStdString());
+        throw HelperError(Error::DRIVE_WRITE, drive(), reply.error().message());
     }
 }
 

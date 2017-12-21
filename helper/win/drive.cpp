@@ -41,23 +41,17 @@ Drive::Drive(const QString &identifier) : m_handle(nullptr) {
 }
 
 Drive::~Drive() {
-    try {
-        unlock();
-    } catch (std::runtime_error &e) {
-        QTextStream err(stderr);
-        err << e.what() << '\n';
-        err.flush();
-    }
+    unlock();
     ::CloseHandle(m_handle);
     m_handle = nullptr;
 }
 
-void Drive::throwError(const QString &error) {
+void Drive::throwError(Error error, const QString &drive) {
     constexpr std::size_t MESSAGE_SIZE = 256;
     TCHAR message[MESSAGE_SIZE];
     FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, nullptr, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, MESSAGE_SIZE - 1, nullptr);
-    auto error_message = error + " (" + QString::fromWCharArray(message).trimmed() + ")";
-    throw std::runtime_error(error_message.toStdString());
+    auto detail = QString::fromWCharArray(message).trimmed();
+    throw HelperError(error, drive, detail);
 }
 
 HANDLE Drive::openBlockDevice(const QString &device) {
@@ -73,7 +67,7 @@ void Drive::lock() {
     constexpr int MAX_ATTEMPTS = 10;
     for (int attempts = 0; !deviceIoControlCode(FSCTL_LOCK_VOLUME); ++attempts) {
         if (attempts == MAX_ATTEMPTS) {
-            throwError("Couldn't lock the drive.");
+            throwError(Error::DRIVE_USE, drive());
             break;
         }
         Sleep(2000);
@@ -81,9 +75,8 @@ void Drive::lock() {
 }
 
 void Drive::unlock() {
-    if (deviceIoControlCode(FSCTL_UNLOCK_VOLUME)) {
-        throwError("Couldn't unlock the drive.");
-    }
+    // Error is ignored because we're done here.
+    deviceIoControlCode(FSCTL_UNLOCK_VOLUME);
 }
 
 void Drive::init() {
@@ -93,11 +86,11 @@ void Drive::init() {
     m_handle = openBlockDevice(drivePath);
     if (m_handle == INVALID_HANDLE_VALUE) {
         m_handle = nullptr;
-        throwError("Couldn't open the drive for writing.");
+        throwError(Error::DRIVE_WRITE, drive());
     }
 
     lock();
-    m_geometry = deviceIoControl<decltype(m_geometry)>("Couldn't get disk info.");
+    m_geometry = deviceIoControl<decltype(m_geometry)>();
 }
 
 /**
@@ -106,7 +99,7 @@ void Drive::init() {
 void Drive::write(const void *buffer, std::size_t size) {
     int fd = getDescriptor();
     if (static_cast<std::size_t>(::write(fd, buffer, size)) != size) {
-        throw std::runtime_error("Destination drive is not writable.");
+        throw HelperError(Error::DRIVE_WRITE, drive());
     }
 }
 
@@ -121,13 +114,16 @@ int Drive::getDescriptor() const {
     return fd;
 }
 
+QString Drive::drive() const {
+    return QString("\\\\.\\PhysicalDrive%0").arg(m_driveNumber);
+}
+
 void Drive::wipe() {
-    const QString message = "Couldn't wipe partition.";
     CREATE_DISK disk;
     disk.PartitionStyle = PARTITION_STYLE_MBR;
-    deviceIoControl(message, &disk);
+    deviceIoControl(&disk);
     if (!deviceIoControlCode(IOCTL_DISK_UPDATE_PROPERTIES)) {
-        throwError(message);
+        throwError(Error::DRIVE_USE, drive());
     }
     QProcess diskpart;
     diskpart.setProgram("diskpart.exe");
@@ -139,44 +135,7 @@ void Drive::wipe() {
     diskpart.write("exit\r\n");
     diskpart.waitForFinished();
     if (diskpart.exitCode() != 0)
-        throw std::runtime_error(message.toStdString());
-}
-
-/**
- * Currently unused because it doesn't work correctly.
- */
-char Drive::unusedDriveLetter() {
-    constexpr char ALPHABET[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    // This does not include mounted network drives, etc.
-    DWORD drives = ::GetLogicalDrives();
-    /*
-     * It's safe to start at D because people hard-code C in their source code
-     * so Windows will never switch away from that and A and B are legacy drive
-     * letters.
-     */
-    for (std::size_t i = 3; i < std::extent<decltype(ALPHABET)>::value; ++i) {
-        if (drives & (1 << i))
-            continue;
-        const char driveLetter = ALPHABET[i];
-        /*
-         * DRIVE_NO_ROOT_DIR should be returned if the root directory is
-         * invalid or if the slot is unused.
-         *
-         * FIXME: For some reason the expression below evaluates to true even
-         * though a network drive is mounted at the specified path.
-         *
-         * Note: What's crazy is that mounting to it a drive letter at which a
-         * network drive is already monted works without any error but both
-         * drives are then mounted on the same drive letter and the network
-         * drive shadows the actual disk in the explorer visually but
-         * essentially the network drive cannot be used from that mountpoint
-         * anymore.
-         */
-        if (::GetDriveTypeA(qPrintable(QString("%0:\\").arg(driveLetter))) == DRIVE_NO_ROOT_DIR) {
-            return driveLetter;
-        }
-    }
-    throw std::runtime_error("All drive letters have been used.");
+        throw HelperError(Error::DRIVE_USE, drive());
 }
 
 /**
@@ -193,7 +152,7 @@ bool Drive::hasDriveLetter(const char driveLetter) const {
                 return true;
             }
         }
-    } catch (std::runtime_error &) {
+    } catch (HelperError &) {
     }
     if (handle)
         CloseHandle(handle);
@@ -216,12 +175,35 @@ void Drive::umount() {
         if (hasDriveLetter(driveLetter)) {
             QString volumePath = QString("%1:\\").arg(driveLetter);
             if (!DeleteVolumeMountPointA(qPrintable(volumePath))) {
-                throwError(QString("Couldn't remove the drive %1:").arg(driveLetter));
+                throwError(Error::DRIVE_USE, drive());
             }
         }
     }
 }
 
+/**
+ * If you'd like to use a new control code you'll look up which one you want
+ * and what the input and output buffer types are.
+ * Control codes: https://msdn.microsoft.com/en-us/library/windows/desktop/aa363216(v=vs.85).aspx
+ * Then you add it in the following form to make use of the new control code
+ * through the Drive::deviceIoControl interface:
+ * ```
+ * template <>
+ * DWORD Drive::controlCodeOf<OUTPUT_TYPE, INPUT_TYPE>() {
+ *     return CONTROL_CODE;
+ * }
+ * ```
+ * If either input or output buffer is not specified you just use
+ * std::nullptr_t in the place of them.
+ * If both of them are not specified you want to use something like
+ * Drive::deviceIoControlCode instead instead of adding the control code here.
+ *
+ * The benefit of this is that you don't have to fill in the gaps or edit
+ * multiple values when calling DeviceIoControl through the deviceIoControl
+ * interface.
+ * Which means you don't have to specify the control code anywhere else nor do
+ * you have to fill in null pointers.
+ */
 template <>
 DWORD Drive::controlCodeOf<std::nullptr_t, CREATE_DISK>() {
     return IOCTL_DISK_CREATE_DISK;

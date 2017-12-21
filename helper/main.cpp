@@ -25,6 +25,7 @@
 #include <QTimer>
 #include <QTranslator>
 
+#include "error.h"
 // Platform specific drive handler.
 #include "drive.h"
 
@@ -57,8 +58,12 @@ int main(int argc, char *argv[]) {
                 drive->writeIso(argv[2]);
             }
             qApp->exit(0);
-        } catch (std::runtime_error &error) {
-            err << error.what() << '\n';
+        } catch (HelperError &error) {
+            auto message = QObject::tr(error.what());
+            if (message.contains("%1")) {
+              message = message.arg(error.context());
+            }
+            err << message << '\n';
             err.flush();
             qApp->exit(1);
         }

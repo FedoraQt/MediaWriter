@@ -17,41 +17,36 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef DRIVE_H
-#define DRIVE_H
+#ifndef HELPER_ERROR_H
+#define HELPER_ERROR_H
 
-#include <utility>
+#include <exception>
 
-#include <QDBusInterface>
-#include <QDBusUnixFileDescriptor>
-#include <QObject>
-#include <QScopedPointer>
 #include <QString>
-#include <QTextStream>
-#include <QtGlobal>
 
-#include "genericdrive.h"
-
-class Drive : public GenericDrive {
-    Q_OBJECT
-public:
-    /**
-     * Shared public interface across platforms.
-     */
-    explicit Drive(const QString &driveIdentifier);
-    ~Drive();
-    void init();
-    void write(const void *buffer, std::size_t size);
-    int getDescriptor() const;
-    QString drive() const;
-    void wipe();
-    void umount();
-
-private:
-    QDBusUnixFileDescriptor m_fileDescriptor;
-    QString m_identifier;
-    QScopedPointer<QDBusInterface> m_device;
-    QString m_path;
+enum class Error {
+  DECOMPRESS_INIT,
+  DECOMPRESS_MEM,
+  DECOMPRESS_OPTIONS,
+  DECOMPRESS_UNKNOWN,
+  FILE_CORRUPT,
+  FILE_READ,
+  DRIVE_USE,
+  DRIVE_WRITE,
+  DRIVE_DAMAGED,
+  UNEXPECTED
 };
 
-#endif // DRIVE_H
+class HelperError : public std::exception {
+public:
+  HelperError(Error error, const QString& context = "", const QString& detail = "");
+  const char *what() const noexcept;
+  QString context() const noexcept;
+  QString detail() const noexcept;
+private:
+  Error m_error;
+  QString m_context;
+  QString m_detail;
+};
+
+#endif // HELPER_ERROR_H
