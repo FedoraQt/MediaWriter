@@ -19,6 +19,30 @@ XPStyle on
 # This is the size (in kB) of all the files copied into "Program Files"
 #!define INSTALLSIZE
 
+
+
+!ifdef INNER
+    !echo "Inner invocation"                  ; just to see what's going on
+    OutFile "../../build/tempinstaller.exe"       ; not really important where this is
+    SetCompress off                           ; for speed
+!else
+    !echo "Outer invocation"
+
+    ; Call makensis again against current file, defining INNER.  This writes an installer for us which, when
+    ; it is invoked, will just write the uninstaller to some location, and then exit.
+
+    !makensis '-DINNER "${__FILE__}"' = 0
+
+    ; Run the temporary installer and then sign the unsigned binary that has been created
+    !system "chmod +x ../../build/tempinstaller.exe" = 0
+    !system "../../build/tempinstaller.exe" = 512
+    !system 'osslsigncode sign -pkcs12 "${CERTPATH}/authenticode.pfx" -readpass "${CERTPASS}" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "../../build/wineprefix/drive_c/uninstall.unsigned.exe" -out "../../build/wineprefix/drive_c/uninstall.exe" ' = 0
+
+    outFile "FMW-setup.exe"
+    SetCompressor /SOLID lzma
+!endif
+
+
 RequestExecutionLevel admin ;Require admin rights on NT6+ (When UAC is turned on)
 
 InstallDir "$PROGRAMFILES\${APPNAME}"
@@ -28,7 +52,6 @@ LicenseData "../../build/app/release/LICENSE.txt"
 # This will be in the installer/uninstaller's title bar
 Name "${APPNAME}"
 Icon "../../app/assets/icon/mediawriter.ico"
-outFile "FMW-setup.exe"
 
 !include LogicLib.nsh
 
@@ -112,21 +135,35 @@ ${EndIf}
 !macroend
 
 function .onInit
-        setShellVarContext all
-        !insertmacro VerifyUserIsAdmin
+    !ifdef INNER
+
+    ; If INNER is defined, then we aren't supposed to do anything except write out
+    ; the installer.  This is better than processing a command line option as it means
+    ; this entire code path is not present in the final (real) installer.
+
+    WriteUninstaller "C:\uninstall.unsigned.exe"
+    Quit  ; just bail out quickly when running the "inner" installer
+    !endif
+
+    setShellVarContext all
+    !insertmacro VerifyUserIsAdmin
 functionEnd
 
 section "install"
         # Files for the install directory - to build the installer, these should be in the same directory as the install script (this file)
-        setOutPath $INSTDIR
+        SetOutPath $INSTDIR
         SetOverwrite on
-        # Files added here should be removed by the uninstaller (see section "uninstall")
-        file /r "../../build/app/release/*"
-        file "../../app/assets/icon/mediawriter.ico"
-        # Add any other files for the install directory (license files, app data, etc) here
 
-        # Uninstaller - See function un.onInit and section "uninstall" for configuration
-        writeUninstaller "$INSTDIR\uninstall.exe"
+        !ifndef INNER
+            SetOutPath $INSTDIR
+
+            # Files added here should be removed by the uninstaller (see section "uninstall")
+            File /r "../../build/app/release/*"
+            File "../../app/assets/icon/mediawriter.ico"
+
+            ; this packages the signed uninstaller
+            File ../../build/wineprefix/drive_c/uninstall.exe
+        !endif
 
         # Start Menu
         createShortCut "$SMPROGRAMS\${APPNAME}.lnk" "$INSTDIR\mediawriter.exe" "" "$INSTDIR\mediawriter.ico"
@@ -152,8 +189,8 @@ section "install"
 sectionEnd
 
 # Uninstaller
-
-function un.onInit
+!ifdef INNER
+    function un.onInit
         SetShellVarContext all
 
         #Verify the uninstaller - last chance to back out
@@ -161,10 +198,9 @@ function un.onInit
                 Abort
         next:
         !insertmacro VerifyUserIsAdmin
-functionEnd
+    functionEnd
 
-section "uninstall"
-
+    section "uninstall"
         # Remove Start Menu launcher
         delete "$SMPROGRAMS\${APPNAME}.lnk"
 
@@ -176,4 +212,5 @@ section "uninstall"
 
         # Remove uninstaller information from the registry
         DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"
-sectionEnd
+    sectionEnd
+!endif

@@ -30,7 +30,7 @@ if [ -z "$CERTPASS" ]; then
     CERTPASS="$CERTPATH/authenticode.pass"
 fi
 
-PACKAGES="mingw32-qt5-qmake mingw32-mediawriter mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-nsis mono-devel"
+PACKAGES="mingw32-qt5-qmake mingw32-mediawriter mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-nsis mono-devel wine-core"
 
 echo "=== Installing dependencies"
 dnf install $PACKAGES
@@ -48,8 +48,11 @@ BIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_BINS)
 PLUGIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_PLUGINS)
 QML_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_QML)
 
+export WINEPREFIX="$BUILDPATH/wineprefix"
+export WINEDEBUG="-all"
 
 mkdir -p "$BUILDPATH"
+mkdir -p "$WINEPREFIX"
 pushd "$BUILDPATH" >/dev/null
 
 VERSION_FULL=''
@@ -153,7 +156,7 @@ sed -i "s/#!define VERSIONMAJOR/!define VERSIONMAJOR ${VERSION_MAJOR}/" "$SCRIPT
 sed -i "s/#!define VERSIONMINOR/!define VERSIONMINOR ${VERSION_MINOR}/" "$SCRIPTDIR/mediawriter.tmp.nsi"
 sed -i "s/#!define VERSIONBUILD/!define VERSIONBUILD ${VERSION_BUILD}/" "$SCRIPTDIR/mediawriter.tmp.nsi"
 sed -i "s/#!define INSTALLSIZE/!define INSTALLSIZE ${INSTALLED_SIZE}/" "$SCRIPTDIR/mediawriter.tmp.nsi"
-makensis "$SCRIPTDIR/mediawriter.tmp.nsi" >/dev/null
+makensis -DCERTPATH="$CERTPATH" -DCERTPASS="$CERTPASS" "$SCRIPTDIR/mediawriter.tmp.nsi" >/dev/null
 rm "$SCRIPTDIR/mediawriter.tmp.nsi"
 mv "$SCRIPTDIR/FMW-setup.exe" "$INSTALLER"
 
