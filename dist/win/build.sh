@@ -68,8 +68,8 @@ fi
 
 VERSION_STRIPPED=$(sed "s/-.*//" <<< "${VERSION_FULL}")
 VERSION_MAJOR=$(cut -d. -f1 <<< "${VERSION_STRIPPED}")
-VERSION_MINOR=$(cut -d. -f1 <<< "${VERSION_STRIPPED}")
-VERSION_BUILD=$(cut -d. -f1 <<< "${VERSION_STRIPPED}")
+VERSION_MINOR=$(cut -d. -f2 <<< "${VERSION_STRIPPED}")
+VERSION_BUILD=$(cut -d. -f3 <<< "${VERSION_STRIPPED}")
 
 
 if [ "$1" == "local" ]; then
@@ -153,7 +153,7 @@ sed -i "s/#!define VERSIONMAJOR/!define VERSIONMAJOR ${VERSION_MAJOR}/" "$SCRIPT
 sed -i "s/#!define VERSIONMINOR/!define VERSIONMINOR ${VERSION_MINOR}/" "$SCRIPTDIR/mediawriter.tmp.nsi"
 sed -i "s/#!define VERSIONBUILD/!define VERSIONBUILD ${VERSION_BUILD}/" "$SCRIPTDIR/mediawriter.tmp.nsi"
 sed -i "s/#!define INSTALLSIZE/!define INSTALLSIZE ${INSTALLED_SIZE}/" "$SCRIPTDIR/mediawriter.tmp.nsi"
-makensis "$SCRIPTDIR/mediawriter.nsi" >/dev/null
+makensis "$SCRIPTDIR/mediawriter.tmp.nsi" >/dev/null
 rm "$SCRIPTDIR/mediawriter.tmp.nsi"
 mv "$SCRIPTDIR/FMW-setup.exe" "$INSTALLER"
 
