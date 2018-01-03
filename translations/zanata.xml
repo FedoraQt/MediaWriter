@@ -5,6 +5,6 @@
   <project-version>master</project-version>
   <project-type>gettext</project-type>
   <rules>
-    <rule pattern="**/*.pot">{filename}-{locale}.po</rule>
+    <rule pattern="**/*.pot">{filename}_{locale}.po</rule>
   </rules>
 </config>
