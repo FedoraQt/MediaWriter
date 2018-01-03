@@ -81,7 +81,7 @@ int main(int argc, char **argv)
     qDebug() << "Application constructed";
 
     QTranslator translator;
-    translator.load(QLocale(QLocale().language()), QString(), QString(), ":/translations");
+    translator.load(QLocale(QLocale().language(), QLocale().country()), QString(), QString(), ":/translations");
     app.installTranslator(&translator);
 
     qDebug() << "Injecting QML context properties";
