@@ -35,10 +35,10 @@ void printStack(void) {
      symbol->MaxNameLen = 255;
      symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
 
-     qCritical() << "Backtrace:";
+     mCritical() << "Backtrace:";
      for(int i = 0; i < frames; i++) {
          SymFromAddr(process, (DWORD64)(stack[i]), 0, symbol);
-         qCritical() << '\t' << frames - i - 1 << ':' << symbol->Name << (void*)symbol->Address;
+         mCritical() << '\t' << frames - i - 1 << ':' << symbol->Name << (void*)symbol->Address;
      }
 
      free(symbol);
@@ -56,11 +56,11 @@ LONG faultHandler(struct _EXCEPTION_POINTERS *info) {
         default:                              faultName = "(N/A)"                ; break;
     }
 
-    qCritical() << "=== CRASH OCCURRED ===";
-    qCritical() << "An unhandled exception occurred:";
-    qCritical() << "Code:" << code << "-" << faultName;
-    qCritical() << "Flags:" << flags;
-    qCritical() << "Address" << address;
+    mCritical() << "=== CRASH OCCURRED ===";
+    mCritical() << "An unhandled exception occurred:";
+    mCritical() << "Code:" << code << "-" << faultName;
+    mCritical() << "Flags:" << flags;
+    mCritical() << "Address" << address;
 
     printStack();
     fflush(stderr);

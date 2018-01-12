@@ -25,10 +25,10 @@
 VersionChecker::VersionChecker(QObject *parent)
     : QObject(parent) {
 #if defined(__APPLE__) || defined(_WIN32)
-    qDebug() << this->metaObject()->className() << "Asking for new FMW version information";
+    mDebug() << this->metaObject()->className() << "Asking for new FMW version information";
     DownloadManager::instance()->fetchPageAsync(this, "https://getfedora.org/static/fmw-version.json");
 #else
-    qDebug() << this->metaObject()->className() << "This platform doesn't need to ask about new FMW versions";
+    mDebug() << this->metaObject()->className() << "This platform doesn't need to ask about new FMW versions";
 #endif
 }
 
@@ -42,7 +42,7 @@ void VersionChecker::onStringDownloaded(const QString &text) {
 #else
     const char *platform = nullptr;
 #endif
-    qDebug() << this->metaObject()->className() <<"Got new FMW version information";
+    mDebug() << this->metaObject()->className() <<"Got new FMW version information";
     if (platform) {
         QJsonValueRef versionObject = obj[platform].toObject()["version"];
         if (!versionObject.isNull() && !versionObject.isUndefined()) {
@@ -51,26 +51,26 @@ void VersionChecker::onStringDownloaded(const QString &text) {
             QString urlStr = obj[platform].toObject()["url"].toString();
             QUrl url(urlStr);
             if (isVersionHigher(currentVersion, newVersion) && url.isValid()) {
-                qDebug() << this->metaObject()->className() << "New FMW version is" << newVersion << "- we're running on" << currentVersion << "which is older.";
+                mDebug() << this->metaObject()->className() << "New FMW version is" << newVersion << "- we're running on" << currentVersion << "which is older.";
                 m_newerVersion = newVersion;
                 m_url = url;
                 emit newerVersionChanged();
             }
             else {
-                qDebug() << this->metaObject()->className() << "New FMW version is" << newVersion << "- we're running on" << currentVersion << "which is newer or the same.";
+                mDebug() << this->metaObject()->className() << "New FMW version is" << newVersion << "- we're running on" << currentVersion << "which is newer or the same.";
             }
         }
         else {
-            qWarning() << this->metaObject()->className() << "New FMW version information was empty for this platform";
+            mWarning() << this->metaObject()->className() << "New FMW version information was empty for this platform";
         }
     }
     else {
-        qWarning() << this->metaObject()->className() << "Got an answer to query about new versions despite the fact this platform shouldn't support user updates.";
+        mWarning() << this->metaObject()->className() << "Got an answer to query about new versions despite the fact this platform shouldn't support user updates.";
     }
 }
 
 void VersionChecker::onDownloadError(const QString &message) {
-    qWarning() << this->metaObject()->className() << "It was impossible to fetch info about a new FMW version:" << message;
+    mWarning() << this->metaObject()->className() << "It was impossible to fetch info about a new FMW version:" << message;
 }
 
 QString VersionChecker::newerVersion() const {

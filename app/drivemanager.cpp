@@ -40,7 +40,7 @@ DriveManager *DriveManager::_self = nullptr;
 DriveManager::DriveManager(QObject *parent)
     : QAbstractListModel(parent), m_provider(DriveProvider::create(this))
 {
-    qDebug() << this->metaObject()->className() << "construction";
+    mDebug() << this->metaObject()->className() << "construction";
     qmlRegisterUncreatableType<Drive>("MediaWriter", 1, 0, "Drive", "");
 
     connect(m_provider, &DriveProvider::driveConnected, this, &DriveManager::onDriveConnected);

@@ -21,6 +21,7 @@
 #define UTILITIES_H
 
 #include <QObject>
+#include <QLoggingCategory>
 
 class Progress;
 class Options;
@@ -87,7 +88,14 @@ public:
 class MessageHandler {
 public:
     static void install();
+    static QLoggingCategory category;
 };
+
+#define mInfo() qCInfo(MessageHandler::category)
+#define mDebug() qCDebug(MessageHandler::category)
+#define mWarning() qCWarning(MessageHandler::category)
+#define mCritical() qCCritical(MessageHandler::category)
+#define mFatal() qCFatal(MessageHandler::category)
 
 extern Options options;
 

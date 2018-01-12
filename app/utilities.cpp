@@ -165,3 +165,5 @@ void MessageHandler::install() {
     debugFile = stderr;
     qInstallMessageHandler(myMessageOutput); // Install the handler
 }
+
+QLoggingCategory MessageHandler::category { "org.fedoraproject.MediaWriter" };

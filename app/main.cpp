@@ -74,17 +74,17 @@ int main(int argc, char **argv)
     // considering how often we hit driver issues, I have decided to force
     // the QML software renderer on Windows and Linux, since Qt 5.9
 #if QT_VERSION >= 0x050900 && ((defined(__linux)) || defined(_WIN32))
-    if (qEnvironmentVariableIsEmpty("QMLSCENE_DEVICE") && QStringList({"xcb", "windows"}).contains(app.platformName()))
+    if (qEnvironmentVariableIsEmpty("QMLSCENE_DEVICE"))
         qputenv("QMLSCENE_DEVICE", "softwarecontext");
 #endif
 
-    qDebug() << "Application constructed";
+    mDebug() << "Application constructed";
 
     QTranslator translator;
     translator.load(QLocale(QLocale().language(), QLocale().country()), QString(), QString(), ":/translations");
     app.installTranslator(&translator);
 
-    qDebug() << "Injecting QML context properties";
+    mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("drives", DriveManager::instance());
     engine.rootContext()->setContextProperty("releases", new ReleaseManager());
@@ -96,12 +96,12 @@ int main(int argc, char **argv)
 #else
     engine.rootContext()->setContextProperty("platformSupportsDelayedWriting", false);
 #endif
-    qDebug() << "Loading the QML source code";
+    mDebug() << "Loading the QML source code";
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
-    qDebug() << "Starting the application";
+    mDebug() << "Starting the application";
     int status = app.exec();
-    qDebug() << "Quitting with status" << status;
+    mDebug() << "Quitting with status" << status;
 
     return status;
 }

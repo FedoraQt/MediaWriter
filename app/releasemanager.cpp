@@ -31,7 +31,7 @@
 ReleaseManager::ReleaseManager(QObject *parent)
     : QSortFilterProxyModel(parent), m_sourceModel(new ReleaseListModel(this))
 {
-    qDebug() << this->metaObject()->className() << "construction";
+    mDebug() << this->metaObject()->className() << "construction";
     setSourceModel(m_sourceModel);
 
     qmlRegisterUncreatableType<Release>("MediaWriter", 1, 0, "Release", "");
@@ -119,7 +119,7 @@ void ReleaseManager::setFilterText(const QString &o) {
 }
 
 void ReleaseManager::setLocalFile(const QString &path) {
-    qDebug() << this->metaObject()->className() << "Setting local file to" << path;
+    mDebug() << this->metaObject()->className() << "Setting local file to" << path;
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = m_sourceModel->get(i);
         if (r->source() == Release::LOCAL) {
@@ -191,7 +191,7 @@ ReleaseVariant *ReleaseManager::variant() {
 }
 
 void ReleaseManager::onStringDownloaded(const QString &text) {
-    qDebug() << this->metaObject()->className() << "Received a metadata json";
+    mDebug() << this->metaObject()->className() << "Received a metadata json";
 
     QRegExp re("(\\d+)\\s?(\\S+)?");
     auto doc = QJsonDocument::fromJson(text.toUtf8());
@@ -231,7 +231,7 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         version = re.capturedTexts()[1].toInt();
         status = re.capturedTexts()[2];
 
-        qDebug() << this->metaObject()->className() << "Adding" << release << versionWithStatus << arch;
+        mDebug() << this->metaObject()->className() << "Adding" << release << versionWithStatus << arch;
 
         if (!release.isEmpty() && !url.isEmpty() && !arch.isEmpty())
             updateUrl(release, version, status, releaseDate, arch, url, sha256, size);
@@ -242,7 +242,7 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
 }
 
 void ReleaseManager::onDownloadError(const QString &message) {
-    qWarning() << "Was not able to fetch new releases:" << message << "Retrying in 10 seconds.";
+    mWarning() << "Was not able to fetch new releases:" << message << "Retrying in 10 seconds.";
 
     QTimer::singleShot(10000, this, SLOT(fetchReleases()));
 }
@@ -372,7 +372,7 @@ void Release::setLocalFile(const QString &path) {
     QFileInfo info(QUrl(path).toLocalFile());
 
     if (!info.exists()) {
-        qCritical() << path << "doesn't exist";
+        mCritical() << path << "doesn't exist";
         return;
     }
 
@@ -639,13 +639,13 @@ ReleaseVariant::ReleaseVariant(ReleaseVersion *parent, const QString &file, int6
 bool ReleaseVariant::updateUrl(const QString &url, const QString &sha256, int64_t size) {
     bool changed = false;
     if (!url.isEmpty() && m_url.toUtf8().trimmed() != url.toUtf8().trimmed()) {
-        qWarning() << "Url" << m_url << "changed to" << url;
+        mWarning() << "Url" << m_url << "changed to" << url;
         m_url = url;
         emit urlChanged();
         changed = true;
     }
     if (!sha256.isEmpty() && m_shaHash.trimmed() != sha256.trimmed()) {
-        qWarning() << "SHA256 hash of" << url << "changed from" << m_shaHash << "to" << sha256;
+        mWarning() << "SHA256 hash of" << url << "changed from" << m_shaHash << "to" << sha256;
         m_shaHash = sha256;
         emit shaHashChanged();
         changed = true;
@@ -744,18 +744,18 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
     m_progress->setValue(0.0/0.0, 1.0);
 
     if (!shaHash().isEmpty() && shaHash() != hash) {
-        qWarning() << "Computed SHA256 hash of" << path << " - " << hash << "does not match expected" << shaHash();
+        mWarning() << "Computed SHA256 hash of" << path << " - " << hash << "does not match expected" << shaHash();
         setErrorString(tr("The downloaded image is corrupted"));
         setStatus(FAILED_DOWNLOAD);
         return;
     }
-    qDebug() << this->metaObject()->className() << "SHA256 check passed";
+    mDebug() << this->metaObject()->className() << "SHA256 check passed";
 
     qApp->eventDispatcher()->processEvents(QEventLoop::AllEvents);
 
     int checkResult = mediaCheckFile(QDir::toNativeSeparators(path).toLocal8Bit(), &ReleaseVariant::staticOnMediaCheckAdvanced, this);
     if (checkResult == ISOMD5SUM_CHECK_FAILED) {
-        qWarning() << "Internal MD5 media check of" << path << "failed with status" << checkResult;
+        mWarning() << "Internal MD5 media check of" << path << "failed with status" << checkResult;
         QFile::remove(path);
         setErrorString(tr("The downloaded image is corrupted"));
         setStatus(FAILED_DOWNLOAD);
@@ -767,12 +767,12 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
         return;
     }
     else {
-        qDebug() << this->metaObject()->className() << "MD5 check passed";
+        mDebug() << this->metaObject()->className() << "MD5 check passed";
         QString finalFilename(path);
         finalFilename = finalFilename.replace(QRegExp("[.]part$"), "");
 
         if (finalFilename != path) {
-            qDebug() << this->metaObject()->className() << "Renaming from" << path << "to" << finalFilename;
+            mDebug() << this->metaObject()->className() << "Renaming from" << path << "to" << finalFilename;
             if (!QFile::rename(path, finalFilename)) {
                 setErrorString(tr("Unable to rename the temporary file."));
                 setStatus(FAILED_DOWNLOAD);
@@ -783,7 +783,7 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
         m_iso = finalFilename;
         emit isoChanged();
 
-        qDebug() << this->metaObject()->className() << "Image is ready";
+        mDebug() << this->metaObject()->className() << "Image is ready";
         setStatus(READY);
 
         if (QFile(m_iso).size() != m_size) {
@@ -824,7 +824,7 @@ void ReleaseVariant::download() {
             m_iso = ret;
             emit isoChanged();
 
-            qDebug() << this->metaObject()->className() << m_iso << "is already downloaded";
+            mDebug() << this->metaObject()->className() << m_iso << "is already downloaded";
             setStatus(READY);
 
             if (QFile(m_iso).size() != m_size) {
@@ -853,13 +853,13 @@ void ReleaseVariant::resetStatus() {
 
 bool ReleaseVariant::erase() {
     if (QFile(m_iso).remove()) {
-        qDebug() << this->metaObject()->className() << "Deleted" << m_iso;
+        mDebug() << this->metaObject()->className() << "Deleted" << m_iso;
         m_iso = QString();
         emit isoChanged();
         return true;
     }
     else {
-        qWarning() << this->metaObject()->className() << "An attempt to delete" << m_iso << "failed!";
+        mWarning() << this->metaObject()->className() << "An attempt to delete" << m_iso << "failed!";
         return false;
     }
 }

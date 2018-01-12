@@ -29,7 +29,7 @@ MacDriveProvider *MacDriveProvider::_self = nullptr;
 MacDriveProvider::MacDriveProvider(DriveManager *parent)
     : DriveProvider(parent)
 {
-    qDebug() << this->metaObject()->className() << "construction";
+    mDebug() << this->metaObject()->className() << "construction";
     _self = this;
     startArbiter(&MacDriveProvider::onDriveAdded, &MacDriveProvider::onDriveRemoved);
 }
@@ -47,7 +47,7 @@ void MacDriveProvider::onDriveAdded(const char *bsdName, const char *vendor, con
 }
 
 void MacDriveProvider::addDrive(const QString &bsdName, const QString &vendor, const QString &model, uint64_t size, bool restoreable) {
-    qDebug() << this->metaObject()->className() << "drive added" << bsdName << vendor << model << size << restoreable;
+    mDebug() << this->metaObject()->className() << "drive added" << bsdName << vendor << model << size << restoreable;
     removeDrive(bsdName);
     MacDrive *drive = new MacDrive(this, QString("%1 %2").arg(vendor).arg(model), size, restoreable, bsdName);
     m_devices[bsdName] = drive;
@@ -60,7 +60,7 @@ void MacDriveProvider::onDriveRemoved(const char *bsdName) {
 
 void MacDriveProvider::removeDrive(const QString &bsdName) {
     if (m_devices.contains(bsdName)) {
-        qDebug() << this->metaObject()->className() << "drive removed" << bsdName;
+        mDebug() << this->metaObject()->className() << "drive removed" << bsdName;
         emit driveRemoved(m_devices[bsdName]);
         m_devices[bsdName]->deleteLater();
         m_devices.remove(bsdName);
@@ -122,7 +122,7 @@ bool MacDrive::write(ReleaseVariant *data) {
     QStringList args;
     args << "-e";
     args << command;
-    qCritical() << "The command is" << command;
+    mCritical() << "The command is" << command;
     m_child->setArguments(args);
 
     m_child->start();
@@ -140,7 +140,7 @@ void MacDrive::cancel() {
 }
 
 void MacDrive::restore() {
-    qCritical() << "starting to restore";
+    mCritical() << "starting to restore";
     if (m_child)
         m_child->deleteLater();
 
@@ -170,7 +170,7 @@ void MacDrive::restore() {
     QStringList args;
     args << "-e";
     args << command;
-    qCritical() << "The command is" << command;
+    mCritical() << "The command is" << command;
     m_child->setArguments(args);
 
     //connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
@@ -208,8 +208,8 @@ void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) 
     if (!m_child)
         return;
 
-    qCritical() << "Process finished" << exitCode << exitStatus;
-    qCritical() << m_child->readAllStandardError();
+    mCritical() << "Process finished" << exitCode << exitStatus;
+    mCritical() << m_child->readAllStandardError();
 
     if (exitCode == 0)
         m_restoreStatus = RESTORED;

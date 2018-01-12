@@ -27,7 +27,7 @@
 LinuxDriveProvider::LinuxDriveProvider(DriveManager *parent)
     : DriveProvider(parent)
 {
-    qDebug() << this->metaObject()->className() << "construction";
+    mDebug() << this->metaObject()->className() << "construction";
     qDBusRegisterMetaType<InterfacesAndProperties>();
     qDBusRegisterMetaType<DBusIntrospection>();
 
@@ -39,7 +39,7 @@ LinuxDriveProvider::LinuxDriveProvider(DriveManager *parent)
 void LinuxDriveProvider::delayedConstruct() {
     m_objManager = new QDBusInterface("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus());
 
-    qDebug() << this->metaObject()->className() << "Calling GetManagedObjects over DBus";
+    mDebug() << this->metaObject()->className() << "Calling GetManagedObjects over DBus";
     QDBusPendingCall pcall = m_objManager->asyncCall("GetManagedObjects");
     QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(pcall, this);
 
@@ -85,7 +85,7 @@ QDBusObjectPath LinuxDriveProvider::handleObject(const QDBusObjectPath &object_p
             else
                 name = QString("%1 %2").arg(vendor).arg(model);
 
-        qDebug() << this->metaObject()->className() << "New drive" << driveId.path() << "-" << name << "(" << size << "bytes;" << (isValid ? "removable;" : "nonremovable;") << connectionBus << ")";
+        mDebug() << this->metaObject()->className() << "New drive" << driveId.path() << "-" << name << "(" << size << "bytes;" << (isValid ? "removable;" : "nonremovable;") << connectionBus << ")";
 
         if (isValid) {
 
@@ -105,14 +105,14 @@ QDBusObjectPath LinuxDriveProvider::handleObject(const QDBusObjectPath &object_p
 }
 
 void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
-    qDebug() << this->metaObject()->className() << "Got a reply to GetManagedObjects, parsing";
+    mDebug() << this->metaObject()->className() << "Got a reply to GetManagedObjects, parsing";
 
     QDBusPendingReply<DBusIntrospection> reply = *w;
     QSet<QDBusObjectPath> oldPaths = m_drives.keys().toSet();
     QSet<QDBusObjectPath> newPaths;
 
     if (reply.isError()) {
-        qWarning() << "Could not read drives from UDisks:" << reply.error().name() << reply.error().message();
+        mWarning() << "Could not read drives from UDisks:" << reply.error().name() << reply.error().message();
         emit backendBroken(tr("UDisks2 seems to be unavailable or unaccessible on your system."));
         return;
     }
@@ -150,7 +150,7 @@ void LinuxDriveProvider::onInterfacesAdded(const QDBusObjectPath &object_path, c
 void LinuxDriveProvider::onInterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces) {
     if (interfaces.contains("org.freedesktop.UDisks2.Block")) {
         if (m_drives.contains(object_path)) {
-            qDebug() << this->metaObject()->className() << "Drive at" << object_path.path() << "removed";
+            mDebug() << this->metaObject()->className() << "Drive at" << object_path.path() << "removed";
             emit driveRemoved(m_drives[object_path]);
             m_drives[object_path]->deleteLater();
             m_drives.remove(object_path);
@@ -184,7 +184,7 @@ LinuxDrive::~LinuxDrive() {
 }
 
 bool LinuxDrive::write(ReleaseVariant *data) {
-    qDebug() << this->metaObject()->className() << "Will now write" << data->iso() << "to" << this->m_device;
+    mDebug() << this->metaObject()->className() << "Will now write" << data->iso() << "to" << this->m_device;
 
     if (!Drive::write(data))
         return false;
@@ -218,7 +218,7 @@ bool LinuxDrive::write(ReleaseVariant *data) {
     else
         args << data->temporaryPath();
     args << m_device;
-    qDebug() << this->metaObject()->className() << "Helper command will be" << args;
+    mDebug() << this->metaObject()->className() << "Helper command will be" << args;
     m_process->setArguments(args);
 
     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
@@ -258,7 +258,7 @@ void LinuxDrive::cancel() {
 }
 
 void LinuxDrive::restore() {
-    qDebug() << this->metaObject()->className() << "Will now restore" << this->m_device;
+    mDebug() << this->metaObject()->className() << "Will now restore" << this->m_device;
 
     if (!m_process)
         m_process = new QProcess(this);
@@ -277,13 +277,13 @@ void LinuxDrive::restore() {
         m_process->setProgram(QString("%1/%2").arg(LIBEXECDIR).arg("helper"));
     }
     else {
-        qWarning() << "Couldn't find the helper binary.";
+        mWarning() << "Couldn't find the helper binary.";
         setRestoreStatus(RESTORE_ERROR);
         return;
     }
     args << "restore";
     args << m_device;
-    qDebug() << this->metaObject()->className() << "Helper command will be" << args;
+    mDebug() << this->metaObject()->className() << "Helper command will be" << args;
     m_process->setArguments(args);
 
     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
@@ -302,7 +302,7 @@ void LinuxDrive::onReadyRead() {
     while (m_process->bytesAvailable() > 0) {
         QString line = m_process->readLine().trimmed();
         if (line == "CHECK") {
-            qDebug() << this->metaObject()->className() << "Helper finished writing, now it will check the written data";
+            mDebug() << this->metaObject()->className() << "Helper finished writing, now it will check the written data";
             m_progress->setValue(0);
             m_image->setStatus(ReleaseVariant::WRITE_VERIFYING);
         }
@@ -316,7 +316,7 @@ void LinuxDrive::onReadyRead() {
 }
 
 void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
-    qDebug() << this->metaObject()->className() << "Helper process finished with status" << status;
+    mDebug() << this->metaObject()->className() << "Helper process finished with status" << status;
 
     setDelayedWrite(false);
 
@@ -325,7 +325,7 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
 
     if (exitCode != 0) {
         QString errorMessage = m_process->readAllStandardError();
-        qWarning() << "Writing failed:" << errorMessage;
+        mWarning() << "Writing failed:" << errorMessage;
         Notifications::notify(tr("Error"), tr("Writing %1 failed").arg(m_image->fullName()));
         if (m_image->status() == ReleaseVariant::WRITING) {
             m_image->setErrorString(errorMessage);
@@ -344,13 +344,13 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
 }
 
 void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status) {
-    qDebug() << this->metaObject()->className() << "Helper process finished with status" << status;
+    mDebug() << this->metaObject()->className() << "Helper process finished with status" << status;
 
     if (exitCode != 0) {
         if (m_process)
-            qWarning() << "Drive restoration failed:" << m_process->readAllStandardError();
+            mWarning() << "Drive restoration failed:" << m_process->readAllStandardError();
         else
-            qWarning() << "Drive restoration failed";
+            mWarning() << "Drive restoration failed";
         m_restoreStatus = RESTORE_ERROR;
     }
     else {
@@ -369,7 +369,7 @@ void LinuxDrive::onErrorOccurred(QProcess::ProcessError e) {
         return;
 
     QString errorMessage = m_process->errorString();
-    qWarning() << "Restoring failed:" << errorMessage;
+    mWarning() << "Restoring failed:" << errorMessage;
     m_image->setErrorString(errorMessage);
     m_process->deleteLater();
     m_process = nullptr;

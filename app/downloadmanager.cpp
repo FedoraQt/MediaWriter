@@ -71,14 +71,14 @@ QString DownloadManager::userAgent() {
  * TODO explain how this works
  */
 QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder, Progress *progress) {
-    qDebug() << this->metaObject()->className() << "Going to download" << url;
+    mDebug() << this->metaObject()->className() << "Going to download" << url;
     QString bareFileName = QString("%1/%2").arg(folder).arg(url.fileName());
 
     QDir dir;
     dir.mkpath(folder);
 
     if (QFile::exists(bareFileName)) {
-        qDebug() << this->metaObject()->className() << "The file already exists on" << bareFileName;
+        mDebug() << this->metaObject()->className() << "The file already exists on" << bareFileName;
         return bareFileName;
     }
 
@@ -138,7 +138,7 @@ void DownloadManager::cancel() {
     if (m_current) {
         m_current->deleteLater();
         m_current = nullptr;
-        qDebug() << this->metaObject()->className() << "Cancelling";
+        mDebug() << this->metaObject()->className() << "Cancelling";
     }
 }
 
@@ -146,7 +146,7 @@ void DownloadManager::onStringDownloaded(const QString &text) {
     if (!m_current)
         return;
 
-    qDebug() << this->metaObject()->className() << "Received a list of mirrors";
+    mDebug() << this->metaObject()->className() << "Received a list of mirrors";
 
     QStringList mirrors;
     for (const QString &i : text.split("\n")) {
@@ -178,7 +178,7 @@ void DownloadManager::onStringDownloaded(const QString &text) {
 }
 
 void DownloadManager::onDownloadError(const QString &message) {
-    qWarning() << "Unable to get the mirror list:" << message;
+    mWarning() << "Unable to get the mirror list:" << message;
 
     if (m_mirrorCache.isEmpty()) {
         m_current->handleNewReply(nullptr);
@@ -200,7 +200,7 @@ void DownloadManager::onDownloadError(const QString &message) {
 }
 
 DownloadManager::DownloadManager() {
-    qDebug() << this->metaObject()->className() << "User-Agent:" << userAgent();
+    mDebug() << this->metaObject()->className() << "User-Agent:" << userAgent();
     QNetworkProxyFactory::setUseSystemConfiguration(true);
 }
 
@@ -235,7 +235,7 @@ void Download::handleNewReply(QNetworkReply *reply) {
         m_receiver->onDownloadError(tr("Unable to fetch the requested image."));
         return;
     }
-    qDebug() << this->metaObject()->className() << "Trying to download from a mirror:" << reply->url();
+    mDebug() << this->metaObject()->className() << "Trying to download from a mirror:" << reply->url();
 
     if (m_reply)
         m_reply->deleteLater();
@@ -269,7 +269,7 @@ bool Download::hasCatchedUp() {
 
 void Download::start() {
     if (m_catchingUp) {
-        qDebug() << this->metaObject()->className() << "Will need to precompute the hash of the previously downloaded part";
+        mDebug() << this->metaObject()->className() << "Will need to precompute the hash of the previously downloaded part";
         // first precompute the SHA hash of the already downloaded part
         m_file->open(QIODevice::ReadOnly);
         m_previousSize = 0;
@@ -277,7 +277,7 @@ void Download::start() {
         QTimer::singleShot(0, this, SLOT(catchUp()));
     }
     else if (!m_path.isEmpty()) {
-        qDebug() << this->metaObject()->className() << "Creating a new empty file";
+        mDebug() << this->metaObject()->className() << "Creating a new empty file";
         m_file->open(QIODevice::WriteOnly);
     }
 }
@@ -294,7 +294,7 @@ void Download::catchUp() {
         QTimer::singleShot(0, this, SLOT(catchUp()));
     }
     else {
-        qDebug() << this->metaObject()->className() << "Finished computing the hash of the downloaded part";
+        mDebug() << this->metaObject()->className() << "Finished computing the hash of the downloaded part";
         m_file->close();
         m_file->open(QIODevice::Append);
         m_catchingUp = false;
@@ -344,7 +344,7 @@ void Download::onReadyRead() {
 }
 
 void Download::onError(QNetworkReply::NetworkError code) {
-    qWarning() << "Error" << code << "reading from" << m_reply->url() << ":" << m_reply->errorString();
+    mWarning() << "Error" << code << "reading from" << m_reply->url() << ":" << m_reply->errorString();
     if (m_path.isEmpty())
         return;
 
@@ -356,9 +356,9 @@ void Download::onError(QNetworkReply::NetworkError code) {
 }
 
 void Download::onSslErrors(const QList<QSslError> errors) {
-    qWarning() << "Error reading from" << m_reply->url() << ":" << m_reply->errorString();
+    mWarning() << "Error reading from" << m_reply->url() << ":" << m_reply->errorString();
     for (auto i : errors) {
-        qWarning() << "SSL error" << i.errorString();
+        mWarning() << "SSL error" << i.errorString();
     }
     m_receiver->onDownloadError(m_reply->errorString());
 }
@@ -366,7 +366,7 @@ void Download::onSslErrors(const QList<QSslError> errors) {
 void Download::onFinished() {
     m_timer.stop();
     if (m_reply->error() != 0) {
-        qDebug() << this->metaObject()->className() << "An error occurred at the end:" << m_reply->errorString();
+        mDebug() << this->metaObject()->className() << "An error occurred at the end:" << m_reply->errorString();
         if (m_file && m_file->size() == 0) {
             m_file->remove();
         }
@@ -376,7 +376,7 @@ void Download::onFinished() {
             onReadyRead();
             qApp->eventDispatcher()->processEvents(QEventLoop::ExcludeSocketNotifiers);
         }
-        qDebug() << this->metaObject()->className() << "Finished successfully";
+        mDebug() << this->metaObject()->className() << "Finished successfully";
         if (m_file) {
             m_file->close();
             m_receiver->onFileDownloaded(m_file->fileName(), m_hash.result().toHex());
@@ -407,7 +407,7 @@ void Download::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) {
 }
 
 void Download::onTimedOut() {
-    qWarning() << m_reply->url() << "timed out. Trying another mirror.";
+    mWarning() << m_reply->url() << "timed out. Trying another mirror.";
     m_reply->deleteLater();
     if (m_path.isEmpty())
         return;
