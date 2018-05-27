@@ -486,6 +486,7 @@ public:
     Q_ENUMS(Id);
     static ReleaseArchitecture *fromId(Id id);
     static ReleaseArchitecture *fromAbbreviation(const QString &abbr);
+    static bool isKnown(const QString &abbr);
     static QList<ReleaseArchitecture *> listAll();
     static QStringList listAllDescriptions();
 

@@ -129,6 +129,10 @@ void ReleaseManager::setLocalFile(const QString &path) {
 }
 
 bool ReleaseManager::updateUrl(const QString &release, int version, const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
+    if (!ReleaseArchitecture::isKnown(architecture)) {
+        mWarning() << "Architecture" << architecture << "is not known!";
+        return false;
+    }
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = get(i);
         if (r->name().toLower().contains(release))
@@ -896,7 +900,6 @@ ReleaseArchitecture ReleaseArchitecture::m_all[] = {
     {{"x86", "i386", "i686"}, QT_TR_NOOP("Intel 32bit"), QT_TR_NOOP("ISO format image for Intel, AMD and other compatible PCs (32-bit)")},
     {{"armv7hl", "armhfp"}, QT_TR_NOOP("ARM v7"), QT_TR_NOOP("LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3")},
     {{"aarch64"}, QT_TR_NOOP("AArch64"), QT_TR_NOOP("LZMA-compressed raw image for AArch64 machines")},
-    // TODO handle unknown architectures gracefully - not having aarch64 here had FMW crashing for Server images :/
 };
 
 ReleaseArchitecture::ReleaseArchitecture(const QStringList &abbreviation, const char *description, const char *details)
@@ -917,6 +920,14 @@ ReleaseArchitecture *ReleaseArchitecture::fromAbbreviation(const QString &abbr) 
             return &m_all[i];
     }
     return nullptr;
+}
+
+bool ReleaseArchitecture::isKnown(const QString &abbr) {
+    for (int i = 0; i < _ARCHCOUNT; i++) {
+        if (m_all[i].abbreviation().contains(abbr, Qt::CaseInsensitive))
+            return true;
+    }
+    return false;
 }
 
 QList<ReleaseArchitecture *> ReleaseArchitecture::listAll() {
