@@ -561,7 +561,15 @@ bool ReleaseVersion::updateUrl(const QString &status, const QDateTime &releaseDa
         if (i->arch() == ReleaseArchitecture::fromAbbreviation(architecture))
             return i->updateUrl(url, sha256, size);
     }
-    m_variants.append(new ReleaseVariant(this, url, sha256, size, ReleaseArchitecture::fromAbbreviation(architecture)));
+    // preserve the order from the ReleaseArchitecture::Id enum (to not have ARM first, etc.)
+    // it's actually an array so comparing pointers is fine
+    int order = 0;
+    for (auto i : m_variants) {
+        if (i->arch() > ReleaseArchitecture::fromAbbreviation(architecture))
+            break;
+        order++;
+    }
+    m_variants.insert(order, new ReleaseVariant(this, url, sha256, size, ReleaseArchitecture::fromAbbreviation(architecture)));
     return true;
 }
 
@@ -887,6 +895,8 @@ ReleaseArchitecture ReleaseArchitecture::m_all[] = {
     {{"x86_64"}, QT_TR_NOOP("Intel 64bit"), QT_TR_NOOP("ISO format image for Intel, AMD and other compatible PCs (64-bit)")},
     {{"x86", "i386", "i686"}, QT_TR_NOOP("Intel 32bit"), QT_TR_NOOP("ISO format image for Intel, AMD and other compatible PCs (32-bit)")},
     {{"armv7hl", "armhfp"}, QT_TR_NOOP("ARM v7"), QT_TR_NOOP("LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3")},
+    {{"aarch64"}, QT_TR_NOOP("AArch64"), QT_TR_NOOP("LZMA-compressed raw image for AArch64 machines")},
+    // TODO handle unknown architectures gracefully - not having aarch64 here had FMW crashing for Server images :/
 };
 
 ReleaseArchitecture::ReleaseArchitecture(const QStringList &abbreviation, const char *description, const char *details)

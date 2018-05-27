@@ -480,6 +480,7 @@ public:
         X86_64 = 0,
         X86,
         ARM,
+        AARCH64,
         _ARCHCOUNT,
     };
     Q_ENUMS(Id);
