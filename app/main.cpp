@@ -73,7 +73,7 @@ int main(int argc, char **argv)
 
     // considering how often we hit driver issues, I have decided to force
     // the QML software renderer on Windows and Linux, since Qt 5.9
-#if QT_VERSION >= 0x050900 && ((defined(__linux)) || defined(_WIN32))
+#if QT_VERSION >= 0x050900
     if (qEnvironmentVariableIsEmpty("QMLSCENE_DEVICE"))
         qputenv("QMLSCENE_DEVICE", "softwarecontext");
 #endif
