@@ -18,6 +18,7 @@
  */
 
 #include "crashhandler.h"
+#include "utilities.h"
 
 #ifdef _WIN32
 # include <QDebug>
