@@ -344,7 +344,7 @@ FocusScope {
                             Text {
                                 width: parent.width
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                                text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/MartinBriza/MediaWriter\">https://github.com/MartinBriza/MediaWriter</a>")
+                                text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/FedoraQt/MediaWriter/issues\">https://github.com/FedoraQt/MediaWriter/</a>")
                                 textFormat: Text.RichText
                                 font.pointSize: $(9)
                                 onLinkActivated: Qt.openUrlExternally(link)
