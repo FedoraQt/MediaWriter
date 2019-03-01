@@ -128,7 +128,7 @@ void ReleaseManager::setLocalFile(const QString &path) {
     }
 }
 
-bool ReleaseManager::updateUrl(const QString &release, int version, const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
+bool ReleaseManager::updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
     if (!ReleaseArchitecture::isKnown(architecture)) {
         mWarning() << "Architecture" << architecture << "is not known!";
         return false;
@@ -136,7 +136,7 @@ bool ReleaseManager::updateUrl(const QString &release, int version, const QStrin
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = get(i);
         if (r->name().toLower().contains(release))
-            return r->updateUrl(version, status, releaseDate, architecture, url, sha256, size);
+            return r->updateUrl(version, status, type, releaseDate, architecture, url, sha256, size);
     }
     return false;
 }
@@ -207,6 +207,7 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         QString release = obj["subvariant"].toString().toLower();
         QString versionWithStatus = obj["version"].toString().toLower();
         QString sha256 = obj["sha256"].toString();
+        QString type = "live";
         QDateTime releaseDate = QDateTime::fromString((obj["releaseDate"].toString()), "yyyy-MM-dd");
         int64_t size = obj["size"].toString().toLongLong();
         int version;
@@ -221,8 +222,14 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         if (re.indexIn(versionWithStatus) < 0)
             continue;
 
-        if (release.contains("workstation") && !url.contains("Live") && !url.contains("armhfp"))
+        if (release.contains("workstation") && !url.contains("Live") && !url.contains("armhfp") && !release.contains("silverblue"))
             continue;
+
+        // silverblue actually belongs under workstation
+        if (release == "silverblue") {
+            release = "workstation";
+            type = "atomic";
+        }
 
         if (release.contains("server")) {
             // we want a DVD for x86 but we don't want it for ARM
@@ -238,7 +245,7 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         mDebug() << this->metaObject()->className() << "Adding" << release << versionWithStatus << arch;
 
         if (!release.isEmpty() && !url.isEmpty() && !arch.isEmpty())
-            updateUrl(release, version, status, releaseDate, arch, url, sha256, size);
+            updateUrl(release, version, status, type, releaseDate, arch, url, sha256, size);
     }
 
     m_beingUpdated = false;
@@ -390,11 +397,11 @@ void Release::setLocalFile(const QString &path) {
     emit selectedVersionChanged();
 }
 
-bool Release::updateUrl(int version, const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
+bool Release::updateUrl(int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
     int finalVersions = 0;
     for (auto i : m_versions) {
         if (i->number() == version)
-            return i->updateUrl(status, releaseDate, architecture, url, sha256, size);
+            return i->updateUrl(status, type, releaseDate, architecture, url, sha256, size);
         if (i->status() == ReleaseVersion::FINAL)
             finalVersions++;
     }
@@ -546,7 +553,12 @@ Release *ReleaseVersion::release() {
     return qobject_cast<Release*>(parent());
 }
 
-bool ReleaseVersion::updateUrl(const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
+const Release *ReleaseVersion::release() const {
+    return qobject_cast<const Release*>(parent());
+}
+
+bool ReleaseVersion::updateUrl(const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
+    // first determine and eventually update the current alpha/beta/final level of this version
     Status s = status == "alpha" ? ALPHA : status == "beta" ? BETA : FINAL;
     if (s <= m_status) {
         m_status = s;
@@ -555,25 +567,32 @@ bool ReleaseVersion::updateUrl(const QString &status, const QDateTime &releaseDa
             emit release()->prereleaseChanged();
     }
     else {
+        // return if it got downgraded in the meantime
         return false;
     }
+    // update release date
     if (m_releaseDate != releaseDate && releaseDate.isValid()) {
         m_releaseDate = releaseDate;
         emit releaseDateChanged();
     }
+    // determine what type of release it is
+    ReleaseVariant::Type t = type == "atomic" || type == "silverblue" ? ReleaseVariant::ATOMIC :
+                            type == "netinst" || type == "netinstall" ? ReleaseVariant::NETINSTALL :
+                                                       type == "full" ? ReleaseVariant::FULL :
+                                                                        ReleaseVariant::LIVE;
     for (auto i : m_variants) {
-        if (i->arch() == ReleaseArchitecture::fromAbbreviation(architecture))
+        if (i->arch() == ReleaseArchitecture::fromAbbreviation(architecture) && i->type() == t)
             return i->updateUrl(url, sha256, size);
     }
     // preserve the order from the ReleaseArchitecture::Id enum (to not have ARM first, etc.)
     // it's actually an array so comparing pointers is fine
     int order = 0;
     for (auto i : m_variants) {
-        if (i->arch() > ReleaseArchitecture::fromAbbreviation(architecture))
+        if (i->type() >= t && i->arch() > ReleaseArchitecture::fromAbbreviation(architecture))
             break;
         order++;
     }
-    m_variants.insert(order, new ReleaseVariant(this, url, sha256, size, ReleaseArchitecture::fromAbbreviation(architecture)));
+    m_variants.insert(order, new ReleaseVariant(this, url, sha256, size, ReleaseArchitecture::fromAbbreviation(architecture), t));
     return true;
 }
 
@@ -674,7 +693,15 @@ ReleaseVersion *ReleaseVariant::releaseVersion() {
     return qobject_cast<ReleaseVersion*>(parent());
 }
 
+const ReleaseVersion *ReleaseVariant::releaseVersion() const {
+    return qobject_cast<const ReleaseVersion*>(parent());
+}
+
 Release *ReleaseVariant::release() {
+    return releaseVersion()->release();
+}
+
+const Release *ReleaseVariant::release() const {
     return releaseVersion()->release();
 }
 
@@ -687,7 +714,16 @@ ReleaseVariant::Type ReleaseVariant::type() const {
 }
 
 QString ReleaseVariant::name() const {
-    return m_arch->description();
+    if (type() == ATOMIC && release()->name().toLower().contains("workstation"))
+        return m_arch->description() + " - Silverblue";
+    else if (type() == ATOMIC)
+        return m_arch->description() + " - Atomic";
+    else if (type() == FULL)
+        return m_arch->description() + " - Full Image";
+    else if (type() == NETINSTALL)
+        return m_arch->description() + " - Net Install";
+    else
+        return m_arch->description();
 }
 
 QString ReleaseVariant::fullName() {

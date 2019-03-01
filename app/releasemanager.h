@@ -103,7 +103,7 @@ public:
 
     Q_INVOKABLE void setLocalFile(const QString &path);
 
-    bool updateUrl(const QString &release, int version, const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
+    bool updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
 
     QStringList architectures() const;
     int filterArchitecture() const;
@@ -219,7 +219,7 @@ public:
 
     Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots);
     void setLocalFile(const QString &path);
-    bool updateUrl(int version, const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
+    bool updateUrl(int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
     ReleaseManager *manager();
 
     int index() const;
@@ -290,13 +290,15 @@ public:
         BETA,
         ALPHA
     };
+
     Q_ENUMS(Status)
 
     ReleaseVersion(Release *parent, int number, ReleaseVersion::Status status = FINAL, QDateTime releaseDate = QDateTime());
     ReleaseVersion(Release *parent, const QString &file, int64_t size);
     Release *release();
+    const Release *release() const;
 
-    bool updateUrl(const QString &status, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
+    bool updateUrl(const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
 
     int number() const;
     QString name() const;
@@ -362,7 +364,8 @@ public:
     enum Type {
         LIVE = 0,
         NETINSTALL,
-        FULL
+        FULL,
+        ATOMIC
     };
     Q_ENUMS(Type)
     enum Status {
@@ -393,13 +396,15 @@ public:
         tr("Error")
     };
 
-    ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, ReleaseArchitecture *arch, Type type = LIVE);
+    ReleaseVariant(ReleaseVersion *parent, QString url,  QString shaHash, int64_t size, ReleaseArchitecture *arch, Type type = LIVE);
     ReleaseVariant(ReleaseVersion *parent, const QString &file, int64_t size);
 
     bool updateUrl(const QString &url, const QString &sha256, int64_t size);
 
     ReleaseVersion *releaseVersion();
+    const ReleaseVersion *releaseVersion() const;
     Release *release();
+    const Release *release() const;
 
     ReleaseArchitecture *arch() const;
     ReleaseVariant::Type type() const;

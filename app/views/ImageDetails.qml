@@ -173,7 +173,7 @@ Item {
                                 font.pointSize: $(10)
                                 color: mixColors(palette.window, palette.windowText, 0.3)
                                 visible: typeof releases.selected.version !== 'undefined'
-                                text: releases.variant.arch.description
+                                text: releases.variant.name
                             }
                             Text {
                                 font.pointSize: $(8)
