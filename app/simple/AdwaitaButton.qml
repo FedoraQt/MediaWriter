@@ -25,7 +25,7 @@ Button {
     id: root
     property bool flat: false
     property color color: palette.button
-    property color textColor: palette.buttonText
+    property color textColor: palette.text
 
     style: ButtonStyle {
         background: AdwaitaRectangle {
