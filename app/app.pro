@@ -8,6 +8,8 @@ LIBS += -lisomd5
 
 CONFIG += c++11
 
+VERSION=4.1.3
+
 HEADERS += \
     drivemanager.h \
     releasemanager.h \
@@ -88,6 +90,9 @@ macx {
 
     QMAKE_INFO_PLIST = Info.plist
     ICON = assets/icon/mediawriter.icns
+
+    QMAKE_POST_LINK += sed -i -e "s/@MEDIAWRITER_VERSION_SHORT@/$$MEDIAWRITER_VERSION_SHORT/g" \"./$${TARGET}.app/Contents/Info.plist\";
+    QMAKE_POST_LINK += sed -i -e "s/@MEDIAWRITER_VERSION@/$$MEDIAWRITER_VERSION/g" \"./$${TARGET}.app/Contents/Info.plist\";
 }
 win32 {
     HEADERS += windrivemanager.h
