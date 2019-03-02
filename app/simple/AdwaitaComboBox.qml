@@ -73,7 +73,7 @@ AdwaitaRectangle {
         x: $(9)
         anchors.verticalCenter: parent.verticalCenter
         text: count > 0 && options.currentItem ? options.currentItem.text : placeholderText
-        color: enabled ? palette.buttonText : disabledPalette.buttonText
+        color: enabled ? palette.text : disabledPalette.text
         font.pointSize: $(9)
     }
 

@@ -38,6 +38,8 @@ ApplicationWindow {
 
     SystemPalette {
         id: palette
+        // we have to make this color ourselves because Qt doesn't report them correctly with Mac dark mode
+        property color background: Qt.lighter(palette.window, 1.2)
     }
     SystemPalette {
         id: disabledPalette

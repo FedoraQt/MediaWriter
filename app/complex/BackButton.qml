@@ -39,7 +39,7 @@ AdwaitaButton {
             width: $(2)
             height: $(9)
             radius: $(2)
-            color: mixColors(palette.button, palette.buttonText, 0.5)
+            color: mixColors(palette.button, palette.text, 0.5)
         }
         Rectangle {
             y: $(1.5)
@@ -47,13 +47,13 @@ AdwaitaButton {
             width: $(9)
             height: $(2)
             radius: $(2)
-            color: mixColors(palette.button, palette.buttonText, 0.5)
+            color: mixColors(palette.button, palette.text, 0.5)
         }
     }
     Text {
         id: text
         text: qsTr("Back")
-        color: palette.buttonText
+        color: palette.text
         font.pointSize: $(9)
         anchors {
             left: arrow.left

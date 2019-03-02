@@ -72,7 +72,7 @@ FocusScope {
             width: 1
         }
         radius: $(5)
-        color: palette.base
+        color: palette.background
         anchors {
             top: parent.top
             left: parent.left
@@ -105,7 +105,7 @@ FocusScope {
                     antialiasing: true
                     width: height
                     radius: height / 2
-                    color: palette.base
+                    color: palette.background
                     anchors.centerIn: parent
                 }
                 Rectangle {
@@ -303,9 +303,9 @@ FocusScope {
                     Rectangle {
                         width: parent.width
                         radius: $(5)
-                        color: palette.base
+                        color: palette.background
                         border {
-                            color: Qt.darker(palette.base, 1.3)
+                            color: Qt.darker(palette.background, 1.3)
                             width: 1
                         }
                         height: childrenRect.height + $(24)
@@ -376,11 +376,11 @@ FocusScope {
                 Rectangle {
                     anchors.fill: parent
                     anchors.topMargin: $(-10)
-                    color: threeDotMouse.containsPress ? Qt.darker(palette.window, 1.2) : threeDotMouse.containsMouse ? palette.window : palette.base
+                    color: threeDotMouse.containsPress ? Qt.darker(palette.window, 1.2) : threeDotMouse.containsMouse ? palette.window : palette.background
                     Behavior on color { ColorAnimation { duration: 120 } }
                     radius: $(5)
                     border {
-                        color: Qt.darker(palette.base, 1.3)
+                        color: Qt.darker(palette.background, 1.3)
                         width: 1
                     }
                 }

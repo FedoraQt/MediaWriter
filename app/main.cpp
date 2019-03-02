@@ -68,6 +68,7 @@ int main(int argc, char **argv)
     // qt x11 scaling is broken
     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
+    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication app(argc, argv);
     options.parse(app.arguments());
 
