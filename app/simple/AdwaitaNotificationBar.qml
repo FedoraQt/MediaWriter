@@ -70,7 +70,7 @@ Rectangle {
             verticalAlignment: Text.AlignVCenter
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
 
-            font.pointSize: $(9)
+            font.pointSize: $$(9)
             color: "white"
             textFormat: Text.RichText
         }

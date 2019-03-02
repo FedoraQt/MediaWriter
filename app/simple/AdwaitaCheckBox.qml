@@ -49,7 +49,7 @@ CheckBox {
             }
         }
         label: Text {
-            font.pointSize: $(9)
+            font.pointSize: $$(9)
             text: control.text
             color: control.enabled ? palette.windowText : disabledPalette.windowText
         }

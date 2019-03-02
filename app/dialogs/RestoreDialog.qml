@@ -84,7 +84,7 @@ Dialog {
                                             </p>")
                     textFormat: Text.RichText
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    font.pointSize: $(9)
+                    font.pointSize: $$(9)
                     color: palette.windowText
                 }
                 ColumnLayout {
@@ -106,7 +106,7 @@ Dialog {
                         Layout.alignment: Qt.AlignHCenter
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         text: qsTr("<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
-                        font.pointSize: $(9)
+                        font.pointSize: $$(9)
                         color: palette.windowText
                     }
                 }
@@ -121,7 +121,7 @@ Dialog {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: qsTr("Your drive was successfully restored!")
-                        font.pointSize: $(9)
+                        font.pointSize: $$(9)
                         color: palette.windowText
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     }
@@ -137,7 +137,7 @@ Dialog {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: qsTr("Unfortunately, an error occurred during the process.<br>Please try restoring the drive using your system tools.")
-                        font.pointSize: $(9)
+                        font.pointSize: $$(9)
                         color: palette.windowText
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     }

@@ -65,7 +65,7 @@ RowLayout {
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.Wrap
         textFormat: Text.RichText
-        font.pointSize: $(9)
+        font.pointSize: $$(9)
         color: palette.windowText
         onLinkActivated: Qt.openUrlExternally(link)
         MouseArea {

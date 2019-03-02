@@ -80,7 +80,7 @@ RowLayout {
         Layout.fillHeight: true
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignRight
-        font.pointSize: $(9)
+        font.pointSize: $$(9)
         textFormat: Text.RichText
         color: palette.windowText
         onLinkActivated: Qt.openUrlExternally("file://" + link)

@@ -51,9 +51,13 @@ ApplicationWindow {
         height = $(480)
     }
 
+    property real fontScalingFactor: Qt.platform.os === "osx" ? 1.33 : 1
     property real scalingFactor: Math.ceil(Screen.pixelDensity * 25.4) / 96 > 1 ? Math.ceil(Screen.pixelDensity * 25.4) / 96 : 1
     function $(x) {
         return x
+    }
+    function $$(x) {
+        return fontScalingFactor * x
     }
 
     function mixColors(color1, color2, ratio) {

@@ -74,7 +74,7 @@ AdwaitaRectangle {
         anchors.verticalCenter: parent.verticalCenter
         text: count > 0 && options.currentItem ? options.currentItem.text : placeholderText
         color: enabled ? palette.text : disabledPalette.text
-        font.pointSize: $(9)
+        font.pointSize: $$(9)
     }
 
     Keys.onUpPressed: {
@@ -147,7 +147,7 @@ AdwaitaRectangle {
                 x: $(9)
                 anchors.verticalCenter: parent.verticalCenter
                 text: textRole ? model[textRole] : modelData
-                font.pointSize: $(9)
+                font.pointSize: $$(9)
             }
             Keys.onSpacePressed: itemMouse.action()
             MouseArea {

@@ -69,13 +69,13 @@ Item {
 
         Column {
             Text {
-                font.pointSize: $(9)
+                font.pointSize: $$(9)
                 font.bold: true
                 color: "white"
                 id: title
             }
             Text {
-                font.pointSize: $(9)
+                font.pointSize: $$(9)
                 color: "white"
                 id: description
             }
