@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DEVELOPER_ID="Mac Developer: Martin Briza (N952V7G2F5)"
-QT_ROOT="${HOME}/Qt/5.8/clang_64"
+QT_ROOT="${HOME}/Qt/5.12.1/clang_64"
 QMAKE="${QT_ROOT}/bin/qmake"
 MACDEPLOYQT="${QT_ROOT}/bin/macdeployqt"
 
@@ -33,9 +33,11 @@ for binary in "helper" "Fedora Media Writer"; do
         grep -E "^\s" | grep -Ev "Foundation|OpenGL|AGL|DiskArbitration|IOKit|libc\+\+|libobjc|libSystem|@rpath" |\
         sed -e 's/[[:space:]]\([^[:space:]]*\).*/\1/' |\
         while read library; do
-        echo "Copying $(basename $library)"
-        cp $library "app/Fedora Media Writer.app/Contents/Frameworks"
-        install_name_tool -change "$library" "@executable_path/../Frameworks/$(basename ${library})" "app/Fedora Media Writer.app/Contents/MacOS/$binary"    
+        if [[ ! $library == @loader_path/* ]]; then
+            echo "Copying $(basename $library)"
+            cp $library "app/Fedora Media Writer.app/Contents/Frameworks"
+            install_name_tool -change "$library" "@executable_path/../Frameworks/$(basename ${library})" "app/Fedora Media Writer.app/Contents/MacOS/$binary"
+        fi
     done
 done
 
