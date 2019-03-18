@@ -96,7 +96,7 @@ Item {
                         Layout.fillWidth: true
                     }
                     AdwaitaButton {
-                        text: qsTr("Create Live USB")
+                        text: qsTr("Create Live USB…")
                         color: "#628fcf"
                         textColor: "white"
                         onClicked: {
