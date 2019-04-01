@@ -55,6 +55,9 @@ int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
 }
 
 void WriteJob::work() {
+    out << "WRITE\n";
+    out.flush();
+
     if (what.endsWith(".xz")) {
         if (!writeCompressed()) {
             return;
@@ -210,9 +213,13 @@ bool WriteJob::writeCompressed() {
 void WriteJob::check() {
     QFile target("/dev/r"+where);
     target.open(QIODevice::ReadOnly);
+    out << "CHECK\n";
+    out.flush();
     switch (mediaCheckFD(target.handle(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
     case ISOMD5SUM_CHECK_NOT_FOUND:
     case ISOMD5SUM_CHECK_PASSED:
+        out << "DONE\n";
+        out.flush();
         err << "OK\n";
         err.flush();
         qApp->exit(0);

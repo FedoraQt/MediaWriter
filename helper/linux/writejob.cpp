@@ -247,6 +247,8 @@ bool WriteJob::check(int fd) {
     switch (mediaCheckFD(fd, &WriteJob::staticOnMediaCheckAdvanced, this)) {
     case ISOMD5SUM_CHECK_NOT_FOUND:
     case ISOMD5SUM_CHECK_PASSED:
+        out << "DONE\n";
+        out.flush();
         err << "OK\n";
         err.flush();
         qApp->exit(0);
@@ -293,7 +295,10 @@ void WriteJob::onFileChanged(const QString &path) {
         return;
     }
 
-    out << "1\n"; //to immediately trigger the UI into writing mode
+    //to immediately trigger the UI into writing mode
+    out << "WRITE\n";
+    out.flush();
+    out << "1\n";
     out.flush();
 
     if (!write(fd.fileDescriptor())) {

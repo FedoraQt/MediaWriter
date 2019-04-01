@@ -18,6 +18,7 @@
  */
 
 #include "windrivemanager.h"
+#include "notifications.h"
 
 #include <QTimer>
 #include <QDebug>
@@ -350,6 +351,7 @@ void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
 
     if (exitCode == 0) {
         m_image->setStatus(ReleaseVariant::FINISHED);
+        Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
     }
     else {
         m_image->setErrorString(m_child->readAllStandardError().trimmed());
@@ -390,6 +392,15 @@ void WinDrive::onReadyRead() {
             mDebug() << this->metaObject()->className() << "Written media check starting";
             m_progress->setValue(0);
             m_image->setStatus(ReleaseVariant::WRITE_VERIFYING);
+        }
+        else if (line == "WRITE") {
+            m_progress->setValue(0);
+            m_image->setStatus(ReleaseVariant::WRITING);
+        }
+        else if (line == "DONE") {
+            m_progress->setValue(m_image->size());
+            m_image->setStatus(ReleaseVariant::FINISHED);
+            Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
         }
         else {
             bool ok;

@@ -232,6 +232,9 @@ void WriteJob::onFileChanged(const QString &path) {
 
     what = what.replace(QRegExp("[.]part$"), "");
 
+    out << "WRITE\n";
+    out.flush();
+
     work();
 }
 
@@ -393,6 +396,8 @@ bool WriteJob::check() {
     switch (mediaCheckFD(_open_osfhandle(reinterpret_cast<intptr_t>(drive), 0), &WriteJob::staticOnMediaCheckAdvanced, this)) {
     case ISOMD5SUM_CHECK_NOT_FOUND:
     case ISOMD5SUM_CHECK_PASSED:
+        out << "DONE\n";
+        out.flush();
         err << "OK\n";
         err.flush();
         qApp->exit(0);

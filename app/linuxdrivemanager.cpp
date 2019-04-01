@@ -306,6 +306,15 @@ void LinuxDrive::onReadyRead() {
             m_progress->setValue(0);
             m_image->setStatus(ReleaseVariant::WRITE_VERIFYING);
         }
+        else if (line == "WRITE") {
+            m_progress->setValue(0);
+            m_image->setStatus(ReleaseVariant::WRITING);
+        }
+        else if (line == "DONE") {
+            m_progress->setValue(m_image->size());
+            m_image->setStatus(ReleaseVariant::FINISHED);
+            Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
+        }
         else {
             bool ok = false;
             qreal val = line.toULongLong(&ok);
