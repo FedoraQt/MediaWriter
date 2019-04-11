@@ -36,7 +36,11 @@ XPStyle on
     ; Run the temporary installer and then sign the unsigned binary that has been created
     !system "chmod +x ../../build/tempinstaller.exe" = 0
     !system "../../build/tempinstaller.exe" = 512
-    !system 'osslsigncode sign -pkcs12 "${CERTPATH}/authenticode.pfx" -readpass "${CERTPASS}" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "../../build/wineprefix/drive_c/uninstall.unsigned.exe" -out "../../build/wineprefix/drive_c/uninstall.exe" ' = 0
+    !if "${CERTPASS}" != ""
+        !system 'osslsigncode sign -pkcs12 "${CERTPATH}/authenticode.pfx" -readpass "${CERTPASS}" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "../../build/wineprefix/drive_c/uninstall.unsigned.exe" -out "../../build/wineprefix/drive_c/uninstall.exe" ' = 0
+    !else
+        !system 'mv "../../build/wineprefix/drive_c/uninstall.unsigned.exe" "../../build/wineprefix/drive_c/uninstall.exe"' = 0
+    !endif
 
     outFile "FMW-setup.exe"
     SetCompressor /SOLID lzma

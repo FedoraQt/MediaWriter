@@ -12,6 +12,25 @@
 # You have to provide the $CERTPASS with the path to a file containing the passphrase to your
 # certificate (beware of the trailing last new line symbol)
 
+opt_local=false
+opt_install=false
+opt_debug=false
+opt_nosign=false
+
+while test $# -gt 0
+do
+    case "$1" in
+        local) opt_local=true
+            ;;
+        install) opt_install=true
+            ;;
+        debug) opt_debug=true
+            ;;
+        nosign) opt_nosign=true
+            ;;
+    esac
+    shift
+done
 
 pushd $(dirname $0) >/dev/null
 SCRIPTDIR=$(pwd -P)
@@ -23,20 +42,21 @@ BUILDPATH="$ROOTPATH/build"
 MEDIAWRITER="$BUILDPATH/app/release/mediawriter.exe"
 HELPER="$BUILDPATH/app/helper.exe"
 
-if [ -z "$CERTPATH" ]; then
-    CERTPATH=~
+if ! $opt_nosign; then
+    if [ -z "$CERTPATH" ]; then
+        CERTPATH=~
+    fi
+    if [ -z "$CERTPASS" ]; then
+        CERTPASS="$CERTPATH/authenticode.pass"
+    fi
 fi
-if [ -z "$CERTPASS" ]; then
-    CERTPASS="$CERTPATH/authenticode.pass"
-fi
-
+    
 PACKAGES="mingw32-qt5-qmake mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-nsis osslsigncode wine-core"
-if [ "$1" != "local" ]; then
+if ! $opt_local; then
     PACKAGES="$PACKAGES mingw32-mediawriter"
 fi
 
-
-if [ "$1" == "install" ]; then
+if $opt_install; then
     echo "=== Installing dependencies"
     dnf install $PACKAGES
     exit $?
@@ -68,9 +88,9 @@ pushd "$BUILDPATH" >/dev/null
 
 VERSION_FULL=''
 
-if [ "$1" == "local" ]; then
+if $opt_local; then
     VERSION_FULL=$(git describe --tags)
-    if [ "$2" == "debug" ]; then
+    if $opt_debug; then
         INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-${VERSION_FULL}-debug.exe"
     else
         INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-${VERSION_FULL}.exe"
@@ -86,7 +106,7 @@ VERSION_MINOR=$(cut -d. -f2 <<< "${VERSION_STRIPPED}")
 VERSION_BUILD=$(cut -d. -f3 <<< "${VERSION_STRIPPED}")
 
 
-if [ "$1" == "local" ]; then
+if $opt_local; then
     echo "=== Building"
     if [ "2" == "debug" ]; then
         mingw32-qmake-qt5 .. CONFIG+=debug
@@ -119,7 +139,7 @@ for i in $BINARIES; do
     cp -r "${BIN_PREFIX}/${i}" "$(dirname $i)"
 done
 
-if [ "$2" == "debug" ]; then
+if $opt_debug; then
     for i in $BINARIES; do
         mkdir -p $(dirname $i)
         cp -r "${BIN_PREFIX}/${i}.debug" "$(dirname $i)"
@@ -147,11 +167,13 @@ echo "=== Inserting helper"
 # See http://stackoverflow.com/questions/18287960/signing-windows-application-on-linux-based-distros for details
 echo "=== Signing binaries"
 
-osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "$MEDIAWRITER" -out "$MEDIAWRITER.signed" >/dev/null
-mv "$MEDIAWRITER.signed" "$MEDIAWRITER"
+if ! $opt_nosign; then
+    osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "$MEDIAWRITER" -out "$MEDIAWRITER.signed" >/dev/null
+    mv "$MEDIAWRITER.signed" "$MEDIAWRITER"
 
-osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "$HELPER" -out "$HELPER.signed" >/dev/null
-mv "$HELPER.signed" "$HELPER"
+    osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "$HELPER" -out "$HELPER.signed" >/dev/null
+    mv "$HELPER.signed" "$HELPER"
+fi
 
 cp "$HELPER" .
 
@@ -171,7 +193,9 @@ makensis -DCERTPATH="$CERTPATH" -DCERTPASS="$CERTPASS" "$SCRIPTDIR/mediawriter.t
 rm "$SCRIPTDIR/mediawriter.tmp.nsi"
 mv "$SCRIPTDIR/FMW-setup.exe" "$INSTALLER"
 
-osslsigncode sign -pkcs12 $CERTPATH//authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "$INSTALLER" -out "$INSTALLER.signed" >/dev/null
-mv "$INSTALLER.signed" "$INSTALLER"
+if ! $opt_nosign; then
+    osslsigncode sign -pkcs12 $CERTPATH//authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "$INSTALLER" -out "$INSTALLER.signed" >/dev/null
+    mv "$INSTALLER.signed" "$INSTALLER"
+fi
 
 echo "=== Installer is located in $INSTALLER"
