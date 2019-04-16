@@ -51,7 +51,7 @@ if ! $opt_nosign; then
     fi
 fi
     
-PACKAGES="mingw32-qt5-qmake mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-nsis osslsigncode wine-core"
+PACKAGES="mingw32-qt5-qmake mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-nsis osslsigncode wine-core mingw32-angleproject"
 if ! $opt_local; then
     PACKAGES="$PACKAGES mingw32-mediawriter"
 fi
@@ -66,7 +66,13 @@ echo "=== Checking dependencies"
 DEPENDENCIES=0
 for i in $PACKAGES; do
     rpm -V $i
-    if [ $? -ne 0 ]; then DEPENDENCIES=1; fi
+    if [ $? -ne 0 ]; then 
+        if [ "$i" == "osslsigncode" ]; then
+            opt_nosign=true
+        else
+            DEPENDENCIES=1 
+        fi
+    fi
 done
 if [ $DEPENDENCIES -ne 0 ]; then exit 1; fi
 
