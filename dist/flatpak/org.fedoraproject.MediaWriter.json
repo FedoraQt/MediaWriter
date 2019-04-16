@@ -1,32 +1,30 @@
 {
     "id": "org.fedoraproject.MediaWriter",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.9",
+    "runtime-version": "5.12",
     "sdk": "org.kde.Sdk",
     "command": "mediawriter",
     "rename-appdata-file": "mediawriter.appdata.xml",
     "rename-desktop-file": "mediawriter.desktop",
+    "rename-icon": "mediawriter",
     "finish-args": [
         "--socket=x11",
-	"--device=dri",
+        "--socket=wayland",
+        "--device=dri",
         "--filesystem=host",
-	"--share=network",
-	"--share=ipc",
-	"--system-talk-name=org.freedesktop.UDisks2"
+        "--share=network",
+        "--share=ipc",
+        "--system-talk-name=org.freedesktop.UDisks2"
     ],
     "modules": [
         {
             "name": "MediaWriter",
+            "buildsystem": "qmake",
             "sources": [
                 {
                     "type": "git",
                     "url": "http://github.com/MartinBriza/MediaWriter",
                     "branch": "master"
-                },
-                {
-                    "type": "file",
-                    "path": "mediawriter-configure",
-                    "dest-filename": "configure"
                 }
             ]
         }
