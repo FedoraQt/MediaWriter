@@ -204,6 +204,7 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         QJsonObject obj = i.toObject();
         QString arch = obj["arch"].toString().toLower();
         QString url = obj["link"].toString();
+        QString category = obj["variant"].toString().toLower();
         QString release = obj["subvariant"].toString().toLower();
         QString versionWithStatus = obj["version"].toString().toLower();
         QString sha256 = obj["sha256"].toString();
@@ -226,7 +227,7 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
             continue;
 
         // silverblue actually belongs under workstation
-        if (release == "silverblue") {
+        if (category == "silverblue" || release == "silverblue") {
             release = "workstation";
             type = "atomic";
         }
