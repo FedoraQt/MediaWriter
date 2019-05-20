@@ -28,6 +28,10 @@
 #include <QElapsedTimer>
 #include <QStandardPaths>
 
+#ifdef __linux
+#include <QX11Info>
+#endif
+
 #include "crashhandler.h"
 #include "drivemanager.h"
 #include "releasemanager.h"
@@ -56,18 +60,23 @@ int main(int argc, char **argv)
     CrashHandler::install();
 
 #ifdef __linux
-    if (qEnvironmentVariableIsEmpty("QSG_RENDER_LOOP"))
-        qputenv("QSG_RENDER_LOOP", "threaded");
-    qputenv("GDK_BACKEND", "x11");
+    if (QX11Info::isPlatformX11()) {
+        if (qEnvironmentVariableIsEmpty("QSG_RENDER_LOOP"))
+            qputenv("QSG_RENDER_LOOP", "threaded");
+        qputenv("GDK_BACKEND", "x11");
+    }
 #endif
 
     QApplication::setOrganizationDomain("fedoraproject.org");
     QApplication::setOrganizationName("fedoraproject.org");
     QApplication::setApplicationName("MediaWriter");
-#ifndef __linux
+
+#ifdef __linux
     // qt x11 scaling is broken
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    if (QX11Info::isPlatformX11())
 #endif
+        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication app(argc, argv);
     options.parse(app.arguments());
