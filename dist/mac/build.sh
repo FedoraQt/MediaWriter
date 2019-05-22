@@ -4,6 +4,9 @@ DEVELOPER_ID="Mac Developer: Martin Briza (N952V7G2F5)"
 QT_ROOT="${HOME}/Qt/5.12.1/clang_64"
 QMAKE="${QT_ROOT}/bin/qmake"
 MACDEPLOYQT="${QT_ROOT}/bin/macdeployqt"
+NOTARIZATION_EMAIL=""
+NOTARIZATION_KEYCHAIN_ITEM="XCODE_NOTARY"
+NOTARIZATION_ITUNES_ORGID=""
 
 pushd $(dirname $0) >/dev/null
 SCRIPTDIR=$(pwd -P)
@@ -44,13 +47,20 @@ done
 echo "=== Signing the package ==="
 # sign all frameworks and then the package
 find app/Fedora\ Media\ Writer.app -name "*framework" | while read framework; do
-    codesign -s "$DEVELOPER_ID" --deep -v -f "$framework/Versions/Current/"
+    codesign -s "$DEVELOPER_ID" --deep -v -f "$framework/Versions/Current/" -o runtime
 done
-codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/
+codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/ -o runtime
 
 echo "=== Creating a disk image ==="
 # create the .dmg package - beware, it won't work while FMW is running (blocks partition mounting)
 rm -f ../FedoraMediaWriter-osx-$(git describe --tags).dmg
-hdiutil create -srcfolder app/Fedora\ Media\ Writer.app  -format UDCO -imagekey zlib-level=9 -scrub -volname FedoraMediaWriter-osx ../FedoraMediaWriter-osx-$(git describe --tags).dmg
+hdiutil create -srcfolder app/Fedora\ Media\ Writer.app  -format UDCO -imagekey zlib-level=9 -scrub -volname FedoraMediaWriter-osx ../FedoraMediaWriter-osx-$(git describe --tags).unnotarized.dmg
+
+echo "=== Submitting for notarization ==="
+xcrun altool --notarize-app --primary-bundle-id "org.fedoraproject.mediawriter" --username "${NOTARIZATION_EMAIL}" --password "@keychain:${NOTARIZATION_KEYCHAIN_ITEM}" --asc-provider "${NOTARIZATION_ITUNES_ORGID}" --file "../FedoraMediaWriter-osx-$(git describe --tags).unnotarized.dmg"
+
+echo "DONE. After notarization finished (you'll get an email), run:"
+echo "$ xcrun stabler stable app/Fedora\ Media\ Writer.app"
+echo "$ hdiutil create -srcfolder app/Fedora\ Media\ Writer.app  -format UDCO -imagekey zlib-level=9 -scrub -volname FedoraMediaWriter-osx ../FedoraMediaWriter-osx-$(git describe --tags).dmg"
 
 popd >/dev/null
