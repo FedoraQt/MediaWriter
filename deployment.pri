@@ -16,7 +16,7 @@ linux {
 QMAKE_LIBDIR += $$top_builddir/lib
 INCLUDEPATH += $$top_srcdir/lib/
 isEmpty(MEDIAWRITER_VERSION) {
-    MEDIAWRITER_VERSION=$$quote($$system(git -C \""$$_PRO_FILE_PWD_"\" describe --tags || echo N/A))
+    MEDIAWRITER_VERSION=$$quote($$system(git -C \""$$_PRO_FILE_PWD_"\" describe --tags || echo "Not-Available"))
 }
 MEDIAWRITER_VERSION_SHORT=$$section(MEDIAWRITER_VERSION,-,0,0)
 DEFINES += MEDIAWRITER_VERSION="\\\"$$MEDIAWRITER_VERSION\\\""
