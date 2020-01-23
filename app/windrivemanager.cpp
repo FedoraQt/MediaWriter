@@ -281,9 +281,6 @@ bool WinDrive::write(ReleaseVariant *data) {
     args << QString("%1").arg(m_device);
     m_child->setArguments(args);
 
-    m_progress->setTo(data->size());
-    m_progress->setValue(NAN);
-
     mDebug() << this->metaObject()->className() << "Starting" << m_child->program() << args;
     m_child->start();
     return true;
@@ -382,6 +379,9 @@ void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) 
 void WinDrive::onReadyRead() {
     if (!m_child)
         return;
+
+    m_progress->setTo(m_image->size());
+    m_progress->setValue(NAN);
 
     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
         m_image->setStatus(ReleaseVariant::WRITING);
