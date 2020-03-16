@@ -39,6 +39,8 @@ Building FMW in Windows is just the matter of running `qmake` and `make` - as lo
 
 To create a standalone package, use the `windeployqt` tool, included in your Qt installation. You will probably have to include a bunch of not included DLLs.
 
+It is also possible to build the application using the `MinGW` compiler suite in Fedora (and probably some other distros).
+
 #### Requirements
 
 * `xz-libs`
