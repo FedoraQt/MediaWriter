@@ -109,8 +109,6 @@ bool MacDrive::write(ReleaseVariant *data) {
     command.append(" write ");
     if (data->status() == ReleaseVariant::WRITING) {
         command.append(QString("'%1'").arg(data->iso()));
-        m_progress->setTo(data->size());
-        m_progress->setValue(0.0/0.0);
     }
     else {
         command.append(QString("'%1'").arg(data->temporaryPath()));
@@ -224,6 +222,11 @@ void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) 
 void MacDrive::onReadyRead() {
     if (!m_child)
         return;
+
+    if (m_image->status() == ReleaseVariant::WRITING) {
+        m_progress->setTo(m_image->size());
+        m_progress->setValue(0.0/0.0);
+    }
 
     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
         m_image->setStatus(ReleaseVariant::WRITING);

@@ -228,8 +228,6 @@ bool LinuxDrive::write(ReleaseVariant *data) {
     connect(m_process, &QProcess::errorOccurred, this, &LinuxDrive::onErrorOccurred);
 #endif
 
-    m_progress->setTo(data->size());
-    m_progress->setValue(0.0/0.0);
     m_process->start(QIODevice::ReadOnly);
 
     return true;
@@ -295,6 +293,9 @@ void LinuxDrive::restore() {
 void LinuxDrive::onReadyRead() {
     if (!m_process)
         return;
+
+    m_progress->setTo(data->size());
+    m_progress->setValue(0.0/0.0);
 
     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
         m_image->setStatus(ReleaseVariant::WRITING);
