@@ -294,7 +294,7 @@ void LinuxDrive::onReadyRead() {
     if (!m_process)
         return;
 
-    m_progress->setTo(data->size());
+    m_progress->setTo(m_image->size());
     m_progress->setValue(0.0/0.0);
 
     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
