@@ -16,7 +16,7 @@ Please don't forget to attach the FedoraMediaWriter.log file that will appear in
 
 ## Building
 
-You can build FMW using the default Qt `qmake` build system.
+You can build FMW using the default Qt `qmake` build system. The gist for all three platforms is written below. For a more thorough look into how the releases are composed, you can read our [GitHub Actions configuration](https://github.com/FedoraQt/MediaWriter/blob/master/.github/workflows/ccpp.yml).
 
 ### Linux
 
@@ -35,11 +35,11 @@ The main binary, `mediawriter`, will be written to `$PREFIX/bin` and the helper 
 
 ### Windows
 
-Building FMW in Windows is just the matter of running `qmake` and `make` - as long as you have all dependencies in your include path.
+Building FMW in Windows is just the matter of running `qmake` and `make` - as long as you have all dependencies in your include path. Only MinGW (both 32b and 64b variants) works at this moment.
 
 To create a standalone package, use the `windeployqt` tool, included in your Qt installation. You will probably have to include a bunch of not included DLLs.
 
-It is also possible to build the application using the `MinGW` compiler suite in Fedora (and probably some other distros).
+It is also possible to crosscompile the application using the `MinGW` compiler suite in Fedora (and probably some other distros).
 
 #### Requirements
 
