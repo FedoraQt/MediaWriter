@@ -2,7 +2,7 @@ TEMPLATE = app
 
 QT += core network
 
-LIBS += -lisomd5 -lliblzma
+LIBS += -L$$[QT_INSTALL_BINS] -lisomd5 -lliblzma
 
 CONFIG += c++11
 CONFIG += console
