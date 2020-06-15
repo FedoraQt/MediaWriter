@@ -91,36 +91,28 @@ bool MacDrive::write(ReleaseVariant *data) {
     connect(m_child, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
     connect(m_child, &QProcess::readyRead, this, &MacDrive::onReadyRead);
 
-    m_child->setProgram("osascript");
-
-    QString command;
-    command.append("do shell script \"");
     if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
-        command.append(QString("'%1/../../../../helper/mac/helper.app/Contents/MacOS/helper'").arg(qApp->applicationDirPath()));
+        m_child->setProgram(QString("%1/../../../../helper/mac/helper.app/Contents/MacOS/helper").arg(qApp->applicationDirPath()));
     }
     else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
-        command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
+        m_child->setProgram(QString("%1/helper").arg(qApp->applicationDirPath()));
     }
     else {
         data->setErrorString(tr("Could not find the helper binary. Check your installation."));
         setDelayedWrite(false);
         return false;
     }
-    command.append(" write ");
+    QStringList args;
+    args.append("write");
     if (data->status() == ReleaseVariant::WRITING) {
-        command.append(QString("'%1'").arg(data->iso()));
+        args.append(QString("%1").arg(data->iso()));
     }
     else {
-        command.append(QString("'%1'").arg(data->temporaryPath()));
+        args.append(QString("%1").arg(data->temporaryPath()));
     }
-    command.append(" ");
-    command.append(m_bsdDevice);
-    command.append("\" with administrator privileges without altering line endings");
+    args.append(m_bsdDevice);
 
-    QStringList args;
-    args << "-e";
-    args << command;
-    mCritical() << "The command is" << command;
+    mCritical() << "The command is" << m_child->program() << args;
     m_child->setArguments(args);
 
     m_child->start();

@@ -5,7 +5,7 @@ set -e
 
 PATH="/usr/local/opt/qt/bin:/usr/local/opt/git/bin:$PATH"
 
-DEVELOPER_ID="Mac Developer: Martin Briza (N952V7G2F5)"
+DEVELOPER_ID="Developer ID Application: Martin Briza (Z52EFCPL6D)"
 QT_ROOT="/usr/local/opt/qt"
 QMAKE="${QT_ROOT}/bin/qmake"
 MACDEPLOYQT="${QT_ROOT}/bin/macdeployqt"
@@ -74,7 +74,9 @@ function sign() {
     find app/Fedora\ Media\ Writer.app -name "*framework" | while read framework; do
         codesign -s "$DEVELOPER_ID" --deep -v -f "$framework/Versions/Current/" -o runtime
     done
-    codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/ -o runtime
+    codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/Contents/MacOS/Fedora\ Media\ Writer -o runtime --entitlements ../app/Entitlements.plist
+    codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/Contents/MacOS/helper -o runtime --entitlements ../app/Entitlements.plist
+    codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/ -o runtime --entitlements ../app/Entitlements.plist
     popd >/dev/null
 }
 
