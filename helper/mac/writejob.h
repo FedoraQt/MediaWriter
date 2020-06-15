@@ -1,6 +1,7 @@
 /*
  * Fedora Media Writer
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+ * Copyright (C) 2020 Jan Grulich <jgrulich@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -21,6 +22,7 @@
 #define WRITEJOB_H
 
 #include <QObject>
+#include <QFile>
 #include <QTextStream>
 #include <QProcess>
 #include <QFileSystemWatcher>
@@ -29,6 +31,18 @@
 // 256MB memory limit for the decompressor
 # define MEDIAWRITER_LZMA_LIMIT (1024*1024*256)
 #endif
+
+class AuthOpenProcess : public QProcess {
+    Q_OBJECT
+public:
+    AuthOpenProcess(int parentSocket, int clientSocket, const QString &device, QObject *parent = nullptr);
+
+    void setupChildProcess() override;
+
+private:
+    int m_parentSocket;
+    int m_clientSocket;
+};
 
 class WriteJob : public QObject
 {
@@ -43,10 +57,10 @@ private slots:
     void work();
     void onFileChanged(const QString &path);
 
-    bool writePlain();
-    bool writeCompressed();
+    bool writePlain(QFile &target);
+    bool writeCompressed(QFile &target);
 
-    void check();
+    void check(QFile &target);
 private:
     QString what;
     QString where;

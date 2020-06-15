@@ -1,6 +1,7 @@
 /*
  * Fedora Media Writer
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+ * Copyright (C) 2020 Jan Grulich <jgrulich@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -28,8 +29,28 @@
 #include <QDebug>
 
 #include <lzma.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <fcntl.h>
 
 #include "isomd5/libcheckisomd5.h"
+
+AuthOpenProcess::AuthOpenProcess(int parentSocket, int clientSocket, const QString &device, QObject *parent)
+    : QProcess(parent)
+    , m_parentSocket(parentSocket)
+    , m_clientSocket(clientSocket)
+{
+    setProgram(QStringLiteral("/usr/libexec/authopen"));
+    setArguments({QStringLiteral("-stdoutpipe"), QStringLiteral("-o"), QString::number(O_RDWR), QStringLiteral("/dev/r") + device});
+}
+
+void AuthOpenProcess::setupChildProcess()
+{
+    ::close(m_parentSocket);
+    ::dup2(m_clientSocket, STDOUT_FILENO);
+}
 
 WriteJob::WriteJob(const QString &what, const QString &where)
     : QObject(nullptr), what(what), where(where)
@@ -55,20 +76,77 @@ int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
 }
 
 void WriteJob::work() {
+    int sockets[2];
+    int result = socketpair(AF_UNIX, SOCK_STREAM, 0, sockets);
+    if (result == - 1) {
+        err << tr("Unable to allocate socket pair") << "\n";
+        err.flush();
+        return;
+    }
+
+    QProcess diskUtil;
+    diskUtil.setProgram("diskutil");
+    diskUtil.setArguments(QStringList() << "unmountDisk" << where);
+    diskUtil.start();
+    diskUtil.waitForFinished();
+
+    AuthOpenProcess p(sockets[0], sockets[1], where);
+    p.start(QIODevice::ReadOnly);
+
+    close(sockets[1]);
+
+    int fd = -1;
+    const size_t bufferSize = sizeof(struct cmsghdr) + sizeof(int);
+    char buffer[bufferSize];
+
+    struct iovec io_vec[1];
+    io_vec[0].iov_len = bufferSize;
+    io_vec[0].iov_base = buffer;
+
+    const socklen_t socketSize = static_cast<socklen_t>(CMSG_SPACE(sizeof(int)));
+    char cmsg_socket[socketSize];
+
+    struct msghdr message = { 0 };
+    message.msg_iov = io_vec;
+    message.msg_iovlen = 1;
+    message.msg_control = cmsg_socket;
+    message.msg_controllen = socketSize;
+
+    ssize_t size = recvmsg(sockets[0], &message, 0);
+
+    if (size > 0) {
+        struct cmsghdr *socketHeader = CMSG_FIRSTHDR(&message);
+        if (socketHeader && socketHeader->cmsg_level == SOL_SOCKET && socketHeader->cmsg_type == SCM_RIGHTS) {
+            fd = *reinterpret_cast<int*>(CMSG_DATA(socketHeader));
+        }
+    }
+
+    p.waitForFinished();
+
+    if (fd == -1) {
+        err << tr("Unable to open destination for writing") << "\n";
+        err.flush();
+        return;
+    }
+
     out << "WRITE\n";
     out.flush();
 
+    QFile target;
+    target.open(fd, QIODevice::ReadWrite, QFileDevice::AutoCloseHandle);
+
     if (what.endsWith(".xz")) {
-        if (!writeCompressed()) {
+        if (!writeCompressed(target)) {
             return;
         }
     }
     else {
-        if (!writePlain()) {
+        if (!writePlain(target)) {
             return;
         }
     }
-    check();
+
+    check(target);
 }
 
 void WriteJob::onFileChanged(const QString &path) {
@@ -80,11 +158,10 @@ void WriteJob::onFileChanged(const QString &path) {
     work();
 }
 
-bool WriteJob::writePlain() {
+bool WriteJob::writePlain(QFile &target) {
     qint64 bytesTotal = 0;
 
     QFile source(what);
-    QFile target("/dev/r"+where);
     QByteArray buffer(BLOCK_SIZE, 0);
 
     out << -1 << "\n";
@@ -92,12 +169,8 @@ bool WriteJob::writePlain() {
 
     QProcess diskUtil;
     diskUtil.setProgram("diskutil");
-    diskUtil.setArguments(QStringList() << "unmountDisk" << where);
-    diskUtil.start();
-    diskUtil.waitForFinished();
 
     source.open(QIODevice::ReadOnly);
-    target.open(QIODevice::WriteOnly);
 
     while (source.isReadable() && !source.atEnd() && target.isWritable()) {
         qint64 bytes = source.read(buffer.data(), BLOCK_SIZE);
@@ -129,7 +202,7 @@ bool WriteJob::writePlain() {
     return true;
 }
 
-bool WriteJob::writeCompressed() {
+bool WriteJob::writeCompressed(QFile &target) {
     qint64 totalRead = 0;
 
     lzma_stream strm = LZMA_STREAM_INIT;
@@ -140,8 +213,6 @@ bool WriteJob::writeCompressed() {
 
     QFile source(what);
     source.open(QIODevice::ReadOnly);
-    QFile target("/dev/r"+where);
-    target.open(QIODevice::WriteOnly);
 
     ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
     if (ret != LZMA_OK) {
@@ -210,9 +281,7 @@ bool WriteJob::writeCompressed() {
     }
 }
 
-void WriteJob::check() {
-    QFile target("/dev/r"+where);
-    target.open(QIODevice::ReadOnly);
+void WriteJob::check(QFile &target) {
     out << "CHECK\n";
     out.flush();
     switch (mediaCheckFD(target.handle(), &WriteJob::staticOnMediaCheckAdvanced, this)) {
