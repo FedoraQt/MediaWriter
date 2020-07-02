@@ -161,6 +161,7 @@ jobs:
         cp $Qt5_Dir/bin/libstdc*.dll .
         cp $Qt5_Dir/bin/libwinpthread*.dll .
         cp $Qt5_Dir/bin/libgcc*.dll .
+        cp $Qt5_Dir/bin/liblzma.dll $Qt5_Dir/bin/libliblzma.dll .
         cp /c/Program\ Files/OpenSSL/bin/*.dll .
     - name: Installer
       if: github.event_name == 'release'
