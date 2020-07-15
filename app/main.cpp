@@ -28,10 +28,6 @@
 #include <QElapsedTimer>
 #include <QStandardPaths>
 
-#ifdef __linux
-#include <QX11Info>
-#endif
-
 #include "crashhandler.h"
 #include "drivemanager.h"
 #include "releasemanager.h"
@@ -60,7 +56,7 @@ int main(int argc, char **argv)
     CrashHandler::install();
 
 #ifdef __linux
-    if (QX11Info::isPlatformX11()) {
+    if (QGuiApplication::platformName() == QStringLiteral("xcb")) {
         if (qEnvironmentVariableIsEmpty("QSG_RENDER_LOOP"))
             qputenv("QSG_RENDER_LOOP", "threaded");
         qputenv("GDK_BACKEND", "x11");
@@ -73,7 +69,7 @@ int main(int argc, char **argv)
 
 #ifdef __linux
     // qt x11 scaling is broken
-    if (QX11Info::isPlatformX11())
+    if (QGuiApplication::platformName() == QStringLiteral("xcb"))
 #endif
         QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
