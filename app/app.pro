@@ -54,7 +54,7 @@ target.path = $$BINDIR
 INSTALLS += target
 
 linux {
-    QT += dbus x11extras
+    QT += dbus
 
     HEADERS += linuxdrivemanager.h
     SOURCES += linuxdrivemanager.cpp
