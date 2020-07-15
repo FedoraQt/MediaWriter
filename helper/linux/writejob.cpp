@@ -95,7 +95,7 @@ QDBusUnixFileDescriptor WriteJob::getDescriptor() {
         return QDBusUnixFileDescriptor(-1);
     }
 
-    QDBusReply<QDBusUnixFileDescriptor> reply = device.callWithArgumentList(QDBus::Block, "OpenForBenchmark", {Properties{{"writable", true}}} );
+    QDBusReply<QDBusUnixFileDescriptor> reply = device.call(QDBus::Block, "OpenDevice", "rw", Properties{} );
     QDBusUnixFileDescriptor fd = reply.value();
 
     if (!fd.isValid()) {
