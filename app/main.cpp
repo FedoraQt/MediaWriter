@@ -37,10 +37,6 @@
 #include "releasemanager.h"
 #include "versionchecker.h"
 
-#if QT_VERSION < 0x050300
-# error "Minimum supported Qt version is 5.3.0"
-#endif
-
 #ifdef QT_STATIC
 Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
 
@@ -83,10 +79,8 @@ int main(int argc, char **argv)
 
     // considering how often we hit driver issues, I have decided to force
     // the QML software renderer on Windows and Linux, since Qt 5.9
-#if QT_VERSION >= 0x050900
     if (qEnvironmentVariableIsEmpty("QMLSCENE_DEVICE"))
         qputenv("QMLSCENE_DEVICE", "softwarecontext");
-#endif
 
     mDebug() << "Application constructed";
 

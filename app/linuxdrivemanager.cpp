@@ -223,10 +223,8 @@ bool LinuxDrive::write(ReleaseVariant *data) {
 
     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
     connect(m_process, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onFinished(int,QProcess::ExitStatus)));
-#if QT_VERSION >= 0x050600
     // TODO check if this is actually necessary - it should work just fine even without it
     connect(m_process, &QProcess::errorOccurred, this, &LinuxDrive::onErrorOccurred);
-#endif
 
     m_process->start(QIODevice::ReadOnly);
 

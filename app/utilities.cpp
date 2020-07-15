@@ -135,11 +135,9 @@ static void myMessageOutput(QtMsgType type, const QMessageLogContext &context, c
         if (options.verbose || options.logging)
             fprintf(debugFile, "D");
         break;
-#if QT_VERSION >= 0x050500
     case QtInfoMsg:
         fprintf(debugFile, "I");
         break;
-#endif
     case QtWarningMsg:
         fprintf(debugFile, "W");
         break;
