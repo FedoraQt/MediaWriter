@@ -13,8 +13,8 @@ linux {
     DEFINES += DATADIR=\\\"$$DATADIR\\\"
     DEFINES += LIBEXECDIR=\\\"$$LIBEXECDIR\\\"
 }
-QMAKE_LIBDIR += $$top_builddir/lib
-INCLUDEPATH += $$top_srcdir/lib/
+QMAKE_LIBDIR += $$top_builddir/lib $$top_builddir/theme
+INCLUDEPATH += $$top_srcdir/lib/ $$top_srcdir/theme/
 isEmpty(MEDIAWRITER_VERSION) {
     MEDIAWRITER_VERSION=$$quote($$system(git -C \""$$_PRO_FILE_PWD_"\" describe --tags || echo "Not-Available"))
 }

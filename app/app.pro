@@ -2,9 +2,9 @@ TEMPLATE = app
 
 TARGET = mediawriter
 
-QT += qml quick widgets network
+QT += qml quick quickcontrols2 widgets network
 
-LIBS += -lisomd5
+LIBS += -lisomd5 -ladwaitathemeplugin
 
 CONFIG += c++11
 

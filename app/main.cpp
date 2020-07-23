@@ -27,11 +27,15 @@
 #include <QtPlugin>
 #include <QElapsedTimer>
 #include <QStandardPaths>
+#include <QQuickStyle>
 
 #include "crashhandler.h"
 #include "drivemanager.h"
 #include "releasemanager.h"
 #include "versionchecker.h"
+
+#include "theme.h"
+#include "units.h"
 
 #ifdef QT_STATIC
 Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
@@ -70,7 +74,7 @@ int main(int argc, char **argv)
         QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
     options.parse(app.arguments());
 
     // considering how often we hit driver issues, I have decided to force
@@ -83,6 +87,10 @@ int main(int argc, char **argv)
     QTranslator translator;
     translator.load(QLocale(QLocale().language(), QLocale().country()), QString(), QString(), ":/translations");
     app.installTranslator(&translator);
+
+    // Load AdwaitaTheme
+    Q_INIT_RESOURCE(adwaitatheme);
+    QQuickStyle::setStyle(":/AdwaitaTheme");
 
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;
@@ -97,6 +105,13 @@ int main(int argc, char **argv)
     engine.rootContext()->setContextProperty("platformSupportsDelayedWriting", false);
 #endif
     mDebug() << "Loading the QML source code";
+
+    // TODO: make this work from the plugin itself
+    AdwaitaTheme *theme = new AdwaitaTheme;
+    engine.rootContext()->setContextProperty(QStringLiteral("theme"), theme);
+    qmlRegisterUncreatableType<AdwaitaTheme>("AdwaitaTheme", 2, 0, "Theme", QStringLiteral("It is not possible to instantiate Theme directly."));
+    qmlRegisterUncreatableType<AdwaitaUnits>("AdwaitaTheme", 2, 0, "Units", {});
+
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     mDebug() << "Starting the application";

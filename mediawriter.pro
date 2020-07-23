@@ -1,8 +1,8 @@
 TEMPLATE = subdirs
 
-SUBDIRS = lib app helper
+SUBDIRS = lib app helper theme
 
-app.depends = lib
+app.depends = lib theme
 helper.depends = lib
 
 equals(QT_MAJOR_VERSION, 5):lessThan(QT_MINOR_VERSION, 12) {

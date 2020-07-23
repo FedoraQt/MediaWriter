@@ -19,6 +19,7 @@
 
 import QtQuick 2.3
 import QtQuick.Controls 1.2
+import QtQuick.Controls 2.12 as QQC2
 import QtQuick.Controls.Styles 1.2
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
@@ -95,10 +96,10 @@ Item {
                     Item {
                         Layout.fillWidth: true
                     }
-                    AdwaitaButton {
+                    QQC2.Button {
                         text: qsTr("Create Live USB…")
-                        color: "#628fcf"
-                        textColor: "white"
+                        highlighted: true
+
                         onClicked: {
                             if (dlDialog.visible)
                                 return
