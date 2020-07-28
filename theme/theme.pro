@@ -1,6 +1,7 @@
 TEMPLATE = lib
 
-CONFIG += plugin qmltypes qt
+CONFIG += link_pkgconfig plugin qmltypes qt
+PKGCONFIG += adwaita-qt
 
 TARGET = adwaitathemeplugin
 

@@ -51,43 +51,15 @@ Item {
         }
 
         property color bottomColor: {
-            if (control.pressed || control.checked) {
-                if (theme.darkMode) {
-                    return theme.darken(root.highlighted ? theme.highlightColor : theme.windowColor, 0.09)
-                } else {
-                    return theme.darken(root.highlighted ? theme.highlightColor : theme.windowColor, 0.14)
-                }
-            } else if (control.hovered) {
-                if (theme.darkMode) {
-                    return theme.lighten(root.highlighted ? theme.highlightColor : theme.windowColor, 0.01)
-                } else {
-                    return root.highlighted ? theme.highlightColor : theme.windowColor
-                }
-            } else {
-                return root.highlighted ? theme.highlightColor : theme.buttonColor
-            }
+            return theme.getButtonBottomColor(root.highlighted, control.hovered, control.pressed || control.checked)
         }
 
         property color topColor: {
-            if (control.pressed || control.checked) {
-                if (theme.darkMode) {
-                    return theme.darken(root.highlighted ? theme.highlightColor : theme.windowColor, 0.09)
-                } else {
-                    return theme.darken(root.highlighted ? theme.highlightColor : theme.windowColor, 0.14)
-                }
-            } else if (control.hovered) {
-                if (theme.darkMode) {
-                    return theme.lighten(root.highlighted ? theme.highlightColor : theme.windowColor, 0.01)
-                } else {
-                    return theme.lighten(root.highlighted ? theme.highlightColor : theme.windowColor, 0.01)
-                }
-            } else {
-                  return root.highlighted ? theme.highlightColor : theme.windowColor
-            }
+            return theme.getButtonTopColor(root.highlighted, control.hovered, control.pressed || control.checked)
         }
 
         border {
-            width: 1
+            width: root.highlighted ? 0 : 1
             color: theme.buttonOutlineColor
         }
     }
