@@ -20,7 +20,7 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Templates 2.12 as T
-import AdwaitaTheme 2.0
+import org.fedoraproject.AdwaitaTheme 2.0
 import "private" as Private
 
 

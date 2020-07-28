@@ -34,9 +34,6 @@
 #include "releasemanager.h"
 #include "versionchecker.h"
 
-#include "theme.h"
-#include "units.h"
-
 #ifdef QT_STATIC
 Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
 
@@ -89,8 +86,7 @@ int main(int argc, char **argv)
     app.installTranslator(&translator);
 
     // Load AdwaitaTheme
-    Q_INIT_RESOURCE(adwaitatheme);
-    QQuickStyle::setStyle(":/AdwaitaTheme");
+    QQuickStyle::setStyle("org.fedoraproject.AdwaitaTheme");
 
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;
@@ -105,12 +101,6 @@ int main(int argc, char **argv)
     engine.rootContext()->setContextProperty("platformSupportsDelayedWriting", false);
 #endif
     mDebug() << "Loading the QML source code";
-
-    // TODO: make this work from the plugin itself
-    AdwaitaTheme *theme = new AdwaitaTheme;
-    engine.rootContext()->setContextProperty(QStringLiteral("theme"), theme);
-    qmlRegisterUncreatableType<AdwaitaTheme>("AdwaitaTheme", 2, 0, "Theme", QStringLiteral("It is not possible to instantiate Theme directly."));
-    qmlRegisterUncreatableType<AdwaitaUnits>("AdwaitaTheme", 2, 0, "Units", {});
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 

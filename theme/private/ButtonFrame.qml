@@ -19,7 +19,7 @@
  */
 
 import QtQuick 2.12
-import AdwaitaTheme 2.0
+import org.fedoraproject.AdwaitaTheme 2.0
 
 Item {
     id: root

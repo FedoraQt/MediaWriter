@@ -4,7 +4,7 @@ TARGET = mediawriter
 
 QT += qml quick quickcontrols2 widgets network
 
-LIBS += -lisomd5 -ladwaitathemeplugin
+LIBS += -lisomd5
 
 CONFIG += c++11
 

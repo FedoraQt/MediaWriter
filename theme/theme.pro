@@ -1,6 +1,6 @@
 TEMPLATE = lib
 
-CONFIG += staticlib plugin qmltypes qt
+CONFIG += plugin qmltypes qt
 
 TARGET = adwaitathemeplugin
 
@@ -16,9 +16,7 @@ SOURCES += adwaitathemeplugin.cpp \
     theme.cpp \
     units.cpp
 
-RESOURCES += adwaitatheme.qrc
-
-QML_IMPORT_NAME = AdwaitaTheme
+QML_IMPORT_NAME = org.fedoraproject.AdwaitaTheme
 QML_IMPORT_MAJOR_VERSION = 2
 
 lupdate_only {
@@ -27,3 +25,16 @@ lupdate_only {
         $$PWD/*.cpp
     HEADERS += $$PWD/*.h
 }
+
+qml.files += $$PWD/*.qml
+qml.path = $$[QT_INSTALL_QML]/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
+
+qmlprivate.files += $$PWD/private/*.qml
+qmlprivate.path =  $$[QT_INSTALL_QML]/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme/private
+
+qmldir.files += qmldir
+qmldir.path = $$[QT_INSTALL_QML]/org/fedoraproject/AdwaitaTheme
+
+target.path = $$[QT_INSTALL_QML]/org/fedoraproject/AdwaitaTheme
+
+INSTALLS += target qml qmlprivate qmldir

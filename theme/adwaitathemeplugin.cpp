@@ -35,7 +35,7 @@ void AdwaitaThemePlugin::initializeEngine(QQmlEngine *engine, const char *uri)
 
 void AdwaitaThemePlugin::registerTypes(const char *uri)
 {
-    Q_ASSERT(uri == QByteArray("AdwaitaTheme"));
+    Q_ASSERT(uri == QByteArray("org.fedoraproject.AdwaitaTheme"));
 
     qmlRegisterUncreatableType<AdwaitaTheme>(uri, 2, 0, "Theme", QStringLiteral("It is not possible to instantiate Theme directly."));
     qmlRegisterUncreatableType<AdwaitaUnits>(uri, 2, 0, "Units", {});
