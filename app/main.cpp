@@ -85,8 +85,9 @@ int main(int argc, char **argv)
     translator.load(QLocale(QLocale().language(), QLocale().country()), QString(), QString(), ":/translations");
     app.installTranslator(&translator);
 
-    // Load AdwaitaTheme
+#ifdef __linux
     QQuickStyle::setStyle("org.fedoraproject.AdwaitaTheme");
+#endif
 
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;
