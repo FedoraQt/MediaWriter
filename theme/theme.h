@@ -42,6 +42,7 @@ class AdwaitaTheme : public QObject
     Q_PROPERTY(int frameWidth READ frameWidth CONSTANT)
 
     // Colors
+    Q_PROPERTY(QColor baseColor READ baseColor CONSTANT)
     Q_PROPERTY(QColor buttonColor READ buttonColor CONSTANT)
     Q_PROPERTY(QColor buttonOutlineColor READ buttonOutlineColor CONSTANT)
     Q_PROPERTY(QColor disabledTextColor READ disabledTextColor CONSTANT)
@@ -69,6 +70,7 @@ public:
     int frameWidth() const { return Adwaita::Menu_FrameWidth; }
 
     // Base colors
+    QColor baseColor() const { return m_palette.color(QPalette::Base); }
     QColor buttonColor() const { return m_palette.color(QPalette::Button); }
     QColor buttonOutlineColor() const;
     QColor disabledTextColor() const { return m_palette.color(QPalette::Disabled, QPalette::Text); }

@@ -34,6 +34,10 @@
 #include "releasemanager.h"
 #include "versionchecker.h"
 
+#ifdef __linux
+#include <AdwaitaQt/adwaitacolors.h>
+#endif
+
 #ifdef QT_STATIC
 Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
 
@@ -87,6 +91,9 @@ int main(int argc, char **argv)
 
 #ifdef __linux
     QQuickStyle::setStyle("org.fedoraproject.AdwaitaTheme");
+
+    QPalette adwaitaPalette = Adwaita::Colors::palette();
+    QGuiApplication::setPalette(adwaitaPalette);
 #endif
 
     mDebug() << "Injecting QML context properties";

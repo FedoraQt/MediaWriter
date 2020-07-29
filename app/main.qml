@@ -22,6 +22,7 @@ import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 import QtQuick.Dialogs 1.3
 import QtQuick.Layouts 1.12
+import QtQml 2.12
 
 import "dialogs"
 import "simple"
