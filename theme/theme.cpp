@@ -31,7 +31,7 @@ AdwaitaTheme::AdwaitaTheme(QObject *parent)
         m_darkMode = true;
     }
 
-    m_palette = Adwaita::Colors::palette(m_darkMode ? Adwaita::AdwaitaDark : Adwaita::Adwaita);
+    m_palette = Adwaita::Colors::palette();
 }
 
 AdwaitaTheme *AdwaitaTheme::qmlAttachedProperties(QObject *object)
@@ -41,10 +41,7 @@ AdwaitaTheme *AdwaitaTheme::qmlAttachedProperties(QObject *object)
 
 QColor AdwaitaTheme::buttonOutlineColor() const
 {
-    Adwaita::StyleOptions styleOptions(m_palette);
-    styleOptions.setColorVariant(m_darkMode ? Adwaita::AdwaitaDark : Adwaita::Adwaita);
-
-    return Adwaita::Colors::buttonOutlineColor(styleOptions);
+    return Adwaita::Colors::buttonOutlineColor(Adwaita::StyleOptions(m_palette));
 }
 
 QColor AdwaitaTheme::getButtonBottomColor(bool highlighted, bool hovered, bool pressed)
@@ -60,7 +57,6 @@ QColor AdwaitaTheme::getButtonBottomColor(bool highlighted, bool hovered, bool p
     }
 
     Adwaita::StyleOptions styleOptions(m_palette);
-    styleOptions.setColorVariant(m_darkMode ? Adwaita::AdwaitaDark : Adwaita::Adwaita);
     styleOptions.setMouseOver(hovered);
     styleOptions.setSunken(pressed);
 
