@@ -17,10 +17,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.3
-import QtQuick.Controls 1.2
-import QtQuick.Controls.Styles 1.2
-import QtQuick.Layouts 1.1
+import QtQuick 2.12
+import QtQuick.Controls 2.12 as QQC2
+import QtQuick.Layouts 1.12
 
 Rectangle {
     id: root
@@ -75,7 +74,7 @@ Rectangle {
             textFormat: Text.RichText
         }
 
-        AdwaitaButton {
+        QQC2.Button {
             id: buttonAccept
             visible: text.length
 
@@ -87,18 +86,11 @@ Rectangle {
             Layout.alignment: Qt.AlignVCenter
         }
 
-        AdwaitaButton {
+        // TODO: turn into Toolbutton?
+        QQC2.Button {
             id: buttonCancel
             flat: true
-            color: "transparent"
-            implicitWidth: $(20)
-            implicitHeight: $(20)
-            Cross {
-                color: palette.windowText
-                anchors.centerIn: parent
-                width: $(8)
-                height: $(8)
-            }
+            icon.name: "window-close"
 
             onClicked: {
                 root.open = false

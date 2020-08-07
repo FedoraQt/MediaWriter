@@ -17,12 +17,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.3
-import QtQuick.Controls 1.2
-import QtQuick.Controls.Styles 1.2
-import QtQuick.Window 2.0
+import QtQuick 2.12
+import QtQuick.Controls 2.12 as QQC2
 import QtQuick.Dialogs 1.2
-import QtQuick.Layouts 1.1
+import QtQuick.Layouts 1.12
 
 import MediaWriter 1.0
 
@@ -149,7 +147,7 @@ Dialog {
                 anchors.bottom: parent.bottom
                 anchors.right: parent.right
                 spacing: $(12)
-                AdwaitaButton {
+                QQC2.Button {
                     text: qsTr("Cancel")
                     visible: drives.lastRestoreable &&
                              drives.lastRestoreable.restoreStatus != Drive.RESTORED &&
@@ -157,16 +155,21 @@ Dialog {
                     Behavior on x { NumberAnimation {} }
                     onClicked: root.visible = false
                 }
-                AdwaitaButton {
+                QQC2.Button {
+                    id: restoreButton
                     text: drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? qsTr("Restore") : qsTr("Close")
-                    color: drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? "red" : "#628fcf"
-                    textColor: "white"
+                    highlighted: true
                     enabled: !drives.lastRestoreable || drives.lastRestoreable.restoreStatus != Drive.RESTORING
                     onClicked: {
                         if (drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE)
                             drives.lastRestoreable.restore()
                         else
                             root.visible = false
+                    }
+                    onTextChanged: {
+                        if (restoreButton.hasOwnProperty("destructiveAction")) {
+                            restoreButton.destructiveAction = restoreButton.text == qsTr("Restore")
+                        }
                     }
                 }
             }

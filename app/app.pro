@@ -8,11 +8,6 @@ LIBS += -lisomd5
 
 CONFIG += c++11
 
-linux {
-    CONFIG += link_pkgconfig
-    PKGCONFIG += adwaita-qt
-}
-
 VERSION=4.50.0
 
 HEADERS += \

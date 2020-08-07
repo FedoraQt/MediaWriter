@@ -34,10 +34,6 @@
 #include "releasemanager.h"
 #include "versionchecker.h"
 
-#ifdef __linux
-#include <AdwaitaQt/adwaitacolors.h>
-#endif
-
 #ifdef QT_STATIC
 Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
 
@@ -75,7 +71,7 @@ int main(int argc, char **argv)
         QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
     options.parse(app.arguments());
 
     // considering how often we hit driver issues, I have decided to force
@@ -88,13 +84,6 @@ int main(int argc, char **argv)
     QTranslator translator;
     translator.load(QLocale(QLocale().language(), QLocale().country()), QString(), QString(), ":/translations");
     app.installTranslator(&translator);
-
-#ifdef __linux
-    QQuickStyle::setStyle("org.fedoraproject.AdwaitaTheme");
-
-    QPalette adwaitaPalette = Adwaita::Colors::palette();
-    QGuiApplication::setPalette(adwaitaPalette);
-#endif
 
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;

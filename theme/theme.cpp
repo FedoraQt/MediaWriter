@@ -44,8 +44,19 @@ QColor AdwaitaTheme::buttonOutlineColor() const
     return Adwaita::Colors::buttonOutlineColor(Adwaita::StyleOptions(m_palette));
 }
 
-QColor AdwaitaTheme::getButtonBottomColor(bool highlighted, bool hovered, bool pressed)
+QColor AdwaitaTheme::getButtonBottomColor(bool highlighted, bool destructiveAction, bool hovered, bool pressed)
 {
+    // Give destructive action higher priority and leave "highlighted" as fallback
+    if (destructiveAction) {
+        if (pressed) {
+            return m_darkMode ? QColor("#8a1116") : QColor("#a0131a");
+        } else if (hovered) {
+            return m_darkMode ? QColor("#ae151c") : QColor("#e01b24");
+        } else {
+            return m_darkMode ? QColor("#ae151c") : QColor("#ce1921");
+        }
+    }
+
     if (highlighted) {
         if (pressed) {
             return m_darkMode ? QColor("#103e75") : QColor("#1961b9");
@@ -66,8 +77,18 @@ QColor AdwaitaTheme::getButtonBottomColor(bool highlighted, bool hovered, bool p
     return hovered && m_darkMode ? Adwaita::Colors::lighten(color, 0.01) : color;
 }
 
-QColor AdwaitaTheme::getButtonTopColor(bool highlighted, bool hovered, bool pressed)
+QColor AdwaitaTheme::getButtonTopColor(bool highlighted, bool destructiveAction, bool hovered, bool pressed)
 {
+    if (destructiveAction) {
+        if (pressed) {
+            return m_darkMode ? QColor("#8a1116") : QColor("#a0131a");
+        } else if (hovered) {
+            return m_darkMode ? QColor("#b2161d") : QColor("#e41c26");
+        } else {
+            return m_darkMode ? QColor("#b2161d") : QColor("#e01b24");
+        }
+    }
+
     if (highlighted) {
         if (pressed) {
             return m_darkMode ? QColor("#103e75") : QColor("#1961b9");
@@ -78,7 +99,7 @@ QColor AdwaitaTheme::getButtonTopColor(bool highlighted, bool hovered, bool pres
         }
     }
 
-    const QColor color = getButtonBottomColor(highlighted, hovered, pressed);
+    const QColor color = getButtonBottomColor(highlighted, destructiveAction, hovered, pressed);
 
     // TODO: separate this from Adwaita::Helper::renderButtonFrame()
     if (pressed) {

@@ -1,43 +1,92 @@
-import QtQuick 2.0
-import QtQuick.Controls 1.1
-import QtQuick.Layouts 1.0
+/*
+ * Fedora Media Writer
+ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+ * Copyright (C) 2020 Jan Grulich <jgrulich@redhat.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
+import QtQuick 2.12
+import QtQuick.Controls 2.12 as QQC2
+import QtQuick.Layouts 1.12
 
 import "../simple"
 
-RowLayout {
-    id: deleteButtonRoot
+QQC2.Button {
+    id: deleteButton
 
     property string errorText: ""
     signal started
+
+    enabled: true
+    visible: opacity > 0.0
+    opacity: 1.0
+
+    QQC2.BusyIndicator {
+        id: indicator
+        anchors.centerIn: parent
+        implicitHeight: deleteButton.height
+        implicitWidth: deleteButton.width
+        opacity: 0.0
+        visible: opacity > 0.0
+        Behavior on opacity {
+            NumberAnimation {
+                duration: 120
+            }
+        }
+    }
 
     states: [
         State {
             name: "hidden"
             PropertyChanges {
-                target: eraseButton
+                target: deleteButton
                 opacity: 0.0
             }
         },
         State {
             name: "ready"
             PropertyChanges {
-                target: eraseButton
+                target: deleteButton
                 enabled: true
                 text: qsTr("Delete the Downloaded Image")
+            }
+            PropertyChanges {
+                target: deleteButton
+                highlighted: true
             }
         },
         State {
             name: "working"
             PropertyChanges {
-                target: eraseIndicator
+                target: indicator
                 opacity: 1.0
+            }
+            StateChangeScript {
+                name: "colorChange"
+                script: if (deleteButton.hasOwnProperty("destructiveAction")) {
+                            deleteButton.destructiveAction = false
+                        }
             }
         },
         State {
             name: "success"
             PropertyChanges {
-                target: eraseCheckmark
-                opacity: 1.0
+                target: deleteButton
+                // TODO
+                icon.name: "dialog-information"
             }
             PropertyChanges {
                 target: hideTimer
@@ -47,12 +96,13 @@ RowLayout {
         State {
             name: "error"
             PropertyChanges {
-                target: eraseCross
-                opacity: 1.0
+                target: deleteButton
+                // TODO
+                icon.name: "dialog-error"
             }
             PropertyChanges {
-                target: eraseText
-                text: deleteButtonRoot.errorText
+                target: deleteButton
+                text: deleteButton.errorText
             }
         }
     ]
@@ -69,62 +119,30 @@ RowLayout {
         id: hideTimer
         interval: 5000
         onTriggered: {
-            deleteButtonRoot.state = "hidden"
+            deleteButton.state = "hidden"
         }
     }
 
-    Text {
-        id: eraseText
-        Layout.alignment: Qt.AlignRight
-        Layout.maximumWidth: parent.width - eraseButton.width - parent.spacing
-        Layout.fillHeight: true
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignRight
-        font.pointSize: $$(9)
-        textFormat: Text.RichText
-        color: palette.windowText
-        onLinkActivated: Qt.openUrlExternally("file://" + link)
-        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-        Behavior on opacity { NumberAnimation { duration: 120 } }
+    Behavior on opacity {
+        NumberAnimation {
+            duration: 240
+        }
     }
-    AdwaitaButton {
-        id: eraseButton
-        Layout.alignment: Qt.AlignRight
-        enabled: false
-        visible: opacity > 0.0
-        opacity: 1.0
-        color: "red"
-        textColor: "white"
-        text: ""
-        Behavior on opacity { NumberAnimation { duration: 240 } }
-        Behavior on implicitWidth { NumberAnimation { duration: deleteButtonRoot.state == "working" ? 120 : 240 } }
-        onClicked: {
-            deleteButtonRoot.state = "working"
-            workTimer.start()
+
+    Behavior on width {
+        NumberAnimation {
+            duration: state == "working" ? 120 : 240
         }
-        BusyIndicator {
-            id: eraseIndicator
-            anchors.fill: parent
-            anchors.margins: $(9)
-            opacity: 0.0
-            visible: opacity > 0.0
-            Behavior on opacity { NumberAnimation { duration: 120 } }
-        }
-        CheckMark {
-            id: eraseCheckmark
-            anchors.fill: parent
-            anchors.margins: $(9)
-            opacity: 0.0
-            visible: opacity > 0.0
-            Behavior on opacity { NumberAnimation { duration: 120 } }
-        }
-        Cross {
-            id: eraseCross
-            anchors.fill: parent
-            anchors.margins: $(9)
-            opacity: 0.0
-            visible: opacity > 0.0
-            Behavior on opacity { NumberAnimation { duration: 120 } }
+    }
+
+    onClicked: {
+        deleteButton.state = "working"
+        workTimer.start()
+    }
+
+    Component.onCompleted: {
+        if (deleteButton.hasOwnProperty("destructiveAction")) {
+            deleteButton.destructiveAction = true
         }
     }
 }

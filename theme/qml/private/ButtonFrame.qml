@@ -25,15 +25,16 @@ Item {
     id: root
 
     // TODO add a focus rect
-    // TODO verify the highlight color is correct
 
     property bool flat: false
     property bool highlighted: false
+    property bool destructiveAction: false
 
     Rectangle {
         id: rect
         anchors.fill: parent
         radius: theme.frameRadius
+        visible: flat ? control.pressed || control.checked : true
 
         readonly property int animationDuration: 150
 
@@ -51,15 +52,15 @@ Item {
         }
 
         property color bottomColor: {
-            return theme.getButtonBottomColor(root.highlighted, control.hovered, control.pressed || control.checked)
+            return theme.getButtonBottomColor(root.highlighted, root.destructiveAction, control.hovered, control.pressed || control.checked)
         }
 
         property color topColor: {
-            return theme.getButtonTopColor(root.highlighted, control.hovered, control.pressed || control.checked)
+            return theme.getButtonTopColor(root.highlighted, root.destructiveAction, control.hovered, control.pressed || control.checked)
         }
 
         border {
-            width: root.highlighted ? 0 : 1
+            width: root.highlighted || root.destructiveAction ? 0 : 1
             color: theme.buttonOutlineColor
         }
     }

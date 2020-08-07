@@ -17,8 +17,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.0
-import QtQuick.Layouts 1.0
+import QtQuick 2.12
+import QtQuick.Controls 2.12 as QQC2
+import QtQuick.Layouts 1.12
 
 Item {
     id: root
@@ -85,25 +86,16 @@ Item {
             Layout.fillWidth: true
         }
 
-        AdwaitaButton {
+        QQC2.Button {
             id: button
-            color: "transparent"
-            textColor: "white"
             onClicked: root.accepted()
         }
-        AdwaitaButton {
+        // TODO: turn into Toolbutton?
+        QQC2.Button {
             id: crossButton
             flat: true
-            color: "transparent"
-            implicitWidth: $(21)
-            implicitHeight: $(21)
+            icon.name: "window-close"
             onClicked: root.open = false
-            Cross {
-                color: palette.windowText
-                anchors.centerIn: parent
-                width: $(8)
-                height: $(8)
-            }
         }
     }
 }

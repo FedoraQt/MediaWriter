@@ -89,8 +89,10 @@ Item {
                 RowLayout {
                     id: tools
                     Layout.fillWidth: true
-                    BackButton {
+                    QQC2.Button {
                         id: backButton
+                        icon.name: "go-previous"
+                        text: qsTr("Back")
                         onClicked: toMainScreen()
                     }
                     Item {

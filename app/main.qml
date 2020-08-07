@@ -199,7 +199,7 @@ ApplicationWindow {
                 color: "white"
                 text: qsTr("%1<br>Writing images will not be possible.<br>You can still view Fedora flavors and download images to your hard drive.").arg(drives.errorString)
             }
-            AdwaitaButton {
+            Button {
                 Layout.alignment: Qt.AlignCenter
                 text: qsTr("Ok")
                 onClicked: fatalErrorOverlay.opacity = 0.0

@@ -17,11 +17,12 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.3
+import QtQuick 2.12
 import QtQuick.Controls 1.2
+import QtQuick.Controls 2.12 as QQC2
 import QtQuick.Controls.Styles 1.2
 import QtQuick.Dialogs 1.2
-import QtQuick.Layouts 1.1
+import QtQuick.Layouts 1.12
 import QtQuick.Window 2.0
 
 import MediaWriter 1.0
@@ -116,8 +117,14 @@ Dialog {
                 PropertyChanges {
                     target: rightButton;
                     enabled: true;
-                    color: "red";
+                    highlighted: true
                     onClicked: drives.selected.write(releases.variant)
+                }
+                StateChangeScript {
+                    name: "colorChange"
+                    script: if (rightButton.hasOwnProperty("destructiveAction")) {
+                                rightButton.destructiveAction = true
+                            }
                 }
             },
             State {
@@ -148,6 +155,12 @@ Dialog {
                     target: progressBar;
                     value: drives.selected.progress.ratio;
                     progressColor: "red"
+                }
+                StateChangeScript {
+                    name: "colorChange"
+                    script: if (rightButton.hasOwnProperty("destructiveAction")) {
+                                rightButton.destructiveAction = false
+                            }
                 }
             },
             State {
@@ -185,8 +198,7 @@ Dialog {
                 PropertyChanges {
                     target: leftButton;
                     text: qsTr("Close");
-                    color: "#628fcf";
-                    textColor: "white"
+                    highlighted: true
                     onClicked: {
                         dialog.close()
                     }
@@ -203,8 +215,14 @@ Dialog {
                     target: rightButton;
                     text: qsTr("Retry");
                     enabled: false;
-                    color: "red";
+                    highlighted: true
                     onClicked: drives.selected.write(releases.variant)
+                }
+                StateChangeScript {
+                    name: "colorChange"
+                    script: if (rightButton.hasOwnProperty("destructiveAction")) {
+                                rightButton.destructiveAction = true
+                            }
                 }
             },
             State {
@@ -218,8 +236,14 @@ Dialog {
                     target: rightButton;
                     text: qsTr("Retry");
                     enabled: true;
-                    color: "red";
+                    highlighted: true
                     onClicked: drives.selected.write(releases.variant)
+                }
+                StateChangeScript {
+                    name: "colorChange"
+                    script: if (rightButton.hasOwnProperty("destructiveAction")) {
+                                rightButton.destructiveAction = true
+                            }
                 }
             },
             State {
@@ -233,7 +257,7 @@ Dialog {
                     target: rightButton;
                     text: qsTr("Retry");
                     enabled: true;
-                    color: "#628fcf";
+                    highlighted: true
                     onClicked: releases.variant.download()
                 }
             },
@@ -244,8 +268,14 @@ Dialog {
                     target: rightButton;
                     text: qsTr("Retry");
                     enabled: false;
-                    color: "red";
+                    highlighted: true
                     onClicked: drives.selected.write(releases.variant)
+                }
+                StateChangeScript {
+                    name: "colorChange"
+                    script: if (rightButton.hasOwnProperty("destructiveAction")) {
+                                rightButton.destructiveAction = true
+                            }
                 }
             },
             State {
@@ -259,8 +289,14 @@ Dialog {
                     target: rightButton;
                     text: qsTr("Retry");
                     enabled: true;
-                    color: "red";
+                    highlighted: true
                     onClicked: drives.selected.write(releases.variant)
+                }
+                StateChangeScript {
+                    name: "colorChange"
+                    script: if (rightButton.hasOwnProperty("destructiveAction")) {
+                                rightButton.destructiveAction = true
+                            }
                 }
             }
         ]
@@ -508,7 +544,6 @@ Dialog {
 
                             DeleteButton {
                                 id: deleteButton
-                                Layout.fillWidth: true
                                 Layout.fillHeight: true
                                 Layout.maximumWidth: parent.width - leftButton.width - rightButton.width - parent.spacing * 2
                                 state: "hidden"
@@ -520,7 +555,7 @@ Dialog {
                                         state = "error"
                                 }
                             }
-                            AdwaitaButton {
+                            QQC2.Button {
                                 id: leftButton
                                 Layout.alignment: Qt.AlignRight
                                 Behavior on implicitWidth { NumberAnimation { duration: 80 } }
@@ -533,11 +568,10 @@ Dialog {
                                     dialog.close()
                                 }
                             }
-                            AdwaitaButton {
+                            QQC2.Button {
                                 id: rightButton
                                 Layout.alignment: Qt.AlignRight
                                 Behavior on implicitWidth { NumberAnimation { duration: 80 } }
-                                textColor: enabled ? "white" : palette.text
                                 text: qsTr("Write to Disk")
                                 enabled: false
                             }
