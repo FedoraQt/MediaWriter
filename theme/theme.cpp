@@ -51,7 +51,9 @@ QColor AdwaitaTheme::getButtonBottomColor(bool highlighted, bool destructiveActi
         if (pressed) {
             return m_darkMode ? QColor("#8a1116") : QColor("#a0131a");
         } else if (hovered) {
-            return m_darkMode ? QColor("#ae151c") : QColor("#e01b24");
+            // FIXME: this is not 1:1 from Adwaita, but we need to make it
+            // lighter to highlight the hover
+            return m_darkMode ? Adwaita::Colors::lighten(QColor("#ae151c"), 0.01) : QColor("#e01b24");
         } else {
             return m_darkMode ? QColor("#ae151c") : QColor("#ce1921");
         }
@@ -83,7 +85,9 @@ QColor AdwaitaTheme::getButtonTopColor(bool highlighted, bool destructiveAction,
         if (pressed) {
             return m_darkMode ? QColor("#8a1116") : QColor("#a0131a");
         } else if (hovered) {
-            return m_darkMode ? QColor("#b2161d") : QColor("#e41c26");
+            // FIXME: this is not 1:1 from Adwaita, but we need to make it
+            // lighter to highlight the hover
+            return m_darkMode ? Adwaita::Colors::lighten(QColor("#b2161d"), 0.01) : QColor("#e41c26");
         } else {
             return m_darkMode ? QColor("#b2161d") : QColor("#e01b24");
         }
@@ -110,4 +114,20 @@ QColor AdwaitaTheme::getButtonTopColor(bool highlighted, bool destructiveAction,
     } else {
         return m_darkMode ? Adwaita::Colors::lighten(color, 0.01) : Adwaita::Colors::lighten(color, 0.04);
     }
+}
+
+QColor AdwaitaTheme::getButtonOutlineColor(bool highlighted, bool destructiveAction, bool hovered, bool pressed)
+{
+    if (destructiveAction) {
+        return m_darkMode ? QColor("#851015") : QColor("#b2161d");
+    }
+
+    if (highlighted) {
+        return m_darkMode ? QColor("#0f3b71") : QColor("#1b6acb");
+    }
+
+    Adwaita::StyleOptions styleOptions(m_palette);
+    styleOptions.setMouseOver(hovered);
+    styleOptions.setSunken(pressed);
+    return Adwaita::Colors::buttonOutlineColor(Adwaita::StyleOptions(m_palette));
 }

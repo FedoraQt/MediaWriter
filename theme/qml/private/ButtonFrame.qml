@@ -60,8 +60,7 @@ Item {
         }
 
         border {
-            width: root.highlighted || root.destructiveAction ? 0 : 1
-            color: theme.buttonOutlineColor
+            color: theme.getButtonOutlineColor(root.highlighted, root.destructiveAction, control.hovered, control.pressed || control.checked)
         }
     }
 }

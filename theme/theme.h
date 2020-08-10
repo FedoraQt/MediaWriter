@@ -83,6 +83,7 @@ public:
     // Advanced colors
     Q_INVOKABLE QColor getButtonBottomColor(bool highlighted, bool destructiveAction, bool hovered, bool pressed);
     Q_INVOKABLE QColor getButtonTopColor(bool highlighted, bool destructiveAction, bool hovered, bool pressed);
+    Q_INVOKABLE QColor getButtonOutlineColor(bool highlighted, bool destructiveAction, bool hovered, bool pressed);
 
     bool darkMode() const { return m_darkMode; }
 private:
