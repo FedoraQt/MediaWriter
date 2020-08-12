@@ -17,28 +17,30 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef ADWAITA_UNITS_H
-#define ADWAITA_UNITS_H
+#ifndef UNITS_H
+#define UNITS_H
 
 #include <QObject>
-#include <QtQml>
 
-class AdwaitaUnits : public QObject
+class Units : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(qreal devicePixelRatio READ devicePixelRatio NOTIFY devicePixelRatioChanged)
     Q_PROPERTY(int gridUnit READ gridUnit NOTIFY gridUnitChanged)
     Q_PROPERTY(int smallSpacing READ smallSpacing NOTIFY spacingChanged)
     Q_PROPERTY(int largeSpacing READ largeSpacing NOTIFY spacingChanged)
 public:
-    explicit AdwaitaUnits(QObject *parent = nullptr);
-    ~AdwaitaUnits() override = default;
+    explicit Units(QObject *parent = nullptr);
+    ~Units() override = default;
 
-    static AdwaitaUnits *qmlAttachedProperties(QObject *object);
+    static Units *instance();
 
+    qreal devicePixelRatio() const;
     int gridUnit() const;
     int smallSpacing() const;
     int largeSpacing() const;
 Q_SIGNALS:
+    void devicePixelRatioChanged();
     void gridUnitChanged();
     void spacingChanged();
 
@@ -47,13 +49,15 @@ protected:
 
 private:
     void update();
+    void updateDevicePixelRatio();
 
+    static Units *_self;
+
+    qreal m_devicePixelRatio;
     int m_gridUnit;
     int m_smallSpacing;
     int m_largeSpacing;
 };
 
-QML_DECLARE_TYPEINFO(AdwaitaUnits, QML_HAS_ATTACHED_PROPERTIES)
-
-#endif // ADWAITA_UNITS_H
+#endif // UNITS_H
 

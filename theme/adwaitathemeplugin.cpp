@@ -20,7 +20,6 @@
 #include "adwaitathemeplugin.h"
 #include "icon.h"
 #include "theme.h"
-#include "units.h"
 
 #include <QQmlContext>
 
@@ -39,7 +38,6 @@ void AdwaitaThemePlugin::registerTypes(const char *uri)
     Q_ASSERT(uri == QByteArray("org.fedoraproject.AdwaitaTheme"));
 
     qmlRegisterUncreatableType<AdwaitaTheme>(uri, 2, 0, "Theme", QStringLiteral("It is not possible to instantiate Theme directly."));
-    qmlRegisterUncreatableType<AdwaitaUnits>(uri, 2, 0, "Units", {});
     qmlRegisterType<Icon>(uri, 2, 0, "Icon");
 
 }

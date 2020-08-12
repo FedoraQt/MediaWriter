@@ -11,24 +11,28 @@ CONFIG += c++11
 VERSION=4.50.0
 
 HEADERS += \
-    drivemanager.h \
-    releasemanager.h \
-    utilities.h \
-    fakedrivemanager.h \
-    notifications.h \
     crashhandler.h \
     downloadmanager.h \
-    versionchecker.h
+    drivemanager.h \
+    fakedrivemanager.h \
+    notifications.h \
+    releasemanager.h \
+    units.h \
+    utilities.h \
+    versionchecker.h \
+    $$top_srcdir/theme/icon.h
 
 SOURCES += main.cpp \
-    drivemanager.cpp \
-    releasemanager.cpp \
-    utilities.cpp \
-    fakedrivemanager.cpp \
-    notifications.cpp \
     crashhandler.cpp \
     downloadmanager.cpp \
-    versionchecker.cpp
+    drivemanager.cpp \
+    fakedrivemanager.cpp \
+    releasemanager.cpp \
+    notifications.cpp \
+    units.cpp \
+    utilities.cpp \
+    versionchecker.cpp \
+    $$top_srcdir/theme/icon.cpp
 
 RESOURCES += qml.qrc \
     assets.qrc \

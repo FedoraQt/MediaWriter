@@ -24,37 +24,49 @@
 
 #include <QFontMetrics>
 #include <QGuiApplication>
+#include <QScreen>
 
-AdwaitaUnits::AdwaitaUnits(QObject *parent)
+Units *Units::_self = nullptr;
+
+Units::Units(QObject *parent)
     : QObject(parent)
+    , m_devicePixelRatio(-1)
     , m_gridUnit(-1)
     , m_smallSpacing(-1)
     , m_largeSpacing(-1)
 {
     update();
+    updateDevicePixelRatio();
 }
 
-AdwaitaUnits *AdwaitaUnits::qmlAttachedProperties(QObject *object)
+Units *Units::instance()
 {
-    return new AdwaitaUnits(object);
+    if (!_self)
+        _self = new Units();
+    return _self;
 }
 
-int AdwaitaUnits::gridUnit() const
+qreal Units::devicePixelRatio() const
+{
+    return m_devicePixelRatio;
+}
+
+int Units::gridUnit() const
 {
     return m_gridUnit;
 }
 
-int AdwaitaUnits::smallSpacing() const
+int Units::smallSpacing() const
 {
     return m_smallSpacing;
 }
 
-int AdwaitaUnits::largeSpacing() const
+int Units::largeSpacing() const
 {
     return m_largeSpacing;
 }
 
-bool AdwaitaUnits::eventFilter(QObject *watched, QEvent *event)
+bool Units::eventFilter(QObject *watched, QEvent *event)
 {
     if (watched == QCoreApplication::instance()) {
         if (event->type() == QEvent::ApplicationFontChange) {
@@ -65,7 +77,7 @@ bool AdwaitaUnits::eventFilter(QObject *watched, QEvent *event)
     return QObject::eventFilter(watched, event);
 }
 
-void AdwaitaUnits::update()
+void Units::update()
 {
     int gridUnit = QFontMetrics(QGuiApplication::font()).boundingRect(QStringLiteral("M")).height();
 
@@ -80,7 +92,26 @@ void AdwaitaUnits::update()
 
     if (gridUnit != m_largeSpacing) {
         m_smallSpacing = qMax(2, (int)(gridUnit / 4)); // 1/4 of gridUnit, at least 2
-        m_largeSpacing = gridUnit; // msize.height
+        m_largeSpacing = m_smallSpacing * 2;
         Q_EMIT spacingChanged();
     }
+}
+
+void Units::updateDevicePixelRatio()
+{
+    // Using QGuiApplication::devicePixelRatio() gives too coarse values,
+    // i.e. it directly jumps from 1.0 to 2.0. We want tighter control on
+    // sizing, so we compute the exact ratio and use that.
+    // TODO: make it possible to adapt to the dpi for the current screen dpi
+    //  instead of assuming that all of them use the same dpi which applies for
+    //  X11 but not for other systems.
+    QScreen *primary = QGuiApplication::primaryScreen();
+    if (!primary) {
+        return;
+    }
+    const qreal dpi = primary->logicalDotsPerInchX();
+    // Usual "default" is 96 dpi
+    // that magic ratio follows the definition of "device independent pixel" by Microsoft
+    m_devicePixelRatio = (qreal)dpi / (qreal)96;
+    emit devicePixelRatioChanged();
 }

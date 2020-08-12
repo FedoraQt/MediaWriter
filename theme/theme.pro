@@ -11,13 +11,11 @@ CONFIG += c++11
 
 HEADERS += adwaitathemeplugin.h \
     icon.h \
-    theme.h \
-    units.h
+    theme.h
 
 SOURCES += adwaitathemeplugin.cpp \
     icon.cpp \
-    theme.cpp \
-    units.cpp
+    theme.cpp
 
 QML_IMPORT_NAME = org.fedoraproject.AdwaitaTheme
 QML_IMPORT_MAJOR_VERSION = 2

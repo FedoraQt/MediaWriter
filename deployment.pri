@@ -14,7 +14,7 @@ linux {
     DEFINES += LIBEXECDIR=\\\"$$LIBEXECDIR\\\"
 }
 QMAKE_LIBDIR += $$top_builddir/lib
-INCLUDEPATH += $$top_srcdir/lib/
+INCLUDEPATH += $$top_srcdir/lib/ $$top_srcdir/theme/
 isEmpty(MEDIAWRITER_VERSION) {
     MEDIAWRITER_VERSION=$$quote($$system(git -C \""$$_PRO_FILE_PWD_"\" describe --tags || echo "Not-Available"))
 }

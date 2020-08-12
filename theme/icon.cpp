@@ -6,7 +6,7 @@
  */
 
 #include "icon.h"
-#include "theme.h"
+//#include "theme.h"
 
 #include <QSGSimpleTextureNode>
 #include <QQuickWindow>
@@ -18,6 +18,7 @@
 #include <QtQml>
 #include <QQuickImageProvider>
 #include <QGuiApplication>
+#include <QPalette>
 #include <QPointer>
 #include <QPainter>
 #include <QScreen>
@@ -142,12 +143,12 @@ void Icon::setSource(const QVariant &icon)
     m_source = icon;
     m_monochromeHeuristics.clear();
 
-    if (!m_theme) {
-        m_theme = new AdwaitaTheme(this);
-        Q_ASSERT(m_theme);
+//    if (!m_theme) {
+//        m_theme = new AdwaitaTheme(this);
+//        Q_ASSERT(m_theme);
 
         // connect(m_theme, &AdwaitaTheme::colorsChanged, this, &QQuickItem::polish);
-    }
+//    }
 
     if (icon.type() == QVariant::String) {
         const QString iconSource = icon.toString();
@@ -355,7 +356,9 @@ void Icon::updatePolish()
             m_icon.fill(Qt::transparent);
         }
 
-        const QColor tintColor = !m_color.isValid() || m_color == Qt::transparent ? (m_selected ? m_theme->highlightTextColor() : m_theme->textColor()) : m_color;
+//        const QColor tintColor = !m_color.isValid() || m_color == Qt::transparent ? (m_selected ? m_theme->highlightTextColor() : m_theme->textColor()) : m_color;
+        const QPalette &palette = QGuiApplication::palette();
+        const QColor tintColor = !m_color.isValid() || m_color == Qt::transparent ? (m_selected ? palette.color(QPalette::HighlightedText) : palette.color(QPalette::Text)) : m_color;
 
         //TODO: initialize m_isMask with icon.isMask()
         if (tintColor.alpha() > 0 && (isMask() || guessMonochrome(m_icon))) {

@@ -31,7 +31,9 @@
 
 #include "crashhandler.h"
 #include "drivemanager.h"
+#include "icon.h"
 #include "releasemanager.h"
+#include "units.h"
 #include "versionchecker.h"
 
 #ifdef QT_STATIC
@@ -87,16 +89,19 @@ int main(int argc, char **argv)
 
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("drives", DriveManager::instance());
-    engine.rootContext()->setContextProperty("releases", new ReleaseManager());
     engine.rootContext()->setContextProperty("downloadManager", DownloadManager::instance());
+    engine.rootContext()->setContextProperty("drives", DriveManager::instance());
     engine.rootContext()->setContextProperty("mediawriterVersion", MEDIAWRITER_VERSION);
+    engine.rootContext()->setContextProperty("releases", new ReleaseManager());
+    engine.rootContext()->setContextProperty("units", Units::instance());
     engine.rootContext()->setContextProperty("versionChecker", new VersionChecker());
 #if (defined(__linux) || defined(_WIN32))
     engine.rootContext()->setContextProperty("platformSupportsDelayedWriting", true);
 #else
     engine.rootContext()->setContextProperty("platformSupportsDelayedWriting", false);
 #endif
+    qmlRegisterType<Icon>("MediaWriter", 1, 0, "Icon");
+
     mDebug() << "Loading the QML source code";
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
