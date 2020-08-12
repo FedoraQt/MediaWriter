@@ -17,13 +17,13 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.3
+import QtQuick 2.12
 import QtQuick.Controls 1.2
 import QtQuick.Controls 2.12 as QQC2
 import QtQuick.Controls.Styles 1.2
-import QtQuick.Layouts 1.1
-import QtQuick.Dialogs 1.2
-import QtQuick.Window 2.0
+import QtQuick.Layouts 1.12
+import QtQuick.Dialogs 1.3
+import QtQuick.Window 2.12
 
 import MediaWriter 1.0
 
@@ -79,12 +79,12 @@ Item {
         contentItem: Item {
             x: mainWindow.margin
             width: root.width - 2 * mainWindow.margin
-            height: childrenRect.height + $(64) + $(32)
+            height: childrenRect.height + Math.round(units.gridUnit * 3.5) + units.gridUnit * 2
 
             ColumnLayout {
-                y: $(18)
+                y: units.gridUnit
                 width: parent.width
-                spacing: $(24)
+                spacing: units.largeSpacing * 3
 
                 RowLayout {
                     id: tools
@@ -119,12 +119,12 @@ Item {
                     z: 1 // so the popover stays over the text below
                     anchors.left: parent.left
                     anchors.right: parent.right
-                    spacing: $(24)
+                    spacing: units.largeSpacing * 3
                     Item {
-                        Layout.preferredWidth: $(64) + $(16)
-                        Layout.preferredHeight: $(64)
+                        Layout.preferredWidth: Math.round(units.gridUnit * 3.5) + units.gridUnit
+                        Layout.preferredHeight: Math.round(units.gridUnit * 3.5)
                         IndicatedImage {
-                            x: $(12)
+                            x: units.gridUnit
                             source: releases.selected.icon ? releases.selected.icon: ""
                             fillMode: Image.PreserveAspectFit
                             sourceSize.width: parent.width
@@ -133,18 +133,18 @@ Item {
                     }
                     ColumnLayout {
                         Layout.fillHeight: true
-                        spacing: $(6)
+                        spacing: units.largeSpacing
                         RowLayout {
                             Layout.fillWidth: true
                             Text {
                                 Layout.fillWidth: true
                                 anchors.left: parent.left
-                                font.pointSize: $$(14)
+                                font.pointSize: 14 // TODO: scale font on Mac OSX
                                 text: releases.selected.name
                                 color: palette.windowText
                             }
                             Text {
-                                font.pointSize: $$(12)
+                                font.pointSize: 12 // TODO: scale font on Mac OSX
                                 property double size: releases.variant.size
                                 text: size <= 0 ? "" :
                                       (size < 1024) ? (size + " B") :
@@ -155,7 +155,7 @@ Item {
                                 color: mixColors(palette.window, palette.windowText, 0.3)
                             }
                             Text {
-                                font.pointSize: $$(12)
+                                font.pointSize: 12 // TODO: scale font on Mac OSX
                                 visible: releases.variant.realSize != releases.variant.size && releases.variant.realSize > 0.1
                                 property double size: releases.variant.realSize
                                 property string sizeString: size <= 0 ? "" :
@@ -170,16 +170,16 @@ Item {
                         }
                         ColumnLayout {
                             width: parent.width
-                            spacing: $(6)
+                            spacing: units.largeSpacing
                             opacity: releases.selected.isLocal ? 0.0 : 1.0
                             Text {
-                                font.pointSize: $$(10)
+                                font.pointSize: 10 // TODO: scale font on Mac OSX
                                 color: mixColors(palette.window, palette.windowText, 0.3)
                                 visible: typeof releases.selected.version !== 'undefined'
                                 text: releases.variant.name
                             }
                             Text {
-                                font.pointSize: $$(8)
+                                font.pointSize: 8 // TODO: scale font on Mac OSX
                                 color: mixColors(palette.window, palette.windowText, 0.3)
                                 visible: releases.selected.version && releases.variant
                                 text: releases.variant.arch.details
@@ -189,7 +189,7 @@ Item {
                                 width: parent.width
                                 Text {
                                     text: qsTr("Version %1").arg(releases.selected.version.name)
-                                    font.pointSize: $$(8)
+                                    font.pointSize: 8 // TODO: scale font on Mac OSX
 
                                     color: versionRepeater.count <= 1 ? mixColors(palette.window, palette.windowText, 0.3) : versionMouse.containsPress ? Qt.lighter("#1d61bf", 1.7) : versionMouse.containsMouse ? Qt.darker("#1d61bf", 1.5) : "#1d61bf"
                                     Behavior on color { ColorAnimation { duration: 100 } }
@@ -209,14 +209,14 @@ Item {
                                         Keys.onSpacePressed: action()
                                         FocusRectangle {
                                             anchors.fill: parent
-                                            anchors.margins: $(-2)
+                                            anchors.margins: -2
                                             visible: parent.activeFocus
                                         }
                                     }
 
                                     BusyIndicator {
                                         anchors.right: parent.left
-                                        anchors.rightMargin: $(4)
+                                        anchors.rightMargin: units.smallSpacing
                                         anchors.verticalCenter: parent.verticalCenter
                                         height: parent.height * 0.8
                                         width: height
@@ -235,7 +235,7 @@ Item {
                                         radius: height / 2
                                         color: parent.color
                                         antialiasing: true
-                                        height: $(1)
+                                        height: 1
                                     }
 
 
@@ -245,7 +245,7 @@ Item {
                                         anchors {
                                             horizontalCenter: parent.horizontalCenter
                                             top: parent.bottom
-                                            topMargin: $(8) + opacity * $(24)
+                                            topMargin: units.largeSpacing + opacity * Math.round(units.gridUnit * 1.5)
                                         }
 
                                         onOpenChanged: {
@@ -256,7 +256,7 @@ Item {
                                         }
 
                                         ColumnLayout {
-                                            spacing: $(9)
+                                            spacing: units.largeSpacing
                                             ExclusiveGroup {
                                                 id: versionEG
                                             }
@@ -284,7 +284,7 @@ Item {
                                         anchors {
                                             left: parent.left
                                             top: parent.bottom
-                                            topMargin: $(8) + opacity * $(24)
+                                            topMargin: units.largeSpacing + opacity * Math.round(units.gridUnit * 1.5)
                                         }
 
                                         onOpenChanged: {
@@ -296,7 +296,7 @@ Item {
 
                                         Text {
                                             text: qsTr("Fedora %1 was released! Check it out!<br>If you want a stable, finished system, it's better to stay at version %2.").arg(releases.selected.prerelease).arg(releases.selected.version.name)
-                                            font.pointSize: $$(8)
+                                            font.pointSize: 8 // TODO: scale font on Mac OSX
                                             color: "white"
                                         }
 
@@ -325,7 +325,7 @@ Item {
                                     Layout.alignment: Qt.AlignRight
                                     visible: releases.selected.version.variants.length > 1
                                     text: qsTr("Other variants...")
-                                    font.pointSize: $$(8)
+                                    font.pointSize: 8 // TODO: scale font on Mac OSX
                                     color: archMouse.containsPress ? Qt.lighter("#1d61bf", 1.7) : archMouse.containsMouse ? Qt.darker("#1d61bf", 1.5) : "#1d61bf"
                                     Behavior on color { ColorAnimation { duration: 100 } }
                                     MouseArea {
@@ -348,7 +348,7 @@ Item {
                                         }
                                         FocusRectangle {
                                             anchors.fill: parent
-                                            anchors.margins: $(-2)
+                                            anchors.margins: -2
                                             visible: parent.activeFocus
                                         }
                                     }
@@ -361,7 +361,7 @@ Item {
                                         }
                                         radius: height / 2
                                         color: parent.color
-                                        height: $(1)
+                                        height: 1
                                     }
 
                                     AdwaitaPopOver {
@@ -370,7 +370,7 @@ Item {
                                         anchors {
                                             horizontalCenter: parent.horizontalCenter
                                             top: parent.bottom
-                                            topMargin: $(8) + opacity * $(24)
+                                            topMargin: units.largeSpacing + opacity * Math.round(units.gridUnit * 1.5)
                                         }
 
                                         onOpenChanged: {
@@ -381,7 +381,7 @@ Item {
                                         }
 
                                         ColumnLayout {
-                                            spacing: $(9)
+                                            spacing: units.largeSpacing
                                             ExclusiveGroup {
                                                 id: archEG
                                             }
@@ -412,7 +412,7 @@ Item {
                     wrapMode: Text.WordWrap
                     text: releases.selected.description
                     textFormat: Text.RichText
-                    font.pointSize: $$(9)
+                    font.pointSize: 9 // TODO: scale font on Mac OSX
                     color: palette.windowText
                 }
                 Repeater {
@@ -430,29 +430,31 @@ Item {
                 }
             }
         }
+
+        // TODO: replace with QQC2
         style: ScrollViewStyle {
             incrementControl: Item {}
             decrementControl: Item {}
             corner: Item {
-                implicitWidth: $(11)
-                implicitHeight: $(11)
+                implicitWidth: 11
+                implicitHeight: 11
             }
             scrollBarBackground: Rectangle {
                 color: Qt.darker(palette.window, 1.2)
-                implicitWidth: $(11)
-                implicitHeight: $(11)
+                implicitWidth: 11
+                implicitHeight: 11
             }
             handle: Rectangle {
                 color: mixColors(palette.window, palette.windowText, 0.5)
-                x: $(3)
-                y: $(3)
-                implicitWidth: $(6)
-                implicitHeight: $(7)
-                radius: $(4)
+                x: 3
+                y: 3
+                implicitWidth: 6
+                implicitHeight: 7
+                radius: 4
             }
             transientScrollBars: false
-            handleOverlap: $(1)
-            minimumHandleLength: $(10)
+            handleOverlap: 1
+            minimumHandleLength: 10
         }
     }
 }

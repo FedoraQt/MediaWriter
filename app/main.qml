@@ -32,8 +32,8 @@ import "views"
 ApplicationWindow {
     id: mainWindow
     visible: true
-    minimumWidth: $(800)
-    minimumHeight: $(480)
+    minimumWidth: 800
+    minimumHeight: 480
     title: "Fedora Media Writer"
 
     SystemPalette {
@@ -47,17 +47,8 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
-        width = $(800)
-        height = $(480)
-    }
-
-    property real fontScalingFactor: Qt.platform.os === "osx" ? 1.33 : 1
-    property real scalingFactor: Math.ceil(Screen.pixelDensity * 25.4) / 96 > 1 ? Math.ceil(Screen.pixelDensity * 25.4) / 96 : 1
-    function $(x) {
-        return x
-    }
-    function $$(x) {
-        return fontScalingFactor * x
+        width = 800
+        height = 480
     }
 
     function mixColors(color1, color2, ratio) {
@@ -68,8 +59,15 @@ ApplicationWindow {
     }
 
     property bool canGoBack: false
-    property real margin: $(64) + (width - $(800)) / 4
-    property real potentialMargin: $(64) + (Screen.width - $(800)) / 4
+    property real margin: 64 + (width - 800) / 4
+    property real potentialMargin: 64 + (Screen.width - 800) / 4
+
+    function $(x) {
+        return x
+    }
+    function $$(x) {
+     return x
+    }
 
     AdwaitaNotificationBar {
         id: deviceNotification

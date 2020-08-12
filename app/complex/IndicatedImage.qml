@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.3
+import QtQuick 2.12
 import QtQuick.Controls 1.2
 
 Item {
@@ -45,8 +45,8 @@ Item {
     BusyIndicator {
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
-        width: $(implicitWidth)
-        height: $(implicitHeight)
+        width: implicitWidth
+        height: implicitHeight
         opacity: image.status == Image.Ready ? 0 : 1
         Behavior on opacity {
             NumberAnimation {

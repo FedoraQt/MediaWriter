@@ -23,7 +23,7 @@ import QtQuick.Controls 2.12 as QQC2
 import QtQuick.Controls.Styles 1.2
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.12
-import QtQuick.Window 2.0
+import QtQuick.Window 2.12
 
 import MediaWriter 1.0
 
@@ -34,10 +34,10 @@ Dialog {
     id: dialog
     title: qsTr("Write %1").arg(releases.selected.name)
 
-    height: layout.height + $(36)
+    height: layout.height + (units.gridUnit * 2)
     standardButtons: StandardButton.NoButton
 
-    width: $(640)
+    width: 640
 
     function reset() {
         writeArrow.color = palette.text
@@ -314,21 +314,21 @@ Dialog {
             activeFocusOnTab: false
 
             contentItem: Item {
-                width: contentScrollView.width - $(18)
-                height: layout.height + $(18)
+                width: contentScrollView.width - units.gridUnit
+                height: layout.height + units.gridUnit
                 ColumnLayout {
                     id: layout
-                    spacing: $(18)
+                    spacing: units.largeSpacing * 2
                     anchors {
                         top: parent.top
                         left: parent.left
                         right: parent.right
-                        topMargin: $(18)
-                        leftMargin: $(18)
+                        topMargin: units.gridUnit
+                        leftMargin: units.gridUnit
                     }
                     ColumnLayout {
                         id: infoColumn
-                        spacing: $(4)
+                        spacing: units.smallSpacing
                         Layout.fillWidth: true
 
                         InfoMessage {
@@ -384,7 +384,7 @@ Dialog {
 
                     ColumnLayout {
                         width: parent.width
-                        spacing: $(5)
+                        spacing: units.smallSpacing
 
                         Behavior on y {
                             NumberAnimation {
@@ -396,7 +396,7 @@ Dialog {
                             Layout.fillWidth: true
                             Layout.fillHeight: true
                             horizontalAlignment: Text.AlignHCenter
-                            font.pointSize: $$(9)
+                            font.pointSize: 9 // TODO: scaling on Mac OSX
                             property double leftSize: releases.variant.progress.to - releases.variant.progress.value
                             property string leftStr:  leftSize <= 0                    ? "" :
                                                      (leftSize < 1024)                 ? qsTr("(%1 B left)").arg(leftSize) :
@@ -445,19 +445,19 @@ Dialog {
 
                     RowLayout {
                         anchors.horizontalCenter: parent.horizontalCenter
-                        spacing: $(32)
+                        spacing: units.gridUnit * 2
                         Image {
                             source: releases.selected.icon
-                            Layout.preferredWidth: $(64)
-                            Layout.preferredHeight: $(64)
-                            sourceSize.width: $(64)
-                            sourceSize.height: $(64)
+                            Layout.preferredWidth: Math.round(units.gridUnit * 3.5)
+                            Layout.preferredHeight: Math.round(units.gridUnit * 3.5)
+                            sourceSize.width: Math.round(units.gridUnit * 3.5)
+                            sourceSize.height: Math.round(units.gridUnit * 3.5)
                             fillMode: Image.PreserveAspectFit
                         }
                         Arrow {
                             id: writeArrow
                             anchors.verticalCenter: parent.verticalCenter
-                            scale: $(1.4)
+                            scale: 1.4
                             SequentialAnimation {
                                 running: releases.variant.status == Variant.WRITING
                                 loops: -1
@@ -488,7 +488,7 @@ Dialog {
                             }
                         }
                         Column {
-                            spacing: $(6)
+                            spacing: units.largeSpacing
                             Layout.preferredWidth: driveCombo.implicitWidth * 2.5
                             AdwaitaComboBox {
                                 z: pressed ? 1 : 0
@@ -526,16 +526,16 @@ Dialog {
                     ColumnLayout {
                         z: -1
                         Layout.maximumWidth: parent.width
-                        spacing: $(3)
+                        spacing: units.smallSpacing
                         Item {
-                            height: $(3)
+                            height: units.smallSpacing
                             width: 1
                         }
                         RowLayout {
                             height: rightButton.height
                             Layout.minimumWidth: parent.width
                             Layout.maximumWidth: parent.width
-                            spacing: $(6)
+                            spacing: units.largeSpacing
 
                             Item {
                                 Layout.fillWidth: true

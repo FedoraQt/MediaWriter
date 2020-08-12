@@ -17,8 +17,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.3
-import QtQuick.Layouts 1.0
+import QtQuick 2.12
+import QtQuick.Layouts 1.12
 import MediaWriter 1.0
 
 import "../simple"
@@ -26,7 +26,7 @@ import "../simple"
 Item {
     id: root
     width: parent.width
-    height: $(84)
+    height: Math.round(units.gridUnit * 4.5)
     activeFocusOnTab: true
 
     readonly property bool isTop: !releases.get(index-1) || (release.category !== releases.get(index-1).category)
@@ -58,8 +58,8 @@ Item {
                 top: parent.top
                 left: parent.left
                 bottom: parent.bottom
-                leftMargin: $(32)
-                topMargin: $(16)
+                leftMargin: units.gridUnit * 2
+                topMargin: units.gridUnit
                 bottomMargin: anchors.topMargin
             }
             width: height
@@ -72,26 +72,26 @@ Item {
         }
         ColumnLayout {
             id: textRect
-            spacing: $(4)
+            spacing: units.smallSpacing
             anchors {
                 verticalCenter: parent.verticalCenter
                 left: iconRect.right
                 right: arrow.left
-                leftMargin: $(28)
-                rightMargin: $(14)
+                leftMargin: units.gridUnit * 2
+                rightMargin: units.gridUnit
             }
             RowLayout {
                 spacing: 0
                 Text {
                     verticalAlignment: Text.AlignBottom
-                    font.pointSize: $$(9)
+                    font.pointSize: 9 // TODO: scaling on OSX
                     text: release.name
                     color: palette.text
                 }
                 Text {
                     text: " " + release.version.name
                     visible: !release.isLocal
-                    font.pointSize: $$(9)
+                    font.pointSize: 9 // TODO: scaling on OSX
                     color: palette.text
                 }
                 Item {
@@ -102,7 +102,7 @@ Item {
             Text {
                 Layout.fillWidth: true
                 verticalAlignment: Text.AlignTop
-                font.pointSize: $$(9)
+                font.pointSize: 9 // TODO: scaling on OSX
                 text: release.summary
                 wrapMode: Text.Wrap
                 color: "#a1a1a1"
@@ -114,13 +114,13 @@ Item {
             anchors {
                 verticalCenter: parent.verticalCenter
                 right: parent.right
-                rightMargin: $(20)
+                rightMargin: units.gridUnit
             }
         }
         Rectangle {
             id: topRounding
             visible: root.isTop
-            height: $(5)
+            height: units.smallSpacing
             color: palette.window
             clip: true
             anchors {
@@ -129,8 +129,8 @@ Item {
                 top: parent.top
             }
             Rectangle {
-                height: $(10)
-                radius: $(5)
+                height: Math.round(units.gridUnit / 2)
+                radius: 5
                 color: root.color
                 border {
                     color: Qt.darker(palette.window, 1.2)
@@ -146,7 +146,7 @@ Item {
         Rectangle {
             id: bottomRounding
             visible: root.isBottom
-            height: $(5)
+            height: units.smallSpacing
             color: palette.window
             clip: true
             anchors {
@@ -155,8 +155,8 @@ Item {
                 bottom: parent.bottom
             }
             Rectangle {
-                height: $(10)
-                radius: $(5)
+                height: Math.round(units.gridUnit / 2)
+                radius: 5
                 color: root.color
                 border {
                     color: Qt.darker(palette.window, 1.2)
@@ -172,7 +172,7 @@ Item {
         FocusRectangle {
             visible: root.activeFocus
             anchors.fill: parent
-            anchors.margins: $(3)
+            anchors.margins: units.smallSpacing
         }
     }
 

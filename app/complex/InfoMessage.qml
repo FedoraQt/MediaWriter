@@ -1,26 +1,28 @@
-import QtQuick 2.4
-import QtQuick.Layouts 1.0
+import QtQuick 2.12
+import QtQuick.Layouts 1.12
 
 RowLayout {
     id: root
     property alias text: infoMessageText.text
     property bool error: false
-    spacing: $(8)
+    spacing: units.largeSpacing
+
+    // Replace with Icon
     Rectangle {
         visible: !root.error
         Layout.fillWidth: false
         Layout.alignment: Qt.AlignVCenter
-        width: $(17)
-        height: $(17)
+        width: units.gridUnit
+        height: units.gridUnit
         radius: width / 2
         color: "#628fcf"
         border {
-            width: $(1)
+            width: 1
             color: "#a1a1a1"
         }
         Rectangle {
-            width: $(1)
-            height: $(6)
+            width: 1
+            height: 6
             anchors {
                 bottom: parent.bottom
                 bottomMargin: (parent.height - height) / 3
@@ -29,8 +31,8 @@ RowLayout {
             color: "#cce3e3e3"
         }
         Rectangle {
-            width: $(1)
-            height: $(1)
+            width: 1
+            height: 1
             anchors {
                 top: parent.top
                 topMargin: (parent.height - height) / 4
@@ -43,12 +45,12 @@ RowLayout {
         visible: root.error
         Layout.fillWidth: false
         Layout.alignment: Qt.AlignVCenter
-        width: $(18)
-        height: $(18)
+        width: units.gridUnit
+        height: units.gridUnit
         radius: width / 2
         color: "red"
         border {
-            width: $(1)
+            width: 1
             color: "#a1a1a1"
         }
         Rectangle {
@@ -65,7 +67,7 @@ RowLayout {
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.Wrap
         textFormat: Text.RichText
-        font.pointSize: $$(9)
+        font.pointSize: 9 // TODO: scaling on Mac OSX
         color: palette.windowText
         onLinkActivated: Qt.openUrlExternally(link)
         MouseArea {

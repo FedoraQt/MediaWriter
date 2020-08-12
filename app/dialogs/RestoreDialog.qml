@@ -40,9 +40,9 @@ Dialog {
 
     contentItem : Rectangle {
         focus: true
-        implicitWidth: $(480)
-        implicitHeight: textItem.height + buttonItem.height + $(48)
-        height: textItem.height + buttonItem.height + $(48)
+        implicitWidth: 480
+        implicitHeight: textItem.height + buttonItem.height + Math.round(units.gridUnit * 2.5)
+        height: textItem.height + buttonItem.height + Math.round(units.gridUnit * 2.5)
         color: palette.window
 
         Keys.onEscapePressed: {
@@ -53,13 +53,13 @@ Dialog {
         Item {
             id: wrapper
             anchors.fill: parent
-            anchors.margins: $(18)
+            anchors.margins: units.gridUnit
             Row {
                 id: textItem
-                spacing: $(36)
+                spacing: units.gridUnit * 2
                 x: !drives.lastRestoreable || drives.lastRestoreable.restoreStatus == Drive.CONTAINS_LIVE ? 0 :
-                                              drives.lastRestoreable.restoreStatus == Drive.RESTORING     ? - (parent.width + $(36)) :
-                                                                                                            - (2 * parent.width + $(72))
+                                              drives.lastRestoreable.restoreStatus == Drive.RESTORING     ? - (parent.width + (units.gridUnit * 2)) :
+                                                                                                            - (2 * parent.width + (units.gridUnit * 4))
                 height: warningText.height
                 Behavior on x {
                     NumberAnimation {
@@ -82,21 +82,21 @@ Dialog {
                                             </p>")
                     textFormat: Text.RichText
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    font.pointSize: $$(9)
+                    font.pointSize: 9 // TODO: scale font on Mac OSX
                     color: palette.windowText
                 }
                 ColumnLayout {
                     id: progress
                     width: wrapper.width
                     anchors.verticalCenter: parent.verticalCenter
-                    spacing: $(12)
+                    spacing: units.largeSpacing + units.smallSpacing
                     Item {
                         width: 1; height: 1
                     }
 
                     AdwaitaBusyIndicator {
                         id: progressIndicator
-                        width: $(256)
+                        width: units.gridUnit * 14
                         Layout.alignment: Qt.AlignHCenter
                     }
 
@@ -104,7 +104,7 @@ Dialog {
                         Layout.alignment: Qt.AlignHCenter
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         text: qsTr("<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
-                        font.pointSize: $$(9)
+                        font.pointSize: 9 // TODO: scale font on Mac OSX
                         color: palette.windowText
                     }
                 }
@@ -119,7 +119,7 @@ Dialog {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: qsTr("Your drive was successfully restored!")
-                        font.pointSize: $$(9)
+                        font.pointSize: 9 // TODO: scale font on Mac OSX
                         color: palette.windowText
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     }
@@ -135,7 +135,7 @@ Dialog {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: qsTr("Unfortunately, an error occurred during the process.<br>Please try restoring the drive using your system tools.")
-                        font.pointSize: $$(9)
+                        font.pointSize: 9 // TODO: scale font on Mac OSX
                         color: palette.windowText
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     }
@@ -146,7 +146,7 @@ Dialog {
                 id: buttonItem
                 anchors.bottom: parent.bottom
                 anchors.right: parent.right
-                spacing: $(12)
+                spacing: units.largeSpacing + units.smallSpacing
                 QQC2.Button {
                     text: qsTr("Cancel")
                     visible: drives.lastRestoreable &&
