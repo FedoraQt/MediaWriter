@@ -94,7 +94,7 @@ Item {
         QQC2.Button {
             id: crossButton
             flat: true
-            icon.name: "window-close"
+            icon.name: "qrc:/icons/window-close"
             onClicked: root.open = false
         }
     }

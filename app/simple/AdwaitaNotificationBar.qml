@@ -90,7 +90,7 @@ Rectangle {
         QQC2.Button {
             id: buttonCancel
             flat: true
-            icon.name: "window-close"
+            icon.name: "qrc:/icons/window-close"
 
             onClicked: {
                 root.open = false

@@ -91,7 +91,7 @@ Item {
                     Layout.fillWidth: true
                     QQC2.Button {
                         id: backButton
-                        icon.name: "go-previous"
+                        icon.name: "qrc:/icons/go-previous"
                         text: qsTr("Back")
                         onClicked: toMainScreen()
                     }
@@ -315,7 +315,7 @@ Item {
                                     // I'm sorry, everyone, I can't find a better way to determine if the date is valid
                                     visible: releases.selected.version.releaseDate.toLocaleDateString().length > 0
                                     text: qsTr(", released on %1").arg(releases.selected.version.releaseDate.toLocaleDateString())
-                                    font.pointSize: $$(8)
+                                    font.pointSize: 8 // TODO: scale font on Mac OSX
                                     color: mixColors(palette.window, palette.windowText, 0.3)
                                 }
                                 Item {

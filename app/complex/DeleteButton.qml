@@ -86,7 +86,7 @@ QQC2.Button {
             PropertyChanges {
                 target: deleteButton
                 // TODO
-                icon.name: "dialog-information"
+                icon.name: "qrc:/icons/dialog-information"
             }
             PropertyChanges {
                 target: hideTimer
@@ -98,7 +98,7 @@ QQC2.Button {
             PropertyChanges {
                 target: deleteButton
                 // TODO
-                icon.name: "dialog-error"
+                icon.name: "qrc:/icons/dialog-error"
             }
             PropertyChanges {
                 target: deleteButton
