@@ -160,10 +160,10 @@ FocusScope {
         activeFocusOnTab: visible
         visible: opacity > 0.0
         anchors {
+            bottom: searchBox.bottom
             right: parent.right
-            top: parent.top
+            top: searchBox.top
             rightMargin: mainWindow.margin + 1
-            topMargin: units.largeSpacing + units.smallSpacing
         }
         height: units.gridUnit * 2
         width: units.gridUnit * 8
