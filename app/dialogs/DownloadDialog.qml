@@ -416,7 +416,7 @@ Dialog {
                                 value: 0.0
                             }
                         }
-                        AdwaitaCheckBox {
+                        QQC2.CheckBox {
                             id: writeImmediately
                             enabled: driveCombo.count && opacity > 0.0
                             visible: platformSupportsDelayedWriting

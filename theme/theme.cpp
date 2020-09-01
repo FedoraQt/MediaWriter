@@ -20,6 +20,7 @@
 #include "theme.h"
 
 #include <QGuiApplication>
+#include <QCheckBox>
 
 AdwaitaTheme::AdwaitaTheme(QObject *parent)
     : QObject(parent)
@@ -129,5 +130,61 @@ QColor AdwaitaTheme::getButtonOutlineColor(bool highlighted, bool destructiveAct
     Adwaita::StyleOptions styleOptions(m_palette);
     styleOptions.setMouseOver(hovered);
     styleOptions.setSunken(pressed);
-    return Adwaita::Colors::buttonOutlineColor(Adwaita::StyleOptions(m_palette));
+    return Adwaita::Colors::buttonOutlineColor(styleOptions);
 }
+
+QColor AdwaitaTheme::getCheckBoxBottomColor(bool hovered, bool pressed, bool checked)
+{
+    Adwaita::StyleOptions styleOptions(m_palette);
+    styleOptions.setMouseOver(hovered);
+    styleOptions.setSunken(pressed);
+    styleOptions.setCheckboxState(checked ? Adwaita::CheckBoxState::CheckOn : Adwaita::CheckBoxState::CheckOff);
+
+    const QColor color = Adwaita::Colors::indicatorBackgroundColor(styleOptions);
+
+    // TODO: separate this from Adwaita::Helper::renderCheckBoxFrame()
+    if (!checked) {
+        if (pressed) {
+            // Pressed button in normal and dark mode is not a gradient, but just an image consting from same $color
+            return color;
+        } else if (hovered) {
+            QColor baseColor = m_darkMode ? color : Adwaita::Colors::darken(color, 0.09);
+            return m_darkMode ? Adwaita::Colors::darken(baseColor, 0.04) : color;
+        } else {
+            QColor baseColor = m_darkMode ? Adwaita::Colors::lighten(color, 0.03) : Adwaita::Colors::darken(color, 0.05);
+            return m_darkMode ? Adwaita::Colors::darken(baseColor, 0.06) : baseColor;
+        }
+    } else {
+        return Adwaita::Colors::lighten(color, 0.04);
+    }
+}
+
+QColor AdwaitaTheme::getCheckBoxTopColor(bool hovered, bool pressed, bool checked)
+{
+    const QColor color = getCheckBoxBottomColor(hovered, pressed, checked);
+
+    // TODO: separate this from Adwaita::Helper::renderCheckBoxFrame()
+    if (!checked) {
+        if (pressed) {
+            // Pressed button in normal and dark mode is not a gradient, but just an image consting from same $color
+            return color;
+        } else if (hovered) {
+            QColor baseColor = m_darkMode ? color : Adwaita::Colors::darken(color, 0.09);
+            return m_darkMode ? color : Adwaita::Colors::lighten(baseColor, 0.04);
+        } else {
+            return m_darkMode ? color : color;
+        }
+    } else {
+        return Adwaita::Colors::lighten(color, 0.04);
+    }
+}
+
+QColor AdwaitaTheme::getCheckBoxOutlineColor(bool hovered, bool pressed, bool checked)
+{
+    Adwaita::StyleOptions styleOptions(m_palette);
+    styleOptions.setMouseOver(hovered);
+    styleOptions.setSunken(pressed);
+    styleOptions.setCheckboxState(checked ? Adwaita::CheckBoxState::CheckOn : Adwaita::CheckBoxState::CheckOff);
+    return Adwaita::Colors::indicatorOutlineColor(styleOptions);
+}
+

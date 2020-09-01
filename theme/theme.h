@@ -37,6 +37,11 @@ class AdwaitaTheme : public QObject
     Q_PROPERTY(int buttonMinimumHeight READ buttonMinimumHeight CONSTANT)
     Q_PROPERTY(int buttonMinimumWidth READ buttonMinimumWidth CONSTANT)
 
+    // Checkbox
+    Q_PROPERTY(int checkboxItemSpacing READ checkboxItemSpacing CONSTANT)
+    Q_PROPERTY(int checkboxFocusMarginWidth READ checkboxFocusMarginWidth CONSTANT)
+    Q_PROPERTY(int checkboxSize READ checkboxSize CONSTANT)
+
     // Frame
     Q_PROPERTY(int frameRadius READ frameRadius CONSTANT)
     Q_PROPERTY(int frameWidth READ frameWidth CONSTANT)
@@ -65,6 +70,11 @@ public:
     int buttonMinimumHeight() const { return Adwaita::Button_MinHeight; }
     int buttonMinimumWidth() const { return Adwaita::Button_MinWidth; }
 
+    // Checkbox
+    int checkboxItemSpacing() const { return Adwaita::CheckBox_ItemSpacing; }
+    int checkboxFocusMarginWidth() const { return Adwaita::CheckBox_FocusMarginWidth; }
+    int checkboxSize() const { return Adwaita::CheckBox_Size; }
+
     // Frame
     int frameRadius() const { return Adwaita::Frame_FrameRadius; }
     int frameWidth() const { return Adwaita::Menu_FrameWidth; }
@@ -84,6 +94,10 @@ public:
     Q_INVOKABLE QColor getButtonBottomColor(bool highlighted, bool destructiveAction, bool hovered, bool pressed);
     Q_INVOKABLE QColor getButtonTopColor(bool highlighted, bool destructiveAction, bool hovered, bool pressed);
     Q_INVOKABLE QColor getButtonOutlineColor(bool highlighted, bool destructiveAction, bool hovered, bool pressed);
+
+    Q_INVOKABLE QColor getCheckBoxBottomColor(bool hovered, bool pressed, bool checked);
+    Q_INVOKABLE QColor getCheckBoxTopColor(bool hovered, bool pressed, bool checked);
+    Q_INVOKABLE QColor getCheckBoxOutlineColor(bool hovered, bool pressed, bool checked);
 
     bool darkMode() const { return m_darkMode; }
 private:
