@@ -112,8 +112,11 @@ Dialog {
                     visible: drives.lastRestoreable && drives.lastRestoreable.restoreStatus != Drive.RESTORE_ERROR
                     width: wrapper.width
                     anchors.verticalCenter: parent.verticalCenter
-                    CheckMark {
+                    Icon {
                         Layout.alignment: Qt.AlignHCenter
+                        height: 64
+                        width: 64
+                        source: "qrc:/icons/checkmark"
                     }
                     Text {
                         Layout.alignment: Qt.AlignHCenter
@@ -128,8 +131,11 @@ Dialog {
                     visible: drives.lastRestoreable && drives.lastRestoreable.restoreStatus != Drive.RESTORED
                     width: wrapper.width
                     anchors.verticalCenter: parent.verticalCenter
-                    Cross {
+                    Icon {
                         Layout.alignment: Qt.AlignHCenter
+                        height: 64
+                        width: 64
+                        source: "qrc:/icons/window-close"
                     }
                     Text {
                         Layout.alignment: Qt.AlignHCenter
