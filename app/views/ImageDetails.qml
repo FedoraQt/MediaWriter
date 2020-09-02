@@ -257,16 +257,13 @@ Item {
 
                                         ColumnLayout {
                                             spacing: units.largeSpacing
-                                            ExclusiveGroup {
-                                                id: versionEG
-                                            }
+
                                             Repeater {
                                                 id: versionRepeater
                                                 model: releases.selected.versions
-                                                AdwaitaRadioButton {
+                                                QQC2.RadioButton {
                                                     text: name
                                                     Layout.alignment: Qt.AlignVCenter
-                                                    exclusiveGroup: versionEG
                                                     checked: index == releases.selected.versionIndex
                                                     onCheckedChanged: {
                                                         if (checked)
@@ -382,15 +379,12 @@ Item {
 
                                         ColumnLayout {
                                             spacing: units.largeSpacing
-                                            ExclusiveGroup {
-                                                id: archEG
-                                            }
+
                                             Repeater {
                                                 model: releases.selected.version.variants
-                                                AdwaitaRadioButton {
+                                                QQC2.RadioButton {
                                                     text: name
                                                     Layout.alignment: Qt.AlignVCenter
-                                                    exclusiveGroup: archEG
                                                     checked: index == releases.selected.version.variantIndex
                                                     onCheckedChanged: {
                                                         if (checked)
