@@ -18,9 +18,7 @@
  */
 
 import QtQuick 2.12
-import QtQuick.Controls 1.2
 import QtQuick.Controls 2.12 as QQC2
-import QtQuick.Controls.Styles 1.2
 import QtQuick.Layouts 1.12
 import QtQuick.Dialogs 1.3
 import QtQuick.Window 2.12
@@ -217,12 +215,13 @@ Item {
                                         }
                                     }
 
-                                    BusyIndicator {
+                                    // TODO: Adwaita themed component
+                                    QQC2.BusyIndicator {
                                         anchors.right: parent.left
                                         anchors.rightMargin: units.smallSpacing
                                         anchors.verticalCenter: parent.verticalCenter
-                                        height: parent.height * 0.8
-                                        width: height
+                                        height: 24
+                                        width: 24
                                         opacity: releases.beingUpdated ? 0.6 : 0.0
                                         visible: opacity > 0.01
                                         Behavior on opacity { NumberAnimation { } }
