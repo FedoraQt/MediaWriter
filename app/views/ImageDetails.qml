@@ -143,11 +143,11 @@ Item {
                             Layout.fillWidth: true
                             QQC2.Label {
                                 Layout.fillWidth: true
-                                font.pointSize: referenceLabel.pointSize + 4
+                                font.pointSize: referenceLabel.font.pointSize + 4
                                 text: releases.selected.name
                             }
                             QQC2.Label {
-                                font.pointSize: referenceLabel.pointSize + 2
+                                font.pointSize: referenceLabel.font.pointSize + 2
                                 property double size: releases.variant.size
                                 text: size <= 0 ? "" :
                                                   (size < 1024) ? (size + " B") :
@@ -157,7 +157,7 @@ Item {
                                 opacity: 0.6
                             }
                             QQC2.Label {
-                                font.pointSize: referenceLabel.pointSize + 2
+                                font.pointSize: referenceLabel.font.pointSize + 2
                                 visible: releases.variant.realSize != releases.variant.size && releases.variant.realSize > 0.1
                                 property double size: releases.variant.realSize
                                 property string sizeString: size <= 0 ? "" :
@@ -175,13 +175,13 @@ Item {
                             spacing: units.largeSpacing
                             opacity: releases.selected.isLocal ? 0.0 : 1.0
                             QQC2.Label {
-                                font.pointSize: referenceLabel.pointSize + 1
+                                font.pointSize: referenceLabel.font.pointSize + 1
                                 visible: typeof releases.selected.version !== 'undefined'
                                 text: releases.variant.name
                                 opacity: 0.6
                             }
                             QQC2.Label {
-                                font.pointSize: referenceLabel.pointSize - 1
+                                font.pointSize: referenceLabel.font.pointSize - 1
                                 visible: releases.selected.version && releases.variant
                                 text: releases.variant.arch.details
                                 opacity: 0.6
@@ -190,7 +190,7 @@ Item {
                                 spacing: 0
                                 width: parent.width
                                 QQC2.Label {
-                                    font.pointSize: referenceLabel.pointSize - 1
+                                    font.pointSize: referenceLabel.font.pointSize - 1
                                     text: qsTr("Version %1").arg(releases.selected.version.name)
                                     color: versionMouse.containsPress ? Qt.lighter(palette.link, 1.5) : versionMouse.containsMouse ? Qt.darker(palette.link, 1.5) : palette.link
                                     opacity: versionRepeater.count <= 1 ? 0.6 : 1
@@ -295,7 +295,7 @@ Item {
 
                                         QQC2.Label {
                                             text: qsTr("Fedora %1 was released! Check it out!<br>If you want a stable, finished system, it's better to stay at version %2.").arg(releases.selected.prerelease).arg(releases.selected.version.name)
-                                            font.pointSize: referenceLabel.pointSize - 1
+                                            font.pointSize: referenceLabel.font.pointSize - 1
                                         }
 
                                         Timer {
@@ -313,7 +313,7 @@ Item {
                                     // I'm sorry, everyone, I can't find a better way to determine if the date is valid
                                     visible: releases.selected.version.releaseDate.toLocaleDateString().length > 0
                                     text: qsTr(", released on %1").arg(releases.selected.version.releaseDate.toLocaleDateString())
-                                    font.pointSize: referenceLabel.pointSize - 1
+                                    font.pointSize: referenceLabel.font.pointSize - 1
                                     opacity: 0.6
                                 }
                                 Item {
@@ -323,7 +323,7 @@ Item {
                                     Layout.alignment: Qt.AlignRight
                                     visible: releases.selected.version.variants.length > 1
                                     text: qsTr("Other variants...")
-                                    font.pointSize: referenceLabel.pointSize - 1
+                                    font.pointSize: referenceLabel.font.pointSize - 1
                                     color: archMouse.containsPress ? Qt.lighter(palette.link, 1.5) : archMouse.containsMouse ? Qt.darker(palette.link, 1.5) : palette.link
 
                                     Behavior on color { ColorAnimation { duration: 100 } }
