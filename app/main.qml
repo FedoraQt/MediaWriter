@@ -193,7 +193,7 @@ ApplicationWindow {
         ColumnLayout {
             anchors.centerIn: parent
             spacing: 9
-            Text {
+            Label {
                 horizontalAlignment: Text.AlignHCenter
                 color: "white"
                 text: qsTr("%1<br>Writing images will not be possible.<br>You can still view Fedora flavors and download images to your hard drive.").arg(drives.errorString)
