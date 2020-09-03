@@ -18,8 +18,7 @@
  */
 
 import QtQuick 2.12
-import QtQuick.Controls 1.2
-import QtQuick.Controls.Styles 1.2
+import QtQuick.Controls 2.12 as QQC2
 import QtQuick.Layouts 1.12
 
 import "../simple"
@@ -217,32 +216,33 @@ FocusScope {
         spacing: units.smallSpacing
         Behavior on opacity { NumberAnimation { } }
 
-        BusyIndicator {
-            anchors.verticalCenter: parent.verticalCenter
-            height: checkingForUpdatesText.height * 0.8
-            width: height
+        // TODO: Adwaita themed component
+        QQC2.BusyIndicator {
+            anchors.verticalCenter: checkingForUpdatesText.verticalCenter
+            height: 24
+            width: 24
         }
-        Text {
+        QQC2.Label {
             id: checkingForUpdatesText
             text: qsTr("Checking for new releases")
-            font.pointSize: 9 // TODO: scale font on Mac OSX
-            color: "#7a7a7a"
+            opacity: 0.6
         }
     }
 
-    ScrollView {
+    // TODO: QQC2 styling for scrollbar
+    QQC2.ScrollView {
         id: fullList
-        anchors.fill: parent
+        anchors {
+            fill: parent
+            leftMargin: mainWindow.margin
+            rightMargin: mainWindow.margin
+            topMargin: whiteBackground.y
+        }
+
         ListView {
             id: osListView
             clip: true
             focus: true
-            anchors {
-                fill: parent
-                leftMargin: mainWindow.margin
-                rightMargin: anchors.leftMargin - (fullList.width - fullList.viewport.width)
-                topMargin: whiteBackground.y
-            }
 
             model: releases
 
@@ -271,11 +271,9 @@ FocusScope {
                 delegate: Item {
                     height: section == "main" ? 0 : Math.round(units.gridUnit * 3.5)
                     width: parent.width
-                    Text {
+                    QQC2.Label {
                         text: section
                         textFormat: Text.RichText
-                        font.pointSize: 9 // TODO: scale font on Mac OSX
-                        color: palette.windowText
                         anchors {
                             left: parent.left
                             bottom: parent.bottom
@@ -300,16 +298,14 @@ FocusScope {
                         width: parent.width
                         height: Math.round(units.gridUnit * 3.5)
 
-                        Text {
-                            text: qsTr("About Fedora Media Writer")
-                            font.pointSize: 9 // TODO: scale font on Mac OSX
-                            color: palette.windowText
+                        QQC2.Label {
                             anchors {
                                 bottom: parent.bottom
                                 left: parent.left
                                 leftMargin: units.gridUnit
                                 bottomMargin: units.largeSpacing + units.smallSpacing
                             }
+                            text: qsTr("About Fedora Media Writer")
                         }
                     }
                     Rectangle {
@@ -330,37 +326,35 @@ FocusScope {
                             width: parent.width
                             move: Transition { NumberAnimation { properties: "y" } }
 
-                            Text {
+                            QQC2.Label {
                                 width: parent.width
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 text: qsTr("Version %1").arg(mediawriterVersion)
                                 textFormat: Text.RichText
-                                font.pointSize: 9 // TODO: scale font on Mac OSX
-                                color: palette.text
                             }
-                            Text {
+                            QQC2.Label {
                                 width: parent.width
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 visible: releases.beingUpdated
                                 text: qsTr("Fedora Media Writer is now checking for new releases")
-                                font.pointSize: 9 // TODO: scale font on Mac OSX
-                                BusyIndicator {
+
+                                // TODO: Adwaita themed component
+                                QQC2.BusyIndicator {
                                     anchors.right: parent.left
                                     anchors.rightMargin: units.smallSpacing
                                     anchors.verticalCenter: parent.verticalCenter
-                                    height: parent.height - units.smallSpacing
-                                    width: height
+                                    height: 24
+                                    width: 24
                                 }
-                                color: palette.text
                             }
-                            Text {
+                            QQC2.Label {
                                 width: parent.width
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/FedoraQt/MediaWriter/issues\">https://github.com/FedoraQt/MediaWriter/</a>")
                                 textFormat: Text.RichText
-                                font.pointSize: 9 // TODO: scale font on Mac OSX
                                 onLinkActivated: Qt.openUrlExternally(link)
-                                color: Qt.darker("light gray")
+                                opacity: 0.6
+
                                 MouseArea {
                                     anchors.fill: parent
                                     acceptedButtons: Qt.NoButton
@@ -410,15 +404,14 @@ FocusScope {
                     }
                 }
 
-                Text {
+                QQC2.Label {
                     id: threeDotText
                     y: threeDotDots.hidden ? parent.height / 2 - height / 2 : -height
-                    font.pointSize: 9 // TODO: scale font on Mac OSX
                     anchors.horizontalCenter: threeDotDots.horizontalCenter
                     Behavior on y { NumberAnimation { duration: 60 } }
                     clip: true
                     text: qsTr("Display additional Fedora flavors")
-                    color: "gray"
+                    opacity: 0.6
                 }
 
                 FocusRectangle {
@@ -459,32 +452,6 @@ FocusScope {
                     }
                 }
             }
-        }
-
-        // TODO: replace with QQC2
-        style: ScrollViewStyle {
-            incrementControl: Item {}
-            decrementControl: Item {}
-            corner: Item {
-                implicitWidth: 11
-                implicitHeight: 11
-            }
-            scrollBarBackground: Rectangle {
-                color: Qt.darker(palette.window, 1.2)
-                implicitWidth: 11
-                implicitHeight: 11
-            }
-            handle: Rectangle {
-                color: mixColors(palette.window, palette.windowText, 0.5)
-                x: 3
-                y: 3
-                implicitWidth: 6
-                implicitHeight: 7
-                radius: 4
-            }
-            transientScrollBars: false
-            handleOverlap: -2
-            minimumHandleLength: 10
         }
     }
 }
