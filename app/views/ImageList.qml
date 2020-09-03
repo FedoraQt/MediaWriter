@@ -20,6 +20,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12 as QQC2
 import QtQuick.Layouts 1.12
+import MediaWriter 1.0
 
 import "../simple"
 import "../complex"
@@ -84,42 +85,18 @@ FocusScope {
         height: 36
         z: 2
 
-        // TODO: use Icon
-        Item {
+        Icon {
             id: magnifyingGlass
             anchors {
                 left: parent.left
                 leftMargin: (parent.height - height) / 2
                 verticalCenter: parent.verticalCenter
             }
-            height: childrenRect.height + 3
-            width: childrenRect.width + 2
-
-            Rectangle {
-                height: 11
-                antialiasing: true
-                width: height
-                radius: height / 2
-                color: palette.text
-                Rectangle {
-                    height: 7
-                    antialiasing: true
-                    width: height
-                    radius: height / 2
-                    color: palette.background
-                    anchors.centerIn: parent
-                }
-                Rectangle {
-                    height: 2
-                    width: 6
-                    radius: 2
-                    x: 8
-                    y: 11
-                    rotation: 45
-                    color: palette.text
-                }
-            }
+            width: units.gridUnit
+            height: units.gridUnit
+            source: "qrc:/icons/edit-find"
         }
+
         TextInput {
             id: searchInput
             activeFocusOnTab: searchBox.visible
@@ -130,11 +107,10 @@ FocusScope {
                 right: parent.right
                 margins: 8
             }
-            Text {
+            QQC2.Label {
                 anchors.fill: parent
-                color: "light gray"
-                font.pointSize: 9 // TODO: scale font on Mac OSX
                 text: qsTr("Find an operating system image")
+                opacity: 0.6
                 visible: !parent.activeFocus && parent.text.length == 0
                 verticalAlignment: Text.AlignVCenter
             }
