@@ -442,7 +442,7 @@ Dialog {
                     }
 
                     RowLayout {
-                        anchors.horizontalCenter: parent.horizontalCenter
+                        Layout.alignment: Qt.AlignHCenter
                         spacing: units.gridUnit * 2
                         Image {
                             source: releases.selected.icon
@@ -454,7 +454,7 @@ Dialog {
                         }
                         Arrow {
                             id: writeArrow
-                            anchors.verticalCenter: parent.verticalCenter
+                            Layout.alignment: Qt.AlignVCenter
                             scale: 1.4
                             SequentialAnimation {
                                 running: releases.variant.status == Variant.WRITING
