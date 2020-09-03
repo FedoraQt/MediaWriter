@@ -19,7 +19,7 @@
 
 import QtQuick 2.12
 import QtQuick.Controls 2.12 as QQC2
-import QtQuick.Dialogs 1.2
+import QtQuick.Dialogs 1.3
 import QtQuick.Layouts 1.12
 
 import MediaWriter 1.0
@@ -67,7 +67,7 @@ Dialog {
                         easing.type: Easing.OutExpo
                     }
                 }
-                Text {
+                QQC2.Label {
                     id: warningText
                     width: wrapper.width
                     text: qsTr( "<p align=\"justify\">
@@ -82,8 +82,6 @@ Dialog {
                                             </p>")
                     textFormat: Text.RichText
                     wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                    font.pointSize: 9 // TODO: scale font on Mac OSX
-                    color: palette.windowText
                 }
                 ColumnLayout {
                     id: progress
@@ -100,12 +98,10 @@ Dialog {
                         Layout.alignment: Qt.AlignHCenter
                     }
 
-                    Text {
+                    QQC2.Label {
                         Layout.alignment: Qt.AlignHCenter
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         text: qsTr("<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
-                        font.pointSize: 9 // TODO: scale font on Mac OSX
-                        color: palette.windowText
                     }
                 }
                 ColumnLayout {
@@ -118,12 +114,10 @@ Dialog {
                         width: 64
                         source: "qrc:/icons/checkmark"
                     }
-                    Text {
+                    QQC2.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: qsTr("Your drive was successfully restored!")
-                        font.pointSize: 9 // TODO: scale font on Mac OSX
-                        color: palette.windowText
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     }
                 }
@@ -137,18 +131,16 @@ Dialog {
                         width: 64
                         source: "qrc:/icons/window-close"
                     }
-                    Text {
+                    QQC2.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: qsTr("Unfortunately, an error occurred during the process.<br>Please try restoring the drive using your system tools.")
-                        font.pointSize: 9 // TODO: scale font on Mac OSX
-                        color: palette.windowText
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                     }
                 }
             }
 
-            Row {
+            RowLayout {
                 id: buttonItem
                 anchors.bottom: parent.bottom
                 anchors.right: parent.right
