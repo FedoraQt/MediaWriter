@@ -37,6 +37,12 @@ Item {
     property bool focused: contentList.currentIndex === 1
     enabled: focused
 
+    QQC2.Label {
+        id: referenceLabel
+        visible: false
+        opacity: 0
+    }
+
     onFocusedChanged: {
         if (focused && !prereleaseNotification.wasOpen && releases.selected.prerelease.length > 0)
             prereleaseTimer.start()
@@ -67,19 +73,20 @@ Item {
                 toMainScreen()
     }
 
-    ScrollView {
+    // TODO: scrollbar styling
+
+    QQC2.ScrollView {
         activeFocusOnTab: false
         focus: true
         anchors {
             fill: parent
             leftMargin: anchors.rightMargin
         }
-        horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
-        flickableItem.flickableDirection: Flickable.VerticalFlick
-        contentItem: Item {
+
+        Item {
             x: mainWindow.margin
-            width: root.width - 2 * mainWindow.margin
-            height: childrenRect.height + Math.round(units.gridUnit * 3.5) + units.gridUnit * 2
+            implicitWidth: root.width - 2 * mainWindow.margin
+            implicitHeight: childrenRect.height + Math.round(units.gridUnit * 3.5) + units.gridUnit * 2
 
             ColumnLayout {
                 y: units.gridUnit
@@ -117,8 +124,6 @@ Item {
 
                 RowLayout {
                     z: 1 // so the popover stays over the text below
-                    anchors.left: parent.left
-                    anchors.right: parent.right
                     spacing: units.largeSpacing * 3
                     Item {
                         Layout.preferredWidth: Math.round(units.gridUnit * 3.5) + units.gridUnit
@@ -136,62 +141,60 @@ Item {
                         spacing: units.largeSpacing
                         RowLayout {
                             Layout.fillWidth: true
-                            Text {
+                            QQC2.Label {
                                 Layout.fillWidth: true
-                                anchors.left: parent.left
-                                font.pointSize: 14 // TODO: scale font on Mac OSX
+                                font.pointSize: referenceLabel.pointSize + 4
                                 text: releases.selected.name
-                                color: palette.windowText
                             }
-                            Text {
-                                font.pointSize: 12 // TODO: scale font on Mac OSX
+                            QQC2.Label {
+                                font.pointSize: referenceLabel.pointSize + 2
                                 property double size: releases.variant.size
                                 text: size <= 0 ? "" :
-                                      (size < 1024) ? (size + " B") :
-                                      (size < (1024 * 1024)) ? ((size / 1024).toFixed(1) + " KB") :
-                                      (size < (1024 * 1024 * 1024)) ? ((size / 1024 / 1024).toFixed(1) + " MB") :
-                                      ((size / 1024 / 1024 / 1024).toFixed(1) + " GB")
-
-                                color: mixColors(palette.window, palette.windowText, 0.3)
+                                                  (size < 1024) ? (size + " B") :
+                                                                  (size < (1024 * 1024)) ? ((size / 1024).toFixed(1) + " KB") :
+                                                                                           (size < (1024 * 1024 * 1024)) ? ((size / 1024 / 1024).toFixed(1) + " MB") :
+                                                                                                                           ((size / 1024 / 1024 / 1024).toFixed(1) + " GB")
+                                opacity: 0.6
                             }
-                            Text {
-                                font.pointSize: 12 // TODO: scale font on Mac OSX
+                            QQC2.Label {
+                                font.pointSize: referenceLabel.pointSize + 2
                                 visible: releases.variant.realSize != releases.variant.size && releases.variant.realSize > 0.1
                                 property double size: releases.variant.realSize
                                 property string sizeString: size <= 0 ? "" :
-                                                           (size < 1024) ? (size + " B") :
-                                                           (size < (1024 * 1024)) ? ((size / 1024).toFixed(1) + " KB") :
-                                                           (size < (1024 * 1024 * 1024)) ? ((size / 1024 / 1024).toFixed(1) + " MB") :
-                                                           ((size / 1024 / 1024 / 1024).toFixed(1) + " GB")
+                                                                        (size < 1024) ? (size + " B") :
+                                                                                        (size < (1024 * 1024)) ? ((size / 1024).toFixed(1) + " KB") :
+                                                                                                                 (size < (1024 * 1024 * 1024)) ? ((size / 1024 / 1024).toFixed(1) + " MB") :
+                                                                                                                                                 ((size / 1024 / 1024 / 1024).toFixed(1) + " GB")
                                 //: The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
                                 text: qsTr("(%1 after writing)").arg(sizeString)
-                                color: mixColors(palette.window, palette.windowText, 0.3)
+                                opacity: 0.6
                             }
                         }
                         ColumnLayout {
                             width: parent.width
                             spacing: units.largeSpacing
                             opacity: releases.selected.isLocal ? 0.0 : 1.0
-                            Text {
-                                font.pointSize: 10 // TODO: scale font on Mac OSX
-                                color: mixColors(palette.window, palette.windowText, 0.3)
+                            QQC2.Label {
+                                font.pointSize: referenceLabel.pointSize + 1
                                 visible: typeof releases.selected.version !== 'undefined'
                                 text: releases.variant.name
+                                opacity: 0.6
                             }
-                            Text {
-                                font.pointSize: 8 // TODO: scale font on Mac OSX
-                                color: mixColors(palette.window, palette.windowText, 0.3)
+                            QQC2.Label {
+                                font.pointSize: referenceLabel.pointSize - 1
                                 visible: releases.selected.version && releases.variant
                                 text: releases.variant.arch.details
+                                opacity: 0.6
                             }
                             RowLayout {
                                 spacing: 0
                                 width: parent.width
-                                Text {
+                                QQC2.Label {
+                                    font.pointSize: referenceLabel.pointSize - 1
                                     text: qsTr("Version %1").arg(releases.selected.version.name)
-                                    font.pointSize: 8 // TODO: scale font on Mac OSX
+                                    color: versionMouse.containsPress ? Qt.lighter(palette.link, 1.5) : versionMouse.containsMouse ? Qt.darker(palette.link, 1.5) : palette.link
+                                    opacity: versionRepeater.count <= 1 ? 0.6 : 1
 
-                                    color: versionRepeater.count <= 1 ? mixColors(palette.window, palette.windowText, 0.3) : versionMouse.containsPress ? Qt.lighter("#1d61bf", 1.7) : versionMouse.containsMouse ? Qt.darker("#1d61bf", 1.5) : "#1d61bf"
                                     Behavior on color { ColorAnimation { duration: 100 } }
                                     MouseArea {
                                         id: versionMouse
@@ -237,7 +240,6 @@ Item {
                                         antialiasing: true
                                         height: 1
                                     }
-
 
                                     AdwaitaPopOver {
                                         id: versionPopover
@@ -291,10 +293,9 @@ Item {
                                             }
                                         }
 
-                                        Text {
+                                        QQC2.Label {
                                             text: qsTr("Fedora %1 was released! Check it out!<br>If you want a stable, finished system, it's better to stay at version %2.").arg(releases.selected.prerelease).arg(releases.selected.version.name)
-                                            font.pointSize: 8 // TODO: scale font on Mac OSX
-                                            color: "white"
+                                            font.pointSize: referenceLabel.pointSize - 1
                                         }
 
                                         Timer {
@@ -308,22 +309,23 @@ Item {
                                         }
                                     }
                                 }
-                                Text {
+                                QQC2.Label {
                                     // I'm sorry, everyone, I can't find a better way to determine if the date is valid
                                     visible: releases.selected.version.releaseDate.toLocaleDateString().length > 0
                                     text: qsTr(", released on %1").arg(releases.selected.version.releaseDate.toLocaleDateString())
-                                    font.pointSize: 8 // TODO: scale font on Mac OSX
-                                    color: mixColors(palette.window, palette.windowText, 0.3)
+                                    font.pointSize: referenceLabel.pointSize - 1
+                                    opacity: 0.6
                                 }
                                 Item {
                                     Layout.fillWidth: true
                                 }
-                                Text {
+                                QQC2.Label {
                                     Layout.alignment: Qt.AlignRight
                                     visible: releases.selected.version.variants.length > 1
                                     text: qsTr("Other variants...")
-                                    font.pointSize: 8 // TODO: scale font on Mac OSX
-                                    color: archMouse.containsPress ? Qt.lighter("#1d61bf", 1.7) : archMouse.containsMouse ? Qt.darker("#1d61bf", 1.5) : "#1d61bf"
+                                    font.pointSize: referenceLabel.pointSize - 1
+                                    color: archMouse.containsPress ? Qt.lighter(palette.link, 1.5) : archMouse.containsMouse ? Qt.darker(palette.link, 1.5) : palette.link
+
                                     Behavior on color { ColorAnimation { duration: 100 } }
                                     MouseArea {
                                         id: archMouse
@@ -400,14 +402,12 @@ Item {
                         }
                     }
                 }
-                Text {
+                QQC2.Label {
                     Layout.fillWidth: true
                     width: Layout.width
                     wrapMode: Text.WordWrap
                     text: releases.selected.description
                     textFormat: Text.RichText
-                    font.pointSize: 9 // TODO: scale font on Mac OSX
-                    color: palette.windowText
                 }
                 Repeater {
                     id: screenshotRepeater
@@ -423,32 +423,6 @@ Item {
                     }
                 }
             }
-        }
-
-        // TODO: replace with QQC2
-        style: ScrollViewStyle {
-            incrementControl: Item {}
-            decrementControl: Item {}
-            corner: Item {
-                implicitWidth: 11
-                implicitHeight: 11
-            }
-            scrollBarBackground: Rectangle {
-                color: Qt.darker(palette.window, 1.2)
-                implicitWidth: 11
-                implicitHeight: 11
-            }
-            handle: Rectangle {
-                color: mixColors(palette.window, palette.windowText, 0.5)
-                x: 3
-                y: 3
-                implicitWidth: 6
-                implicitHeight: 7
-                radius: 4
-            }
-            transientScrollBars: false
-            handleOverlap: 1
-            minimumHandleLength: 10
         }
     }
 }
