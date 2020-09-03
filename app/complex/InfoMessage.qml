@@ -1,5 +1,27 @@
+/*
+ * Fedora Media Writer
+ * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+ * Copyright (C) 2020 Jan Grulich <jgrulich@redhat.com>
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+
 import QtQuick 2.12
+import QtQuick.Controls 2.12 as QQC2
 import QtQuick.Layouts 1.12
+import MediaWriter 1.0
 
 RowLayout {
     id: root
@@ -7,68 +29,31 @@ RowLayout {
     property bool error: false
     spacing: units.largeSpacing
 
-    // Replace with Icon
-    Rectangle {
+    Icon {
+        source: "qrc:/icons/dialog-information"
         visible: !root.error
         Layout.fillWidth: false
         Layout.alignment: Qt.AlignVCenter
         width: units.gridUnit
         height: units.gridUnit
-        radius: width / 2
-        color: "#628fcf"
-        border {
-            width: 1
-            color: "#a1a1a1"
-        }
-        Rectangle {
-            width: 1
-            height: 6
-            anchors {
-                bottom: parent.bottom
-                bottomMargin: (parent.height - height) / 3
-                horizontalCenter: parent.horizontalCenter
-            }
-            color: "#cce3e3e3"
-        }
-        Rectangle {
-            width: 1
-            height: 1
-            anchors {
-                top: parent.top
-                topMargin: (parent.height - height) / 4
-                horizontalCenter: parent.horizontalCenter
-            }
-            color: "#cce3e3e3"
-        }
     }
-    Rectangle {
+
+    Icon {
+        source: "qrc:/icons/dialog-error"
         visible: root.error
         Layout.fillWidth: false
         Layout.alignment: Qt.AlignVCenter
         width: units.gridUnit
         height: units.gridUnit
-        radius: width / 2
-        color: "red"
-        border {
-            width: 1
-            color: "#a1a1a1"
-        }
-        Rectangle {
-            anchors.centerIn: parent
-            width: parent.width * 0.65
-            height: parent.width * 0.15
-            color: "white"
-        }
     }
-    Text {
+
+    QQC2.Label {
         id: infoMessageText
         Layout.fillHeight: true
         Layout.fillWidth: true
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.Wrap
         textFormat: Text.RichText
-        font.pointSize: 9 // TODO: scaling on Mac OSX
-        color: palette.windowText
         onLinkActivated: Qt.openUrlExternally(link)
         MouseArea {
             acceptedButtons: Qt.NoButton
