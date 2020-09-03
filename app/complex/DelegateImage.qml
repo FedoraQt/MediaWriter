@@ -18,6 +18,7 @@
  */
 
 import QtQuick 2.12
+import QtQuick.Controls 2.12 as QQC2
 import QtQuick.Layouts 1.12
 import MediaWriter 1.0
 
@@ -81,31 +82,23 @@ Item {
                 rightMargin: units.gridUnit
             }
             RowLayout {
+                Layout.fillWidth: true
                 spacing: 0
-                Text {
+                QQC2.Label {
                     verticalAlignment: Text.AlignBottom
-                    font.pointSize: 9 // TODO: scaling on OSX
                     text: release.name
-                    color: palette.text
                 }
-                Text {
+                QQC2.Label {
                     text: " " + release.version.name
                     visible: !release.isLocal
-                    font.pointSize: 9 // TODO: scaling on OSX
-                    color: palette.text
-                }
-                Item {
-                    Layout.fillWidth: true
-                    height: 1
                 }
             }
-            Text {
+            QQC2.Label {
                 Layout.fillWidth: true
                 verticalAlignment: Text.AlignTop
-                font.pointSize: 9 // TODO: scaling on OSX
                 text: release.summary
                 wrapMode: Text.Wrap
-                color: "#a1a1a1"
+                opacity: 0.6
             }
         }
         Arrow {
