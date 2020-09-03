@@ -18,9 +18,7 @@
  */
 
 import QtQuick 2.12
-import QtQuick.Controls 1.2
 import QtQuick.Controls 2.12 as QQC2
-import QtQuick.Controls.Styles 1.2
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.12
 import QtQuick.Window 2.12
@@ -306,16 +304,19 @@ Dialog {
                 dialog.visible = false
         }
 
-        ScrollView {
+        QQC2.ScrollView {
             id: contentScrollView
-            anchors.fill: parent
-            horizontalScrollBarPolicy: Qt.ScrollBarAlwaysOff
-            flickableItem.flickableDirection: Flickable.VerticalFlick
+            anchors {
+                fill: parent
+                leftMargin: units.gridUnit
+                rightMargin: units.gridUnit
+            }
+
             activeFocusOnTab: false
 
             contentItem: Item {
-                width: contentScrollView.width - units.gridUnit
-                height: layout.height + units.gridUnit
+                width: contentScrollView.width
+                height: layout.height
                 ColumnLayout {
                     id: layout
                     spacing: units.largeSpacing * 2
@@ -324,7 +325,6 @@ Dialog {
                         left: parent.left
                         right: parent.right
                         topMargin: units.gridUnit
-                        leftMargin: units.gridUnit
                     }
                     ColumnLayout {
                         id: infoColumn
@@ -392,11 +392,10 @@ Dialog {
                             }
                         }
 
-                        Text {
+                        QQC2.Label {
                             Layout.fillWidth: true
                             Layout.fillHeight: true
                             horizontalAlignment: Text.AlignHCenter
-                            font.pointSize: 9 // TODO: scaling on Mac OSX
                             property double leftSize: releases.variant.progress.to - releases.variant.progress.value
                             property string leftStr:  leftSize <= 0                    ? "" :
                                                      (leftSize < 1024)                 ? qsTr("(%1 B left)").arg(leftSize) :
@@ -404,7 +403,6 @@ Dialog {
                                                      (leftSize < (1024 * 1024 * 1024)) ? qsTr("(%1 MB left)").arg((leftSize / 1024 / 1024).toFixed(1)) :
                                                                                          qsTr("(%1 GB left)").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
                             text: releases.variant.statusString + (releases.variant.status == Variant.DOWNLOADING ? (" " + leftStr) : "")
-                            color: palette.windowText
                         }
                         Item {
                             Layout.fillWidth: true
