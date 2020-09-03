@@ -79,10 +79,9 @@ Item {
                 left: iconRect.right
                 right: arrow.left
                 leftMargin: units.gridUnit * 2
-                rightMargin: units.gridUnit
+                rightMargin: units.gridUnit * 2
             }
             RowLayout {
-                Layout.fillWidth: true
                 spacing: 0
                 QQC2.Label {
                     verticalAlignment: Text.AlignBottom
