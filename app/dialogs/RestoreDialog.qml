@@ -92,10 +92,11 @@ Dialog {
                         width: 1; height: 1
                     }
 
-                    AdwaitaBusyIndicator {
+                    QQC2.ProgressBar {
                         id: progressIndicator
                         width: units.gridUnit * 14
                         Layout.alignment: Qt.AlignHCenter
+                        indeterminate: true
                     }
 
                     QQC2.Label {

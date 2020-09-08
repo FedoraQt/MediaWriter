@@ -46,6 +46,10 @@ class AdwaitaTheme : public QObject
     Q_PROPERTY(int frameRadius READ frameRadius CONSTANT)
     Q_PROPERTY(int frameWidth READ frameWidth CONSTANT)
 
+    // Progressbar
+    Q_PROPERTY(int progressBarBusyIndicatorSize READ progressBarBusyIndicatorSize CONSTANT)
+    Q_PROPERTY(int progressBarThickness READ progressBarThickness CONSTANT)
+
     // Colors
     Q_PROPERTY(QColor baseColor READ baseColor CONSTANT)
     Q_PROPERTY(QColor buttonColor READ buttonColor CONSTANT)
@@ -79,6 +83,10 @@ public:
     int frameRadius() const { return Adwaita::Frame_FrameRadius; }
     int frameWidth() const { return Adwaita::Menu_FrameWidth; }
 
+    // Progressbar
+    int progressBarBusyIndicatorSize() const { return Adwaita::ProgressBar_BusyIndicatorSize; }
+    int progressBarThickness() const { return Adwaita::ProgressBar_Thickness; }
+
     // Base colors
     QColor baseColor() const { return m_palette.color(QPalette::Base); }
     QColor buttonColor() const { return m_palette.color(QPalette::Button); }
@@ -98,6 +106,9 @@ public:
     Q_INVOKABLE QColor getCheckBoxBottomColor(bool hovered, bool pressed, bool checked);
     Q_INVOKABLE QColor getCheckBoxTopColor(bool hovered, bool pressed, bool checked);
     Q_INVOKABLE QColor getCheckBoxOutlineColor(bool hovered, bool pressed, bool checked);
+
+    Q_INVOKABLE QColor getProgressBarColor();
+    Q_INVOKABLE QColor getProgressBarOutlineColor();
 
     bool darkMode() const { return m_darkMode; }
 private:

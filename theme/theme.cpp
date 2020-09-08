@@ -188,3 +188,13 @@ QColor AdwaitaTheme::getCheckBoxOutlineColor(bool hovered, bool pressed, bool ch
     return Adwaita::Colors::indicatorOutlineColor(styleOptions);
 }
 
+QColor AdwaitaTheme::getProgressBarColor()
+{
+    return m_palette.currentColorGroup() ? m_palette.color(QPalette::Window) : Adwaita::Colors::mix(getProgressBarOutlineColor(), m_palette.color(QPalette::Window));
+}
+
+QColor AdwaitaTheme::getProgressBarOutlineColor()
+{
+    Adwaita::StyleOptions styleOptions(m_palette);
+    return Adwaita::Colors::buttonOutlineColor(styleOptions);
+}

@@ -98,7 +98,14 @@ Dialog {
                 PropertyChanges {
                     target: progressBar;
                     value: releases.variant.progress.ratio;
-                    progressColor: Qt.lighter("green")
+                }
+                StateChangeScript {
+                    name: "colorChange"
+                    script:  {
+                        if (progressBar.hasOwnProperty("progressBarColor")) {
+                            progressBar.progressBarColor = Qt.lighter("green")
+                        }
+                    }
                 }
             },
             State {
@@ -152,13 +159,17 @@ Dialog {
                 PropertyChanges {
                     target: progressBar;
                     value: drives.selected.progress.ratio;
-                    progressColor: "red"
                 }
                 StateChangeScript {
                     name: "colorChange"
-                    script: if (rightButton.hasOwnProperty("destructiveAction")) {
-                                rightButton.destructiveAction = false
-                            }
+                    script:  {
+                        if (progressBar.hasOwnProperty("destructiveAction")) {
+                            progressBar.destructiveAction = false
+                        }
+                        if (progressBar.hasOwnProperty("progressBarColor")) {
+                            progressBar.progressBarColor = "red"
+                        }
+                    }
                 }
             },
             State {
@@ -179,7 +190,14 @@ Dialog {
                 PropertyChanges {
                     target: progressBar;
                     value: drives.selected.progress.ratio;
-                    progressColor: Qt.lighter("green")
+                }
+                StateChangeScript {
+                    name: "colorChange"
+                    script:  {
+                        if (progressBar.hasOwnProperty("progressBarColor")) {
+                            progressBar.progressBarColor = Qt.lighter("green")
+                        }
+                    }
                 }
             },
             State {
@@ -404,15 +422,10 @@ Dialog {
                                                                                          qsTr("(%1 GB left)").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
                             text: releases.variant.statusString + (releases.variant.status == Variant.DOWNLOADING ? (" " + leftStr) : "")
                         }
-                        Item {
+                        QQC2.ProgressBar {
+                            id: progressBar
                             Layout.fillWidth: true
-                            height: childrenRect.height
-                            AdwaitaProgressBar {
-                                id: progressBar
-                                width: parent.width
-                                progressColor: "#54aada"
-                                value: 0.0
-                            }
+                            value: 0.0
                         }
                         QQC2.CheckBox {
                             id: writeImmediately
