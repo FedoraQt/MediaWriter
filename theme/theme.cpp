@@ -21,6 +21,7 @@
 
 #include <QGuiApplication>
 #include <QCheckBox>
+#include <iostream>
 
 AdwaitaTheme::AdwaitaTheme(QObject *parent)
     : QObject(parent)
@@ -28,11 +29,13 @@ AdwaitaTheme::AdwaitaTheme(QObject *parent)
 {
     // Just guess dark mode for now based on text color
     const QColor textColor = QGuiApplication::palette().color(QPalette::Text);
-    if ((textColor.redF() * 0.299 + textColor.greenF() * 0.587 + textColor.blueF() * 0.114) <= 186) {
+    if (qSqrt(((textColor.red() * textColor.red()) * 0.299) +
+              ((textColor.green() * textColor.green()) * 0.587) +
+              ((textColor.blue() * textColor.blue()) * 0.114)) > 128) {
         m_darkMode = true;
     }
 
-    m_palette = Adwaita::Colors::palette();
+    m_palette = Adwaita::Colors::palette(m_darkMode ? Adwaita::ColorVariant::AdwaitaDark : Adwaita::ColorVariant::Adwaita);
 }
 
 AdwaitaTheme *AdwaitaTheme::qmlAttachedProperties(QObject *object)
@@ -42,6 +45,8 @@ AdwaitaTheme *AdwaitaTheme::qmlAttachedProperties(QObject *object)
 
 QColor AdwaitaTheme::buttonOutlineColor() const
 {
+    Adwaita::StyleOptions styleOptions(m_palette);
+    styleOptions.setColorVariant(m_darkMode ? Adwaita::ColorVariant::AdwaitaDark : Adwaita::ColorVariant::Adwaita);
     return Adwaita::Colors::buttonOutlineColor(Adwaita::StyleOptions(m_palette));
 }
 
@@ -73,6 +78,7 @@ QColor AdwaitaTheme::getButtonBottomColor(bool highlighted, bool destructiveActi
     Adwaita::StyleOptions styleOptions(m_palette);
     styleOptions.setMouseOver(hovered);
     styleOptions.setSunken(pressed);
+    styleOptions.setColorVariant(m_darkMode ? Adwaita::ColorVariant::AdwaitaDark : Adwaita::ColorVariant::Adwaita);
 
     const QColor color = Adwaita::Colors::buttonBackgroundColor(styleOptions);
 
@@ -130,6 +136,8 @@ QColor AdwaitaTheme::getButtonOutlineColor(bool highlighted, bool destructiveAct
     Adwaita::StyleOptions styleOptions(m_palette);
     styleOptions.setMouseOver(hovered);
     styleOptions.setSunken(pressed);
+    styleOptions.setColorVariant(m_darkMode ? Adwaita::ColorVariant::AdwaitaDark : Adwaita::ColorVariant::Adwaita);
+
     return Adwaita::Colors::buttonOutlineColor(styleOptions);
 }
 
@@ -139,6 +147,7 @@ QColor AdwaitaTheme::getCheckBoxBottomColor(bool hovered, bool pressed, bool che
     styleOptions.setMouseOver(hovered);
     styleOptions.setSunken(pressed);
     styleOptions.setCheckboxState(checked ? Adwaita::CheckBoxState::CheckOn : Adwaita::CheckBoxState::CheckOff);
+    styleOptions.setColorVariant(m_darkMode ? Adwaita::ColorVariant::AdwaitaDark : Adwaita::ColorVariant::Adwaita);
 
     const QColor color = Adwaita::Colors::indicatorBackgroundColor(styleOptions);
 
@@ -185,6 +194,8 @@ QColor AdwaitaTheme::getCheckBoxOutlineColor(bool hovered, bool pressed, bool ch
     styleOptions.setMouseOver(hovered);
     styleOptions.setSunken(pressed);
     styleOptions.setCheckboxState(checked ? Adwaita::CheckBoxState::CheckOn : Adwaita::CheckBoxState::CheckOff);
+    styleOptions.setColorVariant(m_darkMode ? Adwaita::ColorVariant::AdwaitaDark : Adwaita::ColorVariant::Adwaita);
+
     return Adwaita::Colors::indicatorOutlineColor(styleOptions);
 }
 
@@ -196,5 +207,7 @@ QColor AdwaitaTheme::getProgressBarColor()
 QColor AdwaitaTheme::getProgressBarOutlineColor()
 {
     Adwaita::StyleOptions styleOptions(m_palette);
+    styleOptions.setColorVariant(m_darkMode ? Adwaita::ColorVariant::AdwaitaDark : Adwaita::ColorVariant::Adwaita);
+
     return Adwaita::Colors::buttonOutlineColor(styleOptions);
 }
