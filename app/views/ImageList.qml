@@ -62,18 +62,8 @@ FocusScope {
         color: palette.window
     }
 
-    // TODO: use QQC2.TextField
-    Rectangle {
-        enabled: !releases.frontPage
-        opacity: !releases.frontPage ? 1.0 : 0.0
-        visible: opacity > 0.0
+    QQC2.TextField {
         id: searchBox
-        border {
-            color: searchInput.activeFocus ? "#4a90d9" : Qt.darker(palette.button, 1.3)
-            width: 1
-        }
-        radius: 5
-        color: palette.background
         anchors {
             top: parent.top
             left: parent.left
@@ -82,44 +72,15 @@ FocusScope {
             leftMargin: mainWindow.margin
             rightMargin: 4
         }
-        height: 36
         z: 2
-
-        Icon {
-            id: magnifyingGlass
-            anchors {
-                left: parent.left
-                leftMargin: (parent.height - height) / 2
-                verticalCenter: parent.verticalCenter
-            }
-            width: units.gridUnit
-            height: units.gridUnit
-            source: "qrc:/icons/edit-find"
-        }
-
-        TextInput {
-            id: searchInput
-            activeFocusOnTab: searchBox.visible
-            anchors {
-                left: magnifyingGlass.right
-                top: parent.top
-                bottom: parent.bottom
-                right: parent.right
-                margins: 8
-            }
-            QQC2.Label {
-                anchors.fill: parent
-                text: qsTr("Find an operating system image")
-                opacity: 0.6
-                visible: !parent.activeFocus && parent.text.length == 0
-                verticalAlignment: Text.AlignVCenter
-            }
-            verticalAlignment: TextInput.AlignVCenter
-            text: releases.filterText
-            onTextChanged: releases.filterText = text
-            clip: true
-            color: palette.text
-        }
+        enabled: !releases.frontPage
+        opacity: !releases.frontPage ? 1.0 : 0.0
+        visible: opacity > 0.0
+        activeFocusOnTab: visible
+        placeholderText: qsTr("Find an operating system image")
+        text: releases.filterText
+        onTextChanged: releases.filterText = text
+        clip: true
     }
 
     AdwaitaComboBox {

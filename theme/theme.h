@@ -50,6 +50,13 @@ class AdwaitaTheme : public QObject
     Q_PROPERTY(int progressBarBusyIndicatorSize READ progressBarBusyIndicatorSize CONSTANT)
     Q_PROPERTY(int progressBarThickness READ progressBarThickness CONSTANT)
 
+    // LineEdit
+    Q_PROPERTY(int lineEditFrameWidth READ lineEditFrameWidth CONSTANT)
+    Q_PROPERTY(int lineEditMarginHeight READ lineEditMarginHeight CONSTANT)
+    Q_PROPERTY(int lineEditMarginWidth READ lineEditMarginWidth CONSTANT)
+    Q_PROPERTY(int lineEditMinimumHeight READ lineEditMinimumHeight CONSTANT)
+    Q_PROPERTY(int lineEditMinimumWidth READ lineEditMinimumWidth CONSTANT)
+
     // Colors
     Q_PROPERTY(QColor baseColor READ baseColor CONSTANT)
     Q_PROPERTY(QColor buttonColor READ buttonColor CONSTANT)
@@ -86,6 +93,13 @@ public:
     // Progressbar
     int progressBarBusyIndicatorSize() const { return Adwaita::ProgressBar_BusyIndicatorSize; }
     int progressBarThickness() const { return Adwaita::ProgressBar_Thickness; }
+
+    // LineEdit
+    int lineEditFrameWidth() const { return Adwaita::LineEdit_FrameWidth; }
+    int lineEditMarginHeight() const { return Adwaita::LineEdit_MarginHeight; }
+    int lineEditMarginWidth() const { return Adwaita::LineEdit_MarginWidth; }
+    int lineEditMinimumHeight() const { return Adwaita::LineEdit_MinHeight; }
+    int lineEditMinimumWidth() const { return Adwaita::LineEdit_MinWidth; }
 
     // Base colors
     QColor baseColor() const { return m_palette.color(QPalette::Base); }
