@@ -21,7 +21,6 @@
 
 #include <QGuiApplication>
 #include <QCheckBox>
-#include <iostream>
 
 AdwaitaTheme::AdwaitaTheme(QObject *parent)
     : QObject(parent)
