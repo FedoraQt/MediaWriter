@@ -56,9 +56,12 @@ int main(int argc, char **argv)
 
 #ifdef __linux
     if (QGuiApplication::platformName() == QStringLiteral("xcb")) {
-        if (qEnvironmentVariableIsEmpty("QSG_RENDER_LOOP"))
-            qputenv("QSG_RENDER_LOOP", "threaded");
         qputenv("GDK_BACKEND", "x11");
+    }
+    // For some reason threaded renderer makes all the animations slow for me
+    // so as a fallback force non-threaded renderer
+    if (qEnvironmentVariableIsEmpty("QSG_RENDER_LOOP")) {
+        qputenv("QSG_RENDER_LOOP", "basic");
     }
 #endif
 
@@ -75,11 +78,6 @@ int main(int argc, char **argv)
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication app(argc, argv);
     options.parse(app.arguments());
-
-    // considering how often we hit driver issues, I have decided to force
-    // the QML software renderer on Windows and Linux, since Qt 5.9
-    if (qEnvironmentVariableIsEmpty("QMLSCENE_DEVICE"))
-        qputenv("QMLSCENE_DEVICE", "softwarecontext");
 
     mDebug() << "Application constructed";
 
