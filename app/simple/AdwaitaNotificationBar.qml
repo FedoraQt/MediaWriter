@@ -27,9 +27,9 @@ Rectangle {
     enabled: open
     focus: open
 
-    color: "#729FCF"
+    color: palette.highlight
     border {
-        color: "#4C7BB2"
+        color: Qt.darker(palette.highlight, 1.0)
         width: 1
     }
 
@@ -61,7 +61,7 @@ Rectangle {
             margins: $(18)
         }
         spacing: $(12)
-        Text {
+        QQC2.Label {
             id: label
 
             Layout.fillWidth: true
@@ -70,7 +70,7 @@ Rectangle {
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
 
             font.pointSize: $$(9)
-            color: "white"
+            color: palette.highlightedText
             textFormat: Text.RichText
         }
 
