@@ -62,50 +62,54 @@ FocusScope {
         color: palette.window
     }
 
-    QQC2.TextField {
-        id: searchBox
+    RowLayout {
         anchors {
-            top: parent.top
             left: parent.left
-            right: archSelect.left
+            right: parent.right
+            top: parent.top
             topMargin: 12
             leftMargin: mainWindow.margin
-            rightMargin: 4
+            rightMargin: mainWindow.margin + 1
         }
-        z: 2
-        enabled: !releases.frontPage
-        opacity: !releases.frontPage ? 1.0 : 0.0
-        visible: opacity > 0.0
-        activeFocusOnTab: visible
-        placeholderText: qsTr("Find an operating system image")
-        text: releases.filterText
-        onTextChanged: releases.filterText = text
-        clip: true
-    }
+        spacing: 4
 
-    AdwaitaComboBox {
-        enabled: !releases.frontPage
-        opacity: !releases.frontPage ? 1.0 : 0.0
-        Behavior on opacity {
-            NumberAnimation {
-                duration: imageList.fadeDuration
+        QQC2.TextField {
+            id: searchBox
+            Layout.fillWidth: true
+            z: 2
+            enabled: !releases.frontPage
+            opacity: !releases.frontPage ? 1.0 : 0.0
+            visible: opacity > 0.0
+            activeFocusOnTab: visible
+            placeholderText: qsTr("Find an operating system image")
+            text: releases.filterText
+            onTextChanged: releases.filterText = text
+            clip: true
+
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: imageList.fadeDuration
+                }
             }
         }
 
-        id: archSelect
-        activeFocusOnTab: visible
-        visible: opacity > 0.0
-        anchors {
-            bottom: searchBox.bottom
-            right: parent.right
-            top: searchBox.top
-            rightMargin: mainWindow.margin + 1
-        }
-        height: units.gridUnit * 2
-        width: units.gridUnit * 8
-        model: releases.architectures
-        onCurrentIndexChanged:  {
-            releases.filterArchitecture = currentIndex
+        QQC2.ComboBox {
+            id: archSelect
+            enabled: !releases.frontPage
+            opacity: !releases.frontPage ? 1.0 : 0.0
+            activeFocusOnTab: visible
+            visible: opacity > 0.0
+            model: releases.architectures
+
+            onCurrentIndexChanged:  {
+                releases.filterArchitecture = currentIndex
+            }
+
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: imageList.fadeDuration
+                }
+            }
         }
     }
 

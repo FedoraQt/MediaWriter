@@ -42,13 +42,15 @@ class AdwaitaTheme : public QObject
     Q_PROPERTY(int checkboxFocusMarginWidth READ checkboxFocusMarginWidth CONSTANT)
     Q_PROPERTY(int checkboxSize READ checkboxSize CONSTANT)
 
+    // ComboBox
+    Q_PROPERTY(int comboBoxMarginHeight READ comboBoxMarginHeight CONSTANT)
+    Q_PROPERTY(int comboBoxMarginWidth READ comboBoxMarginWidth CONSTANT)
+    Q_PROPERTY(int comboBoxMinimumHeight READ comboBoxMinimumHeight CONSTANT)
+    Q_PROPERTY(int comboBoxMinimumWidth READ comboBoxMinimumWidth CONSTANT)
+
     // Frame
     Q_PROPERTY(int frameRadius READ frameRadius CONSTANT)
     Q_PROPERTY(int frameWidth READ frameWidth CONSTANT)
-
-    // Progressbar
-    Q_PROPERTY(int progressBarBusyIndicatorSize READ progressBarBusyIndicatorSize CONSTANT)
-    Q_PROPERTY(int progressBarThickness READ progressBarThickness CONSTANT)
 
     // LineEdit
     Q_PROPERTY(int lineEditFrameWidth READ lineEditFrameWidth CONSTANT)
@@ -56,6 +58,14 @@ class AdwaitaTheme : public QObject
     Q_PROPERTY(int lineEditMarginWidth READ lineEditMarginWidth CONSTANT)
     Q_PROPERTY(int lineEditMinimumHeight READ lineEditMinimumHeight CONSTANT)
     Q_PROPERTY(int lineEditMinimumWidth READ lineEditMinimumWidth CONSTANT)
+
+    // MenuItem
+    Q_PROPERTY(int menuItemSpacing READ menuItemSpacing CONSTANT)
+    Q_PROPERTY(int menuItemMarginWidth READ menuItemMarginWidth CONSTANT)
+
+    // Progressbar
+    Q_PROPERTY(int progressBarBusyIndicatorSize READ progressBarBusyIndicatorSize CONSTANT)
+    Q_PROPERTY(int progressBarThickness READ progressBarThickness CONSTANT)
 
     // Colors
     Q_PROPERTY(QColor baseColor READ baseColor CONSTANT)
@@ -86,13 +96,15 @@ public:
     int checkboxFocusMarginWidth() const { return Adwaita::CheckBox_FocusMarginWidth; }
     int checkboxSize() const { return Adwaita::CheckBox_Size; }
 
+    // ComboBox
+    int comboBoxMarginHeight() const { return Adwaita::ComboBox_MarginHeight; }
+    int comboBoxMarginWidth() const { return Adwaita::ComboBox_MarginWidth; }
+    int comboBoxMinimumHeight() const { return Adwaita::ComboBox_MinHeight; }
+    int comboBoxMinimumWidth() const { return Adwaita::ComboBox_MinWidth; }
+
     // Frame
     int frameRadius() const { return Adwaita::Frame_FrameRadius; }
     int frameWidth() const { return Adwaita::Menu_FrameWidth; }
-
-    // Progressbar
-    int progressBarBusyIndicatorSize() const { return Adwaita::ProgressBar_BusyIndicatorSize; }
-    int progressBarThickness() const { return Adwaita::ProgressBar_Thickness; }
 
     // LineEdit
     int lineEditFrameWidth() const { return Adwaita::LineEdit_FrameWidth; }
@@ -100,6 +112,14 @@ public:
     int lineEditMarginWidth() const { return Adwaita::LineEdit_MarginWidth; }
     int lineEditMinimumHeight() const { return Adwaita::LineEdit_MinHeight; }
     int lineEditMinimumWidth() const { return Adwaita::LineEdit_MinWidth; }
+
+    // MenuItem
+    int menuItemSpacing() const { return Adwaita::MenuItem_ItemSpacing; }
+    int menuItemMarginWidth() const { return Adwaita::MenuItem_MarginWidth; }
+
+    // Progressbar
+    int progressBarBusyIndicatorSize() const { return Adwaita::ProgressBar_BusyIndicatorSize; }
+    int progressBarThickness() const { return Adwaita::ProgressBar_Thickness; }
 
     // Base colors
     QColor baseColor() const { return m_palette.color(QPalette::Base); }

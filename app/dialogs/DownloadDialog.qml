@@ -498,15 +498,16 @@ Dialog {
                                 }
                             }
                         }
-                        Column {
+                        ColumnLayout {
                             spacing: units.largeSpacing
-                            Layout.preferredWidth: driveCombo.implicitWidth * 2.5
-                            AdwaitaComboBox {
-                                z: pressed ? 1 : 0
+
+                            QQC2.ComboBox {
                                 id: driveCombo
-                                width: driveCombo.implicitWidth * 2.5
+                                z: pressed ? 1 : 0
                                 model: drives
+                                displayText: currentIndex === -1 || !currentText ? qsTr("There are no portable drives connected") : currentText
                                 textRole: "display"
+
                                 Binding on currentIndex {
                                     when: drives
                                     value: drives.selectedIndex
@@ -520,14 +521,12 @@ Dialog {
                                     if ([Variant.FINISHED, Variant.FAILED, Variant.FAILED_VERIFICATION].indexOf(releases.variant.status) >= 0)
                                         releases.variant.resetStatus()
                                 }
-                                placeholderText: qsTr("There are no portable drives connected")
                             }
-                            AdwaitaComboBox {
+                            QQC2.ComboBox {
                                 id: boardCombo
                                 z: pressed ? 1 : 0
                                 enabled: visible
                                 visible: releases.selected.version.variant.arch.id == Architecture.ARM || (releases.selected.isLocal && releases.variant.iso.indexOf(".iso", releases.variant.iso.length - ".iso".length) === -1)
-                                width: driveCombo.implicitWidth * 2.5
                                 property bool otherSelected: currentIndex === (count - 1)
                                 model: ["Raspberry Pi 2 Model B", "Raspberry Pi 3 Model B", qsTr("Other")]
                             }
