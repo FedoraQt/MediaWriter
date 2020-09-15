@@ -122,11 +122,13 @@ Item {
 
                 RowLayout {
                     z: 1 // so the popover stays over the text below
-                    spacing: units.largeSpacing * 3
+                    spacing: units.largeSpacing
                     Item {
                         Layout.preferredWidth: Math.round(units.gridUnit * 3.5) + units.gridUnit
                         Layout.preferredHeight: Math.round(units.gridUnit * 3.5)
+                        Layout.alignment: Qt.AlignHCenter
                         IndicatedImage {
+                            anchors.fill: parent
                             x: units.gridUnit
                             source: releases.selected.icon ? releases.selected.icon: ""
                             fillMode: Image.PreserveAspectFit
