@@ -86,9 +86,9 @@ T.ComboBox {
         validator: control.validator
 
         font: control.font
-        color: control.editable ? control.palette.text : control.palette.buttonText
-        selectionColor: control.palette.highlight
-        selectedTextColor: control.palette.highlightedText
+        color: theme.textColor
+        selectionColor: theme.highlightColor
+        selectedTextColor: theme.highlightTextColor
         verticalAlignment: Text.AlignVCenter
     }
 
