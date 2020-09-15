@@ -1,3 +1,5 @@
+CONFIG += link_pkgconfig
+
 TEMPLATE = app
 
 TARGET = mediawriter
@@ -59,6 +61,8 @@ INSTALLS += target
 
 linux {
     QT += dbus
+
+    PKGCONFIG += adwaita-qt
 
     HEADERS += linuxdrivemanager.h
     SOURCES += linuxdrivemanager.cpp
