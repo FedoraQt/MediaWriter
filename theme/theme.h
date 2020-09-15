@@ -36,6 +36,7 @@ class AdwaitaTheme : public QObject
     Q_PROPERTY(int buttonMarginWidth READ buttonMarginWidth CONSTANT)
     Q_PROPERTY(int buttonMinimumHeight READ buttonMinimumHeight CONSTANT)
     Q_PROPERTY(int buttonMinimumWidth READ buttonMinimumWidth CONSTANT)
+    Q_PROPERTY(int buttonItemSpacing READ buttonItemSpacing CONSTANT)
 
     // Checkbox
     Q_PROPERTY(int checkboxItemSpacing READ checkboxItemSpacing CONSTANT)
@@ -90,6 +91,7 @@ public:
     int buttonMarginWidth() const { return Adwaita::Button_MarginWidth; }
     int buttonMinimumHeight() const { return Adwaita::Button_MinHeight; }
     int buttonMinimumWidth() const { return Adwaita::Button_MinWidth; }
+    int buttonItemSpacing() const { return Adwaita::Button_ItemSpacing; }
 
     // Checkbox
     int checkboxItemSpacing() const { return Adwaita::CheckBox_ItemSpacing; }

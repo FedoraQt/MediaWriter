@@ -63,8 +63,8 @@ T.Button {
 
         Label {
             id: label
-            Layout.leftMargin: control.leftPadding
-            Layout.rightMargin: control.rightPadding
+            Layout.leftMargin: theme.buttonItemSpacing
+            Layout.rightMargin: theme.buttonItemSpacing
             Layout.fillWidth: true
             text: control.text
             font: control.font
