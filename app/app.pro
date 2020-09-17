@@ -69,10 +69,10 @@ linux {
                  assets/icon/512x512
 
     desktopfile.path = "$$DATADIR/applications/"
-    desktopfile.files = "$$top_srcdir/dist/linux/org.fedoraproject.mediawriter.desktop"
+    desktopfile.files = "$$top_srcdir/dist/linux/org.fedoraproject.MediaWriter.desktop"
 
     appdatafile.path = "$$DATADIR/metainfo/"
-    appdatafile.files = "$$top_srcdir/dist/linux/org.fedoraproject.mediawriter.appdata.xml"
+    appdatafile.files = "$$top_srcdir/dist/linux/org.fedoraproject.MediaWriter.appdata.xml"
 
     INSTALLS += icon desktopfile appdatafile
 }
