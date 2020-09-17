@@ -71,7 +71,7 @@ linux {
     desktopfile.path = "$$DATADIR/applications/"
     desktopfile.files = "$$top_srcdir/dist/linux/org.fedoraproject.mediawriter.desktop"
 
-    appdatafile.path = "$$DATADIR/appdata/"
+    appdatafile.path = "$$DATADIR/metainfo/"
     appdatafile.files = "$$top_srcdir/dist/linux/org.fedoraproject.mediawriter.appdata.xml"
 
     INSTALLS += icon desktopfile appdatafile
