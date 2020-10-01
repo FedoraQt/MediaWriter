@@ -34,10 +34,10 @@ T.ComboBox {
                              contentItem.implicitHeight + bottomPadding + topPadding) + (2 * theme.frameWidth)
 
     spacing: theme.menuItemSpacing
-    leftPadding: theme.comboBoxMarginWidth
-    rightPadding: theme.comboBoxMarginWidth
-    bottomPadding: theme.comboBoxMarginHeight
-    topPadding: theme.comboBoxMarginHeight
+    leftPadding: theme.comboBoxMarginWidth + theme.frameWidth
+    rightPadding: theme.comboBoxMarginWidth + theme.frameWidth
+    bottomPadding: theme.comboBoxMarginHeight + theme.frameWidth
+    topPadding: theme.comboBoxMarginHeight + theme.frameWidth
 
     hoverEnabled: true
 
@@ -52,7 +52,7 @@ T.ComboBox {
     indicator: Shape {
         implicitHeight: 10
         implicitWidth: 10
-        x: control.mirrored ? control.leftPadding : control.width - width - control.rightPadding
+        x: control.mirrored ? control.leftPadding - 2 : control.width - width - control.rightPadding + 2
         y: control.topPadding + control.availableHeight / 2
 
         ShapePath {
