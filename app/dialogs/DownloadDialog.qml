@@ -351,42 +351,42 @@ Dialog {
 
                         InfoMessage {
                             id: messageDownload
+                            Layout.fillWidth: true
                             visible: false
-                            width: infoColumn.width
                             text: qsTr("The file will be saved to your Downloads folder.")
                         }
 
                         InfoMessage {
                             id: messageLoseData
+                            Layout.fillWidth: true
                             visible: false
-                            width: infoColumn.width
                             text: qsTr("By writing, you will lose all of the data on %1.").arg(driveCombo.currentText)
                         }
 
                         InfoMessage {
                             id: messageRestore
+                            Layout.fillWidth: true
                             visible: false
-                            width: infoColumn.width
                             text: qsTr("Your drive will be resized to a smaller capacity. You may resize it back to normal by using Fedora Media Writer; this will remove installation media from your drive.")
                         }
 
                         InfoMessage {
                             id: messageSelectedImage
-                            width: infoColumn.width
+                            Layout.fillWidth: true
                             visible: releases.selected.isLocal
                             text: "<font color=\"gray\">" + qsTr("Selected:") + "</font> " + (releases.variant.iso ? (((String)(releases.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
                         }
 
                         InfoMessage {
                             id: messageArmBoard
-                            width: infoColumn.width
+                            Layout.fillWidth: true
                             visible: boardCombo.otherSelected
                             text: qsTr("Your board or device is not supported by Fedora Media Writer yet. Please check <a href=%1>this page</a> for more information about its compatibility with Fedora and how to create bootable media for it.").arg("https://fedoraproject.org/wiki/Architectures/ARM")
                         }
 
                         InfoMessage {
                             id: messageDriveSize
-                            width: infoColumn.width
+                            Layout.fillWidth: true
                             enabled: true
                             visible: enabled && drives.selected && drives.selected.size > 160 * 1024 * 1024 * 1024 // warn when it's more than 160GB
                             text: qsTr("The selected drive's size is %1. It's possible you have selected an external drive by accident!").arg(drives.selected ? drives.selected.readableSize : "N/A")
@@ -394,7 +394,7 @@ Dialog {
 
                         InfoMessage {
                             error: true
-                            width: infoColumn.width
+                            Layout.fillWidth: true
                             visible: releases.variant && releases.variant.errorString.length > 0
                             text: releases.variant ? releases.variant.errorString : ""
                         }
