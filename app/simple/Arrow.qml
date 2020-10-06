@@ -23,7 +23,7 @@ Item {
     implicitHeight: 10
     width: height / 2
     clip: true
-    scale: $(1)
+    scale: 1
     property alias color: rect.color
     Rectangle {
         id: rect

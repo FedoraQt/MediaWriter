@@ -63,13 +63,6 @@ ApplicationWindow {
     property real margin: 64 + (width - 800) / 4
     property real potentialMargin: 64 + (Screen.width - 800) / 4
 
-    function $(x) {
-        return x
-    }
-    function $$(x) {
-     return x
-    }
-
     AdwaitaNotificationBar {
         id: deviceNotification
         text: open ? qsTr("You inserted <b>%1</b> that already contains a live system.<br>Do you want to restore it to factory settings?").arg(drives.lastRestoreable.name) : ""
