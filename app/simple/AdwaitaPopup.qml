@@ -20,6 +20,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12 as QQC2
 import QtQuick.Layouts 1.12
+import MediaWriter 1.0
 
 Item {
     id: root
@@ -41,17 +42,17 @@ Item {
         id: background
         anchors {
             fill: layout
-            bottomMargin: $(-18)
+            bottomMargin: -units.gridUnit
             topMargin: anchors.bottomMargin - background.radius
             leftMargin: anchors.bottomMargin
-            rightMargin: anchors.bottomMargin + $(4)
+            rightMargin: anchors.bottomMargin + units.smallSpacing
         }
         border {
             color: "#3a3a3a"
             width: 1
         }
         color: "#bb000000"
-        radius: $(6)
+        radius: units.smallSpacing
         MouseArea {
             id: mouse
             anchors.fill: parent
@@ -61,22 +62,20 @@ Item {
 
     RowLayout {
         id: layout
-        spacing: $(6)
+        spacing:  units.smallSpacing
 
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width * 0.666
-        y: root.open ? $(18) : -(height + $(24))
+        y: root.open ? units.gridUnit : -(height + units.gridUnit + units.smallSpacing)
         Behavior on y { NumberAnimation { duration: 120; easing.type: Easing.InOutQuad } }
 
         Column {
             Text {
-                font.pointSize: $$(9)
                 font.bold: true
                 color: "white"
                 id: title
             }
             Text {
-                font.pointSize: $$(9)
                 color: "white"
                 id: description
             }
