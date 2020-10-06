@@ -20,6 +20,7 @@
 import QtQuick 2.3
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.0
+import MediaWriter 1.0
 
 FocusScope {
     id: popover
@@ -28,8 +29,8 @@ FocusScope {
     opacity: open ? 1.0 : 0.0
     Behavior on opacity { NumberAnimation { duration: 120 } }
 
-    height: contents.height + $(12)
-    width: contents.width + $(12)
+    height: contents.height + (units.largeSpacing * 2)
+    width: contents.width + (units.largeSpacing * 2)
 
     default property alias children: contents.data
 
@@ -47,30 +48,30 @@ FocusScope {
         z: -2
         anchors {
             fill: frame
-            topMargin: -$(1)
-            bottomMargin: -$(2)
-            leftMargin: -$(2)
-            rightMargin: -$(2)
+            topMargin: -1
+            bottomMargin: -2
+            leftMargin: -2
+            rightMargin: -2
         }
 
-        radius: frame.radius + $(2)
+        radius: frame.radius + 2
         color: "#10000000"
     }
 
     Rectangle {
         id: frame
         anchors.fill: contents
-        anchors.margins: - $(12)
+        anchors.margins: -units.largeSpacing
         color: palette.window
         antialiasing: true
         border {
             width: 1
             color: Qt.darker(palette.button, 1.5)
         }
-        radius: $(6)
+        radius: units.smallSpacing
         Rectangle {
             z: -1
-            y: -$(6.5) - 1
+            y: -units.largeSpacing - 1
             antialiasing: true
             border {
                 width: 1
@@ -78,16 +79,16 @@ FocusScope {
             }
             color: palette.window
             anchors.horizontalCenter: parent.horizontalCenter
-            width: $(14)
-            height: $(14)
+            width: units.gridUnit
+            height: units.gridUnit
             rotation: 45
         }
         Rectangle {
             color: palette.window
-            y: -$(6.5) + 1
+            y: -units.largeSpacing + 1
             anchors.horizontalCenter: parent.horizontalCenter
-            width: $(14)
-            height: $(14)
+            width: units.gridUnit
+            height: units.gridUnit
             rotation: 45
         }
         MouseArea { // to stay open when user clicks inside the bubble
