@@ -68,7 +68,7 @@ FocusScope {
         }
 
         radius: frame.radius + 2
-        color: Qt.darker(palette.highlight, 1.0)
+        color: "#10000000"
     }
 
     Rectangle {
