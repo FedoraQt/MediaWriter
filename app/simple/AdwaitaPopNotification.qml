@@ -18,6 +18,7 @@
  */
 
 import QtQuick 2.12
+import MediaWriter 1.0
 
 FocusScope {
     id: root
@@ -32,8 +33,8 @@ FocusScope {
             hideTimer.start()
     }
 
-    height: contents.height + $(12)
-    width: contents.width + $(12)
+    height: contents.height + (2 * units.largeSpacing)
+    width: contents.width + (2 * units.largeSpacing)
 
     default property alias children: contents.data
 
@@ -60,47 +61,47 @@ FocusScope {
         z: -2
         anchors {
             fill: frame
-            topMargin: -$(1)
-            bottomMargin: -$(2)
-            leftMargin: -$(2)
-            rightMargin: -$(2)
+            topMargin: -1
+            bottomMargin: -2
+            leftMargin: -2
+            rightMargin: -2
         }
 
-        radius: frame.radius + $(2)
-        color: "#10000000"
+        radius: frame.radius + 2
+        color: Qt.darker(palette.highlight, 1.0)
     }
 
     Rectangle {
         id: frame
         anchors.fill: contents
-        anchors.margins: - $(12)
-        color: "#729FCF"
+        anchors.margins: -(2 * units.largeSpacing)
+        color: palette.highlight
         antialiasing: true
         border {
             width: 1
-            color: "#b1b1b1"
+            color: Qt.darker(palette.highlight, 1.0)
         }
-        radius: $(6)
+        radius: units.smallSpacing
         Rectangle {
             z: -1
-            y: -$(6.5) - 1
+            y: -units.largeSpacing - 1
             antialiasing: true
-            border.color: "#b1b1b1"
+            border.color:  Qt.darker(palette.highlight, 1.0)
             border.width: 1
-            color: "#729FCF"
+            color: palette.highlight
             anchors.left: parent.left
-            anchors.leftMargin: parent.radius + $(10)
-            width: $(14)
-            height: $(14)
+            anchors.leftMargin: parent.radius + Math.round(units.gridUnit / 2)
+            width: units.gridUnit
+            height: units.gridUnit
             rotation: 45
         }
         Rectangle {
-            color: "#729FCF"
-            y: -$(6.5) + 1
+            color: palette.highlight
+            y: -units.largeSpacing + 1
             anchors.left: parent.left
-            anchors.leftMargin: parent.radius + $(10)
-            width: $(14)
-            height: $(14)
+            anchors.leftMargin: parent.radius + Math.round(units.gridUnit / 2)
+            width: units.gridUnit
+            height: units.gridUnit
             rotation: 45
         }
     }
