@@ -20,6 +20,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12 as QQC2
 import QtQuick.Layouts 1.12
+import MediaWriter 1.0
 
 Rectangle {
     id: root
@@ -33,8 +34,8 @@ Rectangle {
         width: 1
     }
 
-    height: $(70)
-    property real margin: open ? 0 : $(-70)
+    height: units.gridUnit * 4
+    property real margin: open ? 0 : -(units.gridUnit * 4)
     anchors.topMargin: margin
     Behavior on margin {
         NumberAnimation {
@@ -58,9 +59,9 @@ Rectangle {
     RowLayout {
         anchors {
             fill: parent
-            margins: $(18)
+            margins: units.gridUnit
         }
-        spacing: $(12)
+        spacing: 2 * units.largeSpacing
         QQC2.Label {
             id: label
 
@@ -69,7 +70,6 @@ Rectangle {
             verticalAlignment: Text.AlignVCenter
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
 
-            font.pointSize: $$(9)
             color: palette.highlightedText
             textFormat: Text.RichText
         }
