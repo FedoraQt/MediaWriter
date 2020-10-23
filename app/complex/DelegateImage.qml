@@ -78,7 +78,7 @@ Item {
                 verticalCenter: parent.verticalCenter
                 left: iconRect.right
                 right: arrow.left
-                leftMargin: units.gridUnit
+                leftMargin: units.gridUnit * 2
                 rightMargin: units.gridUnit * 2
             }
             RowLayout {
