@@ -170,7 +170,6 @@ FocusScope {
         }
     }
 
-    // TODO: QQC2 styling for scrollbar
     QQC2.ScrollView {
         id: fullList
         anchors {
@@ -184,11 +183,10 @@ FocusScope {
             id: osListView
             clip: true
             focus: true
-
             model: releases
 
             delegate: DelegateImage {
-                width: parent.width
+                width: osListView.width
                 focus: true
             }
 

@@ -210,3 +210,22 @@ QColor AdwaitaTheme::getProgressBarOutlineColor()
 
     return Adwaita::Colors::buttonOutlineColor(styleOptions);
 }
+
+QColor AdwaitaTheme::getScrollBarGrooveColor()
+{
+    if (m_darkMode) {
+        return Adwaita::Colors::mix(windowColor(), baseColor(), 0.5);
+    } else {
+        return Adwaita::Colors::mix(windowColor(), baseColor(), 0.2);
+    }
+}
+
+QColor AdwaitaTheme::getScrollBarHandleColor(bool hovered, bool pressed)
+{
+    Adwaita::StyleOptions styleOptions(m_palette);
+    styleOptions.setMouseOver(hovered);
+    styleOptions.setSunken(pressed);
+    styleOptions.setColorVariant(m_darkMode ? Adwaita::ColorVariant::AdwaitaDark : Adwaita::ColorVariant::Adwaita);
+
+    return Adwaita::Colors::scrollBarHandleColor(styleOptions);
+}

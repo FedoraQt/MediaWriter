@@ -146,6 +146,9 @@ public:
     Q_INVOKABLE QColor getProgressBarColor();
     Q_INVOKABLE QColor getProgressBarOutlineColor();
 
+    Q_INVOKABLE QColor getScrollBarGrooveColor();
+    Q_INVOKABLE QColor getScrollBarHandleColor(bool hovered, bool pressed);
+
     bool darkMode() const { return m_darkMode; }
 private:
     bool m_darkMode;

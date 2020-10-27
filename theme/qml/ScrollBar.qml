@@ -29,30 +29,35 @@ T.ScrollBar {
     implicitWidth: implicitContentWidth + leftPadding + rightPadding
     implicitHeight: implicitContentHeight + topPadding + bottomPadding
 
-    padding: 2
-    visible: control.policy !== T.ScrollBar.AlwaysOff
+    leftPadding: 4
+    rightPadding: 4
+    // FIXME
+    // Workaround for me not being able to hide horizontal scrollbar
+    visible: control.size < 1.0 && orientation !== Qt.Horizontal
     minimumSize: orientation == Qt.Horizontal ? height / width : width / height
+    hoverEnabled: true
 
     contentItem: Rectangle {
-        implicitWidth: control.interactive ? 6 : 2
-        implicitHeight: control.interactive ? 6 : 2
-
+        implicitWidth: control.pressed || control.hovered ? 6 : 2
+        implicitHeight: control.pressed || control.hovered ? 6 : 2
         radius: width / 2
-        color: control.pressed ? control.palette.dark : control.palette.mid
-        opacity: 0.0
+        color: theme.getScrollBarHandleColor(control.hovered, control.pressed)
+    }
 
-        states: State {
-            name: "active"
-            when: control.policy === T.ScrollBar.AlwaysOn || (control.active && control.size < 1.0)
-            PropertyChanges { target: control.contentItem; opacity: 0.75 }
-        }
-
-        transitions: Transition {
-            from: "active"
-            SequentialAnimation {
-                PauseAnimation { duration: 450 }
-                NumberAnimation { target: control.contentItem; duration: 200; property: "opacity"; to: 0.0 }
+    background: Item {
+        visible: control.size < 1.0 && control.pressed
+        implicitWidth: implicitWidth
+        implicitHeight: implicitWidth
+        Rectangle {
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                left: parent.left
             }
+            width: parent.width
+            color: theme.getScrollBarGrooveColor()
+            border.color: Qt.darker(palette.window, 1.2) // FIXME
+            border.width: 1
         }
     }
 }
