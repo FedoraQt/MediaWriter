@@ -36,9 +36,7 @@
 #include "units.h"
 #include "versionchecker.h"
 
-#ifdef __linux
 #include <AdwaitaQt/adwaitacolors.h>
-#endif
 
 #ifdef QT_STATIC
 Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
@@ -89,12 +87,10 @@ int main(int argc, char **argv)
     translator.load(QLocale(QLocale().language(), QLocale().country()), QString(), QString(), ":/translations");
     app.installTranslator(&translator);
 
-#ifdef __linux
     QQuickStyle::setStyle("org.fedoraproject.AdwaitaTheme");
 
     QPalette adwaitaPalette = Adwaita::Colors::palette();
     QGuiApplication::setPalette(adwaitaPalette);
-#endif
 
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;

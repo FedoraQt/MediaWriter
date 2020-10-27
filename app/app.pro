@@ -1,4 +1,5 @@
 CONFIG += link_pkgconfig
+PKGCONFIG += adwaita-qt
 
 TEMPLATE = app
 
@@ -61,8 +62,6 @@ INSTALLS += target
 
 linux {
     QT += dbus
-
-    PKGCONFIG += adwaita-qt
 
     HEADERS += linuxdrivemanager.h
     SOURCES += linuxdrivemanager.cpp
