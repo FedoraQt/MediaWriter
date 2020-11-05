@@ -129,6 +129,7 @@ jobs:
       run: |
         choco install nsis
         choco install dos2unix
+        #choco install pkgconfiglite
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
@@ -147,16 +148,29 @@ jobs:
         cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX="$Qt5_Dir" -DBUILD_SHARED_LIBS=ON ..
         mingw32-make -j2 VERBOSE=1
         mingw32-make install
-        # ugh
-        cp "$Qt5_Dir/bin/liblzma.dll" "$Qt5_Dir/bin/libliblzma.dll"
+    - name: Build Adwaita-qt
+      shell: bash
+      if: ${{ !steps.cache-qt.outputs.cache-hit }}
+      run: |
+        git clone https://github.com/FedoraQt/adwaita-qt.git
+        mkdir adwaita-qt/build
+        cd adwaita-qt/build
+        cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt5_Dir" ..
+        mingw32-make -j2 VERBOSE=1
+        mingw32-make install
     - name: Build MediaWriter
       shell: bash
       run: |
         #export PATH=$(echo "$PATH" | sed -e 's/:\/c\/ProgramData\/Chocolatey\/bin//' | sed -e 's/:\/c\/Strawberry\/c\/bin//')
         #export PATH="$Qt5_Dir/../../Tools/mingw730_32/bin:$PATH"
+        #FIXME: pkg-config seems to be somehow broken and pulls in debug versions of Qt libraries instead
+        sed s@PKGCONFIG\ +=\ adwaita-qt@LIBS\ +=\ -L\$\$[QT_INSTALL_BINS]\ -ladwaitaqt@ -i app/app.pro
+        sed s@PKGCONFIG\ +=\ adwaita-qt@LIBS\ +=\ -L\$\$[QT_INSTALL_BINS]\ -ladwaitaqt@ -i theme/theme.pro
         mkdir build
         cd build
-        "$Qt5_Dir/bin/qmake"  ..
+        #export PKG_CONFIG_PATH="$Qt5_Dir/lib/pkgconfig/" 
+        #"$Qt5_Dir/bin/qmake" .. "PKG_CONFIG=C:/ProgramData/chocolatey/lib/pkgconfiglite/tools/pkg-config-lite-0.28-1/bin/pkg-config.exe"
+        "$Qt5_Dir/bin/qmake" .. 
         mingw32-make -j2 VERBOSE=1
     - name: Windeployqt
       if: github.event_name == 'release'
@@ -164,11 +178,17 @@ jobs:
       run: |
         cd build/app/release
         mv ../helper.exe .
-        $Qt5_Dir/bin/windeployqt -qmldir ../../.. mediawriter.exe
+        mkdir -p QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
+        mkdir -p org/fedoraproject/AdwaitaTheme
+        cp -r ../../../theme/qml/* ./QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
+        cp -r ../../../theme/qmldir ./org/fedoraproject/AdwaitaTheme
+        cp -r ../../theme/release/adwaitathemeplugin.dll ./org/fedoraproject/AdwaitaTheme
+        $Qt5_Dir/bin/windeployqt -qmldir ../../.. mediawriter.exe --release
+        cp $Qt5_Dir/bin/libadwaita*.dll .
         cp $Qt5_Dir/bin/libstdc*.dll .
         cp $Qt5_Dir/bin/libwinpthread*.dll .
         cp $Qt5_Dir/bin/libgcc*.dll .
-        cp $Qt5_Dir/bin/liblzma.dll $Qt5_Dir/bin/libliblzma.dll .
+        cp $Qt5_Dir/bin/liblzma.dll .
         cp /c/Program\ Files/OpenSSL/bin/*.dll .
     - name: Installer
       if: github.event_name == 'release'
@@ -192,7 +212,8 @@ jobs:
         sed -i "s/#!define VERSIONBUILD/!define VERSIONBUILD ${VERSION_BUILD}/" "dist/win/mediawriter_native.tmp.nsi"
         sed -i "s/#!define INSTALLSIZE/!define INSTALLSIZE ${INSTALLED_SIZE}/" "dist/win/mediawriter_native.tmp.nsi"
 
-        unix2dos < "LICENSE" > "build/app/release/LICENSE.txt"
+        unix2dos < "LICENSE.GPL-2" > "build/app/release/LICENSE.GPL-2.txt"
+        unix2dos < "LICENSE.LGPL-2" > "build/app/release/LICENSE.LGPL-2.txt"
         makensis -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
         mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64-$TAG_NAME.exe"
     - name: Upload to GitHub

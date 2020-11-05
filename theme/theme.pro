@@ -1,11 +1,11 @@
 TEMPLATE = lib
 
-CONFIG += link_pkgconfig plugin qmltypes qt
+CONFIG += link_pkgconfig
 PKGCONFIG += adwaita-qt
 
 TARGET = adwaitathemeplugin
 
-QT += qml quick quickcontrols2
+QT += qml quick quickcontrols2 widgets
 
 CONFIG += c++11
 
