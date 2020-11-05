@@ -51,7 +51,7 @@ if ! $opt_nosign; then
     fi
 fi
     
-PACKAGES="mingw32-qt5-qmake mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-nsis osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
+PACKAGES="mingw32-qt5-qmake mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols2 mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-libadwaita-qt5 mingw32-qt5-qtwinextras mingw32-qt5-qtsvg mingw32-nsis osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
 if ! $opt_local; then
     PACKAGES="$PACKAGES mingw32-mediawriter"
 fi
@@ -66,19 +66,19 @@ echo "=== Checking dependencies"
 DEPENDENCIES=0
 for i in $PACKAGES; do
     rpm -V $i
-    if [ $? -ne 0 ]; then 
+    if [ $? -ne 0 ]; then
         if [ "$i" == "osslsigncode" ]; then
             opt_nosign=true
         else
-            DEPENDENCIES=1 
+            DEPENDENCIES=1
         fi
     fi
 done
 if [ $DEPENDENCIES -ne 0 ]; then exit 1; fi
 
-BINARIES="libstdc++-6.dll libwinpthread-1.dll libgcc_s_sjlj-1.dll libcrypto-1_1.dll libssl-1_1.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre2-16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll Qt5Core.dll Qt5Gui.dll Qt5Network.dll Qt5Qml.dll Qt5Quick.dll Qt5Widgets.dll Qt5WinExtras.dll"
-PLUGINS="imageformats/qjpeg.dll platforms/qwindows.dll"
-QMLMODULES="Qt QtQml QtQuick/Controls QtQuick/Dialogs QtQuick/Extras QtQuick/Layouts QtQuick/PrivateWidgets QtQuick/Window.2 QtQuick.2"
+BINARIES="libstdc++-6.dll libgcc_s_dw2-1.dll libssp-0.dll iconv.dll libwinpthread-1.dll libcrypto-1_1.dll libssl-1_1.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre2-16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll libadwaitaqtpriv-1.dll libadwaitaqt-1.dll Qt5Core.dll Qt5Gui.dll Qt5Network.dll Qt5Qml.dll Qt5QmlModels.dll Qt5Quick.dll Qt5QuickControls2.dll Qt5QuickShapes.dll Qt5QuickTemplates2.dll Qt5QmlWorkerScript.dll Qt5Svg.dll Qt5Widgets.dll Qt5WinExtras.dll"
+PLUGINS="imageformats/qjpeg.dll imageformats/qsvg.dll platforms/qwindows.dll"
+QMLMODULES="Qt QtQml QtQuick/Controls QtQuick/Controls.2 QtQuick/Dialogs QtQuick/Extras QtQuick/Layouts QtQuick/PrivateWidgets QtQuick/Shapes QtQuick/Templates.2 QtQuick/Window.2 QtQuick.2"
 
 INSTALL_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_PREFIX)
 BIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_BINS)
@@ -121,11 +121,20 @@ if $opt_local; then
     fi
 
     mingw32-make -j9 >/dev/null
+
+    # FIXME just a workaround for Adwaita theme not being build and placed to correct location
+    # without installation
+    mkdir -p $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
+    mkdir -p $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
+    cp -r ../theme/qml/* $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
+    cp -r ../theme/qmldir $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
+    cp -r $BUILDPATH/theme/release/adwaitathemeplugin.dll $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
+    cp -r $BUILDPATH/app/helper.exe $BUILDPATH/app/release/
 else
     mkdir -p "app/release"
     echo "=== Getting distribution binary"
     cp "$BIN_PREFIX/mediawriter.exe" app/release
-    cp "$INSTALL_PREFIX/libexec/mediawriter/helper.exe" app/
+    cp "$INSTALL_PREFIX/libexec/mediawriter/helper.exe" app/release
 fi
 
 pushd "app/release" >/dev/null
