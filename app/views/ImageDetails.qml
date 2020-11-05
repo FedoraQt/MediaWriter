@@ -71,8 +71,6 @@ Item {
                 toMainScreen()
     }
 
-    // TODO: scrollbar styling
-
     QQC2.ScrollView {
         activeFocusOnTab: false
         focus: true
