@@ -77,6 +77,7 @@ int main(int argc, char **argv)
 #endif
         QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
+    QQuickStyle::setStyle("org.fedoraproject.AdwaitaTheme");
     QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication app(argc, argv);
     options.parse(app.arguments());
@@ -87,7 +88,6 @@ int main(int argc, char **argv)
     translator.load(QLocale(QLocale().language(), QLocale().country()), QString(), QString(), ":/translations");
     app.installTranslator(&translator);
 
-    QQuickStyle::setStyle("org.fedoraproject.AdwaitaTheme");
 
     QPalette adwaitaPalette = Adwaita::Colors::palette();
     QGuiApplication::setPalette(adwaitaPalette);
