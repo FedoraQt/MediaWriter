@@ -11,17 +11,40 @@
         "--filesystem=host",
         "--share=network",
         "--share=ipc",
-        "--system-talk-name=org.freedesktop.UDisks2"
+        "--system-talk-name=org.freedesktop.UDisks2",
+        "--env=QML2_IMPORT_PATH=/app/lib/qt5/qml"
     ],
     "modules": [
+        {
+            "name": "Adwaita-qt",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/FedoraQt/adwaita-qt.git"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "sed -i 's@add_subdirectory(style)@#add_subdirectory(style)@' src/CMakeLists.txt"
+                    ]
+                }
+            ]
+        },
         {
             "name": "MediaWriter",
             "buildsystem": "qmake",
             "sources": [
                 {
                     "type": "git",
-                    "url": "http://github.com/MartinBriza/MediaWriter",
+                    "url": "https://github.com/FedoraQt/MediaWriter.git",
                     "branch": "master"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "sed -i 's@\$\$\\[QT_INSTALL_QML\\]@/app/lib/qt5/qml@' theme/theme.pro"
+                    ]
                 }
             ]
         }
