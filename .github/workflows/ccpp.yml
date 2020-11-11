@@ -45,8 +45,8 @@ jobs:
     - name: Install Flatpak KDE SDK
       run: |
         sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        sudo flatpak install --system -y flathub org.kde.Platform//5.14
-        sudo flatpak install --system -y flathub org.kde.Sdk//5.14
+        sudo flatpak install --system -y flathub org.kde.Platform//5.15
+        sudo flatpak install --system -y flathub org.kde.Sdk//5.15
     - name: Build the Flatpak package
       run: |
         TAG_NAME=$(bash ./dist/get-tag-name.sh)
