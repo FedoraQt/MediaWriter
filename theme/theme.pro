@@ -1,6 +1,6 @@
 TEMPLATE = lib
 
-CONFIG += link_pkgconfig
+CONFIG += link_pkgconfig qt plugin qmltypes
 PKGCONFIG += adwaita-qt
 
 TARGET = adwaitathemeplugin
@@ -39,3 +39,8 @@ qmldir.path = $$[QT_INSTALL_QML]/org/fedoraproject/AdwaitaTheme
 target.path = $$[QT_INSTALL_QML]/org/fedoraproject/AdwaitaTheme
 
 INSTALLS += target qml qmlprivate qmldir
+
+macx {
+    QMAKE_MOC_OPTIONS += -Muri=org.fedoraproject.AdwaitaTheme
+    QMAKE_BUNDLE_DATA += target qml qmlprivate qmldir
+}
