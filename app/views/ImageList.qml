@@ -172,15 +172,17 @@ FocusScope {
 
     QQC2.ScrollView {
         id: fullList
-        anchors {
-            fill: parent
-            leftMargin: mainWindow.margin
-            rightMargin: mainWindow.margin
-            topMargin: whiteBackground.y
-        }
+        anchors.fill: parent
 
         ListView {
             id: osListView
+            anchors {
+                fill: parent
+                leftMargin: mainWindow.margin
+                rightMargin: mainWindow.margin
+                topMargin: whiteBackground.y
+            }
+
             clip: true
             focus: true
             model: releases
