@@ -26,8 +26,9 @@ import org.fedoraproject.AdwaitaTheme 2.0
 T.CheckBox {
     id: control
 
-    implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
-    implicitHeight: contentItem.implicitHeight + bottomPadding + topPadding
+    // FIXME: windows seems to need more space for some reason
+    implicitWidth: implicitContentWidth + leftPadding + rightPadding + (Qt.platform.os == "windows" ? indicator.width : spacing)
+    implicitHeight: implicitContentHeight + bottomPadding + topPadding
 
     padding: theme.checkboxItemSpacing
     spacing: theme.checkboxItemSpacing
@@ -39,7 +40,7 @@ T.CheckBox {
         control: control
     }
 
-    contentItem: Label {
+    contentItem: Text {
         id: label
         leftPadding: control.indicator && !control.mirrored ? control.indicator.width + control.spacing : 0
         rightPadding: control.indicator && control.mirrored ? control.indicator.width + control.spacing : 0
