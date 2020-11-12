@@ -246,7 +246,7 @@ Item {
                                         anchors {
                                             horizontalCenter: parent.horizontalCenter
                                             top: parent.bottom
-                                            topMargin: units.largeSpacing + opacity * Math.round(units.gridUnit * 1.5)
+                                            topMargin: units.smallSpacing + opacity * units.gridUnit
                                         }
 
                                         onOpenChanged: {
@@ -368,7 +368,7 @@ Item {
                                         anchors {
                                             horizontalCenter: parent.horizontalCenter
                                             top: parent.bottom
-                                            topMargin: units.largeSpacing + opacity * Math.round(units.gridUnit * 1.5)
+                                            topMargin: units.smallSpacing + opacity * units.gridUnit
                                         }
 
                                         onOpenChanged: {

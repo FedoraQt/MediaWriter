@@ -71,7 +71,7 @@ FocusScope {
         radius: units.smallSpacing
         Rectangle {
             z: -1
-            y: -units.largeSpacing - 1
+            y: -units.smallSpacing - 1
             antialiasing: true
             border {
                 width: 1
@@ -85,7 +85,7 @@ FocusScope {
         }
         Rectangle {
             color: palette.window
-            y: -units.largeSpacing + 1
+            y: -units.smallSpacing + 1
             anchors.horizontalCenter: parent.horizontalCenter
             width: units.gridUnit
             height: units.gridUnit
