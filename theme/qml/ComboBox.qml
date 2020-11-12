@@ -86,7 +86,7 @@ T.ComboBox {
         validator: control.validator
 
         font: control.font
-        color: theme.textColor
+        color: control.enabled ? theme.textColor : theme.disabledTextColor
         selectionColor: theme.highlightColor
         selectedTextColor: theme.highlightTextColor
         verticalAlignment: Text.AlignVCenter
