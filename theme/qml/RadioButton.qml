@@ -34,15 +34,15 @@ T.CheckBox {
     hoverEnabled: true
 
     indicator: RadioIndicator {
-        // x: control.text ? (control.mirrored ? control.width - width - control.rightPadding : control.leftPadding) : control.leftPadding + (control.availableWidth - width) / 2
+        x: control.text ? (control.mirrored ? control.width - width - control.rightPadding : control.leftPadding) : control.leftPadding + (control.availableWidth - width) / 2
         y: control.topPadding + (control.availableHeight - height) / 2
         control: control
     }
 
     contentItem: Label {
         id: label
-        leftPadding: control.indicator && !control.mirrored ? control.indicator.width : 0
-        rightPadding: control.indicator && control.mirrored ? control.indicator.width : 0
+        leftPadding: control.indicator && !control.mirrored ? control.indicator.width + control.spacing : 0
+        rightPadding: control.indicator && control.mirrored ? control.indicator.width + control.spacing : 0
         text: control.text
         font: control.font
         color: control.enabled ? theme.textColor : theme.disabledTextColor
