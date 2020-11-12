@@ -59,7 +59,7 @@ Rectangle {
     Rectangle {
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
-        visible: (typeof control.checkState !== "undefined") && control.checkState == Qt.Checked
+        visible: control.checked
         opacity: visible
         color: theme.highlightTextColor
         width: parent.width / 2
