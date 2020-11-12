@@ -505,6 +505,7 @@ Dialog {
                                 id: driveCombo
                                 z: pressed ? 1 : 0
                                 model: drives
+                                enabled: !(currentIndex === -1 || !currentText)
                                 displayText: currentIndex === -1 || !currentText ? qsTr("There are no portable drives connected") : currentText
                                 textRole: "display"
 
