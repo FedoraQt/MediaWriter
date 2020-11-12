@@ -56,6 +56,10 @@ function build() {
 
 function deps() {
     pushd build >/dev/null
+
+    #FIXME: workaround for macdeployqt not picking Adwaita theme
+    make install
+
     echo "=== Inserting Qt deps ==="
     cp "helper/mac/helper.app/Contents/MacOS/helper" "app/Fedora Media Writer.app/Contents/MacOS"
     ${MACDEPLOYQT} "app/Fedora Media Writer.app" -qmldir=".." -executable="app/Fedora Media Writer.app/Contents/MacOS/helper"
