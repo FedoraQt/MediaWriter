@@ -172,7 +172,10 @@ FocusScope {
 
     QQC2.ScrollView {
         id: fullList
-        anchors.fill: parent
+        anchors {
+            fill: parent
+            topMargin: whiteBackground.y
+        }
 
         ListView {
             id: osListView
@@ -180,7 +183,6 @@ FocusScope {
                 fill: parent
                 leftMargin: mainWindow.margin
                 rightMargin: mainWindow.margin
-                topMargin: whiteBackground.y
             }
 
             clip: true
