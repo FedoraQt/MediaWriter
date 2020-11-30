@@ -332,7 +332,7 @@ Dialog {
 
             activeFocusOnTab: false
 
-            contentItem: Item {
+            Item {
                 width: contentScrollView.width
                 height: layout.height
                 ColumnLayout {
