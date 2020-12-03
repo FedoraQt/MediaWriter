@@ -68,7 +68,7 @@ T.Button {
             Layout.fillWidth: true
             text: control.text
             font: control.font
-            color: control.enabled ? control.highlighted ? theme.disabledTextColor: theme.textColor : theme.disabledTextColor
+            color: control.enabled ? control.highlighted ? theme.highlightTextColor : theme.textColor : theme.disabledTextColor
             horizontalAlignment: icon.visible ? Text.AlignLeft : Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             elide: Text.ElideRight
