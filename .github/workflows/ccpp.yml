@@ -119,12 +119,6 @@ jobs:
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
-    - name: Cache Qt
-      id: cache-qt
-      uses: actions/cache@v1
-      with:
-        path: d:/a/MediaWriter/Qt
-        key: QtCache
     - name: Install dependencies
       shell: bash
       run: |
@@ -135,7 +129,8 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         cached: ${{ steps.cache-qt.outputs.cache-hit }}
-        arch: win64_mingw73
+        arch: win64_mingw81
+        version: '5.15.2'
     - name: Build xz-utils
       shell: bash
       if: ${{ !steps.cache-qt.outputs.cache-hit }}
