@@ -85,27 +85,33 @@ jobs:
         TAG_NAME=$(bash ./dist/get-tag-name.sh)
         bash dist/mac/build.sh build
     - name: Insert dependencies
-      if: github.event_name == 'release'
+      if: github.event_name != 'release'
       run: |
         TAG_NAME=$(bash ./dist/get-tag-name.sh)
         bash dist/mac/build.sh deps
     - name: Sign (TBD)
-      if: github.event_name == 'release'
+      if: github.event_name != 'release'
       run: |
         TAG_NAME=$(bash ./dist/get-tag-name.sh)
         true # bash  dist/mac/build.sh sign
     - name: Package
-      if: github.event_name == 'release'
+      if: github.event_name != 'release'
       run: |
         TAG_NAME=$(bash ./dist/get-tag-name.sh)
         cd build/app
         create-dmg "Fedora Media Writer.app" || true # without signing, create-dmg returns an error code
-        mv Fedora*.dmg ../../FedoraMediaWriter-osx-$TAG_NAME.unnotarized.dmg
+        mv Fedora*.dmg ../../FedoraMediaWriter-osx.unnotarized.dmg
     - name: Notarize (TBD)
-      if: github.event_name == 'release'
+      if: github.event_name != 'release'
       run: |
         TAG_NAME=$(bash ./dist/get-tag-name.sh)
         true # bash dist/mac/build.sh notarize
+    - name: Upload artifacts to GitHub
+      if: github.event_name != 'release'
+      uses: actions/upload-artifact@v2
+      with:
+        name: FedoraMediaWriter-osx.unnotarized.dmg
+        path: FedoraMediaWriter-osx.unnotarized.dmg
     - name: Upload to GitHub
       if: github.event_name == 'release'
       shell: bash
