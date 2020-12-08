@@ -77,7 +77,7 @@ function deps() {
                   "app/Fedora Media Writer.app/Contents/Frameworks/libadwaitaqt.1.dylib" \
                   "app/Fedora Media Writer.app/Contents/Frameworks/libadwaitaqtpriv.1.dylib"; do
         otool -L "$binary" |\
-            grep -E "^\s" | grep -Ev "Foundation|OpenGL|AGL|DiskArbitration|IOKit|libc\+\+|libobjc|libSystem|@rpath|$(basename $binary)" |\
+            grep -E "^\s" | grep -Ev "AppKit|Metal|Foundation|OpenGL|AGL|DiskArbitration|IOKit|libc\+\+|libobjc|libSystem|@rpath|$(basename $binary)" |\
             sed -e 's/[[:space:]]\([^[:space:]]*\).*/\1/' |\
             while read library; do
             if [[ ! $library == @loader_path/* ]]; then
