@@ -70,15 +70,6 @@ function deps() {
     cp "/usr/local/lib/libadwaitaqt.1.dylib" "app/Fedora Media Writer.app/Contents/Frameworks"
     cp "/usr/local/lib/libadwaitaqtpriv.1.dylib" "app/Fedora Media Writer.app/Contents/Frameworks"
 
-    # echo "=== Inserting Adwaita theme ==="
-    # mkdir -p "app/Fedora Media Writer.app/Contents/Resources/qml/org/fedoraproject/AdwaitaTheme"
-    # mkdir -p "app/Fedora Media Writer.app/Contents/Resources/qml/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme/private"
-    # for file in "../theme/qml/*.qml"; do cp $file "app/Fedora Media Writer.app/Contents/Resources/qml/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme"; done
-    # for file in "../theme/qml/private/*.qml"; do cp $file "app/Fedora Media Writer.app/Contents/Resources/qml/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme/private"; done
-    # ${QMAKE} -install qinstall -exe "theme/libadwaitathemeplugin.dylib" "app/Fedora Media Writer.app/Contents/Resources/qml/org/fedoraproject/AdwaitaTheme/libadwaitathemeplugin.dylib"
-    # strip -S -x "app/Fedora Media Writer.app/Contents/Resources/qml/org/fedoraproject/AdwaitaTheme/libadwaitathemeplugin.dylib"
-    # cp "../theme/qmldir" "app/Fedora Media Writer.app/Contents/Resources/qml/org/fedoraproject/AdwaitaTheme"
-
     echo "=== Checking unresolved library deps ==="
     # Look at the binaries and search for dynamic library dependencies that are not included on every system
     # So far, this finds only liblzma but in the future it may be necessary for more libs
@@ -86,13 +77,17 @@ function deps() {
                   "app/Fedora Media Writer.app/Contents/Frameworks/libadwaitaqt.1.dylib" \
                   "app/Fedora Media Writer.app/Contents/Frameworks/libadwaitaqtpriv.1.dylib"; do
         otool -L "$binary" |\
-            grep -E "^\s" | grep -Ev "Foundation|OpenGL|AGL|DiskArbitration|IOKit|libc\+\+|libobjc|libSystem|@rpath|$(basename $binary)" |\
+            grep -E "^\s" | grep -Ev "AppKit|Metal|Foundation|OpenGL|AGL|DiskArbitration|IOKit|libc\+\+|libobjc|libSystem|@rpath|$(basename $binary)" |\
             sed -e 's/[[:space:]]\([^[:space:]]*\).*/\1/' |\
             while read library; do
             if [[ ! $library == @loader_path/* ]]; then
-                echo "Copying $(basename $library)"
-                cp -f $library "app/Fedora Media Writer.app/Contents/Frameworks"
-                install_name_tool -change "$library" "@executable_path/../Frameworks/$(basename ${library})" "$binary"
+                if [[ ! $library == *Qt* ]]; then
+                    echo "Copying $(basename $library)"
+                    cp -f $library "app/Fedora Media Writer.app/Contents/Frameworks"
+                    install_name_tool -change "$library" "@executable_path/../Frameworks/$(basename ${library})" "$binary"
+                else
+                    install_name_tool -change "$library" "@loader_path/../Frameworks/$(basename ${library}).framework/$(basename ${library})" "$binary"
+                fi
             fi
         done
     done

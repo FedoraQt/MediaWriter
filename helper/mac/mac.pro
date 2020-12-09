@@ -1,9 +1,12 @@
+CONFIG += link_pkgconfig
+PKGCONFIG = liblzma
+
 TEMPLATE = app
 
 QT += core network
 
 INCLUDEPATH += "/usr/local/include" # for brew packages
-LIBS += -lisomd5 -llzma
+LIBS += -lisomd5
 
 CONFIG += c++11
 CONFIG += console
