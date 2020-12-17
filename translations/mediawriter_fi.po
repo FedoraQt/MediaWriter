@@ -1,0 +1,784 @@
+# #-#-#-#-#  appstream_fi.po  #-#-#-#-#
+# Juhani Numminen <juhaninumminen0@gmail.com>, 2016. #zanata
+# #-#-#-#-#  desktop_fi.po  #-#-#-#-#
+# Juhani Numminen <juhaninumminen0@gmail.com>, 2016. #zanata
+# #-#-#-#-#  mediawriter_fi.po  #-#-#-#-#
+# Juhani Numminen <juhaninumminen0@gmail.com>, 2016. #zanata
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2017. #zanata
+# Toni Rantala <trantalafilo@gmail.com>, 2017. #zanata
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2018. #zanata
+#, fuzzy
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-08-21 03:59-0400\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"Language-Team: Finnish\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Zanata 4.6.2\n"
+"X-Qt-Contexts: true\n"
+
+#. #-#-#-#-#  appstream_fi.po  #-#-#-#-#
+#. (itstool) path: application/name
+#: ../dist/linux/org.fedoraproject.MediaWriter.appdata.xml.in:8
+#: ../dist/linux/org.fedoraproject.MediaWriter.desktop:4
+msgid "Fedora Media Writer"
+msgstr "Fedora-median luontityökalu"
+
+#. (itstool) path: application/summary
+#: ../dist/linux/org.fedoraproject.MediaWriter.appdata.xml.in:9
+msgid "A tool to create a live USB drive with an edition of Fedora"
+msgstr "Luo USB-muistitikku, jolta voi käynnistää jonkin Fedoran version"
+
+#. (itstool) path: description/p
+#: ../dist/linux/org.fedoraproject.MediaWriter.appdata.xml.in:11
+msgid ""
+"A tool to create a bootable live USB drive with an edition of Fedora. Not "
+"only can Fedora Media Writer write an image to your flash drive, it can also "
+"download it for you. It offers official editions (Server, Workstation), "
+"Fedora spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
+"Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
+"about each of them to help you make the right choice."
+msgstr ""
+"Ohjelma, jolla voi luoda USB-muistilta käynnistettävän Fedoran. "
+"Luontityökalu osaa ladata levykuvan ja kirjoittaa sen USB-muistille. "
+"Tarjolla ovat viralliset editiot (Server ja Workstation), Fedoran spinit "
+"(mm. Xfce-, Cinnamon- ja KDE Plasma -työpöydät) sekä Fedora Lab -julkaisut "
+"(mm. design-ohjelmistot ja turvallisuuslaboratorio). Valinnan avuksi niistä "
+"jokaisesta kerrotaan lyhyesti."
+
+#. (itstool) path: description/p
+#: ../dist/linux/org.fedoraproject.MediaWriter.appdata.xml.in:12
+msgid ""
+"Fedora Media Writer can also write other bootable ISOs loaded from your "
+"local disk, but keep in mind that it's only tested with Fedora images."
+msgstr ""
+"Fedora-median luontityökalulla voi kirjoittaa USB:lle myös muita ISO-"
+"tiedostoja, mutta työkalua on testattu vain Fedoran levykuvilla."
+
+#: ../dist/linux/org.fedoraproject.MediaWriter.desktop:36
+msgid "Write Fedora images to your portable drives"
+msgstr "Kirjoita Fedoran levykuvia siirrettäville laitteille"
+
+#: ../app/complex/DeleteButton.qml:64
+msgctxt "DeleteButton|"
+msgid "Delete the Downloaded Image"
+msgstr "Poista ladattu levykuva"
+
+#: ../app/downloadmanager.cpp:215
+msgctxt "Download|"
+msgid "Unable to fetch the requested image."
+msgstr "Pyydetyn levykuvan noutaminen ei onnistu."
+
+#: ../app/downloadmanager.cpp:311
+msgctxt "Download|"
+msgid "You ran out of space in your Downloads folder."
+msgstr "Sinulta loppui tila Lataukset-kansiosta."
+
+#: ../app/downloadmanager.cpp:313
+msgctxt "Download|"
+msgid "The download file is not writable."
+msgstr "Ladattu tiedosto ei ole kirjoitettavissa."
+
+#: ../app/downloadmanager.cpp:399
+msgctxt "Download|"
+msgid "Connection timed out"
+msgstr "Yhteys aikakatkaistiin"
+
+#: ../app/dialogs/DownloadDialog.qml:33
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "Write %1"
+msgstr "Kirjoita %1"
+
+#: ../app/dialogs/DownloadDialog.qml:141
+msgctxt "DownloadDialog|"
+msgid "Writing is not possible"
+msgstr "Kirjoittaminen ei ole mahdollista"
+
+#: ../app/dialogs/DownloadDialog.qml:216
+msgctxt "DownloadDialog|"
+msgid "Close"
+msgstr "Sulje"
+
+#: ../app/dialogs/DownloadDialog.qml:232 ../app/dialogs/DownloadDialog.qml:253
+#: ../app/dialogs/DownloadDialog.qml:274 ../app/dialogs/DownloadDialog.qml:285
+#: ../app/dialogs/DownloadDialog.qml:306
+msgctxt "DownloadDialog|"
+msgid "Retry"
+msgstr "Yritä uudelleen"
+
+#: ../app/dialogs/DownloadDialog.qml:356
+msgctxt "DownloadDialog|"
+msgid "The file will be saved to your Downloads folder."
+msgstr "Tiedosto tallennetaan Lataukset-kansioon."
+
+#: ../app/dialogs/DownloadDialog.qml:363
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "By writing, you will lose all of the data on %1."
+msgstr "Kirjoittamalla kaikki aseman %1 tiedot menetetään."
+
+#: ../app/dialogs/DownloadDialog.qml:370
+msgctxt "DownloadDialog|"
+msgid ""
+"Your drive will be resized to a smaller capacity. You may resize it back to "
+"normal by using Fedora Media Writer; this will remove installation media "
+"from your drive."
+msgstr ""
+"Asemasi kapasiteetti muutetaan pienemmäksi. Voit palauttaa sen normaalin "
+"koon Fedora Media Writeria käyttäen; se poistaa asennusmedian asemalta."
+
+#: ../app/dialogs/DownloadDialog.qml:377
+msgctxt "DownloadDialog|"
+msgid "Selected:"
+msgstr "Valittu:"
+
+#: ../app/dialogs/DownloadDialog.qml:377
+msgctxt "DownloadDialog|"
+msgid "None"
+msgstr "Ei mitään"
+
+#: ../app/dialogs/DownloadDialog.qml:384
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid ""
+"Your board or device is not supported by Fedora Media Writer yet. Please "
+"check <a href=%1>this page</a> for more information about its compatibility "
+"with Fedora and how to create bootable media for it."
+msgstr ""
+"Alustasi tai laitteesi ei ole tuettu Fedora Media Writerin toimesta. "
+"Tarkista <a href=%1>tämä sivu</a> saadaksesi lisätietoja laitteesi "
+"yhteensopivuudesta Fedoran kanssa, ja kuinka luoda käynnistettävä media "
+"sille."
+
+#: ../app/dialogs/DownloadDialog.qml:392
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid ""
+"The selected drive's size is %1. It's possible you have selected an external "
+"drive by accident!"
+msgstr ""
+"Valitun levyn koko on %1. Saatoit mahdollisesti valita vahingossa erillisen "
+"aseman!"
+
+#: ../app/dialogs/DownloadDialog.qml:419
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "(%1 B left)"
+msgstr "(%1 t jäljellä)"
+
+#: ../app/dialogs/DownloadDialog.qml:420
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "(%1 KB left)"
+msgstr "(%1 kt jäljellä)"
+
+#: ../app/dialogs/DownloadDialog.qml:421
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "(%1 MB left)"
+msgstr "(%1 Mt jäljellä)"
+
+#: ../app/dialogs/DownloadDialog.qml:422
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "(%1 GB left)"
+msgstr "(%1 Gt jäljellä)"
+
+#: ../app/dialogs/DownloadDialog.qml:435
+msgctxt "DownloadDialog|"
+msgid "Write the image immediately when the download is finished"
+msgstr "Kirjoita levykuva heti kun se on ladattu"
+
+#: ../app/dialogs/DownloadDialog.qml:509
+msgctxt "DownloadDialog|"
+msgid "There are no portable drives connected"
+msgstr "Siirrettäviä tallennusvälineitä ei ole liitetty"
+
+#: ../app/dialogs/DownloadDialog.qml:532
+msgctxt "DownloadDialog|"
+msgid "Other"
+msgstr "Muu"
+
+#: ../app/dialogs/DownloadDialog.qml:561
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
+msgstr "Ei voitu poistaa<br>\"<a href=\"%1\">%2</a>\"."
+
+#: ../app/dialogs/DownloadDialog.qml:573
+msgctxt "DownloadDialog|"
+msgid "Cancel"
+msgstr "Peru"
+
+#: ../app/dialogs/DownloadDialog.qml:586
+msgctxt "DownloadDialog|"
+msgid "Write to Disk"
+msgstr "Kirjoita levylle"
+
+#: ../app/drivemanager.cpp:286
+msgctxt "Drive|"
+msgid "This drive is not large enough."
+msgstr "Levyllä ei ole tarpeeksi tilaa."
+
+#: ../app/views/ImageDetails.qml:98
+msgctxt "ImageDetails|"
+msgid "Back"
+msgstr ""
+
+#: ../app/views/ImageDetails.qml:105
+msgctxt "ImageDetails|"
+msgid "Create Live USB…"
+msgstr ""
+
+#. The downloaded image is compressed, this refers to the size which it will
+#. take after being decompressed and written to the drive
+#: ../app/views/ImageDetails.qml:167
+#, qt-format
+msgctxt "ImageDetails|"
+msgid "(%1 after writing)"
+msgstr "(%1 kirjoittamisen jälkeen)"
+
+#: ../app/views/ImageDetails.qml:192
+#, qt-format
+msgctxt "ImageDetails|"
+msgid "Version %1"
+msgstr "Versio %1"
+
+#: ../app/views/ImageDetails.qml:296
+#, qt-format
+msgctxt "ImageDetails|"
+msgid ""
+"Fedora %1 was released! Check it out!<br>If you want a stable, finished "
+"system, it's better to stay at version %2."
+msgstr ""
+"Fedora %1 julkaistiin, tutustu siihen!<br>Jos haluat vakaan ja viimeistellyn "
+"järjestelmän, kannattanee pysyä versiossa %2."
+
+#: ../app/views/ImageDetails.qml:314
+#, qt-format
+msgctxt "ImageDetails|"
+msgid ", released on %1"
+msgstr ", julkaisuaika %1"
+
+#: ../app/views/ImageDetails.qml:324
+msgctxt "ImageDetails|"
+msgid "Other variants..."
+msgstr "Muut muunnelmat..."
+
+#: ../app/views/ImageList.qml:84
+msgctxt "ImageList|"
+msgid "Find an operating system image"
+msgstr "Etsi käyttöjärjestelmän levykuva"
+
+#: ../app/views/ImageList.qml:168
+msgctxt "ImageList|"
+msgid "Checking for new releases"
+msgstr "Etsitään uusia julkaisuja"
+
+#: ../app/views/ImageList.qml:251
+msgctxt "ImageList|"
+msgid "About Fedora Media Writer"
+msgstr "Tietoja Fedora-median luontityökalusta"
+
+#: ../app/views/ImageList.qml:275
+#, qt-format
+msgctxt "ImageList|"
+msgid "Version %1"
+msgstr "Versio %1"
+
+#: ../app/views/ImageList.qml:282
+msgctxt "ImageList|"
+msgid "Fedora Media Writer is now checking for new releases"
+msgstr "Median luontityökalu tarkistaa, onko uusia julkaisuja"
+
+#: ../app/views/ImageList.qml:296
+#, qt-format
+msgctxt "ImageList|"
+msgid "Please report bugs or your suggestions on %1"
+msgstr "Kerro ohjelmistovioista tai ehdotuksistasi osoitteessa %1"
+
+#: ../app/views/ImageList.qml:356
+msgctxt "ImageList|"
+msgid "Display additional Fedora flavors"
+msgstr "Näytä myös muut Fedora-muunnelmat"
+
+#: ../app/linuxdrivemanager.cpp:181
+msgctxt "LinuxDrive|"
+msgid "The drive was removed while it was written to."
+msgstr "Asema poistettiin kun siihen kirjoitettiin."
+
+#: ../app/linuxdrivemanager.cpp:210
+msgctxt "LinuxDrive|"
+msgid "Could not find the helper binary. Check your installation."
+msgstr "Avustinbinääriä ei löytynyt. Tarkista asennuksesi."
+
+#: ../app/linuxdrivemanager.cpp:245
+msgctxt "LinuxDrive|"
+msgid "Stopped before writing has finished."
+msgstr "Pysäytetty ennen kuin kirjoittaminen oli valmis."
+
+#: ../app/linuxdrivemanager.cpp:315 ../app/linuxdrivemanager.cpp:344
+msgctxt "LinuxDrive|"
+msgid "Finished!"
+msgstr "Valmis!"
+
+#: ../app/linuxdrivemanager.cpp:315 ../app/linuxdrivemanager.cpp:344
+#, qt-format
+msgctxt "LinuxDrive|"
+msgid "Writing %1 was successful"
+msgstr "Kohteen %1 kirjoittaminen onnistui"
+
+#: ../app/linuxdrivemanager.cpp:337
+msgctxt "LinuxDrive|"
+msgid "Error"
+msgstr "Virhe"
+
+#: ../app/linuxdrivemanager.cpp:337
+#, qt-format
+msgctxt "LinuxDrive|"
+msgid "Writing %1 failed"
+msgstr "Kohteen %1 kirjoittaminen epäonnistui"
+
+#: ../app/linuxdrivemanager.cpp:116
+msgctxt "LinuxDriveProvider|"
+msgid "UDisks2 seems to be unavailable or unaccessible on your system."
+msgstr ""
+"UDisk2 vaikuttaisi olevan käyttämättömissä tai tavoittamattomissa "
+"järjestelmässäsi."
+
+#: ../app/macdrivemanager.cpp:101
+msgctxt "MacDrive|"
+msgid "Could not find the helper binary. Check your installation."
+msgstr "Avustinbinääriä ei löytynyt. Tarkista asennuksesi."
+
+#: ../app/macdrivemanager.cpp:188
+msgctxt "MacDrive|"
+msgid "Error"
+msgstr "Virhe"
+
+#: ../app/macdrivemanager.cpp:188
+#, qt-format
+msgctxt "MacDrive|"
+msgid "Writing %1 failed"
+msgstr "Kohteen %1 kirjoittaminen epäonnistui"
+
+#: ../app/macdrivemanager.cpp:192
+msgctxt "MacDrive|"
+msgid "Finished!"
+msgstr "Valmis!"
+
+#: ../app/macdrivemanager.cpp:192
+#, qt-format
+msgctxt "MacDrive|"
+msgid "Writing %1 was successful"
+msgstr "Kohteen %1 kirjoittaminen onnistui"
+
+#: ../app/releasemanager.cpp:330 ../app/releasemanager.cpp:336
+msgctxt "Release|"
+msgid "Pick a file from your drive(s)"
+msgstr "Valitse tiedosto kiintolevy(i)ltäsi"
+
+#: ../app/releasemanager.cpp:330 ../app/releasemanager.cpp:336
+msgctxt "Release|"
+msgid ""
+"<p>Here you can choose a OS image from your hard drive to be written to your "
+"flash disk</p><p>Currently it is only supported to write raw disk images (."
+"iso or .bin)</p>"
+msgstr ""
+"<p>Voit valita käyttöjärjestelmän levykuvan kiintolevyltä kirjoitettavaksi "
+"ulkoiselle asemalle</p><p>Tuettuja ovat raakalevykuvat (.iso tai .bin)</p>"
+
+#: ../app/releasemanager.cpp:362
+msgctxt "Release|"
+msgid "Fedora Spins"
+msgstr "Fedora Spinit"
+
+#: ../app/releasemanager.cpp:364
+msgctxt "Release|"
+msgid "Fedora Labs"
+msgstr "Fedora Labsit"
+
+#: ../app/releasemanager.cpp:366
+msgctxt "Release|"
+msgid "Other"
+msgstr "Muut"
+
+#: ../app/releasemanager.cpp:936
+msgctxt "ReleaseArchitecture|"
+msgid "Intel 64bit"
+msgstr "64-bittinen Intel"
+
+#: ../app/releasemanager.cpp:936
+msgctxt "ReleaseArchitecture|"
+msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+msgstr ""
+"Levykuva ISO-muodossa Intelille, AMD:lle ja muille yhteensopiville PC:ille "
+"(64-bit)"
+
+#: ../app/releasemanager.cpp:937
+msgctxt "ReleaseArchitecture|"
+msgid "Intel 32bit"
+msgstr "32-bittinen Intel"
+
+#: ../app/releasemanager.cpp:937
+msgctxt "ReleaseArchitecture|"
+msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
+msgstr ""
+"Levykuva ISO-muodossa Intelille, AMD:lle ja muille yhteensopiville PC:ille "
+"(32-bit)"
+
+#: ../app/releasemanager.cpp:938
+msgctxt "ReleaseArchitecture|"
+msgid "ARM v7"
+msgstr "ARM v7"
+
+#: ../app/releasemanager.cpp:938
+msgctxt "ReleaseArchitecture|"
+msgid ""
+"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
+msgstr ""
+"LZMA-pakattu raakalevykuva ARM v7-A -koneille kuten Raspberry Pi 2 ja 3"
+
+#: ../app/releasemanager.cpp:939
+msgctxt "ReleaseArchitecture|"
+msgid "AArch64"
+msgstr ""
+
+#: ../app/releasemanager.cpp:939
+msgctxt "ReleaseArchitecture|"
+msgid "LZMA-compressed raw image for AArch64 machines"
+msgstr ""
+
+#: ../app/releasemanager.cpp:330 ../app/releasemanager.cpp:336
+msgctxt "ReleaseListModel|"
+msgid "Custom image"
+msgstr "Omavalintainen levykuva"
+
+#: ../app/releasemanager.cpp:797 ../app/releasemanager.cpp:809
+msgctxt "ReleaseVariant|"
+msgid "The downloaded image is corrupted"
+msgstr "Ladattu levykuva on korruptoitunut"
+
+#: ../app/releasemanager.cpp:814
+msgctxt "ReleaseVariant|"
+msgid "The downloaded file is not readable."
+msgstr "Ladattu tiedosto ei ole luettavissa."
+
+#: ../app/releasemanager.cpp:826
+msgctxt "ReleaseVariant|"
+msgid "Unable to rename the temporary file."
+msgstr "Väliaikaista tiedostoa ei voitu uudelleennimetä."
+
+#: ../app/releasemanager.h:386
+msgctxt "ReleaseVariant|"
+msgid "Preparing"
+msgstr "Valmistellaan"
+
+#: ../app/releasemanager.h:387
+msgctxt "ReleaseVariant|"
+msgid "Downloading"
+msgstr "Ladataan"
+
+#: ../app/releasemanager.h:388
+msgctxt "ReleaseVariant|"
+msgid "Checking the download"
+msgstr "Tarkistetaan latausta"
+
+#: ../app/releasemanager.h:389
+msgctxt "ReleaseVariant|"
+msgid "Ready to write"
+msgstr "Valmis kirjoittamaan"
+
+#: ../app/releasemanager.h:390
+msgctxt "ReleaseVariant|"
+msgid "Image file was saved to your downloads folder. Writing is not possible"
+msgstr ""
+"Levykuvatiedosto tallennettu Lataukset-kansioosi. Kirjoittaminen ei ole "
+"mahdollista"
+
+#: ../app/releasemanager.h:391
+msgctxt "ReleaseVariant|"
+msgid "Writing"
+msgstr "Kirjoitetaan"
+
+#: ../app/releasemanager.h:392
+msgctxt "ReleaseVariant|"
+msgid "Checking the written data"
+msgstr "Tarkistetaan kirjoitettua dataa"
+
+#: ../app/releasemanager.h:393
+msgctxt "ReleaseVariant|"
+msgid "Finished!"
+msgstr "Valmis!"
+
+#: ../app/releasemanager.h:394
+msgctxt "ReleaseVariant|"
+msgid "The written data is corrupted"
+msgstr "Kirjoitettu data on korruptoitunut"
+
+#: ../app/releasemanager.h:395
+msgctxt "ReleaseVariant|"
+msgid "Download failed"
+msgstr "Lataus epäonnistui"
+
+#: ../app/releasemanager.h:396
+msgctxt "ReleaseVariant|"
+msgid "Error"
+msgstr "Virhe"
+
+#: ../app/releasemanager.cpp:607
+#, qt-format
+msgctxt "ReleaseVersion|"
+msgid "%1 Alpha"
+msgstr "%1 alfaversio"
+
+#: ../app/releasemanager.cpp:609
+#, qt-format
+msgctxt "ReleaseVersion|"
+msgid "%1 Beta"
+msgstr "%1 beetaversio"
+
+#: ../app/releasemanager.cpp:611
+#, qt-format
+msgctxt "ReleaseVersion|"
+msgid "%1 Release Candidate"
+msgstr "%1 Julkaisukandidaatti"
+
+#: ../app/dialogs/RestoreDialog.qml:31
+#, qt-format
+msgctxt "RestoreDialog|"
+msgid "Restore %1?"
+msgstr "Palautetaanko %1?"
+
+#: ../app/dialogs/RestoreDialog.qml:73
+msgctxt "RestoreDialog|"
+msgid ""
+"<p align=\"justify\">\n"
+"                                                To reclaim all space "
+"available on the drive, it has to be restored to its factory settings.\n"
+"                                                The live system and all "
+"saved data will be deleted.\n"
+"                                            </p>\n"
+"                                            <p align=\"justify\">\n"
+"                                                You don't need to restore "
+"the drive if you want to write another live system to it.\n"
+"                                            </p>\n"
+"                                            <p align=\"justify\">\n"
+"                                                Do you want to continue?\n"
+"                                            </p>"
+msgstr ""
+"<p align=\"justify\">\n"
+"                                                Palauttaaksesi kaiken "
+"saatavilla olevan tilan levyllä, se pitää palauttaa tehdasasetuksille.\n"
+"                                                Live-järjestelmä ja kaikki "
+"tallennettu data poistetaan.\n"
+"                                            </p>\n"
+"                                            <p align=\"justify\">\n"
+"                                                Sinun ei tarvitse palauttaa "
+"levyä jos et halua kirjoittaa toista live-järjestelmää siihen.\n"
+"                                            </p>\n"
+"                                            <p align=\"justify\">\n"
+"                                                Haluatko jatkaa?\n"
+"                                            </p>"
+
+#: ../app/dialogs/RestoreDialog.qml:105
+msgctxt "RestoreDialog|"
+msgid ""
+"<p align=\"justify\">Please wait while Fedora Media Writer restores your "
+"portable drive.</p>"
+msgstr ""
+"<p align=\"justify\">Odota hetki kun Fedora Media Writer palauttaa levysi.</"
+"p>"
+
+#: ../app/dialogs/RestoreDialog.qml:121
+msgctxt "RestoreDialog|"
+msgid "Your drive was successfully restored!"
+msgstr "Asemasi palautettiin onnistuneesti!"
+
+#: ../app/dialogs/RestoreDialog.qml:138
+msgctxt "RestoreDialog|"
+msgid ""
+"Unfortunately, an error occurred during the process.<br>Please try restoring "
+"the drive using your system tools."
+msgstr ""
+"Valitettavasti, prosessin aikana tapahtui virhe. <br>Kokeile levyn "
+"palauttamista järjestelmäsi työkaluja käyttäen."
+
+#: ../app/dialogs/RestoreDialog.qml:150
+msgctxt "RestoreDialog|"
+msgid "Cancel"
+msgstr "Peru"
+
+#: ../app/dialogs/RestoreDialog.qml:159 ../app/dialogs/RestoreDialog.qml:170
+msgctxt "RestoreDialog|"
+msgid "Restore"
+msgstr "Palauta"
+
+#: ../app/dialogs/RestoreDialog.qml:159
+msgctxt "RestoreDialog|"
+msgid "Close"
+msgstr "Sulje"
+
+#: ../app/windrivemanager.cpp:270
+msgctxt "WinDrive|"
+msgid "Could not find the helper binary. Check your installation."
+msgstr "Avustinbinääriä ei löytynyt. Tarkista asennuksesi."
+
+#: ../app/windrivemanager.cpp:351 ../app/windrivemanager.cpp:403
+msgctxt "WinDrive|"
+msgid "Finished!"
+msgstr ""
+
+#: ../app/windrivemanager.cpp:351 ../app/windrivemanager.cpp:403
+#, qt-format
+msgctxt "WinDrive|"
+msgid "Writing %1 was successful"
+msgstr ""
+
+#: ../helper/linux/writejob.cpp:136 ../helper/win/writejob.cpp:271
+#: ../helper/mac/writejob.cpp:219
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
+msgstr "Purkamisen käynnistäminen epäonnistui."
+
+#: ../helper/linux/writejob.cpp:161 ../helper/linux/writejob.cpp:191
+#: ../helper/linux/writejob.cpp:228 ../helper/win/writejob.cpp:188
+#: ../helper/win/writejob.cpp:195 ../helper/mac/writejob.cpp:180
+#: ../helper/mac/writejob.cpp:244 ../helper/mac/writejob.cpp:274
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "Kohdelevy ei ole kirjoitettava"
+
+#: ../helper/linux/writejob.cpp:170 ../helper/win/writejob.cpp:315
+#: ../helper/mac/writejob.cpp:253
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr "Muistia ei ole tarpeeksi tiedoston purkamiseen."
+
+#: ../helper/linux/writejob.cpp:175 ../helper/win/writejob.cpp:320
+#: ../helper/mac/writejob.cpp:258
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "Ladattu pakattu tiedosto on korruptoitunut."
+
+#: ../helper/linux/writejob.cpp:178 ../helper/win/writejob.cpp:323
+#: ../helper/mac/writejob.cpp:261
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr "Pakkausvalintoja ei tueta."
+
+#: ../helper/linux/writejob.cpp:181 ../helper/win/writejob.cpp:326
+#: ../helper/mac/writejob.cpp:264
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr "Tuntematon purkuvirhe."
+
+#: ../helper/linux/writejob.cpp:206 ../helper/linux/writejob.cpp:221
+#: ../helper/win/writejob.cpp:361
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "Lähdekuva ei ole luettavissa"
+
+#: ../helper/linux/writejob.cpp:257 ../helper/win/writejob.cpp:406
+#: ../helper/mac/writejob.cpp:297
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr "Asemasi on luultavasti vaurioitunut."
+
+#: ../helper/linux/writejob.cpp:262 ../helper/win/writejob.cpp:411
+#: ../helper/mac/writejob.cpp:302
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr "Median tarkistamisen aikana tapahtui odottamaton virhe."
+
+#: ../helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr "Aseman avaaminen kirjoitusta varten ei onnistunut"
+
+#: ../helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr "Aseman lukitseminen ei onnistunut"
+
+#: ../helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr "Asemaa ei voitu poistaa %1:"
+
+#: ../helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr "Aseman lukituksen avaaminen ei onnistunut"
+
+#: ../helper/mac/writejob.cpp:82
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr ""
+
+#: ../helper/mac/writejob.cpp:127
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr ""
+
+#: ../app/main.qml:68
+#, qt-format
+msgctxt "main|"
+msgid ""
+"You inserted <b>%1</b> that already contains a live system.<br>Do you want "
+"to restore it to factory settings?"
+msgstr ""
+"Kiinnitit<b>%1</b> joka sisältää jo valmiiksi live-järjestelmän.<br>Haluatko "
+"palauttaa sen tehdasasetuksille?"
+
+#: ../app/main.qml:70
+msgctxt "main|"
+msgid "Restore"
+msgstr "Palauta"
+
+#: ../app/main.qml:146
+#, qt-format
+msgctxt "main|"
+msgid "Fedora Media Writer %1 Released"
+msgstr "Fedora-median luontityökalu %1 julkaistu"
+
+#: ../app/main.qml:147
+msgctxt "main|"
+msgid "Update for great new features and bugfixes!"
+msgstr "Päivitä saadaksesi uusia ominaisuuksia ja viankorjauksia!"
+
+#: ../app/main.qml:148
+msgctxt "main|"
+msgid "Open Browser"
+msgstr "Avaa selain"
+
+#: ../app/main.qml:163
+msgctxt "main|"
+msgid "Image files"
+msgstr "Levykuvatiedostot"
+
+#: ../app/main.qml:163
+msgctxt "main|"
+msgid "All files (*)"
+msgstr "Kaikki tiedostot (*)"
+
+#: ../app/main.qml:192
+#, qt-format
+msgctxt "main|"
+msgid ""
+"%1<br>Writing images will not be possible.<br>You can still view Fedora "
+"flavors and download images to your hard drive."
+msgstr ""
+"%1<br>Levykuvien kirjoittaminen ei ole mahdollista.<br>Voit silti katsella "
+"Fedora-mukaelmia ja ladata levykuvat kiintolevyllesi."
+
+#: ../app/main.qml:196
+msgctxt "main|"
+msgid "Ok"
+msgstr "OK"

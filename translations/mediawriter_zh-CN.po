@@ -1,0 +1,766 @@
+# #-#-#-#-#  appstream_zh-CN.po  #-#-#-#-#
+# Tong Hui <tonghuix@fedoraproject.org>, 2016. #zanata
+# Charles Lee <lchopn@gmail.com>, 2017. #zanata
+# #-#-#-#-#  desktop_zh-CN.po  #-#-#-#-#
+# Tong Hui <tonghuix@fedoraproject.org>, 2016. #zanata
+# #-#-#-#-#  mediawriter_zh-CN.po  #-#-#-#-#
+# Tian Shixiong <tiansworld@fedoraproject.org>, 2016. #zanata
+# Tong Hui <tonghuix@fedoraproject.org>, 2016. #zanata
+# Charles Lee <lchopn@gmail.com>, 2017. #zanata
+# lexuge <LEXUGEyky@outlook.com>, 2017. #zanata
+#, fuzzy
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-12-10 05:41-0500\n"
+"Last-Translator: Charles Lee <lchopn@gmail.com>\n"
+"Language-Team: Chinese (China)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Zanata 4.6.2\n"
+"X-Qt-Contexts: true\n"
+
+#. #-#-#-#-#  appstream_zh-CN.po  #-#-#-#-#
+#. (itstool) path: application/name
+#: ../dist/linux/org.fedoraproject.MediaWriter.appdata.xml.in:8
+#: ../dist/linux/org.fedoraproject.MediaWriter.desktop:4
+msgid "Fedora Media Writer"
+msgstr "Fedora Media Writer"
+
+#. (itstool) path: application/summary
+#: ../dist/linux/org.fedoraproject.MediaWriter.appdata.xml.in:9
+msgid "A tool to create a live USB drive with an edition of Fedora"
+msgstr "一个用来创建 Live USB 启动盘的 Fedora 版工具"
+
+#. (itstool) path: description/p
+#: ../dist/linux/org.fedoraproject.MediaWriter.appdata.xml.in:11
+msgid ""
+"A tool to create a bootable live USB drive with an edition of Fedora. Not "
+"only can Fedora Media Writer write an image to your flash drive, it can also "
+"download it for you. It offers official editions (Server, Workstation), "
+"Fedora spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
+"Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
+"about each of them to help you make the right choice."
+msgstr ""
+"为各种 Fedora 版本制作可启动 Live USB 设备的工具。Fedora  Media Writer 不只能"
+"将镜像写入您的闪存盘中，它还能替您下载镜像。它提供官方版（Server、"
+"Workstation）、Fedora Spin （KDE Plasma 桌面、Xfce 桌面、Cinnamon 桌面等）、"
+"和 Fedora 实验室（设计套件、安全实验室等）。它还提供各版本的基本资讯来帮助您"
+"作选择。"
+
+#. (itstool) path: description/p
+#: ../dist/linux/org.fedoraproject.MediaWriter.appdata.xml.in:12
+msgid ""
+"Fedora Media Writer can also write other bootable ISOs loaded from your "
+"local disk, but keep in mind that it's only tested with Fedora images."
+msgstr ""
+"Fedora Media Writer 也可以从你本地磁盘载入可启动的 ISO 文件，但请注意这个工具"
+"只测试过 Fedora 镜像。"
+
+#: ../dist/linux/org.fedoraproject.MediaWriter.desktop:36
+msgid "Write Fedora images to your portable drives"
+msgstr "将 Fedora 镜像写入到你的移动存储设备"
+
+#: ../app/complex/DeleteButton.qml:64
+msgctxt "DeleteButton|"
+msgid "Delete the Downloaded Image"
+msgstr "删除已下载的镜像"
+
+#: ../app/downloadmanager.cpp:215
+msgctxt "Download|"
+msgid "Unable to fetch the requested image."
+msgstr "无法获取请求的镜像。"
+
+#: ../app/downloadmanager.cpp:311
+msgctxt "Download|"
+msgid "You ran out of space in your Downloads folder."
+msgstr "您的“下载”文件夹空间不足。"
+
+#: ../app/downloadmanager.cpp:313
+msgctxt "Download|"
+msgid "The download file is not writable."
+msgstr "下载的文件不可写"
+
+#: ../app/downloadmanager.cpp:399
+msgctxt "Download|"
+msgid "Connection timed out"
+msgstr "连接超时。"
+
+#: ../app/dialogs/DownloadDialog.qml:33
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "Write %1"
+msgstr "写入 %1"
+
+#: ../app/dialogs/DownloadDialog.qml:141
+msgctxt "DownloadDialog|"
+msgid "Writing is not possible"
+msgstr "无法写入"
+
+#: ../app/dialogs/DownloadDialog.qml:216
+msgctxt "DownloadDialog|"
+msgid "Close"
+msgstr "关闭"
+
+#: ../app/dialogs/DownloadDialog.qml:232 ../app/dialogs/DownloadDialog.qml:253
+#: ../app/dialogs/DownloadDialog.qml:274 ../app/dialogs/DownloadDialog.qml:285
+#: ../app/dialogs/DownloadDialog.qml:306
+msgctxt "DownloadDialog|"
+msgid "Retry"
+msgstr "重试"
+
+#: ../app/dialogs/DownloadDialog.qml:356
+msgctxt "DownloadDialog|"
+msgid "The file will be saved to your Downloads folder."
+msgstr "文件将被保存到你的“下载”文件夹"
+
+#: ../app/dialogs/DownloadDialog.qml:363
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "By writing, you will lose all of the data on %1."
+msgstr "因为写入数据，您将会失去所有在 %1 上的数据"
+
+#: ../app/dialogs/DownloadDialog.qml:370
+msgctxt "DownloadDialog|"
+msgid ""
+"Your drive will be resized to a smaller capacity. You may resize it back to "
+"normal by using Fedora Media Writer; this will remove installation media "
+"from your drive."
+msgstr ""
+"您的驱动器将被调整至较小容量。您将可以使用 Fedora Media Writer 将其调整回其正"
+"常容量，但这也将从您的驱动器上删除安装介质。"
+
+#: ../app/dialogs/DownloadDialog.qml:377
+msgctxt "DownloadDialog|"
+msgid "Selected:"
+msgstr "已选择:"
+
+#: ../app/dialogs/DownloadDialog.qml:377
+msgctxt "DownloadDialog|"
+msgid "None"
+msgstr "无"
+
+#: ../app/dialogs/DownloadDialog.qml:384
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid ""
+"Your board or device is not supported by Fedora Media Writer yet. Please "
+"check <a href=%1>this page</a> for more information about its compatibility "
+"with Fedora and how to create bootable media for it."
+msgstr ""
+"您的主板或设备不被 Fedora Media Writer 所支持。 请查看 <a href=%1>此页面</a> "
+"以获取关于您的设备与 Fedora 兼容性以及如何为其创建可启动介质的更多信息。"
+
+#: ../app/dialogs/DownloadDialog.qml:392
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid ""
+"The selected drive's size is %1. It's possible you have selected an external "
+"drive by accident!"
+msgstr "已选驱动器的容量为 %1。您可能不小心选择了一个外部驱动器。"
+
+#: ../app/dialogs/DownloadDialog.qml:419
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "(%1 B left)"
+msgstr "(剩余 %1 B)"
+
+#: ../app/dialogs/DownloadDialog.qml:420
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "(%1 KB left)"
+msgstr "(剩余 %1 KB)"
+
+#: ../app/dialogs/DownloadDialog.qml:421
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "(%1 MB left)"
+msgstr "(剩余 %1 MB)"
+
+#: ../app/dialogs/DownloadDialog.qml:422
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "(%1 GB left)"
+msgstr "(剩余 %1 GB)"
+
+#: ../app/dialogs/DownloadDialog.qml:435
+msgctxt "DownloadDialog|"
+msgid "Write the image immediately when the download is finished"
+msgstr "下载完成后，立刻将镜像写入 USB"
+
+#: ../app/dialogs/DownloadDialog.qml:509
+msgctxt "DownloadDialog|"
+msgid "There are no portable drives connected"
+msgstr "没有检测到移动设备"
+
+#: ../app/dialogs/DownloadDialog.qml:532
+msgctxt "DownloadDialog|"
+msgid "Other"
+msgstr "其他"
+
+#: ../app/dialogs/DownloadDialog.qml:561
+#, qt-format
+msgctxt "DownloadDialog|"
+msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
+msgstr "无法删除 <br>\"<a href=\"%1\">%2</a>\"."
+
+#: ../app/dialogs/DownloadDialog.qml:573
+msgctxt "DownloadDialog|"
+msgid "Cancel"
+msgstr "取消"
+
+#: ../app/dialogs/DownloadDialog.qml:586
+msgctxt "DownloadDialog|"
+msgid "Write to Disk"
+msgstr "写入磁盘"
+
+#: ../app/drivemanager.cpp:286
+msgctxt "Drive|"
+msgid "This drive is not large enough."
+msgstr "此驱动器容量不足"
+
+#: ../app/views/ImageDetails.qml:98
+msgctxt "ImageDetails|"
+msgid "Back"
+msgstr ""
+
+#: ../app/views/ImageDetails.qml:105
+msgctxt "ImageDetails|"
+msgid "Create Live USB…"
+msgstr ""
+
+#. The downloaded image is compressed, this refers to the size which it will
+#. take after being decompressed and written to the drive
+#: ../app/views/ImageDetails.qml:167
+#, qt-format
+msgctxt "ImageDetails|"
+msgid "(%1 after writing)"
+msgstr "（已写入 %1）"
+
+#: ../app/views/ImageDetails.qml:192
+#, qt-format
+msgctxt "ImageDetails|"
+msgid "Version %1"
+msgstr "版本 %1"
+
+#: ../app/views/ImageDetails.qml:296
+#, qt-format
+msgctxt "ImageDetails|"
+msgid ""
+"Fedora %1 was released! Check it out!<br>If you want a stable, finished "
+"system, it's better to stay at version %2."
+msgstr ""
+"Fedora %1 已发布！ 看看吧！<br>当然您要是需要一个稳定完善的系统，最好还是使"
+"用 %2。"
+
+#: ../app/views/ImageDetails.qml:314
+#, qt-format
+msgctxt "ImageDetails|"
+msgid ", released on %1"
+msgstr "于 %1 发布"
+
+#: ../app/views/ImageDetails.qml:324
+msgctxt "ImageDetails|"
+msgid "Other variants..."
+msgstr "其他版本..."
+
+#: ../app/views/ImageList.qml:84
+msgctxt "ImageList|"
+msgid "Find an operating system image"
+msgstr "查找操作系统镜像"
+
+#: ../app/views/ImageList.qml:168
+msgctxt "ImageList|"
+msgid "Checking for new releases"
+msgstr "正在检查新版本"
+
+#: ../app/views/ImageList.qml:251
+msgctxt "ImageList|"
+msgid "About Fedora Media Writer"
+msgstr "有关 Fedora Media Writer"
+
+#: ../app/views/ImageList.qml:275
+#, qt-format
+msgctxt "ImageList|"
+msgid "Version %1"
+msgstr "版本 %1"
+
+#: ../app/views/ImageList.qml:282
+msgctxt "ImageList|"
+msgid "Fedora Media Writer is now checking for new releases"
+msgstr "Fedora Media Writer 正在检查新版本"
+
+#: ../app/views/ImageList.qml:296
+#, qt-format
+msgctxt "ImageList|"
+msgid "Please report bugs or your suggestions on %1"
+msgstr "请您将 bug 和建议发到 %1"
+
+#: ../app/views/ImageList.qml:356
+msgctxt "ImageList|"
+msgid "Display additional Fedora flavors"
+msgstr "显示额外的 Fedora 套餐"
+
+#: ../app/linuxdrivemanager.cpp:181
+msgctxt "LinuxDrive|"
+msgid "The drive was removed while it was written to."
+msgstr "此驱动器将在其被写入的时候弹出。"
+
+#: ../app/linuxdrivemanager.cpp:210
+msgctxt "LinuxDrive|"
+msgid "Could not find the helper binary. Check your installation."
+msgstr "找不到 helper 二进制文件，请检查是否已安装。"
+
+#: ../app/linuxdrivemanager.cpp:245
+msgctxt "LinuxDrive|"
+msgid "Stopped before writing has finished."
+msgstr "在写入完成前被终止。"
+
+#: ../app/linuxdrivemanager.cpp:315 ../app/linuxdrivemanager.cpp:344
+msgctxt "LinuxDrive|"
+msgid "Finished!"
+msgstr "完成！"
+
+#: ../app/linuxdrivemanager.cpp:315 ../app/linuxdrivemanager.cpp:344
+#, qt-format
+msgctxt "LinuxDrive|"
+msgid "Writing %1 was successful"
+msgstr "成功写入 %1"
+
+#: ../app/linuxdrivemanager.cpp:337
+msgctxt "LinuxDrive|"
+msgid "Error"
+msgstr "错误！"
+
+#: ../app/linuxdrivemanager.cpp:337
+#, qt-format
+msgctxt "LinuxDrive|"
+msgid "Writing %1 failed"
+msgstr "写入 %1 失败"
+
+#: ../app/linuxdrivemanager.cpp:116
+msgctxt "LinuxDriveProvider|"
+msgid "UDisks2 seems to be unavailable or unaccessible on your system."
+msgstr "UDisk2似乎在您的系统上不可用或不被允许"
+
+#: ../app/macdrivemanager.cpp:101
+msgctxt "MacDrive|"
+msgid "Could not find the helper binary. Check your installation."
+msgstr "找不到 helper 二进制文件，请检查是否已安装。"
+
+#: ../app/macdrivemanager.cpp:188
+msgctxt "MacDrive|"
+msgid "Error"
+msgstr "错误"
+
+#: ../app/macdrivemanager.cpp:188
+#, qt-format
+msgctxt "MacDrive|"
+msgid "Writing %1 failed"
+msgstr "写入 %1失败"
+
+#: ../app/macdrivemanager.cpp:192
+msgctxt "MacDrive|"
+msgid "Finished!"
+msgstr "完成！"
+
+#: ../app/macdrivemanager.cpp:192
+#, qt-format
+msgctxt "MacDrive|"
+msgid "Writing %1 was successful"
+msgstr "成功写入%1"
+
+#: ../app/releasemanager.cpp:330 ../app/releasemanager.cpp:336
+msgctxt "Release|"
+msgid "Pick a file from your drive(s)"
+msgstr "选择一个文件"
+
+#: ../app/releasemanager.cpp:330 ../app/releasemanager.cpp:336
+msgctxt "Release|"
+msgid ""
+"<p>Here you can choose a OS image from your hard drive to be written to your "
+"flash disk</p><p>Currently it is only supported to write raw disk images (."
+"iso or .bin)</p>"
+msgstr ""
+"<p>可以从硬盘上选择一个打算写入优盘的操作系统镜像</p><p>当前只支持写入原生镜"
+"像 (.iso 或 .bin 文件)</p>"
+
+#: ../app/releasemanager.cpp:362
+msgctxt "Release|"
+msgid "Fedora Spins"
+msgstr "Fedora 定制版"
+
+#: ../app/releasemanager.cpp:364
+msgctxt "Release|"
+msgid "Fedora Labs"
+msgstr "Fedora 实验室"
+
+#: ../app/releasemanager.cpp:366
+msgctxt "Release|"
+msgid "Other"
+msgstr "其他"
+
+#: ../app/releasemanager.cpp:936
+msgctxt "ReleaseArchitecture|"
+msgid "Intel 64bit"
+msgstr "Intel 64 位"
+
+#: ../app/releasemanager.cpp:936
+msgctxt "ReleaseArchitecture|"
+msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+msgstr "适用于 Intel、AMD 和其他兼容 PC (64 位) 的 ISO 格式的镜像"
+
+#: ../app/releasemanager.cpp:937
+msgctxt "ReleaseArchitecture|"
+msgid "Intel 32bit"
+msgstr "Intel 32 位"
+
+#: ../app/releasemanager.cpp:937
+msgctxt "ReleaseArchitecture|"
+msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
+msgstr "适用于 Intel、AMD 和其他兼容 PC (32 位) 的 ISO 格式的镜像"
+
+#: ../app/releasemanager.cpp:938
+msgctxt "ReleaseArchitecture|"
+msgid "ARM v7"
+msgstr "ARM v7"
+
+#: ../app/releasemanager.cpp:938
+msgctxt "ReleaseArchitecture|"
+msgid ""
+"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
+msgstr "针对 ARM v7-A 架构，如树莓派 2 和 3 的 LZMA 压缩原生镜像"
+
+#: ../app/releasemanager.cpp:939
+msgctxt "ReleaseArchitecture|"
+msgid "AArch64"
+msgstr ""
+
+#: ../app/releasemanager.cpp:939
+msgctxt "ReleaseArchitecture|"
+msgid "LZMA-compressed raw image for AArch64 machines"
+msgstr ""
+
+#: ../app/releasemanager.cpp:330 ../app/releasemanager.cpp:336
+msgctxt "ReleaseListModel|"
+msgid "Custom image"
+msgstr "自定义镜像"
+
+#: ../app/releasemanager.cpp:797 ../app/releasemanager.cpp:809
+msgctxt "ReleaseVariant|"
+msgid "The downloaded image is corrupted"
+msgstr "下载的镜像已损坏"
+
+#: ../app/releasemanager.cpp:814
+msgctxt "ReleaseVariant|"
+msgid "The downloaded file is not readable."
+msgstr "下载到的文件不可读"
+
+#: ../app/releasemanager.cpp:826
+msgctxt "ReleaseVariant|"
+msgid "Unable to rename the temporary file."
+msgstr "无法重命名临时文件"
+
+#: ../app/releasemanager.h:386
+msgctxt "ReleaseVariant|"
+msgid "Preparing"
+msgstr "准备中"
+
+#: ../app/releasemanager.h:387
+msgctxt "ReleaseVariant|"
+msgid "Downloading"
+msgstr "下载中"
+
+#: ../app/releasemanager.h:388
+msgctxt "ReleaseVariant|"
+msgid "Checking the download"
+msgstr "检查下载"
+
+#: ../app/releasemanager.h:389
+msgctxt "ReleaseVariant|"
+msgid "Ready to write"
+msgstr "准备写入"
+
+#: ../app/releasemanager.h:390
+msgctxt "ReleaseVariant|"
+msgid "Image file was saved to your downloads folder. Writing is not possible"
+msgstr "无法写入。镜像文件已经保存到您的下载目录。"
+
+#: ../app/releasemanager.h:391
+msgctxt "ReleaseVariant|"
+msgid "Writing"
+msgstr "写入中"
+
+#: ../app/releasemanager.h:392
+msgctxt "ReleaseVariant|"
+msgid "Checking the written data"
+msgstr "正在检查已写入数据"
+
+#: ../app/releasemanager.h:393
+msgctxt "ReleaseVariant|"
+msgid "Finished!"
+msgstr "已完成！"
+
+#: ../app/releasemanager.h:394
+msgctxt "ReleaseVariant|"
+msgid "The written data is corrupted"
+msgstr "已写入的数据有损坏"
+
+#: ../app/releasemanager.h:395
+msgctxt "ReleaseVariant|"
+msgid "Download failed"
+msgstr "下载失败"
+
+#: ../app/releasemanager.h:396
+msgctxt "ReleaseVariant|"
+msgid "Error"
+msgstr "错误"
+
+#: ../app/releasemanager.cpp:607
+#, qt-format
+msgctxt "ReleaseVersion|"
+msgid "%1 Alpha"
+msgstr "%1 Alpha 版"
+
+#: ../app/releasemanager.cpp:609
+#, qt-format
+msgctxt "ReleaseVersion|"
+msgid "%1 Beta"
+msgstr "%1 Beta 版"
+
+#: ../app/releasemanager.cpp:611
+#, qt-format
+msgctxt "ReleaseVersion|"
+msgid "%1 Release Candidate"
+msgstr "%1 发行后选版"
+
+#: ../app/dialogs/RestoreDialog.qml:31
+#, qt-format
+msgctxt "RestoreDialog|"
+msgid "Restore %1?"
+msgstr "重置为 %1?"
+
+#: ../app/dialogs/RestoreDialog.qml:73
+msgctxt "RestoreDialog|"
+msgid ""
+"<p align=\"justify\">\n"
+"                                                To reclaim all space "
+"available on the drive, it has to be restored to its factory settings.\n"
+"                                                The live system and all "
+"saved data will be deleted.\n"
+"                                            </p>\n"
+"                                            <p align=\"justify\">\n"
+"                                                You don't need to restore "
+"the drive if you want to write another live system to it.\n"
+"                                            </p>\n"
+"                                            <p align=\"justify\">\n"
+"                                                Do you want to continue?\n"
+"                                            </p>"
+msgstr ""
+"<p align=\"justify\">\n"
+"                                                为了使用此磁盘上所有可用空"
+"间，它必须被重置到其出厂设置。\n"
+"                                                Live 系统及所有存储数据都会删"
+"除。\n"
+"                                            </p>\n"
+"                                            <p align=\"justify\">\n"
+"                                                如果你只是希望写入其他 live "
+"系统，不需要重置此磁盘。\n"
+"                                            </p>\n"
+"                                            <p align=\"justify\">\n"
+"                                                 想要继续吗？\n"
+"                                            </p>"
+
+#: ../app/dialogs/RestoreDialog.qml:105
+msgctxt "RestoreDialog|"
+msgid ""
+"<p align=\"justify\">Please wait while Fedora Media Writer restores your "
+"portable drive.</p>"
+msgstr ""
+"<p align=\"justify\">请等待 Fedora Media Writer 完成重置此移动磁盘。</p>"
+
+#: ../app/dialogs/RestoreDialog.qml:121
+msgctxt "RestoreDialog|"
+msgid "Your drive was successfully restored!"
+msgstr "你的磁盘已重置成功！"
+
+#: ../app/dialogs/RestoreDialog.qml:138
+msgctxt "RestoreDialog|"
+msgid ""
+"Unfortunately, an error occurred during the process.<br>Please try restoring "
+"the drive using your system tools."
+msgstr "很不幸，此过程中发生了错误。<br>请使用系统工具重置此驱动器。"
+
+#: ../app/dialogs/RestoreDialog.qml:150
+msgctxt "RestoreDialog|"
+msgid "Cancel"
+msgstr "取消"
+
+#: ../app/dialogs/RestoreDialog.qml:159 ../app/dialogs/RestoreDialog.qml:170
+msgctxt "RestoreDialog|"
+msgid "Restore"
+msgstr "重置"
+
+#: ../app/dialogs/RestoreDialog.qml:159
+msgctxt "RestoreDialog|"
+msgid "Close"
+msgstr "关闭"
+
+#: ../app/windrivemanager.cpp:270
+msgctxt "WinDrive|"
+msgid "Could not find the helper binary. Check your installation."
+msgstr "找不到 helper 二进制文件，请检查是否已安装。"
+
+#: ../app/windrivemanager.cpp:351 ../app/windrivemanager.cpp:403
+msgctxt "WinDrive|"
+msgid "Finished!"
+msgstr ""
+
+#: ../app/windrivemanager.cpp:351 ../app/windrivemanager.cpp:403
+#, qt-format
+msgctxt "WinDrive|"
+msgid "Writing %1 was successful"
+msgstr ""
+
+#: ../helper/linux/writejob.cpp:136 ../helper/win/writejob.cpp:271
+#: ../helper/mac/writejob.cpp:219
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
+msgstr "无法进行解压"
+
+#: ../helper/linux/writejob.cpp:161 ../helper/linux/writejob.cpp:191
+#: ../helper/linux/writejob.cpp:228 ../helper/win/writejob.cpp:188
+#: ../helper/win/writejob.cpp:195 ../helper/mac/writejob.cpp:180
+#: ../helper/mac/writejob.cpp:244 ../helper/mac/writejob.cpp:274
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "目标设备不可写"
+
+#: ../helper/linux/writejob.cpp:170 ../helper/win/writejob.cpp:315
+#: ../helper/mac/writejob.cpp:253
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr "没有足够的空间来解压文件"
+
+#: ../helper/linux/writejob.cpp:175 ../helper/win/writejob.cpp:320
+#: ../helper/mac/writejob.cpp:258
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "下载到的压缩文件已损坏"
+
+#: ../helper/linux/writejob.cpp:178 ../helper/win/writejob.cpp:323
+#: ../helper/mac/writejob.cpp:261
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr "不被支持的压缩选项"
+
+#: ../helper/linux/writejob.cpp:181 ../helper/win/writejob.cpp:326
+#: ../helper/mac/writejob.cpp:264
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr "未知的解压错误"
+
+#: ../helper/linux/writejob.cpp:206 ../helper/linux/writejob.cpp:221
+#: ../helper/win/writejob.cpp:361
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "源文件不可读"
+
+#: ../helper/linux/writejob.cpp:257 ../helper/win/writejob.cpp:406
+#: ../helper/mac/writejob.cpp:297
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr "您的驱动器可能已被损坏。"
+
+#: ../helper/linux/writejob.cpp:262 ../helper/win/writejob.cpp:411
+#: ../helper/mac/writejob.cpp:302
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr "介质检查中出现意外错误。"
+
+#: ../helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr "无法打开设备来写入数据"
+
+#: ../helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr "无法锁定设备"
+
+#: ../helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr "无法移除设备：%1"
+
+#: ../helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr "无法解锁设备"
+
+#: ../helper/mac/writejob.cpp:82
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr ""
+
+#: ../helper/mac/writejob.cpp:127
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr ""
+
+#: ../app/main.qml:68
+#, qt-format
+msgctxt "main|"
+msgid ""
+"You inserted <b>%1</b> that already contains a live system.<br>Do you want "
+"to restore it to factory settings?"
+msgstr ""
+"你插入的 <b>%1</b> 已包含一个 live 系统。<br>你是否希望重置其到出厂设置？"
+
+#: ../app/main.qml:70
+msgctxt "main|"
+msgid "Restore"
+msgstr "重置"
+
+#: ../app/main.qml:146
+#, qt-format
+msgctxt "main|"
+msgid "Fedora Media Writer %1 Released"
+msgstr "Fedora Media Writer %1 现已发布"
+
+#: ../app/main.qml:147
+msgctxt "main|"
+msgid "Update for great new features and bugfixes!"
+msgstr "更新以获取新特性以及 bug 修复"
+
+#: ../app/main.qml:148
+msgctxt "main|"
+msgid "Open Browser"
+msgstr "打开浏览器"
+
+#: ../app/main.qml:163
+msgctxt "main|"
+msgid "Image files"
+msgstr "镜像文件"
+
+#: ../app/main.qml:163
+msgctxt "main|"
+msgid "All files (*)"
+msgstr "全部文件(*)"
+
+#: ../app/main.qml:192
+#, qt-format
+msgctxt "main|"
+msgid ""
+"%1<br>Writing images will not be possible.<br>You can still view Fedora "
+"flavors and download images to your hard drive."
+msgstr ""
+"%1 <br> 无法写入镜像。 <br> 你可以继续查看Fedora版本并下载镜像到您的硬盘"
+
+#: ../app/main.qml:196
+msgctxt "main|"
+msgid "Ok"
+msgstr "确定"
