@@ -10,7 +10,7 @@ on:
 jobs:
   Linux:
     if: github.event_name == 'push'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v1
       with:
@@ -38,8 +38,8 @@ jobs:
     - name: Install Flatpak KDE SDK
       run: |
         sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        sudo flatpak install --system -y flathub org.kde.Platform//5.14
-        sudo flatpak install --system -y flathub org.kde.Sdk//5.14
+        sudo flatpak install --system -y flathub org.kde.Platform//5.15
+        sudo flatpak install --system -y flathub org.kde.Sdk//5.15
     - name: Build the Flatpak package
       run: |
         TAG_NAME=$(bash ./dist/get-tag-name.sh)
@@ -111,12 +111,6 @@ jobs:
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
-    - name: Cache Qt
-      id: cache-qt
-      uses: actions/cache@v1
-      with:
-        path: d:/a/MediaWriter/Qt
-        key: QtCache
     - name: Install dependencies
       shell: bash
       run: |
@@ -126,7 +120,8 @@ jobs:
       uses: jurplel/install-qt-action@v2
       with:
         cached: ${{ steps.cache-qt.outputs.cache-hit }}
-        arch: win64_mingw73
+        arch: win64_mingw81
+        version: '5.15.2'
     - name: Build xz-utils
       shell: bash
       if: ${{ !steps.cache-qt.outputs.cache-hit }}
@@ -140,8 +135,6 @@ jobs:
         cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX="$Qt5_Dir" -DBUILD_SHARED_LIBS=ON ..
         mingw32-make -j2 VERBOSE=1
         mingw32-make install
-        # ugh
-        cp "$Qt5_Dir/bin/liblzma.dll" "$Qt5_Dir/bin/libliblzma.dll"
     - name: Build MediaWriter
       shell: bash
       run: |
@@ -161,7 +154,6 @@ jobs:
         cp $Qt5_Dir/bin/libstdc*.dll .
         cp $Qt5_Dir/bin/libwinpthread*.dll .
         cp $Qt5_Dir/bin/libgcc*.dll .
-        cp $Qt5_Dir/bin/liblzma.dll $Qt5_Dir/bin/libliblzma.dll .
         cp /c/Program\ Files/OpenSSL/bin/*.dll .
     - name: Installer
       if: github.event_name == 'release'
