@@ -8,7 +8,7 @@ LIBS += -lisomd5
 
 CONFIG += c++11
 
-VERSION=4.1.7
+VERSION=4.1.8
 
 HEADERS += \
     drivemanager.h \
