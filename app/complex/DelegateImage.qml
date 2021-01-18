@@ -66,7 +66,7 @@ Item {
             width: height
             IndicatedImage {
                 fillMode: Image.PreserveAspectFit
-                source: release.icon
+                source: release.icon + "64"
                 sourceSize.height: parent.height
                 sourceSize.width: parent.width
             }
