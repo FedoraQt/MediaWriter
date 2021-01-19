@@ -45,7 +45,7 @@ void LinuxDriveProvider::delayedConstruct() {
 
     connect(w, &QDBusPendingCallWatcher::finished, this, &LinuxDriveProvider::init);
 
-    QDBusConnection::systemBus().connect("org.freedesktop.UDisks2", 0, "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(onPropertiesChanged(QString,QVariantMap,QStringList)));
+    QDBusConnection::systemBus().connect("org.freedesktop.UDisks2", nullptr, "org.freedesktop.DBus.Properties", "PropertiesChanged", this, SLOT(onPropertiesChanged(QString,QVariantMap,QStringList)));
     QDBusConnection::systemBus().connect("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", "InterfacesAdded", this, SLOT(onInterfacesAdded(QDBusObjectPath,InterfacesAndProperties)));
     QDBusConnection::systemBus().connect("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", "InterfacesRemoved", this, SLOT(onInterfacesRemoved(QDBusObjectPath,QStringList)));
 }
@@ -108,7 +108,8 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
     mDebug() << this->metaObject()->className() << "Got a reply to GetManagedObjects, parsing";
 
     QDBusPendingReply<DBusIntrospection> reply = *w;
-    QSet<QDBusObjectPath> oldPaths = m_drives.keys().toSet();
+    const QList<QDBusObjectPath> paths = m_drives.keys();
+    QSet<QDBusObjectPath> oldPaths(paths.begin(), paths.end());
     QSet<QDBusObjectPath> newPaths;
 
     if (reply.isError()) {
@@ -161,10 +162,12 @@ void LinuxDriveProvider::onInterfacesRemoved(const QDBusObjectPath &object_path,
 void LinuxDriveProvider::onPropertiesChanged(const QString &interface_name, const QVariantMap &changed_properties, const QStringList &invalidated_properties) {
     Q_UNUSED(interface_name)
     const QSet<QString> watchedProperties = { "MediaAvailable", "Size" };
-
+    const QList<QString> changedPropertyKeys = changed_properties.keys();
+    QSet<QString> changedPropertiesSet(changedPropertyKeys.begin(), changedPropertyKeys.end());
+    QSet<QString> invalidatedPropertiesSet(invalidated_properties.begin(), invalidated_properties.end());
     // not ideal but it works alright without a huge lot of code
-    if (!changed_properties.keys().toSet().intersect(watchedProperties).isEmpty() ||
-            !invalidated_properties.toSet().intersect(watchedProperties).isEmpty()) {
+    if (!changedPropertiesSet.intersect(watchedProperties).isEmpty() ||
+            !invalidatedPropertiesSet.intersect(watchedProperties).isEmpty()) {
         QDBusPendingCall pcall = m_objManager->asyncCall("GetManagedObjects");
         QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(pcall, this);
 

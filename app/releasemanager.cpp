@@ -472,7 +472,7 @@ QString Release::prerelease() const {
 }
 
 QQmlListProperty<ReleaseVersion> Release::versions() {
-    return QQmlListProperty<ReleaseVersion>(this, m_versions);
+    return QQmlListProperty<ReleaseVersion>(this, &m_versions);
 }
 
 QList<ReleaseVersion *> Release::versionList() const {
@@ -647,7 +647,7 @@ void ReleaseVersion::addVariant(ReleaseVariant *v) {
 }
 
 QQmlListProperty<ReleaseVariant> ReleaseVersion::variants() {
-    return QQmlListProperty<ReleaseVariant>(this, m_variants);
+    return QQmlListProperty<ReleaseVariant>(this, &m_variants);
 }
 
 QList<ReleaseVariant *> ReleaseVersion::variantList() const {
