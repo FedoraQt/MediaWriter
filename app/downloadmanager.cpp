@@ -225,7 +225,11 @@ void Download::handleNewReply(QNetworkReply *reply) {
     m_reply->setParent(this);
 
     connect(m_reply, &QNetworkReply::readyRead, this, &Download::onReadyRead);
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
     connect(m_reply, &QNetworkReply::errorOccurred, this, &Download::onError);
+#else
+    connect(m_reply, static_cast<void(QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), this, &Download::onError);
+#endif
     connect(m_reply, &QNetworkReply::sslErrors, this, &Download::onSslErrors);
     connect(m_reply, &QNetworkReply::finished, this, &Download::onFinished);
     if (m_progress) {
