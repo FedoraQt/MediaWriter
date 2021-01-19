@@ -79,7 +79,7 @@ ApplicationWindow {
 
         Connections {
             target: drives
-            onLastRestoreableChanged: {
+            function onLastRestoreableChanged() {
                 if (drives.lastRestoreable != null && !dlDialog.visible)
                     deviceNotification.open = true
                 if (!drives.lastRestoreable)
@@ -129,7 +129,7 @@ ApplicationWindow {
                 }
                 Connections {
                     target: contentLoader.item
-                    onStepForward: {
+                    function onStepForward(index) {
                         contentList.currentIndex++
                         canGoBack = true
                         releases.selectedIndex = index

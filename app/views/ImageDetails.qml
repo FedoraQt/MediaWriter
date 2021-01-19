@@ -48,7 +48,7 @@ Item {
 
     Connections {
         target: focused && releases.selected ? releases.selected : null
-        onPrereleaseChanged: {
+        function onPrereleaseChanged() {
             if (releases.selected.prerelease.length > 0)
                 prereleaseTimer.start()
         }

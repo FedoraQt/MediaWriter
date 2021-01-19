@@ -53,14 +53,14 @@ Dialog {
 
     Connections {
         target: releases
-        onSelectedChanged: {
+        function onSelectedChanged() {
             reset();
         }
     }
 
     Connections {
         target: drives
-        onSelectedChanged: {
+        function onSelectedChanged() {
             drives.selected.delayedWrite = false
         }
     }
