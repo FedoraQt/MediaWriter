@@ -29,9 +29,9 @@ T.ComboBox {
     id: control
 
     implicitWidth: Math.max(background ? background.implicitWidth : 0,
-                            contentItem.implicitWidth) + leftPadding + rightPadding + (2 * theme.frameWidth) + spacing + indicator.implicitWidth + rightPadding
+                            contentItem.implicitWidth) + leftPadding + rightPadding + spacing + indicator.implicitWidth + rightPadding
     implicitHeight: Math.max(background ? background.implicitHeight : 0,
-                             contentItem.implicitHeight + bottomPadding + topPadding) + (2 * theme.frameWidth)
+                             contentItem.implicitHeight + bottomPadding + topPadding)
 
     spacing: theme.menuItemSpacing
     leftPadding: theme.comboBoxMarginWidth + theme.frameWidth

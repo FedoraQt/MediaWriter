@@ -37,7 +37,6 @@ T.Button {
     bottomPadding: theme.buttonMarginWidth + theme.frameWidth
     topPadding: theme.buttonMarginWidth + theme.frameWidth
 
-    Layout.minimumHeight: theme.buttonMinimumHeight
     Layout.minimumWidth: control.text ? theme.buttonMinimumWidth : theme.buttonMinimumWidth / 2
 
     hoverEnabled: true
