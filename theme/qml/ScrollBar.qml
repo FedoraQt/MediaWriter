@@ -31,6 +31,8 @@ T.ScrollBar {
 
     leftPadding: 4
     rightPadding: 4
+    bottomPadding: 4
+    topPadding: 4
     // FIXME
     // Workaround for me not being able to hide horizontal scrollbar
     visible: control.size < 1.0 && orientation !== Qt.Horizontal
@@ -45,7 +47,7 @@ T.ScrollBar {
     }
 
     background: Item {
-        visible: control.size < 1.0 && control.pressed
+        visible: control.size < 1.0 && (control.pressed || control.hovered)
         implicitWidth: implicitWidth
         implicitHeight: implicitWidth
         Rectangle {
