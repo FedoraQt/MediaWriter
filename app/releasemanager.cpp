@@ -472,7 +472,11 @@ QString Release::prerelease() const {
 }
 
 QQmlListProperty<ReleaseVersion> Release::versions() {
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
     return QQmlListProperty<ReleaseVersion>(this, &m_versions);
+#else
+    return QQmlListProperty<ReleaseVersion>(this, m_versions);
+#endif
 }
 
 QList<ReleaseVersion *> Release::versionList() const {
@@ -647,7 +651,11 @@ void ReleaseVersion::addVariant(ReleaseVariant *v) {
 }
 
 QQmlListProperty<ReleaseVariant> ReleaseVersion::variants() {
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
     return QQmlListProperty<ReleaseVariant>(this, &m_variants);
+#else
+    return QQmlListProperty<ReleaseVariant>(this, m_variants);
+#endif
 }
 
 QList<ReleaseVariant *> ReleaseVersion::variantList() const {
