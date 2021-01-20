@@ -108,8 +108,12 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
     mDebug() << this->metaObject()->className() << "Got a reply to GetManagedObjects, parsing";
 
     QDBusPendingReply<DBusIntrospection> reply = *w;
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
     const QList<QDBusObjectPath> paths = m_drives.keys();
     QSet<QDBusObjectPath> oldPaths(paths.begin(), paths.end());
+#else
+    QSet<QDBusObjectPath> oldPaths = m_drives.keys().toSet();
+#endif
     QSet<QDBusObjectPath> newPaths;
 
     if (reply.isError()) {
@@ -163,11 +167,18 @@ void LinuxDriveProvider::onPropertiesChanged(const QString &interface_name, cons
     Q_UNUSED(interface_name)
     const QSet<QString> watchedProperties = { "MediaAvailable", "Size" };
     const QList<QString> changedPropertyKeys = changed_properties.keys();
+
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
     QSet<QString> changedPropertiesSet(changedPropertyKeys.begin(), changedPropertyKeys.end());
     QSet<QString> invalidatedPropertiesSet(invalidated_properties.begin(), invalidated_properties.end());
     // not ideal but it works alright without a huge lot of code
     if (!changedPropertiesSet.intersect(watchedProperties).isEmpty() ||
             !invalidatedPropertiesSet.intersect(watchedProperties).isEmpty()) {
+#else
+    // not ideal but it works alright without a huge lot of code
+    if (!changed_properties.keys().toSet().intersect(watchedProperties).isEmpty() ||
+            !invalidated_properties.toSet().intersect(watchedProperties).isEmpty()) {
+#endif
         QDBusPendingCall pcall = m_objManager->asyncCall("GetManagedObjects");
         QDBusPendingCallWatcher *w = new QDBusPendingCallWatcher(pcall, this);
 
