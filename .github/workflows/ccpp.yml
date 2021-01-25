@@ -124,7 +124,6 @@ jobs:
       run: |
         choco install nsis
         choco install dos2unix
-        #choco install pkgconfiglite
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
@@ -157,8 +156,6 @@ jobs:
     - name: Build MediaWriter
       shell: bash
       run: |
-        #export PATH=$(echo "$PATH" | sed -e 's/:\/c\/ProgramData\/Chocolatey\/bin//' | sed -e 's/:\/c\/Strawberry\/c\/bin//')
-        #export PATH="$Qt5_Dir/../../Tools/mingw730_32/bin:$PATH"
         #FIXME: pkg-config seems to be somehow broken and pulls in debug versions of Qt libraries instead
         sed s@PKGCONFIG\ +=\ adwaita-qt@LIBS\ +=\ -L\$\$[QT_INSTALL_BINS]\ -ladwaitaqt@ -i app/app.pro
         sed s@PKGCONFIG\ +=\ adwaita-qt@LIBS\ +=\ -L\$\$[QT_INSTALL_BINS]\ -ladwaitaqt@ -i theme/theme.pro
@@ -179,7 +176,7 @@ jobs:
         cp -r ../../../theme/qml/* ./QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
         cp -r ../../../theme/qmldir ./org/fedoraproject/AdwaitaTheme
         cp -r ../../theme/release/adwaitathemeplugin.dll ./org/fedoraproject/AdwaitaTheme
-        $Qt5_Dir/bin/windeployqt -qmldir ../../.. mediawriter.exe --release
+        $Qt5_Dir/bin/windeployqt -qmldir ../../.. mediawriter.exe
         cp $Qt5_Dir/bin/libadwaita*.dll .
         cp $Qt5_Dir/bin/libstdc*.dll .
         cp $Qt5_Dir/bin/libwinpthread*.dll .
