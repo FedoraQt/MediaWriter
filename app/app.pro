@@ -11,7 +11,7 @@ LIBS += -lisomd5
 
 CONFIG += c++11
 
-VERSION=4.2.0
+VERSION=4.2.50
 
 HEADERS += \
     crashhandler.h \
