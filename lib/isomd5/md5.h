@@ -15,9 +15,9 @@ struct MD5Context {
 	int doByteReverse;
 };
 
-void MD5_Init(struct MD5Context *);
-void MD5_Update(struct MD5Context *, unsigned const char *, unsigned);
-void MD5_Final(unsigned char digest[16], struct MD5Context *);
+void ISOMD5_Init(struct MD5Context *);
+void ISOMD5_Update(struct MD5Context *, unsigned const char *, unsigned);
+void ISOMD5_Final(unsigned char digest[16], struct MD5Context *);
 
 /*
  * This is needed to make RSAREF happy on some MS-DOS compilers.

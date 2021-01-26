@@ -226,7 +226,7 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
     /* rewind, compute md5sum */
     lseek64(isofd, 0LL, SEEK_SET);
 
-    MD5_Init(&md5ctx);
+    ISOMD5_Init(&md5ctx);
 
     offset = 0;
     apoff = pvd_offset + APPDATA_OFFSET;
@@ -267,13 +267,13 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
             memset(buf+appdata_start_offset, ' ', len);
         }
 
-        MD5_Update(&md5ctx, buf, nread);
+        ISOMD5_Update(&md5ctx, buf, nread);
         if (fragmentcount) {
             current_fragment = offset * (fragmentcount+1) / (isosize - skipsectors*2048);
             /* if we're onto the next fragment, calculate the previous sum and check */
             if ( current_fragment != previous_fragment ) {
                 memcpy(&fragmd5ctx, &md5ctx, sizeof(MD5_CTX));
-                MD5_Final(fragmd5sum, &fragmd5ctx);
+                ISOMD5_Final(fragmd5sum, &fragmd5ctx);
                 *computedsum = '\0';
                 j = (current_fragment-1)*FRAGMENT_SUM_LENGTH/fragmentcount;
                 for (i=0; i<FRAGMENT_SUM_LENGTH/fragmentcount; i++) {
@@ -305,7 +305,7 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
 
     free(buf_unaligned);
 
-    MD5_Final(md5sum, &md5ctx);
+    ISOMD5_Final(md5sum, &md5ctx);
 
     *computedsum = '\0';
     for (i=0; i<16; i++) {
