@@ -40,7 +40,7 @@ ROOTPATH=$(realpath "$SCRIPTDIR/../../")
 BUILDPATH="$ROOTPATH/build"
 
 MEDIAWRITER="$BUILDPATH/app/release/mediawriter.exe"
-HELPER="$BUILDPATH/app/helper.exe"
+HELPER="$BUILDPATH/app/release/helper.exe"
 
 if ! $opt_nosign; then
     if [ -z "$CERTPATH" ]; then
