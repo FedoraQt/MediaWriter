@@ -37,7 +37,7 @@ XPStyle on
     !system "chmod +x tempinstaller.exe" = 0
     !system "tempinstaller.exe" = 2
     !if "${CERTPASS}" != ""
-        !system 'osslsigncode sign -pkcs12 "${CERTPATH}/authenticode.pfx" -readpass "${CERTPASS}" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "/c/uninstall.unsigned.exe" -out "/c/uninstall.exe" ' = 0
+        !system 'osslsigncode sign -pkcs12 "${CERTPATH}/authenticode.pfx" -readpass "${CERTPASS}" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "/c/uninstall.unsigned.exe" -out "/c/uninstall.exe" ' = 0
     !else
         !system 'mv "/c/uninstall.unsigned.exe" "/c/uninstall.exe"' = 0
     !endif
