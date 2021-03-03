@@ -183,10 +183,10 @@ echo "=== Inserting helper"
 echo "=== Signing binaries"
 
 if ! $opt_nosign; then
-    osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "$MEDIAWRITER" -out "$MEDIAWRITER.signed" >/dev/null
+    osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "$MEDIAWRITER" -out "$MEDIAWRITER.signed" >/dev/null
     mv "$MEDIAWRITER.signed" "$MEDIAWRITER"
 
-    osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "$HELPER" -out "$HELPER.signed" >/dev/null
+    osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "$HELPER" -out "$HELPER.signed" >/dev/null
     mv "$HELPER.signed" "$HELPER"
 fi
 
@@ -210,7 +210,7 @@ rm "$SCRIPTDIR/mediawriter.tmp.nsi"
 mv "$SCRIPTDIR/FMW-setup.exe" "$INSTALLER"
 
 if ! $opt_nosign; then
-    osslsigncode sign -pkcs12 $CERTPATH//authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.verisign.com/scripts/timstamp.dll -in "$INSTALLER" -out "$INSTALLER.signed" >/dev/null
+    osslsigncode sign -pkcs12 $CERTPATH//authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "$INSTALLER" -out "$INSTALLER.signed" >/dev/null
     mv "$INSTALLER.signed" "$INSTALLER"
 fi
 
