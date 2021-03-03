@@ -197,7 +197,8 @@ popd >/dev/null
 popd >/dev/null
 
 echo "=== Composing installer"
-unix2dos < "$ROOTPATH/LICENSE" > "$BUILDPATH/app/release/LICENSE.txt"
+unix2dos < "$ROOTPATH/LICENSE.GPL-2" > "$BUILDPATH/app/release/LICENSE.GPL-2.txt"
+unix2dos < "$ROOTPATH/LICENSE.LGPL-2" > "$BUILDPATH/app/release/LICENSE.LGPL-2.txt"
 INSTALLED_SIZE=$(du -k -d0 "$BUILDPATH/app/release" | cut -f1)
 cp "$SCRIPTDIR/mediawriter.nsi" "$SCRIPTDIR/mediawriter.tmp.nsi"
 sed -i "s/#!define VERSIONMAJOR/!define VERSIONMAJOR ${VERSION_MAJOR}/" "$SCRIPTDIR/mediawriter.tmp.nsi"
