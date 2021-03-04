@@ -22,9 +22,6 @@ import QtQuick.Controls 2.12 as QQC2
 import QtQuick.Layouts 1.12
 import MediaWriter 1.0
 
-import "../simple"
-import "../complex"
-
 FocusScope {
     id: imageList
 

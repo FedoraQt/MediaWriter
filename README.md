@@ -16,15 +16,15 @@ Please don't forget to attach the FedoraMediaWriter.log file that will appear in
 
 ## Building
 
-You can build FMW using the default Qt `qmake` build system. The gist for all three platforms is written below. For a more thorough look into how the releases are composed, you can read our [GitHub Actions configuration](https://github.com/FedoraQt/MediaWriter/blob/master/.github/workflows/ccpp.yml).
+You can build FMW using the default Qt `cmake` build system. The gist for all three platforms is written below. For a more thorough look into how the releases are composed, you can read our [GitHub Actions configuration](https://github.com/FedoraQt/MediaWriter/blob/master/.github/workflows/ccpp.yml).
 
 ### Linux
 
-You should specify the target directory using the `PREFIX` `qmake` variable. The default prefix path is `/usr/local`
+You should specify the target directory using the `-DCMAKE_INSTALL_PREFIX` `cmake` option. The default prefix path is `/usr/local`
 
 It can be done like this:
 
-`qmake PREFIX=/usr .`
+`cmake [OPTIONS] .`
 
 The main binary, `mediawriter`, will be written to `$PREFIX/bin` and the helper binary can be found on the path `$PREFIX/libexec/mediawriter/helper`.
 
@@ -36,7 +36,7 @@ The main binary, `mediawriter`, will be written to `$PREFIX/bin` and the helper 
 
 ### Windows
 
-Building FMW in Windows is just the matter of running `qmake` and `make` - as long as you have all dependencies in your include path. Only MinGW (both 32b and 64b variants) works at this moment.
+Building FMW in Windows is just the matter of running `cmake` and `make` - as long as you have all dependencies in your include path. Only MinGW (both 32b and 64b variants) works at this moment.
 
 To create a standalone package, use the `windeployqt` tool, included in your Qt installation. You will probably have to include a bunch of not included DLLs.
 
@@ -49,7 +49,7 @@ It is also possible to crosscompile the application using the `MinGW` compiler s
 
 ### macOS
 
-Again, you can just run `qmake` and `make`.
+Again, you can just run `cmake` and `make`.
 
 To release a standalone package, use `macdeployqt`, supplied with your Qt installation.
 

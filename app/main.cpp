@@ -51,6 +51,8 @@ Q_IMPORT_PLUGIN(QmlFolderListModelPlugin);
 Q_IMPORT_PLUGIN(QmlSettingsPlugin);
 #endif
 
+#include <QDebug>
+
 int main(int argc, char **argv)
 {
     MessageHandler::install();
@@ -91,6 +93,7 @@ int main(int argc, char **argv)
 
     QPalette adwaitaPalette = Adwaita::Colors::palette();
     QGuiApplication::setPalette(adwaitaPalette);
+    QGuiApplication::setDesktopFileName("org.fedoraproject.MediaWriter.desktop");
 
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;
@@ -110,7 +113,7 @@ int main(int argc, char **argv)
 
     mDebug() << "Loading the QML source code";
 
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
 
     mDebug() << "Starting the application";
     int status = app.exec();

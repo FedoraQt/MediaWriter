@@ -25,9 +25,6 @@ import QtQuick.Window 2.12
 
 import MediaWriter 1.0
 
-import "../simple"
-import "../complex"
-
 Item {
     id: root
     anchors.fill: parent

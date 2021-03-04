@@ -24,8 +24,6 @@ import QtQuick.Layouts 1.12
 
 import MediaWriter 1.0
 
-import "../simple"
-
 Dialog {
     id: root
     title: drives.lastRestoreable ? qsTr("Restore %1?").arg(drives.lastRestoreable.name) : ""
