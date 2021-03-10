@@ -12,7 +12,7 @@
 # You have to provide the $CERTPASS with the path to a file containing the passphrase to your
 # certificate (beware of the trailing last new line symbol)
 
-opt_local=false
+opt_local=true
 opt_install=false
 opt_debug=false
 opt_nosign=false
@@ -115,12 +115,12 @@ VERSION_BUILD=$(cut -d. -f3 <<< "${VERSION_STRIPPED}")
 if $opt_local; then
     echo "=== Building"
     if [ "2" == "debug" ]; then
-        mingw32-qmake-qt5 .. CONFIG+=debug
+        mingw32-cmake ..
     else
-        mingw32-qmake-qt5 ..
+        mingw32-cmake ..
     fi
 
-    mingw32-make -j9 >/dev/null
+    mingw32-make -j9 > /dev/null
 
     # FIXME just a workaround for Adwaita theme not being build and placed to correct location
     # without installation
@@ -128,8 +128,10 @@ if $opt_local; then
     mkdir -p $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
     cp -r ../theme/qml/* $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
     cp -r ../theme/qmldir $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
-    cp -r $BUILDPATH/theme/release/adwaitathemeplugin.dll $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
+    cp -r $BUILDPATH/theme/adwaitathemeplugin.dll $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
     cp -r $BUILDPATH/app/helper.exe $BUILDPATH/app/release/
+    cp -r $BUILDPATH/app/mediawriter.exe $BUILDPATH/app/release/
+
 else
     mkdir -p "app/release"
     echo "=== Getting distribution binary"

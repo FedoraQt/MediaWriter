@@ -7,7 +7,7 @@ endif()
     #add_subdirectory(mac)
 #endif()
 
-#if (WIN32)
-    #add_subdirectory(win)
-#endif()
+if (WIN32)
+    add_subdirectory(win)
+endif()
 

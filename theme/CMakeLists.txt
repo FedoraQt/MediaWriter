@@ -10,7 +10,8 @@ set(ADWAITA_THEME_PLUGIN_SRCS
     theme.cpp
 )
 
-add_library(adwaitathemeplugin SHARED ${ADWAITA_THEME_PLUGIN_SRCS})
+add_library(adwaitathemeplugin MODULE ${ADWAITA_THEME_PLUGIN_SRCS})
+set_target_properties(adwaitathemeplugin PROPERTIES PREFIX "")
 target_link_libraries(adwaitathemeplugin
     Qt5::Qml
     Qt5::Quick

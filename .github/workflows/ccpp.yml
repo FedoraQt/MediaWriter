@@ -115,105 +115,101 @@ jobs:
         #TAG_NAME=$(bash ./dist/get-tag-name.sh)
         #bash ./dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="$TAG_NAME" filename="FedoraMediaWriter-osx-$TAG_NAME.unnotarized.dmg"
 
-  #Windows:
-    #runs-on: windows-latest
-    #steps:
-    #- uses: actions/checkout@v1
-      #with:
-        #fetch-depth: 1
-    #- name: Install dependencies
-      #shell: bash
-      #run: |
-        #choco install nsis
-        #choco install dos2unix
-    #- name: Install Qt
-      #uses: jurplel/install-qt-action@v2
-      #with:
-        #cached: ${{ steps.cache-qt.outputs.cache-hit }}
-        #arch: win64_mingw81
-        #version: '5.15.2'
-    #- name: Build xz-utils
-      #shell: bash
-      #if: ${{ !steps.cache-qt.outputs.cache-hit }}
-      #run: |
-        #git clone https://git.tukaani.org/xz.git
-        #sed -i 's/#include "config.h"//' xz/src/common/common_w32res.rc
-        #sed -i 's/PACKAGE_NAME/"liblzma"/' xz/src/common/common_w32res.rc
-        #sed -i 's/PACKAGE_URL/"https:\/\/tukaani.org\/xz\/"/' xz/src/common/common_w32res.rc
-        #mkdir xz/build
-        #cd xz/build
-        #cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX="$Qt5_Dir" -DBUILD_SHARED_LIBS=ON ..
-        #mingw32-make -j2 VERBOSE=1
-        #mingw32-make install
-    #- name: Build Adwaita-qt
-      #shell: bash
-      #if: ${{ !steps.cache-qt.outputs.cache-hit }}
-      #run: |
-        #git clone https://github.com/FedoraQt/adwaita-qt.git
-        #mkdir adwaita-qt/build
-        #cd adwaita-qt/build
-        #cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt5_Dir" ..
-        #mingw32-make -j2 VERBOSE=1
-        #mingw32-make install
-    #- name: Build MediaWriter
-      #shell: bash
-      #run: |
-        ##FIXME: pkg-config seems to be somehow broken and pulls in debug versions of Qt libraries instead
-        #sed s@PKGCONFIG\ +=\ adwaita-qt@LIBS\ +=\ -L\$\$[QT_INSTALL_BINS]\ -ladwaitaqt@ -i app/app.pro
-        #sed s@PKGCONFIG\ +=\ adwaita-qt@LIBS\ +=\ -L\$\$[QT_INSTALL_BINS]\ -ladwaitaqt@ -i theme/theme.pro
-        #mkdir build
-        #cd build
-        ##export PKG_CONFIG_PATH="$Qt5_Dir/lib/pkgconfig/" 
-        ##"$Qt5_Dir/bin/qmake" .. "PKG_CONFIG=C:/ProgramData/chocolatey/lib/pkgconfiglite/tools/pkg-config-lite-0.28-1/bin/pkg-config.exe"
-        #"$Qt5_Dir/bin/qmake" .. 
-        #mingw32-make -j2 VERBOSE=1
-    #- name: Windeployqt
-      #if: github.event_name == 'release'
-      #shell: bash
-      #run: |
-        #cd build/app/release
-        #mv ../helper.exe .
-        #mkdir -p QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
-        #mkdir -p org/fedoraproject/AdwaitaTheme
-        #cp -r ../../../theme/qml/* ./QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
-        #cp -r ../../../theme/qmldir ./org/fedoraproject/AdwaitaTheme
-        #cp -r ../../theme/release/adwaitathemeplugin.dll ./org/fedoraproject/AdwaitaTheme
-        #$Qt5_Dir/bin/windeployqt -qmldir ../../.. mediawriter.exe
-        #cp $Qt5_Dir/bin/libadwaita*.dll .
-        #cp $Qt5_Dir/bin/libstdc*.dll .
-        #cp $Qt5_Dir/bin/libwinpthread*.dll .
-        #cp $Qt5_Dir/bin/libgcc*.dll .
-        #cp $Qt5_Dir/bin/liblzma.dll .
-        #cp /c/Program\ Files/OpenSSL/bin/*.dll .
-    #- name: Installer
-      #if: github.event_name == 'release'
-      #shell: bash
-      #run: |
-        #TAG_NAME=$(bash ./dist/get-tag-name.sh)
+  Windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+    - name: Install dependencies
+      shell: bash
+      run: |
+        choco install nsis
+        choco install dos2unix
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v2
+      with:
+        cached: ${{ steps.cache-qt.outputs.cache-hit }}
+        arch: win64_mingw81
+        version: '5.15.2'
+    - name: Build xz-utils
+      shell: bash
+      if: ${{ !steps.cache-qt.outputs.cache-hit }}
+      run: |
+        git clone https://git.tukaani.org/xz.git
+        sed -i 's/#include "config.h"//' xz/src/common/common_w32res.rc
+        sed -i 's/PACKAGE_NAME/"liblzma"/' xz/src/common/common_w32res.rc
+        sed -i 's/PACKAGE_URL/"https:\/\/tukaani.org\/xz\/"/' xz/src/common/common_w32res.rc
+        mkdir xz/build
+        cd xz/build
+        cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX="$Qt5_Dir" -DBUILD_SHARED_LIBS=ON ..
+        mingw32-make -j2 VERBOSE=1
+        mingw32-make install
+    - name: Build Adwaita-qt
+      shell: bash
+      if: ${{ !steps.cache-qt.outputs.cache-hit }}
+      run: |
+        git clone https://github.com/FedoraQt/adwaita-qt.git
+        mkdir adwaita-qt/build
+        cd adwaita-qt/build
+        cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt5_Dir" ..
+        mingw32-make -j2 VERBOSE=1
+        mingw32-make install
+    - name: Build MediaWriter
+      shell: bash
+      run: |
+        mkdir build
+        cd build
+        cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt5_Dir" ..
+        mingw32-make -j2 VERBOSE=1
+    - name: Windeployqt
+      if: github.event_name == 'release'
+      shell: bash
+      run: |
+        cd build/app/release
+        mv ../helper.exe .
+        mv ../mediawriter.exe .
+        mkdir -p QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
+        mkdir -p org/fedoraproject/AdwaitaTheme
+        cp -r ../../../theme/qml/* ./QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
+        cp -r ../../../theme/qmldir ./org/fedoraproject/AdwaitaTheme
+        cp -r ../../theme/release/adwaitathemeplugin.dll ./org/fedoraproject/AdwaitaTheme
+        $Qt5_Dir/bin/windeployqt -qmldir ../../.. mediawriter.exe
+        cp $Qt5_Dir/bin/libadwaita*.dll .
+        cp $Qt5_Dir/bin/libstdc*.dll .
+        cp $Qt5_Dir/bin/libwinpthread*.dll .
+        cp $Qt5_Dir/bin/libgcc*.dll .
+        cp $Qt5_Dir/bin/liblzma.dll .
+        cp /c/Program\ Files/OpenSSL/bin/*.dll .
+    - name: Installer
+      if: github.event_name == 'release'
+      shell: bash
+      run: |
+        TAG_NAME=$(bash ./dist/get-tag-name.sh)
 
-        #VERSION_STRIPPED=$(sed "s/-.*//" <<< "${TAG_NAME}")
-        #if [[ "$VERSION_STRIPPED" == "" ]]; then
-            #VERSION_STRIPPED=0.0.0
-        #fi
-        #VERSION_MAJOR=$(cut -d. -f1 <<< "${VERSION_STRIPPED}")
-        #VERSION_MINOR=$(cut -d. -f2 <<< "${VERSION_STRIPPED}")
-        #VERSION_BUILD=$(cut -d. -f3 <<< "${VERSION_STRIPPED}")
-        #INSTALLED_SIZE=$(du -k -d0 "build/app/release" | cut -f1)
+        VERSION_STRIPPED=$(sed "s/-.*//" <<< "${TAG_NAME}")
+        if [[ "$VERSION_STRIPPED" == "" ]]; then
+            VERSION_STRIPPED=0.0.0
+        fi
+        VERSION_MAJOR=$(cut -d. -f1 <<< "${VERSION_STRIPPED}")
+        VERSION_MINOR=$(cut -d. -f2 <<< "${VERSION_STRIPPED}")
+        VERSION_BUILD=$(cut -d. -f3 <<< "${VERSION_STRIPPED}")
+        INSTALLED_SIZE=$(du -k -d0 "build/app/release" | cut -f1)
 
-        #cp "dist/win/mediawriter_native.nsi" "dist/win/mediawriter_native.tmp.nsi"
+        cp "dist/win/mediawriter_native.nsi" "dist/win/mediawriter_native.tmp.nsi"
 
-        #sed -i "s/#!define VERSIONMAJOR/!define VERSIONMAJOR ${VERSION_MAJOR}/" "dist/win/mediawriter_native.tmp.nsi"
-        #sed -i "s/#!define VERSIONMINOR/!define VERSIONMINOR ${VERSION_MINOR}/" "dist/win/mediawriter_native.tmp.nsi"
-        #sed -i "s/#!define VERSIONBUILD/!define VERSIONBUILD ${VERSION_BUILD}/" "dist/win/mediawriter_native.tmp.nsi"
-        #sed -i "s/#!define INSTALLSIZE/!define INSTALLSIZE ${INSTALLED_SIZE}/" "dist/win/mediawriter_native.tmp.nsi"
+        sed -i "s/#!define VERSIONMAJOR/!define VERSIONMAJOR ${VERSION_MAJOR}/" "dist/win/mediawriter_native.tmp.nsi"
+        sed -i "s/#!define VERSIONMINOR/!define VERSIONMINOR ${VERSION_MINOR}/" "dist/win/mediawriter_native.tmp.nsi"
+        sed -i "s/#!define VERSIONBUILD/!define VERSIONBUILD ${VERSION_BUILD}/" "dist/win/mediawriter_native.tmp.nsi"
+        sed -i "s/#!define INSTALLSIZE/!define INSTALLSIZE ${INSTALLED_SIZE}/" "dist/win/mediawriter_native.tmp.nsi"
 
-        #unix2dos < "LICENSE.GPL-2" > "build/app/release/LICENSE.GPL-2.txt"
-        #unix2dos < "LICENSE.LGPL-2" > "build/app/release/LICENSE.LGPL-2.txt"
-        #makensis -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
-        #mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64-$TAG_NAME.exe"
-    #- name: Upload to GitHub
-      #if: github.event_name == 'release'
-      #shell: bash
-      #run: |
-        #TAG_NAME=$(bash ./dist/get-tag-name.sh)
-        #bash ./dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="$TAG_NAME" filename="FedoraMediaWriter-win64-$TAG_NAME.exe"
+        unix2dos < "LICENSE.GPL-2" > "build/app/release/LICENSE.GPL-2.txt"
+        unix2dos < "LICENSE.LGPL-2" > "build/app/release/LICENSE.LGPL-2.txt"
+        makensis -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
+        mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64-$TAG_NAME.exe"
+    - name: Upload to GitHub
+      if: github.event_name == 'release'
+      shell: bash
+      run: |
+        TAG_NAME=$(bash ./dist/get-tag-name.sh)
+        bash ./dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="$TAG_NAME" filename="FedoraMediaWriter-win64-$TAG_NAME.exe"

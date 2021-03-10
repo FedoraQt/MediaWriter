@@ -28,12 +28,25 @@ if (APPLE)
 endif()
 
 if (WIN32)
-    #set (MEDIAWRITER_SRCS ${MEDIAWRITER_SRCS} windrivemanager.cpp)
+    add_definitions(-DUNICODE)
+    set (MEDIAWRITER_SRCS ${MEDIAWRITER_SRCS} windrivemanager.cpp)
 endif()
 
 qt5_add_resources(MEDIAWRITER_SRCS assets.qrc qml.qrc ${CMAKE_SOURCE_DIR}/translations/translations.qrc)
 
+if (WIN32)
+    qt5_add_resources(MEDIAWRITER_SRCS windowsicon.qrc)
+endif()
+
 add_executable(mediawriter ${MEDIAWRITER_SRCS})
+
+if (WIN32)
+    # HACK: we need to remove -std=c++11 definition for manifest file, otherwise
+    # it will complain about undefined option "s" (as first letter from -Std=c++11)
+    remove_definitions(-std=c++11)
+    target_sources(mediawriter PRIVATE data/windows.rc)
+endif()
+
 target_link_libraries(mediawriter
     Qt5::Core
     Qt5::Network
@@ -45,6 +58,10 @@ target_link_libraries(mediawriter
 
 if (UNIX)
     target_link_libraries(mediawriter Qt5::DBus)
+endif()
+
+if (WIN32)
+    target_link_libraries(mediawriter dbghelp)
 endif()
 
 install(TARGETS mediawriter DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
@@ -77,19 +94,4 @@ endif()
     #QMAKE_POST_LINK += sed -i -e "s/@MEDIAWRITER_VERSION_SHORT@/$$MEDIAWRITER_VERSION_SHORT/g" \"./$${TARGET}.app/Contents/Info.plist\";
     #QMAKE_POST_LINK += sed -i -e "s/@MEDIAWRITER_VERSION@/$$MEDIAWRITER_VERSION/g" \"./$${TARGET}.app/Contents/Info.plist\";
 #}
-#win32 {
-    #HEADERS += windrivemanager.h
-    #SOURCES += windrivemanager.cpp
-    #RESOURCES += windowsicon.qrc
 
-    #LIBS += -ldbghelp
-
-    ## Until I find out how (or if it's even possible at all) to run a privileged process from an unprivileged one, the main binary will be privileged too
-    #DISTFILES += windows.manifest
-    #QMAKE_MANIFEST = $${PWD}/windows.manifest
-
-    #RC_ICONS = assets/icon/mediawriter.ico
-    #static {
-        #QTPLUGIN.platforms = qwindows
-    #}
-#}
