@@ -1,8 +1,5 @@
 
-#macx {
-    #QMAKE_MOC_OPTIONS += -Muri=org.fedoraproject.AdwaitaTheme
-    #QMAKE_BUNDLE_DATA += target qml qmlprivate qmldir
-#}
+include_directories(${ADWAITAQT_INCLUDE_DIRS})
 
 set(ADWAITA_THEME_PLUGIN_SRCS
     adwaitathemeplugin.cpp
@@ -10,8 +7,13 @@ set(ADWAITA_THEME_PLUGIN_SRCS
     theme.cpp
 )
 
-add_library(adwaitathemeplugin MODULE ${ADWAITA_THEME_PLUGIN_SRCS})
-set_target_properties(adwaitathemeplugin PROPERTIES PREFIX "")
+if (WIN32)
+    add_library(adwaitathemeplugin MODULE ${ADWAITA_THEME_PLUGIN_SRCS})
+    set_target_properties(adwaitathemeplugin PROPERTIES PREFIX "")
+else()
+    add_library(adwaitathemeplugin SHARED ${ADWAITA_THEME_PLUGIN_SRCS})
+endif()
+
 target_link_libraries(adwaitathemeplugin
     Qt5::Qml
     Qt5::Quick
@@ -19,6 +21,7 @@ target_link_libraries(adwaitathemeplugin
     Qt5::Widgets
     ${ADWAITAQT_LIBRARIES}
 )
+
 
 install(TARGETS adwaitathemeplugin DESTINATION ${QT_INSTALL_QML}/org/fedoraproject/AdwaitaTheme)
 install(FILES qmldir DESTINATION ${QT_INSTALL_QML}/org/fedoraproject/AdwaitaTheme)

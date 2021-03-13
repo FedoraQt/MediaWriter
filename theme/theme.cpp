@@ -26,6 +26,7 @@ AdwaitaTheme::AdwaitaTheme(QObject *parent)
     : QObject(parent)
     , m_darkMode(false)
 {
+#if (defined(__linux) || defined(_WIN32))
     // Just guess dark mode for now based on text color
     const QColor textColor = QGuiApplication::palette().color(QPalette::Text);
     if (qSqrt(((textColor.red() * textColor.red()) * 0.299) +
@@ -33,7 +34,7 @@ AdwaitaTheme::AdwaitaTheme(QObject *parent)
               ((textColor.blue() * textColor.blue()) * 0.114)) > 128) {
         m_darkMode = true;
     }
-
+#endif
     m_palette = Adwaita::Colors::palette(m_darkMode ? Adwaita::ColorVariant::AdwaitaDark : Adwaita::ColorVariant::Adwaita);
 }
 

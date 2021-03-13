@@ -1,11 +1,11 @@
 
-if (UNIX)
+if (UNIX AND NOT APPLE)
     add_subdirectory(linux)
 endif()
 
-#if (APPLE)
-    #add_subdirectory(mac)
-#endif()
+if (APPLE)
+    add_subdirectory(mac)
+endif()
 
 if (WIN32)
     add_subdirectory(win)

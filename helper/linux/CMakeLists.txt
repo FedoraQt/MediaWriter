@@ -1,10 +1,10 @@
 
+find_package(LibLZMA REQUIRED)
+
 include_directories(
     ${CMAKE_SOURCE_DIR}/lib
+    ${LIBLZMA_INCLUDE_DIRS}
 )
-
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(lzma REQUIRED IMPORTED_TARGET liblzma)
 
 set(HELPER_SRCS
     main.cpp
@@ -19,7 +19,7 @@ target_link_libraries(helper
     Qt5::Core
     Qt5::DBus
     isomd5
-    lzma
+    ${LIBLZMA_LIBRARIES}
 )
 
 install(TARGETS helper DESTINATION ${CMAKE_INSTALL_FULL_LIBEXECDIR}/mediawriter)
