@@ -33,19 +33,19 @@
         },
         {
             "name": "MediaWriter",
-            "buildsystem": "qmake",
+            "buildsystem": "cmake",
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/FedoraQt/MediaWriter.git",
-                    "branch": "master"
+                    "branch": "cmake"
                 },
                 {
                     "type": "shell",
                     "commands": [
-                        "sed -i 's@\$\$\\[QT_INSTALL_QML\\]@/app/lib/qt5/qml@' theme/theme.pro"
+                        "sed -i 's@\${QT_INSTALL_QML}@/app/lib/qt5/qml@' theme/CMakeLists.txt"
                     ]
-                }
+                 }
             ]
         }
     ]
