@@ -85,9 +85,10 @@ function sign() {
     find app/Fedora\ Media\ Writer.app -name "*adwaita*" | while read framework; do
         codesign -s "$DEVELOPER_ID" --deep -v -f "$framework" -o runtime
     done
-    codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/Contents/MacOS/Fedora\ Media\ Writer -o runtime --entitlements ../app/Entitlements.plist
-    codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/Contents/MacOS/helper -o runtime --entitlements ../app/Entitlements.plist
-    codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/ -o runtime --entitlements ../app/Entitlements.plist
+
+    codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/Contents/MacOS/Fedora\ Media\ Writer -o runtime
+    codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/Contents/MacOS/helper -o runtime
+    codesign -s "$DEVELOPER_ID" --deep -v -f app/Fedora\ Media\ Writer.app/ -o runtime
     popd >/dev/null
 }
 
