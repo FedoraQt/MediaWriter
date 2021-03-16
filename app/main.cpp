@@ -90,11 +90,7 @@ int main(int argc, char **argv)
     translator.load(QLocale(QLocale().language(), QLocale().country()), QString(), QString(), ":/translations");
     app.installTranslator(&translator);
 
-#if (defined(__linux) || defined(_WIN32))
     QPalette adwaitaPalette = Adwaita::Colors::palette();
-#else
-    QPalette adwaitaPalette = Adwaita::Colors::palette(Adwaita::ColorVariant::Adwaita);
-#endif
     QGuiApplication::setPalette(adwaitaPalette);
     QGuiApplication::setDesktopFileName("org.fedoraproject.MediaWriter.desktop");
 
