@@ -43,6 +43,7 @@
                 {
                     "type": "shell",
                     "commands": [
+                        "rm -rf app/data/icons/hicolor/1024x1024",
                         "sed -i 's@\${QT_INSTALL_QML}@/app/lib/qt5/qml@' theme/CMakeLists.txt"
                     ]
                  }

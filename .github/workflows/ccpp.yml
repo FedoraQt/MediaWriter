@@ -173,6 +173,7 @@ jobs:
       if: github.event_name == 'release'
       shell: bash
       run: |
+        mkdir build/app/release
         cd build/app/release
         mv ../helper.exe .
         mv ../mediawriter.exe .
@@ -180,7 +181,7 @@ jobs:
         mkdir -p org/fedoraproject/AdwaitaTheme
         cp -r ../../../theme/qml/* ./QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
         cp -r ../../../theme/qmldir ./org/fedoraproject/AdwaitaTheme
-        cp -r ../../theme/release/adwaitathemeplugin.dll ./org/fedoraproject/AdwaitaTheme
+        cp -r ../../theme/adwaitathemeplugin.dll ./org/fedoraproject/AdwaitaTheme
         $Qt5_Dir/bin/windeployqt -qmldir ../../.. mediawriter.exe
         cp $Qt5_Dir/bin/libadwaita*.dll .
         cp $Qt5_Dir/bin/libstdc*.dll .
