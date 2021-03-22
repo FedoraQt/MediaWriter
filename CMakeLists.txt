@@ -28,7 +28,7 @@ add_definitions(-DLIBEXECDIR="${CMAKE_INSTALL_FULL_LIBEXECDIR}")
 
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Network Qml Quick QuickControls2 Widgets)
 
-find_package(AdwaitaQt "1.2.0" REQUIRED)
+find_package(AdwaitaQt "1.2.1" REQUIRED)
 
 # Installation paths
 get_target_property(REAL_QMAKE_EXECUTABLE ${Qt5Core_QMAKE_EXECUTABLE}

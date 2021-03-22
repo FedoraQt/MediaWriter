@@ -35,6 +35,7 @@ function configure() {
     echo "=== Building Adwaita-qt ==="
     git clone https://github.com/FedoraQt/adwaita-qt.git
     pushd adwaita-qt > /dev/null
+    git checkout 1.2
     mkdir -p "build"
     pushd build > /dev/null
     cmake ..
