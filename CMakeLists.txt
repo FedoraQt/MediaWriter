@@ -11,6 +11,10 @@ set(MEDIAWRITER_VERSION "${MEDIAWRITER_MAJOR_VERSION}.${MEDIAWRITER_MINOR_VERSIO
 set(QT_MIN_VERSION "5.12.0")
 set(CMAKE_AUTOMOC ON)
 
+if (WIN32)
+    cmake_policy(SET CMP0020 NEW) # to use winmain to avoid opening a console window when starting
+endif()
+
 include(GNUInstallDirs)
 include(FeatureSummary)
 

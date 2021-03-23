@@ -44,6 +44,10 @@ if (NOT APPLE)
 endif()
 
 if (WIN32)
+    set_target_properties(mediawriter PROPERTIES WIN32_EXECUTABLE TRUE)
+endif()
+
+if (WIN32)
     # HACK: we need to remove -std=c++11 definition for manifest file, otherwise
     # it will complain about undefined option "s" (as first letter from -Std=c++11)
     remove_definitions(-std=c++11)
