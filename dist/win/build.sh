@@ -12,7 +12,7 @@
 # You have to provide the $CERTPASS with the path to a file containing the passphrase to your
 # certificate (beware of the trailing last new line symbol)
 
-opt_local=true
+opt_local=false
 opt_install=false
 opt_debug=false
 opt_nosign=false

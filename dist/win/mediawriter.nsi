@@ -35,7 +35,7 @@ XPStyle on
 
     ; Run the temporary installer and then sign the unsigned binary that has been created
     !system "chmod +x tempinstaller.exe" = 0
-    !system "tempinstaller.exe" = 512
+    !system "./tempinstaller.exe" = 512
     !if "${CERTPASS}" != ""
         !system 'osslsigncode sign -pkcs12 "${CERTPATH}/authenticode.pfx" -readpass "${CERTPASS}" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "../../build/wineprefix/drive_c/uninstall.unsigned.exe" -out "../../build/wineprefix/drive_c/uninstall.exe" ' = 0
     !else
