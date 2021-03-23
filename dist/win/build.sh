@@ -176,8 +176,6 @@ for i in $QMLMODULES; do
     cp -r "${QML_PREFIX}/${i}" "$(dirname $i)"
 done
 
-echo "=== Inserting helper"
-
 #echo "=== Compressing binaries"
 #upx $(find . -name "*.exe")
 #upx $(find . -name "*.dll")
@@ -192,8 +190,6 @@ if ! $opt_nosign; then
     osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "$HELPER" -out "$HELPER.signed" >/dev/null
     mv "$HELPER.signed" "$HELPER"
 fi
-
-cp "$HELPER" .
 
 
 popd >/dev/null
