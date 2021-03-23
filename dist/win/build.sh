@@ -12,7 +12,7 @@
 # You have to provide the $CERTPASS with the path to a file containing the passphrase to your
 # certificate (beware of the trailing last new line symbol)
 
-opt_local=true
+opt_local=false
 opt_install=false
 opt_debug=false
 opt_nosign=false
@@ -51,7 +51,7 @@ if ! $opt_nosign; then
     fi
 fi
     
-PACKAGES="mingw32-qt5-qmake mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols2 mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-libadwaita-qt5 mingw32-qt5-qtwinextras mingw32-qt5-qtsvg mingw32-nsis osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
+PACKAGES="cmake mingw32-filesystem mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols2 mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-libadwaita-qt5 mingw32-qt5-qtwinextras mingw32-qt5-qtsvg mingw32-nsis osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
 if ! $opt_local; then
     PACKAGES="$PACKAGES mingw32-mediawriter"
 fi
@@ -111,7 +111,6 @@ VERSION_MAJOR=$(cut -d. -f1 <<< "${VERSION_STRIPPED}")
 VERSION_MINOR=$(cut -d. -f2 <<< "${VERSION_STRIPPED}")
 VERSION_BUILD=$(cut -d. -f3 <<< "${VERSION_STRIPPED}")
 
-
 if $opt_local; then
     echo "=== Building"
     if [ "2" == "debug" ]; then
@@ -137,6 +136,8 @@ else
     echo "=== Getting distribution binary"
     cp "$BIN_PREFIX/mediawriter.exe" app/release
     cp "$INSTALL_PREFIX/libexec/mediawriter/helper.exe" app/release
+    cp -r "$QML_PREFIX/org" $BUILDPATH/app/release/
+    cp -r "$QML_PREFIX/QtQuick" $BUILDPATH/app/release/
 fi
 
 pushd "app/release" >/dev/null
@@ -175,8 +176,6 @@ for i in $QMLMODULES; do
     cp -r "${QML_PREFIX}/${i}" "$(dirname $i)"
 done
 
-echo "=== Inserting helper"
-
 #echo "=== Compressing binaries"
 #upx $(find . -name "*.exe")
 #upx $(find . -name "*.dll")
@@ -191,8 +190,6 @@ if ! $opt_nosign; then
     osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "$HELPER" -out "$HELPER.signed" >/dev/null
     mv "$HELPER.signed" "$HELPER"
 fi
-
-cp "$HELPER" .
 
 
 popd >/dev/null
