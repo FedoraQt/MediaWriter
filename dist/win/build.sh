@@ -51,7 +51,7 @@ if ! $opt_nosign; then
     fi
 fi
     
-PACKAGES="mingw32-filesystem mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols2 mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-libadwaita-qt5 mingw32-qt5-qtwinextras mingw32-qt5-qtsvg mingw32-nsis osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
+PACKAGES="cmake mingw32-filesystem mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols2 mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-libadwaita-qt5 mingw32-qt5-qtwinextras mingw32-qt5-qtsvg mingw32-nsis osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
 if ! $opt_local; then
     PACKAGES="$PACKAGES mingw32-mediawriter"
 fi
