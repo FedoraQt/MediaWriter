@@ -130,14 +130,15 @@ if $opt_local; then
     cp -r $BUILDPATH/theme/adwaitathemeplugin.dll $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
     cp -r $BUILDPATH/app/helper.exe $BUILDPATH/app/release/
     cp -r $BUILDPATH/app/mediawriter.exe $BUILDPATH/app/release/
-
 else
     mkdir -p "app/release"
     echo "=== Getting distribution binary"
     cp "$BIN_PREFIX/mediawriter.exe" app/release
     cp "$INSTALL_PREFIX/libexec/mediawriter/helper.exe" app/release
-    cp -r "$QML_PREFIX/org" $BUILDPATH/app/release/
-    cp -r "$QML_PREFIX/QtQuick" $BUILDPATH/app/release/
+    mkdir -p $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
+    mkdir -p $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
+    cp -r $QML_PREFIX/org/fedoraproject/AdwaitaTheme/* $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme/
+    cp -r $QML_PREFIX/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme/* $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme/
 fi
 
 pushd "app/release" >/dev/null
