@@ -27,8 +27,10 @@ else()
     add_definitions(-DMEDIAWRITER_VERSION="${MEDIAWRITER_VERSION}")
 endif()
 
-# FIXME: this is not ideal
-add_definitions(-DLIBEXECDIR="${CMAKE_INSTALL_FULL_LIBEXECDIR}")
+if (UNIX AND NOT APPLE)
+    # FIXME: this is not ideal
+    add_definitions(-DLIBEXECDIR="${CMAKE_INSTALL_FULL_LIBEXECDIR}/mediawriter")
+endif()
 
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Network Qml Quick QuickControls2 Widgets)
 
