@@ -55,11 +55,11 @@ InstallDir "$PROGRAMFILES\${APPNAME}"
 LicenseData "../../build/app/release/LICENSE.GPL-2.txt"
 # This will be in the installer/uninstaller's title bar
 Name "${APPNAME}"
-Icon "../../app/data/icons/mediawriter.ico"
+Icon "../../src/app/data/icons/mediawriter.ico"
 
 !include LogicLib.nsh
 
-!define MUI_ICON ../../app/data/icons/mediawriter.ico
+!define MUI_ICON ../../src/app/data/icons/mediawriter.ico
 
 !insertmacro MUI_PAGE_LICENSE "../../build/app/release/LICENSE.GPL-2.txt"
 !insertmacro MUI_PAGE_DIRECTORY

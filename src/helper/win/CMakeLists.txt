@@ -29,6 +29,6 @@ target_link_libraries(helper
     ${LIBLZMA_LIBRARIES}
 )
 
-set_target_properties(helper PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/app)
+set_target_properties(helper PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/src/app)
 
 install(TARGETS helper DESTINATION ${CMAKE_INSTALL_FULL_LIBEXECDIR}/mediawriter)

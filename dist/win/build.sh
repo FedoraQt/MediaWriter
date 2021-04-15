@@ -125,11 +125,11 @@ if $opt_local; then
     # without installation
     mkdir -p $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
     mkdir -p $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
-    cp -r ../theme/qml/* $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
-    cp -r ../theme/qmldir $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
-    cp -r $BUILDPATH/theme/adwaitathemeplugin.dll $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
-    cp -r $BUILDPATH/app/helper.exe $BUILDPATH/app/release/
-    cp -r $BUILDPATH/app/mediawriter.exe $BUILDPATH/app/release/
+    cp -r ../src/theme/qml/* $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
+    cp -r ../src/theme/qmldir $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
+    cp -r $BUILDPATH/src/theme/adwaitathemeplugin.dll $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
+    cp -r $BUILDPATH/src/app/helper.exe $BUILDPATH/app/release/
+    cp -r $BUILDPATH/src/app/mediawriter.exe $BUILDPATH/app/release/
 else
     mkdir -p "app/release"
     echo "=== Getting distribution binary"
