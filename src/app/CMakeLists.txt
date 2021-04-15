@@ -104,30 +104,30 @@ if (APPLE AND CREATE_STANDALONE_MAC_BUNDLE)
 
     add_custom_command(TARGET mediawriter POST_BUILD
                        COMMAND ${CMAKE_COMMAND} -E make_directory
-                       "${CMAKE_BINARY_DIR}/theme/qml/org/fedoraproject/AdwaitaTheme/")
+                       "${CMAKE_BINARY_DIR}/src/theme/qml/org/fedoraproject/AdwaitaTheme/")
     add_custom_command(TARGET mediawriter POST_BUILD
                        COMMAND ${CMAKE_COMMAND} -E copy
-                       "${CMAKE_BINARY_DIR}/theme/libadwaitathemeplugin.dylib"
-                       "${CMAKE_BINARY_DIR}/theme/qml/org/fedoraproject/AdwaitaTheme/")
+                       "${CMAKE_BINARY_DIR}/src/theme/libadwaitathemeplugin.dylib"
+                       "${CMAKE_BINARY_DIR}/src/theme/qml/org/fedoraproject/AdwaitaTheme/")
     add_custom_command(TARGET mediawriter POST_BUILD
                        COMMAND ${CMAKE_COMMAND} -E copy
                        "${CMAKE_SOURCE_DIR}/src/theme/qmldir"
-                       "${CMAKE_BINARY_DIR}/theme/qml/org/fedoraproject/AdwaitaTheme/")
+                       "${CMAKE_BINARY_DIR}/src/theme/qml/org/fedoraproject/AdwaitaTheme/")
 
     add_custom_command(TARGET mediawriter POST_BUILD
                        COMMAND "${MACDEPLOYQT_EXECUTABLE}"
-                               "${CMAKE_BINARY_DIR}/app/Fedora Media Writer.app"
+                               "${CMAKE_BINARY_DIR}/src/app/Fedora Media Writer.app"
                                -qmldir="${CMAKE_SOURCE_DIR}/src"
-                               -qmlimport=\"${CMAKE_BINARY_DIR}/theme/qml\"
-                               -executable=\"${CMAKE_BINARY_DIR}/app/Fedora Media Writer.app/Contents/MacOS/helper\"
+                               -qmlimport=\"${CMAKE_BINARY_DIR}/src/theme/qml\"
+                               -executable=\"${CMAKE_BINARY_DIR}/src/app/Fedora Media Writer.app/Contents/MacOS/helper\"
                         COMMENT "Deploying Qt...")
 
     # Copy QML files
     add_custom_command(TARGET mediawriter POST_BUILD
                        COMMAND ${CMAKE_COMMAND} -E make_directory
-                       "${CMAKE_BINARY_DIR}/app/Fedora Media Writer.app/Contents/Resources/qml/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme")
+                       "${CMAKE_BINARY_DIR}/src/app/Fedora Media Writer.app/Contents/Resources/qml/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme")
     add_custom_command(TARGET mediawriter POST_BUILD
                        COMMAND ${CMAKE_COMMAND} -E copy_directory
-                       "${CMAKE_SOURCE_DIR}/theme/qml/"
-                       "${CMAKE_BINARY_DIR}/app/Fedora Media Writer.app/Contents/Resources/qml/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme")
+                       "${CMAKE_SOURCE_DIR}/src/theme/qml/"
+                       "${CMAKE_BINARY_DIR}/src/app/Fedora Media Writer.app/Contents/Resources/qml/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme")
 endif()
