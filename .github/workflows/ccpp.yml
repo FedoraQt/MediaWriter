@@ -179,9 +179,9 @@ jobs:
         mv ../mediawriter.exe .
         mkdir -p QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
         mkdir -p org/fedoraproject/AdwaitaTheme
-        cp -r ../../../theme/qml/* ./QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
-        cp -r ../../../theme/qmldir ./org/fedoraproject/AdwaitaTheme
-        cp -r ../../theme/adwaitathemeplugin.dll ./org/fedoraproject/AdwaitaTheme
+        cp -r ../../../src/theme/qml/* ./QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
+        cp -r ../../../src/theme/qmldir ./org/fedoraproject/AdwaitaTheme
+        cp -r ../../src/theme/adwaitathemeplugin.dll ./org/fedoraproject/AdwaitaTheme
         $Qt5_Dir/bin/windeployqt -qmldir ../../.. mediawriter.exe
         cp $Qt5_Dir/bin/libadwaita*.dll .
         cp $Qt5_Dir/bin/libstdc*.dll .
