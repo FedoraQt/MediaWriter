@@ -2,7 +2,7 @@
 find_package(LibLZMA REQUIRED)
 
 include_directories(
-    ${CMAKE_SOURCE_DIR}/lib
+    ${CMAKE_SOURCE_DIR}/src/lib
     ${LIBLZMA_INCLUDE_DIRS}
 )
 
@@ -14,7 +14,7 @@ set(HELPER_SRCS
     writejob.cpp
 )
 
-qt5_add_resources(HELPER_SRCS ${CMAKE_SOURCE_DIR}/translations/translations.qrc)
+qt5_add_resources(HELPER_SRCS ${CMAKE_SOURCE_DIR}/src/translations/translations.qrc)
 
 add_executable(helper ${HELPER_SRCS})
 

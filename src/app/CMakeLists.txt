@@ -1,7 +1,7 @@
 
 include_directories(
-    ${CMAKE_SOURCE_DIR}/lib
-    ${CMAKE_SOURCE_DIR}/theme
+    ${CMAKE_SOURCE_DIR}/src/lib
+    ${CMAKE_SOURCE_DIR}/src/theme
     ${ADWAITAQT_INCLUDE_DIRS}
 )
 
@@ -17,7 +17,7 @@ set(MEDIAWRITER_SRCS
     utilities.cpp
     versionchecker.cpp
     # From theme
-    ${CMAKE_SOURCE_DIR}/theme/icon.cpp
+    ${CMAKE_SOURCE_DIR}/src/theme/icon.cpp
 )
 
 if (UNIX AND NOT APPLE)
@@ -33,7 +33,7 @@ if (WIN32)
     set (MEDIAWRITER_SRCS ${MEDIAWRITER_SRCS} windrivemanager.cpp)
 endif()
 
-qt5_add_resources(MEDIAWRITER_SRCS assets.qrc qml.qrc ${CMAKE_SOURCE_DIR}/translations/translations.qrc)
+qt5_add_resources(MEDIAWRITER_SRCS assets.qrc qml.qrc ${CMAKE_SOURCE_DIR}/src/translations/translations.qrc)
 
 if (WIN32)
     qt5_add_resources(MEDIAWRITER_SRCS windowsicon.qrc)
@@ -111,13 +111,13 @@ if (APPLE AND CREATE_STANDALONE_MAC_BUNDLE)
                        "${CMAKE_BINARY_DIR}/theme/qml/org/fedoraproject/AdwaitaTheme/")
     add_custom_command(TARGET mediawriter POST_BUILD
                        COMMAND ${CMAKE_COMMAND} -E copy
-                       "${CMAKE_SOURCE_DIR}/theme/qmldir"
+                       "${CMAKE_SOURCE_DIR}/src/theme/qmldir"
                        "${CMAKE_BINARY_DIR}/theme/qml/org/fedoraproject/AdwaitaTheme/")
 
     add_custom_command(TARGET mediawriter POST_BUILD
                        COMMAND "${MACDEPLOYQT_EXECUTABLE}"
                                "${CMAKE_BINARY_DIR}/app/Fedora Media Writer.app"
-                               -qmldir="${CMAKE_SOURCE_DIR}"
+                               -qmldir="${CMAKE_SOURCE_DIR}/src"
                                -qmlimport=\"${CMAKE_BINARY_DIR}/theme/qml\"
                                -executable=\"${CMAKE_BINARY_DIR}/app/Fedora Media Writer.app/Contents/MacOS/helper\"
                         COMMENT "Deploying Qt...")

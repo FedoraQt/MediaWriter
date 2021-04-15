@@ -46,9 +46,6 @@ if (NOT QT_INSTALL_QML)
                     ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
 endif()
 
-add_subdirectory(app)
-add_subdirectory(helper)
-add_subdirectory(lib)
-add_subdirectory(theme)
+add_subdirectory(src)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
