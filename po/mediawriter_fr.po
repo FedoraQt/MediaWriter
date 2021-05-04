@@ -11,18 +11,18 @@
 # José Fournier <jaaf64@zoraldia.com>, 2017. #zanata
 # Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2018. #zanata
 # Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2019. #zanata
-#, fuzzy
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-03-18 07:39-0400\n"
-"Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
-"Language-Team: French\n"
+"PO-Revision-Date: 2021-04-29 12:02+0000\n"
+"Last-Translator: Julien Humbert <julroy67@gmail.com>\n"
+"Language-Team: French <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.6\n"
 "X-Qt-Contexts: true\n"
 
 #. #-#-#-#-#  appstream_fr.po  #-#-#-#-#
@@ -77,7 +77,7 @@ msgstr "Supprimer l’image téléchargée"
 #: ../app/downloadmanager.cpp:215
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr "L’image requise n’a pu être récupérée"
+msgstr "L’image requise n’a pu être récupérée."
 
 #: ../app/downloadmanager.cpp:311
 msgctxt "Download|"
@@ -135,9 +135,9 @@ msgid ""
 "normal by using Fedora Media Writer; this will remove installation media "
 "from your drive."
 msgstr ""
-"Votre disque sera redimensionné à une taille plus petite. Vous pourrez le "
-"revenir à la normale en utilisant le Fedora Media Writer ; ce qui retirera "
-"le média d’installation de votre disque."
+"Votre disque sera redimensionné à une taille plus petite. Vous pourrez "
+"revenir à la normale en utilisant Fedora Media Writer ; ce qui retirera le "
+"média d’installation de votre disque."
 
 #: ../app/dialogs/DownloadDialog.qml:377
 msgctxt "DownloadDialog|"
@@ -168,8 +168,8 @@ msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
-"La taille du disque sélectionné est %1. Il est possible que vous ayez "
-"sélectionné un disque externe par erreur !"
+"La taille du disque sélectionné est de %1. Il est possible que vous ayez "
+"sélectionné un disque externe par erreur !"
 
 #: ../app/dialogs/DownloadDialog.qml:419
 #, qt-format
@@ -234,7 +234,7 @@ msgstr "Ce disque n’est pas assez large."
 #: ../app/views/ImageDetails.qml:98
 msgctxt "ImageDetails|"
 msgid "Back"
-msgstr ""
+msgstr "Retour"
 
 #: ../app/views/ImageDetails.qml:105
 msgctxt "ImageDetails|"
@@ -262,14 +262,14 @@ msgid ""
 "Fedora %1 was released! Check it out!<br>If you want a stable, finished "
 "system, it's better to stay at version %2."
 msgstr ""
-"Fedora %1 est disponible ! Allez voir !<br>Si vous voulez un système stable "
+"Fedora %1 est disponible ! Allez voir !<br>Si vous voulez un système stable "
 "et finalisé, il vaut mieux rester à la version %2."
 
 #: ../app/views/ImageDetails.qml:314
 #, qt-format
 msgctxt "ImageDetails|"
 msgid ", released on %1"
-msgstr ", publiée le  %1"
+msgstr ", publiée le %1"
 
 #: ../app/views/ImageDetails.qml:324
 msgctxt "ImageDetails|"
@@ -355,7 +355,7 @@ msgstr "L’écriture de %1 a échoué"
 #: ../app/linuxdrivemanager.cpp:116
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
-msgstr "UDisks2 semble être indisponible ou inaccessible sur votre système"
+msgstr "UDisks2 semble être indisponible ou inaccessible sur votre système."
 
 #: ../app/macdrivemanager.cpp:101
 msgctxt "MacDrive|"
@@ -378,7 +378,7 @@ msgstr "L’écriture de %1 a échoué"
 #: ../app/macdrivemanager.cpp:192
 msgctxt "MacDrive|"
 msgid "Finished!"
-msgstr "C’est terminé !"
+msgstr "C’est terminé !"
 
 #: ../app/macdrivemanager.cpp:192
 #, qt-format
@@ -559,7 +559,7 @@ msgstr "%1 Release Candidate"
 #, qt-format
 msgctxt "RestoreDialog|"
 msgid "Restore %1?"
-msgstr "Restaurer  %1 ?"
+msgstr "Restaurer %1 ?"
 
 #: ../app/dialogs/RestoreDialog.qml:73
 msgctxt "RestoreDialog|"
@@ -640,13 +640,13 @@ msgstr ""
 #: ../app/windrivemanager.cpp:351 ../app/windrivemanager.cpp:403
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "C’est terminé !"
 
 #: ../app/windrivemanager.cpp:351 ../app/windrivemanager.cpp:403
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "L’écriture de %1 a réussi"
 
 #: ../helper/linux/writejob.cpp:136 ../helper/win/writejob.cpp:271
 #: ../helper/mac/writejob.cpp:219
@@ -707,7 +707,7 @@ msgstr "Une erreur inattendue a eu lieu pendant la vérification du média."
 #: ../helper/win/writejob.cpp:74
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for writing"
-msgstr "Impossible d’ouvrir le disque pour écrire."
+msgstr "Impossible d’ouvrir le disque pour écrire"
 
 #: ../helper/win/writejob.cpp:98
 msgctxt "WriteJob|"
@@ -718,7 +718,7 @@ msgstr "Impossible de verrouiller le disque"
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't remove the drive %1:"
-msgstr "Impossible de retirer le disque %1 : "
+msgstr "Impossible de retirer le disque %1 :"
 
 #: ../helper/win/writejob.cpp:209
 msgctxt "WriteJob|"
@@ -728,12 +728,12 @@ msgstr "Impossible de déverrouiller le disque"
 #: ../helper/mac/writejob.cpp:82
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "Impossible d’allouer le socket pair"
 
 #: ../helper/mac/writejob.cpp:127
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "Impossible d’ouvrir la destination pour écriture"
 
 #: ../app/main.qml:68
 #, qt-format
@@ -759,7 +759,7 @@ msgstr "Fedora Media Writer %1 est disponible"
 #: ../app/main.qml:147
 msgctxt "main|"
 msgid "Update for great new features and bugfixes!"
-msgstr "Mettre à jour pour de nouvelles fonctionnalités et corrections !"
+msgstr "Mettez à jour pour de nouvelles fonctionnalités et corrections !"
 
 #: ../app/main.qml:148
 msgctxt "main|"
