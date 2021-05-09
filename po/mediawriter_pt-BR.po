@@ -10,6 +10,8 @@
 # Mateus de Melo Santos <mateusms@tutanota.com>, 2017. #zanata
 msgid ""
 msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-07 16:44+0200\n"
 "PO-Revision-Date: 2021-04-27 23:12+0000\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.fedoraproject.org/"
@@ -22,110 +24,66 @@ msgstr ""
 "X-Generator: Weblate 4.6\n"
 "X-Qt-Contexts: true\n"
 
-#. #-#-#-#-#  appstream_pt-BR.po  #-#-#-#-#
-#. (itstool) path: application/name
-#: ../dist/linux/org.fedoraproject.MediaWriter.appdata.xml.in:8
-#: ../dist/linux/org.fedoraproject.MediaWriter.desktop:4
-msgid "Fedora Media Writer"
-msgstr "Fedora Media Writer"
-
-#. (itstool) path: application/summary
-#: ../dist/linux/org.fedoraproject.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of Fedora"
-msgstr "Ferramenta para criar um dispositivo live USB com uma edição do Fedora"
-
-#. (itstool) path: description/p
-#: ../dist/linux/org.fedoraproject.MediaWriter.appdata.xml.in:11
-msgid ""
-"A tool to create a bootable live USB drive with an edition of Fedora. Not "
-"only can Fedora Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"Fedora spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
-msgstr ""
-"Uma ferramenta para criar dispositivos inicializáveis USB live com uma "
-"edição do Fedora. Ela não somente pode gravar imagens em seu dispositivo "
-"USB, mas também pode baixá-las para você. Ela oferece edições oficiais "
-"(Server, Workstation), spins do Fedora (KDE Plasma Desktop, Xfce Desktop, "
-"Cinnamon Desktop,...), e Fedora Labs (Design Suite, Security Lab,...). Ela "
-"fornece informações básicas sobre cada uma delas para ajudá-lo a fazer a "
-"escolha certa."
-
-#. (itstool) path: description/p
-#: ../dist/linux/org.fedoraproject.MediaWriter.appdata.xml.in:12
-msgid ""
-"Fedora Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with Fedora images."
-msgstr ""
-"O Fedora Media Writer também pode criar outras ISO inicializáveis a partir "
-"de seu disco local, mas tenha consciência de que isso só foi testado com as "
-"imagens do Fedora."
-
-#: ../dist/linux/org.fedoraproject.MediaWriter.desktop:36
-msgid "Write Fedora images to your portable drives"
-msgstr "Grave imagens do Fedora em seus dispositivos móveis"
-
-#: ../app/complex/DeleteButton.qml:64
+#: ../src/app/qml/DeleteButton.qml:64
 msgctxt "DeleteButton|"
 msgid "Delete the Downloaded Image"
 msgstr "Deletar a Imagem Baixada"
 
-#: ../app/downloadmanager.cpp:215
+#: ../src/app/downloadmanager.cpp:215
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "Não foi possível buscar a imagem solicitada."
 
-#: ../app/downloadmanager.cpp:311
+#: ../src/app/downloadmanager.cpp:311
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "Você ficou sem espaço na sua pasta de downloads."
 
-#: ../app/downloadmanager.cpp:313
+#: ../src/app/downloadmanager.cpp:313
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "O arquivo descarregado não é gravável."
 
-#: ../app/downloadmanager.cpp:399
+#: ../src/app/downloadmanager.cpp:399
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "A conexão expirou"
 
-#: ../app/dialogs/DownloadDialog.qml:33
+#: ../src/app/qml/DownloadDialog.qml:33
 #, qt-format
 msgctxt "DownloadDialog|"
 msgid "Write %1"
 msgstr "Gravar %1"
 
-#: ../app/dialogs/DownloadDialog.qml:141
+#: ../src/app/qml/DownloadDialog.qml:141
 msgctxt "DownloadDialog|"
 msgid "Writing is not possible"
 msgstr "A escrita não é possível"
 
-#: ../app/dialogs/DownloadDialog.qml:216
+#: ../src/app/qml/DownloadDialog.qml:216
 msgctxt "DownloadDialog|"
 msgid "Close"
 msgstr "Fechar"
 
-#: ../app/dialogs/DownloadDialog.qml:232 ../app/dialogs/DownloadDialog.qml:253
-#: ../app/dialogs/DownloadDialog.qml:274 ../app/dialogs/DownloadDialog.qml:285
-#: ../app/dialogs/DownloadDialog.qml:306
+#: ../src/app/qml/DownloadDialog.qml:232 ../src/app/qml/DownloadDialog.qml:253
+#: ../src/app/qml/DownloadDialog.qml:274 ../src/app/qml/DownloadDialog.qml:285
+#: ../src/app/qml/DownloadDialog.qml:306
 msgctxt "DownloadDialog|"
 msgid "Retry"
 msgstr "Tentar novamente"
 
-#: ../app/dialogs/DownloadDialog.qml:356
+#: ../src/app/qml/DownloadDialog.qml:356
 msgctxt "DownloadDialog|"
 msgid "The file will be saved to your Downloads folder."
 msgstr "O arquivo será salvo na pasta downloads."
 
-#: ../app/dialogs/DownloadDialog.qml:363
+#: ../src/app/qml/DownloadDialog.qml:363
 #, qt-format
 msgctxt "DownloadDialog|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Ao gravar, você irá perder todos os dados em %1."
 
-#: ../app/dialogs/DownloadDialog.qml:370
+#: ../src/app/qml/DownloadDialog.qml:370
 msgctxt "DownloadDialog|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -136,17 +94,17 @@ msgstr ""
 "redimensionar para o tamanho normal usando o Fedora Media Writer; isto irá "
 "remover a instalação da sua unidade."
 
-#: ../app/dialogs/DownloadDialog.qml:377
+#: ../src/app/qml/DownloadDialog.qml:377
 msgctxt "DownloadDialog|"
 msgid "Selected:"
 msgstr "Selecionado:"
 
-#: ../app/dialogs/DownloadDialog.qml:377
+#: ../src/app/qml/DownloadDialog.qml:377
 msgctxt "DownloadDialog|"
 msgid "None"
 msgstr "Nenhum"
 
-#: ../app/dialogs/DownloadDialog.qml:384
+#: ../src/app/qml/DownloadDialog.qml:384
 #, qt-format
 msgctxt "DownloadDialog|"
 msgid ""
@@ -159,7 +117,7 @@ msgstr ""
 "compatibilidade dele com o Fedora e como criar um dispositivo iniciável para "
 "isso."
 
-#: ../app/dialogs/DownloadDialog.qml:392
+#: ../src/app/qml/DownloadDialog.qml:392
 #, qt-format
 msgctxt "DownloadDialog|"
 msgid ""
@@ -169,91 +127,90 @@ msgstr ""
 "O tamanho da unidade selecionada é %1. É possível que você tenha selecionado "
 "uma unidade externa por acidente!"
 
-#: ../app/dialogs/DownloadDialog.qml:419
+#: ../src/app/qml/DownloadDialog.qml:419
 #, qt-format
 msgctxt "DownloadDialog|"
 msgid "(%1 B left)"
 msgstr "(%1 B restantes)"
 
-#: ../app/dialogs/DownloadDialog.qml:420
+#: ../src/app/qml/DownloadDialog.qml:420
 #, qt-format
 msgctxt "DownloadDialog|"
 msgid "(%1 KB left)"
 msgstr "(%1 KB restantes)"
 
-#: ../app/dialogs/DownloadDialog.qml:421
+#: ../src/app/qml/DownloadDialog.qml:421
 #, qt-format
 msgctxt "DownloadDialog|"
 msgid "(%1 MB left)"
 msgstr "(%1 MB restantes)"
 
-#: ../app/dialogs/DownloadDialog.qml:422
+#: ../src/app/qml/DownloadDialog.qml:422
 #, qt-format
 msgctxt "DownloadDialog|"
 msgid "(%1 GB left)"
 msgstr "(%1 GB restantes)"
 
-#: ../app/dialogs/DownloadDialog.qml:435
+#: ../src/app/qml/DownloadDialog.qml:435
 msgctxt "DownloadDialog|"
 msgid "Write the image immediately when the download is finished"
 msgstr "Grave a imagem imediatamente quando terminar de baixar"
 
-#: ../app/dialogs/DownloadDialog.qml:509
+#: ../src/app/qml/DownloadDialog.qml:509
 msgctxt "DownloadDialog|"
 msgid "There are no portable drives connected"
 msgstr "Não há dispositivos portáteis conectados"
 
-#: ../app/dialogs/DownloadDialog.qml:532
+#: ../src/app/qml/DownloadDialog.qml:532
 msgctxt "DownloadDialog|"
 msgid "Other"
 msgstr "Outro"
 
-#: ../app/dialogs/DownloadDialog.qml:561
+#: ../src/app/qml/DownloadDialog.qml:561
 #, qt-format
 msgctxt "DownloadDialog|"
 msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
 msgstr "Não foi possível excluir<br>\"<a href=\"%1\">%2</a>\"."
 
-#: ../app/dialogs/DownloadDialog.qml:573
+#: ../src/app/qml/DownloadDialog.qml:573
 msgctxt "DownloadDialog|"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../app/dialogs/DownloadDialog.qml:586
+#: ../src/app/qml/DownloadDialog.qml:586
 msgctxt "DownloadDialog|"
 msgid "Write to Disk"
 msgstr "Gravar em disco"
 
-#: ../app/drivemanager.cpp:286
+#: ../src/app/drivemanager.cpp:286
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "Esta unidade não é grande o suficiente."
 
-#: ../app/views/ImageDetails.qml:98
+#: ../src/app/qml/ImageDetails.qml:98
 msgctxt "ImageDetails|"
 msgid "Back"
 msgstr "Voltar"
 
-#: ../app/views/ImageDetails.qml:105
+#: ../src/app/qml/ImageDetails.qml:105
 msgctxt "ImageDetails|"
 msgid "Create Live USB…"
 msgstr "Cria USB live…"
 
-#. The downloaded image is compressed, this refers to the size which it will
-#. take after being decompressed and written to the drive
-#: ../app/views/ImageDetails.qml:167
+#. The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
+#: ../src/app/qml/ImageDetails.qml:167
 #, qt-format
 msgctxt "ImageDetails|"
 msgid "(%1 after writing)"
 msgstr "(%1 após gravação)"
 
-#: ../app/views/ImageDetails.qml:192
+#: ../src/app/qml/ImageDetails.qml:192
 #, qt-format
 msgctxt "ImageDetails|"
 msgid "Version %1"
 msgstr "Versão %1"
 
-#: ../app/views/ImageDetails.qml:296
+#: ../src/app/qml/ImageDetails.qml:296
 #, qt-format
 msgctxt "ImageDetails|"
 msgid ""
@@ -263,131 +220,131 @@ msgstr ""
 "O Fedora %1 foi lançado! Confira!<br>Se você quer um sistema estável e "
 "finalizado, é melhor ficar na versão %2."
 
-#: ../app/views/ImageDetails.qml:314
+#: ../src/app/qml/ImageDetails.qml:314
 #, qt-format
 msgctxt "ImageDetails|"
 msgid ", released on %1"
 msgstr ", lançada em %1"
 
-#: ../app/views/ImageDetails.qml:324
+#: ../src/app/qml/ImageDetails.qml:324
 msgctxt "ImageDetails|"
 msgid "Other variants..."
 msgstr "Outras variantes..."
 
-#: ../app/views/ImageList.qml:84
+#: ../src/app/qml/ImageList.qml:84
 msgctxt "ImageList|"
 msgid "Find an operating system image"
 msgstr "Buscar uma imagem de um sistema operacional"
 
-#: ../app/views/ImageList.qml:168
+#: ../src/app/qml/ImageList.qml:168
 msgctxt "ImageList|"
 msgid "Checking for new releases"
 msgstr "Verificando por novas versões"
 
-#: ../app/views/ImageList.qml:251
+#: ../src/app/qml/ImageList.qml:251
 msgctxt "ImageList|"
 msgid "About Fedora Media Writer"
 msgstr "Sobre o Fedora Media Writer"
 
-#: ../app/views/ImageList.qml:275
+#: ../src/app/qml/ImageList.qml:275
 #, qt-format
 msgctxt "ImageList|"
 msgid "Version %1"
 msgstr "Versão %1"
 
-#: ../app/views/ImageList.qml:282
+#: ../src/app/qml/ImageList.qml:282
 msgctxt "ImageList|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr "O Fedora Media Writer está agora verificando por novas versões"
 
-#: ../app/views/ImageList.qml:296
+#: ../src/app/qml/ImageList.qml:296
 #, qt-format
 msgctxt "ImageList|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Por favor, relate erros ou as suas sugestões em %1"
 
-#: ../app/views/ImageList.qml:356
+#: ../src/app/qml/ImageList.qml:356
 msgctxt "ImageList|"
 msgid "Display additional Fedora flavors"
 msgstr "Exibir sabores adicionais do Fedora"
 
-#: ../app/linuxdrivemanager.cpp:181
+#: ../src/app/linuxdrivemanager.cpp:181
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
 msgstr "A unidade foi removida enquanto foi escrita."
 
-#: ../app/linuxdrivemanager.cpp:210
+#: ../src/app/linuxdrivemanager.cpp:210
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "Não foi possível encontrar o binário auxiliar. Verifique a sua instalação."
 
-#: ../app/linuxdrivemanager.cpp:245
+#: ../src/app/linuxdrivemanager.cpp:245
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
 msgstr "Parou antes da escrita terminar."
 
-#: ../app/linuxdrivemanager.cpp:315 ../app/linuxdrivemanager.cpp:344
+#: ../src/app/linuxdrivemanager.cpp:315 ../src/app/linuxdrivemanager.cpp:344
 msgctxt "LinuxDrive|"
 msgid "Finished!"
 msgstr "Concluído!"
 
-#: ../app/linuxdrivemanager.cpp:315 ../app/linuxdrivemanager.cpp:344
+#: ../src/app/linuxdrivemanager.cpp:315 ../src/app/linuxdrivemanager.cpp:344
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
 msgstr "Gravação %1 foi bem sucedida"
 
-#: ../app/linuxdrivemanager.cpp:337
+#: ../src/app/linuxdrivemanager.cpp:337
 msgctxt "LinuxDrive|"
 msgid "Error"
 msgstr "Erro"
 
-#: ../app/linuxdrivemanager.cpp:337
+#: ../src/app/linuxdrivemanager.cpp:337
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
 msgstr "Gravação %1 falhou"
 
-#: ../app/linuxdrivemanager.cpp:116
+#: ../src/app/linuxdrivemanager.cpp:116
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr "UDisks2 aparente está indisponível ou inacessível para o seu sistema."
 
-#: ../app/macdrivemanager.cpp:101
+#: ../src/app/macdrivemanager.cpp:101
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "Não foi possível encontrar o binário auxiliar. Verifique a sua instalação."
 
-#: ../app/macdrivemanager.cpp:188
+#: ../src/app/macdrivemanager.cpp:188
 msgctxt "MacDrive|"
 msgid "Error"
 msgstr "Erro"
 
-#: ../app/macdrivemanager.cpp:188
+#: ../src/app/macdrivemanager.cpp:188
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
 msgstr "Gravação %1 falhou"
 
-#: ../app/macdrivemanager.cpp:192
+#: ../src/app/macdrivemanager.cpp:192
 msgctxt "MacDrive|"
 msgid "Finished!"
 msgstr "Concluído!"
 
-#: ../app/macdrivemanager.cpp:192
+#: ../src/app/macdrivemanager.cpp:192
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
 msgstr "Gravação %1 foi bem sucedida"
 
-#: ../app/releasemanager.cpp:330 ../app/releasemanager.cpp:336
+#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Escolha um arquivo da(s) sua(s) unidade(s)"
 
-#: ../app/releasemanager.cpp:330 ../app/releasemanager.cpp:336
+#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -398,167 +355,167 @@ msgstr ""
 "seu disco rígido para ser gravada em seu disco flash</p><p>Atualmente, "
 "somente é suportado gravar imagens de disco raw (.iso ou .bin)</p>"
 
-#: ../app/releasemanager.cpp:362
+#: ../src/app/releasemanager.cpp:362
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora Spins"
 
-#: ../app/releasemanager.cpp:364
+#: ../src/app/releasemanager.cpp:364
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
-#: ../app/releasemanager.cpp:366
+#: ../src/app/releasemanager.cpp:366
 msgctxt "Release|"
 msgid "Other"
 msgstr "Outro"
 
-#: ../app/releasemanager.cpp:936
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 64bit"
 msgstr "Intel 64 bits"
 
-#: ../app/releasemanager.cpp:936
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
 "Formato de imagem ISO para Intel, AMD e outros PCs compatíveis (64-bit)"
 
-#: ../app/releasemanager.cpp:937
+#: ../src/app/releasemanager.cpp:937
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 32bit"
 msgstr "Intel 32 bits"
 
-#: ../app/releasemanager.cpp:937
+#: ../src/app/releasemanager.cpp:937
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
 "Formato de imagem ISO para Intel, AMD e outros compatíveis com PC (32-bit)"
 
-#: ../app/releasemanager.cpp:938
+#: ../src/app/releasemanager.cpp:938
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../app/releasemanager.cpp:938
+#: ../src/app/releasemanager.cpp:938
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
 "Imagem raw LZMA compactada para máquinas ARM v7-A, como o Raspberry Pi 2 e 3"
 
-#: ../app/releasemanager.cpp:939
+#: ../src/app/releasemanager.cpp:939
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../app/releasemanager.cpp:939
+#: ../src/app/releasemanager.cpp:939
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "Imagem raw comprimido LZMA para máquinas AArch64"
 
-#: ../app/releasemanager.cpp:330 ../app/releasemanager.cpp:336
+#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Imagem personalizada"
 
-#: ../app/releasemanager.cpp:797 ../app/releasemanager.cpp:809
+#: ../src/app/releasemanager.cpp:797 ../src/app/releasemanager.cpp:809
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "A imagem descarregada está corrompida"
 
-#: ../app/releasemanager.cpp:814
+#: ../src/app/releasemanager.cpp:814
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "O arquivo descarregado não é legível."
 
-#: ../app/releasemanager.cpp:826
+#: ../src/app/releasemanager.cpp:826
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Incapaz de renomear o arquivo temporário."
 
-#: ../app/releasemanager.h:386
+#: ../src/app/releasemanager.h:386
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Preparando"
 
-#: ../app/releasemanager.h:387
+#: ../src/app/releasemanager.h:387
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "Descarregando"
 
-#: ../app/releasemanager.h:388
+#: ../src/app/releasemanager.h:388
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "Verificando o download"
 
-#: ../app/releasemanager.h:389
+#: ../src/app/releasemanager.h:389
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
 msgstr "Pronto para gravar"
 
-#: ../app/releasemanager.h:390
+#: ../src/app/releasemanager.h:390
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
 "O arquivo de imagem foi salvo na sua pasta de downloads. Impossível realizar "
 "a escrita"
 
-#: ../app/releasemanager.h:391
+#: ../src/app/releasemanager.h:391
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "Gravando"
 
-#: ../app/releasemanager.h:392
+#: ../src/app/releasemanager.h:392
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "Verificando os dados gravados"
 
-#: ../app/releasemanager.h:393
+#: ../src/app/releasemanager.h:393
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "Terminado!"
 
-#: ../app/releasemanager.h:394
+#: ../src/app/releasemanager.h:394
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
 msgstr "Os dados gravados estão corrompidos"
 
-#: ../app/releasemanager.h:395
+#: ../src/app/releasemanager.h:395
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "O download falhou"
 
-#: ../app/releasemanager.h:396
+#: ../src/app/releasemanager.h:396
 msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Erro"
 
-#: ../app/releasemanager.cpp:607
+#: ../src/app/releasemanager.cpp:607
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../app/releasemanager.cpp:609
+#: ../src/app/releasemanager.cpp:609
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../app/releasemanager.cpp:611
+#: ../src/app/releasemanager.cpp:611
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "%1 Candidato à lançamento"
 
-#: ../app/dialogs/RestoreDialog.qml:31
+#: ../src/app/qml/RestoreDialog.qml:31
 #, qt-format
 msgctxt "RestoreDialog|"
 msgid "Restore %1?"
 msgstr "Restaurar %1?"
 
-#: ../app/dialogs/RestoreDialog.qml:73
+#: ../src/app/qml/RestoreDialog.qml:73
 msgctxt "RestoreDialog|"
 msgid ""
 "<p align=\"justify\">\n"
@@ -590,7 +547,7 @@ msgstr ""
 "                                                Deseja continuar?\n"
 "                                            </p>"
 
-#: ../app/dialogs/RestoreDialog.qml:105
+#: ../src/app/qml/RestoreDialog.qml:105
 msgctxt "RestoreDialog|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
@@ -599,12 +556,12 @@ msgstr ""
 "<p align=\"justify\">Por favor, aguarde enquanto o Fedora Media Writer "
 "restaura o seu dispositivo portátil.</p>"
 
-#: ../app/dialogs/RestoreDialog.qml:121
+#: ../src/app/qml/RestoreDialog.qml:121
 msgctxt "RestoreDialog|"
 msgid "Your drive was successfully restored!"
 msgstr "Seu dispositivo foi restaurado com sucesso!"
 
-#: ../app/dialogs/RestoreDialog.qml:138
+#: ../src/app/qml/RestoreDialog.qml:138
 msgctxt "RestoreDialog|"
 msgid ""
 "Unfortunately, an error occurred during the process.<br>Please try restoring "
@@ -613,126 +570,126 @@ msgstr ""
 "Infelizmente, ocorreu um erro durante o processo.<br>Por favor, tente "
 "restaurar a unidade usando suas ferramentas de sistema."
 
-#: ../app/dialogs/RestoreDialog.qml:150
+#: ../src/app/qml/RestoreDialog.qml:150
 msgctxt "RestoreDialog|"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../app/dialogs/RestoreDialog.qml:159 ../app/dialogs/RestoreDialog.qml:170
+#: ../src/app/qml/RestoreDialog.qml:159 ../src/app/qml/RestoreDialog.qml:170
 msgctxt "RestoreDialog|"
 msgid "Restore"
 msgstr "Restaurar"
 
-#: ../app/dialogs/RestoreDialog.qml:159
+#: ../src/app/qml/RestoreDialog.qml:159
 msgctxt "RestoreDialog|"
 msgid "Close"
 msgstr "Fechar"
 
-#: ../app/windrivemanager.cpp:270
+#: ../src/app/windrivemanager.cpp:270
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "Não foi possível encontrar o binário auxiliar. Verifique a sua instalação."
 
-#: ../app/windrivemanager.cpp:351 ../app/windrivemanager.cpp:403
+#: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr "Concluído!"
 
-#: ../app/windrivemanager.cpp:351 ../app/windrivemanager.cpp:403
+#: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "Gravação %1 foi bem sucedida"
 
-#: ../helper/linux/writejob.cpp:136 ../helper/win/writejob.cpp:271
-#: ../helper/mac/writejob.cpp:219
+#: ../src/helper/linux/writejob.cpp:136 ../src/helper/win/writejob.cpp:271
+#: ../src/helper/mac/writejob.cpp:219
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
 msgstr "Falha ao iniciar a descompressão."
 
-#: ../helper/linux/writejob.cpp:161 ../helper/linux/writejob.cpp:191
-#: ../helper/linux/writejob.cpp:228 ../helper/win/writejob.cpp:188
-#: ../helper/win/writejob.cpp:195 ../helper/mac/writejob.cpp:180
-#: ../helper/mac/writejob.cpp:244 ../helper/mac/writejob.cpp:274
+#: ../src/helper/linux/writejob.cpp:161 ../src/helper/linux/writejob.cpp:191
+#: ../src/helper/linux/writejob.cpp:228 ../src/helper/win/writejob.cpp:188
+#: ../src/helper/win/writejob.cpp:195 ../src/helper/mac/writejob.cpp:180
+#: ../src/helper/mac/writejob.cpp:244 ../src/helper/mac/writejob.cpp:274
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
 msgstr "A unidade de destino não é gravável"
 
-#: ../helper/linux/writejob.cpp:170 ../helper/win/writejob.cpp:315
-#: ../helper/mac/writejob.cpp:253
+#: ../src/helper/linux/writejob.cpp:170 ../src/helper/win/writejob.cpp:315
+#: ../src/helper/mac/writejob.cpp:253
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
 msgstr "Não há memória suficiente para descompactar o arquivo."
 
-#: ../helper/linux/writejob.cpp:175 ../helper/win/writejob.cpp:320
-#: ../helper/mac/writejob.cpp:258
+#: ../src/helper/linux/writejob.cpp:175 ../src/helper/win/writejob.cpp:320
+#: ../src/helper/mac/writejob.cpp:258
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "O arquivo compactado está corrompido."
 
-#: ../helper/linux/writejob.cpp:178 ../helper/win/writejob.cpp:323
-#: ../helper/mac/writejob.cpp:261
+#: ../src/helper/linux/writejob.cpp:178 ../src/helper/win/writejob.cpp:323
+#: ../src/helper/mac/writejob.cpp:261
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
 msgstr "Opções de compactação não suportadas."
 
-#: ../helper/linux/writejob.cpp:181 ../helper/win/writejob.cpp:326
-#: ../helper/mac/writejob.cpp:264
+#: ../src/helper/linux/writejob.cpp:181 ../src/helper/win/writejob.cpp:326
+#: ../src/helper/mac/writejob.cpp:264
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
 msgstr "Erro de descompactação desconhecido."
 
-#: ../helper/linux/writejob.cpp:206 ../helper/linux/writejob.cpp:221
-#: ../helper/win/writejob.cpp:361
+#: ../src/helper/linux/writejob.cpp:206 ../src/helper/linux/writejob.cpp:221
+#: ../src/helper/win/writejob.cpp:361
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
 msgstr "A imagem de origem não é legível"
 
-#: ../helper/linux/writejob.cpp:257 ../helper/win/writejob.cpp:406
-#: ../helper/mac/writejob.cpp:297
+#: ../src/helper/linux/writejob.cpp:257 ../src/helper/win/writejob.cpp:406
+#: ../src/helper/mac/writejob.cpp:297
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
 msgstr "Sua unidade provavelmente está danificada."
 
-#: ../helper/linux/writejob.cpp:262 ../helper/win/writejob.cpp:411
-#: ../helper/mac/writejob.cpp:302
+#: ../src/helper/linux/writejob.cpp:262 ../src/helper/win/writejob.cpp:411
+#: ../src/helper/mac/writejob.cpp:302
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
 msgstr "Ocorreu um erro inesperado durante a verificação da mídia."
 
-#: ../helper/win/writejob.cpp:74
+#: ../src/helper/win/writejob.cpp:74
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for writing"
 msgstr "Não foi possível abrir a unidade para gravação"
 
-#: ../helper/win/writejob.cpp:98
+#: ../src/helper/win/writejob.cpp:98
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
 msgstr "Não foi possível bloquear a unidade"
 
-#: ../helper/win/writejob.cpp:134
+#: ../src/helper/win/writejob.cpp:134
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't remove the drive %1:"
 msgstr "Não foi possível remover a unidade %1:"
 
-#: ../helper/win/writejob.cpp:209
+#: ../src/helper/win/writejob.cpp:209
 msgctxt "WriteJob|"
 msgid "Couldn't unlock the drive"
 msgstr "Não foi possível desbloquear a unidade"
 
-#: ../helper/mac/writejob.cpp:82
+#: ../src/helper/mac/writejob.cpp:82
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
 msgstr "Não foi possível criar par de sockets"
 
-#: ../helper/mac/writejob.cpp:127
+#: ../src/helper/mac/writejob.cpp:127
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
 msgstr "Não foi possível abrir o destino para gravação"
 
-#: ../app/main.qml:68
+#: ../src/app/qml/main.qml:68
 #, qt-format
 msgctxt "main|"
 msgid ""
@@ -742,38 +699,38 @@ msgstr ""
 "Você inseriu <b>%1</b> que já contém um sistema live.<br>Deseja restaurá-lo "
 "para as configurações de fábrica?"
 
-#: ../app/main.qml:70
+#: ../src/app/qml/main.qml:70
 msgctxt "main|"
 msgid "Restore"
 msgstr "Restaurar"
 
-#: ../app/main.qml:146
+#: ../src/app/qml/main.qml:146
 #, qt-format
 msgctxt "main|"
 msgid "Fedora Media Writer %1 Released"
 msgstr "Fedora Media Writer %1 lançado"
 
-#: ../app/main.qml:147
+#: ../src/app/qml/main.qml:147
 msgctxt "main|"
 msgid "Update for great new features and bugfixes!"
 msgstr "Atualize para grandes novidades e correções de bugs!"
 
-#: ../app/main.qml:148
+#: ../src/app/qml/main.qml:148
 msgctxt "main|"
 msgid "Open Browser"
 msgstr "Abrir navegador"
 
-#: ../app/main.qml:163
+#: ../src/app/qml/main.qml:163
 msgctxt "main|"
 msgid "Image files"
 msgstr "Arquivos de imagem"
 
-#: ../app/main.qml:163
+#: ../src/app/qml/main.qml:163
 msgctxt "main|"
 msgid "All files (*)"
 msgstr "Todos os arquivos (*)"
 
-#: ../app/main.qml:192
+#: ../src/app/qml/main.qml:192
 #, qt-format
 msgctxt "main|"
 msgid ""
@@ -783,7 +740,807 @@ msgstr ""
 "%1<br>A escrita de imagens não será possível.<br>Você ainda pode ver os "
 "sabores do Fedora e baixar imagens para o seu disco rígido."
 
-#: ../app/main.qml:196
+#: ../src/app/qml/main.qml:196
 msgctxt "main|"
 msgid "Ok"
 msgstr "Ok"
+
+#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
+#. (itstool) path: application/name
+#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop.in:4
+msgid "Fedora Media Writer"
+msgstr "Fedora Media Writer"
+
+#. (itstool) path: application/summary
+#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
+msgid "A tool to create a live USB drive with an edition of Fedora"
+msgstr "Ferramenta para criar um dispositivo live USB com uma edição do Fedora"
+
+#. (itstool) path: description/p
+#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
+msgid ""
+"A tool to create a bootable live USB drive with an edition of Fedora. Not "
+"only can Fedora Media Writer write an image to your flash drive, it can also "
+"download it for you. It offers official editions (Server, Workstation), "
+"Fedora spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
+"Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
+"about each of them to help you make the right choice."
+msgstr ""
+"Uma ferramenta para criar dispositivos inicializáveis USB live com uma "
+"edição do Fedora. Ela não somente pode gravar imagens em seu dispositivo "
+"USB, mas também pode baixá-las para você. Ela oferece edições oficiais "
+"(Server, Workstation), spins do Fedora (KDE Plasma Desktop, Xfce Desktop, "
+"Cinnamon Desktop,...), e Fedora Labs (Design Suite, Security Lab,...). Ela "
+"fornece informações básicas sobre cada uma delas para ajudá-lo a fazer a "
+"escolha certa."
+
+#. (itstool) path: description/p
+#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
+msgid ""
+"Fedora Media Writer can also write other bootable ISOs loaded from your "
+"local disk, but keep in mind that it's only tested with Fedora images."
+msgstr ""
+"O Fedora Media Writer também pode criar outras ISO inicializáveis a partir "
+"de seu disco local, mas tenha consciência de que isso só foi testado com as "
+"imagens do Fedora."
+
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop.in:39
+msgid "Write Fedora images to your portable drives"
+msgstr "Grave imagens do Fedora em seus dispositivos móveis"
+
+# ############## metadata.json ###############
+#: [0].subvariant
+msgid "workstation"
+msgstr ""
+
+#: [0].category
+msgctxt "[0].category"
+msgid "product"
+msgstr ""
+
+#: [0].name
+msgid "Fedora Workstation"
+msgstr ""
+
+#: [0].summary
+msgid "This is the Linux workstation you've been waiting for."
+msgstr ""
+
+#: [0].description[0]
+msgid ""
+"Fedora Workstation is a reliable, user-friendly, and powerful operating "
+"system for your laptop or desktop computer. It supports a wide range of "
+"developers, from hobbyists and students to professionals in corporate "
+"environments."
+msgstr ""
+
+#: [0].description[1]
+msgid ""
+"“The plethora of tools provided by<br /> Fedora allows me to get the job "
+"done.<br /> It just works.”"
+msgstr ""
+
+#: [0].description[2]
+msgid "JVM performance engineer"
+msgstr ""
+
+#: [0].description[3]
+msgid "Sleek user interface"
+msgstr ""
+
+#: [0].description[4]
+msgid ""
+"Focus on your code in the GNOME 3 desktop environment. GNOME is built with "
+"developer feedback and minimizes distractions, so you can concentrate on "
+"what's important."
+msgstr ""
+
+#: [0].description[5]
+msgid "Complete open source toolbox"
+msgstr ""
+
+#: [0].description[6]
+msgid ""
+"Skip the drag of trying to find or build the tools you need. With Fedora's "
+"complete set of open source languages, tools, and utilities, everything is a "
+"click or command line away. There's even project hosting and repositories "
+"like COPR to make your code and builds available quickly to the community."
+msgstr ""
+
+#: [0].description[7]
+msgid "GNOME Boxes & other virt tools"
+msgstr ""
+
+#: [0].description[8]
+msgid ""
+"Get virtual machines up and running quickly to test your code on multiple "
+"platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization "
+"tools for even more control."
+msgstr ""
+
+#: [0].description[9]
+msgid "Built-in Docker support"
+msgstr ""
+
+#: [0].description[10]
+msgid ""
+"Containerize your own apps, or deploy containerized apps out of the box on "
+"Fedora, using the latest technology like Docker."
+msgstr ""
+
+#: [1].subvariant
+msgid "server"
+msgstr ""
+
+#: [1].category
+msgctxt "[1].category"
+msgid "product"
+msgstr ""
+
+#: [1].name
+#, fuzzy
+#| msgid "Fedora Media Writer"
+msgid "Fedora Server"
+msgstr "Fedora Media Writer"
+
+#: [1].summary
+msgid ""
+"The latest technology. A stable foundation. Together, for your applications "
+"and services."
+msgstr ""
+
+#: [1].description[0]
+msgid ""
+"“The simplicity introduced with rolekit and cockpit have made server "
+"deployments a breeze. What took me a few days on other operating systems "
+"took less than an hour with Fedora %(rel)s Server. It just works.”"
+msgstr ""
+
+#: [1].description[1]
+msgid "Systems Engineer"
+msgstr ""
+
+#: [1].description[2]
+msgid ""
+"Fedora Server is a short-lifecycle, community-supported server operating "
+"system that enables seasoned system administrators experienced with any OS "
+"to make use of the very latest server-based technologies available in the "
+"open source community."
+msgstr ""
+
+#: [1].description[3]
+msgid "Easy Administration"
+msgstr ""
+
+#: [1].description[4]
+msgid ""
+"Manage your system simply with Cockpit's powerful, modern interface. View "
+"and monitor system performance and status, and deploy and manage container-"
+"based services."
+msgstr ""
+
+#: [1].description[5]
+msgid "Server Roles"
+msgstr ""
+
+#: [1].description[6]
+msgid ""
+"There's no need to set up your server from scratch when you use server "
+"roles. Server roles plug into your Fedora Server system, providing a well-"
+"integrated service on top of the Fedora Server platform. Deploy and manage "
+"these prepared roles simply using the Rolekit tool."
+msgstr ""
+
+#: [1].description[7]
+msgid "Database Services"
+msgstr ""
+
+#: [1].description[8]
+msgid ""
+"Fedora Server brings with it an enterprise-class, scalable database server "
+"powered by the open-source PostgreSQL project."
+msgstr ""
+
+#: [1].description[9]
+msgid "Complete Enterprise Domain Solution"
+msgstr ""
+
+#: [1].description[10]
+msgid ""
+"Level up your Linux network with advanced identity management, DNS, "
+"certificate services, Windows(TM) domain integration throughout your "
+"environment with FreeIPA, the engine that drives Fedora Server's Domain "
+"Controller role."
+msgstr ""
+
+#: [1].description[11]
+msgid ""
+"“The Docker Role for Fedora Server was simple and fast to install so that "
+"you can run your Docker images. This makes a great testbed for beginners and "
+"experts with docker so that they can develop their applications on the fly.”"
+msgstr ""
+
+#: [1].description[12]
+msgid "</p><p align=right> ― <em>John Unland, "
+msgstr ""
+
+#: [1].description[13]
+msgid "Information Systems Student"
+msgstr ""
+
+#: [2].subvariant
+msgid "silverblue"
+msgstr ""
+
+#: [2].category
+msgid "emerging"
+msgstr ""
+
+#: [2].name
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Spins"
+msgid "Fedora Silverblue"
+msgstr "Fedora Spins"
+
+#: [2].summary
+msgid ""
+"An extremely stable and reliable desktop operating system, excellent for "
+"developers and for those using container-focused workflows."
+msgstr ""
+
+#: [2].description[0]
+msgid ""
+"Silverblue is a variant of Fedora Workstation. It looks, feels and behaves "
+"like a regular desktop operating system, and the experience is similar to "
+"what you find with using a standard Fedora Workstation."
+msgstr ""
+
+#: [2].description[1]
+msgid ""
+"However, unlike other operating systems, Silverblue has reprovisionable "
+"infrastructure with anti-hysteresis properties. This means that every "
+"installation is identical to every other installation of the same version. "
+"The operating system that is on disk is exactly the same from one machine to "
+"the next, and it never changes as it is used."
+msgstr ""
+
+#: [2].description[2]
+msgid ""
+"Silverblue’s design is intended to make it more stable, less prone to bugs, "
+"and easier to test and develop. The design also makes it an excellent "
+"platform for containerized applications as well as container-based software "
+"development. In each case, applications and containers are kept separate "
+"from the host system, improving stability and reliability."
+msgstr ""
+
+#: [2].description[3]
+msgid ""
+"Silverblue’s core technologies have some other helpful features. OS updates "
+"are fast and there’s no waiting around for them to install: just reboot as "
+"normal to start using the next version. With Silverblue, it is also possible "
+"to roll back to the previous version of the operating system, if something "
+"goes wrong."
+msgstr ""
+
+#: [3].subvariant
+msgid "kde"
+msgstr ""
+
+#: [3].category
+msgctxt ""
+"[3].category[3].category[3].category[3].category[3].category[3].category"
+msgid "spins"
+msgstr ""
+
+#: [3].name
+msgid "Fedora KDE Plasma Desktop"
+msgstr ""
+
+#: [3].summary
+msgid "A complete, modern desktop built using the KDE Plasma Desktop."
+msgstr ""
+
+#: [3].description[0]
+msgid ""
+"The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based operating "
+"system utilizing the KDE Plasma Desktop as the main user interface."
+msgstr ""
+
+#: [3].description[1]
+msgid ""
+"Fedora KDE Plasma Desktop comes with many pre-selected top quality "
+"applications that suit all modern desktop use cases - from online "
+"communication like web browsing, instant messaging and electronic mail "
+"correspondence, through multimedia and entertainment, to an advanced "
+"productivity suite, including office applications and enterprise grade "
+"personal information management."
+msgstr ""
+
+#: [3].description[2]
+msgid ""
+"All KDE applications are well integrated, with a similar look and feel and "
+"an easy to use interface, accompanied by an outstanding graphical appearance."
+msgstr ""
+
+#: [4].subvariant
+msgid "xfce"
+msgstr ""
+
+#: [4].category
+msgctxt "[4].category"
+msgid "spins"
+msgstr ""
+
+#: [4].name
+msgid "Fedora Xfce Desktop"
+msgstr ""
+
+#: [4].summary
+msgid "A complete, well-integrated Xfce Desktop."
+msgstr ""
+
+#: [4].description[0]
+msgid ""
+"The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast and "
+"lightweight, while still being visually appealing and user friendly."
+msgstr ""
+
+#: [4].description[1]
+msgid ""
+"Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
+msgstr ""
+
+#: [5].subvariant
+msgid "lxqt"
+msgstr ""
+
+#: [5].category
+msgctxt "[5].category"
+msgid "spins"
+msgstr ""
+
+#: [5].name
+msgid "Fedora LXQt Desktop"
+msgstr ""
+
+#: [5].summary
+msgid "A lightweight, well-integrated LXQt desktop environment."
+msgstr ""
+
+#: [5].description[0]
+msgid ""
+"Fedora LXQt provides a lightweight, well-integrated LXQt desktop "
+"environment. In addition to LXQt itself it provides a small, well selected "
+"collection of applications like the QupZilla browser, which combines "
+"Chromium's rendering engine with a nice Qt experience. Other applications "
+"include the Trojita mail client, the qBittorrent client, the Yarock music "
+"player and a set of some more commonly used applications. As all "
+"applications use the same Qt5 toolkit and the Breeze theme known from KDE, "
+"the desktop provides a unified and well-integrated style and theming. In "
+"addition breeze-gtk is provided to allow the user to integrate GTK "
+"applications too."
+msgstr ""
+
+#: [6].subvariant
+msgid "mate"
+msgstr ""
+
+#: [6].category
+msgctxt "[6].category"
+msgid "spins"
+msgstr ""
+
+#: [6].name
+msgid "Fedora MATE-Compiz Desktop"
+msgstr ""
+
+#: [6].summary
+msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
+msgstr ""
+
+#: [6].description[0]
+msgid ""
+"The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE Desktop "
+"is a lightweight, powerful desktop designed with productivity and "
+"performance in mind. The default windows manager is Marco which is usable "
+"for all machines and VMs. Compiz Fusion is a beautiful 3D windowing manager "
+"with Emerald and GTK+ theming."
+msgstr ""
+
+#: [6].description[1]
+msgid ""
+"If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
+"should definitely try the MATE-Compiz spin."
+msgstr ""
+
+#: [7].subvariant
+msgid "cinnamon"
+msgstr ""
+
+#: [7].category
+msgctxt "[7].category"
+msgid "spins"
+msgstr ""
+
+#: [7].name
+msgid "Fedora Cinnamon Desktop"
+msgstr ""
+
+#: [7].summary
+msgid "A modern desktop featuring traditional Gnome user experience."
+msgstr ""
+
+#: [7].screenshots[0]
+msgid ""
+"https://spins.fedoraproject.org/static/images/screenshots/screenshot-"
+"cinnamon.jpg"
+msgstr ""
+
+#: [7].description[0]
+msgid ""
+"Cinnamon is a Linux desktop which provides advanced innovative features and "
+"a traditional user experience. The desktop layout is similar to Gnome 2. The "
+"underlying technology is forked from Gnome Shell. The emphasis is put on "
+"making users feel at home and providing them with an easy to use and "
+"comfortable desktop experience."
+msgstr ""
+
+#: [7].description[1]
+msgid ""
+"Cinnamon is a popular desktop alternative to Gnome 3 and this spin provides "
+"the option to quickly try and install this desktop."
+msgstr ""
+
+#: [8].subvariant
+msgid "lxde"
+msgstr ""
+
+#: [8].category
+msgctxt "[8].category"
+msgid "spins"
+msgstr ""
+
+#: [8].name
+msgid "Fedora LXDE Desktop"
+msgstr ""
+
+#: [8].summary
+msgid "A light, fast, less-resource hungry desktop environment."
+msgstr ""
+
+#: [8].screenshots[0]
+msgid ""
+"https://spins.fedoraproject.org/static/images/screenshots/screenshot-lxde.jpg"
+msgstr ""
+
+#: [8].description[0]
+msgid ""
+"LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
+"performant, and energy-saving desktop environment. It maintained by an "
+"international community of developers and comes with a beautiful interface, "
+"multi-language support, standard keyboard shortcuts and additional features "
+"like tabbed file browsing."
+msgstr ""
+
+#: [8].description[1]
+msgid ""
+"LXDE is not designed to be powerful and bloated, but to be usable and slim. "
+"A main goal of LXDE is to keep computer resource usage low. It is especially "
+"designed for computers with low hardware specifications like netbooks, "
+"mobile devices (e.g. MIDs) or older computers."
+msgstr ""
+
+#: [9].subvariant
+msgid "soas"
+msgstr ""
+
+#: [9].category
+msgctxt "[9].category"
+msgid "spins"
+msgstr ""
+
+#: [9].name
+msgid "Fedora SoaS Desktop"
+msgstr ""
+
+#: [9].summary
+msgid "Discover. Reflect. Share. Learn."
+msgstr ""
+
+#: [9].description[0]
+msgid ""
+"Sugar on a Stick is a Fedora-based operating system featuring the award-"
+"winning Sugar Learning Platform and designed to fit on an ordinary USB "
+"thumbdrive (\"stick\")."
+msgstr ""
+
+#: [9].description[1]
+msgid ""
+"Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
+"child-friendly graphical environment. Sugar automatically saves your "
+"progress to a \"Journal\" on your stick, so teachers and parents can easily "
+"pull up \"all collaborative web browsing sessions done in the past week\" or "
+"\"papers written with Daniel and Sarah in the last 24 hours\" with a simple "
+"query rather than memorizing complex file/folder structures. Applications in "
+"Sugar are known as Activities, some of which are described below."
+msgstr ""
+
+#: [9].description[2]
+msgid ""
+"It is now deployable for the cost of a stick rather than a laptop; students "
+"can take their Sugar on a Stick thumbdrive to any machine - at school, at "
+"home, at a library or community center - and boot their customized computing "
+"environment without touching the host machine’s hard disk or existing system "
+"at all."
+msgstr ""
+
+#: [10].subvariant
+msgid "astronomy"
+msgstr ""
+
+#: [10].category
+msgctxt ""
+"[10].category[10].category[10].category[10].category[10].category[10]."
+"category"
+msgid "labs"
+msgstr ""
+
+#: [10].name
+msgid "Fedora Astronomy"
+msgstr ""
+
+#: [10].summary
+msgid ""
+"Powerful completely open-source and free tool for amateurs and professionals."
+msgstr ""
+
+#: [10].description[0]
+msgid ""
+"Fedora Astronomy brings a complete open source toolchain to both amateur and "
+"professional astronomers."
+msgstr ""
+
+#: [10].description[1]
+msgid ""
+"The Spin provides the Fedora KDE desktop enhanced with a complete scientific "
+"Python environment and the AstrOmatic software for data analysis. KStars was "
+"added to provide a full featured astrophotography tool. As KStars uses the "
+"INDI library to control equipment, various telescopes, cameras etc. are "
+"supported. Summarized, Fedora Astronomy provides a complete set of software, "
+"from the observation planning to the final results."
+msgstr ""
+
+#: [11].subvariant
+msgid "design_suite"
+msgstr ""
+
+#: [11].category
+msgctxt "[11].category"
+msgid "labs"
+msgstr ""
+
+#: [11].name
+#, fuzzy
+#| msgid "Fedora Media Writer"
+msgid "Fedora Design Suite"
+msgstr "Fedora Media Writer"
+
+#: [11].summary
+msgid ""
+"Visual design, multimedia production, and publishing suite of free and open "
+"source creative tools."
+msgstr ""
+
+#: [11].description[0]
+msgid ""
+"Looking for a ready-to-go desktop environment brimming with free and open "
+"source multimedia production and publishing tools? Try the Design Suite, a "
+"Fedora Spin created by designers, for designers."
+msgstr ""
+
+#: [11].description[1]
+msgid ""
+"The Design Suite includes the favorite tools of the Fedora Design Team. "
+"These are the same programs we use to create all the artwork that you see "
+"within the Fedora Project, from desktop backgrounds to CD sleeves, web page "
+"designs, application interfaces, flyers, posters and more. From document "
+"publication to vector and bitmap editing or 3D modeling to photo management, "
+"the Design Suite has an application for you — and you can install thousands "
+"more from the Fedora universe of packages."
+msgstr ""
+
+#: [12].subvariant
+msgid "games"
+msgstr ""
+
+#: [12].category
+msgctxt "[12].category"
+msgid "labs"
+msgstr ""
+
+#: [12].name
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Labs"
+msgid "Fedora Games"
+msgstr "Fedora Labs"
+
+#: [12].summary
+msgid ""
+"A collection and perfect show-case of the best games available in Fedora."
+msgstr ""
+
+#: [12].description[0]
+msgid ""
+"The Fedora Games spin offers a perfect showcase of the best games available "
+"in Fedora. The included games span several genres, from first-person "
+"shooters to real-time and turn-based strategy games to puzzle games."
+msgstr ""
+
+#: [12].description[1]
+msgid ""
+"Not all the games available in Fedora are included on this spin, but trying "
+"out this spin will give you a fair impression of Fedora's ability to run "
+"great games."
+msgstr ""
+
+#: [13].subvariant
+msgid "python"
+msgstr ""
+
+#: [13].category
+msgctxt "[13].category"
+msgid "labs"
+msgstr ""
+
+#: [13].name
+msgid "Fedora Python Classroom"
+msgstr ""
+
+#: [13].summary
+msgid ""
+"A classroom lab for teaching the Python programming language to students"
+msgstr ""
+
+#: [13].description[0]
+msgid ""
+"One of the benefits of Fedora for Python developers is the ease of setting "
+"up Python development. The Fedora Python Classroom Lab makes it even easier "
+"for teachers and instructors to use Fedora in their classrooms or workshops. "
+"Ready to use operating system with important stuff pre-installed - either "
+"with GNOME or as a headless environment for Docker or Vagrant. Teach Python "
+"on Fedora, with Fedora, using the stuff you love: IPython, Jupyter Notebook, "
+"multiple Pythons, virtualenvs, tox, git and more"
+msgstr ""
+
+#: [13].description[1]
+msgid ""
+"The Fedora Python Classroom Lab comes in 3 variants. Either you can run it "
+"in graphical mode with GNOME, or you can virtualize it with Vagrant or run "
+"it in a Docker container. You choose what fits your teaching environment the "
+"best."
+msgstr ""
+
+#: [14].subvariant
+msgid "robotics"
+msgstr ""
+
+#: [14].category
+msgctxt "[14].category"
+msgid "labs"
+msgstr ""
+
+#: [14].name
+#, fuzzy
+#| msgid "Fedora Media Writer"
+msgid "Fedora Robotics Suite"
+msgstr "Fedora Media Writer"
+
+#: [14].summary
+msgid ""
+"A wide variety of free and open robotics software packages for beginners and "
+"experts in robotics."
+msgstr ""
+
+#: [14].description[0]
+msgid ""
+"The Fedora Robotics spin provides a wide variety of free and open robotics "
+"software packages. These range from hardware accessory libraries for the "
+"Hokuyo laser scanners or Katana robotic arm to software frameworks like "
+"Fawkes or Player and simulation environments such as Stage and RoboCup "
+"Soccer Simulation Server 2D/3D. It also provides a ready to use development "
+"environment for robotics including useful libraries such as OpenCV computer "
+"vision library, Festival text to speech system and MRPT."
+msgstr ""
+
+#: [14].description[1]
+msgid ""
+"The Robotics spin is targeted at people just discovering their interest in "
+"robotics as well as experienced roboticists. For the former we provide a "
+"readily usable simulation environment with an introductory hands-on "
+"demonstration, and for the latter we provide a full development environment, "
+"to be used immediately."
+msgstr ""
+
+#: [15].subvariant
+msgid "scientific"
+msgstr ""
+
+#: [15].category
+msgctxt "[15].category"
+msgid "labs"
+msgstr ""
+
+#: [15].name
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Spins"
+msgid "Fedora Scientific"
+msgstr "Fedora Spins"
+
+#: [15].summary
+msgid ""
+"A bundle of open source scientific and numerical tools used in research."
+msgstr ""
+
+#: [15].description[0]
+msgid ""
+"Wary of reinstalling all the essential tools for your scientific and "
+"numerical work? The answer is here. Fedora Scientific Spin brings together "
+"the most useful open source scientific and numerical tools atop the goodness "
+"of the KDE desktop environment."
+msgstr ""
+
+#: [15].description[1]
+msgid ""
+"Fedora Scientific currently ships with numerous applications and libraries. "
+"These range from libraries such as the GNU Scientific library, the SciPy "
+"libraries, tools like Octave and xfig to typesetting tools like Kile and "
+"graphics programs such as Inkscape. The current set of packages include an "
+"IDE, tools and libraries for programming in C, C++, Python, Java and R. Also "
+"included along with are libraries for parallel computing such as the OpenMPI "
+"and OpenMP. Tools for typesetting, writing and publishing are included."
+msgstr ""
+
+#: [16].subvariant
+msgid "security"
+msgstr ""
+
+#: [16].category
+msgctxt "[16].category"
+msgid "labs"
+msgstr ""
+
+#: [16].name
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Labs"
+msgid "Fedora Security Lab"
+msgstr "Fedora Labs"
+
+#: [16].summary
+msgid ""
+"A safe test environment to work on security auditing, forensics, system "
+"rescue and teaching security testing methodologies."
+msgstr ""
+
+#: [16].description[0]
+msgid ""
+"The Fedora Security Lab provides a safe test environment to work on security "
+"auditing, forensics, system rescue and teaching security testing "
+"methodologies in universities and other organizations."
+msgstr ""
+
+#: [16].description[1]
+msgid ""
+"The spin is maintained by a community of security testers and developers. It "
+"comes with the clean and fast Xfce Desktop Environment and a customized menu "
+"that provides all the instruments needed to follow a proper test path for "
+"security testing or to rescue a broken system. The Live image has been "
+"crafted to make it possible to install software while running, and if you "
+"are running it from a USB stick created with LiveUSB Creator using the "
+"overlay feature, you can install and update software and save your test "
+"results permanently."
+msgstr ""
