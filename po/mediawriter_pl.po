@@ -13,8 +13,8 @@ msgstr ""
 "POT-Creation-Date: 2021-04-07 16:44+0200\n"
 "PO-Revision-Date: 2021-05-10 12:00+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
-"Language-Team: Polish <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/pl/>\n"
+"Language-Team: Polish <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -787,24 +787,40 @@ msgid "Write Fedora images to your portable drives"
 msgstr "Zapisywanie obrazów Fedory na dyskach USB"
 
 # ############## metadata.json ###############
-#: [0].subvariant
+#: [Workstation].subvariant
 msgid "workstation"
 msgstr "Workstation"
 
-#: [0].category
-msgctxt "[0].category"
+#: [Workstation].category
+#, fuzzy
+#| msgctxt "[0].category"
+#| msgid "product"
+msgctxt "Release|"
 msgid "product"
 msgstr "produkt"
 
-#: [0].name
+#: [Workstation].name
+#, fuzzy
+#| msgid "Fedora Workstation"
+msgctxt "Release|"
 msgid "Fedora Workstation"
 msgstr "Fedora Workstation"
 
-#: [0].summary
+#: [Workstation].summary
+#, fuzzy
+#| msgid "This is the Linux workstation you've been waiting for."
+msgctxt "Release|"
 msgid "This is the Linux workstation you've been waiting for."
 msgstr "Najlepsza linuksowa stacja robocza."
 
-#: [0].description[0]
+#: [Workstation].description[0]
+#, fuzzy
+#| msgid ""
+#| "Fedora Workstation is a reliable, user-friendly, and powerful operating "
+#| "system for your laptop or desktop computer. It supports a wide range of "
+#| "developers, from hobbyists and students to professionals in corporate "
+#| "environments."
+msgctxt "Release|"
 msgid ""
 "Fedora Workstation is a reliable, user-friendly, and powerful operating "
 "system for your laptop or desktop computer. It supports a wide range of "
@@ -815,7 +831,12 @@ msgstr ""
 "możliwościach dla laptopów i komputerów stacjonarnych. Dostarcza on funkcje "
 "niezbędne programistom, hobbistom, studentom i zawodowcom."
 
-#: [0].description[1]
+#: [Workstation].description[1]
+#, fuzzy
+#| msgid ""
+#| "“The plethora of tools provided by<br /> Fedora allows me to get the job "
+#| "done.<br /> It just works.”"
+msgctxt "Release|"
 msgid ""
 "“The plethora of tools provided by<br /> Fedora allows me to get the job "
 "done.<br /> It just works.”"
@@ -823,29 +844,52 @@ msgstr ""
 "„Zestaw narzędzi dostarczanych przez<br /> Fedorę umożliwia mi wykonywanie "
 "mojej pracy.<br /> Fedora po prostu działa.”"
 
-#: [0].description[2]
+#: [Workstation].description[2]
+#, fuzzy
+#| msgid "JVM performance engineer"
+msgctxt "Release|"
 msgid "JVM performance engineer"
 msgstr "inżynier wydajności JVM"
 
-#: [0].description[3]
+#: [Workstation].description[3]
+#, fuzzy
+#| msgid "Sleek user interface"
+msgctxt "Release|"
 msgid "Sleek user interface"
 msgstr "Elegancki interfejs"
 
-#: [0].description[4]
+#: [Workstation].description[4]
+#, fuzzy
+#| msgid ""
+#| "Focus on your code in the GNOME 3 desktop environment. GNOME is built "
+#| "with developer feedback and minimizes distractions, so you can "
+#| "concentrate on what's important."
+msgctxt "Release|"
 msgid ""
 "Focus on your code in the GNOME 3 desktop environment. GNOME is built with "
 "developer feedback and minimizes distractions, so you can concentrate on "
 "what's important."
 msgstr ""
-"Skup się na kodzie w środowisku pulpitu GNOME 3, zbudowanym we współpracy z "
-"programistami, które nie rozprasza, umożliwiając skoncentrowanie się na tym, "
-"co jest naprawdę ważne."
+"Skup się na kodzie w środowisku pulpitu GNOME 3, zbudowanym we współpracy "
+"z programistami, które nie rozprasza, umożliwiając skoncentrowanie się na "
+"tym, co jest naprawdę ważne."
 
-#: [0].description[5]
+#: [Workstation].description[5]
+#, fuzzy
+#| msgid "Complete open source toolbox"
+msgctxt "Release|"
 msgid "Complete open source toolbox"
 msgstr "Pełny zestaw narzędzi open source"
 
-#: [0].description[6]
+#: [Workstation].description[6]
+#, fuzzy
+#| msgid ""
+#| "Skip the drag of trying to find or build the tools you need. With "
+#| "Fedora's complete set of open source languages, tools, and utilities, "
+#| "everything is a click or command line away. There's even project hosting "
+#| "and repositories like COPR to make your code and builds available quickly "
+#| "to the community."
+msgctxt "Release|"
 msgid ""
 "Skip the drag of trying to find or build the tools you need. With Fedora's "
 "complete set of open source languages, tools, and utilities, everything is a "
@@ -858,11 +902,20 @@ msgstr ""
 "projektów i repozytoria COPR do tworzenia kodu i plików binarnych szybko "
 "dostępnych dla całej społeczności."
 
-#: [0].description[7]
+#: [Workstation].description[7]
+#, fuzzy
+#| msgid "GNOME Boxes & other virt tools"
+msgctxt "Release|"
 msgid "GNOME Boxes & other virt tools"
 msgstr "GNOME Boxes i inne narzędzia wirtualizacji"
 
-#: [0].description[8]
+#: [Workstation].description[8]
+#, fuzzy
+#| msgid ""
+#| "Get virtual machines up and running quickly to test your code on multiple "
+#| "platforms using GNOME Boxes. Or dig into powerful, scriptable "
+#| "virtualization tools for even more control."
+msgctxt "Release|"
 msgid ""
 "Get virtual machines up and running quickly to test your code on multiple "
 "platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization "
@@ -872,11 +925,19 @@ msgstr ""
 "testować kod na wielu systemach. Jeszcze więcej możliwości dostarczają "
 "potężne, skryptowalne narzędzia wirtualizacji."
 
-#: [0].description[9]
+#: [Workstation].description[9]
+#, fuzzy
+#| msgid "Built-in Docker support"
+msgctxt "Release|"
 msgid "Built-in Docker support"
 msgstr "Wbudowana obsługa Dockera"
 
-#: [0].description[10]
+#: [Workstation].description[10]
+#, fuzzy
+#| msgid ""
+#| "Containerize your own apps, or deploy containerized apps out of the box "
+#| "on Fedora, using the latest technology like Docker."
+msgctxt "Release|"
 msgid ""
 "Containerize your own apps, or deploy containerized apps out of the box on "
 "Fedora, using the latest technology like Docker."
@@ -884,27 +945,39 @@ msgstr ""
 "Twórz kontenery własnych aplikacji lub wdrażaj kontenery z aplikacjami bez "
 "konfiguracji na Fedorze za pomocą najnowszej technologii, takiej jak Docker."
 
-#: [1].subvariant
+#: [Server].subvariant
+#, fuzzy
+#| msgid "server"
+msgctxt "Release|"
 msgid "server"
 msgstr "Server"
 
-#: [1].category
-msgctxt "[1].category"
-msgid "product"
-msgstr "produkt"
-
-#: [1].name
+#: [Server].category [Server].name
+#, fuzzy
+#| msgid "Fedora Server"
+msgctxt "Release|"
 msgid "Fedora Server"
 msgstr "Fedora Server"
 
-#: [1].summary
+#: [Server].summary
+#, fuzzy
+#| msgid ""
+#| "The latest technology. A stable foundation. Together, for your "
+#| "applications and services."
+msgctxt "Release|"
 msgid ""
 "The latest technology. A stable foundation. Together, for your applications "
 "and services."
 msgstr ""
 "Najnowsza technologia. Stabilne fundamenty. Razem dla aplikacji i usług."
 
-#: [1].description[0]
+#: [Server].description[0]
+#, fuzzy
+#| msgid ""
+#| "“The simplicity introduced with rolekit and cockpit have made server "
+#| "deployments a breeze. What took me a few days on other operating systems "
+#| "took less than an hour with Fedora %(rel)s Server. It just works.”"
+msgctxt "Release|"
 msgid ""
 "“The simplicity introduced with rolekit and cockpit have made server "
 "deployments a breeze. What took me a few days on other operating systems "
@@ -915,11 +988,21 @@ msgstr ""
 "systemach operacyjnych, za pomocą Fedory %(rel)s Server zajmuje mniej niż "
 "godzinę. Po prostu działa.”"
 
-#: [1].description[1]
+#: [Server].description[1]
+#, fuzzy
+#| msgid "Systems Engineer"
+msgctxt "Release|"
 msgid "Systems Engineer"
 msgstr "administrator systemów"
 
-#: [1].description[2]
+#: [Server].description[2]
+#, fuzzy
+#| msgid ""
+#| "Fedora Server is a short-lifecycle, community-supported server operating "
+#| "system that enables seasoned system administrators experienced with any "
+#| "OS to make use of the very latest server-based technologies available in "
+#| "the open source community."
+msgctxt "Release|"
 msgid ""
 "Fedora Server is a short-lifecycle, community-supported server operating "
 "system that enables seasoned system administrators experienced with any OS "
@@ -930,25 +1013,44 @@ msgstr ""
 "system operacyjny udostępniający zaawansowanym administratorom systemów "
 "najnowsze technologie dostępne w społeczności open source."
 
-#: [1].description[3]
+#: [Server].description[3]
+#, fuzzy
+#| msgid "Easy Administration"
+msgctxt "Release|"
 msgid "Easy Administration"
 msgstr "Łatwa administracja"
 
-#: [1].description[4]
+#: [Server].description[4]
+#, fuzzy
+#| msgid ""
+#| "Manage your system simply with Cockpit's powerful, modern interface. View "
+#| "and monitor system performance and status, and deploy and manage "
+#| "container-based services."
+msgctxt "Release|"
 msgid ""
 "Manage your system simply with Cockpit's powerful, modern interface. View "
 "and monitor system performance and status, and deploy and manage container-"
 "based services."
 msgstr ""
 "Łatwo zarządzaj systemami za pomocą nowoczesnego interfejsu Cockpit o wielu "
-"możliwościach. Wyświetlaj i monitoruj wydajność i stan oraz wdrażaj i "
-"zarządzaj usługami opartymi o kontenery."
+"możliwościach. Wyświetlaj i monitoruj wydajność i stan oraz wdrażaj "
+"i zarządzaj usługami opartymi o kontenery."
 
-#: [1].description[5]
+#: [Server].description[5]
+#, fuzzy
+#| msgid "Server Roles"
+msgctxt "Release|"
 msgid "Server Roles"
 msgstr "Role serwerowe"
 
-#: [1].description[6]
+#: [Server].description[6]
+#, fuzzy
+#| msgid ""
+#| "There's no need to set up your server from scratch when you use server "
+#| "roles. Server roles plug into your Fedora Server system, providing a well-"
+#| "integrated service on top of the Fedora Server platform. Deploy and "
+#| "manage these prepared roles simply using the Rolekit tool."
+msgctxt "Release|"
 msgid ""
 "There's no need to set up your server from scratch when you use server "
 "roles. Server roles plug into your Fedora Server system, providing a well-"
@@ -960,11 +1062,19 @@ msgstr ""
 "na jego podstawie. Łatwo wdrażaj i zarządzaj przygotowanymi rolami za pomocą "
 "narzędzia RoleKit."
 
-#: [1].description[7]
+#: [Server].description[7]
+#, fuzzy
+#| msgid "Database Services"
+msgctxt "Release|"
 msgid "Database Services"
 msgstr "Usługi bazodanowe"
 
-#: [1].description[8]
+#: [Server].description[8]
+#, fuzzy
+#| msgid ""
+#| "Fedora Server brings with it an enterprise-class, scalable database "
+#| "server powered by the open-source PostgreSQL project."
+msgctxt "Release|"
 msgid ""
 "Fedora Server brings with it an enterprise-class, scalable database server "
 "powered by the open-source PostgreSQL project."
@@ -972,11 +1082,21 @@ msgstr ""
 "Fedora Server dostarcza skalowalny serwer baz danych klasy enterprise, "
 "oparty o projekt open source PostgreSQL."
 
-#: [1].description[9]
+#: [Server].description[9]
+#, fuzzy
+#| msgid "Complete Enterprise Domain Solution"
+msgctxt "Release|"
 msgid "Complete Enterprise Domain Solution"
 msgstr "Kompletne rozwiązanie dla domen firmowych"
 
-#: [1].description[10]
+#: [Server].description[10]
+#, fuzzy
+#| msgid ""
+#| "Level up your Linux network with advanced identity management, DNS, "
+#| "certificate services, Windows(TM) domain integration throughout your "
+#| "environment with FreeIPA, the engine that drives Fedora Server's Domain "
+#| "Controller role."
+msgctxt "Release|"
 msgid ""
 "Level up your Linux network with advanced identity management, DNS, "
 "certificate services, Windows(TM) domain integration throughout your "
@@ -988,7 +1108,14 @@ msgstr ""
 "środowisku za pomocą FreeIPA, silnika napędzającego rolę kontrolera domen "
 "Fedory Server."
 
-#: [1].description[11]
+#: [Server].description[11]
+#, fuzzy
+#| msgid ""
+#| "“The Docker Role for Fedora Server was simple and fast to install so that "
+#| "you can run your Docker images. This makes a great testbed for beginners "
+#| "and experts with docker so that they can develop their applications on "
+#| "the fly.”"
+msgctxt "Release|"
 msgid ""
 "“The Docker Role for Fedora Server was simple and fast to install so that "
 "you can run your Docker images. This makes a great testbed for beginners and "
@@ -998,40 +1125,58 @@ msgstr ""
 "uruchamianie obrazów Docker. Czyni ją to świetną metodą na testowanie "
 "aplikacji przez początkujących i ekspertów.”"
 
-#: [1].description[12]
+#: [Server].description[12]
+#, fuzzy
+#| msgid "</p><p align=right> ― <em>John Unland, "
+msgctxt "Release|"
 msgid "</p><p align=right> ― <em>John Unland, "
 msgstr "</p><p align=right> — <em>John Unland, "
 
-#: [1].description[13]
+#: [Server].description[13]
+#, fuzzy
+#| msgid "Information Systems Student"
+msgctxt "Release|"
 msgid "Information Systems Student"
 msgstr "student informatyki"
 
-#: [2].subvariant
+#: [Silverblue].subvariant
+#, fuzzy
+#| msgid "silverblue"
+msgctxt "Release|"
 msgid "silverblue"
 msgstr "Silverblue"
 
-#: [2].category
+#: [Silverblue].category
+#, fuzzy
+#| msgid "emerging"
+msgctxt "Release|"
 msgid "emerging"
 msgstr "nowe wydanie"
 
-#: [2].name
+#: [Silverblue].name
+#, fuzzy
+#| msgid "Fedora Silverblue"
+msgctxt "Release|"
 msgid "Fedora Silverblue"
 msgstr "Fedora Silverblue"
 
-#: [2].summary
+#: [Silverblue].summary
+msgctxt "Release|"
 msgid ""
 "An extremely stable and reliable desktop operating system, excellent for "
 "developers and for those using container-focused workflows."
 msgstr ""
 
-#: [2].description[0]
+#: [Silverblue].description[0]
+msgctxt "Release|"
 msgid ""
 "Silverblue is a variant of Fedora Workstation. It looks, feels and behaves "
 "like a regular desktop operating system, and the experience is similar to "
 "what you find with using a standard Fedora Workstation."
 msgstr ""
 
-#: [2].description[1]
+#: [Silverblue].description[1]
+msgctxt "Release|"
 msgid ""
 "However, unlike other operating systems, Silverblue has reprovisionable "
 "infrastructure with anti-hysteresis properties. This means that every "
@@ -1040,7 +1185,8 @@ msgid ""
 "the next, and it never changes as it is used."
 msgstr ""
 
-#: [2].description[2]
+#: [Silverblue].description[2]
+msgctxt "Release|"
 msgid ""
 "Silverblue’s design is intended to make it more stable, less prone to bugs, "
 "and easier to test and develop. The design also makes it an excellent "
@@ -1049,7 +1195,8 @@ msgid ""
 "from the host system, improving stability and reliability."
 msgstr ""
 
-#: [2].description[3]
+#: [Silverblue].description[3]
+msgctxt "Release|"
 msgid ""
 "Silverblue’s core technologies have some other helpful features. OS updates "
 "are fast and there’s no waiting around for them to install: just reboot as "
@@ -1058,25 +1205,43 @@ msgid ""
 "goes wrong."
 msgstr ""
 
-#: [3].subvariant
+#: [KDE].subvariant
+#, fuzzy
+#| msgid "kde"
+msgctxt "Release|"
 msgid "kde"
 msgstr "KDE"
 
-#: [3].category
-msgctxt ""
-"[3].category[3].category[3].category[3].category[3].category[3].category"
+#: [KDE].category
+#, fuzzy
+#| msgctxt ""
+#| "[3].category[3].category[3].category[3].category[3].category[3].category"
+#| msgid "spins"
+msgctxt "Release|"
 msgid "spins"
 msgstr "obrazy"
 
-#: [3].name
+#: [KDE].name
+#, fuzzy
+#| msgid "Fedora KDE Plasma Desktop"
+msgctxt "Release|"
 msgid "Fedora KDE Plasma Desktop"
 msgstr "Fedora ze środowiskiem KDE Plasma"
 
-#: [3].summary
+#: [KDE].summary
+#, fuzzy
+#| msgid "A complete, modern desktop built using the KDE Plasma Desktop."
+msgctxt "Release|"
 msgid "A complete, modern desktop built using the KDE Plasma Desktop."
 msgstr "Pełne, nowoczesne środowisko KDE Plasma."
 
-#: [3].description[0]
+#: [KDE].description[0]
+#, fuzzy
+#| msgid ""
+#| "The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based "
+#| "operating system utilizing the KDE Plasma Desktop as the main user "
+#| "interface."
+msgctxt "Release|"
 msgid ""
 "The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based operating "
 "system utilizing the KDE Plasma Desktop as the main user interface."
@@ -1084,7 +1249,16 @@ msgstr ""
 "Fedora KDE Plasma jest systemem operacyjnym opartym na Fedorze o wielu "
 "możliwościach, używającym środowiska KDE Plasma."
 
-#: [3].description[1]
+#: [KDE].description[1]
+#, fuzzy
+#| msgid ""
+#| "Fedora KDE Plasma Desktop comes with many pre-selected top quality "
+#| "applications that suit all modern desktop use cases - from online "
+#| "communication like web browsing, instant messaging and electronic mail "
+#| "correspondence, through multimedia and entertainment, to an advanced "
+#| "productivity suite, including office applications and enterprise grade "
+#| "personal information management."
+msgctxt "Release|"
 msgid ""
 "Fedora KDE Plasma Desktop comes with many pre-selected top quality "
 "applications that suit all modern desktop use cases - from online "
@@ -1098,7 +1272,13 @@ msgstr ""
 "wiadomości e-mail, słuchania muzyki, oglądania filmów, grania, a także "
 "programy biurowe i PIM."
 
-#: [3].description[2]
+#: [KDE].description[2]
+#, fuzzy
+#| msgid ""
+#| "All KDE applications are well integrated, with a similar look and feel "
+#| "and an easy to use interface, accompanied by an outstanding graphical "
+#| "appearance."
+msgctxt "Release|"
 msgid ""
 "All KDE applications are well integrated, with a similar look and feel and "
 "an easy to use interface, accompanied by an outstanding graphical appearance."
@@ -1106,24 +1286,33 @@ msgstr ""
 "Wszystkie aplikacje KDE są ze sobą zintegrowane, mają podobny wygląd i łatwy "
 "w użyciu interfejs."
 
-#: [4].subvariant
+#: [XFCE].subvariant
+#, fuzzy
+#| msgid "xfce"
+msgctxt "Release|"
 msgid "xfce"
 msgstr "Xfce"
 
-#: [4].category
-msgctxt "[4].category"
-msgid "spins"
-msgstr "obrazy"
-
-#: [4].name
+#: [XFCE].category [XFCE].name
+#, fuzzy
+#| msgid "Fedora Xfce Desktop"
+msgctxt "Release|"
 msgid "Fedora Xfce Desktop"
 msgstr "Fedora ze środowiskiem Xfce"
 
-#: [4].summary
+#: [XFCE].summary
+#, fuzzy
+#| msgid "A complete, well-integrated Xfce Desktop."
+msgctxt "Release|"
 msgid "A complete, well-integrated Xfce Desktop."
 msgstr "Pełne, dobrze zintegrowane środowisko Xfce."
 
-#: [4].description[0]
+#: [XFCE].description[0]
+#, fuzzy
+#| msgid ""
+#| "The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast "
+#| "and lightweight, while still being visually appealing and user friendly."
+msgctxt "Release|"
 msgid ""
 "The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast and "
 "lightweight, while still being visually appealing and user friendly."
@@ -1131,30 +1320,51 @@ msgstr ""
 "Obraz Fedory ze środowiskiem Xfce ma na celu być jak najszybszy i lekki, ale "
 "jednocześnie ładny i łatwy w obsłudze."
 
-#: [4].description[1]
+#: [XFCE].description[1]
+#, fuzzy
+#| msgid ""
+#| "Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
+msgctxt "Release|"
 msgid ""
 "Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
 msgstr ""
 "Xfce Fedory jest pełnym środowiskiem używającym standardów freedesktop.org."
 
-#: [5].subvariant
+#: [LXQT].subvariant
+#, fuzzy
+#| msgid "lxqt"
+msgctxt "Release|"
 msgid "lxqt"
 msgstr "LXQt"
 
-#: [5].category
-msgctxt "[5].category"
-msgid "spins"
-msgstr "obrazy"
-
-#: [5].name
+#: [LXQT].category [LXQT].name
+#, fuzzy
+#| msgid "Fedora LXQt Desktop"
+msgctxt "Release|"
 msgid "Fedora LXQt Desktop"
 msgstr "Fedora ze środowiskiem LXQt"
 
-#: [5].summary
+#: [LXQT].summary
+#, fuzzy
+#| msgid "A lightweight, well-integrated LXQt desktop environment."
+msgctxt "Release|"
 msgid "A lightweight, well-integrated LXQt desktop environment."
 msgstr "Lekkie, dobrze zintegrowane środowisko LXQt."
 
-#: [5].description[0]
+#: [LXQT].description[0]
+#, fuzzy
+#| msgid ""
+#| "Fedora LXQt provides a lightweight, well-integrated LXQt desktop "
+#| "environment. In addition to LXQt itself it provides a small, well "
+#| "selected collection of applications like the QupZilla browser, which "
+#| "combines Chromium's rendering engine with a nice Qt experience. Other "
+#| "applications include the Trojita mail client, the qBittorrent client, the "
+#| "Yarock music player and a set of some more commonly used applications. As "
+#| "all applications use the same Qt5 toolkit and the Breeze theme known from "
+#| "KDE, the desktop provides a unified and well-integrated style and "
+#| "theming. In addition breeze-gtk is provided to allow the user to "
+#| "integrate GTK applications too."
+msgctxt "Release|"
 msgid ""
 "Fedora LXQt provides a lightweight, well-integrated LXQt desktop "
 "environment. In addition to LXQt itself it provides a small, well selected "
@@ -1169,32 +1379,44 @@ msgid ""
 msgstr ""
 "Ta Fedora dostarcza lekkie, dobrze zintegrowane środowisko LXQt. Poza samym "
 "LXQt zawiera także mały, wyselekcjonowany zestaw aplikacji, w tym "
-"przeglądarkę QupZilla, łączącą mechanizm wyświetlania stron Chromium z "
-"interfejsem Qt. Dostępny jest także klient poczty Trojita, klient "
+"przeglądarkę QupZilla, łączącą mechanizm wyświetlania stron Chromium "
+"z interfejsem Qt. Dostępny jest także klient poczty Trojita, klient "
 "qBittorrent, odtwarzacz muzyki Yarock i więcej często używanych aplikacji. "
 "Ponieważ wszystkie używają tej samej biblioteki Qt5 i tego samego motywu "
 "Breeze, znanego ze środowiska KDE, LXQt ma ujednolicony, dobrze zintegrowany "
 "styl. Dodatkowo dostarczany jest pakiet breeze-gtk, umożliwiający "
 "integrowanie aplikacji GTK."
 
-#: [6].subvariant
+#: [Mate].subvariant
+#, fuzzy
+#| msgid "mate"
+msgctxt "Release|"
 msgid "mate"
 msgstr "MATE"
 
-#: [6].category
-msgctxt "[6].category"
-msgid "spins"
-msgstr "obrazy"
-
-#: [6].name
+#: [Mate].category [Mate].name
+#, fuzzy
+#| msgid "Fedora MATE-Compiz Desktop"
+msgctxt "Release|"
 msgid "Fedora MATE-Compiz Desktop"
 msgstr "Fedora ze środowiskiem MATE Compiz"
 
-#: [6].summary
+#: [Mate].summary
+#, fuzzy
+#| msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
+msgctxt "Release|"
 msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
 msgstr "Klasyczny pulpit Fedory z dodatkowym menedżerem okien 3D."
 
-#: [6].description[0]
+#: [Mate].description[0]
+#, fuzzy
+#| msgid ""
+#| "The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE "
+#| "Desktop is a lightweight, powerful desktop designed with productivity and "
+#| "performance in mind. The default windows manager is Marco which is usable "
+#| "for all machines and VMs. Compiz Fusion is a beautiful 3D windowing "
+#| "manager with Emerald and GTK+ theming."
+msgctxt "Release|"
 msgid ""
 "The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE Desktop "
 "is a lightweight, powerful desktop designed with productivity and "
@@ -1203,12 +1425,17 @@ msgid ""
 "with Emerald and GTK+ theming."
 msgstr ""
 "Obraz MATE Compiz łączy środowisko MATE z menedżerem okien Compiz Fusion. "
-"Środowisko MATE to lekki pulpit o wielu możliwościach, zaprojektowany z "
-"myślą o produktywności i wydajności. Domyślnym menedżerem okien jest Marco, "
-"działający na wszystkich komputerach i maszynach wirtualnych. Compiz Fusion "
-"jest pięknym menedżerem okien 3D obsługującym motywy Emerald i GTK."
+"Środowisko MATE to lekki pulpit o wielu możliwościach, zaprojektowany "
+"z myślą o produktywności i wydajności. Domyślnym menedżerem okien jest "
+"Marco, działający na wszystkich komputerach i maszynach wirtualnych. Compiz "
+"Fusion jest pięknym menedżerem okien 3D obsługującym motywy Emerald i GTK."
 
-#: [6].description[1]
+#: [Mate].description[1]
+#, fuzzy
+#| msgid ""
+#| "If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
+#| "should definitely try the MATE-Compiz spin."
+msgctxt "Release|"
 msgid ""
 "If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
 "should definitely try the MATE-Compiz spin."
@@ -1216,32 +1443,36 @@ msgstr ""
 "Użytkownicy spragnieni potężnego, lekkiego pulpitu Fedory z dodatkami 3D "
 "zdecydowanie powinni spróbować obraz MATE Compiz."
 
-#: [7].subvariant
+#: [Cinnamon].subvariant
+#, fuzzy
+#| msgid "cinnamon"
+msgctxt "Release|"
 msgid "cinnamon"
 msgstr "Cinnamon"
 
-#: [7].category
-msgctxt "[7].category"
-msgid "spins"
-msgstr "obrazy"
-
-#: [7].name
+#: [Cinnamon].category [Cinnamon].name
+#, fuzzy
+#| msgid "Fedora Cinnamon Desktop"
+msgctxt "Release|"
 msgid "Fedora Cinnamon Desktop"
 msgstr "Fedora ze środowiskiem Cinnamon"
 
-#: [7].summary
+#: [Cinnamon].summary
+#, fuzzy
+#| msgid "A modern desktop featuring traditional Gnome user experience."
+msgctxt "Release|"
 msgid "A modern desktop featuring traditional Gnome user experience."
 msgstr "Nowoczesne środowisko zawierające tradycyjny interfejs GNOME."
 
-#: [7].screenshots[0]
-msgid ""
-"https://spins.fedoraproject.org/static/images/screenshots/screenshot-"
-"cinnamon.jpg"
-msgstr ""
-"https://spins.fedoraproject.org/static/images/screenshots/screenshot-cinnamon"
-".jpg"
-
-#: [7].description[0]
+#: [Cinnamon].description[0]
+#, fuzzy
+#| msgid ""
+#| "Cinnamon is a Linux desktop which provides advanced innovative features "
+#| "and a traditional user experience. The desktop layout is similar to Gnome "
+#| "2. The underlying technology is forked from Gnome Shell. The emphasis is "
+#| "put on making users feel at home and providing them with an easy to use "
+#| "and comfortable desktop experience."
+msgctxt "Release|"
 msgid ""
 "Cinnamon is a Linux desktop which provides advanced innovative features and "
 "a traditional user experience. The desktop layout is similar to Gnome 2. The "
@@ -1249,12 +1480,17 @@ msgid ""
 "making users feel at home and providing them with an easy to use and "
 "comfortable desktop experience."
 msgstr ""
-"Cinnamon to linuksowe środowisko dostarczające zaawansowane funkcje i "
-"tradycyjny interfejs. Układ pulpitu jest podobny do GNOME 2, a jego "
+"Cinnamon to linuksowe środowisko dostarczające zaawansowane funkcje "
+"i tradycyjny interfejs. Układ pulpitu jest podobny do GNOME 2, a jego "
 "technologia pochodzi od GNOME Shell. Cinnamon kładzie nacisk na przyjazny "
 "wygląd i wygodę użycia."
 
-#: [7].description[1]
+#: [Cinnamon].description[1]
+#, fuzzy
+#| msgid ""
+#| "Cinnamon is a popular desktop alternative to Gnome 3 and this spin "
+#| "provides the option to quickly try and install this desktop."
+msgctxt "Release|"
 msgid ""
 "Cinnamon is a popular desktop alternative to Gnome 3 and this spin provides "
 "the option to quickly try and install this desktop."
@@ -1262,30 +1498,36 @@ msgstr ""
 "Cinnamon to popularna alternatywa dla GNOME 3. Ten obraz umożliwia jego "
 "szybkie wypróbowanie i zainstalowanie."
 
-#: [8].subvariant
+#: [LXDE].subvariant
+#, fuzzy
+#| msgid "lxde"
+msgctxt "Release|"
 msgid "lxde"
 msgstr "LXDE"
 
-#: [8].category
-msgctxt "[8].category"
-msgid "spins"
-msgstr "obrazy"
-
-#: [8].name
+#: [LXDE].category [LXDE].name
+#, fuzzy
+#| msgid "Fedora LXDE Desktop"
+msgctxt "Release|"
 msgid "Fedora LXDE Desktop"
 msgstr "Fedora ze środowiskiem LXDE"
 
-#: [8].summary
+#: [LXDE].summary
+#, fuzzy
+#| msgid "A light, fast, less-resource hungry desktop environment."
+msgctxt "Release|"
 msgid "A light, fast, less-resource hungry desktop environment."
 msgstr "Lekkie, szybkie środowisko pulpitu."
 
-#: [8].screenshots[0]
-msgid ""
-"https://spins.fedoraproject.org/static/images/screenshots/screenshot-lxde.jpg"
-msgstr ""
-"https://spins.fedoraproject.org/static/images/screenshots/screenshot-lxde.jpg"
-
-#: [8].description[0]
+#: [LXDE].description[0]
+#, fuzzy
+#| msgid ""
+#| "LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
+#| "performant, and energy-saving desktop environment. It maintained by an "
+#| "international community of developers and comes with a beautiful "
+#| "interface, multi-language support, standard keyboard shortcuts and "
+#| "additional features like tabbed file browsing."
+msgctxt "Release|"
 msgid ""
 "LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
 "performant, and energy-saving desktop environment. It maintained by an "
@@ -1299,7 +1541,14 @@ msgstr ""
 "obsługę wielu języków, standardowe skróty klawiszowe i dodatkowe funkcje, "
 "takie jak przeglądanie plików w kartach."
 
-#: [8].description[1]
+#: [LXDE].description[1]
+#, fuzzy
+#| msgid ""
+#| "LXDE is not designed to be powerful and bloated, but to be usable and "
+#| "slim. A main goal of LXDE is to keep computer resource usage low. It is "
+#| "especially designed for computers with low hardware specifications like "
+#| "netbooks, mobile devices (e.g. MIDs) or older computers."
+msgctxt "Release|"
 msgid ""
 "LXDE is not designed to be powerful and bloated, but to be usable and slim. "
 "A main goal of LXDE is to keep computer resource usage low. It is especially "
@@ -1311,24 +1560,34 @@ msgstr ""
 "dzięki czemu doskonale sprawdza się na słabszych komputerach, takich jak "
 "netbooki, urządzenia mobilne (np. MID) lub po prostu starsze komputery."
 
-#: [9].subvariant
+#: [SOAS].subvariant
+#, fuzzy
+#| msgid "soas"
+msgctxt "Release|"
 msgid "soas"
 msgstr "SoaS"
 
-#: [9].category
-msgctxt "[9].category"
-msgid "spins"
-msgstr "obrazy"
-
-#: [9].name
+#: [SOAS].category [SOAS].name
+#, fuzzy
+#| msgid "Fedora SoaS Desktop"
+msgctxt "Release|"
 msgid "Fedora SoaS Desktop"
 msgstr "Fedora ze środowiskiem SoaS"
 
-#: [9].summary
+#: [SOAS].summary
+#, fuzzy
+#| msgid "Discover. Reflect. Share. Learn."
+msgctxt "Release|"
 msgid "Discover. Reflect. Share. Learn."
 msgstr "Odkrycie. Refleksja. Dzielenie się. Uczenie się."
 
-#: [9].description[0]
+#: [SOAS].description[0]
+#, fuzzy
+#| msgid ""
+#| "Sugar on a Stick is a Fedora-based operating system featuring the award-"
+#| "winning Sugar Learning Platform and designed to fit on an ordinary USB "
+#| "thumbdrive (\"stick\")."
+msgctxt "Release|"
 msgid ""
 "Sugar on a Stick is a Fedora-based operating system featuring the award-"
 "winning Sugar Learning Platform and designed to fit on an ordinary USB "
@@ -1338,7 +1597,18 @@ msgstr ""
 "nagradzaną Platformę nauczania Sugar i zaprojektowany tak, aby pasował do "
 "zwykłego pendrive’a."
 
-#: [9].description[1]
+#: [SOAS].description[1]
+#, fuzzy
+#| msgid ""
+#| "Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
+#| "child-friendly graphical environment. Sugar automatically saves your "
+#| "progress to a \"Journal\" on your stick, so teachers and parents can "
+#| "easily pull up \"all collaborative web browsing sessions done in the past "
+#| "week\" or \"papers written with Daniel and Sarah in the last 24 hours\" "
+#| "with a simple query rather than memorizing complex file/folder "
+#| "structures. Applications in Sugar are known as Activities, some of which "
+#| "are described below."
+msgctxt "Release|"
 msgid ""
 "Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
 "child-friendly graphical environment. Sugar automatically saves your "
@@ -1351,13 +1621,21 @@ msgstr ""
 "Sugar nie korzysta z tradycyjnego pulpitu, zamiast którego zawiera "
 "środowisko graficzne przyjazne dzieciom. Sugar automatycznie zapisuje "
 "postępy w Dzienniku na pendrivie, więc nauczyciele i rodzice mogą łatwo "
-"uzyskać dostęp do „wszystkich sesji grupowego przeglądania stron WWW w "
-"ostatnim tygodniu” lub „wypracowań napisanych przez Daniela i Sarę w ciągu "
+"uzyskać dostęp do „wszystkich sesji grupowego przeglądania stron WWW "
+"w ostatnim tygodniu” lub „wypracowań napisanych przez Daniela i Sarę w ciągu "
 "ostatniej doby” za pomocą prostych zapytań, zamiast zapamiętywania "
 "skomplikowanych hierarchii plików/katalogów. Aplikacje w środowisku Sugar są "
 "znane jako Aktywności. Niektóre z nich są opisane poniżej."
 
-#: [9].description[2]
+#: [SOAS].description[2]
+#, fuzzy
+#| msgid ""
+#| "It is now deployable for the cost of a stick rather than a laptop; "
+#| "students can take their Sugar on a Stick thumbdrive to any machine - at "
+#| "school, at home, at a library or community center - and boot their "
+#| "customized computing environment without touching the host machine’s hard "
+#| "disk or existing system at all."
+msgctxt "Release|"
 msgid ""
 "It is now deployable for the cost of a stick rather than a laptop; students "
 "can take their Sugar on a Stick thumbdrive to any machine - at school, at "
@@ -1370,35 +1648,64 @@ msgstr ""
 "domu, bibliotece lub w domu kultury — i uruchomić dostosowane pod siebie "
 "środowisko bez zmieniania niczego na tym komputerze."
 
-#: [10].subvariant
+#: [Astronomy].subvariant
+#, fuzzy
+#| msgid "astronomy"
+msgctxt "Release|"
 msgid "astronomy"
 msgstr "Astronomy"
 
-#: [10].category
-msgctxt ""
-"[10].category[10].category[10].category[10].category[10].category[10]."
-"category"
+#: [Astronomy].category
+#, fuzzy
+#| msgctxt ""
+#| "[10].category[10].category[10].category[10].category[10].category[10]."
+#| "category"
+#| msgid "labs"
+msgctxt "Release|"
 msgid "labs"
 msgstr "Labs"
 
-#: [10].name
+#: [Astronomy].name
+#, fuzzy
+#| msgid "Fedora Astronomy"
+msgctxt "Release|"
 msgid "Fedora Astronomy"
 msgstr "Fedora Astronomy"
 
-#: [10].summary
+#: [Astronomy].summary
+#, fuzzy
+#| msgid ""
+#| "Powerful completely open-source and free tool for amateurs and "
+#| "professionals."
+msgctxt "Release|"
 msgid ""
 "Powerful completely open-source and free tool for amateurs and professionals."
 msgstr "Kompleksowe narzędzie open source dla amatorów i zawodowców."
 
-#: [10].description[0]
+#: [Astronomy].description[0]
+#, fuzzy
+#| msgid ""
+#| "Fedora Astronomy brings a complete open source toolchain to both amateur "
+#| "and professional astronomers."
+msgctxt "Release|"
 msgid ""
 "Fedora Astronomy brings a complete open source toolchain to both amateur and "
 "professional astronomers."
 msgstr ""
-"Fedora Astronomy zawiera kompleksowy zestaw narzędzi dla amatorskich i "
-"zawodowych astronomów."
+"Fedora Astronomy zawiera kompleksowy zestaw narzędzi dla amatorskich "
+"i zawodowych astronomów."
 
-#: [10].description[1]
+#: [Astronomy].description[1]
+#, fuzzy
+#| msgid ""
+#| "The Spin provides the Fedora KDE desktop enhanced with a complete "
+#| "scientific Python environment and the AstrOmatic software for data "
+#| "analysis. KStars was added to provide a full featured astrophotography "
+#| "tool. As KStars uses the INDI library to control equipment, various "
+#| "telescopes, cameras etc. are supported. Summarized, Fedora Astronomy "
+#| "provides a complete set of software, from the observation planning to the "
+#| "final results."
+msgctxt "Release|"
 msgid ""
 "The Spin provides the Fedora KDE desktop enhanced with a complete scientific "
 "Python environment and the AstrOmatic software for data analysis. KStars was "
@@ -1414,20 +1721,26 @@ msgstr ""
 "Fedora Astronomy to pełny zestaw oprogramowania astronomicznego, od "
 "planowania obserwacji do uzyskania wyników."
 
-#: [11].subvariant
+#: [DesignSuite].subvariant
+#, fuzzy
+#| msgid "design_suite"
+msgctxt "Release|"
 msgid "design_suite"
 msgstr "Design Suite"
 
-#: [11].category
-msgctxt "[11].category"
-msgid "labs"
-msgstr "Labs"
-
-#: [11].name
+#: [DesignSuite].category [DesignSuite].name
+#, fuzzy
+#| msgid "Fedora Design Suite"
+msgctxt "Release|"
 msgid "Fedora Design Suite"
 msgstr "Fedora Design Suite"
 
-#: [11].summary
+#: [DesignSuite].summary
+#, fuzzy
+#| msgid ""
+#| "Visual design, multimedia production, and publishing suite of free and "
+#| "open source creative tools."
+msgctxt "Release|"
 msgid ""
 "Visual design, multimedia production, and publishing suite of free and open "
 "source creative tools."
@@ -1435,7 +1748,13 @@ msgstr ""
 "Zestaw narzędzi open source do projektowania, rysowania, tworzenia projektów "
 "multimedialnych i publikowania."
 
-#: [11].description[0]
+#: [DesignSuite].description[0]
+#, fuzzy
+#| msgid ""
+#| "Looking for a ready-to-go desktop environment brimming with free and open "
+#| "source multimedia production and publishing tools? Try the Design Suite, "
+#| "a Fedora Spin created by designers, for designers."
+msgctxt "Release|"
 msgid ""
 "Looking for a ready-to-go desktop environment brimming with free and open "
 "source multimedia production and publishing tools? Try the Design Suite, a "
@@ -1445,7 +1764,17 @@ msgstr ""
 "narzędziami do produkcji multimediów i publikacji? Spróbuj Design Suite, "
 "obrazu Fedory stworzonego przez projektantów, dla projektantów."
 
-#: [11].description[1]
+#: [DesignSuite].description[1]
+#, fuzzy
+#| msgid ""
+#| "The Design Suite includes the favorite tools of the Fedora Design Team. "
+#| "These are the same programs we use to create all the artwork that you see "
+#| "within the Fedora Project, from desktop backgrounds to CD sleeves, web "
+#| "page designs, application interfaces, flyers, posters and more. From "
+#| "document publication to vector and bitmap editing or 3D modeling to photo "
+#| "management, the Design Suite has an application for you — and you can "
+#| "install thousands more from the Fedora universe of packages."
+msgctxt "Release|"
 msgid ""
 "The Design Suite includes the favorite tools of the Fedora Design Team. "
 "These are the same programs we use to create all the artwork that you see "
@@ -1456,42 +1785,58 @@ msgid ""
 "more from the Fedora universe of packages."
 msgstr ""
 "Design Suite zawiera ulubione narzędzia Zespołu projektantów Fedory. Są to "
-"te same programy, których zespół używa do tworzenia obrazów widocznych w "
-"Projekcie Fedora, od teł pulpitu do okładek na płyty CD, projekty stron WWW, "
-"interfejsy aplikacji, ulotki, plakaty i wiele więcej. Design Suite zawiera "
-"wszystko, co jest potrzebne do publikowania dokumentów, modyfikowania grafik "
-"wektorowych i bitmapowych, modelowania grafiki 3D, zarządzania zdjęciami — a "
-"do tego można zainstalować tysiące innych programów dostępnych w Fedorze."
+"te same programy, których zespół używa do tworzenia obrazów widocznych "
+"w Projekcie Fedora, od teł pulpitu do okładek na płyty CD, projekty stron "
+"WWW, interfejsy aplikacji, ulotki, plakaty i wiele więcej. Design Suite "
+"zawiera wszystko, co jest potrzebne do publikowania dokumentów, "
+"modyfikowania grafik wektorowych i bitmapowych, modelowania grafiki 3D, "
+"zarządzania zdjęciami — a do tego można zainstalować tysiące innych "
+"programów dostępnych w Fedorze."
 
-#: [12].subvariant
+#: [Games].subvariant
+#, fuzzy
+#| msgid "games"
+msgctxt "Release|"
 msgid "games"
 msgstr "Games"
 
-#: [12].category
-msgctxt "[12].category"
-msgid "labs"
-msgstr "Labs"
-
-#: [12].name
+#: [Games].category [Games].name
 msgid "Fedora Games"
 msgstr "Fedora Games"
 
-#: [12].summary
+#: [Games].summary
+#, fuzzy
+#| msgid ""
+#| "A collection and perfect show-case of the best games available in Fedora."
+msgctxt "Release|"
 msgid ""
 "A collection and perfect show-case of the best games available in Fedora."
 msgstr "Idealny pokaz najlepszych gier dostępnych w Fedorze."
 
-#: [12].description[0]
+#: [Games].description[0]
+#, fuzzy
+#| msgid ""
+#| "The Fedora Games spin offers a perfect showcase of the best games "
+#| "available in Fedora. The included games span several genres, from first-"
+#| "person shooters to real-time and turn-based strategy games to puzzle "
+#| "games."
+msgctxt "Release|"
 msgid ""
 "The Fedora Games spin offers a perfect showcase of the best games available "
 "in Fedora. The included games span several genres, from first-person "
 "shooters to real-time and turn-based strategy games to puzzle games."
 msgstr ""
-"Obraz Fedora Games oferuje idealny pokaz najlepszych gier dostępnych w "
-"Fedorze: od strzelanek pierwszoosobowych, przez strategie turowe i czasu "
+"Obraz Fedora Games oferuje idealny pokaz najlepszych gier dostępnych "
+"w Fedorze: od strzelanek pierwszoosobowych, przez strategie turowe i czasu "
 "rzeczywistego, do łamigłówek logicznych."
 
-#: [12].description[1]
+#: [Games].description[1]
+#, fuzzy
+#| msgid ""
+#| "Not all the games available in Fedora are included on this spin, but "
+#| "trying out this spin will give you a fair impression of Fedora's ability "
+#| "to run great games."
+msgctxt "Release|"
 msgid ""
 "Not all the games available in Fedora are included on this spin, but trying "
 "out this spin will give you a fair impression of Fedora's ability to run "
@@ -1500,25 +1845,41 @@ msgstr ""
 "Nie wszystkie gry dostępne w Fedorze są zawarte w tym obrazie, ale "
 "wypróbowanie go daje odpowiedni obraz możliwości Fedory w dziedzinie gier."
 
-#: [13].subvariant
+#: [Python].subvariant
+#, fuzzy
+#| msgid "python"
+msgctxt "Release|"
 msgid "python"
 msgstr "Python"
 
-#: [13].category
-msgctxt "[13].category"
-msgid "labs"
-msgstr "Labs"
-
-#: [13].name
+#: [Python].category [Python].name
+#, fuzzy
+#| msgid "Fedora Python Classroom"
+msgctxt "Release|"
 msgid "Fedora Python Classroom"
 msgstr "Fedora Python Classroom"
 
-#: [13].summary
+#: [Python].summary
+#, fuzzy
+#| msgid ""
+#| "A classroom lab for teaching the Python programming language to students"
+msgctxt "Release|"
 msgid ""
 "A classroom lab for teaching the Python programming language to students"
 msgstr "Laboratorium do nauczania języka programowania Python"
 
-#: [13].description[0]
+#: [Python].description[0]
+#, fuzzy
+#| msgid ""
+#| "One of the benefits of Fedora for Python developers is the ease of "
+#| "setting up Python development. The Fedora Python Classroom Lab makes it "
+#| "even easier for teachers and instructors to use Fedora in their "
+#| "classrooms or workshops. Ready to use operating system with important "
+#| "stuff pre-installed - either with GNOME or as a headless environment for "
+#| "Docker or Vagrant. Teach Python on Fedora, with Fedora, using the stuff "
+#| "you love: IPython, Jupyter Notebook, multiple Pythons, virtualenvs, tox, "
+#| "git and more"
+msgctxt "Release|"
 msgid ""
 "One of the benefits of Fedora for Python developers is the ease of setting "
 "up Python development. The Fedora Python Classroom Lab makes it even easier "
@@ -1531,12 +1892,19 @@ msgstr ""
 "Jedną z zalet Fedory dla programistów języka Python jest łatwość ustawiania "
 "środowiska Python. Fedora Python Classroom jeszcze bardziej ułatwia używanie "
 "Fedory w klasach i warsztatach. To gotowy do użycia system operacyjny z już "
-"zainstalowanymi ważnymi programami — zarówno ze środowiskiem GNOME, jak i "
-"dla oprogramowania Docker i Vagrant. Nauczanie języka Python na Fedorze, z "
-"Fedorą, używając ulubionych programów: IPython, Jupyter Notebook, wiele "
+"zainstalowanymi ważnymi programami — zarówno ze środowiskiem GNOME, jak "
+"i dla oprogramowania Docker i Vagrant. Nauczanie języka Python na Fedorze, "
+"z Fedorą, używając ulubionych programów: IPython, Jupyter Notebook, wiele "
 "wersji Pythona, virtualenvs, tox, git i nie tylko"
 
-#: [13].description[1]
+#: [Python].description[1]
+#, fuzzy
+#| msgid ""
+#| "The Fedora Python Classroom Lab comes in 3 variants. Either you can run "
+#| "it in graphical mode with GNOME, or you can virtualize it with Vagrant or "
+#| "run it in a Docker container. You choose what fits your teaching "
+#| "environment the best."
+msgctxt "Release|"
 msgid ""
 "The Fedora Python Classroom Lab comes in 3 variants. Either you can run it "
 "in graphical mode with GNOME, or you can virtualize it with Vagrant or run "
@@ -1547,20 +1915,26 @@ msgstr ""
 "graficznym za pomocą środowiska GNOME, wirtualizować ją za pomocą "
 "oprogramowania Vagrant lub uruchamiać w kontenerze Docker."
 
-#: [14].subvariant
+#: [Robotics].subvariant
+#, fuzzy
+#| msgid "robotics"
+msgctxt "Release|"
 msgid "robotics"
 msgstr "Robotics"
 
-#: [14].category
-msgctxt "[14].category"
-msgid "labs"
-msgstr "Labs"
-
-#: [14].name
+#: [Robotics].category [Robotics].name
+#, fuzzy
+#| msgid "Fedora Robotics Suite"
+msgctxt "Release|"
 msgid "Fedora Robotics Suite"
 msgstr "Fedora Robotics Suite"
 
-#: [14].summary
+#: [Robotics].summary
+#, fuzzy
+#| msgid ""
+#| "A wide variety of free and open robotics software packages for beginners "
+#| "and experts in robotics."
+msgctxt "Release|"
 msgid ""
 "A wide variety of free and open robotics software packages for beginners and "
 "experts in robotics."
@@ -1568,7 +1942,18 @@ msgstr ""
 "Zestaw pakietów open source dla początkujących i zaawansowanych entuzjastów "
 "robotyki."
 
-#: [14].description[0]
+#: [Robotics].description[0]
+#, fuzzy
+#| msgid ""
+#| "The Fedora Robotics spin provides a wide variety of free and open "
+#| "robotics software packages. These range from hardware accessory libraries "
+#| "for the Hokuyo laser scanners or Katana robotic arm to software "
+#| "frameworks like Fawkes or Player and simulation environments such as "
+#| "Stage and RoboCup Soccer Simulation Server 2D/3D. It also provides a "
+#| "ready to use development environment for robotics including useful "
+#| "libraries such as OpenCV computer vision library, Festival text to speech "
+#| "system and MRPT."
+msgctxt "Release|"
 msgid ""
 "The Fedora Robotics spin provides a wide variety of free and open robotics "
 "software packages. These range from hardware accessory libraries for the "
@@ -1578,8 +1963,8 @@ msgid ""
 "environment for robotics including useful libraries such as OpenCV computer "
 "vision library, Festival text to speech system and MRPT."
 msgstr ""
-"Obraz Fedora Robotics dostarcza liczne wolne pakiety wspierające robotykę, w "
-"tym biblioteki dostępu do sprzętu dla skanerów laserowych Hokuyo lub "
+"Obraz Fedora Robotics dostarcza liczne wolne pakiety wspierające robotykę, "
+"w tym biblioteki dostępu do sprzętu dla skanerów laserowych Hokuyo lub "
 "automatycznego ramienia Katana, mechanizmy programowe, takie jak Fawkes lub "
 "Player oraz środowiska symulacyjne, takie jak Stage i RoboCup Soccer "
 "Simulation Server 2D/3D. Dostarcza on także gotowe do użycia środowisko "
@@ -1587,7 +1972,15 @@ msgstr ""
 "biblioteka wzroku komputerowego OpenCV, system tekstu-do-mowy Festival oraz "
 "MRPT."
 
-#: [14].description[1]
+#: [Robotics].description[1]
+#, fuzzy
+#| msgid ""
+#| "The Robotics spin is targeted at people just discovering their interest "
+#| "in robotics as well as experienced roboticists. For the former we provide "
+#| "a readily usable simulation environment with an introductory hands-on "
+#| "demonstration, and for the latter we provide a full development "
+#| "environment, to be used immediately."
+msgctxt "Release|"
 msgid ""
 "The Robotics spin is targeted at people just discovering their interest in "
 "robotics as well as experienced roboticists. For the former we provide a "
@@ -1597,31 +1990,43 @@ msgid ""
 msgstr ""
 "Obraz Robotics jest przeznaczony zarówno dla osób rozpoczynających przygodę "
 "z robotyką, jak i specjalistów w tej dziedzinie. Dla tych pierwszych "
-"dostarczane jest gotowe środowisko symulacji z wprowadzającym samouczkiem, a "
-"dla tych drugich dostarczane jest pełne środowisko programistyczne, gotowe "
+"dostarczane jest gotowe środowisko symulacji z wprowadzającym samouczkiem, "
+"a dla tych drugich dostarczane jest pełne środowisko programistyczne, gotowe "
 "do natychmiastowego użytku."
 
-#: [15].subvariant
+#: [Scientific].subvariant
+#, fuzzy
+#| msgid "scientific"
+msgctxt "Release|"
 msgid "scientific"
 msgstr "Scientific"
 
-#: [15].category
-msgctxt "[15].category"
-msgid "labs"
-msgstr "Labs"
-
-#: [15].name
+#: [Scientific].category [Scientific].name
+#, fuzzy
+#| msgid "Fedora Scientific"
+msgctxt "Release|"
 msgid "Fedora Scientific"
 msgstr "Fedora Scientific"
 
-#: [15].summary
+#: [Scientific].summary
+#, fuzzy
+#| msgid ""
+#| "A bundle of open source scientific and numerical tools used in research."
+msgctxt "Release|"
 msgid ""
 "A bundle of open source scientific and numerical tools used in research."
 msgstr ""
 "Zestaw narzędzi naukowych i obliczeniowych open source używanych w badaniach "
 "naukowych."
 
-#: [15].description[0]
+#: [Scientific].description[0]
+#, fuzzy
+#| msgid ""
+#| "Wary of reinstalling all the essential tools for your scientific and "
+#| "numerical work? The answer is here. Fedora Scientific Spin brings "
+#| "together the most useful open source scientific and numerical tools atop "
+#| "the goodness of the KDE desktop environment."
+msgctxt "Release|"
 msgid ""
 "Wary of reinstalling all the essential tools for your scientific and "
 "numerical work? The answer is here. Fedora Scientific Spin brings together "
@@ -1632,7 +2037,18 @@ msgstr ""
 "source do działań naukowych i obliczeniowych razem ze wspaniałym "
 "środowiskiem KDE."
 
-#: [15].description[1]
+#: [Scientific].description[1]
+#, fuzzy
+#| msgid ""
+#| "Fedora Scientific currently ships with numerous applications and "
+#| "libraries. These range from libraries such as the GNU Scientific library, "
+#| "the SciPy libraries, tools like Octave and xfig to typesetting tools like "
+#| "Kile and graphics programs such as Inkscape. The current set of packages "
+#| "include an IDE, tools and libraries for programming in C, C++, Python, "
+#| "Java and R. Also included along with are libraries for parallel computing "
+#| "such as the OpenMPI and OpenMP. Tools for typesetting, writing and "
+#| "publishing are included."
+msgctxt "Release|"
 msgid ""
 "Fedora Scientific currently ships with numerous applications and libraries. "
 "These range from libraries such as the GNU Scientific library, the SciPy "
@@ -1645,25 +2061,31 @@ msgstr ""
 "Fedora Scientific obecnie zawiera liczne aplikacje i biblioteki, takie jak "
 "GNU Scientific Library, biblioteki SciPy, narzędzia Octave, xfig i Kile oraz "
 "program graficzny Inkscape. Obecny zbiór pakietów zawiera zintegrowane "
-"środowisko programistyczne, narzędzia i biblioteki do programowania w "
-"językach C, C++, Python, Java i R. Zawarte są także biblioteki do "
+"środowisko programistyczne, narzędzia i biblioteki do programowania "
+"w językach C, C++, Python, Java i R. Zawarte są także biblioteki do "
 "wykonywania obliczeń równoległych, takie jak OpenMPI i OpenMP, oraz "
 "narzędzia do składania, pisania i publikowania."
 
-#: [16].subvariant
+#: [Security].subvariant
+#, fuzzy
+#| msgid "security"
+msgctxt "Release|"
 msgid "security"
 msgstr "Security"
 
-#: [16].category
-msgctxt "[16].category"
-msgid "labs"
-msgstr "Labs"
-
-#: [16].name
+#: [Security].category [Security].name
+#, fuzzy
+#| msgid "Fedora Security Lab"
+msgctxt "Release|"
 msgid "Fedora Security Lab"
 msgstr "Fedora Security Lab"
 
-#: [16].summary
+#: [Security].summary
+#, fuzzy
+#| msgid ""
+#| "A safe test environment to work on security auditing, forensics, system "
+#| "rescue and teaching security testing methodologies."
+msgctxt "Release|"
 msgid ""
 "A safe test environment to work on security auditing, forensics, system "
 "rescue and teaching security testing methodologies."
@@ -1671,7 +2093,13 @@ msgstr ""
 "Bezpieczne środowisko testowe do audytów bezpieczeństwa, badania dowodów, "
 "ratowania systemu i nauczania metodologii testowania zabezpieczeń."
 
-#: [16].description[0]
+#: [Security].description[0]
+#, fuzzy
+#| msgid ""
+#| "The Fedora Security Lab provides a safe test environment to work on "
+#| "security auditing, forensics, system rescue and teaching security testing "
+#| "methodologies in universities and other organizations."
+msgctxt "Release|"
 msgid ""
 "The Fedora Security Lab provides a safe test environment to work on security "
 "auditing, forensics, system rescue and teaching security testing "
@@ -1682,7 +2110,18 @@ msgstr ""
 "systemów oraz nauczania metodyk przeprowadzania testów bezpieczeństwa na "
 "uniwersytetach i w innych organizacjach."
 
-#: [16].description[1]
+#: [Security].description[1]
+#, fuzzy
+#| msgid ""
+#| "The spin is maintained by a community of security testers and developers. "
+#| "It comes with the clean and fast Xfce Desktop Environment and a "
+#| "customized menu that provides all the instruments needed to follow a "
+#| "proper test path for security testing or to rescue a broken system. The "
+#| "Live image has been crafted to make it possible to install software while "
+#| "running, and if you are running it from a USB stick created with LiveUSB "
+#| "Creator using the overlay feature, you can install and update software "
+#| "and save your test results permanently."
+msgctxt "Release|"
 msgid ""
 "The spin is maintained by a community of security testers and developers. It "
 "comes with the clean and fast Xfce Desktop Environment and a customized menu "
@@ -1693,11 +2132,77 @@ msgid ""
 "overlay feature, you can install and update software and save your test "
 "results permanently."
 msgstr ""
-"Ten obraz jest zarządzany przez społeczność testerów zabezpieczeń i "
-"programistów. Zawiera on proste i szybkie środowisko Xfce oraz specjalne "
+"Ten obraz jest zarządzany przez społeczność testerów zabezpieczeń "
+"i programistów. Zawiera on proste i szybkie środowisko Xfce oraz specjalne "
 "menu dostarczające wszystkie instrumenty potrzebne do testowania "
 "zabezpieczeń lub ratowania uszkodzonych systemów. Obraz Live umożliwia "
 "instalowanie programów podczas działania, a za pomocą pendrive’a nagranego "
 "narzędziem LiveUSB Creator z wykorzystaniem funkcji „overlay” można "
 "instalować i aktualizować oprogramowanie oraz zapisywać wyniki testów na "
 "stałe."
+
+#~ msgctxt "[1].category"
+#~ msgid "product"
+#~ msgstr "produkt"
+
+#~ msgctxt "[4].category"
+#~ msgid "spins"
+#~ msgstr "obrazy"
+
+#~ msgctxt "[5].category"
+#~ msgid "spins"
+#~ msgstr "obrazy"
+
+#~ msgctxt "[6].category"
+#~ msgid "spins"
+#~ msgstr "obrazy"
+
+#~ msgctxt "[7].category"
+#~ msgid "spins"
+#~ msgstr "obrazy"
+
+#~ msgid ""
+#~ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-"
+#~ "cinnamon.jpg"
+#~ msgstr ""
+#~ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-"
+#~ "cinnamon.jpg"
+
+#~ msgctxt "[8].category"
+#~ msgid "spins"
+#~ msgstr "obrazy"
+
+#~ msgid ""
+#~ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-lxde."
+#~ "jpg"
+#~ msgstr ""
+#~ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-lxde."
+#~ "jpg"
+
+#~ msgctxt "[9].category"
+#~ msgid "spins"
+#~ msgstr "obrazy"
+
+#~ msgctxt "[11].category"
+#~ msgid "labs"
+#~ msgstr "Labs"
+
+#~ msgctxt "[12].category"
+#~ msgid "labs"
+#~ msgstr "Labs"
+
+#~ msgctxt "[13].category"
+#~ msgid "labs"
+#~ msgstr "Labs"
+
+#~ msgctxt "[14].category"
+#~ msgid "labs"
+#~ msgstr "Labs"
+
+#~ msgctxt "[15].category"
+#~ msgid "labs"
+#~ msgstr "Labs"
+
+#~ msgctxt "[16].category"
+#~ msgid "labs"
+#~ msgstr "Labs"
