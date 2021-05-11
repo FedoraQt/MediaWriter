@@ -212,6 +212,7 @@ public:
         LOCAL,
         SPINS,
         LABS,
+        EMERGING,
         OTHER
     };
     Q_ENUMS(Source)

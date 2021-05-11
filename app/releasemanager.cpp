@@ -223,14 +223,8 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         if (re.indexIn(versionWithStatus) < 0)
             continue;
 
-        if (release.contains("workstation") && !url.contains("Live") && !url.contains("armhfp") && !release.contains("silverblue"))
+        if (release.contains("workstation") && !url.contains("Live") && !url.contains("armhfp"))
             continue;
-
-        // silverblue actually belongs under workstation
-        if (category == "silverblue" || release == "silverblue") {
-            release = "workstation";
-            type = "atomic";
-        }
 
         if (release.contains("server")) {
             // we want a DVD for x86 but we don't want it for ARM
@@ -307,10 +301,11 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
         QJsonObject obj = i.toObject();
         QString subvariant = obj["subvariant"].toString();
         QString sourceString = obj["category"].toString();
-        Release::Source source = sourceString == "product" ? Release::PRODUCT :
-                                 sourceString == "spins"   ? Release::SPINS :
-                                 sourceString == "labs"    ? Release::LABS :
-                                                             Release::OTHER;
+        Release::Source source = sourceString == "product"  ? Release::PRODUCT :
+                                 sourceString == "spins"    ? Release::SPINS :
+                                 sourceString == "labs"     ? Release::LABS :
+                                 sourceString == "emerging" ? Release::EMERGING:
+                                                              Release::OTHER;
         QString name = obj["name"].toString();
         QString summary = obj["summary"].toString();
         QStringList description;
@@ -362,6 +357,8 @@ QString Release::sourceString() {
         return tr("Fedora Spins");
     case LABS:
         return tr("Fedora Labs");
+    case EMERGING:
+        return tr("Emerging Fedora Editions");
     default:
         return tr("Other");
     }
@@ -581,9 +578,9 @@ bool ReleaseVersion::updateUrl(const QString &status, const QString &type, const
         emit releaseDateChanged();
     }
     // determine what type of release it is
-    ReleaseVariant::Type t = type == "atomic" || type == "silverblue" ? ReleaseVariant::ATOMIC :
-                            type == "netinst" || type == "netinstall" ? ReleaseVariant::NETINSTALL :
-                                                       type == "full" ? ReleaseVariant::FULL :
+    ReleaseVariant::Type t = type == "atomic"                          ? ReleaseVariant::ATOMIC :
+                             type == "netinst" || type == "netinstall" ? ReleaseVariant::NETINSTALL :
+                                                        type == "full" ? ReleaseVariant::FULL :
                                                                         ReleaseVariant::LIVE;
     for (auto i : m_variants) {
         if (i->arch() == ReleaseArchitecture::fromAbbreviation(architecture) && i->type() == t)
@@ -723,9 +720,7 @@ ReleaseVariant::Type ReleaseVariant::type() const {
 }
 
 QString ReleaseVariant::name() const {
-    if (type() == ATOMIC && release()->name().toLower().contains("workstation"))
-        return m_arch->description() + " - Silverblue";
-    else if (type() == ATOMIC)
+    if (type() == ATOMIC)
         return m_arch->description() + " - Atomic";
     else if (type() == FULL)
         return m_arch->description() + " - Full Image";
