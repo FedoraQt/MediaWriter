@@ -330,8 +330,7 @@ Dialog {
             activeFocusOnTab: false
 
             Item {
-                width: contentScrollView.width
-                height: layout.height
+                anchors.fill: parent
                 ColumnLayout {
                     id: layout
                     spacing: units.largeSpacing * 2
