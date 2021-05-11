@@ -1,15 +1,528 @@
 [
    {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Cloud/x86_64/images/Fedora-Cloud-Base-GCP-34-1.2.x86_64.tar.gz",
+      "variant":"Cloud",
+      "subvariant":"Cloud_Base",
+      "sha256":"80872caa285ba616424ac67885b584cd01ac0552a898b05a48892cee2d3551f2",
+      "size":"246697745"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Cloud/x86_64/images/Fedora-Cloud-Base-34-1.2.x86_64.qcow2",
+      "variant":"Cloud",
+      "subvariant":"Cloud_Base",
+      "sha256":"b9b621b26725ba95442d9a56cbaa054784e0779a9522ec6eafff07c6e6f717ea",
+      "size":"261554176"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Cloud/x86_64/images/Fedora-Cloud-Base-34-1.2.x86_64.raw.xz",
+      "variant":"Cloud",
+      "subvariant":"Cloud_Base",
+      "sha256":"bf8f7c8ad173dbfde165ecb1043691490f6a0fc2b393b7962301dde229d26e5f",
+      "size":"184254164"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-34-1.2.x86_64.vagrant-libvirt.box",
+      "variant":"Cloud",
+      "subvariant":"Cloud_Base",
+      "sha256":"3d9c00892253c869bffcf2e84ddd308e90d5c7a5928b3bc00e0563a4bec55849",
+      "size":"250225800"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-34-1.2.x86_64.vagrant-virtualbox.box",
+      "variant":"Cloud",
+      "subvariant":"Cloud_Base",
+      "sha256":"e72d9987c61d58108910fab700e8bdf349e69d2e158037a10b07706a68446fda",
+      "size":"262696960"
+   },
+   {
+      "version":"34",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Cloud/aarch64/images/Fedora-Cloud-Base-34-1.2.aarch64.qcow2",
+      "variant":"Cloud",
+      "subvariant":"Cloud_Base",
+      "sha256":"141f16f52bfbe159947267658a0dbfbbe96fd5b988a95d1271f9c9ed61156da2",
+      "size":"263782400"
+   },
+   {
+      "version":"34",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Cloud/aarch64/images/Fedora-Cloud-Base-34-1.2.aarch64.raw.xz",
+      "variant":"Cloud",
+      "subvariant":"Cloud_Base",
+      "sha256":"4b0b58d053d0264ca6215ecbeee0f2f8c886ae3fda7629dd393884bc47f28003",
+      "size":"184478760"
+   },
+   {
+      "version":"34",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Container/armhfp/images/Fedora-Container-Base-34-1.2.armhfp.tar.xz",
+      "variant":"Container",
+      "subvariant":"Container_Base",
+      "sha256":"8f248e13b49d74502b19bbd3581445ce15583f07bbf20e15c01cfc25f69ca4c1",
+      "size":"35825184"
+   },
+   {
+      "version":"34",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Container/armhfp/images/Fedora-Container-Minimal-Base-34-1.2.armhfp.tar.xz",
+      "variant":"Container",
+      "subvariant":"Container_Minimal_Base",
+      "sha256":"6f78e8cf7578797a012ec46516958a8703ba22c41855cea304b68ce307ef40db",
+      "size":"23886464"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Container/x86_64/images/Fedora-Container-Base-34-1.2.x86_64.tar.xz",
+      "variant":"Container",
+      "subvariant":"Container_Base",
+      "sha256":"ec004e272acc09252a11c2cf326fec47ff5c7a004d4329d73317f5101cfb9b94",
+      "size":"40168704"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Container/x86_64/images/Fedora-Container-Minimal-Base-34-1.2.x86_64.tar.xz",
+      "variant":"Container",
+      "subvariant":"Container_Minimal_Base",
+      "sha256":"f99ea3065e477bf0fa695e9883865c1270c4ff48fde83d71fe9991b058f51f71",
+      "size":"27654440"
+   },
+   {
+      "version":"34",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Container/aarch64/images/Fedora-Container-Base-34-1.2.aarch64.tar.xz",
+      "variant":"Container",
+      "subvariant":"Container_Base",
+      "sha256":"7f1c22db296e8937db4dd7f3afff2a5e96a1eff1af57897e7f2ec7e1865fd731",
+      "size":"37619460"
+   },
+   {
+      "version":"34",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Container/aarch64/images/Fedora-Container-Minimal-Base-34-1.2.aarch64.tar.xz",
+      "variant":"Container",
+      "subvariant":"Container_Minimal_Base",
+      "sha256":"8f7c3f6616ae511f74fd7cefccf623f068403be05579e285c5ca51ea91d83dcf",
+      "size":"25834320"
+   },
+   {
+      "version":"34",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Everything/armhfp/iso/Fedora-Everything-netinst-armhfp-34-1.2.iso",
+      "variant":"Everything",
+      "subvariant":"Everything",
+      "sha256":"f3f91cf4b3d584e37f8461e2239cb54aecc2b4f8ed1f109cb1496696ec8fc5c3",
+      "size":"706279424"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Everything/x86_64/iso/Fedora-Everything-netinst-x86_64-34-1.2.iso",
+      "variant":"Everything",
+      "subvariant":"Everything",
+      "sha256":"eb617779a454f9792a84985d1d6763f78c485e89a0d09e9e62b4dabcd540aff1",
+      "size":"678428672"
+   },
+   {
+      "version":"34",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Everything/aarch64/iso/Fedora-Everything-netinst-aarch64-34-1.2.iso",
+      "variant":"Everything",
+      "subvariant":"Everything",
+      "sha256":"8a35085c84dc9fba9c4ea2e5a646dea0d65ee28ad561dbfcba34ac6461ea0949",
+      "size":"634675200"
+   },
+   {
+      "version":"34",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Server/armhfp/images/Fedora-Server-34-1.2.armhfp.raw.xz",
+      "variant":"Server",
+      "subvariant":"Server",
+      "sha256":"29a2ec9e0a543263b82c136424c78f970b30304d1afe69b0706192b6d073ecbd",
+      "size":"775240488"
+   },
+   {
+      "version":"34",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Server/armhfp/iso/Fedora-Server-dvd-armhfp-34-1.2.iso",
+      "variant":"Server",
+      "subvariant":"Server",
+      "sha256":"7376107da2fb292a99bb5f384f437c5021b00dbec102390b0642d499e0e515eb",
+      "size":"2104162304"
+   },
+   {
+      "version":"34",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Server/armhfp/iso/Fedora-Server-netinst-armhfp-34-1.2.iso",
+      "variant":"Server",
+      "subvariant":"Server",
+      "sha256":"2a35579bbb7f2b1588e3c615daaeda18aa4d2fb1216f8e556bb2b3b14c809418",
+      "size":"706269184"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Server/x86_64/iso/Fedora-Server-dvd-x86_64-34-1.2.iso",
+      "variant":"Server",
+      "subvariant":"Server",
+      "sha256":"0b9dc87d060c7c4ef89f63db6d4d1597dd3feaf4d635ca051d87f5e8c89e8675",
+      "size":"2101346304"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Server/x86_64/iso/Fedora-Server-netinst-x86_64-34-1.2.iso",
+      "variant":"Server",
+      "subvariant":"Server",
+      "sha256":"e1a38b9faa62f793ad4561b308c31f32876cfaaee94457a7a9108aaddaeec406",
+      "size":"678428672"
+   },
+   {
+      "version":"34",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Server/aarch64/images/Fedora-Server-34-1.2.aarch64.raw.xz",
+      "variant":"Server",
+      "subvariant":"Server",
+      "sha256":"2b60134405766c42d9f08d8a9f3541fa90921bb1db025d74d42d20fbb373305f",
+      "size":"826367292"
+   },
+   {
+      "version":"34",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Server/aarch64/iso/Fedora-Server-dvd-aarch64-34-1.2.iso",
+      "variant":"Server",
+      "subvariant":"Server",
+      "sha256":"57baee600b29d6c751626d3d94b76053e65d378f562869cb89b26a594b47f52a",
+      "size":"2008135680"
+   },
+   {
+      "version":"34",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Server/aarch64/iso/Fedora-Server-netinst-aarch64-34-1.2.iso",
+      "variant":"Server",
+      "subvariant":"Server",
+      "sha256":"925fc062e0be73e86d32ba0e969fbbde549eb80ac6342e82bc01457220b82311",
+      "size":"634667008"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Silverblue/x86_64/iso/Fedora-Silverblue-ostree-x86_64-34-1.2.iso",
+      "variant":"Silverblue",
+      "subvariant":"Silverblue",
+      "sha256":"b311ea95bc58a1b5126eeea940001a9e2f90031990378b4381a582141176d03e",
+      "size":"2790850560"
+   },
+   {
+      "version":"34",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Silverblue/aarch64/iso/Fedora-Silverblue-ostree-aarch64-34-1.2.iso",
+      "variant":"Silverblue",
+      "subvariant":"Silverblue",
+      "sha256":"03cf02044b47878da32a07662d3b3e2927cfc91386cb72e37ac5711f1b8b416b",
+      "size":"2175203328"
+   },
+   {
+      "version":"34",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Spins/armhfp/images/Fedora-KDE-34-1.2.armhfp.raw.xz",
+      "variant":"Spins",
+      "subvariant":"KDE",
+      "sha256":"c61af43e013b1b80df80dbd92480e325f96a22b5091c13771a5c741bb4668a9e",
+      "size":"3883690332"
+   },
+   {
+      "version":"34",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Spins/armhfp/images/Fedora-Minimal-34-1.2.armhfp.raw.xz",
+      "variant":"Spins",
+      "subvariant":"Minimal",
+      "sha256":"4e1fe6cae29a74185c8f3e51543c55380ffb4d1fc1d01355d76d28703261eec5",
+      "size":"631243556"
+   },
+   {
+      "version":"34",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Spins/armhfp/images/Fedora-SoaS-34-1.2.armhfp.raw.xz",
+      "variant":"Spins",
+      "subvariant":"SoaS",
+      "sha256":"c839f365ebe675a6b8b0f89421b639644d08ad7239b163f5e9ef93d8c96242ef",
+      "size":"1969781012"
+   },
+   {
+      "version":"34",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Spins/armhfp/images/Fedora-Xfce-34-1.2.armhfp.raw.xz",
+      "variant":"Spins",
+      "subvariant":"Xfce",
+      "sha256":"988ee7376900ce06f63d66924c10309ff9cc92b39b988ea0c5787986a9c11566",
+      "size":"2910763180"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Spins/x86_64/iso/Fedora-MATE_Compiz-Live-x86_64-34-1.2.iso",
+      "variant":"Spins",
+      "subvariant":"Mate",
+      "sha256":"c16abc4a944325679df9b77a5303c03c35ede10ac928f73eca20812d80db58e2",
+      "size":"2147483648"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Spins/x86_64/iso/Fedora-KDE-Live-x86_64-34-1.2.iso",
+      "variant":"Spins",
+      "subvariant":"KDE",
+      "sha256":"5f5a25271dd50c222b58d128ab3f31392e685f7a4408cb3e09b994842af3cc89",
+      "size":"2128625664"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Spins/x86_64/iso/Fedora-LXDE-Live-x86_64-34-1.2.iso",
+      "variant":"Spins",
+      "subvariant":"LXDE",
+      "sha256":"ac166d49f404a315cd3922a8e014e4cba19cf8f37242c1a4fd9c3ecba4bc269a",
+      "size":"1371701248"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Spins/x86_64/iso/Fedora-LXQt-Live-x86_64-34-1.2.iso",
+      "variant":"Spins",
+      "subvariant":"LXQt",
+      "sha256":"af6df4f0a3f7e255ab9e097f0a385e4a3d4e65ea4f2e20aad60c735a2df8c699",
+      "size":"1456766976"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Spins/x86_64/iso/Fedora-SoaS-Live-x86_64-34-1.2.iso",
+      "variant":"Spins",
+      "subvariant":"SoaS",
+      "sha256":"a3bf79e93e28fd96439fb82e54d8d4a220ad060d3b8d8ac3ea5db8c728afb02c",
+      "size":"1093238784"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Spins/x86_64/iso/Fedora-Xfce-Live-x86_64-34-1.2.iso",
+      "variant":"Spins",
+      "subvariant":"Xfce",
+      "sha256":"d00a64868a9b6df59376590f13f04ea8bff7f52fa7be5c0d2f21c741840b002f",
+      "size":"1667891200"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Spins/x86_64/iso/Fedora-i3-Live-x86_64-34-1.2.iso",
+      "variant":"Spins",
+      "subvariant":"i3",
+      "sha256":"de6e0a3753151c637cc60ff306ddc47552125866f8f7c5296a0508d05119f10b",
+      "size":"1453916160"
+   },
+   {
+      "version":"34",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Workstation/armhfp/images/Fedora-Workstation-34-1.2.armhfp.raw.xz",
+      "variant":"Workstation",
+      "subvariant":"Workstation",
+      "sha256":"9195f17b3ad17dc15b84ce6c08dfc18ae52ad79241e077dd42321ab48a55ceaf",
+      "size":"3414885804"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-34-1.2.iso",
+      "variant":"Workstation",
+      "subvariant":"Workstation",
+      "sha256":"865c4457dd066d3074c35a8847c8dac1380667c96a4f6d74526324dba14f1b5c",
+      "size":"2007367680"
+   },
+   {
+      "version":"34",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Workstation/aarch64/images/Fedora-Workstation-34-1.2.aarch64.raw.xz",
+      "variant":"Workstation",
+      "subvariant":"Workstation",
+      "sha256":"b0db81cde1a9a5edd13cd95175e68de6a46609382be1e1cc664ce8f44cf95938",
+      "size":"3843942776"
+   },
+   {
+      "version":"34",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/34/Workstation/aarch64/iso/Fedora-Workstation-Live-aarch64-34-1.2.iso",
+      "variant":"Workstation",
+      "subvariant":"Workstation",
+      "sha256":"8d5c0d085a2aae7a069717cf503e76f45f719d23c6d740c2c05fef86df413c6a",
+      "size":"1915834368"
+   },
+   {
+      "version":"34",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/armhfp/images/Fedora-Python-Classroom-34-1.2.armhfp.raw.xz",
+      "variant":"Labs",
+      "subvariant":"Python_Classroom",
+      "sha256":"31442b5a7c515463597250fd780b5c52ccc14dd8f6d1c7262ae142ce8e1e2f31",
+      "size":"3191682616"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/x86_64/images/Fedora-Python-Classroom-Vagrant-34-1.2.x86_64.vagrant-libvirt.box",
+      "variant":"Labs",
+      "subvariant":"Python_Classroom",
+      "sha256":"13bfce55349e4975b94a4f5987b357bc41ddd998e3d28df68a3d0f776ab39ce2",
+      "size":"836462374"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/x86_64/images/Fedora-Python-Classroom-Vagrant-34-1.2.x86_64.vagrant-virtualbox.box",
+      "variant":"Labs",
+      "subvariant":"Python_Classroom",
+      "sha256":"8eb1e472235b8ba17a9a49e9c3a156c0a8f75044d4fdf69bbc60d2675567c81f",
+      "size":"878786560"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/x86_64/images/Fedora-Scientific-Vagrant-34-1.2.x86_64.vagrant-libvirt.box",
+      "variant":"Labs",
+      "subvariant":"Scientific",
+      "sha256":"2fe0ac4d5a5ef39a4137e9ad3bb2965d70a57236b1212d6ef1e8efcb58cc5d2a",
+      "size":"3131478248"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/x86_64/images/Fedora-Scientific-Vagrant-34-1.2.x86_64.vagrant-virtualbox.box",
+      "variant":"Labs",
+      "subvariant":"Scientific",
+      "sha256":"12614835962d170580ff4dade88194d041d576740b3bddd5e047fd06b3b43617",
+      "size":"3247687680"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/x86_64/iso/Fedora-Astronomy_KDE-Live-x86_64-34-1.2.iso",
+      "variant":"Labs",
+      "subvariant":"Astronomy_KDE",
+      "sha256":"a96aab1f7908f2ca59966f140cdd332a371ca1ab67e2e513235b3be94710e830",
+      "size":"4893106176"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/x86_64/iso/Fedora-Comp_Neuro-Live-x86_64-34-1.2.iso",
+      "variant":"Labs",
+      "subvariant":"Comp_Neuro",
+      "sha256":"d3ebd0b2f219eac1f8a57e863c1628163172f409d919f4ec6379c93ae9f19734",
+      "size":"3195060224"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/x86_64/iso/Fedora-Design_suite-Live-x86_64-34-1.2.iso",
+      "variant":"Labs",
+      "subvariant":"Design_suite",
+      "sha256":"a686a3d8b9971eb5f3f9faaf15bbcdf89e22b529fa6fa6c3486e52aa08245e5e",
+      "size":"3248422912"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/x86_64/iso/Fedora-Games-Live-x86_64-34-1.2.iso",
+      "variant":"Labs",
+      "subvariant":"Games",
+      "sha256":"47b812e056ce134bff0151ae91741f9ee20a426bb3259f1d47914280850c166a",
+      "size":"4976455680"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/x86_64/iso/Fedora-Jam_KDE-Live-x86_64-34-1.2.iso",
+      "variant":"Labs",
+      "subvariant":"Jam_KDE",
+      "sha256":"342fe885ed3bd33c4e61f28baeb4529830fe340e658912ef91f79a5e988d6355",
+      "size":"2707292160"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/x86_64/iso/Fedora-Python-Classroom-Live-x86_64-34-1.2.iso",
+      "variant":"Labs",
+      "subvariant":"Python_Classroom",
+      "sha256":"df0cac74c1c58f2219e7e387eb5cd527fe0aa158e46c2eda92b50ad4c5a301b1",
+      "size":"1825144832"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/x86_64/iso/Fedora-Robotics-Live-x86_64-34-1.2.iso",
+      "variant":"Labs",
+      "subvariant":"Robotics",
+      "sha256":"3faadac18d7bb883f04d11e56dfb818bdfa3e5e2a1050158265928de6868071e",
+      "size":"3087007744"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/x86_64/iso/Fedora-Scientific_KDE-Live-x86_64-34-1.2.iso",
+      "variant":"Labs",
+      "subvariant":"Scientific_KDE",
+      "sha256":"22943b6f9be54f0cf86de79389b94583564fa2914ff965d76e65286b0467ab39",
+      "size":"4169367552"
+   },
+   {
+      "version":"34",
+      "arch":"x86_64",
+      "link":"https://download.fedoraproject.org/pub/alt/releases/34/Labs/x86_64/iso/Fedora-Security-Live-x86_64-34-1.2.iso",
+      "variant":"Labs",
+      "subvariant":"Security",
+      "sha256":"776847bd509a5e8ce52ce367ac4a3f0484a4b1ae0502e4fb70fce334ed36b907",
+      "size":"2687942656"
+   },
+   {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/armhfp/iso/Fedora-Server-dvd-armhfp-33-1.2.iso",
+      "variant":"Server",
+      "subvariant":"Server",
+      "sha256":"f259cc164dda22f2f21c7ad2de6cb058a6cd51705adcf0859da5942762c7b00d",
+      "size":"2080688128"
+   },
+   {
+      "version":"33",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/armhfp/iso/Fedora-Server-netinst-armhfp-33-1.2.iso",
+      "variant":"Server",
+      "subvariant":"Server",
+      "sha256":"4f0c769fcb01adbdfc3836fc76d11242fa69fd8c701840283f20448db8eeffc2",
+      "size":"735930368"
+   },
+   {
+      "version":"33",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/armhfp/iso/Fedora-Server-dvd-armhfp-33-1.3.iso",
       "variant":"Server",
       "subvariant":"Server"
    },
    {
       "version":"33",
       "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/armhfp/iso/Fedora-Server-netinst-armhfp-33-1.2.iso",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/armhfp/iso/Fedora-Server-netinst-armhfp-33-1.3.iso",
       "variant":"Server",
       "subvariant":"Server"
    },
@@ -18,12 +531,23 @@
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/armhfp/images/Fedora-Server-33-1.2.armhfp.raw.xz",
       "variant":"Server",
-      "subvariant":"Server"
+      "subvariant":"Server",
+      "sha256":"032d9c62fb2433edd4c33fa8c68cd7e86c44ee477dee2232498725d1e4a3cd9c",
+      "size":"1380645444"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/armhfp/images/Fedora-Server-armhfp-33-1.2-sda.raw.xz",
+      "variant":"Server",
+      "subvariant":"Server_Appliance",
+      "sha256":"cf10b7922a01f15408fc1374f698eae7649a3744a2160f95b75ded5e47d64396",
+      "size":"568522244"
+   },
+   {
+      "version":"33",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/armhfp/images/Fedora-Server-33-1.3.armhfp.raw.xz",
       "variant":"Server",
       "subvariant":"Server"
    },
@@ -32,26 +556,48 @@
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/x86_64/iso/Fedora-Server-dvd-x86_64-33-1.2.iso",
       "variant":"Server",
-      "subvariant":"Server"
+      "subvariant":"Server",
+      "sha256":"4fe38b45a4c788927ddfdfb224c414f138226a75f27a287995d802cba3cb89d4",
+      "size":"2076180480"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/x86_64/iso/Fedora-Server-netinst-x86_64-33-1.2.iso",
       "variant":"Server",
-      "subvariant":"Server"
+      "subvariant":"Server",
+      "sha256":"1f1f018e78f0cc23d08db0c85952344ea5c200e67b672da5b07507c066a52ccf",
+      "size":"719323136"
    },
    {
       "version":"33",
       "arch":"aarch64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/aarch64/iso/Fedora-Server-dvd-aarch64-33-1.2.iso",
       "variant":"Server",
-      "subvariant":"Server"
+      "subvariant":"Server",
+      "sha256":"c07ead14b1b44266cefcbb6684682c78d2a1ce24adf1fd70731517192b6185cf",
+      "size":"2008027136"
    },
    {
       "version":"33",
       "arch":"aarch64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/aarch64/iso/Fedora-Server-netinst-aarch64-33-1.2.iso",
+      "variant":"Server",
+      "subvariant":"Server",
+      "sha256":"8b6e6e17f3719dab2616606ac7a4cb61a74248343588664c89b9263602da5888",
+      "size":"669517824"
+   },
+   {
+      "version":"33",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/aarch64/iso/Fedora-Server-dvd-aarch64-33-1.3.iso",
+      "variant":"Server",
+      "subvariant":"Server"
+   },
+   {
+      "version":"33",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/aarch64/iso/Fedora-Server-netinst-aarch64-33-1.3.iso",
       "variant":"Server",
       "subvariant":"Server"
    },
@@ -60,12 +606,30 @@
       "arch":"aarch64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/aarch64/images/Fedora-Server-33-1.2.aarch64.raw.xz",
       "variant":"Server",
+      "subvariant":"Server",
+      "sha256":"270f0bb07c11bf858e23abfbcd6e05f272062f6128f17384f0a658c770d9d62e",
+      "size":"1184282660"
+   },
+   {
+      "version":"33",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Server/aarch64/images/Fedora-Server-33-1.3.aarch64.raw.xz",
+      "variant":"Server",
       "subvariant":"Server"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Everything/armhfp/iso/Fedora-Everything-netinst-armhfp-33-1.2.iso",
+      "variant":"Everything",
+      "subvariant":"Everything",
+      "sha256":"8e5247bc5d631b16c7234538f92d7f4ca23b2920d96c1b41647eeff99df49910",
+      "size":"736131072"
+   },
+   {
+      "version":"33",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Everything/armhfp/iso/Fedora-Everything-netinst-armhfp-33-1.3.iso",
       "variant":"Everything",
       "subvariant":"Everything"
    },
@@ -74,12 +638,23 @@
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Everything/x86_64/iso/Fedora-Everything-netinst-x86_64-33-1.2.iso",
       "variant":"Everything",
-      "subvariant":"Everything"
+      "subvariant":"Everything",
+      "sha256":"964fb135339759f54300130922b1b46dc153b6ed2f8ea538b316757f8ee707bc",
+      "size":"719323136"
    },
    {
       "version":"33",
       "arch":"aarch64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Everything/aarch64/iso/Fedora-Everything-netinst-aarch64-33-1.2.iso",
+      "variant":"Everything",
+      "subvariant":"Everything",
+      "sha256":"f3212ec098087df349a3a25e36213de533ae8e6b2f57c88928ac80bf96641fb3",
+      "size":"669319168"
+   },
+   {
+      "version":"33",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Everything/aarch64/iso/Fedora-Everything-netinst-aarch64-33-1.3.iso",
       "variant":"Everything",
       "subvariant":"Everything"
    },
@@ -88,138 +663,192 @@
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Silverblue/x86_64/iso/Fedora-Silverblue-ostree-x86_64-33-1.2.iso",
       "variant":"Silverblue",
-      "subvariant":"Silverblue"
+      "subvariant":"Silverblue",
+      "sha256":"093cc7e62687c028975ad431e10243d52e0535f2e0546e0eed0340a2796a977b",
+      "size":"2874408960"
    },
    {
       "version":"33",
       "arch":"aarch64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Silverblue/aarch64/iso/Fedora-Silverblue-ostree-aarch64-33-1.2.iso",
       "variant":"Silverblue",
-      "subvariant":"Silverblue"
+      "subvariant":"Silverblue",
+      "sha256":"227df80172b5a1a06b5171ad5fa32ba70b48291c744a4e252167da1e6abc2c0b",
+      "size":"2245246976"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/x86_64/iso/Fedora-MATE_Compiz-Live-x86_64-33-1.2.iso",
       "variant":"Spins",
-      "subvariant":"Mate"
+      "subvariant":"Mate",
+      "sha256":"d32d9bcfc990876623c785f3cf39e0c745f75619c0d52f875b22bb86dd8cbbc0",
+      "size":"2134900736"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/x86_64/iso/Fedora-Cinnamon-Live-x86_64-33-1.2.iso",
       "variant":"Spins",
-      "subvariant":"Cinnamon"
+      "subvariant":"Cinnamon",
+      "sha256":"61b740771af35b3376e11da54950a01e19b25ccdef1677d2cb32ac5b1a34cc61",
+      "size":"2153693184"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/x86_64/iso/Fedora-KDE-Live-x86_64-33-1.2.iso",
       "variant":"Spins",
-      "subvariant":"KDE"
+      "subvariant":"KDE",
+      "sha256":"aa906a0d21f79b62940cbb75840b08a0931b225d331f43bace0c360ca46c43b9",
+      "size":"1957183488"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/x86_64/iso/Fedora-LXDE-Live-x86_64-33-1.2.iso",
       "variant":"Spins",
-      "subvariant":"LXDE"
+      "subvariant":"LXDE",
+      "sha256":"ab132dfc5a1e02ff90a720462a418406c487fe10b224cf6a03b6f91aeca01f26",
+      "size":"1377550336"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/x86_64/iso/Fedora-LXQt-Live-x86_64-33-1.2.iso",
       "variant":"Spins",
-      "subvariant":"LXQt"
+      "subvariant":"LXQt",
+      "sha256":"2a42c31dbe0279d310060a3fdc5f35f6aed3ff4d4585575a4411b47c295cf234",
+      "size":"1485881344"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/x86_64/iso/Fedora-SoaS-Live-x86_64-33-1.2.iso",
       "variant":"Spins",
-      "subvariant":"SoaS"
+      "subvariant":"SoaS",
+      "sha256":"b4cc799c25491a4e831b42b500915a7c67e09a1f7f7ae18dbef5ae8aead36ace",
+      "size":"1114193920"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/x86_64/iso/Fedora-Xfce-Live-x86_64-33-1.2.iso",
       "variant":"Spins",
-      "subvariant":"Xfce"
+      "subvariant":"Xfce",
+      "sha256":"2d397bedaa15b1cc197eb33e82ac27773ae4b0a74e1fb7294ce5290b732b0bc8",
+      "size":"1592279040"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/armhfp/images/Fedora-KDE-armhfp-33-1.2-sda.raw.xz",
       "variant":"Spins",
-      "subvariant":"KDE"
+      "subvariant":"KDE",
+      "sha256":"530680eff52aa1450a78b0d3001c646b3459bb98ed84e7590fb58d257d5ba51b",
+      "size":"1684427092"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/armhfp/images/Fedora-LXDE-armhfp-33-1.2-sda.raw.xz",
       "variant":"Spins",
-      "subvariant":"LXDE"
+      "subvariant":"LXDE",
+      "sha256":"5cd9298c92e1c57abb51196ba2a2121ff6f393aa4de091553fea79675c4883d1",
+      "size":"1098728640"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/armhfp/images/Fedora-LXQt-armhfp-33-1.2-sda.raw.xz",
       "variant":"Spins",
-      "subvariant":"LXQt"
+      "subvariant":"LXQt",
+      "sha256":"06ac20a9b5a98d130282d1ffcde0e0332d79404b13e1818c936449c88639f1ce",
+      "size":"1116268308"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/armhfp/images/Fedora-Mate-armhfp-33-1.2-sda.raw.xz",
       "variant":"Spins",
-      "subvariant":"Mate"
+      "subvariant":"Mate",
+      "sha256":"216878298ecef6787481f43b5c14b42a1c566caa1a99ef85882b1a74d1c7f6f5",
+      "size":"1624748188"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/armhfp/images/Fedora-Minimal-33-1.2.armhfp.raw.xz",
       "variant":"Spins",
-      "subvariant":"Minimal"
+      "subvariant":"Minimal",
+      "sha256":"6f251d33d976f1e3c9a9a5586ad0dbe74f4f8475d7e5df8ea9a18f2dedecb35c",
+      "size":"1012097180"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/armhfp/images/Fedora-Minimal-armhfp-33-1.2-sda.raw.xz",
       "variant":"Spins",
-      "subvariant":"Minimal"
+      "subvariant":"Minimal_Appliance",
+      "sha256":"9cf8377d7d79ec9f033abde1f6166b0874a92509c6ac5f2c9b07d801dd90f98f",
+      "size":"465712376"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/armhfp/images/Fedora-SoaS-armhfp-33-1.2-sda.raw.xz",
       "variant":"Spins",
-      "subvariant":"SoaS"
+      "subvariant":"SoaS",
+      "sha256":"a249053f97d4753139862bfeffa9f65ff54ac9907856d84f930d3a00d11ba36e",
+      "size":"902206836"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/armhfp/images/Fedora-Xfce-armhfp-33-1.2-sda.raw.xz",
       "variant":"Spins",
-      "subvariant":"Xfce"
+      "subvariant":"Xfce_Appliance",
+      "sha256":"9f15e59ee0a7d53e68eb74d0a9686a7f4ddfbbcbebe9a8211f41981d15b266a0",
+      "size":"1270866348"
+   },
+   {
+      "version":"33",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Spins/armhfp/images/Fedora-Minimal-33-1.3.armhfp.raw.xz",
+      "variant":"Spins",
+      "subvariant":"Minimal"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-33-1.2.iso",
       "variant":"Workstation",
-      "subvariant":"Workstation"
+      "subvariant":"Workstation",
+      "sha256":"582a825d564e2682334ac893c9160667c7f4578c0c8045a25ea534af7c13334b",
+      "size":"2049490944"
    },
    {
       "version":"33",
       "arch":"aarch64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Workstation/aarch64/iso/Fedora-Workstation-Live-aarch64-33-1.2.iso",
       "variant":"Workstation",
-      "subvariant":"Workstation"
+      "subvariant":"Workstation",
+      "sha256":"e84afdc3156e603696d757de838f2669a3177ea4907facda3ae601ca7f1c6c0c",
+      "size":"1957701632"
    },
    {
       "version":"33",
       "arch":"aarch64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Workstation/aarch64/images/Fedora-Workstation-33-1.2.aarch64.raw.xz",
+      "variant":"Workstation",
+      "subvariant":"Workstation",
+      "sha256":"2f46a467d166029f2e232a73449159c01bbe7a648d3b680527a491a6274d93a5",
+      "size":"3236914016"
+   },
+   {
+      "version":"33",
+      "arch":"aarch64",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Workstation/aarch64/images/Fedora-Workstation-33-1.3.aarch64.raw.xz",
       "variant":"Workstation",
       "subvariant":"Workstation"
    },
@@ -228,12 +857,23 @@
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Workstation/armhfp/images/Fedora-Workstation-33-1.2.armhfp.raw.xz",
       "variant":"Workstation",
-      "subvariant":"Workstation"
+      "subvariant":"Workstation",
+      "sha256":"26a652786817cf80bcf6eee417bbbcba3baf456d7fdb201b9ba156670f30ab46",
+      "size":"3337133336"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Workstation/armhfp/images/Fedora-Workstation-armhfp-33-1.2-sda.raw.xz",
+      "variant":"Workstation",
+      "subvariant":"Workstation_Appliance",
+      "sha256":"ce4ce6b9d0819b3a5d964135b68703e6cd9f4c5e80d004938faa384436cb6b0f",
+      "size":"1555448844"
+   },
+   {
+      "version":"33",
+      "arch":"armhfp",
+      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Workstation/armhfp/images/Fedora-Workstation-33-1.3.armhfp.raw.xz",
       "variant":"Workstation",
       "subvariant":"Workstation"
    },
@@ -242,189 +882,243 @@
       "arch":"aarch64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Cloud/aarch64/images/Fedora-Cloud-Base-33-1.2.aarch64.qcow2",
       "variant":"Cloud",
-      "subvariant":"Cloud_Base"
+      "subvariant":"Cloud_Base",
+      "sha256":"e7f75cdfd523fe5ac2ca9eeece68edc1a81f386a17f969c1d1c7c87031008a6b",
+      "size":"295370752"
    },
    {
       "version":"33",
       "arch":"aarch64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Cloud/aarch64/images/Fedora-Cloud-Base-33-1.2.aarch64.raw.xz",
       "variant":"Cloud",
-      "subvariant":"Cloud_Base"
+      "subvariant":"Cloud_Base",
+      "sha256":"203c848bb753e2bb5b5a68d9e99ff39b9eab8378394dc22241343143c0e855af",
+      "size":"210267516"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Cloud/x86_64/images/Fedora-Cloud-Base-GCP-33-1.2.x86_64.tar.gz",
       "variant":"Cloud",
-      "subvariant":"Cloud_Base"
+      "subvariant":"Cloud_Base",
+      "sha256":"779b187d8d75b8aacc6659fccb87db1d063105afeb79da242ed905c54efe281c",
+      "size":"275727838"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Cloud/x86_64/images/Fedora-Cloud-Base-33-1.2.x86_64.qcow2",
       "variant":"Cloud",
-      "subvariant":"Cloud_Base"
+      "subvariant":"Cloud_Base",
+      "sha256":"7a2b3cc3bb3a92ce927e685d33efe8efd75577efbe207b267cb66f68afae7ce9",
+      "size":"283299840"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Cloud/x86_64/images/Fedora-Cloud-Base-33-1.2.x86_64.raw.xz",
       "variant":"Cloud",
-      "subvariant":"Cloud_Base"
+      "subvariant":"Cloud_Base",
+      "sha256":"35fa778f5d4830b58f7baf121fff6bd2b52500411c9abc46761b29a690415c3f",
+      "size":"203308980"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-33-1.2.x86_64.vagrant-libvirt.box",
       "variant":"Cloud",
-      "subvariant":"Cloud_Base"
+      "subvariant":"Cloud_Base",
+      "sha256":"455767b8ac4d8a4820e186f9674c3b3ef2c5edd65141326b1224dcbc3b9dd1b4",
+      "size":"272054042"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-33-1.2.x86_64.vagrant-virtualbox.box",
       "variant":"Cloud",
-      "subvariant":"Cloud_Base"
+      "subvariant":"Cloud_Base",
+      "sha256":"dbd5c61e3fe9a37f81b518a3a6d9eede939ec0ea728b731a3e07276429bdf2ea",
+      "size":"284672000"
    },
    {
       "version":"33",
       "arch":"aarch64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Container/aarch64/images/Fedora-Container-Base-33-1.2.aarch64.tar.xz",
       "variant":"Container",
-      "subvariant":"Container_Base"
+      "subvariant":"Container_Base",
+      "sha256":"21ae2f9cee4d1905eee82fe60b17c1d1f52590c63059c66f2891d7a231c88fdd",
+      "size":"35965712"
    },
    {
       "version":"33",
       "arch":"aarch64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Container/aarch64/images/Fedora-Container-Minimal-Base-33-1.2.aarch64.tar.xz",
       "variant":"Container",
-      "subvariant":"Container_Minimal_Base"
+      "subvariant":"Container_Minimal_Base",
+      "sha256":"bd9adf8f26303c34e665aa8b976b05cc8394eeefcc57e24e727f9bc0c9021ac0",
+      "size":"26112424"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Container/armhfp/images/Fedora-Container-Base-33-1.2.armhfp.tar.xz",
       "variant":"Container",
-      "subvariant":"Container_Base"
+      "subvariant":"Container_Base",
+      "sha256":"22f9b90edd4ed24ea83ca9e83b0b5c785b5794a0d3704eae25ba3592eb4ff417",
+      "size":"34016660"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Container/armhfp/images/Fedora-Container-Minimal-Base-33-1.2.armhfp.tar.xz",
       "variant":"Container",
-      "subvariant":"Container_Minimal_Base"
+      "subvariant":"Container_Minimal_Base",
+      "sha256":"37bdacc954a49be2f5a09aa525c0b97c42011ce6b4cd72d3f44b8a3e6a1042e9",
+      "size":"23962188"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Container/x86_64/images/Fedora-Container-Base-33-1.2.x86_64.tar.xz",
       "variant":"Container",
-      "subvariant":"Container_Base"
+      "subvariant":"Container_Base",
+      "sha256":"e70a005fb29f6b6fb74c0d70372dbb557c3e56eff8b33c9dc76e3a1136b07969",
+      "size":"39860672"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/33/Container/x86_64/images/Fedora-Container-Minimal-Base-33-1.2.x86_64.tar.xz",
       "variant":"Container",
-      "subvariant":"Container_Minimal_Base"
+      "subvariant":"Container_Minimal_Base",
+      "sha256":"ee02bfb5d40ca8d16509fc15e59bf9182d12ae0239ad8500d444d0117f69d117",
+      "size":"28395076"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/x86_64/iso/Fedora-Astronomy_KDE-Live-x86_64-33-1.2.iso",
       "variant":"Labs",
-      "subvariant":"Astronomy_KDE"
+      "subvariant":"Astronomy_KDE",
+      "sha256":"5f03bc561955fe882c89e3c8bd228c056a307e25da8efa38420d33ec42fbfda0",
+      "size":"4160749568"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/x86_64/iso/Fedora-Comp_Neuro-Live-x86_64-33-1.2.iso",
       "variant":"Labs",
-      "subvariant":"Comp_Neuro"
+      "subvariant":"Comp_Neuro",
+      "sha256":"e1f761bdc3f84064693a9d6bf7d27d68045984872bdc3fb3885d159ca646950e",
+      "size":"2693218304"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/x86_64/iso/Fedora-Design_suite-Live-x86_64-33-1.2.iso",
       "variant":"Labs",
-      "subvariant":"Design_suite"
+      "subvariant":"Design_suite",
+      "sha256":"07b52bdfa3baf1741b148f632b4e48d2b853b405d21efab5de12854bb1e5b8be",
+      "size":"2676490240"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/x86_64/iso/Fedora-Games-Live-x86_64-33-1.2.iso",
       "variant":"Labs",
-      "subvariant":"Games"
+      "subvariant":"Games",
+      "sha256":"e0b5ed248d7be367c52cf54ce600797b0fe0f7c785d1fcaedc8f01ff3d2d4594",
+      "size":"5020581888"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/x86_64/iso/Fedora-Jam_KDE-Live-x86_64-33-1.2.iso",
       "variant":"Labs",
-      "subvariant":"Jam_KDE"
+      "subvariant":"Jam_KDE",
+      "sha256":"86b574ab73119173b17ccd07b3756b97cfc125c59ee7e87091d7d3193be7e300",
+      "size":"2590310400"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/x86_64/iso/Fedora-Python-Classroom-Live-x86_64-33-1.2.iso",
       "variant":"Labs",
-      "subvariant":"Python_Classroom"
+      "subvariant":"Python_Classroom",
+      "sha256":"b32c1af2d37cfdada22c067b649160ca39211138252618f315bf58bdc1fca16e",
+      "size":"1932853248"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/x86_64/iso/Fedora-Robotics-Live-x86_64-33-1.2.iso",
       "variant":"Labs",
-      "subvariant":"Robotics"
+      "subvariant":"Robotics",
+      "sha256":"ea1d0b24d5aa83d3528ed292b942d72f33b6c35674b6ab31c2c5b0b304abded7",
+      "size":"2509209600"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/x86_64/iso/Fedora-Scientific_KDE-Live-x86_64-33-1.2.iso",
       "variant":"Labs",
-      "subvariant":"Scientific_KDE"
+      "subvariant":"Scientific_KDE",
+      "sha256":"0817a24ceb2f41f84fcbed25e03d7c09b1fe8ae961fbc930105ff65bb8c22199",
+      "size":"4068900864"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/x86_64/iso/Fedora-Security-Live-x86_64-33-1.2.iso",
       "variant":"Labs",
-      "subvariant":"Security"
+      "subvariant":"Security",
+      "sha256":"2e9c98e9ca472a4ce87c91eb578feb7ea0860ffcaedbf9ecbfa4cbc1361c1faa",
+      "size":"2034827264"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/x86_64/images/Fedora-Python-Classroom-Vagrant-33-1.2.x86_64.vagrant-libvirt.box",
       "variant":"Labs",
-      "subvariant":"Python_Classroom"
+      "subvariant":"Python_Classroom",
+      "sha256":"902c21de17125c1780a94b3fc980c65b8e41b0b23e497731aea74668f9d01071",
+      "size":"1036324123"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/x86_64/images/Fedora-Python-Classroom-Vagrant-33-1.2.x86_64.vagrant-virtualbox.box",
       "variant":"Labs",
-      "subvariant":"Python_Classroom"
+      "subvariant":"Python_Classroom",
+      "sha256":"9ea3921c655f5658348be3a0e392a4053dcffce0d15e7cb09cbbd924a834bd3b",
+      "size":"1084221440"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/x86_64/images/Fedora-Scientific-Vagrant-33-1.2.x86_64.vagrant-libvirt.box",
       "variant":"Labs",
-      "subvariant":"Scientific"
+      "subvariant":"Scientific",
+      "sha256":"f878ac856f73bccd87b35d3a74ed22726cba99bc7e5e478e8c5c3e7dd5f4ea07",
+      "size":"3166730611"
    },
    {
       "version":"33",
       "arch":"x86_64",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/x86_64/images/Fedora-Scientific-Vagrant-33-1.2.x86_64.vagrant-virtualbox.box",
       "variant":"Labs",
-      "subvariant":"Scientific"
+      "subvariant":"Scientific",
+      "sha256":"4e7092b227cf399741db01518903ea6cd5c46ac9ad25d5332ab1c9960ec4624b",
+      "size":"3299758080"
    },
    {
       "version":"33",
       "arch":"armhfp",
       "link":"https://download.fedoraproject.org/pub/alt/releases/33/Labs/armhfp/images/Fedora-Python-Classroom-armhfp-33-1.2-sda.raw.xz",
       "variant":"Labs",
-      "subvariant":"Python_Classroom"
+      "subvariant":"Python_Classroom",
+      "sha256":"49bb9bcf1637b24ee0ca9551d0b64801e4094c9e5304df811d2c9512ca217a14",
+      "size":"1487181948"
    },
    {
       "version":"32",
@@ -893,348 +1587,5 @@
       "subvariant":"Security",
       "sha256":"2219d1bc5c284007df341e2b4137ebe9f406dd13a3b762000120990d1190a0e8",
       "size":"1932853248"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/x86_64/images/Fedora-Cloud-Base-31-1.9.x86_64.qcow2",
-      "variant":"Cloud",
-      "subvariant":"Cloud_Base"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/x86_64/images/Fedora-Cloud-Base-31-1.9.x86_64.raw.xz",
-      "variant":"Cloud",
-      "subvariant":"Cloud_Base"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/x86_64/images/Fedora-Cloud-Base-31-1.9.x86_64.vmdk",
-      "variant":"Cloud",
-      "subvariant":"Cloud_Base"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-31-1.9.x86_64.vagrant-libvirt.box",
-      "variant":"Cloud",
-      "subvariant":"Cloud_Base"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/x86_64/images/Fedora-Cloud-Base-Vagrant-31-1.9.x86_64.vagrant-virtualbox.box",
-      "variant":"Cloud",
-      "subvariant":"Cloud_Base"
-   },
-   {
-      "version":"31",
-      "arch":"aarch64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/aarch64/images/Fedora-Cloud-Base-31-1.9.aarch64.qcow2",
-      "variant":"Cloud",
-      "subvariant":"Cloud_Base"
-   },
-   {
-      "version":"31",
-      "arch":"aarch64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/aarch64/images/Fedora-Cloud-Base-31-1.9.aarch64.raw.xz",
-      "variant":"Cloud",
-      "subvariant":"Cloud_Base"
-   },
-   {
-      "version":"31",
-      "arch":"aarch64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Cloud/aarch64/images/Fedora-Cloud-Base-31-1.9.aarch64.vmdk",
-      "variant":"Cloud",
-      "subvariant":"Cloud_Base"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Container/x86_64/images/Fedora-Container-Base-31-1.9.x86_64.tar.xz",
-      "variant":"Container",
-      "subvariant":"Container_Base"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Container/x86_64/images/Fedora-Container-Minimal-Base-31-1.9.x86_64.tar.xz",
-      "variant":"Container",
-      "subvariant":"Container_Minimal_Base"
-   },
-   {
-      "version":"31",
-      "arch":"aarch64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Container/aarch64/images/Fedora-Container-Base-31-1.9.aarch64.tar.xz",
-      "variant":"Container",
-      "subvariant":"Container_Base"
-   },
-   {
-      "version":"31",
-      "arch":"aarch64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Container/aarch64/images/Fedora-Container-Minimal-Base-31-1.9.aarch64.tar.xz",
-      "variant":"Container",
-      "subvariant":"Container_Minimal_Base"
-   },
-   {
-      "version":"31",
-      "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Everything/armhfp/iso/Fedora-Everything-netinst-armhfp-31-1.9.iso",
-      "variant":"Everything",
-      "subvariant":"Everything"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Everything/x86_64/iso/Fedora-Everything-netinst-x86_64-31-1.9.iso",
-      "variant":"Everything",
-      "subvariant":"Everything"
-   },
-   {
-      "version":"31",
-      "arch":"aarch64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Everything/aarch64/iso/Fedora-Everything-netinst-aarch64-31-1.9.iso",
-      "variant":"Everything",
-      "subvariant":"Everything"
-   },
-   {
-      "version":"31",
-      "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Server/armhfp/images/Fedora-Server-armhfp-31-1.9-sda.raw.xz",
-      "variant":"Server",
-      "subvariant":"Server"
-   },
-   {
-      "version":"31",
-      "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Server/armhfp/iso/Fedora-Server-dvd-armhfp-31-1.9.iso",
-      "variant":"Server",
-      "subvariant":"Server"
-   },
-   {
-      "version":"31",
-      "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Server/armhfp/iso/Fedora-Server-netinst-armhfp-31-1.9.iso",
-      "variant":"Server",
-      "subvariant":"Server"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Server/x86_64/iso/Fedora-Server-dvd-x86_64-31-1.9.iso",
-      "variant":"Server",
-      "subvariant":"Server"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Server/x86_64/iso/Fedora-Server-netinst-x86_64-31-1.9.iso",
-      "variant":"Server",
-      "subvariant":"Server"
-   },
-   {
-      "version":"31",
-      "arch":"aarch64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Server/aarch64/images/Fedora-Server-31-1.9.aarch64.raw.xz",
-      "variant":"Server",
-      "subvariant":"Server"
-   },
-   {
-      "version":"31",
-      "arch":"aarch64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Server/aarch64/iso/Fedora-Server-dvd-aarch64-31-1.9.iso",
-      "variant":"Server",
-      "subvariant":"Server"
-   },
-   {
-      "version":"31",
-      "arch":"aarch64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Server/aarch64/iso/Fedora-Server-netinst-aarch64-31-1.9.iso",
-      "variant":"Server",
-      "subvariant":"Server"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Silverblue/x86_64/iso/Fedora-Silverblue-ostree-x86_64-31-1.9.iso",
-      "variant":"Silverblue",
-      "subvariant":"Silverblue"
-   },
-   {
-      "version":"31",
-      "arch":"aarch64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Silverblue/aarch64/iso/Fedora-Silverblue-ostree-aarch64-31-1.9.iso",
-      "variant":"Silverblue",
-      "subvariant":"Silverblue"
-   },
-   {
-      "version":"31",
-      "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/armhfp/images/Fedora-KDE-armhfp-31-1.9-sda.raw.xz",
-      "variant":"Spins",
-      "subvariant":"KDE"
-   },
-   {
-      "version":"31",
-      "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/armhfp/images/Fedora-LXDE-armhfp-31-1.9-sda.raw.xz",
-      "variant":"Spins",
-      "subvariant":"LXDE"
-   },
-   {
-      "version":"31",
-      "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/armhfp/images/Fedora-LXQt-armhfp-31-1.9-sda.raw.xz",
-      "variant":"Spins",
-      "subvariant":"LXQt"
-   },
-   {
-      "version":"31",
-      "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/armhfp/images/Fedora-Mate-armhfp-31-1.9-sda.raw.xz",
-      "variant":"Spins",
-      "subvariant":"Mate"
-   },
-   {
-      "version":"31",
-      "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/armhfp/images/Fedora-Minimal-armhfp-31-1.9-sda.raw.xz",
-      "variant":"Spins",
-      "subvariant":"Minimal"
-   },
-   {
-      "version":"31",
-      "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/armhfp/images/Fedora-SoaS-armhfp-31-1.9-sda.raw.xz",
-      "variant":"Spins",
-      "subvariant":"SoaS"
-   },
-   {
-      "version":"31",
-      "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/armhfp/images/Fedora-Xfce-armhfp-31-1.9-sda.raw.xz",
-      "variant":"Spins",
-      "subvariant":"Xfce"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/x86_64/iso/Fedora-MATE_Compiz-Live-x86_64-31-1.9.iso",
-      "variant":"Spins",
-      "subvariant":"Mate"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/x86_64/iso/Fedora-Cinnamon-Live-x86_64-31-1.9.iso",
-      "variant":"Spins",
-      "subvariant":"Cinnamon"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/x86_64/iso/Fedora-KDE-Live-x86_64-31-1.9.iso",
-      "variant":"Spins",
-      "subvariant":"KDE"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/x86_64/iso/Fedora-LXDE-Live-x86_64-31-1.9.iso",
-      "variant":"Spins",
-      "subvariant":"LXDE"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/x86_64/iso/Fedora-LXQt-Live-x86_64-31-1.9.iso",
-      "variant":"Spins",
-      "subvariant":"LXQt"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/x86_64/iso/Fedora-SoaS-Live-x86_64-31-1.9.iso",
-      "variant":"Spins",
-      "subvariant":"SoaS"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Spins/x86_64/iso/Fedora-Xfce-Live-x86_64-31-1.9.iso",
-      "variant":"Spins",
-      "subvariant":"Xfce"
-   },
-   {
-      "version":"31",
-      "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Workstation/armhfp/images/Fedora-Workstation-armhfp-31-1.9-sda.raw.xz",
-      "variant":"Workstation",
-      "subvariant":"Workstation"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/fedora/linux/releases/31/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-31-1.9.iso",
-      "variant":"Workstation",
-      "subvariant":"Workstation"
-   },
-   {
-      "version":"31",
-      "arch":"armhfp",
-      "link":"https://download.fedoraproject.org/pub/alt/releases/31/Labs/armhfp/images/Fedora-Python-Classroom-armhfp-31-1.9-sda.raw.xz",
-      "variant":"Labs",
-      "subvariant":"Python_Classroom"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/alt/releases/31/Labs/x86_64/images/Fedora-Python-Classroom-Vagrant-31-1.9.x86_64.vagrant-libvirt.box",
-      "variant":"Labs",
-      "subvariant":"Python_Classroom"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/alt/releases/31/Labs/x86_64/images/Fedora-Python-Classroom-Vagrant-31-1.9.x86_64.vagrant-virtualbox.box",
-      "variant":"Labs",
-      "subvariant":"Python_Classroom"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/alt/releases/31/Labs/x86_64/iso/Fedora-Astronomy_KDE-Live-x86_64-31-1.9.iso",
-      "variant":"Labs",
-      "subvariant":"Astronomy_KDE"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/alt/releases/31/Labs/x86_64/iso/Fedora-Design_suite-Live-x86_64-31-1.9.iso",
-      "variant":"Labs",
-      "subvariant":"Design_suite"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/alt/releases/31/Labs/x86_64/iso/Fedora-Python-Classroom-Live-x86_64-31-1.9.iso",
-      "variant":"Labs",
-      "subvariant":"Python_Classroom"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/alt/releases/31/Labs/x86_64/iso/Fedora-Robotics-Live-x86_64-31-1.9.iso",
-      "variant":"Labs",
-      "subvariant":"Robotics"
-   },
-   {
-      "version":"31",
-      "arch":"x86_64",
-      "link":"https://download.fedoraproject.org/pub/alt/releases/31/Labs/x86_64/iso/Fedora-Security-Live-x86_64-31-1.9.iso",
-      "variant":"Labs",
-      "subvariant":"Security"
    }
 ]
