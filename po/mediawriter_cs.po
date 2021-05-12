@@ -10,20 +10,21 @@
 # Marek Suchánek <m.suchanek.2@gmail.com>, 2017. #zanata
 # Martin Bříza <mbriza@redhat.com>, 2017. #zanata
 # Michal Konečný <michalkonec666@gmail.com>, 2019. #zanata
-#, fuzzy
+# Jan Grulich <jgrulich@redhat.com>, 2021.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 16:44+0200\n"
-"PO-Revision-Date: 2019-08-22 01:44-0400\n"
-"Last-Translator: Michal Konečný <michalkonec666@gmail.com>\n"
-"Language-Team: Czech\n"
+"PO-Revision-Date: 2021-05-12 11:55+0000\n"
+"Last-Translator: Jan Grulich <jgrulich@redhat.com>\n"
+"Language-Team: Czech <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.6.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/DeleteButton.qml:64
@@ -191,7 +192,7 @@ msgstr "Tento disk není dostatečně velký."
 #: ../src/app/qml/ImageDetails.qml:98
 msgctxt "ImageDetails|"
 msgid "Back"
-msgstr ""
+msgstr "Zpět"
 
 #: ../src/app/qml/ImageDetails.qml:105
 msgctxt "ImageDetails|"
@@ -589,13 +590,13 @@ msgstr "Nelze nalézt pomocný binární soubor. Zkontrolujte svou instalaci."
 #: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "Dokončeno!"
 
 #: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Zapisování %1 bylo úspěšné"
 
 #: ../src/helper/linux/writejob.cpp:136 ../src/helper/win/writejob.cpp:271
 #: ../src/helper/mac/writejob.cpp:219
@@ -677,7 +678,7 @@ msgstr "Disk nelze odemknout"
 #: ../src/helper/mac/writejob.cpp:82
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "nedaří se vytvořit dvojici soketů"
 
 #: ../src/helper/mac/writejob.cpp:127
 msgctxt "WriteJob|"
@@ -785,7 +786,7 @@ msgstr "Zapisujte obrazy Fedory na přenosná média"
 # ############## metadata.json ###############
 #: [Workstation].subvariant
 msgid "workstation"
-msgstr ""
+msgstr "Workstation"
 
 #: [Workstation].category
 msgctxt "Release|"
@@ -793,17 +794,14 @@ msgid "product"
 msgstr ""
 
 #: [Workstation].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "Fedora Workstation"
-msgstr "Spiny Fedory"
+msgstr "Fedora Workstation"
 
 #: [Workstation].summary
 msgctxt "Release|"
 msgid "This is the Linux workstation you've been waiting for."
-msgstr ""
+msgstr "Linuxová pracovní stanice, na kterou jste čekali."
 
 #: [Workstation].description[0]
 msgctxt "Release|"
@@ -813,6 +811,9 @@ msgid ""
 "developers, from hobbyists and students to professionals in corporate "
 "environments."
 msgstr ""
+"Fedora Workstation je spolehlivý, uživatelsky přívětivý a výkonný operační "
+"systém pro laptop a stolní počítač. Poskytne podporu široké škále vývojářů "
+"od nadšenců a studentů po profesionály v podnikových prostředích."
 
 #: [Workstation].description[1]
 msgctxt "Release|"
