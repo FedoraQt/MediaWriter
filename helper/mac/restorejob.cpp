@@ -32,22 +32,11 @@ RestoreJob::RestoreJob(const QString &where)
 }
 
 void RestoreJob::work() {
-    QFile target("/dev/r"+where);
-    QByteArray buffer(1024 * 512, 0);
-
     QProcess diskUtil;
     diskUtil.setProgram("diskutil");
     diskUtil.setArguments(QStringList() << "unmountDisk" << where);
     diskUtil.start();
     diskUtil.waitForFinished();
-
-    target.open(QIODevice::WriteOnly);
-
-    for (int i = 0; i < 64; i++) {
-        target.write(buffer);
-    }
-
-    target.close();
 
     diskUtil.setProcessChannelMode(QProcess::ForwardedChannels);
     diskUtil.setArguments(QStringList() << "partitionDisk" << where << "1" << "MBR" << "fat32" << "FLASHDISK" << "R");
