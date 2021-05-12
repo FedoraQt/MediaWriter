@@ -54,6 +54,7 @@ DADissenterRef OnMountApproval(DADiskRef disk, void *context) {
 
 static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx) {
     static bool lastS1 = false;
+    static bool lastS2 = false;
     static NSString *lastPrefix = @"";
     if (disk) {
         NSDictionary *diskDescription = (NSDictionary*) DADiskCopyDescription(disk);
@@ -67,6 +68,7 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
         NSNumber *diskSize = nil;
         NSNumber *bsdNumber = nil;
         NSString *deviceProtocol = nil;
+        NSString *contentKey = nil;
 
         diskSize = [diskDescription objectForKey:(NSString*)kDADiskDescriptionMediaSizeKey];
         diskVendor = [diskDescription objectForKey:(NSString*)kDADiskDescriptionDeviceVendorKey];
@@ -77,6 +79,7 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
         bsdNumber = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionMediaBSDUnitKey];
         isInternal = [diskDescription objectForKey:(NSNumber*)kDADiskDescriptionDeviceInternalKey];
         deviceProtocol = [diskDescription objectForKey:(NSString*)kDADiskDescriptionDeviceProtocolKey];
+        contentKey = [diskDescription objectForKey:(NSString*)kDADiskDescriptionMediaContentKey];
 
         //NSLog(@"%@\n", bsdName);
 
@@ -86,10 +89,16 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
                 lastS1 = true;
         }
 
+        if ([bsdName hasSuffix:@"s2"]) {
+            lastPrefix = [bsdName substringToIndex:[bsdName length] - 2];
+            if ([contentKey hasSuffix:@"0xEF"])
+                lastS2 = true;
+        }
+
         if (isWhole != nil && [isWhole integerValue] != 0) {
             if ((isInternal != nil && [isInternal integerValue] == 0 && isRemovable != nil && [isRemovable integerValue] != 0)
                 || (deviceProtocol != nil && [deviceProtocol isEqual:@"USB"])) {
-                    bool isRestoreable = lastS1 & [bsdName isEqualToString:lastPrefix];
+                    bool isRestoreable = (lastS1 || lastS2)  & [bsdName isEqualToString:lastPrefix];
                     onAdded([bsdName UTF8String], [diskVendor UTF8String], [diskModel UTF8String], [diskSize integerValue], isRestoreable);
             }
         }

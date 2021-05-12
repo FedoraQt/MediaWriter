@@ -75,7 +75,6 @@ MacDrive::MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bo
 }
 
 bool MacDrive::write(ReleaseVariant *data) {
-    //osascript -e "do shell script \"$*\" with administrator privileges"
     if (!Drive::write(data))
         return false;
 
@@ -139,34 +138,29 @@ void MacDrive::restore() {
     m_restoreStatus = RESTORING;
     emit restoreStatusChanged();
 
-    m_child->setProgram("osascript");
-
-    QString command;
-    command.append("do shell script \"");
     if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
-        command.append(QString("'%1/../../../../helper/mac/helper.app/Contents/MacOS/helper'").arg(qApp->applicationDirPath()));
+        m_child->setProgram(QString("%1/../../../../helper/mac/helper.app/Contents/MacOS/helper").arg(qApp->applicationDirPath()));
     }
     else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
-        command.append(QString("'%1/helper'").arg(qApp->applicationDirPath()));
+        m_child->setProgram(QString("%1/helper").arg(qApp->applicationDirPath()));
     }
     else {
         m_restoreStatus = RESTORE_ERROR;
         return;
     }
-    command.append(" restore ");
-    command.append(m_bsdDevice);
-    command.append("\" with administrator privileges without altering line endings");
 
     QStringList args;
-    args << "-e";
-    args << command;
-    mCritical() << "The command is" << command;
+    args.append("restore");
+    args.append(m_bsdDevice);
     m_child->setArguments(args);
 
-    //connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
-    connect(m_child, SIGNAL(finished(int,QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int,QProcess::ExitStatus)));
+    m_child->setProcessChannelMode(QProcess::ForwardedChannels);
 
-    m_child->start(QIODevice::ReadOnly);
+    connect(m_child, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onRestoreFinished);
+
+    mCritical() << "The command is" << m_child->program() << args;
+
+    m_child->start();
 }
 
 void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
