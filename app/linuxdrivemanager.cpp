@@ -354,10 +354,7 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status) {
             m_image->setStatus(ReleaseVariant::FAILED);
         }
     }
-    else {
-        Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
-        m_image->setStatus(ReleaseVariant::FINISHED);
-    }
+
     if (m_process) {
         m_process->deleteLater();
         m_process = nullptr;
