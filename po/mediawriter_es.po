@@ -7,20 +7,21 @@
 # Máximo Castañeda Riloba <mcrcctm@gmail.com>, 2016. #zanata
 # Dennis Tobar <dennis.tobar@gmail.com>, 2017. #zanata
 # Máximo Castañeda Riloba <mcrcctm@gmail.com>, 2017. #zanata
-#, fuzzy
+# Santiago Gil <santix91@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 16:44+0200\n"
-"PO-Revision-Date: 2017-11-06 06:51-0500\n"
-"Last-Translator: Máximo Castañeda Riloba <mcrcctm@gmail.com>\n"
-"Language-Team: Spanish\n"
+"PO-Revision-Date: 2021-05-17 17:02+0000\n"
+"Last-Translator: Santiago Gil <santix91@gmail.com>\n"
+"Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.6.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/DeleteButton.qml:64
@@ -57,7 +58,7 @@ msgstr "Escribir %1"
 #: ../src/app/qml/DownloadDialog.qml:141
 msgctxt "DownloadDialog|"
 msgid "Writing is not possible"
-msgstr "No se puede escribir."
+msgstr "No se puede escribir"
 
 #: ../src/app/qml/DownloadDialog.qml:216
 msgctxt "DownloadDialog|"
@@ -188,7 +189,7 @@ msgstr "La unidad no es suficientemente grande."
 #: ../src/app/qml/ImageDetails.qml:98
 msgctxt "ImageDetails|"
 msgid "Back"
-msgstr ""
+msgstr "Atrás"
 
 #: ../src/app/qml/ImageDetails.qml:105
 msgctxt "ImageDetails|"
@@ -405,12 +406,12 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:939
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
-msgstr ""
+msgstr "AArch64"
 
 #: ../src/app/releasemanager.cpp:939
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr ""
+msgstr "Imagen comprimida por LZMA para sistemas AArch64"
 
 #: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
 msgctxt "ReleaseListModel|"
@@ -593,13 +594,13 @@ msgstr ""
 #: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "¡Terminado!"
 
 #: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "La escritura de %1 finalizó correctamente"
 
 #: ../src/helper/linux/writejob.cpp:136 ../src/helper/win/writejob.cpp:271
 #: ../src/helper/mac/writejob.cpp:219
@@ -683,12 +684,12 @@ msgstr "No se pudo desbloquear la unidad"
 #: ../src/helper/mac/writejob.cpp:82
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "no es posible crear un par de socket"
 
 #: ../src/helper/mac/writejob.cpp:127
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "No es posible abrir el destino para escritura"
 
 #: ../src/app/qml/main.qml:68
 #, qt-format
@@ -698,7 +699,7 @@ msgid ""
 "to restore it to factory settings?"
 msgstr ""
 "Ha insertado <b>%1</b>, que ya contiene un sistema vivo.<br>¿Desea restaurar "
-"el disco a sus ajustes de fábrica? "
+"el disco a sus ajustes de fábrica?"
 
 #: ../src/app/qml/main.qml:70
 msgctxt "main|"
@@ -799,7 +800,7 @@ msgstr ""
 #: [Workstation].category
 msgctxt "Release|"
 msgid "product"
-msgstr ""
+msgstr "producto"
 
 #: [Workstation].name
 #, fuzzy
@@ -812,7 +813,7 @@ msgstr "Fedora Spins"
 #: [Workstation].summary
 msgctxt "Release|"
 msgid "This is the Linux workstation you've been waiting for."
-msgstr ""
+msgstr "Esta es la estación de trabajo Linux que estabas esperando."
 
 #: [Workstation].description[0]
 msgctxt "Release|"
@@ -822,6 +823,10 @@ msgid ""
 "developers, from hobbyists and students to professionals in corporate "
 "environments."
 msgstr ""
+"Fedora Workstation es un sistema operativo fiable, potente y fácil de usar "
+"para equipos portátiles y de escritorio. Soporta una amplia gama de "
+"desarrolladores, desde aficionados y estudiantes hasta profesionales en "
+"entornos empresariales."
 
 #: [Workstation].description[1]
 msgctxt "Release|"
@@ -829,16 +834,18 @@ msgid ""
 "“The plethora of tools provided by<br /> Fedora allows me to get the job "
 "done.<br /> It just works.”"
 msgstr ""
+"\"La multitud de herramientas provistas <br />por Fedora me permiten "
+"realizar mi <br />trabajo. Simplemente funciona.\""
 
 #: [Workstation].description[2]
 msgctxt "Release|"
 msgid "JVM performance engineer"
-msgstr ""
+msgstr "Ingeniero de rendimiento de JVM"
 
 #: [Workstation].description[3]
 msgctxt "Release|"
 msgid "Sleek user interface"
-msgstr ""
+msgstr "Interfaz de usuario elegante"
 
 #: [Workstation].description[4]
 msgctxt "Release|"
@@ -847,11 +854,15 @@ msgid ""
 "developer feedback and minimizes distractions, so you can concentrate on "
 "what's important."
 msgstr ""
+"Concéntrese en su código con el entorno de escritorio GNOME 3. GNOME está "
+"desarrollado teniendo en cuenta las necesidades de los desarrolladores y "
+"está libre de distracciones innecesarias, de manera que pueda concentrarse "
+"en lo que de verdad importa."
 
 #: [Workstation].description[5]
 msgctxt "Release|"
 msgid "Complete open source toolbox"
-msgstr ""
+msgstr "Colección completa de herramientas de código abierto"
 
 #: [Workstation].description[6]
 msgctxt "Release|"
@@ -861,11 +872,16 @@ msgid ""
 "click or command line away. There's even project hosting and repositories "
 "like COPR to make your code and builds available quickly to the community."
 msgstr ""
+"Evite el trabajo de tratar de encontrar o compilar las herramientas que "
+"necesita. Con la completa colección de lenguajes de código abierto, "
+"herramientas y utilidades de Fedora todo está a un clic o comando de "
+"distancia. Incluso hay proyectos de hospedaje y repositorios como COPR para "
+"compartir su código y crear compilaciones disponibles para toda la comunidad."
 
 #: [Workstation].description[7]
 msgctxt "Release|"
 msgid "GNOME Boxes & other virt tools"
-msgstr ""
+msgstr "GNOME Boxes y otras herramientas de virtualización"
 
 #: [Workstation].description[8]
 msgctxt "Release|"
@@ -874,11 +890,14 @@ msgid ""
 "platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization "
 "tools for even more control."
 msgstr ""
+"Configure máquinas virtuales rápidamente para probar su código en varias "
+"plataformas mediante GNOME Boxes. O bien aproveche herramientas de "
+"virtualización potentes y extensibles para un mayor control."
 
 #: [Workstation].description[9]
 msgctxt "Release|"
 msgid "Built-in Docker support"
-msgstr ""
+msgstr "Soporte para Docker incluído"
 
 #: [Workstation].description[10]
 msgctxt "Release|"
@@ -890,14 +909,12 @@ msgstr ""
 #: [Server].subvariant
 msgctxt "Release|"
 msgid "server"
-msgstr ""
+msgstr "servidor"
 
 #: [Server].category [Server].name
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "Fedora Server"
-msgstr "Fedora Media Writer"
+msgstr "Fedora Server"
 
 #: [Server].summary
 msgctxt "Release|"
@@ -905,6 +922,8 @@ msgid ""
 "The latest technology. A stable foundation. Together, for your applications "
 "and services."
 msgstr ""
+"La última tecnología. Una fundación estable. Juntos para sus aplicaciones y "
+"servicios."
 
 #: [Server].description[0]
 msgctxt "Release|"
@@ -917,7 +936,7 @@ msgstr ""
 #: [Server].description[1]
 msgctxt "Release|"
 msgid "Systems Engineer"
-msgstr ""
+msgstr "Ingeniero de sistemas"
 
 #: [Server].description[2]
 msgctxt "Release|"
@@ -927,11 +946,15 @@ msgid ""
 "to make use of the very latest server-based technologies available in the "
 "open source community."
 msgstr ""
+"Fedora Server es un sistema operativo para servidores apoyado por la "
+"comunidad que permite a los administradores con experiencia en cualquier "
+"sistema operativo utilizar las últimas tecnologías disponibles en la "
+"comunidad de código abierto."
 
 #: [Server].description[3]
 msgctxt "Release|"
 msgid "Easy Administration"
-msgstr ""
+msgstr "Administración sencilla"
 
 #: [Server].description[4]
 msgctxt "Release|"
@@ -940,11 +963,14 @@ msgid ""
 "and monitor system performance and status, and deploy and manage container-"
 "based services."
 msgstr ""
+"Administre su sistema fácilmente con la potente y moderna interfaz de "
+"Cockpit. Vea y monitoree el rendimiento y estado de su sistema, y despliegue "
+"y administre servicios basados en contenedores."
 
 #: [Server].description[5]
 msgctxt "Release|"
 msgid "Server Roles"
-msgstr ""
+msgstr "Roles de Servidor"
 
 #: [Server].description[6]
 msgctxt "Release|"
@@ -958,7 +984,7 @@ msgstr ""
 #: [Server].description[7]
 msgctxt "Release|"
 msgid "Database Services"
-msgstr ""
+msgstr "Servicios de bases de datos"
 
 #: [Server].description[8]
 msgctxt "Release|"
