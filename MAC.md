@@ -4,7 +4,7 @@
 
 ## Running
 
-The process of running Fedora Media Writer on a Mac computer is very similar to every other Mac application.
+The process of running Fedora Media Writer on a Mac computer is the same as every other Mac application.
 
 ### System configuration
 
@@ -16,7 +16,7 @@ Resource-wise, every Intel-based Mac computer should be able to run Fedora Media
 
 ### Usage
 
-Download the .dmg file from the [Releases](../../releases) section of this page or [getfedora.org](https://getfedora.org), then open it. The files downloaded from this page are not signed, which means you can get a prompt saying you won't be able to open them.
+Download the .dmg file from the [Releases](../../releases) section of this page for the latest or [getfedora.org](https://getfedora.org/workstation/download/), then open it. The files downloaded from this page are not signed, which means you can get a prompt saying you won't be able to open them.
 
 To avoid this problem, two-finger click the "Fedora Media Writer" application and use the "Open" option as seen on the picture below.
 
@@ -28,11 +28,11 @@ To avoid this problem, two-finger click the "Fedora Media Writer" application an
 There are several issues or things that are known to need to be improved in the future:
 
 * `osascript` is used instead of the proper way of acquiring privileged access to the system ([#25](../../issues/25))
-* The progressbar doesn't report the actual progress of writing ([#26](../../issues/26))
+* The progress bar doesn't report the actual progress of writing ([#26](../../issues/26))
 
 ## Building
 
-You can build Fedora Media Writer yourself. It has just a few dependencies and building it is a matter of just running two commands.
+You can build Fedora Media Writer yourself. It has just a few dependencies and building it is a matter of just running a few commands.
 
 ### Dependencies
 
@@ -48,9 +48,3 @@ make
 ```
 
 There is also the [build.sh](/dist/mac/build.sh) script included that I use for building a dmg package for distribution on this site. There are some hardcoded paths which you can modify to match yours. It will then build the application and create a portable `.dmg` package that can be used on other computers.
-
-
-
-
-
-
