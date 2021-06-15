@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 16:44+0200\n"
-"PO-Revision-Date: 2021-06-13 02:10+0000\n"
+"PO-Revision-Date: 2021-06-14 18:35+0000\n"
 "Last-Translator: simmon <simmon@nplob.com>\n"
 "Language-Team: Korean <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/ko/>\n"
@@ -1044,6 +1044,9 @@ msgid ""
 "The operating system that is on disk is exactly the same from one machine to "
 "the next, and it never changes as it is used."
 msgstr ""
+"아뭏튼, 다른 운영 체제와 달리, 실버블루는 비-히스테리시스 속성이 있는 재규정 가능한 인프라스트럭쳐를 가지고 있습니다. 이는 모든 "
+"설치가 동일한 버전의 다른 모든 설치와 동일하다는 것을 의미합니다. 디스크에 있는 운영체제는 하나의 시스템에서 다음 시스템까지 정확하게 "
+"동일하며, 그리고 사용 할 때에 변경되지 않습니다."
 
 #: [Silverblue].description[2]
 msgctxt "Release|"
@@ -1054,6 +1057,9 @@ msgid ""
 "development. In each case, applications and containers are kept separate "
 "from the host system, improving stability and reliability."
 msgstr ""
+"실버블루의 디자인은 보다 안정적이고, 결점 발생 가능성이 적으며, 시험과 개발을 더 편리하게 합니다. 이 디자인은 또한 컨테이너 -기반 "
+"소프트웨어 개발 뿐만 아니라 컨테이너화된 응용프로그램을 위한 훌륭한 플랫폼이 됩니다. 각각의 경우, 응용프로그램과 컨테이너가 호스트 "
+"시스템에서 분리되어 있어, 안정성과 신뢰성이 향상됩니다."
 
 #: [Silverblue].description[3]
 msgctxt "Release|"
@@ -1064,6 +1070,8 @@ msgid ""
 "to roll back to the previous version of the operating system, if something "
 "goes wrong."
 msgstr ""
+"실버블루의 핵심 기술에는 다른 유용한 기능이 있습니다. OS 최신화는 빠르고 설치를 기다릴 필요가 없습니다: 다음 버전을 사용하면 "
+"정상적으로 재시작만 하면 됩니다. 실버블루에서, 문제가 발생한 경우 이전 버전의 운영 체제로 되돌릴 수도 있습니다."
 
 #: [KDE].subvariant
 msgctxt "Release|"
@@ -1091,6 +1099,7 @@ msgid ""
 "The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based operating "
 "system utilizing the KDE Plasma Desktop as the main user interface."
 msgstr ""
+"페도라 KDE 플래즈마 데스크탑 배포판은 주 사용자 연결장치로 KDE 플래즈마 데스크탑을 사용하는 강력한 페도라 기반 운영 체제입니다."
 
 #: [KDE].description[1]
 msgctxt "Release|"
@@ -1130,13 +1139,13 @@ msgctxt "Release|"
 msgid ""
 "The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast and "
 "lightweight, while still being visually appealing and user friendly."
-msgstr ""
+msgstr "페도라 Xfce 스핀은 빠르고 가벼우면서도 시각적으로 매력적이고 사용자 친화적인 Xfce 데스크탑을 보여줍니다."
 
 #: [XFCE].description[1]
 msgctxt "Release|"
 msgid ""
 "Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
-msgstr ""
+msgstr "페도라 Xfce는 freedesktop.org 표준을 사용하는 완전한 데스크탑입니다."
 
 #: [LXQT].subvariant
 msgctxt "Release|"
@@ -1181,7 +1190,7 @@ msgstr "페도라 메이트-Compiz 데스크탑"
 #: [Mate].summary
 msgctxt "Release|"
 msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
-msgstr ""
+msgstr "추가적인 3D 윈도우 관리자가 있는 클래식 페도라 데스크탑."
 
 #: [Mate].description[0]
 msgctxt "Release|"
@@ -1230,7 +1239,7 @@ msgctxt "Release|"
 msgid ""
 "Cinnamon is a popular desktop alternative to Gnome 3 and this spin provides "
 "the option to quickly try and install this desktop."
-msgstr ""
+msgstr "시나몬은 그놈 3의 인기 있는 데스크탑 대안이고 이 스핀은 이 데스크탑을 빠르게 시도하고 설치 할 수 있는 선택을 제공합니다."
 
 #: [LXDE].subvariant
 msgctxt "Release|"
@@ -1288,6 +1297,8 @@ msgid ""
 "winning Sugar Learning Platform and designed to fit on an ordinary USB "
 "thumbdrive (\"stick\")."
 msgstr ""
+"스틱에 있는 슈가는 수상 경력에 빛나는 슈가 학습 플랫폼을 특징으로 하는 페도라 기반 운영 체제이며 일반적인 USB 썸드라이브 ( \"스틱"
+"\")에 맞도록 설계되었습니다."
 
 #: [SOAS].description[1]
 msgctxt "Release|"
@@ -1314,20 +1325,17 @@ msgstr ""
 #: [i3].subvariant
 msgctxt "Release|"
 msgid "i3"
-msgstr ""
+msgstr "i3"
 
 #: [i3].category [i3].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Xfce Desktop"
 msgctxt "Release|"
 msgid "Fedora i3 Desktop"
-msgstr "페도라 Xfce 데스크탑"
+msgstr "페도라 i3 데스크탑"
 
 #: [i3].summary
 msgctxt "Release|"
 msgid "Simplicity over Complexity"
-msgstr ""
+msgstr "복잡성보다 단순함"
 
 #: [i3].description[1]
 msgctxt "Release|"
@@ -1398,7 +1406,7 @@ msgctxt "Release|"
 msgid ""
 "Visual design, multimedia production, and publishing suite of free and open "
 "source creative tools."
-msgstr ""
+msgstr "시각 디자인, 멀티미디어 제작과 무료와 개방형 원천 창작 도구의 출판 제품군입니다."
 
 #: [DesignSuite].description[0]
 msgctxt "Release|"
@@ -1407,6 +1415,8 @@ msgid ""
 "source multimedia production and publishing tools? Try the Design Suite, a "
 "Fedora Spin created by designers, for designers."
 msgstr ""
+"무료이고 개방형 원천 멀티미디어 제작과 게시 도구로 가득한 바로 사용 할 수 있는 데스크탑 환경을 찾고 계시나요? 디자이너를 위해 "
+"디자이너가 생성한 페도라 스핀인 디자인 제품군을 사용해보세요."
 
 #: [DesignSuite].description[1]
 msgctxt "Release|"
@@ -1433,7 +1443,7 @@ msgstr "페도라 게임"
 msgctxt "Release|"
 msgid ""
 "A collection and perfect show-case of the best games available in Fedora."
-msgstr ""
+msgstr "페도라에서 사용 할 수 있는 최고의 게임 모음과 완벽한 전시물입니다."
 
 #: [Games].description[0]
 msgctxt "Release|"
@@ -1579,7 +1589,7 @@ msgctxt "Release|"
 msgid ""
 "A safe test environment to work on security auditing, forensics, system "
 "rescue and teaching security testing methodologies."
-msgstr ""
+msgstr "보안 감사, 포렌식, 시스템 구조와 보안 시험 방법론 교육을 위한 안전한 시험 환경입니다."
 
 #: [Security].description[0]
 msgctxt "Release|"
