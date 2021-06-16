@@ -304,7 +304,7 @@ FocusScope {
                 width: osListView.width - 2
                 height: units.gridUnit * 2
                 anchors.horizontalCenter: parent.horizontalCenter
-                y: Math.round(units.gridUnit * 4.5) * 3 + 1
+                y: Math.round(units.gridUnit * 4.5) * 4 + 1
                 z: -1
                 Rectangle {
                     anchors.fill: parent
