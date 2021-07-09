@@ -1,18 +1,18 @@
-# Fabio Tomat <f.t.public@gmail.com>, 2017. #zanata
-#, fuzzy
+# Fabio Tomat <f.t.public@gmail.com>, 2017. #zanata, 2021.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 16:44+0200\n"
-"PO-Revision-Date: 2017-11-05 10:30-0500\n"
+"PO-Revision-Date: 2021-07-09 07:04+0000\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
-"Language-Team: Friulian\n"
+"Language-Team: Friulian <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/fur/>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Zanata 4.6.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.7.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/DeleteButton.qml:64
@@ -181,12 +181,12 @@ msgstr "Cheste unitât no je vonde grande."
 #: ../src/app/qml/ImageDetails.qml:98
 msgctxt "ImageDetails|"
 msgid "Back"
-msgstr ""
+msgstr "Indaûr"
 
 #: ../src/app/qml/ImageDetails.qml:105
 msgctxt "ImageDetails|"
 msgid "Create Live USB…"
-msgstr ""
+msgstr "Cree Live USB…"
 
 #. The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
 #: ../src/app/qml/ImageDetails.qml:167
@@ -395,12 +395,12 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:939
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
-msgstr ""
+msgstr "AArch64"
 
 #: ../src/app/releasemanager.cpp:939
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr ""
+msgstr "Imagjin grese comprimude cun LZMA pes machinis AArch64"
 
 #: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
 msgctxt "ReleaseListModel|"
@@ -581,13 +581,13 @@ msgstr "Impussibil cjatâ il binari di jutori. Controle la instalazion."
 #: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "Finît!"
 
 #: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Scriture di %1 completade cun sucès"
 
 #: ../src/helper/linux/writejob.cpp:136 ../src/helper/win/writejob.cpp:271
 #: ../src/helper/mac/writejob.cpp:219
@@ -669,12 +669,12 @@ msgstr "Impussibil sblocâ la unitât"
 #: ../src/helper/mac/writejob.cpp:82
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "Impussibil assegnâ la cubie di socket"
 
 #: ../src/helper/mac/writejob.cpp:127
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "Impussibil vierzi la destinazion pe scriture"
 
 #: ../src/app/qml/main.qml:68
 #, qt-format
@@ -778,25 +778,22 @@ msgstr "Scrîf lis imagjins di Fedora tes tôs unitâts portatilis"
 # ############## metadata.json ###############
 #: [Workstation].subvariant
 msgid "workstation"
-msgstr ""
+msgstr "workstation"
 
 #: [Workstation].category
 msgctxt "Release|"
 msgid "product"
-msgstr ""
+msgstr "prodot"
 
 #: [Workstation].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "Fedora Workstation"
-msgstr "Fedora Spins"
+msgstr "Fedora Workstation"
 
 #: [Workstation].summary
 msgctxt "Release|"
 msgid "This is the Linux workstation you've been waiting for."
-msgstr ""
+msgstr "Cheste e je la postazion di lavôr Linux che tu stavis spietant."
 
 #: [Workstation].description[0]
 msgctxt "Release|"
@@ -806,6 +803,10 @@ msgid ""
 "developers, from hobbyists and students to professionals in corporate "
 "environments."
 msgstr ""
+"Fedora Workstation al è un sisteme operatîf afidabil, facil e potent, adat "
+"ai portatii o ai computer fis. Al supuarte une grande schirie di "
+"svilupadôrs, da chei che a svilupin par passetimp e students, ai "
+"professioniscj in ambits aziendâi."
 
 #: [Workstation].description[1]
 msgctxt "Release|"
@@ -813,16 +814,18 @@ msgid ""
 "“The plethora of tools provided by<br /> Fedora allows me to get the job "
 "done.<br /> It just works.”"
 msgstr ""
+"“La sorebondance di struments furnîts di <br /> Fedora mi permet di puartâ a "
+"tiermin il lavôr.<br /> Al funzione e vonde.”"
 
 #: [Workstation].description[2]
 msgctxt "Release|"
 msgid "JVM performance engineer"
-msgstr ""
+msgstr "Inzegnîr des prestazion di JVM"
 
 #: [Workstation].description[3]
 msgctxt "Release|"
 msgid "Sleek user interface"
-msgstr ""
+msgstr "Interface utent elegante"
 
 #: [Workstation].description[4]
 msgctxt "Release|"
@@ -831,11 +834,14 @@ msgid ""
 "developer feedback and minimizes distractions, so you can concentrate on "
 "what's important."
 msgstr ""
+"Concentriti sul to codiç tal ambient scritori GNOME 3. GNOME al è costruît "
+"su la fonde dai parês dai svilupadôrs e al minimize lis distrazions, cussì "
+"che tu ti puedis concentrâ su ce che al è impuartant."
 
 #: [Workstation].description[5]
 msgctxt "Release|"
 msgid "Complete open source toolbox"
-msgstr ""
+msgstr "Cassele dai imprescj libars complete"
 
 #: [Workstation].description[6]
 msgctxt "Release|"
@@ -845,11 +851,16 @@ msgid ""
 "click or command line away. There's even project hosting and repositories "
 "like COPR to make your code and builds available quickly to the community."
 msgstr ""
+"Evite il lavôr di cirî di cjatâ o costruî i imprescj che ti coventin. Cun la "
+"cumbinazion complete di Fedora di lengaçs libars, struments e utilitâts, dut "
+"al è a un clic (o a comant) di distance. Al inclût ancje un puest dulà "
+"ospitâ i progjets e i dipuesits come COPR par rindi il to codiç e lis "
+"versions costruidis disponibilis ae comunitât."
 
 #: [Workstation].description[7]
 msgctxt "Release|"
 msgid "GNOME Boxes & other virt tools"
-msgstr ""
+msgstr "GNOME Scjatulis e altris struments di virtualizazion"
 
 #: [Workstation].description[8]
 msgctxt "Release|"
@@ -858,11 +869,14 @@ msgid ""
 "platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization "
 "tools for even more control."
 msgstr ""
+"Configure e eseguìs lis machinis virtuâls subite, par provâ il to codiç su "
+"plui plateformis, doprant GNOME Scjatulis. O aprofondìs i potents struments "
+"di virtualizazion, che si puedin meti in script, par vê ancjemò plui control."
 
 #: [Workstation].description[9]
 msgctxt "Release|"
 msgid "Built-in Docker support"
-msgstr ""
+msgstr "Supuart par Docker incorporât"
 
 #: [Workstation].description[10]
 msgctxt "Release|"
@@ -870,18 +884,19 @@ msgid ""
 "Containerize your own apps, or deploy containerized apps out of the box on "
 "Fedora, using the latest technology like Docker."
 msgstr ""
+"Met tai contignidôrs lis tôs aplicazions o distribuìs lis aplicazions tai "
+"contignidôrs prontis di doprâ su Fedora, doprant lis ultimis tecnologjiis "
+"come Docker."
 
 #: [Server].subvariant
 msgctxt "Release|"
 msgid "server"
-msgstr ""
+msgstr "servidôr"
 
 #: [Server].category [Server].name
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "Fedora Server"
-msgstr "Scritôr Supuarts di Fedora"
+msgstr "Fedora Server"
 
 #: [Server].summary
 msgctxt "Release|"
@@ -889,6 +904,8 @@ msgid ""
 "The latest technology. A stable foundation. Together, for your applications "
 "and services."
 msgstr ""
+"Lis ultimis tecnologjiis. Une fonde stabile. Adun pes tôs aplicazions e i "
+"tiei servizis."
 
 #: [Server].description[0]
 msgctxt "Release|"
@@ -897,11 +914,15 @@ msgid ""
 "deployments a breeze. What took me a few days on other operating systems "
 "took less than an hour with Fedora %(rel)s Server. It just works.”"
 msgstr ""
+"“La semplicitât introdote cun rolekit e cockpit e à fat in mût che meti "
+"impins i servidôrs al sedi un zûc di fruts. Ce che mi puartave vie un pôcs "
+"di dîs su altris sistemis operatîfs cun Fedora %(rel)s Server mi à puartât "
+"vie mancul di une ore. Al funzione e vonde!”"
 
 #: [Server].description[1]
 msgctxt "Release|"
 msgid "Systems Engineer"
-msgstr ""
+msgstr "Inzegnîr di sistemis"
 
 #: [Server].description[2]
 msgctxt "Release|"
@@ -911,11 +932,15 @@ msgid ""
 "to make use of the very latest server-based technologies available in the "
 "open source community."
 msgstr ""
+"Fedora Server al è un sisteme operatîf a cicli di vite curt, supuartât de "
+"comunitât che al permet ai aministradôrs di sisteme esperts e cun esperience "
+"su cualsisei SO di doprâ lis ultimis tecnologjiis disponibilis par servidôrs "
+"te comunitât open source."
 
 #: [Server].description[3]
 msgctxt "Release|"
 msgid "Easy Administration"
-msgstr ""
+msgstr "Aministrazion facile"
 
 #: [Server].description[4]
 msgctxt "Release|"
@@ -924,11 +949,14 @@ msgid ""
 "and monitor system performance and status, and deploy and manage container-"
 "based services."
 msgstr ""
+"Gjestìs il to sisteme in maniere semplice cu la interface moderne e potente "
+"di Cockpit. Viôt e ten di voli il stât e lis prestazion dal sisteme e met "
+"impins e gjestìs i servizis basâts su contignidôrs."
 
 #: [Server].description[5]
 msgctxt "Release|"
 msgid "Server Roles"
-msgstr ""
+msgstr "Rûi dai servidôrs"
 
 #: [Server].description[6]
 msgctxt "Release|"
@@ -938,11 +966,16 @@ msgid ""
 "integrated service on top of the Fedora Server platform. Deploy and manage "
 "these prepared roles simply using the Rolekit tool."
 msgstr ""
+"Nol covente tirâ sù il servidôr dal nuie cuant che tu dopris i rûi dai "
+"servidôrs. I rûi dai servidôrs si inserissin tal sisteme Fedora Server, "
+"furnint un servizi ben integrât parsore de plateforme Fedora Server. Met "
+"impins e gjestìs chescj rûi preparâts doprant semplicementri il strument "
+"Rolekit."
 
 #: [Server].description[7]
 msgctxt "Release|"
 msgid "Database Services"
-msgstr ""
+msgstr "Servizis de base di dâts"
 
 #: [Server].description[8]
 msgctxt "Release|"
@@ -950,11 +983,13 @@ msgid ""
 "Fedora Server brings with it an enterprise-class, scalable database server "
 "powered by the open-source PostgreSQL project."
 msgstr ""
+"Fedora Server al puarte cun se un servidôr des basis di dâts di classe "
+"imprenditoriâl e scjalabil gracie al progjet a codiç viert PostgreSQL."
 
 #: [Server].description[9]
 msgctxt "Release|"
 msgid "Complete Enterprise Domain Solution"
-msgstr ""
+msgstr "Soluzion complete di domini di imprese"
 
 #: [Server].description[10]
 msgctxt "Release|"
@@ -964,6 +999,10 @@ msgid ""
 "environment with FreeIPA, the engine that drives Fedora Server's Domain "
 "Controller role."
 msgstr ""
+"Miore la tô rêt Linux cu la gjestion avanzade des identitâts, il DNS, i "
+"servizis dai certificâts, la integrazion dai dominis Windows(TM) in dut il "
+"to ambient cun FreeIPA, il motôr che al vuide il rûl dal controlôr dal "
+"domini di Fedora Server."
 
 #: [Server].description[11]
 msgctxt "Release|"
@@ -972,37 +1011,35 @@ msgid ""
 "you can run your Docker images. This makes a great testbed for beginners and "
 "experts with docker so that they can develop their applications on the fly.”"
 msgstr ""
+"“Il Rûl di Docker par Fedora Server al è sempliç e svelt di instalâ cussì "
+"che tu puedis eseguî lis tôs imagjins Docker. Chest al è un maraveôs banc di "
+"prove pai novizis e pai esperts cun docker in mût che a puedin disvilupâ lis "
+"lôr aplicazions intun lamp.”"
 
 #: [Server].description[12]
 msgctxt "Release|"
 msgid "</p><p align=right> ― <em>John Unland, "
-msgstr ""
+msgstr "</p><p align=right> ― <em>John Unland, "
 
 #: [Server].description[13]
 msgctxt "Release|"
 msgid "Information Systems Student"
-msgstr ""
+msgstr "Student di sistemis di informazion"
 
 #: [Silverblue].subvariant
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "silverblue"
-msgstr "Fedora Spins"
+msgstr "silverblue"
 
 #: [Silverblue].category
 msgctxt "Release|"
 msgid "emerging"
-msgstr ""
+msgstr "emerging"
 
 #: [Silverblue].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "Fedora Silverblue"
-msgstr "Fedora Spins"
+msgstr "Fedora Silverblue"
 
 #: [Silverblue].summary
 msgctxt "Release|"
@@ -1010,6 +1047,8 @@ msgid ""
 "An extremely stable and reliable desktop operating system, excellent for "
 "developers and for those using container-focused workflows."
 msgstr ""
+"Un sisteme operatîf par scritori une vore stabil e afidabil, ecelent pai "
+"svilupadôrs e par chei che a doprin flus di lavôr centrâts sui contignidôrs."
 
 #: [Silverblue].description[0]
 msgctxt "Release|"
@@ -1018,6 +1057,9 @@ msgid ""
 "like a regular desktop operating system, and the experience is similar to "
 "what you find with using a standard Fedora Workstation."
 msgstr ""
+"Silverblue e je une variante di Fedora Workstation. E somee e si compuarte "
+"come un sisteme operatîf di scritori regolâr e la esperience e je simil a "
+"chê che tu cjatis doprant une Fedora Workstation standard."
 
 #: [Silverblue].description[1]
 msgctxt "Release|"
@@ -1028,6 +1070,11 @@ msgid ""
 "The operating system that is on disk is exactly the same from one machine to "
 "the next, and it never changes as it is used."
 msgstr ""
+"Dut câs, a diference di chei altris sistemis operatîfs, Silverblue al à une "
+"infrastruture che si pues ripeti cun proprietâts anti-isteresi. Chest al "
+"significhe che ogni instalazion e je compagne di dutis lis altris "
+"instalazions de stesse version. Il sisteme operatîf che al sta sul disc al è "
+"il stes di machine in machine e nol cambie mai cuant che al ven doprât."
 
 #: [Silverblue].description[2]
 msgctxt "Release|"
@@ -1038,6 +1085,12 @@ msgid ""
 "development. In each case, applications and containers are kept separate "
 "from the host system, improving stability and reliability."
 msgstr ""
+"Silverblue al è stât progjetât par jessi plui stabil, mancul puartât a vê "
+"erôrs e plui facil di provâ e disvilupâ. La sô struture lu rint ancje une "
+"plateforme ecelente par meti in contignidôr lis aplicazions e par disvilupâ "
+"software basât su contignidôrs. In ogni câs, lis aplicazions e i "
+"contignidôrs a vegnin tignûts separâts dal sisteme che ju ospite, miorant "
+"cussì la stabilitât e la afidabilitât."
 
 #: [Silverblue].description[3]
 msgctxt "Release|"
@@ -1048,26 +1101,31 @@ msgid ""
 "to roll back to the previous version of the operating system, if something "
 "goes wrong."
 msgstr ""
+"Il cûr des tecnologjiis di Silverblue al à cualchi altre funzionalitât "
+"utile. I inzornaments dal SO a son svelts e no tu âs di spietâ par vêju "
+"instalâts: al baste tornâ a inviâ come simpri par tacâ a doprâ la version "
+"sucessive. Cun Silverblue, se alc al va strucj, al è ancje pussibil tornâ "
+"indaûr ae version precedente dal sisteme operatîf."
 
 #: [KDE].subvariant
 msgctxt "Release|"
 msgid "kde"
-msgstr ""
+msgstr "kde"
 
 #: [KDE].category
 msgctxt "Release|"
 msgid "spins"
-msgstr ""
+msgstr "spins"
 
 #: [KDE].name
 msgctxt "Release|"
 msgid "Fedora KDE Plasma Desktop"
-msgstr ""
+msgstr "Fedora KDE Plasma Desktop"
 
 #: [KDE].summary
 msgctxt "Release|"
 msgid "A complete, modern desktop built using the KDE Plasma Desktop."
-msgstr ""
+msgstr "Un scritori moderni e complet fat sù doprant il KDE Plasma Desktop."
 
 #: [KDE].description[0]
 msgctxt "Release|"
@@ -1075,6 +1133,9 @@ msgid ""
 "The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based operating "
 "system utilizing the KDE Plasma Desktop as the main user interface."
 msgstr ""
+"La edizion di Fedora KDE Plasma Desktop al è un sisteme operatîf potent "
+"basât su Fedora che al dopre il KDE Plasma Desktop tant che interface utent "
+"principâl."
 
 #: [KDE].description[1]
 msgctxt "Release|"
@@ -1086,6 +1147,13 @@ msgid ""
 "productivity suite, including office applications and enterprise grade "
 "personal information management."
 msgstr ""
+"Fedora KDE Plasma Desktop al rive cun tantis aplicazions pre-selezionadis di "
+"cualitât superiôr che si adatin a ducj i câs di utilizazion dai scritoris "
+"modernis - partint des comunicazions in rêt come la navigazion web, il mandâ "
+"messaçs istantanis e la corispondence de pueste eletroniche e continuant cul "
+"divertiment e il multimedia rivant fin aes suite avanzadis di produtivitât, "
+"includudis lis aplicazions di ufici e la gjestion des informazions personâls "
+"di grât imprenditoriâl."
 
 #: [KDE].description[2]
 msgctxt "Release|"
@@ -1093,21 +1161,24 @@ msgid ""
 "All KDE applications are well integrated, with a similar look and feel and "
 "an easy to use interface, accompanied by an outstanding graphical appearance."
 msgstr ""
+"Dutis lis aplicazions KDE a son ben integradis, cuntun aspiets e "
+"compuartaments simii e une interface facile di doprâ, il dut acompagnât di "
+"un aspiet grafic ecezionâl."
 
 #: [XFCE].subvariant
 msgctxt "Release|"
 msgid "xfce"
-msgstr ""
+msgstr "xfce"
 
 #: [XFCE].category [XFCE].name
 msgctxt "Release|"
 msgid "Fedora Xfce Desktop"
-msgstr ""
+msgstr "Fedora Xfce Desktop"
 
 #: [XFCE].summary
 msgctxt "Release|"
 msgid "A complete, well-integrated Xfce Desktop."
-msgstr ""
+msgstr "Xfce, un scritori complet e ben integrât."
 
 #: [XFCE].description[0]
 msgctxt "Release|"
@@ -1115,30 +1186,31 @@ msgid ""
 "The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast and "
 "lightweight, while still being visually appealing and user friendly."
 msgstr ""
+"La spin Fedora Xfce e met in mostre il scritori Xfce, che al ponte a jessi "
+"veloç e lizêr, ma tal stes timp inmagant a nivel grafic e facil di doprâ."
 
 #: [XFCE].description[1]
 msgctxt "Release|"
 msgid ""
 "Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
 msgstr ""
+"Fedora Xfce al è un scritori complet a ducj i efiets che al dopre i "
+"standards freedesktop.org."
 
 #: [LXQT].subvariant
 msgctxt "Release|"
 msgid "lxqt"
-msgstr ""
+msgstr "lxqt"
 
 #: [LXQT].category [LXQT].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora LXQt Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora LXQt Desktop"
 
 #: [LXQT].summary
 msgctxt "Release|"
 msgid "A lightweight, well-integrated LXQt desktop environment."
-msgstr ""
+msgstr "LXQt, un ambient di scritori lizêr e ben integrât."
 
 #: [LXQT].description[0]
 msgctxt "Release|"
@@ -1154,21 +1226,31 @@ msgid ""
 "addition breeze-gtk is provided to allow the user to integrate GTK "
 "applications too."
 msgstr ""
+"Fedora LXQt al furnìs un ambient di scritori LXQt lizêr e ben integrât. In "
+"zonte a LXQt al furnìs une piçule e ben selezionade colezion di aplicazions "
+"com il navigadôr QupZilla, che al cumbine il motôr di rapresentazion di "
+"Chromium cuntune esperience Qt ninine. Altris aplicazion includudis a son il "
+"client di pueste Trojita, il client qBittorrent, il riprodutôr musicâl "
+"Yarock e une cumbinazion di altris aplicazions dopradis dispès. Viodût che "
+"dutis lis aplicazions a doprin il stes toolkit Qt5 e il teme Breeze "
+"cognossût di KDE, il scritori al ufrìs un stîl e un teme unificât e ben "
+"integrât. In plui al ven furnît breeze-gtk par permeti al utent di integrâ "
+"ancje lis aplicazions GTK."
 
 #: [Mate].subvariant
 msgctxt "Release|"
 msgid "mate"
-msgstr ""
+msgstr "mate"
 
 #: [Mate].category [Mate].name
 msgctxt "Release|"
 msgid "Fedora MATE-Compiz Desktop"
-msgstr ""
+msgstr "Fedora MATE-Compiz Desktop"
 
 #: [Mate].summary
 msgctxt "Release|"
 msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
-msgstr ""
+msgstr "Un classic Fedora Desktop cuntun gjestôr di barcons 3D adizionâl."
 
 #: [Mate].description[0]
 msgctxt "Release|"
@@ -1179,6 +1261,11 @@ msgid ""
 "for all machines and VMs. Compiz Fusion is a beautiful 3D windowing manager "
 "with Emerald and GTK+ theming."
 msgstr ""
+"La spin MATE Compiz e met adun il scritori MATE cun Compiz Fusion. Il "
+"scritori Mate al è un scritori lizêr e potent progjetât pensant ae "
+"produtivitât e aes prestazions. Il gjestôr dai barcons predefinît al è Marco "
+"che si lu pues doprâ cun dutis lis machinis e MVs. Compiz Fusion al è un "
+"biel gjestôr di barcons 3D cun temis GTK+ e Emerald."
 
 #: [Mate].description[1]
 msgctxt "Release|"
@@ -1186,24 +1273,24 @@ msgid ""
 "If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
 "should definitely try the MATE-Compiz spin."
 msgstr ""
+"Se tu vuelis un scritori Fedora potent e lizêr cun biei efiets 3D cence dubi "
+"tu âs di provâ la spin MATE-Compiz."
 
 #: [Cinnamon].subvariant
 msgctxt "Release|"
 msgid "cinnamon"
-msgstr ""
+msgstr "cinnamon"
 
 #: [Cinnamon].category [Cinnamon].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora Cinnamon Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora Cinnamon Desktop"
 
 #: [Cinnamon].summary
 msgctxt "Release|"
 msgid "A modern desktop featuring traditional Gnome user experience."
 msgstr ""
+"Un scritori moderni che al presente la tradizionâl esperience utent di Gnome."
 
 #: [Cinnamon].description[0]
 msgctxt "Release|"
@@ -1214,6 +1301,11 @@ msgid ""
 "making users feel at home and providing them with an easy to use and "
 "comfortable desktop experience."
 msgstr ""
+"Cinnamon al è un scritori Linux che al furnìs funzionalitâts inovativis "
+"avanzadis e une esperience utent tradizionâl. La disposizion dal scritori e "
+"je simile a chê di Gnome 2. La tecnologjie che e sta sot e rive di Gnome "
+"Shell. La enfasi e je chê di fâ sintî i utents a cjase e dâur une esperience "
+"di scritori semplice e comude."
 
 #: [Cinnamon].description[1]
 msgctxt "Release|"
@@ -1221,24 +1313,23 @@ msgid ""
 "Cinnamon is a popular desktop alternative to Gnome 3 and this spin provides "
 "the option to quickly try and install this desktop."
 msgstr ""
+"Cinnamon e je une popolâr alternative di scritori a Gnome 3 e cheste spin e "
+"ufrìs la opzion par provâ e instalâ daurman chest scritori."
 
 #: [LXDE].subvariant
 msgctxt "Release|"
 msgid "lxde"
-msgstr ""
+msgstr "lxde"
 
 #: [LXDE].category [LXDE].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora LXDE Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora LXDE Desktop"
 
 #: [LXDE].summary
 msgctxt "Release|"
 msgid "A light, fast, less-resource hungry desktop environment."
-msgstr ""
+msgstr "Un ambient di scritori snel, svelt e che al mangje mancul risorsis."
 
 #: [LXDE].description[0]
 msgctxt "Release|"
@@ -1249,6 +1340,11 @@ msgid ""
 "multi-language support, standard keyboard shortcuts and additional features "
 "like tabbed file browsing."
 msgstr ""
+"LXDE, il \"Lightweight X11 Desktop Environment\", al è un ambient di "
+"scritori une vore veloç, ad altis prestazions e che al sparagne energjiis. "
+"Al è mantignût di une comunitât internazionâl di svilupadôrs e si presente "
+"cuntune interface biele, cun supuart par plui lenghis, scurtis di tastiere "
+"standard e funzionalitâts adizionâls come la esplorazion dai file in schedis."
 
 #: [LXDE].description[1]
 msgctxt "Release|"
@@ -1258,24 +1354,26 @@ msgid ""
 "designed for computers with low hardware specifications like netbooks, "
 "mobile devices (e.g. MIDs) or older computers."
 msgstr ""
+"LXDE nol è progjetât par jessi potent e sglonf, ma par jessi doprabil e "
+"snel. Un obietîf principâl di LXDE al è chel di tignî bassis lis risorsis "
+"dal computer dopradis. Al è soredut progjetât pai computers cun specifichis "
+"hardware bassis come i netbooks, i dispositîfs mobii (p.e. i MIDs: "
+"Dispositîfs Internet Mobii) o computers vecjos."
 
 #: [SOAS].subvariant
 msgctxt "Release|"
 msgid "soas"
-msgstr ""
+msgstr "soas"
 
 #: [SOAS].category [SOAS].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora SoaS Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora SoaS Desktop"
 
 #: [SOAS].summary
 msgctxt "Release|"
 msgid "Discover. Reflect. Share. Learn."
-msgstr ""
+msgstr "Scuvierç. Riflet. Condivît. Impare."
 
 #: [SOAS].description[0]
 msgctxt "Release|"
@@ -1284,6 +1382,9 @@ msgid ""
 "winning Sugar Learning Platform and designed to fit on an ordinary USB "
 "thumbdrive (\"stick\")."
 msgstr ""
+"Sugar on a Stick al è un sisteme operatîf basât su Fedora che al presente la "
+"pluripremiade plateforme di aprendiment Sugar e al è progjetât par ficjâsi "
+"intune ordenarie clavute USB (\"stick\")."
 
 #: [SOAS].description[1]
 msgctxt "Release|"
@@ -1296,6 +1397,14 @@ msgid ""
 "query rather than memorizing complex file/folder structures. Applications in "
 "Sugar are known as Activities, some of which are described below."
 msgstr ""
+"Sugar al met in bande la metafore tradizionâdi di \"scritori di ufici\", "
+"presentant un ambient grafic sempliç pai fruts. Sugar al salve in automatic "
+"i tiei avanzaments suntun \"Gjornâl\" te clavute, cussì che i insegnants e i "
+"gjenitôrs a puedin tirâ fûr cun facilitât \"dutis lis sessions di navigazion "
+"web colaborativis fatis inte setemane passade\" o \"lis cjartis scritis cun "
+"Denêl e Sara intes ultimis 24 oris\" cuntune semplice domande invezit di "
+"memorizâ la complesse struture di files/cartelis. Lis aplicazions in Sugar a "
+"son cognossudis come Ativitâts, cualchidune di chês a son descritis chi sot."
 
 #: [SOAS].description[2]
 msgctxt "Release|"
@@ -1306,29 +1415,31 @@ msgid ""
 "environment without touching the host machine’s hard disk or existing system "
 "at all."
 msgstr ""
+"Cumò al è pussibil distribuîlu pal cost di une clavute invezit che di un "
+"portatil; i students a puedin puartâ la lôr clavute Sugar on a Stick su "
+"cualsisei machine - a scuele, a cjase, in librarie o al centri ricreatîf - e "
+"inviâ il lôr ambient di elaborazion personalizât cence tocjâ il disc fis de "
+"machine host o il sisteme esistent."
 
 #: [i3].subvariant
 msgctxt "Release|"
 msgid "i3"
-msgstr ""
+msgstr "i3"
 
 #: [i3].category [i3].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora i3 Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora i3 Desktop"
 
 #: [i3].summary
 msgctxt "Release|"
 msgid "Simplicity over Complexity"
-msgstr ""
+msgstr "Semplicitât sore de complessitât"
 
 #: [i3].description[1]
 msgctxt "Release|"
 msgid "The Fedora i3 Spin provides the popular i3 tiling window manager."
-msgstr ""
+msgstr "La spin Fedora i3 e ufrìs il popolâr gjestôr di barcons piastrelâts i3."
 
 #: [i3].description[3]
 msgctxt "Release|"
@@ -1339,27 +1450,34 @@ msgid ""
 "text editing, and media playback, the Fedora i3 Spin offers a complete "
 "experience with a minimalist user interface."
 msgstr ""
+"i3 al è acesibil e atraent a novizis e utents avanzâts che a preferissin no "
+"doprâ il mouse, il touchpad o altris dispositîs di pontament par interagjî "
+"cul lôr ambient. Presentant aplicazions lizeris pe navigazion web, la "
+"modifiche dai tescj e la riproduzion multimediâl, la Spin Fedora i3 e ufrìs "
+"une esperience complete cuntune interface utent minimaliste."
 
 #: [Astronomy].subvariant
 msgctxt "Release|"
 msgid "astronomy"
-msgstr ""
+msgstr "astronomy"
 
 #: [Astronomy].category
 msgctxt "Release|"
 msgid "labs"
-msgstr ""
+msgstr "labs"
 
 #: [Astronomy].name
 msgctxt "Release|"
 msgid "Fedora Astronomy"
-msgstr ""
+msgstr "Fedora Astronomy"
 
 #: [Astronomy].summary
 msgctxt "Release|"
 msgid ""
 "Powerful completely open-source and free tool for amateurs and professionals."
 msgstr ""
+"Imprest potent dal dut libar, gratuit e a codiç viert pai amadôrs e "
+"professioniscj."
 
 #: [Astronomy].description[0]
 msgctxt "Release|"
@@ -1367,6 +1485,8 @@ msgid ""
 "Fedora Astronomy brings a complete open source toolchain to both amateur and "
 "professional astronomers."
 msgstr ""
+"Fedora Astronomy al puarte une complete cjadene di struments a codiç viert "
+"sedi par astronoms amadôrs che par professioniscj."
 
 #: [Astronomy].description[1]
 msgctxt "Release|"
@@ -1378,20 +1498,24 @@ msgid ""
 "supported. Summarized, Fedora Astronomy provides a complete set of software, "
 "from the observation planning to the final results."
 msgstr ""
+"La Spin e furnìs il scritori KDE di Fedora miorât cuntun ambient Python "
+"sientific complet e il software AstrOmatic pe analisi dai dâts. KStars al è "
+"stât zontât par dâ un strument astro-fotografic cun dutis lis "
+"funzionalitâts. Viodût che KStars al dopre la librarie INDI a son "
+"supuartadis strumentazions, varis telescopis, fotocjamaris e v.i. pal lôr "
+"control. In struc, Fedora Astronomy al furnìs une cumbinazion complete di "
+"software, partint de planificazion de osservazion par rivâ ai risultâts "
+"finâi."
 
 #: [DesignSuite].subvariant
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "design_suite"
-msgstr "Scritôr Supuarts di Fedora"
+msgstr "design_suite"
 
 #: [DesignSuite].category [DesignSuite].name
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "Fedora Design Suite"
-msgstr "Scritôr Supuarts di Fedora"
+msgstr "Fedora Design Suite"
 
 #: [DesignSuite].summary
 msgctxt "Release|"
@@ -1399,6 +1523,8 @@ msgid ""
 "Visual design, multimedia production, and publishing suite of free and open "
 "source creative tools."
 msgstr ""
+"Suite di struments creatîfs libars e a codiç viert pe progjetazion grafiche, "
+"produzion multimediâl e publicazion."
 
 #: [DesignSuite].description[0]
 msgctxt "Release|"
@@ -1407,6 +1533,9 @@ msgid ""
 "source multimedia production and publishing tools? Try the Design Suite, a "
 "Fedora Spin created by designers, for designers."
 msgstr ""
+"Stâstu cirint un ambient di scritori pront pal ûs e plen di struments libars "
+"e open source pe produzion multimediâl e publicazion? Prove la Design Suite, "
+"une Spin di Fedora creade dai disegnadôrs, pai disegnadôrs."
 
 #: [DesignSuite].description[1]
 msgctxt "Release|"
