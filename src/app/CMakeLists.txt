@@ -12,6 +12,7 @@ set(MEDIAWRITER_SRCS
     fakedrivemanager.cpp
     main.cpp
     notifications.cpp
+    portalfiledialog.cpp
     releasemanager.cpp
     units.cpp
     utilities.cpp

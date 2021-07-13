@@ -175,7 +175,10 @@ Item {
         function action() {
             if (release.isLocal) {
                 releases.selectedIndex = index
-                fileDialog.visible = true
+                if (portalFileDialog.isAvailable)
+                    portalFileDialog.open()
+                else
+                    fileDialog.open()
             }
             else {
                 imageList.currentIndex = index
