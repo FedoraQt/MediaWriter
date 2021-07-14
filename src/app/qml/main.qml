@@ -162,6 +162,14 @@ ApplicationWindow {
         }
     }
 
+    Connections {
+        target: portalFileDialog
+        function onFileSelected(fileName) {
+            releases.setLocalFile(fileName)
+            dlDialog.visible = true
+        }
+    }
+
     FullscreenViewer {
         id: fullscreenViewer
     }

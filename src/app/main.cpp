@@ -32,6 +32,7 @@
 #include "crashhandler.h"
 #include "drivemanager.h"
 #include "icon.h"
+#include "portalfiledialog.h"
 #include "releasemanager.h"
 #include "units.h"
 #include "versionchecker.h"
@@ -50,8 +51,6 @@ Q_IMPORT_PLUGIN(QtQuickLayoutsPlugin);
 Q_IMPORT_PLUGIN(QmlFolderListModelPlugin);
 Q_IMPORT_PLUGIN(QmlSettingsPlugin);
 #endif
-
-#include <QDebug>
 
 int main(int argc, char **argv)
 {
@@ -96,8 +95,10 @@ int main(int argc, char **argv)
 
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;
+
     engine.rootContext()->setContextProperty("downloadManager", DownloadManager::instance());
     engine.rootContext()->setContextProperty("drives", DriveManager::instance());
+    engine.rootContext()->setContextProperty("portalFileDialog", new PortalFileDialog(&app));
     engine.rootContext()->setContextProperty("mediawriterVersion", MEDIAWRITER_VERSION);
     engine.rootContext()->setContextProperty("releases", new ReleaseManager());
     engine.rootContext()->setContextProperty("units", Units::instance());
