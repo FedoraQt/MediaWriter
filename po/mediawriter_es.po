@@ -8,12 +8,13 @@
 # Dennis Tobar <dennis.tobar@gmail.com>, 2017. #zanata
 # Máximo Castañeda Riloba <mcrcctm@gmail.com>, 2017. #zanata
 # Santiago Gil <santix91@gmail.com>, 2021.
+# Emilio Herrera <ehespinosa57@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 16:44+0200\n"
-"PO-Revision-Date: 2021-07-11 17:14+0000\n"
-"Last-Translator: Santiago Gil <santix91@gmail.com>\n"
+"PO-Revision-Date: 2021-09-11 17:04+0000\n"
+"Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/es/>\n"
 "Language: es\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.1\n"
+"X-Generator: Weblate 4.8\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/DeleteButton.qml:64
@@ -194,7 +195,7 @@ msgstr "Atrás"
 #: ../src/app/qml/ImageDetails.qml:105
 msgctxt "ImageDetails|"
 msgid "Create Live USB…"
-msgstr ""
+msgstr "Crear un USB Vivo…"
 
 #. The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
 #: ../src/app/qml/ImageDetails.qml:167
@@ -795,7 +796,7 @@ msgstr "Grabe imágenes de Fedora en sus discos portátiles"
 # ############## metadata.json ###############
 #: [Workstation].subvariant
 msgid "workstation"
-msgstr ""
+msgstr "estación de trabajo"
 
 #: [Workstation].category
 msgctxt "Release|"
@@ -803,12 +804,9 @@ msgid "product"
 msgstr "producto"
 
 #: [Workstation].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "Fedora Workstation"
-msgstr "Fedora Spins"
+msgstr "Fedora Workstation"
 
 #: [Workstation].summary
 msgctxt "Release|"
@@ -905,6 +903,9 @@ msgid ""
 "Containerize your own apps, or deploy containerized apps out of the box on "
 "Fedora, using the latest technology like Docker."
 msgstr ""
+"Organice sus propias aplicaciones en contenedores o implemente aplicaciones "
+"listas para usar en Fedora en contenedores, utilizando las últimas "
+"tecnologías como Docker."
 
 #: [Server].subvariant
 msgctxt "Release|"
@@ -932,6 +933,10 @@ msgid ""
 "deployments a breeze. What took me a few days on other operating systems "
 "took less than an hour with Fedora %(rel)s Server. It just works.”"
 msgstr ""
+"“La simplicidad introducida en el kit de roles y en la cabina hacen que la "
+"implementación de servidores sea muy sencilla. Lo que lleva unos cuantos "
+"días en otros sistemas operativos, lleva menos de una hora con Fedora %(rel)"
+"s Server. Simplemente funciona.”"
 
 #: [Server].description[1]
 msgctxt "Release|"
@@ -980,6 +985,11 @@ msgid ""
 "integrated service on top of the Fedora Server platform. Deploy and manage "
 "these prepared roles simply using the Rolekit tool."
 msgstr ""
+"No es necesario configurar un servidor desde cero cuando usa roles de "
+"servidor. Los roles de servidor se conectan a su sistema Fedora Server, "
+"suministrando un servicio bien integrado sobre la plataforma Fedora Server. "
+"Implemente y administre estos roles preparados usando simplemente la "
+"herramienta Rolekit."
 
 #: [Server].description[7]
 msgctxt "Release|"
@@ -992,11 +1002,13 @@ msgid ""
 "Fedora Server brings with it an enterprise-class, scalable database server "
 "powered by the open-source PostgreSQL project."
 msgstr ""
+"Fedora Server viene con un servidor de base de datos escalable de clase "
+"empresarial impulsado por el proyecto de código abierto PostgreSQL."
 
 #: [Server].description[9]
 msgctxt "Release|"
 msgid "Complete Enterprise Domain Solution"
-msgstr ""
+msgstr "Solución Completa de Dominio Empresarial"
 
 #: [Server].description[10]
 msgctxt "Release|"
@@ -1006,6 +1018,10 @@ msgid ""
 "environment with FreeIPA, the engine that drives Fedora Server's Domain "
 "Controller role."
 msgstr ""
+"Eleve el nivel de su red Linux con una administración avanzada de identidad, "
+"DNS, servicios de certificado, integración de dominio Windows(TM) a través "
+"de su entorno con FreeIPA, la maquina que conduce el rol Controlador de "
+"Dominio de Fedora Server."
 
 #: [Server].description[11]
 msgctxt "Release|"
@@ -1014,37 +1030,35 @@ msgid ""
 "you can run your Docker images. This makes a great testbed for beginners and "
 "experts with docker so that they can develop their applications on the fly.”"
 msgstr ""
+"“El Rol Docker para Fedora Server fue sencillo y rápido de instalar de modo "
+"que puede ejecutar sus imágenes Docker. Esto lo convierte en un gran banco "
+"de pruebas para principiantes y expertos en Docker para que puedan "
+"desarrollar sus aplicaciones sobre la marcha.”"
 
 #: [Server].description[12]
 msgctxt "Release|"
 msgid "</p><p align=right> ― <em>John Unland, "
-msgstr ""
+msgstr "</p><p align=right> ― <em>John Unland, "
 
 #: [Server].description[13]
 msgctxt "Release|"
 msgid "Information Systems Student"
-msgstr ""
+msgstr "Sistemas de Información de Estudiantes"
 
 #: [Silverblue].subvariant
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "silverblue"
-msgstr "Fedora Spins"
+msgstr "silverblue"
 
 #: [Silverblue].category
 msgctxt "Release|"
 msgid "emerging"
-msgstr ""
+msgstr "emergente"
 
 #: [Silverblue].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "Fedora Silverblue"
-msgstr "Fedora Spins"
+msgstr "Fedora Silverblue"
 
 #: [Silverblue].summary
 msgctxt "Release|"
@@ -1052,6 +1066,9 @@ msgid ""
 "An extremely stable and reliable desktop operating system, excellent for "
 "developers and for those using container-focused workflows."
 msgstr ""
+"Un sistema operativo de escritorio extremadamente estable y de confianza, "
+"excelente para desarrolladores y para aquellos que utilizan flujos de "
+"trabajo enfocados en contenedores."
 
 #: [Silverblue].description[0]
 msgctxt "Release|"
@@ -1060,6 +1077,9 @@ msgid ""
 "like a regular desktop operating system, and the experience is similar to "
 "what you find with using a standard Fedora Workstation."
 msgstr ""
+"Silverblue es una variante de Fedora Workstation. Se ve, se siente y se "
+"comporta como un sistema operativo de escritorio normal y la experiencia es "
+"similar a la que usted encuentra usando Fedora Workstation estandar."
 
 #: [Silverblue].description[1]
 msgctxt "Release|"
@@ -1070,6 +1090,12 @@ msgid ""
 "The operating system that is on disk is exactly the same from one machine to "
 "the next, and it never changes as it is used."
 msgstr ""
+"Sin embargo, de modo diferente a otros sistemas operativos, Silverblue tiene "
+"una infraestructura reaprovisionable con propiedades anti histéresis. Esto "
+"significa que cada instalación es idéntica a cada una de las otras "
+"instalaciones de la misma versión. El sistema operativo que está en el disco "
+"es exactamente el mismo de una máquina a la siguiente y nunca cambia a "
+"medida que se usa."
 
 #: [Silverblue].description[2]
 msgctxt "Release|"
