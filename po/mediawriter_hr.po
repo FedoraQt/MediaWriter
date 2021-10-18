@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 16:44+0200\n"
-"PO-Revision-Date: 2021-10-03 18:05+0000\n"
+"PO-Revision-Date: 2021-10-18 00:48+0000\n"
 "Last-Translator: Gogo Gogsi <linux.hr@protonmail.com>\n"
 "Language-Team: Croatian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/hr/>\n"
@@ -99,7 +99,7 @@ msgstr "Odabrano:"
 #: ../src/app/qml/DownloadDialog.qml:377
 msgctxt "DownloadDialog|"
 msgid "None"
-msgstr "Ništa"
+msgstr "Nijedan"
 
 #: ../src/app/qml/DownloadDialog.qml:384
 #, qt-format
@@ -782,7 +782,7 @@ msgstr "Zapišite Fedora slike na vaše uklonjive uređaje"
 ############### metadata.json ###############
 #: [Workstation].subvariant
 msgid "workstation"
-msgstr "radna stanica"
+msgstr "workstation"
 
 #: [Workstation].category
 msgctxt "Release|"
@@ -792,12 +792,12 @@ msgstr "proizvod"
 #: [Workstation].name
 msgctxt "Release|"
 msgid "Fedora Workstation"
-msgstr ""
+msgstr "Fedora Workstation"
 
 #: [Workstation].summary
 msgctxt "Release|"
 msgid "This is the Linux workstation you've been waiting for."
-msgstr ""
+msgstr "Ovo je Linux radna stanica koju ste čekali."
 
 #: [Workstation].description[0]
 msgctxt "Release|"
@@ -807,6 +807,10 @@ msgid ""
 "developers, from hobbyists and students to professionals in corporate "
 "environments."
 msgstr ""
+"Fedora Workstation je pouzdan, prilagođen korisniku i snažan operativni "
+"sustav za vaše prijenosno ili stolno računalo. Podržan je od strane velikog "
+"broja razvijatelja, od hobista i studenata do profesionalaca iz "
+"korporativnih okruženja."
 
 #: [Workstation].description[1]
 msgctxt "Release|"
@@ -814,16 +818,18 @@ msgid ""
 "“The plethora of tools provided by<br /> Fedora allows me to get the job "
 "done.<br /> It just works.”"
 msgstr ""
+"“Obilje alata koje pruža<br /> Fedora omogućuje mi da završim svoj posao.<br "
+"/> Jednostavno radi.”"
 
 #: [Workstation].description[2]
 msgctxt "Release|"
 msgid "JVM performance engineer"
-msgstr ""
+msgstr "JVM inženjer za performanse"
 
 #: [Workstation].description[3]
 msgctxt "Release|"
 msgid "Sleek user interface"
-msgstr ""
+msgstr "Elegantno korisničko sučelje"
 
 #: [Workstation].description[4]
 msgctxt "Release|"
@@ -832,11 +838,14 @@ msgid ""
 "developer feedback and minimizes distractions, so you can concentrate on "
 "what's important."
 msgstr ""
+"Usredotočite se na svoj kôd u radnom okruženju GNOME 3. GNOME je izgrađen s "
+"povratnim informacijama razvijatelja tako da smanjuje odvraćanje i da se "
+"možete koncentrirati na ono što je bitno."
 
 #: [Workstation].description[5]
 msgctxt "Release|"
 msgid "Complete open source toolbox"
-msgstr ""
+msgstr "Potpuni paket alata otvorenog kôda"
 
 #: [Workstation].description[6]
 msgctxt "Release|"
@@ -846,11 +855,16 @@ msgid ""
 "click or command line away. There's even project hosting and repositories "
 "like COPR to make your code and builds available quickly to the community."
 msgstr ""
+"Ne morate pokušavati pronaći ili izraditi potrebne alate. S Fedorinim "
+"paketima programskih jezika, alatima i pomagalima otvorenog kôda, sve je "
+"udaljeno samo jednim klikom ili naredbenim retkom. Postoje čak i objave "
+"projekata i repozitorija poput COPR -a kako bi vaš kôd i njegove izgradnje "
+"paketa bile dostupne zajednici u kratkom roku."
 
 #: [Workstation].description[7]
 msgctxt "Release|"
 msgid "GNOME Boxes & other virt tools"
-msgstr ""
+msgstr "GNOME Boksevi i drugi alati virtualizacije"
 
 #: [Workstation].description[8]
 msgctxt "Release|"
@@ -859,11 +873,14 @@ msgid ""
 "platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization "
 "tools for even more control."
 msgstr ""
+"Brzo pokrenite virtualne strojeve i testirajte svoj kôd na više platforma "
+"pomoću GNOME Bokseva. Ili istražite moćne, skriptabilne alate za "
+"virtualizaciju kako bi imali još veću kontrolu."
 
 #: [Workstation].description[9]
 msgctxt "Release|"
 msgid "Built-in Docker support"
-msgstr ""
+msgstr "Ugrađena Docker podrška"
 
 #: [Workstation].description[10]
 msgctxt "Release|"
@@ -871,6 +888,9 @@ msgid ""
 "Containerize your own apps, or deploy containerized apps out of the box on "
 "Fedora, using the latest technology like Docker."
 msgstr ""
+"Kontejnerzirajte svoje vlastite aplikacije, ili implementirajte "
+"kontejnerzirane aplikacije na Fedori, koristeći najnovije tehnologije poput "
+"Dockera."
 
 #: [Server].subvariant
 msgctxt "Release|"
@@ -881,7 +901,7 @@ msgstr "poslužitelj"
 #: [Server].name
 msgctxt "Release|"
 msgid "Fedora Server"
-msgstr ""
+msgstr "Fedora Server"
 
 #: [Server].summary
 msgctxt "Release|"
@@ -889,6 +909,7 @@ msgid ""
 "The latest technology. A stable foundation. Together, for your applications "
 "and services."
 msgstr ""
+"Najnovija tehnologija. Stabilna osnova. Sve za vaše aplikacije i usluge."
 
 #: [Server].description[0]
 msgctxt "Release|"
@@ -897,11 +918,15 @@ msgid ""
 "deployments a breeze. What took me a few days on other operating systems "
 "took less than an hour with Fedora %(rel)s Server. It just works.”"
 msgstr ""
+"“Jednostavnost uvedena s rolekitom i cockpitom učinila je postavljanje "
+"poslužitelja lakim. Za ono što mi je trebalo nekoliko dana na drugim "
+"operativnim sustavima trajalo je manje od sat vremena s Fedora %(rel)s "
+"Server izdanjem. Jednostavno radi.”"
 
 #: [Server].description[1]
 msgctxt "Release|"
 msgid "Systems Engineer"
-msgstr ""
+msgstr "Sistemski inženjer"
 
 #: [Server].description[2]
 msgctxt "Release|"
@@ -911,11 +936,15 @@ msgid ""
 "to make use of the very latest server-based technologies available in the "
 "open source community."
 msgstr ""
+"Fedora Server je operativni sustav za poslužitelje kratkog životnog ciklusa, "
+"koji podržava zajednica i omogućuje iskusnim administratorima sustava koji "
+"imaju iskustvo sa bilo kojim OS-om da koriste najnovije tehnologije "
+"temeljene na poslužitelju dostupne u zajednici otvorenog kôda."
 
 #: [Server].description[3]
 msgctxt "Release|"
 msgid "Easy Administration"
-msgstr ""
+msgstr "Jednostavna administracija"
 
 #: [Server].description[4]
 msgctxt "Release|"
@@ -924,11 +953,14 @@ msgid ""
 "and monitor system performance and status, and deploy and manage container-"
 "based services."
 msgstr ""
+"Upravljajte svojim sustavom s Cockpitom snažnim i modernim sučeljem. "
+"Pregledavajte i nadgledajte performanse i stanje sustava, implementirajte i "
+"upravljajte uslugama temeljenim na kontejnerima."
 
 #: [Server].description[5]
 msgctxt "Release|"
 msgid "Server Roles"
-msgstr ""
+msgstr "Role poslužitelja"
 
 #: [Server].description[6]
 msgctxt "Release|"
@@ -938,11 +970,16 @@ msgid ""
 "integrated service on top of the Fedora Server platform. Deploy and manage "
 "these prepared roles simply using the Rolekit tool."
 msgstr ""
+"Nema potreba za postavljanjem vašeg poslužitelja od početka kada koristite "
+"role poslužitelja. Role poslužitelj uklopljen u vašem Fedora Server sustavu, "
+"pruža vam dobro uklopljenu uslugu u Fedora Server platformi. Implementirajte "
+"i upravljajte s tim predpripremljenih rolama jednostavno pomoću Rolekit "
+"alata."
 
 #: [Server].description[7]
 msgctxt "Release|"
 msgid "Database Services"
-msgstr ""
+msgstr "Usluge baze podataka"
 
 #: [Server].description[8]
 msgctxt "Release|"
@@ -950,11 +987,13 @@ msgid ""
 "Fedora Server brings with it an enterprise-class, scalable database server "
 "powered by the open-source PostgreSQL project."
 msgstr ""
+"Fedora Server donosi prilagodljivi poslužitelj baze podataka poslovne klase "
+"koji pokreće PostgreSQL projekt otvorenog kôda."
 
 #: [Server].description[9]
 msgctxt "Release|"
 msgid "Complete Enterprise Domain Solution"
-msgstr ""
+msgstr "Cjelovito rješenje za poslovnu domenu"
 
 #: [Server].description[10]
 msgctxt "Release|"
@@ -964,6 +1003,10 @@ msgid ""
 "environment with FreeIPA, the engine that drives Fedora Server's Domain "
 "Controller role."
 msgstr ""
+"Poboljšajte svoju Linux mrežu s naprednim upravljanjem identitetom, DNS-om, "
+"uslugama vjerodajnicama, integracijom Windows (TM) domene putem vašeg "
+"okruženja pomoću FreeIPA-e, pogonom koji pokreće rolu kontrolera Fedora "
+"Server domene."
 
 #: [Server].description[11]
 msgctxt "Release|"
@@ -972,31 +1015,34 @@ msgid ""
 "you can run your Docker images. This makes a great testbed for beginners and "
 "experts with docker so that they can develop their applications on the fly.”"
 msgstr ""
+"Docker Rolu za Fedora Server je jednostavno i brzo instalirati kako bi mogli "
+"pokrenuti vaše Docker slike. Ovo čini izvrsno ispitno mjesto za početnike i "
+"stručnjake s dockerom kako bi mogli razvijati svoje aplikacije u hodu.”"
 
 #: [Server].description[12]
 msgctxt "Release|"
 msgid "</p><p align=right> ― <em>John Unland, "
-msgstr ""
+msgstr "</p><p align=right> ― <em>John Unland, "
 
 #: [Server].description[13]
 msgctxt "Release|"
 msgid "Information Systems Student"
-msgstr ""
+msgstr "Student informacijskih sustava"
 
 #: [Silverblue].subvariant
 msgctxt "Release|"
 msgid "silverblue"
-msgstr ""
+msgstr "silverblue"
 
 #: [Silverblue].category
 msgctxt "Release|"
 msgid "emerging"
-msgstr ""
+msgstr "u nastajanju"
 
 #: [Silverblue].name
 msgctxt "Release|"
 msgid "Fedora Silverblue"
-msgstr ""
+msgstr "Fedora Silverblue"
 
 #: [Silverblue].summary
 msgctxt "Release|"
@@ -1004,6 +1050,8 @@ msgid ""
 "An extremely stable and reliable desktop operating system, excellent for "
 "developers and for those using container-focused workflows."
 msgstr ""
+"Izuzetno stabilan i pouzdan operativni sustav za osobna računala, izvrstan "
+"za razvijatelje i za one koji koriste radne procese usmjerene na kontejnere."
 
 #: [Silverblue].description[0]
 msgctxt "Release|"
@@ -1012,6 +1060,9 @@ msgid ""
 "like a regular desktop operating system, and the experience is similar to "
 "what you find with using a standard Fedora Workstation."
 msgstr ""
+"Silverblue je izdanje Fedora Workstationa. Izgleda i ponaša se poput "
+"uobičajenog operativnog sustava za osobna računala, a iskustvo je slično kao "
+"i u standardnom Fedora Workstationu."
 
 #: [Silverblue].description[1]
 msgctxt "Release|"
@@ -1022,6 +1073,11 @@ msgid ""
 "The operating system that is on disk is exactly the same from one machine to "
 "the next, and it never changes as it is used."
 msgstr ""
+"Međutim, za razliku od drugih operativnih sustava, Silverblue ima obnovljivu "
+"infrastrukturu sa svojstvima antihistereze. To znači da je svaka instalacija "
+"identična sa svakom drugom instalacijom iste inačice. Operativni sustav koji "
+"se nalazi na disku potpuno je isti na svim računalima i nikada se ne mijenja "
+"kako se koristi."
 
 #: [Silverblue].description[2]
 msgctxt "Release|"
@@ -1032,6 +1088,11 @@ msgid ""
 "development. In each case, applications and containers are kept separate "
 "from the host system, improving stability and reliability."
 msgstr ""
+"Silverblueov dizajn ima za svrhu učiniti ga stabilnijim, manje sklonim "
+"greškama i lakšim za testiranje i razvoj. Dizajn ga također čini izvrsnom "
+"platformom za kontejnerske aplikacije, kao i za razvoj softvera temeljenog "
+"na kontejnerima. U svakom slučaju, aplikacije i kontejneri drže se odvojeno "
+"od sustava računala, što poboljšava stabilnost i pouzdanost."
 
 #: [Silverblue].description[3]
 msgctxt "Release|"
@@ -1042,6 +1103,11 @@ msgid ""
 "to roll back to the previous version of the operating system, if something "
 "goes wrong."
 msgstr ""
+"Silverbluove osnovne tehnologije imaju i neke druge korisne značajke. "
+"Nadopune OS-a su brze i nema čekanja da se instaliraju: samo ponovno "
+"pokrenite računalo kao uobičajeno pokretanje i koristiti će se nove inačice. "
+"Uz Silverblue moguće je i vratiti se na prijašnje izdanje operativnog "
+"sustava, ako nešto pođe po krivu."
 
 #: [KDE].subvariant
 msgctxt "Release|"
@@ -1056,12 +1122,14 @@ msgstr "spinovi"
 #: [KDE].name
 msgctxt "Release|"
 msgid "Fedora KDE Plasma Desktop"
-msgstr ""
+msgstr "Fedora KDE Plasma Desktop"
 
 #: [KDE].summary
 msgctxt "Release|"
 msgid "A complete, modern desktop built using the KDE Plasma Desktop."
 msgstr ""
+"Cjelokupno, moderno radno okruženje izgrađeno pomoću KDE Plasma radnog "
+"okruženja."
 
 #: [KDE].description[0]
 msgctxt "Release|"
@@ -1069,6 +1137,8 @@ msgid ""
 "The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based operating "
 "system utilizing the KDE Plasma Desktop as the main user interface."
 msgstr ""
+"Fedora KDE Plasma Desktop izdanje je snažan Fedora temeljen operativni "
+"sustav koji koristi KDE Plasma radno okruženje kao glavno korisničko sučelje."
 
 #: [KDE].description[1]
 msgctxt "Release|"
@@ -1080,6 +1150,12 @@ msgid ""
 "productivity suite, including office applications and enterprise grade "
 "personal information management."
 msgstr ""
+"Fedora KDE Plasma Desktop dolazi s mnogim predodabranim kvalitetnim "
+"aplikacijama koje odgovaraju svim modernim zahtjevima radnog okruženja - od "
+"mrežne komunikacije poput pregledavanja weba, trenutne razmjene poruka i "
+"slanja elektroničke pošte, preko multimedije i zabave, do naprednog paketa "
+"za produktivnost, uključujući uredske aplikacije i upravljanje osobnim "
+"podacima na poslovnoj razini."
 
 #: [KDE].description[2]
 msgctxt "Release|"
@@ -1087,22 +1163,24 @@ msgid ""
 "All KDE applications are well integrated, with a similar look and feel and "
 "an easy to use interface, accompanied by an outstanding graphical appearance."
 msgstr ""
+"Sve KDE aplikacije su dobro integrirane, sa sličnim izgledom i laganim "
+"sučeljem za korištenje, što je popraćeno izvanrednim grafičkim izgledom."
 
 #: [XFCE].subvariant
 msgctxt "Release|"
 msgid "xfce"
-msgstr ""
+msgstr "xfce"
 
 #: [XFCE].category
 #: [XFCE].name
 msgctxt "Release|"
 msgid "Fedora Xfce Desktop"
-msgstr ""
+msgstr "Fedora Xfce Desktop"
 
 #: [XFCE].summary
 msgctxt "Release|"
 msgid "A complete, well-integrated Xfce Desktop."
-msgstr ""
+msgstr "Cjelokupno, dobro integrirano Xfce radno okruženje."
 
 #: [XFCE].description[0]
 msgctxt "Release|"
@@ -1110,28 +1188,34 @@ msgid ""
 "The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast and "
 "lightweight, while still being visually appealing and user friendly."
 msgstr ""
+"Fedora Xfce spin prikazuje Xfce radno okruženje, kojemu je svrha da bude "
+"brzo i manje zahtjevno prema hardverskim resursima, a opet vizualno "
+"privlačno i prilagođeno korisniku."
 
 #: [XFCE].description[1]
 msgctxt "Release|"
 msgid ""
 "Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
 msgstr ""
+"Fedora Xfce potpuno radno okruženje koje koristi Freedesktop.org standarde."
 
 #: [LXQT].subvariant
 msgctxt "Release|"
 msgid "lxqt"
-msgstr ""
+msgstr "lxqt"
 
 #: [LXQT].category
 #: [LXQT].name
 msgctxt "Release|"
 msgid "Fedora LXQt Desktop"
-msgstr ""
+msgstr "Fedora LXQt Desktop"
 
 #: [LXQT].summary
 msgctxt "Release|"
 msgid "A lightweight, well-integrated LXQt desktop environment."
 msgstr ""
+"Manje zahtjevno prema hardverskim resursima, dobro integrirano LXQt radno "
+"okruženje."
 
 #: [LXQT].description[0]
 msgctxt "Release|"
@@ -1147,22 +1231,31 @@ msgid ""
 "addition breeze-gtk is provided to allow the user to integrate GTK "
 "applications too."
 msgstr ""
+"Fedoru LXQt karakteriziraju manji zahtjevi prema hardverskim resursima, "
+"dobro integrirano LXQt radno okruženje. Osim samog LXQt-a pruža i malu dobro "
+"odabranu kolekciju aplikacija poput QupZilla preglednika, koji kombinira "
+"Chromiumov pogon prikaza s ugodnim Qt iskustvom. Ostale aplikacije uključuju "
+"Trojitu klijent e-pošte, qBittorrent klijent, Yarock glazbeni reproduktor i "
+"paket još nekih učestalo korištenih aplikacija. Budući da sve aplikacije "
+"koriste isti Qt5 komplet alata i Breeze temu poznatu iz KDE-a, radno "
+"okruženje pruža objedinjen i dobro uklopljen izgled i teme. Dodatno breeze-"
+"gtk omogućuje integraciju GTK aplikacija."
 
 #: [Mate].subvariant
 msgctxt "Release|"
 msgid "mate"
-msgstr ""
+msgstr "mate"
 
 #: [Mate].category
 #: [Mate].name
 msgctxt "Release|"
 msgid "Fedora MATE-Compiz Desktop"
-msgstr ""
+msgstr "Fedora MATE-Compiz Desktop"
 
 #: [Mate].summary
 msgctxt "Release|"
 msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
-msgstr ""
+msgstr "Klasično Fedora radno okruženje s dodatnim 3D upraviteljem prozora."
 
 #: [Mate].description[0]
 msgctxt "Release|"
@@ -1173,6 +1266,12 @@ msgid ""
 "for all machines and VMs. Compiz Fusion is a beautiful 3D windowing manager "
 "with Emerald and GTK+ theming."
 msgstr ""
+"MATE Compiz spin dolazi s MATE radnim okruženjem i Compiz Fusionom. MATE "
+"radno okruženje je manje hardverski zahtjevno, snažno radno okruženje s "
+"naglaskom za produktivnošću i performansama na prvom mjestu. Zadani "
+"upravitelj prozora je Marco koji se može koristiti na svim računalima i "
+"virtualnim strojevima. Compiz Fusion je prekrasan 3D upravitelj prozorima s "
+"Emeraldom i GTK+ temama."
 
 #: [Mate].description[1]
 msgctxt "Release|"
@@ -1180,22 +1279,24 @@ msgid ""
 "If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
 "should definitely try the MATE-Compiz spin."
 msgstr ""
+"Ako želite snažno, hardverski manje zahtjevno Fedora radno okruženje sa 3D "
+"ukrasima svakako biste trebali isprobati MATE-Compiz spin."
 
 #: [Cinnamon].subvariant
 msgctxt "Release|"
 msgid "cinnamon"
-msgstr ""
+msgstr "cinnamon"
 
 #: [Cinnamon].category
 #: [Cinnamon].name
 msgctxt "Release|"
 msgid "Fedora Cinnamon Desktop"
-msgstr ""
+msgstr "Fedora Cinnamon Desktop"
 
 #: [Cinnamon].summary
 msgctxt "Release|"
 msgid "A modern desktop featuring traditional Gnome user experience."
-msgstr ""
+msgstr "Moderno radno okruženje s tradicionalnim Gnome korisničkim iskustvom."
 
 #: [Cinnamon].description[0]
 msgctxt "Release|"
@@ -1206,6 +1307,11 @@ msgid ""
 "making users feel at home and providing them with an easy to use and "
 "comfortable desktop experience."
 msgstr ""
+"Cinnamon je Linux radno okruženje koje pruža napredne i inovativne značajke "
+"i tradicionalno korisničko iskustvo. Izgled radne površine je sličan Gnomu "
+"2. Koristi osnovnu tehnologiju iz Gnome ljuske. Naglasak je stavljen na to "
+"da se korisnici osjećaju kao kod kuće te da im se omogući jednostavno i "
+"ugodno iskustvo na radnoj površini."
 
 #: [Cinnamon].description[1]
 msgctxt "Release|"
@@ -1213,22 +1319,24 @@ msgid ""
 "Cinnamon is a popular desktop alternative to Gnome 3 and this spin provides "
 "the option to quickly try and install this desktop."
 msgstr ""
+"Cinnamon je alternativno popularno radno okruženje Gnomu 3 i ovaj spin pruža "
+"mogućnost za brzu probu i instalaciju ovog radnog okruženja."
 
 #: [LXDE].subvariant
 msgctxt "Release|"
 msgid "lxde"
-msgstr ""
+msgstr "lxde"
 
 #: [LXDE].category
 #: [LXDE].name
 msgctxt "Release|"
 msgid "Fedora LXDE Desktop"
-msgstr ""
+msgstr "Fedora LXDE Desktop"
 
 #: [LXDE].summary
 msgctxt "Release|"
 msgid "A light, fast, less-resource hungry desktop environment."
-msgstr ""
+msgstr "Jednostavno, brzo, manje hardverski zahtjevno radno okruženje."
 
 #: [LXDE].description[0]
 msgctxt "Release|"
@@ -1239,6 +1347,11 @@ msgid ""
 "multi-language support, standard keyboard shortcuts and additional features "
 "like tabbed file browsing."
 msgstr ""
+"LXDE, \"Manje zahtjevno X11 radno okruženje\", je iznimno brzo, učinkovito "
+"radno okruženje koje štedi energiju. Održava ga međunarodna zajednica "
+"razvijatelja i dolazi s prekrasnim sučeljem, višejezičnom podrškom, "
+"standardnim prečacima tipkovnice i dodatnim značajkma poput pregledavanja "
+"datoteka u karticama."
 
 #: [LXDE].description[1]
 msgctxt "Release|"
@@ -1248,22 +1361,27 @@ msgid ""
 "designed for computers with low hardware specifications like netbooks, "
 "mobile devices (e.g. MIDs) or older computers."
 msgstr ""
+"LXDE nije dizajniran da bude snažan i pun nepotrebnih aplikacija, već da "
+"bude koristan i jednostavan. Svrha LXDE okruženja je da koristi što manje "
+"resursa računala. Dizajniran je posebno za računala sa slabim hardverskim "
+"specifikacijama poput prijenosnika i mobilnih računala (npr. MID) ili "
+"starijih računala."
 
 #: [SOAS].subvariant
 msgctxt "Release|"
 msgid "soas"
-msgstr ""
+msgstr "soas"
 
 #: [SOAS].category
 #: [SOAS].name
 msgctxt "Release|"
 msgid "Fedora SoaS Desktop"
-msgstr ""
+msgstr "Fedora SoaS Desktop"
 
 #: [SOAS].summary
 msgctxt "Release|"
 msgid "Discover. Reflect. Share. Learn."
-msgstr ""
+msgstr "Otkrijte. Razmišljajte. Dijelite. Naučite."
 
 #: [SOAS].description[0]
 msgctxt "Release|"
@@ -1272,6 +1390,9 @@ msgid ""
 "winning Sugar Learning Platform and designed to fit on an ordinary USB "
 "thumbdrive (\"stick\")."
 msgstr ""
+"Sugar on a Stick je Fedora baziran operativni sustav temeljen na "
+"nagrađivanoj Sugar platformi za učenje i dizajniran da stane na uobičajene "
+"USB uređaje pohrane (\"stikove\")."
 
 #: [SOAS].description[1]
 msgctxt "Release|"
@@ -1284,6 +1405,13 @@ msgid ""
 "query rather than memorizing complex file/folder structures. Applications in "
 "Sugar are known as Activities, some of which are described below."
 msgstr ""
+"Sugar odbacuje tradicionalnu metaforu “uredskog radnog okruženja”, "
+"predstavljajući grafičko okruženje prilagođeno djeci. Sugar automatski "
+"sprema vaš napredak u \"Dnevnik\" na vašem USB uređaju pohrane, tako da "
+"učitelji i roditelji mogu lako pregledati \"sve suradničke sesije web "
+"pregledavanja u prošlom tjednu\" ili \"radove napisane s Danijelom i Sarom u "
+"posljednja 24 sata\" s jednostavnim upitom radije nego pamćenjem složenih "
+"struktura datoteke/mape."
 
 #: [SOAS].description[2]
 msgctxt "Release|"
@@ -1294,28 +1422,33 @@ msgid ""
 "environment without touching the host machine’s hard disk or existing system "
 "at all."
 msgstr ""
+"Dobavljiv je odmah po cijeni USB uređaja pohrane a ne po cijeni prijenosnog "
+"računala, studenti mogu prenositi svoj Sugar na USB uređaju pohrane na bilo "
+"koje računalo - u školi, kod kuće, u knjižnici ili obližnjem studenskom "
+"centru - i pokrenuti svoje prilagođeno računalno okruženje bez utjecaja na "
+"čvrsti disk računala ili postojećeg sustava."
 
 #: [i3].subvariant
 msgctxt "Release|"
 msgid "i3"
-msgstr ""
+msgstr "i3"
 
 #: [i3].category
 #: [i3].name
 msgctxt "Release|"
 msgid "Fedora i3 Desktop"
-msgstr ""
+msgstr "Fedora i3 Desktop"
 
 #: [i3].summary
 msgctxt "Release|"
 msgid "Simplicity over Complexity"
-msgstr ""
+msgstr "Jednostavnost prije složenosti"
 
 #: [i3].description[1]
 msgctxt "Release|"
 msgid ""
 "The Fedora i3 Spin provides the popular i3 tiling window manager."
-msgstr ""
+msgstr "Fedora i3 spin pruža popularni i3 upravitelj prozora s pločicama."
 
 #: [i3].description[3]
 msgctxt "Release|"
@@ -1326,27 +1459,33 @@ msgid ""
 "editing, and media playback, the Fedora i3 Spin offers a complete experience "
 "with a minimalist user interface."
 msgstr ""
+"Čini i3 pristupačnim i privlačnim početnicima i naprednim korisnicima koji "
+"radije ne koriste miš, touchpad ili drugi pokazivački uređaj za interakciju "
+"sa svojim okruženjem. S nezahtjevnim aplikacijama za pregledavanje weba, "
+"uređivanje teksta i reprodukciju medija, Fedora i3 spin nudi cjelokupno "
+"iskustvo s minimalističkim korisničkim sučeljem."
 
 #: [Astronomy].subvariant
 msgctxt "Release|"
 msgid "astronomy"
-msgstr ""
+msgstr "astronomy"
 
 #: [Astronomy].category
 msgctxt "Release|"
 msgid "labs"
-msgstr ""
+msgstr "labs"
 
 #: [Astronomy].name
 msgctxt "Release|"
 msgid "Fedora Astronomy"
-msgstr ""
+msgstr "Fedora Astronomy"
 
 #: [Astronomy].summary
 msgctxt "Release|"
 msgid ""
 "Powerful completely open-source and free tool for amateurs and professionals."
 msgstr ""
+"Snažan potpuno otvorenog kôda i besplatan alat za amatere i profesionalce."
 
 #: [Astronomy].description[0]
 msgctxt "Release|"
@@ -1354,6 +1493,8 @@ msgid ""
 "Fedora Astronomy brings a complete open source toolchain to both amateur and "
 "professional astronomers."
 msgstr ""
+"Fedora Astronomy donosi potpuni paket alata otvorenog kôda za amatere i "
+"profesionalne astronome."
 
 #: [Astronomy].description[1]
 msgctxt "Release|"
@@ -1365,17 +1506,23 @@ msgid ""
 "supported. Summarized, Fedora Astronomy provides a complete set of software, "
 "from the observation planning to the final results."
 msgstr ""
+"Spin dolazi sa Fedora KDE radnim okruženjem poboljšanim s kompletnim "
+"znanstvenim Python okruženjem i softverom AstrOmatic za analizu podataka. "
+"KStars je dodan kako bi pružio potpuno opremljen alat za astrofotografiju. "
+"KStars koristi INDI biblioteku za upravljanje opremom, podržani su različiti "
+"teleskopi i kamere itd. Ukratko, Fedora Astronomy pruža cjelokupan paket "
+"softvera, od planiranja promatranja do konačnih rezultata."
 
 #: [DesignSuite].subvariant
 msgctxt "Release|"
 msgid "design_suite"
-msgstr ""
+msgstr "design_suite"
 
 #: [DesignSuite].category
 #: [DesignSuite].name
 msgctxt "Release|"
 msgid "Fedora Design Suite"
-msgstr ""
+msgstr "Fedora Design Suite"
 
 #: [DesignSuite].summary
 msgctxt "Release|"
@@ -1383,6 +1530,8 @@ msgid ""
 "Visual design, multimedia production, and publishing suite of free and open "
 "source creative tools."
 msgstr ""
+"Vizualni dizajn, multimedijska produkcija i paket za objavljivanje "
+"besplatnih kreativnih alata otvorenog kôda."
 
 #: [DesignSuite].description[0]
 msgctxt "Release|"
@@ -1391,6 +1540,9 @@ msgid ""
 "source multimedia production and publishing tools? Try the Design Suite, a "
 "Fedora Spin created by designers, for designers."
 msgstr ""
+"Tražite li radno okruženje odmah spremno za rad prepuno besplatnih alata "
+"otvorenog kôda za multimedijsku produkciju i izdavalaštvo? Isprobajte Design "
+"Suite, Fedora spin stvoren od strane dizajnera, za dizajnere."
 
 #: [DesignSuite].description[1]
 msgctxt "Release|"
@@ -1403,22 +1555,29 @@ msgid ""
 "the Design Suite has an application for you — and you can install thousands "
 "more from the Fedora universe of packages."
 msgstr ""
+"Design Suite uključuje omiljene alate Fedora tima za dizajn. To su isti "
+"programi koje koristimo za stvaranje svih umjetničkih djela koja vidite u "
+"Fedora projektu, od pozadina radne površine do omota CD-a, dizajna web "
+"stranica, sučelja aplikacija, letaka, postera i još mnogo toga. Od "
+"objavljivanja dokumenata do uređivanja vektora i bitmapa ili 3D modeliranja "
+"do upravljanja fotografijama, Design Suite ima aplikaciju za vas — a možete "
+"instalirati još tisuće aplikacija iz Fedora universe repozitorija ili paketa."
 
 #: [Games].subvariant
 msgctxt "Release|"
 msgid "games"
-msgstr ""
+msgstr "games"
 
 #: [Games].category
 #: [Games].name
 msgid "Fedora Games"
-msgstr ""
+msgstr "Fedora Games"
 
 #: [Games].summary
 msgctxt "Release|"
 msgid ""
 "A collection and perfect show-case of the best games available in Fedora."
-msgstr ""
+msgstr "Kolekcija i savršena igroteka najboljih igara dostupnih u Fedori."
 
 #: [Games].description[0]
 msgctxt "Release|"
@@ -1427,6 +1586,10 @@ msgid ""
 "in Fedora. The included games span several genres, from first-person "
 "shooters to real-time and turn-based strategy games to puzzle games."
 msgstr ""
+"Fedora Games spin pruža vam savršenu igroteku najboljih igara dostupnih u "
+"Fedori. Uključene igre obuhvaćaju nekoliko žanrova, od pucačina iz prvog "
+"lica do strateških igara u stvarnom vremenu i poteznih strategija do "
+"slagalica."
 
 #: [Games].description[1]
 msgctxt "Release|"
@@ -1435,6 +1598,9 @@ msgid ""
 "out this spin will give you a fair impression of Fedora's ability to run "
 "great games."
 msgstr ""
+"Nisu sve igre dostupne u Fedori uključene u ovom spinu, ali isprobavanje "
+"ovog spina ostavit će vam pošten dojam o Fedorinoj sposobnosti da pokreće "
+"izvrsne igre."
 
 #: [Python].subvariant
 msgctxt "Release|"
@@ -1445,13 +1611,13 @@ msgstr "python"
 #: [Python].name
 msgctxt "Release|"
 msgid "Fedora Python Classroom"
-msgstr ""
+msgstr "Fedora Python Classroom"
 
 #: [Python].summary
 msgctxt "Release|"
 msgid ""
 "A classroom lab for teaching the Python programming language to students"
-msgstr ""
+msgstr "Učiteljski laboratorij za poučavanje učenika programskom jeziku Python"
 
 #: [Python].description[0]
 msgctxt "Release|"
@@ -1464,6 +1630,13 @@ msgid ""
 "on Fedora, with Fedora, using the stuff you love: IPython, Jupyter Notebook, "
 "multiple Pythons, virtualenvs, tox, git and more"
 msgstr ""
+"Jedna od prednosti Fedore za Pythona razvijatelje je jednostavnost "
+"postavljanja Python okruženja. Fedora Python Classroom Lab dodatno olakšava "
+"učiteljima i instruktorima korištenje Fedore u svojim učionicama ili "
+"radionicama. Operativni sustav spreman za upotrebu s predinstaliranim bitnim "
+"stvarima - bilo s GNOMOM ili kao bezglavno okruženje za Docker ili Vagrant. "
+"Naučite Python na Fedori, s Fedorom, koristeći stvari koje volite: IPython, "
+"Jupyter Notebook, više Pythona, virtualenvs, tox, git i još mnogo toga"
 
 #: [Python].description[1]
 msgctxt "Release|"
@@ -1473,17 +1646,21 @@ msgid ""
 "it in a Docker container. You choose what fits your teaching environment the "
 "best."
 msgstr ""
+"Fedora Python Classroom Lab dolazi u 3 izdanja. Ili ju možete pokrenuti u "
+"grafičkom načinu rada s GNOMOM, ili ju možete virtualizirati s Vagrantom ili "
+"pokrenuti u Docker kontejneru. Vi birate ono što najbolje odgovara vašem "
+"nastavnom okruženju."
 
 #: [Robotics].subvariant
 msgctxt "Release|"
 msgid "robotics"
-msgstr ""
+msgstr "robotics"
 
 #: [Robotics].category
 #: [Robotics].name
 msgctxt "Release|"
 msgid "Fedora Robotics Suite"
-msgstr ""
+msgstr "Fedora Robotics Suite"
 
 #: [Robotics].summary
 msgctxt "Release|"
@@ -1491,6 +1668,8 @@ msgid ""
 "A wide variety of free and open robotics software packages for beginners and "
 "experts in robotics."
 msgstr ""
+"Veliki izbor besplatnih softverskih paketa otvorenog kôda za početnike i "
+"stručnjake u robotici."
 
 #: [Robotics].description[0]
 msgctxt "Release|"
@@ -1503,6 +1682,14 @@ msgid ""
 "environment for robotics including useful libraries such as OpenCV computer "
 "vision library, Festival text to speech system and MRPT."
 msgstr ""
+"Fedora Robotics spin nudi veliki izbor besplatnih softverskih paketa za "
+"robotiku otvorenog kôda. Oni se kreću od biblioteka hardverskih dodataka za "
+"laserske skenere Hokuyo ili Katana robotske ruke do softverskih radnih "
+"okvira poput Fawkesa ili Playera i simulacijskih okruženja kao što su Stage "
+"i RoboCup Soccer Simulation Server 2D/3D. Omogućuje i razvojno okruženje "
+"spremno za upotrebu u robotici, uključujući korisne biblioteke poput OpenCV "
+"biblioteke računalnog vida, Festival sustava za pretvaranje teksta u govor i "
+"MRPT."
 
 #: [Robotics].description[1]
 msgctxt "Release|"
@@ -1513,23 +1700,29 @@ msgid ""
 "demonstration, and for the latter we provide a full development environment, "
 "to be used immediately."
 msgstr ""
+"Robotics spin je usmjeren na ljude koji tek otkrivaju svoj interes za "
+"robotiku, kao i na iskusne robotičare. Za prve pružamo lako upotrebljivo "
+"simulacijsko okruženje s uvodnom praktičnom demonstracijom, a za druge "
+"pružamo potpuno razvojno okruženje koje se može odmah koristiti."
 
 #:[Scientific].subvariant
 msgctxt "Release|"
 msgid "scientific"
-msgstr ""
+msgstr "scientific"
 
 #:[Scientific].category
 #:[Scientific].name
 msgctxt "Release|"
 msgid "Fedora Scientific"
-msgstr ""
+msgstr "Fedora Scientific"
 
 #:[Scientific].summary
 msgctxt "Release|"
 msgid ""
 "A bundle of open source scientific and numerical tools used in research."
 msgstr ""
+"Paket znanstvenih i numeričkih alata otvorenog kôda koji se koriste u "
+"istraživanju."
 
 #:[Scientific].description[0]
 msgctxt "Release|"
@@ -1539,6 +1732,10 @@ msgid ""
 "the most useful open source scientific and numerical tools atop the goodness "
 "of the KDE desktop environment."
 msgstr ""
+"Oprezni ste od ponovne instalacije svih bitnih alata za vaš znanstveni i "
+"numerički rad? Odgovor je ovdje. Fedora Scientific spin objedinjuje "
+"najkorisnije znanstvene i numeričke alate otvorenog kôda povrh dobrobiti KDE "
+"radnog okruženja."
 
 #:[Scientific].description[1]
 msgctxt "Release|"
@@ -1551,17 +1748,24 @@ msgid ""
 "included along with are libraries for parallel computing such as the OpenMPI "
 "and OpenMP. Tools for typesetting, writing and publishing are included."
 msgstr ""
+"Fedora Scientific trenutno se isporučuje s brojnim aplikacijama i "
+"bibliotekama. One se kreću od biblioteka poput GNU Scientific biblioteke, "
+"SciPy biblioteke, alata poput Octave i xfiga do alata za slaganje poput "
+"Kilea i grafičkih programa poput Inkscapea. Trenutni skup paketa uključuje "
+"IDE, alate i biblioteke za programiranje u C, C ++, Pythonu, Javi i R. "
+"Također su uključene i biblioteke za paralelno računanje poput OpenMPI i "
+"OpenMP. Uključeni su alati za slaganje, pisanje i objavljivanje."
 
 #:[Security].subvariant
 msgctxt "Release|"
 msgid "security"
-msgstr ""
+msgstr "security"
 
 #:[Security].category
 #:[Security].name
 msgctxt "Release|"
 msgid "Fedora Security Lab"
-msgstr ""
+msgstr "Fedora Security Lab"
 
 #:[Security].summary
 msgctxt "Release|"
@@ -1569,6 +1773,8 @@ msgid ""
 "A safe test environment to work on security auditing, forensics, system "
 "rescue and teaching security testing methodologies."
 msgstr ""
+"Sigurno okruženje za testiranje rada na reviziji sigurnosti, forenzici, "
+"spašavanju sustava i poučavanju metodologija testiranja sigurnosti."
 
 #:[Security].description[0]
 msgctxt "Release|"
@@ -1577,6 +1783,9 @@ msgid ""
 "auditing, forensics, system rescue and teaching security testing "
 "methodologies in universities and other organizations."
 msgstr ""
+"Fedora Security Lab pruža sigurno okruženje za testiranje rada revizije "
+"sigurnosti, forenzike, spašavanja sustava i poučavanja metodologija "
+"testiranja sigurnosti na sveučilištima i drugim organizacijama."
 
 #:[Security].description[1]
 msgctxt "Release|"
@@ -1590,3 +1799,11 @@ msgid ""
 "overlay feature, you can install and update software and save your test "
 "results permanently."
 msgstr ""
+"Spin održava zajednica sigurnosnih testera i razvijatelja. Dolazi s "
+"preglednim i brzim Xfce radnim okruženjem, prilagođenim izbornikom koji "
+"pruža sve instrumente potrebne za praćenje ispravnog puta testiranja za "
+"sigurnosno testiranje ili za spašavanje pokvarenog sustava. Pokretljiva "
+"slika izrađena je kako bi omogućila instalaciju softvera dok je pokrenuta, a "
+"ako je pokrećete s USB uređaja pohrane stvorenog pomoću LiveUSB Creatora "
+"pomoću overlay značajke, možete instalirati i nadopuniti softver te trajno "
+"spremiti rezultate testa."
