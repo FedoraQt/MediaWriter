@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 16:44+0200\n"
-"PO-Revision-Date: 2021-09-11 17:04+0000\n"
+"PO-Revision-Date: 2021-10-20 18:05+0000\n"
 "Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/es/>\n"
@@ -1106,6 +1106,12 @@ msgid ""
 "development. In each case, applications and containers are kept separate "
 "from the host system, improving stability and reliability."
 msgstr ""
+"El diseño de Silverblue pretende hacerlo más estable, menos propenso a los "
+"errores y más fácil de probar y desarrollar. El diseño lo hace también una "
+"excelente plataforma para aplicaciones en contenedor así como el desarrollo "
+"de software basado en contenedores. En cada caso, las aplicaciones y los "
+"contenedores se mantienen separados del sistema huésped, mejorando la "
+"estabilidad y la fiabilidad."
 
 #: [Silverblue].description[3]
 msgctxt "Release|"
@@ -1116,26 +1122,33 @@ msgid ""
 "to roll back to the previous version of the operating system, if something "
 "goes wrong."
 msgstr ""
+"Las tecnologías centrales de Silverblue tiene otras características útiles. "
+"Las actualizaciones de SO son rápidas y no hay que esperar a que se instalen:"
+" simplemente reinicie como de costumbre para empezar a usar la siguiente "
+"versión. Con Silverblue, también es posible volver atrás hacia la versión "
+"anterior del sistema operativo si algo va mal."
 
 #: [KDE].subvariant
 msgctxt "Release|"
 msgid "kde"
-msgstr ""
+msgstr "kde"
 
 #: [KDE].category
 msgctxt "Release|"
 msgid "spins"
-msgstr ""
+msgstr "giros"
 
 #: [KDE].name
 msgctxt "Release|"
 msgid "Fedora KDE Plasma Desktop"
-msgstr ""
+msgstr "Escritorio Fedora KDE Plasma"
 
 #: [KDE].summary
 msgctxt "Release|"
 msgid "A complete, modern desktop built using the KDE Plasma Desktop."
 msgstr ""
+"Un escritorio completo y moderno, construido usando el Escritorio Plasma de "
+"KDE."
 
 #: [KDE].description[0]
 msgctxt "Release|"
@@ -1143,6 +1156,9 @@ msgid ""
 "The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based operating "
 "system utilizing the KDE Plasma Desktop as the main user interface."
 msgstr ""
+"La Edición Fedora Escritorio KDE Plasmaes un potente sistema operativo "
+"basado en Fedora que usa el Escritorio KDE Plasma como principal interfaz de "
+"usuario."
 
 #: [KDE].description[1]
 msgctxt "Release|"
@@ -1154,6 +1170,13 @@ msgid ""
 "productivity suite, including office applications and enterprise grade "
 "personal information management."
 msgstr ""
+"El Escritorio KDE Plasma Fedora se ofrece con una gran selección "
+"aplicaciones de altísima calidad que satisfacen todos los escenarios en los "
+"escritorios modernos: desde la comunicación en línea, como navegación web, "
+"mensajería instantánea o correspondencia electrónica, pasando por aspectos "
+"multimedia y de entretenimiento, hasta paquetes de productividad avanzados, "
+"que incluyen aplicaciones de oficina o administración de información "
+"personal a nivel empresarial."
 
 #: [KDE].description[2]
 msgctxt "Release|"
@@ -1161,21 +1184,24 @@ msgid ""
 "All KDE applications are well integrated, with a similar look and feel and "
 "an easy to use interface, accompanied by an outstanding graphical appearance."
 msgstr ""
+"Todas las aplicaciones KDE están perfectamente integradas, con un aspecto "
+"similar y una interfaz intuitiva y fácil de utilizar, que además luce de "
+"manera asombrosa."
 
 #: [XFCE].subvariant
 msgctxt "Release|"
 msgid "xfce"
-msgstr ""
+msgstr "xfce"
 
 #: [XFCE].category [XFCE].name
 msgctxt "Release|"
 msgid "Fedora Xfce Desktop"
-msgstr ""
+msgstr "Escritorio Fedora Xfce"
 
 #: [XFCE].summary
 msgctxt "Release|"
 msgid "A complete, well-integrated Xfce Desktop."
-msgstr ""
+msgstr "Un Escritorio Xfce completo y muy bien integrado."
 
 #: [XFCE].description[0]
 msgctxt "Release|"
@@ -1183,30 +1209,32 @@ msgid ""
 "The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast and "
 "lightweight, while still being visually appealing and user friendly."
 msgstr ""
+"La edición Xfce de Fedora se presenta con el escritorio Xfce, que intenta "
+"ser rápido, liviano, y al mismo tiempo poder conservar una apariencia visual "
+"interesante y amigable con el usuario."
 
 #: [XFCE].description[1]
 msgctxt "Release|"
 msgid ""
 "Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
 msgstr ""
+"Fedora Xfce es un escritorio completamente desarrollado utilizando los "
+"estándares de freedesktop.org"
 
 #: [LXQT].subvariant
 msgctxt "Release|"
 msgid "lxqt"
-msgstr ""
+msgstr "lxqt"
 
 #: [LXQT].category [LXQT].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora LXQt Desktop"
-msgstr "Fedora Labs"
+msgstr "Escritorio Fedora LXQt"
 
 #: [LXQT].summary
 msgctxt "Release|"
 msgid "A lightweight, well-integrated LXQt desktop environment."
-msgstr ""
+msgstr "Un entorno de escritorio LXQt ligero y bien integrado."
 
 #: [LXQT].description[0]
 msgctxt "Release|"
@@ -1222,21 +1250,30 @@ msgid ""
 "addition breeze-gtk is provided to allow the user to integrate GTK "
 "applications too."
 msgstr ""
+"Fedora LXQt proporciona un entorno de escritorio integrado y ligero de LXQt. "
+"Además del propio LXQt incluye una selección de aplicaciones, como el "
+"navegador QupZilla, que combina el motor de Chromium con una experiencia de "
+"usuario de Qt. También están el cliente de correo Trojita, el cliente "
+"qBittorrent, el reproductor de música Yarock y más. Como todas las "
+"aplicaciones usan el sistema Qt5 y el tema Breeze de KDE, se consigue un "
+"entorno unificado. Además se incluye breeze-gtk, para que las aplicaciones "
+"GTK del usuario también queden integradas."
 
 #: [Mate].subvariant
 msgctxt "Release|"
 msgid "mate"
-msgstr ""
+msgstr "mate"
 
 #: [Mate].category [Mate].name
 msgctxt "Release|"
 msgid "Fedora MATE-Compiz Desktop"
-msgstr ""
+msgstr "Escritorio Fedora MATE-Compiz"
 
 #: [Mate].summary
 msgctxt "Release|"
 msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
 msgstr ""
+"Un Escritorio Fedora clásico con un Administrador de Ventanas 3D adicional."
 
 #: [Mate].description[0]
 msgctxt "Release|"
@@ -1247,6 +1284,12 @@ msgid ""
 "for all machines and VMs. Compiz Fusion is a beautiful 3D windowing manager "
 "with Emerald and GTK+ theming."
 msgstr ""
+"La edición MATE Compiz une el Escritorio MATE con Compiz Fusion. El "
+"Escritorio MATE es un escritorio ligero y potente diseñado con la "
+"productividad y el rendimiento en mente. El administrador de ventanas "
+"predeterminado es Marco, que se puede utilizar en todas las computadoras y "
+"en máquinas virtuales. Compiz Fusion es un administrador de ventanas 3D "
+"precioso con el gestor Emerald y temas GTK+."
 
 #: [Mate].description[1]
 msgctxt "Release|"
@@ -1254,24 +1297,23 @@ msgid ""
 "If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
 "should definitely try the MATE-Compiz spin."
 msgstr ""
+"Si quiere un Escritorio Fedora potente, ligero y con efectos 3D, "
+"definitivamente debería probar la edición MATE Compiz."
 
 #: [Cinnamon].subvariant
 msgctxt "Release|"
 msgid "cinnamon"
-msgstr ""
+msgstr "Cinnamon"
 
 #: [Cinnamon].category [Cinnamon].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora Cinnamon Desktop"
-msgstr "Fedora Labs"
+msgstr "Escritorio Fedora Cinnamon"
 
 #: [Cinnamon].summary
 msgctxt "Release|"
 msgid "A modern desktop featuring traditional Gnome user experience."
-msgstr ""
+msgstr "Un escritorio moderno con la experiencia tradicional de Gnome."
 
 #: [Cinnamon].description[0]
 msgctxt "Release|"
@@ -1282,6 +1324,10 @@ msgid ""
 "making users feel at home and providing them with an easy to use and "
 "comfortable desktop experience."
 msgstr ""
+"Cinnamon es un escritorio Linux con características innovadoras avanzadas y "
+"una experiencia de usuario tradicional. La disposición del escritorio es "
+"similar a la de Gnome 2. La tecnología interna proviene de Gnome Shell. La "
+"prioridad es hacer que los usuarios se sientan cómodos con su escritorio."
 
 #: [Cinnamon].description[1]
 msgctxt "Release|"
@@ -1289,6 +1335,8 @@ msgid ""
 "Cinnamon is a popular desktop alternative to Gnome 3 and this spin provides "
 "the option to quickly try and install this desktop."
 msgstr ""
+"Cinnamon es una alternativa popular a Gnome 3, y este spin facilita probarlo "
+"e instalarlo."
 
 #: [LXDE].subvariant
 msgctxt "Release|"
