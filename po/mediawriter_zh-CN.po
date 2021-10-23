@@ -1,19 +1,19 @@
 # #-#-#-#-#  appstream_zh-CN.po  #-#-#-#-#
 # Tong Hui <tonghuix@fedoraproject.org>, 2016. #zanata
-# Charles Lee <lchopn@gmail.com>, 2017. #zanata
+# Charles Lee <lchopn@gmail.com>, 2017. #zanata, 2021.
 # #-#-#-#-#  desktop_zh-CN.po  #-#-#-#-#
 # Tong Hui <tonghuix@fedoraproject.org>, 2016. #zanata
 # #-#-#-#-#  mediawriter_zh-CN.po  #-#-#-#-#
 # Tian Shixiong <tiansworld@fedoraproject.org>, 2016. #zanata
 # Tong Hui <tonghuix@fedoraproject.org>, 2016. #zanata
-# Charles Lee <lchopn@gmail.com>, 2017. #zanata
+# Charles Lee <lchopn@gmail.com>, 2017. #zanata, 2021.
 # lexuge <LEXUGEyky@outlook.com>, 2017. #zanata
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 16:44+0200\n"
-"PO-Revision-Date: 2021-07-11 17:15+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2021-10-23 08:05+0000\n"
+"Last-Translator: Charles Lee <lchopn@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
 "projects/fedora-media-writer/mediawriter/zh_CN/>\n"
 "Language: zh-CN\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.7.1\n"
+"X-Generator: Weblate 4.8\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/DeleteButton.qml:64
@@ -42,12 +42,12 @@ msgstr "您的“下载”文件夹空间不足。"
 #: ../src/app/downloadmanager.cpp:313
 msgctxt "Download|"
 msgid "The download file is not writable."
-msgstr "下载的文件不可写"
+msgstr "下载的文件不可写。"
 
 #: ../src/app/downloadmanager.cpp:399
 msgctxt "Download|"
 msgid "Connection timed out"
-msgstr "连接超时。"
+msgstr "连接超时"
 
 #: ../src/app/qml/DownloadDialog.qml:33
 #, qt-format
@@ -75,13 +75,13 @@ msgstr "重试"
 #: ../src/app/qml/DownloadDialog.qml:356
 msgctxt "DownloadDialog|"
 msgid "The file will be saved to your Downloads folder."
-msgstr "文件将被保存到你的“下载”文件夹"
+msgstr "文件将被保存到你的“下载”文件夹。"
 
 #: ../src/app/qml/DownloadDialog.qml:363
 #, qt-format
 msgctxt "DownloadDialog|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "因为写入数据，您将会失去所有在 %1 上的数据"
+msgstr "因为写入数据，您将会失去所有在 %1 上的数据。"
 
 #: ../src/app/qml/DownloadDialog.qml:370
 msgctxt "DownloadDialog|"
@@ -118,7 +118,7 @@ msgctxt "DownloadDialog|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
-msgstr "已选驱动器的容量为 %1。您可能不小心选择了一个外部驱动器。"
+msgstr "已选驱动器的容量为 %1。您可能不小心选择了一个外部驱动器！"
 
 #: ../src/app/qml/DownloadDialog.qml:419
 #, qt-format
@@ -178,17 +178,17 @@ msgstr "写入磁盘"
 #: ../src/app/drivemanager.cpp:286
 msgctxt "Drive|"
 msgid "This drive is not large enough."
-msgstr "此驱动器容量不足"
+msgstr "此驱动器容量不足。"
 
 #: ../src/app/qml/ImageDetails.qml:98
 msgctxt "ImageDetails|"
 msgid "Back"
-msgstr ""
+msgstr "返回"
 
 #: ../src/app/qml/ImageDetails.qml:105
 msgctxt "ImageDetails|"
 msgid "Create Live USB…"
-msgstr ""
+msgstr "创建 Live USB…"
 
 #. The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
 #: ../src/app/qml/ImageDetails.qml:167
@@ -299,7 +299,7 @@ msgstr "写入 %1 失败"
 #: ../src/app/linuxdrivemanager.cpp:116
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
-msgstr "UDisk2似乎在您的系统上不可用或不被允许"
+msgstr "UDisk2 似乎在您的系统上不可用或不被允许。"
 
 #: ../src/app/macdrivemanager.cpp:101
 msgctxt "MacDrive|"
@@ -390,12 +390,12 @@ msgstr "针对 ARM v7-A 架构，如树莓派 2 和 3 的 LZMA 压缩原生镜�
 #: ../src/app/releasemanager.cpp:939
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
-msgstr ""
+msgstr "AArch64"
 
 #: ../src/app/releasemanager.cpp:939
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr ""
+msgstr "适用于 AArch64 机器的 LZMA 压缩格式 raw 镜像"
 
 #: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
 msgctxt "ReleaseListModel|"
@@ -410,12 +410,12 @@ msgstr "下载的镜像已损坏"
 #: ../src/app/releasemanager.cpp:814
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
-msgstr "下载到的文件不可读"
+msgstr "下载到的文件不可读。"
 
 #: ../src/app/releasemanager.cpp:826
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr "无法重命名临时文件"
+msgstr "无法重命名临时文件。"
 
 #: ../src/app/releasemanager.h:386
 msgctxt "ReleaseVariant|"
@@ -440,7 +440,7 @@ msgstr "准备写入"
 #: ../src/app/releasemanager.h:390
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr "无法写入。镜像文件已经保存到您的下载目录。"
+msgstr "镜像文件已经保存到您的下载目录。无法写入"
 
 #: ../src/app/releasemanager.h:391
 msgctxt "ReleaseVariant|"
@@ -568,19 +568,19 @@ msgstr "找不到 helper 二进制文件，请检查是否已安装。"
 #: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "已完成！"
 
 #: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "成功写入 %1"
 
 #: ../src/helper/linux/writejob.cpp:136 ../src/helper/win/writejob.cpp:271
 #: ../src/helper/mac/writejob.cpp:219
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr "无法进行解压"
+msgstr "无法进行解压。"
 
 #: ../src/helper/linux/writejob.cpp:161 ../src/helper/linux/writejob.cpp:191
 #: ../src/helper/linux/writejob.cpp:228 ../src/helper/win/writejob.cpp:188
@@ -594,25 +594,25 @@ msgstr "目标设备不可写"
 #: ../src/helper/mac/writejob.cpp:253
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
-msgstr "没有足够的空间来解压文件"
+msgstr "没有足够的空间来解压文件。"
 
 #: ../src/helper/linux/writejob.cpp:175 ../src/helper/win/writejob.cpp:320
 #: ../src/helper/mac/writejob.cpp:258
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
-msgstr "下载到的压缩文件已损坏"
+msgstr "下载到的压缩文件已损坏。"
 
 #: ../src/helper/linux/writejob.cpp:178 ../src/helper/win/writejob.cpp:323
 #: ../src/helper/mac/writejob.cpp:261
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
-msgstr "不被支持的压缩选项"
+msgstr "不被支持的压缩选项。"
 
 #: ../src/helper/linux/writejob.cpp:181 ../src/helper/win/writejob.cpp:326
 #: ../src/helper/mac/writejob.cpp:264
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
-msgstr "未知的解压错误"
+msgstr "未知的解压错误。"
 
 #: ../src/helper/linux/writejob.cpp:206 ../src/helper/linux/writejob.cpp:221
 #: ../src/helper/win/writejob.cpp:361
@@ -646,7 +646,7 @@ msgstr "无法锁定设备"
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't remove the drive %1:"
-msgstr "无法移除设备：%1"
+msgstr "无法移除设备 %1："
 
 #: ../src/helper/win/writejob.cpp:209
 msgctxt "WriteJob|"
@@ -656,12 +656,12 @@ msgstr "无法解锁设备"
 #: ../src/helper/mac/writejob.cpp:82
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "无法分配套接字对"
 
 #: ../src/helper/mac/writejob.cpp:127
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "无法打开写入的目的地"
 
 #: ../src/app/qml/main.qml:68
 #, qt-format
@@ -708,7 +708,7 @@ msgctxt "main|"
 msgid ""
 "%1<br>Writing images will not be possible.<br>You can still view Fedora "
 "flavors and download images to your hard drive."
-msgstr "%1 <br> 无法写入镜像。 <br> 你可以继续查看Fedora版本并下载镜像到您的硬盘"
+msgstr "%1 <br> 无法写入镜像。 <br> 你可以继续查看 Fedora 版本并下载镜像到您的硬盘。"
 
 #: ../src/app/qml/main.qml:196
 msgctxt "main|"
@@ -737,9 +737,9 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
-"为各种 Fedora 版本制作可启动 Live USB 设备的工具。Fedora  Media Writer "
-"不只能将镜像写入您的闪存盘中，它还能替您下载镜像。它提供官方版（Server、Workstation）、Fedora Spin （KDE Plasma "
-"桌面、Xfce 桌面、Cinnamon 桌面等）、和 Fedora 实验室（设计套件、安全实验室等）。它还提供各版本的基本资讯来帮助您作选择。"
+"一个为各种 Fedora 版本制作可启动 Live USB 设备的工具。Fedora Media Writer "
+"不仅能将镜像写入您的闪存盘中，它还能替您下载镜像。它提供官方版（Server、Workstation）、Fedora Spin （KDE Plasma "
+"桌面、Xfce 桌面、Cinnamon 桌面等）、和 Fedora 实验室（设计套件、安全实验室等）。它还提供各版本的基本信息来帮助您作选择。"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -763,17 +763,14 @@ msgid "product"
 msgstr ""
 
 #: [Workstation].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "Fedora Workstation"
-msgstr "Fedora 定制版"
+msgstr "Fedora Workstation"
 
 #: [Workstation].summary
 msgctxt "Release|"
 msgid "This is the Linux workstation you've been waiting for."
-msgstr ""
+msgstr "这是您一直期盼的 Linux 工作站。"
 
 #: [Workstation].description[0]
 msgctxt "Release|"
@@ -854,18 +851,16 @@ msgid "server"
 msgstr ""
 
 #: [Server].category [Server].name
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "Fedora Server"
-msgstr "Fedora Media Writer"
+msgstr "Fedora Server"
 
 #: [Server].summary
 msgctxt "Release|"
 msgid ""
 "The latest technology. A stable foundation. Together, for your applications "
 "and services."
-msgstr ""
+msgstr "最新的技术。稳定的基础。结合二者以支持您的应用与服务。"
 
 #: [Server].description[0]
 msgctxt "Release|"
@@ -974,19 +969,16 @@ msgid "emerging"
 msgstr ""
 
 #: [Silverblue].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "Fedora Silverblue"
-msgstr "Fedora 定制版"
+msgstr "Fedora Silverblue"
 
 #: [Silverblue].summary
 msgctxt "Release|"
 msgid ""
 "An extremely stable and reliable desktop operating system, excellent for "
 "developers and for those using container-focused workflows."
-msgstr ""
+msgstr "极其稳定和可靠的桌面操作系统，面向开发者和容器工作流的用户。"
 
 #: [Silverblue].description[0]
 msgctxt "Release|"
@@ -1039,7 +1031,7 @@ msgstr ""
 #: [KDE].name
 msgctxt "Release|"
 msgid "Fedora KDE Plasma Desktop"
-msgstr ""
+msgstr "Fedora KDE Plasma 桌面"
 
 #: [KDE].summary
 msgctxt "Release|"
