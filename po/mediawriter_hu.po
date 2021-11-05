@@ -10,12 +10,13 @@
 # Zoltan Hoppar <zoltanh721@fedoraproject.org>, 2017. #zanata
 # Meskó Balázs <meskobalazs@gmail.com>, 2019. #zanata
 # Dankaházi (ifj.) István <dankahazi.istvan@gmail.com>, 2021.
+# Balázs Meskó <meskobalazs@mailbox.org>, 2021.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 16:44+0200\n"
-"PO-Revision-Date: 2021-07-11 17:14+0000\n"
-"Last-Translator: Dankaházi (ifj.) István <dankahazi.istvan@gmail.com>\n"
+"PO-Revision-Date: 2021-11-04 22:05+0000\n"
+"Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/hu/>\n"
 "Language: hu\n"
@@ -23,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.1\n"
+"X-Generator: Weblate 4.8\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/DeleteButton.qml:64
@@ -697,7 +698,7 @@ msgstr ""
 #: ../src/app/qml/main.qml:70
 msgctxt "main|"
 msgid "Restore"
-msgstr "Visszaállítás"
+msgstr "Helyreállítás"
 
 #: ../src/app/qml/main.qml:146
 #, qt-format
@@ -788,12 +789,12 @@ msgstr "Írjon Fedora lemezképeket a hordozható meghajtóira"
 # ############## metadata.json ###############
 #: [Workstation].subvariant
 msgid "workstation"
-msgstr "Workstation"
+msgstr "workstation"
 
 #: [Workstation].category
 msgctxt "Release|"
 msgid "product"
-msgstr ""
+msgstr "termék"
 
 #: [Workstation].name
 msgctxt "Release|"
@@ -803,7 +804,7 @@ msgstr "Fedora Workstation"
 #: [Workstation].summary
 msgctxt "Release|"
 msgid "This is the Linux workstation you've been waiting for."
-msgstr ""
+msgstr "Ez a Linux munkaállomás, amelyre várt."
 
 #: [Workstation].description[0]
 msgctxt "Release|"
@@ -813,6 +814,10 @@ msgid ""
 "developers, from hobbyists and students to professionals in corporate "
 "environments."
 msgstr ""
+"A Fedora Workstation egy megbízható, felhasználóbarát és hatékony operációs "
+"rendszer a laptopjára vagy asztali számítógépére. Fejlesztők, hobbisták "
+"széles skáláját támogatja, a tanulóktól kezdve a céges környezetben dolgozó "
+"szakemberekig."
 
 #: [Workstation].description[1]
 msgctxt "Release|"
@@ -820,16 +825,18 @@ msgid ""
 "“The plethora of tools provided by<br /> Fedora allows me to get the job "
 "done.<br /> It just works.”"
 msgstr ""
+"„A Fedora által biztosított eszközök<br /> sokasága segít elvégezni a "
+"munkámat.<br /> Egyszerűen működik.”"
 
 #: [Workstation].description[2]
 msgctxt "Release|"
 msgid "JVM performance engineer"
-msgstr ""
+msgstr "JVM teljesítménymérnök"
 
 #: [Workstation].description[3]
 msgctxt "Release|"
 msgid "Sleek user interface"
-msgstr ""
+msgstr "Elegáns felhasználó felület"
 
 #: [Workstation].description[4]
 msgctxt "Release|"
@@ -838,11 +845,14 @@ msgid ""
 "developer feedback and minimizes distractions, so you can concentrate on "
 "what's important."
 msgstr ""
+"Fókuszáljon a kódjára a GNOME 3 asztali környezetben. A GNOME fejlesztői "
+"visszajelzés alapján készült, és minimalizálja a zavaró tényezőket, így a "
+"fontos dolgokra koncentrálhat."
 
 #: [Workstation].description[5]
 msgctxt "Release|"
 msgid "Complete open source toolbox"
-msgstr ""
+msgstr "Teljes nyílt forráskódú eszközkészlet"
 
 #: [Workstation].description[6]
 msgctxt "Release|"
@@ -856,7 +866,7 @@ msgstr ""
 #: [Workstation].description[7]
 msgctxt "Release|"
 msgid "GNOME Boxes & other virt tools"
-msgstr ""
+msgstr "GNOME Gépek és egyéb virtualizáció eszközök"
 
 #: [Workstation].description[8]
 msgctxt "Release|"
@@ -869,7 +879,7 @@ msgstr ""
 #: [Workstation].description[9]
 msgctxt "Release|"
 msgid "Built-in Docker support"
-msgstr ""
+msgstr "Beépített Docker támogatás"
 
 #: [Workstation].description[10]
 msgctxt "Release|"
@@ -881,14 +891,12 @@ msgstr ""
 #: [Server].subvariant
 msgctxt "Release|"
 msgid "server"
-msgstr ""
+msgstr "server"
 
 #: [Server].category [Server].name
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "Fedora Server"
-msgstr "Fedora médiaíró"
+msgstr "Fedora Server"
 
 #: [Server].summary
 msgctxt "Release|"
@@ -896,6 +904,8 @@ msgid ""
 "The latest technology. A stable foundation. Together, for your applications "
 "and services."
 msgstr ""
+"A legfrissebb technológia. Egy stabil alap. Együtt, az alkalmazásainak és "
+"szolgáltatásainak."
 
 #: [Server].description[0]
 msgctxt "Release|"
@@ -904,11 +914,15 @@ msgid ""
 "deployments a breeze. What took me a few days on other operating systems "
 "took less than an hour with Fedora %(rel)s Server. It just works.”"
 msgstr ""
+"„A rolekittel és cockpittal bevezetett egyszerűség gyerekjátékká teszi a "
+"kiszolgálótelepítéseket. Ami más operációs rendszerekkel napokig tartott, az "
+"a Fedora %(rel)s Serverrel kevesebb mint egy órába telik. Egyszerűen "
+"működik.”"
 
 #: [Server].description[1]
 msgctxt "Release|"
 msgid "Systems Engineer"
-msgstr ""
+msgstr "Rendszermérnök"
 
 #: [Server].description[2]
 msgctxt "Release|"
@@ -918,11 +932,15 @@ msgid ""
 "to make use of the very latest server-based technologies available in the "
 "open source community."
 msgstr ""
+"A Fedora Server egy rövid életciklusú, közösségileg támogatott kiszolgáló "
+"operációs rendszer, amely lehetővé teszi, hogy a (bármilyen OS használatában)"
+" tapasztalt rendszergazdák a nyílt forráskódú közösségben elérhető "
+"legfrissebb kiszolgáló-alapú technológiákat használják."
 
 #: [Server].description[3]
 msgctxt "Release|"
 msgid "Easy Administration"
-msgstr ""
+msgstr "Könnyű adminisztráció"
 
 #: [Server].description[4]
 msgctxt "Release|"
@@ -935,7 +953,7 @@ msgstr ""
 #: [Server].description[5]
 msgctxt "Release|"
 msgid "Server Roles"
-msgstr ""
+msgstr "Kiszolgáló szerepkörök"
 
 #: [Server].description[6]
 msgctxt "Release|"
@@ -945,11 +963,15 @@ msgid ""
 "integrated service on top of the Fedora Server platform. Deploy and manage "
 "these prepared roles simply using the Rolekit tool."
 msgstr ""
+"Nem kell a semmiből beállítania a kiszolgálóját, ha szerepköröket használ. A "
+"szerepkörök a Fedora Server rendszerbe épülnek, jól integrált szolgáltatást "
+"biztosítva a Fedora Server platform felett. Telepítse és kezelje ezeket az "
+"előre elkészített szerepköröket a Rolekit eszközzel."
 
 #: [Server].description[7]
 msgctxt "Release|"
 msgid "Database Services"
-msgstr ""
+msgstr "Adatbázis szolgáltatások"
 
 #: [Server].description[8]
 msgctxt "Release|"
@@ -961,7 +983,7 @@ msgstr ""
 #: [Server].description[9]
 msgctxt "Release|"
 msgid "Complete Enterprise Domain Solution"
-msgstr ""
+msgstr "Teljes vállalati tartománymegoldás"
 
 #: [Server].description[10]
 msgctxt "Release|"
@@ -983,20 +1005,17 @@ msgstr ""
 #: [Server].description[12]
 msgctxt "Release|"
 msgid "</p><p align=right> ― <em>John Unland, "
-msgstr ""
+msgstr "</p><p align=right> ― <em>John Unland, "
 
 #: [Server].description[13]
 msgctxt "Release|"
 msgid "Information Systems Student"
-msgstr ""
+msgstr "Informatikahallgató"
 
 #: [Silverblue].subvariant
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "silverblue"
-msgstr "Fedora Spinek"
+msgstr "silverblue"
 
 #: [Silverblue].category
 msgctxt "Release|"
@@ -1004,12 +1023,9 @@ msgid "emerging"
 msgstr ""
 
 #: [Silverblue].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "Fedora Silverblue"
-msgstr "Fedora Spinek"
+msgstr "Fedora Silverblue"
 
 #: [Silverblue].summary
 msgctxt "Release|"
@@ -1059,17 +1075,17 @@ msgstr ""
 #: [KDE].subvariant
 msgctxt "Release|"
 msgid "kde"
-msgstr ""
+msgstr "kde"
 
 #: [KDE].category
 msgctxt "Release|"
 msgid "spins"
-msgstr ""
+msgstr "spinek"
 
 #: [KDE].name
 msgctxt "Release|"
 msgid "Fedora KDE Plasma Desktop"
-msgstr ""
+msgstr "Fedora KDE Plasma asztal"
 
 #: [KDE].summary
 msgctxt "Release|"
@@ -1104,12 +1120,12 @@ msgstr ""
 #: [XFCE].subvariant
 msgctxt "Release|"
 msgid "xfce"
-msgstr ""
+msgstr "xfce"
 
 #: [XFCE].category [XFCE].name
 msgctxt "Release|"
 msgid "Fedora Xfce Desktop"
-msgstr ""
+msgstr "Fedora Xfce asztal"
 
 #: [XFCE].summary
 msgctxt "Release|"
@@ -1132,15 +1148,12 @@ msgstr ""
 #: [LXQT].subvariant
 msgctxt "Release|"
 msgid "lxqt"
-msgstr ""
+msgstr "lxqt"
 
 #: [LXQT].category [LXQT].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora LXQt Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora LXQt asztal"
 
 #: [LXQT].summary
 msgctxt "Release|"
@@ -1165,12 +1178,12 @@ msgstr ""
 #: [Mate].subvariant
 msgctxt "Release|"
 msgid "mate"
-msgstr ""
+msgstr "mate"
 
 #: [Mate].category [Mate].name
 msgctxt "Release|"
 msgid "Fedora MATE-Compiz Desktop"
-msgstr ""
+msgstr "Fedora MATE-Compiz asztal"
 
 #: [Mate].summary
 msgctxt "Release|"
@@ -1197,15 +1210,12 @@ msgstr ""
 #: [Cinnamon].subvariant
 msgctxt "Release|"
 msgid "cinnamon"
-msgstr ""
+msgstr "cinnamon"
 
 #: [Cinnamon].category [Cinnamon].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora Cinnamon Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora Cinnamon asztal"
 
 #: [Cinnamon].summary
 msgctxt "Release|"
@@ -1232,15 +1242,12 @@ msgstr ""
 #: [LXDE].subvariant
 msgctxt "Release|"
 msgid "lxde"
-msgstr ""
+msgstr "lxde"
 
 #: [LXDE].category [LXDE].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora LXDE Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora LXDE asztal"
 
 #: [LXDE].summary
 msgctxt "Release|"
@@ -1272,12 +1279,9 @@ msgid "soas"
 msgstr ""
 
 #: [SOAS].category [SOAS].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora SoaS Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora SoaS asztal"
 
 #: [SOAS].summary
 msgctxt "Release|"
@@ -1317,25 +1321,22 @@ msgstr ""
 #: [i3].subvariant
 msgctxt "Release|"
 msgid "i3"
-msgstr ""
+msgstr "i3"
 
 #: [i3].category [i3].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora i3 Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora i3 asztal"
 
 #: [i3].summary
 msgctxt "Release|"
 msgid "Simplicity over Complexity"
-msgstr ""
+msgstr "Egyszerűség az összetettség helyett"
 
 #: [i3].description[1]
 msgctxt "Release|"
 msgid "The Fedora i3 Spin provides the popular i3 tiling window manager."
-msgstr ""
+msgstr "A Fedora i3 Spin a népszerű i3 ablakkezelőt biztosítja."
 
 #: [i3].description[3]
 msgctxt "Release|"
@@ -1350,17 +1351,17 @@ msgstr ""
 #: [Astronomy].subvariant
 msgctxt "Release|"
 msgid "astronomy"
-msgstr ""
+msgstr "astronomy"
 
 #: [Astronomy].category
 msgctxt "Release|"
 msgid "labs"
-msgstr ""
+msgstr "labs"
 
 #: [Astronomy].name
 msgctxt "Release|"
 msgid "Fedora Astronomy"
-msgstr ""
+msgstr "Fedora Astronomy"
 
 #: [Astronomy].summary
 msgctxt "Release|"
@@ -1387,18 +1388,14 @@ msgid ""
 msgstr ""
 
 #: [DesignSuite].subvariant
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "design_suite"
-msgstr "Fedora médiaíró"
+msgstr "design_suite"
 
 #: [DesignSuite].category [DesignSuite].name
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "Fedora Design Suite"
-msgstr "Fedora médiaíró"
+msgstr "Fedora Design Suite"
 
 #: [DesignSuite].summary
 msgctxt "Release|"
@@ -1430,14 +1427,11 @@ msgstr ""
 #: [Games].subvariant
 msgctxt "Release|"
 msgid "games"
-msgstr ""
+msgstr "games"
 
 #: [Games].category [Games].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgid "Fedora Games"
-msgstr "Fedora Labs"
+msgstr "Fedora Games"
 
 #: [Games].summary
 msgctxt "Release|"
@@ -1464,12 +1458,12 @@ msgstr ""
 #: [Python].subvariant
 msgctxt "Release|"
 msgid "python"
-msgstr ""
+msgstr "python"
 
 #: [Python].category [Python].name
 msgctxt "Release|"
 msgid "Fedora Python Classroom"
-msgstr ""
+msgstr "Fedora Python Classroom"
 
 #: [Python].summary
 msgctxt "Release|"
@@ -1501,14 +1495,12 @@ msgstr ""
 #: [Robotics].subvariant
 msgctxt "Release|"
 msgid "robotics"
-msgstr ""
+msgstr "robotics"
 
 #: [Robotics].category [Robotics].name
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "Fedora Robotics Suite"
-msgstr "Fedora médiaíró"
+msgstr "Fedora Robotics Suite"
 
 #: [Robotics].summary
 msgctxt "Release|"
@@ -1540,20 +1532,14 @@ msgid ""
 msgstr ""
 
 #: [Scientific].subvariant
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "scientific"
-msgstr "Fedora Spinek"
+msgstr "scientific"
 
 #: [Scientific].category [Scientific].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "Fedora Scientific"
-msgstr "Fedora Spinek"
+msgstr "Fedora Scientific"
 
 #: [Scientific].summary
 msgctxt "Release|"
@@ -1585,15 +1571,12 @@ msgstr ""
 #: [Security].subvariant
 msgctxt "Release|"
 msgid "security"
-msgstr ""
+msgstr "security"
 
 #: [Security].category [Security].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora Security Lab"
-msgstr "Fedora Labs"
+msgstr "Fedora Security Lab"
 
 #: [Security].summary
 msgctxt "Release|"
