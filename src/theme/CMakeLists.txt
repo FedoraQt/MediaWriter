@@ -15,14 +15,14 @@ else()
 endif()
 
 target_link_libraries(adwaitathemeplugin
-    Qt5::Qml
-    Qt5::Quick
-    Qt5::QuickControls2
-    Qt5::Widgets
-    ${ADWAITAQT_LIBRARIES}
+    Qt6::Core
+    Qt6::Qml
+    Qt6::Quick
+    Qt6::QuickControls2
+    Qt6::Widgets
+    ${ADWAITAQT6_LIBRARIES}
 )
 
-
-install(TARGETS adwaitathemeplugin DESTINATION ${QT_INSTALL_QML}/org/fedoraproject/AdwaitaTheme)
-install(FILES qmldir DESTINATION ${QT_INSTALL_QML}/org/fedoraproject/AdwaitaTheme)
-install(DIRECTORY qml/ DESTINATION ${QT_INSTALL_QML}/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme)
+install(TARGETS adwaitathemeplugin DESTINATION ${QT6_INSTALL_QML}/org/fedoraproject/AdwaitaTheme)
+install(FILES qmldir DESTINATION ${QT6_INSTALL_QML}/org/fedoraproject/AdwaitaTheme)
+install(DIRECTORY qml/ DESTINATION ${QT6_INSTALL_QML}/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme)

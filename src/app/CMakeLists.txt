@@ -34,10 +34,10 @@ if (WIN32)
     set (MEDIAWRITER_SRCS ${MEDIAWRITER_SRCS} windrivemanager.cpp)
 endif()
 
-qt5_add_resources(MEDIAWRITER_SRCS assets.qrc qml.qrc ${CMAKE_SOURCE_DIR}/src/translations/translations.qrc)
+qt6_add_resources(MEDIAWRITER_SRCS assets.qrc qml.qrc ${CMAKE_SOURCE_DIR}/src/translations/translations.qrc)
 
 if (WIN32)
-    qt5_add_resources(MEDIAWRITER_SRCS windowsicon.qrc)
+    qt6_add_resources(MEDIAWRITER_SRCS windowsicon.qrc)
 endif()
 
 if (NOT APPLE)
@@ -51,7 +51,7 @@ endif()
 if (WIN32)
     # HACK: we need to remove -std=c++11 definition for manifest file, otherwise
     # it will complain about undefined option "s" (as first letter from -Std=c++11)
-    remove_definitions(-std=c++11)
+    remove_definitions(-std=c++17)
     target_sources(mediawriter PRIVATE data/windows.rc)
 endif()
 
@@ -70,16 +70,16 @@ if (APPLE)
 endif()
 
 target_link_libraries(mediawriter
-    Qt5::Core
-    Qt5::Network
-    Qt5::QuickControls2
-    Qt5::Widgets
-    ${ADWAITAQT_LIBRARIES}
+    Qt6::Core
+    Qt6::Network
+    Qt6::QuickControls2
+    Qt6::Widgets
+    ${ADWAITAQT6_LIBRARIES}
     isomd5
 )
 
 if (UNIX AND NOT APPLE)
-    target_link_libraries(mediawriter Qt5::DBus)
+    target_link_libraries(mediawriter Qt6::DBus)
 endif()
 
 if (WIN32)
@@ -99,7 +99,7 @@ if (UNIX AND NOT APPLE)
 endif()
 
 if (APPLE AND CREATE_STANDALONE_MAC_BUNDLE)
-    get_target_property(QMAKE_EXECUTABLE Qt5::qmake IMPORTED_LOCATION)
+    get_target_property(QMAKE_EXECUTABLE Qt6::qmake IMPORTED_LOCATION)
     get_filename_component(QT_BIN_DIR "${QMAKE_EXECUTABLE}" DIRECTORY)
     find_program(MACDEPLOYQT_EXECUTABLE macdeployqt HINTS "${QT_BIN_DIR}")
 

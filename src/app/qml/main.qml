@@ -29,7 +29,7 @@ ApplicationWindow {
     visible: true
     minimumWidth: 800
     minimumHeight: 480
-    title: "Fedora Media Writer"
+    title: "Fedora Media Writer test"
 
     SystemPalette {
         id: palette
