@@ -197,7 +197,7 @@ ReleaseVariant *ReleaseManager::variant() {
 void ReleaseManager::onStringDownloaded(const QString &text) {
     mDebug() << this->metaObject()->className() << "Received a metadata json";
 
-    QRegExp re("(\\d+)\\s?(\\S+)?");
+    QRegularExpression re("(\\d+)\\s?(\\S+)?");
     auto doc = QJsonDocument::fromJson(text.toUtf8());
 
     for (auto i : doc.array()) {
@@ -217,10 +217,10 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         if (QStringList{"cloud", "cloud_base", "atomic", "everything", "minimal", "docker", "docker_base"}.contains(release))
             continue;
 
-        release.replace(QRegExp("_kde$"), "");
+        release.replace(QRegularExpression("_kde$"), "");
         release.replace("_", " ");
 
-        if (re.indexIn(versionWithStatus) < 0)
+        if (re.match(versionWithStatus).hasMatch() < 0)
             continue;
 
         if (release.contains("workstation") && !url.contains("Live") && !url.contains("armhfp"))
@@ -234,8 +234,8 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
                 continue;
         }
 
-        version = re.capturedTexts()[1].toInt();
-        status = re.capturedTexts()[2];
+        version = re.match(versionWithStatus).captured(1).toInt();
+        status = re.match(versionWithStatus).captured(2);
 
         mDebug() << this->metaObject()->className() << "Adding" << release << versionWithStatus << arch;
 
@@ -821,7 +821,7 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
     else {
         mDebug() << this->metaObject()->className() << "MD5 check passed";
         QString finalFilename(path);
-        finalFilename = finalFilename.replace(QRegExp("[.]part$"), "");
+        finalFilename = finalFilename.replace(QRegularExpression("[.]part$"), "");
 
         if (finalFilename != path) {
             mDebug() << this->metaObject()->className() << "Renaming from" << path << "to" << finalFilename;

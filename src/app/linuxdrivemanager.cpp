@@ -22,6 +22,7 @@
 #include <QtDBus/QtDBus>
 #include <QDBusArgument>
 
+
 #include "notifications.h"
 
 LinuxDriveProvider::LinuxDriveProvider(DriveManager *parent)
@@ -51,14 +52,14 @@ void LinuxDriveProvider::delayedConstruct() {
 }
 
 QDBusObjectPath LinuxDriveProvider::handleObject(const QDBusObjectPath &object_path, const InterfacesAndProperties &interfaces_and_properties) {
-    QRegExp numberRE("[0-9]$");
-    QRegExp mmcRE("[0-9]p[0-9]$");
+    QRegularExpression numberRE("[0-9]$");
+    QRegularExpression mmcRE("[0-9]p[0-9]$");
     QDBusObjectPath driveId = qvariant_cast<QDBusObjectPath>(interfaces_and_properties["org.freedesktop.UDisks2.Block"]["Drive"]);
 
     QDBusInterface driveInterface("org.freedesktop.UDisks2", driveId.path(), "org.freedesktop.UDisks2.Drive", QDBusConnection::systemBus());
 
-    if ((numberRE.indexIn(object_path.path()) >= 0 && !object_path.path().startsWith("/org/freedesktop/UDisks2/block_devices/mmcblk")) ||
-            mmcRE.indexIn(object_path.path()) >= 0)
+    if ((numberRE.match(object_path.path()).hasMatch() && !object_path.path().startsWith("/org/freedesktop/UDisks2/block_devices/mmcblk")) ||
+            mmcRE.match(object_path.path()).hasMatch())
         return QDBusObjectPath();
 
     if (!driveId.path().isEmpty() && driveId.path() != "/") {
@@ -143,7 +144,7 @@ void LinuxDriveProvider::init(QDBusPendingCallWatcher *w) {
 }
 
 void LinuxDriveProvider::onInterfacesAdded(const QDBusObjectPath &object_path, const InterfacesAndProperties &interfaces_and_properties) {
-    QRegExp numberRE("[0-9]$");
+    QRegularExpression numberRE("[0-9]$");
 
     if (interfaces_and_properties.keys().contains("org.freedesktop.UDisks2.Block")) {
         if (!m_drives.contains(object_path)) {

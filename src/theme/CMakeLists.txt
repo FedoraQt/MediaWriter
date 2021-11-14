@@ -20,7 +20,7 @@ target_link_libraries(adwaitathemeplugin
     Qt6::Quick
     Qt6::QuickControls2
     Qt6::Widgets
-    ${ADWAITAQT6_LIBRARIES}
+    ${ADWAITAQT_LIBRARIES}
 )
 
 install(TARGETS adwaitathemeplugin DESTINATION ${QT6_INSTALL_QML}/org/fedoraproject/AdwaitaTheme)

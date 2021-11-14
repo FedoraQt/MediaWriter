@@ -19,13 +19,13 @@
 
 import QtQuick 2.12
 import QtQuick.Controls 2.12 as QQC2
-import QtQuick.Dialogs 1.3
+//import QtQuick.Dialogs 1.3
 import QtQuick.Layouts 1.12
 import QtQuick.Window 2.12
 
 import MediaWriter 1.0
 
-Dialog {
+QQC2.Dialog {
     id: dialog
     title: qsTr("Write %1").arg(releases.selected.name)
 

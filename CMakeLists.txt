@@ -35,12 +35,8 @@ endif()
 
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Network Qml Quick QuickControls2 Widgets)
 
-find_package(AdwaitaQt "1.4.50" REQUIRED)
+find_package(AdwaitaQt6 "1.4.1" REQUIRED)
 
-
-# Installation paths
-get_target_property(REAL_QMAKE_EXECUTABLE Qt6::qmake
-                    IMPORTED_LOCATION)
 
 if (NOT QT_INSTALL_QML)
     execute_process(COMMAND "${REAL_QMAKE_EXECUTABLE}" -query QT_INSTALL_QML

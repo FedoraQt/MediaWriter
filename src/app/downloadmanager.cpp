@@ -26,6 +26,7 @@
 #include <QStorageInfo>
 #include <QSysInfo>
 #include <QDir>
+#include <QRegularExpression>
 
 DownloadManager *DownloadManager::_self = nullptr;
 
@@ -43,7 +44,7 @@ QString DownloadManager::dir() {
 
 QString DownloadManager::userAgent() {
     QString ret = QString("FedoraMediaWriter/%1 (").arg(MEDIAWRITER_VERSION);
-    ret.append(QString("%1").arg(QSysInfo::prettyProductName().replace(QRegExp("[()]"), "")));
+    ret.append(QString("%1").arg(QSysInfo::prettyProductName().replace(QRegularExpression("[()]"), "")));
     ret.append(QString("; %1").arg(QSysInfo::buildAbi()));
     ret.append(QString("; %1").arg(QLocale(QLocale().language()).name()));
 #ifdef MEDIAWRITER_PLATFORM_DETAILS
@@ -85,7 +86,7 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &ur
 void DownloadManager::fetchPageAsync(DownloadReceiver *receiver, const QString &url) {
     QNetworkRequest request;
     request.setUrl(QUrl(url));
-    request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+    //request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
 
     if (!options.noUserAgent)
         request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
@@ -108,7 +109,7 @@ QNetworkReply *DownloadManager::tryAnotherMirror() {
         return nullptr;
 
     QNetworkRequest request;
-    request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+    //request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(m_mirrorCache.first());
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
     if (!options.noUserAgent)
@@ -147,7 +148,7 @@ void DownloadManager::onStringDownloaded(const QString &text) {
         return;
 
     QNetworkRequest request;
-    request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+    //request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(m_mirrorCache.first());
 
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
@@ -168,7 +169,7 @@ void DownloadManager::onDownloadError(const QString &message) {
     }
 
     QNetworkRequest request;
-    request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+    //request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(m_mirrorCache.first());
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
     if (!options.noUserAgent)

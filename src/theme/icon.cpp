@@ -303,9 +303,9 @@ QSGNode* Icon::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData* /
     return node;
 }
 
-void Icon::geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry)
+void Icon::geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry)
 {
-    QQuickItem::geometryChanged(newGeometry, oldGeometry);
+    QQuickItem::geometryChange(newGeometry, oldGeometry);
     if (newGeometry.size() != oldGeometry.size()) {
         polish();
     }

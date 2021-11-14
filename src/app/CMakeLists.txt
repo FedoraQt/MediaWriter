@@ -74,7 +74,7 @@ target_link_libraries(mediawriter
     Qt6::Network
     Qt6::QuickControls2
     Qt6::Widgets
-    ${ADWAITAQT6_LIBRARIES}
+    ${ADWAITAQT_LIBRARIES}
     isomd5
 )
 

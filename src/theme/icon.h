@@ -165,7 +165,7 @@ Q_SIGNALS:
     void fallbackChanged(const QString &fallback);
 
 protected:
-    void geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry) override;
+    void geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry) override;
     QImage findIcon(const QSize& size);
     QIcon::Mode iconMode() const;
     bool guessMonochrome(const QImage &img);
