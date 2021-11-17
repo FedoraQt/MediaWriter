@@ -29,8 +29,8 @@ int main(int argc, char *argv[]) {
     QCoreApplication app(argc, argv);
 
     QTranslator translator;
-    translator.load(QLocale(), QString(), QString(), QString(":/translations"));
-    //QLocale(), QLatin1String("myapp"), QLatin1String("_"), QLatin1String(":/i18n")
+    bool returnValue = translator.load(QLocale(), QLatin1String(), QLatin1String(), QLatin1String(":/translations"));
+    
     app.installTranslator(&translator);
 
     if (app.arguments().count() == 3 && app.arguments()[1] == "restore") {

@@ -37,13 +37,6 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Network Qml Qui
 
 find_package(AdwaitaQt6 "1.4.1" REQUIRED)
 
-
-if (NOT QT_INSTALL_QML)
-    execute_process(COMMAND "${REAL_QMAKE_EXECUTABLE}" -query QT_INSTALL_QML
-                    OUTPUT_VARIABLE QT_INSTALL_QML
-                    ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
-endif()
-
 add_subdirectory(src)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

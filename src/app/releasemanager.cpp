@@ -220,7 +220,7 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         release.replace(QRegularExpression("_kde$"), "");
         release.replace("_", " ");
 
-        if (re.match(versionWithStatus).hasMatch() < 0)
+        if (!re.match(versionWithStatus).hasMatch())
             continue;
 
         if (release.contains("workstation") && !url.contains("Live") && !url.contains("armhfp"))

@@ -126,7 +126,7 @@ Icon::Icon(QQuickItem *parent)
 {
     setFlag(ItemHasContents, true);
     //FIXME: not necessary anymore
-    connect(qApp, &QGuiApplication::paletteChanged, this, &QQuickItem::polish);
+    connect(qApp, &QEvent::ApplicationPaletteChange, this, &QQuickItem::polish);
     connect(this, &QQuickItem::enabledChanged, this, &QQuickItem::polish);
 }
 
@@ -150,7 +150,7 @@ void Icon::setSource(const QVariant &icon)
         // connect(m_theme, &AdwaitaTheme::colorsChanged, this, &QQuickItem::polish);
 //    }
 
-    if (icon.type() == QVariant::String) {
+    if (icon.typeId() == QVariant::String) {
         const QString iconSource = icon.toString();
         m_isMaskHeuristic = (iconSource.endsWith(QLatin1String("-symbolic"))
                             || iconSource.endsWith(QLatin1String("-symbolic-rtl"))
@@ -281,8 +281,7 @@ QSGNode* Icon::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData* /
             mNode = new ManagedTextureNode;
         }
         if (itemSize.width() != 0 && itemSize.height() != 0) {
-            const auto multiplier = QCoreApplication::instance()->testAttribute(Qt::AA_UseHighDpiPixmaps) ? 1 : (window() ? window()->devicePixelRatio() : qGuiApp->devicePixelRatio());
-            const QSize size = itemSize * multiplier;
+            const QSize size = itemSize;
             mNode->setTexture(s_iconImageCache->loadTexture(window(), m_icon));
             if (m_icon.size() != size) {
                 // At this point, the image will already be scaled, but we need to output it in
@@ -321,10 +320,9 @@ void Icon::updatePolish()
 
     const QSize itemSize(width(), height());
     if (itemSize.width() != 0 && itemSize.height() != 0) {
-        const auto multiplier = QCoreApplication::instance()->testAttribute(Qt::AA_UseHighDpiPixmaps) ? 1 : (window() ? window()->devicePixelRatio() : qGuiApp->devicePixelRatio());
-        const QSize size = itemSize * multiplier;
+        const QSize size = itemSize;
 
-        switch(m_source.type()){
+        switch(m_source.typeId()){
         case QVariant::Pixmap:
             m_icon = m_source.value<QPixmap>().toImage();
             break;
@@ -335,7 +333,8 @@ void Icon::updatePolish()
             m_icon = m_source.value<QBitmap>().toImage();
             break;
         case QVariant::Icon:
-            m_icon = m_source.value<QIcon>().pixmap(window(), itemSize, iconMode(), QIcon::On).toImage();
+            m_icon = m_source.value<QIcon>().pixmap(window(), QWindow::devicePixelRatio()).toImage();
+            //itemSize, iconMode(), QIcon::On).toImage();
             break;
         case QVariant::Url:
         case QVariant::String:
@@ -378,7 +377,6 @@ QImage Icon::findIcon(const QSize &size)
     QString iconSource = m_source.toString();
 
     if (iconSource.startsWith(QLatin1String("image://"))) {
-        const auto multiplier = QCoreApplication::instance()->testAttribute(Qt::AA_UseHighDpiPixmaps) ? (window() ? window()->devicePixelRatio() : qGuiApp->devicePixelRatio()) : 1;
         QUrl iconUrl(iconSource);
         QString iconProviderId = iconUrl.host();
         QString iconId = iconUrl.path();
@@ -395,10 +393,10 @@ QImage Icon::findIcon(const QSize &size)
             return img;
         switch(imageProvider->imageType()){
         case QQmlImageProviderBase::Image:
-            img = imageProvider->requestImage(iconId, &actualSize, size * multiplier);
+            img = imageProvider->requestImage(iconId, &actualSize, size);
             break;
         case QQmlImageProviderBase::Pixmap:
-            img = imageProvider->requestPixmap(iconId, &actualSize, size * multiplier).toImage();
+            img = imageProvider->requestPixmap(iconId, &actualSize, size).toImage();
             break;
         case QQmlImageProviderBase::Texture:
         case QQmlImageProviderBase::Invalid:

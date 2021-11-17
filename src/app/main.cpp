@@ -76,17 +76,16 @@ int main(int argc, char **argv)
     // qt x11 scaling is broken
     if (QGuiApplication::platformName() == QStringLiteral("xcb"))
 #endif
-        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+        
 
     QQuickStyle::setStyle("org.fedoraproject.AdwaitaTheme");
-    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication app(argc, argv);
     options.parse(app.arguments());
 
     mDebug() << "Application constructed";
 
     QTranslator translator;
-    translator.load(QLocale(QLocale().language(), QLocale().country()), QString(), QString(), ":/translations");
+    bool returnValue = translator.load(QLocale(QLocale().language(), QLocale().country()), QLatin1String(), QLatin1String(), ":/translations");
     app.installTranslator(&translator);
 
     QPalette adwaitaPalette = Adwaita::Colors::palette();
