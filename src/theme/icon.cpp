@@ -125,9 +125,6 @@ Icon::Icon(QQuickItem *parent)
       m_isMask(false)
 {
     setFlag(ItemHasContents, true);
-    //FIXME: not necessary anymore
-    connect(qApp, &QEvent::ApplicationPaletteChange, this, &QQuickItem::polish);
-    connect(this, &QQuickItem::enabledChanged, this, &QQuickItem::polish);
 }
 
 
@@ -281,9 +278,8 @@ QSGNode* Icon::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData* /
             mNode = new ManagedTextureNode;
         }
         if (itemSize.width() != 0 && itemSize.height() != 0) {
-            const QSize size = itemSize;
             mNode->setTexture(s_iconImageCache->loadTexture(window(), m_icon));
-            if (m_icon.size() != size) {
+            if (m_icon.size() != itemSize) {
                 // At this point, the image will already be scaled, but we need to output it in
                 // the correct aspect ratio, painted centered in the viewport. So:
                 QRect destination(QPoint(0, 0), m_icon.size().scaled(itemSize, Qt::KeepAspectRatio));
@@ -320,7 +316,6 @@ void Icon::updatePolish()
 
     const QSize itemSize(width(), height());
     if (itemSize.width() != 0 && itemSize.height() != 0) {
-        const QSize size = itemSize;
 
         switch(m_source.typeId()){
         case QVariant::Pixmap:
@@ -333,17 +328,17 @@ void Icon::updatePolish()
             m_icon = m_source.value<QBitmap>().toImage();
             break;
         case QVariant::Icon:
-            m_icon = m_source.value<QIcon>().pixmap(window(), QWindow::devicePixelRatio()).toImage();
-            //itemSize, iconMode(), QIcon::On).toImage();
+            QScreen * screen;
+            m_icon = m_source.value<QIcon>().pixmap(itemSize, screen->devicePixelRatio()).toImage();
             break;
         case QVariant::Url:
         case QVariant::String:
-            m_icon = findIcon(size);
+            m_icon = findIcon(itemSize);
             break;
         case QVariant::Brush:
             //todo: fill here too?
         case QVariant::Color:
-            m_icon = QImage(size, QImage::Format_Alpha8);
+            m_icon = QImage(itemSize, QImage::Format_Alpha8);
             m_icon.fill(m_source.value<QColor>());
             break;
         default:
@@ -351,7 +346,7 @@ void Icon::updatePolish()
         }
 
         if (m_icon.isNull()){
-            m_icon = QImage(size, QImage::Format_Alpha8);
+            m_icon = QImage(itemSize, QImage::Format_Alpha8);
             m_icon.fill(Qt::transparent);
         }
 
@@ -421,7 +416,8 @@ QImage Icon::findIcon(const QSize &size)
             }
         }
         if (!icon.isNull()) {
-            img = icon.pixmap(window(), size, iconMode(), QIcon::On).toImage();
+            QScreen *screen;
+            img = icon.pixmap(size, screen->devicePixelRatio()).toImage();
 
             /*const QColor tintColor = !m_color.isValid() || m_color == Qt::transparent ? (m_selected ? m_theme->highlightedTextColor() : m_theme->textColor()) : m_color;
 
@@ -435,7 +431,8 @@ QImage Icon::findIcon(const QSize &size)
     }
 
     if (!iconSource.isEmpty() && img.isNull()) {
-        img = QIcon::fromTheme(m_fallback).pixmap(window(), size, iconMode(), QIcon::On).toImage();
+        QScreen *screen;
+        img = QIcon::fromTheme(m_fallback).pixmap(size, screen->devicePixelRatio()).toImage();
     }
     return img;
 }

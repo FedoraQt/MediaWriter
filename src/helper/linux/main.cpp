@@ -29,9 +29,8 @@ int main(int argc, char *argv[]) {
     QCoreApplication app(argc, argv);
 
     QTranslator translator;
-    bool returnValue = translator.load(QLocale(), QLatin1String(), QLatin1String(), QLatin1String(":/translations"));
-    
-    app.installTranslator(&translator);
+    if(translator.load(QLocale(), QLatin1String(), QLatin1String(), QLatin1String(":/translations")))
+        app.installTranslator(&translator);
 
     if (app.arguments().count() == 3 && app.arguments()[1] == "restore") {
         new RestoreJob(app.arguments()[2]);

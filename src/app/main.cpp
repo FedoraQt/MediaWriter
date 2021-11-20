@@ -54,7 +54,7 @@ Q_IMPORT_PLUGIN(QmlSettingsPlugin);
 
 int main(int argc, char **argv)
 {
-//     MessageHandler::install();
+    //MessageHandler::install();
     CrashHandler::install();
 
 #ifdef __linux
@@ -85,8 +85,8 @@ int main(int argc, char **argv)
     mDebug() << "Application constructed";
 
     QTranslator translator;
-    bool returnValue = translator.load(QLocale(QLocale().language(), QLocale().country()), QLatin1String(), QLatin1String(), ":/translations");
-    app.installTranslator(&translator);
+    if(translator.load(QLocale(QLocale().language(), QLocale().country()), QLatin1String(), QLatin1String(), ":/translations"))
+        app.installTranslator(&translator);
 
     QPalette adwaitaPalette = Adwaita::Colors::palette();
     QGuiApplication::setPalette(adwaitaPalette);
