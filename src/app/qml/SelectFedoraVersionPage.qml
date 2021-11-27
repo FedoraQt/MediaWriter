@@ -19,58 +19,69 @@
 
 import QtQuick 6.2
 import QtQuick.Controls 6.2
-import QtQuick.Window 6.2
 import QtQuick.Layouts 6.2
 import QtQml 6.2
 
-ApplicationWindow {
-    id: mainWindow
-    visible: true
-    minimumWidth: 800
-    minimumHeight: 480
-    title: "Fedora Media Writer"
-    
-    StackView {
-        id: stackView
-        anchors.fill: parent
-        initialItem: mainColumn
-    }
-        
-    Units {
-        id: units
-    }
+
+Page {
+    title: "Select Fedora Version"
     
     ColumnLayout {
         id: mainColumn
+        anchors.fill: parent
         
-        Image {
-            Layout.alignment: Qt.AlignHCenter
-            source: "qrc:/main"
-            sourceSize.height: units.gridUnit * 10
-        }
-    
         Label {
-            id: mainLabel
             Layout.alignment: Qt.AlignHCenter
             font.bold: true
-            text: "Select Image Source"
-            font.pixelSize: units.gridUnit * 1.3
+            font.pixelSize: units.gridUnit * 1.5
+            text: "Select Fedora Version"   
         }
-
+        
         ColumnLayout {
             Layout.alignment: Qt.AlignHCenter
             
+            Label {
+                Layout.alignment: Qt.AlignHCenter
+                font.pixelSize: units.gridUnit
+                text: "Select from:"
+            }
+        
             RadioButton {
                 Layout.alignment: Qt.AlignLeft
                 checked: true
-                text: "Download automatically"
+                text: "Official Editions"
                 font.pixelSize: units.gridUnit
             }
     
             RadioButton {
                 Layout.alignment: Qt.AlignLeft
-                text: "Select .iso file"
+                text: "Emerging Editions"
                 font.pixelSize: units.gridUnit
+            }
+            
+            RadioButton {
+                Layout.alignment: Qt.AlignLeft
+                text: "Spins"
+                font.pixelSize: units.gridUnit
+            }
+            
+            RadioButton {
+                Layout.alignment: Qt.AlignLeft
+                font.pixelSize: units.gridUnit
+                text: "Labs"
+            }
+            
+            ComboBox {
+                id: selectFromComboBox
+                Layout.alignment: Qt.AlignHCenter
+                textRole: "text"
+                valueRole: "value"
+                font.pixelSize: units.gridUnit
+                model: [
+                    { value: 1, text: "Prvni moznost" },
+                    { value: 2, text: "Druha moznost" },
+                    { value: 3, text: "Treti moznost" }
+                ]
             }
         }
         
@@ -78,9 +89,10 @@ ApplicationWindow {
             Layout.margins: units.gridUnit * 1.3
             Layout.alignment: Qt.AlignBottom
             Button {
-                id: aboutButton
-                text: qsTr("About")
+                id: previousButton
+                text: qsTr("Previous")
                 font.pixelSize: units.gridUnit
+                onClicked: stackView.pop("SelectFedoraVersionPage.qml")
             }
         
             Item {
@@ -91,11 +103,10 @@ ApplicationWindow {
                 id: nextButton
                 text: qsTr("Next")
                 font.pixelSize: units.gridUnit
-                onClicked: {
-                    stackView.push("SelectFedoraVersionPage.qml")
-                }
+                onClicked: stackView.push("SelectDrivePage.qml")
             }
         }
     }
 }
+
 

@@ -23,64 +23,82 @@ import QtQuick.Window 6.2
 import QtQuick.Layouts 6.2
 import QtQml 6.2
 
-ApplicationWindow {
-    id: mainWindow
-    visible: true
-    minimumWidth: 800
-    minimumHeight: 480
-    title: "Fedora Media Writer"
-    
-    StackView {
-        id: stackView
-        anchors.fill: parent
-        initialItem: mainColumn
-    }
-        
-    Units {
-        id: units
-    }
+Page {
+    title: "Select drive"
     
     ColumnLayout {
-        id: mainColumn
+        anchors.fill: parent
         
-        Image {
-            Layout.alignment: Qt.AlignHCenter
-            source: "qrc:/main"
-            sourceSize.height: units.gridUnit * 10
-        }
-    
         Label {
-            id: mainLabel
             Layout.alignment: Qt.AlignHCenter
             font.bold: true
-            text: "Select Image Source"
-            font.pixelSize: units.gridUnit * 1.3
+            font.pixelSize: units.gridUnit * 1.5
+            text: "Write Options"
         }
-
+        
         ColumnLayout {
             Layout.alignment: Qt.AlignHCenter
-            
-            RadioButton {
-                Layout.alignment: Qt.AlignLeft
-                checked: true
-                text: "Download automatically"
+            Label {
+                font.bold: true
                 font.pixelSize: units.gridUnit
+                text: "Hardware Architecture"
             }
-    
-            RadioButton {
-                Layout.alignment: Qt.AlignLeft
-                text: "Select .iso file"
+            
+            ComboBox {
+                textRole: "text"
                 font.pixelSize: units.gridUnit
+                Layout.alignment: Qt.AlignHCenter
+                valueRole: "value"
+                model: [
+                    { value: 64, text: "x84_64" },
+                    { value: 32, text: "x64" }
+                ]
+            }
+        }
+        
+        ColumnLayout {
+            Layout.alignment: Qt.AlignHCenter
+            Label {
+                font.bold: true
+                font.pixelSize: units.gridUnit
+                text: "USB Drive"
+            }
+            
+            ComboBox {
+                textRole: "text"
+                valueRole: "value"
+                Layout.alignment: Qt.AlignHCenter
+                font.pixelSize: units.gridUnit
+                model: [
+                    { value: 1, text: "Prvni USB" },
+                    { value: 2, text: "Druhe USB" }
+                ]
+            }
+        }
+        
+        ColumnLayout {
+            Layout.alignment: Qt.AlignHCenter    
+            Label {
+                font.bold: true
+                font.pixelSize: units.gridUnit
+                text: "Download"
+            }
+        
+            CheckBox {
+                font.pixelSize: units.gridUnit
+                text: "Delete download adter writing"
             }
         }
         
         RowLayout {
             Layout.margins: units.gridUnit * 1.3
             Layout.alignment: Qt.AlignBottom
+            
             Button {
                 id: aboutButton
-                text: qsTr("About")
+                text: qsTr("Previous")
                 font.pixelSize: units.gridUnit
+                onClicked: stackView.pop("SelectDrivePage.qml")
             }
         
             Item {
@@ -91,11 +109,10 @@ ApplicationWindow {
                 id: nextButton
                 text: qsTr("Next")
                 font.pixelSize: units.gridUnit
-                onClicked: {
-                    stackView.push("SelectFedoraVersionPage.qml")
-                }
+                onClicked: stackView.push("DownloadPage.qml")
             }
         }
+            
+        
     }
 }
-

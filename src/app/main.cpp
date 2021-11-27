@@ -85,7 +85,7 @@ int main(int argc, char **argv)
     mDebug() << "Application constructed";
 
     QTranslator translator;
-    if(translator.load(QLocale(QLocale().language(), QLocale().country()), QLatin1String(), QLatin1String(), ":/translations"))
+    if (translator.load(QLocale(QLocale().language(), QLocale().country()), QLatin1String(), QLatin1String(), ":/translations"))
         app.installTranslator(&translator);
 
     QPalette adwaitaPalette = Adwaita::Colors::palette();

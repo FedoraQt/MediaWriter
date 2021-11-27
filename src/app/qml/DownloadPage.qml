@@ -23,79 +23,64 @@ import QtQuick.Window 6.2
 import QtQuick.Layouts 6.2
 import QtQml 6.2
 
-ApplicationWindow {
-    id: mainWindow
-    visible: true
-    minimumWidth: 800
-    minimumHeight: 480
-    title: "Fedora Media Writer"
-    
-    StackView {
-        id: stackView
-        anchors.fill: parent
-        initialItem: mainColumn
-    }
-        
-    Units {
-        id: units
-    }
+
+Page {
+    title: "Downloading"
     
     ColumnLayout {
-        id: mainColumn
+        anchors.fill: parent
         
         Image {
-            Layout.alignment: Qt.AlignHCenter
-            source: "qrc:/main"
-            sourceSize.height: units.gridUnit * 10
+            Layout.alignment: Qt.AlignHCenter 
+            source: "qrc:/download"
+            sourceSize.width: units.gridUnit * 13
+            sourceSize.height: units.gridUnit * 13
         }
-    
+        
         Label {
-            id: mainLabel
-            Layout.alignment: Qt.AlignHCenter
+            Layout.alignment: Qt.AlignHCenter 
             font.bold: true
-            text: "Select Image Source"
-            font.pixelSize: units.gridUnit * 1.3
+            font.pixelSize: units.gridUnit * 1.5
+            text: "Downloading Fedora Workstation 35"
         }
-
+        
         ColumnLayout {
-            Layout.alignment: Qt.AlignHCenter
-            
-            RadioButton {
-                Layout.alignment: Qt.AlignLeft
-                checked: true
-                text: "Download automatically"
+            Layout.alignment: Qt.AlignHCenter   
+            Label {
+                Layout.alignment: Qt.AlignHCenter
                 font.pixelSize: units.gridUnit
+                text: "0.3 of 1.9 GB downloaded"
             }
-    
-            RadioButton {
-                Layout.alignment: Qt.AlignLeft
-                text: "Select .iso file"
-                font.pixelSize: units.gridUnit
+        
+            ProgressBar {
+                Layout.fillWidth: true
+                Layout.leftMargin: units.gridUnit * 10
+                Layout.rightMargin: units.gridUnit * 10
             }
+        }
+        
+        Label {
+            Layout.alignment: Qt.AlignHCenter 
+            font.pixelSize: units.gridUnit * 0.7
+            text: "Image will be writen to <disk> when download completes"
         }
         
         RowLayout {
             Layout.margins: units.gridUnit * 1.3
             Layout.alignment: Qt.AlignBottom
-            Button {
-                id: aboutButton
-                text: qsTr("About")
-                font.pixelSize: units.gridUnit
-            }
-        
+            
             Item {
                 Layout.fillWidth: true
             }
             
             Button {
-                id: nextButton
-                text: qsTr("Next")
+                id: cancelButton
                 font.pixelSize: units.gridUnit
-                onClicked: {
-                    stackView.push("SelectFedoraVersionPage.qml")
-                }
+                text: "Cancel"
             }
+            
         }
+        
     }
 }
 
