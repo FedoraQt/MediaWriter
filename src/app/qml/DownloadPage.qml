@@ -33,8 +33,7 @@ Page {
         Image {
             Layout.alignment: Qt.AlignHCenter 
             source: "qrc:/download"
-            sourceSize.width: units.gridUnit * 13
-            sourceSize.height: units.gridUnit * 13
+            sourceSize.width: units.gridUnit * 10
         }
         
         Label {

@@ -25,4 +25,4 @@ target_link_libraries(adwaitathemeplugin
 
 install(TARGETS adwaitathemeplugin DESTINATION ${QT6_INSTALL_QML}/org/fedoraproject/AdwaitaTheme)
 install(FILES qmldir DESTINATION ${QT6_INSTALL_QML}/org/fedoraproject/AdwaitaTheme)
-install(DIRECTORY qml/ DESTINATION ${QT6_INSTALL_QML}/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme)
+install(DIRECTORY qml/ DESTINATION ${QT6_INSTALL_QML}/QtQuick/Controls/org/fedoraproject/AdwaitaTheme)
