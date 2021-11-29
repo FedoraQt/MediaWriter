@@ -23,9 +23,8 @@ import QtQuick.Window 6.2
 import QtQuick.Layouts 6.2
 import QtQml 6.2
 
-
 Page {
-    title: qsTr("Downloading")
+    title: qsTr("Fedora Media Writer")
     
     ColumnLayout {
         anchors.fill: parent
@@ -33,38 +32,32 @@ Page {
         
         Image {
             Layout.topMargin: units.gridUnit
-            Layout.alignment: Qt.AlignHCenter 
-            source: "qrc:/downloadPageImage"
+            Layout.alignment: Qt.AlignHCenter
+            source: "qrc:/mainPageImage"
             Layout.fillHeight: true
             fillMode: Image.PreserveAspectFit
         }
-        
+    
         Heading {
-            Layout.topMargin: units.gridUnit / 2
             Layout.alignment: Qt.AlignHCenter
-            text: qsTr("Downloading Fedora Workstation 35")
+            text: qsTr("Select Image Source")
             level: 5
         }
-        
+
         ColumnLayout {
+            Layout.alignment: Qt.AlignLeft
             Layout.leftMargin: units.gridUnit * 9
-            Layout.rightMargin: units.gridUnit * 9
             
-            Label {
-                Layout.alignment: Qt.AlignHCenter
-                text: "0.3 of 1.9 GB downloaded"
+            RadioButton {
+                Layout.alignment: Qt.AlignLeft
+                checked: true
+                text: qsTr("Download automatically")
             }
-        
-            ProgressBar {
-                Layout.topMargin: units.gridUnit / 2
-                Layout.fillWidth: true
+    
+            RadioButton {
+                Layout.alignment: Qt.AlignLeft
+                text: "Select .iso file"
             }
-        }
-        
-        Label {
-            Layout.alignment: Qt.AlignHCenter 
-            Layout.topMargin: units.gridUnit / 2
-            text: qsTr("Image will be writen to <disk> when download completes")
         }
         
         RowLayout {
@@ -74,15 +67,20 @@ Page {
             Layout.bottomMargin: units.gridUnit * 2
             Layout.alignment: Qt.AlignBottom
             
+            Button {
+                id: aboutButton
+                text: qsTr("About")
+            }
+        
             Item {
                 Layout.fillWidth: true
             }
             
             Button {
-                id: cancelButton
-                text: qsTr("Cancel")
+                id: nextButton
+                text: qsTr("Next")
+                onClicked: stackView.push("VersionPage.qml")
             }
         }
     }
 }
-

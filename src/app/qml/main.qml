@@ -1,6 +1,6 @@
 /*
  * Fedora Media Writer
- * Copyright (C) 2021 Evžen Gasta 
+ * Copyright (C) 2021 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -23,79 +23,22 @@ import QtQuick.Window 6.2
 import QtQuick.Layouts 6.2
 import QtQml 6.2
 
+
 ApplicationWindow {
     id: mainWindow
     visible: true
-    minimumWidth: 800
+    minimumWidth: 640
     minimumHeight: 480
-    title: "Fedora Media Writer"
+    title: qsTr("Fedora Media Writer")
     
     StackView {
         id: stackView
         anchors.fill: parent
-        initialItem: mainColumn
+        initialItem: "MainPage.qml"
     }
         
     Units {
         id: units
-    }
-    
-    ColumnLayout {
-        id: mainColumn
-        
-        Image {
-            Layout.alignment: Qt.AlignHCenter
-            source: "qrc:/main"
-            sourceSize.height: units.gridUnit * 10
-        }
-    
-        Label {
-            id: mainLabel
-            Layout.alignment: Qt.AlignHCenter
-            font.bold: true
-            text: "Select Image Source"
-            font.pixelSize: units.gridUnit * 1.3
-        }
-
-        ColumnLayout {
-            Layout.alignment: Qt.AlignHCenter
-            
-            RadioButton {
-                Layout.alignment: Qt.AlignLeft
-                checked: true
-                text: "Download automatically"
-                font.pixelSize: units.gridUnit
-            }
-    
-            RadioButton {
-                Layout.alignment: Qt.AlignLeft
-                text: "Select .iso file"
-                font.pixelSize: units.gridUnit
-            }
-        }
-        
-        RowLayout {
-            Layout.margins: units.gridUnit * 1.3
-            Layout.alignment: Qt.AlignBottom
-            Button {
-                id: aboutButton
-                text: qsTr("About")
-                font.pixelSize: units.gridUnit
-            }
-        
-            Item {
-                Layout.fillWidth: true
-            }
-            
-            Button {
-                id: nextButton
-                text: qsTr("Next")
-                font.pixelSize: units.gridUnit
-                onClicked: {
-                    stackView.push("SelectFedoraVersionPage.qml")
-                }
-            }
-        }
     }
 }
 

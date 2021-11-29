@@ -2,7 +2,7 @@
  * Fedora Media Writer
  * Copyright (C) 2021 Evžen Gasta <evzen.ml@seznam.cz>
  *
- * This program is free software; you can redistribute it and/or
+ * This program is free software; you can red Layout.alignment: Qt.AlignHCenteristribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
@@ -18,18 +18,17 @@
  */
 
 import QtQuick 6.2
+import QtQuick.Controls 6.2
+import QtQuick.Window 6.2
+import QtQuick.Layouts 6.2
+import QtQml 6.2
 
-
-
-QtObject {
-    id: units
+Label {
+    property int level: 0
+    font.bold: true
+    Label {
+        id: referenceLabel
+    }
     
-    property double gridUnit: fontMetrics.boundingRect.height
-    
-    property list<QtObject> children: [
-        TextMetrics {
-            id: fontMetrics
-            text: "M"
-        }
-    ]
+    font.pointSize: referenceLabel.font.pointSize + level
 }

@@ -1,6 +1,6 @@
 /*
  * Fedora Media Writer
- * Copyright (C) 2021 Evžen Gasta 
+ * Copyright (C) 2021 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -24,51 +24,49 @@ import QtQml 6.2
 
 
 Page {
-    title: "Select Fedora Version"
+    title: qsTr("Select Fedora Version")
     
     ColumnLayout {
-        id: mainColumn
         anchors.fill: parent
+        spacing: units.gridUnit 
         
-        Label {
+        Heading {
+            Layout.topMargin: units.gridUnit
             Layout.alignment: Qt.AlignHCenter
-            font.bold: true
-            font.pixelSize: units.gridUnit * 1.5
-            text: "Select Fedora Version"   
+            text: qsTr("Select Fedora Version")
+            level: 5
         }
         
         ColumnLayout {
-            Layout.alignment: Qt.AlignHCenter
+            Layout.alignment: Qt.AlignLeft
+            Layout.topMargin: units.gridUnit / 2
+            Layout.leftMargin: units.gridUnit * 9
+            Layout.rightMargin: units.gridUnit * 9
             
             Label {
-                Layout.alignment: Qt.AlignHCenter
-                font.pixelSize: units.gridUnit
-                text: "Select from:"
+                Layout.alignment: Qt.AlignLeft
+                text: qsTr("Select from:")
             }
         
             RadioButton {
                 Layout.alignment: Qt.AlignLeft
                 checked: true
-                text: "Official Editions"
-                font.pixelSize: units.gridUnit
+                text: qsTr("Official Editions")
             }
     
             RadioButton {
                 Layout.alignment: Qt.AlignLeft
-                text: "Emerging Editions"
-                font.pixelSize: units.gridUnit
+                text: qsTr("Emerging Editions")
             }
             
             RadioButton {
                 Layout.alignment: Qt.AlignLeft
-                text: "Spins"
-                font.pixelSize: units.gridUnit
+                text: qsTr("Spins")
             }
             
             RadioButton {
                 Layout.alignment: Qt.AlignLeft
-                font.pixelSize: units.gridUnit
-                text: "Labs"
+                text: qsTr("Labs")
             }
             
             ComboBox {
@@ -76,7 +74,8 @@ Page {
                 Layout.alignment: Qt.AlignHCenter
                 textRole: "text"
                 valueRole: "value"
-                font.pixelSize: units.gridUnit
+                Layout.fillWidth: true
+                Layout.topMargin: units.gridUnit / 2
                 model: [
                     { value: 1, text: "Prvni moznost" },
                     { value: 2, text: "Druha moznost" },
@@ -85,14 +84,21 @@ Page {
             }
         }
         
+        Item {
+            Layout.fillHeight: true
+        }
+        
         RowLayout {
-            Layout.margins: units.gridUnit * 1.3
+            Layout.topMargin: units.gridUnit * 2
+            Layout.leftMargin: units.gridUnit * 3
+            Layout.rightMargin: units.gridUnit * 3
+            Layout.bottomMargin: units.gridUnit * 2
             Layout.alignment: Qt.AlignBottom
+            
             Button {
                 id: previousButton
                 text: qsTr("Previous")
-                font.pixelSize: units.gridUnit
-                onClicked: stackView.pop("SelectFedoraVersionPage.qml")
+                onClicked: stackView.pop("VersionPage.qml")
             }
         
             Item {
@@ -102,11 +108,8 @@ Page {
             Button {
                 id: nextButton
                 text: qsTr("Next")
-                font.pixelSize: units.gridUnit
-                onClicked: stackView.push("SelectDrivePage.qml")
+                onClicked: stackView.push("DrivePage.qml")
             }
         }
     }
 }
-
-

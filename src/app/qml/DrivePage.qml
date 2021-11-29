@@ -1,6 +1,6 @@
 /*
  * Fedora Media Writer
- * Copyright (C) 2021 Evžen Gasta 
+ * Copyright (C) 2021 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -24,51 +24,57 @@ import QtQuick.Layouts 6.2
 import QtQml 6.2
 
 Page {
-    title: "Select drive"
+    title: qsTr("Select drive")
     
     ColumnLayout {
         anchors.fill: parent
+        spacing: units.gridUnit 
         
-        Label {
+        Heading {
+            Layout.topMargin: units.gridUnit
             Layout.alignment: Qt.AlignHCenter
-            font.bold: true
-            font.pixelSize: units.gridUnit * 1.5
-            text: "Write Options"
+            text: qsTr("Write Options")
+            level: 5
         }
         
         ColumnLayout {
-            Layout.alignment: Qt.AlignHCenter
-            Label {
-                font.bold: true
-                font.pixelSize: units.gridUnit
-                text: "Hardware Architecture"
+            Layout.alignment: Qt.AlignLeft
+            Layout.topMargin: units.gridUnit * 2
+            Layout.leftMargin: units.gridUnit * 9
+            Layout.rightMargin: units.gridUnit * 9
+            
+            Heading {
+                Layout.alignment: Qt.AlignLeft
+                text: qsTr("Hardware Architecture")
             }
             
             ComboBox {
                 textRole: "text"
-                font.pixelSize: units.gridUnit
-                Layout.alignment: Qt.AlignHCenter
                 valueRole: "value"
+                Layout.fillWidth: true
+                Layout.topMargin: units.gridUnit / 2
                 model: [
                     { value: 64, text: "x84_64" },
-                    { value: 32, text: "x64" }
+                    { value: 32, text: "x84" }
                 ]
             }
         }
         
         ColumnLayout {
-            Layout.alignment: Qt.AlignHCenter
-            Label {
-                font.bold: true
-                font.pixelSize: units.gridUnit
-                text: "USB Drive"
+            Layout.alignment: Qt.AlignLeft
+            Layout.leftMargin: units.gridUnit * 9
+            Layout.rightMargin: units.gridUnit * 9
+            
+            Heading {
+                Layout.alignment: Qt.AlignLeft
+                text: qsTr("USB Drive")
             }
             
             ComboBox {
                 textRole: "text"
                 valueRole: "value"
-                Layout.alignment: Qt.AlignHCenter
-                font.pixelSize: units.gridUnit
+                Layout.fillWidth: true
+                Layout.topMargin: units.gridUnit / 2
                 model: [
                     { value: 1, text: "Prvni USB" },
                     { value: 2, text: "Druhe USB" }
@@ -77,28 +83,36 @@ Page {
         }
         
         ColumnLayout {
-            Layout.alignment: Qt.AlignHCenter    
-            Label {
-                font.bold: true
-                font.pixelSize: units.gridUnit
-                text: "Download"
+            Layout.alignment: Qt.AlignLeft
+            Layout.leftMargin: units.gridUnit * 9
+            Layout.rightMargin: units.gridUnit * 9
+            
+            Heading {
+                Layout.alignment: Qt.AlignLeft
+                text: qsTr("Download")
+                level: 1
             }
         
             CheckBox {
-                font.pixelSize: units.gridUnit
-                text: "Delete download adter writing"
+                text: qsTr("Delete download adter writing")
             }
         }
         
+        Item { 
+            Layout.fillHeight: true
+        }
+        
         RowLayout {
-            Layout.margins: units.gridUnit * 1.3
+            Layout.topMargin: units.gridUnit * 2
+            Layout.leftMargin: units.gridUnit * 3
+            Layout.rightMargin: units.gridUnit * 3
+            Layout.bottomMargin: units.gridUnit * 2
             Layout.alignment: Qt.AlignBottom
             
             Button {
                 id: aboutButton
                 text: qsTr("Previous")
-                font.pixelSize: units.gridUnit
-                onClicked: stackView.pop("SelectDrivePage.qml")
+                onClicked: stackView.pop("DrivePage.qml")
             }
         
             Item {
@@ -108,11 +122,8 @@ Page {
             Button {
                 id: nextButton
                 text: qsTr("Next")
-                font.pixelSize: units.gridUnit
                 onClicked: stackView.push("DownloadPage.qml")
             }
         }
-            
-        
     }
 }
