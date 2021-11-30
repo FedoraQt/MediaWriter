@@ -35,6 +35,7 @@ ApplicationWindow {
         id: stackView
         anchors.fill: parent
         initialItem: "MainPage.qml"
+        spacing: units.gridUnit 
     }
         
     Units {

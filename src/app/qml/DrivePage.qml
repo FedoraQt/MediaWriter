@@ -28,7 +28,6 @@ Page {
     
     ColumnLayout {
         anchors.fill: parent
-        spacing: units.gridUnit 
         
         Heading {
             Layout.topMargin: units.gridUnit

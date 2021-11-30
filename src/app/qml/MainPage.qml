@@ -28,7 +28,6 @@ Page {
     
     ColumnLayout {
         anchors.fill: parent
-        spacing: units.gridUnit 
         
         Image {
             Layout.topMargin: units.gridUnit
@@ -65,11 +64,13 @@ Page {
             Layout.leftMargin: units.gridUnit * 3
             Layout.rightMargin: units.gridUnit * 3
             Layout.bottomMargin: units.gridUnit * 2
+            
             Layout.alignment: Qt.AlignBottom
             
             Button {
                 id: aboutButton
                 text: qsTr("About")
+                onClicked: about.visible = true
             }
         
             Item {
@@ -83,4 +84,9 @@ Page {
             }
         }
     }
+    
+    AboutPopup {
+        id: about
+    }
+    
 }

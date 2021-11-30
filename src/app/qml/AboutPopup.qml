@@ -23,54 +23,39 @@ import QtQuick.Window 6.2
 import QtQuick.Layouts 6.2
 import QtQml 6.2
 
-
-Page {
-    title: qsTr("Downloading")
+Dialog {
+    id: main
+    opacity: 0.9
+    width: parent.width
     
     ColumnLayout {
         anchors.fill: parent
+        spacing: units.gridUnit 
         
-        Image {
-            Layout.topMargin: units.gridUnit
-            Layout.alignment: Qt.AlignHCenter 
-            source: "qrc:/downloadPageImage"
-            Layout.fillHeight: true
-            fillMode: Image.PreserveAspectFit
+        Keys.onEscapePressed: {
+            if (drives.lastRestoreable.restoreStatus != Drive.RESTORING)
+                root.close()
         }
         
         Heading {
-            Layout.topMargin: units.gridUnit / 2
             Layout.alignment: Qt.AlignHCenter
-            text: qsTr("Downloading Fedora Workstation 35")
+            text: qsTr("About")
             level: 5
-        }
-        
-        ColumnLayout {
-            Layout.leftMargin: units.gridUnit * 9
-            Layout.rightMargin: units.gridUnit * 9
-            
-            Label {
-                Layout.alignment: Qt.AlignHCenter
-                text: "0.3 of 1.9 GB downloaded"
-            }
-        
-            ProgressBar {
-                Layout.topMargin: units.gridUnit / 2
-                Layout.fillWidth: true
-            }
+            color: "white"
         }
         
         Label {
-            Layout.alignment: Qt.AlignHCenter 
-            Layout.topMargin: units.gridUnit / 2
-            text: qsTr("Image will be writen to <disk> when download completes")
+            id: text
+            Layout.alignment: Qt.AlignHCenter
+            text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Quisque porta. Nullam dapibus fermentum ipsum. \n Ut tempus purus at lorem. Mauris elementum mauris vitae tortor. Nunc auctor. Nulla est."
+            color: "white"
         }
         
         RowLayout {
             Layout.topMargin: units.gridUnit * 2
-            Layout.leftMargin: units.gridUnit * 3
-            Layout.rightMargin: units.gridUnit * 3
-            Layout.bottomMargin: units.gridUnit * 2
+            Layout.leftMargin: units.gridUnit * 2
+            Layout.rightMargin: units.gridUnit * 2
+            Layout.bottomMargin: units.gridUnit 
             Layout.alignment: Qt.AlignBottom
             
             Item {
@@ -79,9 +64,9 @@ Page {
             
             Button {
                 id: cancelButton
-                text: qsTr("Cancel")
+                text: qsTr("Close")
+                onClicked: main.close()
             }
         }
     }
 }
-
