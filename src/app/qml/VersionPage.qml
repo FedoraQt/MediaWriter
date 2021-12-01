@@ -24,47 +24,35 @@ import QtQml 6.2
 
 
 Page {
-    title: qsTr("Select Fedora Version")
-    
     ColumnLayout {
         anchors.fill: parent
         
         Heading {
-            Layout.topMargin: units.gridUnit
             Layout.alignment: Qt.AlignHCenter
             text: qsTr("Select Fedora Version")
             level: 5
         }
         
         ColumnLayout {
-            Layout.alignment: Qt.AlignLeft
-            Layout.topMargin: units.gridUnit / 2
-            Layout.leftMargin: units.gridUnit * 9
-            Layout.rightMargin: units.gridUnit * 9
-            
+            Layout.alignment: Qt.AlignTop
             Label {
-                Layout.alignment: Qt.AlignLeft
                 text: qsTr("Select from:")
             }
         
             RadioButton {
-                Layout.alignment: Qt.AlignLeft
                 checked: true
                 text: qsTr("Official Editions")
             }
     
             RadioButton {
-                Layout.alignment: Qt.AlignLeft
                 text: qsTr("Emerging Editions")
             }
             
             RadioButton {
-                Layout.alignment: Qt.AlignLeft
                 text: qsTr("Spins")
             }
             
             RadioButton {
-                Layout.alignment: Qt.AlignLeft
                 text: qsTr("Labs")
             }
             
@@ -80,34 +68,6 @@ Page {
                     { value: 2, text: "Druha moznost" },
                     { value: 3, text: "Treti moznost" }
                 ]
-            }
-        }
-        
-        Item {
-            Layout.fillHeight: true
-        }
-        
-        RowLayout {
-            Layout.topMargin: units.gridUnit * 2
-            Layout.leftMargin: units.gridUnit * 3
-            Layout.rightMargin: units.gridUnit * 3
-            Layout.bottomMargin: units.gridUnit * 2
-            Layout.alignment: Qt.AlignBottom
-            
-            Button {
-                id: previousButton
-                text: qsTr("Previous")
-                onClicked: stackView.pop("VersionPage.qml")
-            }
-        
-            Item {
-                Layout.fillWidth: true
-            }
-            
-            Button {
-                id: nextButton
-                text: qsTr("Next")
-                onClicked: stackView.push("DrivePage.qml")
             }
         }
     }

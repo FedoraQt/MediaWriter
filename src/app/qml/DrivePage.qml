@@ -24,26 +24,18 @@ import QtQuick.Layouts 6.2
 import QtQml 6.2
 
 Page {
-    title: qsTr("Select drive")
-    
     ColumnLayout {
         anchors.fill: parent
+        spacing: units.gridUnit
         
         Heading {
-            Layout.topMargin: units.gridUnit
             Layout.alignment: Qt.AlignHCenter
             text: qsTr("Write Options")
             level: 5
         }
         
         ColumnLayout {
-            Layout.alignment: Qt.AlignLeft
-            Layout.topMargin: units.gridUnit * 2
-            Layout.leftMargin: units.gridUnit * 9
-            Layout.rightMargin: units.gridUnit * 9
-            
             Heading {
-                Layout.alignment: Qt.AlignLeft
                 text: qsTr("Hardware Architecture")
             }
             
@@ -51,7 +43,6 @@ Page {
                 textRole: "text"
                 valueRole: "value"
                 Layout.fillWidth: true
-                Layout.topMargin: units.gridUnit / 2
                 model: [
                     { value: 64, text: "x84_64" },
                     { value: 32, text: "x84" }
@@ -60,12 +51,7 @@ Page {
         }
         
         ColumnLayout {
-            Layout.alignment: Qt.AlignLeft
-            Layout.leftMargin: units.gridUnit * 9
-            Layout.rightMargin: units.gridUnit * 9
-            
             Heading {
-                Layout.alignment: Qt.AlignLeft
                 text: qsTr("USB Drive")
             }
             
@@ -73,7 +59,6 @@ Page {
                 textRole: "text"
                 valueRole: "value"
                 Layout.fillWidth: true
-                Layout.topMargin: units.gridUnit / 2
                 model: [
                     { value: 1, text: "Prvni USB" },
                     { value: 2, text: "Druhe USB" }
@@ -82,46 +67,15 @@ Page {
         }
         
         ColumnLayout {
-            Layout.alignment: Qt.AlignLeft
-            Layout.leftMargin: units.gridUnit * 9
-            Layout.rightMargin: units.gridUnit * 9
+            Layout.bottomMargin: units.gridUnit * 5
             
             Heading {
-                Layout.alignment: Qt.AlignLeft
                 text: qsTr("Download")
                 level: 1
             }
         
             CheckBox {
                 text: qsTr("Delete download adter writing")
-            }
-        }
-        
-        Item { 
-            Layout.fillHeight: true
-        }
-        
-        RowLayout {
-            Layout.topMargin: units.gridUnit * 2
-            Layout.leftMargin: units.gridUnit * 3
-            Layout.rightMargin: units.gridUnit * 3
-            Layout.bottomMargin: units.gridUnit * 2
-            Layout.alignment: Qt.AlignBottom
-            
-            Button {
-                id: aboutButton
-                text: qsTr("Previous")
-                onClicked: stackView.pop("DrivePage.qml")
-            }
-        
-            Item {
-                Layout.fillWidth: true
-            }
-            
-            Button {
-                id: nextButton
-                text: qsTr("Next")
-                onClicked: stackView.push("DownloadPage.qml")
             }
         }
     }

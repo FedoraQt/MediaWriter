@@ -25,11 +25,19 @@ QtObject {
     id: units
     
     property double gridUnit: fontMetrics.boundingRect.height
-    
     property list<QtObject> children: [
         TextMetrics {
             id: fontMetrics
             text: "M"
         }
     ]
+    
+    enum Page {
+        AboutPage,
+        MainPage,
+        VersionPage,
+        DrivePage,
+        DownloadPage
+    }
+    
 }

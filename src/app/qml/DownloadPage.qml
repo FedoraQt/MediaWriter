@@ -25,30 +25,24 @@ import QtQml 6.2
 
 
 Page {
-    title: qsTr("Downloading")
-    
     ColumnLayout {
         anchors.fill: parent
+        spacing: units.gridUnit
         
         Image {
-            Layout.topMargin: units.gridUnit
-            Layout.alignment: Qt.AlignHCenter 
             source: "qrc:/downloadPageImage"
             Layout.fillHeight: true
+            Layout.fillWidth: true
             fillMode: Image.PreserveAspectFit
         }
         
         Heading {
-            Layout.topMargin: units.gridUnit / 2
             Layout.alignment: Qt.AlignHCenter
             text: qsTr("Downloading Fedora Workstation 35")
             level: 5
         }
         
         ColumnLayout {
-            Layout.leftMargin: units.gridUnit * 9
-            Layout.rightMargin: units.gridUnit * 9
-            
             Label {
                 Layout.alignment: Qt.AlignHCenter
                 text: "0.3 of 1.9 GB downloaded"
@@ -64,23 +58,6 @@ Page {
             Layout.alignment: Qt.AlignHCenter 
             Layout.topMargin: units.gridUnit / 2
             text: qsTr("Image will be writen to <disk> when download completes")
-        }
-        
-        RowLayout {
-            Layout.topMargin: units.gridUnit * 2
-            Layout.leftMargin: units.gridUnit * 3
-            Layout.rightMargin: units.gridUnit * 3
-            Layout.bottomMargin: units.gridUnit * 2
-            Layout.alignment: Qt.AlignBottom
-            
-            Item {
-                Layout.fillWidth: true
-            }
-            
-            Button {
-                id: cancelButton
-                text: qsTr("Cancel")
-            }
         }
     }
 }

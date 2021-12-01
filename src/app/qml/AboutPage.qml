@@ -23,50 +23,22 @@ import QtQuick.Window 6.2
 import QtQuick.Layouts 6.2
 import QtQml 6.2
 
-Dialog {
-    id: main
-    opacity: 0.9
-    width: parent.width
-    
+Page {    
     ColumnLayout {
         anchors.fill: parent
-        spacing: units.gridUnit 
-        
-        Keys.onEscapePressed: {
-            if (drives.lastRestoreable.restoreStatus != Drive.RESTORING)
-                root.close()
-        }
+        spacing: units.gridUnit
         
         Heading {
             Layout.alignment: Qt.AlignHCenter
             text: qsTr("About")
             level: 5
-            color: "white"
         }
         
         Label {
-            id: text
-            Layout.alignment: Qt.AlignHCenter
-            text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Quisque porta. Nullam dapibus fermentum ipsum. \n Ut tempus purus at lorem. Mauris elementum mauris vitae tortor. Nunc auctor. Nulla est."
-            color: "white"
-        }
-        
-        RowLayout {
-            Layout.topMargin: units.gridUnit * 2
-            Layout.leftMargin: units.gridUnit * 2
-            Layout.rightMargin: units.gridUnit * 2
-            Layout.bottomMargin: units.gridUnit 
-            Layout.alignment: Qt.AlignBottom
+            Layout.alignment: Qt.AlignHCenter 
+            Layout.fillHeight: true
+            text: qsTr("Random text")
             
-            Item {
-                Layout.fillWidth: true
-            }
-            
-            Button {
-                id: cancelButton
-                text: qsTr("Close")
-                onClicked: main.close()
-            }
         }
     }
 }
