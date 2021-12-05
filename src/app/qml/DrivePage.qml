@@ -35,6 +35,7 @@ Page {
         }
         
         ColumnLayout {
+            id: architectureCol
             Heading {
                 text: qsTr("Hardware Architecture")
             }
@@ -57,12 +58,13 @@ Page {
             
             ComboBox {
                 textRole: "text"
-                valueRole: "value"
                 Layout.fillWidth: true
-                model: [
-                    { value: 1, text: "Prvni USB" },
-                    { value: 2, text: "Druhe USB" }
-                ]
+                model: [ drive ]
+                
+                Connections {
+                    target: drives
+                }
+                
             }
         }
         
@@ -79,4 +81,17 @@ Page {
             }
         }
     }
+    
+    states: [
+        State {
+            name: "ISOSelected"
+            when: !units.selectedISO
+            PropertyChanges { target: architectureCol; visible: true }
+        },
+        State {
+            name: "ISONotSelected"
+            when: units.selectedISO
+            PropertyChanges { target: architectureCol; visible: false }
+        }
+    ]
 }

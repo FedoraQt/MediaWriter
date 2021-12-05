@@ -20,10 +20,10 @@
 import QtQuick 6.2
 
 
-
 QtObject {
     id: units
     
+    property bool selectedISO: false    
     property double gridUnit: fontMetrics.boundingRect.height
     property list<QtObject> children: [
         TextMetrics {

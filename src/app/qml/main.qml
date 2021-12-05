@@ -23,16 +23,14 @@ import QtQuick.Window 6.2
 import QtQuick.Layouts 6.2
 import QtQml 6.2
 
-
 ApplicationWindow {
     id: mainWindow
     visible: true
     minimumWidth: 640
     minimumHeight: 480
-    title: qsTr("Fedora Media Writer")
     
     property int selectedPage: Units.Page.MainPage
-        
+    
     ColumnLayout {
         anchors.fill: parent
         
@@ -54,7 +52,6 @@ ApplicationWindow {
         
         RowLayout {
             Layout.alignment: Qt.AlignBottom
-        
             
             Button {
                 id: prevButton
@@ -69,7 +66,7 @@ ApplicationWindow {
                     }
                     else if (selectedPage == Units.Page.DrivePage) {
                         stackView.pop("DrivePage.qml")
-                        selectedPage = Units.Page.VersionPage
+                        selectedPage = !Units.selectedISO ? Units.Page.VersionPage : Units.Page.MainPage
                     }
                     else if (selectedPage == Units.Page.AboutPage) {
                         stackView.pop("AboutPage.qml")
@@ -86,8 +83,14 @@ ApplicationWindow {
                 id: nextButton
                 onClicked: {
                     if (selectedPage == Units.Page.MainPage) {
-                        stackView.push("VersionPage.qml")
-                        selectedPage = Units.Page.VersionPage
+                        if (!Units.selectedISO) {
+                            stackView.push("VersionPage.qml")
+                            selectedPage = Units.Page.VersionPage
+                        }
+                        else {
+                            stackView.push("DrivePage.qml")
+                            selectedPage = Units.Page.DrivePage
+                        }
                     }
                     else if (selectedPage == Units.Page.VersionPage) {
                         stackView.push("DrivePage.qml")
@@ -97,10 +100,10 @@ ApplicationWindow {
                         stackView.push("DownloadPage.qml")
                         selectedPage = Units.Page.DownloadPage
                     }
-                    //else if (selectedPage == Units.Page.DownloadPage) {
-                    //    stackView.pop("DownloadPage.qml")
-                    //    selectedPage = Units.Page.DownloadPage
-                    //}
+                    else if (selectedPage == Units.Page.DownloadPage) {
+                        stackView.pop("DownloadPage.qml")
+                        selectedPage = Units.Page.DrivePage
+                    }
                 }
             }
         }
@@ -144,8 +147,43 @@ ApplicationWindow {
         ]
     }
     
+    RestoreNotification {
+        id: restoreNotification
+        visible: drives.lastRestoreable
+        open: drives.lastRestoreable
+        color: palette.highlight
+        border {
+            color: Qt.darker(palette.highlight, 1.0)
+            width: 1
+        }
+    
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+        }
+        
+        Connections {
+            target: drives
+            function onLastRestoreableChanged() {
+                if (drives.lastRestoreable != null)
+                    restoreNotification.open = true
+                if (!drives.lastRestoreable)
+                    restoreNotification.open = false
+            }
+        }
+    }
+    
     Units {
         id: units
+    }
+    
+    Connections {
+        target: portalFileDialog
+        function onFileSelected(fileName) {
+            releases.setLocalFile(fileName)
+            //dlDialog.visible = true
+        }
     }
 }
 

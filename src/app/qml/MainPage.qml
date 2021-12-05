@@ -22,6 +22,7 @@ import QtQuick.Controls 6.2
 import QtQuick.Window 6.2
 import QtQuick.Layouts 6.2
 import QtQml 6.2
+import QtQuick.Dialogs 6.2
 
 Page {
     ColumnLayout {
@@ -49,7 +50,22 @@ Page {
     
             RadioButton {
                 text: "Select .iso file"
+                onClicked: {
+                    if (portalFileDialog.isAvailable)
+                        portalFileDialog.open()
+                    else
+                        fileDialog.open()
+                }
             }
+            Labe {
+                text: fileName
+                
+            }
+        }
+                    
+        FileDialog {
+            id: fileDialog
+            //onAccepted:  
         }
     }
 }
