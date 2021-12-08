@@ -49,23 +49,30 @@ Page {
             }
     
             RadioButton {
-                text: "Select .iso file"
+                text: qsTr("Select .iso file")
                 onClicked: {
-                    if (portalFileDialog.isAvailable)
-                        portalFileDialog.open()
-                    else
-                        fileDialog.open()
+                    selectISO = true
                 }
             }
-            Labe {
-                text: fileName
+            
+            RadioButton {
+                id: restoreRadio
+                visible: drives.lastRestoreable
+                text: qsTr("Restore <b>%1</b>").arg(drives.lastRestoreable.name)
+                onClicked: {
+                    restoreDrive = true
+                }
                 
+                Connections {
+                    target: drives
+                    function onLastRestoreableChanged() {
+                        if (drives.lastRestoreable != null && !restoreRadio.visible)
+                            restoreRadio.visible = true
+                        if (!drives.lastRestoreable)
+                            restoreRadio.visible = false
+                    }
+                }
             }
-        }
-                    
-        FileDialog {
-            id: fileDialog
-            //onAccepted:  
         }
     }
 }

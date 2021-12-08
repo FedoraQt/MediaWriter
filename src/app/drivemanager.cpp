@@ -114,7 +114,6 @@ int DriveManager::length() const {
 Drive *DriveManager::lastRestoreable() {
     return m_lastRestoreable;
 }
-
 bool DriveManager::isBackendBroken() {
     return !m_errorString.isEmpty();
 }
@@ -153,6 +152,10 @@ void DriveManager::onDriveConnected(Drive *d) {
 
     if (d->restoreStatus() == Drive::CONTAINS_LIVE) {
         setLastRestoreable(d);
+        connect(d, &Drive::restoreStatusChanged, [=] () {
+            if (d && d == m_lastRestoreable && d->restoreStatus() != Drive::CONTAINS_LIVE) 
+                setLastRestoreable(nullptr);
+        });
     }
 }
 

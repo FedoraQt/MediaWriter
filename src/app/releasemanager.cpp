@@ -34,7 +34,7 @@ ReleaseManager::ReleaseManager(QObject *parent)
     mDebug() << this->metaObject()->className() << "construction";
     setSourceModel(m_sourceModel);
 
-    qmlRegisterUncreatableType<Release>("MediaWriter", 1, 0, "Release", "");
+    qmlRegisterUncreatableType<Release>("MediaWriter", 1, 0, "Release", ""); 
     qmlRegisterUncreatableType<ReleaseVersion>("MediaWriter", 1, 0, "Version", "");
     qmlRegisterUncreatableType<ReleaseVariant>("MediaWriter", 1, 0, "Variant", "");
     qmlRegisterUncreatableType<ReleaseArchitecture>("MediaWriter", 1, 0, "Architecture", "");
@@ -51,13 +51,12 @@ ReleaseManager::ReleaseManager(QObject *parent)
 
 bool ReleaseManager::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const {
     Q_UNUSED(source_parent)
-    if (m_frontPage)
-        if (source_row < 3)
-            return true;
-        else
-            return false;
+    auto r = get(source_row);
+    
+    if (r->source() == Release::PRODUCT) 
+        return true;
+    
     else {
-        auto r = get(source_row);
         bool containsArch = false;
         for (auto version : r->versionList()) {
             for (auto variant : version->variantList()) {
@@ -124,9 +123,22 @@ void ReleaseManager::setLocalFile(const QString &path) {
         Release *r = m_sourceModel->get(i);
         if (r->source() == Release::LOCAL) {
             r->setLocalFile(path);
+            emit localFileChanged();
         }
     }
 }
+
+QString ReleaseManager::localFile() const {
+    for (int i = 0; i < m_sourceModel->rowCount(); i++) {
+        Release *r = m_sourceModel->get(i);
+        if (r->source() == Release::LOCAL) {
+            return r->selectedVersion()->selectedVariant()->iso();
+        }
+    }
+
+    return QString();
+}
+
 
 bool ReleaseManager::updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
     if (!ReleaseArchitecture::isKnown(architecture)) {
@@ -263,6 +275,8 @@ QVariant ReleaseListModel::headerData(int section, Qt::Orientation orientation, 
 
     if (role == Qt::UserRole + 1)
         return "release";
+    if (role == Qt::DisplayRole)
+        return "name";
 
     return QVariant();
 }
@@ -270,6 +284,7 @@ QVariant ReleaseListModel::headerData(int section, Qt::Orientation orientation, 
 QHash<int, QByteArray> ReleaseListModel::roleNames() const {
     QHash<int, QByteArray> ret;
     ret.insert(Qt::UserRole + 1, "release");
+    ret.insert(Qt::DisplayRole, "name");
     return ret;
 }
 
@@ -284,6 +299,8 @@ QVariant ReleaseListModel::data(const QModelIndex &index, int role) const {
 
     if (role == Qt::UserRole + 1)
         return QVariant::fromValue(m_releases[index.row()]);
+    else if (role == Qt::DisplayRole)
+        return m_releases[index.row()]->name();
 
     return QVariant();
 }

@@ -30,6 +30,11 @@ ApplicationWindow {
     minimumHeight: 480
     
     property int selectedPage: Units.Page.MainPage
+    property int selectedVersion: Units.Source.Product
+    property bool selectISO: false 
+    property bool restoreDrive: false
+    
+    property bool enNextButton: true
     
     ColumnLayout {
         anchors.fill: parent
@@ -66,11 +71,18 @@ ApplicationWindow {
                     }
                     else if (selectedPage == Units.Page.DrivePage) {
                         stackView.pop("DrivePage.qml")
-                        selectedPage = !Units.selectedISO ? Units.Page.VersionPage : Units.Page.MainPage
+                        selectedPage = selectISO ? Units.Page.MainPage : Units.Page.VersionPage 
+                        selectISO = false
+                        enNextButton = true
                     }
                     else if (selectedPage == Units.Page.AboutPage) {
                         stackView.pop("AboutPage.qml")
                         selectedPage = Units.Page.MainPage
+                    }
+                    else if (selectedPage == Units.Page.RestorePage) {
+                        stackView.pop("RestorePage.qml")
+                        selectedPage = Units.Page.MainPage
+                        restoreDrive = false
                     }
                 }
             }
@@ -81,15 +93,20 @@ ApplicationWindow {
             
             Button {
                 id: nextButton
+                enabled: enNextButton
                 onClicked: {
                     if (selectedPage == Units.Page.MainPage) {
-                        if (!Units.selectedISO) {
-                            stackView.push("VersionPage.qml")
-                            selectedPage = Units.Page.VersionPage
+                        if (restoreDrive) {
+                            stackView.push("RestorePage.qml")
+                            selectedPage = Units.Page.RestorePage
                         }
-                        else {
+                        else if (selectISO) {
                             stackView.push("DrivePage.qml")
                             selectedPage = Units.Page.DrivePage
+                        }
+                        else {
+                            stackView.push("VersionPage.qml")
+                            selectedPage = Units.Page.VersionPage
                         }
                     }
                     else if (selectedPage == Units.Page.VersionPage) {
@@ -98,11 +115,15 @@ ApplicationWindow {
                     }
                     else if (selectedPage == Units.Page.DrivePage) {
                         stackView.push("DownloadPage.qml")
+                        onClicked: drives.selected.write(releases.variant)
                         selectedPage = Units.Page.DownloadPage
                     }
                     else if (selectedPage == Units.Page.DownloadPage) {
                         stackView.pop("DownloadPage.qml")
                         selectedPage = Units.Page.DrivePage
+                    }
+                    else if (selectedPage == Units.Page.RestorePage) {
+                        drives.lastRestoreable.restore()
                     }
                 }
             }
@@ -131,11 +152,18 @@ ApplicationWindow {
                 PropertyChanges { target: nextButton; text: qsTr("Next") }
             },
             State {
+                name: "drivePageISOSelected"
+                when: selectedPage == Units.Page.DrivePage && selectISO
+                PropertyChanges { target: mainWindow; title: qsTr("Select file and drive") }
+                PropertyChanges { target: prevButton; text: qsTr("Previous") }
+                PropertyChanges { target: nextButton; text: qsTr("Write") }
+            },
+            State {
                 name: "drivePage"
-                when: selectedPage == Units.Page.DrivePage
+                when: selectedPage == Units.Page.DrivePage && !selectISO
                 PropertyChanges { target: mainWindow; title: qsTr("Select drive") }
                 PropertyChanges { target: prevButton; text: qsTr("Previous") }
-                PropertyChanges { target: nextButton; text: qsTr("Next") }
+                PropertyChanges { target: nextButton; text: qsTr("Download") }
             },
             State {
                 name: "downloadPage"
@@ -143,47 +171,19 @@ ApplicationWindow {
                 PropertyChanges { target: mainWindow; title: qsTr("Downloading") }
                 PropertyChanges { target: prevButton; visible: false }
                 PropertyChanges { target: nextButton; text: qsTr("Cancel") }
+            },
+            State {
+                name: "restorePage"
+                when: selectedPage == Units.Page.RestorePage
+                PropertyChanges { target: mainWindow; title: qsTr("Restore") }
+                PropertyChanges { target: prevButton; text: qsTr("Previous") }
+                PropertyChanges { target: nextButton; text: qsTr("Restore") }
             }
         ]
     }
     
-    RestoreNotification {
-        id: restoreNotification
-        visible: drives.lastRestoreable
-        open: drives.lastRestoreable
-        color: palette.highlight
-        border {
-            color: Qt.darker(palette.highlight, 1.0)
-            width: 1
-        }
-    
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: parent.top
-        }
-        
-        Connections {
-            target: drives
-            function onLastRestoreableChanged() {
-                if (drives.lastRestoreable != null)
-                    restoreNotification.open = true
-                if (!drives.lastRestoreable)
-                    restoreNotification.open = false
-            }
-        }
-    }
-    
     Units {
         id: units
-    }
-    
-    Connections {
-        target: portalFileDialog
-        function onFileSelected(fileName) {
-            releases.setLocalFile(fileName)
-            //dlDialog.visible = true
-        }
     }
 }
 

@@ -87,6 +87,7 @@ class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver {
     Q_PROPERTY(ReleaseVariant* variant READ variant NOTIFY variantChanged)
 
     Q_PROPERTY(QStringList architectures READ architectures CONSTANT)
+    Q_PROPERTY(QString localFile READ localFile WRITE setLocalFile NOTIFY localFileChanged);
 public:
     explicit ReleaseManager(QObject *parent = 0);
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
@@ -101,7 +102,8 @@ public:
     QString filterText() const;
     void setFilterText(const QString &o);
 
-    Q_INVOKABLE void setLocalFile(const QString &path);
+    void setLocalFile(const QString &path);
+    QString localFile() const;
 
     bool updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
 
@@ -130,6 +132,7 @@ signals:
     void filterArchitectureChanged();
     void selectedChanged();
     void variantChanged();
+    void localFileChanged();
 
 private:
     ReleaseListModel *m_sourceModel { nullptr };

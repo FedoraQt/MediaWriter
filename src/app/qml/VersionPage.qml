@@ -42,32 +42,32 @@ Page {
             RadioButton {
                 checked: true
                 text: qsTr("Official Editions")
+                onClicked: mainWindow.selectedVersion = Units.Source.Product
             }
     
             RadioButton {
                 text: qsTr("Emerging Editions")
+                onClicked: mainWindow.selectedVersion = Units.Source.Emerging
             }
             
             RadioButton {
                 text: qsTr("Spins")
+                onClicked: mainWindow.selectedVersion = Units.Source.Spins
             }
             
             RadioButton {
                 text: qsTr("Labs")
+                onClicked: mainWindow.selectedVersion = Units.Source.Labs
             }
             
             ComboBox {
                 id: selectFromComboBox
                 Layout.alignment: Qt.AlignHCenter
-                textRole: "text"
-                valueRole: "value"
                 Layout.fillWidth: true
                 Layout.topMargin: units.gridUnit / 2
-                model: [
-                    { value: 1, text: "Prvni moznost" },
-                    { value: 2, text: "Druha moznost" },
-                    { value: 3, text: "Treti moznost" }
-                ]
+                displayText: releases.get(currentIndex).name
+                textRole: "name"
+                model: releases
             }
         }
     }

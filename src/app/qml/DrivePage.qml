@@ -24,6 +24,8 @@ import QtQuick.Layouts 6.2
 import QtQml 6.2
 
 Page {
+    property string file
+    
     ColumnLayout {
         anchors.fill: parent
         spacing: units.gridUnit
@@ -41,13 +43,39 @@ Page {
             }
             
             ComboBox {
-                textRole: "text"
-                valueRole: "value"
+                id: hwArchCombo
                 Layout.fillWidth: true
-                model: [
-                    { value: 64, text: "x84_64" },
-                    { value: 32, text: "x84" }
-                ]
+                model: releases.selected.version.variants
+                textRole: "name"
+            }
+        }
+        
+        RowLayout {
+            id: fileCol
+            Label {
+                text: "<font color=\"gray\">" + qsTr("Selected:<br>") + "</font> " + (releases.localFile ? (((String)(releases.localFile)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
+            }
+            
+            Item {
+                Layout.fillWidth: true
+            }
+            
+            Button {
+                Layout.alignment: Qt.AlignRight
+                text: qsTr("Select")
+                onClicked: {
+                    if (portalFileDialog.isAvailable)
+                        portalFileDialog.open()
+                    else
+                        fileDialog.open()
+                }
+                                
+                Connections {
+                    target: portalFileDialog
+                    function onFileSelected(fileName) {
+                        releases.localFile = fileName
+                    }
+                }
             }
         }
         
@@ -57,14 +85,22 @@ Page {
             }
             
             ComboBox {
-                textRole: "text"
+                id: driveCombo
                 Layout.fillWidth: true
-                model: [ drive ]
+                model: drives
+                enabled: !(currentIndex === -1 || !currentText)
+                displayText: currentIndex === -1 || !currentText ? qsTr("There are no portable drives connected") : currentText
+                textRole: "display"
                 
-                Connections {
-                    target: drives
+                Binding on currentIndex {
+                    when: drives
+                    value: drives.selectedIndex
                 }
-                
+                Binding {
+                    target: drives
+                    property: "selectedIndex"
+                    value: driveCombo.currentIndex
+                }
             }
         }
         
@@ -77,21 +113,25 @@ Page {
             }
         
             CheckBox {
-                text: qsTr("Delete download adter writing")
+                text: qsTr("Delete download after writing")
             }
         }
     }
     
     states: [
         State {
-            name: "ISOSelected"
-            when: !units.selectedISO
+            name: "ISONotSelected"
+            when: !selectISO
             PropertyChanges { target: architectureCol; visible: true }
+            PropertyChanges { target: fileCol; visible: false }
+            PropertyChanges { target: mainWindow; enNextButton: driveCombo.enabled && hwArchCombo.currentIndex + 1 }
         },
         State {
-            name: "ISONotSelected"
-            when: units.selectedISO
+            name: "ISOSelected"
+            when: selectISO
             PropertyChanges { target: architectureCol; visible: false }
+            PropertyChanges { target: fileCol; visible: true }
+            PropertyChanges { target: mainWindow; enNextButton: driveCombo.enabled && releases.localFile }
         }
     ]
 }

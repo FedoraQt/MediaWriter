@@ -7,7 +7,11 @@
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
+ * This program is 
+ *
+ *
+ *
+ * in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -22,45 +26,30 @@ import QtQuick.Controls 6.2
 import QtQuick.Window 6.2
 import QtQuick.Layouts 6.2
 import QtQml 6.2
+import QtQuick.Dialogs 6.2
 
-
-Page {
+Page {    
     ColumnLayout {
         anchors.fill: parent
         spacing: units.gridUnit
         
-        Image {
-            source: "qrc:/downloadPageImage"
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            fillMode: Image.PreserveAspectFit
-        }
-        
         Heading {
             Layout.alignment: Qt.AlignHCenter
-            text: qsTr("Downloading Fedora Workstation 35")
+            text: qsTr("Restore Drive")
             level: 5
         }
         
-        ColumnLayout {
-            Label {
-                Layout.alignment: Qt.AlignHCenter
-                text: "0.3 of 1.9 GB downloaded"
-            }
-        
-            ProgressBar {
-                id: progressBar
-                Layout.topMargin: units.gridUnit / 2
-                Layout.fillWidth: true
-                value: 0.0
-            }
-        }
-        
         Label {
-            Layout.alignment: Qt.AlignHCenter 
-            Layout.topMargin: units.gridUnit / 2
-            text: qsTr("Image will be writen to <disk> when download completes")
+            id: label
+            Layout.alignment: Qt.AlignHCenter
+            text: qsTr("You inserted <b>%1</b><br> that already contains a live system.<br>Do you want to restore it to factory settings?").arg(drives.lastRestoreable ? drives.lastRestoreable.name : "<font color=\"gray\">" + qsTr("None") + "</font>") 
+        }
+    }
+    
+    Connections {
+        target: drives
+        function onLastRestoreableChanged() {
+            mainWindow.enNextButton = drives.lastRestoreable ? true : false
         }
     }
 }
-

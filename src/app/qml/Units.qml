@@ -23,7 +23,6 @@ import QtQuick 6.2
 QtObject {
     id: units
     
-    property bool selectedISO: false    
     property double gridUnit: fontMetrics.boundingRect.height
     property list<QtObject> children: [
         TextMetrics {
@@ -37,7 +36,16 @@ QtObject {
         MainPage,
         VersionPage,
         DrivePage,
-        DownloadPage
+        DownloadPage,
+        RestorePage
     }
     
+    enum Source {
+        Product,
+        Local,
+        Spins,
+        Labs,
+        Emerging,
+        Other
+    }
 }
