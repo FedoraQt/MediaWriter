@@ -56,11 +56,115 @@ Page {
             }
         }
         
-        Label {
-            Layout.alignment: Qt.AlignHCenter 
-            Layout.topMargin: units.gridUnit / 2
-            text: qsTr("Image will be writen to <disk> when download completes")
-        }
+        //ColumnLayout {
+            //Layout.alignment: Qt.AlignHCenter 
+            //Layout.topMargin: units.gridUnit / 2
+            
+            //Column {
+                //InfoMessage {
+                    //id: messageRestore
+                    //visible: false
+                    //text: qsTr("Your drive will be resized to a smaller capacity. You may resize it back to normal by using Fedora Media Writer; this will remove installation media from your drive.")
+                    //width: layout.width
+                //}
+                    
+                //InfoMessage {
+                    //id: messageDriveSize
+                    //enabled: true
+                    //visible: enabled && drives.selected && drives.selected.size > 160 * 1024 * 1024 * 1024 // warn when it's more than 160GB
+                    //text: qsTr("The selected drive's size is %1. It's possible you have selected an external drive by accident!").arg(drives.selected ? drives.selected.readableSize : "N/A")
+                    //width: layout.width
+                //}
+            //}
+        //}
     }
+    
+    
+    
+    states: [
+        State {
+            name: "writing"
+            when: releases.variant.status === Variant.WRITING
+            PropertyChanges {
+                target: messageDriveSize
+                enabled: false
+            }
+            PropertyChanges {
+                target: messageRestore;
+                visible: true
+            }
+            PropertyChanges {
+                target: driveCombo;
+                enabled: false
+            }
+            PropertyChanges {
+                target: progressBar;
+                value: drives.selected.progress.ratio;
+            }
+            StateChangeScript {
+                name: "colorChange"
+                script:  {
+                    if (progressBar.hasOwnProperty("destructiveAction")) {
+                        progressBar.destructiveAction = false
+                    }
+                    if (progressBar.hasOwnProperty("progressBarColor")) {
+                        progressBar.progressBarColor = "red"
+                    }
+                }
+            }
+        },
+        State {
+            name: "write_verifying"
+            when: releases.variant.status === Variant.WRITE_VERIFYING
+            PropertyChanges {
+                target: messageDriveSize
+                enabled: false
+            }
+            PropertyChanges {
+                target: messageRestore;
+                visible: true
+            }
+            //PropertyChanges {
+                //target: driveCombo;
+                //enabled: false
+            //}
+            PropertyChanges {
+                target: progressBar;
+                value: drives.selected.progress.ratio;
+            }
+            StateChangeScript {
+                name: "colorChange"
+                script:  {
+                    if (progressBar.hasOwnProperty("progressBarColor")) {
+                        progressBar.progressBarColor = Qt.lighter("green")
+                    }
+                }
+            }
+        },
+        State {
+            name: "finished"
+            when: releases.variant.status === Variant.FINISHED
+            PropertyChanges {
+                target: messageDriveSize
+                enabled: false
+            }
+            PropertyChanges {
+                target: messageRestore;
+                visible: true
+            }
+            //PropertyChanges {
+                //target: leftButton;
+                //text: qsTr("Close");
+                //highlighted: true
+                //onClicked: {
+                    //dialog.close()
+                //}
+            //}
+            //PropertyChanges {
+                //target: deleteButton
+                //state: "ready"
+            //}
+        }
+    ]
 }
 

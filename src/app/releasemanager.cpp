@@ -53,10 +53,9 @@ bool ReleaseManager::filterAcceptsRow(int source_row, const QModelIndex &source_
     Q_UNUSED(source_parent)
     auto r = get(source_row);
     
-    if (r->source() == Release::PRODUCT) 
-        return true;
-    
-    else {
+    if (r->source() != m_filterSource) {
+        return false;
+    } else {
         bool containsArch = false;
         for (auto version : r->versionList()) {
             for (auto variant : version->variantList()) {
@@ -117,6 +116,29 @@ void ReleaseManager::setFilterText(const QString &o) {
     }
 }
 
+int ReleaseManager::filterSource() const {
+    return m_filterSource;
+}
+
+void ReleaseManager::setFilterSource(int source) {
+    if (m_filterSource != source) {
+        m_filterSource = source;
+        emit filterSourceChanged();
+        emit firstSourceChanged();
+        invalidateFilter();
+    }
+}
+
+int ReleaseManager::firstSource() const{
+    for (int i = 0; i < m_sourceModel->rowCount(); i++) {
+        Release *r = m_sourceModel->get(i);
+        if (r->source() == m_filterSource)
+            return i;
+    }
+    return 0;
+}
+
+
 void ReleaseManager::setLocalFile(const QString &path) {
     mDebug() << this->metaObject()->className() << "Setting local file to" << path;
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
@@ -128,15 +150,15 @@ void ReleaseManager::setLocalFile(const QString &path) {
     }
 }
 
-QString ReleaseManager::localFile() const {
+ReleaseVariant* ReleaseManager::localFile() const {
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = m_sourceModel->get(i);
         if (r->source() == Release::LOCAL) {
-            return r->selectedVersion()->selectedVariant()->iso();
+            return r->selectedVersion()->selectedVariant();
         }
     }
 
-    return QString();
+    return nullptr;
 }
 
 

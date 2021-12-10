@@ -24,6 +24,10 @@ import QtQml 6.2
 
 
 Page {
+    id: versionPage
+    property int prevSource: 0
+    property var r: {} 
+    
     ColumnLayout {
         anchors.fill: parent
         
@@ -42,33 +46,48 @@ Page {
             RadioButton {
                 checked: true
                 text: qsTr("Official Editions")
-                onClicked: mainWindow.selectedVersion = Units.Source.Product
+                onClicked: releases.filterSource = Units.Source.Product
             }
     
             RadioButton {
                 text: qsTr("Emerging Editions")
-                onClicked: mainWindow.selectedVersion = Units.Source.Emerging
+                onClicked: releases.filterSource = Units.Source.Emerging
             }
             
             RadioButton {
                 text: qsTr("Spins")
-                onClicked: mainWindow.selectedVersion = Units.Source.Spins
+                onClicked: releases.filterSource = Units.Source.Spins
             }
             
             RadioButton {
                 text: qsTr("Labs")
-                onClicked: mainWindow.selectedVersion = Units.Source.Labs
+                onClicked: releases.filterSource = Units.Source.Labs
             }
             
+        
             ComboBox {
                 id: selectFromComboBox
                 Layout.alignment: Qt.AlignHCenter
                 Layout.fillWidth: true
                 Layout.topMargin: units.gridUnit / 2
-                displayText: releases.get(currentIndex).name
+                displayText: getComboText()
                 textRole: "name"
                 model: releases
             }
         }
+    }
+    
+    function getComboText() {        
+        if (releases.filterSource != prevSource) {
+            prevSource = releases.filterSource
+            r = releases.get(releases.firstSource).name
+            releases.setSelectedIndex = releases.firstSource 
+        } else { 
+            if (selectFromComboBox.currentIndex == -1)
+                selectFromComboBox.currentIndex = 0
+            r = releases.get(releases.firstSource + selectFromComboBox.currentIndex).name
+            releases.setSelectedIndex = releases.firstSource + selectFromComboBox.currentIndex
+        }
+        return r
     }
 }

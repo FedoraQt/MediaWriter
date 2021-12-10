@@ -79,6 +79,7 @@ class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver {
     Q_PROPERTY(bool beingUpdated READ beingUpdated NOTIFY beingUpdatedChanged)
 
     Q_PROPERTY(int filterArchitecture READ filterArchitecture WRITE setFilterArchitecture NOTIFY filterArchitectureChanged)
+    Q_PROPERTY(int filterSource READ filterSource WRITE setFilterSource NOTIFY filterSourceChanged);
     Q_PROPERTY(QString filterText READ filterText WRITE setFilterText NOTIFY filterTextChanged)
 
     Q_PROPERTY(Release* selected READ selected NOTIFY selectedChanged)
@@ -87,7 +88,9 @@ class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver {
     Q_PROPERTY(ReleaseVariant* variant READ variant NOTIFY variantChanged)
 
     Q_PROPERTY(QStringList architectures READ architectures CONSTANT)
-    Q_PROPERTY(QString localFile READ localFile WRITE setLocalFile NOTIFY localFileChanged);
+    Q_PROPERTY(ReleaseVariant* localFile READ localFile NOTIFY localFileChanged);
+    
+    Q_PROPERTY(int firstSource READ firstSource NOTIFY firstSourceChanged);
 public:
     explicit ReleaseManager(QObject *parent = 0);
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
@@ -102,14 +105,19 @@ public:
     QString filterText() const;
     void setFilterText(const QString &o);
 
-    void setLocalFile(const QString &path);
-    QString localFile() const;
+    Q_INVOKABLE void setLocalFile(const QString &path);
+    ReleaseVariant* localFile() const;
 
     bool updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
 
     QStringList architectures() const;
     int filterArchitecture() const;
     void setFilterArchitecture(int o);
+    
+    int filterSource() const;
+    void setFilterSource(int source);
+    
+    int firstSource() const;
 
     Release *selected() const;
     int selectedIndex() const;
@@ -130,7 +138,9 @@ signals:
     void frontPageChanged();
     void filterTextChanged();
     void filterArchitectureChanged();
+    void filterSourceChanged();
     void selectedChanged();
+    void firstSourceChanged();
     void variantChanged();
     void localFileChanged();
 
@@ -139,6 +149,7 @@ private:
     bool m_frontPage { true };
     QString m_filterText {};
     int m_filterArchitecture { 0 };
+    int m_filterSource { 0 };
     int m_selectedIndex { 0 };
     bool m_beingUpdated { false };
 };

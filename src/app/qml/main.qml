@@ -35,8 +35,11 @@ ApplicationWindow {
     property bool restoreDrive: false
     
     property bool enNextButton: true
+    property bool enPrevButton: true
+    property bool visibPrevButton: true
     
     ColumnLayout {
+        id: mainLayout
         anchors.fill: parent
         
         anchors.leftMargin: units.gridUnit * 3
@@ -60,30 +63,13 @@ ApplicationWindow {
             
             Button {
                 id: prevButton
+                visible: mainLayout.state != "downloadPage"
+                text: getPrevButtonText()
                 onClicked: {
-                    if (selectedPage == Units.Page.MainPage) {
-                        stackView.push("AboutPage.qml") 
-                        selectedPage = Units.Page.AboutPage
-                    }
-                    else if (selectedPage == Units.Page.VersionPage) {
-                        stackView.pop("VersionPage.qml")
-                        selectedPage = Units.Page.MainPage
-                    }
-                    else if (selectedPage == Units.Page.DrivePage) {
-                        stackView.pop("DrivePage.qml")
-                        selectedPage = selectISO ? Units.Page.MainPage : Units.Page.VersionPage 
-                        selectISO = false
-                        enNextButton = true
-                    }
-                    else if (selectedPage == Units.Page.AboutPage) {
-                        stackView.pop("AboutPage.qml")
-                        selectedPage = Units.Page.MainPage
-                    }
-                    else if (selectedPage == Units.Page.RestorePage) {
-                        stackView.pop("RestorePage.qml")
-                        selectedPage = Units.Page.MainPage
-                        restoreDrive = false
-                    }
+                    stackView.pop()
+                    selectedPage = selectISO || restoreDrive || mainLayout.state == "aboutPage"? Units.Page.MainPage : selectedPage - 1
+                    selectISO = false
+                    restoreDrive = false
                 }
             }
         
@@ -93,38 +79,31 @@ ApplicationWindow {
             
             Button {
                 id: nextButton
-                enabled: enNextButton
+                visible: mainLayout.state != "aboutPage"
+                enabled: mainLayout.state != "drivePage" && mainLayout.state != "restorePage"? true : enNextButton
+                text: getNextButtonText()
                 onClicked: {
-                    if (selectedPage == Units.Page.MainPage) {
-                        if (restoreDrive) {
-                            stackView.push("RestorePage.qml")
-                            selectedPage = Units.Page.RestorePage
-                        }
-                        else if (selectISO) {
-                            stackView.push("DrivePage.qml")
-                            selectedPage = Units.Page.DrivePage
-                        }
-                        else {
-                            stackView.push("VersionPage.qml")
-                            selectedPage = Units.Page.VersionPage
-                        }
-                    }
-                    else if (selectedPage == Units.Page.VersionPage) {
-                        stackView.push("DrivePage.qml")
+                    if (mainLayout.state == "mainPage" && selectISO)
                         selectedPage = Units.Page.DrivePage
+                    else if (mainLayout.state == "mainPage" && restoreDrive)
+                        selectedPage = Units.Page.RestorePage
+                    else if (mainLayout.state == "drivePage" && selectISO)
+                    {
+                        selectedPage += 1
+                        drives.selected.write(releases.localFile)
                     }
-                    else if (selectedPage == Units.Page.DrivePage) {
-                        stackView.push("DownloadPage.qml")
-                        onClicked: drives.selected.write(releases.variant)
-                        selectedPage = Units.Page.DownloadPage
+                    else if (mainLayout.state == "drivePage" && !selectISO)
+                    {
+                        releases.variant.download()
+                        // TODO start download
                     }
-                    else if (selectedPage == Units.Page.DownloadPage) {
-                        stackView.pop("DownloadPage.qml")
-                        selectedPage = Units.Page.DrivePage
-                    }
-                    else if (selectedPage == Units.Page.RestorePage) {
-                        drives.lastRestoreable.restore()
-                    }
+                    else if (mainLayout.state == "restorePage")
+                        drives.lastRestoreable.restore()  
+                    else if (mainLayout.state == "downloadPage")
+                        selectedPage = Units.Page.MainPage
+                    else
+                        selectedPage += 1
+                    //selectedPage = selectISO ? Units.Page.DrivePage : restoreDrive ? Units.Page.RestorePage : selectedPage + 1
                 }
             }
         }
@@ -134,50 +113,55 @@ ApplicationWindow {
                 name: "aboutPage"
                 when: selectedPage == Units.Page.AboutPage
                 PropertyChanges { target: mainWindow; title: qsTr("About") }
-                PropertyChanges { target: prevButton; text: qsTr("Previous") }
-                PropertyChanges { target: nextButton; visible: false }
+                StateChangeScript {
+                    script: stackView.push("AboutPage.qml")
+                }
             },
             State {
                 name: "mainPage"
                 when: selectedPage == Units.Page.MainPage
                 PropertyChanges { target: mainWindow; title: qsTr("Fedora Media Writer") }
-                PropertyChanges { target: prevButton; text: qsTr("About") }
-                PropertyChanges { target: nextButton; text: qsTr("Next"); visible: true }
+                StateChangeScript {
+                    script: {
+                        if (stackView.depth > 1) 
+                            while(stackView.depth != 1)
+                                stackView.pop()
+                        else 
+                            stackView.push("MainPage.qml")
+                    }
+                }
             },
             State {
                 name: "versionPage"
                 when: selectedPage == Units.Page.VersionPage
                 PropertyChanges { target: mainWindow; title: qsTr("Select Fedora Version") }
-                PropertyChanges { target: prevButton; text: qsTr("Previous") }
-                PropertyChanges { target: nextButton; text: qsTr("Next") }
-            },
-            State {
-                name: "drivePageISOSelected"
-                when: selectedPage == Units.Page.DrivePage && selectISO
-                PropertyChanges { target: mainWindow; title: qsTr("Select file and drive") }
-                PropertyChanges { target: prevButton; text: qsTr("Previous") }
-                PropertyChanges { target: nextButton; text: qsTr("Write") }
+                StateChangeScript {
+                    script: stackView.push("VersionPage.qml")
+                }
             },
             State {
                 name: "drivePage"
-                when: selectedPage == Units.Page.DrivePage && !selectISO
+                when: selectedPage == Units.Page.DrivePage
                 PropertyChanges { target: mainWindow; title: qsTr("Select drive") }
-                PropertyChanges { target: prevButton; text: qsTr("Previous") }
-                PropertyChanges { target: nextButton; text: qsTr("Download") }
+                StateChangeScript {
+                    script: stackView.push("DrivePage.qml")
+                }
             },
             State {
                 name: "downloadPage"
                 when: selectedPage == Units.Page.DownloadPage
                 PropertyChanges { target: mainWindow; title: qsTr("Downloading") }
-                PropertyChanges { target: prevButton; visible: false }
-                PropertyChanges { target: nextButton; text: qsTr("Cancel") }
+                StateChangeScript {
+                    script: stackView.push("DownloadPage.qml")
+                }
             },
             State {
                 name: "restorePage"
                 when: selectedPage == Units.Page.RestorePage
                 PropertyChanges { target: mainWindow; title: qsTr("Restore") }
-                PropertyChanges { target: prevButton; text: qsTr("Previous") }
-                PropertyChanges { target: nextButton; text: qsTr("Restore") }
+                StateChangeScript {
+                    script: stackView.push("RestorePage.qml")
+                }
             }
         ]
     }
@@ -185,5 +169,22 @@ ApplicationWindow {
     Units {
         id: units
     }
+    
+    function getNextButtonText() {
+        if (mainLayout.state == "restorePage") 
+            return qsTr("Restore")
+        else if (mainLayout.state == "downloadPage")
+            return qsTr("Cancel")
+        else if (mainLayout.state == "drivePage")
+            return qsTr("Write")   
+        return qsTr("Next")
+    }
+    
+    function getPrevButtonText() {
+        if (mainLayout.state == "mainPage") 
+            return qsTr("About")
+        return qsTr("Previous")
+    }
+
 }
 

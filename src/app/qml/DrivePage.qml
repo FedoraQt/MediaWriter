@@ -24,8 +24,6 @@ import QtQuick.Layouts 6.2
 import QtQml 6.2
 
 Page {
-    property string file
-    
     ColumnLayout {
         anchors.fill: parent
         spacing: units.gridUnit
@@ -38,6 +36,7 @@ Page {
         
         ColumnLayout {
             id: architectureCol
+            visible: !selectISO
             Heading {
                 text: qsTr("Hardware Architecture")
             }
@@ -47,33 +46,41 @@ Page {
                 Layout.fillWidth: true
                 model: releases.selected.version.variants
                 textRole: "name"
+                onCurrentIndexChanged: releases.setSelectedVariantIndex = currentIndex
             }
         }
         
-        RowLayout {
-            id: fileCol
-            Label {
-                text: "<font color=\"gray\">" + qsTr("Selected:<br>") + "</font> " + (releases.localFile ? (((String)(releases.localFile)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
+        ColumnLayout {
+            Heading {
+                text: qsTr("Selected file")
             }
             
-            Item {
-                Layout.fillWidth: true
-            }
-            
-            Button {
-                Layout.alignment: Qt.AlignRight
-                text: qsTr("Select")
-                onClicked: {
-                    if (portalFileDialog.isAvailable)
-                        portalFileDialog.open()
-                    else
-                        fileDialog.open()
+            RowLayout {
+                id: fileCol
+                visible: selectISO
+                Label {
+                    text: releases.localFile.iso ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : ("<font color=\"gray\">" + qsTr("None") + "</font>")
                 }
-                                
-                Connections {
-                    target: portalFileDialog
-                    function onFileSelected(fileName) {
-                        releases.localFile = fileName
+                
+                Item {
+                    Layout.fillWidth: true
+                }
+                
+                Button {
+                    Layout.alignment: Qt.AlignRight
+                    text: qsTr("Select ...")
+                    onClicked: {
+                        if (portalFileDialog.isAvailable)
+                            portalFileDialog.open()
+                        else
+                            fileDialog.open()
+                    }
+
+                    Connections {
+                        target: portalFileDialog
+                        function onFileSelected(fileName) {
+                            releases.setLocalFile(fileName)
+                        }
                     }
                 }
             }
@@ -122,16 +129,13 @@ Page {
         State {
             name: "ISONotSelected"
             when: !selectISO
-            PropertyChanges { target: architectureCol; visible: true }
-            PropertyChanges { target: fileCol; visible: false }
             PropertyChanges { target: mainWindow; enNextButton: driveCombo.enabled && hwArchCombo.currentIndex + 1 }
+            StateChangeScript { script: releases.setSelectedVariantIndex = 0 }
         },
         State {
             name: "ISOSelected"
             when: selectISO
-            PropertyChanges { target: architectureCol; visible: false }
-            PropertyChanges { target: fileCol; visible: true }
-            PropertyChanges { target: mainWindow; enNextButton: driveCombo.enabled && releases.localFile }
+            PropertyChanges { target: mainWindow; enNextButton: driveCombo.enabled && releases.localFile.iso }
         }
     ]
 }
