@@ -31,6 +31,12 @@ QtObject {
         }
     ]
     
+    enum MainSelect {
+        Download,
+        Write,
+        Restore
+    }
+    
     enum Page {
         AboutPage,
         MainPage,
@@ -47,5 +53,19 @@ QtObject {
         Labs,
         Emerging,
         Other
+    }
+    
+    enum Status {
+        Preparing,
+        Downloading,
+        Download_Verifying,
+        Ready,
+        Writing_Not_Possible,
+        Writing,
+        Write_Verifying,
+        Finished,
+        Failed_Verification,
+        Failed_Download,
+        Failed
     }
 }

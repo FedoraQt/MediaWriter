@@ -38,14 +38,21 @@ Page {
         
         Heading {
             Layout.alignment: Qt.AlignHCenter
-            text: qsTr("Downloading Fedora Workstation 35")
+            text: mainWindow.selectedOption == 1 ? qsTr("Writing %1").arg((String)(releases.localFile.iso).split("/").slice(-1)[0]) :                                                         qsTr("Downloading %1 ").arg(releases.selected.name) + releases.selected.version.number
             level: 5
         }
         
         ColumnLayout {
             Label {
                 Layout.alignment: Qt.AlignHCenter
-                text: "0.3 of 1.9 GB downloaded"
+                property double leftSize: releases.variant.progress.to - releases.variant.progress.value
+                property string leftStr:  leftSize <= 0 ? "" :
+                                                                                 (leftSize < 1024)                 ? qsTr("(%1 B left)").arg(leftSize) :
+                                                                                                                     (leftSize < (1024 * 1024))        ? qsTr("(%1 KB left)").arg((leftSize / 1024).toFixed(1)) :
+                                                                                                                                                         (leftSize < (1024 * 1024 * 1024)) ? qsTr("(%1 MB left)").arg((leftSize / 1024 / 1024).toFixed(1)) :
+                                                                                                                                                                                             qsTr("(%1 GB left)").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
+                    text: releases.variant.statusString + (releases.variant.status == Units.Status.Downloading ? (" " + leftStr) : "")
+                
             }
         
             ProgressBar {
@@ -56,35 +63,112 @@ Page {
             }
         }
         
-        //ColumnLayout {
-            //Layout.alignment: Qt.AlignHCenter 
-            //Layout.topMargin: units.gridUnit / 2
+        ColumnLayout {
+            id: infoColumn
+            spacing: units.gridUnit / 2
             
-            //Column {
-                //InfoMessage {
-                    //id: messageRestore
-                    //visible: false
-                    //text: qsTr("Your drive will be resized to a smaller capacity. You may resize it back to normal by using Fedora Media Writer; this will remove installation media from your drive.")
-                    //width: layout.width
-                //}
-                    
-                //InfoMessage {
-                    //id: messageDriveSize
-                    //enabled: true
-                    //visible: enabled && drives.selected && drives.selected.size > 160 * 1024 * 1024 * 1024 // warn when it's more than 160GB
-                    //text: qsTr("The selected drive's size is %1. It's possible you have selected an external drive by accident!").arg(drives.selected ? drives.selected.readableSize : "N/A")
-                    //width: layout.width
-                //}
-            //}
-        //}
+            Label {
+                id: messageDownload
+                visible: false
+                text: qsTr("The file will be saved to your Downloads folder.")
+            }
+
+            Label {
+                id: messageLoseData
+                visible: false
+                text: qsTr("By writing, you will lose all of the data on<br> %1.").arg(drives.selected.name)
+            }
+
+            Label {
+                id: messageRestore
+                visible: false
+                text: qsTr("Your drive will be resized to a smaller capacity. <br>You may resize it back to normal by using Fedora Media Writer. <br>This will remove installation media from your drive.")
+            }
+
+            Label {
+                id: messageSelectedImage
+                visible: releases.selected.isLocal
+                text: "<font color=\"gray\">" + qsTr("Selected:") + "</font> " + (releases.variant.iso ? (((String)(releases.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
+            }
+
+            Label {
+                id: messageArmBoard
+                visible: false //boardCombo.otherSelected
+                text: qsTr("Your board or device is not supported by Fedora Media Writer yet. Please check <a href=%1>this page</a> for more information about its compatibility with Fedora and how to create bootable media for it.").arg("https://fedoraproject.org/wiki/Architectures/ARM")
+            }
+
+            Label {
+                id: messageDriveSize
+                enabled: true
+                visible: enabled && drives.selected && drives.selected.size > 160 * 1024 * 1024 * 1024 // warn when it's more than 160GB
+                text: qsTr("The selected drive's size is %1. It's possible you have selected an external drive by accident!").arg(drives.selected ? drives.selected.readableSize : "N/A")
+            }
+
+            Label {
+                //error: true
+                visible: releases.variant && releases.variant.errorString.length > 0
+                text: releases.variant ? releases.variant.errorString : ""
+                //width: layout.width
+            }
+        }
     }
-    
-    
     
     states: [
         State {
+            name: "preparing"
+            when: releases.variant.status === Units.Status.Preparing
+        },
+        State {
+            name: "downloading"
+            when: releases.variant.status === Units.Status.Downloading
+            PropertyChanges {
+                target: messageDownload
+                visible: true
+            }
+            PropertyChanges {
+                target: progressBar;
+                value: releases.variant.progress.ratio
+            }
+        },
+        State {
+            name: "download_verifying"
+            when: releases.variant.status === Units.Status.Downloading_Verifying
+            PropertyChanges {
+                target: messageDownload
+                visible: true
+            }
+            PropertyChanges {
+                target: progressBar;
+                value: releases.variant.progress.ratio;
+            }
+            StateChangeScript {
+                name: "colorChange"
+                script:  {
+                    if (progressBar.hasOwnProperty("progressBarColor")) {
+                        progressBar.progressBarColor = Qt.lighter("green")
+                    }
+                }
+            }
+        },
+        State {
+            name: "ready_no_drives"
+            when: releases.variant.status === Units.Status.Ready && drives.length <= 0
+        },
+        State {
+            name: "ready"
+            when: releases.variant.status === Units.Status.Ready && drives.length > 0
+            PropertyChanges {
+                target: messageLoseData;
+                visible: true
+            }
+        },
+        State {
+            name: "writing_not_possible"
+            when: releases.variant.status === Units.Status.Writing_Not_Possible
+        },
+        State {
             name: "writing"
-            when: releases.variant.status === Variant.WRITING
+            when: releases.variant.status === Units.Status.Writing
             PropertyChanges {
                 target: messageDriveSize
                 enabled: false
@@ -92,10 +176,6 @@ Page {
             PropertyChanges {
                 target: messageRestore;
                 visible: true
-            }
-            PropertyChanges {
-                target: driveCombo;
-                enabled: false
             }
             PropertyChanges {
                 target: progressBar;
@@ -115,7 +195,7 @@ Page {
         },
         State {
             name: "write_verifying"
-            when: releases.variant.status === Variant.WRITE_VERIFYING
+            when: releases.variant.status === Units.Status.Write_Verifying
             PropertyChanges {
                 target: messageDriveSize
                 enabled: false
@@ -124,10 +204,6 @@ Page {
                 target: messageRestore;
                 visible: true
             }
-            //PropertyChanges {
-                //target: driveCombo;
-                //enabled: false
-            //}
             PropertyChanges {
                 target: progressBar;
                 value: drives.selected.progress.ratio;
@@ -143,7 +219,7 @@ Page {
         },
         State {
             name: "finished"
-            when: releases.variant.status === Variant.FINISHED
+            when: releases.variant.status === Units.Status.Finished
             PropertyChanges {
                 target: messageDriveSize
                 enabled: false
@@ -152,19 +228,35 @@ Page {
                 target: messageRestore;
                 visible: true
             }
-            //PropertyChanges {
-                //target: leftButton;
-                //text: qsTr("Close");
-                //highlighted: true
-                //onClicked: {
-                    //dialog.close()
-                //}
-            //}
-            //PropertyChanges {
-                //target: deleteButton
-                //state: "ready"
-            //}
+        },
+        State {
+            name: "failed_verification_no_drives"
+            when: releases.variant.status === Units.Status.Failed_Verification && drives.length <= 0
+        },
+        State {
+            name: "failed_verification"
+            when: releases.variant.status === Units.Status.Failed_Verification && drives.length > 0
+            PropertyChanges {
+                target: messageLoseData;
+                visible: true
+            }
+        },
+        State {
+            name: "failed_download"
+            when: releases.variant.status === Units.Status.Failed_Download
+        },
+        State {
+            name: "failed_no_drives"
+            when: releases.variant.status === Units.Status.Failed && drives.length <= 0
+        },
+        State {
+            name: "failed"
+            when: releases.variant.status === Units.Status.Failed && drives.length > 0
+            PropertyChanges {
+                target: messageLoseData;
+                visible: true
+            }
         }
-    ]
+    ]           
 }
 

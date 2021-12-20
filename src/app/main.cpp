@@ -79,6 +79,7 @@ int main(int argc, char **argv)
         
 
     QQuickStyle::setStyle("QtQuick.Controls.org.fedoraproject.AdwaitaTheme");
+    QQuickStyle::setStyle("QtQuick.Controls.org.fedoraproject.AdwaitaTheme");
     QApplication app(argc, argv);
     options.parse(app.arguments());
 

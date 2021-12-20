@@ -31,8 +31,7 @@ ApplicationWindow {
     
     property int selectedPage: Units.Page.MainPage
     property int selectedVersion: Units.Source.Product
-    property bool selectISO: false 
-    property bool restoreDrive: false
+    property int selectedOption: Units.MainSelect.Download
     
     property bool enNextButton: true
     property bool enPrevButton: true
@@ -67,9 +66,8 @@ ApplicationWindow {
                 text: getPrevButtonText()
                 onClicked: {
                     stackView.pop()
-                    selectedPage = selectISO || restoreDrive || mainLayout.state == "aboutPage"? Units.Page.MainPage : selectedPage - 1
-                    selectISO = false
-                    restoreDrive = false
+                    selectedPage = selectedOption == Units.MainSelect.Write || selectedOption == Units.MainSelect.Restore || mainLayout.state == "aboutPage"? Units.Page.MainPage : selectedPage - 1
+                    selectedOption = 0
                 }
             }
         
@@ -83,27 +81,35 @@ ApplicationWindow {
                 enabled: mainLayout.state != "drivePage" && mainLayout.state != "restorePage"? true : enNextButton
                 text: getNextButtonText()
                 onClicked: {
-                    if (mainLayout.state == "mainPage" && selectISO)
+                    if (mainLayout.state == "mainPage" && selectedOption == Units.MainSelect.Write)
                         selectedPage = Units.Page.DrivePage
-                    else if (mainLayout.state == "mainPage" && restoreDrive)
+                    else if (mainLayout.state == "mainPage" && selectedOption == Units.MainSelect.Restore)
                         selectedPage = Units.Page.RestorePage
-                    else if (mainLayout.state == "drivePage" && selectISO)
+                    else if (mainLayout.state == "drivePage" && selectedOption == Units.MainSelect.Write)
                     {
                         selectedPage += 1
+                        drives.selected.setImage(releases.localFile)
                         drives.selected.write(releases.localFile)
                     }
-                    else if (mainLayout.state == "drivePage" && !selectISO)
+                    else if (mainLayout.state == "drivePage" && !selectedOption == Units.MainSelect.Write)
                     {
+                        selectedPage += 1
                         releases.variant.download()
-                        // TODO start download
+                        drives.selected.setImage(releases.variant)
+                        drives.selected.write(releases.variant)
                     }
                     else if (mainLayout.state == "restorePage")
                         drives.lastRestoreable.restore()  
                     else if (mainLayout.state == "downloadPage")
+                    {
+                        //stop downloading & writing
+                        drives.selected.cancel()
+                        releases.variant.resetStatus()
+                        downloadManager.cancel()
                         selectedPage = Units.Page.MainPage
+                    }
                     else
                         selectedPage += 1
-                    //selectedPage = selectISO ? Units.Page.DrivePage : restoreDrive ? Units.Page.RestorePage : selectedPage + 1
                 }
             }
         }
@@ -126,8 +132,8 @@ ApplicationWindow {
                         if (stackView.depth > 1) 
                             while(stackView.depth != 1)
                                 stackView.pop()
-                        else 
-                            stackView.push("MainPage.qml")
+                        //else 
+                        //    stackView.push("MainPage.qml")
                     }
                 }
             },

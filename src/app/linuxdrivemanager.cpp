@@ -203,7 +203,6 @@ bool LinuxDrive::write(ReleaseVariant *data) {
 
     if (!Drive::write(data))
         return false;
-
     if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED ||
             m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
         m_image->setStatus(ReleaseVariant::WRITING);

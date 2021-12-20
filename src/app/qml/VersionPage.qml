@@ -26,7 +26,6 @@ import QtQml 6.2
 Page {
     id: versionPage
     property int prevSource: 0
-    property var r: {} 
     
     ColumnLayout {
         anchors.fill: parent
@@ -70,9 +69,9 @@ Page {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.fillWidth: true
                 Layout.topMargin: units.gridUnit / 2
-                displayText: getComboText()
                 textRole: "name"
                 model: releases
+                onCurrentIndexChanged: getComboText()
             }
         }
     }
@@ -80,14 +79,9 @@ Page {
     function getComboText() {        
         if (releases.filterSource != prevSource) {
             prevSource = releases.filterSource
-            r = releases.get(releases.firstSource).name
-            releases.setSelectedIndex = releases.firstSource 
-        } else { 
-            if (selectFromComboBox.currentIndex == -1)
-                selectFromComboBox.currentIndex = 0
-            r = releases.get(releases.firstSource + selectFromComboBox.currentIndex).name
-            releases.setSelectedIndex = releases.firstSource + selectFromComboBox.currentIndex
+            selectFromComboBox.currentIndex = 0
         }
-        return r
+        releases.selectedIndex = releases.firstSource + selectFromComboBox.currentIndex
+       
     }
 }

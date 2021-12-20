@@ -46,12 +46,15 @@ Page {
             RadioButton {
                 checked: true
                 text: qsTr("Download automatically")
+                onClicked: {
+                    selectedOption = 0
+                }
             }
     
             RadioButton {
                 text: qsTr("Select .iso file")
                 onClicked: {
-                    selectISO = true
+                    selectedOption = 1
                 }
             }
             
@@ -60,7 +63,7 @@ Page {
                 visible: drives.lastRestoreable
                 text: qsTr("Restore <b>%1</b>").arg(drives.lastRestoreable.name)
                 onClicked: {
-                    restoreDrive = true
+                    selectedOption = 2
                 }
                 
                 Connections {

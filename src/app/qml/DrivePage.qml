@@ -36,7 +36,7 @@ Page {
         
         ColumnLayout {
             id: architectureCol
-            visible: !selectISO
+            visible: !selectedOption == 1
             Heading {
                 text: qsTr("Hardware Architecture")
             }
@@ -46,18 +46,18 @@ Page {
                 Layout.fillWidth: true
                 model: releases.selected.version.variants
                 textRole: "name"
-                onCurrentIndexChanged: releases.setSelectedVariantIndex = currentIndex
+                onCurrentIndexChanged: releases.selectedVariantIndex = currentIndex
             }
         }
         
         ColumnLayout {
+            visible: selectedOption == 1
             Heading {
                 text: qsTr("Selected file")
             }
             
             RowLayout {
                 id: fileCol
-                visible: selectISO
                 Label {
                     text: releases.localFile.iso ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : ("<font color=\"gray\">" + qsTr("None") + "</font>")
                 }
@@ -128,13 +128,13 @@ Page {
     states: [
         State {
             name: "ISONotSelected"
-            when: !selectISO
+            when: !selectedOption == 1
             PropertyChanges { target: mainWindow; enNextButton: driveCombo.enabled && hwArchCombo.currentIndex + 1 }
             StateChangeScript { script: releases.setSelectedVariantIndex = 0 }
         },
         State {
             name: "ISOSelected"
-            when: selectISO
+            when: selectedOption == 1
             PropertyChanges { target: mainWindow; enNextButton: driveCombo.enabled && releases.localFile.iso }
         }
     ]

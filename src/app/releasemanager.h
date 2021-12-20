@@ -79,7 +79,7 @@ class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver {
     Q_PROPERTY(bool beingUpdated READ beingUpdated NOTIFY beingUpdatedChanged)
 
     Q_PROPERTY(int filterArchitecture READ filterArchitecture WRITE setFilterArchitecture NOTIFY filterArchitectureChanged)
-    Q_PROPERTY(int filterSource READ filterSource WRITE setFilterSource NOTIFY filterSourceChanged);
+    Q_PROPERTY(int filterSource READ filterSource WRITE setFilterSource NOTIFY filterSourceChanged)
     Q_PROPERTY(QString filterText READ filterText WRITE setFilterText NOTIFY filterTextChanged)
 
     Q_PROPERTY(Release* selected READ selected NOTIFY selectedChanged)
@@ -88,9 +88,9 @@ class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver {
     Q_PROPERTY(ReleaseVariant* variant READ variant NOTIFY variantChanged)
 
     Q_PROPERTY(QStringList architectures READ architectures CONSTANT)
-    Q_PROPERTY(ReleaseVariant* localFile READ localFile NOTIFY localFileChanged);
+    Q_PROPERTY(ReleaseVariant* localFile READ localFile NOTIFY localFileChanged)
     
-    Q_PROPERTY(int firstSource READ firstSource NOTIFY firstSourceChanged);
+    Q_PROPERTY(int firstSource READ firstSource NOTIFY firstSourceChanged)
 public:
     explicit ReleaseManager(QObject *parent = 0);
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;

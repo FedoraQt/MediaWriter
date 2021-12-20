@@ -416,7 +416,6 @@ Release::Release(ReleaseManager *parent, int index, const QString &name, const Q
 void Release::setLocalFile(const QString &path) {
     if (m_source != LOCAL)
         return;
-
     QFileInfo info(QUrl(path).toLocalFile());
 
     if (!info.exists()) {
@@ -908,7 +907,7 @@ void ReleaseVariant::download() {
         resetStatus();
         setStatus(DOWNLOADING);
         if (m_size)
-            m_progress->setTo(m_size);
+            progress()->setTo(m_size);
         QString ret = DownloadManager::instance()->downloadFile(this, url(), DownloadManager::dir(), progress());
         if (!ret.endsWith(".part")) {
             m_temporaryIso = QString();
