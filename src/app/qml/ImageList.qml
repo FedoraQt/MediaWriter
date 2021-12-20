@@ -253,11 +253,13 @@ FocusScope {
                             width: parent.width
                             move: Transition { NumberAnimation { properties: "y" } }
 
-                            QQC2.Label {
+                            QQC2.TextArea {
                                 width: parent.width
                                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                                 text: qsTr("Version %1").arg(mediawriterVersion)
                                 textFormat: Text.RichText
+                                readOnly: true
+                                selectByMouse: true
                             }
                             QQC2.Label {
                                 width: parent.width
