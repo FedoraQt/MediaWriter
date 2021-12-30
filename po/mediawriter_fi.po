@@ -8,12 +8,13 @@
 # Toni Rantala <trantalafilo@gmail.com>, 2017. #zanata
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2018. #zanata, 2021.
 # Jan Kuparinen <copper_fin@hotmail.com>, 2021.
+# Lumiukko Lumiukko <lokalisoija@luukku.com>, 2021.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 16:44+0200\n"
-"PO-Revision-Date: 2021-09-06 01:05+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"PO-Revision-Date: 2021-12-30 18:16+0000\n"
+"Last-Translator: Lumiukko Lumiukko <lokalisoija@luukku.com>\n"
 "Language-Team: Finnish <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/fi/>\n"
 "Language: fi\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8\n"
+"X-Generator: Weblate 4.10.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/DeleteButton.qml:64
@@ -194,7 +195,7 @@ msgstr "Takaisin"
 #: ../src/app/qml/ImageDetails.qml:105
 msgctxt "ImageDetails|"
 msgid "Create Live USB…"
-msgstr "Luo Live-USB…"
+msgstr "Luo asennusmedia…"
 
 #. The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
 #: ../src/app/qml/ImageDetails.qml:167
@@ -243,7 +244,7 @@ msgstr "Etsitään uusia julkaisuja"
 #: ../src/app/qml/ImageList.qml:251
 msgctxt "ImageList|"
 msgid "About Fedora Media Writer"
-msgstr "Tietoja Fedora-median luontityökalusta"
+msgstr "Tietoja Fedora Media Writerista"
 
 #: ../src/app/qml/ImageList.qml:275
 #, qt-format
@@ -254,7 +255,7 @@ msgstr "Versio %1"
 #: ../src/app/qml/ImageList.qml:282
 msgctxt "ImageList|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Median luontityökalu tarkistaa, onko uusia julkaisuja"
+msgstr "Fedora Media Writer tarkistaa, onko uusia julkaisuja"
 
 #: ../src/app/qml/ImageList.qml:296
 #, qt-format
@@ -533,13 +534,13 @@ msgid ""
 msgstr ""
 "<p align=\"justify\">\n"
 "                                                Palauttaaksesi kaiken "
-"saatavilla olevan tilan levyllä, se pitää palauttaa tehdasasetuksille.\n"
-"                                                Live-järjestelmä ja kaikki "
-"tallennettu data poistetaan.\n"
+"saatavilla olevan tilan levyltä, se pitää palauttaa tehdasasetuksille.\n"
+"                                                Kaikki tallennettu data "
+"poistetaan.\n"
 "                                            </p>\n"
 "                                            <p align=\"justify\">\n"
 "                                                Sinun ei tarvitse palauttaa "
-"levyä jos et halua kirjoittaa toista live-järjestelmää siihen.\n"
+"levyä, jos et halua kirjoittaa toista järjestelmää siihen.\n"
 "                                            </p>\n"
 "                                            <p align=\"justify\">\n"
 "                                                Haluatko jatkaa?\n"
@@ -705,7 +706,7 @@ msgstr "Palauta"
 #, qt-format
 msgctxt "main|"
 msgid "Fedora Media Writer %1 Released"
-msgstr "Fedora-median luontityökalu %1 julkaistu"
+msgstr "Fedora Media Writer %1 julkaistu"
 
 #: ../src/app/qml/main.qml:147
 msgctxt "main|"
@@ -747,7 +748,7 @@ msgstr "OK"
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop.in:4
 msgid "Fedora Media Writer"
-msgstr "Fedora-median luontityökalu"
+msgstr "Fedora Media Writer"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
@@ -764,12 +765,12 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
-"Ohjelma, jolla voi luoda USB-muistilta käynnistettävän Fedoran. "
-"Luontityökalu osaa ladata levykuvan ja kirjoittaa sen USB-muistille. "
-"Tarjolla ovat viralliset editiot (Server ja Workstation), Fedoran spinit ("
-"mm. Xfce-, Cinnamon- ja KDE Plasma -työpöydät) sekä Fedora Lab -julkaisut ("
-"mm. design-ohjelmistot ja turvallisuuslaboratorio). Valinnan avuksi niistä "
-"jokaisesta kerrotaan lyhyesti."
+"Työkalu, jolla voi luoda USB-muistista käynnistettävän asennusmedian "
+"Fedoralle. Luontityökalu osaa ladata levykuvan ja kirjoittaa sen USB-"
+"muistille. Tarjolla ovat viralliset versiot (Server ja Workstation), Fedoran "
+"Spinit (mm. KDE Plasma, Xfce, Cinnamon -työpöydät) sekä Fedora Lab -"
+"julkaisut (mm. Design Suite, Security Lab). Se antaa jokaisesta niistä "
+"perustiedot, auttaaksesi sinua valitsemaan."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -1794,10 +1795,10 @@ msgid ""
 "results permanently."
 msgstr ""
 "Spiniä ylläpitää turvatestaajien ja kehittäjien yhteisö. Sen mukana tulee "
-"puhdas ja nopea Xfce työpöytäympäristö ja räätälöity valikko, joka tarjoaa "
+"puhdas ja nopea Xfce-työpöytäympäristö ja räätälöity valikko, joka tarjoaa "
 "kaikki tarvittavat välineet, jotta voidaan seurata asianmukaista testipolkua "
-"turvallisuustestauksessa tai pelastaa rikkinäinen järjestelmä. Live-levykuva "
-"on muotoiltu siten, että ohjelmisto voidaan asentaa levykuvan ollessa "
-"käynnissä, ja jos käytät sitä USB-tikulta, joka on luotu LiveUSB Creatorilla "
-"peittotoiminnon avulla, voit asentaa ja päivittää ohjelmiston ja tallentaa "
-"testituloksesi pysyvästi."
+"turvallisuustestauksessa tai pelastaa rikkinäinen järjestelmä. "
+"Asennuslevykuva on tehty siten, että ohjelmisto voidaan asentaa levykuvan "
+"ollessa käynnissä, ja jos käytät sitä USB-tikulta, joka on luotu LiveUSB "
+"Creatorilla peittotoiminnon avulla, voit asentaa ja päivittää ohjelmiston ja "
+"tallentaa testituloksesi pysyvästi."
