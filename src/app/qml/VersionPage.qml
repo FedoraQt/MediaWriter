@@ -36,8 +36,14 @@ Page {
             level: 5
         }
         
+        ButtonGroup {
+            id: radioGroup
+        }
+        
         ColumnLayout {
+            id: radioColumn
             Layout.alignment: Qt.AlignTop
+            
             Label {
                 text: qsTr("Select from:")
             }
@@ -46,23 +52,26 @@ Page {
                 checked: true
                 text: qsTr("Official Editions")
                 onClicked: releases.filterSource = Units.Source.Product
+                ButtonGroup.group: radioGroup
             }
     
             RadioButton {
                 text: qsTr("Emerging Editions")
                 onClicked: releases.filterSource = Units.Source.Emerging
+                ButtonGroup.group: radioGroup
             }
             
             RadioButton {
                 text: qsTr("Spins")
                 onClicked: releases.filterSource = Units.Source.Spins
+                ButtonGroup.group: radioGroup
             }
             
             RadioButton {
                 text: qsTr("Labs")
                 onClicked: releases.filterSource = Units.Source.Labs
+                ButtonGroup.group: radioGroup
             }
-            
         
             ComboBox {
                 id: selectFromComboBox

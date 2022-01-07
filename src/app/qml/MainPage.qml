@@ -25,6 +25,8 @@ import QtQml 6.2
 import QtQuick.Dialogs 6.2
 
 Page {
+    id: mainPage
+    
     ColumnLayout {
         anchors.fill: parent
         spacing: units.gridUnit
@@ -41,21 +43,29 @@ Page {
             text: qsTr("Select Image Source")
             level: 5
         }
+        
+        ButtonGroup {
+            id: radioGroup 
+        }
 
         ColumnLayout {
+            id: radioColumn
+            
             RadioButton {
-                checked: true
+                checked: mainWindow.selectedOption == Units.MainSelect.Download
                 text: qsTr("Download automatically")
                 onClicked: {
-                    selectedOption = 0
+                    selectedOption = Units.MainSelect.Download
                 }
+                ButtonGroup.group: radioGroup
             }
     
             RadioButton {
                 text: qsTr("Select .iso file")
                 onClicked: {
-                    selectedOption = 1
+                    selectedOption = Units.MainSelect.Write
                 }
+                ButtonGroup.group: radioGroup
             }
             
             RadioButton {
@@ -63,8 +73,9 @@ Page {
                 visible: drives.lastRestoreable
                 text: qsTr("Restore <b>%1</b>").arg(drives.lastRestoreable.name)
                 onClicked: {
-                    selectedOption = 2
+                    selectedOption = Units.MainSelect.Restore
                 }
+                ButtonGroup.group: radioGroup
                 
                 Connections {
                     target: drives
@@ -77,5 +88,9 @@ Page {
                 }
             }
         }
+    }
+    
+    AboutDialog {
+        id: aboutDialog
     }
 }

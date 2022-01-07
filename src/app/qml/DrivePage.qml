@@ -46,7 +46,7 @@ Page {
                 Layout.fillWidth: true
                 model: releases.selected.version.variants
                 textRole: "name"
-                onCurrentIndexChanged: releases.selectedVariantIndex = currentIndex
+                onCurrentIndexChanged: releases.selected.version.variantIndex = currentIndex
             }
         }
         
@@ -79,7 +79,7 @@ Page {
                     Connections {
                         target: portalFileDialog
                         function onFileSelected(fileName) {
-                            releases.setLocalFile(fileName)
+                            releases.selectLocalFile(fileName)
                         }
                     }
                 }

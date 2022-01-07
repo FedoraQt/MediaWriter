@@ -38,7 +38,6 @@ QtObject {
     }
     
     enum Page {
-        AboutPage,
         MainPage,
         VersionPage,
         DrivePage,

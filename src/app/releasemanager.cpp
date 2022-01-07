@@ -139,12 +139,13 @@ int ReleaseManager::firstSource() const{
 }
 
 
-void ReleaseManager::setLocalFile(const QString &path) {
+void ReleaseManager::selectLocalFile(const QString &path) {
     mDebug() << this->metaObject()->className() << "Setting local file to" << path;
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = m_sourceModel->get(i);
         if (r->source() == Release::LOCAL) {
             r->setLocalFile(path);
+            setSelectedIndex(i);
             emit localFileChanged();
         }
     }

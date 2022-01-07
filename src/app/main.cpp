@@ -72,13 +72,6 @@ int main(int argc, char **argv)
     QApplication::setOrganizationName("fedoraproject.org");
     QApplication::setApplicationName("MediaWriter");
 
-#ifdef __linux
-    // qt x11 scaling is broken
-    if (QGuiApplication::platformName() == QStringLiteral("xcb"))
-#endif
-        
-
-    QQuickStyle::setStyle("QtQuick.Controls.org.fedoraproject.AdwaitaTheme");
     QQuickStyle::setStyle("QtQuick.Controls.org.fedoraproject.AdwaitaTheme");
     QApplication app(argc, argv);
     options.parse(app.arguments());

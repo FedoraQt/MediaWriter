@@ -25,7 +25,10 @@ import QtQml 6.2
 
 
 Page {
+    id: downloadPage
+    
     ColumnLayout {
+        id: mainColumn
         anchors.fill: parent
         spacing: units.gridUnit
         
@@ -38,7 +41,7 @@ Page {
         
         Heading {
             Layout.alignment: Qt.AlignHCenter
-            text: mainWindow.selectedOption == 1 ? qsTr("Writing %1").arg((String)(releases.localFile.iso).split("/").slice(-1)[0]) :                                                         qsTr("Downloading %1 ").arg(releases.selected.name) + releases.selected.version.number
+            text: mainWindow.selectedOption == 1 ? qsTr("Writing <br>%1").arg((String)(releases.localFile.iso).split("/").slice(-1)[0]) :                                                         qsTr("Downloading <br>%1 ").arg(releases.selected.name)// + releases.selected.version.number
             level: 5
         }
         
@@ -46,13 +49,9 @@ Page {
             Label {
                 Layout.alignment: Qt.AlignHCenter
                 property double leftSize: releases.variant.progress.to - releases.variant.progress.value
-                property string leftStr:  leftSize <= 0 ? "" :
-                                                                                 (leftSize < 1024)                 ? qsTr("(%1 B left)").arg(leftSize) :
-                                                                                                                     (leftSize < (1024 * 1024))        ? qsTr("(%1 KB left)").arg((leftSize / 1024).toFixed(1)) :
-                                                                                                                                                         (leftSize < (1024 * 1024 * 1024)) ? qsTr("(%1 MB left)").arg((leftSize / 1024 / 1024).toFixed(1)) :
-                                                                                                                                                                                             qsTr("(%1 GB left)").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
-                    text: releases.variant.statusString + (releases.variant.status == Units.Status.Downloading ? (" " + leftStr) : "")
-                
+                property string leftStr:  leftSize <= 0 ? "" : (leftSize < 1024) ? qsTr("(%1 B left)").arg(leftSize) : (leftSize < (1024 * 1024)) ? qsTr("(%1 KB left)").arg((leftSize / 1024).toFixed(1)) : (leftSize < (1024 * 1024 * 1024)) ? qsTr("(%1 MB left)").arg((leftSize / 1024 / 1024).toFixed(1)) :
+                qsTr("(%1 GB left)").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
+                text: releases.variant.statusString + (releases.variant.status == Units.Status.Downloading ? (" " + leftStr) : "")
             }
         
             ProgressBar {
@@ -63,7 +62,7 @@ Page {
             }
         }
         
-        ColumnLayout {
+        Column {
             id: infoColumn
             spacing: units.gridUnit / 2
             
@@ -71,30 +70,40 @@ Page {
                 id: messageDownload
                 visible: false
                 text: qsTr("The file will be saved to your Downloads folder.")
+                wrapMode: Label.Wrap
+                width: mainColumn.width - units.gridUnit * 5
             }
 
             Label {
                 id: messageLoseData
                 visible: false
-                text: qsTr("By writing, you will lose all of the data on<br> %1.").arg(drives.selected.name)
+                text: qsTr("By writing, you will lose all of the data on %1.").arg(drives.selected.name)
+                wrapMode: Label.Wrap
+                width: mainColumn.width
             }
 
             Label {
                 id: messageRestore
                 visible: false
-                text: qsTr("Your drive will be resized to a smaller capacity. <br>You may resize it back to normal by using Fedora Media Writer. <br>This will remove installation media from your drive.")
+                text: qsTr("Your drive will be resized to a smaller capacity. You may resize it back to normal by using Fedora Media Writer. This will remove installation media from your drive.")
+                wrapMode: Label.Wrap
+                width: mainColumn.width
             }
 
             Label {
                 id: messageSelectedImage
                 visible: releases.selected.isLocal
                 text: "<font color=\"gray\">" + qsTr("Selected:") + "</font> " + (releases.variant.iso ? (((String)(releases.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
+                wrapMode: Label.Wrap
+                width: mainColumn.width
             }
 
             Label {
                 id: messageArmBoard
                 visible: false //boardCombo.otherSelected
                 text: qsTr("Your board or device is not supported by Fedora Media Writer yet. Please check <a href=%1>this page</a> for more information about its compatibility with Fedora and how to create bootable media for it.").arg("https://fedoraproject.org/wiki/Architectures/ARM")
+                wrapMode: Label.Wrap
+                width: mainColumn.width
             }
 
             Label {
@@ -102,15 +111,21 @@ Page {
                 enabled: true
                 visible: enabled && drives.selected && drives.selected.size > 160 * 1024 * 1024 * 1024 // warn when it's more than 160GB
                 text: qsTr("The selected drive's size is %1. It's possible you have selected an external drive by accident!").arg(drives.selected ? drives.selected.readableSize : "N/A")
+                wrapMode: Label.Wrap
+                width: mainColumn.width
             }
 
             Label {
-                //error: true
                 visible: releases.variant && releases.variant.errorString.length > 0
                 text: releases.variant ? releases.variant.errorString : ""
-                //width: layout.width
+                wrapMode: Label.Wrap
+                width: mainColumn.width
             }
         }
+    }
+    
+    CancelDialog {
+        id: cancelDialog
     }
     
     states: [
@@ -140,14 +155,6 @@ Page {
             PropertyChanges {
                 target: progressBar;
                 value: releases.variant.progress.ratio;
-            }
-            StateChangeScript {
-                name: "colorChange"
-                script:  {
-                    if (progressBar.hasOwnProperty("progressBarColor")) {
-                        progressBar.progressBarColor = Qt.lighter("green")
-                    }
-                }
             }
         },
         State {
@@ -181,17 +188,6 @@ Page {
                 target: progressBar;
                 value: drives.selected.progress.ratio;
             }
-            StateChangeScript {
-                name: "colorChange"
-                script:  {
-                    if (progressBar.hasOwnProperty("destructiveAction")) {
-                        progressBar.destructiveAction = false
-                    }
-                    if (progressBar.hasOwnProperty("progressBarColor")) {
-                        progressBar.progressBarColor = "red"
-                    }
-                }
-            }
         },
         State {
             name: "write_verifying"
@@ -208,25 +204,26 @@ Page {
                 target: progressBar;
                 value: drives.selected.progress.ratio;
             }
-            StateChangeScript {
-                name: "colorChange"
-                script:  {
-                    if (progressBar.hasOwnProperty("progressBarColor")) {
-                        progressBar.progressBarColor = Qt.lighter("green")
-                    }
-                }
-            }
         },
         State {
             name: "finished"
             when: releases.variant.status === Units.Status.Finished
             PropertyChanges {
-                target: messageDriveSize
+                target: messageDriveSize;
                 enabled: false
             }
             PropertyChanges {
                 target: messageRestore;
                 visible: true
+            }
+            PropertyChanges {
+                target: prevButton;
+                text: qsTr("Back");
+                visible: true
+            }
+            PropertyChanges {
+                target: nextButton;
+                visible: false
             }
         },
         State {

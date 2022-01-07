@@ -105,7 +105,7 @@ public:
     QString filterText() const;
     void setFilterText(const QString &o);
 
-    Q_INVOKABLE void setLocalFile(const QString &path);
+    Q_INVOKABLE void selectLocalFile(const QString &path);
     ReleaseVariant* localFile() const;
 
     bool updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
