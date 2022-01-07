@@ -37,7 +37,7 @@
 #include "units.h"
 #include "versionchecker.h"
 
-#include <AdwaitaQt/adwaitacolors.h>
+#include <AdwaitaQt6/adwaitacolors.h>
 
 #ifdef QT_STATIC
 Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);

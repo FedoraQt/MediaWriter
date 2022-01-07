@@ -1,7 +1,7 @@
 {
     "id": "org.fedoraproject.MediaWriter",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.15",
+    "runtime-version": "6.2",
     "sdk": "org.kde.Sdk",
     "command": "mediawriter",
     "finish-args": [
@@ -12,12 +12,13 @@
         "--share=network",
         "--share=ipc",
         "--system-talk-name=org.freedesktop.UDisks2",
-        "--env=QML2_IMPORT_PATH=/app/lib/qt5/qml"
+        "--env=QML2_IMPORT_PATH=/app/lib/qt6/qml"
     ],
     "modules": [
         {
             "name": "Adwaita-qt",
             "buildsystem": "cmake",
+            "config-opts": ["-DUSE_QT6=ON"],
             "sources": [
                 {
                     "type": "git",
@@ -37,14 +38,14 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/FedoraQt/MediaWriter.git",
-                    "branch": "master"
+                    "url": "https://github.com/gastoner/MediaWriter.git",
+                    "branch": "test-flatpak-build"
                 },
                 {
                     "type": "shell",
                     "commands": [
                         "rm -rf app/data/icons/hicolor/1024x1024",
-                        "sed -i 's@\${QT_INSTALL_QML}@/app/lib/qt5/qml@' theme/CMakeLists.txt"
+                        "sed -i 's@\${QT6_INSTALL_QML}@/app/lib/qt6/qml@' src/theme/CMakeLists.txt"
                     ]
                  }
             ]

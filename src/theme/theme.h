@@ -25,8 +25,8 @@
 #include <QPalette>
 #include <QtQml>
 
-#include <AdwaitaQt/adwaita.h>
-#include <AdwaitaQt/adwaitacolors.h>
+#include <AdwaitaQt6/adwaita.h>
+#include <AdwaitaQt6/adwaitacolors.h>
 
 class AdwaitaTheme : public QObject
 {
