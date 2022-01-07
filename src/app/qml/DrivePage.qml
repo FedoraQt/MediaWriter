@@ -22,6 +22,7 @@ import QtQuick.Controls 6.2
 import QtQuick.Window 6.2
 import QtQuick.Layouts 6.2
 import QtQml 6.2
+import QtQuick.Dialogs 6.2
 
 Page {
     ColumnLayout {
@@ -82,6 +83,15 @@ Page {
                             releases.selectLocalFile(fileName)
                         }
                     }
+                    
+                    FileDialog {
+                        id: fileDialog
+                        nameFilters: [ qsTr("Image files") + " (*.iso *.raw *.xz)", qsTr("All files (*)")]
+                        onAccepted: {
+                            releases.selectLocalFile(fileUrl)
+                        }
+                    }
+    
                 }
             }
         }
