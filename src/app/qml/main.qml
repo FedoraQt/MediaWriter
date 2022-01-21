@@ -34,8 +34,8 @@ ApplicationWindow {
     property int selectedOption: Units.MainSelect.Download
     
     property bool enNextButton: true
-    property bool visibleCancelDialog: false
-    property bool visibleAboutDialog: false
+    property bool visibleCancelWindow: false
+    property bool visibleAboutWindow: false
     
     ColumnLayout {
         id: mainLayout
@@ -72,10 +72,10 @@ ApplicationWindow {
                         releases.variant.resetStatus()
                         downloadManager.cancel()
                         selectedPage = Units.Page.MainPage
-                        visibleCancelDialog = !visibleCancelDialog
+                        visibleCancelWindow = !visibleCancelWindow
                     }
                     else if (mainLayout.state == "mainPage")
-                        visibleAboutDialog = !visibleAboutDialog
+                        visibleAboutWindow = !visibleAboutWindow
                     else if (selectedOption == Units.MainSelect.Write || selectedOption == Units.MainSelect.Restore)
                         selectedPage = Units.Page.MainPage
                     else 
@@ -99,12 +99,6 @@ ApplicationWindow {
                         //reset of source on versionPage
                         releases.filterSource = 0
                         selectedPage = selectedOption == Units.MainSelect.Write ? Units.Page.DrivePage : selectedOption == Units.MainSelect.Restore ? Units.Page.RestorePage : Units.Page.VersionPage
-                        //if (selectedOption == Units.MainSelect.Write)
-                            //selectedPage = Units.Page.DrivePage
-                        //else if (selectedOption == Units.MainSelect.Restore)
-                            //selectedPage = Units.Page.RestorePage
-                        //else 
-                            //selectedPage = Units.Page.VersionPage
                     }
                     else if (mainLayout.state == "drivePage") {
                         selectedPage = Units.Page.DownloadPage 
@@ -117,7 +111,7 @@ ApplicationWindow {
                         drives.lastRestoreable.restore()  
                     else if (mainLayout.state == "downloadPage") {
                         if (releases.variant.status === Units.Status.Write_Verifying || releases.variant.status === Units.Status.Writing)
-                            visibleCancelDialog = !visibleCancelDialog
+                            visibleCancelWindow = !visibleCancelWindow
                         else {
                             drives.selected.cancel()
                             releases.variant.resetStatus()

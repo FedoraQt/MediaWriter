@@ -88,10 +88,9 @@ Page {
                         id: fileDialog
                         nameFilters: [ qsTr("Image files") + " (*.iso *.raw *.xz)", qsTr("All files (*)")]
                         onAccepted: {
-                            releases.selectLocalFile(fileUrl)
+                            releases.selectLocalFile(currentFile)
                         }
                     }
-    
                 }
             }
         }

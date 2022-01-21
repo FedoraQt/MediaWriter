@@ -124,10 +124,6 @@ Page {
         }
     }
     
-    CancelDialog {
-        id: cancelDialog
-    }
-    
     states: [
         State {
             name: "preparing"
@@ -254,6 +250,11 @@ Page {
                 visible: true
             }
         }
-    ]           
+    ]    
+    
+    CancelWindow {
+        id: cancelWindow
+    }
+    
 }
 
