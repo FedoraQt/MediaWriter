@@ -130,6 +130,7 @@ Page {
         
             CheckBox {
                 text: qsTr("Delete download after writing")
+                onCheckedChanged: mainWindow.eraseVariant = !mainWindow.eraseVariant
             }
         }
     }

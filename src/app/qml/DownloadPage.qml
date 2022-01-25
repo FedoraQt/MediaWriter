@@ -71,7 +71,7 @@ Page {
                 visible: false
                 text: qsTr("The file will be saved to your Downloads folder.")
                 wrapMode: Label.Wrap
-                width: mainColumn.width - units.gridUnit * 5
+                width: mainColumn.width
             }
 
             Label {
@@ -220,6 +220,12 @@ Page {
             PropertyChanges {
                 target: nextButton;
                 visible: false
+            }
+            StateChangeScript {
+                script: {
+                    if (mainWindow.eraseVariant)
+                        releases.variant.erase()
+                }        
             }
         },
         State {

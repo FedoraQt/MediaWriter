@@ -36,6 +36,7 @@ ApplicationWindow {
     property bool enNextButton: true
     property bool visibleCancelWindow: false
     property bool visibleAboutWindow: false
+    property bool eraseVariant: false
     
     ColumnLayout {
         id: mainLayout
@@ -62,19 +63,21 @@ ApplicationWindow {
             
             Button {
                 id: prevButton
-                visible: mainLayout.state != "downloadPage"
+                visible: selectedPage != Units.Page.DownloadPage
                 text: getPrevButtonText()
                 onClicked: {
                     stackView.pop()
                     
-                    if (mainLayout.state == "downloadPage") {
-                        drives.selected.cancel()
+                    if (selectedPage == Units.Page.DownloadPage) {
+                        console.error("Button clicked")
+                        //drives.selected.cancel()
+                        if (releases.variant.status != Units.Status.Finished && releases.variant.status != Units.Status.Failed && releases.variant.status != Units.Status.Failed_Verification && releases.variant.status != Units.Status.Failed_Download)
+                            visibleCancelWindow = !visibleCancelWindow
+                        selectedPage = Units.Page.MainPage
                         releases.variant.resetStatus()
                         downloadManager.cancel()
-                        selectedPage = Units.Page.MainPage
-                        visibleCancelWindow = !visibleCancelWindow
                     }
-                    else if (mainLayout.state == "mainPage")
+                    else if (selectedPage == Units.Page.MainPage)
                         visibleAboutWindow = !visibleAboutWindow
                     else if (selectedOption == Units.MainSelect.Write || selectedOption == Units.MainSelect.Restore)
                         selectedPage = Units.Page.MainPage
@@ -110,7 +113,7 @@ ApplicationWindow {
                     else if (mainLayout.state == "restorePage")
                         drives.lastRestoreable.restore()  
                     else if (mainLayout.state == "downloadPage") {
-                        if (releases.variant.status === Units.Status.Write_Verifying || releases.variant.status === Units.Status.Writing)
+                        if (releases.variant.status === Units.Status.Write_Verifying || releases.variant.status === Units.Status.Writing || releases.variant.status === Units.Status.Downloading)
                             visibleCancelWindow = !visibleCancelWindow
                         else {
                             drives.selected.cancel()
@@ -137,6 +140,9 @@ ApplicationWindow {
                                 stackView.pop()
                     }
                 }
+                //PropertyChanges { target: prevButton; text: getPrevButtonText() }
+                //PropertyChanges { target: prevButton; visible: true }
+                //PropertyChanges { target: nextButton; visible: true }
             },
             State {
                 name: "versionPage"

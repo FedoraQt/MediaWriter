@@ -26,39 +26,55 @@ import QtQml 6.2
 ApplicationWindow {
     id: cancelWindow
     visible: mainWindow.visibleCancelWindow
-    minimumWidth: 640
-    minimumHeight: 480
+    minimumWidth: mainWindow.width / 2 + units.gridUnit * 6
+    minimumHeight: mainWindow.height / 2
+    modality: Qt.ApplicationModal
     
     ColumnLayout {
+        id: mainColumn
         anchors.fill: parent
         anchors.leftMargin: units.gridUnit * 3
         anchors.rightMargin: units.gridUnit * 3
         anchors.topMargin: units.gridUnit * 2
         anchors.bottomMargin: units.gridUnit * 2
         spacing: units.gridUnit
-            
-        Heading {
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            text: qsTr("Do you want to cancel writing?")
-            level: 3
+           
+        Column {
+            Heading {
+                Layout.alignment: Qt.AlignVCenter
+                text: releases.variant.status == Units.Status.Downloading ? qsTr("Downloading is still in progress, do you wish to cancel it?") : qsTr("Do you want to cancel writing?")
+                level: 3
+                wrapMode: Label.Wrap
+                width: mainColumn.width
+            }
         }
           
-        DialogButtonBox {
-            standardButtons: Dialog.No | Dialog.Yes
+        RowLayout {
             Layout.alignment: Qt.AlignBottom
-                
-            onRejected: {
-                mainWindow.visibleCancelWindow = !mainWindow.visibleCancelWindow
+            
+            Item {
+                Layout.fillWidth: true
             }
             
-            onAccepted: {
-                mainWindow.visibleCancelWindow = !mainWindow.visibleCancelWindow
-                drives.selected.cancel()
-                releases.variant.resetStatus()
-                downloadManager.cancel()
-                mainWindow.selectedPage = Units.Page.MainPage
+            Button {
+                id: continueButton
+                onClicked: mainWindow.visibleCancelWindow = !mainWindow.visibleCancelWindow
+                text: qsTr("Cancel")
             }
-        }  
+            
+            Button {
+                id: cancelButton
+                onClicked: {
+                    mainWindow.visibleCancelWindow = !mainWindow.visibleCancelWindow
+                    //TODO is correct to unselect drive?
+                    drives.selected.cancel()
+                    releases.variant.resetStatus()
+                    downloadManager.cancel()
+                    mainWindow.selectedPage = Units.Page.MainPage
+                }
+                text: qsTr("Ok")
+            }
+        }
     }
 }
 
