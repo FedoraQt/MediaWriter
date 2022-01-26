@@ -41,8 +41,11 @@ Page {
         
         Heading {
             Layout.alignment: Qt.AlignHCenter
-            text: mainWindow.selectedOption == 1 ? qsTr("Writing <br>%1").arg((String)(releases.localFile.iso).split("/").slice(-1)[0]) :                                                         qsTr("Downloading <br>%1 ").arg(releases.selected.name)// + releases.selected.version.number
+            text: mainWindow.selectedOption == 1 ? qsTr("Writing %1").arg((String)(releases.localFile.iso).split("/").slice(-1)[0]) :                                                         qsTr("Downloading %1 ").arg(releases.selected.name)// + releases.selected.version.number
             level: 5
+            Layout.preferredWidth: mainColumn.width
+            elide: Label.ElideRight
+            horizontalAlignment: Label.AlignHCenter
         }
         
         ColumnLayout {

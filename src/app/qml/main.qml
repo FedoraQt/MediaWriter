@@ -69,8 +69,6 @@ ApplicationWindow {
                     stackView.pop()
                     
                     if (selectedPage == Units.Page.DownloadPage) {
-                        console.error("Button clicked")
-                        //drives.selected.cancel()
                         if (releases.variant.status != Units.Status.Finished && releases.variant.status != Units.Status.Failed && releases.variant.status != Units.Status.Failed_Verification && releases.variant.status != Units.Status.Failed_Download)
                             visibleCancelWindow = !visibleCancelWindow
                         selectedPage = Units.Page.MainPage
@@ -140,9 +138,6 @@ ApplicationWindow {
                                 stackView.pop()
                     }
                 }
-                //PropertyChanges { target: prevButton; text: getPrevButtonText() }
-                //PropertyChanges { target: prevButton; visible: true }
-                //PropertyChanges { target: nextButton; visible: true }
             },
             State {
                 name: "versionPage"
