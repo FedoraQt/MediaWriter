@@ -54,7 +54,7 @@ QtObject {
         Other
     }
     
-    enum Status {
+    enum DownloadStatus {
         Preparing,
         Downloading,
         Download_Verifying,
@@ -66,5 +66,13 @@ QtObject {
         Failed_Verification,
         Failed_Download,
         Failed
+    }
+    
+    enum RestoreStatus {
+        Clean,
+        Contains_Live,
+        Restoring,
+        Restore_Error,
+        Restored
     }
 }

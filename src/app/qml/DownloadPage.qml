@@ -54,7 +54,7 @@ Page {
                 property double leftSize: releases.variant.progress.to - releases.variant.progress.value
                 property string leftStr:  leftSize <= 0 ? "" : (leftSize < 1024) ? qsTr("(%1 B left)").arg(leftSize) : (leftSize < (1024 * 1024)) ? qsTr("(%1 KB left)").arg((leftSize / 1024).toFixed(1)) : (leftSize < (1024 * 1024 * 1024)) ? qsTr("(%1 MB left)").arg((leftSize / 1024 / 1024).toFixed(1)) :
                 qsTr("(%1 GB left)").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
-                text: releases.variant.statusString + (releases.variant.status == Units.Status.Downloading ? (" " + leftStr) : "")
+                text: releases.variant.statusString + (releases.variant.status == Units.DownloadStatus.Downloading ? (" " + leftStr) : "")
             }
         
             ProgressBar {
@@ -130,11 +130,11 @@ Page {
     states: [
         State {
             name: "preparing"
-            when: releases.variant.status === Units.Status.Preparing
+            when: releases.variant.status === Units.DownloadStatus.Preparing
         },
         State {
             name: "downloading"
-            when: releases.variant.status === Units.Status.Downloading
+            when: releases.variant.status === Units.DownloadStatus.Downloading
             PropertyChanges {
                 target: messageDownload
                 visible: true
@@ -146,7 +146,7 @@ Page {
         },
         State {
             name: "download_verifying"
-            when: releases.variant.status === Units.Status.Downloading_Verifying
+            when: releases.variant.status === Units.DownloadStatus.Downloading_Verifying
             PropertyChanges {
                 target: messageDownload
                 visible: true
@@ -158,11 +158,11 @@ Page {
         },
         State {
             name: "ready_no_drives"
-            when: releases.variant.status === Units.Status.Ready && drives.length <= 0
+            when: releases.variant.status === Units.DownloadStatus.Ready && drives.length <= 0
         },
         State {
             name: "ready"
-            when: releases.variant.status === Units.Status.Ready && drives.length > 0
+            when: releases.variant.status === Units.DownloadStatus.Ready && drives.length > 0
             PropertyChanges {
                 target: messageLoseData;
                 visible: true
@@ -170,11 +170,11 @@ Page {
         },
         State {
             name: "writing_not_possible"
-            when: releases.variant.status === Units.Status.Writing_Not_Possible
+            when: releases.variant.status === Units.DownloadStatus.Writing_Not_Possible
         },
         State {
             name: "writing"
-            when: releases.variant.status === Units.Status.Writing
+            when: releases.variant.status === Units.DownloadStatus.Writing
             PropertyChanges {
                 target: messageDriveSize
                 enabled: false
@@ -190,7 +190,7 @@ Page {
         },
         State {
             name: "write_verifying"
-            when: releases.variant.status === Units.Status.Write_Verifying
+            when: releases.variant.status === Units.DownloadStatus.Write_Verifying
             PropertyChanges {
                 target: messageDriveSize
                 enabled: false
@@ -206,7 +206,7 @@ Page {
         },
         State {
             name: "finished"
-            when: releases.variant.status === Units.Status.Finished
+            when: releases.variant.status === Units.DownloadStatus.Finished
             PropertyChanges {
                 target: messageDriveSize;
                 enabled: false
@@ -230,14 +230,18 @@ Page {
                         releases.variant.erase()
                 }        
             }
+            StateChangeScript {
+                script: { mainWindow.visibleCancelWindow = !mainWindow.visibleCancelWindow }   
+            }
+            
         },
         State {
             name: "failed_verification_no_drives"
-            when: releases.variant.status === Units.Status.Failed_Verification && drives.length <= 0
+            when: releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length <= 0
         },
         State {
             name: "failed_verification"
-            when: releases.variant.status === Units.Status.Failed_Verification && drives.length > 0
+            when: releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length > 0
             PropertyChanges {
                 target: messageLoseData;
                 visible: true
@@ -245,15 +249,15 @@ Page {
         },
         State {
             name: "failed_download"
-            when: releases.variant.status === Units.Status.Failed_Download
+            when: releases.variant.status === Units.DownloadStatus.Failed_Download
         },
         State {
             name: "failed_no_drives"
-            when: releases.variant.status === Units.Status.Failed && drives.length <= 0
+            when: releases.variant.status === Units.DownloadStatus.Failed && drives.length <= 0
         },
         State {
             name: "failed"
-            when: releases.variant.status === Units.Status.Failed && drives.length > 0
+            when: releases.variant.status === Units.DownloadStatus.Failed && drives.length > 0
             PropertyChanges {
                 target: messageLoseData;
                 visible: true

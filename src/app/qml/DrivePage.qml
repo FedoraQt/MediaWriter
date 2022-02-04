@@ -52,6 +52,7 @@ Page {
         }
         
         ColumnLayout {
+            id: selectFileColumn
             visible: selectedOption == 1
             Heading {
                 text: qsTr("Selected file")
@@ -61,9 +62,12 @@ Page {
                 id: fileCol
                 Label {
                     text: releases.localFile.iso ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : ("<font color=\"gray\">" + qsTr("None") + "</font>")
+                    Layout.preferredWidth: spacing.width
+                    elide: Label.ElideRight
                 }
                 
                 Item {
+                    id: spacing
                     Layout.fillWidth: true
                 }
                 

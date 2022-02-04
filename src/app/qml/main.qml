@@ -69,7 +69,7 @@ ApplicationWindow {
                     stackView.pop()
                     
                     if (selectedPage == Units.Page.DownloadPage) {
-                        if (releases.variant.status != Units.Status.Finished && releases.variant.status != Units.Status.Failed && releases.variant.status != Units.Status.Failed_Verification && releases.variant.status != Units.Status.Failed_Download)
+                        if (releases.variant.status != Units.DownloadStatus.Finished && releases.variant.status != Units.DownloadStatus.Failed && releases.variant.status != Units.DownloadStatus.Failed_Verification && releases.variant.status != Units.DownloadStatus.Failed_Download)
                             visibleCancelWindow = !visibleCancelWindow
                         selectedPage = Units.Page.MainPage
                         releases.variant.resetStatus()
@@ -111,10 +111,10 @@ ApplicationWindow {
                     else if (mainLayout.state == "restorePage")
                         drives.lastRestoreable.restore()  
                     else if (mainLayout.state == "downloadPage") {
-                        if (releases.variant.status === Units.Status.Write_Verifying || releases.variant.status === Units.Status.Writing || releases.variant.status === Units.Status.Downloading)
+                        if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading)
                             visibleCancelWindow = !visibleCancelWindow
                         else {
-                            drives.selected.cancel()
+                            //drives.selected.cancel()
                             releases.variant.resetStatus()
                             downloadManager.cancel()
                             selectedPage = Units.Page.MainPage

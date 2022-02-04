@@ -71,7 +71,7 @@ Page {
             RadioButton {
                 id: restoreRadio
                 visible: drives.lastRestoreable
-                text: qsTr("Restore <b>%1</b>").arg(drives.lastRestoreable.name)
+                text: drives.lastRestoreable ? qsTr("Restore <b>%1</b>").arg(drives.lastRestoreable.name) : ""
                 onClicked: {
                     selectedOption = Units.MainSelect.Restore
                 }

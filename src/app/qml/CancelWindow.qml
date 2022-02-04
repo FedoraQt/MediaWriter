@@ -47,10 +47,10 @@ ApplicationWindow {
         Column {
             Heading {
                 Layout.alignment: Qt.AlignVCenter
-                text: releases.variant.status == Units.Status.Downloading ? qsTr("Downloading is still in progress, do you wish to cancel it?") : qsTr("Do you want to cancel writing?")
-                level: 3
+                text: releases.variant.status == Units.DownloadStatus.Downloading ? qsTr("Downloading is still in progress, do you wish to cancel it?") : qsTr("Do you want to cancel writing?")
                 wrapMode: Label.Wrap
                 width: mainColumn.width
+                horizontalAlignment: Label.AlignHCenter
             }
         }
           
