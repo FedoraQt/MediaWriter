@@ -12,12 +12,13 @@
 # Thomas Eichhorn <tomislav@posteo.de>, 2017. #zanata
 # Thomas Eichhorn <tomislav@posteo.de>, 2019. #zanata
 # Ettore Atalan <atalanttore@googlemail.com>, 2021.
+# Philipp Trulson <philipp@trulson.de>, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 16:44+0200\n"
-"PO-Revision-Date: 2021-11-18 22:16+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2022-02-04 16:16+0000\n"
+"Last-Translator: Philipp Trulson <philipp@trulson.de>\n"
 "Language-Team: German <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/de/>\n"
 "Language: de\n"
@@ -25,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9\n"
+"X-Generator: Weblate 4.10.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/DeleteButton.qml:64
@@ -131,7 +132,7 @@ msgid ""
 "drive by accident!"
 msgstr ""
 "Die Größe des ausgewählten Datenträgers ist %1. Sie haben möglicherweise "
-"unbeabsichtigt ein externes Laufwerk ausgewählt."
+"unbeabsichtigt ein externes Laufwerk ausgewählt!"
 
 #: ../src/app/qml/DownloadDialog.qml:419
 #, qt-format
@@ -201,7 +202,7 @@ msgstr "Zurück"
 #: ../src/app/qml/ImageDetails.qml:105
 msgctxt "ImageDetails|"
 msgid "Create Live USB…"
-msgstr "Erzeuge Live-USB"
+msgstr "Erzeuge Live-USB …"
 
 #. The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
 #: ../src/app/qml/ImageDetails.qml:167
@@ -665,7 +666,7 @@ msgstr "Ihr Speichermedium ist vermutlich beschädigt."
 #: ../src/helper/mac/writejob.cpp:302
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr "Unerwarteter Fehler beim Überprüfen des Mediums aufgetreten"
+msgstr "Unerwarteter Fehler beim Überprüfen des Mediums."
 
 #: ../src/helper/win/writejob.cpp:74
 msgctxt "WriteJob|"
@@ -829,6 +830,10 @@ msgid ""
 "developers, from hobbyists and students to professionals in corporate "
 "environments."
 msgstr ""
+"Fedora Workstation ist ein zuverlässiges, benutzerfreundliches und "
+"leistungsfähiges Betriebssystem für Ihren Laptop oder Desktop. Es wird von "
+"vielen Entwicklern eingesetzt, von Studenten über Laien bis hin zu "
+"Spezialisten in Unternehmensumgebungen."
 
 #: [Workstation].description[1]
 msgctxt "Release|"
@@ -854,6 +859,9 @@ msgid ""
 "developer feedback and minimizes distractions, so you can concentrate on "
 "what's important."
 msgstr ""
+"Mit der GNOME 3 Benutzeroberfläche können Sie sich auf Ihren Code "
+"konzentrieren. GNOME wurde zusammen mit Entwicklern konzipiert und minimiert "
+"Ablenkungen, damit Sie sich auf das Wesentliche konzentrieren können."
 
 #: [Workstation].description[5]
 msgctxt "Release|"
@@ -1145,12 +1153,9 @@ msgid "lxqt"
 msgstr ""
 
 #: [LXQT].category [LXQT].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora LXQt Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora LXQt Desktop"
 
 #: [LXQT].summary
 msgctxt "Release|"
@@ -1210,12 +1215,9 @@ msgid "cinnamon"
 msgstr ""
 
 #: [Cinnamon].category [Cinnamon].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora Cinnamon Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora Cinnamon Desktop"
 
 #: [Cinnamon].summary
 msgctxt "Release|"
@@ -1245,12 +1247,9 @@ msgid "lxde"
 msgstr ""
 
 #: [LXDE].category [LXDE].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora LXDE Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora LXDE Desktop"
 
 #: [LXDE].summary
 msgctxt "Release|"
@@ -1282,12 +1281,9 @@ msgid "soas"
 msgstr ""
 
 #: [SOAS].category [SOAS].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora SoaS Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora SoaS Desktop"
 
 #: [SOAS].summary
 msgctxt "Release|"
@@ -1330,12 +1326,9 @@ msgid "i3"
 msgstr ""
 
 #: [i3].category [i3].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora i3 Desktop"
-msgstr "Fedora Labs"
+msgstr "Fedora i3 Desktop"
 
 #: [i3].summary
 msgctxt "Release|"
@@ -1397,18 +1390,14 @@ msgid ""
 msgstr ""
 
 #: [DesignSuite].subvariant
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "design_suite"
-msgstr "Fedora Media Writer"
+msgstr "design_suite"
 
 #: [DesignSuite].category [DesignSuite].name
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "Fedora Design Suite"
-msgstr "Fedora Media Writer"
+msgstr "Fedora Design Suite"
 
 #: [DesignSuite].summary
 msgctxt "Release|"
@@ -1443,11 +1432,8 @@ msgid "games"
 msgstr ""
 
 #: [Games].category [Games].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgid "Fedora Games"
-msgstr "Fedora Labs"
+msgstr "Fedora Games"
 
 #: [Games].summary
 msgctxt "Release|"
@@ -1514,11 +1500,9 @@ msgid "robotics"
 msgstr ""
 
 #: [Robotics].category [Robotics].name
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "Fedora Robotics Suite"
-msgstr "Fedora Media Writer"
+msgstr "Fedora Robotics Suite"
 
 #: [Robotics].summary
 msgctxt "Release|"
@@ -1550,20 +1534,14 @@ msgid ""
 msgstr ""
 
 #: [Scientific].subvariant
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "scientific"
-msgstr "Fedora Spins"
+msgstr "wissenschaftlich"
 
 #: [Scientific].category [Scientific].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "Fedora Scientific"
-msgstr "Fedora Spins"
+msgstr "Fedora Scientific"
 
 #: [Scientific].summary
 msgctxt "Release|"
@@ -1598,12 +1576,9 @@ msgid "security"
 msgstr ""
 
 #: [Security].category [Security].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora Security Lab"
-msgstr "Fedora Labs"
+msgstr "Fedora Security Lab"
 
 #: [Security].summary
 msgctxt "Release|"
