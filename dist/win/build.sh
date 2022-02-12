@@ -50,8 +50,10 @@ if ! $opt_nosign; then
         CERTPASS="$CERTPATH/authenticode.pass"
     fi
 fi
-    
-PACKAGES="cmake mingw32-filesystem mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols2 mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-libadwaita-qt5 mingw32-qt5-qtwinextras mingw32-qt5-qtsvg mingw32-nsis osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
+
+#mingw32-qt6-qtwinextras
+PACKAGES="cmake mingw32-filesystem mingw32-qt6-qtbase mingw32-qt6-qtdeclarative mingw32-xz-libs mingw32-libadwaita-qt6 mingw32-qt6-qtsvg mingw32-nsis osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
+
 if ! $opt_local; then
     PACKAGES="$PACKAGES mingw32-mediawriter"
 fi
@@ -76,14 +78,25 @@ for i in $PACKAGES; do
 done
 if [ $DEPENDENCIES -ne 0 ]; then exit 1; fi
 
-BINARIES="libstdc++-6.dll libgcc_s_dw2-1.dll libssp-0.dll iconv.dll libwinpthread-1.dll libcrypto-1_1.dll libssl-1_1.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre2-16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll libadwaitaqtpriv-1.dll libadwaitaqt-1.dll Qt5Core.dll Qt5Gui.dll Qt5Network.dll Qt5Qml.dll Qt5QmlModels.dll Qt5Quick.dll Qt5QuickControls2.dll Qt5QuickShapes.dll Qt5QuickTemplates2.dll Qt5QmlWorkerScript.dll Qt5Svg.dll Qt5Widgets.dll Qt5WinExtras.dll"
-PLUGINS="imageformats/qjpeg.dll imageformats/qsvg.dll platforms/qwindows.dll"
-QMLMODULES="Qt QtQml QtQuick/Controls QtQuick/Controls.2 QtQuick/Dialogs QtQuick/Extras QtQuick/Layouts QtQuick/PrivateWidgets QtQuick/Shapes QtQuick/Templates.2 QtQuick/Window.2 QtQuick.2"
+BINARIES="libstdc++-6.dll libgcc_s_dw2-1.dll libssp-0.dll iconv.dll libwinpthread-1.dll libcrypto-1_1.dll libssl-1_1.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre2-16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll libadwaitaqt6priv-1.dll libadwaitaqt6-1.dll Qt6Core.dll Qt6Gui.dll Qt6Network.dll Qt6QmlWorkerScript.dll Qt6Svg.dll Qt6WinExtras.dll"
 
-INSTALL_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_PREFIX)
-BIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_BINS)
-PLUGIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_PLUGINS)
-QML_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_QML)
+# BINARIES="libstdc++-6.dll libgcc_s_dw2-1.dll libssp-0.dll iconv.dll libwinpthread-1.dll libcrypto-1_1.dll libssl-1_1.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre2-16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll libadwaitaqt6priv-1.dll libadwaitaqt6-1.dll Qt6Core.dll Qt6Gui.dll Qt6Network.dll Qt6Widgets.dll Qt6Declarative.dll"
+
+PLUGINS="imageformats/qjpeg.dll imageformats/qsvg.dll platforms/qwindows.dll"
+#PLUGINS="imageformats/qjpeg.dll"
+
+QMLMODULES="Qt QtQml QtQuick/Controls QtQuick/Controls.2 QtQuick/Dialogs QtQuick/Extras QtQuick/Layouts QtQuick/PrivateWidgets QtQuick/Shapes QtQuick/Templates.2 QtQuick/Window.2 QtQuick.2"
+#QMLMODULES="Qt QtQml QtQuick/Controls QtQuick/Controls.2 QtQuick/Dialogs QtQuick/Layouts QtQuick/Shapes"
+
+# INSTALL_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_PREFIX)
+# BIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_BINS)
+# PLUGIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_PLUGINS)
+# QML_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_QML)
+
+INSTALL_PREFIX=$(mingw32-cmake -L | grep CMAKE_INSTALL_PREFIX | cut -d "=" -f2)
+BIN_PREFIX=$(mingw32-cmake -L | grep CMAKE_INSTALL_PREFIX | cut -d "=" -f2)
+PLUGIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_PLUGINS | tr 5 6)
+QML_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_QML | tr 5 6)
 
 export WINEPREFIX="$BUILDPATH/wineprefix"
 export WINEDEBUG="-all"
@@ -123,22 +136,24 @@ if $opt_local; then
 
     # FIXME just a workaround for Adwaita theme not being build and placed to correct location
     # without installation
-    mkdir -p $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
-    mkdir -p $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
-    cp -r ../src/theme/qml/* $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
-    cp -r ../src/theme/qmldir $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
-    cp -r $BUILDPATH/src/theme/adwaitathemeplugin.dll $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
+#     mkdir -p $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
+#     mkdir -p $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
+#     cp -r ../src/theme/qml/* $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
+#     cp -r ../src/theme/qmldir $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
+#     cp -r $BUILDPATH/src/theme/adwaitathemeplugin.dll $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
     cp -r $BUILDPATH/src/app/helper.exe $BUILDPATH/app/release/
     cp -r $BUILDPATH/src/app/mediawriter.exe $BUILDPATH/app/release/
 else
     mkdir -p "app/release"
     echo "=== Getting distribution binary"
-    cp "$BIN_PREFIX/mediawriter.exe" app/release
+    cp "$BIN_PREFIX/bin/mediawriter.exe" app/release
     cp "$INSTALL_PREFIX/libexec/mediawriter/helper.exe" app/release
-    mkdir -p $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
-    mkdir -p $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
-    cp -r $QML_PREFIX/org/fedoraproject/AdwaitaTheme/* $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme/
-    cp -r $QML_PREFIX/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme/* $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme/
+#     mkdir -p $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
+#     mkdir -p $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
+#     cp -r $QML_PREFIX/org/fedoraproject/AdwaitaTheme/* $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme/
+#     cp -r $QML_PREFIX/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme/* $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme/
+#     cp -r /usr/lib64/qt6/qml/org/fedoraproject/AdwaitaTheme/* $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme/
+#     cp -r /usr/lib64/qt6/qml/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme/* $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme/
 fi
 
 pushd "app/release" >/dev/null
@@ -155,13 +170,13 @@ rm -f *.o
 echo "=== Copying dlls"
 for i in $BINARIES; do
     mkdir -p $(dirname $i)
-    cp -r "${BIN_PREFIX}/${i}" "$(dirname $i)"
+    cp -r "${BIN_PREFIX}/bin/${i}" "$(dirname $i)"
 done
 
 if $opt_debug; then
     for i in $BINARIES; do
         mkdir -p $(dirname $i)
-        cp -r "${BIN_PREFIX}/${i}.debug" "$(dirname $i)"
+        cp -r "${BIN_PREFIX}/bin/${i}.debug" "$(dirname $i)"
     done
 fi
 
@@ -174,7 +189,9 @@ done
 echo "=== Copying QML modules"
 for i in $QMLMODULES; do
     mkdir -p $(dirname $i)
-    cp -r "${QML_PREFIX}/${i}" "$(dirname $i)"
+#     cp -r "${QML_PREFIX}/${i}" "$(dirname $i)"
+    cp -r "/usr/lib64/qt6/qml/${i}" "$(dirname $i)"
+    
 done
 
 #echo "=== Compressing binaries"
