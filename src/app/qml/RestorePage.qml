@@ -7,11 +7,7 @@
  * as published by the Free Software Foundation; either version 2
  * of the License, or (at your option) any later version.
  *
- * This program is 
- *
- *
- *
- * in the hope that it will be useful,
+ * This program is in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -30,25 +26,27 @@ import QtQuick.Dialogs 6.2
 
 Page {  
     id: restorePage
+    property QtObject lastRestoreable
+    
     ColumnLayout {
         id: mainColumn
         anchors.fill: parent
         spacing: units.gridUnit
         
         Column {
-            Heading {
+            Label {
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                text: qsTr("Restore Drive <b>%1</b>").arg(drives.lastRestoreable.name)//drives.lastRestoreable ? drives.lastRestoreable.name : "<font color=\"gray\">" + qsTr("None") + "</font>") 
+                text: qsTr("Restore Drive <b>%1</b>").arg(drives.lastRestoreable.name)
                 wrapMode: Label.Wrap
                 width: mainColumn.width
                 horizontalAlignment: Label.AlignHCenter
-                level: 5
             }
         }
         
         Column {
             Label {
-                visible: drives.lastRestoreable && drives.lastRestoreable.restoreStatus == Units.RestoreStatus.Contains_Live
+                id: warningText
+                visible: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Contains_Live
                 Layout.alignment: Qt.AlignHCenter
                 text: qsTr("<p align=\"justify\"> To reclaim all space available on the drive, it has to be restored to its factory settings. The live system and all saved data will be deleted. </p> <p align=\"justify\"> You don't need to restore the drive if you want to write another live system to it. 
                 </p> <p align=\"justify\"> Do you want to restore it to factory settings? </p>" )
@@ -60,7 +58,7 @@ Page {
             
             ColumnLayout {
                 id: progress
-                visible: drives.lastRestoreable.restoreStatus == Units.RestoreStatus.Restoring
+                visible: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restoring
                 
                 Label {
                     Layout.alignment: Qt.AlignHCenter
@@ -72,13 +70,13 @@ Page {
                 ProgressBar {
                     id: progressIndicator
                     width: units.gridUnit * 14
-                    Layout.alignment: Qt.AlignHCenter
+                    Layout.alignment: Qt.AlignHCenter   
                     indeterminate: true
                 }
             }
             
             Label {
-                visible: drives.lastRestoreable.restoreStatus == Units.RestoreStatus.Restored
+                visible: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored
                 Layout.alignment: Qt.AlignHCenter
                 horizontalAlignment: Text.AlignHCenter
                 text: qsTr("Your drive was successfully restored!")
@@ -87,7 +85,7 @@ Page {
             }
             
             Label {
-                visible: drives.lastRestoreable.restoreStatus == Units.RestoreStatus.Restore_Error
+                visible: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restore_Error
                 Layout.alignment: Qt.AlignHCenter
                 horizontalAlignment: Text.AlignHCenter
                 text: qsTr("Unfortunately, an error occurred during the process. Please try restoring the drive using your system tools.")
@@ -102,5 +100,9 @@ Page {
         function onLastRestoreableChanged() {
             mainWindow.enNextButton = drives.lastRestoreable ? true : false
         }
+    }
+    
+    Component.onCompleted: {
+        lastRestoreable = drives.lastRestoreable
     }
 }

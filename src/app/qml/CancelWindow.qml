@@ -26,13 +26,13 @@ import QtQml 6.2
 ApplicationWindow {
     id: cancelWindow
     visible: mainWindow.visibleCancelWindow
-    minimumWidth: mainWindow.width / 2 + units.gridUnit * 6
-    minimumHeight: mainWindow.height / 2
+    minimumWidth: mainWindow.width / 2 + units.gridUnit * 10
+    minimumHeight: mainWindow.height / 3
     modality: Qt.ApplicationModal
     
     Component.onCompleted: {
-        width = mainWindow.minimumWidth / 2 + units.gridUnit * 6
-        height = mainWindow.minimumHeight / 2
+        width = mainWindow.minimumWidth / 2 + units.gridUnit * 10
+        height = mainWindow.minimumHeight / 3
     }
     
     ColumnLayout {
@@ -45,13 +45,23 @@ ApplicationWindow {
         spacing: units.gridUnit
            
         Column {
-            Heading {
+            spacing: units.gridUnit
+            
+            Label {
                 Layout.alignment: Qt.AlignVCenter
                 text: releases.variant.status == Units.DownloadStatus.Downloading ? qsTr("Downloading is still in progress, do you wish to cancel it?") : qsTr("Do you want to cancel writing?")
                 wrapMode: Label.Wrap
                 width: mainColumn.width
                 horizontalAlignment: Label.AlignHCenter
             }
+            
+            //Label {
+                //Layout.alignment: Qt.AlignVCenter
+                //text: releases.variant.status == Units.DownloadStatus.Writing ? qsTr("random text?") : qsTr("other random text")
+                //wrapMode: Label.Wrap
+                //width: mainColumn.width
+                //horizontalAlignment: Label.AlignHCenter
+            //}
         }
           
         RowLayout {
