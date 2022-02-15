@@ -42,10 +42,13 @@
                     "branch": "qt6"
                 },
                 {
+                    "type": "patch",
+                    "path": "fmw-paths.patch"
+                },
+                {
                     "type": "shell",
                     "commands": [
-                        "rm -rf app/data/icons/hicolor/1024x1024",
-                        "sed -i 's@\${QT6_INSTALL_QML}@/app/lib/qt6/qml@' src/theme/CMakeLists.txt"
+                        "rm -rf app/data/icons/hicolor/1024x1024"
                     ]
                  }
             ]
