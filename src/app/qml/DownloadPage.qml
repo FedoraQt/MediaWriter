@@ -153,7 +153,7 @@ Page {
             }
             PropertyChanges {
                 target: progressBar;
-                value: releases.variant.progress.ratio;
+                value: releases.variant.progress.ratio
             }
         },
         State {
@@ -187,6 +187,10 @@ Page {
                 target: progressBar;
                 value: drives.selected.progress.ratio;
             }
+            PropertyChanges {
+                target: mainWindow;
+                title: qsTr("Writing")
+            }
         },
         State {
             name: "write_verifying"
@@ -203,6 +207,10 @@ Page {
                 target: progressBar;
                 value: drives.selected.progress.ratio;
             }
+            PropertyChanges {
+                target: mainWindow;
+                title: qsTr("Write verifying")
+            }
         },
         State {
             name: "finished"
@@ -217,21 +225,28 @@ Page {
             }
             PropertyChanges {
                 target: prevButton;
-                text: qsTr("Back");
+                text: qsTr("Finish");
                 visible: true
             }
             PropertyChanges {
                 target: nextButton;
                 visible: false
             }
-            StateChangeScript {
-                script: {
-                    if (mainWindow.eraseVariant)
-                        releases.variant.erase()
-                }        
+            PropertyChanges {
+                target: progressBar;
+                value: 100;
+            }
+            PropertyChanges {
+                target: mainWindow;
+                title: mainWindow.selectedOption == 1 ? qsTr("Writing finished") : qsTr("Downloading finished")
             }
             StateChangeScript {
-                script: { mainWindow.visibleCancelWindow = !mainWindow.visibleCancelWindow }   
+                script: { 
+                    if (mainWindow.visibleCancelWindow)
+                        mainWindow.visibleCancelWindow = !mainWindow.visibleCancelWindow
+                    if (mainWindow.eraseVariant)
+                        releases.variant.erase()
+                }   
             }
             
         },

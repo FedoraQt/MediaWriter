@@ -26,12 +26,12 @@ import QtQml 6.2
 ApplicationWindow {
     id: cancelWindow
     visible: mainWindow.visibleCancelWindow
-    minimumWidth: mainWindow.width / 2 + units.gridUnit * 10
+    minimumWidth: mainWindow.width / 2 + units.gridUnit * 5
     minimumHeight: mainWindow.height / 3
     modality: Qt.ApplicationModal
     
     Component.onCompleted: {
-        width = mainWindow.minimumWidth / 2 + units.gridUnit * 10
+        width = mainWindow.minimumWidth / 2 + units.gridUnit * 5
         height = mainWindow.minimumHeight / 3
     }
     
@@ -82,7 +82,7 @@ ApplicationWindow {
                 onClicked: {
                     mainWindow.visibleCancelWindow = !mainWindow.visibleCancelWindow
                     //TODO is correct to unselect drive?
-                    //drives.selected.cancel()
+                    drives.selected.cancel()
                     releases.variant.resetStatus()
                     downloadManager.cancel()
                     mainWindow.selectedPage = Units.Page.MainPage

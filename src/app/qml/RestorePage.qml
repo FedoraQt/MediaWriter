@@ -46,7 +46,7 @@ Page {
         Column {
             Label {
                 id: warningText
-                visible: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Contains_Live
+                visible: false
                 Layout.alignment: Qt.AlignHCenter
                 text: qsTr("<p align=\"justify\"> To reclaim all space available on the drive, it has to be restored to its factory settings. The live system and all saved data will be deleted. </p> <p align=\"justify\"> You don't need to restore the drive if you want to write another live system to it. 
                 </p> <p align=\"justify\"> Do you want to restore it to factory settings? </p>" )
@@ -58,7 +58,7 @@ Page {
             
             ColumnLayout {
                 id: progress
-                visible: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restoring
+                visible: false
                 
                 Label {
                     Layout.alignment: Qt.AlignHCenter
@@ -76,7 +76,8 @@ Page {
             }
             
             Label {
-                visible: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored
+                id: restoredText
+                visible: false
                 Layout.alignment: Qt.AlignHCenter
                 horizontalAlignment: Text.AlignHCenter
                 text: qsTr("Your drive was successfully restored!")
@@ -85,7 +86,8 @@ Page {
             }
             
             Label {
-                visible: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restore_Error
+                id: errorText
+                visible: false
                 Layout.alignment: Qt.AlignHCenter
                 horizontalAlignment: Text.AlignHCenter
                 text: qsTr("Unfortunately, an error occurred during the process. Please try restoring the drive using your system tools.")
@@ -105,4 +107,67 @@ Page {
     Component.onCompleted: {
         lastRestoreable = drives.lastRestoreable
     }
+    
+    states: [
+        State {
+            name: "contains_live"
+            when: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Contains_Live
+            PropertyChanges {
+                target: warningText;
+                visible: true
+            }
+        },
+        State {
+            name: "restoring"
+            when: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restoring
+            PropertyChanges {
+                target: progress;
+                visible: true
+            }
+            PropertyChanges {
+                target: prevButton;
+                enabled: false
+            }
+        },
+        State {
+            name: "restored"
+            when: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored
+            PropertyChanges {
+                target: mainWindow;
+                title: qsTr("Restoring finished")
+            }
+            PropertyChanges {
+                target: restoredText;
+                visible: true
+            }
+            PropertyChanges {
+                target: prevButton;
+                text: qsTr("Finish")
+            }
+            PropertyChanges {
+                target: prevButton;
+                enabled: true
+            }
+        },
+        State {
+            name: "restore_error"
+            when: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restore_Error
+            PropertyChanges {
+                target: errorText;
+                visible: true
+            }
+            PropertyChanges {
+                target: prevButton;
+                enabled: true
+            }
+        },
+        State {
+            name: "Clean"
+            when: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Clean
+            PropertyChanges {
+                target: prevButton;
+                enabled: true
+            }
+        }
+    ]
 }
