@@ -33,7 +33,6 @@ ApplicationWindow {
     property int selectedVersion: Units.Source.Product
     property int selectedOption: Units.MainSelect.Download
     
-    property bool enNextButton: true
     property bool visibleCancelWindow: false
     property bool visibleAboutWindow: false
     property bool eraseVariant: false

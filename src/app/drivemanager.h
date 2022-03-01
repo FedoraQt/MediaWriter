@@ -51,7 +51,7 @@ class DriveManager : public QAbstractListModel
     Q_PROPERTY(bool isBroken READ isBackendBroken NOTIFY isBackendBrokenChanged)
     Q_PROPERTY(QString errorString READ errorString NOTIFY isBackendBrokenChanged)
 
-    Q_PROPERTY(Drive* lastRestoreable READ lastRestoreable NOTIFY restoreableDriveChanged)
+    Q_PROPERTY(Drive* lastRestoreable READ lastRestoreable WRITE setLastRestoreable NOTIFY restoreableDriveChanged)
 public:
     static DriveManager *instance();
 
@@ -71,7 +71,6 @@ public:
     bool isBackendBroken();
     QString errorString();
 
-protected:
     void setLastRestoreable(Drive *d);
 
 private slots:

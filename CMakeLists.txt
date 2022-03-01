@@ -1,6 +1,7 @@
 project(MediaWriter)
 
-cmake_minimum_required(VERSION 3.17)
+#cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.21)
 
 set(MEDIAWRITER_MAJOR_VERSION "5")
 set(MEDIAWRITER_MINOR_VERSION "0")
@@ -37,6 +38,8 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Network Qml Qui
 
 find_package(AdwaitaQt6 "1.4.1" REQUIRED)
 
+#qt_import_plugins(MediaWriter QWindowsIntegrationPlugin QMacIntegrationPlugin)
+    
 add_subdirectory(src)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

@@ -51,7 +51,7 @@ endif()
 if (WIN32)
     # HACK: we need to remove -std=c++11 definition for manifest file, otherwise
     # it will complain about undefined option "s" (as first letter from -Std=c++11)
-    remove_definitions(-std=c++17)
+    remove_definitions(-std=c++11)
     target_sources(mediawriter PRIVATE data/windows.rc)
 endif()
 

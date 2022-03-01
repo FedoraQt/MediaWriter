@@ -32,6 +32,7 @@
 #include <windows.h>
 
 #include <lzma.h>
+#include <qt6/QtCore/qregularexpression.h>
 
 #include "isomd5/libcheckisomd5.h"
 
@@ -229,8 +230,8 @@ void WriteJob::work() {
 void WriteJob::onFileChanged(const QString &path) {
     if (QFile::exists(path))
         return;
-
-    what = what.replace(QRegExp("[.]part$"), "");
+    QRegularExpression reg("[.]part$");
+    what = what.replace(reg, "");
 
     out << "WRITE\n";
     out.flush();
