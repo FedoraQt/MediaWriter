@@ -1,6 +1,6 @@
 /*
  * Fedora Media Writer
- * Copyright (C) 2021 Evžen Gasta <evzen.ml@seznam.cz>
+ * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License

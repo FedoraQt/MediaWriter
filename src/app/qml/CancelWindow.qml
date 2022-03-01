@@ -1,6 +1,6 @@
 /*
  * Fedora Media Writer
- * Copyright (C) 2021 Evžen Gasta <evzen.ml@seznam.cz>
+ * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -26,14 +26,14 @@ import QtQml 6.2
 ApplicationWindow {
     id: cancelWindow
     visible: mainWindow.visibleCancelWindow
-    minimumWidth: mainWindow.width / 2 + units.gridUnit * 5
-    minimumHeight: mainWindow.height / 3
+    width: mainWindow.width / 2 + units.gridUnit * 5
+    height: mainWindow.height / 3
     modality: Qt.ApplicationModal
     
-    Component.onCompleted: {
-        width = mainWindow.minimumWidth / 2 + units.gridUnit * 5
-        height = mainWindow.minimumHeight / 3
-    }
+    //Component.onCompleted: {
+        //width = mainWindow.minimumWidth / 2 + units.gridUnit * 5
+        //height = mainWindow.minimumHeight / 3
+    //}
     
     ColumnLayout {
         id: mainColumn

@@ -25,14 +25,13 @@
 #include <QProcess>
 #include <QFile>
 #include <QThread>
-
+#include <QRegularExpression>
 #include <QDebug>
 
 #include <io.h>
 #include <windows.h>
 
 #include <lzma.h>
-#include <qt6/QtCore/qregularexpression.h>
 
 #include "isomd5/libcheckisomd5.h"
 

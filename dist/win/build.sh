@@ -15,7 +15,7 @@
 opt_local=false
 opt_install=false
 opt_debug=false
-opt_nosign=true
+opt_nosign=false
 
 while test $# -gt 0
 do
