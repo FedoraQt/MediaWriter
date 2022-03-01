@@ -54,14 +54,6 @@ ApplicationWindow {
                 width: mainColumn.width
                 horizontalAlignment: Label.AlignHCenter
             }
-            
-            //Label {
-                //Layout.alignment: Qt.AlignVCenter
-                //text: releases.variant.status == Units.DownloadStatus.Writing ? qsTr("random text?") : qsTr("other random text")
-                //wrapMode: Label.Wrap
-                //width: mainColumn.width
-                //horizontalAlignment: Label.AlignHCenter
-            //}
         }
           
         RowLayout {

@@ -246,6 +246,8 @@ Page {
                         mainWindow.visibleCancelWindow = !mainWindow.visibleCancelWindow
                     if (mainWindow.eraseVariant)
                         releases.variant.erase()
+                    else
+                        releases.variant
                 }   
             }
             

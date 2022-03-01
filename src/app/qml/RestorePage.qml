@@ -22,7 +22,6 @@ import QtQuick.Controls 6.2
 import QtQuick.Window 6.2
 import QtQuick.Layouts 6.2
 import QtQml 6.2
-import QtQuick.Dialogs 6.2
 
 Page {  
     id: restorePage
@@ -100,7 +99,8 @@ Page {
     Connections {
         target: drives
         function onLastRestoreableChanged() {
-            mainWindow.enNextButton = drives.lastRestoreable ? true : false
+            if (!drives.selected)
+                mainWindow.selectedPage = Units.Page.MainPage 
         }
     }
     
@@ -128,6 +128,10 @@ Page {
                 target: prevButton;
                 enabled: false
             }
+            PropertyChanges {
+                target: nextButton;
+                enabled: false
+            }
         },
         State {
             name: "restored"
@@ -143,10 +147,14 @@ Page {
             PropertyChanges {
                 target: prevButton;
                 text: qsTr("Finish")
+                enabled: true
             }
             PropertyChanges {
-                target: prevButton;
-                enabled: true
+                target: nextButton;
+                enabled: false
+            }
+            StateChangeScript {
+                script: { drives.lastRestoreable = null }
             }
         },
         State {

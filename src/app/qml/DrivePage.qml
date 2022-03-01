@@ -141,15 +141,15 @@ Page {
     
     states: [
         State {
-            name: "ISONotSelected"
+            name: "Downloading"
             when: !selectedOption == 1
-            PropertyChanges { target: mainWindow; enNextButton: driveCombo.enabled && hwArchCombo.currentIndex + 1 }
+            PropertyChanges { target: nextButton; enabled: driveCombo.enabled && hwArchCombo.currentIndex + 1 }
             StateChangeScript { script: releases.setSelectedVariantIndex = 0 }
         },
         State {
-            name: "ISOSelected"
+            name: "WritingISO"
             when: selectedOption == 1
-            PropertyChanges { target: mainWindow; enNextButton: driveCombo.enabled && releases.localFile.iso }
+            PropertyChanges { target: nextButton; enabled: driveCombo.enabled && releases.localFile.iso }
         }
     ]
 }

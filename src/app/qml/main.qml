@@ -73,7 +73,7 @@ ApplicationWindow {
             
             Button {
                 id: nextButton
-                enabled: mainLayout.state != "drivePage" && mainLayout.state != "restorePage"? true : enNextButton
+                enabled: mainLayout.state != "drivePage" 
                 text: getNextButtonText()
             }
         }
@@ -82,17 +82,27 @@ ApplicationWindow {
             State {
                 name: "mainPage"
                 when: selectedPage == Units.Page.MainPage
-                PropertyChanges { target: mainWindow; title: qsTr("Fedora Media Writer") }
+                PropertyChanges { 
+                    target: mainWindow
+                    title: qsTr("Fedora Media Writer") 
+                }
                 //When comming back from restore page, after successfull restoring a USB drive
-                PropertyChanges { target: prevButton; text: qsTr("About"); onClicked: visibleAboutWindow = !visibleAboutWindow }
-                PropertyChanges { target: nextButton; 
+                PropertyChanges { 
+                    target: prevButton
+                    text: getPrevButtonText()
+                    onClicked: visibleAboutWindow = !visibleAboutWindow 
+                }
+                PropertyChanges { 
+                    target: nextButton
+                    enabled: true
                     onClicked: {
                         if (selectedOption == Units.MainSelect.Write)
                             selectedPage = Units.Page.DrivePage 
                         else if (selectedOption == Units.MainSelect.Restore)
                             selectedPage = Units.Page.RestorePage
                         else
-                            selectedPage = Units.Page.VersionPage }
+                            selectedPage = Units.Page.VersionPage 
+                    }
                 }
                 StateChangeScript {
                     script: {
@@ -108,7 +118,7 @@ ApplicationWindow {
                 name: "versionPage"
                 when: selectedPage == Units.Page.VersionPage
                 PropertyChanges { target: mainWindow; title: qsTr("Select Fedora Version") }
-                PropertyChanges { target: nextButton; onClicked: selectedPage += 1 } 
+                PropertyChanges { target: nextButton; enabled: true; onClicked: selectedPage += 1 } 
                 PropertyChanges { target: prevButton; onClicked: selectedPage -= 1 }
                 StateChangeScript {
                     script: {
@@ -121,9 +131,13 @@ ApplicationWindow {
             State {
                 name: "drivePage"
                 when: selectedPage == Units.Page.DrivePage
-                PropertyChanges { target: mainWindow; title: qsTr("Select drive") }
+                PropertyChanges { 
+                    target: mainWindow
+                    title: qsTr("Select drive") 
+                }
                 PropertyChanges {
                     target: nextButton;
+                    enabled: true
                     onClicked: {
                         selectedPage = Units.Page.DownloadPage 
                         if (selectedOption != Units.MainSelect.Write) 
@@ -133,7 +147,7 @@ ApplicationWindow {
                     }
                 }
                 PropertyChanges {
-                    target: prevButton;
+                    target: prevButton
                     onClicked: {
                         if (selectedOption == Units.MainSelect.Write)
                             selectedPage = Units.Page.MainPage
@@ -143,21 +157,27 @@ ApplicationWindow {
                         }
                     }
                 }
-                StateChangeScript { script: stackView.push("DrivePage.qml") }
+                StateChangeScript { 
+                    script: { stackView.push("DrivePage.qml") }
+                }
             },
             State {
                 name: "downloadPage"
                 when: selectedPage == Units.Page.DownloadPage
-                PropertyChanges { target: mainWindow; title: qsTr("Downloading") }
+                PropertyChanges {  
+                    target: mainWindow
+                    title: qsTr("Downloading") 
+                }
                 StateChangeScript {
-                    script: stackView.push("DownloadPage.qml")
+                    script: { stackView.push("DownloadPage.qml") }
                 }
                 PropertyChanges {
                     target: prevButton;
                     onClicked: {
                         if (releases.variant.status != Units.DownloadStatus.Finished && releases.variant.status != Units.DownloadStatus.Failed && releases.variant.status != Units.DownloadStatus.Failed_Verification && releases.variant.status != Units.DownloadStatus.Failed_Download)
                             visibleCancelWindow = !visibleCancelWindow
-                        drives.selected.cancel()
+                        drives.lastRestoreable = drives.selected
+                        drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
                         releases.variant.resetStatus()
                         downloadManager.cancel()
                         selectedPage = Units.Page.MainPage
@@ -165,6 +185,7 @@ ApplicationWindow {
                 }
                 PropertyChanges {
                     target: nextButton;
+                    enabled: true
                     onClicked: {
                         if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading)
                             visibleCancelWindow = !visibleCancelWindow
@@ -179,16 +200,22 @@ ApplicationWindow {
             State {
                 name: "restorePage"
                 when: selectedPage == Units.Page.RestorePage
-                PropertyChanges { target: mainWindow; title: qsTr("Restore") }
+                PropertyChanges { 
+                    target: mainWindow
+                    title: qsTr("Restore") 
+                }
                 PropertyChanges {
                     target: nextButton
+                    enabled: true
                     onClicked: drives.lastRestoreable.restore() 
                 }
                 PropertyChanges {
                     target: prevButton
                     onClicked: selectedPage = Units.Page.MainPage 
                 }
-                StateChangeScript { script: stackView.push("RestorePage.qml") }
+                StateChangeScript { 
+                    script: { stackView.push("RestorePage.qml") }
+                }
             }
         ]
     }
