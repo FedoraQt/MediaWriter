@@ -24,16 +24,11 @@ import QtQuick.Layouts 6.2
 import QtQml 6.2
 
 ApplicationWindow {
-    id: cancelWindow
-    visible: mainWindow.visibleCancelWindow
-    width: mainWindow.width / 2 + units.gridUnit * 5
+    id: cancelDialog
+    visible: mainWindow.visibleCancelDialog
+    width: mainWindow.width / 2 //+ units.gridUnit * 5
     height: mainWindow.height / 3
     modality: Qt.ApplicationModal
-    
-    //Component.onCompleted: {
-        //width = mainWindow.minimumWidth / 2 + units.gridUnit * 5
-        //height = mainWindow.minimumHeight / 3
-    //}
     
     ColumnLayout {
         id: mainColumn
@@ -65,14 +60,14 @@ ApplicationWindow {
             
             Button {
                 id: continueButton
-                onClicked: mainWindow.visibleCancelWindow = !mainWindow.visibleCancelWindow
+                onClicked: mainWindow.visibleCancelDialog = !mainWindow.visibleCancelDialog
                 text: qsTr("Cancel")
             }
             
             Button {
                 id: cancelButton
                 onClicked: {
-                    mainWindow.visibleCancelWindow = !mainWindow.visibleCancelWindow
+                    mainWindow.visibleCancelDialog = !mainWindow.visibleCancelDialog
                     //TODO is correct to unselect drive?
                     drives.selected.cancel()
                     releases.variant.resetStatus()

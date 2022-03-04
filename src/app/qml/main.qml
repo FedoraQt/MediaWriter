@@ -33,8 +33,8 @@ ApplicationWindow {
     property int selectedVersion: Units.Source.Product
     property int selectedOption: Units.MainSelect.Download
     
-    property bool visibleCancelWindow: false
-    property bool visibleAboutWindow: false
+    property bool visibleCancelDialog: false
+    property bool visibleAboutDialog: false
     property bool eraseVariant: false
     
     ColumnLayout {
@@ -89,7 +89,7 @@ ApplicationWindow {
                 PropertyChanges { 
                     target: prevButton
                     text: getPrevButtonText()
-                    onClicked: visibleAboutWindow = !visibleAboutWindow 
+                    onClicked: visibleAboutDialog = !visibleAboutDialog 
                 }
                 PropertyChanges { 
                     target: nextButton
@@ -174,7 +174,7 @@ ApplicationWindow {
                     target: prevButton;
                     onClicked: {
                         if (releases.variant.status != Units.DownloadStatus.Finished && releases.variant.status != Units.DownloadStatus.Failed && releases.variant.status != Units.DownloadStatus.Failed_Verification && releases.variant.status != Units.DownloadStatus.Failed_Download)
-                            visibleCancelWindow = !visibleCancelWindow
+                            visibleCancelDialog = !visibleCancelDialog
                         drives.lastRestoreable = drives.selected
                         drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
                         releases.variant.resetStatus()
@@ -187,7 +187,7 @@ ApplicationWindow {
                     enabled: true
                     onClicked: {
                         if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading)
-                            visibleCancelWindow = !visibleCancelWindow
+                            visibleCancelDialog = !visibleCancelDialog
                         else {
                             releases.variant.resetStatus()
                             downloadManager.cancel()
