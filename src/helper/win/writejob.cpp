@@ -25,7 +25,7 @@
 #include <QProcess>
 #include <QFile>
 #include <QThread>
-
+#include <QRegularExpression>
 #include <QDebug>
 
 #include <io.h>
@@ -229,8 +229,8 @@ void WriteJob::work() {
 void WriteJob::onFileChanged(const QString &path) {
     if (QFile::exists(path))
         return;
-
-    what = what.replace(QRegExp("[.]part$"), "");
+    QRegularExpression reg("[.]part$");
+    what = what.replace(reg, "");
 
     out << "WRITE\n";
     out.flush();

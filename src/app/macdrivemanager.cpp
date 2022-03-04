@@ -173,7 +173,7 @@ void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
 
     if (exitCode != 0) {
         QString output = m_child->readAllStandardError();
-        QRegExp re("^.+:.+: ");
+        QRegularExpression re("^.+:.+: ");
         QStringList lines = output.split('\n');
         if (lines.length() > 0) {
             QString line = lines.first().replace(re, "");

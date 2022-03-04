@@ -18,11 +18,13 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Shapes 1.12
-import QtQuick.Templates 2.12 as T
-import org.fedoraproject.AdwaitaTheme 2.0
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Controls.impl
+import QtQuick.Layouts 
+import QtQuick.Shapes 
+import QtQuick.Templates as T
+import org.fedoraproject.AdwaitaTheme 
 import "private" as Private
 
 T.MenuItem {

@@ -37,7 +37,9 @@
 #include "units.h"
 #include "versionchecker.h"
 
-#include <AdwaitaQt/adwaitacolors.h>
+#if (defined(__linux))
+#include <AdwaitaQt6/adwaitacolors.h>
+#endif
 
 #ifdef QT_STATIC
 Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
@@ -54,7 +56,7 @@ Q_IMPORT_PLUGIN(QmlSettingsPlugin);
 
 int main(int argc, char **argv)
 {
-    MessageHandler::install();
+    //MessageHandler::install();
     CrashHandler::install();
 
 #ifdef __linux
@@ -71,26 +73,24 @@ int main(int argc, char **argv)
     QApplication::setOrganizationDomain("fedoraproject.org");
     QApplication::setOrganizationName("fedoraproject.org");
     QApplication::setApplicationName("MediaWriter");
-
-#ifdef __linux
-    // qt x11 scaling is broken
-    if (QGuiApplication::platformName() == QStringLiteral("xcb"))
+    
+#if (defined(__linux))
+    QQuickStyle::setStyle("QtQuick.Controls.org.fedoraproject.AdwaitaTheme");
 #endif
-        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
-    QQuickStyle::setStyle("org.fedoraproject.AdwaitaTheme");
-    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    
     QApplication app(argc, argv);
     options.parse(app.arguments());
 
     mDebug() << "Application constructed";
 
     QTranslator translator;
-    translator.load(QLocale(QLocale().language(), QLocale().country()), QString(), QString(), ":/translations");
-    app.installTranslator(&translator);
-
+    if (translator.load(QLocale(QLocale().language(), QLocale().country()), QLatin1String(), QLatin1String(), ":/translations"))
+        app.installTranslator(&translator);
+    
+#if (defined(__linux))        
     QPalette adwaitaPalette = Adwaita::Colors::palette();
     QGuiApplication::setPalette(adwaitaPalette);
+#endif
     QGuiApplication::setDesktopFileName("org.fedoraproject.MediaWriter.desktop");
 
     mDebug() << "Injecting QML context properties";

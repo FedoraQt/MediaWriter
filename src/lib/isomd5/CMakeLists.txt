@@ -1,6 +1,6 @@
 
 # This is not valid for C files
-remove_definitions(-std=c++11)
+remove_definitions(-std=c++17)
 
 set(ISOMD5_SRCS
     libcheckisomd5.c

@@ -1,6 +1,6 @@
 /*
  * Fedora Media Writer
- * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+ * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,188 +17,226 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Window 2.12
-import QtQuick.Dialogs 1.3
-import QtQuick.Layouts 1.12
-import QtQml 2.12
+import QtQuick 6.2
+import QtQuick.Controls 6.2
+import QtQuick.Window 6.2
+import QtQuick.Layouts 6.2
+import QtQml 6.2
 
 ApplicationWindow {
     id: mainWindow
     visible: true
-    minimumWidth: 800
+    minimumWidth: 640
     minimumHeight: 480
-    title: "Fedora Media Writer"
-
-    SystemPalette {
-        id: palette
-        // we have to make this color ourselves because Qt doesn't report them correctly with Mac dark mode
-        property color background: Qt.lighter(palette.window, 1.2)
-    }
-
-    SystemPalette {
-        id: disabledPalette
-        colorGroup: SystemPalette.Disabled
-    }
-
-    Component.onCompleted: {
-        width = 800
-        height = 480
-    }
-
-    function mixColors(color1, color2, ratio) {
-        return Qt.rgba(color1.r * ratio + color2.r * (1.0 - ratio),
-                       color1.g * ratio + color2.g * (1.0 - ratio),
-                       color1.b * ratio + color2.b * (1.0 - ratio),
-                       color1.a * ratio + color2.a * (1.0 - ratio))
-    }
-
-    property bool canGoBack: false
-    property real margin: 64 + (width - 800) / 4
-    property real potentialMargin: 64 + (Screen.width - 800) / 4
-
-    AdwaitaNotificationBar {
-        id: deviceNotification
-        text: open ? qsTr("You inserted <b>%1</b> that already contains a live system.<br>Do you want to restore it to factory settings?").arg(drives.lastRestoreable.name) : ""
-        open: drives.lastRestoreable
-        acceptText: qsTr("Restore")
-        property var disk: null
-        z: 1
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: parent.top
+    
+    property int selectedPage: Units.Page.MainPage
+    property int selectedVersion: Units.Source.Product
+    property int selectedOption: Units.MainSelect.Download
+    
+    property bool visibleCancelWindow: false
+    property bool visibleAboutWindow: false
+    property bool eraseVariant: false
+    
+    ColumnLayout {
+        id: mainLayout
+        anchors.fill: parent
+        
+        anchors.leftMargin: units.gridUnit * 3
+        anchors.rightMargin: units.gridUnit * 3
+        anchors.topMargin: units.gridUnit * 2
+        anchors.bottomMargin: units.gridUnit * 2
+    
+        StackView {
+            id: stackView
+            initialItem: "MainPage.qml"
+            
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.leftMargin: parent.width / 8
+            Layout.rightMargin: parent.width / 8
+            Layout.bottomMargin: units.gridUnit * 2
         }
-        onAccepted: restoreDialog.visible = true
-
-        Connections {
-            target: drives
-            function onLastRestoreableChanged() {
-                if (drives.lastRestoreable != null && !dlDialog.visible)
-                    deviceNotification.open = true
-                if (!drives.lastRestoreable)
-                    deviceNotification.open = false
+        
+        RowLayout {
+            Layout.alignment: Qt.AlignBottom
+            
+            Button {
+                id: prevButton
+                visible: selectedPage != Units.Page.DownloadPage
+                text: getPrevButtonText()
+            }
+        
+            Item {
+                Layout.fillWidth: true
+            }
+            
+            Button {
+                id: nextButton
+                enabled: mainLayout.state != "drivePage" 
+                text: getNextButtonText()
             }
         }
-    }
-
-    Rectangle {
-        id: mainWindowContainer
-        anchors {
-            top: deviceNotification.bottom
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-
-        color: palette.window
-        //radius: 8
-        clip: true
-
-        ListView {
-            id: contentList
-            anchors{
-                top: parent.top
-                bottom: parent.bottom
-                left: parent.left
-                right: parent.right
-            }
-            model: ["ImageList.qml", "ImageDetails.qml"]
-            orientation: ListView.Horizontal
-            snapMode: ListView.SnapToItem
-            highlightFollowsCurrentItem: true
-            highlightRangeMode: ListView.StrictlyEnforceRange
-            interactive: false
-            highlightMoveVelocity: 3 * contentList.width
-            highlightResizeDuration: 0
-            cacheBuffer: 2*width
-            delegate: Item {
-                id: contentComponent
-                width: contentList.width
-                height: contentList.height
-                Loader {
-                    id: contentLoader
-                    source: contentList.model[index]
-                    anchors.fill: parent
+        
+        states: [
+            State {
+                name: "mainPage"
+                when: selectedPage == Units.Page.MainPage
+                PropertyChanges { 
+                    target: mainWindow
+                    title: qsTr("Fedora Media Writer") 
                 }
-                Connections {
-                    target: contentLoader.item
-                    function onStepForward(index) {
-                        contentList.currentIndex++
-                        canGoBack = true
-                        releases.selectedIndex = index
+                //When comming back from restore page, after successfull restoring a USB drive
+                PropertyChanges { 
+                    target: prevButton
+                    text: getPrevButtonText()
+                    onClicked: visibleAboutWindow = !visibleAboutWindow 
+                }
+                PropertyChanges { 
+                    target: nextButton
+                    enabled: true
+                    onClicked: {
+                        if (selectedOption == Units.MainSelect.Write)
+                            selectedPage = Units.Page.DrivePage 
+                        else if (selectedOption == Units.MainSelect.Restore)
+                            selectedPage = Units.Page.RestorePage
+                        else
+                            selectedPage = Units.Page.VersionPage 
                     }
                 }
+                StateChangeScript {
+                    script: {
+                        //reset of source on versionPage
+                        selectedOption = 0
+                        releases.filterSource = 0
+                        if (stackView.depth > 1) 
+                            while(stackView.depth != 1)
+                                stackView.pop() }
+                }
+            },
+            State {
+                name: "versionPage"
+                when: selectedPage == Units.Page.VersionPage
+                PropertyChanges { target: mainWindow; title: qsTr("Select Fedora Version") }
+                PropertyChanges { target: nextButton; enabled: true; onClicked: selectedPage += 1 } 
+                PropertyChanges { target: prevButton; onClicked: selectedPage -= 1 }
+                StateChangeScript {
+                    script: {
+                        //state was pushing same page when returing from drivePage
+                        if (stackView.depth <= 1)  
+                            stackView.push("VersionPage.qml")
+                    }
+                }
+            },
+            State {
+                name: "drivePage"
+                when: selectedPage == Units.Page.DrivePage
+                PropertyChanges { 
+                    target: mainWindow
+                    title: qsTr("Select drive") 
+                }
+                PropertyChanges {
+                    target: nextButton;
+                    enabled: true
+                    onClicked: {
+                        selectedPage = Units.Page.DownloadPage 
+                        if (selectedOption != Units.MainSelect.Write) 
+                            releases.variant.download()
+                        drives.selected.setImage(releases.variant)
+                        drives.selected.write(releases.variant)
+                    }
+                }
+                PropertyChanges {
+                    target: prevButton
+                    onClicked: {
+                        if (selectedOption == Units.MainSelect.Write)
+                            selectedPage = Units.Page.MainPage
+                        else {
+                            selectedPage -= 1 
+                            stackView.pop()
+                        }
+                    }
+                }
+                StateChangeScript { 
+                    script: { stackView.push("DrivePage.qml") }
+                }
+            },
+            State {
+                name: "downloadPage"
+                when: selectedPage == Units.Page.DownloadPage
+                PropertyChanges {  
+                    target: mainWindow
+                    title: qsTr("Downloading") 
+                }
+                StateChangeScript {
+                    script: { stackView.push("DownloadPage.qml") }
+                }
+                PropertyChanges {
+                    target: prevButton;
+                    onClicked: {
+                        if (releases.variant.status != Units.DownloadStatus.Finished && releases.variant.status != Units.DownloadStatus.Failed && releases.variant.status != Units.DownloadStatus.Failed_Verification && releases.variant.status != Units.DownloadStatus.Failed_Download)
+                            visibleCancelWindow = !visibleCancelWindow
+                        drives.lastRestoreable = drives.selected
+                        drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
+                        releases.variant.resetStatus()
+                        downloadManager.cancel()
+                        selectedPage = Units.Page.MainPage
+                    }
+                }
+                PropertyChanges {
+                    target: nextButton;
+                    enabled: true
+                    onClicked: {
+                        if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading)
+                            visibleCancelWindow = !visibleCancelWindow
+                        else {
+                            releases.variant.resetStatus()
+                            downloadManager.cancel()
+                            selectedPage = Units.Page.MainPage
+                        }
+                    }
+                }
+            },
+            State {
+                name: "restorePage"
+                when: selectedPage == Units.Page.RestorePage
+                PropertyChanges { 
+                    target: mainWindow
+                    title: qsTr("Restore") 
+                }
+                PropertyChanges {
+                    target: nextButton
+                    enabled: true
+                    onClicked: drives.lastRestoreable.restore() 
+                }
+                PropertyChanges {
+                    target: prevButton
+                    onClicked: selectedPage = Units.Page.MainPage 
+                }
+                StateChangeScript { 
+                    script: { stackView.push("RestorePage.qml") }
+                }
             }
-        }
+        ]
     }
-
-    AdwaitaPopup {
-        id: newVersionPopup
-        enabled: open
-        open: versionChecker.newerVersion
-        title: qsTr("Fedora Media Writer %1 Released").arg(versionChecker.newerVersion)
-        text: qsTr("Update for great new features and bugfixes!")
-        buttonText: qsTr("Open Browser")
-        onAccepted: Qt.openUrlExternally(versionChecker.url)
+    
+    Units {
+        id: units
     }
-
-    RestoreDialog {
-        id: restoreDialog
+    
+    function getNextButtonText() {
+        if (mainLayout.state == "restorePage") 
+            return qsTr("Restore")
+        else if (mainLayout.state == "downloadPage")
+            return qsTr("Cancel")
+        else if (mainLayout.state == "drivePage")
+            return qsTr("Write")   
+        return qsTr("Next")
     }
-
-    DownloadDialog {
-        id: dlDialog
-    }
-
-    FileDialog {
-        id: fileDialog
-        folder: shortcuts.home
-        nameFilters: [ qsTr("Image files") + " (*.iso *.raw *.xz)", qsTr("All files (*)")]
-        onAccepted: {
-            releases.setLocalFile(fileUrl)
-            dlDialog.visible = true
-        }
-    }
-
-    Connections {
-        target: portalFileDialog
-        function onFileSelected(fileName) {
-            releases.setLocalFile(fileName)
-            dlDialog.visible = true
-        }
-    }
-
-    FullscreenViewer {
-        id: fullscreenViewer
-    }
-
-    Rectangle {
-        id: fatalErrorOverlay
-        opacity: drives.isBroken ? 1.0 : 0.0
-        enabled: visible
-        visible: opacity > 0.1
-        Behavior on opacity { NumberAnimation { } }
-        anchors.fill: parent
-        color: "#cc000000"
-        MouseArea {
-            anchors.fill: parent
-            hoverEnabled: true
-        }
-        ColumnLayout {
-            anchors.centerIn: parent
-            spacing: 9
-            Label {
-                horizontalAlignment: Text.AlignHCenter
-                color: "white"
-                text: qsTr("%1<br>Writing images will not be possible.<br>You can still view Fedora flavors and download images to your hard drive.").arg(drives.errorString)
-            }
-            Button {
-                Layout.alignment: Qt.AlignCenter
-                text: qsTr("Ok")
-                onClicked: fatalErrorOverlay.opacity = 0.0
-            }
-        }
+    
+    function getPrevButtonText() {
+        if (mainLayout.state == "mainPage") 
+            return qsTr("About")
+        return qsTr("Previous")
     }
 }
+

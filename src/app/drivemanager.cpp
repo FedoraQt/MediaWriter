@@ -114,7 +114,6 @@ int DriveManager::length() const {
 Drive *DriveManager::lastRestoreable() {
     return m_lastRestoreable;
 }
-
 bool DriveManager::isBackendBroken() {
     return !m_errorString.isEmpty();
 }
@@ -153,6 +152,10 @@ void DriveManager::onDriveConnected(Drive *d) {
 
     if (d->restoreStatus() == Drive::CONTAINS_LIVE) {
         setLastRestoreable(d);
+        connect(d, &Drive::restoreStatusChanged, [=] () {
+            if (d && d == m_lastRestoreable && d->restoreStatus() != Drive::CONTAINS_LIVE) 
+                setLastRestoreable(nullptr);
+        });
     }
 }
 
@@ -281,7 +284,6 @@ void Drive::setImage(ReleaseVariant *data) {
 bool Drive::write(ReleaseVariant *data) {
     m_image = data;
     m_image->setErrorString(QString());
-
     if (data && data->size() > 0 && size() > 0 && data->realSize() > size()) {
         m_image->setErrorString(tr("This drive is not large enough."));
         setDelayedWrite(false);

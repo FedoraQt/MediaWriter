@@ -12,12 +12,12 @@ set(HELPER_SRCS
     writejob.cpp
 )
 
-qt5_add_resources(HELPER_SRCS ${CMAKE_SOURCE_DIR}/src/translations/translations.qrc)
+qt6_add_resources(HELPER_SRCS ${CMAKE_SOURCE_DIR}/src/translations/translations.qrc)
 
 add_executable(helper ${HELPER_SRCS})
 target_link_libraries(helper
-    Qt5::Core
-    Qt5::DBus
+    Qt6::Core
+    Qt6::DBus
     isomd5
     ${LIBLZMA_LIBRARIES}
 )
