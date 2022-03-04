@@ -29,12 +29,7 @@ ApplicationWindow {
     width: mainWindow.width / 2 + units.gridUnit * 5
     height: mainWindow.height / 2
     modality: Qt.ApplicationModal
-    
-    //Component.onCompleted: {
-        //width = 480//mainWindow.minimumWidth / 2 + units.gridUnit * 5
-        //height = 640//mainWindow.minimumHeight / 2
-    //}
-    
+
     ColumnLayout {
         id: mainColumn
         anchors.fill: parent
