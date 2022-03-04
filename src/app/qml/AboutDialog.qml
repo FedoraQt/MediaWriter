@@ -24,16 +24,11 @@ import QtQuick.Layouts 6.2
 import QtQml 6.2
 
 ApplicationWindow {    
-    id: aboutWindow
-    visible: mainWindow.visibleAboutWindow
-    width: mainWindow.width / 2 + units.gridUnit * 5
+    id: aboutDialog
+    visible: mainWindow.visibleAboutDialog
+    width: mainWindow.width / 3 * 2 //+ units.gridUnit * 5
     height: mainWindow.height / 2
     modality: Qt.ApplicationModal
-    
-    //Component.onCompleted: {
-        //width = 480//mainWindow.minimumWidth / 2 + units.gridUnit * 5
-        //height = 640//mainWindow.minimumHeight / 2
-    //}
     
     ColumnLayout {
         id: mainColumn
@@ -89,7 +84,7 @@ ApplicationWindow {
             
             Button {
                 id: closeButton
-                onClicked: mainWindow.visibleAboutWindow = !mainWindow.visibleAboutWindow
+                onClicked: mainWindow.visibleAboutDialog = !mainWindow.visibleAboutDialog
                 text: qsTr("Close")
             }
         }

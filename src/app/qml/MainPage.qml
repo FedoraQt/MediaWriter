@@ -90,7 +90,7 @@ Page {
         }
     }
     
-    AboutWindow {
-        id: aboutWindow
+    AboutDialog {
+        id: aboutDialog
     }
 }
