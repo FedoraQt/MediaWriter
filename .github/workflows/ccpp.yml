@@ -4,12 +4,15 @@ on:
   push:
     branches:
       - '**'
+  pull_request:
+    branches:
+      - '**'
   release:
     types: [ created ]
 
 jobs:
   Linux:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v1
@@ -43,7 +46,7 @@ jobs:
 
 
   Flatpak-test-build:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     container:
       image: docker.io/bilelmoussaoui/flatpak-github-actions:kde-6.2
@@ -58,6 +61,7 @@ jobs:
         manifest-path: "dist/flatpak/org.fedoraproject.MediaWriter.json"
         cache-key: flatpak-builder-${{ github.sha }}
     - uses: marvinpinto/action-automatic-releases@latest
+      if: github.event_name == 'push'
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "latest"
