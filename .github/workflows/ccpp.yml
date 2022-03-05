@@ -57,6 +57,13 @@ jobs:
         bundle: "org.fedoraproject.MediaWriter.flatpak"
         manifest-path: "dist/flatpak/org.fedoraproject.MediaWriter.json"
         cache-key: flatpak-builder-${{ github.sha }}
+    - uses: marvinpinto/action-automatic-releases@latest
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "Development Build"
+        files: org.fedoraproject.MediaWriter.flatpak
 
   #Flatpak:
     #if: github.event_name == 'release'
