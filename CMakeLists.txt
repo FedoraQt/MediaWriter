@@ -35,7 +35,9 @@ endif()
 
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Network Qml Quick QuickControls2 Widgets)
 
-find_package(AdwaitaQt6 "1.4.1" REQUIRED)
+if (UNIX AND NOT APPLE)
+    find_package(AdwaitaQt6 "1.4.1" REQUIRED)
+endif()
 
 #qt_import_plugins(MediaWriter QWindowsIntegrationPlugin QMacIntegrationPlugin)
     
