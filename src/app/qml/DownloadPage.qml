@@ -242,8 +242,8 @@ Page {
             }
             StateChangeScript {
                 script: { 
-                    if (mainWindow.visibleCancelDialog)
-                        mainWindow.visibleCancelDialog = !mainWindow.visibleCancelDialog
+                    if (cancelDialog.visible)
+                        cancelDialog.close()
                     if (mainWindow.eraseVariant)
                         releases.variant.erase()
                     else
@@ -281,10 +281,5 @@ Page {
             }
         }
     ]    
-    
-    CancelDialog {
-        id: cancelDialog
-    }
-    
 }
 

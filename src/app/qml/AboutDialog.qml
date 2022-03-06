@@ -25,9 +25,8 @@ import QtQml 6.2
 
 ApplicationWindow {    
     id: aboutDialog
-    visible: mainWindow.visibleAboutDialog
-    width: mainWindow.width / 3 * 2 //+ units.gridUnit * 5
-    height: mainWindow.height / 2
+    width: 420
+    height: 240
     modality: Qt.ApplicationModal
     
     ColumnLayout {
@@ -38,14 +37,16 @@ ApplicationWindow {
         anchors.topMargin: units.gridUnit * 2
         anchors.bottomMargin: units.gridUnit * 2
         spacing: units.gridUnit
-            
-        Heading {
-            Layout.alignment: Qt.AlignHCenter
-            text: qsTr("About Fedora Media Writer")
-            level: 3
-        }
         
         Column {
+            Heading {
+                Layout.alignment: Qt.AlignHCenter
+                text: qsTr("About Fedora Media Writer")
+                level: 3
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                width: mainColumn.width
+            }
+        
             Label {
                 width: mainColumn.width
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -84,7 +85,7 @@ ApplicationWindow {
             
             Button {
                 id: closeButton
-                onClicked: mainWindow.visibleAboutDialog = !mainWindow.visibleAboutDialog
+                onClicked: aboutDialog.close()
                 text: qsTr("Close")
             }
         }

@@ -33,8 +33,6 @@ ApplicationWindow {
     property int selectedVersion: Units.Source.Product
     property int selectedOption: Units.MainSelect.Download
     
-    property bool visibleCancelDialog: false
-    property bool visibleAboutDialog: false
     property bool eraseVariant: false
     
     ColumnLayout {
@@ -89,7 +87,7 @@ ApplicationWindow {
                 PropertyChanges { 
                     target: prevButton
                     text: getPrevButtonText()
-                    onClicked: visibleAboutDialog = !visibleAboutDialog 
+                    onClicked: aboutDialog.show()
                 }
                 PropertyChanges { 
                     target: nextButton
@@ -174,7 +172,7 @@ ApplicationWindow {
                     target: prevButton;
                     onClicked: {
                         if (releases.variant.status != Units.DownloadStatus.Finished && releases.variant.status != Units.DownloadStatus.Failed && releases.variant.status != Units.DownloadStatus.Failed_Verification && releases.variant.status != Units.DownloadStatus.Failed_Download)
-                            visibleCancelDialog = !visibleCancelDialog
+                            cancelDialog.close()
                         drives.lastRestoreable = drives.selected
                         drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
                         releases.variant.resetStatus()
@@ -187,7 +185,7 @@ ApplicationWindow {
                     enabled: true
                     onClicked: {
                         if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading)
-                            visibleCancelDialog = !visibleCancelDialog
+                            cancelDialog.show()
                         else {
                             releases.variant.resetStatus()
                             downloadManager.cancel()
@@ -222,6 +220,15 @@ ApplicationWindow {
     Units {
         id: units
     }
+    
+    AboutDialog {
+        id: aboutDialog
+    }
+    
+    CancelDialog {
+        id: cancelDialog
+    }
+    
     
     function getNextButtonText() {
         if (mainLayout.state == "restorePage") 
