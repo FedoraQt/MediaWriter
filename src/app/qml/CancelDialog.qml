@@ -25,9 +25,8 @@ import QtQml 6.2
 
 ApplicationWindow {
     id: cancelDialog
-    visible: mainWindow.visibleCancelDialog
-    width: mainWindow.width / 2 //+ units.gridUnit * 5
-    height: mainWindow.height / 3
+    width: 360
+    height: 180
     modality: Qt.ApplicationModal
     
     ColumnLayout {
@@ -60,15 +59,14 @@ ApplicationWindow {
             
             Button {
                 id: continueButton
-                onClicked: mainWindow.visibleCancelDialog = !mainWindow.visibleCancelDialog
+                onClicked: cancelDialog.close()
                 text: qsTr("Cancel")
             }
             
             Button {
                 id: cancelButton
                 onClicked: {
-                    mainWindow.visibleCancelDialog = !mainWindow.visibleCancelDialog
-                    //TODO is correct to unselect drive?
+                    cancelDialog.close()
                     drives.selected.cancel()
                     releases.variant.resetStatus()
                     downloadManager.cancel()

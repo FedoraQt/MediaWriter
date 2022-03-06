@@ -89,8 +89,4 @@ Page {
             }
         }
     }
-    
-    AboutDialog {
-        id: aboutDialog
-    }
 }
