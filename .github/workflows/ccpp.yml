@@ -180,6 +180,9 @@ jobs:
       if: ${{ !steps.cache-qt.outputs.cache-hit }}
       run: |
         git clone https://git.tukaani.org/xz.git
+        cd xz
+        git checkout v5.2
+        cd ..
         sed -i 's/#include "config.h"//' xz/src/common/common_w32res.rc
         sed -i 's/PACKAGE_NAME/"liblzma"/' xz/src/common/common_w32res.rc
         sed -i 's/PACKAGE_URL/"https:\/\/tukaani.org\/xz\/"/' xz/src/common/common_w32res.rc
