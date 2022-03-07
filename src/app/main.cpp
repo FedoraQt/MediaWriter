@@ -56,7 +56,7 @@ Q_IMPORT_PLUGIN(QmlSettingsPlugin);
 
 int main(int argc, char **argv)
 {
-    //MessageHandler::install();
+    MessageHandler::install();
     CrashHandler::install();
 
 #ifdef __linux

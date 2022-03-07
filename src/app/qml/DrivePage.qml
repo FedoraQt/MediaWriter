@@ -25,6 +25,8 @@ import QtQml 6.2
 import QtQuick.Dialogs 6.2
 
 Page {
+    id: drivePage
+    
     ColumnLayout {
         anchors.fill: parent
         spacing: units.gridUnit
@@ -142,13 +144,13 @@ Page {
     states: [
         State {
             name: "Downloading"
-            when: !selectedOption == 1
+            when: !selectedOption == 1 && selectedPage == Units.Page.DrivePage
             PropertyChanges { target: nextButton; enabled: driveCombo.enabled && hwArchCombo.currentIndex + 1 }
             StateChangeScript { script: releases.setSelectedVariantIndex = 0 }
         },
         State {
             name: "WritingISO"
-            when: selectedOption == 1
+            when: selectedOption == 1 && selectedPage == Units.Page.DrivePage
             PropertyChanges { target: nextButton; enabled: driveCombo.enabled && releases.localFile.iso }
         }
     ]
