@@ -128,7 +128,7 @@ Page {
                 visible: true
             }
             PropertyChanges {
-                target: backButton;
+                target: prevButton;
                 enabled: false
             }
             PropertyChanges {
@@ -148,7 +148,7 @@ Page {
                 visible: true
             }
             PropertyChanges {
-                target: backButton;
+                target: prevButton;
                 text: qsTr("Finish")
                 enabled: true
             }
@@ -168,7 +168,7 @@ Page {
                 visible: true
             }
             PropertyChanges {
-                target: backButton;
+                target: prevButton;
                 enabled: true
             }
         },
@@ -176,7 +176,7 @@ Page {
             name: "Clean"
             when: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Clean
             PropertyChanges {
-                target: backButton;
+                target: prevButton;
                 enabled: true
             }
         }
