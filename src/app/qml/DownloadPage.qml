@@ -41,8 +41,8 @@ Page {
         
         Heading {
             Layout.alignment: Qt.AlignHCenter
-            text: mainWindow.selectedOption == 1 ? qsTr("Writing %1").arg((String)(releases.localFile.iso).split("/").slice(-1)[0]) :                                                         qsTr("Downloading %1 ").arg(releases.selected.name)// + releases.selected.version.number
-            level: 5
+            text: mainWindow.selectedOption == Units.MainSelect.Write ? qsTr("Writing %1").arg((String)(releases.localFile.iso).split("/").slice(-1)[0]) :                                                         qsTr("Downloading %1 ").arg(releases.selected.name) + releases.selected.version.number
+            level: 4
             Layout.preferredWidth: mainColumn.width
             elide: Label.ElideRight
             horizontalAlignment: Label.AlignHCenter
@@ -238,7 +238,7 @@ Page {
             }
             PropertyChanges {
                 target: mainWindow;
-                title: mainWindow.selectedOption == 1 ? qsTr("Writing finished") : qsTr("Downloading finished")
+                title: mainWindow.selectedOption == Units.MainSelect.Write ? qsTr("Writing finished") : qsTr("Downloading finished")
             }
             StateChangeScript {
                 script: { 

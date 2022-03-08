@@ -59,17 +59,20 @@ Page {
                 id: progress
                 visible: false
                 
-                Label {
-                    Layout.alignment: Qt.AlignHCenter
-                    wrapMode: Label.Wrap
-                    width: warningText.width
-                    text: qsTr("<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
+                Column{
+                    Label {
+                        Layout.alignment: Qt.AlignHCenter
+                        horizontalAlignment: Label.AlignHCenter
+                        wrapMode: Label.Wrap
+                        width: warningText.width
+                        text: qsTr("<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
+                    }
                 }
                 
                 ProgressBar {
                     id: progressIndicator
                     width: units.gridUnit * 14
-                    Layout.alignment: Qt.AlignHCenter   
+                    Layout.alignment: Qt.AlignHCenter
                     indeterminate: true
                 }
             }

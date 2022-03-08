@@ -32,7 +32,7 @@ Page {
         
         Heading {
             Layout.alignment: Qt.AlignHCenter
-            text: qsTr("Select Fedora Version")
+            text: qsTr("Select Fedora Release")
             level: 5
         }
         

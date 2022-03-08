@@ -104,7 +104,7 @@ ApplicationWindow {
                 StateChangeScript {
                     script: {
                         //reset of source on versionPage
-                        selectedOption = 0
+                        selectedOption = Units.MainSelect.Download
                         releases.filterSource = 0
                         if (stackView.depth > 1) 
                             while(stackView.depth != 1)
