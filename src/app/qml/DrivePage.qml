@@ -38,8 +38,26 @@ Page {
         }
         
         ColumnLayout {
+            id: versionCol
+            visible: !selectedOption == 1
+            
+            Heading {
+                text: qsTr("Version")
+            }
+            
+            ComboBox {
+                id: versionCombo
+                Layout.fillWidth: true
+                model: releases.selected.versions
+                textRole: "name"
+                onCurrentIndexChanged: releases.selected.versionIndex = currentIndex
+            }
+        }
+        
+        ColumnLayout {
             id: architectureCol
             visible: !selectedOption == 1
+            
             Heading {
                 text: qsTr("Hardware Architecture")
             }
