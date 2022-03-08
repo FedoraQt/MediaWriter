@@ -59,9 +59,9 @@ ApplicationWindow {
             Layout.alignment: Qt.AlignBottom
             
             Button {
-                id: backButton
+                id: prevButton
                 visible: selectedPage != Units.Page.DownloadPage
-                text: getBackButtonText()
+                text: getPrevButtonText()
             }
         
             Item {
@@ -85,8 +85,8 @@ ApplicationWindow {
                 }
                 //When comming back from restore page, after successfull restoring a USB drive
                 PropertyChanges { 
-                    target: backButton
-                    text: getBackButtonText()
+                    target: prevButton
+                    text: getPrevButtonText()
                     onClicked: aboutDialog.show()
                 }
                 PropertyChanges { 
@@ -116,7 +116,7 @@ ApplicationWindow {
                 when: selectedPage == Units.Page.VersionPage
                 PropertyChanges { target: mainWindow; title: qsTr("Select Fedora Version") }
                 PropertyChanges { target: nextButton; enabled: true; onClicked: selectedPage += 1 } 
-                PropertyChanges { target: backButton; onClicked: selectedPage -= 1 }
+                PropertyChanges { target: prevButton; onClicked: selectedPage -= 1 }
                 StateChangeScript {
                     script: {
                         //state was pushing same page when returing from drivePage
@@ -144,7 +144,7 @@ ApplicationWindow {
                     }
                 }
                 PropertyChanges {
-                    target: backButton
+                    target: prevButton
                     onClicked: {
                         if (selectedOption == Units.MainSelect.Write)
                             selectedPage = Units.Page.MainPage
@@ -169,7 +169,7 @@ ApplicationWindow {
                     script: { stackView.push("DownloadPage.qml") }
                 }
                 PropertyChanges {
-                    target: backButton;
+                    target: prevButton;
                     onClicked: {
                         if (releases.variant.status != Units.DownloadStatus.Finished && releases.variant.status != Units.DownloadStatus.Failed && releases.variant.status != Units.DownloadStatus.Failed_Verification && releases.variant.status != Units.DownloadStatus.Failed_Download)
                             cancelDialog.close()
@@ -207,7 +207,7 @@ ApplicationWindow {
                     onClicked: drives.lastRestoreable.restore() 
                 }
                 PropertyChanges {
-                    target: backButton
+                    target: prevButton
                     onClicked: selectedPage = Units.Page.MainPage 
                 }
                 StateChangeScript { 
@@ -240,10 +240,10 @@ ApplicationWindow {
         return qsTr("Next")
     }
     
-    function getBackButtonText() {
+    function getPrevButtonText() {
         if (mainLayout.state == "mainPage") 
             return qsTr("About")
-        return qsTr("Back")
+        return qsTr("Previous")
     }
 }
 

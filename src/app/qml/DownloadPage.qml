@@ -224,7 +224,7 @@ Page {
                 visible: true
             }
             PropertyChanges {
-                target: backButton;
+                target: prevButton;
                 text: qsTr("Finish");
                 visible: true
             }
