@@ -39,7 +39,7 @@ Page {
         
         ColumnLayout {
             id: versionCol
-            visible: !selectedOption == 1
+            visible: selectedOption != Units.MainSelect.Write
             
             Heading {
                 text: qsTr("Version")
@@ -56,7 +56,7 @@ Page {
         
         ColumnLayout {
             id: architectureCol
-            visible: !selectedOption == 1
+            visible: selectedOption != Units.MainSelect.Write
             
             Heading {
                 text: qsTr("Hardware Architecture")
@@ -73,7 +73,7 @@ Page {
         
         ColumnLayout {
             id: selectFileColumn
-            visible: selectedOption == 1
+            visible: selectedOption == Units.MainSelect.Write
             Heading {
                 text: qsTr("Selected file")
             }
@@ -162,13 +162,13 @@ Page {
     states: [
         State {
             name: "Downloading"
-            when: !selectedOption == 1 && selectedPage == Units.Page.DrivePage
+            when: selectedOption != Units.MainSelect.Write && selectedPage == Units.Page.DrivePage
             PropertyChanges { target: nextButton; enabled: driveCombo.enabled && hwArchCombo.currentIndex + 1 }
             StateChangeScript { script: releases.setSelectedVariantIndex = 0 }
         },
         State {
             name: "WritingISO"
-            when: selectedOption == 1 && selectedPage == Units.Page.DrivePage
+            when: selectedOption == Units.MainSelect.Write && selectedPage == Units.Page.DrivePage
             PropertyChanges { target: nextButton; enabled: driveCombo.enabled && releases.localFile.iso }
         }
     ]
