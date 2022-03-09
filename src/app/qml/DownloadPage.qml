@@ -263,10 +263,18 @@ Page {
                 target: messageLoseData;
                 visible: true
             }
+            PropertyChanges {
+                target: nextButton;
+                text: qsTr("Retry")
+            }
         },
         State {
             name: "failed_download"
             when: releases.variant.status === Units.DownloadStatus.Failed_Download
+            PropertyChanges {
+                target: nextButton;
+                text: qsTr("Retry")
+            }
         },
         State {
             name: "failed_no_drives"
@@ -278,6 +286,10 @@ Page {
             PropertyChanges {
                 target: messageLoseData;
                 visible: true
+            }
+            PropertyChanges {
+                target: nextButton;
+                text: qsTr("Retry")
             }
         }
     ]    

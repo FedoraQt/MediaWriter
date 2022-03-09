@@ -186,6 +186,12 @@ ApplicationWindow {
                     onClicked: {
                         if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading)
                             cancelDialog.show()
+                        else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Failed_Download || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length > 0)) {
+                            if (selectedOption != Units.MainSelect.Write) 
+                                releases.variant.download()
+                            drives.selected.setImage(releases.variant)
+                            drives.selected.write(releases.variant)
+                        }
                         else {
                             releases.variant.resetStatus()
                             downloadManager.cancel()
