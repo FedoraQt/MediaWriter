@@ -133,7 +133,7 @@ Page {
             }
             PropertyChanges {
                 target: nextButton;
-                enabled: false
+                visible: false
             }
         },
         State {
@@ -154,7 +154,7 @@ Page {
             }
             PropertyChanges {
                 target: nextButton;
-                enabled: false
+                visible: false
             }
             StateChangeScript {
                 script: { drives.lastRestoreable = null }
