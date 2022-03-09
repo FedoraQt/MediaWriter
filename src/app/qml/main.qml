@@ -91,7 +91,7 @@ ApplicationWindow {
                 }
                 PropertyChanges { 
                     target: nextButton
-                    enabled: true
+                    visible: true
                     onClicked: {
                         if (selectedOption == Units.MainSelect.Write)
                             selectedPage = Units.Page.DrivePage 
@@ -115,7 +115,7 @@ ApplicationWindow {
                 name: "versionPage"
                 when: selectedPage == Units.Page.VersionPage
                 PropertyChanges { target: mainWindow; title: qsTr("Select Fedora Version") }
-                PropertyChanges { target: nextButton; enabled: true; onClicked: selectedPage += 1 } 
+                PropertyChanges { target: nextButton; visible: true; onClicked: selectedPage += 1 } 
                 PropertyChanges { target: prevButton; onClicked: selectedPage -= 1 }
                 StateChangeScript {
                     script: {
@@ -134,7 +134,7 @@ ApplicationWindow {
                 }
                 PropertyChanges {
                     target: nextButton;
-                    enabled: true
+                    visible: true
                     onClicked: {
                         selectedPage = Units.Page.DownloadPage 
                         if (selectedOption != Units.MainSelect.Write) 
@@ -182,7 +182,7 @@ ApplicationWindow {
                 }
                 PropertyChanges {
                     target: nextButton;
-                    enabled: true
+                    visible: true
                     onClicked: {
                         if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading)
                             cancelDialog.show()
@@ -203,7 +203,7 @@ ApplicationWindow {
                 }
                 PropertyChanges {
                     target: nextButton
-                    enabled: true
+                    visible: true
                     onClicked: drives.lastRestoreable.restore() 
                 }
                 PropertyChanges {
