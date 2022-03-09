@@ -35,7 +35,7 @@ Page {
         Column {
             Label {
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                text: qsTr("Restore Drive <b>%1</b>").arg(drives.lastRestoreable.name)
+                text: qsTr("Restore Drive <b>%1</b>").arg(lastRestoreable.name)
                 wrapMode: Label.Wrap
                 width: mainColumn.width
                 horizontalAlignment: Label.AlignHCenter
