@@ -50,6 +50,7 @@ Page {
 
         ColumnLayout {
             id: radioColumn
+            Layout.bottomMargin: drives.lastRestoreable ? 0 : restoreRadio.height + 5
             
             RadioButton {
                 checked: mainWindow.selectedOption == Units.MainSelect.Download
