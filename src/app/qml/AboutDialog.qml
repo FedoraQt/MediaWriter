@@ -25,8 +25,10 @@ import QtQml 6.2
 
 ApplicationWindow {    
     id: aboutDialog
-    width: 420
-    height: 240
+    minimumWidth: 420
+    maximumWidth: 420
+    minimumHeight: 240
+    maximumHeight: 240
     modality: Qt.ApplicationModal
     
     ColumnLayout {

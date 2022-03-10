@@ -25,8 +25,10 @@ import QtQml 6.2
 
 ApplicationWindow {
     id: cancelDialog
-    width: 360
-    height: 180
+    minimumWidth: 360
+    maximumWidth: 360
+    minimumHeight: 180
+    maximumHeight: 180
     modality: Qt.ApplicationModal
     
     ColumnLayout {

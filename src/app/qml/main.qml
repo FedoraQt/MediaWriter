@@ -27,7 +27,9 @@ ApplicationWindow {
     id: mainWindow
     visible: true
     minimumWidth: 640
+    maximumWidth: 640
     minimumHeight: 480
+    maximumHeight: 480
     
     property int selectedPage: Units.Page.MainPage
     property int selectedVersion: Units.Source.Product
