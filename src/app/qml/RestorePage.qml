@@ -35,7 +35,7 @@ Page {
         Column {
             Label {
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                text: qsTr("Restore Drive <b>%1</b>").arg(drives.lastRestoreable.name)
+                text: qsTr("Restore Drive <b>%1</b>").arg(lastRestoreable.name)
                 wrapMode: Label.Wrap
                 width: mainColumn.width
                 horizontalAlignment: Label.AlignHCenter
@@ -133,7 +133,7 @@ Page {
             }
             PropertyChanges {
                 target: nextButton;
-                enabled: false
+                visible: false
             }
         },
         State {
@@ -154,7 +154,7 @@ Page {
             }
             PropertyChanges {
                 target: nextButton;
-                enabled: false
+                visible: false
             }
             StateChangeScript {
                 script: { drives.lastRestoreable = null }

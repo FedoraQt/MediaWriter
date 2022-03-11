@@ -25,8 +25,10 @@ import QtQml 6.2
 
 ApplicationWindow {
     id: cancelDialog
-    width: 360
-    height: 180
+    minimumWidth: 360
+    maximumWidth: 360
+    minimumHeight: 180
+    maximumHeight: 180
     modality: Qt.ApplicationModal
     
     ColumnLayout {
@@ -43,7 +45,14 @@ ApplicationWindow {
             
             Label {
                 Layout.alignment: Qt.AlignVCenter
-                text: releases.variant.status == Units.DownloadStatus.Downloading ? qsTr("Downloading is still in progress, do you wish to cancel it?") : qsTr("Do you want to cancel writing?")
+                text: {
+                    if (releases.variant.status == Units.DownloadStatus.Downloading)
+                        qsTr("Downloading is still in progress, do you wish to cancel it?")
+                    else if (releases.variant.status == Units.DownloadStatus.Writing) 
+                        qsTr("Do you want to cancel writing?")
+                    else
+                        qsTr("Do you want to cancel validitation of data? This operation is safe.")
+                }   
                 wrapMode: Label.Wrap
                 width: mainColumn.width
                 horizontalAlignment: Label.AlignHCenter

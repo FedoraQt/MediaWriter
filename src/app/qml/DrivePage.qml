@@ -74,24 +74,22 @@ Page {
         ColumnLayout {
             id: selectFileColumn
             visible: selectedOption == Units.MainSelect.Write
+            
             Heading {
                 text: qsTr("Selected file")
             }
             
             RowLayout {
                 id: fileCol
+                
                 Label {
                     text: releases.localFile.iso ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : ("<font color=\"gray\">" + qsTr("None") + "</font>")
-                    Layout.preferredWidth: spacing.width
+                    Layout.fillWidth: true
                     elide: Label.ElideRight
                 }
                 
-                Item {
-                    id: spacing
-                    Layout.fillWidth: true
-                }
-                
                 Button {
+                    id: selectFileButton
                     Layout.alignment: Qt.AlignRight
                     text: qsTr("Select ...")
                     onClicked: {

@@ -27,7 +27,9 @@ ApplicationWindow {
     id: mainWindow
     visible: true
     minimumWidth: 640
+    maximumWidth: 640
     minimumHeight: 480
+    maximumHeight: 480
     
     property int selectedPage: Units.Page.MainPage
     property int selectedVersion: Units.Source.Product
@@ -91,7 +93,7 @@ ApplicationWindow {
                 }
                 PropertyChanges { 
                     target: nextButton
-                    enabled: true
+                    visible: true
                     onClicked: {
                         if (selectedOption == Units.MainSelect.Write)
                             selectedPage = Units.Page.DrivePage 
@@ -115,7 +117,7 @@ ApplicationWindow {
                 name: "versionPage"
                 when: selectedPage == Units.Page.VersionPage
                 PropertyChanges { target: mainWindow; title: qsTr("Select Fedora Version") }
-                PropertyChanges { target: nextButton; enabled: true; onClicked: selectedPage += 1 } 
+                PropertyChanges { target: nextButton; visible: true; onClicked: selectedPage += 1 } 
                 PropertyChanges { target: prevButton; onClicked: selectedPage -= 1 }
                 StateChangeScript {
                     script: {
@@ -134,7 +136,7 @@ ApplicationWindow {
                 }
                 PropertyChanges {
                     target: nextButton;
-                    enabled: true
+                    visible: true
                     onClicked: {
                         selectedPage = Units.Page.DownloadPage 
                         if (selectedOption != Units.MainSelect.Write) 
@@ -182,10 +184,16 @@ ApplicationWindow {
                 }
                 PropertyChanges {
                     target: nextButton;
-                    enabled: true
+                    visible: true
                     onClicked: {
                         if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading)
                             cancelDialog.show()
+                        else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Failed_Download || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length > 0)) {
+                            if (selectedOption != Units.MainSelect.Write) 
+                                releases.variant.download()
+                            drives.selected.setImage(releases.variant)
+                            drives.selected.write(releases.variant)
+                        }
                         else {
                             releases.variant.resetStatus()
                             downloadManager.cancel()
@@ -203,7 +211,7 @@ ApplicationWindow {
                 }
                 PropertyChanges {
                     target: nextButton
-                    enabled: true
+                    visible: true
                     onClicked: drives.lastRestoreable.restore() 
                 }
                 PropertyChanges {
