@@ -51,7 +51,7 @@ ApplicationWindow {
                     else if (releases.variant.status == Units.DownloadStatus.Writing) 
                         qsTr("Do you want to cancel writing?")
                     else
-                        qsTr("Do you want to cancel validitation of data? This operation is safe.")
+                        qsTr("Do you want to cancel data validation? This operation is safe to be cancelled.")
                 }   
                 wrapMode: Label.Wrap
                 width: mainColumn.width
