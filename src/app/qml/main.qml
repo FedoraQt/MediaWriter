@@ -174,32 +174,32 @@ ApplicationWindow {
                 }
                 PropertyChanges {
                     target: prevButton;
-                    onClicked: {
-                        if (releases.variant.status != Units.DownloadStatus.Finished && releases.variant.status != Units.DownloadStatus.Failed && releases.variant.status != Units.DownloadStatus.Failed_Verification && releases.variant.status != Units.DownloadStatus.Failed_Download)
-                            cancelDialog.close()
-                        drives.lastRestoreable = drives.selected
-                        drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
-                        releases.variant.resetStatus()
-                        downloadManager.cancel()
-                        selectedPage = Units.Page.MainPage
-                    }
-                }
-                PropertyChanges {
-                    target: nextButton;
                     visible: true
                     onClicked: {
                         if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading)
                             cancelDialog.show()
-                        else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Failed_Download || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length > 0)) {
-                            if (selectedOption != Units.MainSelect.Write) 
-                                releases.variant.download()
-                            drives.selected.setImage(releases.variant)
-                            drives.selected.write(releases.variant)
-                        }
-                        else {
+                        else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length <= 0) || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length <= 0) || (releases.variant.status === Units.DownloadStatus.Ready && drives.length <= 0)) {
                             releases.variant.resetStatus()
                             downloadManager.cancel()
                             selectedPage = Units.Page.MainPage
+                        } else {
+                            drives.lastRestoreable = drives.selected
+                            drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
+                            releases.variant.resetStatus()
+                            downloadManager.cancel()
+                            selectedPage = Units.Page.MainPage
+                        }
+                    }
+                }
+                PropertyChanges {
+                    target: nextButton;
+                    visible: false
+                    onClicked: {
+                        if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Failed_Download || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Ready) {
+                            if (selectedOption != Units.MainSelect.Write)
+                                releases.variant.download()
+                            drives.selected.setImage(releases.variant)
+                            drives.selected.write(releases.variant)
                         }
                     }
                 }
@@ -243,16 +243,18 @@ ApplicationWindow {
     function getNextButtonText() {
         if (mainLayout.state == "restorePage") 
             return qsTr("Restore")
-        else if (mainLayout.state == "downloadPage")
-            return qsTr("Cancel")
         else if (mainLayout.state == "drivePage")
-            return qsTr("Write")   
+            return qsTr("Write")  
+        else if (mainLayout.state == "downloadPage")
+            return qsTr("Retry")
         return qsTr("Next")
     }
     
     function getPrevButtonText() {
         if (mainLayout.state == "mainPage") 
             return qsTr("About")
+        else if (mainLayout.state == "downloadPage")
+            return qsTr("Cancel")
         return qsTr("Previous")
     }
 }

@@ -167,6 +167,14 @@ Page {
                 target: messageLoseData;
                 visible: true
             }
+            PropertyChanges {
+                target: nextButton
+                visible: true
+            }
+            PropertyChanges {
+                target: prevButton
+                visible: true
+            }
         },
         State {
             name: "writing_not_possible"
@@ -190,6 +198,14 @@ Page {
             PropertyChanges {
                 target: mainWindow;
                 title: qsTr("Writing")
+            }
+            PropertyChanges {
+                target: nextButton
+                visible: false
+            }
+            PropertyChanges {
+                target: prevButton
+                visible: true
             }
         },
         State {
@@ -250,7 +266,6 @@ Page {
                         releases.variant
                 }   
             }
-            
         },
         State {
             name: "failed_verification_no_drives"
@@ -265,7 +280,7 @@ Page {
             }
             PropertyChanges {
                 target: nextButton;
-                text: qsTr("Retry")
+                visible: true
             }
         },
         State {
@@ -273,12 +288,20 @@ Page {
             when: releases.variant.status === Units.DownloadStatus.Failed_Download
             PropertyChanges {
                 target: nextButton;
-                text: qsTr("Retry")
+                visible: true
             }
         },
         State {
             name: "failed_no_drives"
             when: releases.variant.status === Units.DownloadStatus.Failed && drives.length <= 0
+            PropertyChanges {
+                target: nextButton;
+                visible: false
+            }
+            PropertyChanges {
+                target: prevButton;
+                visible: true
+            }
         },
         State {
             name: "failed"
@@ -289,7 +312,11 @@ Page {
             }
             PropertyChanges {
                 target: nextButton;
-                text: qsTr("Retry")
+                visible: true
+            }
+            PropertyChanges {
+                target: prevButton;
+                visible: true
             }
         }
     ]    
