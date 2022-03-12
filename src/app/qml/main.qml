@@ -95,9 +95,11 @@ ApplicationWindow {
                     target: nextButton
                     visible: true
                     onClicked: {
-                        if (selectedOption == Units.MainSelect.Write)
+                        if (selectedOption == Units.MainSelect.Write) {
+                            if (releases.localFile.iso)
+                                releases.selectLocalFile()
                             selectedPage = Units.Page.DrivePage 
-                        else if (selectedOption == Units.MainSelect.Restore)
+                        } else if (selectedOption == Units.MainSelect.Restore)
                             selectedPage = Units.Page.RestorePage
                         else
                             selectedPage = Units.Page.VersionPage 
