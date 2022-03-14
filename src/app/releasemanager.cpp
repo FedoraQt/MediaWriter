@@ -418,8 +418,9 @@ void Release::setLocalFile(const QString &path) {
     if (m_source != LOCAL)
         return;
     QFileInfo info(QUrl(path).toLocalFile());
-
-    if (!info.exists()) {
+    
+    // We might use an empty path to just reset local file
+    if (!info.exists() && !path.isEmpty()) {
         mCritical() << path << "doesn't exist";
         return;
     }
