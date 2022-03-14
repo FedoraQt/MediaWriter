@@ -62,7 +62,7 @@ ApplicationWindow {
             
             Button {
                 id: prevButton
-                visible: selectedPage != Units.Page.DownloadPage
+                visible: true
                 text: getPrevButtonText()
             }
         
@@ -72,6 +72,7 @@ ApplicationWindow {
             
             Button {
                 id: nextButton
+                visible: mainLayout.state != "downloadPage" 
                 enabled: mainLayout.state != "drivePage" 
                 text: getNextButtonText()
             }
@@ -173,29 +174,27 @@ ApplicationWindow {
                     script: { stackView.push("DownloadPage.qml") }
                 }
                 PropertyChanges {
-                    target: prevButton;
-                    visible: true
+                    target: prevButton
                     onClicked: {
-                        if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading)
-                            cancelDialog.show()
-                        else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length <= 0) || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length <= 0) || (releases.variant.status === Units.DownloadStatus.Ready && drives.length <= 0)) {
-                            releases.variant.resetStatus()
-                            downloadManager.cancel()
-                            selectedPage = Units.Page.MainPage
-                        } else {
+                        if (!(releases.variant.status === Units.DownloadStatus.Failed && drives.length <= 0) && !(releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length <= 0) && !(releases.variant.status === Units.DownloadStatus.Ready && drives.length <= 0)) {
                             drives.lastRestoreable = drives.selected
                             drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
-                            releases.variant.resetStatus()
-                            downloadManager.cancel()
-                            selectedPage = Units.Page.MainPage
-                        }
+                        }    
+                        releases.variant.resetStatus()
+                        downloadManager.cancel()
+                        mainWindow.selectedPage = Units.Page.MainPage
                     }
                 }
                 PropertyChanges {
-                    target: nextButton;
-                    visible: false
+                    target: nextButton
                     onClicked: {
-                        if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Failed_Download || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Ready) {
+                        if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                            cancelDialog.show()
+                        else if (releases.variant.status === Units.DownloadStatus.Finished) {
+                            releases.variant.resetStatus()
+                            downloadManager.cancel()
+                            selectedPage = Units.Page.MainPage
+                        } else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Failed_Download || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Ready) {
                             if (selectedOption != Units.MainSelect.Write)
                                 releases.variant.download()
                             drives.selected.setImage(releases.variant)
@@ -245,8 +244,12 @@ ApplicationWindow {
             return qsTr("Restore")
         else if (mainLayout.state == "drivePage")
             return qsTr("Write")  
-        else if (mainLayout.state == "downloadPage")
-            return qsTr("Retry")
+        else if (mainLayout.state == "downloadPage") {
+            if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                return qsTr("Cancel")
+            else
+                return qsTr("Retry")
+        }
         return qsTr("Next")
     }
     

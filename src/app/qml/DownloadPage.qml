@@ -130,11 +130,11 @@ Page {
     states: [
         State {
             name: "preparing"
-            when: releases.variant.status === Units.DownloadStatus.Preparing
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Preparing
         },
         State {
             name: "downloading"
-            when: releases.variant.status === Units.DownloadStatus.Downloading
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Downloading
             PropertyChanges {
                 target: messageDownload
                 visible: true
@@ -142,11 +142,19 @@ Page {
             PropertyChanges {
                 target: progressBar;
                 value: releases.variant.progress.ratio
+            }
+            PropertyChanges {
+                target: nextButton
+                visible: true
+            }
+            PropertyChanges {
+                target: prevButton
+                visible: false
             }
         },
         State {
             name: "download_verifying"
-            when: releases.variant.status === Units.DownloadStatus.Downloading_Verifying
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Download_Verifying
             PropertyChanges {
                 target: messageDownload
                 visible: true
@@ -155,14 +163,26 @@ Page {
                 target: progressBar;
                 value: releases.variant.progress.ratio
             }
+            PropertyChanges {
+                target: nextButton
+                visible: true
+            }
+            PropertyChanges {
+                target: prevButton
+                visible: false
+            }
         },
         State {
             name: "ready_no_drives"
-            when: releases.variant.status === Units.DownloadStatus.Ready && drives.length <= 0
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Ready && drives.length <= 0
+            PropertyChanges {
+                target: prevButton
+                visible: true
+            }
         },
         State {
             name: "ready"
-            when: releases.variant.status === Units.DownloadStatus.Ready && drives.length > 0
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Ready && drives.length > 0
             PropertyChanges {
                 target: messageLoseData;
                 visible: true
@@ -178,11 +198,15 @@ Page {
         },
         State {
             name: "writing_not_possible"
-            when: releases.variant.status === Units.DownloadStatus.Writing_Not_Possible
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Writing_Not_Possible
+            PropertyChanges {
+                target: mainWindow;
+                title: qsTr("Writing not possible")
+            }
         },
         State {
             name: "writing"
-            when: releases.variant.status === Units.DownloadStatus.Writing
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Writing
             PropertyChanges {
                 target: messageDriveSize
                 enabled: false
@@ -201,16 +225,16 @@ Page {
             }
             PropertyChanges {
                 target: nextButton
-                visible: false
+                visible: true
             }
             PropertyChanges {
                 target: prevButton
-                visible: true
+                visible: false
             }
         },
         State {
             name: "write_verifying"
-            when: releases.variant.status === Units.DownloadStatus.Write_Verifying
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Write_Verifying
             PropertyChanges {
                 target: messageDriveSize
                 enabled: false
@@ -227,10 +251,14 @@ Page {
                 target: mainWindow;
                 title: qsTr("Write verifying")
             }
+            PropertyChanges {
+                target: prevButton;
+                visible: false
+            }
         },
         State {
             name: "finished"
-            when: releases.variant.status === Units.DownloadStatus.Finished
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Finished
             PropertyChanges {
                 target: messageDriveSize;
                 enabled: false
@@ -240,12 +268,12 @@ Page {
                 visible: true
             }
             PropertyChanges {
-                target: prevButton;
+                target: nextButton;
                 text: qsTr("Finish");
                 visible: true
             }
             PropertyChanges {
-                target: nextButton;
+                target: prevButton;
                 visible: false
             }
             PropertyChanges {
@@ -269,11 +297,15 @@ Page {
         },
         State {
             name: "failed_verification_no_drives"
-            when: releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length <= 0
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length <= 0
+            PropertyChanges {
+                target: mainWindow;
+                title: qsTr("Failed verification no drives")
+            }
         },
         State {
             name: "failed_verification"
-            when: releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length > 0
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length > 0
             PropertyChanges {
                 target: messageLoseData;
                 visible: true
@@ -282,18 +314,26 @@ Page {
                 target: nextButton;
                 visible: true
             }
+            PropertyChanges {
+                target: mainWindow;
+                title: qsTr("Failed verification")
+            }
         },
         State {
             name: "failed_download"
-            when: releases.variant.status === Units.DownloadStatus.Failed_Download
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed_Download
             PropertyChanges {
                 target: nextButton;
                 visible: true
             }
+            PropertyChanges {
+                target: mainWindow;
+                title: qsTr("Failed download")
+            }
         },
         State {
             name: "failed_no_drives"
-            when: releases.variant.status === Units.DownloadStatus.Failed && drives.length <= 0
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed && drives.length <= 0
             PropertyChanges {
                 target: nextButton;
                 visible: false
@@ -302,10 +342,14 @@ Page {
                 target: prevButton;
                 visible: true
             }
+            PropertyChanges {
+                target: mainWindow;
+                title: qsTr("Failed no drives")
+            }
         },
         State {
             name: "failed"
-            when: releases.variant.status === Units.DownloadStatus.Failed && drives.length > 0
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed && drives.length > 0
             PropertyChanges {
                 target: messageLoseData;
                 visible: true
@@ -317,6 +361,10 @@ Page {
             PropertyChanges {
                 target: prevButton;
                 visible: true
+            }
+            PropertyChanges {
+                target: mainWindow;
+                title: qsTr("Failed")
             }
         }
     ]    

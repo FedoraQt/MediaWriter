@@ -46,7 +46,7 @@ ApplicationWindow {
             Label {
                 Layout.alignment: Qt.AlignVCenter
                 text: {
-                    if (releases.variant.status == Units.DownloadStatus.Downloading)
+                    if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
                         qsTr("Downloading is still in progress, do you wish to cancel it?")
                     else if (releases.variant.status == Units.DownloadStatus.Writing) 
                         qsTr("Do you want to cancel writing?")
