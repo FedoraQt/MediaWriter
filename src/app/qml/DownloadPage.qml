@@ -252,6 +252,10 @@ Page {
                 title: qsTr("Write verifying")
             }
             PropertyChanges {
+                target: nextButton
+                visible: true
+            }
+            PropertyChanges {
                 target: prevButton;
                 visible: false
             }
