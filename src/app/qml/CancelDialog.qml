@@ -30,6 +30,9 @@ ApplicationWindow {
     minimumHeight: 180
     maximumHeight: 180
     modality: Qt.ApplicationModal
+    x: Screen.width / 2 - width / 2
+    y: Screen.height / 2 - height / 2
+    
     property QtObject drivesSelected: drives.selected
     
     ColumnLayout {
