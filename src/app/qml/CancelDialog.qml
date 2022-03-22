@@ -76,10 +76,13 @@ ApplicationWindow {
                 id: cancelButton
                 onClicked: {
                     cancelDialog.close()
-                    drives.selected.cancel()
+                    if (mainWindow.selectedPage == Units.Page.DownloadPage && (releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing_Not_Possible)) {
+                        drives.lastRestoreable = drives.selected
+                        drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
+                    }
                     releases.variant.resetStatus()
                     downloadManager.cancel()
-                    mainWindow.selectedPage = Units.Page.MainPage
+                    selectedPage = Units.Page.MainPage
                 }
                 text: qsTr("Ok")
             }
