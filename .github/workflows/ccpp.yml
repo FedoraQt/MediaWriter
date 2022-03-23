@@ -188,42 +188,32 @@ jobs:
         sed -i 's/PACKAGE_URL/"https:\/\/tukaani.org\/xz\/"/' xz/src/common/common_w32res.rc
         mkdir xz/build
         cd xz/build
-        cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX="$Qt6_Dir" -DBUILD_SHARED_LIBS=ON ..
+        cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_INSTALL_PREFIX="$Qt6_DIR" -DBUILD_SHARED_LIBS=ON ..
         mingw32-make -j2 VERBOSE=1
         mingw32-make install
-    #- name: Build Adwaita-qt
-      #shell: bash
-      #if: ${{ !steps.cache-qt.outputs.cache-hit }}
-      #run: |
-        #git clone https://github.com/FedoraQt/adwaita-qt.git
-        #mkdir adwaita-qt/build
-        #cd adwaita-qt/build
-        #cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt6_Dir" ..
-        #mingw32-make -j2 VERBOSE=1
-        #mingw32-make install
     - name: Build MediaWriter
       shell: bash
       run: |
         mkdir build
         cd build
-        cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt6_Dir" ..
+        cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt6_DIR" ..
         mingw32-make -j2 VERBOSE=1
     - name: Windeployqt
-      if: github.event_name == 'release'
+      if: github.event_name == 'push' || github.event_name == 'release'
       shell: bash
       run: |
-        mkdir build/app/release
+        mkdir -p build/app/release
         cd build/app/release
-        mv ../helper.exe .
-        mv ../mediawriter.exe .
-        $Qt6_Dir/bin/windeployqt -qmldir ../../.. mediawriter.exe
-        cp $Qt6_Dir/bin/libstdc*.dll .
-        cp $Qt6_Dir/bin/libwinpthread*.dll .
-        cp $Qt6_Dir/bin/libgcc*.dll .
-        cp $Qt6_Dir/bin/liblzma.dll .
+        mv ../../src/app/helper.exe .
+        mv ../../src/app/mediawriter.exe .
+        $Qt6_DIR/bin/windeployqt.exe --release --qmldir ../../.. mediawriter.exe
+        cp $Qt6_DIR/bin/libstdc*.dll .
+        cp $Qt6_DIR/bin/libwinpthread*.dll .
+        cp $Qt6_DIR/bin/libgcc*.dll .
+        cp $Qt6_DIR/bin/liblzma.dll .
         cp /c/Program\ Files/OpenSSL/bin/*.dll .
     - name: Installer
-      if: github.event_name == 'release'
+      if: github.event_name == 'push' || github.event_name == 'release'
       shell: bash
       run: |
         TAG_NAME=$(bash ./dist/get-tag-name.sh)
@@ -247,10 +237,25 @@ jobs:
         unix2dos < "LICENSE.GPL-2" > "build/app/release/LICENSE.GPL-2.txt"
         unix2dos < "LICENSE.LGPL-2" > "build/app/release/LICENSE.LGPL-2.txt"
         makensis -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
-        mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64-$TAG_NAME.exe"
-    - name: Upload to GitHub
+        if [[ "$TAG_NAME" != "" ]]; then
+          mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64-$TAG_NAME.exe"
+        else
+          mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64.exe"
+        fi
+        
+    - name: Upload to GitHub (release)
       if: github.event_name == 'release'
       shell: bash
       run: |
         TAG_NAME=$(bash ./dist/get-tag-name.sh)
-        bash ./dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="$TAG_NAME" filename="FedoraMediaWriter-win64-$TAG_NAME.exe"
+        bash ./dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="$TAG_NAME" filename="FedoraMediaWriter-win64-$TAG_NAME.exe"        
+
+    - name: Upload to GitHub (Development build)
+      if: github.event_name == 'push'
+      uses: marvinpinto/action-automatic-releases@latest
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "Development Build"
+        files: FedoraMediaWriter-win64.exe  
