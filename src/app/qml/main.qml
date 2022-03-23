@@ -34,7 +34,7 @@ ApplicationWindow {
     property int selectedPage: Units.Page.MainPage
     property int selectedVersion: Units.Source.Product
     property int selectedOption: Units.MainSelect.Download
-    
+    property QtObject lastRestoreable
     property bool eraseVariant: false
     
     ColumnLayout {
@@ -121,7 +121,7 @@ ApplicationWindow {
                 when: selectedPage == Units.Page.VersionPage
                 PropertyChanges { target: mainWindow; title: qsTr("Select Fedora Version") }
                 PropertyChanges { target: nextButton; visible: true; onClicked: selectedPage += 1 } 
-                PropertyChanges { target: prevButton; onClicked: selectedPage -= 1 }
+                PropertyChanges { target: prevButton; visible: true; onClicked: selectedPage -= 1 }
                 StateChangeScript {
                     script: {
                         //state was pushing same page when returing from drivePage
@@ -150,6 +150,7 @@ ApplicationWindow {
                 }
                 PropertyChanges {
                     target: prevButton
+                    visible: true
                     onClicked: {
                         if (selectedOption == Units.MainSelect.Write)
                             selectedPage = Units.Page.MainPage
@@ -175,11 +176,8 @@ ApplicationWindow {
                 }
                 PropertyChanges {
                     target: prevButton
-                    onClicked: {
-                        if (!(releases.variant.status === Units.DownloadStatus.Failed && drives.length <= 0) && !(releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length <= 0) && !(releases.variant.status === Units.DownloadStatus.Ready && drives.length <= 0)) {
-                            drives.lastRestoreable = drives.selected
-                            drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
-                        }    
+                    visible: true
+                    onClicked: {  
                         releases.variant.resetStatus()
                         downloadManager.cancel()
                         mainWindow.selectedPage = Units.Page.MainPage
@@ -191,6 +189,8 @@ ApplicationWindow {
                         if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
                             cancelDialog.show()
                         else if (releases.variant.status === Units.DownloadStatus.Finished) {
+                            drives.lastRestoreable = drives.selected
+                            drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
                             releases.variant.resetStatus()
                             downloadManager.cancel()
                             selectedPage = Units.Page.MainPage
@@ -213,10 +213,16 @@ ApplicationWindow {
                 PropertyChanges {
                     target: nextButton
                     visible: true
-                    onClicked: drives.lastRestoreable.restore() 
+                    onClicked: {
+                        if (lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored)
+                            selectedPage = Units.Page.MainPage 
+                        else
+                            drives.lastRestoreable.restore() 
+                    }
                 }
                 PropertyChanges {
                     target: prevButton
+                    visible: true
                     onClicked: selectedPage = Units.Page.MainPage 
                 }
                 StateChangeScript { 
@@ -240,9 +246,11 @@ ApplicationWindow {
     
     
     function getNextButtonText() {
-        if (mainLayout.state == "restorePage") 
+        if (mainLayout.state == "restorePage") {
+            if (lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored)
+                return qsTr("Finish")
             return qsTr("Restore")
-        else if (mainLayout.state == "drivePage")
+        } else if (mainLayout.state == "drivePage")
             return qsTr("Write")  
         else if (mainLayout.state == "downloadPage") {
             if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)

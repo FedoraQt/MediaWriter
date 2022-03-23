@@ -30,6 +30,8 @@ ApplicationWindow {
     minimumHeight: 240
     maximumHeight: 240
     modality: Qt.ApplicationModal
+    x: Screen.width / 2 - width / 2
+    y: Screen.height / 2 - height / 2
     
     ColumnLayout {
         id: mainColumn

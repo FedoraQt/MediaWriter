@@ -25,7 +25,6 @@ import QtQml 6.2
 
 Page {  
     id: restorePage
-    property QtObject lastRestoreable
     
     ColumnLayout {
         id: mainColumn
@@ -35,7 +34,7 @@ Page {
         Column {
             Label {
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                text: qsTr("Restore Drive <b>%1</b>").arg(lastRestoreable.name)
+                text: qsTr("Restore Drive <b>%1</b>").arg(mainWindow.lastRestoreable.name)
                 wrapMode: Label.Wrap
                 width: mainColumn.width
                 horizontalAlignment: Label.AlignHCenter
@@ -108,13 +107,13 @@ Page {
     }
     
     Component.onCompleted: {
-        lastRestoreable = drives.lastRestoreable
+        mainWindow.lastRestoreable = drives.lastRestoreable
     }
     
     states: [
         State {
             name: "contains_live"
-            when: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Contains_Live
+            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus == Units.RestoreStatus.Contains_Live
             PropertyChanges {
                 target: warningText;
                 visible: true
@@ -122,14 +121,14 @@ Page {
         },
         State {
             name: "restoring"
-            when: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restoring
+            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus == Units.RestoreStatus.Restoring
             PropertyChanges {
                 target: progress;
                 visible: true
             }
             PropertyChanges {
                 target: prevButton;
-                enabled: false
+                visible: false
             }
             PropertyChanges {
                 target: nextButton;
@@ -138,7 +137,7 @@ Page {
         },
         State {
             name: "restored"
-            when: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored
+            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus == Units.RestoreStatus.Restored
             PropertyChanges {
                 target: mainWindow;
                 title: qsTr("Restoring finished")
@@ -148,21 +147,20 @@ Page {
                 visible: true
             }
             PropertyChanges {
-                target: prevButton;
-                text: qsTr("Finish")
+                target: nextButton;
                 enabled: true
             }
             PropertyChanges {
-                target: nextButton;
+                target: prevButton;
                 visible: false
             }
             StateChangeScript {
-                script: { drives.lastRestoreable = null }
+                script: drives.lastRestoreable = null
             }
         },
         State {
             name: "restore_error"
-            when: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restore_Error
+            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus == Units.RestoreStatus.Restore_Error
             PropertyChanges {
                 target: errorText;
                 visible: true
@@ -174,7 +172,7 @@ Page {
         },
         State {
             name: "Clean"
-            when: lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Clean
+            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus == Units.RestoreStatus.Clean
             PropertyChanges {
                 target: prevButton;
                 enabled: true

@@ -30,6 +30,10 @@ ApplicationWindow {
     minimumHeight: 180
     maximumHeight: 180
     modality: Qt.ApplicationModal
+    x: Screen.width / 2 - width / 2
+    y: Screen.height / 2 - height / 2
+    
+    property QtObject drivesSelected: drives.selected
     
     ColumnLayout {
         id: mainColumn
@@ -76,10 +80,14 @@ ApplicationWindow {
                 id: cancelButton
                 onClicked: {
                     cancelDialog.close()
-                    drives.selected.cancel()
+                    if (mainWindow.selectedPage == Units.Page.DownloadPage && (releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing_Not_Possible)) {
+                        drives.selected.cancel()
+                        drives.lastRestoreable = drivesSelected
+                        drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
+                    }
                     releases.variant.resetStatus()
                     downloadManager.cancel()
-                    mainWindow.selectedPage = Units.Page.MainPage
+                    selectedPage = Units.Page.MainPage
                 }
                 text: qsTr("Ok")
             }
