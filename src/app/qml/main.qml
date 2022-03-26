@@ -55,6 +55,39 @@ ApplicationWindow {
             Layout.leftMargin: parent.width / 8
             Layout.rightMargin: parent.width / 8
             Layout.bottomMargin: units.gridUnit * 2
+            
+            pushEnter: Transition {
+                PropertyAnimation {
+                    property: "x"
+                    from: mainWindow.width
+                    to: 0
+                    duration: 250
+                }
+            }
+            pushExit: Transition {
+                PropertyAnimation {
+                    property: "x"
+                    from: 0
+                    to: -mainWindow.width
+                    duration: 250
+                }
+            }
+            popEnter: Transition {
+              PropertyAnimation {
+                    property: "x"
+                    from: -mainWindow.width
+                    to: 0
+                    duration: 250
+                }
+            }
+            popExit: Transition {
+                PropertyAnimation {
+                    property: "x"
+                    from: 0
+                    to: mainWindow.width
+                    duration: 250
+                }
+            }
         }
         
         RowLayout {
