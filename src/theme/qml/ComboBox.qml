@@ -36,10 +36,10 @@ T.ComboBox {
                              contentItem.implicitHeight + bottomPadding + topPadding)
 
     spacing: theme.menuItemSpacing
-    leftPadding: theme.comboBoxMarginWidth + theme.frameWidth
-    rightPadding: theme.comboBoxMarginWidth + theme.frameWidth
-    bottomPadding: theme.comboBoxMarginHeight + theme.frameWidth
-    topPadding: theme.comboBoxMarginHeight + theme.frameWidth
+    leftPadding: theme.comboBoxMarginWidth
+    rightPadding: theme.comboBoxMarginWidth
+    bottomPadding: theme.comboBoxMarginHeight
+    topPadding: theme.comboBoxMarginHeight
 
     hoverEnabled: true
 

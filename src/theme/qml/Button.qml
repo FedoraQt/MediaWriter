@@ -34,10 +34,10 @@ T.Button {
     implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
     implicitHeight: contentItem.implicitHeight + bottomPadding + topPadding
 
-    leftPadding: theme.buttonMarginWidth + theme.frameWidth
-    rightPadding: theme.buttonMarginWidth + theme.frameWidth
-    bottomPadding: theme.buttonMarginWidth + theme.frameWidth
-    topPadding: theme.buttonMarginWidth + theme.frameWidth
+    leftPadding: theme.buttonMarginWidth 
+    rightPadding: theme.buttonMarginWidth 
+    bottomPadding: theme.buttonMarginWidth 
+    topPadding: theme.buttonMarginWidth 
 
     Layout.minimumWidth: control.text ? theme.buttonMinimumWidth : theme.buttonMinimumWidth / 2
 

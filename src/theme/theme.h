@@ -106,7 +106,7 @@ public:
 
     // Frame
     int frameRadius() const { return Adwaita::Frame_FrameRadius; }
-    int frameWidth() const { return Adwaita::Menu_FrameWidth; }
+    int frameWidth() const { return Adwaita::Frame_FrameWidth; }
 
     // LineEdit
     int lineEditFrameWidth() const { return Adwaita::LineEdit_FrameWidth; }

@@ -35,10 +35,10 @@ T.TextField {
                              contentHeight + topPadding + bottomPadding,
                              placeholder.implicitHeight + topPadding + bottomPadding)
 
-    leftPadding: theme.lineEditMarginWidth + theme.frameWidth
-    rightPadding: theme.lineEditMarginWidth + theme.frameWidth
-    bottomPadding: theme.lineEditMarginHeight + theme.frameWidth
-    topPadding: theme.lineEditMarginHeight + theme.frameWidth
+    leftPadding: theme.lineEditMarginWidth 
+    rightPadding: theme.lineEditMarginWidth 
+    bottomPadding: theme.lineEditMarginHeight 
+    topPadding: theme.lineEditMarginHeight 
 
     color: theme.textColor
     selectionColor: theme.highlightColor
