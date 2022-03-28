@@ -31,7 +31,7 @@ T.ComboBox {
     id: control
 
     implicitWidth: Math.max(background ? background.implicitWidth : 0,
-                            contentItem.implicitWidth) + leftPadding + rightPadding + spacing + indicator.implicitWidth + rightPadding
+                            contentItem.implicitWidth + leftPadding + rightPadding) + spacing + indicator.implicitWidth + rightPadding
     implicitHeight: Math.max(background ? background.implicitHeight : 0,
                              contentItem.implicitHeight + bottomPadding + topPadding)
 
@@ -44,11 +44,12 @@ T.ComboBox {
     hoverEnabled: true
 
     delegate: MenuItem {
-        width: parent.width
+        width: parent.width - theme.frameWidth
         text: control.textRole ? (Array.isArray(control.model) ? modelData[control.textRole] : model[control.textRole]) : modelData
         font.weight: control.currentIndex === index ? Font.DemiBold : Font.Normal
         highlighted: control.highlightedIndex == index
         hoverEnabled: control.hoverEnabled
+        x: theme.frameWidth / 2
     }
 
     indicator: Shape {
@@ -135,7 +136,7 @@ T.ComboBox {
         x: control.mirrored ? control.width - width : 0
         y: control.height
         width: control.width
-        height: contentItem.implicitHeight
+        height: contentItem.implicitHeight + (theme.menuItemSpacing * 2)
         topMargin: 6
         bottomMargin: 6
 
@@ -147,7 +148,7 @@ T.ComboBox {
             currentIndex: control.highlightedIndex
             highlightRangeMode: ListView.ApplyRange
             highlightMoveDuration: 0
-
+            topMargin: theme.menuItemSpacing
             T.ScrollBar.vertical: ScrollBar { }
         }
 
