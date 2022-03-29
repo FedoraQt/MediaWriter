@@ -163,7 +163,7 @@ section "install"
 
             # Files added here should be removed by the uninstaller (see section "uninstall")
             File /r "..\..\build\app\release\*.*"
-            File "..\..\app\data\icons\mediawriter.ico"
+            File "..\..\src\app\data\icons\mediawriter.ico"
 
             ; this packages the signed uninstaller
             File c:\uninstall.exe
