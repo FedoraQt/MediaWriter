@@ -57,32 +57,28 @@ ApplicationWindow {
             Layout.bottomMargin: units.gridUnit * 2
             
             pushEnter: Transition {
-                PropertyAnimation {
-                    property: "x"
+                XAnimator {
                     from: mainWindow.width
                     to: 0
                     duration: 250
                 }
             }
             pushExit: Transition {
-                PropertyAnimation {
-                    property: "x"
+                XAnimator {
                     from: 0
                     to: -mainWindow.width
                     duration: 250
                 }
             }
             popEnter: Transition {
-              PropertyAnimation {
-                    property: "x"
+              XAnimator {
                     from: -mainWindow.width
                     to: 0
                     duration: 250
                 }
             }
             popExit: Transition {
-                PropertyAnimation {
-                    property: "x"
+                XAnimator {
                     from: 0
                     to: mainWindow.width
                     duration: 250
@@ -144,9 +140,12 @@ ApplicationWindow {
                         //reset of source on versionPage
                         selectedOption = Units.MainSelect.Download
                         releases.filterSource = 0
-                        if (stackView.depth > 1) 
-                            while(stackView.depth != 1)
-                                stackView.pop() }
+                        if (stackView.depth > 1)  {
+                            while (stackView.depth != 1) {
+                                stackView.pop()
+                            }
+                        }
+                    }
                 }
             },
             State {
