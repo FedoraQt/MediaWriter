@@ -147,7 +147,7 @@ void Icon::setSource(const QVariant &icon)
         // connect(m_theme, &AdwaitaTheme::colorsChanged, this, &QQuickItem::polish);
 //    }
 
-    if (icon.typeId() == QVariant::String) {
+    if (icon.typeId() == QMetaType::QString) {
         const QString iconSource = icon.toString();
         m_isMaskHeuristic = (iconSource.endsWith(QLatin1String("-symbolic"))
                             || iconSource.endsWith(QLatin1String("-symbolic-rtl"))
@@ -318,26 +318,26 @@ void Icon::updatePolish()
     if (itemSize.width() != 0 && itemSize.height() != 0) {
 
         switch(m_source.typeId()){
-        case QVariant::Pixmap:
+        case QMetaType::QPixmap:
             m_icon = m_source.value<QPixmap>().toImage();
             break;
-        case QVariant::Image:
+        case QMetaType::QImage:
             m_icon = m_source.value<QImage>();
             break;
-        case QVariant::Bitmap:
+        case QMetaType::QBitmap:
             m_icon = m_source.value<QBitmap>().toImage();
             break;
-        case QVariant::Icon:
+        case QMetaType::QIcon:
             QScreen * screen;
             m_icon = m_source.value<QIcon>().pixmap(itemSize, screen->devicePixelRatio()).toImage();
             break;
-        case QVariant::Url:
-        case QVariant::String:
+        case QMetaType::QUrl:
+        case QMetaType::QString:
             m_icon = findIcon(itemSize);
             break;
-        case QVariant::Brush:
+        case QMetaType::QBrush:
             //todo: fill here too?
-        case QVariant::Color:
+        case QMetaType::QColor:
             m_icon = QImage(itemSize, QImage::Format_Alpha8);
             m_icon.fill(m_source.value<QColor>());
             break;

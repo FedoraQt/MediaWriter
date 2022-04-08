@@ -7,12 +7,7 @@ set(ADWAITA_THEME_PLUGIN_SRCS
     theme.cpp
 )
 
-if (WIN32)
-    add_library(adwaitathemeplugin MODULE ${ADWAITA_THEME_PLUGIN_SRCS})
-    set_target_properties(adwaitathemeplugin PROPERTIES PREFIX "")
-else()
-    add_library(adwaitathemeplugin SHARED ${ADWAITA_THEME_PLUGIN_SRCS})
-endif()
+add_library(adwaitathemeplugin SHARED ${ADWAITA_THEME_PLUGIN_SRCS})
 
 target_link_libraries(adwaitathemeplugin
     Qt6::Core
