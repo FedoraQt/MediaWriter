@@ -1,5 +1,5 @@
-add_subdirectory(app)
 add_subdirectory(helper)
+add_subdirectory(app)
 add_subdirectory(lib)
 if (UNIX AND NOT APPLE)
     add_subdirectory(theme)
