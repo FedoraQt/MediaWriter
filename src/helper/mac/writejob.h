@@ -37,8 +37,6 @@ class AuthOpenProcess : public QProcess {
 public:
     AuthOpenProcess(int parentSocket, int clientSocket, const QString &device, QObject *parent = nullptr);
 
-    void setChildProcessModifier();
-
 private:
     int m_parentSocket;
     int m_clientSocket;

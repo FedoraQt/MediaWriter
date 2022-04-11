@@ -45,12 +45,11 @@ AuthOpenProcess::AuthOpenProcess(int parentSocket, int clientSocket, const QStri
 {
     setProgram(QStringLiteral("/usr/libexec/authopen"));
     setArguments({QStringLiteral("-stdoutpipe"), QStringLiteral("-o"), QString::number(O_RDWR), QStringLiteral("/dev/r") + device});
-}
 
-void AuthOpenProcess::setChildProcessModifier()
-{
-    ::close(m_parentSocket);
-    ::dup2(m_clientSocket, STDOUT_FILENO);
+    setChildProcessModifier([=] {
+        ::close(m_parentSocket);
+        ::dup2(m_clientSocket, STDOUT_FILENO);
+    });
 }
 
 WriteJob::WriteJob(const QString &what, const QString &where)
