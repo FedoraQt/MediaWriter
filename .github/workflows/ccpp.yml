@@ -101,7 +101,7 @@ jobs:
         #bash ./dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="$TAG_NAME" filename="org.fedoraproject.MediaWriter-$TAG_NAME.flatpak"
 
   macOS:
-    runs-on: macos-latest
+    runs-on: macOS-10.15
     steps:
     - uses: actions/checkout@v1
       with:
