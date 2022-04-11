@@ -61,7 +61,7 @@ function deps() {
             while read library; do
             if [[ ! $library == @loader_path/* ]]; then
                 echo "Copying $(basename $library)"
-                if [[ "$library" == "/System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO" && ! -e "$library" && "$VERSION" == "" ]]; then
+                if [[ "$library" == "/System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO" && ! -e "$library" ]]; then
                     continue
                 fi
                 # fix for newer version of Mac
@@ -73,9 +73,8 @@ function deps() {
             fi
         done
     done
-    # echo "Copy libbrotlicommon.1.dylib"
-    # cp "/usr/local/opt/brotli/lib/libbrotlicommon.1.dylib" "src/app/Fedora Media Writer.app/Contents/Frameworks"
-    # install_name_tool -change "$library" "@executable_path/../Frameworks/$(basename ${library})" "src/app/Fedora Media Writer.app/Contents/MacOS/$binary"        
+    echo "Copy libbrotlicommon.1.dylib"
+    cp "/usr/local/opt/brotli/lib/libbrotlicommon.1.dylib" "src/app/Fedora Media Writer.app/Contents/Frameworks"        
     popd >/dev/null
 }
 
