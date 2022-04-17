@@ -39,8 +39,6 @@ if (UNIX AND NOT APPLE)
     find_package(AdwaitaQt6 "1.4.1" REQUIRED)
 endif()
 
-#qt_import_plugins(MediaWriter QWindowsIntegrationPlugin QMacIntegrationPlugin)
-    
 add_subdirectory(src)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

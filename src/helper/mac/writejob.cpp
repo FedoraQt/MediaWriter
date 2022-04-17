@@ -25,6 +25,7 @@
 #include <QTextStream>
 #include <QProcess>
 #include <QFile>
+#include <QRegularExpression>
 
 #include <QDebug>
 
@@ -44,12 +45,11 @@ AuthOpenProcess::AuthOpenProcess(int parentSocket, int clientSocket, const QStri
 {
     setProgram(QStringLiteral("/usr/libexec/authopen"));
     setArguments({QStringLiteral("-stdoutpipe"), QStringLiteral("-o"), QString::number(O_RDWR), QStringLiteral("/dev/r") + device});
-}
 
-void AuthOpenProcess::setupChildProcess()
-{
-    ::close(m_parentSocket);
-    ::dup2(m_clientSocket, STDOUT_FILENO);
+    setChildProcessModifier([=] {
+        ::close(m_parentSocket);
+        ::dup2(m_clientSocket, STDOUT_FILENO);
+    });
 }
 
 WriteJob::WriteJob(const QString &what, const QString &where)
@@ -153,7 +153,7 @@ void WriteJob::onFileChanged(const QString &path) {
     if (QFile::exists(path))
         return;
 
-    what = what.replace(QRegExp("[.]part$"), "");
+    what.replace(QRegularExpression("[.]part$"), "");
 
     work();
 }

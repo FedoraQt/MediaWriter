@@ -100,63 +100,77 @@ jobs:
         #TAG_NAME=$(bash ./dist/get-tag-name.sh)
         #bash ./dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="$TAG_NAME" filename="org.fedoraproject.MediaWriter-$TAG_NAME.flatpak"
 
-  #macOS:
-    #runs-on: macos-latest
-    #steps:
-    #- uses: actions/checkout@v1
+  macOS:
+    runs-on: macOS-10.15
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+    - name: Install dependencies
+      run: |
+        brew install qt6
+        echo 'export PATH="/usr/local/opt/qt@6/bin:$PATH"' >> ~/.bash_profile
+        brew install xz
+        brew install git
+        brew install cmake
+        npm install -g create-dmg
+    - name: Configure
+      run: |
+        TAG_NAME=$(bash ./dist/get-tag-name.sh)
+        bash dist/mac/build.sh configure
+    - name: Build
+      run: |
+        TAG_NAME=$(bash ./dist/get-tag-name.sh)
+        bash dist/mac/build.sh build
+    - name: Insert dependencies
+      if: github.event_name == 'push' || github.event_name == 'release'
+      run: |
+        TAG_NAME=$(bash ./dist/get-tag-name.sh)
+        bash dist/mac/build.sh deps
+    - name: Sign (TBD)
+      if: github.event_name == 'release'
+      run: |
+        TAG_NAME=$(bash ./dist/get-tag-name.sh)
+        true # bash  dist/mac/build.sh sign
+    - name: Package
+      if: github.event_name == 'push' || github.event_name == 'release'
+      run: |
+        TAG_NAME=$(bash ./dist/get-tag-name.sh)
+        cd build/src/app
+        create-dmg "Fedora Media Writer.app" || true # without signing, create-dmg returns an error code
+        if [[ "$TAG_NAME" != "" ]]; then
+          mv Fedora*.dmg ../../../FedoraMediaWriter-osx-$TAG_NAME.unnotarized.dmg
+        else 
+          mv Fedora*.dmg ../../../FedoraMediaWriter-osx.unnotarized.dmg
+        fi
+    - name: Notarize (TBD)
+      if: github.event_name == 'release'
+      run: |
+        TAG_NAME=$(bash ./dist/get-tag-name.sh)
+        true # bash dist/mac/build.sh notarize
+    #- name: Upload artifacts to GitHub
+      #if: github.event_name != 'release'
+      #uses: actions/upload-artifact@v2
       #with:
-        #fetch-depth: 1
-    #- name: Install dependencies
-      #run: |
-        #brew install qt5
-        #echo 'export PATH="/usr/local/opt/qt@5/bin:$PATH"' >> ~/.bash_profile
-        #brew install xz
-        #brew install git
-        #brew install cmake
-        #npm install -g create-dmg
-    #- name: Configure
-      #run: |
-        #TAG_NAME=$(bash ./dist/get-tag-name.sh)
-        #bash dist/mac/build.sh configure
-    #- name: Build
-      #run: |
-        #TAG_NAME=$(bash ./dist/get-tag-name.sh)
-        #bash dist/mac/build.sh build
-    #- name: Insert dependencies
-      #if: github.event_name == 'release'
-      #run: |
-        #TAG_NAME=$(bash ./dist/get-tag-name.sh)
-        #bash dist/mac/build.sh deps
-    #- name: Sign (TBD)
-      #if: github.event_name == 'release'
-      #run: |
-        #TAG_NAME=$(bash ./dist/get-tag-name.sh)
-        #true # bash  dist/mac/build.sh sign
-    #- name: Package
-      #if: github.event_name == 'release'
-      #run: |
-        #TAG_NAME=$(bash ./dist/get-tag-name.sh)
-        #cd build/app
-        #create-dmg "Fedora Media Writer.app" || true # without signing, create-dmg returns an error code
-        #mv Fedora*.dmg ../../FedoraMediaWriter-osx-$TAG_NAME.unnotarized.dmg
-    #- name: Notarize (TBD)
-      #if: github.event_name == 'release'
-      #run: |
-        #TAG_NAME=$(bash ./dist/get-tag-name.sh)
-        #true # bash dist/mac/build.sh notarize
-    ##- name: Upload artifacts to GitHub
-      ##if: github.event_name != 'release'
-      ##uses: actions/upload-artifact@v2
-      ##with:
-            ##name: FedoraMediaWriter-osx-unnotarized.dmg
-            ##path: FedoraMediaWriter-osx-unnotarized.dmg
+            #name: FedoraMediaWriter-osx-unnotarized.dmg
+            #path: FedoraMediaWriter-osx-unnotarized.dmg
 
-    #- name: Upload to GitHub
-      #if: github.event_name == 'release'
-      #shell: bash
-      #run: |
-        #TAG_NAME=$(bash ./dist/get-tag-name.sh)
-        #bash ./dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="$TAG_NAME" filename="FedoraMediaWriter-osx-$TAG_NAME.unnotarized.dmg"
+    - name: Upload to GitHub (release)
+      if: github.event_name == 'release'
+      shell: bash
+      run: |
+        TAG_NAME=$(bash ./dist/get-tag-name.sh)
+        bash ./dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="$TAG_NAME" filename="FedoraMediaWriter-osx-$TAG_NAME.unnotarized.dmg"
+
+    - name: Upload to GitHub (Development build)
+      if: github.event_name == 'push'
+      uses: marvinpinto/action-automatic-releases@latest
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest-macos"
+        prerelease: true
+        title: "Development Build (MacOS)"
+        files: FedoraMediaWriter-osx.unnotarized.dmg
 
   Windows:
     runs-on: windows-latest
