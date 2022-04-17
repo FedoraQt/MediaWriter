@@ -9,12 +9,12 @@
 # Elena Metelli <byruit@gmail.com>, 2017. #zanata
 # Gianluca Sforna <giallu@gmail.com>, 2017. #zanata
 # Luca Ciavatta <luca.ciavatta@gmail.com>, 2017. #zanata
-# Nathan <nathan95@live.it>, 2021.
+# Nathan <nathan95@live.it>, 2021, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-07 16:44+0200\n"
-"PO-Revision-Date: 2021-07-11 17:14+0000\n"
+"PO-Revision-Date: 2022-04-17 09:17+0000\n"
 "Last-Translator: Nathan <nathan95@live.it>\n"
 "Language-Team: Italian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/it/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.1\n"
+"X-Generator: Weblate 4.11.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/DeleteButton.qml:64
@@ -409,12 +409,12 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:939
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
-msgstr ""
+msgstr "AArch64"
 
 #: ../src/app/releasemanager.cpp:939
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr ""
+msgstr "Immagine grezza LZMA-compressa per computer AArch64"
 
 #: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
 msgctxt "ReleaseListModel|"
@@ -685,12 +685,12 @@ msgstr "Impossibile sbloccare il drive"
 #: ../src/helper/mac/writejob.cpp:82
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "Impossibile allocare la coppia di socket"
 
 #: ../src/helper/mac/writejob.cpp:127
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "Impossibile aprire la destinazione per la scrittura"
 
 #: ../src/app/qml/main.qml:68
 #, qt-format
@@ -797,25 +797,22 @@ msgstr "Scrive le immagini Fedora sulle unità portatili"
 # ############## metadata.json ###############
 #: [Workstation].subvariant
 msgid "workstation"
-msgstr ""
+msgstr "workstation"
 
 #: [Workstation].category
 msgctxt "Release|"
 msgid "product"
-msgstr ""
+msgstr "prodotto"
 
 #: [Workstation].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "Fedora Workstation"
-msgstr "Fedora Spins"
+msgstr "Fedora Workstation"
 
 #: [Workstation].summary
 msgctxt "Release|"
 msgid "This is the Linux workstation you've been waiting for."
-msgstr ""
+msgstr "Questa è la workstation Linux che stavi aspettando."
 
 #: [Workstation].description[0]
 msgctxt "Release|"
@@ -825,6 +822,10 @@ msgid ""
 "developers, from hobbyists and students to professionals in corporate "
 "environments."
 msgstr ""
+"Fedora Workstation è un sistema operativo affidabile, user-friendly e "
+"potente per il tuo laptop o computer desktop. Supporta una grande varietà di "
+"sviluppatori, dagli hobbisti e studenti ai professionisti in ambienti "
+"aziendali."
 
 #: [Workstation].description[1]
 msgctxt "Release|"
@@ -832,6 +833,8 @@ msgid ""
 "“The plethora of tools provided by<br /> Fedora allows me to get the job "
 "done.<br /> It just works.”"
 msgstr ""
+"\"La pletora di strumenti forniti da <br /> Fedora mi permette di portare a "
+"termine il lavoro.<br /> Semplicemente funziona.\""
 
 #: [Workstation].description[2]
 msgctxt "Release|"
@@ -841,7 +844,7 @@ msgstr ""
 #: [Workstation].description[3]
 msgctxt "Release|"
 msgid "Sleek user interface"
-msgstr ""
+msgstr "Interfaccia utente elegante"
 
 #: [Workstation].description[4]
 msgctxt "Release|"
@@ -854,7 +857,7 @@ msgstr ""
 #: [Workstation].description[5]
 msgctxt "Release|"
 msgid "Complete open source toolbox"
-msgstr ""
+msgstr "Toolbox opensource completo"
 
 #: [Workstation].description[6]
 msgctxt "Release|"
@@ -877,11 +880,14 @@ msgid ""
 "platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization "
 "tools for even more control."
 msgstr ""
+"Avvia velocemente macchine virtuali per testare il tuo codice su diverse "
+"piattaforme con GNOME Boxes. Oppure ottieni ancora più controllo grazie agli "
+"strumenti di virtualizzazione potenti e con supporto agli script."
 
 #: [Workstation].description[9]
 msgctxt "Release|"
 msgid "Built-in Docker support"
-msgstr ""
+msgstr "Supporto a Docker integrato"
 
 #: [Workstation].description[10]
 msgctxt "Release|"
@@ -889,18 +895,18 @@ msgid ""
 "Containerize your own apps, or deploy containerized apps out of the box on "
 "Fedora, using the latest technology like Docker."
 msgstr ""
+"Containerizza le tue app, o distribuisci app containerizzate out of the box "
+"su Fedora, usando le ultime tecnologie come Docker."
 
 #: [Server].subvariant
 msgctxt "Release|"
 msgid "server"
-msgstr ""
+msgstr "server"
 
 #: [Server].category [Server].name
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "Fedora Server"
-msgstr "Fedora Media Writer"
+msgstr "Fedora Server"
 
 #: [Server].summary
 msgctxt "Release|"
@@ -908,6 +914,8 @@ msgid ""
 "The latest technology. A stable foundation. Together, for your applications "
 "and services."
 msgstr ""
+"L'ultima tecnologia. Una base stabile. Insieme, per le vostre applicazioni e "
+"servizi."
 
 #: [Server].description[0]
 msgctxt "Release|"
@@ -916,6 +924,10 @@ msgid ""
 "deployments a breeze. What took me a few days on other operating systems "
 "took less than an hour with Fedora %(rel)s Server. It just works.”"
 msgstr ""
+"\"La semplicità introdotta con rolekit e cockpit ha reso l'installazione dei "
+"server un gioco da ragazzi. Ciò che mi ha richiesto alcuni giorni su altri "
+"sistemi operativi ha richiesto meno di un'ora con Fedora %(rel)s Server. "
+"Funziona e basta\"."
 
 #: [Server].description[1]
 msgctxt "Release|"
@@ -930,11 +942,14 @@ msgid ""
 "to make use of the very latest server-based technologies available in the "
 "open source community."
 msgstr ""
+"Fedora Server ha un ciclo di vita breve ed è un sistema operativo supportato "
+"dalla community, che abilita qualunque amministratore di sistemi all'uso "
+"delle ultime tecnologie disponibili nella community open source."
 
 #: [Server].description[3]
 msgctxt "Release|"
 msgid "Easy Administration"
-msgstr ""
+msgstr "Amministrazione semplificata"
 
 #: [Server].description[4]
 msgctxt "Release|"
@@ -943,11 +958,14 @@ msgid ""
 "and monitor system performance and status, and deploy and manage container-"
 "based services."
 msgstr ""
+"Gestisci semplicemente il tuo sistema con l'interfaccia potente e moderna di "
+"Cockpit. Visualizza e controlla le prestazioni e lo stato del sistema, "
+"esegui il deploy e gestisci servizi basati su container."
 
 #: [Server].description[5]
 msgctxt "Release|"
 msgid "Server Roles"
-msgstr ""
+msgstr "Ruoli Server"
 
 #: [Server].description[6]
 msgctxt "Release|"
@@ -969,6 +987,8 @@ msgid ""
 "Fedora Server brings with it an enterprise-class, scalable database server "
 "powered by the open-source PostgreSQL project."
 msgstr ""
+"Fedora Server porta con sé un database scalabile di classe enterprise basato "
+"sul progetto open-source PostgreSQL."
 
 #: [Server].description[9]
 msgctxt "Release|"
@@ -1003,25 +1023,19 @@ msgid "Information Systems Student"
 msgstr ""
 
 #: [Silverblue].subvariant
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "silverblue"
-msgstr "Fedora Spins"
+msgstr "siverblue"
 
 #: [Silverblue].category
 msgctxt "Release|"
 msgid "emerging"
-msgstr ""
+msgstr "emergente"
 
 #: [Silverblue].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "Release|"
 msgid "Fedora Silverblue"
-msgstr "Fedora Spins"
+msgstr "Fedora Siverblue"
 
 #: [Silverblue].summary
 msgctxt "Release|"
@@ -1029,6 +1043,9 @@ msgid ""
 "An extremely stable and reliable desktop operating system, excellent for "
 "developers and for those using container-focused workflows."
 msgstr ""
+"Un sistema operativo desktop estremamente stabile e affidabile, eccellente "
+"per gli sviluppatori e per coloro che utilizzano flussi di lavoro incentrati "
+"sui container."
 
 #: [Silverblue].description[0]
 msgctxt "Release|"
