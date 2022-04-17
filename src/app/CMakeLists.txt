@@ -108,7 +108,6 @@ if (APPLE AND CREATE_STANDALONE_MAC_BUNDLE)
                        COMMAND "${MACDEPLOYQT_EXECUTABLE}"
                                "${CMAKE_BINARY_DIR}/src/app/Fedora Media Writer.app"
                                -qmldir="${CMAKE_SOURCE_DIR}/src/app/qml"
-                               -verbose=2
                                -executable=\"${CMAKE_BINARY_DIR}/src/app/Fedora Media Writer.app/Contents/MacOS/helper\"
                         COMMENT "Deploying Qt...")
 endif()
