@@ -51,11 +51,11 @@ ApplicationWindow {
                 Layout.alignment: Qt.AlignVCenter
                 text: {
                     if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
-                        qsTr("Downloading is still in progress, do you wish to cancel it?")
+                        qsTr("A download is still in progress. Do you want to cancel the download?")
                     else if (releases.variant.status == Units.DownloadStatus.Writing) 
-                        qsTr("Do you want to cancel writing?")
+                        qsTr("Writing is still in progress. Do you want to cancel the writing process?")
                     else
-                        qsTr("Do you want to cancel data validation? This operation is safe to be cancelled.")
+                        qsTr("Data validation is still in progress. This operation is safe to be cancelled.")
                 }   
                 wrapMode: Label.Wrap
                 width: mainColumn.width
