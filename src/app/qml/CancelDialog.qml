@@ -32,6 +32,7 @@ ApplicationWindow {
     modality: Qt.ApplicationModal
     x: Screen.width / 2 - width / 2
     y: Screen.height / 2 - height / 2
+    title: " "
     
     property QtObject drivesSelected: drives.selected
     
@@ -82,7 +83,7 @@ ApplicationWindow {
             Button {
                 id: continueButton
                 onClicked: cancelDialog.close()
-                text: qsTr("Cancel")
+                text: qsTr("Continue")
             }
             
             Button {
@@ -98,7 +99,14 @@ ApplicationWindow {
                     downloadManager.cancel()
                     selectedPage = Units.Page.MainPage
                 }
-                text: qsTr("Ok")
+                text: {
+                    if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                        qsTr("Cancel Download")
+                    else if (releases.variant.status == Units.DownloadStatus.Writing) 
+                        qsTr("Cancel Writing")
+                    else
+                        qsTr("Cancel Verification")
+                }  
             }
         }
     }

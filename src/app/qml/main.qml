@@ -167,7 +167,7 @@ ApplicationWindow {
                 when: selectedPage == Units.Page.DrivePage
                 PropertyChanges { 
                     target: mainWindow
-                    title: qsTr("Select drive") 
+                    title: qsTr("Select Drive") 
                 }
                 PropertyChanges {
                     target: nextButton;
@@ -283,7 +283,7 @@ ApplicationWindow {
                 return qsTr("Finish")
             return qsTr("Restore")
         } else if (mainLayout.state == "drivePage")
-            return qsTr("Write")  
+            return qsTr("Download & Write")  
         else if (mainLayout.state == "downloadPage") {
             if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
                 return qsTr("Cancel")

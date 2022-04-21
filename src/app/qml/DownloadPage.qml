@@ -41,7 +41,20 @@ Page {
         
         Heading {
             Layout.alignment: Qt.AlignHCenter
-            text: mainWindow.selectedOption == Units.MainSelect.Write ? qsTr("Writing %1").arg((String)(releases.localFile.iso).split("/").slice(-1)[0]) :                                                         qsTr("Downloading %1 ").arg(releases.selected.name) + releases.selected.version.number
+            text: {
+                if (mainWindow.selectedOption == Units.MainSelect.Write)
+                    qsTr("Writing %1").arg((String)(releases.localFile.iso).split("/").slice(-1)[0])
+                else if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing)
+                    qsTr("Writing %1 ").arg(releases.selected.name) + releases.selected.version.number
+                else if (releases.variant.status === Units.DownloadStatus.Download_Verifying || releases.variant.status === Units.DownloadStatus.Downloading)
+                    qsTr("Downloading %1 ").arg(releases.selected.name) + releases.selected.version.number
+                else if (releases.variant.status === Units.DownloadStatus.Finished)
+                    qsTr("%1 Sucessfuly Written").arg(releases.selected.name) + releases.selected.version.number
+                else if (releases.variant.status === Units.DownloadStatus.Preparing)
+                    qsTr("Preparing %1").arg(releases.selected.name) + releases.selected.version.number
+                else
+                    qsTr("Failed")
+            }
             level: 4
             Layout.preferredWidth: mainColumn.width
             elide: Label.ElideRight
@@ -72,7 +85,7 @@ Page {
             Label {
                 id: messageDownload
                 visible: false
-                text: qsTr("The file will be saved to your Downloads folder.")
+                text: qsTr("Downloads are saved to the downloads folder.")
                 wrapMode: Label.Wrap
                 width: mainColumn.width
             }
@@ -114,6 +127,15 @@ Page {
                 enabled: true
                 visible: enabled && drives.selected && drives.selected.size > 160 * 1024 * 1024 * 1024 // warn when it's more than 160GB
                 text: qsTr("The selected drive's size is %1. It's possible you have selected an external drive by accident!").arg(drives.selected ? drives.selected.readableSize : "N/A")
+                wrapMode: Label.Wrap
+                width: mainColumn.width
+            }
+            
+            Label {
+                id: messageFinished
+                enabled: true
+                visible: false
+                text: qsTr("Restart and boot from %1 to start using Fedora Workstation.").arg(drives.selected ? drives.selected.readableSize : "N/A")
                 wrapMode: Label.Wrap
                 width: mainColumn.width
             }
@@ -268,7 +290,7 @@ Page {
                 enabled: false
             }
             PropertyChanges {
-                target: messageRestore;
+                target: messageFinished;
                 visible: true
             }
             PropertyChanges {
@@ -286,7 +308,7 @@ Page {
             }
             PropertyChanges {
                 target: mainWindow;
-                title: mainWindow.selectedOption == Units.MainSelect.Write ? qsTr("Writing finished") : qsTr("Downloading finished")
+                title: qsTr("Write Successful")
             }
             StateChangeScript {
                 script: { 

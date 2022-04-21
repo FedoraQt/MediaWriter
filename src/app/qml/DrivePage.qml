@@ -91,7 +91,7 @@ Page {
                 Button {
                     id: selectFileButton
                     Layout.alignment: Qt.AlignRight
-                    text: qsTr("Select ...")
+                    text: qsTr("Select...")
                     onClicked: {
                         if (portalFileDialog.isAvailable)
                             portalFileDialog.open()
