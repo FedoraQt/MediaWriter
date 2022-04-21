@@ -38,17 +38,27 @@ ApplicationWindow {
     ColumnLayout {
         id: mainColumn
         anchors.fill: parent
-        anchors.leftMargin: units.gridUnit * 3
-        anchors.rightMargin: units.gridUnit * 3
-        anchors.topMargin: units.gridUnit * 2
-        anchors.bottomMargin: units.gridUnit * 2
+        anchors.margins: units.gridUnit 
         spacing: units.gridUnit
-           
+        
         Column {
+            leftPadding: units.gridUnit
+            rightPadding: units.gridUnit
             spacing: units.gridUnit
             
+            Heading {
+                level: 2
+                text: {
+                    if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                        qsTr("Cancel Download?")
+                    else if (releases.variant.status == Units.DownloadStatus.Writing) 
+                        qsTr("Cancel Writing?")
+                    else
+                        qsTr("Cancel Verification?")
+                }  
+            }
+            
             Label {
-                Layout.alignment: Qt.AlignVCenter
                 text: {
                     if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
                         qsTr("Downloading is still in progress, do you wish to cancel it?")
@@ -58,8 +68,7 @@ ApplicationWindow {
                         qsTr("Do you want to cancel data validation? This operation is safe to be cancelled.")
                 }   
                 wrapMode: Label.Wrap
-                width: mainColumn.width
-                horizontalAlignment: Label.AlignHCenter
+                width: mainColumn.width - units.gridUnit * 2
             }
         }
           
