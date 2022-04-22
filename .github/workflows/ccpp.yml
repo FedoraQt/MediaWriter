@@ -111,7 +111,6 @@ jobs:
         brew install qt6
         echo 'export PATH="/usr/local/opt/qt@6/bin:$PATH"' >> ~/.bash_profile
         brew install xz
-        brew install git
         brew install cmake
         npm install -g create-dmg
     - name: Configure
