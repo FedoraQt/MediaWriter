@@ -62,11 +62,11 @@ ApplicationWindow {
             Label {
                 text: {
                     if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
-                        qsTr("Downloading is still in progress, do you wish to cancel it?")
+                        qsTr("Download progress will be lost and media writing will be aborted.")
                     else if (releases.variant.status == Units.DownloadStatus.Writing) 
-                        qsTr("Do you want to cancel writing?")
+                        qsTr("Writing process will be aborted and your drive will have to be restored afterwards.")
                     else
-                        qsTr("Do you want to cancel data validation? This operation is safe to be cancelled.")
+                        qsTr("This operation is safe to be cancelled.")
                 }   
                 wrapMode: Label.Wrap
                 width: mainColumn.width - units.gridUnit * 2
@@ -104,7 +104,7 @@ ApplicationWindow {
                         qsTr("Cancel Download")
                     else if (releases.variant.status == Units.DownloadStatus.Writing) 
                         qsTr("Cancel Writing")
-                    else
+                    else if (releases.variant.status == Units.DownloadStatus.Write_Verifying) 
                         qsTr("Cancel Verification")
                 }  
             }
