@@ -36,36 +36,37 @@ ApplicationWindow {
     ColumnLayout {
         id: mainColumn
         anchors.fill: parent
-        anchors.leftMargin: units.gridUnit * 3
-        anchors.rightMargin: units.gridUnit * 3
-        anchors.topMargin: units.gridUnit * 2
-        anchors.bottomMargin: units.gridUnit * 2
+        anchors.margins: units.gridUnit 
         spacing: units.gridUnit
         
         Column {
+            leftPadding: units.gridUnit
+            rightPadding: units.gridUnit
+            spacing: units.gridUnit
+            
             Heading {
                 Layout.alignment: Qt.AlignHCenter
                 text: qsTr("About Fedora Media Writer")
                 level: 3
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                width: mainColumn.width
+                width: mainColumn.width - units.gridUnit * 2
             }
         
             Label {
-                width: mainColumn.width
+                width: mainColumn.width - units.gridUnit * 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 text: qsTr("Version %1").arg(mediawriterVersion)
             }
             
             Label {
-                width: mainColumn.width
+                width: mainColumn.width - units.gridUnit * 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 visible: releases.beingUpdated
                 text: qsTr("Fedora Media Writer is now checking for new releases")
             }
             
             Label {
-                width: mainColumn.width
+                width: mainColumn.width - units.gridUnit * 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/FedoraQt/MediaWriter/issues\">https://github.com/FedoraQt/MediaWriter/</a>")
                 textFormat: Text.RichText

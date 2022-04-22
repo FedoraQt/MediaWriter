@@ -41,7 +41,22 @@ Page {
         
         Heading {
             Layout.alignment: Qt.AlignHCenter
-            text: mainWindow.selectedOption == Units.MainSelect.Write ? qsTr("Writing %1").arg((String)(releases.localFile.iso).split("/").slice(-1)[0]) :                                                         qsTr("Downloading %1 ").arg(releases.selected.name) + releases.selected.version.number
+            text: {
+                if (mainWindow.selectedOption == Units.MainSelect.Write && releases.variant.status === Units.DownloadStatus.Finished)
+                    qsTr("%1 Sucessfuly Written").arg((String)(releases.localFile.iso).split("/").slice(-1)[0])
+                else if (mainWindow.selectedOption == Units.MainSelect.Write)
+                    qsTr("Writing %1").arg((String)(releases.localFile.iso).split("/").slice(-1)[0])
+                else if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing)
+                    qsTr("Writing %1 ").arg(releases.selected.name) + releases.selected.version.number
+                else if (releases.variant.status === Units.DownloadStatus.Download_Verifying || releases.variant.status === Units.DownloadStatus.Downloading)
+                    qsTr("Downloading %1 ").arg(releases.selected.name) + releases.selected.version.number
+                else if (releases.variant.status === Units.DownloadStatus.Finished)
+                    qsTr("%1 Sucessfuly Written").arg(releases.selected.name + " " + releases.selected.version.number)
+                else if (releases.variant.status === Units.DownloadStatus.Preparing)
+                    qsTr("Preparing %1").arg(releases.selected.name) + releases.selected.version.number
+                else
+                    qsTr("Failed")
+            }
             level: 4
             Layout.preferredWidth: mainColumn.width
             elide: Label.ElideRight
@@ -49,14 +64,46 @@ Page {
         }
         
         ColumnLayout {
-            Label {
-                Layout.alignment: Qt.AlignHCenter
-                property double leftSize: releases.variant.progress.to - releases.variant.progress.value
-                property string leftStr:  leftSize <= 0 ? "" : (leftSize < 1024) ? qsTr("(%1 B left)").arg(leftSize) : (leftSize < (1024 * 1024)) ? qsTr("(%1 KB left)").arg((leftSize / 1024).toFixed(1)) : (leftSize < (1024 * 1024 * 1024)) ? qsTr("(%1 MB left)").arg((leftSize / 1024 / 1024).toFixed(1)) :
-                qsTr("(%1 GB left)").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
-                text: releases.variant.statusString + (releases.variant.status == Units.DownloadStatus.Downloading ? (" " + leftStr) : "")
+            id: progressColumn
+            property double leftSize: releases.variant.progress.to - releases.variant.progress.value
+            property string rightStr: leftSize <= 0 ? "" :
+                                                      (leftSize < 1024) ? qsTr(" B left)") :
+                                                                          (leftSize < (1024 * 1024)) ? qsTr(" KB left)") :
+                                                                                                       (leftSize < (1024 * 1024 * 1024)) ? qsTr(" MB left)") :
+                                                                                                                                           qsTr(" GB left)")
+
+            property string leftStr: leftSize <= 0 ? "" :
+                                                     (leftSize < 1024) ? qsTr(" (%1").arg(leftSize) :
+                                                                         (leftSize < (1024 * 1024)) ? qsTr(" (%1").arg((leftSize / 1024).toFixed(1)) :
+                                                                                                      (leftSize < (1024 * 1024 * 1024)) ? qsTr(" (%1").arg((leftSize / 1024 / 1024).toFixed(1)) :
+                                                                                                                                          qsTr(" (%1").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
+
+            TextMetrics {
+                id: fontMetrics
+                text: progressColumn.leftStr.replace(/[1-9]/g, '0')
             }
-        
+
+            RowLayout {
+                Layout.alignment: Qt.AlignHCenter
+                spacing: 0
+
+                Label {
+                    id: refLabel
+                    text: releases.variant.statusString
+                }
+
+                Label {
+                    visible: releases.variant.status == Units.DownloadStatus.Downloading
+                    Layout.preferredWidth: fontMetrics.width
+                    text: progressColumn.leftStr
+                }
+
+                Label {
+                    visible: releases.variant.status == Units.DownloadStatus.Downloading
+                    text: progressColumn.rightStr
+                }
+            }
+
             ProgressBar {
                 id: progressBar
                 Layout.topMargin: units.gridUnit / 2
@@ -72,7 +119,7 @@ Page {
             Label {
                 id: messageDownload
                 visible: false
-                text: qsTr("The file will be saved to your Downloads folder.")
+                text: qsTr("Downloads are saved to the downloads folder.")
                 wrapMode: Label.Wrap
                 width: mainColumn.width
             }
@@ -114,6 +161,15 @@ Page {
                 enabled: true
                 visible: enabled && drives.selected && drives.selected.size > 160 * 1024 * 1024 * 1024 // warn when it's more than 160GB
                 text: qsTr("The selected drive's size is %1. It's possible you have selected an external drive by accident!").arg(drives.selected ? drives.selected.readableSize : "N/A")
+                wrapMode: Label.Wrap
+                width: mainColumn.width
+            }
+            
+            Label {
+                id: messageFinished
+                enabled: true
+                visible: false
+                text: qsTr("Restart and boot from %1 to start using %2.").arg(drives.selected ? drives.selected.name : "N/A").arg(mainWindow.selectedOption == Units.MainSelect.Write ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : releases.selected.name)
                 wrapMode: Label.Wrap
                 width: mainColumn.width
             }
@@ -268,7 +324,7 @@ Page {
                 enabled: false
             }
             PropertyChanges {
-                target: messageRestore;
+                target: messageFinished;
                 visible: true
             }
             PropertyChanges {
@@ -286,7 +342,7 @@ Page {
             }
             PropertyChanges {
                 target: mainWindow;
-                title: mainWindow.selectedOption == Units.MainSelect.Write ? qsTr("Writing finished") : qsTr("Downloading finished")
+                title: qsTr("Write Successful")
             }
             StateChangeScript {
                 script: { 

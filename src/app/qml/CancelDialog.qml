@@ -32,34 +32,44 @@ ApplicationWindow {
     modality: Qt.ApplicationModal
     x: Screen.width / 2 - width / 2
     y: Screen.height / 2 - height / 2
+    title: " "
     
     property QtObject drivesSelected: drives.selected
     
     ColumnLayout {
         id: mainColumn
         anchors.fill: parent
-        anchors.leftMargin: units.gridUnit * 3
-        anchors.rightMargin: units.gridUnit * 3
-        anchors.topMargin: units.gridUnit * 2
-        anchors.bottomMargin: units.gridUnit * 2
+        anchors.margins: units.gridUnit 
         spacing: units.gridUnit
-           
+        
         Column {
+            leftPadding: units.gridUnit
+            rightPadding: units.gridUnit
             spacing: units.gridUnit
             
-            Label {
-                Layout.alignment: Qt.AlignVCenter
+            Heading {
+                level: 2
                 text: {
                     if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
-                        qsTr("Downloading is still in progress, do you wish to cancel it?")
+                        qsTr("Cancel Download?")
                     else if (releases.variant.status == Units.DownloadStatus.Writing) 
-                        qsTr("Do you want to cancel writing?")
+                        qsTr("Cancel Writing?")
                     else
-                        qsTr("Do you want to cancel data validation? This operation is safe to be cancelled.")
+                        qsTr("Cancel Verification?")
+                }  
+            }
+            
+            Label {
+                text: {
+                    if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                        qsTr("Download progress will be lost and media writing will be aborted.")
+                    else if (releases.variant.status == Units.DownloadStatus.Writing) 
+                        qsTr("Writing process will be aborted and your drive will have to be restored afterwards.")
+                    else
+                        qsTr("This operation is safe to be cancelled.")
                 }   
                 wrapMode: Label.Wrap
-                width: mainColumn.width
-                horizontalAlignment: Label.AlignHCenter
+                width: mainColumn.width - units.gridUnit * 2
             }
         }
           
@@ -73,7 +83,7 @@ ApplicationWindow {
             Button {
                 id: continueButton
                 onClicked: cancelDialog.close()
-                text: qsTr("Cancel")
+                text: qsTr("Continue")
             }
             
             Button {
@@ -89,7 +99,14 @@ ApplicationWindow {
                     downloadManager.cancel()
                     selectedPage = Units.Page.MainPage
                 }
-                text: qsTr("Ok")
+                text: {
+                    if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                        qsTr("Cancel Download")
+                    else if (releases.variant.status == Units.DownloadStatus.Writing) 
+                        qsTr("Cancel Writing")
+                    else if (releases.variant.status == Units.DownloadStatus.Write_Verifying) 
+                        qsTr("Cancel Verification")
+                }  
             }
         }
     }
