@@ -40,20 +40,22 @@ Page {
         }
         
         Heading {
+            property string file: mainWindow.selectedOption == Units.MainSelect.Write ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : releases.selected.name + " " + releases.selected.version.number
+            
             Layout.alignment: Qt.AlignHCenter
             text: {
-                if (mainWindow.selectedOption == Units.MainSelect.Write && releases.variant.status === Units.DownloadStatus.Finished)
-                    qsTr("%1 Sucessfuly Written").arg((String)(releases.localFile.iso).split("/").slice(-1)[0])
-                else if (mainWindow.selectedOption == Units.MainSelect.Write)
-                    qsTr("Writing %1").arg((String)(releases.localFile.iso).split("/").slice(-1)[0])
-                else if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing)
-                    qsTr("Writing %1 ").arg(releases.selected.name) + releases.selected.version.number
-                else if (releases.variant.status === Units.DownloadStatus.Download_Verifying || releases.variant.status === Units.DownloadStatus.Downloading)
-                    qsTr("Downloading %1 ").arg(releases.selected.name) + releases.selected.version.number
-                else if (releases.variant.status === Units.DownloadStatus.Finished)
-                    qsTr("%1 Sucessfuly Written").arg(releases.selected.name + " " + releases.selected.version.number)
+                if (releases.variant.status === Units.DownloadStatus.Finished)
+                    qsTr("%1 Sucessfuly Written").arg(file)
+                else if (releases.variant.status === Units.DownloadStatus.Writing)
+                    qsTr("Writing %1").arg(file)
+                else if (releases.variant.status === Units.DownloadStatus.Write_Verifying)
+                    qsTr("Verifying written data")
+                else if (releases.variant.status === Units.DownloadStatus.Downloading)
+                    qsTr("Downloading %1").arg(file)
+                else if (releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                    qsTr("Verifying downloaded image")
                 else if (releases.variant.status === Units.DownloadStatus.Preparing)
-                    qsTr("Preparing %1").arg(releases.selected.name) + releases.selected.version.number
+                    qsTr("Preparing %1").arg(file)
                 else
                     qsTr("Failed")
             }
