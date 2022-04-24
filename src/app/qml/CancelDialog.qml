@@ -56,7 +56,7 @@ ApplicationWindow {
                         qsTr("Cancel Writing?")
                     else
                         qsTr("Cancel Verification?")
-                }  
+                } 
             }
             
             Label {
