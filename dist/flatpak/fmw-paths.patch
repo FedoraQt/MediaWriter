@@ -1,0 +1,14 @@
+diff --git a/src/theme/CMakeLists.txt b/src/theme/CMakeLists.txt
+index de208fd..7291536 100644
+--- a/src/theme/CMakeLists.txt
++++ b/src/theme/CMakeLists.txt
+@@ -23,6 +23,6 @@ target_link_libraries(adwaitathemeplugin
+     ${ADWAITAQT_LIBRARIES}
+ )
+ 
+-install(TARGETS adwaitathemeplugin DESTINATION ${QT6_INSTALL_QML}/org/fedoraproject/AdwaitaTheme)
+-install(FILES qmldir DESTINATION ${QT6_INSTALL_QML}/org/fedoraproject/AdwaitaTheme)
+-install(DIRECTORY qml/ DESTINATION ${QT6_INSTALL_QML}/QtQuick/Controls/org/fedoraproject/AdwaitaTheme)
++install(TARGETS adwaitathemeplugin DESTINATION /app/lib/qt6/qml/org/fedoraproject/AdwaitaTheme)
++install(FILES qmldir DESTINATION /app/lib/qt6/qml/org/fedoraproject/AdwaitaTheme)
++install(DIRECTORY qml/ DESTINATION /app/lib/qt6/qml/QtQuick/Controls/org/fedoraproject/AdwaitaTheme)

@@ -25,8 +25,8 @@
 #include <QPalette>
 #include <QtQml>
 
-#include <AdwaitaQt/adwaita.h>
-#include <AdwaitaQt/adwaitacolors.h>
+#include <AdwaitaQt6/adwaita.h>
+#include <AdwaitaQt6/adwaitacolors.h>
 
 class AdwaitaTheme : public QObject
 {
@@ -106,7 +106,7 @@ public:
 
     // Frame
     int frameRadius() const { return Adwaita::Frame_FrameRadius; }
-    int frameWidth() const { return Adwaita::Menu_FrameWidth; }
+    int frameWidth() const { return Adwaita::Frame_FrameWidth; }
 
     // LineEdit
     int lineEditFrameWidth() const { return Adwaita::LineEdit_FrameWidth; }

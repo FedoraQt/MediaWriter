@@ -125,9 +125,6 @@ Icon::Icon(QQuickItem *parent)
       m_isMask(false)
 {
     setFlag(ItemHasContents, true);
-    //FIXME: not necessary anymore
-    connect(qApp, &QGuiApplication::paletteChanged, this, &QQuickItem::polish);
-    connect(this, &QQuickItem::enabledChanged, this, &QQuickItem::polish);
 }
 
 
@@ -150,7 +147,7 @@ void Icon::setSource(const QVariant &icon)
         // connect(m_theme, &AdwaitaTheme::colorsChanged, this, &QQuickItem::polish);
 //    }
 
-    if (icon.type() == QVariant::String) {
+    if (icon.typeId() == QMetaType::QString) {
         const QString iconSource = icon.toString();
         m_isMaskHeuristic = (iconSource.endsWith(QLatin1String("-symbolic"))
                             || iconSource.endsWith(QLatin1String("-symbolic-rtl"))
@@ -281,10 +278,8 @@ QSGNode* Icon::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData* /
             mNode = new ManagedTextureNode;
         }
         if (itemSize.width() != 0 && itemSize.height() != 0) {
-            const auto multiplier = QCoreApplication::instance()->testAttribute(Qt::AA_UseHighDpiPixmaps) ? 1 : (window() ? window()->devicePixelRatio() : qGuiApp->devicePixelRatio());
-            const QSize size = itemSize * multiplier;
             mNode->setTexture(s_iconImageCache->loadTexture(window(), m_icon));
-            if (m_icon.size() != size) {
+            if (m_icon.size() != itemSize) {
                 // At this point, the image will already be scaled, but we need to output it in
                 // the correct aspect ratio, painted centered in the viewport. So:
                 QRect destination(QPoint(0, 0), m_icon.size().scaled(itemSize, Qt::KeepAspectRatio));
@@ -303,9 +298,9 @@ QSGNode* Icon::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData* /
     return node;
 }
 
-void Icon::geometryChanged(const QRectF &newGeometry, const QRectF &oldGeometry)
+void Icon::geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry)
 {
-    QQuickItem::geometryChanged(newGeometry, oldGeometry);
+    QQuickItem::geometryChange(newGeometry, oldGeometry);
     if (newGeometry.size() != oldGeometry.size()) {
         polish();
     }
@@ -321,30 +316,29 @@ void Icon::updatePolish()
 
     const QSize itemSize(width(), height());
     if (itemSize.width() != 0 && itemSize.height() != 0) {
-        const auto multiplier = QCoreApplication::instance()->testAttribute(Qt::AA_UseHighDpiPixmaps) ? 1 : (window() ? window()->devicePixelRatio() : qGuiApp->devicePixelRatio());
-        const QSize size = itemSize * multiplier;
 
-        switch(m_source.type()){
-        case QVariant::Pixmap:
+        switch(m_source.typeId()){
+        case QMetaType::QPixmap:
             m_icon = m_source.value<QPixmap>().toImage();
             break;
-        case QVariant::Image:
+        case QMetaType::QImage:
             m_icon = m_source.value<QImage>();
             break;
-        case QVariant::Bitmap:
+        case QMetaType::QBitmap:
             m_icon = m_source.value<QBitmap>().toImage();
             break;
-        case QVariant::Icon:
-            m_icon = m_source.value<QIcon>().pixmap(window(), itemSize, iconMode(), QIcon::On).toImage();
+        case QMetaType::QIcon:
+            QScreen * screen;
+            m_icon = m_source.value<QIcon>().pixmap(itemSize, screen->devicePixelRatio()).toImage();
             break;
-        case QVariant::Url:
-        case QVariant::String:
-            m_icon = findIcon(size);
+        case QMetaType::QUrl:
+        case QMetaType::QString:
+            m_icon = findIcon(itemSize);
             break;
-        case QVariant::Brush:
+        case QMetaType::QBrush:
             //todo: fill here too?
-        case QVariant::Color:
-            m_icon = QImage(size, QImage::Format_Alpha8);
+        case QMetaType::QColor:
+            m_icon = QImage(itemSize, QImage::Format_Alpha8);
             m_icon.fill(m_source.value<QColor>());
             break;
         default:
@@ -352,7 +346,7 @@ void Icon::updatePolish()
         }
 
         if (m_icon.isNull()){
-            m_icon = QImage(size, QImage::Format_Alpha8);
+            m_icon = QImage(itemSize, QImage::Format_Alpha8);
             m_icon.fill(Qt::transparent);
         }
 
@@ -378,7 +372,6 @@ QImage Icon::findIcon(const QSize &size)
     QString iconSource = m_source.toString();
 
     if (iconSource.startsWith(QLatin1String("image://"))) {
-        const auto multiplier = QCoreApplication::instance()->testAttribute(Qt::AA_UseHighDpiPixmaps) ? (window() ? window()->devicePixelRatio() : qGuiApp->devicePixelRatio()) : 1;
         QUrl iconUrl(iconSource);
         QString iconProviderId = iconUrl.host();
         QString iconId = iconUrl.path();
@@ -395,10 +388,10 @@ QImage Icon::findIcon(const QSize &size)
             return img;
         switch(imageProvider->imageType()){
         case QQmlImageProviderBase::Image:
-            img = imageProvider->requestImage(iconId, &actualSize, size * multiplier);
+            img = imageProvider->requestImage(iconId, &actualSize, size);
             break;
         case QQmlImageProviderBase::Pixmap:
-            img = imageProvider->requestPixmap(iconId, &actualSize, size * multiplier).toImage();
+            img = imageProvider->requestPixmap(iconId, &actualSize, size).toImage();
             break;
         case QQmlImageProviderBase::Texture:
         case QQmlImageProviderBase::Invalid:
@@ -423,7 +416,8 @@ QImage Icon::findIcon(const QSize &size)
             }
         }
         if (!icon.isNull()) {
-            img = icon.pixmap(window(), size, iconMode(), QIcon::On).toImage();
+            QScreen *screen;
+            img = icon.pixmap(size, screen->devicePixelRatio()).toImage();
 
             /*const QColor tintColor = !m_color.isValid() || m_color == Qt::transparent ? (m_selected ? m_theme->highlightedTextColor() : m_theme->textColor()) : m_color;
 
@@ -437,7 +431,8 @@ QImage Icon::findIcon(const QSize &size)
     }
 
     if (!iconSource.isEmpty() && img.isNull()) {
-        img = QIcon::fromTheme(m_fallback).pixmap(window(), size, iconMode(), QIcon::On).toImage();
+        QScreen *screen;
+        img = QIcon::fromTheme(m_fallback).pixmap(size, screen->devicePixelRatio()).toImage();
     }
     return img;
 }

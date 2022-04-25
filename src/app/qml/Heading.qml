@@ -1,6 +1,6 @@
 /*
  * Fedora Media Writer
- * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+ * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,17 +17,19 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.12
+import QtQuick.Controls 6.2
+import QtQml 6.2
 
-// TODO use a BorderImage or something else to draw a dashed rectangle, this is ugly
-BorderImage {
-    border {
-        left: 2
-        right: 2
-        top: 2
-        bottom: 2
-    }
-    source: "qrc:/focusRect"
-    horizontalTileMode: BorderImage.Repeat
-    verticalTileMode: BorderImage.Repeat
+Label {
+    id: mainLabel
+    property int level: 0
+    font.bold: true
+    
+    font.pointSize: referenceLabel.font.pointSize + level
+    property list<QtObject> children: [
+        Label {
+            id: referenceLabel
+            visible: false
+        }
+    ]
 }

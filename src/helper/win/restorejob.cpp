@@ -41,11 +41,9 @@ void RestoreJob::work() {
 
     m_diskpart.write(qPrintable(QString("select disk %0\r\n").arg(m_where)));
     m_diskpart.write("clean\r\n");
+    m_diskpart.write("convert gpt\r\n");
+    m_diskpart.write("convert mbr\r\n");
     m_diskpart.write("create part pri\r\n");
-    // again, for some reason this works, doing it once does not
-    m_diskpart.write("clean\r\n");
-    m_diskpart.write("create part pri\r\n");
-    m_diskpart.write("select part 1\r\n");
     m_diskpart.write("format fs=fat32 quick\r\n");
     m_diskpart.write("assign\r\n");
     m_diskpart.write("exit\r\n");

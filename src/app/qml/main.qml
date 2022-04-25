@@ -1,6 +1,6 @@
 /*
  * Fedora Media Writer
- * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
+ * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,188 +17,288 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Window 2.12
-import QtQuick.Dialogs 1.3
-import QtQuick.Layouts 1.12
-import QtQml 2.12
+import QtQuick 6.2
+import QtQuick.Controls 6.2
+import QtQuick.Window 6.2
+import QtQuick.Layouts 6.2
+import QtQml 6.2
 
 ApplicationWindow {
     id: mainWindow
     visible: true
-    minimumWidth: 800
+    minimumWidth: 640
+    maximumWidth: 640
     minimumHeight: 480
-    title: "Fedora Media Writer"
-
-    SystemPalette {
-        id: palette
-        // we have to make this color ourselves because Qt doesn't report them correctly with Mac dark mode
-        property color background: Qt.lighter(palette.window, 1.2)
-    }
-
-    SystemPalette {
-        id: disabledPalette
-        colorGroup: SystemPalette.Disabled
-    }
-
-    Component.onCompleted: {
-        width = 800
-        height = 480
-    }
-
-    function mixColors(color1, color2, ratio) {
-        return Qt.rgba(color1.r * ratio + color2.r * (1.0 - ratio),
-                       color1.g * ratio + color2.g * (1.0 - ratio),
-                       color1.b * ratio + color2.b * (1.0 - ratio),
-                       color1.a * ratio + color2.a * (1.0 - ratio))
-    }
-
-    property bool canGoBack: false
-    property real margin: 64 + (width - 800) / 4
-    property real potentialMargin: 64 + (Screen.width - 800) / 4
-
-    AdwaitaNotificationBar {
-        id: deviceNotification
-        text: open ? qsTr("You inserted <b>%1</b> that already contains a live system.<br>Do you want to restore it to factory settings?").arg(drives.lastRestoreable.name) : ""
-        open: drives.lastRestoreable
-        acceptText: qsTr("Restore")
-        property var disk: null
-        z: 1
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: parent.top
-        }
-        onAccepted: restoreDialog.visible = true
-
-        Connections {
-            target: drives
-            function onLastRestoreableChanged() {
-                if (drives.lastRestoreable != null && !dlDialog.visible)
-                    deviceNotification.open = true
-                if (!drives.lastRestoreable)
-                    deviceNotification.open = false
-            }
-        }
-    }
-
-    Rectangle {
-        id: mainWindowContainer
-        anchors {
-            top: deviceNotification.bottom
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-
-        color: palette.window
-        //radius: 8
-        clip: true
-
-        ListView {
-            id: contentList
-            anchors{
-                top: parent.top
-                bottom: parent.bottom
-                left: parent.left
-                right: parent.right
-            }
-            model: ["ImageList.qml", "ImageDetails.qml"]
-            orientation: ListView.Horizontal
-            snapMode: ListView.SnapToItem
-            highlightFollowsCurrentItem: true
-            highlightRangeMode: ListView.StrictlyEnforceRange
-            interactive: false
-            highlightMoveVelocity: 3 * contentList.width
-            highlightResizeDuration: 0
-            cacheBuffer: 2*width
-            delegate: Item {
-                id: contentComponent
-                width: contentList.width
-                height: contentList.height
-                Loader {
-                    id: contentLoader
-                    source: contentList.model[index]
-                    anchors.fill: parent
+    maximumHeight: 480
+    
+    property int selectedPage: Units.Page.MainPage
+    property int selectedVersion: Units.Source.Product
+    property int selectedOption: Units.MainSelect.Download
+    property QtObject lastRestoreable
+    property bool eraseVariant: false
+    
+    ColumnLayout {
+        id: mainLayout
+        anchors.fill: parent
+        
+        anchors.leftMargin: units.gridUnit * 3
+        anchors.rightMargin: units.gridUnit * 3
+        anchors.topMargin: units.gridUnit * 2
+        anchors.bottomMargin: units.gridUnit * 2
+    
+        StackView {
+            id: stackView
+            initialItem: "MainPage.qml"
+            
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.leftMargin: parent.width / 8
+            Layout.rightMargin: parent.width / 8
+            Layout.bottomMargin: units.gridUnit * 2
+            
+            pushEnter: Transition {
+                XAnimator {
+                    from: mainWindow.width
+                    to: 0
+                    duration: 250
                 }
-                Connections {
-                    target: contentLoader.item
-                    function onStepForward(index) {
-                        contentList.currentIndex++
-                        canGoBack = true
-                        releases.selectedIndex = index
+            }
+            pushExit: Transition {
+                XAnimator {
+                    from: 0
+                    to: -mainWindow.width
+                    duration: 250
+                }
+            }
+            popEnter: Transition {
+              XAnimator {
+                    from: -mainWindow.width
+                    to: 0
+                    duration: 250
+                }
+            }
+            popExit: Transition {
+                XAnimator {
+                    from: 0
+                    to: mainWindow.width
+                    duration: 250
+                }
+            }
+        }
+        
+        RowLayout {
+            Layout.alignment: Qt.AlignBottom
+            
+            Button {
+                id: prevButton
+                visible: true
+                text: getPrevButtonText()
+            }
+        
+            Item {
+                Layout.fillWidth: true
+            }
+            
+            Button {
+                id: nextButton
+                visible: mainLayout.state != "downloadPage" 
+                enabled: mainLayout.state != "drivePage" 
+                text: getNextButtonText()
+            }
+        }
+        
+        states: [
+            State {
+                name: "mainPage"
+                when: selectedPage == Units.Page.MainPage
+                PropertyChanges { 
+                    target: mainWindow
+                    title: qsTr("Fedora Media Writer") 
+                }
+                //When comming back from restore page, after successfull restoring a USB drive
+                PropertyChanges { 
+                    target: prevButton
+                    text: getPrevButtonText()
+                    onClicked: aboutDialog.show()
+                }
+                PropertyChanges { 
+                    target: nextButton
+                    visible: true
+                    onClicked: {
+                        if (selectedOption == Units.MainSelect.Write) {
+                            if (releases.localFile.iso)
+                                releases.selectLocalFile()
+                            selectedPage = Units.Page.DrivePage 
+                        } else if (selectedOption == Units.MainSelect.Restore)
+                            selectedPage = Units.Page.RestorePage
+                        else
+                            selectedPage = Units.Page.VersionPage 
                     }
                 }
+                StateChangeScript {
+                    script: {
+                        //reset of source on versionPage
+                        selectedOption = Units.MainSelect.Download
+                        releases.filterSource = 0
+                        if (stackView.depth > 1)  {
+                            while (stackView.depth != 1) {
+                                stackView.pop()
+                            }
+                        }
+                    }
+                }
+            },
+            State {
+                name: "versionPage"
+                when: selectedPage == Units.Page.VersionPage
+                PropertyChanges { target: mainWindow; title: qsTr("Select Fedora Version") }
+                PropertyChanges { target: nextButton; visible: true; onClicked: selectedPage += 1 } 
+                PropertyChanges { target: prevButton; visible: true; onClicked: selectedPage -= 1 }
+                StateChangeScript {
+                    script: {
+                        //state was pushing same page when returing from drivePage
+                        if (stackView.depth <= 1)  
+                            stackView.push("VersionPage.qml")
+                    }
+                }
+            },
+            State {
+                name: "drivePage"
+                when: selectedPage == Units.Page.DrivePage
+                PropertyChanges { 
+                    target: mainWindow
+                    title: qsTr("Select Drive") 
+                }
+                PropertyChanges {
+                    target: nextButton;
+                    visible: true
+                    onClicked: {
+                        selectedPage = Units.Page.DownloadPage 
+                        if (selectedOption != Units.MainSelect.Write) 
+                            releases.variant.download()
+                        drives.selected.setImage(releases.variant)
+                        drives.selected.write(releases.variant)
+                    }
+                }
+                PropertyChanges {
+                    target: prevButton
+                    visible: true
+                    onClicked: {
+                        if (selectedOption == Units.MainSelect.Write)
+                            selectedPage = Units.Page.MainPage
+                        else {
+                            selectedPage -= 1 
+                            stackView.pop()
+                        }
+                    }
+                }
+                StateChangeScript { 
+                    script: { stackView.push("DrivePage.qml") }
+                }
+            },
+            State {
+                name: "downloadPage"
+                when: selectedPage == Units.Page.DownloadPage
+                PropertyChanges {  
+                    target: mainWindow
+                    title: qsTr("Downloading") 
+                }
+                StateChangeScript {
+                    script: { stackView.push("DownloadPage.qml") }
+                }
+                PropertyChanges {
+                    target: prevButton
+                    visible: true
+                    onClicked: {  
+                        releases.variant.resetStatus()
+                        downloadManager.cancel()
+                        mainWindow.selectedPage = Units.Page.MainPage
+                    }
+                }
+                PropertyChanges {
+                    target: nextButton
+                    onClicked: {
+                        if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                            cancelDialog.show()
+                        else if (releases.variant.status === Units.DownloadStatus.Finished) {
+                            drives.lastRestoreable = drives.selected
+                            drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
+                            releases.variant.resetStatus()
+                            downloadManager.cancel()
+                            selectedPage = Units.Page.MainPage
+                        } else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Failed_Download || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Ready) {
+                            if (selectedOption != Units.MainSelect.Write)
+                                releases.variant.download()
+                            drives.selected.setImage(releases.variant)
+                            drives.selected.write(releases.variant)
+                        }
+                    }
+                }
+            },
+            State {
+                name: "restorePage"
+                when: selectedPage == Units.Page.RestorePage
+                PropertyChanges { 
+                    target: mainWindow
+                    title: qsTr("Restore") 
+                }
+                PropertyChanges {
+                    target: nextButton
+                    visible: true
+                    onClicked: {
+                        if (lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored)
+                            selectedPage = Units.Page.MainPage 
+                        else
+                            drives.lastRestoreable.restore() 
+                    }
+                }
+                PropertyChanges {
+                    target: prevButton
+                    visible: true
+                    onClicked: selectedPage = Units.Page.MainPage 
+                }
+                StateChangeScript { 
+                    script: { stackView.push("RestorePage.qml") }
+                }
             }
+        ]
+    }
+    
+    Units {
+        id: units
+    }
+    
+    AboutDialog {
+        id: aboutDialog
+    }
+    
+    CancelDialog {
+        id: cancelDialog
+    }
+    
+    
+    function getNextButtonText() {
+        if (mainLayout.state == "restorePage") {
+            if (lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored)
+                return qsTr("Finish")
+            return qsTr("Restore")
+        } else if (mainLayout.state == "drivePage")
+            return qsTr("Download & Write")  
+        else if (mainLayout.state == "downloadPage") {
+            if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                return qsTr("Cancel")
+            else
+                return qsTr("Retry")
         }
+        return qsTr("Next")
     }
-
-    AdwaitaPopup {
-        id: newVersionPopup
-        enabled: open
-        open: versionChecker.newerVersion
-        title: qsTr("Fedora Media Writer %1 Released").arg(versionChecker.newerVersion)
-        text: qsTr("Update for great new features and bugfixes!")
-        buttonText: qsTr("Open Browser")
-        onAccepted: Qt.openUrlExternally(versionChecker.url)
-    }
-
-    RestoreDialog {
-        id: restoreDialog
-    }
-
-    DownloadDialog {
-        id: dlDialog
-    }
-
-    FileDialog {
-        id: fileDialog
-        folder: shortcuts.home
-        nameFilters: [ qsTr("Image files") + " (*.iso *.raw *.xz)", qsTr("All files (*)")]
-        onAccepted: {
-            releases.setLocalFile(fileUrl)
-            dlDialog.visible = true
-        }
-    }
-
-    Connections {
-        target: portalFileDialog
-        function onFileSelected(fileName) {
-            releases.setLocalFile(fileName)
-            dlDialog.visible = true
-        }
-    }
-
-    FullscreenViewer {
-        id: fullscreenViewer
-    }
-
-    Rectangle {
-        id: fatalErrorOverlay
-        opacity: drives.isBroken ? 1.0 : 0.0
-        enabled: visible
-        visible: opacity > 0.1
-        Behavior on opacity { NumberAnimation { } }
-        anchors.fill: parent
-        color: "#cc000000"
-        MouseArea {
-            anchors.fill: parent
-            hoverEnabled: true
-        }
-        ColumnLayout {
-            anchors.centerIn: parent
-            spacing: 9
-            Label {
-                horizontalAlignment: Text.AlignHCenter
-                color: "white"
-                text: qsTr("%1<br>Writing images will not be possible.<br>You can still view Fedora flavors and download images to your hard drive.").arg(drives.errorString)
-            }
-            Button {
-                Layout.alignment: Qt.AlignCenter
-                text: qsTr("Ok")
-                onClicked: fatalErrorOverlay.opacity = 0.0
-            }
-        }
+    
+    function getPrevButtonText() {
+        if (mainLayout.state == "mainPage") 
+            return qsTr("About")
+        else if (mainLayout.state == "downloadPage")
+            return qsTr("Cancel")
+        return qsTr("Previous")
     }
 }
+

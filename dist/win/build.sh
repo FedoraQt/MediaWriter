@@ -50,8 +50,9 @@ if ! $opt_nosign; then
         CERTPASS="$CERTPATH/authenticode.pass"
     fi
 fi
-    
-PACKAGES="cmake mingw32-filesystem mingw32-qt5-qtbase mingw32-qt5-qtdeclarative mingw32-qt5-qtquickcontrols2 mingw32-qt5-qtwinextras mingw32-xz-libs mingw32-libadwaita-qt5 mingw32-qt5-qtwinextras mingw32-qt5-qtsvg mingw32-nsis osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
+
+PACKAGES="cmake mingw32-filesystem mingw32-qt6-qtbase mingw32-qt6-qtdeclarative mingw32-xz-libs mingw32-qt6-qtsvg mingw32-nsis osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
+
 if ! $opt_local; then
     PACKAGES="$PACKAGES mingw32-mediawriter"
 fi
@@ -76,14 +77,18 @@ for i in $PACKAGES; do
 done
 if [ $DEPENDENCIES -ne 0 ]; then exit 1; fi
 
-BINARIES="libstdc++-6.dll libgcc_s_dw2-1.dll libssp-0.dll iconv.dll libwinpthread-1.dll libcrypto-1_1.dll libssl-1_1.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre2-16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll libadwaitaqtpriv-1.dll libadwaitaqt-1.dll Qt5Core.dll Qt5Gui.dll Qt5Network.dll Qt5Qml.dll Qt5QmlModels.dll Qt5Quick.dll Qt5QuickControls2.dll Qt5QuickShapes.dll Qt5QuickTemplates2.dll Qt5QmlWorkerScript.dll Qt5Svg.dll Qt5Widgets.dll Qt5WinExtras.dll"
-PLUGINS="imageformats/qjpeg.dll imageformats/qsvg.dll platforms/qwindows.dll"
-QMLMODULES="Qt QtQml QtQuick/Controls QtQuick/Controls.2 QtQuick/Dialogs QtQuick/Extras QtQuick/Layouts QtQuick/PrivateWidgets QtQuick/Shapes QtQuick/Templates.2 QtQuick/Window.2 QtQuick.2"
+BINARIES="libstdc++-6.dll libgcc_s_dw2-1.dll libssp-0.dll iconv.dll libwinpthread-1.dll libcrypto-1_1.dll libssl-1_1.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre2-16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll icui18n69.dll icuuc69.dll icudata69.dll Qt6Core.dll Qt6Gui.dll Qt6Network.dll Qt6Concurrent.dll Qt6Qml.dll Qt6QmlModels.dll Qt6Quick.dll Qt6QuickControls2.dll Qt6QuickControls2Impl.dll Qt6QuickShapes.dll Qt6QuickTemplates2.dll Qt6QmlWorkerScript.dll Qt6Svg.dll Qt6Widgets.dll Qt6OpenGL.dll Qt6QuickLayouts.dll Qt6QmlLocalStorage.dll Qt6QuickDialogs2.dll Qt6QuickDialogs2QuickImpl.dll Qt6QuickDialogs2Utils.dll" 
 
-INSTALL_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_PREFIX)
-BIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_BINS)
-PLUGIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_PLUGINS)
-QML_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_QML)
+PLUGINS="imageformats/qjpeg.dll imageformats/qsvg.dll platforms/qwindows.dll tls/qcertonlybackend.dll tls/qopensslbackend.dll tls/qschannelbackend.dll"
+
+QMLMODULES="Qt QtQml QtQuick/Controls/impl QtQuick/Controls/Windows QtQuick/NativeStyle QtQuick/Window QtQuick/Dialogs QtQuick/Layouts QtQuick/Shapes QtQuick/Templates QtQuick/Controls/Basic QtQuick/Controls/Fusion"
+
+# QMAKE_BIN=/usr/lib64/qt6/bin/qmake
+# INSTALL_PREFIX=$($QMAKE_BIN -query QT_INSTALL_PREFIX)
+INSTALL_PREFIX=$(mingw32-cmake -L | grep CMAKE_INSTALL_PREFIX | cut -d "=" -f2) 
+BIN_PREFIX=$(mingw32-cmake -L | grep CMAKE_INSTALL_PREFIX | cut -d "=" -f2)
+PLUGIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_PLUGINS | tr 5 6)
+QML_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_QML | tr 5 6)
 
 export WINEPREFIX="$BUILDPATH/wineprefix"
 export WINEDEBUG="-all"
@@ -120,25 +125,15 @@ if $opt_local; then
     fi
 
     mingw32-make -j9 > /dev/null
-
-    # FIXME just a workaround for Adwaita theme not being build and placed to correct location
-    # without installation
-    mkdir -p $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
-    mkdir -p $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
-    cp -r ../src/theme/qml/* $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
-    cp -r ../src/theme/qmldir $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
-    cp -r $BUILDPATH/src/theme/adwaitathemeplugin.dll $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
+    
+    mkdir -p $BUILDPATH/app/release/
     cp -r $BUILDPATH/src/app/helper.exe $BUILDPATH/app/release/
     cp -r $BUILDPATH/src/app/mediawriter.exe $BUILDPATH/app/release/
 else
     mkdir -p "app/release"
     echo "=== Getting distribution binary"
-    cp "$BIN_PREFIX/mediawriter.exe" app/release
+    cp "$BIN_PREFIX/bin/mediawriter.exe" app/release
     cp "$INSTALL_PREFIX/libexec/mediawriter/helper.exe" app/release
-    mkdir -p $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme
-    mkdir -p $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme
-    cp -r $QML_PREFIX/org/fedoraproject/AdwaitaTheme/* $BUILDPATH/app/release/org/fedoraproject/AdwaitaTheme/
-    cp -r $QML_PREFIX/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme/* $BUILDPATH/app/release/QtQuick/Controls.2/org.fedoraproject.AdwaitaTheme/
 fi
 
 pushd "app/release" >/dev/null
@@ -155,13 +150,13 @@ rm -f *.o
 echo "=== Copying dlls"
 for i in $BINARIES; do
     mkdir -p $(dirname $i)
-    cp -r "${BIN_PREFIX}/${i}" "$(dirname $i)"
+    cp -r "${BIN_PREFIX}/bin/${i}" "$(dirname $i)"
 done
 
 if $opt_debug; then
     for i in $BINARIES; do
         mkdir -p $(dirname $i)
-        cp -r "${BIN_PREFIX}/${i}.debug" "$(dirname $i)"
+        cp -r "${BIN_PREFIX}/bin/${i}.debug" "$(dirname $i)"
     done
 fi
 
@@ -176,6 +171,14 @@ for i in $QMLMODULES; do
     mkdir -p $(dirname $i)
     cp -r "${QML_PREFIX}/${i}" "$(dirname $i)"
 done
+    
+cp -r "${BIN_PREFIX}/lib/qt6/qml/QtQuick/Controls/qtquickcontrols2plugin.dll" "QtQuick/Controls" 
+cp -r "${BIN_PREFIX}/lib/qt6/qml/QtQuick/Controls/qmldir" "QtQuick/Controls" 
+cp -r "${BIN_PREFIX}/lib/qt6/qml/QtQuick/Controls/plugins.qmltypes" "QtQuick/Controls" 
+cp -r "${BIN_PREFIX}/lib/qt6/qml/QtQuick/qmldir" "QtQuick" 
+cp -r "${BIN_PREFIX}/lib/qt6/qml/QtQuick/plugins.qmltypes" "QtQuick"
+cp -r "${BIN_PREFIX}/lib/qt6/qml/QtQuick/qtquick2plugin.dll" "QtQuick"
+cp -r "${BIN_PREFIX}/lib/qt6/qml/QtQml/WorkerScript/workerscriptplugin.dll" "QtQml/WorkerScript" 
 
 #echo "=== Compressing binaries"
 #upx $(find . -name "*.exe")

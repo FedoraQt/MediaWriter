@@ -289,7 +289,7 @@ void WriteJob::onFileChanged(const QString &path) {
     if (QFile::exists(path))
         return;
 
-    what = what.replace(QRegExp(".part$"), "");
+    what.replace(QRegularExpression(".part$"), "");
 
     if (!QFile::exists(what)) {
         qApp->exit(4);

@@ -34,7 +34,7 @@ ReleaseManager::ReleaseManager(QObject *parent)
     mDebug() << this->metaObject()->className() << "construction";
     setSourceModel(m_sourceModel);
 
-    qmlRegisterUncreatableType<Release>("MediaWriter", 1, 0, "Release", "");
+    qmlRegisterUncreatableType<Release>("MediaWriter", 1, 0, "Release", ""); 
     qmlRegisterUncreatableType<ReleaseVersion>("MediaWriter", 1, 0, "Version", "");
     qmlRegisterUncreatableType<ReleaseVariant>("MediaWriter", 1, 0, "Variant", "");
     qmlRegisterUncreatableType<ReleaseArchitecture>("MediaWriter", 1, 0, "Architecture", "");
@@ -51,13 +51,11 @@ ReleaseManager::ReleaseManager(QObject *parent)
 
 bool ReleaseManager::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const {
     Q_UNUSED(source_parent)
-    if (m_frontPage)
-        if (source_row < 3)
-            return true;
-        else
-            return false;
-    else {
-        auto r = get(source_row);
+    auto r = get(source_row);
+    
+    if (r->source() != m_filterSource) {
+        return false;
+    } else {
         bool containsArch = false;
         for (auto version : r->versionList()) {
             for (auto variant : version->variantList()) {
@@ -118,15 +116,52 @@ void ReleaseManager::setFilterText(const QString &o) {
     }
 }
 
-void ReleaseManager::setLocalFile(const QString &path) {
+int ReleaseManager::filterSource() const {
+    return m_filterSource;
+}
+
+void ReleaseManager::setFilterSource(int source) {
+    if (m_filterSource != source) {
+        m_filterSource = source;
+        emit filterSourceChanged();
+        emit firstSourceChanged();
+        invalidateFilter();
+    }
+}
+
+int ReleaseManager::firstSource() const{
+    for (int i = 0; i < m_sourceModel->rowCount(); i++) {
+        Release *r = m_sourceModel->get(i);
+        if (r->source() == m_filterSource)
+            return i;
+    }
+    return 0;
+}
+
+
+void ReleaseManager::selectLocalFile(const QString &path) {
     mDebug() << this->metaObject()->className() << "Setting local file to" << path;
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = m_sourceModel->get(i);
         if (r->source() == Release::LOCAL) {
             r->setLocalFile(path);
+            setSelectedIndex(i);
+            emit localFileChanged();
         }
     }
 }
+
+ReleaseVariant* ReleaseManager::localFile() const {
+    for (int i = 0; i < m_sourceModel->rowCount(); i++) {
+        Release *r = m_sourceModel->get(i);
+        if (r->source() == Release::LOCAL) {
+            return r->selectedVersion()->selectedVariant();
+        }
+    }
+
+    return nullptr;
+}
+
 
 bool ReleaseManager::updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
     if (!ReleaseArchitecture::isKnown(architecture)) {
@@ -197,7 +232,7 @@ ReleaseVariant *ReleaseManager::variant() {
 void ReleaseManager::onStringDownloaded(const QString &text) {
     mDebug() << this->metaObject()->className() << "Received a metadata json";
 
-    QRegExp re("(\\d+)\\s?(\\S+)?");
+    QRegularExpression re("(\\d+)\\s?(\\S+)?");
     auto doc = QJsonDocument::fromJson(text.toUtf8());
 
     for (auto i : doc.array()) {
@@ -217,10 +252,10 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
         if (QStringList{"cloud", "cloud_base", "atomic", "everything", "minimal", "docker", "docker_base"}.contains(release))
             continue;
 
-        release.replace(QRegExp("_kde$"), "");
+        release.replace(QRegularExpression("_kde$"), "");
         release.replace("_", " ");
 
-        if (re.indexIn(versionWithStatus) < 0)
+        if (!re.match(versionWithStatus).hasMatch())
             continue;
 
         if (release.contains("workstation") && !url.contains("Live") && !url.contains("armhfp"))
@@ -234,8 +269,8 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
                 continue;
         }
 
-        version = re.capturedTexts()[1].toInt();
-        status = re.capturedTexts()[2];
+        version = re.match(versionWithStatus).captured(1).toInt();
+        status = re.match(versionWithStatus).captured(2);
 
         mDebug() << this->metaObject()->className() << "Adding" << release << versionWithStatus << arch;
 
@@ -263,6 +298,8 @@ QVariant ReleaseListModel::headerData(int section, Qt::Orientation orientation, 
 
     if (role == Qt::UserRole + 1)
         return "release";
+    if (role == Qt::DisplayRole)
+        return "name";
 
     return QVariant();
 }
@@ -270,6 +307,7 @@ QVariant ReleaseListModel::headerData(int section, Qt::Orientation orientation, 
 QHash<int, QByteArray> ReleaseListModel::roleNames() const {
     QHash<int, QByteArray> ret;
     ret.insert(Qt::UserRole + 1, "release");
+    ret.insert(Qt::DisplayRole, "name");
     return ret;
 }
 
@@ -284,6 +322,8 @@ QVariant ReleaseListModel::data(const QModelIndex &index, int role) const {
 
     if (role == Qt::UserRole + 1)
         return QVariant::fromValue(m_releases[index.row()]);
+    else if (role == Qt::DisplayRole)
+        return m_releases[index.row()]->name();
 
     return QVariant();
 }
@@ -377,10 +417,10 @@ Release::Release(ReleaseManager *parent, int index, const QString &name, const Q
 void Release::setLocalFile(const QString &path) {
     if (m_source != LOCAL)
         return;
-
     QFileInfo info(QUrl(path).toLocalFile());
-
-    if (!info.exists()) {
+    
+    // We might use an empty path to just reset local file
+    if (!info.exists() && !path.isEmpty()) {
         mCritical() << path << "doesn't exist";
         return;
     }
@@ -821,7 +861,7 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
     else {
         mDebug() << this->metaObject()->className() << "MD5 check passed";
         QString finalFilename(path);
-        finalFilename = finalFilename.replace(QRegExp("[.]part$"), "");
+        finalFilename = finalFilename.replace(QRegularExpression("[.]part$"), "");
 
         if (finalFilename != path) {
             mDebug() << this->metaObject()->className() << "Renaming from" << path << "to" << finalFilename;
@@ -869,7 +909,7 @@ void ReleaseVariant::download() {
         resetStatus();
         setStatus(DOWNLOADING);
         if (m_size)
-            m_progress->setTo(m_size);
+            progress()->setTo(m_size);
         QString ret = DownloadManager::instance()->downloadFile(this, url(), DownloadManager::dir(), progress());
         if (!ret.endsWith(".part")) {
             m_temporaryIso = QString();

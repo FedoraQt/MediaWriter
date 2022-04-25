@@ -18,10 +18,12 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 2.12
-import QtQuick.Layouts 1.12
-import QtQuick.Templates 2.12 as T
-import org.fedoraproject.AdwaitaTheme 2.0
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Controls.impl
+import QtQuick.Templates as T
+import QtQuick.Layouts
+import org.fedoraproject.AdwaitaTheme
 import "private" as Private
 
 T.Button {
@@ -32,10 +34,10 @@ T.Button {
     implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
     implicitHeight: contentItem.implicitHeight + bottomPadding + topPadding
 
-    leftPadding: theme.buttonMarginWidth + theme.frameWidth
-    rightPadding: theme.buttonMarginWidth + theme.frameWidth
-    bottomPadding: theme.buttonMarginWidth + theme.frameWidth
-    topPadding: theme.buttonMarginWidth + theme.frameWidth
+    leftPadding: theme.buttonMarginWidth 
+    rightPadding: theme.buttonMarginWidth 
+    bottomPadding: theme.buttonMarginWidth 
+    topPadding: theme.buttonMarginWidth 
 
     Layout.minimumWidth: control.text ? theme.buttonMinimumWidth : theme.buttonMinimumWidth / 2
 
