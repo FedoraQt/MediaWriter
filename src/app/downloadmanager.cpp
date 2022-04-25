@@ -19,30 +19,33 @@
 
 #include "downloadmanager.h"
 
-#include <QApplication>
 #include <QAbstractEventDispatcher>
+#include <QApplication>
+#include <QDir>
 #include <QNetworkProxyFactory>
+#include <QRegularExpression>
 #include <QStandardPaths>
 #include <QStorageInfo>
 #include <QSysInfo>
-#include <QDir>
-#include <QRegularExpression>
 
 DownloadManager *DownloadManager::_self = nullptr;
 
-DownloadManager *DownloadManager::instance() {
+DownloadManager *DownloadManager::instance()
+{
     if (!_self)
         _self = new DownloadManager();
     return _self;
 }
 
-QString DownloadManager::dir() {
+QString DownloadManager::dir()
+{
     QString d = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation);
 
     return d;
 }
 
-QString DownloadManager::userAgent() {
+QString DownloadManager::userAgent()
+{
     QString ret = QString("FedoraMediaWriter/%1 (").arg(MEDIAWRITER_VERSION);
     ret.append(QString("%1").arg(QSysInfo::prettyProductName().replace(QRegularExpression("[()]"), "")));
     ret.append(QString("; %1").arg(QSysInfo::buildAbi()));
@@ -58,7 +61,8 @@ QString DownloadManager::userAgent() {
 /*
  * TODO explain how this works
  */
-QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder, Progress *progress) {
+QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder, Progress *progress)
+{
     mDebug() << this->metaObject()->className() << "Going to download" << url;
     QString bareFileName = QString("%1/%2").arg(folder).arg(url.fileName());
 
@@ -77,16 +81,19 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &ur
         m_current->deleteLater();
 
     m_current = new Download(this, receiver, bareFileName, progress);
-    connect(m_current, &QObject::destroyed, [&](){ m_current = nullptr; });
+    connect(m_current, &QObject::destroyed, [&]() {
+        m_current = nullptr;
+    });
     fetchPageAsync(this, "https://mirrors.fedoraproject.org/mirrorlist?path=" + url.path());
 
     return bareFileName + ".part";
 }
 
-void DownloadManager::fetchPageAsync(DownloadReceiver *receiver, const QString &url) {
+void DownloadManager::fetchPageAsync(DownloadReceiver *receiver, const QString &url)
+{
     QNetworkRequest request;
     request.setUrl(QUrl(url));
-    //request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+    // request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
 
     if (!options.noUserAgent)
         request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
@@ -97,19 +104,21 @@ void DownloadManager::fetchPageAsync(DownloadReceiver *receiver, const QString &
     Q_UNUSED(download)
 }
 
-QString DownloadManager::fetchPage(const QString &url) {
+QString DownloadManager::fetchPage(const QString &url)
+{
     Q_UNUSED(url)
     return QString();
 }
 
-QNetworkReply *DownloadManager::tryAnotherMirror() {
+QNetworkReply *DownloadManager::tryAnotherMirror()
+{
     if (m_mirrorCache.isEmpty())
         return nullptr;
     if (!m_current)
         return nullptr;
 
     QNetworkRequest request;
-    //request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+    // request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(m_mirrorCache.first());
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
     if (!options.noUserAgent)
@@ -119,7 +128,8 @@ QNetworkReply *DownloadManager::tryAnotherMirror() {
     return m_manager.get(request);
 }
 
-void DownloadManager::cancel() {
+void DownloadManager::cancel()
+{
     if (m_current) {
         m_current->deleteLater();
         m_current = nullptr;
@@ -127,7 +137,8 @@ void DownloadManager::cancel() {
     }
 }
 
-void DownloadManager::onStringDownloaded(const QString &text) {
+void DownloadManager::onStringDownloaded(const QString &text)
+{
     if (!m_current)
         return;
 
@@ -148,19 +159,19 @@ void DownloadManager::onStringDownloaded(const QString &text) {
         return;
 
     QNetworkRequest request;
-    //request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+    // request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(m_mirrorCache.first());
 
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
     if (!options.noUserAgent)
         request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
 
-
     m_mirrorCache.removeFirst();
     m_current->handleNewReply(m_manager.get(request));
 }
 
-void DownloadManager::onDownloadError(const QString &message) {
+void DownloadManager::onDownloadError(const QString &message)
+{
     mWarning() << "Unable to get the mirror list:" << message;
 
     if (m_mirrorCache.isEmpty()) {
@@ -169,22 +180,21 @@ void DownloadManager::onDownloadError(const QString &message) {
     }
 
     QNetworkRequest request;
-    //request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+    // request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(m_mirrorCache.first());
     request.setRawHeader("Range", QString("bytes=%1-").arg(m_current->bytesDownloaded()).toLocal8Bit());
     if (!options.noUserAgent)
         request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
 
-
     m_mirrorCache.removeFirst();
     m_current->handleNewReply(m_manager.get(request));
 }
 
-DownloadManager::DownloadManager() {
+DownloadManager::DownloadManager()
+{
     mDebug() << this->metaObject()->className() << "User-Agent:" << userAgent();
     QNetworkProxyFactory::setUseSystemConfiguration(true);
 }
-
 
 Download::Download(DownloadManager *parent, DownloadReceiver *receiver, const QString &filePath, Progress *progress)
     : QObject(parent)
@@ -207,11 +217,13 @@ Download::Download(DownloadManager *parent, DownloadReceiver *receiver, const QS
     QTimer::singleShot(0, this, SLOT(start()));
 }
 
-DownloadManager *Download::manager() {
-    return qobject_cast<DownloadManager*>(parent());
+DownloadManager *Download::manager()
+{
+    return qobject_cast<DownloadManager *>(parent());
 }
 
-void Download::handleNewReply(QNetworkReply *reply) {
+void Download::handleNewReply(QNetworkReply *reply)
+{
     if (!reply) {
         m_receiver->onDownloadError(tr("Unable to fetch the requested image."));
         return;
@@ -222,14 +234,14 @@ void Download::handleNewReply(QNetworkReply *reply) {
         m_reply->deleteLater();
     m_reply = reply;
     // have only a 64MB buffer in case the user is on a very fast network
-    m_reply->setReadBufferSize(64*1024*1024);
+    m_reply->setReadBufferSize(64 * 1024 * 1024);
     m_reply->setParent(this);
 
     connect(m_reply, &QNetworkReply::readyRead, this, &Download::onReadyRead);
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
     connect(m_reply, &QNetworkReply::errorOccurred, this, &Download::onError);
 #else
-    connect(m_reply, static_cast<void(QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), this, &Download::onError);
+    connect(m_reply, static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(&QNetworkReply::error), this, &Download::onError);
 #endif
     connect(m_reply, &QNetworkReply::sslErrors, this, &Download::onSslErrors);
     connect(m_reply, &QNetworkReply::finished, this, &Download::onFinished);
@@ -241,18 +253,20 @@ void Download::handleNewReply(QNetworkReply *reply) {
 
     if (m_reply->bytesAvailable() > 0)
         onReadyRead();
-
 }
 
-qint64 Download::bytesDownloaded() {
+qint64 Download::bytesDownloaded()
+{
     return m_bytesDownloaded;
 }
 
-bool Download::hasCatchedUp() {
+bool Download::hasCatchedUp()
+{
     return !m_catchingUp;
 }
 
-void Download::start() {
+void Download::start()
+{
     if (m_catchingUp) {
         mDebug() << this->metaObject()->className() << "Will need to precompute the hash of the previously downloaded part";
         // first precompute the SHA hash of the already downloaded part
@@ -260,15 +274,15 @@ void Download::start() {
         m_previousSize = 0;
 
         QTimer::singleShot(0, this, SLOT(catchUp()));
-    }
-    else if (!m_path.isEmpty()) {
+    } else if (!m_path.isEmpty()) {
         mDebug() << this->metaObject()->className() << "Creating a new empty file";
         m_file->open(QIODevice::WriteOnly);
     }
 }
 
-void Download::catchUp() {
-    QByteArray buffer = m_file->read(1024*1024);
+void Download::catchUp()
+{
+    QByteArray buffer = m_file->read(1024 * 1024);
     m_previousSize += buffer.size();
     m_hash.addData(buffer);
     if (m_progress && m_previousSize < m_progress->to())
@@ -277,8 +291,7 @@ void Download::catchUp() {
 
     if (!m_file->atEnd()) {
         QTimer::singleShot(0, this, SLOT(catchUp()));
-    }
-    else {
+    } else {
         mDebug() << this->metaObject()->className() << "Finished computing the hash of the downloaded part";
         m_file->close();
         m_file->open(QIODevice::Append);
@@ -289,12 +302,12 @@ void Download::catchUp() {
     }
 }
 
-void Download::onReadyRead() {
+void Download::onReadyRead()
+{
     if (!m_reply)
         return;
-    QByteArray buf = m_reply->read(1024*64);
+    QByteArray buf = m_reply->read(1024 * 64);
     if (m_reply->error() == QNetworkReply::NoError && buf.size() > 0) {
-
         m_bytesDownloaded += buf.size();
 
         if (m_progress && m_reply->header(QNetworkRequest::ContentLengthHeader).isValid())
@@ -309,8 +322,7 @@ void Download::onReadyRead() {
         if (m_file) {
             if (m_file->exists() && m_file->isOpen() && m_file->isWritable() && m_file->write(buf) == buf.size()) {
                 m_hash.addData(buf);
-            }
-            else {
+            } else {
                 QStorageInfo storage(m_file->fileName());
                 if (storage.bytesAvailable() < 5L * 1024L * 1024L) // HACK(?): 5MB
                     m_receiver->onDownloadError(tr("You ran out of space in your Downloads folder."));
@@ -318,8 +330,7 @@ void Download::onReadyRead() {
                     m_receiver->onDownloadError(tr("The download file is not writable."));
                 deleteLater();
             }
-        }
-        else {
+        } else {
             m_buf.append(buf);
         }
     }
@@ -328,7 +339,8 @@ void Download::onReadyRead() {
     }
 }
 
-void Download::onError(QNetworkReply::NetworkError code) {
+void Download::onError(QNetworkReply::NetworkError code)
+{
     mWarning() << "Error" << code << "reading from" << m_reply->url() << ":" << m_reply->errorString();
     if (m_path.isEmpty())
         return;
@@ -340,7 +352,8 @@ void Download::onError(QNetworkReply::NetworkError code) {
         m_receiver->onDownloadError(m_reply->errorString());
 }
 
-void Download::onSslErrors(const QList<QSslError> errors) {
+void Download::onSslErrors(const QList<QSslError> errors)
+{
     mWarning() << "Error reading from" << m_reply->url() << ":" << m_reply->errorString();
     for (auto i : errors) {
         mWarning() << "SSL error" << i.errorString();
@@ -348,15 +361,15 @@ void Download::onSslErrors(const QList<QSslError> errors) {
     m_receiver->onDownloadError(m_reply->errorString());
 }
 
-void Download::onFinished() {
+void Download::onFinished()
+{
     m_timer.stop();
     if (m_reply->error() != 0) {
         mDebug() << this->metaObject()->className() << "An error occurred at the end:" << m_reply->errorString();
         if (m_file && m_file->size() == 0) {
             m_file->remove();
         }
-    }
-    else {
+    } else {
         while (m_reply->bytesAvailable() > 0) {
             onReadyRead();
             qApp->eventDispatcher()->processEvents(QEventLoop::ExcludeSocketNotifiers);
@@ -368,8 +381,7 @@ void Download::onFinished() {
             m_reply->deleteLater();
             m_reply = nullptr;
             deleteLater();
-        }
-        else {
+        } else {
             m_receiver->onStringDownloaded(m_buf);
             m_reply->deleteLater();
             m_reply = nullptr;
@@ -378,7 +390,8 @@ void Download::onFinished() {
     }
 }
 
-void Download::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) {
+void Download::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal)
+{
     Q_UNUSED(bytesReceived);
     Q_UNUSED(bytesTotal);
     /*
@@ -391,7 +404,8 @@ void Download::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal) {
     */
 }
 
-void Download::onTimedOut() {
+void Download::onTimedOut()
+{
     mWarning() << m_reply->url() << "timed out. Trying another mirror.";
     m_reply->deleteLater();
     if (m_path.isEmpty())

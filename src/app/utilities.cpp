@@ -20,8 +20,8 @@
 #include "utilities.h"
 
 #include <QDebug>
-#include <QStandardPaths>
 #include <QElapsedTimer>
+#include <QStandardPaths>
 
 Options options;
 
@@ -32,41 +32,52 @@ static FILE *debugFile;
 // TODO: everything Q_UNUSED
 
 Progress::Progress(QObject *parent, qreal from, qreal to)
-    : QObject(parent), m_from(from), m_to(to), m_value(from) {
+    : QObject(parent)
+    , m_from(from)
+    , m_to(to)
+    , m_value(from)
+{
     connect(this, &Progress::toChanged, this, &Progress::valueChanged);
 }
 
-qreal Progress::from() const {
+qreal Progress::from() const
+{
     return m_from;
 }
 
-qreal Progress::to() const {
+qreal Progress::to() const
+{
     return m_to;
 }
 
-qreal Progress::value() const {
+qreal Progress::value() const
+{
     return m_value;
 }
 
-qreal Progress::ratio() const {
+qreal Progress::ratio() const
+{
     return (value() - from()) / (to() - from());
 }
 
-void Progress::setTo(qreal v) {
+void Progress::setTo(qreal v)
+{
     if (m_to != v) {
         m_to = v;
         emit toChanged();
     }
 }
 
-void Progress::setValue(qreal v) {
+void Progress::setValue(qreal v)
+{
     if (m_value != v) {
         m_value = v;
         emit valueChanged();
     }
 }
 
-void Progress::setValue(qreal v, qreal to) {
+void Progress::setValue(qreal v, qreal to)
+{
     qreal computedValue = v / to * (m_to - m_from) + m_from;
     if (computedValue != m_value) {
         m_value = computedValue;
@@ -74,22 +85,24 @@ void Progress::setValue(qreal v, qreal to) {
     }
 }
 
-void Progress::update(qreal value) {
+void Progress::update(qreal value)
+{
     if (m_value != value) {
         m_value = value;
         emit valueChanged();
     }
 }
 
-void Progress::reset() {
+void Progress::reset()
+{
     update(from());
 }
-
 
 // this is slowly getting out of hand
 // when adding an another option, please consider using a real argv parser
 
-void Options::parse(QStringList argv) {
+void Options::parse(QStringList argv)
+{
     int index;
     if (argv.contains("--testing"))
         testing = true;
@@ -121,14 +134,14 @@ void Options::parse(QStringList argv) {
     }
 }
 
-void Options::printHelp() {
+void Options::printHelp()
+{
     QTextStream out(stdout);
     out << "mediawriter [--testing] [--no-user-agent] [--releasesUrl <url>]\n";
 }
 
-
-
-static void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg) {
+static void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+{
     QByteArray localMsg = msg.toLocal8Bit();
     switch (type) {
     case QtDebugMsg:
@@ -158,10 +171,11 @@ static void myMessageOutput(QtMsgType type, const QMessageLogContext &context, c
         exit(1);
 }
 
-void MessageHandler::install() {
+void MessageHandler::install()
+{
     timer.start();
     debugFile = stderr;
     qInstallMessageHandler(myMessageOutput); // Install the handler
 }
 
-QLoggingCategory MessageHandler::category { "org.fedoraproject.MediaWriter" };
+QLoggingCategory MessageHandler::category{"org.fedoraproject.MediaWriter"};

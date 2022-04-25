@@ -21,20 +21,20 @@
 #include "writejob.h"
 
 #include <QCoreApplication>
-#include <QTimer>
-#include <QTextStream>
-#include <QProcess>
 #include <QFile>
+#include <QProcess>
 #include <QRegularExpression>
+#include <QTextStream>
+#include <QTimer>
 
 #include <QDebug>
 
+#include <fcntl.h>
 #include <lzma.h>
-#include <unistd.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <fcntl.h>
+#include <unistd.h>
 
 #include "isomd5/libcheckisomd5.h"
 
@@ -53,32 +53,36 @@ AuthOpenProcess::AuthOpenProcess(int parentSocket, int clientSocket, const QStri
 }
 
 WriteJob::WriteJob(const QString &what, const QString &where)
-    : QObject(nullptr), what(what), where(where)
+    : QObject(nullptr)
+    , what(what)
+    , where(where)
 {
     connect(&watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
     if (what.endsWith(".part")) {
         watcher.addPath(what);
-    }
-    else {
+    } else {
         QTimer::singleShot(0, this, &WriteJob::work);
     }
 }
 
-int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
-    return ((WriteJob*)data)->onMediaCheckAdvanced(offset, total);
+int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total)
+{
+    return ((WriteJob *)data)->onMediaCheckAdvanced(offset, total);
 }
 
-int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
+int WriteJob::onMediaCheckAdvanced(long long offset, long long total)
+{
     Q_UNUSED(total)
     out << offset << "\n";
     out.flush();
     return 0;
 }
 
-void WriteJob::work() {
+void WriteJob::work()
+{
     int sockets[2];
     int result = socketpair(AF_UNIX, SOCK_STREAM, 0, sockets);
-    if (result == - 1) {
+    if (result == -1) {
         err << tr("Unable to allocate socket pair") << "\n";
         err.flush();
         return;
@@ -106,7 +110,7 @@ void WriteJob::work() {
     const socklen_t socketSize = static_cast<socklen_t>(CMSG_SPACE(sizeof(int)));
     char cmsg_socket[socketSize];
 
-    struct msghdr message = { 0 };
+    struct msghdr message = {0};
     message.msg_iov = io_vec;
     message.msg_iovlen = 1;
     message.msg_control = cmsg_socket;
@@ -117,7 +121,7 @@ void WriteJob::work() {
     if (size > 0) {
         struct cmsghdr *socketHeader = CMSG_FIRSTHDR(&message);
         if (socketHeader && socketHeader->cmsg_level == SOL_SOCKET && socketHeader->cmsg_type == SCM_RIGHTS) {
-            fd = *reinterpret_cast<int*>(CMSG_DATA(socketHeader));
+            fd = *reinterpret_cast<int *>(CMSG_DATA(socketHeader));
         }
     }
 
@@ -139,8 +143,7 @@ void WriteJob::work() {
         if (!writeCompressed(target)) {
             return;
         }
-    }
-    else {
+    } else {
         if (!writePlain(target)) {
             return;
         }
@@ -149,7 +152,8 @@ void WriteJob::work() {
     check(target);
 }
 
-void WriteJob::onFileChanged(const QString &path) {
+void WriteJob::onFileChanged(const QString &path)
+{
     if (QFile::exists(path))
         return;
 
@@ -158,7 +162,8 @@ void WriteJob::onFileChanged(const QString &path) {
     work();
 }
 
-bool WriteJob::writePlain(QFile &target) {
+bool WriteJob::writePlain(QFile &target)
+{
     qint64 bytesTotal = 0;
 
     QFile source(what);
@@ -202,7 +207,8 @@ bool WriteJob::writePlain(QFile &target) {
     return true;
 }
 
-bool WriteJob::writeCompressed(QFile &target) {
+bool WriteJob::writeCompressed(QFile &target)
+{
     qint64 totalRead = 0;
 
     lzma_stream strm = LZMA_STREAM_INIT;
@@ -227,7 +233,7 @@ bool WriteJob::writeCompressed(QFile &target) {
 
     while (true) {
         if (strm.avail_in == 0) {
-            qint64 len = source.read((char*) inBuffer, BLOCK_SIZE);
+            qint64 len = source.read((char *)inBuffer, BLOCK_SIZE);
             totalRead += len;
 
             strm.next_in = inBuffer;
@@ -239,7 +245,7 @@ bool WriteJob::writeCompressed(QFile &target) {
 
         ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
         if (ret == LZMA_STREAM_END) {
-            quint64 len = target.write((char*) outBuffer, BLOCK_SIZE - strm.avail_out);
+            quint64 len = target.write((char *)outBuffer, BLOCK_SIZE - strm.avail_out);
             if (len != BLOCK_SIZE - strm.avail_out) {
                 err << tr("Destination drive is not writable");
                 qApp->exit(3);
@@ -269,7 +275,7 @@ bool WriteJob::writeCompressed(QFile &target) {
         }
 
         if (strm.avail_out == 0) {
-            quint64 len = target.write((char*) outBuffer, BLOCK_SIZE - strm.avail_out);
+            quint64 len = target.write((char *)outBuffer, BLOCK_SIZE - strm.avail_out);
             if (len != BLOCK_SIZE - strm.avail_out) {
                 err << tr("Destination drive is not writable");
                 qApp->exit(3);
@@ -281,7 +287,8 @@ bool WriteJob::writeCompressed(QFile &target) {
     }
 }
 
-void WriteJob::check(QFile &target) {
+void WriteJob::check(QFile &target)
+{
     out << "CHECK\n";
     out.flush();
     switch (mediaCheckFD(target.handle(), &WriteJob::staticOnMediaCheckAdvanced, this)) {

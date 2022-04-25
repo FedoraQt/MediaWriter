@@ -29,10 +29,7 @@ class PortalFileDialog : public QObject
     Q_PROPERTY(bool isAvailable READ isAvailable)
 public:
     // Copied from QXdgDesktopPortalFileDialog
-    enum ConditionType : uint {
-        GlobalPattern = 0,
-        MimeType = 1
-    };
+    enum ConditionType : uint { GlobalPattern = 0, MimeType = 1 };
     // Filters a(sa(us))
     // Example: [('Images', [(0, '*.ico'), (1, 'image/png')]), ('Text', [(0, '*.txt')])]
     struct FilterCondition {
@@ -42,7 +39,8 @@ public:
     typedef QVector<FilterCondition> FilterConditionList;
     struct Filter {
         QString name; // E.g. 'Images' or 'Text
-        FilterConditionList filterConditions;; // E.g. [(0, '*.ico'), (1, 'image/png')] or [(0, '*.txt')]
+        FilterConditionList filterConditions;
+        ; // E.g. [(0, '*.ico'), (1, 'image/png')] or [(0, '*.txt')]
     };
     typedef QVector<Filter> FilterList;
 

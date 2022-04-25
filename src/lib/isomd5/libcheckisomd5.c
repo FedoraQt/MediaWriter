@@ -23,24 +23,25 @@
 
 #define _LARGEFILE64_SOURCE
 
+#include <fcntl.h>
+#include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <fcntl.h>
 #include <string.h>
-#include <inttypes.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 
-#include "md5.h"
 #include "libcheckisomd5.h"
+#include "md5.h"
 
 #ifdef __APPLE__
 #define lseek64 lseek
 #endif
 
 #ifdef _WIN32
-size_t getpagesize () {
+size_t getpagesize()
+{
     return 2048; // not really necessary for Windows
 }
 #endif
@@ -51,16 +52,17 @@ size_t getpagesize () {
 /* Length in characters of string used for fragment md5sum checking */
 #define FRAGMENT_SUM_LENGTH 60
 
-#define MAX(x, y)  ((x > y) ? x : y)
-#define MIN(x, y)  ((x < y) ? x : y)
+#define MAX(x, y) ((x > y) ? x : y)
+#define MIN(x, y) ((x < y) ? x : y)
 
 /* finds primary volume descriptor and returns info from it */
 /* mediasum must be a preallocated buffer at least 33 bytes long */
 /* fragmentsums must be a preallocated buffer at least FRAGMENT_SUM_LENGTH+1 bytes long */
-static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isosize, int *supported, char *fragmentsums, long long *fragmentcount) {
+static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isosize, int *supported, char *fragmentsums, long long *fragmentcount)
+{
     int pagesize = getpagesize();
-    unsigned char *buf_unaligned = (unsigned char *) malloc((2048LL + pagesize) * sizeof(unsigned char));
-    unsigned char *buf = (buf_unaligned + (pagesize - ((uintptr_t) buf_unaligned % pagesize)));
+    unsigned char *buf_unaligned = (unsigned char *)malloc((2048LL + pagesize) * sizeof(unsigned char));
+    unsigned char *buf = (buf_unaligned + (pagesize - ((uintptr_t)buf_unaligned % pagesize)));
     char buf2[512];
     char tmpbuf[512];
     int skipfnd, md5fnd, supportedfnd, fragsumfnd, fragcntfnd;
@@ -72,7 +74,7 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
         goto fail;
 
     offset = (16LL * 2048LL);
-    for (;1;) {
+    for (; 1;) {
         if (read(isofd, buf, 2048) <= 0)
             goto fail;
 
@@ -99,7 +101,6 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
     loc = 0;
     while (loc < 512) {
         if (!strncmp(buf2 + loc, "ISO MD5SUM = ", 13)) {
-
             /* make sure we dont walk off end */
             if ((loc + 32 + 13) > 511)
                 goto fail;
@@ -108,7 +109,8 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
             mediasum[32] = '\0';
             md5fnd = 1;
             loc += 45;
-            for (p=buf2+loc; loc < 512 && *p != ';'; p++, loc++);
+            for (p = buf2 + loc; loc < 512 && *p != ';'; p++, loc++)
+                ;
         } else if (!strncmp(buf2 + loc, "SKIPSECTORS = ", 14)) {
             char *errptr;
 
@@ -117,7 +119,7 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
                 goto fail;
 
             loc = loc + 14;
-            for (p=tmpbuf; loc < 512 && buf2[loc] != ';'; p++, loc++)
+            for (p = tmpbuf; loc < 512 && buf2[loc] != ';'; p++, loc++)
                 *p = buf2[loc];
 
             *p = '\0';
@@ -129,15 +131,18 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
                 skipfnd = 1;
             }
 
-            for (p=buf2+loc; loc < 512 && *p != ';'; p++, loc++);
+            for (p = buf2 + loc; loc < 512 && *p != ';'; p++, loc++)
+                ;
         } else if (!strncmp(buf2 + loc, "RHLISOSTATUS=1", 14)) {
             *supported = 1;
             supportedfnd = 1;
-            for (p=buf2+loc; loc < 512 && *p != ';'; p++, loc++);
+            for (p = buf2 + loc; loc < 512 && *p != ';'; p++, loc++)
+                ;
         } else if (!strncmp(buf2 + loc, "RHLISOSTATUS=0", 14)) {
             *supported = 0;
             supportedfnd = 1;
-            for (p=buf2+loc; loc < 512 && *p != ';'; p++, loc++);
+            for (p = buf2 + loc; loc < 512 && *p != ';'; p++, loc++)
+                ;
         } else if (!strncmp(buf2 + loc, "FRAGMENT SUMS = ", 16)) {
             /* make sure we dont walk off end */
             if ((loc + FRAGMENT_SUM_LENGTH) > 511)
@@ -147,7 +152,8 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
             fragmentsums[FRAGMENT_SUM_LENGTH] = '\0';
             fragsumfnd = 1;
             loc += FRAGMENT_SUM_LENGTH + 16;
-            for (p=buf2+loc; loc < 512 && *p != ';'; p++, loc++);
+            for (p = buf2 + loc; loc < 512 && *p != ';'; p++, loc++)
+                ;
         } else if (!strncmp(buf2 + loc, "FRAGMENT COUNT = ", 17)) {
             char *errptr;
             /* make sure we dont walk off end */
@@ -155,7 +161,7 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
                 goto fail;
 
             loc = loc + 17;
-            for (p=tmpbuf; loc < 512 && buf2[loc] != ';'; p++, loc++)
+            for (p = tmpbuf; loc < 512 && buf2[loc] != ';'; p++, loc++)
                 *p = buf2[loc];
 
             *p = '\0';
@@ -167,7 +173,8 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
                 fragcntfnd = 1;
             }
 
-            for (p=buf2+loc; loc < 512 && *p != ';'; p++, loc++);
+            for (p = buf2 + loc; loc < 512 && *p != ';'; p++, loc++)
+                ;
         } else {
             loc++;
         }
@@ -180,8 +187,7 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
         goto fail;
 
     /* get isosize */
-    *isosize = (buf[SIZE_OFFSET]*0x1000000+buf[SIZE_OFFSET+1]*0x10000 +
-                buf[SIZE_OFFSET+2]*0x100 + buf[SIZE_OFFSET+3]) * 2048LL;
+    *isosize = (buf[SIZE_OFFSET] * 0x1000000 + buf[SIZE_OFFSET + 1] * 0x10000 + buf[SIZE_OFFSET + 2] * 0x100 + buf[SIZE_OFFSET + 3]) * 2048LL;
 
     free(buf_unaligned);
     return offset;
@@ -189,12 +195,12 @@ static int parsepvd(int isofd, char *mediasum, int *skipsectors, long long *isos
 fail:
     free(buf_unaligned);
     return -1LL;
-
 }
 
 /* mediasum is the sum encoded in media, computedsum is one we compute   */
 /* both strings must be pre-allocated at least 33 chars in length        */
-static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallback cb, void *cbdata) {
+static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallback cb, void *cbdata)
+{
     long long nread;
     int i, j;
     int appdata_start_offset, appdata_end_offset;
@@ -208,11 +214,11 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
     unsigned char md5sum[16];
     unsigned char fragmd5sum[16];
     unsigned int len;
-    unsigned char *buf_unaligned = (unsigned char *) malloc((bufsize + pagesize) * sizeof(unsigned char));
-    unsigned char *buf = (buf_unaligned + (pagesize - ((uintptr_t) buf_unaligned % pagesize)));
+    unsigned char *buf_unaligned = (unsigned char *)malloc((bufsize + pagesize) * sizeof(unsigned char));
+    unsigned char *buf = (buf_unaligned + (pagesize - ((uintptr_t)buf_unaligned % pagesize)));
     long long isosize, offset, pvd_offset, apoff;
-    char fragmentsums[FRAGMENT_SUM_LENGTH+1];
-    char thisfragsum[FRAGMENT_SUM_LENGTH+1];
+    char fragmentsums[FRAGMENT_SUM_LENGTH + 1];
+    char thisfragsum[FRAGMENT_SUM_LENGTH + 1];
     long long fragmentcount = 0;
     MD5_CTX md5ctx, fragmd5ctx;
 
@@ -231,12 +237,11 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
     offset = 0;
     apoff = pvd_offset + APPDATA_OFFSET;
 
-
     if (cb)
-        cb(cbdata, 0, isosize - skipsectors*2048);
+        cb(cbdata, 0, isosize - skipsectors * 2048);
 
-    while (offset < isosize - skipsectors*2048) {
-        nattempt = MIN(isosize - skipsectors*2048 - offset, bufsize);
+    while (offset < isosize - skipsectors * 2048) {
+        nattempt = MIN(isosize - skipsectors * 2048 - offset, bufsize);
 
         /*      printf("%lld %lld %lld %d\n", offset, isosize, isosize-SKIPSECTORS*2048, nattempt); */
 
@@ -246,37 +251,36 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
 
         if (nread > nattempt) {
             nread = nattempt;
-            lseek64(isofd, offset+nread, SEEK_SET);
+            lseek64(isofd, offset + nread, SEEK_SET);
         }
         /* overwrite md5sum we implanted with original data */
-        if (offset < apoff && offset+nread >= apoff) {
+        if (offset < apoff && offset + nread >= apoff) {
             appdata_start_offset = apoff - offset;
-            appdata_end_offset = MIN(appdata_start_offset+MIN(nread, 512),
-                                     offset + nread - apoff);
+            appdata_end_offset = MIN(appdata_start_offset + MIN(nread, 512), offset + nread - apoff);
             len = appdata_end_offset - appdata_start_offset;
-            memset(buf+appdata_start_offset, ' ', len);
-        } else if (offset >= apoff && offset+nread < apoff + 512) {
+            memset(buf + appdata_start_offset, ' ', len);
+        } else if (offset >= apoff && offset + nread < apoff + 512) {
             appdata_start_offset = 0;
             appdata_end_offset = nread;
             len = appdata_end_offset - appdata_start_offset;
-            memset(buf+appdata_start_offset, ' ', len);
-        } else if (offset < apoff + 512 && offset+nread >= apoff + 512) {
+            memset(buf + appdata_start_offset, ' ', len);
+        } else if (offset < apoff + 512 && offset + nread >= apoff + 512) {
             appdata_start_offset = 0;
             appdata_end_offset = apoff + 512 - offset;
             len = appdata_end_offset - appdata_start_offset;
-            memset(buf+appdata_start_offset, ' ', len);
+            memset(buf + appdata_start_offset, ' ', len);
         }
 
         ISOMD5_Update(&md5ctx, buf, nread);
         if (fragmentcount) {
-            current_fragment = offset * (fragmentcount+1) / (isosize - skipsectors*2048);
+            current_fragment = offset * (fragmentcount + 1) / (isosize - skipsectors * 2048);
             /* if we're onto the next fragment, calculate the previous sum and check */
-            if ( current_fragment != previous_fragment ) {
+            if (current_fragment != previous_fragment) {
                 memcpy(&fragmd5ctx, &md5ctx, sizeof(MD5_CTX));
                 ISOMD5_Final(fragmd5sum, &fragmd5ctx);
                 *computedsum = '\0';
-                j = (current_fragment-1)*FRAGMENT_SUM_LENGTH/fragmentcount;
-                for (i=0; i<FRAGMENT_SUM_LENGTH/fragmentcount; i++) {
+                j = (current_fragment - 1) * FRAGMENT_SUM_LENGTH / fragmentcount;
+                for (i = 0; i < FRAGMENT_SUM_LENGTH / fragmentcount; i++) {
                     char tmpstr[2];
                     snprintf(tmpstr, 2, "%01x", fragmd5sum[i]);
                     strncat(computedsum, tmpstr, 1);
@@ -286,14 +290,14 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
                 previous_fragment = current_fragment;
                 /* Exit immediately if current fragment sum is incorrect */
                 if (strcmp(thisfragsum, computedsum) != 0) {
-                    free (buf_unaligned);
+                    free(buf_unaligned);
                     return ISOMD5SUM_CHECK_FAILED;
                 }
             }
         }
         offset = offset + nread;
         if (cb && offset / nread % 256 == 0) {
-            if(cb(cbdata, offset, isosize - skipsectors*2048)) {
+            if (cb(cbdata, offset, isosize - skipsectors * 2048)) {
                 free(buf_unaligned);
                 return ISOMD5SUM_CHECK_ABORTED;
             }
@@ -301,16 +305,16 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
     }
 
     if (cb)
-        cb(cbdata, isosize, isosize - skipsectors*2048);
+        cb(cbdata, isosize, isosize - skipsectors * 2048);
 
     free(buf_unaligned);
 
     ISOMD5_Final(md5sum, &md5ctx);
 
     *computedsum = '\0';
-    for (i=0; i<16; i++) {
+    for (i = 0; i < 16; i++) {
         char tmpstr[4];
-        snprintf (tmpstr, 4, "%02x", md5sum[i]);
+        snprintf(tmpstr, 4, "%02x", md5sum[i]);
         strncat(computedsum, tmpstr, 2);
     }
 
@@ -322,12 +326,12 @@ static int checkmd5sum(int isofd, char *mediasum, char *computedsum, checkCallba
         return ISOMD5SUM_CHECK_PASSED;
 }
 
-
-static int doMediaCheck(int isofd, char *mediasum, char *computedsum, long long *isosize, int *supported, checkCallback cb, void *cbdata) {
+static int doMediaCheck(int isofd, char *mediasum, char *computedsum, long long *isosize, int *supported, checkCallback cb, void *cbdata)
+{
     int rc;
     int skipsectors;
     long long fragmentcount = 0;
-    char fragmentsums[FRAGMENT_SUM_LENGTH+1];
+    char fragmentsums[FRAGMENT_SUM_LENGTH + 1];
 
     if (parsepvd(isofd, mediasum, &skipsectors, isosize, supported, fragmentsums, &fragmentcount) < 0) {
         return ISOMD5SUM_CHECK_NOT_FOUND;
@@ -338,7 +342,8 @@ static int doMediaCheck(int isofd, char *mediasum, char *computedsum, long long 
     return rc;
 }
 
-int mediaCheckFile(const char *file, checkCallback cb, void *cbdata) {
+int mediaCheckFile(const char *file, checkCallback cb, void *cbdata)
+{
     int isofd;
     int rc;
     char mediasum[33], computedsum[33];
@@ -355,19 +360,19 @@ int mediaCheckFile(const char *file, checkCallback cb, void *cbdata) {
         return ISOMD5SUM_FILE_NOT_FOUND;
     }
 
-
     rc = doMediaCheck(isofd, mediasum, computedsum, &isosize, &supported, cb, cbdata);
 
     close(isofd);
 
-    /*    printf("isosize = %lld\n", isosize); 
+    /*    printf("isosize = %lld\n", isosize);
      *    printf("%s\n%s\n", mediasum, computedsum);
      */
 
     return rc;
 }
 
-int mediaCheckFD(int fd, checkCallback cb, void *cbdata) {
+int mediaCheckFD(int fd, checkCallback cb, void *cbdata)
+{
     int rc;
     char mediasum[33], computedsum[33];
     long long isosize;
@@ -382,11 +387,12 @@ int mediaCheckFD(int fd, checkCallback cb, void *cbdata) {
     return rc;
 }
 
-int printMD5SUM(char *file) {
+int printMD5SUM(char *file)
+{
     int isofd;
     char mediasum[64];
     long long isosize;
-    char fragmentsums[FRAGMENT_SUM_LENGTH+1];
+    char fragmentsums[FRAGMENT_SUM_LENGTH + 1];
     long long fragmentcount = 0;
     int supported;
     int skipsectors;
@@ -404,10 +410,10 @@ int printMD5SUM(char *file) {
     close(isofd);
 
     printf("%s:   %s\n", file, mediasum);
-    if ( (strlen(fragmentsums) > 0) && (fragmentcount > 0) ) {
+    if ((strlen(fragmentsums) > 0) && (fragmentcount > 0)) {
         printf("Fragment sums: %s\n", fragmentsums);
 #ifdef _WIN32
-        printf("Fragment count: %"PRId64"\n", fragmentcount);
+        printf("Fragment count: %" PRId64 "\n", fragmentcount);
 #else
         printf("Fragment count: %lld\n", fragmentcount);
 #endif

@@ -29,6 +29,7 @@ public:
     explicit RestoreJob(const QString &where);
 private slots:
     void work();
+
 private:
     QString where;
 };

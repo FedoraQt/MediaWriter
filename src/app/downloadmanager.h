@@ -17,16 +17,15 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-
 #ifndef DOWNLOADMANAGER_H
 #define DOWNLOADMANAGER_H
 
-#include <QObject>
 #include <QApplication>
-#include <QNetworkAccessManager>
-#include <QNetworkRequest>
-#include <QNetworkReply>
 #include <QFile>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QNetworkRequest>
+#include <QObject>
 #include <QTimer>
 
 #include "utilities.h"
@@ -79,13 +78,20 @@ class DownloadManager;
  *
  * A virtual class for getting the results of a download
  */
-class DownloadReceiver {
+class DownloadReceiver
+{
 public:
-    virtual void onFileDownloaded(const QString &path, const QString &shaHash) { Q_UNUSED(path); Q_UNUSED(shaHash) }
-    virtual void onStringDownloaded(const QString &text) { Q_UNUSED(text) }
+    virtual void onFileDownloaded(const QString &path, const QString &shaHash)
+    {
+        Q_UNUSED(path);
+        Q_UNUSED(shaHash)
+    }
+    virtual void onStringDownloaded(const QString &text)
+    {
+        Q_UNUSED(text)
+    }
     virtual void onDownloadError(const QString &message) = 0;
 };
-
 
 /**
  * @brief The Download class
@@ -94,7 +100,8 @@ public:
  *
  * It processes the incoming data, computes its checksum and tracks the amount of data downloaded/required
  */
-class Download : public QObject {
+class Download : public QObject
+{
     Q_OBJECT
 
 public:
@@ -118,18 +125,18 @@ private slots:
     void onTimedOut();
 
 private:
-    qint64 m_previousSize { 0 };
-    qint64 m_bytesDownloaded { 0 };
-    QNetworkReply *m_reply { nullptr };
-    DownloadReceiver *m_receiver { nullptr };
-    QString m_path { };
-    Progress *m_progress { nullptr };
-    QTimer m_timer { };
-    bool m_catchingUp { false };
+    qint64 m_previousSize{0};
+    qint64 m_bytesDownloaded{0};
+    QNetworkReply *m_reply{nullptr};
+    DownloadReceiver *m_receiver{nullptr};
+    QString m_path{};
+    Progress *m_progress{nullptr};
+    QTimer m_timer{};
+    bool m_catchingUp{false};
 
-    QFile *m_file { nullptr };
-    QByteArray m_buf { };
-    QCryptographicHash m_hash { QCryptographicHash::Sha256 };
+    QFile *m_file{nullptr};
+    QByteArray m_buf{};
+    QCryptographicHash m_hash{QCryptographicHash::Sha256};
 };
 
 /**
@@ -141,7 +148,8 @@ private:
  *
  * For files hosted on Fedora servers, it also tries to get a list of mirrors to download the file from.
  */
-class DownloadManager : public QObject, public DownloadReceiver {
+class DownloadManager : public QObject, public DownloadReceiver
+{
     Q_OBJECT
 public:
     static DownloadManager *instance();
@@ -164,8 +172,8 @@ private:
     DownloadManager();
     static DownloadManager *_self;
 
-    Download *m_current { nullptr };
-    QStringList m_mirrorCache { };
+    Download *m_current{nullptr};
+    QStringList m_mirrorCache{};
 
     QNetworkAccessManager m_manager;
 };

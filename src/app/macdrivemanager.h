@@ -26,7 +26,8 @@
 
 class MacDrive;
 
-class MacDriveProvider : public DriveProvider {
+class MacDriveProvider : public DriveProvider
+{
     Q_OBJECT
 public:
     MacDriveProvider(DriveManager *parent);
@@ -37,12 +38,14 @@ public:
     void addDrive(const QString &bsdName, const QString &vendor, const QString &model, uint64_t size, bool restoreable);
     static void onDriveRemoved(const char *bsdName);
     void removeDrive(const QString &bsdName);
+
 private:
     static MacDriveProvider *_self;
-    QMap<QString, MacDrive*> m_devices;
+    QMap<QString, MacDrive *> m_devices;
 };
 
-class MacDrive : public Drive {
+class MacDrive : public Drive
+{
     Q_OBJECT
 public:
     MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive, const QString &bsdDevice);
@@ -54,9 +57,10 @@ private slots:
     void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void onReadyRead();
+
 private:
     QString m_bsdDevice;
-    QProcess *m_child { nullptr };
+    QProcess *m_child{nullptr};
 };
 
 #endif // MACDRIVEMANAGER_H

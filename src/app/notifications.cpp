@@ -25,9 +25,10 @@
 
 #ifdef __linux
 
-# include <QDBusInterface>
+#include <QDBusInterface>
 
-void Notifications::notify(const QString &title, const QString &body) {
+void Notifications::notify(const QString &title, const QString &body)
+{
     QDBusInterface notifications("org.freedesktop.Notifications", "/org/freedesktop/Notifications", "org.freedesktop.Notifications", QDBusConnection::sessionBus());
     auto reply = notifications.call("Notify", "Fedora Media Writer", 0U, "org.fedoraproject.MediaWriter", title, body, QStringList{}, QVariantMap{}, -1);
     if (reply.type() == QDBusMessage::ErrorMessage)
@@ -38,7 +39,8 @@ void Notifications::notify(const QString &title, const QString &body) {
 
 #ifdef __APPLE__
 
-void Notifications::notify(const QString &title, const QString &body) {
+void Notifications::notify(const QString &title, const QString &body)
+{
     static QSystemTrayIcon *icon = new QSystemTrayIcon();
     if (!icon->isVisible())
         icon->show();
@@ -49,7 +51,8 @@ void Notifications::notify(const QString &title, const QString &body) {
 
 #ifdef _WIN32
 
-void Notifications::notify(const QString &title, const QString &body) {
+void Notifications::notify(const QString &title, const QString &body)
+{
     static QSystemTrayIcon *icon = new QSystemTrayIcon(QIcon(":/icon.ico"));
     if (!icon->isVisible())
         icon->show();
@@ -57,5 +60,3 @@ void Notifications::notify(const QString &title, const QString &body) {
 }
 
 #endif // _WIN32
-
-

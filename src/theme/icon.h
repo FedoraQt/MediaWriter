@@ -9,9 +9,9 @@
 #pragma once
 
 #include <QIcon>
+#include <QPointer>
 #include <QQuickItem>
 #include <QVariant>
-#include <QPointer>
 
 class AdwaitaTheme;
 
@@ -151,7 +151,7 @@ public:
     QString fallback() const;
     void setFallback(const QString &fallback);
 
-    QSGNode* updatePaintNode(QSGNode* node, UpdatePaintNodeData* data) override;
+    QSGNode *updatePaintNode(QSGNode *node, UpdatePaintNodeData *data) override;
 
 Q_SIGNALS:
     void sourceChanged();
@@ -166,7 +166,7 @@ Q_SIGNALS:
 
 protected:
     void geometryChange(const QRectF &newGeometry, const QRectF &oldGeometry) override;
-    QImage findIcon(const QSize& size);
+    QImage findIcon(const QSize &size);
     QIcon::Mode iconMode() const;
     bool guessMonochrome(const QImage &img);
     void updatePolish() override;

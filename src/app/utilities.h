@@ -20,8 +20,8 @@
 #ifndef UTILITIES_H
 #define UTILITIES_H
 
-#include <QObject>
 #include <QLoggingCategory>
+#include <QObject>
 
 class Progress;
 class Options;
@@ -37,7 +37,8 @@ class MessageHandler;
  * @property value the current value of the process
  * @property ratio the ratio of the value, is in the range [0.0, 1.0]
  */
-class Progress : public QObject {
+class Progress : public QObject
+{
     Q_OBJECT
     Q_PROPERTY(qreal from READ from CONSTANT)
     Q_PROPERTY(qreal to READ to NOTIFY toChanged)
@@ -64,28 +65,30 @@ public slots:
     void reset();
 
 private:
-    qreal m_from { 0.0 };
-    qreal m_to { 1.0 };
-    qreal m_value { 0.0 };
+    qreal m_from{0.0};
+    qreal m_to{1.0};
+    qreal m_value{0.0};
 };
 
-class Options {
+class Options
+{
 public:
     void parse(QStringList argv);
     void printHelp();
 
-    bool testing { false };
-    bool verbose { false };
+    bool testing{false};
+    bool verbose{false};
 #ifdef QT_NO_DEBUG
-    bool logging { false };
+    bool logging{false};
 #else
-    bool logging { true };
+    bool logging{true};
 #endif
-    QString releasesUrl { "https://getfedora.org/releases.json" };
-    bool noUserAgent { false }; // disables sending the custom Fedora Media Writer user agent header
+    QString releasesUrl{"https://getfedora.org/releases.json"};
+    bool noUserAgent{false}; // disables sending the custom Fedora Media Writer user agent header
 };
 
-class MessageHandler {
+class MessageHandler
+{
 public:
     static void install();
     static QLoggingCategory category;

@@ -21,8 +21,8 @@
 #define RELEASEMANAGER_H
 
 #include <QAbstractListModel>
-#include <QSortFilterProxyModel>
 #include <QQmlListProperty>
+#include <QSortFilterProxyModel>
 
 #include <QDateTime>
 
@@ -55,7 +55,6 @@ class ReleaseArchitecture;
  * There should be no platform-dependent code in this file nor in potential child classes.
  */
 
-
 /**
  * @brief The ReleaseManager class
  *
@@ -73,7 +72,8 @@ class ReleaseArchitecture;
  * @property selectedIndex the index of the currently selected release
  * @property architectures the list of the available architectures
  */
-class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver {
+class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver
+{
     Q_OBJECT
     Q_PROPERTY(bool frontPage READ frontPage WRITE setFrontPage NOTIFY frontPageChanged)
     Q_PROPERTY(bool beingUpdated READ beingUpdated NOTIFY beingUpdatedChanged)
@@ -82,14 +82,14 @@ class ReleaseManager : public QSortFilterProxyModel, public DownloadReceiver {
     Q_PROPERTY(int filterSource READ filterSource WRITE setFilterSource NOTIFY filterSourceChanged)
     Q_PROPERTY(QString filterText READ filterText WRITE setFilterText NOTIFY filterTextChanged)
 
-    Q_PROPERTY(Release* selected READ selected NOTIFY selectedChanged)
+    Q_PROPERTY(Release *selected READ selected NOTIFY selectedChanged)
     Q_PROPERTY(int selectedIndex READ selectedIndex WRITE setSelectedIndex NOTIFY selectedChanged)
 
-    Q_PROPERTY(ReleaseVariant* variant READ variant NOTIFY variantChanged)
+    Q_PROPERTY(ReleaseVariant *variant READ variant NOTIFY variantChanged)
 
     Q_PROPERTY(QStringList architectures READ architectures CONSTANT)
-    Q_PROPERTY(ReleaseVariant* localFile READ localFile NOTIFY localFileChanged)
-    
+    Q_PROPERTY(ReleaseVariant *localFile READ localFile NOTIFY localFileChanged)
+
     Q_PROPERTY(int firstSource READ firstSource NOTIFY firstSourceChanged)
 public:
     explicit ReleaseManager(QObject *parent = 0);
@@ -106,17 +106,17 @@ public:
     void setFilterText(const QString &o);
 
     Q_INVOKABLE void selectLocalFile(const QString &path = QString());
-    ReleaseVariant* localFile() const;
+    ReleaseVariant *localFile() const;
 
     bool updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
 
     QStringList architectures() const;
     int filterArchitecture() const;
     void setFilterArchitecture(int o);
-    
+
     int filterSource() const;
     void setFilterSource(int source);
-    
+
     int firstSource() const;
 
     Release *selected() const;
@@ -145,22 +145,22 @@ signals:
     void localFileChanged();
 
 private:
-    ReleaseListModel *m_sourceModel { nullptr };
-    bool m_frontPage { true };
-    QString m_filterText {};
-    int m_filterArchitecture { 0 };
-    int m_filterSource { 0 };
-    int m_selectedIndex { 0 };
-    bool m_beingUpdated { false };
+    ReleaseListModel *m_sourceModel{nullptr};
+    bool m_frontPage{true};
+    QString m_filterText{};
+    int m_filterArchitecture{0};
+    int m_filterSource{0};
+    int m_selectedIndex{0};
+    bool m_beingUpdated{false};
 };
-
 
 /**
  * @brief The ReleaseListModel class
  *
  * The list model containing all available releases without filtering.
  */
-class ReleaseListModel : public QAbstractListModel {
+class ReleaseListModel : public QAbstractListModel
+{
     Q_OBJECT
 public:
     explicit ReleaseListModel(ReleaseManager *parent = 0);
@@ -172,11 +172,10 @@ public:
     QHash<int, QByteArray> roleNames() const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+
 private:
-
-    QList<Release*> m_releases {};
+    QList<Release *> m_releases{};
 };
-
 
 /**
  * @brief The Release class
@@ -200,7 +199,8 @@ private:
  * @property version the currently selected @ref ReleaseVersion
  * @property versionIndex the index of the currently selected @ref ReleaseVersion
  */
-class Release : public QObject {
+class Release : public QObject
+{
     Q_OBJECT
     Q_PROPERTY(int index READ index CONSTANT)
     Q_PROPERTY(QString name READ name CONSTANT)
@@ -218,17 +218,10 @@ class Release : public QObject {
 
     Q_PROPERTY(QQmlListProperty<ReleaseVersion> versions READ versions NOTIFY versionsChanged)
     Q_PROPERTY(QStringList versionNames READ versionNames NOTIFY versionsChanged)
-    Q_PROPERTY(ReleaseVersion* version READ selectedVersion NOTIFY selectedVersionChanged)
+    Q_PROPERTY(ReleaseVersion *version READ selectedVersion NOTIFY selectedVersionChanged)
     Q_PROPERTY(int versionIndex READ selectedVersionIndex WRITE setSelectedVersionIndex NOTIFY selectedVersionChanged)
 public:
-    enum Source {
-        PRODUCT,
-        LOCAL,
-        SPINS,
-        LABS,
-        EMERGING,
-        OTHER
-    };
+    enum Source { PRODUCT, LOCAL, SPINS, LABS, EMERGING, OTHER };
     Q_ENUMS(Source)
     Q_INVOKABLE QString sourceString();
 
@@ -250,7 +243,7 @@ public:
     void addVersion(ReleaseVersion *version);
     void removeVersion(ReleaseVersion *version);
     QQmlListProperty<ReleaseVersion> versions();
-    QList<ReleaseVersion*> versionList() const;
+    QList<ReleaseVersion *> versionList() const;
     QStringList versionNames() const;
     ReleaseVersion *selectedVersion() const;
     int selectedVersionIndex() const;
@@ -260,18 +253,18 @@ signals:
     void versionsChanged();
     void selectedVersionChanged();
     void prereleaseChanged();
-private:
-    int m_index { 0 };
-    QString m_name {};
-    QString m_summary {};
-    QStringList m_description {};
-    Release::Source m_source { LOCAL };
-    QString m_icon {};
-    QStringList m_screenshots {};
-    QList<ReleaseVersion *> m_versions {};
-    int m_selectedVersion { 0 };
-};
 
+private:
+    int m_index{0};
+    QString m_name{};
+    QString m_summary{};
+    QStringList m_description{};
+    Release::Source m_source{LOCAL};
+    QString m_icon{};
+    QStringList m_screenshots{};
+    QList<ReleaseVersion *> m_versions{};
+    int m_selectedVersion{0};
+};
 
 /**
  * @brief The ReleaseVersion class
@@ -286,7 +279,8 @@ private:
  * @property variant the currently selected variant
  * @property variantIndex the index of the currently selected variant
  */
-class ReleaseVersion : public QObject {
+class ReleaseVersion : public QObject
+{
     Q_OBJECT
     Q_PROPERTY(int number READ number CONSTANT)
     Q_PROPERTY(QString name READ name CONSTANT)
@@ -295,16 +289,11 @@ class ReleaseVersion : public QObject {
     Q_PROPERTY(QDateTime releaseDate READ releaseDate NOTIFY releaseDateChanged)
 
     Q_PROPERTY(QQmlListProperty<ReleaseVariant> variants READ variants NOTIFY variantsChanged)
-    Q_PROPERTY(ReleaseVariant* variant READ selectedVariant NOTIFY selectedVariantChanged)
+    Q_PROPERTY(ReleaseVariant *variant READ selectedVariant NOTIFY selectedVariantChanged)
     Q_PROPERTY(int variantIndex READ selectedVariantIndex WRITE setSelectedVariantIndex NOTIFY selectedVariantChanged)
 
 public:
-    enum Status {
-        FINAL,
-        RELEASE_CANDIDATE,
-        BETA,
-        ALPHA
-    };
+    enum Status { FINAL, RELEASE_CANDIDATE, BETA, ALPHA };
 
     Q_ENUMS(Status)
 
@@ -322,7 +311,7 @@ public:
 
     void addVariant(ReleaseVariant *v);
     QQmlListProperty<ReleaseVariant> variants();
-    QList<ReleaseVariant*> variantList() const;
+    QList<ReleaseVariant *> variantList() const;
     ReleaseVariant *selectedVariant() const;
     int selectedVariantIndex() const;
     void setSelectedVariantIndex(int o);
@@ -334,13 +323,12 @@ signals:
     void releaseDateChanged();
 
 private:
-    int m_number { 0 };
-    ReleaseVersion::Status m_status { FINAL };
-    QDateTime m_releaseDate {};
-    QList<ReleaseVariant*> m_variants {};
-    int m_selectedVariant { 0 };
+    int m_number{0};
+    ReleaseVersion::Status m_status{FINAL};
+    QDateTime m_releaseDate{};
+    QList<ReleaseVariant *> m_variants{};
+    int m_selectedVariant{0};
 };
-
 
 /**
  * @brief The ReleaseVariant class
@@ -359,9 +347,10 @@ private:
  * @property statusString string representation of the @ref status
  * @property errorString a string better describing the current error @ref status of the variant
  */
-class ReleaseVariant : public QObject, public DownloadReceiver {
+class ReleaseVariant : public QObject, public DownloadReceiver
+{
     Q_OBJECT
-    Q_PROPERTY(ReleaseArchitecture* arch READ arch CONSTANT)
+    Q_PROPERTY(ReleaseArchitecture *arch READ arch CONSTANT)
     Q_PROPERTY(ReleaseVariant::Type type READ type CONSTANT)
     Q_PROPERTY(QString name READ name CONSTANT)
 
@@ -370,48 +359,29 @@ class ReleaseVariant : public QObject, public DownloadReceiver {
     Q_PROPERTY(QString iso READ iso NOTIFY isoChanged)
     Q_PROPERTY(qreal size READ size NOTIFY sizeChanged) // stored as a 64b int, UI doesn't need the precision and QML doesn't support long ints
     Q_PROPERTY(qreal realSize READ realSize NOTIFY realSizeChanged) // size after decompression
-    Q_PROPERTY(Progress* progress READ progress CONSTANT)
+    Q_PROPERTY(Progress *progress READ progress CONSTANT)
 
     Q_PROPERTY(Status status READ status NOTIFY statusChanged)
     Q_PROPERTY(QString statusString READ statusString NOTIFY statusChanged)
     Q_PROPERTY(QString errorString READ errorString WRITE setErrorString NOTIFY errorStringChanged)
 public:
-    enum Type {
-        LIVE = 0,
-        NETINSTALL,
-        FULL,
-        ATOMIC
-    };
+    enum Type { LIVE = 0, NETINSTALL, FULL, ATOMIC };
     Q_ENUMS(Type)
-    enum Status {
-        PREPARING = 0,
-        DOWNLOADING,
-        DOWNLOAD_VERIFYING,
-        READY,
-        WRITING_NOT_POSSIBLE,
-        WRITING,
-        WRITE_VERIFYING,
-        FINISHED,
-        FAILED_VERIFICATION,
-        FAILED_DOWNLOAD,
-        FAILED
-    };
+    enum Status { PREPARING = 0, DOWNLOADING, DOWNLOAD_VERIFYING, READY, WRITING_NOT_POSSIBLE, WRITING, WRITE_VERIFYING, FINISHED, FAILED_VERIFICATION, FAILED_DOWNLOAD, FAILED };
     Q_ENUMS(Status)
-    const QStringList m_statusStrings {
-        tr("Preparing"),
-        tr("Downloading"),
-        tr("Checking the download"),
-        tr("Ready to write"),
-        tr("Image file was saved to your downloads folder. Writing is not possible"),
-        tr("Writing"),
-        tr("Checking the written data"),
-        tr("Finished!"),
-        tr("The written data is corrupted"),
-        tr("Download failed"),
-        tr("Error")
-    };
+    const QStringList m_statusStrings{tr("Preparing"),
+                                      tr("Downloading"),
+                                      tr("Checking the download"),
+                                      tr("Ready to write"),
+                                      tr("Image file was saved to your downloads folder. Writing is not possible"),
+                                      tr("Writing"),
+                                      tr("Checking the written data"),
+                                      tr("Finished!"),
+                                      tr("The written data is corrupted"),
+                                      tr("Download failed"),
+                                      tr("Error")};
 
-    ReleaseVariant(ReleaseVersion *parent, QString url,  QString shaHash, int64_t size, ReleaseArchitecture *arch, Type type = LIVE);
+    ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, ReleaseArchitecture *arch, Type type = LIVE);
     ReleaseVariant(ReleaseVersion *parent, const QString &file, int64_t size);
 
     bool updateUrl(const QString &url, const QString &sha256, int64_t size);
@@ -465,20 +435,19 @@ public slots:
     void resetStatus();
 
 private:
-    QString m_temporaryIso {};
-    QString m_iso {};
-    ReleaseArchitecture *m_arch { nullptr };
-    ReleaseVariant::Type m_type { LIVE };
-    QString m_url {};
-    QString m_shaHash {};
-    int64_t m_size { 0 };
-    int64_t m_realSize { 0 };
-    Status m_status { PREPARING };
-    QString m_error {};
+    QString m_temporaryIso{};
+    QString m_iso{};
+    ReleaseArchitecture *m_arch{nullptr};
+    ReleaseVariant::Type m_type{LIVE};
+    QString m_url{};
+    QString m_shaHash{};
+    int64_t m_size{0};
+    int64_t m_realSize{0};
+    Status m_status{PREPARING};
+    QString m_error{};
 
-    Progress *m_progress { nullptr };
+    Progress *m_progress{nullptr};
 };
-
 
 /**
  * @brief The ReleaseArchitecture class
@@ -489,7 +458,8 @@ private:
  * @property description a better description what the short stands for, like Intel 64bit
  * @property details an even longer description of the architecture
  */
-class ReleaseArchitecture : public QObject {
+class ReleaseArchitecture : public QObject
+{
     Q_OBJECT
     Q_PROPERTY(QStringList abbreviation READ abbreviation CONSTANT)
     Q_PROPERTY(QString description READ description CONSTANT)
@@ -521,9 +491,9 @@ private:
 
     static ReleaseArchitecture m_all[];
 
-    const QStringList m_abbreviation {};
-    const char *m_description {};
-    const char *m_details {};
+    const QStringList m_abbreviation{};
+    const char *m_description{};
+    const char *m_details{};
 };
 
 #endif // RELEASEMANAGER_H

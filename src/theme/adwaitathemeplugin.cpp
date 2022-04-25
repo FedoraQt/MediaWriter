@@ -39,5 +39,4 @@ void AdwaitaThemePlugin::registerTypes(const char *uri)
 
     qmlRegisterUncreatableType<AdwaitaTheme>(uri, 2, 0, "Theme", QStringLiteral("It is not possible to instantiate Theme directly."));
     qmlRegisterType<Icon>(uri, 2, 0, "Icon");
-
 }

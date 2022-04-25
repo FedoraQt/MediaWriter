@@ -19,8 +19,8 @@
 
 #include "theme.h"
 
-#include <QGuiApplication>
 #include <QCheckBox>
+#include <QGuiApplication>
 
 AdwaitaTheme::AdwaitaTheme(QObject *parent)
     : QObject(parent)
@@ -28,9 +28,7 @@ AdwaitaTheme::AdwaitaTheme(QObject *parent)
 {
     // Just guess dark mode for now based on text color
     const QColor textColor = QGuiApplication::palette().color(QPalette::Text);
-    if (qSqrt(((textColor.red() * textColor.red()) * 0.299) +
-              ((textColor.green() * textColor.green()) * 0.587) +
-              ((textColor.blue() * textColor.blue()) * 0.114)) > 128) {
+    if (qSqrt(((textColor.red() * textColor.red()) * 0.299) + ((textColor.green() * textColor.green()) * 0.587) + ((textColor.blue() * textColor.blue()) * 0.114)) > 128) {
         m_darkMode = true;
     }
 
