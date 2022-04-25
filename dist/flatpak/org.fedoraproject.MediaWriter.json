@@ -39,18 +39,12 @@
                 {
                     "type": "git",
                     "url": "https://github.com/FedoraQt/MediaWriter.git",
-                    "branch": "nextgen"
+                    "branch": "main"
                 },
                 {
                     "type": "patch",
                     "path": "fmw-paths.patch"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "rm -rf app/data/icons/hicolor/1024x1024"
-                    ]
-                 }
+                }
             ]
         }
     ]
