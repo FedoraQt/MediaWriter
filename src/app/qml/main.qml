@@ -282,9 +282,12 @@ ApplicationWindow {
             if (lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored)
                 return qsTr("Finish")
             return qsTr("Restore")
-        } else if (mainLayout.state == "drivePage")
-            return qsTr("Download & Write")  
-        else if (mainLayout.state == "downloadPage") {
+        } else if (mainLayout.state == "drivePage") {
+            //if Windows or Mac
+            if (Qt.platform.os === "windows") 
+                return qsTr("Download && Write")
+            return qsTr("Download & Write") 
+        } else if (mainLayout.state == "downloadPage") {
             if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
                 return qsTr("Cancel")
             else
