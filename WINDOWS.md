@@ -16,7 +16,7 @@ You need to have about 200MB of free memory (RAM) available. It will take about 
 
 Download the .exe installer from the [Releases](../../releases) section of this page or [getfedora.org](https://getfedora.org), then open it.
 
-The application download from both mentioned sources should be signed, either by Martin Bříza or Dennis Gilmore. It should also not triggered any system warning screens.
+The application download from both mentioned sources should be signed. It should also not triggered any system warning screens.
 
 ### Known issues 
 
@@ -30,14 +30,14 @@ You can build Fedora Media Writer yourself. It has just a few dependencies and b
 
 ### Dependencies
 
-* `Qt5` (`qtbase`, `qtdeclarative` and `qtquickcontrols`)
+* `Qt6` (`qtbase`, `qtdeclarative` and `qtquickcontrols`)
 
 ### Steps
 
 You can use Qt Creator to build and work with the application. If not using that, the process is basically just these two commands you need to run inside the Fedora Media Writer source code directory:
 
 ```
-qmake
+cmake
 make
 ```
 
