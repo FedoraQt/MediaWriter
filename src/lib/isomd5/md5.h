@@ -9,10 +9,10 @@ typedef uint32_t u_int32_t;
 typedef u_int32_t uint32;
 
 struct MD5Context {
-	uint32 buf[4];
-	uint32 bits[2];
-	unsigned char in[64];
-	int doByteReverse;
+    uint32 buf[4];
+    uint32 bits[2];
+    unsigned char in[64];
+    int doByteReverse;
 };
 
 void ISOMD5_Init(struct MD5Context *);
@@ -25,4 +25,4 @@ void ISOMD5_Final(unsigned char digest[16], struct MD5Context *);
 
 typedef struct MD5Context MD5_CTX;
 
-#endif				/* MD5_H */
+#endif /* MD5_H */

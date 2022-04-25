@@ -20,8 +20,8 @@
 #ifndef DRIVEMANAGER_H
 #define DRIVEMANAGER_H
 
-#include <QDebug>
 #include <QAbstractListModel>
+#include <QDebug>
 
 #include "releasemanager.h"
 
@@ -46,12 +46,12 @@ class DriveManager : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(int length READ length NOTIFY drivesChanged)
-    Q_PROPERTY(Drive* selected READ selected NOTIFY selectedChanged)
+    Q_PROPERTY(Drive *selected READ selected NOTIFY selectedChanged)
     Q_PROPERTY(int selectedIndex READ selectedIndex WRITE setSelectedIndex NOTIFY selectedChanged)
     Q_PROPERTY(bool isBroken READ isBackendBroken NOTIFY isBackendBrokenChanged)
     Q_PROPERTY(QString errorString READ errorString NOTIFY isBackendBrokenChanged)
 
-    Q_PROPERTY(Drive* lastRestoreable READ lastRestoreable WRITE setLastRestoreable NOTIFY restoreableDriveChanged)
+    Q_PROPERTY(Drive *lastRestoreable READ lastRestoreable WRITE setLastRestoreable NOTIFY restoreableDriveChanged)
 public:
     static DriveManager *instance();
 
@@ -88,11 +88,11 @@ private:
     explicit DriveManager(QObject *parent = 0);
 
     static DriveManager *_self;
-    QList<Drive*> m_drives {};
-    int m_selectedIndex { 0 };
-    Drive *m_lastRestoreable { nullptr };
-    DriveProvider *m_provider { nullptr };
-    QString m_errorString { };
+    QList<Drive *> m_drives{};
+    int m_selectedIndex{0};
+    Drive *m_lastRestoreable{nullptr};
+    DriveProvider *m_provider{nullptr};
+    QString m_errorString{};
 };
 
 /**
@@ -104,7 +104,8 @@ private:
  *
  * It reports coming and going drives through the @ref driveConnected and @ref driveRemoved signals.
  */
-class DriveProvider : public QObject {
+class DriveProvider : public QObject
+{
     Q_OBJECT
     Q_PROPERTY(bool initialized READ initialized NOTIFY initializedChanged)
 public:
@@ -122,7 +123,7 @@ signals:
 protected:
     DriveProvider(DriveManager *parent);
 
-    bool m_initialized { true };
+    bool m_initialized{true};
 };
 
 /**
@@ -137,9 +138,10 @@ protected:
  * @property size the size of the drive, in bytes
  * @property restoreStatus the status of restoring the drive
  */
-class Drive : public QObject {
+class Drive : public QObject
+{
     Q_OBJECT
-    Q_PROPERTY(Progress* progress READ progress CONSTANT)
+    Q_PROPERTY(Progress *progress READ progress CONSTANT)
 
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(QString readableSize READ readableSize CONSTANT)
@@ -173,7 +175,7 @@ public:
     Q_INVOKABLE virtual void cancel();
     Q_INVOKABLE virtual void restore() = 0;
 
-    bool operator==(const Drive& o) const;
+    bool operator==(const Drive &o) const;
 
 public slots:
     void setRestoreStatus(RestoreStatus o);
@@ -183,13 +185,13 @@ signals:
     void delayedWriteChanged();
 
 protected:
-    ReleaseVariant *m_image { nullptr };
-    Progress *m_progress { nullptr };
-    QString m_name { };
-    uint64_t m_size { 0 };
-    RestoreStatus m_restoreStatus { CLEAN };
-    QString m_error { };
-    bool m_delayedWrite { false };
+    ReleaseVariant *m_image{nullptr};
+    Progress *m_progress{nullptr};
+    QString m_name{};
+    uint64_t m_size{0};
+    RestoreStatus m_restoreStatus{CLEAN};
+    QString m_error{};
+    bool m_delayedWrite{false};
 };
 
 #endif // DRIVEMANAGER_H

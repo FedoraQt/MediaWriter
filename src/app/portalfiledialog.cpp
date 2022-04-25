@@ -20,29 +20,29 @@
 #include "portalfiledialog.h"
 #include "utilities.h"
 
+#include <QFileDialog>
 #include <QGuiApplication>
 #include <QRandomGenerator>
-#include <QFileDialog>
 #include <QStandardPaths>
 
 #ifdef __linux
-#include <QtDBus/QtDBus>
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
 #include <QDBusMessage>
 #include <QDBusPendingCall>
 #include <QDBusPendingCallWatcher>
 #include <QDBusPendingReply>
+#include <QtDBus/QtDBus>
 
 // Copied from PortalFileDialog
-QDBusArgument &operator <<(QDBusArgument &arg, const PortalFileDialog::FilterCondition &filterCondition)
+QDBusArgument &operator<<(QDBusArgument &arg, const PortalFileDialog::FilterCondition &filterCondition)
 {
     arg.beginStructure();
     arg << filterCondition.type << filterCondition.pattern;
     arg.endStructure();
     return arg;
 }
-const QDBusArgument &operator >>(const QDBusArgument &arg, PortalFileDialog::FilterCondition &filterCondition)
+const QDBusArgument &operator>>(const QDBusArgument &arg, PortalFileDialog::FilterCondition &filterCondition)
 {
     uint type;
     QString filterPattern;
@@ -53,14 +53,14 @@ const QDBusArgument &operator >>(const QDBusArgument &arg, PortalFileDialog::Fil
     arg.endStructure();
     return arg;
 }
-QDBusArgument &operator <<(QDBusArgument &arg, const PortalFileDialog::Filter filter)
+QDBusArgument &operator<<(QDBusArgument &arg, const PortalFileDialog::Filter filter)
 {
     arg.beginStructure();
     arg << filter.name << filter.filterConditions;
     arg.endStructure();
     return arg;
 }
-const QDBusArgument &operator >>(const QDBusArgument &arg, PortalFileDialog::Filter &filter)
+const QDBusArgument &operator>>(const QDBusArgument &arg, PortalFileDialog::Filter &filter)
 {
     QString name;
     PortalFileDialog::FilterConditionList filterConditions;
@@ -113,10 +113,8 @@ void PortalFileDialog::open()
     }
 
 #ifdef __linux
-    QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.portal.Desktop"),
-                                                          QStringLiteral("/org/freedesktop/portal/desktop"),
-                                                          QStringLiteral("org.freedesktop.portal.FileChooser"),
-                                                          QStringLiteral("OpenFile"));
+    QDBusMessage message =
+        QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.portal.Desktop"), QStringLiteral("/org/freedesktop/portal/desktop"), QStringLiteral("org.freedesktop.portal.FileChooser"), QStringLiteral("OpenFile"));
     QVariantMap options;
     options.insert(QStringLiteral("modal"), true);
     options.insert(QStringLiteral("handle_token"), QStringLiteral("qt%1").arg(QRandomGenerator::global()->generate()));
@@ -159,22 +157,16 @@ void PortalFileDialog::open()
 
     options.insert(QLatin1String("filters"), QVariant::fromValue(filterList));
 
-    const QString parentWindow = QGuiApplication::platformName() == QStringLiteral("xcb") ? QStringLiteral("x11:%1").arg(QString::number(m_winId)) :
-                                                                                            QStringLiteral("wayland:%1").arg(QString::number(m_winId));
+    const QString parentWindow = QGuiApplication::platformName() == QStringLiteral("xcb") ? QStringLiteral("x11:%1").arg(QString::number(m_winId)) : QStringLiteral("wayland:%1").arg(QString::number(m_winId));
 
     message << parentWindow << tr("Open File") << options;
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this] (QDBusPendingCallWatcher *watcher) {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
         QDBusPendingReply<QDBusObjectPath> reply = *watcher;
         if (!reply.isError()) {
-            QDBusConnection::sessionBus().connect(nullptr,
-                                                  reply.value().path(),
-                                                  QStringLiteral("org.freedesktop.portal.Request"),
-                                                  QStringLiteral("Response"),
-                                                  this,
-                                                  SLOT(gotResponse(uint,QVariantMap)));
+            QDBusConnection::sessionBus().connect(nullptr, reply.value().path(), QStringLiteral("org.freedesktop.portal.Request"), QStringLiteral("Response"), this, SLOT(gotResponse(uint, QVariantMap)));
         } else {
             mWarning() << "Failed to open portal file dialog: " << reply.error().message();
         }

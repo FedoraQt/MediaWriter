@@ -21,18 +21,19 @@
 #ifndef WRITEJOB_H
 #define WRITEJOB_H
 
-#include <QObject>
 #include <QFile>
-#include <QTextStream>
-#include <QProcess>
 #include <QFileSystemWatcher>
+#include <QObject>
+#include <QProcess>
+#include <QTextStream>
 
 #ifndef MEDIAWRITER_LZMA_LIMIT
 // 256MB memory limit for the decompressor
-# define MEDIAWRITER_LZMA_LIMIT (1024*1024*256)
+#define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
 #endif
 
-class AuthOpenProcess : public QProcess {
+class AuthOpenProcess : public QProcess
+{
     Q_OBJECT
 public:
     AuthOpenProcess(int parentSocket, int clientSocket, const QString &device, QObject *parent = nullptr);
@@ -59,16 +60,17 @@ private slots:
     bool writeCompressed(QFile &target);
 
     void check(QFile &target);
+
 private:
     QString what;
     QString where;
 
-    QTextStream out { stdout };
-    QTextStream err { stderr };
+    QTextStream out{stdout};
+    QTextStream err{stderr};
 
-    QFileSystemWatcher watcher { };
+    QFileSystemWatcher watcher{};
 
-    const int BLOCK_SIZE { 512 * 1024 };
+    const int BLOCK_SIZE{512 * 1024};
 };
 
 #endif // WRITEJOB_H

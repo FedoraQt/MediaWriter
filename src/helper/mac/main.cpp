@@ -18,27 +18,26 @@
  */
 
 #include <QCoreApplication>
+#include <QLocale>
 #include <QTextStream>
 #include <QTranslator>
-#include <QLocale>
 
 #include "restorejob.h"
 #include "writejob.h"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     QCoreApplication app(argc, argv);
 
     QTranslator translator;
     if (translator.load(QLocale(QLocale().language(), QLocale().country()), QLatin1String(), QLatin1String(), ":/translations"))
-        app.installTranslator(&translator);   
+        app.installTranslator(&translator);
 
     if (app.arguments().count() == 3 && app.arguments()[1] == "restore") {
         new RestoreJob(app.arguments()[2]);
-    }
-    else if (app.arguments().count() == 4 && app.arguments()[1] == "write") {
+    } else if (app.arguments().count() == 4 && app.arguments()[1] == "write") {
         new WriteJob(app.arguments()[2], app.arguments()[3]);
-    }
-    else {
+    } else {
         QTextStream err(stderr);
         err << "Helper: Wrong arguments entered";
         return 1;

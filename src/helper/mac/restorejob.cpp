@@ -18,20 +18,22 @@
  */
 
 #include "restorejob.h"
-#include <QTextStream>
+#include <QCoreApplication>
+#include <QDebug>
 #include <QFile>
 #include <QProcess>
-#include <QCoreApplication>
+#include <QTextStream>
 #include <QTimer>
-#include <QDebug>
 
 RestoreJob::RestoreJob(const QString &where)
-    : QObject(nullptr), where(where)
+    : QObject(nullptr)
+    , where(where)
 {
     QTimer::singleShot(0, this, &RestoreJob::work);
 }
 
-void RestoreJob::work() {
+void RestoreJob::work()
+{
     QProcess diskUtil;
     diskUtil.setProgram("diskutil");
     diskUtil.setArguments(QStringList() << "unmountDisk" << where);
@@ -39,7 +41,11 @@ void RestoreJob::work() {
     diskUtil.waitForFinished();
 
     diskUtil.setProcessChannelMode(QProcess::ForwardedChannels);
-    diskUtil.setArguments(QStringList() << "partitionDisk" << where << "1" << "MBR" << "fat32" << "FLASHDISK" << "R");
+    diskUtil.setArguments(QStringList() << "partitionDisk" << where << "1"
+                                        << "MBR"
+                                        << "fat32"
+                                        << "FLASHDISK"
+                                        << "R");
     diskUtil.start();
     diskUtil.waitForFinished();
 

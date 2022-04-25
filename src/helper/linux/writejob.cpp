@@ -20,14 +20,14 @@
 #include "writejob.h"
 
 #include <QCoreApplication>
-#include <QTimer>
-#include <QTextStream>
 #include <QProcess>
+#include <QTextStream>
+#include <QTimer>
 #include <QtGlobal>
 
-#include <QtDBus>
 #include <QDBusInterface>
 #include <QDBusUnixFileDescriptor>
+#include <QtDBus>
 
 #include <fcntl.h>
 #include <unistd.h>
@@ -49,7 +49,9 @@ Q_DECLARE_METATYPE(InterfacesAndProperties)
 Q_DECLARE_METATYPE(DBusIntrospection)
 
 WriteJob::WriteJob(const QString &what, const QString &where)
-    : QObject(nullptr), what(what), where(where)
+    : QObject(nullptr)
+    , what(what)
+    , where(where)
 {
     qDBusRegisterMetaType<Properties>();
     qDBusRegisterMetaType<InterfacesAndProperties>();
@@ -58,18 +60,21 @@ WriteJob::WriteJob(const QString &what, const QString &where)
     QTimer::singleShot(0, this, SLOT(work()));
 }
 
-int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
-    return ((WriteJob*)data)->onMediaCheckAdvanced(offset, total);
+int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total)
+{
+    return ((WriteJob *)data)->onMediaCheckAdvanced(offset, total);
 }
 
-int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
+int WriteJob::onMediaCheckAdvanced(long long offset, long long total)
+{
     Q_UNUSED(total);
     out << offset << "\n";
     out.flush();
     return 0;
 }
 
-QDBusUnixFileDescriptor WriteJob::getDescriptor() {
+QDBusUnixFileDescriptor WriteJob::getDescriptor()
+{
     QDBusInterface device("org.freedesktop.UDisks2", where, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus(), this);
     QString drivePath = qvariant_cast<QDBusObjectPath>(device.property("Drive")).path();
     QDBusInterface manager("org.freedesktop.UDisks2", "/org/freedesktop/UDisks2", "org.freedesktop.DBus.ObjectManager", QDBusConnection::systemBus());
@@ -84,19 +89,18 @@ QDBusUnixFileDescriptor WriteJob::getDescriptor() {
                 QString currentDrivePath = qvariant_cast<QDBusObjectPath>(objects[i]["org.freedesktop.UDisks2.Block"]["Drive"]).path();
                 if (currentDrivePath == drivePath) {
                     QDBusInterface partition("org.freedesktop.UDisks2", i.path(), "org.freedesktop.UDisks2.Filesystem", QDBusConnection::systemBus());
-                    message = partition.call("Unmount", Properties { {"force", true} });
+                    message = partition.call("Unmount", Properties{{"force", true}});
                 }
             }
         }
-    }
-    else {
+    } else {
         err << message.errorMessage();
         err.flush();
         qApp->exit(2);
         return QDBusUnixFileDescriptor(-1);
     }
 
-    QDBusReply<QDBusUnixFileDescriptor> reply = device.call(QDBus::Block, "OpenDevice", "rw", Properties{{"flags", O_DIRECT | O_SYNC | O_CLOEXEC}} );
+    QDBusReply<QDBusUnixFileDescriptor> reply = device.call(QDBus::Block, "OpenDevice", "rw", Properties{{"flags", O_DIRECT | O_SYNC | O_CLOEXEC}});
     QDBusUnixFileDescriptor fd = reply.value();
 
     if (!fd.isValid()) {
@@ -109,14 +113,16 @@ QDBusUnixFileDescriptor WriteJob::getDescriptor() {
     return fd;
 }
 
-bool WriteJob::write(int fd) {
+bool WriteJob::write(int fd)
+{
     if (what.endsWith(".xz"))
         return writeCompressed(fd);
     else
         return writePlain(fd);
 }
 
-bool WriteJob::writeCompressed(int fd) {
+bool WriteJob::writeCompressed(int fd)
+{
     qint64 totalRead = 0;
 
     lzma_stream strm = LZMA_STREAM_INIT;
@@ -138,9 +144,9 @@ bool WriteJob::writeCompressed(int fd) {
         return false;
     }
 
-    strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
+    strm.next_in = reinterpret_cast<uint8_t *>(inBuffer);
     strm.avail_in = 0;
-    strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
+    strm.next_out = reinterpret_cast<uint8_t *>(outBuffer);
     strm.avail_out = bufferSize;
 
     while (true) {
@@ -148,7 +154,7 @@ bool WriteJob::writeCompressed(int fd) {
             qint64 len = file.read(inBuffer, bufferSize);
             totalRead += len;
 
-            strm.next_in = reinterpret_cast<uint8_t*>(inBuffer);
+            strm.next_in = reinterpret_cast<uint8_t *>(inBuffer);
             strm.avail_in = len;
 
             out << totalRead << "\n";
@@ -193,13 +199,14 @@ bool WriteJob::writeCompressed(int fd) {
                 qApp->exit(3);
                 return false;
             }
-            strm.next_out = reinterpret_cast<uint8_t*>(outBuffer);
+            strm.next_out = reinterpret_cast<uint8_t *>(outBuffer);
             strm.avail_out = bufferSize;
         }
     }
 }
 
-bool WriteJob::writePlain(int fd) {
+bool WriteJob::writePlain(int fd)
+{
     QFile inFile(what);
     inFile.open(QIODevice::ReadOnly);
 
@@ -216,7 +223,7 @@ bool WriteJob::writePlain(int fd) {
     qint64 size = std::get<2>(bufferOwner);
     qint64 total = 0;
 
-    while(!inFile.atEnd()) {
+    while (!inFile.atEnd()) {
         qint64 len = inFile.read(buffer, size);
         if (len < 0) {
             err << tr("Source image is not readable");
@@ -242,7 +249,8 @@ bool WriteJob::writePlain(int fd) {
     return true;
 }
 
-bool WriteJob::check(int fd) {
+bool WriteJob::check(int fd)
+{
     out << "CHECK\n";
     out.flush();
     switch (mediaCheckFD(fd, &WriteJob::staticOnMediaCheckAdvanced, this)) {
@@ -268,7 +276,8 @@ bool WriteJob::check(int fd) {
     return true;
 }
 
-void WriteJob::work() {
+void WriteJob::work()
+{
     // have to keep the QDBus wrapper, otherwise the file gets closed
     fd = getDescriptor();
     if (fd.fileDescriptor() < 0)
@@ -276,8 +285,7 @@ void WriteJob::work() {
 
     if (what.endsWith(".part")) {
         watcher.addPath(what);
-    }
-    else {
+    } else {
         if (!write(fd.fileDescriptor()))
             return;
 
@@ -285,7 +293,8 @@ void WriteJob::work() {
     }
 }
 
-void WriteJob::onFileChanged(const QString &path) {
+void WriteJob::onFileChanged(const QString &path)
+{
     if (QFile::exists(path))
         return;
 
@@ -296,7 +305,7 @@ void WriteJob::onFileChanged(const QString &path) {
         return;
     }
 
-    //to immediately trigger the UI into writing mode
+    // to immediately trigger the UI into writing mode
     out << "WRITE\n";
     out.flush();
     out << "1\n";
@@ -310,7 +319,8 @@ void WriteJob::onFileChanged(const QString &path) {
     check(fd.fileDescriptor());
 }
 
-std::tuple<std::unique_ptr<char[]>, char*, std::size_t> pageAlignedBuffer(std::size_t pages) {
+std::tuple<std::unique_ptr<char[]>, char *, std::size_t> pageAlignedBuffer(std::size_t pages)
+{
     static const std::size_t pagesize = getpagesize();
     const std::size_t size = pages * pagesize;
     std::size_t space = size + pagesize;
@@ -320,5 +330,5 @@ std::tuple<std::unique_ptr<char[]>, char*, std::size_t> pageAlignedBuffer(std::s
     void *ptr = std::align(pagesize, size, buffer, space);
     // This should never fail since std::align should not return a nullptr if the assertion above passes.
     Q_CHECK_PTR(ptr);
-    return std::make_tuple(std::move(owner), static_cast<char*>(buffer), size);
+    return std::make_tuple(std::move(owner), static_cast<char *>(buffer), size);
 };

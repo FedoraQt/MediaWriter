@@ -22,19 +22,20 @@
 
 #include "isomd5/libcheckisomd5.h"
 
-#include <QtQml>
-#include <QApplication>
 #include <QAbstractEventDispatcher>
+#include <QApplication>
+#include <QtQml>
 
 #include <QJsonDocument>
 
 ReleaseManager::ReleaseManager(QObject *parent)
-    : QSortFilterProxyModel(parent), m_sourceModel(new ReleaseListModel(this))
+    : QSortFilterProxyModel(parent)
+    , m_sourceModel(new ReleaseListModel(this))
 {
     mDebug() << this->metaObject()->className() << "construction";
     setSourceModel(m_sourceModel);
 
-    qmlRegisterUncreatableType<Release>("MediaWriter", 1, 0, "Release", ""); 
+    qmlRegisterUncreatableType<Release>("MediaWriter", 1, 0, "Release", "");
     qmlRegisterUncreatableType<ReleaseVersion>("MediaWriter", 1, 0, "Version", "");
     qmlRegisterUncreatableType<ReleaseVariant>("MediaWriter", 1, 0, "Variant", "");
     qmlRegisterUncreatableType<ReleaseArchitecture>("MediaWriter", 1, 0, "Architecture", "");
@@ -49,10 +50,11 @@ ReleaseManager::ReleaseManager(QObject *parent)
     QTimer::singleShot(0, this, SLOT(fetchReleases()));
 }
 
-bool ReleaseManager::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const {
+bool ReleaseManager::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
+{
     Q_UNUSED(source_parent)
     auto r = get(source_row);
-    
+
     if (r->source() != m_filterSource) {
         return false;
     } else {
@@ -71,32 +73,38 @@ bool ReleaseManager::filterAcceptsRow(int source_row, const QModelIndex &source_
     }
 }
 
-Release *ReleaseManager::get(int index) const {
+Release *ReleaseManager::get(int index) const
+{
     return m_sourceModel->get(index);
 }
 
-void ReleaseManager::fetchReleases() {
+void ReleaseManager::fetchReleases()
+{
     m_beingUpdated = true;
     emit beingUpdatedChanged();
 
     DownloadManager::instance()->fetchPageAsync(this, options.releasesUrl);
 }
 
-void ReleaseManager::variantChangedFilter() {
+void ReleaseManager::variantChangedFilter()
+{
     // TODO here we could add some filters to help signal/slot performance
     // TODO otherwise this can just go away and connections can be directly to the signal
     emit variantChanged();
 }
 
-bool ReleaseManager::beingUpdated() const {
+bool ReleaseManager::beingUpdated() const
+{
     return m_beingUpdated;
 }
 
-bool ReleaseManager::frontPage() const {
+bool ReleaseManager::frontPage() const
+{
     return m_frontPage;
 }
 
-void ReleaseManager::setFrontPage(bool o) {
+void ReleaseManager::setFrontPage(bool o)
+{
     if (m_frontPage != o) {
         m_frontPage = o;
         emit frontPageChanged();
@@ -104,11 +112,13 @@ void ReleaseManager::setFrontPage(bool o) {
     }
 }
 
-QString ReleaseManager::filterText() const {
+QString ReleaseManager::filterText() const
+{
     return m_filterText;
 }
 
-void ReleaseManager::setFilterText(const QString &o) {
+void ReleaseManager::setFilterText(const QString &o)
+{
     if (m_filterText != o) {
         m_filterText = o;
         emit filterTextChanged();
@@ -116,11 +126,13 @@ void ReleaseManager::setFilterText(const QString &o) {
     }
 }
 
-int ReleaseManager::filterSource() const {
+int ReleaseManager::filterSource() const
+{
     return m_filterSource;
 }
 
-void ReleaseManager::setFilterSource(int source) {
+void ReleaseManager::setFilterSource(int source)
+{
     if (m_filterSource != source) {
         m_filterSource = source;
         emit filterSourceChanged();
@@ -129,7 +141,8 @@ void ReleaseManager::setFilterSource(int source) {
     }
 }
 
-int ReleaseManager::firstSource() const{
+int ReleaseManager::firstSource() const
+{
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = m_sourceModel->get(i);
         if (r->source() == m_filterSource)
@@ -138,8 +151,8 @@ int ReleaseManager::firstSource() const{
     return 0;
 }
 
-
-void ReleaseManager::selectLocalFile(const QString &path) {
+void ReleaseManager::selectLocalFile(const QString &path)
+{
     mDebug() << this->metaObject()->className() << "Setting local file to" << path;
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = m_sourceModel->get(i);
@@ -151,7 +164,8 @@ void ReleaseManager::selectLocalFile(const QString &path) {
     }
 }
 
-ReleaseVariant* ReleaseManager::localFile() const {
+ReleaseVariant *ReleaseManager::localFile() const
+{
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = m_sourceModel->get(i);
         if (r->source() == Release::LOCAL) {
@@ -162,8 +176,8 @@ ReleaseVariant* ReleaseManager::localFile() const {
     return nullptr;
 }
 
-
-bool ReleaseManager::updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
+bool ReleaseManager::updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size)
+{
     if (!ReleaseArchitecture::isKnown(architecture)) {
         mWarning() << "Architecture" << architecture << "is not known!";
         return false;
@@ -176,11 +190,13 @@ bool ReleaseManager::updateUrl(const QString &release, int version, const QStrin
     return false;
 }
 
-int ReleaseManager::filterArchitecture() const {
+int ReleaseManager::filterArchitecture() const
+{
     return m_filterArchitecture;
 }
 
-void ReleaseManager::setFilterArchitecture(int o) {
+void ReleaseManager::setFilterArchitecture(int o)
+{
     if (m_filterArchitecture != o && m_filterArchitecture >= 0 && m_filterArchitecture < ReleaseArchitecture::_ARCHCOUNT) {
         m_filterArchitecture = o;
         emit filterArchitectureChanged();
@@ -201,24 +217,28 @@ void ReleaseManager::setFilterArchitecture(int o) {
     }
 }
 
-Release *ReleaseManager::selected() const {
+Release *ReleaseManager::selected() const
+{
     if (m_selectedIndex >= 0 && m_selectedIndex < m_sourceModel->rowCount())
         return m_sourceModel->get(m_selectedIndex);
     return nullptr;
 }
 
-int ReleaseManager::selectedIndex() const {
+int ReleaseManager::selectedIndex() const
+{
     return m_selectedIndex;
 }
 
-void ReleaseManager::setSelectedIndex(int o) {
+void ReleaseManager::setSelectedIndex(int o)
+{
     if (m_selectedIndex != o) {
         m_selectedIndex = o;
         emit selectedChanged();
     }
 }
 
-ReleaseVariant *ReleaseManager::variant() {
+ReleaseVariant *ReleaseManager::variant()
+{
     if (selected()) {
         if (selected()->selectedVersion()) {
             if (selected()->selectedVersion()->selectedVariant()) {
@@ -229,7 +249,8 @@ ReleaseVariant *ReleaseManager::variant() {
     return nullptr;
 }
 
-void ReleaseManager::onStringDownloaded(const QString &text) {
+void ReleaseManager::onStringDownloaded(const QString &text)
+{
     mDebug() << this->metaObject()->className() << "Received a metadata json";
 
     QRegularExpression re("(\\d+)\\s?(\\S+)?");
@@ -282,19 +303,22 @@ void ReleaseManager::onStringDownloaded(const QString &text) {
     emit beingUpdatedChanged();
 }
 
-void ReleaseManager::onDownloadError(const QString &message) {
+void ReleaseManager::onDownloadError(const QString &message)
+{
     mWarning() << "Was not able to fetch new releases:" << message << "Retrying in 10 seconds.";
 
     QTimer::singleShot(10000, this, SLOT(fetchReleases()));
 }
 
-QStringList ReleaseManager::architectures() const {
+QStringList ReleaseManager::architectures() const
+{
     return ReleaseArchitecture::listAllDescriptions();
 }
 
-
-QVariant ReleaseListModel::headerData(int section, Qt::Orientation orientation, int role) const {
-    Q_UNUSED(section); Q_UNUSED(orientation);
+QVariant ReleaseListModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    Q_UNUSED(section);
+    Q_UNUSED(orientation);
 
     if (role == Qt::UserRole + 1)
         return "release";
@@ -304,19 +328,22 @@ QVariant ReleaseListModel::headerData(int section, Qt::Orientation orientation, 
     return QVariant();
 }
 
-QHash<int, QByteArray> ReleaseListModel::roleNames() const {
+QHash<int, QByteArray> ReleaseListModel::roleNames() const
+{
     QHash<int, QByteArray> ret;
     ret.insert(Qt::UserRole + 1, "release");
     ret.insert(Qt::DisplayRole, "name");
     return ret;
 }
 
-int ReleaseListModel::rowCount(const QModelIndex &parent) const {
+int ReleaseListModel::rowCount(const QModelIndex &parent) const
+{
     Q_UNUSED(parent)
     return m_releases.count();
 }
 
-QVariant ReleaseListModel::data(const QModelIndex &index, int role) const {
+QVariant ReleaseListModel::data(const QModelIndex &index, int role) const
+{
     if (!index.isValid())
         return QVariant();
 
@@ -328,9 +355,9 @@ QVariant ReleaseListModel::data(const QModelIndex &index, int role) const {
     return QVariant();
 }
 
-
 ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
-    : QAbstractListModel(parent) {
+    : QAbstractListModel(parent)
+{
     QFile metadata(":/metadata.json");
     metadata.open(QIODevice::ReadOnly);
 
@@ -341,11 +368,7 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
         QJsonObject obj = i.toObject();
         QString subvariant = obj["subvariant"].toString();
         QString sourceString = obj["category"].toString();
-        Release::Source source = sourceString == "product"  ? Release::PRODUCT :
-                                 sourceString == "spins"    ? Release::SPINS :
-                                 sourceString == "labs"     ? Release::LABS :
-                                 sourceString == "emerging" ? Release::EMERGING:
-                                                              Release::OTHER;
+        Release::Source source = sourceString == "product" ? Release::PRODUCT : sourceString == "spins" ? Release::SPINS : sourceString == "labs" ? Release::LABS : sourceString == "emerging" ? Release::EMERGING : Release::OTHER;
         QString name = obj["name"].toString();
         QString summary = obj["summary"].toString();
         QStringList description;
@@ -362,13 +385,27 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
 
         m_releases.append(new Release(manager(), m_releases.count(), name, summary, description, source, icon, screenshots));
         if (m_releases.count() == 2) {
-            custom = new Release (manager(), 2, tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {});
+            custom = new Release(manager(),
+                                 2,
+                                 tr("Custom image"),
+                                 QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"),
+                                 {QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>")},
+                                 Release::LOCAL,
+                                 "qrc:/logos/folder",
+                                 {});
             m_releases.append(custom);
         }
     }
 
     if (m_releases.count() < 2) {
-        custom = new Release (manager(), m_releases.count(), tr("Custom image"), QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"), { QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>") }, Release::LOCAL, "qrc:/logos/folder", {});
+        custom = new Release(manager(),
+                             m_releases.count(),
+                             tr("Custom image"),
+                             QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"),
+                             {QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>")},
+                             Release::LOCAL,
+                             "qrc:/logos/folder",
+                             {});
         m_releases.append(custom);
     }
 
@@ -377,18 +414,20 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
     customVersion->addVariant(new ReleaseVariant(customVersion, QString(), QString(), 0, ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64)));
 }
 
-ReleaseManager *ReleaseListModel::manager() {
-    return qobject_cast<ReleaseManager*>(parent());
+ReleaseManager *ReleaseListModel::manager()
+{
+    return qobject_cast<ReleaseManager *>(parent());
 }
 
-Release *ReleaseListModel::get(int index) {
+Release *ReleaseListModel::get(int index)
+{
     if (index >= 0 && index < m_releases.count())
         return m_releases[index];
     return nullptr;
 }
 
-
-QString Release::sourceString() {
+QString Release::sourceString()
+{
     switch (m_source) {
     case LOCAL:
     case PRODUCT:
@@ -404,21 +443,30 @@ QString Release::sourceString() {
     }
 }
 
-int Release::index() const {
+int Release::index() const
+{
     return m_index;
 }
 
 Release::Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots)
-    : QObject(parent), m_index(index), m_name(name), m_summary(summary), m_description(description), m_source(source), m_icon(icon), m_screenshots(screenshots)
+    : QObject(parent)
+    , m_index(index)
+    , m_name(name)
+    , m_summary(summary)
+    , m_description(description)
+    , m_source(source)
+    , m_icon(icon)
+    , m_screenshots(screenshots)
 {
     connect(this, SIGNAL(selectedVersionChanged()), parent, SLOT(variantChangedFilter()));
 }
 
-void Release::setLocalFile(const QString &path) {
+void Release::setLocalFile(const QString &path)
+{
     if (m_source != LOCAL)
         return;
     QFileInfo info(QUrl(path).toLocalFile());
-    
+
     // We might use an empty path to just reset local file
     if (!info.exists() && !path.isEmpty()) {
         mCritical() << path << "doesn't exist";
@@ -435,7 +483,8 @@ void Release::setLocalFile(const QString &path) {
     emit selectedVersionChanged();
 }
 
-bool Release::updateUrl(int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
+bool Release::updateUrl(int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size)
+{
     int finalVersions = 0;
     for (auto i : m_versions) {
         if (i->number() == version)
@@ -464,19 +513,23 @@ bool Release::updateUrl(int version, const QString &status, const QString &type,
     return true;
 }
 
-ReleaseManager *Release::manager() {
-    return qobject_cast<ReleaseManager*>(parent());
+ReleaseManager *Release::manager()
+{
+    return qobject_cast<ReleaseManager *>(parent());
 }
 
-QString Release::name() const {
+QString Release::name() const
+{
     return m_name;
 }
 
-QString Release::summary() const {
+QString Release::summary() const
+{
     return tr(m_summary.toUtf8());
 }
 
-QString Release::description() const {
+QString Release::description() const
+{
     QString result;
     for (auto i : m_description) {
         // there is a %(rel)s formatting string in the translation texts, get rid of that
@@ -486,29 +539,35 @@ QString Release::description() const {
     return result;
 }
 
-Release::Source Release::source() const {
+Release::Source Release::source() const
+{
     return m_source;
 }
 
-bool Release::isLocal() const {
+bool Release::isLocal() const
+{
     return m_source == Release::LOCAL;
 }
 
-QString Release::icon() const {
+QString Release::icon() const
+{
     return m_icon;
 }
 
-QStringList Release::screenshots() const {
+QStringList Release::screenshots() const
+{
     return m_screenshots;
 }
 
-QString Release::prerelease() const {
+QString Release::prerelease() const
+{
     if (m_versions.empty() || m_versions.first()->status() == ReleaseVersion::FINAL)
         return "";
     return m_versions.first()->name();
 }
 
-QQmlListProperty<ReleaseVersion> Release::versions() {
+QQmlListProperty<ReleaseVersion> Release::versions()
+{
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
     return QQmlListProperty<ReleaseVersion>(this, &m_versions);
 #else
@@ -516,11 +575,13 @@ QQmlListProperty<ReleaseVersion> Release::versions() {
 #endif
 }
 
-QList<ReleaseVersion *> Release::versionList() const {
+QList<ReleaseVersion *> Release::versionList() const
+{
     return m_versions;
 }
 
-QStringList Release::versionNames() const {
+QStringList Release::versionNames() const
+{
     QStringList ret;
     for (auto i : m_versions) {
         ret.append(i->name());
@@ -528,7 +589,8 @@ QStringList Release::versionNames() const {
     return ret;
 }
 
-void Release::addVersion(ReleaseVersion *version) {
+void Release::addVersion(ReleaseVersion *version)
+{
     for (int i = 0; i < m_versions.count(); i++) {
         if (m_versions[i]->number() < version->number()) {
             m_versions.insert(i, version);
@@ -545,7 +607,8 @@ void Release::addVersion(ReleaseVersion *version) {
     emit selectedVersionChanged();
 }
 
-void Release::removeVersion(ReleaseVersion *version) {
+void Release::removeVersion(ReleaseVersion *version)
+{
     int idx = m_versions.indexOf(version);
     if (!version || idx < 0)
         return;
@@ -559,26 +622,31 @@ void Release::removeVersion(ReleaseVersion *version) {
     emit versionsChanged();
 }
 
-ReleaseVersion *Release::selectedVersion() const {
+ReleaseVersion *Release::selectedVersion() const
+{
     if (m_selectedVersion >= 0 && m_selectedVersion < m_versions.count())
         return m_versions[m_selectedVersion];
     return nullptr;
 }
 
-int Release::selectedVersionIndex() const {
+int Release::selectedVersionIndex() const
+{
     return m_selectedVersion;
 }
 
-void Release::setSelectedVersionIndex(int o) {
+void Release::setSelectedVersionIndex(int o)
+{
     if (m_selectedVersion != o && m_selectedVersion >= 0 && m_selectedVersion < m_versions.count()) {
         m_selectedVersion = o;
         emit selectedVersionChanged();
     }
 }
 
-
 ReleaseVersion::ReleaseVersion(Release *parent, int number, ReleaseVersion::Status status, QDateTime releaseDate)
-    : QObject(parent), m_number(number), m_status(status), m_releaseDate(releaseDate)
+    : QObject(parent)
+    , m_number(number)
+    , m_status(status)
+    , m_releaseDate(releaseDate)
 {
     if (status != FINAL)
         emit parent->prereleaseChanged();
@@ -586,20 +654,24 @@ ReleaseVersion::ReleaseVersion(Release *parent, int number, ReleaseVersion::Stat
 }
 
 ReleaseVersion::ReleaseVersion(Release *parent, const QString &file, int64_t size)
-    : QObject(parent), m_variants({ new ReleaseVariant(this, file, size) })
+    : QObject(parent)
+    , m_variants({new ReleaseVariant(this, file, size)})
 {
     connect(this, SIGNAL(selectedVariantChanged()), parent->manager(), SLOT(variantChangedFilter()));
 }
 
-Release *ReleaseVersion::release() {
-    return qobject_cast<Release*>(parent());
+Release *ReleaseVersion::release()
+{
+    return qobject_cast<Release *>(parent());
 }
 
-const Release *ReleaseVersion::release() const {
-    return qobject_cast<const Release*>(parent());
+const Release *ReleaseVersion::release() const
+{
+    return qobject_cast<const Release *>(parent());
 }
 
-bool ReleaseVersion::updateUrl(const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size) {
+bool ReleaseVersion::updateUrl(const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size)
+{
     // first determine and eventually update the current alpha/beta/final level of this version
     Status s = status == "alpha" ? ALPHA : status == "beta" ? BETA : FINAL;
     if (s <= m_status) {
@@ -607,8 +679,7 @@ bool ReleaseVersion::updateUrl(const QString &status, const QString &type, const
         emit statusChanged();
         if (s == FINAL)
             emit release()->prereleaseChanged();
-    }
-    else {
+    } else {
         // return if it got downgraded in the meantime
         return false;
     }
@@ -618,10 +689,7 @@ bool ReleaseVersion::updateUrl(const QString &status, const QString &type, const
         emit releaseDateChanged();
     }
     // determine what type of release it is
-    ReleaseVariant::Type t = type == "atomic"                          ? ReleaseVariant::ATOMIC :
-                             type == "netinst" || type == "netinstall" ? ReleaseVariant::NETINSTALL :
-                                                        type == "full" ? ReleaseVariant::FULL :
-                                                                        ReleaseVariant::LIVE;
+    ReleaseVariant::Type t = type == "atomic" ? ReleaseVariant::ATOMIC : type == "netinst" || type == "netinstall" ? ReleaseVariant::NETINSTALL : type == "full" ? ReleaseVariant::FULL : ReleaseVariant::LIVE;
     for (auto i : m_variants) {
         if (i->arch() == ReleaseArchitecture::fromAbbreviation(architecture) && i->type() == t)
             return i->updateUrl(url, sha256, size);
@@ -638,11 +706,13 @@ bool ReleaseVersion::updateUrl(const QString &status, const QString &type, const
     return true;
 }
 
-int ReleaseVersion::number() const {
+int ReleaseVersion::number() const
+{
     return m_number;
 }
 
-QString ReleaseVersion::name() const {
+QString ReleaseVersion::name() const
+{
     switch (m_status) {
     case ALPHA:
         return tr("%1 Alpha").arg(m_number);
@@ -655,39 +725,46 @@ QString ReleaseVersion::name() const {
     }
 }
 
-ReleaseVariant *ReleaseVersion::selectedVariant() const {
+ReleaseVariant *ReleaseVersion::selectedVariant() const
+{
     if (m_selectedVariant >= 0 && m_selectedVariant < m_variants.count())
         return m_variants[m_selectedVariant];
     return nullptr;
 }
 
-int ReleaseVersion::selectedVariantIndex() const {
+int ReleaseVersion::selectedVariantIndex() const
+{
     return m_selectedVariant;
 }
 
-void ReleaseVersion::setSelectedVariantIndex(int o) {
+void ReleaseVersion::setSelectedVariantIndex(int o)
+{
     if (m_selectedVariant != o && m_selectedVariant >= 0 && m_selectedVariant < m_variants.count()) {
         m_selectedVariant = o;
         emit selectedVariantChanged();
     }
 }
 
-ReleaseVersion::Status ReleaseVersion::status() const {
+ReleaseVersion::Status ReleaseVersion::status() const
+{
     return m_status;
 }
 
-QDateTime ReleaseVersion::releaseDate() const {
+QDateTime ReleaseVersion::releaseDate() const
+{
     return m_releaseDate;
 }
 
-void ReleaseVersion::addVariant(ReleaseVariant *v) {
+void ReleaseVersion::addVariant(ReleaseVariant *v)
+{
     m_variants.append(v);
     emit variantsChanged();
     if (m_variants.count() == 1)
         emit selectedVariantChanged();
 }
 
-QQmlListProperty<ReleaseVariant> ReleaseVersion::variants() {
+QQmlListProperty<ReleaseVariant> ReleaseVersion::variants()
+{
 #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
     return QQmlListProperty<ReleaseVariant>(this, &m_variants);
 #else
@@ -695,25 +772,34 @@ QQmlListProperty<ReleaseVariant> ReleaseVersion::variants() {
 #endif
 }
 
-QList<ReleaseVariant *> ReleaseVersion::variantList() const {
+QList<ReleaseVariant *> ReleaseVersion::variantList() const
+{
     return m_variants;
 }
 
-
 ReleaseVariant::ReleaseVariant(ReleaseVersion *parent, QString url, QString shaHash, int64_t size, ReleaseArchitecture *arch, ReleaseVariant::Type type)
-    : QObject(parent), m_arch(arch), m_type(type), m_url(url), m_shaHash(shaHash), m_size(size)
+    : QObject(parent)
+    , m_arch(arch)
+    , m_type(type)
+    , m_url(url)
+    , m_shaHash(shaHash)
+    , m_size(size)
 {
     connect(this, &ReleaseVariant::sizeChanged, this, &ReleaseVariant::realSizeChanged);
 }
 
 ReleaseVariant::ReleaseVariant(ReleaseVersion *parent, const QString &file, int64_t size)
-    : QObject(parent), m_iso(file), m_arch(ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64)), m_size(size)
+    : QObject(parent)
+    , m_iso(file)
+    , m_arch(ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64))
+    , m_size(size)
 {
     connect(this, &ReleaseVariant::sizeChanged, this, &ReleaseVariant::realSizeChanged);
     m_status = READY;
 }
 
-bool ReleaseVariant::updateUrl(const QString &url, const QString &sha256, int64_t size) {
+bool ReleaseVariant::updateUrl(const QString &url, const QString &sha256, int64_t size)
+{
     bool changed = false;
     if (!url.isEmpty() && m_url.toUtf8().trimmed() != url.toUtf8().trimmed()) {
         mWarning() << "Url" << m_url << "changed to" << url;
@@ -735,31 +821,38 @@ bool ReleaseVariant::updateUrl(const QString &url, const QString &sha256, int64_
     return changed;
 }
 
-ReleaseVersion *ReleaseVariant::releaseVersion() {
-    return qobject_cast<ReleaseVersion*>(parent());
+ReleaseVersion *ReleaseVariant::releaseVersion()
+{
+    return qobject_cast<ReleaseVersion *>(parent());
 }
 
-const ReleaseVersion *ReleaseVariant::releaseVersion() const {
-    return qobject_cast<const ReleaseVersion*>(parent());
+const ReleaseVersion *ReleaseVariant::releaseVersion() const
+{
+    return qobject_cast<const ReleaseVersion *>(parent());
 }
 
-Release *ReleaseVariant::release() {
+Release *ReleaseVariant::release()
+{
     return releaseVersion()->release();
 }
 
-const Release *ReleaseVariant::release() const {
+const Release *ReleaseVariant::release() const
+{
     return releaseVersion()->release();
 }
 
-ReleaseArchitecture *ReleaseVariant::arch() const {
+ReleaseArchitecture *ReleaseVariant::arch() const
+{
     return m_arch;
 }
 
-ReleaseVariant::Type ReleaseVariant::type() const {
+ReleaseVariant::Type ReleaseVariant::type() const
+{
     return m_type;
 }
 
-QString ReleaseVariant::name() const {
+QString ReleaseVariant::name() const
+{
     if (type() == ATOMIC)
         return m_arch->description() + " - Atomic";
     else if (type() == FULL)
@@ -770,70 +863,82 @@ QString ReleaseVariant::name() const {
         return m_arch->description();
 }
 
-QString ReleaseVariant::fullName() {
+QString ReleaseVariant::fullName()
+{
     if (release()->isLocal())
         return QFileInfo(iso()).fileName();
     else
         return QString("%1 %2 %3").arg(release()->name()).arg(releaseVersion()->name()).arg(name());
 }
 
-QString ReleaseVariant::url() const {
+QString ReleaseVariant::url() const
+{
     return m_url;
 }
 
-QString ReleaseVariant::shaHash() const {
+QString ReleaseVariant::shaHash() const
+{
     return m_shaHash;
 }
 
-QString ReleaseVariant::iso() const {
+QString ReleaseVariant::iso() const
+{
     return m_iso;
 }
 
-QString ReleaseVariant::temporaryPath() const {
+QString ReleaseVariant::temporaryPath() const
+{
     return m_temporaryIso;
 }
 
-qreal ReleaseVariant::size() const {
+qreal ReleaseVariant::size() const
+{
     return m_size;
 }
 
-qreal ReleaseVariant::realSize() const {
+qreal ReleaseVariant::realSize() const
+{
     if (m_realSize <= 0)
         return m_size;
     return m_realSize;
 }
 
-Progress *ReleaseVariant::progress() {
+Progress *ReleaseVariant::progress()
+{
     if (!m_progress)
         m_progress = new Progress(this, 0.0, size());
 
     return m_progress;
 }
 
-void ReleaseVariant::setRealSize(qint64 o) {
+void ReleaseVariant::setRealSize(qint64 o)
+{
     if (m_realSize != o) {
         m_realSize = o;
         emit realSizeChanged();
     }
 }
 
-ReleaseVariant::Status ReleaseVariant::status() const {
+ReleaseVariant::Status ReleaseVariant::status() const
+{
     if (m_status == READY && DriveManager::instance()->isBackendBroken())
         return WRITING_NOT_POSSIBLE;
     return m_status;
 }
 
-QString ReleaseVariant::statusString() const {
+QString ReleaseVariant::statusString() const
+{
     return m_statusStrings[status()];
 }
 
-void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) {
+void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash)
+{
     m_temporaryIso = QString();
 
     if (m_progress)
         m_progress->setValue(size());
     setStatus(DOWNLOAD_VERIFYING);
-    m_progress->setValue(0.0/0.0, 1.0);
+    m_progress->setValue(0.0 / 0.0, 1.0);
 
     if (!shaHash().isEmpty() && shaHash() != hash) {
         mWarning() << "Computed SHA256 hash of" << path << " - " << hash << "does not match expected" << shaHash();
@@ -852,13 +957,11 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
         setErrorString(tr("The downloaded image is corrupted"));
         setStatus(FAILED_DOWNLOAD);
         return;
-    }
-    else if (checkResult == ISOMD5SUM_FILE_NOT_FOUND) {
+    } else if (checkResult == ISOMD5SUM_FILE_NOT_FOUND) {
         setErrorString(tr("The downloaded file is not readable."));
         setStatus(FAILED_DOWNLOAD);
         return;
-    }
-    else {
+    } else {
         mDebug() << this->metaObject()->className() << "MD5 check passed";
         QString finalFilename(path);
         finalFilename = finalFilename.replace(QRegularExpression("[.]part$"), "");
@@ -885,27 +988,30 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash) 
     }
 }
 
-void ReleaseVariant::onDownloadError(const QString &message) {
+void ReleaseVariant::onDownloadError(const QString &message)
+{
     setErrorString(message);
     setStatus(FAILED_DOWNLOAD);
 }
 
-int ReleaseVariant::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
-    ReleaseVariant *v = static_cast<ReleaseVariant*>(data);
+int ReleaseVariant::staticOnMediaCheckAdvanced(void *data, long long offset, long long total)
+{
+    ReleaseVariant *v = static_cast<ReleaseVariant *>(data);
     return v->onMediaCheckAdvanced(offset, total);
 }
 
-int ReleaseVariant::onMediaCheckAdvanced(long long offset, long long total) {
+int ReleaseVariant::onMediaCheckAdvanced(long long offset, long long total)
+{
     qApp->eventDispatcher()->processEvents(QEventLoop::AllEvents);
     m_progress->setValue(offset, total);
     return 0;
 }
 
-void ReleaseVariant::download() {
+void ReleaseVariant::download()
+{
     if (url().isEmpty() && !iso().isEmpty()) {
         setStatus(READY);
-    }
-    else {
+    } else {
         resetStatus();
         setStatus(DOWNLOADING);
         if (m_size)
@@ -923,18 +1029,17 @@ void ReleaseVariant::download() {
                 m_size = QFile(m_iso).size();
                 emit sizeChanged();
             }
-        }
-        else {
+        } else {
             m_temporaryIso = ret;
         }
     }
 }
 
-void ReleaseVariant::resetStatus() {
+void ReleaseVariant::resetStatus()
+{
     if (!m_iso.isEmpty()) {
         setStatus(READY);
-    }
-    else {
+    } else {
         setStatus(PREPARING);
         if (m_progress)
             m_progress->setValue(0.0);
@@ -943,37 +1048,39 @@ void ReleaseVariant::resetStatus() {
     emit statusChanged();
 }
 
-bool ReleaseVariant::erase() {
+bool ReleaseVariant::erase()
+{
     if (QFile(m_iso).remove()) {
         mDebug() << this->metaObject()->className() << "Deleted" << m_iso;
         m_iso = QString();
         emit isoChanged();
         return true;
-    }
-    else {
+    } else {
         mWarning() << this->metaObject()->className() << "An attempt to delete" << m_iso << "failed!";
         return false;
     }
 }
 
-void ReleaseVariant::setStatus(Status s) {
+void ReleaseVariant::setStatus(Status s)
+{
     if (m_status != s) {
         m_status = s;
         emit statusChanged();
     }
 }
 
-QString ReleaseVariant::errorString() const {
+QString ReleaseVariant::errorString() const
+{
     return m_error;
 }
 
-void ReleaseVariant::setErrorString(const QString &o) {
+void ReleaseVariant::setErrorString(const QString &o)
+{
     if (m_error != o) {
         m_error = o;
         emit errorStringChanged();
     }
 }
-
 
 ReleaseArchitecture ReleaseArchitecture::m_all[] = {
     {{"x86_64"}, QT_TR_NOOP("Intel 64bit"), QT_TR_NOOP("ISO format image for Intel, AMD and other compatible PCs (64-bit)")},
@@ -983,18 +1090,21 @@ ReleaseArchitecture ReleaseArchitecture::m_all[] = {
 };
 
 ReleaseArchitecture::ReleaseArchitecture(const QStringList &abbreviation, const char *description, const char *details)
-    : m_abbreviation(abbreviation), m_description(description), m_details(details)
+    : m_abbreviation(abbreviation)
+    , m_description(description)
+    , m_details(details)
 {
-
 }
 
-ReleaseArchitecture *ReleaseArchitecture::fromId(ReleaseArchitecture::Id id) {
+ReleaseArchitecture *ReleaseArchitecture::fromId(ReleaseArchitecture::Id id)
+{
     if (id >= 0 && id < _ARCHCOUNT)
         return &m_all[id];
     return nullptr;
 }
 
-ReleaseArchitecture *ReleaseArchitecture::fromAbbreviation(const QString &abbr) {
+ReleaseArchitecture *ReleaseArchitecture::fromAbbreviation(const QString &abbr)
+{
     for (int i = 0; i < _ARCHCOUNT; i++) {
         if (m_all[i].abbreviation().contains(abbr, Qt::CaseInsensitive))
             return &m_all[i];
@@ -1002,7 +1112,8 @@ ReleaseArchitecture *ReleaseArchitecture::fromAbbreviation(const QString &abbr) 
     return nullptr;
 }
 
-bool ReleaseArchitecture::isKnown(const QString &abbr) {
+bool ReleaseArchitecture::isKnown(const QString &abbr)
+{
     for (int i = 0; i < _ARCHCOUNT; i++) {
         if (m_all[i].abbreviation().contains(abbr, Qt::CaseInsensitive))
             return true;
@@ -1010,7 +1121,8 @@ bool ReleaseArchitecture::isKnown(const QString &abbr) {
     return false;
 }
 
-QList<ReleaseArchitecture *> ReleaseArchitecture::listAll() {
+QList<ReleaseArchitecture *> ReleaseArchitecture::listAll()
+{
     QList<ReleaseArchitecture *> ret;
     for (int i = 0; i < _ARCHCOUNT; i++) {
         ret.append(&m_all[i]);
@@ -1018,7 +1130,8 @@ QList<ReleaseArchitecture *> ReleaseArchitecture::listAll() {
     return ret;
 }
 
-QStringList ReleaseArchitecture::listAllDescriptions() {
+QStringList ReleaseArchitecture::listAllDescriptions()
+{
     QStringList ret;
     for (int i = 0; i < _ARCHCOUNT; i++) {
         ret.append(m_all[i].description());
@@ -1026,22 +1139,27 @@ QStringList ReleaseArchitecture::listAllDescriptions() {
     return ret;
 }
 
-QStringList ReleaseArchitecture::abbreviation() const {
+QStringList ReleaseArchitecture::abbreviation() const
+{
     return m_abbreviation;
 }
 
-QString ReleaseArchitecture::description() const {
+QString ReleaseArchitecture::description() const
+{
     return tr(m_description);
 }
 
-QString ReleaseArchitecture::details() const {
+QString ReleaseArchitecture::details() const
+{
     return tr(m_details);
 }
 
-int ReleaseArchitecture::index() const {
+int ReleaseArchitecture::index() const
+{
     return this - m_all;
 }
 
-ReleaseArchitecture::Id ReleaseArchitecture::id() const {
-    return (Id) index();
+ReleaseArchitecture::Id ReleaseArchitecture::id() const
+{
+    return (Id)index();
 }

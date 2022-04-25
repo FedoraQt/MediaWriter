@@ -87,52 +87,145 @@ public:
     static AdwaitaTheme *qmlAttachedProperties(QObject *object);
 
     // Button
-    int buttonMarginHeight() const { return Adwaita::Button_MarginHeight; }
-    int buttonMarginWidth() const { return Adwaita::Button_MarginWidth; }
-    int buttonMinimumHeight() const { return Adwaita::Button_MinHeight; }
-    int buttonMinimumWidth() const { return Adwaita::Button_MinWidth; }
-    int buttonItemSpacing() const { return Adwaita::Button_ItemSpacing; }
+    int buttonMarginHeight() const
+    {
+        return Adwaita::Button_MarginHeight;
+    }
+    int buttonMarginWidth() const
+    {
+        return Adwaita::Button_MarginWidth;
+    }
+    int buttonMinimumHeight() const
+    {
+        return Adwaita::Button_MinHeight;
+    }
+    int buttonMinimumWidth() const
+    {
+        return Adwaita::Button_MinWidth;
+    }
+    int buttonItemSpacing() const
+    {
+        return Adwaita::Button_ItemSpacing;
+    }
 
     // Checkbox
-    int checkboxItemSpacing() const { return Adwaita::CheckBox_ItemSpacing; }
-    int checkboxFocusMarginWidth() const { return Adwaita::CheckBox_FocusMarginWidth; }
-    int checkboxSize() const { return Adwaita::CheckBox_Size; }
+    int checkboxItemSpacing() const
+    {
+        return Adwaita::CheckBox_ItemSpacing;
+    }
+    int checkboxFocusMarginWidth() const
+    {
+        return Adwaita::CheckBox_FocusMarginWidth;
+    }
+    int checkboxSize() const
+    {
+        return Adwaita::CheckBox_Size;
+    }
 
     // ComboBox
-    int comboBoxMarginHeight() const { return Adwaita::ComboBox_MarginHeight; }
-    int comboBoxMarginWidth() const { return Adwaita::ComboBox_MarginWidth; }
-    int comboBoxMinimumHeight() const { return Adwaita::ComboBox_MinHeight; }
-    int comboBoxMinimumWidth() const { return Adwaita::ComboBox_MinWidth; }
+    int comboBoxMarginHeight() const
+    {
+        return Adwaita::ComboBox_MarginHeight;
+    }
+    int comboBoxMarginWidth() const
+    {
+        return Adwaita::ComboBox_MarginWidth;
+    }
+    int comboBoxMinimumHeight() const
+    {
+        return Adwaita::ComboBox_MinHeight;
+    }
+    int comboBoxMinimumWidth() const
+    {
+        return Adwaita::ComboBox_MinWidth;
+    }
 
     // Frame
-    int frameRadius() const { return Adwaita::Frame_FrameRadius; }
-    int frameWidth() const { return Adwaita::Frame_FrameWidth; }
+    int frameRadius() const
+    {
+        return Adwaita::Frame_FrameRadius;
+    }
+    int frameWidth() const
+    {
+        return Adwaita::Frame_FrameWidth;
+    }
 
     // LineEdit
-    int lineEditFrameWidth() const { return Adwaita::LineEdit_FrameWidth; }
-    int lineEditMarginHeight() const { return Adwaita::LineEdit_MarginHeight; }
-    int lineEditMarginWidth() const { return Adwaita::LineEdit_MarginWidth; }
-    int lineEditMinimumHeight() const { return Adwaita::LineEdit_MinHeight; }
-    int lineEditMinimumWidth() const { return Adwaita::LineEdit_MinWidth; }
+    int lineEditFrameWidth() const
+    {
+        return Adwaita::LineEdit_FrameWidth;
+    }
+    int lineEditMarginHeight() const
+    {
+        return Adwaita::LineEdit_MarginHeight;
+    }
+    int lineEditMarginWidth() const
+    {
+        return Adwaita::LineEdit_MarginWidth;
+    }
+    int lineEditMinimumHeight() const
+    {
+        return Adwaita::LineEdit_MinHeight;
+    }
+    int lineEditMinimumWidth() const
+    {
+        return Adwaita::LineEdit_MinWidth;
+    }
 
     // MenuItem
-    int menuItemSpacing() const { return Adwaita::MenuItem_ItemSpacing; }
-    int menuItemMarginWidth() const { return Adwaita::MenuItem_MarginWidth; }
+    int menuItemSpacing() const
+    {
+        return Adwaita::MenuItem_ItemSpacing;
+    }
+    int menuItemMarginWidth() const
+    {
+        return Adwaita::MenuItem_MarginWidth;
+    }
 
     // Progressbar
-    int progressBarBusyIndicatorSize() const { return Adwaita::ProgressBar_BusyIndicatorSize; }
-    int progressBarThickness() const { return Adwaita::ProgressBar_Thickness; }
+    int progressBarBusyIndicatorSize() const
+    {
+        return Adwaita::ProgressBar_BusyIndicatorSize;
+    }
+    int progressBarThickness() const
+    {
+        return Adwaita::ProgressBar_Thickness;
+    }
 
     // Base colors
-    QColor baseColor() const { return m_palette.color(QPalette::Base); }
-    QColor buttonColor() const { return m_palette.color(QPalette::Button); }
+    QColor baseColor() const
+    {
+        return m_palette.color(QPalette::Base);
+    }
+    QColor buttonColor() const
+    {
+        return m_palette.color(QPalette::Button);
+    }
     QColor buttonOutlineColor() const;
-    QColor disabledTextColor() const { return m_palette.color(QPalette::Disabled, QPalette::Text); }
-    QColor highlightColor() const { return m_palette.color(QPalette::Highlight); }
-    QColor highlightTextColor() const { return m_palette.color(QPalette::HighlightedText); }
-    QColor linkColor() const { return m_palette.color(QPalette::Link); }
-    QColor textColor() const { return m_palette.color(QPalette::Text); }
-    QColor windowColor() const { return m_palette.color(QPalette::Window); }
+    QColor disabledTextColor() const
+    {
+        return m_palette.color(QPalette::Disabled, QPalette::Text);
+    }
+    QColor highlightColor() const
+    {
+        return m_palette.color(QPalette::Highlight);
+    }
+    QColor highlightTextColor() const
+    {
+        return m_palette.color(QPalette::HighlightedText);
+    }
+    QColor linkColor() const
+    {
+        return m_palette.color(QPalette::Link);
+    }
+    QColor textColor() const
+    {
+        return m_palette.color(QPalette::Text);
+    }
+    QColor windowColor() const
+    {
+        return m_palette.color(QPalette::Window);
+    }
 
     // Advanced colors
     Q_INVOKABLE QColor getButtonBottomColor(bool highlighted, bool destructiveAction, bool hovered, bool pressed);
@@ -149,7 +242,11 @@ public:
     Q_INVOKABLE QColor getScrollBarGrooveColor();
     Q_INVOKABLE QColor getScrollBarHandleColor(bool hovered, bool pressed);
 
-    bool darkMode() const { return m_darkMode; }
+    bool darkMode() const
+    {
+        return m_darkMode;
+    }
+
 private:
     bool m_darkMode;
     QPalette m_palette;

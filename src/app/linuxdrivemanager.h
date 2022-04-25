@@ -22,10 +22,10 @@
 
 #include "drivemanager.h"
 
+#include <QDBusArgument>
 #include <QDBusInterface>
 #include <QDBusObjectPath>
 #include <QDBusPendingCall>
-#include <QDBusArgument>
 #include <QProcess>
 
 typedef QHash<QString, QVariantMap> InterfacesAndProperties;
@@ -36,7 +36,8 @@ Q_DECLARE_METATYPE(DBusIntrospection)
 class LinuxDriveProvider;
 class LinuxDrive;
 
-class LinuxDriveProvider : public DriveProvider {
+class LinuxDriveProvider : public DriveProvider
+{
     Q_OBJECT
 public:
     LinuxDriveProvider(DriveManager *parent);
@@ -52,11 +53,12 @@ private:
     QDBusObjectPath handleObject(const QDBusObjectPath &path, const InterfacesAndProperties &interface);
 
 private:
-    QDBusInterface *m_objManager { nullptr };
-    QHash<QDBusObjectPath, LinuxDrive*> m_drives;
+    QDBusInterface *m_objManager{nullptr};
+    QHash<QDBusObjectPath, LinuxDrive *> m_drives;
 };
 
-class LinuxDrive : public Drive {
+class LinuxDrive : public Drive
+{
     Q_OBJECT
 public:
     LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout);
@@ -75,7 +77,7 @@ private slots:
 private:
     QString m_device;
 
-    QProcess *m_process { nullptr };
+    QProcess *m_process{nullptr};
 };
 
 #endif // LINUXDRIVEMANAGER_H

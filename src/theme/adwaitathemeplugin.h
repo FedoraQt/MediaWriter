@@ -33,4 +33,3 @@ public:
 };
 
 #endif // ADWAITA_THEME_PLUGIN_H
-

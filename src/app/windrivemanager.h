@@ -35,14 +35,16 @@ public:
 
 public slots:
     void checkDrives();
+
 private:
     QSet<int> findPhysicalDrive(char driveLetter);
     bool describeDrive(int driveNumber, bool hasLetter, bool verbose);
 
-    QMap<int, WinDrive*> m_drives;
+    QMap<int, WinDrive *> m_drives;
 };
 
-class WinDrive : public Drive {
+class WinDrive : public Drive
+{
     Q_OBJECT
 public:
     WinDrive(WinDriveProvider *parent, const QString &name, uint64_t size, bool containsLive, int device, const QString &serialNumber);
@@ -64,7 +66,7 @@ private slots:
 private:
     int m_device;
     QString m_serialNo;
-    QProcess *m_child { nullptr };
+    QProcess *m_child{nullptr};
 };
 
 #endif // WINDRIVEMANAGER_H

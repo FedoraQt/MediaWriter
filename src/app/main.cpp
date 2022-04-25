@@ -18,16 +18,16 @@
  */
 
 #include <QApplication>
+#include <QDebug>
+#include <QElapsedTimer>
+#include <QLoggingCategory>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <QLoggingCategory>
-#include <QTranslator>
-#include <QDebug>
-#include <QScreen>
-#include <QtPlugin>
-#include <QElapsedTimer>
-#include <QStandardPaths>
 #include <QQuickStyle>
+#include <QScreen>
+#include <QStandardPaths>
+#include <QTranslator>
+#include <QtPlugin>
 
 #include "crashhandler.h"
 #include "drivemanager.h"
@@ -73,11 +73,11 @@ int main(int argc, char **argv)
     QApplication::setOrganizationDomain("fedoraproject.org");
     QApplication::setOrganizationName("fedoraproject.org");
     QApplication::setApplicationName("MediaWriter");
-    
+
 #if (defined(__linux))
     QQuickStyle::setStyle("QtQuick.Controls.org.fedoraproject.AdwaitaTheme");
 #endif
-    
+
     QApplication app(argc, argv);
     options.parse(app.arguments());
 
@@ -86,8 +86,8 @@ int main(int argc, char **argv)
     QTranslator translator;
     if (translator.load(QLocale(QLocale().language(), QLocale().country()), QLatin1String(), QLatin1String(), ":/translations"))
         app.installTranslator(&translator);
-    
-#if (defined(__linux))        
+
+#if (defined(__linux))
     QPalette adwaitaPalette = Adwaita::Colors::palette();
     QGuiApplication::setPalette(adwaitaPalette);
 #endif

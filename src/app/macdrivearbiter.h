@@ -20,8 +20,7 @@
 #ifndef MACDRIVEARBITER_H
 #define MACDRIVEARBITER_H
 
-void startArbiter(void (*addedCallback)(const char *bsdName, const char *vendor, const char *model, unsigned long long size, bool restoreable),
-                  void (*removedCallback)(const char *bsdName));
+void startArbiter(void (*addedCallback)(const char *bsdName, const char *vendor, const char *model, unsigned long long size, bool restoreable), void (*removedCallback)(const char *bsdName));
 void stopArbiter();
 
 #endif // MACDRIVEARBITER_H

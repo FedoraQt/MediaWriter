@@ -24,8 +24,8 @@
 
 #include "drivemanager.h"
 
-
-class FakeDriveProvider : public DriveProvider {
+class FakeDriveProvider : public DriveProvider
+{
     Q_OBJECT
 public:
     FakeDriveProvider(DriveManager *parent);
@@ -41,7 +41,8 @@ private slots:
  *
  * Contains a fake drive implementation
  */
-class FakeDrive : public Drive {
+class FakeDrive : public Drive
+{
     Q_OBJECT
 public:
     FakeDrive(FakeDriveProvider *parent, const QString &name, uint64_t size, bool containsLive = false);
@@ -56,7 +57,7 @@ private slots:
     void selfdestruct();
 
 private:
-    bool m_writtenTo { false };
+    bool m_writtenTo{false};
 };
 
 #endif // FAKEDRIVEMANAGER_H

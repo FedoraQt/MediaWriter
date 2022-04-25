@@ -23,7 +23,9 @@
 class CrashHandler
 {
 public:
-    CrashHandler(){}
+    CrashHandler()
+    {
+    }
     static void install();
 };
 

@@ -27,7 +27,8 @@
 
 class VersionChecker;
 
-class VersionChecker : public QObject, protected DownloadReceiver {
+class VersionChecker : public QObject, protected DownloadReceiver
+{
     Q_OBJECT
     Q_PROPERTY(QString newerVersion READ newerVersion NOTIFY newerVersionChanged)
     Q_PROPERTY(QUrl url READ url NOTIFY newerVersionChanged)
@@ -38,13 +39,15 @@ public:
 
     QString newerVersion() const;
     QUrl url() const;
+
 protected:
     bool isVersionHigher(QString currentVersion, QString newVersion);
 signals:
     void newerVersionChanged();
+
 private:
-    QString m_newerVersion { };
-    QUrl m_url { };
+    QString m_newerVersion{};
+    QUrl m_url{};
 };
 
 #endif // VERSIONCHECKER_H

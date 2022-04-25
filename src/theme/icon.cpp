@@ -8,24 +8,24 @@
 #include "icon.h"
 //#include "theme.h"
 
-#include <QSGSimpleTextureNode>
-#include <QQuickWindow>
-#include <QIcon>
 #include <QBitmap>
-#include <QSGTexture>
 #include <QDebug>
-#include <QSharedPointer>
-#include <QtQml>
-#include <QQuickImageProvider>
 #include <QGuiApplication>
+#include <QIcon>
+#include <QPainter>
 #include <QPalette>
 #include <QPointer>
-#include <QPainter>
+#include <QQuickImageProvider>
+#include <QQuickWindow>
+#include <QSGSimpleTextureNode>
+#include <QSGTexture>
 #include <QScreen>
+#include <QSharedPointer>
+#include <QtQml>
 
 class ManagedTextureNode : public QSGSimpleTextureNode
 {
-Q_DISABLE_COPY(ManagedTextureNode)
+    Q_DISABLE_COPY(ManagedTextureNode)
 public:
     ManagedTextureNode();
 
@@ -36,7 +36,8 @@ private:
 };
 
 ManagedTextureNode::ManagedTextureNode()
-{}
+{
+}
 
 void ManagedTextureNode::setTexture(QSharedPointer<QSGTexture> texture)
 {
@@ -44,10 +45,9 @@ void ManagedTextureNode::setTexture(QSharedPointer<QSGTexture> texture)
     QSGSimpleTextureNode::setTexture(texture.data());
 }
 
-typedef QHash<qint64, QHash<QWindow*, QWeakPointer<QSGTexture> > > TexturesCache;
+typedef QHash<qint64, QHash<QWindow *, QWeakPointer<QSGTexture>>> TexturesCache;
 
-struct ImageTexturesCachePrivate
-{
+struct ImageTexturesCachePrivate {
     TexturesCache cache;
 };
 
@@ -67,11 +67,9 @@ public:
 
     QSharedPointer<QSGTexture> loadTexture(QQuickWindow *window, const QImage &image);
 
-
 private:
     QScopedPointer<ImageTexturesCachePrivate> d;
 };
-
 
 ImageTexturesCache::ImageTexturesCache()
     : d(new ImageTexturesCachePrivate)
@@ -88,8 +86,8 @@ QSharedPointer<QSGTexture> ImageTexturesCache::loadTexture(QQuickWindow *window,
     QSharedPointer<QSGTexture> texture = d->cache.value(id).value(window).toStrongRef();
 
     if (!texture) {
-        auto cleanAndDelete = [this, window, id](QSGTexture* texture) {
-            QHash<QWindow*, QWeakPointer<QSGTexture> >& textures = (d->cache)[id];
+        auto cleanAndDelete = [this, window, id](QSGTexture *texture) {
+            QHash<QWindow *, QWeakPointer<QSGTexture>> &textures = (d->cache)[id];
             textures.remove(window);
             if (textures.isEmpty())
                 d->cache.remove(id);
@@ -99,9 +97,9 @@ QSharedPointer<QSGTexture> ImageTexturesCache::loadTexture(QQuickWindow *window,
         (d->cache)[id][window] = texture.toWeakRef();
     }
 
-    //if we have a cache in an atlas but our request cannot use an atlassed texture
-    //create a new texture and use that
-    //don't use removedFromAtlas() as that requires keeping a reference to the non atlased version
+    // if we have a cache in an atlas but our request cannot use an atlassed texture
+    // create a new texture and use that
+    // don't use removedFromAtlas() as that requires keeping a reference to the non atlased version
     if (!(options & QQuickWindow::TextureCanUseAtlas) && texture->isAtlasTexture()) {
         texture = QSharedPointer<QSGTexture>(window->createTextureFromImage(image, options));
     }
@@ -117,16 +115,15 @@ QSharedPointer<QSGTexture> ImageTexturesCache::loadTexture(QQuickWindow *window,
 Q_GLOBAL_STATIC(ImageTexturesCache, s_iconImageCache)
 
 Icon::Icon(QQuickItem *parent)
-    : QQuickItem(parent),
-      m_smooth(false),
-      m_changed(false),
-      m_active(false),
-      m_selected(false),
-      m_isMask(false)
+    : QQuickItem(parent)
+    , m_smooth(false)
+    , m_changed(false)
+    , m_active(false)
+    , m_selected(false)
+    , m_isMask(false)
 {
     setFlag(ItemHasContents, true);
 }
-
 
 Icon::~Icon()
 {
@@ -140,18 +137,16 @@ void Icon::setSource(const QVariant &icon)
     m_source = icon;
     m_monochromeHeuristics.clear();
 
-//    if (!m_theme) {
-//        m_theme = new AdwaitaTheme(this);
-//        Q_ASSERT(m_theme);
+    //    if (!m_theme) {
+    //        m_theme = new AdwaitaTheme(this);
+    //        Q_ASSERT(m_theme);
 
-        // connect(m_theme, &AdwaitaTheme::colorsChanged, this, &QQuickItem::polish);
-//    }
+    // connect(m_theme, &AdwaitaTheme::colorsChanged, this, &QQuickItem::polish);
+    //    }
 
     if (icon.typeId() == QMetaType::QString) {
         const QString iconSource = icon.toString();
-        m_isMaskHeuristic = (iconSource.endsWith(QLatin1String("-symbolic"))
-                            || iconSource.endsWith(QLatin1String("-symbolic-rtl"))
-                            || iconSource.endsWith(QLatin1String("-symbolic-ltr")));
+        m_isMaskHeuristic = (iconSource.endsWith(QLatin1String("-symbolic")) || iconSource.endsWith(QLatin1String("-symbolic-rtl")) || iconSource.endsWith(QLatin1String("-symbolic-ltr")));
         emit isMaskChanged();
     }
 
@@ -235,7 +230,6 @@ QColor Icon::color() const
     return m_color;
 }
 
-
 int Icon::implicitWidth() const
 {
     return 32;
@@ -261,7 +255,7 @@ bool Icon::smooth() const
     return m_smooth;
 }
 
-QSGNode* Icon::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData* /*data*/)
+QSGNode *Icon::updatePaintNode(QSGNode *node, QQuickItem::UpdatePaintNodeData * /*data*/)
 {
     if (m_source.isNull() || qFuzzyIsNull(width()) || qFuzzyIsNull(height())) {
         delete node;
@@ -270,9 +264,9 @@ QSGNode* Icon::updatePaintNode(QSGNode* node, QQuickItem::UpdatePaintNodeData* /
 
     if (m_changed || node == nullptr) {
         const QSize itemSize(width(), height());
-        QRect nodeRect(QPoint(0,0), itemSize);
+        QRect nodeRect(QPoint(0, 0), itemSize);
 
-        ManagedTextureNode* mNode = dynamic_cast<ManagedTextureNode*>(node);
+        ManagedTextureNode *mNode = dynamic_cast<ManagedTextureNode *>(node);
         if (!mNode) {
             delete node;
             mNode = new ManagedTextureNode;
@@ -316,8 +310,7 @@ void Icon::updatePolish()
 
     const QSize itemSize(width(), height());
     if (itemSize.width() != 0 && itemSize.height() != 0) {
-
-        switch(m_source.typeId()){
+        switch (m_source.typeId()) {
         case QMetaType::QPixmap:
             m_icon = m_source.value<QPixmap>().toImage();
             break;
@@ -328,7 +321,7 @@ void Icon::updatePolish()
             m_icon = m_source.value<QBitmap>().toImage();
             break;
         case QMetaType::QIcon:
-            QScreen * screen;
+            QScreen *screen;
             m_icon = m_source.value<QIcon>().pixmap(itemSize, screen->devicePixelRatio()).toImage();
             break;
         case QMetaType::QUrl:
@@ -336,7 +329,7 @@ void Icon::updatePolish()
             m_icon = findIcon(itemSize);
             break;
         case QMetaType::QBrush:
-            //todo: fill here too?
+            // todo: fill here too?
         case QMetaType::QColor:
             m_icon = QImage(itemSize, QImage::Format_Alpha8);
             m_icon.fill(m_source.value<QColor>());
@@ -345,16 +338,16 @@ void Icon::updatePolish()
             break;
         }
 
-        if (m_icon.isNull()){
+        if (m_icon.isNull()) {
             m_icon = QImage(itemSize, QImage::Format_Alpha8);
             m_icon.fill(Qt::transparent);
         }
 
-//        const QColor tintColor = !m_color.isValid() || m_color == Qt::transparent ? (m_selected ? m_theme->highlightTextColor() : m_theme->textColor()) : m_color;
+        //        const QColor tintColor = !m_color.isValid() || m_color == Qt::transparent ? (m_selected ? m_theme->highlightTextColor() : m_theme->textColor()) : m_color;
         const QPalette &palette = QGuiApplication::palette();
         const QColor tintColor = !m_color.isValid() || m_color == Qt::transparent ? (m_selected ? palette.color(QPalette::HighlightedText) : palette.color(QPalette::Text)) : m_color;
 
-        //TODO: initialize m_isMask with icon.isMask()
+        // TODO: initialize m_isMask with icon.isMask()
         if (tintColor.alpha() > 0 && (isMask() || guessMonochrome(m_icon))) {
             QPainter p(&m_icon);
             p.setCompositionMode(QPainter::CompositionMode_SourceIn);
@@ -377,16 +370,15 @@ QImage Icon::findIcon(const QSize &size)
         QString iconId = iconUrl.path();
 
         // QRC paths are not correctly handled by .path()
-        if (iconId.size() >=2 && iconId.startsWith(QLatin1String("/:"))) {
+        if (iconId.size() >= 2 && iconId.startsWith(QLatin1String("/:"))) {
             iconId.remove(0, 1);
         }
 
         QSize actualSize;
-        QQuickImageProvider* imageProvider = dynamic_cast<QQuickImageProvider*>(
-                    qmlEngine(this)->imageProvider(iconProviderId));
+        QQuickImageProvider *imageProvider = dynamic_cast<QQuickImageProvider *>(qmlEngine(this)->imageProvider(iconProviderId));
         if (!imageProvider)
             return img;
-        switch(imageProvider->imageType()){
+        switch (imageProvider->imageType()) {
         case QQmlImageProviderBase::Image:
             img = imageProvider->requestImage(iconId, &actualSize, size);
             break;
@@ -396,7 +388,7 @@ QImage Icon::findIcon(const QSize &size)
         case QQmlImageProviderBase::Texture:
         case QQmlImageProviderBase::Invalid:
         case QQmlImageProviderBase::ImageResponse:
-            //will have to investigate this more
+            // will have to investigate this more
             break;
         }
     } else {
@@ -451,7 +443,7 @@ QIcon::Mode Icon::iconMode() const
 
 bool Icon::guessMonochrome(const QImage &img)
 {
-    //don't try for too big images
+    // don't try for too big images
     if (img.width() >= 256) {
         return false;
     }
@@ -481,8 +473,8 @@ bool Icon::guessMonochrome(const QImage &img)
     QHash<int, int> dist;
     int transparentPixels = 0;
     int saturatedPixels = 0;
-    for(int x=0; x < img.width(); x++) {
-        for(int y=0; y < img.height(); y++) {
+    for (int x = 0; x < img.width(); x++) {
+        for (int y = 0; y < img.height(); y++) {
             QColor color = QColor::fromRgba(qUnpremultiply(img.pixel(x, y)));
             if (color.alpha() < 100) {
                 ++transparentPixels;
@@ -505,7 +497,7 @@ bool Icon::guessMonochrome(const QImage &img)
     }
 
     // Arbitrarly low values of entropy and colored pixels
-    m_monochromeHeuristics[stdSize] = saturatedPixels <= (img.size().width()*img.size().height() - transparentPixels) * 0.3 && entropy <= 0.3;
+    m_monochromeHeuristics[stdSize] = saturatedPixels <= (img.size().width() * img.size().height() - transparentPixels) * 0.3 && entropy <= 0.3;
     return m_monochromeHeuristics[stdSize];
 }
 
@@ -514,7 +506,7 @@ QString Icon::fallback() const
     return m_fallback;
 }
 
-void Icon::setFallback(const QString& fallback)
+void Icon::setFallback(const QString &fallback)
 {
     if (m_fallback != fallback) {
         m_fallback = fallback;

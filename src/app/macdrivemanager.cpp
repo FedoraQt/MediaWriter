@@ -34,19 +34,23 @@ MacDriveProvider::MacDriveProvider(DriveManager *parent)
     startArbiter(&MacDriveProvider::onDriveAdded, &MacDriveProvider::onDriveRemoved);
 }
 
-MacDriveProvider::~MacDriveProvider() {
+MacDriveProvider::~MacDriveProvider()
+{
     stopArbiter();
 }
 
-MacDriveProvider *MacDriveProvider::instance() {
+MacDriveProvider *MacDriveProvider::instance()
+{
     return _self;
 }
 
-void MacDriveProvider::onDriveAdded(const char *bsdName, const char *vendor, const char *model, unsigned long long size, bool restoreable) {
+void MacDriveProvider::onDriveAdded(const char *bsdName, const char *vendor, const char *model, unsigned long long size, bool restoreable)
+{
     MacDriveProvider::instance()->addDrive(bsdName, vendor, model, size, restoreable);
 }
 
-void MacDriveProvider::addDrive(const QString &bsdName, const QString &vendor, const QString &model, uint64_t size, bool restoreable) {
+void MacDriveProvider::addDrive(const QString &bsdName, const QString &vendor, const QString &model, uint64_t size, bool restoreable)
+{
     mDebug() << this->metaObject()->className() << "drive added" << bsdName << vendor << model << size << restoreable;
     removeDrive(bsdName);
     MacDrive *drive = new MacDrive(this, QString("%1 %2").arg(vendor).arg(model), size, restoreable, bsdName);
@@ -54,11 +58,13 @@ void MacDriveProvider::addDrive(const QString &bsdName, const QString &vendor, c
     emit driveConnected(drive);
 }
 
-void MacDriveProvider::onDriveRemoved(const char *bsdName) {
+void MacDriveProvider::onDriveRemoved(const char *bsdName)
+{
     MacDriveProvider::instance()->removeDrive(bsdName);
 }
 
-void MacDriveProvider::removeDrive(const QString &bsdName) {
+void MacDriveProvider::removeDrive(const QString &bsdName)
+{
     if (m_devices.contains(bsdName)) {
         mDebug() << this->metaObject()->className() << "drive removed" << bsdName;
         emit driveRemoved(m_devices[bsdName]);
@@ -67,19 +73,18 @@ void MacDriveProvider::removeDrive(const QString &bsdName) {
     }
 }
 
-
 MacDrive::MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive, const QString &bsdDevice)
-    : Drive(parent, name, size, containsLive), m_bsdDevice(bsdDevice)
+    : Drive(parent, name, size, containsLive)
+    , m_bsdDevice(bsdDevice)
 {
-
 }
 
-bool MacDrive::write(ReleaseVariant *data) {
+bool MacDrive::write(ReleaseVariant *data)
+{
     if (!Drive::write(data))
         return false;
 
-    if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED ||
-            m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
+    if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED || m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
         m_image->setStatus(ReleaseVariant::WRITING);
 
     if (m_child) {
@@ -87,16 +92,14 @@ bool MacDrive::write(ReleaseVariant *data) {
         m_child->deleteLater();
     }
     m_child = new QProcess(this);
-    connect(m_child, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
+    connect(m_child, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
     connect(m_child, &QProcess::readyRead, this, &MacDrive::onReadyRead);
 
     if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
         m_child->setProgram(QString("%1/../../../../helper/mac/helper.app/Contents/MacOS/helper").arg(qApp->applicationDirPath()));
-    }
-    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+    } else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
         m_child->setProgram(QString("%1/helper").arg(qApp->applicationDirPath()));
-    }
-    else {
+    } else {
         data->setErrorString(tr("Could not find the helper binary. Check your installation."));
         setDelayedWrite(false);
         return false;
@@ -105,8 +108,7 @@ bool MacDrive::write(ReleaseVariant *data) {
     args.append("write");
     if (data->status() == ReleaseVariant::WRITING) {
         args.append(QString("%1").arg(data->iso()));
-    }
-    else {
+    } else {
         args.append(QString("%1").arg(data->temporaryPath()));
     }
     args.append(m_bsdDevice);
@@ -119,7 +121,8 @@ bool MacDrive::write(ReleaseVariant *data) {
     return true;
 }
 
-void MacDrive::cancel() {
+void MacDrive::cancel()
+{
     Drive::cancel();
     if (m_child) {
         m_child->kill();
@@ -128,7 +131,8 @@ void MacDrive::cancel() {
     }
 }
 
-void MacDrive::restore() {
+void MacDrive::restore()
+{
     mCritical() << "starting to restore";
     if (m_child)
         m_child->deleteLater();
@@ -140,11 +144,9 @@ void MacDrive::restore() {
 
     if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
         m_child->setProgram(QString("%1/../../../../helper/mac/helper.app/Contents/MacOS/helper").arg(qApp->applicationDirPath()));
-    }
-    else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
+    } else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
         m_child->setProgram(QString("%1/helper").arg(qApp->applicationDirPath()));
-    }
-    else {
+    } else {
         m_restoreStatus = RESTORE_ERROR;
         return;
     }
@@ -156,14 +158,15 @@ void MacDrive::restore() {
 
     m_child->setProcessChannelMode(QProcess::ForwardedChannels);
 
-    connect(m_child, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onRestoreFinished);
+    connect(m_child, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onRestoreFinished);
 
     mCritical() << "The command is" << m_child->program() << args;
 
     m_child->start();
 }
 
-void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
+{
     Q_UNUSED(exitStatus)
 
     setDelayedWrite(false);
@@ -181,14 +184,14 @@ void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus) {
         }
         Notifications::notify(tr("Error"), tr("Writing %1 failed").arg(m_image->fullName()));
         m_image->setStatus(ReleaseVariant::FAILED);
-    }
-    else {
+    } else {
         Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
         m_image->setStatus(ReleaseVariant::FINISHED);
     }
 }
 
-void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) {
+void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
+{
     if (!m_child)
         return;
 
@@ -205,13 +208,14 @@ void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus) 
     m_child = nullptr;
 }
 
-void MacDrive::onReadyRead() {
+void MacDrive::onReadyRead()
+{
     if (!m_child)
         return;
 
     if (m_image->status() == ReleaseVariant::WRITING) {
         m_progress->setTo(m_image->size());
-        m_progress->setValue(0.0/0.0);
+        m_progress->setValue(0.0 / 0.0);
     }
 
     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)

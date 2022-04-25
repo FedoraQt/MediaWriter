@@ -30,9 +30,10 @@ public:
     explicit RestoreJob(const QString &where);
 public slots:
     void work();
+
 private:
-    QTextStream out { stdout };
-    QTextStream err { stderr };
+    QTextStream out{stdout};
+    QTextStream err{stderr};
 
     QString where;
 };
