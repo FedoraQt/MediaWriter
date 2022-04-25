@@ -3,12 +3,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# "#-#-#-#-#  mediawriter.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-05 21:56+0100\n"
+"POT-Creation-Date: 2022-04-25 07:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,51 +16,83 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/app/qml/AboutDialog.qml:44
+#: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
 msgstr ""
 
-#: ../src/app/qml/AboutDialog.qml:52
+#: ../src/app/qml/AboutDialog.qml:58
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr ""
 
-#: ../src/app/qml/AboutDialog.qml:59
+#: ../src/app/qml/AboutDialog.qml:65
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr ""
 
-#: ../src/app/qml/AboutDialog.qml:65
+#: ../src/app/qml/AboutDialog.qml:71
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr ""
 
-#: ../src/app/qml/AboutDialog.qml:88
+#: ../src/app/qml/AboutDialog.qml:94
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:47
+#: ../src/app/qml/CancelDialog.qml:54
 msgctxt "CancelDialog|"
-msgid "Downloading is still in progress, do you wish to cancel it?"
+msgid "Cancel Download?"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:47
+#: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
-msgid "Do you want to cancel writing?"
+msgid "Cancel Writing?"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:64
+#: ../src/app/qml/CancelDialog.qml:58
 msgctxt "CancelDialog|"
-msgid "Cancel"
+msgid "Cancel Verification?"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:77
+#: ../src/app/qml/CancelDialog.qml:65
 msgctxt "CancelDialog|"
-msgid "Ok"
+msgid "Download progress will be lost and media writing will be aborted."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:67
+msgctxt "CancelDialog|"
+msgid ""
+"Writing process will be aborted and your drive will have to be restored "
+"afterwards."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:69
+msgctxt "CancelDialog|"
+msgid "This operation is safe to be cancelled."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:86
+msgctxt "CancelDialog|"
+msgid "Continue"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:104
+msgctxt "CancelDialog|"
+msgid "Cancel Download"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:106
+msgctxt "CancelDialog|"
+msgid "Cancel Writing"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:108
+msgctxt "CancelDialog|"
+msgid "Cancel Verification"
 msgstr ""
 
 #: ../src/app/downloadmanager.cpp:216
@@ -83,54 +115,84 @@ msgctxt "Download|"
 msgid "Connection timed out"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:44
+#: ../src/app/qml/DownloadPage.qml:48
+#, qt-format
+msgctxt "DownloadPage|"
+msgid "%1 Sucessfuly Written"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:50
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:44
-#, qt-format
+#: ../src/app/qml/DownloadPage.qml:52
 msgctxt "DownloadPage|"
-msgid "Downloading %1 "
+msgid "Verifying written data"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:55
+#: ../src/app/qml/DownloadPage.qml:54
 #, qt-format
 msgctxt "DownloadPage|"
-msgid "(%1 B left)"
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:55
-#, qt-format
-msgctxt "DownloadPage|"
-msgid "(%1 KB left)"
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:55
-#, qt-format
-msgctxt "DownloadPage|"
-msgid "(%1 MB left)"
+msgid "Downloading %1"
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:56
+msgctxt "DownloadPage|"
+msgid "Verifying downloaded image"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:58
 #, qt-format
 msgctxt "DownloadPage|"
-msgid "(%1 GB left)"
+msgid "Preparing %1"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+msgctxt "DownloadPage|"
+msgid "Failed"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:72
+msgctxt "DownloadPage|"
+msgid " B left)"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:73
+msgctxt "DownloadPage|"
+msgid " KB left)"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:74
+msgctxt "DownloadPage|"
+msgid " MB left)"
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:75
 msgctxt "DownloadPage|"
-msgid "The file will be saved to your Downloads folder."
+msgid " GB left)"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:83
+#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
+#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#, qt-format
+msgctxt "DownloadPage|"
+msgid " (%1"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:124
+msgctxt "DownloadPage|"
+msgid "Downloads are saved to the downloads folder."
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:132
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:91
+#: ../src/app/qml/DownloadPage.qml:140
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -138,17 +200,17 @@ msgid ""
 "from your drive."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:99
+#: ../src/app/qml/DownloadPage.qml:148
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:99
+#: ../src/app/qml/DownloadPage.qml:148
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:107
+#: ../src/app/qml/DownloadPage.qml:156
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -157,7 +219,7 @@ msgid ""
 "with Fedora and how to create bootable media for it."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:116
+#: ../src/app/qml/DownloadPage.qml:165
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -165,29 +227,55 @@ msgid ""
 "drive by accident!"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:192
+#: ../src/app/qml/DownloadPage.qml:174
+#, qt-format
+msgctxt "DownloadPage|"
+msgid "Restart and boot from %1 to start using %2."
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:262
+msgctxt "DownloadPage|"
+msgid "Writing not possible"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:282
 msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:212
+#: ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Write verifying"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:228
+#: ../src/app/qml/DownloadPage.qml:334
 msgctxt "DownloadPage|"
 msgid "Finish"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:241
+#: ../src/app/qml/DownloadPage.qml:347
 msgctxt "DownloadPage|"
-msgid "Writing finished"
+msgid "Write Successful"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:241
+#: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Downloading finished"
+msgid "Failed verification no drives"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:381
+msgctxt "DownloadPage|"
+msgid "Failed verification"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:393
+msgctxt "DownloadPage|"
+msgid "Failed download"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:409
+msgctxt "DownloadPage|"
+msgid "Failed no drives"
 msgstr ""
 
 #: ../src/app/drivemanager.cpp:288
@@ -195,57 +283,62 @@ msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:34
+#: ../src/app/qml/DrivePage.qml:36
 msgctxt "DrivePage|"
 msgid "Write Options"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:42
+#: ../src/app/qml/DrivePage.qml:45
+msgctxt "DrivePage|"
+msgid "Version"
+msgstr ""
+
+#: ../src/app/qml/DrivePage.qml:62
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:58
+#: ../src/app/qml/DrivePage.qml:79
 msgctxt "DrivePage|"
 msgid "Selected file"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:64
+#: ../src/app/qml/DrivePage.qml:86
 msgctxt "DrivePage|"
 msgid "None"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:76
+#: ../src/app/qml/DrivePage.qml:94
 msgctxt "DrivePage|"
-msgid "Select ..."
+msgid "Select..."
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:93
+#: ../src/app/qml/DrivePage.qml:111
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:93
+#: ../src/app/qml/DrivePage.qml:111
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:104
+#: ../src/app/qml/DrivePage.qml:122
 msgctxt "DrivePage|"
 msgid "USB Drive"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:112
+#: ../src/app/qml/DrivePage.qml:130
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:131
+#: ../src/app/qml/DrivePage.qml:149
 msgctxt "DrivePage|"
 msgid "Download"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:136
+#: ../src/app/qml/DrivePage.qml:154
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
 msgstr ""
@@ -324,17 +417,17 @@ msgctxt "MainPage|"
 msgid "Select Image Source"
 msgstr ""
 
-#: ../src/app/qml/MainPage.qml:56
+#: ../src/app/qml/MainPage.qml:57
 msgctxt "MainPage|"
 msgid "Download automatically"
 msgstr ""
 
-#: ../src/app/qml/MainPage.qml:64
+#: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
 msgstr ""
 
-#: ../src/app/qml/MainPage.qml:74
+#: ../src/app/qml/MainPage.qml:76
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
@@ -388,43 +481,43 @@ msgctxt "Release|"
 msgid "Other"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:978
+#: ../src/app/releasemanager.cpp:979
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 64bit"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:978
+#: ../src/app/releasemanager.cpp:979
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:979
+#: ../src/app/releasemanager.cpp:980
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 32bit"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:979
+#: ../src/app/releasemanager.cpp:980
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:980
+#: ../src/app/releasemanager.cpp:981
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:980
+#: ../src/app/releasemanager.cpp:981
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:981
+#: ../src/app/releasemanager.cpp:982
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:981
+#: ../src/app/releasemanager.cpp:982
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr ""
@@ -434,46 +527,46 @@ msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:839 ../src/app/releasemanager.cpp:851
+#: ../src/app/releasemanager.cpp:840 ../src/app/releasemanager.cpp:852
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:856
+#: ../src/app/releasemanager.cpp:857
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:868
+#: ../src/app/releasemanager.cpp:869
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:647
+#: ../src/app/releasemanager.cpp:648
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:649
+#: ../src/app/releasemanager.cpp:650
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:651
+#: ../src/app/releasemanager.cpp:652
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:38
+#: ../src/app/qml/RestorePage.qml:37
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:50
+#: ../src/app/qml/RestorePage.qml:49
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -484,38 +577,33 @@ msgid ""
 "factory settings? </p>"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:66
+#: ../src/app/qml/RestorePage.qml:67
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:82
+#: ../src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:92
+#: ../src/app/qml/RestorePage.qml:94
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:141
+#: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:149
-msgctxt "RestorePage|"
-msgid "Finish"
-msgstr ""
-
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
-msgid "Select Fedora Version"
+msgid "Select Fedora Release"
 msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:48
@@ -559,52 +647,62 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr ""
 
-#: ../src/app/qml/main.qml:86
+#: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr ""
 
-#: ../src/app/qml/main.qml:119
+#: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr ""
 
-#: ../src/app/qml/main.qml:135
+#: ../src/app/qml/main.qml:170
 msgctxt "main|"
-msgid "Select drive"
+msgid "Select Drive"
 msgstr ""
 
-#: ../src/app/qml/main.qml:168
+#: ../src/app/qml/main.qml:204
 msgctxt "main|"
 msgid "Downloading"
 msgstr ""
 
-#: ../src/app/qml/main.qml:204 ../src/app/qml/main.qml:228
+#: ../src/app/qml/main.qml:243 ../src/app/qml/main.qml:284
 msgctxt "main|"
 msgid "Restore"
 msgstr ""
 
-#: ../src/app/qml/main.qml:230
+#: ../src/app/qml/main.qml:283
+msgctxt "main|"
+msgid "Finish"
+msgstr ""
+
+#: ../src/app/qml/main.qml:286
+msgctxt "main|"
+msgid "Download & Write"
+msgstr ""
+
+#: ../src/app/qml/main.qml:289 ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Cancel"
 msgstr ""
 
-#: ../src/app/qml/main.qml:232
+#: ../src/app/qml/main.qml:291
 msgctxt "main|"
-msgid "Write"
+msgid "Retry"
 msgstr ""
 
-#: ../src/app/qml/main.qml:233
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
 msgid "Next"
 msgstr ""
 
-#: ../src/app/qml/main.qml:238
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "About"
 msgstr ""
 
-#: ../src/app/qml/main.qml:239
+#: ../src/app/qml/main.qml:301
 msgctxt "main|"
 msgid "Previous"
 msgstr ""
