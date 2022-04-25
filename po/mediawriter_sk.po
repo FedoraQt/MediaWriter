@@ -10,11 +10,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-07 16:44+0200\n"
+"POT-Creation-Date: 2022-04-25 07:54+0200\n"
 "PO-Revision-Date: 2021-10-08 14:05+0000\n"
 "Last-Translator: Ondrej Sulek <feonsu@gmail.com>\n"
-"Language-Team: Slovak <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/sk/>\n"
+"Language-Team: Slovak <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,88 +23,273 @@ msgstr ""
 "X-Generator: Weblate 4.8\n"
 "X-Qt-Contexts: true\n"
 
-#: ../src/app/qml/DeleteButton.qml:64
-msgctxt "DeleteButton|"
-msgid "Delete the Downloaded Image"
-msgstr "Vymazať stiahnutý obraz"
+#: ../src/app/qml/AboutDialog.qml:49
+#, fuzzy
+#| msgctxt "ImageList|"
+#| msgid "About Fedora Media Writer"
+msgctxt "AboutDialog|"
+msgid "About Fedora Media Writer"
+msgstr "O aplikácii Fedora Media Writer"
 
-#: ../src/app/downloadmanager.cpp:215
+#: ../src/app/qml/AboutDialog.qml:58
+#, fuzzy, qt-format
+#| msgctxt "ImageDetails|"
+#| msgid "Version %1"
+msgctxt "AboutDialog|"
+msgid "Version %1"
+msgstr "Verzia %1"
+
+#: ../src/app/qml/AboutDialog.qml:65
+#, fuzzy
+#| msgctxt "ImageList|"
+#| msgid "Fedora Media Writer is now checking for new releases"
+msgctxt "AboutDialog|"
+msgid "Fedora Media Writer is now checking for new releases"
+msgstr "Fedora Media Writer teraz kontroluje nové vydania"
+
+#: ../src/app/qml/AboutDialog.qml:71
+#, fuzzy, qt-format
+#| msgctxt "ImageList|"
+#| msgid "Please report bugs or your suggestions on %1"
+msgctxt "AboutDialog|"
+msgid "Please report bugs or your suggestions on %1"
+msgstr "Chyby a svoje návrhy nahláste prosím na %1"
+
+#: ../src/app/qml/AboutDialog.qml:94
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Close"
+msgctxt "AboutDialog|"
+msgid "Close"
+msgstr "Zavrieť"
+
+#: ../src/app/qml/CancelDialog.qml:54
+msgctxt "CancelDialog|"
+msgid "Cancel Download?"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:56
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "CancelDialog|"
+msgid "Cancel Writing?"
+msgstr "Zapisovanie"
+
+#: ../src/app/qml/CancelDialog.qml:58
+msgctxt "CancelDialog|"
+msgid "Cancel Verification?"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:65
+msgctxt "CancelDialog|"
+msgid "Download progress will be lost and media writing will be aborted."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:67
+msgctxt "CancelDialog|"
+msgid ""
+"Writing process will be aborted and your drive will have to be restored "
+"afterwards."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:69
+msgctxt "CancelDialog|"
+msgid "This operation is safe to be cancelled."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:86
+msgctxt "CancelDialog|"
+msgid "Continue"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:104
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "CancelDialog|"
+msgid "Cancel Download"
+msgstr "Sťahovanie"
+
+#: ../src/app/qml/CancelDialog.qml:106
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "CancelDialog|"
+msgid "Cancel Writing"
+msgstr "Zapisovanie"
+
+#: ../src/app/qml/CancelDialog.qml:108
+msgctxt "CancelDialog|"
+msgid "Cancel Verification"
+msgstr ""
+
+#: ../src/app/downloadmanager.cpp:216
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "Nepodarilo sa získať požadovaný obraz."
 
-#: ../src/app/downloadmanager.cpp:311
+#: ../src/app/downloadmanager.cpp:316
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "V adresári so stiahnutými súbormi došlo voľné miesto."
 
-#: ../src/app/downloadmanager.cpp:313
+#: ../src/app/downloadmanager.cpp:318
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "Do sťahovaného súboru nie je možné zapisovať."
 
-#: ../src/app/downloadmanager.cpp:399
+#: ../src/app/downloadmanager.cpp:404
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Časový limit spojenia vypršal"
 
-#: ../src/app/qml/DownloadDialog.qml:33
+#: ../src/app/qml/DownloadPage.qml:48
 #, qt-format
-msgctxt "DownloadDialog|"
-msgid "Write %1"
-msgstr "Zapísať %1"
+msgctxt "DownloadPage|"
+msgid "%1 Sucessfuly Written"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:141
-msgctxt "DownloadDialog|"
-msgid "Writing is not possible"
-msgstr "Zapisovanie nie je možné"
+#: ../src/app/qml/DownloadPage.qml:50
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Writing %1"
+msgstr "Zapisovanie"
 
-#: ../src/app/qml/DownloadDialog.qml:216
-msgctxt "DownloadDialog|"
-msgid "Close"
-msgstr "Zavrieť"
+#: ../src/app/qml/DownloadPage.qml:52
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the written data"
+msgctxt "DownloadPage|"
+msgid "Verifying written data"
+msgstr "Overovanie zapísaných údajov"
 
-#: ../src/app/qml/DownloadDialog.qml:232 ../src/app/qml/DownloadDialog.qml:253
-#: ../src/app/qml/DownloadDialog.qml:274 ../src/app/qml/DownloadDialog.qml:285
-#: ../src/app/qml/DownloadDialog.qml:306
-msgctxt "DownloadDialog|"
-msgid "Retry"
-msgstr "Opakovať"
+#: ../src/app/qml/DownloadPage.qml:54
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "DownloadPage|"
+msgid "Downloading %1"
+msgstr "Sťahovanie"
 
-#: ../src/app/qml/DownloadDialog.qml:356
-msgctxt "DownloadDialog|"
-msgid "The file will be saved to your Downloads folder."
+#: ../src/app/qml/DownloadPage.qml:56
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "The downloaded image is corrupted"
+msgctxt "DownloadPage|"
+msgid "Verifying downloaded image"
+msgstr "Stiahnutý obraz je poškodený"
+
+#: ../src/app/qml/DownloadPage.qml:58
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Preparing"
+msgctxt "DownloadPage|"
+msgid "Preparing %1"
+msgstr "Príprava"
+
+#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+msgctxt "DownloadPage|"
+msgid "Failed"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:72
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 B left)"
+msgctxt "DownloadPage|"
+msgid " B left)"
+msgstr "(zostáva %1 B)"
+
+#: ../src/app/qml/DownloadPage.qml:73
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 KB left)"
+msgctxt "DownloadPage|"
+msgid " KB left)"
+msgstr "(zostáva %1 KB)"
+
+#: ../src/app/qml/DownloadPage.qml:74
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 MB left)"
+msgctxt "DownloadPage|"
+msgid " MB left)"
+msgstr "(zostáva %1 MB)"
+
+#: ../src/app/qml/DownloadPage.qml:75
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 GB left)"
+msgctxt "DownloadPage|"
+msgid " GB left)"
+msgstr "(zostáva %1 GB)"
+
+#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
+#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#, qt-format
+msgctxt "DownloadPage|"
+msgid " (%1"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:124
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "The file will be saved to your Downloads folder."
+msgctxt "DownloadPage|"
+msgid "Downloads are saved to the downloads folder."
 msgstr "Súbor bude uložený do adresára so stiahnutými súbormi."
 
-#: ../src/app/qml/DownloadDialog.qml:363
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:132
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid "By writing, you will lose all of the data on %1."
+msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Zápisom prídete o všetky dáta na disku %1."
 
-#: ../src/app/qml/DownloadDialog.qml:370
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:140
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "Your drive will be resized to a smaller capacity. You may resize it back "
+#| "to normal by using Fedora Media Writer; this will remove installation "
+#| "media from your drive."
+msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using Fedora Media Writer; this will remove installation media "
+"normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
 "Disk bude zmenšený na menšiu kapacitu. Fedora Media Writer umožňuje zmeniť "
 "jeho veľkosť späť na pôvodnú, to však vymaže inštalačné médiu z disku."
 
-#: ../src/app/qml/DownloadDialog.qml:377
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:148
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Vybrané:"
 
-#: ../src/app/qml/DownloadDialog.qml:377
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:148
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "None"
+msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Nič"
 
-#: ../src/app/qml/DownloadDialog.qml:384
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:156
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "Your board or device is not supported by Fedora Media Writer yet. Please "
+#| "check <a href=%1>this page</a> for more information about its "
+#| "compatibility with Fedora and how to create bootable media for it."
+msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
 "check <a href=%1>this page</a> for more information about its compatibility "
@@ -114,231 +299,305 @@ msgstr ""
 "informácií o kompatibilite s Fedorou, a ako pre ňu vytvoriť spustiteľné "
 "médium, nájdete na <a href=%1>tejto stránke</a>."
 
-#: ../src/app/qml/DownloadDialog.qml:392
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:165
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "The selected drive's size is %1. It's possible you have selected an "
+#| "external drive by accident!"
+msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
 "Veľkosť vybraného disku je %1. Je možné, že ste omylom vybrali externý disk!"
 
-#: ../src/app/qml/DownloadDialog.qml:419
+#: ../src/app/qml/DownloadPage.qml:174
 #, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 B left)"
-msgstr "(zostáva %1 B)"
+msgctxt "DownloadPage|"
+msgid "Restart and boot from %1 to start using %2."
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:420
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 KB left)"
-msgstr "(zostáva %1 KB)"
+#: ../src/app/qml/DownloadPage.qml:262
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Writing is not possible"
+msgctxt "DownloadPage|"
+msgid "Writing not possible"
+msgstr "Zapisovanie nie je možné"
 
-#: ../src/app/qml/DownloadDialog.qml:421
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 MB left)"
-msgstr "(zostáva %1 MB)"
+#: ../src/app/qml/DownloadPage.qml:282
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Writing"
+msgstr "Zapisovanie"
 
-#: ../src/app/qml/DownloadDialog.qml:422
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 GB left)"
-msgstr "(zostáva %1 GB)"
+#: ../src/app/qml/DownloadPage.qml:310
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Write verifying"
+msgstr "Zapisovanie"
 
-#: ../src/app/qml/DownloadDialog.qml:435
-msgctxt "DownloadDialog|"
-msgid "Write the image immediately when the download is finished"
-msgstr "Zapísať obraz okamžite po dokončení sťahovania"
+#: ../src/app/qml/DownloadPage.qml:334
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Finished!"
+msgctxt "DownloadPage|"
+msgid "Finish"
+msgstr "Dokončené!"
 
-#: ../src/app/qml/DownloadDialog.qml:509
-msgctxt "DownloadDialog|"
-msgid "There are no portable drives connected"
-msgstr "Nie sú pripojené žiadne prenosné disky"
+#: ../src/app/qml/DownloadPage.qml:347
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Writing %1 was successful"
+msgctxt "DownloadPage|"
+msgid "Write Successful"
+msgstr "Zapisovanie %1 bolo úspešné"
 
-#: ../src/app/qml/DownloadDialog.qml:532
-msgctxt "DownloadDialog|"
-msgid "Other"
-msgstr "Iné"
+#: ../src/app/qml/DownloadPage.qml:365
+msgctxt "DownloadPage|"
+msgid "Failed verification no drives"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:561
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-msgstr "Nebolo možné vymazať <br>\"<a href=\"%1\">%2</a>\"."
+#: ../src/app/qml/DownloadPage.qml:381
+msgctxt "DownloadPage|"
+msgid "Failed verification"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:573
-msgctxt "DownloadDialog|"
-msgid "Cancel"
-msgstr "Zrušiť"
+#: ../src/app/qml/DownloadPage.qml:393
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the download"
+msgctxt "DownloadPage|"
+msgid "Failed download"
+msgstr "Overovanie stiahnutého súboru"
 
-#: ../src/app/qml/DownloadDialog.qml:586
-msgctxt "DownloadDialog|"
-msgid "Write to Disk"
-msgstr "Zapísať na disk"
+#: ../src/app/qml/DownloadPage.qml:409
+msgctxt "DownloadPage|"
+msgid "Failed no drives"
+msgstr ""
 
-#: ../src/app/drivemanager.cpp:286
+#: ../src/app/drivemanager.cpp:288
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "Tento disk nie je dostatočne veľký."
 
-#: ../src/app/qml/ImageDetails.qml:98
-msgctxt "ImageDetails|"
-msgid "Back"
-msgstr "Späť"
+#: ../src/app/qml/DrivePage.qml:36
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Write to Disk"
+msgctxt "DrivePage|"
+msgid "Write Options"
+msgstr "Zapísať na disk"
 
-#: ../src/app/qml/ImageDetails.qml:105
-msgctxt "ImageDetails|"
-msgid "Create Live USB…"
-msgstr "Vytvoriť Live USB..."
-
-#. The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
-#: ../src/app/qml/ImageDetails.qml:167
-#, qt-format
-msgctxt "ImageDetails|"
-msgid "(%1 after writing)"
-msgstr "(%1 po zapísaní)"
-
-#: ../src/app/qml/ImageDetails.qml:192
-#, qt-format
-msgctxt "ImageDetails|"
-msgid "Version %1"
+#: ../src/app/qml/DrivePage.qml:45
+#, fuzzy
+#| msgctxt "ImageDetails|"
+#| msgid "Version %1"
+msgctxt "DrivePage|"
+msgid "Version"
 msgstr "Verzia %1"
 
-#: ../src/app/qml/ImageDetails.qml:296
-#, qt-format
-msgctxt "ImageDetails|"
-msgid ""
-"Fedora %1 was released! Check it out!<br>If you want a stable, finished "
-"system, it's better to stay at version %2."
+#: ../src/app/qml/DrivePage.qml:62
+msgctxt "DrivePage|"
+msgid "Hardware Architecture"
 msgstr ""
-"Bola vydaná Fedora %1! Určite ju vyskúšajte!<br>Ak však chcete stabilný a "
-"dokončený systém, bude lepšie zostať pri verzii %2."
 
-#: ../src/app/qml/ImageDetails.qml:314
-#, qt-format
-msgctxt "ImageDetails|"
-msgid ", released on %1"
-msgstr ", vydaná %1"
+#: ../src/app/qml/DrivePage.qml:79
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DrivePage|"
+msgid "Selected file"
+msgstr "Vybrané:"
 
-#: ../src/app/qml/ImageDetails.qml:324
-msgctxt "ImageDetails|"
-msgid "Other variants..."
-msgstr "Ďalšie varianty..."
+#: ../src/app/qml/DrivePage.qml:86
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "None"
+msgctxt "DrivePage|"
+msgid "None"
+msgstr "Nič"
 
-#: ../src/app/qml/ImageList.qml:84
-msgctxt "ImageList|"
-msgid "Find an operating system image"
-msgstr "Nájsť obraz operačného systému"
+#: ../src/app/qml/DrivePage.qml:94
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DrivePage|"
+msgid "Select..."
+msgstr "Vybrané:"
 
-#: ../src/app/qml/ImageList.qml:168
-msgctxt "ImageList|"
-msgid "Checking for new releases"
-msgstr "Kontrola nových vydaní"
+#: ../src/app/qml/DrivePage.qml:111
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Image files"
+msgctxt "DrivePage|"
+msgid "Image files"
+msgstr "Súbory obrazov"
 
-#: ../src/app/qml/ImageList.qml:251
-msgctxt "ImageList|"
-msgid "About Fedora Media Writer"
-msgstr "O aplikácii Fedora Media Writer"
+#: ../src/app/qml/DrivePage.qml:111
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "All files (*)"
+msgctxt "DrivePage|"
+msgid "All files (*)"
+msgstr "Všetky súbory (*)"
 
-#: ../src/app/qml/ImageList.qml:275
-#, qt-format
-msgctxt "ImageList|"
-msgid "Version %1"
-msgstr "Verzia %1"
+#: ../src/app/qml/DrivePage.qml:122
+msgctxt "DrivePage|"
+msgid "USB Drive"
+msgstr ""
 
-#: ../src/app/qml/ImageList.qml:282
-msgctxt "ImageList|"
-msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Fedora Media Writer teraz kontroluje nové vydania"
+#: ../src/app/qml/DrivePage.qml:130
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "There are no portable drives connected"
+msgctxt "DrivePage|"
+msgid "There are no portable drives connected"
+msgstr "Nie sú pripojené žiadne prenosné disky"
 
-#: ../src/app/qml/ImageList.qml:296
-#, qt-format
-msgctxt "ImageList|"
-msgid "Please report bugs or your suggestions on %1"
-msgstr "Chyby a svoje návrhy nahláste prosím na %1"
+#: ../src/app/qml/DrivePage.qml:149
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "DrivePage|"
+msgid "Download"
+msgstr "Sťahovanie"
 
-#: ../src/app/qml/ImageList.qml:356
-msgctxt "ImageList|"
-msgid "Display additional Fedora flavors"
-msgstr "Zobraziť ďalšie varianty Fedory"
+#: ../src/app/qml/DrivePage.qml:154
+#, fuzzy
+#| msgctxt "DeleteButton|"
+#| msgid "Delete the Downloaded Image"
+msgctxt "DrivePage|"
+msgid "Delete download after writing"
+msgstr "Vymazať stiahnutý obraz"
 
-#: ../src/app/linuxdrivemanager.cpp:181
+#: ../src/app/linuxdrivemanager.cpp:196
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
 msgstr "Disk bol odpojený počas zapisovania."
 
-#: ../src/app/linuxdrivemanager.cpp:210
+#: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "Nepodarilo sa nájsť pomocný program. Skontrolujte svoju inštaláciu."
 
-#: ../src/app/linuxdrivemanager.cpp:245
+#: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
 msgstr "Zastavené pred skončením zápisu."
 
-#: ../src/app/linuxdrivemanager.cpp:315 ../src/app/linuxdrivemanager.cpp:344
+#: ../src/app/linuxdrivemanager.cpp:329
 msgctxt "LinuxDrive|"
 msgid "Finished!"
 msgstr "Dokončené!"
 
-#: ../src/app/linuxdrivemanager.cpp:315 ../src/app/linuxdrivemanager.cpp:344
+#: ../src/app/linuxdrivemanager.cpp:329
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
 msgstr "Zapisovanie %1 bolo úspešné"
 
-#: ../src/app/linuxdrivemanager.cpp:337
+#: ../src/app/linuxdrivemanager.cpp:351
 msgctxt "LinuxDrive|"
 msgid "Error"
 msgstr "Chyba"
 
-#: ../src/app/linuxdrivemanager.cpp:337
+#: ../src/app/linuxdrivemanager.cpp:351
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
 msgstr "Zapisovanie %1 zlyhalo"
 
-#: ../src/app/linuxdrivemanager.cpp:116
+#: ../src/app/linuxdrivemanager.cpp:122
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr "Zdá sa, že UDisk2 je v systéme nedostupný alebo neprístupný."
 
-#: ../src/app/macdrivemanager.cpp:101
+#: ../src/app/macdrivemanager.cpp:100
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "Nepodarilo sa nájsť pomocný program. Skontrolujte svoju inštaláciu."
 
-#: ../src/app/macdrivemanager.cpp:188
+#: ../src/app/macdrivemanager.cpp:182
 msgctxt "MacDrive|"
 msgid "Error"
 msgstr "Chyba"
 
-#: ../src/app/macdrivemanager.cpp:188
+#: ../src/app/macdrivemanager.cpp:182
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
 msgstr "Zapisovanie %1 zlyhalo"
 
-#: ../src/app/macdrivemanager.cpp:192
+#: ../src/app/macdrivemanager.cpp:186
 msgctxt "MacDrive|"
 msgid "Finished!"
 msgstr "Dokončené!"
 
-#: ../src/app/macdrivemanager.cpp:192
+#: ../src/app/macdrivemanager.cpp:186
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
 msgstr "Zapisovanie %1 bolo úspešné"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/qml/MainPage.qml:43
+msgctxt "MainPage|"
+msgid "Select Image Source"
+msgstr ""
+
+#: ../src/app/qml/MainPage.qml:57
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
+msgctxt "MainPage|"
+msgid "Download automatically"
+msgstr "Sťahovanie zlyhalo"
+
+#: ../src/app/qml/MainPage.qml:65
+msgctxt "MainPage|"
+msgid "Select .iso file"
+msgstr ""
+
+#: ../src/app/qml/MainPage.qml:76
+#, fuzzy, qt-format
+#| msgctxt "RestoreDialog|"
+#| msgid "Restore %1?"
+msgctxt "MainPage|"
+msgid "Restore <b>%1</b>"
+msgstr "Obnoviť %1?"
+
+#: ../src/app/portalfiledialog.cpp:145
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Image files"
+msgctxt "PortalFileDialog|"
+msgid "Image files"
+msgstr "Súbory obrazov"
+
+#: ../src/app/portalfiledialog.cpp:155
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "All files (*)"
+msgctxt "PortalFileDialog|"
+msgid "All files"
+msgstr "Všetky súbory (*)"
+
+#: ../src/app/portalfiledialog.cpp:165
+msgctxt "PortalFileDialog|"
+msgid "Open File"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Vyberte súbor z disku"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -349,180 +608,137 @@ msgstr ""
 "zapísaný na USB disk</p><p>Aktuálne je podporovaný iba zápis surových "
 "obrazov disku (.iso alebo .bin)</p>"
 
-#: ../src/app/releasemanager.cpp:362
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora spiny"
 
-#: ../src/app/releasemanager.cpp:364
+#: ../src/app/releasemanager.cpp:399
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Laboratóriá Fedora"
 
-#: ../src/app/releasemanager.cpp:366
+#: ../src/app/releasemanager.cpp:401
+msgctxt "Release|"
+msgid "Emerging Fedora Editions"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:403
 msgctxt "Release|"
 msgid "Other"
 msgstr "Ostatné"
 
-#: ../src/app/releasemanager.cpp:936
+#: ../src/app/releasemanager.cpp:979
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 64bit"
 msgstr "Intel 64-bit"
 
-#: ../src/app/releasemanager.cpp:936
+#: ../src/app/releasemanager.cpp:979
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "ISO formát obrazu pre Intel, AMD a ďalšie kompatibilné PC (64-bit)"
 
-#: ../src/app/releasemanager.cpp:937
+#: ../src/app/releasemanager.cpp:980
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 32bit"
 msgstr "Intel 32-bit"
 
-#: ../src/app/releasemanager.cpp:937
+#: ../src/app/releasemanager.cpp:980
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "ISO formát obrazu pre Intel, AMD a ďalšie kompatibilné PC (32-bit)"
 
-#: ../src/app/releasemanager.cpp:938
+#: ../src/app/releasemanager.cpp:981
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:938
+#: ../src/app/releasemanager.cpp:981
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
 "Surový obraz komprimovaný LZMA pre stroje ARM v7-A (napr. Raspberry Pi 2 a 3)"
 
-#: ../src/app/releasemanager.cpp:939
+#: ../src/app/releasemanager.cpp:982
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:939
+#: ../src/app/releasemanager.cpp:982
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "Surový obraz komprimovaný LZMA pre stroje AArch64"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Vlastný obraz"
 
-#: ../src/app/releasemanager.cpp:797 ../src/app/releasemanager.cpp:809
+#: ../src/app/releasemanager.cpp:840 ../src/app/releasemanager.cpp:852
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Stiahnutý obraz je poškodený"
 
-#: ../src/app/releasemanager.cpp:814
+#: ../src/app/releasemanager.cpp:857
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Stiahnutý súbor nie je možné čítať."
 
-#: ../src/app/releasemanager.cpp:826
+#: ../src/app/releasemanager.cpp:869
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Nepodarilo sa premenovať dočasný súbor."
 
-#: ../src/app/releasemanager.h:386
-msgctxt "ReleaseVariant|"
-msgid "Preparing"
-msgstr "Príprava"
-
-#: ../src/app/releasemanager.h:387
-msgctxt "ReleaseVariant|"
-msgid "Downloading"
-msgstr "Sťahovanie"
-
-#: ../src/app/releasemanager.h:388
-msgctxt "ReleaseVariant|"
-msgid "Checking the download"
-msgstr "Overovanie stiahnutého súboru"
-
-#: ../src/app/releasemanager.h:389
-msgctxt "ReleaseVariant|"
-msgid "Ready to write"
-msgstr "Pripravené na zápis"
-
-#: ../src/app/releasemanager.h:390
-msgctxt "ReleaseVariant|"
-msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr ""
-"Súbor obrazu bol uložený do adresára so stiahnutými súbormi, pretože "
-"zapisovanie nebolo možné"
-
-#: ../src/app/releasemanager.h:391
-msgctxt "ReleaseVariant|"
-msgid "Writing"
-msgstr "Zapisovanie"
-
-#: ../src/app/releasemanager.h:392
-msgctxt "ReleaseVariant|"
-msgid "Checking the written data"
-msgstr "Overovanie zapísaných údajov"
-
-#: ../src/app/releasemanager.h:393
-msgctxt "ReleaseVariant|"
-msgid "Finished!"
-msgstr "Dokončené!"
-
-#: ../src/app/releasemanager.h:394
-msgctxt "ReleaseVariant|"
-msgid "The written data is corrupted"
-msgstr "Zapísané údaje sú poškodené"
-
-#: ../src/app/releasemanager.h:395
-msgctxt "ReleaseVariant|"
-msgid "Download failed"
-msgstr "Sťahovanie zlyhalo"
-
-#: ../src/app/releasemanager.h:396
-msgctxt "ReleaseVariant|"
-msgid "Error"
-msgstr "Chyba"
-
-#: ../src/app/releasemanager.cpp:607
+#: ../src/app/releasemanager.cpp:648
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alfa"
 
-#: ../src/app/releasemanager.cpp:609
+#: ../src/app/releasemanager.cpp:650
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:611
+#: ../src/app/releasemanager.cpp:652
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "%1 RC"
 
-#: ../src/app/qml/RestoreDialog.qml:31
+#: ../src/app/qml/RestorePage.qml:37
 #, qt-format
-msgctxt "RestoreDialog|"
-msgid "Restore %1?"
-msgstr "Obnoviť %1?"
+msgctxt "RestorePage|"
+msgid "Restore Drive <b>%1</b>"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:73
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:49
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "<p align=\"justify\">\n"
+#| "                                                To reclaim all space "
+#| "available on the drive, it has to be restored to its factory settings.\n"
+#| "                                                The live system and all "
+#| "saved data will be deleted.\n"
+#| "                                            </p>\n"
+#| "                                            <p align=\"justify\">\n"
+#| "                                                You don't need to restore "
+#| "the drive if you want to write another live system to it.\n"
+#| "                                            </p>\n"
+#| "                                            <p align=\"justify\">\n"
+#| "                                                Do you want to continue?\n"
+#| "                                            </p>"
+msgctxt "RestorePage|"
 msgid ""
-"<p align=\"justify\">\n"
-"                                                To reclaim all space "
-"available on the drive, it has to be restored to its factory settings.\n"
-"                                                The live system and all "
-"saved data will be deleted.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                You don't need to restore "
-"the drive if you want to write another live system to it.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Do you want to continue?\n"
-"                                            </p>"
+"<p align=\"justify\"> To reclaim all space available on the drive, it has to "
+"be restored to its factory settings. The live system and all saved data will "
+"be deleted. </p> <p align=\"justify\"> You don't need to restore the drive "
+"if you want to write another live system to it. \n"
+"                </p> <p align=\"justify\"> Do you want to restore it to "
+"factory settings? </p>"
 msgstr ""
 "<p align=\"justify\">\n"
 "                                                Pre získanie všetkého "
@@ -538,8 +754,13 @@ msgstr ""
 "                                                Chcete pokračovať?\n"
 "                                            </p>"
 
-#: ../src/app/qml/RestoreDialog.qml:105
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:67
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
+#| "portable drive.</p>"
+msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
@@ -547,34 +768,68 @@ msgstr ""
 "<p align=\"justify\">Prosím počkajte dokedy Fedora Media Writer neobnoví váš "
 "prenosný disk.</p>"
 
-#: ../src/app/qml/RestoreDialog.qml:121
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:84
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid "Your drive was successfully restored!"
+msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "Váš disk bol úspešne obnovený!"
 
-#: ../src/app/qml/RestoreDialog.qml:138
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:94
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "Unfortunately, an error occurred during the process.<br>Please try "
+#| "restoring the drive using your system tools."
+msgctxt "RestorePage|"
 msgid ""
-"Unfortunately, an error occurred during the process.<br>Please try restoring "
+"Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
 "Bohužiaľ, počas spracovania sa vyskytla chyba.<br>Vyskúšajte prosím obnoviť "
 "disk pomocou systémových nástrojov."
 
-#: ../src/app/qml/RestoreDialog.qml:150
-msgctxt "RestoreDialog|"
-msgid "Cancel"
-msgstr "Zrušiť"
+#: ../src/app/qml/RestorePage.qml:143
+msgctxt "RestorePage|"
+msgid "Restoring finished"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:159 ../src/app/qml/RestoreDialog.qml:170
-msgctxt "RestoreDialog|"
-msgid "Restore"
-msgstr "Obnoviť"
+#: ../src/app/qml/VersionPage.qml:35
+msgctxt "VersionPage|"
+msgid "Select Fedora Release"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:159
-msgctxt "RestoreDialog|"
-msgid "Close"
-msgstr "Zavrieť"
+#: ../src/app/qml/VersionPage.qml:48
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "VersionPage|"
+msgid "Select from:"
+msgstr "Vybrané:"
+
+#: ../src/app/qml/VersionPage.qml:53
+msgctxt "VersionPage|"
+msgid "Official Editions"
+msgstr ""
+
+#: ../src/app/qml/VersionPage.qml:59
+msgctxt "VersionPage|"
+msgid "Emerging Editions"
+msgstr ""
+
+#: ../src/app/qml/VersionPage.qml:65
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "spins"
+msgctxt "VersionPage|"
+msgid "Spins"
+msgstr "spiny"
+
+#: ../src/app/qml/VersionPage.qml:71
+msgctxt "VersionPage|"
+msgid "Labs"
+msgstr ""
 
 #: ../src/app/windrivemanager.cpp:270
 msgctxt "WinDrive|"
@@ -592,153 +847,93 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "Zapisovanie %1 bolo úspešné"
 
-#: ../src/helper/linux/writejob.cpp:136 ../src/helper/win/writejob.cpp:271
-#: ../src/helper/mac/writejob.cpp:219
-msgctxt "WriteJob|"
-msgid "Failed to start decompressing."
-msgstr "Nepodarilo sa spustiť dekompresiu."
-
-#: ../src/helper/linux/writejob.cpp:161 ../src/helper/linux/writejob.cpp:191
-#: ../src/helper/linux/writejob.cpp:228 ../src/helper/win/writejob.cpp:188
-#: ../src/helper/win/writejob.cpp:195 ../src/helper/mac/writejob.cpp:180
-#: ../src/helper/mac/writejob.cpp:244 ../src/helper/mac/writejob.cpp:274
-msgctxt "WriteJob|"
-msgid "Destination drive is not writable"
-msgstr "Na cieľový disk nie je možné zapisovať"
-
-#: ../src/helper/linux/writejob.cpp:170 ../src/helper/win/writejob.cpp:315
-#: ../src/helper/mac/writejob.cpp:253
-msgctxt "WriteJob|"
-msgid "There is not enough memory to decompress the file."
-msgstr "Systém nemá dostatok pamäte na dekompresiu súboru."
-
-#: ../src/helper/linux/writejob.cpp:175 ../src/helper/win/writejob.cpp:320
-#: ../src/helper/mac/writejob.cpp:258
-msgctxt "WriteJob|"
-msgid "The downloaded compressed file is corrupted."
-msgstr "Stiahnutý komprimovaný súbor je poškodený."
-
-#: ../src/helper/linux/writejob.cpp:178 ../src/helper/win/writejob.cpp:323
-#: ../src/helper/mac/writejob.cpp:261
-msgctxt "WriteJob|"
-msgid "Unsupported compression options."
-msgstr "Nepodporované voľby kompresie."
-
-#: ../src/helper/linux/writejob.cpp:181 ../src/helper/win/writejob.cpp:326
-#: ../src/helper/mac/writejob.cpp:264
-msgctxt "WriteJob|"
-msgid "Unknown decompression error."
-msgstr "Neznáma chyba pri dekompresii."
-
-#: ../src/helper/linux/writejob.cpp:206 ../src/helper/linux/writejob.cpp:221
-#: ../src/helper/win/writejob.cpp:361
-msgctxt "WriteJob|"
-msgid "Source image is not readable"
-msgstr "Zdrojový obraz nie je možné čítať"
-
-#: ../src/helper/linux/writejob.cpp:257 ../src/helper/win/writejob.cpp:406
-#: ../src/helper/mac/writejob.cpp:297
-msgctxt "WriteJob|"
-msgid "Your drive is probably damaged."
-msgstr "Váš disk je pravdepodobne poškodený."
-
-#: ../src/helper/linux/writejob.cpp:262 ../src/helper/win/writejob.cpp:411
-#: ../src/helper/mac/writejob.cpp:302
-msgctxt "WriteJob|"
-msgid "Unexpected error occurred during media check."
-msgstr "Počas kontroly disku sa vyskytla neočakávaná chyba."
-
-#: ../src/helper/win/writejob.cpp:74
-msgctxt "WriteJob|"
-msgid "Couldn't open the drive for writing"
-msgstr "Nepodarilo sa otvoriť disk na zápis"
-
-#: ../src/helper/win/writejob.cpp:98
-msgctxt "WriteJob|"
-msgid "Couldn't lock the drive"
-msgstr "Nepodarilo sa zamknúť disk"
-
-#: ../src/helper/win/writejob.cpp:134
-#, qt-format
-msgctxt "WriteJob|"
-msgid "Couldn't remove the drive %1:"
-msgstr "Nepodarilo sa odpojiť disk %1:"
-
-#: ../src/helper/win/writejob.cpp:209
-msgctxt "WriteJob|"
-msgid "Couldn't unlock the drive"
-msgstr "Nepodarilo sa odomknúť disk"
-
-#: ../src/helper/mac/writejob.cpp:82
-msgctxt "WriteJob|"
-msgid "Unable to allocate socket pair"
-msgstr "Nepodarilo sa prideliť dvojicu soketov"
-
-#: ../src/helper/mac/writejob.cpp:127
-msgctxt "WriteJob|"
-msgid "Unable to open destination for writing"
-msgstr "Nepodarilo sa otvoriť cieľ pre zápis"
-
-#: ../src/app/qml/main.qml:68
-#, qt-format
+#: ../src/app/qml/main.qml:116
+#, fuzzy
+#| msgid "Fedora Media Writer"
 msgctxt "main|"
-msgid ""
-"You inserted <b>%1</b> that already contains a live system.<br>Do you want "
-"to restore it to factory settings?"
-msgstr ""
-"Vložili ste <b>%1</b>, ktorý už obsahuje live systém.<br>Chcete ho obnoviť "
-"do výrobných nastavení?"
+msgid "Fedora Media Writer"
+msgstr "Fedora Media Writer"
 
-#: ../src/app/qml/main.qml:70
+#: ../src/app/qml/main.qml:154
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Workstation"
+msgctxt "main|"
+msgid "Select Fedora Version"
+msgstr "Fedora Workstation"
+
+#: ../src/app/qml/main.qml:170
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "main|"
+msgid "Select Drive"
+msgstr "Vybrané:"
+
+#: ../src/app/qml/main.qml:204
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "main|"
+msgid "Downloading"
+msgstr "Sťahovanie"
+
+#: ../src/app/qml/main.qml:243 ../src/app/qml/main.qml:284
 msgctxt "main|"
 msgid "Restore"
 msgstr "Obnoviť"
 
-#: ../src/app/qml/main.qml:146
-#, qt-format
+#: ../src/app/qml/main.qml:283
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Finished!"
 msgctxt "main|"
-msgid "Fedora Media Writer %1 Released"
-msgstr "Bola vydaný Fedora Media Writer %1"
+msgid "Finish"
+msgstr "Dokončené!"
 
-#: ../src/app/qml/main.qml:147
+#: ../src/app/qml/main.qml:286
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
 msgctxt "main|"
-msgid "Update for great new features and bugfixes!"
-msgstr "Aktualizujte kvôli novým skvelým funkciám a opravám chýb!"
+msgid "Download & Write"
+msgstr "Sťahovanie zlyhalo"
 
-#: ../src/app/qml/main.qml:148
+#: ../src/app/qml/main.qml:289 ../src/app/qml/main.qml:300
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Cancel"
 msgctxt "main|"
-msgid "Open Browser"
-msgstr "Otvoriť prehliadač"
+msgid "Cancel"
+msgstr "Zrušiť"
 
-#: ../src/app/qml/main.qml:163
+#: ../src/app/qml/main.qml:291
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Retry"
 msgctxt "main|"
-msgid "Image files"
-msgstr "Súbory obrazov"
+msgid "Retry"
+msgstr "Opakovať"
 
-#: ../src/app/qml/main.qml:163
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
-msgid "All files (*)"
-msgstr "Všetky súbory (*)"
-
-#: ../src/app/qml/main.qml:192
-#, qt-format
-msgctxt "main|"
-msgid ""
-"%1<br>Writing images will not be possible.<br>You can still view Fedora "
-"flavors and download images to your hard drive."
+msgid "Next"
 msgstr ""
-"%1<br>Zapisovanie obrazov nebude možné.<br>Stále si však môžete prezerať "
-"varianty Fedory a stahovať obrazy na disk."
 
-#: ../src/app/qml/main.qml:196
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
-msgid "Ok"
-msgstr "Ok"
+msgid "About"
+msgstr ""
+
+#: ../src/app/qml/main.qml:301
+msgctxt "main|"
+msgid "Previous"
+msgstr ""
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop.in:4
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
 
@@ -773,1012 +968,1101 @@ msgstr ""
 "Fedora Media Writer umožňuje tiež zapísať iné spustiteľné ISO obrazy z vášho "
 "disku. Nezabudnite však, že bol testovaný iba s obrazmi Fedory."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop.in:39
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:39
 msgid "Write Fedora images to your portable drives"
 msgstr "Zapisujte obrazy Fedory na vaše prenosné disky"
 
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:77
+msgid "fmw;usb;iso;bootable;"
+msgstr ""
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Write %1"
+#~ msgstr "Zapísať %1"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Write the image immediately when the download is finished"
+#~ msgstr "Zapísať obraz okamžite po dokončení sťahovania"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Other"
+#~ msgstr "Iné"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
+#~ msgstr "Nebolo možné vymazať <br>\"<a href=\"%1\">%2</a>\"."
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "Back"
+#~ msgstr "Späť"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "Create Live USB…"
+#~ msgstr "Vytvoriť Live USB..."
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "(%1 after writing)"
+#~ msgstr "(%1 po zapísaní)"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid ""
+#~ "Fedora %1 was released! Check it out!<br>If you want a stable, finished "
+#~ "system, it's better to stay at version %2."
+#~ msgstr ""
+#~ "Bola vydaná Fedora %1! Určite ju vyskúšajte!<br>Ak však chcete stabilný a "
+#~ "dokončený systém, bude lepšie zostať pri verzii %2."
+
+#~ msgctxt "ImageDetails|"
+#~ msgid ", released on %1"
+#~ msgstr ", vydaná %1"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "Other variants..."
+#~ msgstr "Ďalšie varianty..."
+
+#~ msgctxt "ImageList|"
+#~ msgid "Find an operating system image"
+#~ msgstr "Nájsť obraz operačného systému"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Checking for new releases"
+#~ msgstr "Kontrola nových vydaní"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Version %1"
+#~ msgstr "Verzia %1"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Display additional Fedora flavors"
+#~ msgstr "Zobraziť ďalšie varianty Fedory"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Ready to write"
+#~ msgstr "Pripravené na zápis"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid ""
+#~ "Image file was saved to your downloads folder. Writing is not possible"
+#~ msgstr ""
+#~ "Súbor obrazu bol uložený do adresára so stiahnutými súbormi, pretože "
+#~ "zapisovanie nebolo možné"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Finished!"
+#~ msgstr "Dokončené!"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "The written data is corrupted"
+#~ msgstr "Zapísané údaje sú poškodené"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Error"
+#~ msgstr "Chyba"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Cancel"
+#~ msgstr "Zrušiť"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Restore"
+#~ msgstr "Obnoviť"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Close"
+#~ msgstr "Zavrieť"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Failed to start decompressing."
+#~ msgstr "Nepodarilo sa spustiť dekompresiu."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Destination drive is not writable"
+#~ msgstr "Na cieľový disk nie je možné zapisovať"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "There is not enough memory to decompress the file."
+#~ msgstr "Systém nemá dostatok pamäte na dekompresiu súboru."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "The downloaded compressed file is corrupted."
+#~ msgstr "Stiahnutý komprimovaný súbor je poškodený."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unsupported compression options."
+#~ msgstr "Nepodporované voľby kompresie."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unknown decompression error."
+#~ msgstr "Neznáma chyba pri dekompresii."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Source image is not readable"
+#~ msgstr "Zdrojový obraz nie je možné čítať"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Your drive is probably damaged."
+#~ msgstr "Váš disk je pravdepodobne poškodený."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unexpected error occurred during media check."
+#~ msgstr "Počas kontroly disku sa vyskytla neočakávaná chyba."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't open the drive for writing"
+#~ msgstr "Nepodarilo sa otvoriť disk na zápis"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't lock the drive"
+#~ msgstr "Nepodarilo sa zamknúť disk"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't remove the drive %1:"
+#~ msgstr "Nepodarilo sa odpojiť disk %1:"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't unlock the drive"
+#~ msgstr "Nepodarilo sa odomknúť disk"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unable to allocate socket pair"
+#~ msgstr "Nepodarilo sa prideliť dvojicu soketov"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unable to open destination for writing"
+#~ msgstr "Nepodarilo sa otvoriť cieľ pre zápis"
+
+#~ msgctxt "main|"
+#~ msgid ""
+#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
+#~ "want to restore it to factory settings?"
+#~ msgstr ""
+#~ "Vložili ste <b>%1</b>, ktorý už obsahuje live systém.<br>Chcete ho "
+#~ "obnoviť do výrobných nastavení?"
+
+#~ msgctxt "main|"
+#~ msgid "Fedora Media Writer %1 Released"
+#~ msgstr "Bola vydaný Fedora Media Writer %1"
+
+#~ msgctxt "main|"
+#~ msgid "Update for great new features and bugfixes!"
+#~ msgstr "Aktualizujte kvôli novým skvelým funkciám a opravám chýb!"
+
+#~ msgctxt "main|"
+#~ msgid "Open Browser"
+#~ msgstr "Otvoriť prehliadač"
+
+#~ msgctxt "main|"
+#~ msgid ""
+#~ "%1<br>Writing images will not be possible.<br>You can still view Fedora "
+#~ "flavors and download images to your hard drive."
+#~ msgstr ""
+#~ "%1<br>Zapisovanie obrazov nebude možné.<br>Stále si však môžete prezerať "
+#~ "varianty Fedory a stahovať obrazy na disk."
+
+#~ msgctxt "main|"
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
 # ############## metadata.json ###############
-#: [Workstation].subvariant
-msgid "workstation"
-msgstr "workstation"
-
-#: [Workstation].category
-msgctxt "Release|"
-msgid "product"
-msgstr "produkt"
-
-#: [Workstation].name
-msgctxt "Release|"
-msgid "Fedora Workstation"
-msgstr "Fedora Workstation"
-
-#: [Workstation].summary
-msgctxt "Release|"
-msgid "This is the Linux workstation you've been waiting for."
-msgstr "Toto je linuxová pracovná stanica, na ktorú ste čakali."
-
-#: [Workstation].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora Workstation is a reliable, user-friendly, and powerful operating "
-"system for your laptop or desktop computer. It supports a wide range of "
-"developers, from hobbyists and students to professionals in corporate "
-"environments."
-msgstr ""
-"Fedora Workstation je spoľahlivý, používateľsky prívetivý a výkonný operačný "
-"systém pre notebooky a stolné počítače. Podporuje širokú škálu vývojárov od "
-"nadšencov a študentov až po profesionálov v podnikových prostrediach."
-
-#: [Workstation].description[1]
-msgctxt "Release|"
-msgid ""
-"“The plethora of tools provided by<br /> Fedora allows me to get the job "
-"done.<br /> It just works.”"
-msgstr ""
-"“Veľké množstvo nástrojov poskytovaných<br /> Fedorou mi umožňuje dokončiť "
-"prácu.<br /> Jednoducho funguje.”"
-
-#: [Workstation].description[2]
-msgctxt "Release|"
-msgid "JVM performance engineer"
-msgstr "inžinier výkonu JVM"
-
-#: [Workstation].description[3]
-msgctxt "Release|"
-msgid "Sleek user interface"
-msgstr "Uhladené používateľské rozhranie"
-
-#: [Workstation].description[4]
-msgctxt "Release|"
-msgid ""
-"Focus on your code in the GNOME 3 desktop environment. GNOME is built with "
-"developer feedback and minimizes distractions, so you can concentrate on "
-"what's important."
-msgstr ""
-"Zamerajte sa na svoj kód v pracovnom prostredí GNOME 3. GNOME je vytvorené "
-"na základe spätnej väzby od vývojárov a minimalizuje rozptyľovanie, takže sa "
-"môžete koncentrovať na to, čo je dôležité."
-
-#: [Workstation].description[5]
-msgctxt "Release|"
-msgid "Complete open source toolbox"
-msgstr "Kompletná sada open-source nástrojov"
-
-#: [Workstation].description[6]
-msgctxt "Release|"
-msgid ""
-"Skip the drag of trying to find or build the tools you need. With Fedora's "
-"complete set of open source languages, tools, and utilities, everything is a "
-"click or command line away. There's even project hosting and repositories "
-"like COPR to make your code and builds available quickly to the community."
-msgstr ""
-"Preskočte zdĺhavé hľadanie a kompilovanie potrebných nástrojov. S kompletnou "
-"sadou open-source jazykov a nástrojov máte vo Fedore všetko dostupné na pár "
-"klikov alebo cez príkazový riadok. Dokonca existuje i hosting projektov a "
-"repozitárov ako napr. COPR, ktorý umožňuje rýchlo sprístupniť váš kód a "
-"buildy komunite."
-
-#: [Workstation].description[7]
-msgctxt "Release|"
-msgid "GNOME Boxes & other virt tools"
-msgstr "GNOME Boxes a iné virtualizačné nástroje"
-
-#: [Workstation].description[8]
-msgctxt "Release|"
-msgid ""
-"Get virtual machines up and running quickly to test your code on multiple "
-"platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization "
-"tools for even more control."
-msgstr ""
-"Pomocou GNOME Boxy môžete rýchlo sprevádzkovať virtuálne počítače, aby ste "
-"otestovali svoj kód na viacerých platformách. Ak potrebujete ešte väčšiu "
-"kontrolu, využite výkonné a skriptovateľné virtualizačné nástroje."
-
-#: [Workstation].description[9]
-msgctxt "Release|"
-msgid "Built-in Docker support"
-msgstr "Vstavaná podpora Docker"
-
-#: [Workstation].description[10]
-msgctxt "Release|"
-msgid ""
-"Containerize your own apps, or deploy containerized apps out of the box on "
-"Fedora, using the latest technology like Docker."
-msgstr ""
-"Kontajnerizujte svoje vlastné aplikácie, alebo nasadzujte kontajnerizované "
-"aplikácie bez úprav na Fedore pomocou najnovších technológií ako Docker."
-
-#: [Server].subvariant
-msgctxt "Release|"
-msgid "server"
-msgstr "server"
-
-#: [Server].category [Server].name
-msgctxt "Release|"
-msgid "Fedora Server"
-msgstr "Fedora Server"
-
-#: [Server].summary
-msgctxt "Release|"
-msgid ""
-"The latest technology. A stable foundation. Together, for your applications "
-"and services."
-msgstr ""
-"Posledné technológie. Stabilný základ. Spoločne pre vaše aplikácie a služby."
-
-#: [Server].description[0]
-msgctxt "Release|"
-msgid ""
-"“The simplicity introduced with rolekit and cockpit have made server "
-"deployments a breeze. What took me a few days on other operating systems "
-"took less than an hour with Fedora %(rel)s Server. It just works.”"
-msgstr ""
-"“Jednoduchosť nástrojov rolekit a cockpit mi nasadenie serverov veľmi "
-"zjednodušilo. Čo mi na iných operačných systémoch trvalo niekoľko dní, mi na "
-"Fedore %(rel)s Server trvalo menej ako hodinu. Jednoducho funguje.”"
-
-#: [Server].description[1]
-msgctxt "Release|"
-msgid "Systems Engineer"
-msgstr "Systémový inžinier"
-
-#: [Server].description[2]
-msgctxt "Release|"
-msgid ""
-"Fedora Server is a short-lifecycle, community-supported server operating "
-"system that enables seasoned system administrators experienced with any OS "
-"to make use of the very latest server-based technologies available in the "
-"open source community."
-msgstr ""
-"Fedora Server je serverový operačný systém podporovaný komunitou s krátkym "
-"životným cyklom. Umožňuje skúseným správcom, ktorí majú skúsenosti s "
-"akýmkoľvek OS, používať najnovšie technológie dostupné v open-source "
-"komunite."
-
-#: [Server].description[3]
-msgctxt "Release|"
-msgid "Easy Administration"
-msgstr "Jednoduchá správa"
-
-#: [Server].description[4]
-msgctxt "Release|"
-msgid ""
-"Manage your system simply with Cockpit's powerful, modern interface. View "
-"and monitor system performance and status, and deploy and manage container-"
-"based services."
-msgstr ""
-"Spravujte svoj systém jednoducho pomocou výkonného a moderného rozhrania "
-"Cockpit. Zobrazujte, monitorujte výkon a stav systému, nasadzujte a "
-"spravujte služby založené na kontajneroch."
-
-#: [Server].description[5]
-msgctxt "Release|"
-msgid "Server Roles"
-msgstr "Serverové role"
-
-#: [Server].description[6]
-msgctxt "Release|"
-msgid ""
-"There's no need to set up your server from scratch when you use server "
-"roles. Server roles plug into your Fedora Server system, providing a well-"
-"integrated service on top of the Fedora Server platform. Deploy and manage "
-"these prepared roles simply using the Rolekit tool."
-msgstr ""
-"Ak používate serverové role, nemusíte nastavovať svoj server od nuly. "
-"Serverové role obsiahnuté v systéme Fedora Server poskytujú dobre "
-"integrované služby na platforme Fedora Server. Nasaďte a spravujte "
-"pripravené role jednoducho pomocou nástroja Rolekit."
-
-#: [Server].description[7]
-msgctxt "Release|"
-msgid "Database Services"
-msgstr "Databázové služby"
-
-#: [Server].description[8]
-msgctxt "Release|"
-msgid ""
-"Fedora Server brings with it an enterprise-class, scalable database server "
-"powered by the open-source PostgreSQL project."
-msgstr ""
-"Fedora Server prichádza so škálovateľným podnikovým databázovým serverom "
-"postavenom na open-source projekte PostgreSQL."
-
-#: [Server].description[9]
-msgctxt "Release|"
-msgid "Complete Enterprise Domain Solution"
-msgstr "Kompletné riešenie podnikovej domény"
-
-#: [Server].description[10]
-msgctxt "Release|"
-msgid ""
-"Level up your Linux network with advanced identity management, DNS, "
-"certificate services, Windows(TM) domain integration throughout your "
-"environment with FreeIPA, the engine that drives Fedora Server's Domain "
-"Controller role."
-msgstr ""
-"Zvýšte úroveň svojej linuxovej siete pokročilou správou identít, DNS, "
-"certifikačnými službami, integráciou s doménou Windows(TM) v celom svojom "
-"prostredí pomocou FreeIPA - nástroj, ktorý poháňa rolu radiča domény vo "
-"Fedore Server."
-
-#: [Server].description[11]
-msgctxt "Release|"
-msgid ""
-"“The Docker Role for Fedora Server was simple and fast to install so that "
-"you can run your Docker images. This makes a great testbed for beginners and "
-"experts with docker so that they can develop their applications on the fly.”"
-msgstr ""
-"“Inštalácia roly Docker pre Fedoru Server je jednoduchá a rýchla, aby ste "
-"mohli spúšťať svoje Docker obrazy. To vytvára skvelé testovacie prostredie "
-"pre začiatočníkov aj expertov na docker, takže môžu vyvíjať ich aplikácie za "
-"behu.”"
-
-#: [Server].description[12]
-msgctxt "Release|"
-msgid "</p><p align=right> ― <em>John Unland, "
-msgstr "</p><p align=right> ― <em>John Unland, "
-
-#: [Server].description[13]
-msgctxt "Release|"
-msgid "Information Systems Student"
-msgstr "Študent informačných systémov"
-
-#: [Silverblue].subvariant
-msgctxt "Release|"
-msgid "silverblue"
-msgstr "silverblue"
-
-#: [Silverblue].category
-msgctxt "Release|"
-msgid "emerging"
-msgstr "perspektívne"
-
-#: [Silverblue].name
-msgctxt "Release|"
-msgid "Fedora Silverblue"
-msgstr "Fedora Silverblue"
-
-#: [Silverblue].summary
-msgctxt "Release|"
-msgid ""
-"An extremely stable and reliable desktop operating system, excellent for "
-"developers and for those using container-focused workflows."
-msgstr ""
-"Extrémne stabilný a spoľahlivý operačný systém - skvelý pre vývojárov a pre "
-"tých, ktorí používajú pracovné postupy zamerané na kontajnery."
-
-#: [Silverblue].description[0]
-msgctxt "Release|"
-msgid ""
-"Silverblue is a variant of Fedora Workstation. It looks, feels and behaves "
-"like a regular desktop operating system, and the experience is similar to "
-"what you find with using a standard Fedora Workstation."
-msgstr ""
-"Silverblue je variantou Fedory Workstation. Vyzerá, je a správa sa ako "
-"normálny operačných systém a zážitok je podobný tomu, čo nájdete v "
-"štandardnej Fedore Workstation."
-
-#: [Silverblue].description[1]
-msgctxt "Release|"
-msgid ""
-"However, unlike other operating systems, Silverblue has reprovisionable "
-"infrastructure with anti-hysteresis properties. This means that every "
-"installation is identical to every other installation of the same version. "
-"The operating system that is on disk is exactly the same from one machine to "
-"the next, and it never changes as it is used."
-msgstr ""
-"Avšak narozdiel od iných operačných systémov má Silverblue reprodukovateľnú "
-"infraštruktúru s vlastnosťami proti hysteréze. To znamená, že každá "
-"inštalácia je identická s každou ďalšou inštaláciou rovnakej verzie. "
-"Operačný systém, ktorý je na disku, je presne rovnaký z jedného počítača na "
-"druhý, a nikdy sa pri používaním nemení."
-
-#: [Silverblue].description[2]
-msgctxt "Release|"
-msgid ""
-"Silverblue’s design is intended to make it more stable, less prone to bugs, "
-"and easier to test and develop. The design also makes it an excellent "
-"platform for containerized applications as well as container-based software "
-"development. In each case, applications and containers are kept separate "
-"from the host system, improving stability and reliability."
-msgstr ""
-"Dizajn Silverblue je navrhnutý tak, aby ho robil stabilnejším, menej "
-"náchylným k chybám a jednoduchším na testovanie a vývoj. Tento dizajn ho "
-"robí tiež skvelou platformou pre kontajnerizované aplikácie ako aj pre vývoj "
-"aplikácií založených na kontajneroch. V každom prípade sú aplikácie a "
-"kontajnery oddelené od hostiteľského systému, čo zvyšuje stabilitu a "
-"spoľahlivosť."
-
-#: [Silverblue].description[3]
-msgctxt "Release|"
-msgid ""
-"Silverblue’s core technologies have some other helpful features. OS updates "
-"are fast and there’s no waiting around for them to install: just reboot as "
-"normal to start using the next version. With Silverblue, it is also possible "
-"to roll back to the previous version of the operating system, if something "
-"goes wrong."
-msgstr ""
-"Základné technológie Silverblue obsahujú niektoré ďalšie užitočné "
-"vlastnosti. Aktualizácie OS sú rýchle a nie je potrebné čakať na ich "
-"inštaláciu: jednoducho reštartujte ako normálne, aby ste začali používať "
-"ďalšiu verziu. Pomocou Silverblue je sa možné taktiež vrátiť spať na "
-"predchádzajúcu verziu operačného systému, ak sa niečo pokazí."
-
-#: [KDE].subvariant
-msgctxt "Release|"
-msgid "kde"
-msgstr "kde"
-
-#: [KDE].category
-msgctxt "Release|"
-msgid "spins"
-msgstr "spiny"
-
-#: [KDE].name
-msgctxt "Release|"
-msgid "Fedora KDE Plasma Desktop"
-msgstr "Fedora s prostredím KDE Plasma"
-
-#: [KDE].summary
-msgctxt "Release|"
-msgid "A complete, modern desktop built using the KDE Plasma Desktop."
-msgstr "Kompletné moderné pracovné prostredie postavené na KDE Plasma Desktope."
-
-#: [KDE].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based operating "
-"system utilizing the KDE Plasma Desktop as the main user interface."
-msgstr ""
-"Edícia Fedory s prostredím KDE Plasma je výkonný operačný systém založený na "
-"Fedore, ktorý používa ako hlavné používateľské rozhranie KDE Plasma."
-
-#: [KDE].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora KDE Plasma Desktop comes with many pre-selected top quality "
-"applications that suit all modern desktop use cases - from online "
-"communication like web browsing, instant messaging and electronic mail "
-"correspondence, through multimedia and entertainment, to an advanced "
-"productivity suite, including office applications and enterprise grade "
-"personal information management."
-msgstr ""
-"Fedora s prostredím KDE Plasma prichádza s množstvom vopred vybratých "
-"aplikácií najvyššej kvality, ktoré vyhovujú všetkým spôsobom použitia "
-"moderného desktopu - od online komunikácie ako prehliadanie webu, posielanie "
-"okamžitých a e-mailových správ cez multimédiá a zábavu až po pokročilý balík "
-"pre produktívnu prácu, vrátane kancelárskych aplikácií a správy osobných "
-"informácií pre podniky."
-
-#: [KDE].description[2]
-msgctxt "Release|"
-msgid ""
-"All KDE applications are well integrated, with a similar look and feel and "
-"an easy to use interface, accompanied by an outstanding graphical appearance."
-msgstr ""
-"Všetky aplikácie KDE sú veľmi dobre integrovanie, obsahujú rovnaký vzhľad a "
-"ľahko použiteľné rozhrania, doplnené skvelým grafický vzhľadom."
-
-#: [XFCE].subvariant
-msgctxt "Release|"
-msgid "xfce"
-msgstr "xfce"
-
-#: [XFCE].category [XFCE].name
-msgctxt "Release|"
-msgid "Fedora Xfce Desktop"
-msgstr "Fedora s prostredím Xfce"
-
-#: [XFCE].summary
-msgctxt "Release|"
-msgid "A complete, well-integrated Xfce Desktop."
-msgstr "Kompletné a veľmi dobre integrované prostredie Xfce."
-
-#: [XFCE].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast and "
-"lightweight, while still being visually appealing and user friendly."
-msgstr ""
-"Fedora Xfce spin je prehliadkou prostredia Xfce, ktorého cieľom je byť "
-"rýchle a odľahčené prostredie, a pritom byť vizuálne príťažlivé a "
-"používateľsky prívetivé."
-
-#: [XFCE].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
-msgstr ""
-"Fedora Xfce je plnohodnotné pracovné prostredie s použitím štandardov "
-"freedesktop.org."
-
-#: [LXQT].subvariant
-msgctxt "Release|"
-msgid "lxqt"
-msgstr "lxqt"
-
-#: [LXQT].category [LXQT].name
-msgctxt "Release|"
-msgid "Fedora LXQt Desktop"
-msgstr "Fedora s prostredím LXQt"
-
-#: [LXQT].summary
-msgctxt "Release|"
-msgid "A lightweight, well-integrated LXQt desktop environment."
-msgstr "Odľahčené a veľmi dobre integrované prostredie LXQt."
-
-#: [LXQT].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora LXQt provides a lightweight, well-integrated LXQt desktop "
-"environment. In addition to LXQt itself it provides a small, well selected "
-"collection of applications like the QupZilla browser, which combines "
-"Chromium's rendering engine with a nice Qt experience. Other applications "
-"include the Trojita mail client, the qBittorrent client, the Yarock music "
-"player and a set of some more commonly used applications. As all "
-"applications use the same Qt5 toolkit and the Breeze theme known from KDE, "
-"the desktop provides a unified and well-integrated style and theming. In "
-"addition breeze-gtk is provided to allow the user to integrate GTK "
-"applications too."
-msgstr ""
-"Fedora LXQt poskytuje odľahčené, dobre integrované pracovné prostredie LXQt. "
-"Okrem samotného LXQt obsahuje malú ale dobre zvolenú kolekciu aplikácií ako "
-"prehliadač QupZilla, ktorý kombinuje vykresľovacie jadro Chromium a pekné "
-"rozhranie Qt. Medzi ďalšie aplikácie patrí e-mailový klient Trojita, klient "
-"qBittorrent, hudobný prehrávač Yarock a sada niektorých bežne používaných "
-"aplikácií. Pretože všetky aplikácie používajú rovnakú knižnicu Qt5 a tému "
-"Breeze známu z KDE, poskytuje toto pracovné prostredie jednotný a dobre "
-"integrovaný štýl a vzhľad. Navyše je dostupná knižnica breeze-gtk ktorá "
-"umožňuje používateľom integrovať taktiež aplikácie GTK."
-
-#: [Mate].subvariant
-msgctxt "Release|"
-msgid "mate"
-msgstr "mate"
-
-#: [Mate].category [Mate].name
-msgctxt "Release|"
-msgid "Fedora MATE-Compiz Desktop"
-msgstr "Fedora s prostredím MATE-Compiz"
-
-#: [Mate].summary
-msgctxt "Release|"
-msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
-msgstr "Klasické pracovné prostredie Fedory s doplnkovým 3D správcom okien."
-
-#: [Mate].description[0]
-msgctxt "Release|"
-msgid ""
-"The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE Desktop "
-"is a lightweight, powerful desktop designed with productivity and "
-"performance in mind. The default windows manager is Marco which is usable "
-"for all machines and VMs. Compiz Fusion is a beautiful 3D windowing manager "
-"with Emerald and GTK+ theming."
-msgstr ""
-"Spin MATE Compiz obsahuje prostredie MATE s Compiz Fusion. Prostredie MATE "
-"je odľahčené, ale výkonné pracovné prostredie navrhnuté s ohľadom na "
-"produktivitu a výkon. Predvolený správca okien Marco je použiteľný na "
-"všetkých počítačoch a virtuálnych strojoch. Compiz Fusion je nádherný 3D "
-"správca okien s motívmi Emerald a GTK+."
-
-#: [Mate].description[1]
-msgctxt "Release|"
-msgid ""
-"If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
-"should definitely try the MATE-Compiz spin."
-msgstr ""
-"Ak požadujete výkonné a odľahčené prostredie pre Fedoru s 3D efektami, "
-"určite vyskúšajte spin MATE-Compiz."
-
-#: [Cinnamon].subvariant
-msgctxt "Release|"
-msgid "cinnamon"
-msgstr "cinnamon"
-
-#: [Cinnamon].category [Cinnamon].name
-msgctxt "Release|"
-msgid "Fedora Cinnamon Desktop"
-msgstr "Fedora s prostredím Cinnamon"
-
-#: [Cinnamon].summary
-msgctxt "Release|"
-msgid "A modern desktop featuring traditional Gnome user experience."
-msgstr ""
-"Moderné pracovné prostredie predstavujúce tradičné používateľské prostredie "
-"Gnome."
-
-#: [Cinnamon].description[0]
-msgctxt "Release|"
-msgid ""
-"Cinnamon is a Linux desktop which provides advanced innovative features and "
-"a traditional user experience. The desktop layout is similar to Gnome 2. The "
-"underlying technology is forked from Gnome Shell. The emphasis is put on "
-"making users feel at home and providing them with an easy to use and "
-"comfortable desktop experience."
-msgstr ""
-"Cinnamon je linuxové pracovné prostredie, ktoré poskytuje pokročilé "
-"inovatívne funkcie a tradičné používateľské ovládanie. Rozloženie pracovného "
-"prostredia je podobné ako Gnome 2. Základné technológie vychádzajú z Gnome "
-"Shell. Dôraz je kladený na to, aby sa používatelia cítili ako doma, a mali "
-"dostupné jednoduché ovládanie a komfortné pracovné prostredie."
-
-#: [Cinnamon].description[1]
-msgctxt "Release|"
-msgid ""
-"Cinnamon is a popular desktop alternative to Gnome 3 and this spin provides "
-"the option to quickly try and install this desktop."
-msgstr ""
-"Prostredie Cinnamon je populárna alternatíva k Gnome 3 a tento spin ho "
-"umožňuje rýchlo vyskúšať a nainštalovať."
-
-#: [LXDE].subvariant
-msgctxt "Release|"
-msgid "lxde"
-msgstr "lxde"
-
-#: [LXDE].category [LXDE].name
-msgctxt "Release|"
-msgid "Fedora LXDE Desktop"
-msgstr "Fedora s prostredím LXDE"
-
-#: [LXDE].summary
-msgctxt "Release|"
-msgid "A light, fast, less-resource hungry desktop environment."
-msgstr "Ľahké a rýchle pracovné prostredie, ktoré vyžaduje menej zdrojov."
-
-#: [LXDE].description[0]
-msgctxt "Release|"
-msgid ""
-"LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
-"performant, and energy-saving desktop environment. It maintained by an "
-"international community of developers and comes with a beautiful interface, "
-"multi-language support, standard keyboard shortcuts and additional features "
-"like tabbed file browsing."
-msgstr ""
-"LXDE, \"odľahčené prostredie pre X11\", je extrémne rýchle, výkonné a "
-"energeticky úsporné pracovné prostredie. Spravuje ho medzinárodná komunita "
-"vývojárov a obsahuje pekné rozhranie, viacjazyčnú podporu, štandardné "
-"klávesové skratky a ďalšie funkcie ako prehliadanie súborov v záložkách."
-
-#: [LXDE].description[1]
-msgctxt "Release|"
-msgid ""
-"LXDE is not designed to be powerful and bloated, but to be usable and slim. "
-"A main goal of LXDE is to keep computer resource usage low. It is especially "
-"designed for computers with low hardware specifications like netbooks, "
-"mobile devices (e.g. MIDs) or older computers."
-msgstr ""
-"LXDE nie je navrhnutý tak, aby bol výkonný a preplácaný, ale použiteľný a "
-"štíhly. Hlavným cieľom LXDE je nízke využívanie zdrojov počítača. Je "
-"navrhnutý hlavne pre slabšie počítače ako netbooky, mobilné zariadenia alebo "
-"staršie počítače."
-
-#: [SOAS].subvariant
-msgctxt "Release|"
-msgid "soas"
-msgstr "soas"
-
-#: [SOAS].category [SOAS].name
-msgctxt "Release|"
-msgid "Fedora SoaS Desktop"
-msgstr "Fedora s prostredím SoaS"
-
-#: [SOAS].summary
-msgctxt "Release|"
-msgid "Discover. Reflect. Share. Learn."
-msgstr "Objavujte. Vyjadrujte. Zdieľajte. Učte sa."
-
-#: [SOAS].description[0]
-msgctxt "Release|"
-msgid ""
-"Sugar on a Stick is a Fedora-based operating system featuring the award-"
-"winning Sugar Learning Platform and designed to fit on an ordinary USB "
-"thumbdrive (\"stick\")."
-msgstr ""
-"Sugar on a Stick je operačný systém založený na Fedore obsahujúci oceňovanú "
-"vzdelávaciu platformu Sugar, a ktorý je navrhnutý, aby vošiel na bežný USB "
-"kľúč."
-
-#: [SOAS].description[1]
-msgctxt "Release|"
-msgid ""
-"Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
-"child-friendly graphical environment. Sugar automatically saves your "
-"progress to a \"Journal\" on your stick, so teachers and parents can easily "
-"pull up \"all collaborative web browsing sessions done in the past week\" or "
-"\"papers written with Daniel and Sarah in the last 24 hours\" with a simple "
-"query rather than memorizing complex file/folder structures. Applications in "
-"Sugar are known as Activities, some of which are described below."
-msgstr ""
-"Sugar ruší tradičné chápanie \"kancelárskeho pracovného prostredia\", a "
-"predstavuje grafické prostredie vhodné pre deti. Sugar automaticky ukladá "
-"vaše kroky do \"Žurnálu\" na USB kľúč, takže učitelia a rodičia môžu "
-"jednoducho vytiahnuť \"všetky prehliadané webové stránky za posledný týždeň\""
-" alebo \"korešpondenciu napísanú medzi Danielom a Sárou za posledných 24 "
-"hodín\" pomocou jednoduchého dotazu namiesto pamätania si zložitých "
-"adresárových štruktúr. Aplikácie v Sugar sa nazývajú Aktivity, z ktorých "
-"niektoré sú popísané nižšie."
-
-#: [SOAS].description[2]
-msgctxt "Release|"
-msgid ""
-"It is now deployable for the cost of a stick rather than a laptop; students "
-"can take their Sugar on a Stick thumbdrive to any machine - at school, at "
-"home, at a library or community center - and boot their customized computing "
-"environment without touching the host machine’s hard disk or existing system "
-"at all."
-msgstr ""
-"Nasadenie teraz predstavuje skôr cenu USB kľúča ako notebooku. Študenti si "
-"môžu pripojiť svoj USB kľúč s prostredím Sugar do akéhokoľvek počítača - v "
-"škole, doma, v knižnici alebo komunitnom centre - a zaviesť ich vlastné "
-"počítačové prostredie bez ovplyvnenie pevného disku počítača alebo "
-"existujúceho systému."
-
-#: [i3].subvariant
-msgctxt "Release|"
-msgid "i3"
-msgstr "i3"
-
-#: [i3].category [i3].name
-msgctxt "Release|"
-msgid "Fedora i3 Desktop"
-msgstr "Fedora s prostredím i3"
-
-#: [i3].summary
-msgctxt "Release|"
-msgid "Simplicity over Complexity"
-msgstr "Jednoduchosť namiesto zložitosti"
-
-#: [i3].description[1]
-msgctxt "Release|"
-msgid "The Fedora i3 Spin provides the popular i3 tiling window manager."
-msgstr "Fedora i3 spin poskytuje populárneho dlaždicového správcu okien i3."
-
-#: [i3].description[3]
-msgctxt "Release|"
-msgid ""
-"It makes i3 accessible and appealing to both novices and advanced users who "
-"prefer not to use a mouse, touchpad, or other pointing device to interact "
-"with their environment. Featuring lightweight applications for web browsing, "
-"text editing, and media playback, the Fedora i3 Spin offers a complete "
-"experience with a minimalist user interface."
-msgstr ""
-"Sprístupňuje i3 nováčikom aj skúseným používateľom, ktorí preferujú pracovať "
-"so svojím prostredím bez myši, touchpadu aleho iného polohovacieho "
-"zariadenia. Obsahuje odľahčené aplikácie pre prehliadanie webu, úpravu textu "
-"a prehrávanie médií čím Fedora i3 Spin ponúka kompletnú používateľskú "
-"skúsenosť s minimalistickým rozhraním."
-
-#: [Astronomy].subvariant
-msgctxt "Release|"
-msgid "astronomy"
-msgstr "astronomy"
-
-#: [Astronomy].category
-msgctxt "Release|"
-msgid "labs"
-msgstr "labs"
-
-#: [Astronomy].name
-msgctxt "Release|"
-msgid "Fedora Astronomy"
-msgstr "Fedora Astronómia"
-
-#: [Astronomy].summary
-msgctxt "Release|"
-msgid ""
-"Powerful completely open-source and free tool for amateurs and professionals."
-msgstr ""
-"Výkonné, kompletne open-source a slobodné nástroje pre amatérov aj "
-"profesionálov."
-
-#: [Astronomy].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora Astronomy brings a complete open source toolchain to both amateur and "
-"professional astronomers."
-msgstr ""
-"Fedora Astronomy prináša kompletnú sadu nástrojov pre amatérskych aj "
-"profesionálnych astronómov."
-
-#: [Astronomy].description[1]
-msgctxt "Release|"
-msgid ""
-"The Spin provides the Fedora KDE desktop enhanced with a complete scientific "
-"Python environment and the AstrOmatic software for data analysis. KStars was "
-"added to provide a full featured astrophotography tool. As KStars uses the "
-"INDI library to control equipment, various telescopes, cameras etc. are "
-"supported. Summarized, Fedora Astronomy provides a complete set of software, "
-"from the observation planning to the final results."
-msgstr ""
-"Tento spin poskytuje pracovné prostredie KDE rozšírené o kompletné vedecké "
-"prostredie Pythonu a softvér AstrOmatic pre analýzu dát. Pridaný bol aj "
-"KStars poskytujúci plnohodnotný nástroj pre astronomickú fotografiu. KStars "
-"na ovládanie zariadení používa knižnicu INDI, podporované sú rôzne "
-"teleskopy, fotoaparáty atď. Ak to zhrnieme, tak Fedora Astronomy poskytuje "
-"kompletnú sadu softvéru, od plánovania pozorovania až po finálne výsledky."
-
-#: [DesignSuite].subvariant
-msgctxt "Release|"
-msgid "design_suite"
-msgstr "design_suite"
-
-#: [DesignSuite].category [DesignSuite].name
-msgctxt "Release|"
-msgid "Fedora Design Suite"
-msgstr "Fedora Dizajnérsky balík"
-
-#: [DesignSuite].summary
-msgctxt "Release|"
-msgid ""
-"Visual design, multimedia production, and publishing suite of free and open "
-"source creative tools."
-msgstr ""
-"Balík open-source a slobodných tvorivých nástrojov pre vizuálny dizajn, "
-"multimediálnu tvorbu a publikovanie."
-
-#: [DesignSuite].description[0]
-msgctxt "Release|"
-msgid ""
-"Looking for a ready-to-go desktop environment brimming with free and open "
-"source multimedia production and publishing tools? Try the Design Suite, a "
-"Fedora Spin created by designers, for designers."
-msgstr ""
-"Hľadáte pracovné prostredie plné slobodných a open-source nástrojov pre "
-"vytváranie a publikovanie multimédií? Vyskúšajte Fedora spin Dizajnérsky "
-"balík vytvorený dizajnérmi pre dizajnérov."
-
-#: [DesignSuite].description[1]
-msgctxt "Release|"
-msgid ""
-"The Design Suite includes the favorite tools of the Fedora Design Team. "
-"These are the same programs we use to create all the artwork that you see "
-"within the Fedora Project, from desktop backgrounds to CD sleeves, web page "
-"designs, application interfaces, flyers, posters and more. From document "
-"publication to vector and bitmap editing or 3D modeling to photo management, "
-"the Design Suite has an application for you — and you can install thousands "
-"more from the Fedora universe of packages."
-msgstr ""
-"Dizajnérsky balík obsahuje obľúbené nástroje dizajnérskeho tímu Fedory. Sú "
-"to rovnaké programy, ktoré používame na vytváranie všetkej grafiky, ktorú "
-"môžete vidieť v rámci Projektu Fedora, od pozadí pracovnej plochy, po obaly "
-"CD, dizajn webových stránok, rozhraní aplikácií, letákov, plagátov atď. "
-"Design Suite obsahuje aplikácie od publikácie dokumentov, cez úpravu "
-"vektorovej a rastrovej grafiky, 3D modelovania až po správu fotografií. "
-"Niekoľko tisíc ďalších si môžete doinštalovať z množstva balíčkov Fedory."
-
-#: [Games].subvariant
-msgctxt "Release|"
-msgid "games"
-msgstr "games"
-
-#: [Games].category [Games].name
-msgid "Fedora Games"
-msgstr "Fedora Games"
-
-#: [Games].summary
-msgctxt "Release|"
-msgid ""
-"A collection and perfect show-case of the best games available in Fedora."
-msgstr "Kolekcia a skvelá prehliadka najlepších hier dostupných vo Fedore."
-
-#: [Games].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Games spin offers a perfect showcase of the best games available "
-"in Fedora. The included games span several genres, from first-person "
-"shooters to real-time and turn-based strategy games to puzzle games."
-msgstr ""
-"Spin Fedora Games poskytuje dokonalú ukážku najlepších hier dostupných vo "
-"Fedore. Obsahuje hry z rôznych žánrov od strieľačiek z pohľadu prvej osoby "
-"cez realtimové a ťahové stratégie po puzzle."
-
-#: [Games].description[1]
-msgctxt "Release|"
-msgid ""
-"Not all the games available in Fedora are included on this spin, but trying "
-"out this spin will give you a fair impression of Fedora's ability to run "
-"great games."
-msgstr ""
-"Všetky hry dostupné vo Fedore nie sú súčasťou tohto spinu, ale ak vyskúšate "
-"tento spin, získate dobrú predstavu, ako Fedora zvláda spúšťať skvelé hry."
-
-#: [Python].subvariant
-msgctxt "Release|"
-msgid "python"
-msgstr "python"
-
-#: [Python].category [Python].name
-msgctxt "Release|"
-msgid "Fedora Python Classroom"
-msgstr "Fedora Python učebňa"
-
-#: [Python].summary
-msgctxt "Release|"
-msgid ""
-"A classroom lab for teaching the Python programming language to students"
-msgstr ""
-"Laboratórna učebňa na výučbu programovacieho jazyka Python pre študentov."
-
-#: [Python].description[0]
-msgctxt "Release|"
-msgid ""
-"One of the benefits of Fedora for Python developers is the ease of setting "
-"up Python development. The Fedora Python Classroom Lab makes it even easier "
-"for teachers and instructors to use Fedora in their classrooms or workshops. "
-"Ready to use operating system with important stuff pre-installed - either "
-"with GNOME or as a headless environment for Docker or Vagrant. Teach Python "
-"on Fedora, with Fedora, using the stuff you love: IPython, Jupyter Notebook, "
-"multiple Pythons, virtualenvs, tox, git and more"
-msgstr ""
-"Jednou z výhod Fedory pre vývojárov v Pythone je jednoduchosť nastavenia "
-"vývojového prostredia. Laboratórna učebňa Pythonu umožňuje učiteľom a "
-"inštruktorom ešte jednoduchšie použitie Fedory v ich triedach a na "
-"workshopoch. Ide o operačný systém pripravený priamo k použitiu s "
-"predinštalovanými vecami - buď s GNOME alebo ako prostredie bez "
-"zobrazovacieho zariadenia pre Docker alebo Vagrant. Učte sa Python na Fedore "
-"s Fedorou, a používajte nástroje, ktoré milujete: Python, Jupyter Notebook, "
-"viaceré verzie Pythonu, virtualenv, tox, git a ďalšie"
-
-#: [Python].description[1]
-msgctxt "Release|"
-msgid ""
-"The Fedora Python Classroom Lab comes in 3 variants. Either you can run it "
-"in graphical mode with GNOME, or you can virtualize it with Vagrant or run "
-"it in a Docker container. You choose what fits your teaching environment the "
-"best."
-msgstr ""
-"Laboratórna učebňa Pythonu na Fedore je dostupná v 3 variantách. Buď ju "
-"môžete spustiť v grafickom režime s GNOME, alebo ju môžete virtualizovať s "
-"Vagrantom, alebo v kontajneri Docker. Vyberte si variantu, ktorá najlepšie "
-"vyhovuje vášmu výučbovému prostrediu."
-
-#: [Robotics].subvariant
-msgctxt "Release|"
-msgid "robotics"
-msgstr "robotics"
-
-#: [Robotics].category [Robotics].name
-msgctxt "Release|"
-msgid "Fedora Robotics Suite"
-msgstr "Fedora Robotika"
-
-#: [Robotics].summary
-msgctxt "Release|"
-msgid ""
-"A wide variety of free and open robotics software packages for beginners and "
-"experts in robotics."
-msgstr ""
-"Široká škála slobodných a open-source softvérových balíčkov pre "
-"začiatočníkov aj odborníkov v robotike."
-
-#: [Robotics].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Robotics spin provides a wide variety of free and open robotics "
-"software packages. These range from hardware accessory libraries for the "
-"Hokuyo laser scanners or Katana robotic arm to software frameworks like "
-"Fawkes or Player and simulation environments such as Stage and RoboCup "
-"Soccer Simulation Server 2D/3D. It also provides a ready to use development "
-"environment for robotics including useful libraries such as OpenCV computer "
-"vision library, Festival text to speech system and MRPT."
-msgstr ""
-"Fedora spin Robotika poskytuje širokú škálu slobodných a open-source "
-"softvérových balíčkov pre robotiku. Ich škála siaha od knižníc pre prístup k "
-"hardvéru laserových skenerov Hokuyo, alebo robotickým rukám Katana cez "
-"frameworky ako Fawkes alebo Player až po simulačné prostredia ako Stage a "
-"simulačný server futbalu RoboCup v 2D/3D. Poskytuje taktiež vývojové "
-"prostredia pre robotiku vrátane užitočných knižníc ako napr. knižnicu "
-"počítačového videnia OpenCV, systém prevodu textu na reč Festival a MRPT."
-
-#: [Robotics].description[1]
-msgctxt "Release|"
-msgid ""
-"The Robotics spin is targeted at people just discovering their interest in "
-"robotics as well as experienced roboticists. For the former we provide a "
-"readily usable simulation environment with an introductory hands-on "
-"demonstration, and for the latter we provide a full development environment, "
-"to be used immediately."
-msgstr ""
-"Spin Robotika je zameraný na ľudí, ktorí práve objavili svoj záujem o "
-"robotiku, ako aj pre skúsených robotikov. Pre prvú skupinu poskytujeme "
-"okamžite použiteľné simulačné prostredie s praktickými ukážkami, a pre druhú "
-"skupinu zas plnohodnotné vývojové prostredie."
-
-#: [Scientific].subvariant
-msgctxt "Release|"
-msgid "scientific"
-msgstr "scientific"
-
-#: [Scientific].category [Scientific].name
-msgctxt "Release|"
-msgid "Fedora Scientific"
-msgstr "Fedora Veda"
-
-#: [Scientific].summary
-msgctxt "Release|"
-msgid ""
-"A bundle of open source scientific and numerical tools used in research."
-msgstr "Sada open-source vedeckých a numerických nástrojov pre výskum."
-
-#: [Scientific].description[0]
-msgctxt "Release|"
-msgid ""
-"Wary of reinstalling all the essential tools for your scientific and "
-"numerical work? The answer is here. Fedora Scientific Spin brings together "
-"the most useful open source scientific and numerical tools atop the goodness "
-"of the KDE desktop environment."
-msgstr ""
-"Obávate sa preinštalovania všetkých dôležitých nástrojov pre svoju vedeckú "
-"alebo numerickú prácu. Odpoveď je tu. Fedora spin Veda spája spolu "
-"najužitočnejšie open-source vedecké a numerické nástroje v peknom pracovnom "
-"prostredí KDE."
-
-#: [Scientific].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora Scientific currently ships with numerous applications and libraries. "
-"These range from libraries such as the GNU Scientific library, the SciPy "
-"libraries, tools like Octave and xfig to typesetting tools like Kile and "
-"graphics programs such as Inkscape. The current set of packages include an "
-"IDE, tools and libraries for programming in C, C++, Python, Java and R. Also "
-"included along with are libraries for parallel computing such as the OpenMPI "
-"and OpenMP. Tools for typesetting, writing and publishing are included."
-msgstr ""
-"Fedora spin Veda aktuálne obsahuje veľké množstvo aplikácií a knižníc. Ich "
-"škála siaha od knižníc ako napr. GNU Scientific, SciPy cez nástroje ako "
-"Octave a xfig, až po nástroje na sadzbu ako Kile a grafické programy ako "
-"napr. Inkscape. Aktuálna sada balíčkov obsahuje IDE, nástroje a knižnice na "
-"programovanie v C, C++, Python, Java a R. Obsahuje tiež knižnice pre "
-"paralelne programovanie ako sú OpenMPI a OpenMP. Obsiahnuté sú aj nástroje "
-"na sadzbu, písanie a publikovanie."
-
-#: [Security].subvariant
-msgctxt "Release|"
-msgid "security"
-msgstr "security"
-
-#: [Security].category [Security].name
-msgctxt "Release|"
-msgid "Fedora Security Lab"
-msgstr "Fedora Bezpečnostný lab"
-
-#: [Security].summary
-msgctxt "Release|"
-msgid ""
-"A safe test environment to work on security auditing, forensics, system "
-"rescue and teaching security testing methodologies."
-msgstr ""
-"Bezpečné testovacie prostredie pre prácu na bezpečnostných auditoch, "
-"forenznej analýze, záchrane systému a výučbe metód testovania bezpečnosti."
-
-#: [Security].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Security Lab provides a safe test environment to work on security "
-"auditing, forensics, system rescue and teaching security testing "
-"methodologies in universities and other organizations."
-msgstr ""
-"Fedora spin Bezpečnostný lab poskytuje bezpečné testovacie prostredie pre "
-"prácu na bezpečnostných auditoch, forenznej analýze, záchrane systému a "
-"výučbe metód testovania bezpečnosti na univerzitách a ďalších organizáciách."
-
-#: [Security].description[1]
-msgctxt "Release|"
-msgid ""
-"The spin is maintained by a community of security testers and developers. It "
-"comes with the clean and fast Xfce Desktop Environment and a customized menu "
-"that provides all the instruments needed to follow a proper test path for "
-"security testing or to rescue a broken system. The Live image has been "
-"crafted to make it possible to install software while running, and if you "
-"are running it from a USB stick created with LiveUSB Creator using the "
-"overlay feature, you can install and update software and save your test "
-"results permanently."
-msgstr ""
-"Tento spin udržuje komunita bezpečnostných testerov a vývojárov. Obsahuje "
-"čisté a rýchle pracovné prostredie Xfce a upravené menu, ktoré poskytuje "
-"všetky potrebné nástroje na testovanie bezpečnosti alebo záchranu "
-"poškodeného systému. Live obraz bol dôkladne vytvorený tak, aby umožnil za "
-"behu inštaláciu softvéru. V prípade, že ho spúšťate z USB kľúča vytvoreného "
-"pomocou nástroja LiveUSB Creator s funkciou prekrývania, tak môžete trvalo "
-"inštalovať alebo aktualizovať softvér a ukladať výsledky testov."
+#~ msgid "workstation"
+#~ msgstr "workstation"
+
+#~ msgctxt "Release|"
+#~ msgid "product"
+#~ msgstr "produkt"
+
+#~ msgctxt "Release|"
+#~ msgid "This is the Linux workstation you've been waiting for."
+#~ msgstr "Toto je linuxová pracovná stanica, na ktorú ste čakali."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Workstation is a reliable, user-friendly, and powerful operating "
+#~ "system for your laptop or desktop computer. It supports a wide range of "
+#~ "developers, from hobbyists and students to professionals in corporate "
+#~ "environments."
+#~ msgstr ""
+#~ "Fedora Workstation je spoľahlivý, používateľsky prívetivý a výkonný "
+#~ "operačný systém pre notebooky a stolné počítače. Podporuje širokú škálu "
+#~ "vývojárov od nadšencov a študentov až po profesionálov v podnikových "
+#~ "prostrediach."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "“The plethora of tools provided by<br /> Fedora allows me to get the job "
+#~ "done.<br /> It just works.”"
+#~ msgstr ""
+#~ "“Veľké množstvo nástrojov poskytovaných<br /> Fedorou mi umožňuje "
+#~ "dokončiť prácu.<br /> Jednoducho funguje.”"
+
+#~ msgctxt "Release|"
+#~ msgid "JVM performance engineer"
+#~ msgstr "inžinier výkonu JVM"
+
+#~ msgctxt "Release|"
+#~ msgid "Sleek user interface"
+#~ msgstr "Uhladené používateľské rozhranie"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Focus on your code in the GNOME 3 desktop environment. GNOME is built "
+#~ "with developer feedback and minimizes distractions, so you can "
+#~ "concentrate on what's important."
+#~ msgstr ""
+#~ "Zamerajte sa na svoj kód v pracovnom prostredí GNOME 3. GNOME je "
+#~ "vytvorené na základe spätnej väzby od vývojárov a minimalizuje "
+#~ "rozptyľovanie, takže sa môžete koncentrovať na to, čo je dôležité."
+
+#~ msgctxt "Release|"
+#~ msgid "Complete open source toolbox"
+#~ msgstr "Kompletná sada open-source nástrojov"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Skip the drag of trying to find or build the tools you need. With "
+#~ "Fedora's complete set of open source languages, tools, and utilities, "
+#~ "everything is a click or command line away. There's even project hosting "
+#~ "and repositories like COPR to make your code and builds available quickly "
+#~ "to the community."
+#~ msgstr ""
+#~ "Preskočte zdĺhavé hľadanie a kompilovanie potrebných nástrojov. S "
+#~ "kompletnou sadou open-source jazykov a nástrojov máte vo Fedore všetko "
+#~ "dostupné na pár klikov alebo cez príkazový riadok. Dokonca existuje i "
+#~ "hosting projektov a repozitárov ako napr. COPR, ktorý umožňuje rýchlo "
+#~ "sprístupniť váš kód a buildy komunite."
+
+#~ msgctxt "Release|"
+#~ msgid "GNOME Boxes & other virt tools"
+#~ msgstr "GNOME Boxes a iné virtualizačné nástroje"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Get virtual machines up and running quickly to test your code on multiple "
+#~ "platforms using GNOME Boxes. Or dig into powerful, scriptable "
+#~ "virtualization tools for even more control."
+#~ msgstr ""
+#~ "Pomocou GNOME Boxy môžete rýchlo sprevádzkovať virtuálne počítače, aby "
+#~ "ste otestovali svoj kód na viacerých platformách. Ak potrebujete ešte "
+#~ "väčšiu kontrolu, využite výkonné a skriptovateľné virtualizačné nástroje."
+
+#~ msgctxt "Release|"
+#~ msgid "Built-in Docker support"
+#~ msgstr "Vstavaná podpora Docker"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Containerize your own apps, or deploy containerized apps out of the box "
+#~ "on Fedora, using the latest technology like Docker."
+#~ msgstr ""
+#~ "Kontajnerizujte svoje vlastné aplikácie, alebo nasadzujte "
+#~ "kontajnerizované aplikácie bez úprav na Fedore pomocou najnovších "
+#~ "technológií ako Docker."
+
+#~ msgctxt "Release|"
+#~ msgid "server"
+#~ msgstr "server"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Server"
+#~ msgstr "Fedora Server"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The latest technology. A stable foundation. Together, for your "
+#~ "applications and services."
+#~ msgstr ""
+#~ "Posledné technológie. Stabilný základ. Spoločne pre vaše aplikácie a "
+#~ "služby."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "“The simplicity introduced with rolekit and cockpit have made server "
+#~ "deployments a breeze. What took me a few days on other operating systems "
+#~ "took less than an hour with Fedora %(rel)s Server. It just works.”"
+#~ msgstr ""
+#~ "“Jednoduchosť nástrojov rolekit a cockpit mi nasadenie serverov veľmi "
+#~ "zjednodušilo. Čo mi na iných operačných systémoch trvalo niekoľko dní, mi "
+#~ "na Fedore %(rel)s Server trvalo menej ako hodinu. Jednoducho funguje.”"
+
+#~ msgctxt "Release|"
+#~ msgid "Systems Engineer"
+#~ msgstr "Systémový inžinier"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Server is a short-lifecycle, community-supported server operating "
+#~ "system that enables seasoned system administrators experienced with any "
+#~ "OS to make use of the very latest server-based technologies available in "
+#~ "the open source community."
+#~ msgstr ""
+#~ "Fedora Server je serverový operačný systém podporovaný komunitou s "
+#~ "krátkym životným cyklom. Umožňuje skúseným správcom, ktorí majú "
+#~ "skúsenosti s akýmkoľvek OS, používať najnovšie technológie dostupné v "
+#~ "open-source komunite."
+
+#~ msgctxt "Release|"
+#~ msgid "Easy Administration"
+#~ msgstr "Jednoduchá správa"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Manage your system simply with Cockpit's powerful, modern interface. View "
+#~ "and monitor system performance and status, and deploy and manage "
+#~ "container-based services."
+#~ msgstr ""
+#~ "Spravujte svoj systém jednoducho pomocou výkonného a moderného rozhrania "
+#~ "Cockpit. Zobrazujte, monitorujte výkon a stav systému, nasadzujte a "
+#~ "spravujte služby založené na kontajneroch."
+
+#~ msgctxt "Release|"
+#~ msgid "Server Roles"
+#~ msgstr "Serverové role"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "There's no need to set up your server from scratch when you use server "
+#~ "roles. Server roles plug into your Fedora Server system, providing a well-"
+#~ "integrated service on top of the Fedora Server platform. Deploy and "
+#~ "manage these prepared roles simply using the Rolekit tool."
+#~ msgstr ""
+#~ "Ak používate serverové role, nemusíte nastavovať svoj server od nuly. "
+#~ "Serverové role obsiahnuté v systéme Fedora Server poskytujú dobre "
+#~ "integrované služby na platforme Fedora Server. Nasaďte a spravujte "
+#~ "pripravené role jednoducho pomocou nástroja Rolekit."
+
+#~ msgctxt "Release|"
+#~ msgid "Database Services"
+#~ msgstr "Databázové služby"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Server brings with it an enterprise-class, scalable database "
+#~ "server powered by the open-source PostgreSQL project."
+#~ msgstr ""
+#~ "Fedora Server prichádza so škálovateľným podnikovým databázovým serverom "
+#~ "postavenom na open-source projekte PostgreSQL."
+
+#~ msgctxt "Release|"
+#~ msgid "Complete Enterprise Domain Solution"
+#~ msgstr "Kompletné riešenie podnikovej domény"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Level up your Linux network with advanced identity management, DNS, "
+#~ "certificate services, Windows(TM) domain integration throughout your "
+#~ "environment with FreeIPA, the engine that drives Fedora Server's Domain "
+#~ "Controller role."
+#~ msgstr ""
+#~ "Zvýšte úroveň svojej linuxovej siete pokročilou správou identít, DNS, "
+#~ "certifikačnými službami, integráciou s doménou Windows(TM) v celom svojom "
+#~ "prostredí pomocou FreeIPA - nástroj, ktorý poháňa rolu radiča domény vo "
+#~ "Fedore Server."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "“The Docker Role for Fedora Server was simple and fast to install so that "
+#~ "you can run your Docker images. This makes a great testbed for beginners "
+#~ "and experts with docker so that they can develop their applications on "
+#~ "the fly.”"
+#~ msgstr ""
+#~ "“Inštalácia roly Docker pre Fedoru Server je jednoduchá a rýchla, aby ste "
+#~ "mohli spúšťať svoje Docker obrazy. To vytvára skvelé testovacie "
+#~ "prostredie pre začiatočníkov aj expertov na docker, takže môžu vyvíjať "
+#~ "ich aplikácie za behu.”"
+
+#~ msgctxt "Release|"
+#~ msgid "</p><p align=right> ― <em>John Unland, "
+#~ msgstr "</p><p align=right> ― <em>John Unland, "
+
+#~ msgctxt "Release|"
+#~ msgid "Information Systems Student"
+#~ msgstr "Študent informačných systémov"
+
+#~ msgctxt "Release|"
+#~ msgid "silverblue"
+#~ msgstr "silverblue"
+
+#~ msgctxt "Release|"
+#~ msgid "emerging"
+#~ msgstr "perspektívne"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Silverblue"
+#~ msgstr "Fedora Silverblue"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "An extremely stable and reliable desktop operating system, excellent for "
+#~ "developers and for those using container-focused workflows."
+#~ msgstr ""
+#~ "Extrémne stabilný a spoľahlivý operačný systém - skvelý pre vývojárov a "
+#~ "pre tých, ktorí používajú pracovné postupy zamerané na kontajnery."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Silverblue is a variant of Fedora Workstation. It looks, feels and "
+#~ "behaves like a regular desktop operating system, and the experience is "
+#~ "similar to what you find with using a standard Fedora Workstation."
+#~ msgstr ""
+#~ "Silverblue je variantou Fedory Workstation. Vyzerá, je a správa sa ako "
+#~ "normálny operačných systém a zážitok je podobný tomu, čo nájdete v "
+#~ "štandardnej Fedore Workstation."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "However, unlike other operating systems, Silverblue has reprovisionable "
+#~ "infrastructure with anti-hysteresis properties. This means that every "
+#~ "installation is identical to every other installation of the same "
+#~ "version. The operating system that is on disk is exactly the same from "
+#~ "one machine to the next, and it never changes as it is used."
+#~ msgstr ""
+#~ "Avšak narozdiel od iných operačných systémov má Silverblue "
+#~ "reprodukovateľnú infraštruktúru s vlastnosťami proti hysteréze. To "
+#~ "znamená, že každá inštalácia je identická s každou ďalšou inštaláciou "
+#~ "rovnakej verzie. Operačný systém, ktorý je na disku, je presne rovnaký z "
+#~ "jedného počítača na druhý, a nikdy sa pri používaním nemení."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Silverblue’s design is intended to make it more stable, less prone to "
+#~ "bugs, and easier to test and develop. The design also makes it an "
+#~ "excellent platform for containerized applications as well as container-"
+#~ "based software development. In each case, applications and containers are "
+#~ "kept separate from the host system, improving stability and reliability."
+#~ msgstr ""
+#~ "Dizajn Silverblue je navrhnutý tak, aby ho robil stabilnejším, menej "
+#~ "náchylným k chybám a jednoduchším na testovanie a vývoj. Tento dizajn ho "
+#~ "robí tiež skvelou platformou pre kontajnerizované aplikácie ako aj pre "
+#~ "vývoj aplikácií založených na kontajneroch. V každom prípade sú aplikácie "
+#~ "a kontajnery oddelené od hostiteľského systému, čo zvyšuje stabilitu a "
+#~ "spoľahlivosť."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Silverblue’s core technologies have some other helpful features. OS "
+#~ "updates are fast and there’s no waiting around for them to install: just "
+#~ "reboot as normal to start using the next version. With Silverblue, it is "
+#~ "also possible to roll back to the previous version of the operating "
+#~ "system, if something goes wrong."
+#~ msgstr ""
+#~ "Základné technológie Silverblue obsahujú niektoré ďalšie užitočné "
+#~ "vlastnosti. Aktualizácie OS sú rýchle a nie je potrebné čakať na ich "
+#~ "inštaláciu: jednoducho reštartujte ako normálne, aby ste začali používať "
+#~ "ďalšiu verziu. Pomocou Silverblue je sa možné taktiež vrátiť spať na "
+#~ "predchádzajúcu verziu operačného systému, ak sa niečo pokazí."
+
+#~ msgctxt "Release|"
+#~ msgid "kde"
+#~ msgstr "kde"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora KDE Plasma Desktop"
+#~ msgstr "Fedora s prostredím KDE Plasma"
+
+#~ msgctxt "Release|"
+#~ msgid "A complete, modern desktop built using the KDE Plasma Desktop."
+#~ msgstr ""
+#~ "Kompletné moderné pracovné prostredie postavené na KDE Plasma Desktope."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based "
+#~ "operating system utilizing the KDE Plasma Desktop as the main user "
+#~ "interface."
+#~ msgstr ""
+#~ "Edícia Fedory s prostredím KDE Plasma je výkonný operačný systém založený "
+#~ "na Fedore, ktorý používa ako hlavné používateľské rozhranie KDE Plasma."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora KDE Plasma Desktop comes with many pre-selected top quality "
+#~ "applications that suit all modern desktop use cases - from online "
+#~ "communication like web browsing, instant messaging and electronic mail "
+#~ "correspondence, through multimedia and entertainment, to an advanced "
+#~ "productivity suite, including office applications and enterprise grade "
+#~ "personal information management."
+#~ msgstr ""
+#~ "Fedora s prostredím KDE Plasma prichádza s množstvom vopred vybratých "
+#~ "aplikácií najvyššej kvality, ktoré vyhovujú všetkým spôsobom použitia "
+#~ "moderného desktopu - od online komunikácie ako prehliadanie webu, "
+#~ "posielanie okamžitých a e-mailových správ cez multimédiá a zábavu až po "
+#~ "pokročilý balík pre produktívnu prácu, vrátane kancelárskych aplikácií a "
+#~ "správy osobných informácií pre podniky."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "All KDE applications are well integrated, with a similar look and feel "
+#~ "and an easy to use interface, accompanied by an outstanding graphical "
+#~ "appearance."
+#~ msgstr ""
+#~ "Všetky aplikácie KDE sú veľmi dobre integrovanie, obsahujú rovnaký vzhľad "
+#~ "a ľahko použiteľné rozhrania, doplnené skvelým grafický vzhľadom."
+
+#~ msgctxt "Release|"
+#~ msgid "xfce"
+#~ msgstr "xfce"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Xfce Desktop"
+#~ msgstr "Fedora s prostredím Xfce"
+
+#~ msgctxt "Release|"
+#~ msgid "A complete, well-integrated Xfce Desktop."
+#~ msgstr "Kompletné a veľmi dobre integrované prostredie Xfce."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast "
+#~ "and lightweight, while still being visually appealing and user friendly."
+#~ msgstr ""
+#~ "Fedora Xfce spin je prehliadkou prostredia Xfce, ktorého cieľom je byť "
+#~ "rýchle a odľahčené prostredie, a pritom byť vizuálne príťažlivé a "
+#~ "používateľsky prívetivé."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
+#~ msgstr ""
+#~ "Fedora Xfce je plnohodnotné pracovné prostredie s použitím štandardov "
+#~ "freedesktop.org."
+
+#~ msgctxt "Release|"
+#~ msgid "lxqt"
+#~ msgstr "lxqt"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora LXQt Desktop"
+#~ msgstr "Fedora s prostredím LXQt"
+
+#~ msgctxt "Release|"
+#~ msgid "A lightweight, well-integrated LXQt desktop environment."
+#~ msgstr "Odľahčené a veľmi dobre integrované prostredie LXQt."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora LXQt provides a lightweight, well-integrated LXQt desktop "
+#~ "environment. In addition to LXQt itself it provides a small, well "
+#~ "selected collection of applications like the QupZilla browser, which "
+#~ "combines Chromium's rendering engine with a nice Qt experience. Other "
+#~ "applications include the Trojita mail client, the qBittorrent client, the "
+#~ "Yarock music player and a set of some more commonly used applications. As "
+#~ "all applications use the same Qt5 toolkit and the Breeze theme known from "
+#~ "KDE, the desktop provides a unified and well-integrated style and "
+#~ "theming. In addition breeze-gtk is provided to allow the user to "
+#~ "integrate GTK applications too."
+#~ msgstr ""
+#~ "Fedora LXQt poskytuje odľahčené, dobre integrované pracovné prostredie "
+#~ "LXQt. Okrem samotného LXQt obsahuje malú ale dobre zvolenú kolekciu "
+#~ "aplikácií ako prehliadač QupZilla, ktorý kombinuje vykresľovacie jadro "
+#~ "Chromium a pekné rozhranie Qt. Medzi ďalšie aplikácie patrí e-mailový "
+#~ "klient Trojita, klient qBittorrent, hudobný prehrávač Yarock a sada "
+#~ "niektorých bežne používaných aplikácií. Pretože všetky aplikácie "
+#~ "používajú rovnakú knižnicu Qt5 a tému Breeze známu z KDE, poskytuje toto "
+#~ "pracovné prostredie jednotný a dobre integrovaný štýl a vzhľad. Navyše je "
+#~ "dostupná knižnica breeze-gtk ktorá umožňuje používateľom integrovať "
+#~ "taktiež aplikácie GTK."
+
+#~ msgctxt "Release|"
+#~ msgid "mate"
+#~ msgstr "mate"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora MATE-Compiz Desktop"
+#~ msgstr "Fedora s prostredím MATE-Compiz"
+
+#~ msgctxt "Release|"
+#~ msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
+#~ msgstr "Klasické pracovné prostredie Fedory s doplnkovým 3D správcom okien."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE "
+#~ "Desktop is a lightweight, powerful desktop designed with productivity and "
+#~ "performance in mind. The default windows manager is Marco which is usable "
+#~ "for all machines and VMs. Compiz Fusion is a beautiful 3D windowing "
+#~ "manager with Emerald and GTK+ theming."
+#~ msgstr ""
+#~ "Spin MATE Compiz obsahuje prostredie MATE s Compiz Fusion. Prostredie "
+#~ "MATE je odľahčené, ale výkonné pracovné prostredie navrhnuté s ohľadom na "
+#~ "produktivitu a výkon. Predvolený správca okien Marco je použiteľný na "
+#~ "všetkých počítačoch a virtuálnych strojoch. Compiz Fusion je nádherný 3D "
+#~ "správca okien s motívmi Emerald a GTK+."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
+#~ "should definitely try the MATE-Compiz spin."
+#~ msgstr ""
+#~ "Ak požadujete výkonné a odľahčené prostredie pre Fedoru s 3D efektami, "
+#~ "určite vyskúšajte spin MATE-Compiz."
+
+#~ msgctxt "Release|"
+#~ msgid "cinnamon"
+#~ msgstr "cinnamon"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Cinnamon Desktop"
+#~ msgstr "Fedora s prostredím Cinnamon"
+
+#~ msgctxt "Release|"
+#~ msgid "A modern desktop featuring traditional Gnome user experience."
+#~ msgstr ""
+#~ "Moderné pracovné prostredie predstavujúce tradičné používateľské "
+#~ "prostredie Gnome."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Cinnamon is a Linux desktop which provides advanced innovative features "
+#~ "and a traditional user experience. The desktop layout is similar to Gnome "
+#~ "2. The underlying technology is forked from Gnome Shell. The emphasis is "
+#~ "put on making users feel at home and providing them with an easy to use "
+#~ "and comfortable desktop experience."
+#~ msgstr ""
+#~ "Cinnamon je linuxové pracovné prostredie, ktoré poskytuje pokročilé "
+#~ "inovatívne funkcie a tradičné používateľské ovládanie. Rozloženie "
+#~ "pracovného prostredia je podobné ako Gnome 2. Základné technológie "
+#~ "vychádzajú z Gnome Shell. Dôraz je kladený na to, aby sa používatelia "
+#~ "cítili ako doma, a mali dostupné jednoduché ovládanie a komfortné "
+#~ "pracovné prostredie."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Cinnamon is a popular desktop alternative to Gnome 3 and this spin "
+#~ "provides the option to quickly try and install this desktop."
+#~ msgstr ""
+#~ "Prostredie Cinnamon je populárna alternatíva k Gnome 3 a tento spin ho "
+#~ "umožňuje rýchlo vyskúšať a nainštalovať."
+
+#~ msgctxt "Release|"
+#~ msgid "lxde"
+#~ msgstr "lxde"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora LXDE Desktop"
+#~ msgstr "Fedora s prostredím LXDE"
+
+#~ msgctxt "Release|"
+#~ msgid "A light, fast, less-resource hungry desktop environment."
+#~ msgstr "Ľahké a rýchle pracovné prostredie, ktoré vyžaduje menej zdrojov."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
+#~ "performant, and energy-saving desktop environment. It maintained by an "
+#~ "international community of developers and comes with a beautiful "
+#~ "interface, multi-language support, standard keyboard shortcuts and "
+#~ "additional features like tabbed file browsing."
+#~ msgstr ""
+#~ "LXDE, \"odľahčené prostredie pre X11\", je extrémne rýchle, výkonné a "
+#~ "energeticky úsporné pracovné prostredie. Spravuje ho medzinárodná "
+#~ "komunita vývojárov a obsahuje pekné rozhranie, viacjazyčnú podporu, "
+#~ "štandardné klávesové skratky a ďalšie funkcie ako prehliadanie súborov v "
+#~ "záložkách."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "LXDE is not designed to be powerful and bloated, but to be usable and "
+#~ "slim. A main goal of LXDE is to keep computer resource usage low. It is "
+#~ "especially designed for computers with low hardware specifications like "
+#~ "netbooks, mobile devices (e.g. MIDs) or older computers."
+#~ msgstr ""
+#~ "LXDE nie je navrhnutý tak, aby bol výkonný a preplácaný, ale použiteľný a "
+#~ "štíhly. Hlavným cieľom LXDE je nízke využívanie zdrojov počítača. Je "
+#~ "navrhnutý hlavne pre slabšie počítače ako netbooky, mobilné zariadenia "
+#~ "alebo staršie počítače."
+
+#~ msgctxt "Release|"
+#~ msgid "soas"
+#~ msgstr "soas"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora SoaS Desktop"
+#~ msgstr "Fedora s prostredím SoaS"
+
+#~ msgctxt "Release|"
+#~ msgid "Discover. Reflect. Share. Learn."
+#~ msgstr "Objavujte. Vyjadrujte. Zdieľajte. Učte sa."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Sugar on a Stick is a Fedora-based operating system featuring the award-"
+#~ "winning Sugar Learning Platform and designed to fit on an ordinary USB "
+#~ "thumbdrive (\"stick\")."
+#~ msgstr ""
+#~ "Sugar on a Stick je operačný systém založený na Fedore obsahujúci "
+#~ "oceňovanú vzdelávaciu platformu Sugar, a ktorý je navrhnutý, aby vošiel "
+#~ "na bežný USB kľúč."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
+#~ "child-friendly graphical environment. Sugar automatically saves your "
+#~ "progress to a \"Journal\" on your stick, so teachers and parents can "
+#~ "easily pull up \"all collaborative web browsing sessions done in the past "
+#~ "week\" or \"papers written with Daniel and Sarah in the last 24 hours\" "
+#~ "with a simple query rather than memorizing complex file/folder "
+#~ "structures. Applications in Sugar are known as Activities, some of which "
+#~ "are described below."
+#~ msgstr ""
+#~ "Sugar ruší tradičné chápanie \"kancelárskeho pracovného prostredia\", a "
+#~ "predstavuje grafické prostredie vhodné pre deti. Sugar automaticky ukladá "
+#~ "vaše kroky do \"Žurnálu\" na USB kľúč, takže učitelia a rodičia môžu "
+#~ "jednoducho vytiahnuť \"všetky prehliadané webové stránky za posledný "
+#~ "týždeň\" alebo \"korešpondenciu napísanú medzi Danielom a Sárou za "
+#~ "posledných 24 hodín\" pomocou jednoduchého dotazu namiesto pamätania si "
+#~ "zložitých adresárových štruktúr. Aplikácie v Sugar sa nazývajú Aktivity, "
+#~ "z ktorých niektoré sú popísané nižšie."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "It is now deployable for the cost of a stick rather than a laptop; "
+#~ "students can take their Sugar on a Stick thumbdrive to any machine - at "
+#~ "school, at home, at a library or community center - and boot their "
+#~ "customized computing environment without touching the host machine’s hard "
+#~ "disk or existing system at all."
+#~ msgstr ""
+#~ "Nasadenie teraz predstavuje skôr cenu USB kľúča ako notebooku. Študenti "
+#~ "si môžu pripojiť svoj USB kľúč s prostredím Sugar do akéhokoľvek počítača "
+#~ "- v škole, doma, v knižnici alebo komunitnom centre - a zaviesť ich "
+#~ "vlastné počítačové prostredie bez ovplyvnenie pevného disku počítača "
+#~ "alebo existujúceho systému."
+
+#~ msgctxt "Release|"
+#~ msgid "i3"
+#~ msgstr "i3"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora i3 Desktop"
+#~ msgstr "Fedora s prostredím i3"
+
+#~ msgctxt "Release|"
+#~ msgid "Simplicity over Complexity"
+#~ msgstr "Jednoduchosť namiesto zložitosti"
+
+#~ msgctxt "Release|"
+#~ msgid "The Fedora i3 Spin provides the popular i3 tiling window manager."
+#~ msgstr "Fedora i3 spin poskytuje populárneho dlaždicového správcu okien i3."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "It makes i3 accessible and appealing to both novices and advanced users "
+#~ "who prefer not to use a mouse, touchpad, or other pointing device to "
+#~ "interact with their environment. Featuring lightweight applications for "
+#~ "web browsing, text editing, and media playback, the Fedora i3 Spin offers "
+#~ "a complete experience with a minimalist user interface."
+#~ msgstr ""
+#~ "Sprístupňuje i3 nováčikom aj skúseným používateľom, ktorí preferujú "
+#~ "pracovať so svojím prostredím bez myši, touchpadu aleho iného "
+#~ "polohovacieho zariadenia. Obsahuje odľahčené aplikácie pre prehliadanie "
+#~ "webu, úpravu textu a prehrávanie médií čím Fedora i3 Spin ponúka "
+#~ "kompletnú používateľskú skúsenosť s minimalistickým rozhraním."
+
+#~ msgctxt "Release|"
+#~ msgid "astronomy"
+#~ msgstr "astronomy"
+
+#~ msgctxt "Release|"
+#~ msgid "labs"
+#~ msgstr "labs"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Astronomy"
+#~ msgstr "Fedora Astronómia"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Powerful completely open-source and free tool for amateurs and "
+#~ "professionals."
+#~ msgstr ""
+#~ "Výkonné, kompletne open-source a slobodné nástroje pre amatérov aj "
+#~ "profesionálov."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Astronomy brings a complete open source toolchain to both amateur "
+#~ "and professional astronomers."
+#~ msgstr ""
+#~ "Fedora Astronomy prináša kompletnú sadu nástrojov pre amatérskych aj "
+#~ "profesionálnych astronómov."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Spin provides the Fedora KDE desktop enhanced with a complete "
+#~ "scientific Python environment and the AstrOmatic software for data "
+#~ "analysis. KStars was added to provide a full featured astrophotography "
+#~ "tool. As KStars uses the INDI library to control equipment, various "
+#~ "telescopes, cameras etc. are supported. Summarized, Fedora Astronomy "
+#~ "provides a complete set of software, from the observation planning to the "
+#~ "final results."
+#~ msgstr ""
+#~ "Tento spin poskytuje pracovné prostredie KDE rozšírené o kompletné "
+#~ "vedecké prostredie Pythonu a softvér AstrOmatic pre analýzu dát. Pridaný "
+#~ "bol aj KStars poskytujúci plnohodnotný nástroj pre astronomickú "
+#~ "fotografiu. KStars na ovládanie zariadení používa knižnicu INDI, "
+#~ "podporované sú rôzne teleskopy, fotoaparáty atď. Ak to zhrnieme, tak "
+#~ "Fedora Astronomy poskytuje kompletnú sadu softvéru, od plánovania "
+#~ "pozorovania až po finálne výsledky."
+
+#~ msgctxt "Release|"
+#~ msgid "design_suite"
+#~ msgstr "design_suite"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Design Suite"
+#~ msgstr "Fedora Dizajnérsky balík"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Visual design, multimedia production, and publishing suite of free and "
+#~ "open source creative tools."
+#~ msgstr ""
+#~ "Balík open-source a slobodných tvorivých nástrojov pre vizuálny dizajn, "
+#~ "multimediálnu tvorbu a publikovanie."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Looking for a ready-to-go desktop environment brimming with free and open "
+#~ "source multimedia production and publishing tools? Try the Design Suite, "
+#~ "a Fedora Spin created by designers, for designers."
+#~ msgstr ""
+#~ "Hľadáte pracovné prostredie plné slobodných a open-source nástrojov pre "
+#~ "vytváranie a publikovanie multimédií? Vyskúšajte Fedora spin Dizajnérsky "
+#~ "balík vytvorený dizajnérmi pre dizajnérov."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Design Suite includes the favorite tools of the Fedora Design Team. "
+#~ "These are the same programs we use to create all the artwork that you see "
+#~ "within the Fedora Project, from desktop backgrounds to CD sleeves, web "
+#~ "page designs, application interfaces, flyers, posters and more. From "
+#~ "document publication to vector and bitmap editing or 3D modeling to photo "
+#~ "management, the Design Suite has an application for you — and you can "
+#~ "install thousands more from the Fedora universe of packages."
+#~ msgstr ""
+#~ "Dizajnérsky balík obsahuje obľúbené nástroje dizajnérskeho tímu Fedory. "
+#~ "Sú to rovnaké programy, ktoré používame na vytváranie všetkej grafiky, "
+#~ "ktorú môžete vidieť v rámci Projektu Fedora, od pozadí pracovnej plochy, "
+#~ "po obaly CD, dizajn webových stránok, rozhraní aplikácií, letákov, "
+#~ "plagátov atď. Design Suite obsahuje aplikácie od publikácie dokumentov, "
+#~ "cez úpravu vektorovej a rastrovej grafiky, 3D modelovania až po správu "
+#~ "fotografií. Niekoľko tisíc ďalších si môžete doinštalovať z množstva "
+#~ "balíčkov Fedory."
+
+#~ msgctxt "Release|"
+#~ msgid "games"
+#~ msgstr "games"
+
+#~ msgid "Fedora Games"
+#~ msgstr "Fedora Games"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A collection and perfect show-case of the best games available in Fedora."
+#~ msgstr "Kolekcia a skvelá prehliadka najlepších hier dostupných vo Fedore."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Games spin offers a perfect showcase of the best games "
+#~ "available in Fedora. The included games span several genres, from first-"
+#~ "person shooters to real-time and turn-based strategy games to puzzle "
+#~ "games."
+#~ msgstr ""
+#~ "Spin Fedora Games poskytuje dokonalú ukážku najlepších hier dostupných vo "
+#~ "Fedore. Obsahuje hry z rôznych žánrov od strieľačiek z pohľadu prvej "
+#~ "osoby cez realtimové a ťahové stratégie po puzzle."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Not all the games available in Fedora are included on this spin, but "
+#~ "trying out this spin will give you a fair impression of Fedora's ability "
+#~ "to run great games."
+#~ msgstr ""
+#~ "Všetky hry dostupné vo Fedore nie sú súčasťou tohto spinu, ale ak "
+#~ "vyskúšate tento spin, získate dobrú predstavu, ako Fedora zvláda spúšťať "
+#~ "skvelé hry."
+
+#~ msgctxt "Release|"
+#~ msgid "python"
+#~ msgstr "python"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Python Classroom"
+#~ msgstr "Fedora Python učebňa"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A classroom lab for teaching the Python programming language to students"
+#~ msgstr ""
+#~ "Laboratórna učebňa na výučbu programovacieho jazyka Python pre študentov."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "One of the benefits of Fedora for Python developers is the ease of "
+#~ "setting up Python development. The Fedora Python Classroom Lab makes it "
+#~ "even easier for teachers and instructors to use Fedora in their "
+#~ "classrooms or workshops. Ready to use operating system with important "
+#~ "stuff pre-installed - either with GNOME or as a headless environment for "
+#~ "Docker or Vagrant. Teach Python on Fedora, with Fedora, using the stuff "
+#~ "you love: IPython, Jupyter Notebook, multiple Pythons, virtualenvs, tox, "
+#~ "git and more"
+#~ msgstr ""
+#~ "Jednou z výhod Fedory pre vývojárov v Pythone je jednoduchosť nastavenia "
+#~ "vývojového prostredia. Laboratórna učebňa Pythonu umožňuje učiteľom a "
+#~ "inštruktorom ešte jednoduchšie použitie Fedory v ich triedach a na "
+#~ "workshopoch. Ide o operačný systém pripravený priamo k použitiu s "
+#~ "predinštalovanými vecami - buď s GNOME alebo ako prostredie bez "
+#~ "zobrazovacieho zariadenia pre Docker alebo Vagrant. Učte sa Python na "
+#~ "Fedore s Fedorou, a používajte nástroje, ktoré milujete: Python, Jupyter "
+#~ "Notebook, viaceré verzie Pythonu, virtualenv, tox, git a ďalšie"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Python Classroom Lab comes in 3 variants. Either you can run "
+#~ "it in graphical mode with GNOME, or you can virtualize it with Vagrant or "
+#~ "run it in a Docker container. You choose what fits your teaching "
+#~ "environment the best."
+#~ msgstr ""
+#~ "Laboratórna učebňa Pythonu na Fedore je dostupná v 3 variantách. Buď ju "
+#~ "môžete spustiť v grafickom režime s GNOME, alebo ju môžete virtualizovať "
+#~ "s Vagrantom, alebo v kontajneri Docker. Vyberte si variantu, ktorá "
+#~ "najlepšie vyhovuje vášmu výučbovému prostrediu."
+
+#~ msgctxt "Release|"
+#~ msgid "robotics"
+#~ msgstr "robotics"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Robotics Suite"
+#~ msgstr "Fedora Robotika"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A wide variety of free and open robotics software packages for beginners "
+#~ "and experts in robotics."
+#~ msgstr ""
+#~ "Široká škála slobodných a open-source softvérových balíčkov pre "
+#~ "začiatočníkov aj odborníkov v robotike."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Robotics spin provides a wide variety of free and open "
+#~ "robotics software packages. These range from hardware accessory libraries "
+#~ "for the Hokuyo laser scanners or Katana robotic arm to software "
+#~ "frameworks like Fawkes or Player and simulation environments such as "
+#~ "Stage and RoboCup Soccer Simulation Server 2D/3D. It also provides a "
+#~ "ready to use development environment for robotics including useful "
+#~ "libraries such as OpenCV computer vision library, Festival text to speech "
+#~ "system and MRPT."
+#~ msgstr ""
+#~ "Fedora spin Robotika poskytuje širokú škálu slobodných a open-source "
+#~ "softvérových balíčkov pre robotiku. Ich škála siaha od knižníc pre "
+#~ "prístup k hardvéru laserových skenerov Hokuyo, alebo robotickým rukám "
+#~ "Katana cez frameworky ako Fawkes alebo Player až po simulačné prostredia "
+#~ "ako Stage a simulačný server futbalu RoboCup v 2D/3D. Poskytuje taktiež "
+#~ "vývojové prostredia pre robotiku vrátane užitočných knižníc ako napr. "
+#~ "knižnicu počítačového videnia OpenCV, systém prevodu textu na reč "
+#~ "Festival a MRPT."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Robotics spin is targeted at people just discovering their interest "
+#~ "in robotics as well as experienced roboticists. For the former we provide "
+#~ "a readily usable simulation environment with an introductory hands-on "
+#~ "demonstration, and for the latter we provide a full development "
+#~ "environment, to be used immediately."
+#~ msgstr ""
+#~ "Spin Robotika je zameraný na ľudí, ktorí práve objavili svoj záujem o "
+#~ "robotiku, ako aj pre skúsených robotikov. Pre prvú skupinu poskytujeme "
+#~ "okamžite použiteľné simulačné prostredie s praktickými ukážkami, a pre "
+#~ "druhú skupinu zas plnohodnotné vývojové prostredie."
+
+#~ msgctxt "Release|"
+#~ msgid "scientific"
+#~ msgstr "scientific"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Scientific"
+#~ msgstr "Fedora Veda"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A bundle of open source scientific and numerical tools used in research."
+#~ msgstr "Sada open-source vedeckých a numerických nástrojov pre výskum."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Wary of reinstalling all the essential tools for your scientific and "
+#~ "numerical work? The answer is here. Fedora Scientific Spin brings "
+#~ "together the most useful open source scientific and numerical tools atop "
+#~ "the goodness of the KDE desktop environment."
+#~ msgstr ""
+#~ "Obávate sa preinštalovania všetkých dôležitých nástrojov pre svoju "
+#~ "vedeckú alebo numerickú prácu. Odpoveď je tu. Fedora spin Veda spája "
+#~ "spolu najužitočnejšie open-source vedecké a numerické nástroje v peknom "
+#~ "pracovnom prostredí KDE."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Scientific currently ships with numerous applications and "
+#~ "libraries. These range from libraries such as the GNU Scientific library, "
+#~ "the SciPy libraries, tools like Octave and xfig to typesetting tools like "
+#~ "Kile and graphics programs such as Inkscape. The current set of packages "
+#~ "include an IDE, tools and libraries for programming in C, C++, Python, "
+#~ "Java and R. Also included along with are libraries for parallel computing "
+#~ "such as the OpenMPI and OpenMP. Tools for typesetting, writing and "
+#~ "publishing are included."
+#~ msgstr ""
+#~ "Fedora spin Veda aktuálne obsahuje veľké množstvo aplikácií a knižníc. "
+#~ "Ich škála siaha od knižníc ako napr. GNU Scientific, SciPy cez nástroje "
+#~ "ako Octave a xfig, až po nástroje na sadzbu ako Kile a grafické programy "
+#~ "ako napr. Inkscape. Aktuálna sada balíčkov obsahuje IDE, nástroje a "
+#~ "knižnice na programovanie v C, C++, Python, Java a R. Obsahuje tiež "
+#~ "knižnice pre paralelne programovanie ako sú OpenMPI a OpenMP. Obsiahnuté "
+#~ "sú aj nástroje na sadzbu, písanie a publikovanie."
+
+#~ msgctxt "Release|"
+#~ msgid "security"
+#~ msgstr "security"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Security Lab"
+#~ msgstr "Fedora Bezpečnostný lab"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A safe test environment to work on security auditing, forensics, system "
+#~ "rescue and teaching security testing methodologies."
+#~ msgstr ""
+#~ "Bezpečné testovacie prostredie pre prácu na bezpečnostných auditoch, "
+#~ "forenznej analýze, záchrane systému a výučbe metód testovania bezpečnosti."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Security Lab provides a safe test environment to work on "
+#~ "security auditing, forensics, system rescue and teaching security testing "
+#~ "methodologies in universities and other organizations."
+#~ msgstr ""
+#~ "Fedora spin Bezpečnostný lab poskytuje bezpečné testovacie prostredie pre "
+#~ "prácu na bezpečnostných auditoch, forenznej analýze, záchrane systému a "
+#~ "výučbe metód testovania bezpečnosti na univerzitách a ďalších "
+#~ "organizáciách."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The spin is maintained by a community of security testers and developers. "
+#~ "It comes with the clean and fast Xfce Desktop Environment and a "
+#~ "customized menu that provides all the instruments needed to follow a "
+#~ "proper test path for security testing or to rescue a broken system. The "
+#~ "Live image has been crafted to make it possible to install software while "
+#~ "running, and if you are running it from a USB stick created with LiveUSB "
+#~ "Creator using the overlay feature, you can install and update software "
+#~ "and save your test results permanently."
+#~ msgstr ""
+#~ "Tento spin udržuje komunita bezpečnostných testerov a vývojárov. Obsahuje "
+#~ "čisté a rýchle pracovné prostredie Xfce a upravené menu, ktoré poskytuje "
+#~ "všetky potrebné nástroje na testovanie bezpečnosti alebo záchranu "
+#~ "poškodeného systému. Live obraz bol dôkladne vytvorený tak, aby umožnil "
+#~ "za behu inštaláciu softvéru. V prípade, že ho spúšťate z USB kľúča "
+#~ "vytvoreného pomocou nástroja LiveUSB Creator s funkciou prekrývania, tak "
+#~ "môžete trvalo inštalovať alebo aktualizovať softvér a ukladať výsledky "
+#~ "testov."
