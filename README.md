@@ -44,7 +44,6 @@ It is also possible to crosscompile the application using the `MinGW` compiler s
 
 #### Requirements
 
-* `adwaita-qt`
 * `xz-libs`
 
 ### macOS
@@ -55,7 +54,6 @@ To release a standalone package, use `macdeployqt`, supplied with your Qt instal
 
 #### Requirements
 
-* `adwaita-qt`
 * `xz-libs`
 
 ## Translation
