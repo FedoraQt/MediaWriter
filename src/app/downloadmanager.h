@@ -163,6 +163,7 @@ public:
     QNetworkReply *tryAnotherMirror();
 
     Q_INVOKABLE void cancel();
+    Q_INVOKABLE bool isDownloaded(const QUrl &url) const;
 
     // DownloadReceiver interface
     virtual void onStringDownloaded(const QString &text) override;

@@ -137,6 +137,13 @@ void DownloadManager::cancel()
     }
 }
 
+bool DownloadManager::isDownloaded(const QUrl &url) const
+{
+    const QString filePath = QString("%1/%2").arg(DownloadManager::dir()).arg(url.fileName());
+
+    return QFile::exists(filePath);
+}
+
 void DownloadManager::onStringDownloaded(const QString &text)
 {
     if (!m_current)
