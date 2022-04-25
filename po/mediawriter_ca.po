@@ -8,11 +8,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-07 16:44+0200\n"
+"POT-Creation-Date: 2022-04-25 07:54+0200\n"
 "PO-Revision-Date: 2021-07-11 17:14+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Catalan <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/ca/>\n"
+"Language-Team: Catalan <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,89 +21,274 @@ msgstr ""
 "X-Generator: Weblate 4.7.1\n"
 "X-Qt-Contexts: true\n"
 
-#: ../src/app/qml/DeleteButton.qml:64
-msgctxt "DeleteButton|"
-msgid "Delete the Downloaded Image"
-msgstr "Suprimeix de la imatge baixada"
+#: ../src/app/qml/AboutDialog.qml:49
+#, fuzzy
+#| msgctxt "ImageList|"
+#| msgid "About Fedora Media Writer"
+msgctxt "AboutDialog|"
+msgid "About Fedora Media Writer"
+msgstr "Quant a Fedora Media Writer"
 
-#: ../src/app/downloadmanager.cpp:215
+#: ../src/app/qml/AboutDialog.qml:58
+#, fuzzy, qt-format
+#| msgctxt "ImageDetails|"
+#| msgid "Version %1"
+msgctxt "AboutDialog|"
+msgid "Version %1"
+msgstr "Versió %1"
+
+#: ../src/app/qml/AboutDialog.qml:65
+#, fuzzy
+#| msgctxt "ImageList|"
+#| msgid "Fedora Media Writer is now checking for new releases"
+msgctxt "AboutDialog|"
+msgid "Fedora Media Writer is now checking for new releases"
+msgstr "Fedora Media Writer ara està comprovant si hi ha llançaments nous"
+
+#: ../src/app/qml/AboutDialog.qml:71
+#, fuzzy, qt-format
+#| msgctxt "ImageList|"
+#| msgid "Please report bugs or your suggestions on %1"
+msgctxt "AboutDialog|"
+msgid "Please report bugs or your suggestions on %1"
+msgstr "Si us plau, informeu dels errors  o els vostres suggeriments a %1"
+
+#: ../src/app/qml/AboutDialog.qml:94
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Close"
+msgctxt "AboutDialog|"
+msgid "Close"
+msgstr "Tanca"
+
+#: ../src/app/qml/CancelDialog.qml:54
+msgctxt "CancelDialog|"
+msgid "Cancel Download?"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:56
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "CancelDialog|"
+msgid "Cancel Writing?"
+msgstr "Escriptura"
+
+#: ../src/app/qml/CancelDialog.qml:58
+msgctxt "CancelDialog|"
+msgid "Cancel Verification?"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:65
+msgctxt "CancelDialog|"
+msgid "Download progress will be lost and media writing will be aborted."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:67
+msgctxt "CancelDialog|"
+msgid ""
+"Writing process will be aborted and your drive will have to be restored "
+"afterwards."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:69
+msgctxt "CancelDialog|"
+msgid "This operation is safe to be cancelled."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:86
+msgctxt "CancelDialog|"
+msgid "Continue"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:104
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "CancelDialog|"
+msgid "Cancel Download"
+msgstr "Baixada"
+
+#: ../src/app/qml/CancelDialog.qml:106
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "CancelDialog|"
+msgid "Cancel Writing"
+msgstr "Escriptura"
+
+#: ../src/app/qml/CancelDialog.qml:108
+msgctxt "CancelDialog|"
+msgid "Cancel Verification"
+msgstr ""
+
+#: ../src/app/downloadmanager.cpp:216
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "No s'ha pogut capturar la imatge sol·licitada."
 
-#: ../src/app/downloadmanager.cpp:311
+#: ../src/app/downloadmanager.cpp:316
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "Us heu quedat sense espai a la vostra carpeta de Baixades."
 
-#: ../src/app/downloadmanager.cpp:313
+#: ../src/app/downloadmanager.cpp:318
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "El fitxer baixat no és dels que es poden escriure."
 
-#: ../src/app/downloadmanager.cpp:399
+#: ../src/app/downloadmanager.cpp:404
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Expiració de temps de connexió"
 
-#: ../src/app/qml/DownloadDialog.qml:33
+#: ../src/app/qml/DownloadPage.qml:48
 #, qt-format
-msgctxt "DownloadDialog|"
-msgid "Write %1"
-msgstr "Escriu %1"
+msgctxt "DownloadPage|"
+msgid "%1 Sucessfuly Written"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:141
-msgctxt "DownloadDialog|"
-msgid "Writing is not possible"
-msgstr "No és possible l'escriptura"
+#: ../src/app/qml/DownloadPage.qml:50
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Writing %1"
+msgstr "Escriptura"
 
-#: ../src/app/qml/DownloadDialog.qml:216
-msgctxt "DownloadDialog|"
-msgid "Close"
-msgstr "Tanca"
+#: ../src/app/qml/DownloadPage.qml:52
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the written data"
+msgctxt "DownloadPage|"
+msgid "Verifying written data"
+msgstr "Comprovació de les dades escrites"
 
-#: ../src/app/qml/DownloadDialog.qml:232 ../src/app/qml/DownloadDialog.qml:253
-#: ../src/app/qml/DownloadDialog.qml:274 ../src/app/qml/DownloadDialog.qml:285
-#: ../src/app/qml/DownloadDialog.qml:306
-msgctxt "DownloadDialog|"
-msgid "Retry"
-msgstr "Torna a intentar-ho"
+#: ../src/app/qml/DownloadPage.qml:54
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "DownloadPage|"
+msgid "Downloading %1"
+msgstr "Baixada"
 
-#: ../src/app/qml/DownloadDialog.qml:356
-msgctxt "DownloadDialog|"
-msgid "The file will be saved to your Downloads folder."
+#: ../src/app/qml/DownloadPage.qml:56
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "The downloaded image is corrupted"
+msgctxt "DownloadPage|"
+msgid "Verifying downloaded image"
+msgstr "La imatge baixada està malmesa"
+
+#: ../src/app/qml/DownloadPage.qml:58
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Preparing"
+msgctxt "DownloadPage|"
+msgid "Preparing %1"
+msgstr "Preparació"
+
+#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+msgctxt "DownloadPage|"
+msgid "Failed"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:72
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 B left)"
+msgctxt "DownloadPage|"
+msgid " B left)"
+msgstr "(queden %1 B)"
+
+#: ../src/app/qml/DownloadPage.qml:73
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 KB left)"
+msgctxt "DownloadPage|"
+msgid " KB left)"
+msgstr "(queden %1 KB)"
+
+#: ../src/app/qml/DownloadPage.qml:74
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 MB left)"
+msgctxt "DownloadPage|"
+msgid " MB left)"
+msgstr "(queden %1 MB)"
+
+#: ../src/app/qml/DownloadPage.qml:75
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 GB left)"
+msgctxt "DownloadPage|"
+msgid " GB left)"
+msgstr "(queden %1 GB)"
+
+#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
+#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#, qt-format
+msgctxt "DownloadPage|"
+msgid " (%1"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:124
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "The file will be saved to your Downloads folder."
+msgctxt "DownloadPage|"
+msgid "Downloads are saved to the downloads folder."
 msgstr "Es desarà el fitxer a la vostra carpeta de Baixades."
 
-#: ../src/app/qml/DownloadDialog.qml:363
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:132
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid "By writing, you will lose all of the data on %1."
+msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Amb l'escriptura, perdreu totes les dades en %1."
 
-#: ../src/app/qml/DownloadDialog.qml:370
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:140
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "Your drive will be resized to a smaller capacity. You may resize it back "
+#| "to normal by using Fedora Media Writer; this will remove installation "
+#| "media from your drive."
+msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using Fedora Media Writer; this will remove installation media "
+"normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
 "La vostra unitat es redimensionarà a una capacitat menor. Podeu tornar-la a "
 "redimensionar a la mida normal amb Fedora Media Writer; això eliminarà els "
 "mitjans d'instal·lació de la vostra unitat."
 
-#: ../src/app/qml/DownloadDialog.qml:377
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:148
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Selecció:"
 
-#: ../src/app/qml/DownloadDialog.qml:377
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:148
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "None"
+msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Cap"
 
-#: ../src/app/qml/DownloadDialog.qml:384
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:156
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "Your board or device is not supported by Fedora Media Writer yet. Please "
+#| "check <a href=%1>this page</a> for more information about its "
+#| "compatibility with Fedora and how to create bootable media for it."
+msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
 "check <a href=%1>this page</a> for more information about its compatibility "
@@ -114,9 +299,13 @@ msgstr ""
 "informació sobre la seva compatibilitat amb Fedora i com crear mitjans "
 "d'arrencada."
 
-#: ../src/app/qml/DownloadDialog.qml:392
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:165
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "The selected drive's size is %1. It's possible you have selected an "
+#| "external drive by accident!"
+msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
@@ -124,227 +313,297 @@ msgstr ""
 "La mida de la unitat seleccionada és %1. És possible que hàgiu seleccionat "
 "una unitat externa per accident!"
 
-#: ../src/app/qml/DownloadDialog.qml:419
+#: ../src/app/qml/DownloadPage.qml:174
 #, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 B left)"
-msgstr "(queden %1 B)"
+msgctxt "DownloadPage|"
+msgid "Restart and boot from %1 to start using %2."
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:420
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 KB left)"
-msgstr "(queden %1 KB)"
+#: ../src/app/qml/DownloadPage.qml:262
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Writing is not possible"
+msgctxt "DownloadPage|"
+msgid "Writing not possible"
+msgstr "No és possible l'escriptura"
 
-#: ../src/app/qml/DownloadDialog.qml:421
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 MB left)"
-msgstr "(queden %1 MB)"
+#: ../src/app/qml/DownloadPage.qml:282
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Writing"
+msgstr "Escriptura"
 
-#: ../src/app/qml/DownloadDialog.qml:422
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 GB left)"
-msgstr "(queden %1 GB)"
+#: ../src/app/qml/DownloadPage.qml:310
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Write verifying"
+msgstr "Escriptura"
 
-#: ../src/app/qml/DownloadDialog.qml:435
-msgctxt "DownloadDialog|"
-msgid "Write the image immediately when the download is finished"
-msgstr "Escriu immediatament la imatge quan hagi acabat la baixada"
+#: ../src/app/qml/DownloadPage.qml:334
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Finished!"
+msgctxt "DownloadPage|"
+msgid "Finish"
+msgstr "Ha acabat!"
 
-#: ../src/app/qml/DownloadDialog.qml:509
-msgctxt "DownloadDialog|"
-msgid "There are no portable drives connected"
-msgstr "No hi ha connectada cap unitat compatible"
+#: ../src/app/qml/DownloadPage.qml:347
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Writing %1 was successful"
+msgctxt "DownloadPage|"
+msgid "Write Successful"
+msgstr "Escriptura reeixida de %1"
 
-#: ../src/app/qml/DownloadDialog.qml:532
-msgctxt "DownloadDialog|"
-msgid "Other"
-msgstr "Altres"
+#: ../src/app/qml/DownloadPage.qml:365
+msgctxt "DownloadPage|"
+msgid "Failed verification no drives"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:561
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-msgstr "No s'ha pogut suprimir<br>\"<a href=\"%1\">%2</a>\"."
+#: ../src/app/qml/DownloadPage.qml:381
+msgctxt "DownloadPage|"
+msgid "Failed verification"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:573
-msgctxt "DownloadDialog|"
-msgid "Cancel"
-msgstr "Cancel·la"
+#: ../src/app/qml/DownloadPage.qml:393
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the download"
+msgctxt "DownloadPage|"
+msgid "Failed download"
+msgstr "Comprovació de la baixada"
 
-#: ../src/app/qml/DownloadDialog.qml:586
-msgctxt "DownloadDialog|"
-msgid "Write to Disk"
-msgstr "Escriu al disc"
+#: ../src/app/qml/DownloadPage.qml:409
+msgctxt "DownloadPage|"
+msgid "Failed no drives"
+msgstr ""
 
-#: ../src/app/drivemanager.cpp:286
+#: ../src/app/drivemanager.cpp:288
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "La unitat no és prou gran."
 
-#: ../src/app/qml/ImageDetails.qml:98
-msgctxt "ImageDetails|"
-msgid "Back"
-msgstr ""
+#: ../src/app/qml/DrivePage.qml:36
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Write to Disk"
+msgctxt "DrivePage|"
+msgid "Write Options"
+msgstr "Escriu al disc"
 
-#: ../src/app/qml/ImageDetails.qml:105
-msgctxt "ImageDetails|"
-msgid "Create Live USB…"
-msgstr ""
-
-#. The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
-#: ../src/app/qml/ImageDetails.qml:167
-#, qt-format
-msgctxt "ImageDetails|"
-msgid "(%1 after writing)"
-msgstr "(%1 després de l'escriptura)"
-
-#: ../src/app/qml/ImageDetails.qml:192
-#, qt-format
-msgctxt "ImageDetails|"
-msgid "Version %1"
+#: ../src/app/qml/DrivePage.qml:45
+#, fuzzy
+#| msgctxt "ImageDetails|"
+#| msgid "Version %1"
+msgctxt "DrivePage|"
+msgid "Version"
 msgstr "Versió %1"
 
-#: ../src/app/qml/ImageDetails.qml:296
-#, qt-format
-msgctxt "ImageDetails|"
-msgid ""
-"Fedora %1 was released! Check it out!<br>If you want a stable, finished "
-"system, it's better to stay at version %2."
+#: ../src/app/qml/DrivePage.qml:62
+msgctxt "DrivePage|"
+msgid "Hardware Architecture"
 msgstr ""
-"S'ha alliberat Fedora %1! Comproveu-ho!<br>Si voleu un sistema estable i "
-"acabat, és millor quedar-se a la versió %2."
 
-#: ../src/app/qml/ImageDetails.qml:314
-#, qt-format
-msgctxt "ImageDetails|"
-msgid ", released on %1"
-msgstr ", es va publicar el %1"
+#: ../src/app/qml/DrivePage.qml:79
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DrivePage|"
+msgid "Selected file"
+msgstr "Selecció:"
 
-#: ../src/app/qml/ImageDetails.qml:324
-msgctxt "ImageDetails|"
-msgid "Other variants..."
-msgstr "Altres variants..."
+#: ../src/app/qml/DrivePage.qml:86
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "None"
+msgctxt "DrivePage|"
+msgid "None"
+msgstr "Cap"
 
-#: ../src/app/qml/ImageList.qml:84
-msgctxt "ImageList|"
-msgid "Find an operating system image"
-msgstr "Troba la imatge d'un sistema operatiu"
+#: ../src/app/qml/DrivePage.qml:94
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DrivePage|"
+msgid "Select..."
+msgstr "Selecció:"
 
-#: ../src/app/qml/ImageList.qml:168
-msgctxt "ImageList|"
-msgid "Checking for new releases"
-msgstr "Comprovació per si hi ha nous llançaments"
+#: ../src/app/qml/DrivePage.qml:111
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Image files"
+msgctxt "DrivePage|"
+msgid "Image files"
+msgstr "Fitxers d'imatges"
 
-#: ../src/app/qml/ImageList.qml:251
-msgctxt "ImageList|"
-msgid "About Fedora Media Writer"
-msgstr "Quant a Fedora Media Writer"
+#: ../src/app/qml/DrivePage.qml:111
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "All files (*)"
+msgctxt "DrivePage|"
+msgid "All files (*)"
+msgstr "Tots els fitxers (*)"
 
-#: ../src/app/qml/ImageList.qml:275
-#, qt-format
-msgctxt "ImageList|"
-msgid "Version %1"
-msgstr "Versió %1"
+#: ../src/app/qml/DrivePage.qml:122
+msgctxt "DrivePage|"
+msgid "USB Drive"
+msgstr ""
 
-#: ../src/app/qml/ImageList.qml:282
-msgctxt "ImageList|"
-msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Fedora Media Writer ara està comprovant si hi ha llançaments nous"
+#: ../src/app/qml/DrivePage.qml:130
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "There are no portable drives connected"
+msgctxt "DrivePage|"
+msgid "There are no portable drives connected"
+msgstr "No hi ha connectada cap unitat compatible"
 
-#: ../src/app/qml/ImageList.qml:296
-#, qt-format
-msgctxt "ImageList|"
-msgid "Please report bugs or your suggestions on %1"
-msgstr "Si us plau, informeu dels errors  o els vostres suggeriments a %1"
+#: ../src/app/qml/DrivePage.qml:149
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "DrivePage|"
+msgid "Download"
+msgstr "Baixada"
 
-#: ../src/app/qml/ImageList.qml:356
-msgctxt "ImageList|"
-msgid "Display additional Fedora flavors"
-msgstr "Mostra els sabors addicionals de Fedora"
+#: ../src/app/qml/DrivePage.qml:154
+#, fuzzy
+#| msgctxt "DeleteButton|"
+#| msgid "Delete the Downloaded Image"
+msgctxt "DrivePage|"
+msgid "Delete download after writing"
+msgstr "Suprimeix de la imatge baixada"
 
-#: ../src/app/linuxdrivemanager.cpp:181
+#: ../src/app/linuxdrivemanager.cpp:196
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
 msgstr "S'ha extret la unitat mentre s'hi escrivia."
 
-#: ../src/app/linuxdrivemanager.cpp:210
+#: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "No s'ha pogut trobar el binari de l'ajudant. Comproveu la vostra "
 "instal·lació."
 
-#: ../src/app/linuxdrivemanager.cpp:245
+#: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
 msgstr "S'ha aturat abans d'acabar l'escriptura."
 
-#: ../src/app/linuxdrivemanager.cpp:315 ../src/app/linuxdrivemanager.cpp:344
+#: ../src/app/linuxdrivemanager.cpp:329
 msgctxt "LinuxDrive|"
 msgid "Finished!"
 msgstr "Ha acabat!"
 
-#: ../src/app/linuxdrivemanager.cpp:315 ../src/app/linuxdrivemanager.cpp:344
+#: ../src/app/linuxdrivemanager.cpp:329
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
 msgstr "Escriptura reeixida de %1"
 
-#: ../src/app/linuxdrivemanager.cpp:337
+#: ../src/app/linuxdrivemanager.cpp:351
 msgctxt "LinuxDrive|"
 msgid "Error"
 msgstr "Error"
 
-#: ../src/app/linuxdrivemanager.cpp:337
+#: ../src/app/linuxdrivemanager.cpp:351
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
 msgstr "Escriptura fallida de %1"
 
-#: ../src/app/linuxdrivemanager.cpp:116
+#: ../src/app/linuxdrivemanager.cpp:122
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr ""
 "Pel que sembla UDisks2 no està disponible o accessible al vostre sistema."
 
-#: ../src/app/macdrivemanager.cpp:101
+#: ../src/app/macdrivemanager.cpp:100
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "No s'ha pogut trobar el binari de l'ajudant. Comproveu la vostra "
 "instal·lació."
 
-#: ../src/app/macdrivemanager.cpp:188
+#: ../src/app/macdrivemanager.cpp:182
 msgctxt "MacDrive|"
 msgid "Error"
 msgstr "Error"
 
-#: ../src/app/macdrivemanager.cpp:188
+#: ../src/app/macdrivemanager.cpp:182
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
 msgstr "Escriptura fallida de %1"
 
-#: ../src/app/macdrivemanager.cpp:192
+#: ../src/app/macdrivemanager.cpp:186
 msgctxt "MacDrive|"
 msgid "Finished!"
 msgstr "Ha acabat!"
 
-#: ../src/app/macdrivemanager.cpp:192
+#: ../src/app/macdrivemanager.cpp:186
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
 msgstr "Escriptura reeixida de %1"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/qml/MainPage.qml:43
+msgctxt "MainPage|"
+msgid "Select Image Source"
+msgstr ""
+
+#: ../src/app/qml/MainPage.qml:57
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
+msgctxt "MainPage|"
+msgid "Download automatically"
+msgstr "Baixada fallida"
+
+#: ../src/app/qml/MainPage.qml:65
+msgctxt "MainPage|"
+msgid "Select .iso file"
+msgstr ""
+
+#: ../src/app/qml/MainPage.qml:76
+#, fuzzy, qt-format
+#| msgctxt "RestoreDialog|"
+#| msgid "Restore %1?"
+msgctxt "MainPage|"
+msgid "Restore <b>%1</b>"
+msgstr "Volau restaurar %1?"
+
+#: ../src/app/portalfiledialog.cpp:145
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Image files"
+msgctxt "PortalFileDialog|"
+msgid "Image files"
+msgstr "Fitxers d'imatges"
+
+#: ../src/app/portalfiledialog.cpp:155
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "All files (*)"
+msgctxt "PortalFileDialog|"
+msgid "All files"
+msgstr "Tots els fitxers (*)"
+
+#: ../src/app/portalfiledialog.cpp:165
+msgctxt "PortalFileDialog|"
+msgid "Open File"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Trieu un fitxer des d'una de les vostres unitats"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -355,51 +614,56 @@ msgstr ""
 "per escriure-la al vostre disc flash</p><p>Actualment només s'admet "
 "l'escriptura d'imatges de disc en cru (.iso o .bin)</p>"
 
-#: ../src/app/releasemanager.cpp:362
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora Spins"
 
-#: ../src/app/releasemanager.cpp:364
+#: ../src/app/releasemanager.cpp:399
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
-#: ../src/app/releasemanager.cpp:366
+#: ../src/app/releasemanager.cpp:401
+msgctxt "Release|"
+msgid "Emerging Fedora Editions"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:403
 msgctxt "Release|"
 msgid "Other"
 msgstr "Altres"
 
-#: ../src/app/releasemanager.cpp:936
+#: ../src/app/releasemanager.cpp:979
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 64bit"
 msgstr "64 bits d'Intel"
 
-#: ../src/app/releasemanager.cpp:936
+#: ../src/app/releasemanager.cpp:979
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
-"Imatge en format ISO per als ordinadors personals Intel, AMD o compatibles ("
-"64 bits)"
+"Imatge en format ISO per als ordinadors personals Intel, AMD o compatibles "
+"(64 bits)"
 
-#: ../src/app/releasemanager.cpp:937
+#: ../src/app/releasemanager.cpp:980
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 32bit"
 msgstr "32 bits d'Intel"
 
-#: ../src/app/releasemanager.cpp:937
+#: ../src/app/releasemanager.cpp:980
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
-"Imatge en format ISO per als ordinadors personals Intel, AMD o compatibles ("
-"32 bits)"
+"Imatge en format ISO per als ordinadors personals Intel, AMD o compatibles "
+"(32 bits)"
 
-#: ../src/app/releasemanager.cpp:938
+#: ../src/app/releasemanager.cpp:981
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:938
+#: ../src/app/releasemanager.cpp:981
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
@@ -407,133 +671,85 @@ msgstr ""
 "Imatge en cru amb compressió LZMA per a les màquines ARM v7-A com ara "
 "Raspberry Pi 2 i 3"
 
-#: ../src/app/releasemanager.cpp:939
+#: ../src/app/releasemanager.cpp:982
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:939
+#: ../src/app/releasemanager.cpp:982
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Imatge personalitzada"
 
-#: ../src/app/releasemanager.cpp:797 ../src/app/releasemanager.cpp:809
+#: ../src/app/releasemanager.cpp:840 ../src/app/releasemanager.cpp:852
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "La imatge baixada està malmesa"
 
-#: ../src/app/releasemanager.cpp:814
+#: ../src/app/releasemanager.cpp:857
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "El fitxer baixat no es pot llegir."
 
-#: ../src/app/releasemanager.cpp:826
+#: ../src/app/releasemanager.cpp:869
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "No es pot reanomenar el fitxer temporal."
 
-#: ../src/app/releasemanager.h:386
-msgctxt "ReleaseVariant|"
-msgid "Preparing"
-msgstr "Preparació"
-
-#: ../src/app/releasemanager.h:387
-msgctxt "ReleaseVariant|"
-msgid "Downloading"
-msgstr "Baixada"
-
-#: ../src/app/releasemanager.h:388
-msgctxt "ReleaseVariant|"
-msgid "Checking the download"
-msgstr "Comprovació de la baixada"
-
-#: ../src/app/releasemanager.h:389
-msgctxt "ReleaseVariant|"
-msgid "Ready to write"
-msgstr "Preparat per escriure"
-
-#: ../src/app/releasemanager.h:390
-msgctxt "ReleaseVariant|"
-msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr ""
-"S'ha desat el fitxer de la imatge a la vostra carpeta de baixades. No és "
-"possible l'escriptura."
-
-#: ../src/app/releasemanager.h:391
-msgctxt "ReleaseVariant|"
-msgid "Writing"
-msgstr "Escriptura"
-
-#: ../src/app/releasemanager.h:392
-msgctxt "ReleaseVariant|"
-msgid "Checking the written data"
-msgstr "Comprovació de les dades escrites"
-
-#: ../src/app/releasemanager.h:393
-msgctxt "ReleaseVariant|"
-msgid "Finished!"
-msgstr "Ha acabat!"
-
-#: ../src/app/releasemanager.h:394
-msgctxt "ReleaseVariant|"
-msgid "The written data is corrupted"
-msgstr "Les dades escrites estan malmeses"
-
-#: ../src/app/releasemanager.h:395
-msgctxt "ReleaseVariant|"
-msgid "Download failed"
-msgstr "Baixada fallida"
-
-#: ../src/app/releasemanager.h:396
-msgctxt "ReleaseVariant|"
-msgid "Error"
-msgstr "Error"
-
-#: ../src/app/releasemanager.cpp:607
+#: ../src/app/releasemanager.cpp:648
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "Alfa de %1"
 
-#: ../src/app/releasemanager.cpp:609
+#: ../src/app/releasemanager.cpp:650
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "Beta de %1"
 
-#: ../src/app/releasemanager.cpp:611
+#: ../src/app/releasemanager.cpp:652
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "versió candidata de %1"
 
-#: ../src/app/qml/RestoreDialog.qml:31
+#: ../src/app/qml/RestorePage.qml:37
 #, qt-format
-msgctxt "RestoreDialog|"
-msgid "Restore %1?"
-msgstr "Volau restaurar %1?"
+msgctxt "RestorePage|"
+msgid "Restore Drive <b>%1</b>"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:73
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:49
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "<p align=\"justify\">\n"
+#| "                                                To reclaim all space "
+#| "available on the drive, it has to be restored to its factory settings.\n"
+#| "                                                The live system and all "
+#| "saved data will be deleted.\n"
+#| "                                            </p>\n"
+#| "                                            <p align=\"justify\">\n"
+#| "                                                You don't need to restore "
+#| "the drive if you want to write another live system to it.\n"
+#| "                                            </p>\n"
+#| "                                            <p align=\"justify\">\n"
+#| "                                                Do you want to continue?\n"
+#| "                                            </p>"
+msgctxt "RestorePage|"
 msgid ""
-"<p align=\"justify\">\n"
-"                                                To reclaim all space "
-"available on the drive, it has to be restored to its factory settings.\n"
-"                                                The live system and all "
-"saved data will be deleted.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                You don't need to restore "
-"the drive if you want to write another live system to it.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Do you want to continue?\n"
-"                                            </p>"
+"<p align=\"justify\"> To reclaim all space available on the drive, it has to "
+"be restored to its factory settings. The live system and all saved data will "
+"be deleted. </p> <p align=\"justify\"> You don't need to restore the drive "
+"if you want to write another live system to it. \n"
+"                </p> <p align=\"justify\"> Do you want to restore it to "
+"factory settings? </p>"
 msgstr ""
 "<p align=\"justify\">\n"
 "                                                Per a reclamar tot l'espai "
@@ -549,8 +765,13 @@ msgstr ""
 "                                                Voleu continuar?\n"
 "                                            </p>"
 
-#: ../src/app/qml/RestoreDialog.qml:105
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:67
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
+#| "portable drive.</p>"
+msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
@@ -558,34 +779,65 @@ msgstr ""
 "<p align=\"justify\">Si us plau, espereu mentre Fedora Media Writer restaura "
 "la vostra unitat portàtil.</p>"
 
-#: ../src/app/qml/RestoreDialog.qml:121
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:84
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid "Your drive was successfully restored!"
+msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "La vostra unitat ha estat restaurada amb èxit!"
 
-#: ../src/app/qml/RestoreDialog.qml:138
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:94
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "Unfortunately, an error occurred during the process.<br>Please try "
+#| "restoring the drive using your system tools."
+msgctxt "RestorePage|"
 msgid ""
-"Unfortunately, an error occurred during the process.<br>Please try restoring "
+"Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
 "Desafortunadament, s'ha produït un error en el procés.<br>Si us plau, proveu "
 "amb la restauració de la unitat mitjançant les eines del sistema."
 
-#: ../src/app/qml/RestoreDialog.qml:150
-msgctxt "RestoreDialog|"
-msgid "Cancel"
-msgstr "Cancel·la"
+#: ../src/app/qml/RestorePage.qml:143
+msgctxt "RestorePage|"
+msgid "Restoring finished"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:159 ../src/app/qml/RestoreDialog.qml:170
-msgctxt "RestoreDialog|"
-msgid "Restore"
-msgstr "Restaura"
+#: ../src/app/qml/VersionPage.qml:35
+msgctxt "VersionPage|"
+msgid "Select Fedora Release"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:159
-msgctxt "RestoreDialog|"
-msgid "Close"
-msgstr "Tanca"
+#: ../src/app/qml/VersionPage.qml:48
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "VersionPage|"
+msgid "Select from:"
+msgstr "Selecció:"
+
+#: ../src/app/qml/VersionPage.qml:53
+msgctxt "VersionPage|"
+msgid "Official Editions"
+msgstr ""
+
+#: ../src/app/qml/VersionPage.qml:59
+msgctxt "VersionPage|"
+msgid "Emerging Editions"
+msgstr ""
+
+#: ../src/app/qml/VersionPage.qml:65
+msgctxt "VersionPage|"
+msgid "Spins"
+msgstr ""
+
+#: ../src/app/qml/VersionPage.qml:71
+msgctxt "VersionPage|"
+msgid "Labs"
+msgstr ""
 
 #: ../src/app/windrivemanager.cpp:270
 msgctxt "WinDrive|"
@@ -605,153 +857,93 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr ""
 
-#: ../src/helper/linux/writejob.cpp:136 ../src/helper/win/writejob.cpp:271
-#: ../src/helper/mac/writejob.cpp:219
-msgctxt "WriteJob|"
-msgid "Failed to start decompressing."
-msgstr "Ha fallat el començament de la descompressió."
-
-#: ../src/helper/linux/writejob.cpp:161 ../src/helper/linux/writejob.cpp:191
-#: ../src/helper/linux/writejob.cpp:228 ../src/helper/win/writejob.cpp:188
-#: ../src/helper/win/writejob.cpp:195 ../src/helper/mac/writejob.cpp:180
-#: ../src/helper/mac/writejob.cpp:244 ../src/helper/mac/writejob.cpp:274
-msgctxt "WriteJob|"
-msgid "Destination drive is not writable"
-msgstr "La unitat de destí no és d'escriptura"
-
-#: ../src/helper/linux/writejob.cpp:170 ../src/helper/win/writejob.cpp:315
-#: ../src/helper/mac/writejob.cpp:253
-msgctxt "WriteJob|"
-msgid "There is not enough memory to decompress the file."
-msgstr "No hi ha pro memòria per a descomprimir el fitxer."
-
-#: ../src/helper/linux/writejob.cpp:175 ../src/helper/win/writejob.cpp:320
-#: ../src/helper/mac/writejob.cpp:258
-msgctxt "WriteJob|"
-msgid "The downloaded compressed file is corrupted."
-msgstr "El fitxer comprimit que s'ha baixat està malmès."
-
-#: ../src/helper/linux/writejob.cpp:178 ../src/helper/win/writejob.cpp:323
-#: ../src/helper/mac/writejob.cpp:261
-msgctxt "WriteJob|"
-msgid "Unsupported compression options."
-msgstr "Opcions de compressió no admeses."
-
-#: ../src/helper/linux/writejob.cpp:181 ../src/helper/win/writejob.cpp:326
-#: ../src/helper/mac/writejob.cpp:264
-msgctxt "WriteJob|"
-msgid "Unknown decompression error."
-msgstr "Error desconegut de descompressió."
-
-#: ../src/helper/linux/writejob.cpp:206 ../src/helper/linux/writejob.cpp:221
-#: ../src/helper/win/writejob.cpp:361
-msgctxt "WriteJob|"
-msgid "Source image is not readable"
-msgstr "L'origen de la imatge no és de lectura"
-
-#: ../src/helper/linux/writejob.cpp:257 ../src/helper/win/writejob.cpp:406
-#: ../src/helper/mac/writejob.cpp:297
-msgctxt "WriteJob|"
-msgid "Your drive is probably damaged."
-msgstr "La vostra unitat probablement estigui malmesa."
-
-#: ../src/helper/linux/writejob.cpp:262 ../src/helper/win/writejob.cpp:411
-#: ../src/helper/mac/writejob.cpp:302
-msgctxt "WriteJob|"
-msgid "Unexpected error occurred during media check."
-msgstr "S'ha produït un error inesperat durant la comprovació del mitjà."
-
-#: ../src/helper/win/writejob.cpp:74
-msgctxt "WriteJob|"
-msgid "Couldn't open the drive for writing"
-msgstr "No s'ha pogut obrir la unitat per a l'escriptura"
-
-#: ../src/helper/win/writejob.cpp:98
-msgctxt "WriteJob|"
-msgid "Couldn't lock the drive"
-msgstr "No s'ha pogut bloquejar la unitat"
-
-#: ../src/helper/win/writejob.cpp:134
-#, qt-format
-msgctxt "WriteJob|"
-msgid "Couldn't remove the drive %1:"
-msgstr "No es pot extraure la unitat %1:"
-
-#: ../src/helper/win/writejob.cpp:209
-msgctxt "WriteJob|"
-msgid "Couldn't unlock the drive"
-msgstr "No s'ha pogut desbloquejar la unitat"
-
-#: ../src/helper/mac/writejob.cpp:82
-msgctxt "WriteJob|"
-msgid "Unable to allocate socket pair"
-msgstr ""
-
-#: ../src/helper/mac/writejob.cpp:127
-msgctxt "WriteJob|"
-msgid "Unable to open destination for writing"
-msgstr ""
-
-#: ../src/app/qml/main.qml:68
-#, qt-format
+#: ../src/app/qml/main.qml:116
+#, fuzzy
+#| msgid "Fedora Media Writer"
 msgctxt "main|"
-msgid ""
-"You inserted <b>%1</b> that already contains a live system.<br>Do you want "
-"to restore it to factory settings?"
-msgstr ""
-"Heu inserit <b>%1</b> el qual ja conté un sistema autònom.<br>Voleu "
-"restaurar-lo als ajusts de fàbrica?"
+msgid "Fedora Media Writer"
+msgstr "Fedora Media Writer"
 
-#: ../src/app/qml/main.qml:70
+#: ../src/app/qml/main.qml:154
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Spins"
+msgctxt "main|"
+msgid "Select Fedora Version"
+msgstr "Fedora Spins"
+
+#: ../src/app/qml/main.qml:170
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "main|"
+msgid "Select Drive"
+msgstr "Selecció:"
+
+#: ../src/app/qml/main.qml:204
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "main|"
+msgid "Downloading"
+msgstr "Baixada"
+
+#: ../src/app/qml/main.qml:243 ../src/app/qml/main.qml:284
 msgctxt "main|"
 msgid "Restore"
 msgstr "Restaura"
 
-#: ../src/app/qml/main.qml:146
-#, qt-format
+#: ../src/app/qml/main.qml:283
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Finished!"
 msgctxt "main|"
-msgid "Fedora Media Writer %1 Released"
-msgstr "S'ha alliberat Fedora Media Writer %1"
+msgid "Finish"
+msgstr "Ha acabat!"
 
-#: ../src/app/qml/main.qml:147
+#: ../src/app/qml/main.qml:286
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
 msgctxt "main|"
-msgid "Update for great new features and bugfixes!"
-msgstr "Actualitzeu per les noves funcionalitats i les correccions d'errors."
+msgid "Download & Write"
+msgstr "Baixada fallida"
 
-#: ../src/app/qml/main.qml:148
+#: ../src/app/qml/main.qml:289 ../src/app/qml/main.qml:300
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Cancel"
 msgctxt "main|"
-msgid "Open Browser"
-msgstr "Obre el navegador"
+msgid "Cancel"
+msgstr "Cancel·la"
 
-#: ../src/app/qml/main.qml:163
+#: ../src/app/qml/main.qml:291
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Retry"
 msgctxt "main|"
-msgid "Image files"
-msgstr "Fitxers d'imatges"
+msgid "Retry"
+msgstr "Torna a intentar-ho"
 
-#: ../src/app/qml/main.qml:163
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
-msgid "All files (*)"
-msgstr "Tots els fitxers (*)"
-
-#: ../src/app/qml/main.qml:192
-#, qt-format
-msgctxt "main|"
-msgid ""
-"%1<br>Writing images will not be possible.<br>You can still view Fedora "
-"flavors and download images to your hard drive."
+msgid "Next"
 msgstr ""
-"%1<br>No serà possible l'escriptura d'imatges.<br>Encara podeu veure els "
-"sabors de Fedora i les imatges baixades al vostre disc dur."
 
-#: ../src/app/qml/main.qml:196
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
-msgid "Ok"
-msgstr "D'acord"
+msgid "About"
+msgstr ""
+
+#: ../src/app/qml/main.qml:301
+msgctxt "main|"
+msgid "Previous"
+msgstr ""
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop.in:4
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
 
@@ -789,847 +981,282 @@ msgstr ""
 "disc local, però tingueu present que només s'ha provat amb les imatges de "
 "Fedora."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop.in:39
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:39
 msgid "Write Fedora images to your portable drives"
 msgstr "Escriviu imatges de Fedora a les vostres unitats portàtils"
 
-# ############## metadata.json ###############
-#: [Workstation].subvariant
-msgid "workstation"
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:77
+msgid "fmw;usb;iso;bootable;"
 msgstr ""
 
-#: [Workstation].category
-msgctxt "Release|"
-msgid "product"
-msgstr ""
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Write %1"
+#~ msgstr "Escriu %1"
 
-#: [Workstation].name
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Write the image immediately when the download is finished"
+#~ msgstr "Escriu immediatament la imatge quan hagi acabat la baixada"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Other"
+#~ msgstr "Altres"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
+#~ msgstr "No s'ha pogut suprimir<br>\"<a href=\"%1\">%2</a>\"."
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "(%1 after writing)"
+#~ msgstr "(%1 després de l'escriptura)"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid ""
+#~ "Fedora %1 was released! Check it out!<br>If you want a stable, finished "
+#~ "system, it's better to stay at version %2."
+#~ msgstr ""
+#~ "S'ha alliberat Fedora %1! Comproveu-ho!<br>Si voleu un sistema estable i "
+#~ "acabat, és millor quedar-se a la versió %2."
+
+#~ msgctxt "ImageDetails|"
+#~ msgid ", released on %1"
+#~ msgstr ", es va publicar el %1"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "Other variants..."
+#~ msgstr "Altres variants..."
+
+#~ msgctxt "ImageList|"
+#~ msgid "Find an operating system image"
+#~ msgstr "Troba la imatge d'un sistema operatiu"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Checking for new releases"
+#~ msgstr "Comprovació per si hi ha nous llançaments"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Version %1"
+#~ msgstr "Versió %1"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Display additional Fedora flavors"
+#~ msgstr "Mostra els sabors addicionals de Fedora"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Ready to write"
+#~ msgstr "Preparat per escriure"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid ""
+#~ "Image file was saved to your downloads folder. Writing is not possible"
+#~ msgstr ""
+#~ "S'ha desat el fitxer de la imatge a la vostra carpeta de baixades. No és "
+#~ "possible l'escriptura."
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Finished!"
+#~ msgstr "Ha acabat!"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "The written data is corrupted"
+#~ msgstr "Les dades escrites estan malmeses"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Error"
+#~ msgstr "Error"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Cancel"
+#~ msgstr "Cancel·la"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Restore"
+#~ msgstr "Restaura"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Close"
+#~ msgstr "Tanca"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Failed to start decompressing."
+#~ msgstr "Ha fallat el començament de la descompressió."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Destination drive is not writable"
+#~ msgstr "La unitat de destí no és d'escriptura"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "There is not enough memory to decompress the file."
+#~ msgstr "No hi ha pro memòria per a descomprimir el fitxer."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "The downloaded compressed file is corrupted."
+#~ msgstr "El fitxer comprimit que s'ha baixat està malmès."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unsupported compression options."
+#~ msgstr "Opcions de compressió no admeses."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unknown decompression error."
+#~ msgstr "Error desconegut de descompressió."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Source image is not readable"
+#~ msgstr "L'origen de la imatge no és de lectura"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Your drive is probably damaged."
+#~ msgstr "La vostra unitat probablement estigui malmesa."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unexpected error occurred during media check."
+#~ msgstr "S'ha produït un error inesperat durant la comprovació del mitjà."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't open the drive for writing"
+#~ msgstr "No s'ha pogut obrir la unitat per a l'escriptura"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't lock the drive"
+#~ msgstr "No s'ha pogut bloquejar la unitat"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't remove the drive %1:"
+#~ msgstr "No es pot extraure la unitat %1:"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't unlock the drive"
+#~ msgstr "No s'ha pogut desbloquejar la unitat"
+
+#~ msgctxt "main|"
+#~ msgid ""
+#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
+#~ "want to restore it to factory settings?"
+#~ msgstr ""
+#~ "Heu inserit <b>%1</b> el qual ja conté un sistema autònom.<br>Voleu "
+#~ "restaurar-lo als ajusts de fàbrica?"
+
+#~ msgctxt "main|"
+#~ msgid "Fedora Media Writer %1 Released"
+#~ msgstr "S'ha alliberat Fedora Media Writer %1"
+
+#~ msgctxt "main|"
+#~ msgid "Update for great new features and bugfixes!"
+#~ msgstr ""
+#~ "Actualitzeu per les noves funcionalitats i les correccions d'errors."
+
+#~ msgctxt "main|"
+#~ msgid "Open Browser"
+#~ msgstr "Obre el navegador"
+
+#~ msgctxt "main|"
+#~ msgid ""
+#~ "%1<br>Writing images will not be possible.<br>You can still view Fedora "
+#~ "flavors and download images to your hard drive."
+#~ msgstr ""
+#~ "%1<br>No serà possible l'escriptura d'imatges.<br>Encara podeu veure els "
+#~ "sabors de Fedora i les imatges baixades al vostre disc dur."
+
+#~ msgctxt "main|"
+#~ msgid "Ok"
+#~ msgstr "D'acord"
+
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
-msgctxt "Release|"
-msgid "Fedora Workstation"
-msgstr "Fedora Spins"
+#~| msgid "Fedora Media Writer"
+#~ msgctxt "Release|"
+#~ msgid "Fedora Server"
+#~ msgstr "Fedora Media Writer"
 
-#: [Workstation].summary
-msgctxt "Release|"
-msgid "This is the Linux workstation you've been waiting for."
-msgstr ""
-
-#: [Workstation].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora Workstation is a reliable, user-friendly, and powerful operating "
-"system for your laptop or desktop computer. It supports a wide range of "
-"developers, from hobbyists and students to professionals in corporate "
-"environments."
-msgstr ""
-
-#: [Workstation].description[1]
-msgctxt "Release|"
-msgid ""
-"“The plethora of tools provided by<br /> Fedora allows me to get the job "
-"done.<br /> It just works.”"
-msgstr ""
-
-#: [Workstation].description[2]
-msgctxt "Release|"
-msgid "JVM performance engineer"
-msgstr ""
-
-#: [Workstation].description[3]
-msgctxt "Release|"
-msgid "Sleek user interface"
-msgstr ""
-
-#: [Workstation].description[4]
-msgctxt "Release|"
-msgid ""
-"Focus on your code in the GNOME 3 desktop environment. GNOME is built with "
-"developer feedback and minimizes distractions, so you can concentrate on "
-"what's important."
-msgstr ""
-
-#: [Workstation].description[5]
-msgctxt "Release|"
-msgid "Complete open source toolbox"
-msgstr ""
-
-#: [Workstation].description[6]
-msgctxt "Release|"
-msgid ""
-"Skip the drag of trying to find or build the tools you need. With Fedora's "
-"complete set of open source languages, tools, and utilities, everything is a "
-"click or command line away. There's even project hosting and repositories "
-"like COPR to make your code and builds available quickly to the community."
-msgstr ""
-
-#: [Workstation].description[7]
-msgctxt "Release|"
-msgid "GNOME Boxes & other virt tools"
-msgstr ""
-
-#: [Workstation].description[8]
-msgctxt "Release|"
-msgid ""
-"Get virtual machines up and running quickly to test your code on multiple "
-"platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization "
-"tools for even more control."
-msgstr ""
-
-#: [Workstation].description[9]
-msgctxt "Release|"
-msgid "Built-in Docker support"
-msgstr ""
-
-#: [Workstation].description[10]
-msgctxt "Release|"
-msgid ""
-"Containerize your own apps, or deploy containerized apps out of the box on "
-"Fedora, using the latest technology like Docker."
-msgstr ""
-
-#: [Server].subvariant
-msgctxt "Release|"
-msgid "server"
-msgstr ""
-
-#: [Server].category [Server].name
 #, fuzzy
-#| msgid "Fedora Media Writer"
-msgctxt "Release|"
-msgid "Fedora Server"
-msgstr "Fedora Media Writer"
+#~| msgctxt "Release|"
+#~| msgid "Fedora Spins"
+#~ msgctxt "Release|"
+#~ msgid "silverblue"
+#~ msgstr "Fedora Spins"
 
-#: [Server].summary
-msgctxt "Release|"
-msgid ""
-"The latest technology. A stable foundation. Together, for your applications "
-"and services."
-msgstr ""
-
-#: [Server].description[0]
-msgctxt "Release|"
-msgid ""
-"“The simplicity introduced with rolekit and cockpit have made server "
-"deployments a breeze. What took me a few days on other operating systems "
-"took less than an hour with Fedora %(rel)s Server. It just works.”"
-msgstr ""
-
-#: [Server].description[1]
-msgctxt "Release|"
-msgid "Systems Engineer"
-msgstr ""
-
-#: [Server].description[2]
-msgctxt "Release|"
-msgid ""
-"Fedora Server is a short-lifecycle, community-supported server operating "
-"system that enables seasoned system administrators experienced with any OS "
-"to make use of the very latest server-based technologies available in the "
-"open source community."
-msgstr ""
-
-#: [Server].description[3]
-msgctxt "Release|"
-msgid "Easy Administration"
-msgstr ""
-
-#: [Server].description[4]
-msgctxt "Release|"
-msgid ""
-"Manage your system simply with Cockpit's powerful, modern interface. View "
-"and monitor system performance and status, and deploy and manage container-"
-"based services."
-msgstr ""
-
-#: [Server].description[5]
-msgctxt "Release|"
-msgid "Server Roles"
-msgstr ""
-
-#: [Server].description[6]
-msgctxt "Release|"
-msgid ""
-"There's no need to set up your server from scratch when you use server "
-"roles. Server roles plug into your Fedora Server system, providing a well-"
-"integrated service on top of the Fedora Server platform. Deploy and manage "
-"these prepared roles simply using the Rolekit tool."
-msgstr ""
-
-#: [Server].description[7]
-msgctxt "Release|"
-msgid "Database Services"
-msgstr ""
-
-#: [Server].description[8]
-msgctxt "Release|"
-msgid ""
-"Fedora Server brings with it an enterprise-class, scalable database server "
-"powered by the open-source PostgreSQL project."
-msgstr ""
-
-#: [Server].description[9]
-msgctxt "Release|"
-msgid "Complete Enterprise Domain Solution"
-msgstr ""
-
-#: [Server].description[10]
-msgctxt "Release|"
-msgid ""
-"Level up your Linux network with advanced identity management, DNS, "
-"certificate services, Windows(TM) domain integration throughout your "
-"environment with FreeIPA, the engine that drives Fedora Server's Domain "
-"Controller role."
-msgstr ""
-
-#: [Server].description[11]
-msgctxt "Release|"
-msgid ""
-"“The Docker Role for Fedora Server was simple and fast to install so that "
-"you can run your Docker images. This makes a great testbed for beginners and "
-"experts with docker so that they can develop their applications on the fly.”"
-msgstr ""
-
-#: [Server].description[12]
-msgctxt "Release|"
-msgid "</p><p align=right> ― <em>John Unland, "
-msgstr ""
-
-#: [Server].description[13]
-msgctxt "Release|"
-msgid "Information Systems Student"
-msgstr ""
-
-#: [Silverblue].subvariant
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
-msgctxt "Release|"
-msgid "silverblue"
-msgstr "Fedora Spins"
+#~| msgctxt "Release|"
+#~| msgid "Fedora Spins"
+#~ msgctxt "Release|"
+#~ msgid "Fedora Silverblue"
+#~ msgstr "Fedora Spins"
 
-#: [Silverblue].category
-msgctxt "Release|"
-msgid "emerging"
-msgstr ""
-
-#: [Silverblue].name
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
-msgctxt "Release|"
-msgid "Fedora Silverblue"
-msgstr "Fedora Spins"
+#~| msgctxt "Release|"
+#~| msgid "Fedora Labs"
+#~ msgctxt "Release|"
+#~ msgid "Fedora LXQt Desktop"
+#~ msgstr "Fedora Labs"
 
-#: [Silverblue].summary
-msgctxt "Release|"
-msgid ""
-"An extremely stable and reliable desktop operating system, excellent for "
-"developers and for those using container-focused workflows."
-msgstr ""
-
-#: [Silverblue].description[0]
-msgctxt "Release|"
-msgid ""
-"Silverblue is a variant of Fedora Workstation. It looks, feels and behaves "
-"like a regular desktop operating system, and the experience is similar to "
-"what you find with using a standard Fedora Workstation."
-msgstr ""
-
-#: [Silverblue].description[1]
-msgctxt "Release|"
-msgid ""
-"However, unlike other operating systems, Silverblue has reprovisionable "
-"infrastructure with anti-hysteresis properties. This means that every "
-"installation is identical to every other installation of the same version. "
-"The operating system that is on disk is exactly the same from one machine to "
-"the next, and it never changes as it is used."
-msgstr ""
-
-#: [Silverblue].description[2]
-msgctxt "Release|"
-msgid ""
-"Silverblue’s design is intended to make it more stable, less prone to bugs, "
-"and easier to test and develop. The design also makes it an excellent "
-"platform for containerized applications as well as container-based software "
-"development. In each case, applications and containers are kept separate "
-"from the host system, improving stability and reliability."
-msgstr ""
-
-#: [Silverblue].description[3]
-msgctxt "Release|"
-msgid ""
-"Silverblue’s core technologies have some other helpful features. OS updates "
-"are fast and there’s no waiting around for them to install: just reboot as "
-"normal to start using the next version. With Silverblue, it is also possible "
-"to roll back to the previous version of the operating system, if something "
-"goes wrong."
-msgstr ""
-
-#: [KDE].subvariant
-msgctxt "Release|"
-msgid "kde"
-msgstr ""
-
-#: [KDE].category
-msgctxt "Release|"
-msgid "spins"
-msgstr ""
-
-#: [KDE].name
-msgctxt "Release|"
-msgid "Fedora KDE Plasma Desktop"
-msgstr ""
-
-#: [KDE].summary
-msgctxt "Release|"
-msgid "A complete, modern desktop built using the KDE Plasma Desktop."
-msgstr ""
-
-#: [KDE].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based operating "
-"system utilizing the KDE Plasma Desktop as the main user interface."
-msgstr ""
-
-#: [KDE].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora KDE Plasma Desktop comes with many pre-selected top quality "
-"applications that suit all modern desktop use cases - from online "
-"communication like web browsing, instant messaging and electronic mail "
-"correspondence, through multimedia and entertainment, to an advanced "
-"productivity suite, including office applications and enterprise grade "
-"personal information management."
-msgstr ""
-
-#: [KDE].description[2]
-msgctxt "Release|"
-msgid ""
-"All KDE applications are well integrated, with a similar look and feel and "
-"an easy to use interface, accompanied by an outstanding graphical appearance."
-msgstr ""
-
-#: [XFCE].subvariant
-msgctxt "Release|"
-msgid "xfce"
-msgstr ""
-
-#: [XFCE].category [XFCE].name
-msgctxt "Release|"
-msgid "Fedora Xfce Desktop"
-msgstr ""
-
-#: [XFCE].summary
-msgctxt "Release|"
-msgid "A complete, well-integrated Xfce Desktop."
-msgstr ""
-
-#: [XFCE].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast and "
-"lightweight, while still being visually appealing and user friendly."
-msgstr ""
-
-#: [XFCE].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
-msgstr ""
-
-#: [LXQT].subvariant
-msgctxt "Release|"
-msgid "lxqt"
-msgstr ""
-
-#: [LXQT].category [LXQT].name
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
-msgctxt "Release|"
-msgid "Fedora LXQt Desktop"
-msgstr "Fedora Labs"
+#~| msgctxt "Release|"
+#~| msgid "Fedora Labs"
+#~ msgctxt "Release|"
+#~ msgid "Fedora Cinnamon Desktop"
+#~ msgstr "Fedora Labs"
 
-#: [LXQT].summary
-msgctxt "Release|"
-msgid "A lightweight, well-integrated LXQt desktop environment."
-msgstr ""
-
-#: [LXQT].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora LXQt provides a lightweight, well-integrated LXQt desktop "
-"environment. In addition to LXQt itself it provides a small, well selected "
-"collection of applications like the QupZilla browser, which combines "
-"Chromium's rendering engine with a nice Qt experience. Other applications "
-"include the Trojita mail client, the qBittorrent client, the Yarock music "
-"player and a set of some more commonly used applications. As all "
-"applications use the same Qt5 toolkit and the Breeze theme known from KDE, "
-"the desktop provides a unified and well-integrated style and theming. In "
-"addition breeze-gtk is provided to allow the user to integrate GTK "
-"applications too."
-msgstr ""
-
-#: [Mate].subvariant
-msgctxt "Release|"
-msgid "mate"
-msgstr ""
-
-#: [Mate].category [Mate].name
-msgctxt "Release|"
-msgid "Fedora MATE-Compiz Desktop"
-msgstr ""
-
-#: [Mate].summary
-msgctxt "Release|"
-msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
-msgstr ""
-
-#: [Mate].description[0]
-msgctxt "Release|"
-msgid ""
-"The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE Desktop "
-"is a lightweight, powerful desktop designed with productivity and "
-"performance in mind. The default windows manager is Marco which is usable "
-"for all machines and VMs. Compiz Fusion is a beautiful 3D windowing manager "
-"with Emerald and GTK+ theming."
-msgstr ""
-
-#: [Mate].description[1]
-msgctxt "Release|"
-msgid ""
-"If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
-"should definitely try the MATE-Compiz spin."
-msgstr ""
-
-#: [Cinnamon].subvariant
-msgctxt "Release|"
-msgid "cinnamon"
-msgstr ""
-
-#: [Cinnamon].category [Cinnamon].name
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
-msgctxt "Release|"
-msgid "Fedora Cinnamon Desktop"
-msgstr "Fedora Labs"
+#~| msgctxt "Release|"
+#~| msgid "Fedora Labs"
+#~ msgctxt "Release|"
+#~ msgid "Fedora LXDE Desktop"
+#~ msgstr "Fedora Labs"
 
-#: [Cinnamon].summary
-msgctxt "Release|"
-msgid "A modern desktop featuring traditional Gnome user experience."
-msgstr ""
-
-#: [Cinnamon].description[0]
-msgctxt "Release|"
-msgid ""
-"Cinnamon is a Linux desktop which provides advanced innovative features and "
-"a traditional user experience. The desktop layout is similar to Gnome 2. The "
-"underlying technology is forked from Gnome Shell. The emphasis is put on "
-"making users feel at home and providing them with an easy to use and "
-"comfortable desktop experience."
-msgstr ""
-
-#: [Cinnamon].description[1]
-msgctxt "Release|"
-msgid ""
-"Cinnamon is a popular desktop alternative to Gnome 3 and this spin provides "
-"the option to quickly try and install this desktop."
-msgstr ""
-
-#: [LXDE].subvariant
-msgctxt "Release|"
-msgid "lxde"
-msgstr ""
-
-#: [LXDE].category [LXDE].name
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
-msgctxt "Release|"
-msgid "Fedora LXDE Desktop"
-msgstr "Fedora Labs"
+#~| msgctxt "Release|"
+#~| msgid "Fedora Labs"
+#~ msgctxt "Release|"
+#~ msgid "Fedora SoaS Desktop"
+#~ msgstr "Fedora Labs"
 
-#: [LXDE].summary
-msgctxt "Release|"
-msgid "A light, fast, less-resource hungry desktop environment."
-msgstr ""
-
-#: [LXDE].description[0]
-msgctxt "Release|"
-msgid ""
-"LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
-"performant, and energy-saving desktop environment. It maintained by an "
-"international community of developers and comes with a beautiful interface, "
-"multi-language support, standard keyboard shortcuts and additional features "
-"like tabbed file browsing."
-msgstr ""
-
-#: [LXDE].description[1]
-msgctxt "Release|"
-msgid ""
-"LXDE is not designed to be powerful and bloated, but to be usable and slim. "
-"A main goal of LXDE is to keep computer resource usage low. It is especially "
-"designed for computers with low hardware specifications like netbooks, "
-"mobile devices (e.g. MIDs) or older computers."
-msgstr ""
-
-#: [SOAS].subvariant
-msgctxt "Release|"
-msgid "soas"
-msgstr ""
-
-#: [SOAS].category [SOAS].name
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
-msgctxt "Release|"
-msgid "Fedora SoaS Desktop"
-msgstr "Fedora Labs"
+#~| msgctxt "Release|"
+#~| msgid "Fedora Labs"
+#~ msgctxt "Release|"
+#~ msgid "Fedora i3 Desktop"
+#~ msgstr "Fedora Labs"
 
-#: [SOAS].summary
-msgctxt "Release|"
-msgid "Discover. Reflect. Share. Learn."
-msgstr ""
-
-#: [SOAS].description[0]
-msgctxt "Release|"
-msgid ""
-"Sugar on a Stick is a Fedora-based operating system featuring the award-"
-"winning Sugar Learning Platform and designed to fit on an ordinary USB "
-"thumbdrive (\"stick\")."
-msgstr ""
-
-#: [SOAS].description[1]
-msgctxt "Release|"
-msgid ""
-"Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
-"child-friendly graphical environment. Sugar automatically saves your "
-"progress to a \"Journal\" on your stick, so teachers and parents can easily "
-"pull up \"all collaborative web browsing sessions done in the past week\" or "
-"\"papers written with Daniel and Sarah in the last 24 hours\" with a simple "
-"query rather than memorizing complex file/folder structures. Applications in "
-"Sugar are known as Activities, some of which are described below."
-msgstr ""
-
-#: [SOAS].description[2]
-msgctxt "Release|"
-msgid ""
-"It is now deployable for the cost of a stick rather than a laptop; students "
-"can take their Sugar on a Stick thumbdrive to any machine - at school, at "
-"home, at a library or community center - and boot their customized computing "
-"environment without touching the host machine’s hard disk or existing system "
-"at all."
-msgstr ""
-
-#: [i3].subvariant
-msgctxt "Release|"
-msgid "i3"
-msgstr ""
-
-#: [i3].category [i3].name
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
-msgctxt "Release|"
-msgid "Fedora i3 Desktop"
-msgstr "Fedora Labs"
+#~| msgid "Fedora Media Writer"
+#~ msgctxt "Release|"
+#~ msgid "design_suite"
+#~ msgstr "Fedora Media Writer"
 
-#: [i3].summary
-msgctxt "Release|"
-msgid "Simplicity over Complexity"
-msgstr ""
-
-#: [i3].description[1]
-msgctxt "Release|"
-msgid "The Fedora i3 Spin provides the popular i3 tiling window manager."
-msgstr ""
-
-#: [i3].description[3]
-msgctxt "Release|"
-msgid ""
-"It makes i3 accessible and appealing to both novices and advanced users who "
-"prefer not to use a mouse, touchpad, or other pointing device to interact "
-"with their environment. Featuring lightweight applications for web browsing, "
-"text editing, and media playback, the Fedora i3 Spin offers a complete "
-"experience with a minimalist user interface."
-msgstr ""
-
-#: [Astronomy].subvariant
-msgctxt "Release|"
-msgid "astronomy"
-msgstr ""
-
-#: [Astronomy].category
-msgctxt "Release|"
-msgid "labs"
-msgstr ""
-
-#: [Astronomy].name
-msgctxt "Release|"
-msgid "Fedora Astronomy"
-msgstr ""
-
-#: [Astronomy].summary
-msgctxt "Release|"
-msgid ""
-"Powerful completely open-source and free tool for amateurs and professionals."
-msgstr ""
-
-#: [Astronomy].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora Astronomy brings a complete open source toolchain to both amateur and "
-"professional astronomers."
-msgstr ""
-
-#: [Astronomy].description[1]
-msgctxt "Release|"
-msgid ""
-"The Spin provides the Fedora KDE desktop enhanced with a complete scientific "
-"Python environment and the AstrOmatic software for data analysis. KStars was "
-"added to provide a full featured astrophotography tool. As KStars uses the "
-"INDI library to control equipment, various telescopes, cameras etc. are "
-"supported. Summarized, Fedora Astronomy provides a complete set of software, "
-"from the observation planning to the final results."
-msgstr ""
-
-#: [DesignSuite].subvariant
 #, fuzzy
-#| msgid "Fedora Media Writer"
-msgctxt "Release|"
-msgid "design_suite"
-msgstr "Fedora Media Writer"
+#~| msgid "Fedora Media Writer"
+#~ msgctxt "Release|"
+#~ msgid "Fedora Design Suite"
+#~ msgstr "Fedora Media Writer"
 
-#: [DesignSuite].category [DesignSuite].name
 #, fuzzy
-#| msgid "Fedora Media Writer"
-msgctxt "Release|"
-msgid "Fedora Design Suite"
-msgstr "Fedora Media Writer"
+#~| msgctxt "Release|"
+#~| msgid "Fedora Labs"
+#~ msgid "Fedora Games"
+#~ msgstr "Fedora Labs"
 
-#: [DesignSuite].summary
-msgctxt "Release|"
-msgid ""
-"Visual design, multimedia production, and publishing suite of free and open "
-"source creative tools."
-msgstr ""
-
-#: [DesignSuite].description[0]
-msgctxt "Release|"
-msgid ""
-"Looking for a ready-to-go desktop environment brimming with free and open "
-"source multimedia production and publishing tools? Try the Design Suite, a "
-"Fedora Spin created by designers, for designers."
-msgstr ""
-
-#: [DesignSuite].description[1]
-msgctxt "Release|"
-msgid ""
-"The Design Suite includes the favorite tools of the Fedora Design Team. "
-"These are the same programs we use to create all the artwork that you see "
-"within the Fedora Project, from desktop backgrounds to CD sleeves, web page "
-"designs, application interfaces, flyers, posters and more. From document "
-"publication to vector and bitmap editing or 3D modeling to photo management, "
-"the Design Suite has an application for you — and you can install thousands "
-"more from the Fedora universe of packages."
-msgstr ""
-
-#: [Games].subvariant
-msgctxt "Release|"
-msgid "games"
-msgstr ""
-
-#: [Games].category [Games].name
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
-msgid "Fedora Games"
-msgstr "Fedora Labs"
+#~| msgid "Fedora Media Writer"
+#~ msgctxt "Release|"
+#~ msgid "Fedora Robotics Suite"
+#~ msgstr "Fedora Media Writer"
 
-#: [Games].summary
-msgctxt "Release|"
-msgid ""
-"A collection and perfect show-case of the best games available in Fedora."
-msgstr ""
-
-#: [Games].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Games spin offers a perfect showcase of the best games available "
-"in Fedora. The included games span several genres, from first-person "
-"shooters to real-time and turn-based strategy games to puzzle games."
-msgstr ""
-
-#: [Games].description[1]
-msgctxt "Release|"
-msgid ""
-"Not all the games available in Fedora are included on this spin, but trying "
-"out this spin will give you a fair impression of Fedora's ability to run "
-"great games."
-msgstr ""
-
-#: [Python].subvariant
-msgctxt "Release|"
-msgid "python"
-msgstr ""
-
-#: [Python].category [Python].name
-msgctxt "Release|"
-msgid "Fedora Python Classroom"
-msgstr ""
-
-#: [Python].summary
-msgctxt "Release|"
-msgid ""
-"A classroom lab for teaching the Python programming language to students"
-msgstr ""
-
-#: [Python].description[0]
-msgctxt "Release|"
-msgid ""
-"One of the benefits of Fedora for Python developers is the ease of setting "
-"up Python development. The Fedora Python Classroom Lab makes it even easier "
-"for teachers and instructors to use Fedora in their classrooms or workshops. "
-"Ready to use operating system with important stuff pre-installed - either "
-"with GNOME or as a headless environment for Docker or Vagrant. Teach Python "
-"on Fedora, with Fedora, using the stuff you love: IPython, Jupyter Notebook, "
-"multiple Pythons, virtualenvs, tox, git and more"
-msgstr ""
-
-#: [Python].description[1]
-msgctxt "Release|"
-msgid ""
-"The Fedora Python Classroom Lab comes in 3 variants. Either you can run it "
-"in graphical mode with GNOME, or you can virtualize it with Vagrant or run "
-"it in a Docker container. You choose what fits your teaching environment the "
-"best."
-msgstr ""
-
-#: [Robotics].subvariant
-msgctxt "Release|"
-msgid "robotics"
-msgstr ""
-
-#: [Robotics].category [Robotics].name
 #, fuzzy
-#| msgid "Fedora Media Writer"
-msgctxt "Release|"
-msgid "Fedora Robotics Suite"
-msgstr "Fedora Media Writer"
+#~| msgctxt "Release|"
+#~| msgid "Fedora Spins"
+#~ msgctxt "Release|"
+#~ msgid "scientific"
+#~ msgstr "Fedora Spins"
 
-#: [Robotics].summary
-msgctxt "Release|"
-msgid ""
-"A wide variety of free and open robotics software packages for beginners and "
-"experts in robotics."
-msgstr ""
-
-#: [Robotics].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Robotics spin provides a wide variety of free and open robotics "
-"software packages. These range from hardware accessory libraries for the "
-"Hokuyo laser scanners or Katana robotic arm to software frameworks like "
-"Fawkes or Player and simulation environments such as Stage and RoboCup "
-"Soccer Simulation Server 2D/3D. It also provides a ready to use development "
-"environment for robotics including useful libraries such as OpenCV computer "
-"vision library, Festival text to speech system and MRPT."
-msgstr ""
-
-#: [Robotics].description[1]
-msgctxt "Release|"
-msgid ""
-"The Robotics spin is targeted at people just discovering their interest in "
-"robotics as well as experienced roboticists. For the former we provide a "
-"readily usable simulation environment with an introductory hands-on "
-"demonstration, and for the latter we provide a full development environment, "
-"to be used immediately."
-msgstr ""
-
-#: [Scientific].subvariant
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
-msgctxt "Release|"
-msgid "scientific"
-msgstr "Fedora Spins"
+#~| msgctxt "Release|"
+#~| msgid "Fedora Spins"
+#~ msgctxt "Release|"
+#~ msgid "Fedora Scientific"
+#~ msgstr "Fedora Spins"
 
-#: [Scientific].category [Scientific].name
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
-msgctxt "Release|"
-msgid "Fedora Scientific"
-msgstr "Fedora Spins"
-
-#: [Scientific].summary
-msgctxt "Release|"
-msgid ""
-"A bundle of open source scientific and numerical tools used in research."
-msgstr ""
-
-#: [Scientific].description[0]
-msgctxt "Release|"
-msgid ""
-"Wary of reinstalling all the essential tools for your scientific and "
-"numerical work? The answer is here. Fedora Scientific Spin brings together "
-"the most useful open source scientific and numerical tools atop the goodness "
-"of the KDE desktop environment."
-msgstr ""
-
-#: [Scientific].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora Scientific currently ships with numerous applications and libraries. "
-"These range from libraries such as the GNU Scientific library, the SciPy "
-"libraries, tools like Octave and xfig to typesetting tools like Kile and "
-"graphics programs such as Inkscape. The current set of packages include an "
-"IDE, tools and libraries for programming in C, C++, Python, Java and R. Also "
-"included along with are libraries for parallel computing such as the OpenMPI "
-"and OpenMP. Tools for typesetting, writing and publishing are included."
-msgstr ""
-
-#: [Security].subvariant
-msgctxt "Release|"
-msgid "security"
-msgstr ""
-
-#: [Security].category [Security].name
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
-msgctxt "Release|"
-msgid "Fedora Security Lab"
-msgstr "Fedora Labs"
-
-#: [Security].summary
-msgctxt "Release|"
-msgid ""
-"A safe test environment to work on security auditing, forensics, system "
-"rescue and teaching security testing methodologies."
-msgstr ""
-
-#: [Security].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Security Lab provides a safe test environment to work on security "
-"auditing, forensics, system rescue and teaching security testing "
-"methodologies in universities and other organizations."
-msgstr ""
-
-#: [Security].description[1]
-msgctxt "Release|"
-msgid ""
-"The spin is maintained by a community of security testers and developers. It "
-"comes with the clean and fast Xfce Desktop Environment and a customized menu "
-"that provides all the instruments needed to follow a proper test path for "
-"security testing or to rescue a broken system. The Live image has been "
-"crafted to make it possible to install software while running, and if you "
-"are running it from a USB stick created with LiveUSB Creator using the "
-"overlay feature, you can install and update software and save your test "
-"results permanently."
-msgstr ""
+#~| msgctxt "Release|"
+#~| msgid "Fedora Labs"
+#~ msgctxt "Release|"
+#~ msgid "Fedora Security Lab"
+#~ msgstr "Fedora Labs"

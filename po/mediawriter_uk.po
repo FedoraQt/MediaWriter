@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-07 16:44+0200\n"
+"POT-Creation-Date: 2022-04-25 07:54+0200\n"
 "PO-Revision-Date: 2021-07-11 17:15+0000\n"
 "Last-Translator: Andrii Serbovets <serbovets.translation@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
@@ -24,89 +24,275 @@ msgstr ""
 "X-Generator: Weblate 4.7.1\n"
 "X-Qt-Contexts: true\n"
 
-#: ../src/app/qml/DeleteButton.qml:64
-msgctxt "DeleteButton|"
-msgid "Delete the Downloaded Image"
-msgstr "Вилучити отриманий образ"
+#: ../src/app/qml/AboutDialog.qml:49
+#, fuzzy
+#| msgctxt "ImageList|"
+#| msgid "About Fedora Media Writer"
+msgctxt "AboutDialog|"
+msgid "About Fedora Media Writer"
+msgstr "Про Fedora Media Writer"
 
-#: ../src/app/downloadmanager.cpp:215
+#: ../src/app/qml/AboutDialog.qml:58
+#, fuzzy, qt-format
+#| msgctxt "ImageDetails|"
+#| msgid "Version %1"
+msgctxt "AboutDialog|"
+msgid "Version %1"
+msgstr "Версія %1"
+
+#: ../src/app/qml/AboutDialog.qml:65
+#, fuzzy
+#| msgctxt "ImageList|"
+#| msgid "Fedora Media Writer is now checking for new releases"
+msgctxt "AboutDialog|"
+msgid "Fedora Media Writer is now checking for new releases"
+msgstr "Зараз Fedora Media Writer шукає нові випуски"
+
+#: ../src/app/qml/AboutDialog.qml:71
+#, fuzzy, qt-format
+#| msgctxt "ImageList|"
+#| msgid "Please report bugs or your suggestions on %1"
+msgctxt "AboutDialog|"
+msgid "Please report bugs or your suggestions on %1"
+msgstr ""
+"Будь ласка, повідомляйте про вади та ваші пропозиції за цією адресою: %1"
+
+#: ../src/app/qml/AboutDialog.qml:94
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Close"
+msgctxt "AboutDialog|"
+msgid "Close"
+msgstr "Закрити"
+
+#: ../src/app/qml/CancelDialog.qml:54
+msgctxt "CancelDialog|"
+msgid "Cancel Download?"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:56
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "CancelDialog|"
+msgid "Cancel Writing?"
+msgstr "Записуємо"
+
+#: ../src/app/qml/CancelDialog.qml:58
+msgctxt "CancelDialog|"
+msgid "Cancel Verification?"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:65
+msgctxt "CancelDialog|"
+msgid "Download progress will be lost and media writing will be aborted."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:67
+msgctxt "CancelDialog|"
+msgid ""
+"Writing process will be aborted and your drive will have to be restored "
+"afterwards."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:69
+msgctxt "CancelDialog|"
+msgid "This operation is safe to be cancelled."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:86
+msgctxt "CancelDialog|"
+msgid "Continue"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:104
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "CancelDialog|"
+msgid "Cancel Download"
+msgstr "Отримуємо"
+
+#: ../src/app/qml/CancelDialog.qml:106
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "CancelDialog|"
+msgid "Cancel Writing"
+msgstr "Записуємо"
+
+#: ../src/app/qml/CancelDialog.qml:108
+msgctxt "CancelDialog|"
+msgid "Cancel Verification"
+msgstr ""
+
+#: ../src/app/downloadmanager.cpp:216
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "Не вдалося отримати потрібний образ."
 
-#: ../src/app/downloadmanager.cpp:311
+#: ../src/app/downloadmanager.cpp:316
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "У теці «Завантаження» не лишилося вільного місця."
 
-#: ../src/app/downloadmanager.cpp:313
+#: ../src/app/downloadmanager.cpp:318
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "Файл, до якого слід було отримати дані, непридатний до запису."
 
-#: ../src/app/downloadmanager.cpp:399
+#: ../src/app/downloadmanager.cpp:404
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Вичерпано час очікування на з’єднання"
 
-#: ../src/app/qml/DownloadDialog.qml:33
+#: ../src/app/qml/DownloadPage.qml:48
 #, qt-format
-msgctxt "DownloadDialog|"
-msgid "Write %1"
-msgstr "Записати %1"
+msgctxt "DownloadPage|"
+msgid "%1 Sucessfuly Written"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:141
-msgctxt "DownloadDialog|"
-msgid "Writing is not possible"
-msgstr "Записування неможливе"
+#: ../src/app/qml/DownloadPage.qml:50
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Writing %1"
+msgstr "Записуємо"
 
-#: ../src/app/qml/DownloadDialog.qml:216
-msgctxt "DownloadDialog|"
-msgid "Close"
-msgstr "Закрити"
+#: ../src/app/qml/DownloadPage.qml:52
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the written data"
+msgctxt "DownloadPage|"
+msgid "Verifying written data"
+msgstr "Перевіряємо записані дані"
 
-#: ../src/app/qml/DownloadDialog.qml:232 ../src/app/qml/DownloadDialog.qml:253
-#: ../src/app/qml/DownloadDialog.qml:274 ../src/app/qml/DownloadDialog.qml:285
-#: ../src/app/qml/DownloadDialog.qml:306
-msgctxt "DownloadDialog|"
-msgid "Retry"
-msgstr "Повторити"
+#: ../src/app/qml/DownloadPage.qml:54
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "DownloadPage|"
+msgid "Downloading %1"
+msgstr "Отримуємо"
 
-#: ../src/app/qml/DownloadDialog.qml:356
-msgctxt "DownloadDialog|"
-msgid "The file will be saved to your Downloads folder."
+#: ../src/app/qml/DownloadPage.qml:56
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "The downloaded image is corrupted"
+msgctxt "DownloadPage|"
+msgid "Verifying downloaded image"
+msgstr "Отримані дані образу пошкоджено"
+
+#: ../src/app/qml/DownloadPage.qml:58
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Preparing"
+msgctxt "DownloadPage|"
+msgid "Preparing %1"
+msgstr "Готуємося"
+
+#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+msgctxt "DownloadPage|"
+msgid "Failed"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:72
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 B left)"
+msgctxt "DownloadPage|"
+msgid " B left)"
+msgstr "(лишилося %1 Б)"
+
+#: ../src/app/qml/DownloadPage.qml:73
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 KB left)"
+msgctxt "DownloadPage|"
+msgid " KB left)"
+msgstr "(лишилося %1 кБ)"
+
+#: ../src/app/qml/DownloadPage.qml:74
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 MB left)"
+msgctxt "DownloadPage|"
+msgid " MB left)"
+msgstr "(лишилося %1 МБ)"
+
+#: ../src/app/qml/DownloadPage.qml:75
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 GB left)"
+msgctxt "DownloadPage|"
+msgid " GB left)"
+msgstr "(лишилося %1 ГБ)"
+
+#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
+#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#, qt-format
+msgctxt "DownloadPage|"
+msgid " (%1"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:124
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "The file will be saved to your Downloads folder."
+msgctxt "DownloadPage|"
+msgid "Downloads are saved to the downloads folder."
 msgstr "Цей файл буде збережено до теки «Завантаження»."
 
-#: ../src/app/qml/DownloadDialog.qml:363
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:132
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid "By writing, you will lose all of the data on %1."
+msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Запис образу призведе до втрати усіх поточних даних на %1."
 
-#: ../src/app/qml/DownloadDialog.qml:370
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:140
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "Your drive will be resized to a smaller capacity. You may resize it back "
+#| "to normal by using Fedora Media Writer; this will remove installation "
+#| "media from your drive."
+msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using Fedora Media Writer; this will remove installation media "
+"normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
 "Місткість вашого диска буде зменшено. Ви можете відновити параметри "
 "місткості до нормальних за допомогою Fedora Media Writer. У результаті "
 "виконання цієї дії носій для встановлення буде вилучено з вашого диска."
 
-#: ../src/app/qml/DownloadDialog.qml:377
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:148
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Вибрано:"
 
-#: ../src/app/qml/DownloadDialog.qml:377
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:148
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "None"
+msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Немає"
 
-#: ../src/app/qml/DownloadDialog.qml:384
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:156
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "Your board or device is not supported by Fedora Media Writer yet. Please "
+#| "check <a href=%1>this page</a> for more information about its "
+#| "compatibility with Fedora and how to create bootable media for it."
+msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
 "check <a href=%1>this page</a> for more information about its compatibility "
@@ -117,9 +303,13 @@ msgstr ""
 "більше про сумісність з Fedora та способи створення придатного до "
 "завантаження носія даних з цією операційною системою."
 
-#: ../src/app/qml/DownloadDialog.qml:392
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:165
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "The selected drive's size is %1. It's possible you have selected an "
+#| "external drive by accident!"
+msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
@@ -127,227 +317,296 @@ msgstr ""
 "Об'єм вибраного диска дорівнює %1. Ймовірно, ви випадково вибрали зовнішній "
 "диск!"
 
-#: ../src/app/qml/DownloadDialog.qml:419
+#: ../src/app/qml/DownloadPage.qml:174
 #, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 B left)"
-msgstr "(лишилося %1 Б)"
+msgctxt "DownloadPage|"
+msgid "Restart and boot from %1 to start using %2."
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:420
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 KB left)"
-msgstr "(лишилося %1 кБ)"
+#: ../src/app/qml/DownloadPage.qml:262
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Writing is not possible"
+msgctxt "DownloadPage|"
+msgid "Writing not possible"
+msgstr "Записування неможливе"
 
-#: ../src/app/qml/DownloadDialog.qml:421
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 MB left)"
-msgstr "(лишилося %1 МБ)"
+#: ../src/app/qml/DownloadPage.qml:282
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Writing"
+msgstr "Записуємо"
 
-#: ../src/app/qml/DownloadDialog.qml:422
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 GB left)"
-msgstr "(лишилося %1 ГБ)"
+#: ../src/app/qml/DownloadPage.qml:310
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Write verifying"
+msgstr "Записуємо"
 
-#: ../src/app/qml/DownloadDialog.qml:435
-msgctxt "DownloadDialog|"
-msgid "Write the image immediately when the download is finished"
-msgstr "Записати образ одразу після отримання"
+#: ../src/app/qml/DownloadPage.qml:334
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Finished!"
+msgctxt "DownloadPage|"
+msgid "Finish"
+msgstr "Завершено!"
 
-#: ../src/app/qml/DownloadDialog.qml:509
-msgctxt "DownloadDialog|"
-msgid "There are no portable drives connected"
-msgstr "Із комп’ютером не з’єднано жодного портативного носія даних"
+#: ../src/app/qml/DownloadPage.qml:347
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Writing %1 was successful"
+msgctxt "DownloadPage|"
+msgid "Write Successful"
+msgstr "Успішно записано %1"
 
-#: ../src/app/qml/DownloadDialog.qml:532
-msgctxt "DownloadDialog|"
-msgid "Other"
-msgstr "Інше"
+#: ../src/app/qml/DownloadPage.qml:365
+msgctxt "DownloadPage|"
+msgid "Failed verification no drives"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:561
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-msgstr "Не вдалося вилучити<br>\"<a href=\"%1\">%2</a>\"."
+#: ../src/app/qml/DownloadPage.qml:381
+msgctxt "DownloadPage|"
+msgid "Failed verification"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:573
-msgctxt "DownloadDialog|"
-msgid "Cancel"
-msgstr "Скасувати"
+#: ../src/app/qml/DownloadPage.qml:393
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the download"
+msgctxt "DownloadPage|"
+msgid "Failed download"
+msgstr "Перевіряємо отримане"
 
-#: ../src/app/qml/DownloadDialog.qml:586
-msgctxt "DownloadDialog|"
-msgid "Write to Disk"
-msgstr "Записати на диск"
+#: ../src/app/qml/DownloadPage.qml:409
+msgctxt "DownloadPage|"
+msgid "Failed no drives"
+msgstr ""
 
-#: ../src/app/drivemanager.cpp:286
+#: ../src/app/drivemanager.cpp:288
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "На цьому диску недостатньо місця."
 
-#: ../src/app/qml/ImageDetails.qml:98
-msgctxt "ImageDetails|"
-msgid "Back"
-msgstr "Назад"
+#: ../src/app/qml/DrivePage.qml:36
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Write to Disk"
+msgctxt "DrivePage|"
+msgid "Write Options"
+msgstr "Записати на диск"
 
-#: ../src/app/qml/ImageDetails.qml:105
-msgctxt "ImageDetails|"
-msgid "Create Live USB…"
-msgstr "Створити портативний USB…"
-
-#. The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
-#: ../src/app/qml/ImageDetails.qml:167
-#, qt-format
-msgctxt "ImageDetails|"
-msgid "(%1 after writing)"
-msgstr "(%1 після запису)"
-
-#: ../src/app/qml/ImageDetails.qml:192
-#, qt-format
-msgctxt "ImageDetails|"
-msgid "Version %1"
+#: ../src/app/qml/DrivePage.qml:45
+#, fuzzy
+#| msgctxt "ImageDetails|"
+#| msgid "Version %1"
+msgctxt "DrivePage|"
+msgid "Version"
 msgstr "Версія %1"
 
-#: ../src/app/qml/ImageDetails.qml:296
-#, qt-format
-msgctxt "ImageDetails|"
-msgid ""
-"Fedora %1 was released! Check it out!<br>If you want a stable, finished "
-"system, it's better to stay at version %2."
+#: ../src/app/qml/DrivePage.qml:62
+msgctxt "DrivePage|"
+msgid "Hardware Architecture"
 msgstr ""
-"Випущено Fedora %1! Спробуйте її!<br>Якщо вам потрібна стабільна, завершена "
-"система, краще продовжити користування версією %2."
 
-#: ../src/app/qml/ImageDetails.qml:314
-#, qt-format
-msgctxt "ImageDetails|"
-msgid ", released on %1"
-msgstr ", випущено %1"
+#: ../src/app/qml/DrivePage.qml:79
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DrivePage|"
+msgid "Selected file"
+msgstr "Вибрано:"
 
-#: ../src/app/qml/ImageDetails.qml:324
-msgctxt "ImageDetails|"
-msgid "Other variants..."
-msgstr "Інші варіанти…"
+#: ../src/app/qml/DrivePage.qml:86
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "None"
+msgctxt "DrivePage|"
+msgid "None"
+msgstr "Немає"
 
-#: ../src/app/qml/ImageList.qml:84
-msgctxt "ImageList|"
-msgid "Find an operating system image"
-msgstr "Пошук образу операційної системи"
+#: ../src/app/qml/DrivePage.qml:94
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DrivePage|"
+msgid "Select..."
+msgstr "Вибрано:"
 
-#: ../src/app/qml/ImageList.qml:168
-msgctxt "ImageList|"
-msgid "Checking for new releases"
-msgstr "Шукаємо нові випуски"
+#: ../src/app/qml/DrivePage.qml:111
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Image files"
+msgctxt "DrivePage|"
+msgid "Image files"
+msgstr "файли образів"
 
-#: ../src/app/qml/ImageList.qml:251
-msgctxt "ImageList|"
-msgid "About Fedora Media Writer"
-msgstr "Про Fedora Media Writer"
+#: ../src/app/qml/DrivePage.qml:111
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "All files (*)"
+msgctxt "DrivePage|"
+msgid "All files (*)"
+msgstr "усі файли (*)"
 
-#: ../src/app/qml/ImageList.qml:275
-#, qt-format
-msgctxt "ImageList|"
-msgid "Version %1"
-msgstr "Версія %1"
-
-#: ../src/app/qml/ImageList.qml:282
-msgctxt "ImageList|"
-msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Зараз Fedora Media Writer шукає нові випуски"
-
-#: ../src/app/qml/ImageList.qml:296
-#, qt-format
-msgctxt "ImageList|"
-msgid "Please report bugs or your suggestions on %1"
+#: ../src/app/qml/DrivePage.qml:122
+msgctxt "DrivePage|"
+msgid "USB Drive"
 msgstr ""
-"Будь ласка, повідомляйте про вади та ваші пропозиції за цією адресою: %1"
 
-#: ../src/app/qml/ImageList.qml:356
-msgctxt "ImageList|"
-msgid "Display additional Fedora flavors"
-msgstr "Показати додаткові варіанти Fedora"
+#: ../src/app/qml/DrivePage.qml:130
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "There are no portable drives connected"
+msgctxt "DrivePage|"
+msgid "There are no portable drives connected"
+msgstr "Із комп’ютером не з’єднано жодного портативного носія даних"
 
-#: ../src/app/linuxdrivemanager.cpp:181
+#: ../src/app/qml/DrivePage.qml:149
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "DrivePage|"
+msgid "Download"
+msgstr "Отримуємо"
+
+#: ../src/app/qml/DrivePage.qml:154
+#, fuzzy
+#| msgctxt "DeleteButton|"
+#| msgid "Delete the Downloaded Image"
+msgctxt "DrivePage|"
+msgid "Delete download after writing"
+msgstr "Вилучити отриманий образ"
+
+#: ../src/app/linuxdrivemanager.cpp:196
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
 msgstr "Диск було від’єднано до завершення запису."
 
-#: ../src/app/linuxdrivemanager.cpp:210
+#: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "Не вдалося знайти допоміжного виконуваного файла. Перевірте, чи все "
 "встановлено належним чином."
 
-#: ../src/app/linuxdrivemanager.cpp:245
+#: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
 msgstr "Зупинено до завершення запису."
 
-#: ../src/app/linuxdrivemanager.cpp:315 ../src/app/linuxdrivemanager.cpp:344
+#: ../src/app/linuxdrivemanager.cpp:329
 msgctxt "LinuxDrive|"
 msgid "Finished!"
 msgstr "Завершено!"
 
-#: ../src/app/linuxdrivemanager.cpp:315 ../src/app/linuxdrivemanager.cpp:344
+#: ../src/app/linuxdrivemanager.cpp:329
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
 msgstr "Успішно записано %1"
 
-#: ../src/app/linuxdrivemanager.cpp:337
+#: ../src/app/linuxdrivemanager.cpp:351
 msgctxt "LinuxDrive|"
 msgid "Error"
 msgstr "Помилка"
 
-#: ../src/app/linuxdrivemanager.cpp:337
+#: ../src/app/linuxdrivemanager.cpp:351
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
 msgstr "Не вдалося записати %1"
 
-#: ../src/app/linuxdrivemanager.cpp:116
+#: ../src/app/linuxdrivemanager.cpp:122
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr "У вашій системі немає UDisks2 або відповідна програма недоступна."
 
-#: ../src/app/macdrivemanager.cpp:101
+#: ../src/app/macdrivemanager.cpp:100
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "Не вдалося знайти допоміжного виконуваного файла. Перевірте, чи все "
 "встановлено належним чином."
 
-#: ../src/app/macdrivemanager.cpp:188
+#: ../src/app/macdrivemanager.cpp:182
 msgctxt "MacDrive|"
 msgid "Error"
 msgstr "Помилка"
 
-#: ../src/app/macdrivemanager.cpp:188
+#: ../src/app/macdrivemanager.cpp:182
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
 msgstr "Не вдалося записати %1"
 
-#: ../src/app/macdrivemanager.cpp:192
+#: ../src/app/macdrivemanager.cpp:186
 msgctxt "MacDrive|"
 msgid "Finished!"
 msgstr "Завершено!"
 
-#: ../src/app/macdrivemanager.cpp:192
+#: ../src/app/macdrivemanager.cpp:186
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
 msgstr "%1 успішно записано"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/qml/MainPage.qml:43
+msgctxt "MainPage|"
+msgid "Select Image Source"
+msgstr ""
+
+#: ../src/app/qml/MainPage.qml:57
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
+msgctxt "MainPage|"
+msgid "Download automatically"
+msgstr "Помилка під час отримання"
+
+#: ../src/app/qml/MainPage.qml:65
+msgctxt "MainPage|"
+msgid "Select .iso file"
+msgstr ""
+
+#: ../src/app/qml/MainPage.qml:76
+#, fuzzy, qt-format
+#| msgctxt "RestoreDialog|"
+#| msgid "Restore %1?"
+msgctxt "MainPage|"
+msgid "Restore <b>%1</b>"
+msgstr "Відновити %1?"
+
+#: ../src/app/portalfiledialog.cpp:145
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Image files"
+msgctxt "PortalFileDialog|"
+msgid "Image files"
+msgstr "файли образів"
+
+#: ../src/app/portalfiledialog.cpp:155
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "All files (*)"
+msgctxt "PortalFileDialog|"
+msgid "All files"
+msgstr "усі файли (*)"
+
+#: ../src/app/portalfiledialog.cpp:165
+msgctxt "PortalFileDialog|"
+msgid "Open File"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Виберіть файл на диску"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -356,50 +615,55 @@ msgid ""
 msgstr ""
 "<p>Тут ви можете вибрати образ операційної системи, що зберігається на диску "
 "вашого комп’ютера, для наступного запису на флешку.</p><p>У поточній версії "
-"передбачено підтримку запису лише простих образів дисків (у форматі .iso або "
-".bin)</p>"
+"передбачено підтримку запису лише простих образів дисків (у форматі .iso "
+"або .bin)</p>"
 
-#: ../src/app/releasemanager.cpp:362
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Збірки Fedora"
 
-#: ../src/app/releasemanager.cpp:364
+#: ../src/app/releasemanager.cpp:399
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
-#: ../src/app/releasemanager.cpp:366
+#: ../src/app/releasemanager.cpp:401
+msgctxt "Release|"
+msgid "Emerging Fedora Editions"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:403
 msgctxt "Release|"
 msgid "Other"
 msgstr "Інше"
 
-#: ../src/app/releasemanager.cpp:936
+#: ../src/app/releasemanager.cpp:979
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 64bit"
 msgstr "Intel 64-бітовий"
 
-#: ../src/app/releasemanager.cpp:936
+#: ../src/app/releasemanager.cpp:979
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "Образ у форматі ISO для Intel-сумісних ПК (64-бітовий)"
 
-#: ../src/app/releasemanager.cpp:937
+#: ../src/app/releasemanager.cpp:980
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 32bit"
 msgstr "Intel 32-бітовий"
 
-#: ../src/app/releasemanager.cpp:937
+#: ../src/app/releasemanager.cpp:980
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "Образ у форматі ISO для Intel-сумісних ПК (32-бітовий)"
 
-#: ../src/app/releasemanager.cpp:938
+#: ../src/app/releasemanager.cpp:981
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:938
+#: ../src/app/releasemanager.cpp:981
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
@@ -407,133 +671,85 @@ msgstr ""
 "Стиснутий LZMA простий образ для комп’ютерів з процесором ARM v7-A, зокрема "
 "Raspberry Pi 2 і 3"
 
-#: ../src/app/releasemanager.cpp:939
+#: ../src/app/releasemanager.cpp:982
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:939
+#: ../src/app/releasemanager.cpp:982
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "Стиснений LZMA простий образ для архітектури AArch64"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Нетиповий образ"
 
-#: ../src/app/releasemanager.cpp:797 ../src/app/releasemanager.cpp:809
+#: ../src/app/releasemanager.cpp:840 ../src/app/releasemanager.cpp:852
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Отримані дані образу пошкоджено"
 
-#: ../src/app/releasemanager.cpp:814
+#: ../src/app/releasemanager.cpp:857
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Отриманий файл непридатний до читання."
 
-#: ../src/app/releasemanager.cpp:826
+#: ../src/app/releasemanager.cpp:869
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Не вдалося перейменувати тимчасовий файл."
 
-#: ../src/app/releasemanager.h:386
-msgctxt "ReleaseVariant|"
-msgid "Preparing"
-msgstr "Готуємося"
-
-#: ../src/app/releasemanager.h:387
-msgctxt "ReleaseVariant|"
-msgid "Downloading"
-msgstr "Отримуємо"
-
-#: ../src/app/releasemanager.h:388
-msgctxt "ReleaseVariant|"
-msgid "Checking the download"
-msgstr "Перевіряємо отримане"
-
-#: ../src/app/releasemanager.h:389
-msgctxt "ReleaseVariant|"
-msgid "Ready to write"
-msgstr "Готові до запису"
-
-#: ../src/app/releasemanager.h:390
-msgctxt "ReleaseVariant|"
-msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr ""
-"Файл образу було збережено до вашої теки отриманих файлів. Запис даних "
-"неможливий."
-
-#: ../src/app/releasemanager.h:391
-msgctxt "ReleaseVariant|"
-msgid "Writing"
-msgstr "Записуємо"
-
-#: ../src/app/releasemanager.h:392
-msgctxt "ReleaseVariant|"
-msgid "Checking the written data"
-msgstr "Перевіряємо записані дані"
-
-#: ../src/app/releasemanager.h:393
-msgctxt "ReleaseVariant|"
-msgid "Finished!"
-msgstr "Завершено!"
-
-#: ../src/app/releasemanager.h:394
-msgctxt "ReleaseVariant|"
-msgid "The written data is corrupted"
-msgstr "Записані дані пошкоджено"
-
-#: ../src/app/releasemanager.h:395
-msgctxt "ReleaseVariant|"
-msgid "Download failed"
-msgstr "Помилка під час отримання"
-
-#: ../src/app/releasemanager.h:396
-msgctxt "ReleaseVariant|"
-msgid "Error"
-msgstr "Помилка"
-
-#: ../src/app/releasemanager.cpp:607
+#: ../src/app/releasemanager.cpp:648
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../src/app/releasemanager.cpp:609
+#: ../src/app/releasemanager.cpp:650
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:611
+#: ../src/app/releasemanager.cpp:652
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "%1 RC"
 
-#: ../src/app/qml/RestoreDialog.qml:31
+#: ../src/app/qml/RestorePage.qml:37
 #, qt-format
-msgctxt "RestoreDialog|"
-msgid "Restore %1?"
-msgstr "Відновити %1?"
+msgctxt "RestorePage|"
+msgid "Restore Drive <b>%1</b>"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:73
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:49
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "<p align=\"justify\">\n"
+#| "                                                To reclaim all space "
+#| "available on the drive, it has to be restored to its factory settings.\n"
+#| "                                                The live system and all "
+#| "saved data will be deleted.\n"
+#| "                                            </p>\n"
+#| "                                            <p align=\"justify\">\n"
+#| "                                                You don't need to restore "
+#| "the drive if you want to write another live system to it.\n"
+#| "                                            </p>\n"
+#| "                                            <p align=\"justify\">\n"
+#| "                                                Do you want to continue?\n"
+#| "                                            </p>"
+msgctxt "RestorePage|"
 msgid ""
-"<p align=\"justify\">\n"
-"                                                To reclaim all space "
-"available on the drive, it has to be restored to its factory settings.\n"
-"                                                The live system and all "
-"saved data will be deleted.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                You don't need to restore "
-"the drive if you want to write another live system to it.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Do you want to continue?\n"
-"                                            </p>"
+"<p align=\"justify\"> To reclaim all space available on the drive, it has to "
+"be restored to its factory settings. The live system and all saved data will "
+"be deleted. </p> <p align=\"justify\"> You don't need to restore the drive "
+"if you want to write another live system to it. \n"
+"                </p> <p align=\"justify\"> Do you want to restore it to "
+"factory settings? </p>"
 msgstr ""
 "<p align=\"justify\">\n"
 "                                                Щоб отримати у розпорядження "
@@ -551,8 +767,13 @@ msgstr ""
 "диск?\n"
 "                                            </p>"
 
-#: ../src/app/qml/RestoreDialog.qml:105
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:67
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
+#| "portable drive.</p>"
+msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
@@ -560,34 +781,68 @@ msgstr ""
 "<p align=\"justify\">Будь ласка, зачекайте, доки Fedora Media Writer "
 "відновити вміст вашого портативного диска.</p>"
 
-#: ../src/app/qml/RestoreDialog.qml:121
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:84
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid "Your drive was successfully restored!"
+msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "Вміст вашого диска успішно відновлено!"
 
-#: ../src/app/qml/RestoreDialog.qml:138
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:94
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "Unfortunately, an error occurred during the process.<br>Please try "
+#| "restoring the drive using your system tools."
+msgctxt "RestorePage|"
 msgid ""
-"Unfortunately, an error occurred during the process.<br>Please try restoring "
+"Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
 "На жаль, під час виконання дій сталася помилка.<br>Будь ласка, спробуйте "
 "відновити ваш диск за допомогою інших інструментів системи."
 
-#: ../src/app/qml/RestoreDialog.qml:150
-msgctxt "RestoreDialog|"
-msgid "Cancel"
-msgstr "Скасувати"
+#: ../src/app/qml/RestorePage.qml:143
+msgctxt "RestorePage|"
+msgid "Restoring finished"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:159 ../src/app/qml/RestoreDialog.qml:170
-msgctxt "RestoreDialog|"
-msgid "Restore"
-msgstr "Відновити"
+#: ../src/app/qml/VersionPage.qml:35
+msgctxt "VersionPage|"
+msgid "Select Fedora Release"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:159
-msgctxt "RestoreDialog|"
-msgid "Close"
-msgstr "Закрити"
+#: ../src/app/qml/VersionPage.qml:48
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "VersionPage|"
+msgid "Select from:"
+msgstr "Вибрано:"
+
+#: ../src/app/qml/VersionPage.qml:53
+msgctxt "VersionPage|"
+msgid "Official Editions"
+msgstr ""
+
+#: ../src/app/qml/VersionPage.qml:59
+msgctxt "VersionPage|"
+msgid "Emerging Editions"
+msgstr ""
+
+#: ../src/app/qml/VersionPage.qml:65
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "spins"
+msgctxt "VersionPage|"
+msgid "Spins"
+msgstr "збірки"
+
+#: ../src/app/qml/VersionPage.qml:71
+msgctxt "VersionPage|"
+msgid "Labs"
+msgstr ""
 
 #: ../src/app/windrivemanager.cpp:270
 msgctxt "WinDrive|"
@@ -607,154 +862,93 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "%1 успішно записано"
 
-#: ../src/helper/linux/writejob.cpp:136 ../src/helper/win/writejob.cpp:271
-#: ../src/helper/mac/writejob.cpp:219
-msgctxt "WriteJob|"
-msgid "Failed to start decompressing."
-msgstr "Не вдалося розпочати розпаковування."
-
-#: ../src/helper/linux/writejob.cpp:161 ../src/helper/linux/writejob.cpp:191
-#: ../src/helper/linux/writejob.cpp:228 ../src/helper/win/writejob.cpp:188
-#: ../src/helper/win/writejob.cpp:195 ../src/helper/mac/writejob.cpp:180
-#: ../src/helper/mac/writejob.cpp:244 ../src/helper/mac/writejob.cpp:274
-msgctxt "WriteJob|"
-msgid "Destination drive is not writable"
-msgstr "Непридатний до запису диск призначення"
-
-#: ../src/helper/linux/writejob.cpp:170 ../src/helper/win/writejob.cpp:315
-#: ../src/helper/mac/writejob.cpp:253
-msgctxt "WriteJob|"
-msgid "There is not enough memory to decompress the file."
-msgstr "Недостатньо пам’яті для розпаковування файла."
-
-#: ../src/helper/linux/writejob.cpp:175 ../src/helper/win/writejob.cpp:320
-#: ../src/helper/mac/writejob.cpp:258
-msgctxt "WriteJob|"
-msgid "The downloaded compressed file is corrupted."
-msgstr "Отриманий стиснений файл виявився пошкодженим."
-
-#: ../src/helper/linux/writejob.cpp:178 ../src/helper/win/writejob.cpp:323
-#: ../src/helper/mac/writejob.cpp:261
-msgctxt "WriteJob|"
-msgid "Unsupported compression options."
-msgstr "Непідтримувані параметри стискання."
-
-#: ../src/helper/linux/writejob.cpp:181 ../src/helper/win/writejob.cpp:326
-#: ../src/helper/mac/writejob.cpp:264
-msgctxt "WriteJob|"
-msgid "Unknown decompression error."
-msgstr "Невідома помилка під час спроби розпакувати."
-
-#: ../src/helper/linux/writejob.cpp:206 ../src/helper/linux/writejob.cpp:221
-#: ../src/helper/win/writejob.cpp:361
-msgctxt "WriteJob|"
-msgid "Source image is not readable"
-msgstr "Непридатний до читання образ джерела"
-
-#: ../src/helper/linux/writejob.cpp:257 ../src/helper/win/writejob.cpp:406
-#: ../src/helper/mac/writejob.cpp:297
-msgctxt "WriteJob|"
-msgid "Your drive is probably damaged."
-msgstr "Ймовірно, флешка непрацездатна."
-
-#: ../src/helper/linux/writejob.cpp:262 ../src/helper/win/writejob.cpp:411
-#: ../src/helper/mac/writejob.cpp:302
-msgctxt "WriteJob|"
-msgid "Unexpected error occurred during media check."
-msgstr "Під час перевірки носія даних сталася неочікувана помилка."
-
-#: ../src/helper/win/writejob.cpp:74
-msgctxt "WriteJob|"
-msgid "Couldn't open the drive for writing"
-msgstr "Не вдалося відкрити диск для запису"
-
-#: ../src/helper/win/writejob.cpp:98
-msgctxt "WriteJob|"
-msgid "Couldn't lock the drive"
-msgstr "Не вдалося заблокувати диск"
-
-#: ../src/helper/win/writejob.cpp:134
-#, qt-format
-msgctxt "WriteJob|"
-msgid "Couldn't remove the drive %1:"
-msgstr "Не вдалося вилучити диск %1:"
-
-#: ../src/helper/win/writejob.cpp:209
-msgctxt "WriteJob|"
-msgid "Couldn't unlock the drive"
-msgstr "Не вдалося розблокувати диск"
-
-#: ../src/helper/mac/writejob.cpp:82
-msgctxt "WriteJob|"
-msgid "Unable to allocate socket pair"
-msgstr "не вдалося створити пару сокетів"
-
-#: ../src/helper/mac/writejob.cpp:127
-msgctxt "WriteJob|"
-msgid "Unable to open destination for writing"
-msgstr "Не вдалося відкрити файл призначення для запису"
-
-#: ../src/app/qml/main.qml:68
-#, qt-format
+#: ../src/app/qml/main.qml:116
+#, fuzzy
+#| msgid "Fedora Media Writer"
 msgctxt "main|"
-msgid ""
-"You inserted <b>%1</b> that already contains a live system.<br>Do you want "
-"to restore it to factory settings?"
-msgstr ""
-"Диск <b>%1</b> вже містить портативну операційну систему.<br>Хочете "
-"відновити його до початкового порожнього стану?"
+msgid "Fedora Media Writer"
+msgstr "Fedora Media Writer"
 
-#: ../src/app/qml/main.qml:70
+#: ../src/app/qml/main.qml:154
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Workstation"
+msgctxt "main|"
+msgid "Select Fedora Version"
+msgstr "Робоча станція Fedora"
+
+#: ../src/app/qml/main.qml:170
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "main|"
+msgid "Select Drive"
+msgstr "Вибрано:"
+
+#: ../src/app/qml/main.qml:204
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "main|"
+msgid "Downloading"
+msgstr "Отримуємо"
+
+#: ../src/app/qml/main.qml:243 ../src/app/qml/main.qml:284
 msgctxt "main|"
 msgid "Restore"
 msgstr "Відновити"
 
-#: ../src/app/qml/main.qml:146
-#, qt-format
+#: ../src/app/qml/main.qml:283
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Finished!"
 msgctxt "main|"
-msgid "Fedora Media Writer %1 Released"
-msgstr "Випущено Fedora Media Writer %1"
+msgid "Finish"
+msgstr "Завершено!"
 
-#: ../src/app/qml/main.qml:147
+#: ../src/app/qml/main.qml:286
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
 msgctxt "main|"
-msgid "Update for great new features and bugfixes!"
+msgid "Download & Write"
+msgstr "Помилка під час отримання"
+
+#: ../src/app/qml/main.qml:289 ../src/app/qml/main.qml:300
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Cancel"
+msgctxt "main|"
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: ../src/app/qml/main.qml:291
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Retry"
+msgctxt "main|"
+msgid "Retry"
+msgstr "Повторити"
+
+#: ../src/app/qml/main.qml:293
+msgctxt "main|"
+msgid "Next"
 msgstr ""
-"Оновіть програму, щоб скористатися новими можливостями та виправленнями вад!"
 
-#: ../src/app/qml/main.qml:148
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
-msgid "Open Browser"
-msgstr "Відкрити браузер"
-
-#: ../src/app/qml/main.qml:163
-msgctxt "main|"
-msgid "Image files"
-msgstr "файли образів"
-
-#: ../src/app/qml/main.qml:163
-msgctxt "main|"
-msgid "All files (*)"
-msgstr "усі файли (*)"
-
-#: ../src/app/qml/main.qml:192
-#, qt-format
-msgctxt "main|"
-msgid ""
-"%1<br>Writing images will not be possible.<br>You can still view Fedora "
-"flavors and download images to your hard drive."
+msgid "About"
 msgstr ""
-"%1<br>Записати образи не вдасться.<br>Втім, ви зможете переглядати варіанти "
-"Fedora і отримувати образи на диск вашого комп’ютера."
 
-#: ../src/app/qml/main.qml:196
+#: ../src/app/qml/main.qml:301
 msgctxt "main|"
-msgid "Ok"
-msgstr "Гаразд"
+msgid "Previous"
+msgstr ""
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop.in:4
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
 
@@ -777,8 +971,8 @@ msgstr ""
 "системи Fedora на носіях USB. Fedora Media Writer може не лише записувати "
 "образи на вашу флешку, але отримувати ці образи з інтернету. Програма "
 "запропонує вам офіційні випуски (Server, Workstation), Fedora spins (KDE "
-"Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...) та випуски Fedora Labs ("
-"Design Suite, Security Lab,...). Вона надає основну інформацію щодо кожного "
+"Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...) та випуски Fedora Labs "
+"(Design Suite, Security Lab,...). Вона надає основну інформацію щодо кожного "
 "з образів, що допоможе вам зробити правильний вибір."
 
 #. (itstool) path: description/p
@@ -791,1055 +985,1143 @@ msgstr ""
 "завантаження образів ISO з локального диска, але слід мати на увазі, що "
 "тестування програми виконувалося лише для образів Fedora."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop.in:39
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:39
 msgid "Write Fedora images to your portable drives"
 msgstr "Запис образів Fedora на портативні пристрої"
 
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:77
+msgid "fmw;usb;iso;bootable;"
+msgstr ""
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Write %1"
+#~ msgstr "Записати %1"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Write the image immediately when the download is finished"
+#~ msgstr "Записати образ одразу після отримання"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Other"
+#~ msgstr "Інше"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
+#~ msgstr "Не вдалося вилучити<br>\"<a href=\"%1\">%2</a>\"."
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "Back"
+#~ msgstr "Назад"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "Create Live USB…"
+#~ msgstr "Створити портативний USB…"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "(%1 after writing)"
+#~ msgstr "(%1 після запису)"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid ""
+#~ "Fedora %1 was released! Check it out!<br>If you want a stable, finished "
+#~ "system, it's better to stay at version %2."
+#~ msgstr ""
+#~ "Випущено Fedora %1! Спробуйте її!<br>Якщо вам потрібна стабільна, "
+#~ "завершена система, краще продовжити користування версією %2."
+
+#~ msgctxt "ImageDetails|"
+#~ msgid ", released on %1"
+#~ msgstr ", випущено %1"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "Other variants..."
+#~ msgstr "Інші варіанти…"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Find an operating system image"
+#~ msgstr "Пошук образу операційної системи"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Checking for new releases"
+#~ msgstr "Шукаємо нові випуски"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Version %1"
+#~ msgstr "Версія %1"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Display additional Fedora flavors"
+#~ msgstr "Показати додаткові варіанти Fedora"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Ready to write"
+#~ msgstr "Готові до запису"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid ""
+#~ "Image file was saved to your downloads folder. Writing is not possible"
+#~ msgstr ""
+#~ "Файл образу було збережено до вашої теки отриманих файлів. Запис даних "
+#~ "неможливий."
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Finished!"
+#~ msgstr "Завершено!"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "The written data is corrupted"
+#~ msgstr "Записані дані пошкоджено"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Error"
+#~ msgstr "Помилка"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Cancel"
+#~ msgstr "Скасувати"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Restore"
+#~ msgstr "Відновити"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Close"
+#~ msgstr "Закрити"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Failed to start decompressing."
+#~ msgstr "Не вдалося розпочати розпаковування."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Destination drive is not writable"
+#~ msgstr "Непридатний до запису диск призначення"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "There is not enough memory to decompress the file."
+#~ msgstr "Недостатньо пам’яті для розпаковування файла."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "The downloaded compressed file is corrupted."
+#~ msgstr "Отриманий стиснений файл виявився пошкодженим."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unsupported compression options."
+#~ msgstr "Непідтримувані параметри стискання."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unknown decompression error."
+#~ msgstr "Невідома помилка під час спроби розпакувати."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Source image is not readable"
+#~ msgstr "Непридатний до читання образ джерела"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Your drive is probably damaged."
+#~ msgstr "Ймовірно, флешка непрацездатна."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unexpected error occurred during media check."
+#~ msgstr "Під час перевірки носія даних сталася неочікувана помилка."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't open the drive for writing"
+#~ msgstr "Не вдалося відкрити диск для запису"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't lock the drive"
+#~ msgstr "Не вдалося заблокувати диск"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't remove the drive %1:"
+#~ msgstr "Не вдалося вилучити диск %1:"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't unlock the drive"
+#~ msgstr "Не вдалося розблокувати диск"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unable to allocate socket pair"
+#~ msgstr "не вдалося створити пару сокетів"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unable to open destination for writing"
+#~ msgstr "Не вдалося відкрити файл призначення для запису"
+
+#~ msgctxt "main|"
+#~ msgid ""
+#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
+#~ "want to restore it to factory settings?"
+#~ msgstr ""
+#~ "Диск <b>%1</b> вже містить портативну операційну систему.<br>Хочете "
+#~ "відновити його до початкового порожнього стану?"
+
+#~ msgctxt "main|"
+#~ msgid "Fedora Media Writer %1 Released"
+#~ msgstr "Випущено Fedora Media Writer %1"
+
+#~ msgctxt "main|"
+#~ msgid "Update for great new features and bugfixes!"
+#~ msgstr ""
+#~ "Оновіть програму, щоб скористатися новими можливостями та виправленнями "
+#~ "вад!"
+
+#~ msgctxt "main|"
+#~ msgid "Open Browser"
+#~ msgstr "Відкрити браузер"
+
+#~ msgctxt "main|"
+#~ msgid ""
+#~ "%1<br>Writing images will not be possible.<br>You can still view Fedora "
+#~ "flavors and download images to your hard drive."
+#~ msgstr ""
+#~ "%1<br>Записати образи не вдасться.<br>Втім, ви зможете переглядати "
+#~ "варіанти Fedora і отримувати образи на диск вашого комп’ютера."
+
+#~ msgctxt "main|"
+#~ msgid "Ok"
+#~ msgstr "Гаразд"
+
 # ############## metadata.json ###############
-#: [Workstation].subvariant
-msgid "workstation"
-msgstr "workstation"
-
-#: [Workstation].category
-msgctxt "Release|"
-msgid "product"
-msgstr "продукт"
-
-#: [Workstation].name
-msgctxt "Release|"
-msgid "Fedora Workstation"
-msgstr "Робоча станція Fedora"
-
-#: [Workstation].summary
-msgctxt "Release|"
-msgid "This is the Linux workstation you've been waiting for."
-msgstr "Це робоча станція на основі Linux, на яку ви так довго чекали."
-
-#: [Workstation].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora Workstation is a reliable, user-friendly, and powerful operating "
-"system for your laptop or desktop computer. It supports a wide range of "
-"developers, from hobbyists and students to professionals in corporate "
-"environments."
-msgstr ""
-"Fedora Workstation — надійна, дружня до користувача і потужна операційна "
-"система для вашого ноутбука чи стаціонарного комп’ютера. У ній можуть "
-"працювати усі розробники, від початківців та студентів до професіоналів у "
-"корпоративних середовищах."
-
-#: [Workstation].description[1]
-msgctxt "Release|"
-msgid ""
-"“The plethora of tools provided by<br /> Fedora allows me to get the job "
-"done.<br /> It just works.”"
-msgstr ""
-"«Палітра інструментів, які є частиною<br /> Fedora надає мені змогу "
-"виконувати свою роботу.<br /> Це просто працює як слід.»"
-
-#: [Workstation].description[2]
-msgctxt "Release|"
-msgid "JVM performance engineer"
-msgstr "Інженер із швидкодії JVM"
-
-#: [Workstation].description[3]
-msgctxt "Release|"
-msgid "Sleek user interface"
-msgstr "Оптимізований інтерфейс користувача"
-
-#: [Workstation].description[4]
-msgctxt "Release|"
-msgid ""
-"Focus on your code in the GNOME 3 desktop environment. GNOME is built with "
-"developer feedback and minimizes distractions, so you can concentrate on "
-"what's important."
-msgstr ""
-"Зосередьтеся на вашому коді у стільничному середовищі GNOME 3. GNOME "
-"створено на основі побажань розробників, середовище мінімізує сторонні "
-"фактори, отже ви можете сконцентруватися на важливих моментах."
-
-#: [Workstation].description[5]
-msgctxt "Release|"
-msgid "Complete open source toolbox"
-msgstr "Повний набір інструментів із відкритим кодом"
-
-#: [Workstation].description[6]
-msgctxt "Release|"
-msgid ""
-"Skip the drag of trying to find or build the tools you need. With Fedora's "
-"complete set of open source languages, tools, and utilities, everything is a "
-"click or command line away. There's even project hosting and repositories "
-"like COPR to make your code and builds available quickly to the community."
-msgstr ""
-"Забудьте про постійний пошук і збирання потрібних вам інструментів. З повним "
-"набором відкритих мов програмування, інструментів та засобів Fedora будь-що "
-"з цього набору доступне за одне клацання кнопкою миші або просту команду. "
-"Передбачено навіть можливості із зберігання проєктів та власних сховищ "
-"пакунків, зокрема COPR, для того, щоб ваш код і пакунки швидко діставалися "
-"спільноти користувачів."
-
-#: [Workstation].description[7]
-msgctxt "Release|"
-msgid "GNOME Boxes & other virt tools"
-msgstr "GNOME Boxes та інші інструменти віртуалізації"
-
-#: [Workstation].description[8]
-msgctxt "Release|"
-msgid ""
-"Get virtual machines up and running quickly to test your code on multiple "
-"platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization "
-"tools for even more control."
-msgstr ""
-"За допомогою GNOME Boxes ви зможете швидко створювати і запускати віртуальні "
-"машини для тестування вашого коду на багатьох програмних платформах. Ви "
-"також можете скористатися потужними інструментами віртуалізації зі "
-"скриптовим керуванням для того, щоб отримати додаткові важелі керування "
-"середовищем."
-
-#: [Workstation].description[9]
-msgctxt "Release|"
-msgid "Built-in Docker support"
-msgstr "Вбудована підтримка Docker"
-
-#: [Workstation].description[10]
-msgctxt "Release|"
-msgid ""
-"Containerize your own apps, or deploy containerized apps out of the box on "
-"Fedora, using the latest technology like Docker."
-msgstr ""
-"Створюйте контейнери з вашими власними програмами і розгортайте готові до "
-"використання контейнери на основі Fedora за допомогою найсучасніших "
-"технологій, зокрема Docker."
-
-#: [Server].subvariant
-msgctxt "Release|"
-msgid "server"
-msgstr "сервер"
-
-#: [Server].category [Server].name
-msgctxt "Release|"
-msgid "Fedora Server"
-msgstr "Сервер Fedora"
-
-#: [Server].summary
-msgctxt "Release|"
-msgid ""
-"The latest technology. A stable foundation. Together, for your applications "
-"and services."
-msgstr "Найновіші технології. Міцна основа. Разом, для ваших програм і служб."
-
-#: [Server].description[0]
-msgctxt "Release|"
-msgid ""
-"“The simplicity introduced with rolekit and cockpit have made server "
-"deployments a breeze. What took me a few days on other operating systems "
-"took less than an hour with Fedora %(rel)s Server. It just works.”"
-msgstr ""
-"«Простота, яка є результатом впровадження набору ролей та cockpit, розбить "
-"розгортання серверів гранично простим. На те, що потребувало від мене "
-"декількох днів роботи в інших операційних системах, було витрачено менше "
-"години у Fedora %(rel)s Server. Усе просто працює.»"
-
-#: [Server].description[1]
-msgctxt "Release|"
-msgid "Systems Engineer"
-msgstr "Системний інженер"
-
-#: [Server].description[2]
-msgctxt "Release|"
-msgid ""
-"Fedora Server is a short-lifecycle, community-supported server operating "
-"system that enables seasoned system administrators experienced with any OS "
-"to make use of the very latest server-based technologies available in the "
-"open source community."
-msgstr ""
-"Fedora Server — серверна операційна система зі скороченим життєвим циклом "
-"підтримувана спільнотою. Ця операційна система надає змогу адміністраторам з "
-"досвідом роботи із будь-якою операційною системою скористатися найсвіжішими "
-"здобутками заснованих на серверах технологій, які тільки доступні у "
-"середовищі із відкритим кодом."
-
-#: [Server].description[3]
-msgctxt "Release|"
-msgid "Easy Administration"
-msgstr "Просте адміністрування"
-
-#: [Server].description[4]
-msgctxt "Release|"
-msgid ""
-"Manage your system simply with Cockpit's powerful, modern interface. View "
-"and monitor system performance and status, and deploy and manage container-"
-"based services."
-msgstr ""
-"Керувати вашою системою дуже просто за допомогою потужного і сучасного "
-"інтерфейсу Cockpit. Ви можете переглядати і спостерігати за швидкодією і "
-"станом системи, розгортати служби на основі контейнерів і керувати ними."
-
-#: [Server].description[5]
-msgctxt "Release|"
-msgid "Server Roles"
-msgstr "Ролі сервера"
-
-#: [Server].description[6]
-msgctxt "Release|"
-msgid ""
-"There's no need to set up your server from scratch when you use server "
-"roles. Server roles plug into your Fedora Server system, providing a well-"
-"integrated service on top of the Fedora Server platform. Deploy and manage "
-"these prepared roles simply using the Rolekit tool."
-msgstr ""
-"Якщо ви використовуєте ролі сервера, немає потреби у налаштовуванні сервера "
-"з нуля. Ролі сервера вбудовано до вашої системи Fedora Server — вони надають "
-"у ваше розпорядження добре інтегровану службу над платформою Fedora Server. "
-"Розгортайте і керуйте цими заздалегідь приготованими ролями за допомогою "
-"інструментів Rolekit."
-
-#: [Server].description[7]
-msgctxt "Release|"
-msgid "Database Services"
-msgstr "Служби баз даних"
-
-#: [Server].description[8]
-msgctxt "Release|"
-msgid ""
-"Fedora Server brings with it an enterprise-class, scalable database server "
-"powered by the open-source PostgreSQL project."
-msgstr ""
-"Fedora Server може працювати як масштабований сервер бази даних промислового "
-"класу на основі проекту з відкритим кодом PostgreSQL."
-
-#: [Server].description[9]
-msgctxt "Release|"
-msgid "Complete Enterprise Domain Solution"
-msgstr "Повноцінне промислове рішення для домену"
-
-#: [Server].description[10]
-msgctxt "Release|"
-msgid ""
-"Level up your Linux network with advanced identity management, DNS, "
-"certificate services, Windows(TM) domain integration throughout your "
-"environment with FreeIPA, the engine that drives Fedora Server's Domain "
-"Controller role."
-msgstr ""
-"Розширте можливості вашої мережі Linux за допомогою удосконаленого керування "
-"профілями, DNS, служб сертифікації, інтеграції доменів Windows™ у всьому "
-"середовищі, скориставшись FreeIPA, рушієм, який забезпечує роботу ролі "
-"контролера домену для Сервера Fedora."
-
-#: [Server].description[11]
-msgctxt "Release|"
-msgid ""
-"“The Docker Role for Fedora Server was simple and fast to install so that "
-"you can run your Docker images. This makes a great testbed for beginners and "
-"experts with docker so that they can develop their applications on the fly.”"
-msgstr ""
-"«Роль Docker для Fedora Server просто і швидко встановити — і ви одразу "
-"можете запускати ваші образи Docker. Це надає у розпорядження початківців і "
-"експертів чудову тестову платформу із docker. Можна розробляти програми на "
-"льоту.»"
-
-#: [Server].description[12]
-msgctxt "Release|"
-msgid "</p><p align=right> ― <em>John Unland, "
-msgstr "</p><p align=right> ― <em>Джон Анленд (John Unland), "
-
-#: [Server].description[13]
-msgctxt "Release|"
-msgid "Information Systems Student"
-msgstr "Студент спеціальності «Інформаційні системи»"
-
-#: [Silverblue].subvariant
-msgctxt "Release|"
-msgid "silverblue"
-msgstr "silverblue"
-
-#: [Silverblue].category
-msgctxt "Release|"
-msgid "emerging"
-msgstr "нові редакції"
-
-#: [Silverblue].name
-msgctxt "Release|"
-msgid "Fedora Silverblue"
-msgstr "Fedora Silverblue"
-
-#: [Silverblue].summary
-msgctxt "Release|"
-msgid ""
-"An extremely stable and reliable desktop operating system, excellent for "
-"developers and for those using container-focused workflows."
-msgstr ""
-"Надзвичайно стабільна і надійна операційна система для робочих станцій, "
-"ідеально для розробників і тих, хто використовує робочі процеси із акцентом "
-"на контейнеризації."
-
-#: [Silverblue].description[0]
-msgctxt "Release|"
-msgid ""
-"Silverblue is a variant of Fedora Workstation. It looks, feels and behaves "
-"like a regular desktop operating system, and the experience is similar to "
-"what you find with using a standard Fedora Workstation."
-msgstr ""
-"Silverblue є варіантом Fedora Workstation. Система виглядає, працює і "
-"поводиться як звичайна операційна система для робочих станцій — робота у ній "
-"повністю подібна до роботи у стандартній системі Fedora Workstation."
-
-#: [Silverblue].description[1]
-msgctxt "Release|"
-msgid ""
-"However, unlike other operating systems, Silverblue has reprovisionable "
-"infrastructure with anti-hysteresis properties. This means that every "
-"installation is identical to every other installation of the same version. "
-"The operating system that is on disk is exactly the same from one machine to "
-"the next, and it never changes as it is used."
-msgstr ""
-"Втім, на відміну від інших операційних систем, у Silverblue має незмінну "
-"інфраструктуру із антигістерезисними властивостями. Це означає, що усі "
-"встановлення певної версії системи є ідентичними. Операційна система на "
-"диску є абсолютно однаковою на усіх комп'ютерах, вона ніколи не змінюється у "
-"процесі використання."
-
-#: [Silverblue].description[2]
-msgctxt "Release|"
-msgid ""
-"Silverblue’s design is intended to make it more stable, less prone to bugs, "
-"and easier to test and develop. The design also makes it an excellent "
-"platform for containerized applications as well as container-based software "
-"development. In each case, applications and containers are kept separate "
-"from the host system, improving stability and reliability."
-msgstr ""
-"Побудова Silverblue сприяє стабільності, меншій вразливості та простоті у "
-"тестуванні та розробці системи. Крім того, така побудова системи робить її "
-"чудовою платформою для контейнеризованих програм, а також розробки "
-"програмного забезпечення на основі технологій контейнеризації. Програми і "
-"контейнери є відокремленими від основної системи, що підвищує її "
-"стабільність та надійність."
-
-#: [Silverblue].description[3]
-msgctxt "Release|"
-msgid ""
-"Silverblue’s core technologies have some other helpful features. OS updates "
-"are fast and there’s no waiting around for them to install: just reboot as "
-"normal to start using the next version. With Silverblue, it is also possible "
-"to roll back to the previous version of the operating system, if something "
-"goes wrong."
-msgstr ""
-"У базових технологіях Silverblue закладено і деякі інші корисні можливості. "
-"Оновлення операційної системи є швидким — вам не доведеться чекати на "
-"встановлення нових пакунків: просто перезавантажте систему для того, щоб "
-"почати користуватися новою версією. Крім того, у Silverblue можна "
-"повернутися до попередньої версії операційної системи, якщо виникнуть якісь "
-"негаразди."
-
-#: [KDE].subvariant
-msgctxt "Release|"
-msgid "kde"
-msgstr "kde"
-
-#: [KDE].category
-msgctxt "Release|"
-msgid "spins"
-msgstr "збірки"
-
-#: [KDE].name
-msgctxt "Release|"
-msgid "Fedora KDE Plasma Desktop"
-msgstr "Стільниця Плазми KDE Fedora"
-
-#: [KDE].summary
-msgctxt "Release|"
-msgid "A complete, modern desktop built using the KDE Plasma Desktop."
-msgstr "Повноцінне сучасне середовище на основі стільниці Плазма KDE."
-
-#: [KDE].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based operating "
-"system utilizing the KDE Plasma Desktop as the main user interface."
-msgstr ""
-"Варіант Fedora із стільницею Плазми KDE є потужною операційною системою на "
-"основі Fedora, де використано основний інтерфейс стільниці Плазми KDE."
-
-#: [KDE].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora KDE Plasma Desktop comes with many pre-selected top quality "
-"applications that suit all modern desktop use cases - from online "
-"communication like web browsing, instant messaging and electronic mail "
-"correspondence, through multimedia and entertainment, to an advanced "
-"productivity suite, including office applications and enterprise grade "
-"personal information management."
-msgstr ""
-"До складу Стільниці Плазми KDE Fedora включено багато високоякісних програм, "
-"за допомогою яких можна виконувати усі сучасні завдання для робочої станції —"
-" від обміну даними, зокрема роботи у інтернеті, обміну повідомленнями та "
-"повідомленнями електронної пошти; відтворення мультимедійних даних та розваг "
-"до власного комплекту офісних програм та комплексу високоякісних програм для "
-"керування особистими даними."
-
-#: [KDE].description[2]
-msgctxt "Release|"
-msgid ""
-"All KDE applications are well integrated, with a similar look and feel and "
-"an easy to use interface, accompanied by an outstanding graphical appearance."
-msgstr ""
-"Усі програми KDE добре інтегровано між собою, вони мають однаковий вигляд і "
-"поведінку, простий у користуванні інтерфейс та чудовий зовнішній вигляд."
-
-#: [XFCE].subvariant
-msgctxt "Release|"
-msgid "xfce"
-msgstr "xfce"
-
-#: [XFCE].category [XFCE].name
-msgctxt "Release|"
-msgid "Fedora Xfce Desktop"
-msgstr "Стільниця Xfce Fedora"
-
-#: [XFCE].summary
-msgctxt "Release|"
-msgid "A complete, well-integrated Xfce Desktop."
-msgstr "Повноцінне, добре інтегроване середовище Xfce."
-
-#: [XFCE].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast and "
-"lightweight, while still being visually appealing and user friendly."
-msgstr ""
-"До складу цієї збірки Fedora включено середовище Xfce, яке намагається — "
-"залишатись швидким та легким, при цьому мати привабливий вигляд та бути "
-"зручним для використання."
-
-#: [XFCE].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
-msgstr ""
-"Fedora Xfce — повноцінне графічне середовище, створене на основі "
-"рекомендацій ініціативної групи freedesktop.org."
-
-#: [LXQT].subvariant
-msgctxt "Release|"
-msgid "lxqt"
-msgstr "lxqt"
-
-#: [LXQT].category [LXQT].name
-msgctxt "Release|"
-msgid "Fedora LXQt Desktop"
-msgstr "Стільниця LXQt Fedora"
-
-#: [LXQT].summary
-msgctxt "Release|"
-msgid "A lightweight, well-integrated LXQt desktop environment."
-msgstr "Невибагливе, добре інтегроване стільничне середовище LXQt."
-
-#: [LXQT].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora LXQt provides a lightweight, well-integrated LXQt desktop "
-"environment. In addition to LXQt itself it provides a small, well selected "
-"collection of applications like the QupZilla browser, which combines "
-"Chromium's rendering engine with a nice Qt experience. Other applications "
-"include the Trojita mail client, the qBittorrent client, the Yarock music "
-"player and a set of some more commonly used applications. As all "
-"applications use the same Qt5 toolkit and the Breeze theme known from KDE, "
-"the desktop provides a unified and well-integrated style and theming. In "
-"addition breeze-gtk is provided to allow the user to integrate GTK "
-"applications too."
-msgstr ""
-"LXQt Fedora LXQt — невибагливе до ресурсів добре інтегроване стільничне "
-"середовище LXQt. Окрім самого LXQt, до набору програм включено ретельно "
-"відібрані програми, зокрема браузер QupZilla, у якому поєднано рушій "
-"Chromium та чудову оболонку на основі Qt. Серед інших програм поштовий "
-"клієнт Trojita, клієнт мереж торентів qBittorrent, програма для відтворення "
-"музики Yarock та набір загальновживаних програм. Оскільки в усіх програмах "
-"використовується однаковий інструмент побудови інтерфейсу на основі Qt5 та "
-"тема Breeze, відома з KDE, стільниця є добре інтегрованою за стилем і темою. "
-"Крім того, до середовища включено засоби breeze-gtk, які допомагають "
-"інтегрувати до нього і програми на основі бібліотек GTK."
-
-#: [Mate].subvariant
-msgctxt "Release|"
-msgid "mate"
-msgstr "друг"
-
-#: [Mate].category [Mate].name
-msgctxt "Release|"
-msgid "Fedora MATE-Compiz Desktop"
-msgstr "Стільниця MATE-Compiz Fedora"
-
-#: [Mate].summary
-msgctxt "Release|"
-msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
-msgstr ""
-"Класична стільниця Fedora із додатковим просторовим засобом керування "
-"вікнами."
-
-#: [Mate].description[0]
-msgctxt "Release|"
-msgid ""
-"The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE Desktop "
-"is a lightweight, powerful desktop designed with productivity and "
-"performance in mind. The default windows manager is Marco which is usable "
-"for all machines and VMs. Compiz Fusion is a beautiful 3D windowing manager "
-"with Emerald and GTK+ theming."
-msgstr ""
-"У збірці MATE Compiz поєднано стільничне середовище MATE та Compiz Fusion. "
-"Стільничне середовище MATE є невибагливим до ресурсів, потужним стільничним "
-"середовищем, створеним для ефективної та швидкісної роботи. Типовим засобом "
-"керування вікнами є Marco, програма, яка може працювати на усіх комп’ютерах "
-"і у віртуальних машинах. Compiz Fusion — красивий інструмент для керування "
-"вікнами з просторовими ефектами з обрамленням вікон Emerald та темами GTK."
-
-#: [Mate].description[1]
-msgctxt "Release|"
-msgid ""
-"If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
-"should definitely try the MATE-Compiz spin."
-msgstr ""
-"Якщо вам потрібне потужна і невибаглива до ресурсів робоча станція на Fedora "
-"з приємними просторовими ефектами, вам обов’язково слід спробувати збірку з "
-"MATE Compiz."
-
-#: [Cinnamon].subvariant
-msgctxt "Release|"
-msgid "cinnamon"
-msgstr "cinnamon"
-
-#: [Cinnamon].category [Cinnamon].name
-msgctxt "Release|"
-msgid "Fedora Cinnamon Desktop"
-msgstr "Стільниця Fedora Cinnamon"
-
-#: [Cinnamon].summary
-msgctxt "Release|"
-msgid "A modern desktop featuring traditional Gnome user experience."
-msgstr "Сучасне середовище із традиційними елементами Gnome."
-
-#: [Cinnamon].description[0]
-msgctxt "Release|"
-msgid ""
-"Cinnamon is a Linux desktop which provides advanced innovative features and "
-"a traditional user experience. The desktop layout is similar to Gnome 2. The "
-"underlying technology is forked from Gnome Shell. The emphasis is put on "
-"making users feel at home and providing them with an easy to use and "
-"comfortable desktop experience."
-msgstr ""
-"Cinnamon — робоче середовище Linux, у якому поєднуються сучасні інноваційні "
-"можливості і традиційні принципи роботи. Компонування стільниці подібне до "
-"Gnome 2. Базові технології запозичено з Gnome Shell. Акцент зроблено на "
-"забезпеченні звичайних принципів роботи комфортного і простого у "
-"користуванні середовища."
-
-#: [Cinnamon].description[1]
-msgctxt "Release|"
-msgid ""
-"Cinnamon is a popular desktop alternative to Gnome 3 and this spin provides "
-"the option to quickly try and install this desktop."
-msgstr ""
-"Cinnamon — популярна альтернатива Gnome 3 у спектрі робочих середовищ. Цей "
-"варіант операційної системи є простим і швидким способом встановити "
-"відповідне робоче середовище."
-
-#: [LXDE].subvariant
-msgctxt "Release|"
-msgid "lxde"
-msgstr "lxde"
-
-#: [LXDE].category [LXDE].name
-msgctxt "Release|"
-msgid "Fedora LXDE Desktop"
-msgstr "Стільниця LXDE Fedora"
-
-#: [LXDE].summary
-msgctxt "Release|"
-msgid "A light, fast, less-resource hungry desktop environment."
-msgstr "Невибагливе до ресурсів, швидке робоче середовище."
-
-#: [LXDE].description[0]
-msgctxt "Release|"
-msgid ""
-"LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
-"performant, and energy-saving desktop environment. It maintained by an "
-"international community of developers and comes with a beautiful interface, "
-"multi-language support, standard keyboard shortcuts and additional features "
-"like tabbed file browsing."
-msgstr ""
-"LXDE (скорочення від \"Lightweight X11 Desktop Environment\" або «Легке "
-"стільничне середовище X11») — дуже швидке, невибагливе та енергозаощадливе "
-"робоче середовище. Супровід цього середовища здійснюється міжнародною "
-"спільнотою розробників, воно постачається з чудовим інтерфейсом, перекладами "
-"багатьма мовами, передбачено стандартні клавіатурні скорочення та додаткові "
-"можливості, зокрема перегляд файлів у окремих вкладках вікна."
-
-#: [LXDE].description[1]
-msgctxt "Release|"
-msgid ""
-"LXDE is not designed to be powerful and bloated, but to be usable and slim. "
-"A main goal of LXDE is to keep computer resource usage low. It is especially "
-"designed for computers with low hardware specifications like netbooks, "
-"mobile devices (e.g. MIDs) or older computers."
-msgstr ""
-"LXDE не є таким потужним і різнобічним які інші середовища, — це середовище "
-"є просто придатним до користування та позбавленим зайвих елементів. Основним "
-"призначенням LXDE є не навантажувати ресурси комп’ютера. Це середовище "
-"спеціально розроблено для комп’ютерів з обмеженою потужністю, зокрема "
-"нетбуків, мобільних пристроїв (інтернет-планшетів) та застарілих "
-"стаціонарних чи портативних комп’ютерів."
-
-#: [SOAS].subvariant
-msgctxt "Release|"
-msgid "soas"
-msgstr "soas"
-
-#: [SOAS].category [SOAS].name
-msgctxt "Release|"
-msgid "Fedora SoaS Desktop"
-msgstr "Стільниця SoaS Fedora"
-
-#: [SOAS].summary
-msgctxt "Release|"
-msgid "Discover. Reflect. Share. Learn."
-msgstr "Відкривай. Реагуй. Ділись. Навчайся."
-
-#: [SOAS].description[0]
-msgctxt "Release|"
-msgid ""
-"Sugar on a Stick is a Fedora-based operating system featuring the award-"
-"winning Sugar Learning Platform and designed to fit on an ordinary USB "
-"thumbdrive (\"stick\")."
-msgstr ""
-"Sugar on a Stick — операційна система на основі Fedora, у якій ви зможете "
-"скористатися відомою навчальною платформою Sugar. Систему створено таким "
-"чином, щоб вона могла вміститися на звичайний диск USB («флешку»)."
-
-#: [SOAS].description[1]
-msgctxt "Release|"
-msgid ""
-"Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
-"child-friendly graphical environment. Sugar automatically saves your "
-"progress to a \"Journal\" on your stick, so teachers and parents can easily "
-"pull up \"all collaborative web browsing sessions done in the past week\" or "
-"\"papers written with Daniel and Sarah in the last 24 hours\" with a simple "
-"query rather than memorizing complex file/folder structures. Applications in "
-"Sugar are known as Activities, some of which are described below."
-msgstr ""
-"Sugar лежить поза межами звичайної концепції офісної робочої станції, "
-"надаючи у розпорядження користувача зручне для дітей графічне середовище. "
-"Sugar автоматично зберігає дані щодо поступу навчання до журналу на "
-"портативному диску, отже вчителі і батьки можуть отримати «усі сеанси "
-"спільного перегляду інтернету за останній тиждень» або «тексти, написані "
-"разом із Данилом і Тетяною у останні 24 години» за допомогою простого "
-"запиту, без запам’ятовування складної структури тек і файлів."
-
-#: [SOAS].description[2]
-msgctxt "Release|"
-msgid ""
-"It is now deployable for the cost of a stick rather than a laptop; students "
-"can take their Sugar on a Stick thumbdrive to any machine - at school, at "
-"home, at a library or community center - and boot their customized computing "
-"environment without touching the host machine’s hard disk or existing system "
-"at all."
-msgstr ""
-"Тепер для запуску системи достатньо просто мати флешку, мати ноутбук необов’"
-"язково. Учні можуть скористатися своїм Sugar on a Stick («льодяником на "
-"паличці») на будь-якому комп’ютері: у школі, вдома, у бібліотеці чи "
-"громадському центрі. Вони можуть завантажити налаштоване під них середовище "
-"не вносячи ніяких змін на жорсткий диск основної системи комп’ютера та у "
-"наявну на ньому систему взагалі."
-
-#: [i3].subvariant
-msgctxt "Release|"
-msgid "i3"
-msgstr "i3"
-
-#: [i3].category [i3].name
-msgctxt "Release|"
-msgid "Fedora i3 Desktop"
-msgstr "Стільниця i3 Fedora"
-
-#: [i3].summary
-msgctxt "Release|"
-msgid "Simplicity over Complexity"
-msgstr "Простота над складністю"
-
-#: [i3].description[1]
-msgctxt "Release|"
-msgid "The Fedora i3 Spin provides the popular i3 tiling window manager."
-msgstr ""
-"Збірка Fedora i3 надає у ваше розпорядження популярну систему керування "
-"вікнами із мозаїчністю i3."
-
-#: [i3].description[3]
-msgctxt "Release|"
-msgid ""
-"It makes i3 accessible and appealing to both novices and advanced users who "
-"prefer not to use a mouse, touchpad, or other pointing device to interact "
-"with their environment. Featuring lightweight applications for web browsing, "
-"text editing, and media playback, the Fedora i3 Spin offers a complete "
-"experience with a minimalist user interface."
-msgstr ""
-"Ця збірка робить i3 доступним і привабливим для початківців і досвідчених "
-"користувачів, які не хочуть постійно використовувати мишу, сенсорну панель "
-"або інший координатний пристрій для взаємодії із обчислювальним середовищем. "
-"До складу збірки включено невибагливі до ресурсів програми для перегляду "
-"інтернету, редагування текстів та відтворення мультимедійних даних. Збірка "
-"Fedora i3 пропонує вам повноцінне середовище із мінімалістичним інтерфейсом "
-"користувача."
-
-#: [Astronomy].subvariant
-msgctxt "Release|"
-msgid "astronomy"
-msgstr "астрономія"
-
-#: [Astronomy].category
-msgctxt "Release|"
-msgid "labs"
-msgstr "лабораторії"
-
-#: [Astronomy].name
-msgctxt "Release|"
-msgid "Fedora Astronomy"
-msgstr "Астрономічна Fedora"
-
-#: [Astronomy].summary
-msgctxt "Release|"
-msgid ""
-"Powerful completely open-source and free tool for amateurs and professionals."
-msgstr ""
-"Потужний і повністю відкритий та безкоштовний інструмент для аматорів і "
-"професіоналів."
-
-#: [Astronomy].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora Astronomy brings a complete open source toolchain to both amateur and "
-"professional astronomers."
-msgstr ""
-"Fedora Astronomy — повністю відкритий набір інструментів для астрономів-"
-"аматорів та професіоналів."
-
-#: [Astronomy].description[1]
-msgctxt "Release|"
-msgid ""
-"The Spin provides the Fedora KDE desktop enhanced with a complete scientific "
-"Python environment and the AstrOmatic software for data analysis. KStars was "
-"added to provide a full featured astrophotography tool. As KStars uses the "
-"INDI library to control equipment, various telescopes, cameras etc. are "
-"supported. Summarized, Fedora Astronomy provides a complete set of software, "
-"from the observation planning to the final results."
-msgstr ""
-"У цьому варіанті дистрибутива можливості середовища Fedora KDE розширено "
-"повноцінним науковим середовищем Python та програмним забезпеченням "
-"AstrOmatic, призначеним для аналізу даних. До набору пакунків додано KStars, "
-"програму, у якій реалізовано повноцінні інструменти астрографії. Оскільки у "
-"KStars використано бібліотеку INDI, ви зможете керувати різноманітним "
-"астрономічним обладнанням, зокрема телескопами і фотоапаратами, за допомогою "
-"комп’ютера. Загалом, Fedora Astronomy є повноцінним набором астрономічного "
-"програмного забезпечення, за допомогою якого можна виконувати повний спектр "
-"завдань, від планування спостереження до аналізу результатів."
-
-#: [DesignSuite].subvariant
-msgctxt "Release|"
-msgid "design_suite"
-msgstr "design_suite"
-
-#: [DesignSuite].category [DesignSuite].name
-msgctxt "Release|"
-msgid "Fedora Design Suite"
-msgstr "Дизайнерський комплекс Fedora"
-
-#: [DesignSuite].summary
-msgctxt "Release|"
-msgid ""
-"Visual design, multimedia production, and publishing suite of free and open "
-"source creative tools."
-msgstr ""
-"Наочне конструювання, створення мультимедійних даних та комплект програм для "
-"приготування матеріалів для друку — усе це у наборі вільних інструментів для "
-"творчості з відкритим кодом."
-
-#: [DesignSuite].description[0]
-msgctxt "Release|"
-msgid ""
-"Looking for a ready-to-go desktop environment brimming with free and open "
-"source multimedia production and publishing tools? Try the Design Suite, a "
-"Fedora Spin created by designers, for designers."
-msgstr ""
-"Шукаєте робоче середовище з вільними програмами з відкритим кодом для "
-"обробки і приготування до оприлюднення мультимедійних даних? Щоб все було "
-"готове для реалізації ваших творчих задумів? Спробуйте «Дизайнерський набір»"
-", варіант Fedora, створений дизайнерами для дизайнерів."
-
-#: [DesignSuite].description[1]
-msgctxt "Release|"
-msgid ""
-"The Design Suite includes the favorite tools of the Fedora Design Team. "
-"These are the same programs we use to create all the artwork that you see "
-"within the Fedora Project, from desktop backgrounds to CD sleeves, web page "
-"designs, application interfaces, flyers, posters and more. From document "
-"publication to vector and bitmap editing or 3D modeling to photo management, "
-"the Design Suite has an application for you — and you can install thousands "
-"more from the Fedora universe of packages."
-msgstr ""
-"До дизайнерського комплекту (Design Suite) включено вибрані Командою "
-"дизайнерів Fedora інструменти. Це ті самі програми, якими ми користуємося "
-"для створення усіх художніх елементів Проєкту Fedora, від фонових зображень "
-"стільниці до обкладинок компакт-дисків, графічних елементів вебсторінок, "
-"інтерфейсів програм, буклетів, плакатів тощо. Від друку документів до "
-"редагування векторних і растрових зображень або просторового моделювання та "
-"керування фотоальбомом, у Design Suite є усі потрібні програми. Ви також "
-"можете встановити тисячі інших програм зі всесвіту пакунків Fedora."
-
-#: [Games].subvariant
-msgctxt "Release|"
-msgid "games"
-msgstr "ігри"
-
-#: [Games].category [Games].name
-msgid "Fedora Games"
-msgstr "Ігри Fedora"
-
-#: [Games].summary
-msgctxt "Release|"
-msgid ""
-"A collection and perfect show-case of the best games available in Fedora."
-msgstr "Збірка найкращих ігор, якими можна погратися у Fedora."
-
-#: [Games].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Games spin offers a perfect showcase of the best games available "
-"in Fedora. The included games span several genres, from first-person "
-"shooters to real-time and turn-based strategy games to puzzle games."
-msgstr ""
-"У ігровій збірці Fedora ви зможете скористатися чудовим набором з найкращих "
-"ігор, які можна встановити зі сховищ Fedora Включені ігри належать до "
-"декількох жанрів, від стрілялок від першої особи до інтерактивних та "
-"покрокових стратегічних ігор і складанок."
-
-#: [Games].description[1]
-msgctxt "Release|"
-msgid ""
-"Not all the games available in Fedora are included on this spin, but trying "
-"out this spin will give you a fair impression of Fedora's ability to run "
-"great games."
-msgstr ""
-"До цієї збірки включено не всі ігри Fedora, але за допомогою цієї збірки ви "
-"зможете скласти враження щодо можливості грати у чудові ігри за допомогою "
-"Fedora."
-
-#: [Python].subvariant
-msgctxt "Release|"
-msgid "python"
-msgstr "python"
-
-#: [Python].category [Python].name
-msgctxt "Release|"
-msgid "Fedora Python Classroom"
-msgstr "Fedora — класна кімната Python"
-
-#: [Python].summary
-msgctxt "Release|"
-msgid ""
-"A classroom lab for teaching the Python programming language to students"
-msgstr "Класна кімната для навчання студентів мови програмування Python"
-
-#: [Python].description[0]
-msgctxt "Release|"
-msgid ""
-"One of the benefits of Fedora for Python developers is the ease of setting "
-"up Python development. The Fedora Python Classroom Lab makes it even easier "
-"for teachers and instructors to use Fedora in their classrooms or workshops. "
-"Ready to use operating system with important stuff pre-installed - either "
-"with GNOME or as a headless environment for Docker or Vagrant. Teach Python "
-"on Fedora, with Fedora, using the stuff you love: IPython, Jupyter Notebook, "
-"multiple Pythons, virtualenvs, tox, git and more"
-msgstr ""
-"Однією з переваг Fedora для розробників мовою Python є простота "
-"налаштовування середовища для розробки мовою Python. Лабораторія Класної "
-"кімнати Python Fedora спрощує використання Fedora у класних кімнатах і "
-"майстернях для викладачів і лаборантів. Це готова до використання операційна "
-"система із попередньо встановленими усіма важливими компонентами, середовище "
-"GNOME або бездисплейне середовище для Docker або Vagrant. Вивчайте Python у "
-"Fedora, за допомогою Fedora, із використанням улюблених інструментів: "
-"IPython, Записника Jupyter, декількох Python-ів, віртуальних середовищ, tox, "
-"git та інших засобів."
-
-#: [Python].description[1]
-msgctxt "Release|"
-msgid ""
-"The Fedora Python Classroom Lab comes in 3 variants. Either you can run it "
-"in graphical mode with GNOME, or you can virtualize it with Vagrant or run "
-"it in a Docker container. You choose what fits your teaching environment the "
-"best."
-msgstr ""
-"Класна кімната Python Fedora постачається у 3 варіантах. Ви можете працювати "
-"або у графічному режимі середовища GNOME, або у віртуальному середовищі "
-"Vagrant, або у контейнері Docker. Виберіть той з варіантів, який найліпше "
-"пасує до ваших потреб."
-
-#: [Robotics].subvariant
-msgctxt "Release|"
-msgid "robotics"
-msgstr "робототехніка"
-
-#: [Robotics].category [Robotics].name
-msgctxt "Release|"
-msgid "Fedora Robotics Suite"
-msgstr "Робототехнічний комплекс Fedora"
-
-#: [Robotics].summary
-msgctxt "Release|"
-msgid ""
-"A wide variety of free and open robotics software packages for beginners and "
-"experts in robotics."
-msgstr ""
-"Широкий діапазон робототехнічних пакунків вільного програмного забезпечення "
-"з відкритим кодом для початківців та експертів у робототехніці."
-
-#: [Robotics].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Robotics spin provides a wide variety of free and open robotics "
-"software packages. These range from hardware accessory libraries for the "
-"Hokuyo laser scanners or Katana robotic arm to software frameworks like "
-"Fawkes or Player and simulation environments such as Stage and RoboCup "
-"Soccer Simulation Server 2D/3D. It also provides a ready to use development "
-"environment for robotics including useful libraries such as OpenCV computer "
-"vision library, Festival text to speech system and MRPT."
-msgstr ""
-"Збірку Fedora Robotics («Робототехніка») складено з широкого діапазону "
-"вільних пакунків з відкритим кодом, пов’язаних з робототехнікою. Серед цих "
-"пакунків бібліотеки доступу до лазерних сканерів Hokuyo та роботизованої "
-"руки Katana, а також програмні системи, зокрема Fawkes та Player. Крім того, "
-"включено середовища імітації, зокрема Stage та RoboCup Soccer Simulation "
-"Server 2D/3D. Також передбачено готове до використання середовище розробки "
-"для робототехніки, до якого зокрема включено корисні бібліотеки, зокрема "
-"бібліотеку комп’ютеризованого зору OpenCV, систему синтезу мовлення з тексту "
-"Festival та MRPT."
-
-#: [Robotics].description[1]
-msgctxt "Release|"
-msgid ""
-"The Robotics spin is targeted at people just discovering their interest in "
-"robotics as well as experienced roboticists. For the former we provide a "
-"readily usable simulation environment with an introductory hands-on "
-"demonstration, and for the latter we provide a full development environment, "
-"to be used immediately."
-msgstr ""
-"Збірку «Робототехніка» призначено для тих, хто виявляє інтерес до "
-"робототехніки, а також для досвідчених фахівців з робототехніки. Для перших "
-"передбачено просте у користуванні середовище імітації з демонстраціями "
-"початкового рівня. Фахівці ж зможуть знайти у збірці повноцінне середовище "
-"розробки, яким можна користуватися без будь-яких додаткових маніпуляцій."
-
-#: [Scientific].subvariant
-msgctxt "Release|"
-msgid "scientific"
-msgstr "наукові"
-
-#: [Scientific].category [Scientific].name
-msgctxt "Release|"
-msgid "Fedora Scientific"
-msgstr "Fedora Scientific"
-
-#: [Scientific].summary
-msgctxt "Release|"
-msgid ""
-"A bundle of open source scientific and numerical tools used in research."
-msgstr ""
-"Комплект наукових та обчислювальних дослідницьких інструментів із відкритим "
-"кодом."
-
-#: [Scientific].description[0]
-msgctxt "Release|"
-msgid ""
-"Wary of reinstalling all the essential tools for your scientific and "
-"numerical work? The answer is here. Fedora Scientific Spin brings together "
-"the most useful open source scientific and numerical tools atop the goodness "
-"of the KDE desktop environment."
-msgstr ""
-"Втомилися перевстановлювати критично важливі інструменти для вашої наукової "
-"та обчислювальної роботи? Ми маємо готове рішення. Збірка Fedora Scientific "
-"поєднує у собі найкорисніші наукові та обчислювальні інструменти із "
-"відкритим кодом на основі усіх переваг стільничного середовища KDE."
-
-#: [Scientific].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora Scientific currently ships with numerous applications and libraries. "
-"These range from libraries such as the GNU Scientific library, the SciPy "
-"libraries, tools like Octave and xfig to typesetting tools like Kile and "
-"graphics programs such as Inkscape. The current set of packages include an "
-"IDE, tools and libraries for programming in C, C++, Python, Java and R. Also "
-"included along with are libraries for parallel computing such as the OpenMPI "
-"and OpenMP. Tools for typesetting, writing and publishing are included."
-msgstr ""
-"Поточна версія Fedora Scientific постачається із численними програмами та "
-"бібліотеками. Діапазон їх є значним: від бібліотек, подібних до бібліотеки "
-"GNU Scientific, бібліотек SciPy, інструментів, подібних до Octave та xfig, "
-"до програм для верстання, подібних до Kile, і програм для роботи з графікою, "
-"подібних до Inkscape. До поточного набору пакунків включено комплексні "
-"середовища для розробки, інструменти та бібліотеки для програмування мовами "
-"C, C++, Python, Java та R. Також до дистрибутива включено бібліотеки для "
-"паралельного обчислення, зокрема OpenMPI та OpenMP. Частиною дистрибутива "
-"також є програми для верстання, написання текстів та приготування текстів до "
-"друку."
-
-#: [Security].subvariant
-msgctxt "Release|"
-msgid "security"
-msgstr "безпека"
-
-#: [Security].category [Security].name
-msgctxt "Release|"
-msgid "Fedora Security Lab"
-msgstr "Лабораторія безпеки Fedora"
-
-#: [Security].summary
-msgctxt "Release|"
-msgid ""
-"A safe test environment to work on security auditing, forensics, system "
-"rescue and teaching security testing methodologies."
-msgstr ""
-"Безпечне тестове середовище для вивчення питань захисту даних, судової "
-"експертизи, відновлення системи та навчання методології захисту даних."
-
-#: [Security].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Security Lab provides a safe test environment to work on security "
-"auditing, forensics, system rescue and teaching security testing "
-"methodologies in universities and other organizations."
-msgstr ""
-"Fedora Security Lab — безпечне тестове середовище для вивчення питань "
-"захисту даних, судової експертизи, відновлення системи та навчання "
-"методології захисту даних у навчальних та інших закладах."
-
-#: [Security].description[1]
-msgctxt "Release|"
-msgid ""
-"The spin is maintained by a community of security testers and developers. It "
-"comes with the clean and fast Xfce Desktop Environment and a customized menu "
-"that provides all the instruments needed to follow a proper test path for "
-"security testing or to rescue a broken system. The Live image has been "
-"crafted to make it possible to install software while running, and if you "
-"are running it from a USB stick created with LiveUSB Creator using the "
-"overlay feature, you can install and update software and save your test "
-"results permanently."
-msgstr ""
-"Створенням і підтриманням у належному стані цієї збірки займається спільнота "
-"тестерів і розробників програмного забезпечення для захисту системи. Збірка "
-"постачається з простим і швидким стільничним середовищем Xfce та придатним "
-"до налаштовування меню, у якому передбачено всі інструменти для належного "
-"тестування захисту та відновлення пошкоджених систем. Спільнотою збірки "
-"створено образ портативної системи, у якому передбачено встановлення "
-"програмного забезпечення під час його роботи. Якщо запустити цей образ з "
-"флеш-носія USB, створеного за допомогою LiveUSB Creator з можливістю "
-"накладання змін, ви зможете встановлювати і оновлювати програмне "
-"забезпечення, зберігаючи внесені зміни для наступних запусків системи."
+#~ msgid "workstation"
+#~ msgstr "workstation"
+
+#~ msgctxt "Release|"
+#~ msgid "product"
+#~ msgstr "продукт"
+
+#~ msgctxt "Release|"
+#~ msgid "This is the Linux workstation you've been waiting for."
+#~ msgstr "Це робоча станція на основі Linux, на яку ви так довго чекали."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Workstation is a reliable, user-friendly, and powerful operating "
+#~ "system for your laptop or desktop computer. It supports a wide range of "
+#~ "developers, from hobbyists and students to professionals in corporate "
+#~ "environments."
+#~ msgstr ""
+#~ "Fedora Workstation — надійна, дружня до користувача і потужна операційна "
+#~ "система для вашого ноутбука чи стаціонарного комп’ютера. У ній можуть "
+#~ "працювати усі розробники, від початківців та студентів до професіоналів у "
+#~ "корпоративних середовищах."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "“The plethora of tools provided by<br /> Fedora allows me to get the job "
+#~ "done.<br /> It just works.”"
+#~ msgstr ""
+#~ "«Палітра інструментів, які є частиною<br /> Fedora надає мені змогу "
+#~ "виконувати свою роботу.<br /> Це просто працює як слід.»"
+
+#~ msgctxt "Release|"
+#~ msgid "JVM performance engineer"
+#~ msgstr "Інженер із швидкодії JVM"
+
+#~ msgctxt "Release|"
+#~ msgid "Sleek user interface"
+#~ msgstr "Оптимізований інтерфейс користувача"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Focus on your code in the GNOME 3 desktop environment. GNOME is built "
+#~ "with developer feedback and minimizes distractions, so you can "
+#~ "concentrate on what's important."
+#~ msgstr ""
+#~ "Зосередьтеся на вашому коді у стільничному середовищі GNOME 3. GNOME "
+#~ "створено на основі побажань розробників, середовище мінімізує сторонні "
+#~ "фактори, отже ви можете сконцентруватися на важливих моментах."
+
+#~ msgctxt "Release|"
+#~ msgid "Complete open source toolbox"
+#~ msgstr "Повний набір інструментів із відкритим кодом"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Skip the drag of trying to find or build the tools you need. With "
+#~ "Fedora's complete set of open source languages, tools, and utilities, "
+#~ "everything is a click or command line away. There's even project hosting "
+#~ "and repositories like COPR to make your code and builds available quickly "
+#~ "to the community."
+#~ msgstr ""
+#~ "Забудьте про постійний пошук і збирання потрібних вам інструментів. З "
+#~ "повним набором відкритих мов програмування, інструментів та засобів "
+#~ "Fedora будь-що з цього набору доступне за одне клацання кнопкою миші або "
+#~ "просту команду. Передбачено навіть можливості із зберігання проєктів та "
+#~ "власних сховищ пакунків, зокрема COPR, для того, щоб ваш код і пакунки "
+#~ "швидко діставалися спільноти користувачів."
+
+#~ msgctxt "Release|"
+#~ msgid "GNOME Boxes & other virt tools"
+#~ msgstr "GNOME Boxes та інші інструменти віртуалізації"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Get virtual machines up and running quickly to test your code on multiple "
+#~ "platforms using GNOME Boxes. Or dig into powerful, scriptable "
+#~ "virtualization tools for even more control."
+#~ msgstr ""
+#~ "За допомогою GNOME Boxes ви зможете швидко створювати і запускати "
+#~ "віртуальні машини для тестування вашого коду на багатьох програмних "
+#~ "платформах. Ви також можете скористатися потужними інструментами "
+#~ "віртуалізації зі скриптовим керуванням для того, щоб отримати додаткові "
+#~ "важелі керування середовищем."
+
+#~ msgctxt "Release|"
+#~ msgid "Built-in Docker support"
+#~ msgstr "Вбудована підтримка Docker"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Containerize your own apps, or deploy containerized apps out of the box "
+#~ "on Fedora, using the latest technology like Docker."
+#~ msgstr ""
+#~ "Створюйте контейнери з вашими власними програмами і розгортайте готові до "
+#~ "використання контейнери на основі Fedora за допомогою найсучасніших "
+#~ "технологій, зокрема Docker."
+
+#~ msgctxt "Release|"
+#~ msgid "server"
+#~ msgstr "сервер"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Server"
+#~ msgstr "Сервер Fedora"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The latest technology. A stable foundation. Together, for your "
+#~ "applications and services."
+#~ msgstr ""
+#~ "Найновіші технології. Міцна основа. Разом, для ваших програм і служб."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "“The simplicity introduced with rolekit and cockpit have made server "
+#~ "deployments a breeze. What took me a few days on other operating systems "
+#~ "took less than an hour with Fedora %(rel)s Server. It just works.”"
+#~ msgstr ""
+#~ "«Простота, яка є результатом впровадження набору ролей та cockpit, "
+#~ "розбить розгортання серверів гранично простим. На те, що потребувало від "
+#~ "мене декількох днів роботи в інших операційних системах, було витрачено "
+#~ "менше години у Fedora %(rel)s Server. Усе просто працює.»"
+
+#~ msgctxt "Release|"
+#~ msgid "Systems Engineer"
+#~ msgstr "Системний інженер"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Server is a short-lifecycle, community-supported server operating "
+#~ "system that enables seasoned system administrators experienced with any "
+#~ "OS to make use of the very latest server-based technologies available in "
+#~ "the open source community."
+#~ msgstr ""
+#~ "Fedora Server — серверна операційна система зі скороченим життєвим циклом "
+#~ "підтримувана спільнотою. Ця операційна система надає змогу "
+#~ "адміністраторам з досвідом роботи із будь-якою операційною системою "
+#~ "скористатися найсвіжішими здобутками заснованих на серверах технологій, "
+#~ "які тільки доступні у середовищі із відкритим кодом."
+
+#~ msgctxt "Release|"
+#~ msgid "Easy Administration"
+#~ msgstr "Просте адміністрування"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Manage your system simply with Cockpit's powerful, modern interface. View "
+#~ "and monitor system performance and status, and deploy and manage "
+#~ "container-based services."
+#~ msgstr ""
+#~ "Керувати вашою системою дуже просто за допомогою потужного і сучасного "
+#~ "інтерфейсу Cockpit. Ви можете переглядати і спостерігати за швидкодією і "
+#~ "станом системи, розгортати служби на основі контейнерів і керувати ними."
+
+#~ msgctxt "Release|"
+#~ msgid "Server Roles"
+#~ msgstr "Ролі сервера"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "There's no need to set up your server from scratch when you use server "
+#~ "roles. Server roles plug into your Fedora Server system, providing a well-"
+#~ "integrated service on top of the Fedora Server platform. Deploy and "
+#~ "manage these prepared roles simply using the Rolekit tool."
+#~ msgstr ""
+#~ "Якщо ви використовуєте ролі сервера, немає потреби у налаштовуванні "
+#~ "сервера з нуля. Ролі сервера вбудовано до вашої системи Fedora Server — "
+#~ "вони надають у ваше розпорядження добре інтегровану службу над платформою "
+#~ "Fedora Server. Розгортайте і керуйте цими заздалегідь приготованими "
+#~ "ролями за допомогою інструментів Rolekit."
+
+#~ msgctxt "Release|"
+#~ msgid "Database Services"
+#~ msgstr "Служби баз даних"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Server brings with it an enterprise-class, scalable database "
+#~ "server powered by the open-source PostgreSQL project."
+#~ msgstr ""
+#~ "Fedora Server може працювати як масштабований сервер бази даних "
+#~ "промислового класу на основі проекту з відкритим кодом PostgreSQL."
+
+#~ msgctxt "Release|"
+#~ msgid "Complete Enterprise Domain Solution"
+#~ msgstr "Повноцінне промислове рішення для домену"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Level up your Linux network with advanced identity management, DNS, "
+#~ "certificate services, Windows(TM) domain integration throughout your "
+#~ "environment with FreeIPA, the engine that drives Fedora Server's Domain "
+#~ "Controller role."
+#~ msgstr ""
+#~ "Розширте можливості вашої мережі Linux за допомогою удосконаленого "
+#~ "керування профілями, DNS, служб сертифікації, інтеграції доменів Windows™ "
+#~ "у всьому середовищі, скориставшись FreeIPA, рушієм, який забезпечує "
+#~ "роботу ролі контролера домену для Сервера Fedora."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "“The Docker Role for Fedora Server was simple and fast to install so that "
+#~ "you can run your Docker images. This makes a great testbed for beginners "
+#~ "and experts with docker so that they can develop their applications on "
+#~ "the fly.”"
+#~ msgstr ""
+#~ "«Роль Docker для Fedora Server просто і швидко встановити — і ви одразу "
+#~ "можете запускати ваші образи Docker. Це надає у розпорядження початківців "
+#~ "і експертів чудову тестову платформу із docker. Можна розробляти програми "
+#~ "на льоту.»"
+
+#~ msgctxt "Release|"
+#~ msgid "</p><p align=right> ― <em>John Unland, "
+#~ msgstr "</p><p align=right> ― <em>Джон Анленд (John Unland), "
+
+#~ msgctxt "Release|"
+#~ msgid "Information Systems Student"
+#~ msgstr "Студент спеціальності «Інформаційні системи»"
+
+#~ msgctxt "Release|"
+#~ msgid "silverblue"
+#~ msgstr "silverblue"
+
+#~ msgctxt "Release|"
+#~ msgid "emerging"
+#~ msgstr "нові редакції"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Silverblue"
+#~ msgstr "Fedora Silverblue"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "An extremely stable and reliable desktop operating system, excellent for "
+#~ "developers and for those using container-focused workflows."
+#~ msgstr ""
+#~ "Надзвичайно стабільна і надійна операційна система для робочих станцій, "
+#~ "ідеально для розробників і тих, хто використовує робочі процеси із "
+#~ "акцентом на контейнеризації."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Silverblue is a variant of Fedora Workstation. It looks, feels and "
+#~ "behaves like a regular desktop operating system, and the experience is "
+#~ "similar to what you find with using a standard Fedora Workstation."
+#~ msgstr ""
+#~ "Silverblue є варіантом Fedora Workstation. Система виглядає, працює і "
+#~ "поводиться як звичайна операційна система для робочих станцій — робота у "
+#~ "ній повністю подібна до роботи у стандартній системі Fedora Workstation."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "However, unlike other operating systems, Silverblue has reprovisionable "
+#~ "infrastructure with anti-hysteresis properties. This means that every "
+#~ "installation is identical to every other installation of the same "
+#~ "version. The operating system that is on disk is exactly the same from "
+#~ "one machine to the next, and it never changes as it is used."
+#~ msgstr ""
+#~ "Втім, на відміну від інших операційних систем, у Silverblue має незмінну "
+#~ "інфраструктуру із антигістерезисними властивостями. Це означає, що усі "
+#~ "встановлення певної версії системи є ідентичними. Операційна система на "
+#~ "диску є абсолютно однаковою на усіх комп'ютерах, вона ніколи не "
+#~ "змінюється у процесі використання."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Silverblue’s design is intended to make it more stable, less prone to "
+#~ "bugs, and easier to test and develop. The design also makes it an "
+#~ "excellent platform for containerized applications as well as container-"
+#~ "based software development. In each case, applications and containers are "
+#~ "kept separate from the host system, improving stability and reliability."
+#~ msgstr ""
+#~ "Побудова Silverblue сприяє стабільності, меншій вразливості та простоті у "
+#~ "тестуванні та розробці системи. Крім того, така побудова системи робить "
+#~ "її чудовою платформою для контейнеризованих програм, а також розробки "
+#~ "програмного забезпечення на основі технологій контейнеризації. Програми і "
+#~ "контейнери є відокремленими від основної системи, що підвищує її "
+#~ "стабільність та надійність."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Silverblue’s core technologies have some other helpful features. OS "
+#~ "updates are fast and there’s no waiting around for them to install: just "
+#~ "reboot as normal to start using the next version. With Silverblue, it is "
+#~ "also possible to roll back to the previous version of the operating "
+#~ "system, if something goes wrong."
+#~ msgstr ""
+#~ "У базових технологіях Silverblue закладено і деякі інші корисні "
+#~ "можливості. Оновлення операційної системи є швидким — вам не доведеться "
+#~ "чекати на встановлення нових пакунків: просто перезавантажте систему для "
+#~ "того, щоб почати користуватися новою версією. Крім того, у Silverblue "
+#~ "можна повернутися до попередньої версії операційної системи, якщо "
+#~ "виникнуть якісь негаразди."
+
+#~ msgctxt "Release|"
+#~ msgid "kde"
+#~ msgstr "kde"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora KDE Plasma Desktop"
+#~ msgstr "Стільниця Плазми KDE Fedora"
+
+#~ msgctxt "Release|"
+#~ msgid "A complete, modern desktop built using the KDE Plasma Desktop."
+#~ msgstr "Повноцінне сучасне середовище на основі стільниці Плазма KDE."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based "
+#~ "operating system utilizing the KDE Plasma Desktop as the main user "
+#~ "interface."
+#~ msgstr ""
+#~ "Варіант Fedora із стільницею Плазми KDE є потужною операційною системою "
+#~ "на основі Fedora, де використано основний інтерфейс стільниці Плазми KDE."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora KDE Plasma Desktop comes with many pre-selected top quality "
+#~ "applications that suit all modern desktop use cases - from online "
+#~ "communication like web browsing, instant messaging and electronic mail "
+#~ "correspondence, through multimedia and entertainment, to an advanced "
+#~ "productivity suite, including office applications and enterprise grade "
+#~ "personal information management."
+#~ msgstr ""
+#~ "До складу Стільниці Плазми KDE Fedora включено багато високоякісних "
+#~ "програм, за допомогою яких можна виконувати усі сучасні завдання для "
+#~ "робочої станції — від обміну даними, зокрема роботи у інтернеті, обміну "
+#~ "повідомленнями та повідомленнями електронної пошти; відтворення "
+#~ "мультимедійних даних та розваг до власного комплекту офісних програм та "
+#~ "комплексу високоякісних програм для керування особистими даними."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "All KDE applications are well integrated, with a similar look and feel "
+#~ "and an easy to use interface, accompanied by an outstanding graphical "
+#~ "appearance."
+#~ msgstr ""
+#~ "Усі програми KDE добре інтегровано між собою, вони мають однаковий вигляд "
+#~ "і поведінку, простий у користуванні інтерфейс та чудовий зовнішній вигляд."
+
+#~ msgctxt "Release|"
+#~ msgid "xfce"
+#~ msgstr "xfce"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Xfce Desktop"
+#~ msgstr "Стільниця Xfce Fedora"
+
+#~ msgctxt "Release|"
+#~ msgid "A complete, well-integrated Xfce Desktop."
+#~ msgstr "Повноцінне, добре інтегроване середовище Xfce."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast "
+#~ "and lightweight, while still being visually appealing and user friendly."
+#~ msgstr ""
+#~ "До складу цієї збірки Fedora включено середовище Xfce, яке намагається — "
+#~ "залишатись швидким та легким, при цьому мати привабливий вигляд та бути "
+#~ "зручним для використання."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
+#~ msgstr ""
+#~ "Fedora Xfce — повноцінне графічне середовище, створене на основі "
+#~ "рекомендацій ініціативної групи freedesktop.org."
+
+#~ msgctxt "Release|"
+#~ msgid "lxqt"
+#~ msgstr "lxqt"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora LXQt Desktop"
+#~ msgstr "Стільниця LXQt Fedora"
+
+#~ msgctxt "Release|"
+#~ msgid "A lightweight, well-integrated LXQt desktop environment."
+#~ msgstr "Невибагливе, добре інтегроване стільничне середовище LXQt."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora LXQt provides a lightweight, well-integrated LXQt desktop "
+#~ "environment. In addition to LXQt itself it provides a small, well "
+#~ "selected collection of applications like the QupZilla browser, which "
+#~ "combines Chromium's rendering engine with a nice Qt experience. Other "
+#~ "applications include the Trojita mail client, the qBittorrent client, the "
+#~ "Yarock music player and a set of some more commonly used applications. As "
+#~ "all applications use the same Qt5 toolkit and the Breeze theme known from "
+#~ "KDE, the desktop provides a unified and well-integrated style and "
+#~ "theming. In addition breeze-gtk is provided to allow the user to "
+#~ "integrate GTK applications too."
+#~ msgstr ""
+#~ "LXQt Fedora LXQt — невибагливе до ресурсів добре інтегроване стільничне "
+#~ "середовище LXQt. Окрім самого LXQt, до набору програм включено ретельно "
+#~ "відібрані програми, зокрема браузер QupZilla, у якому поєднано рушій "
+#~ "Chromium та чудову оболонку на основі Qt. Серед інших програм поштовий "
+#~ "клієнт Trojita, клієнт мереж торентів qBittorrent, програма для "
+#~ "відтворення музики Yarock та набір загальновживаних програм. Оскільки в "
+#~ "усіх програмах використовується однаковий інструмент побудови інтерфейсу "
+#~ "на основі Qt5 та тема Breeze, відома з KDE, стільниця є добре "
+#~ "інтегрованою за стилем і темою. Крім того, до середовища включено засоби "
+#~ "breeze-gtk, які допомагають інтегрувати до нього і програми на основі "
+#~ "бібліотек GTK."
+
+#~ msgctxt "Release|"
+#~ msgid "mate"
+#~ msgstr "друг"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora MATE-Compiz Desktop"
+#~ msgstr "Стільниця MATE-Compiz Fedora"
+
+#~ msgctxt "Release|"
+#~ msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
+#~ msgstr ""
+#~ "Класична стільниця Fedora із додатковим просторовим засобом керування "
+#~ "вікнами."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE "
+#~ "Desktop is a lightweight, powerful desktop designed with productivity and "
+#~ "performance in mind. The default windows manager is Marco which is usable "
+#~ "for all machines and VMs. Compiz Fusion is a beautiful 3D windowing "
+#~ "manager with Emerald and GTK+ theming."
+#~ msgstr ""
+#~ "У збірці MATE Compiz поєднано стільничне середовище MATE та Compiz "
+#~ "Fusion. Стільничне середовище MATE є невибагливим до ресурсів, потужним "
+#~ "стільничним середовищем, створеним для ефективної та швидкісної роботи. "
+#~ "Типовим засобом керування вікнами є Marco, програма, яка може працювати "
+#~ "на усіх комп’ютерах і у віртуальних машинах. Compiz Fusion — красивий "
+#~ "інструмент для керування вікнами з просторовими ефектами з обрамленням "
+#~ "вікон Emerald та темами GTK."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
+#~ "should definitely try the MATE-Compiz spin."
+#~ msgstr ""
+#~ "Якщо вам потрібне потужна і невибаглива до ресурсів робоча станція на "
+#~ "Fedora з приємними просторовими ефектами, вам обов’язково слід спробувати "
+#~ "збірку з MATE Compiz."
+
+#~ msgctxt "Release|"
+#~ msgid "cinnamon"
+#~ msgstr "cinnamon"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Cinnamon Desktop"
+#~ msgstr "Стільниця Fedora Cinnamon"
+
+#~ msgctxt "Release|"
+#~ msgid "A modern desktop featuring traditional Gnome user experience."
+#~ msgstr "Сучасне середовище із традиційними елементами Gnome."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Cinnamon is a Linux desktop which provides advanced innovative features "
+#~ "and a traditional user experience. The desktop layout is similar to Gnome "
+#~ "2. The underlying technology is forked from Gnome Shell. The emphasis is "
+#~ "put on making users feel at home and providing them with an easy to use "
+#~ "and comfortable desktop experience."
+#~ msgstr ""
+#~ "Cinnamon — робоче середовище Linux, у якому поєднуються сучасні "
+#~ "інноваційні можливості і традиційні принципи роботи. Компонування "
+#~ "стільниці подібне до Gnome 2. Базові технології запозичено з Gnome Shell. "
+#~ "Акцент зроблено на забезпеченні звичайних принципів роботи комфортного і "
+#~ "простого у користуванні середовища."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Cinnamon is a popular desktop alternative to Gnome 3 and this spin "
+#~ "provides the option to quickly try and install this desktop."
+#~ msgstr ""
+#~ "Cinnamon — популярна альтернатива Gnome 3 у спектрі робочих середовищ. "
+#~ "Цей варіант операційної системи є простим і швидким способом встановити "
+#~ "відповідне робоче середовище."
+
+#~ msgctxt "Release|"
+#~ msgid "lxde"
+#~ msgstr "lxde"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora LXDE Desktop"
+#~ msgstr "Стільниця LXDE Fedora"
+
+#~ msgctxt "Release|"
+#~ msgid "A light, fast, less-resource hungry desktop environment."
+#~ msgstr "Невибагливе до ресурсів, швидке робоче середовище."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
+#~ "performant, and energy-saving desktop environment. It maintained by an "
+#~ "international community of developers and comes with a beautiful "
+#~ "interface, multi-language support, standard keyboard shortcuts and "
+#~ "additional features like tabbed file browsing."
+#~ msgstr ""
+#~ "LXDE (скорочення від \"Lightweight X11 Desktop Environment\" або «Легке "
+#~ "стільничне середовище X11») — дуже швидке, невибагливе та "
+#~ "енергозаощадливе робоче середовище. Супровід цього середовища "
+#~ "здійснюється міжнародною спільнотою розробників, воно постачається з "
+#~ "чудовим інтерфейсом, перекладами багатьма мовами, передбачено стандартні "
+#~ "клавіатурні скорочення та додаткові можливості, зокрема перегляд файлів у "
+#~ "окремих вкладках вікна."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "LXDE is not designed to be powerful and bloated, but to be usable and "
+#~ "slim. A main goal of LXDE is to keep computer resource usage low. It is "
+#~ "especially designed for computers with low hardware specifications like "
+#~ "netbooks, mobile devices (e.g. MIDs) or older computers."
+#~ msgstr ""
+#~ "LXDE не є таким потужним і різнобічним які інші середовища, — це "
+#~ "середовище є просто придатним до користування та позбавленим зайвих "
+#~ "елементів. Основним призначенням LXDE є не навантажувати ресурси "
+#~ "комп’ютера. Це середовище спеціально розроблено для комп’ютерів з "
+#~ "обмеженою потужністю, зокрема нетбуків, мобільних пристроїв (інтернет-"
+#~ "планшетів) та застарілих стаціонарних чи портативних комп’ютерів."
+
+#~ msgctxt "Release|"
+#~ msgid "soas"
+#~ msgstr "soas"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora SoaS Desktop"
+#~ msgstr "Стільниця SoaS Fedora"
+
+#~ msgctxt "Release|"
+#~ msgid "Discover. Reflect. Share. Learn."
+#~ msgstr "Відкривай. Реагуй. Ділись. Навчайся."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Sugar on a Stick is a Fedora-based operating system featuring the award-"
+#~ "winning Sugar Learning Platform and designed to fit on an ordinary USB "
+#~ "thumbdrive (\"stick\")."
+#~ msgstr ""
+#~ "Sugar on a Stick — операційна система на основі Fedora, у якій ви зможете "
+#~ "скористатися відомою навчальною платформою Sugar. Систему створено таким "
+#~ "чином, щоб вона могла вміститися на звичайний диск USB («флешку»)."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
+#~ "child-friendly graphical environment. Sugar automatically saves your "
+#~ "progress to a \"Journal\" on your stick, so teachers and parents can "
+#~ "easily pull up \"all collaborative web browsing sessions done in the past "
+#~ "week\" or \"papers written with Daniel and Sarah in the last 24 hours\" "
+#~ "with a simple query rather than memorizing complex file/folder "
+#~ "structures. Applications in Sugar are known as Activities, some of which "
+#~ "are described below."
+#~ msgstr ""
+#~ "Sugar лежить поза межами звичайної концепції офісної робочої станції, "
+#~ "надаючи у розпорядження користувача зручне для дітей графічне середовище. "
+#~ "Sugar автоматично зберігає дані щодо поступу навчання до журналу на "
+#~ "портативному диску, отже вчителі і батьки можуть отримати «усі сеанси "
+#~ "спільного перегляду інтернету за останній тиждень» або «тексти, написані "
+#~ "разом із Данилом і Тетяною у останні 24 години» за допомогою простого "
+#~ "запиту, без запам’ятовування складної структури тек і файлів."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "It is now deployable for the cost of a stick rather than a laptop; "
+#~ "students can take their Sugar on a Stick thumbdrive to any machine - at "
+#~ "school, at home, at a library or community center - and boot their "
+#~ "customized computing environment without touching the host machine’s hard "
+#~ "disk or existing system at all."
+#~ msgstr ""
+#~ "Тепер для запуску системи достатньо просто мати флешку, мати ноутбук "
+#~ "необов’язково. Учні можуть скористатися своїм Sugar on a Stick "
+#~ "(«льодяником на паличці») на будь-якому комп’ютері: у школі, вдома, у "
+#~ "бібліотеці чи громадському центрі. Вони можуть завантажити налаштоване "
+#~ "під них середовище не вносячи ніяких змін на жорсткий диск основної "
+#~ "системи комп’ютера та у наявну на ньому систему взагалі."
+
+#~ msgctxt "Release|"
+#~ msgid "i3"
+#~ msgstr "i3"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora i3 Desktop"
+#~ msgstr "Стільниця i3 Fedora"
+
+#~ msgctxt "Release|"
+#~ msgid "Simplicity over Complexity"
+#~ msgstr "Простота над складністю"
+
+#~ msgctxt "Release|"
+#~ msgid "The Fedora i3 Spin provides the popular i3 tiling window manager."
+#~ msgstr ""
+#~ "Збірка Fedora i3 надає у ваше розпорядження популярну систему керування "
+#~ "вікнами із мозаїчністю i3."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "It makes i3 accessible and appealing to both novices and advanced users "
+#~ "who prefer not to use a mouse, touchpad, or other pointing device to "
+#~ "interact with their environment. Featuring lightweight applications for "
+#~ "web browsing, text editing, and media playback, the Fedora i3 Spin offers "
+#~ "a complete experience with a minimalist user interface."
+#~ msgstr ""
+#~ "Ця збірка робить i3 доступним і привабливим для початківців і досвідчених "
+#~ "користувачів, які не хочуть постійно використовувати мишу, сенсорну "
+#~ "панель або інший координатний пристрій для взаємодії із обчислювальним "
+#~ "середовищем. До складу збірки включено невибагливі до ресурсів програми "
+#~ "для перегляду інтернету, редагування текстів та відтворення "
+#~ "мультимедійних даних. Збірка Fedora i3 пропонує вам повноцінне середовище "
+#~ "із мінімалістичним інтерфейсом користувача."
+
+#~ msgctxt "Release|"
+#~ msgid "astronomy"
+#~ msgstr "астрономія"
+
+#~ msgctxt "Release|"
+#~ msgid "labs"
+#~ msgstr "лабораторії"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Astronomy"
+#~ msgstr "Астрономічна Fedora"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Powerful completely open-source and free tool for amateurs and "
+#~ "professionals."
+#~ msgstr ""
+#~ "Потужний і повністю відкритий та безкоштовний інструмент для аматорів і "
+#~ "професіоналів."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Astronomy brings a complete open source toolchain to both amateur "
+#~ "and professional astronomers."
+#~ msgstr ""
+#~ "Fedora Astronomy — повністю відкритий набір інструментів для астрономів-"
+#~ "аматорів та професіоналів."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Spin provides the Fedora KDE desktop enhanced with a complete "
+#~ "scientific Python environment and the AstrOmatic software for data "
+#~ "analysis. KStars was added to provide a full featured astrophotography "
+#~ "tool. As KStars uses the INDI library to control equipment, various "
+#~ "telescopes, cameras etc. are supported. Summarized, Fedora Astronomy "
+#~ "provides a complete set of software, from the observation planning to the "
+#~ "final results."
+#~ msgstr ""
+#~ "У цьому варіанті дистрибутива можливості середовища Fedora KDE розширено "
+#~ "повноцінним науковим середовищем Python та програмним забезпеченням "
+#~ "AstrOmatic, призначеним для аналізу даних. До набору пакунків додано "
+#~ "KStars, програму, у якій реалізовано повноцінні інструменти астрографії. "
+#~ "Оскільки у KStars використано бібліотеку INDI, ви зможете керувати "
+#~ "різноманітним астрономічним обладнанням, зокрема телескопами і "
+#~ "фотоапаратами, за допомогою комп’ютера. Загалом, Fedora Astronomy є "
+#~ "повноцінним набором астрономічного програмного забезпечення, за допомогою "
+#~ "якого можна виконувати повний спектр завдань, від планування "
+#~ "спостереження до аналізу результатів."
+
+#~ msgctxt "Release|"
+#~ msgid "design_suite"
+#~ msgstr "design_suite"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Design Suite"
+#~ msgstr "Дизайнерський комплекс Fedora"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Visual design, multimedia production, and publishing suite of free and "
+#~ "open source creative tools."
+#~ msgstr ""
+#~ "Наочне конструювання, створення мультимедійних даних та комплект програм "
+#~ "для приготування матеріалів для друку — усе це у наборі вільних "
+#~ "інструментів для творчості з відкритим кодом."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Looking for a ready-to-go desktop environment brimming with free and open "
+#~ "source multimedia production and publishing tools? Try the Design Suite, "
+#~ "a Fedora Spin created by designers, for designers."
+#~ msgstr ""
+#~ "Шукаєте робоче середовище з вільними програмами з відкритим кодом для "
+#~ "обробки і приготування до оприлюднення мультимедійних даних? Щоб все було "
+#~ "готове для реалізації ваших творчих задумів? Спробуйте «Дизайнерський "
+#~ "набір», варіант Fedora, створений дизайнерами для дизайнерів."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Design Suite includes the favorite tools of the Fedora Design Team. "
+#~ "These are the same programs we use to create all the artwork that you see "
+#~ "within the Fedora Project, from desktop backgrounds to CD sleeves, web "
+#~ "page designs, application interfaces, flyers, posters and more. From "
+#~ "document publication to vector and bitmap editing or 3D modeling to photo "
+#~ "management, the Design Suite has an application for you — and you can "
+#~ "install thousands more from the Fedora universe of packages."
+#~ msgstr ""
+#~ "До дизайнерського комплекту (Design Suite) включено вибрані Командою "
+#~ "дизайнерів Fedora інструменти. Це ті самі програми, якими ми користуємося "
+#~ "для створення усіх художніх елементів Проєкту Fedora, від фонових "
+#~ "зображень стільниці до обкладинок компакт-дисків, графічних елементів "
+#~ "вебсторінок, інтерфейсів програм, буклетів, плакатів тощо. Від друку "
+#~ "документів до редагування векторних і растрових зображень або "
+#~ "просторового моделювання та керування фотоальбомом, у Design Suite є усі "
+#~ "потрібні програми. Ви також можете встановити тисячі інших програм зі "
+#~ "всесвіту пакунків Fedora."
+
+#~ msgctxt "Release|"
+#~ msgid "games"
+#~ msgstr "ігри"
+
+#~ msgid "Fedora Games"
+#~ msgstr "Ігри Fedora"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A collection and perfect show-case of the best games available in Fedora."
+#~ msgstr "Збірка найкращих ігор, якими можна погратися у Fedora."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Games spin offers a perfect showcase of the best games "
+#~ "available in Fedora. The included games span several genres, from first-"
+#~ "person shooters to real-time and turn-based strategy games to puzzle "
+#~ "games."
+#~ msgstr ""
+#~ "У ігровій збірці Fedora ви зможете скористатися чудовим набором з "
+#~ "найкращих ігор, які можна встановити зі сховищ Fedora Включені ігри "
+#~ "належать до декількох жанрів, від стрілялок від першої особи до "
+#~ "інтерактивних та покрокових стратегічних ігор і складанок."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Not all the games available in Fedora are included on this spin, but "
+#~ "trying out this spin will give you a fair impression of Fedora's ability "
+#~ "to run great games."
+#~ msgstr ""
+#~ "До цієї збірки включено не всі ігри Fedora, але за допомогою цієї збірки "
+#~ "ви зможете скласти враження щодо можливості грати у чудові ігри за "
+#~ "допомогою Fedora."
+
+#~ msgctxt "Release|"
+#~ msgid "python"
+#~ msgstr "python"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Python Classroom"
+#~ msgstr "Fedora — класна кімната Python"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A classroom lab for teaching the Python programming language to students"
+#~ msgstr "Класна кімната для навчання студентів мови програмування Python"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "One of the benefits of Fedora for Python developers is the ease of "
+#~ "setting up Python development. The Fedora Python Classroom Lab makes it "
+#~ "even easier for teachers and instructors to use Fedora in their "
+#~ "classrooms or workshops. Ready to use operating system with important "
+#~ "stuff pre-installed - either with GNOME or as a headless environment for "
+#~ "Docker or Vagrant. Teach Python on Fedora, with Fedora, using the stuff "
+#~ "you love: IPython, Jupyter Notebook, multiple Pythons, virtualenvs, tox, "
+#~ "git and more"
+#~ msgstr ""
+#~ "Однією з переваг Fedora для розробників мовою Python є простота "
+#~ "налаштовування середовища для розробки мовою Python. Лабораторія Класної "
+#~ "кімнати Python Fedora спрощує використання Fedora у класних кімнатах і "
+#~ "майстернях для викладачів і лаборантів. Це готова до використання "
+#~ "операційна система із попередньо встановленими усіма важливими "
+#~ "компонентами, середовище GNOME або бездисплейне середовище для Docker або "
+#~ "Vagrant. Вивчайте Python у Fedora, за допомогою Fedora, із використанням "
+#~ "улюблених інструментів: IPython, Записника Jupyter, декількох Python-ів, "
+#~ "віртуальних середовищ, tox, git та інших засобів."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Python Classroom Lab comes in 3 variants. Either you can run "
+#~ "it in graphical mode with GNOME, or you can virtualize it with Vagrant or "
+#~ "run it in a Docker container. You choose what fits your teaching "
+#~ "environment the best."
+#~ msgstr ""
+#~ "Класна кімната Python Fedora постачається у 3 варіантах. Ви можете "
+#~ "працювати або у графічному режимі середовища GNOME, або у віртуальному "
+#~ "середовищі Vagrant, або у контейнері Docker. Виберіть той з варіантів, "
+#~ "який найліпше пасує до ваших потреб."
+
+#~ msgctxt "Release|"
+#~ msgid "robotics"
+#~ msgstr "робототехніка"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Robotics Suite"
+#~ msgstr "Робототехнічний комплекс Fedora"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A wide variety of free and open robotics software packages for beginners "
+#~ "and experts in robotics."
+#~ msgstr ""
+#~ "Широкий діапазон робототехнічних пакунків вільного програмного "
+#~ "забезпечення з відкритим кодом для початківців та експертів у "
+#~ "робототехніці."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Robotics spin provides a wide variety of free and open "
+#~ "robotics software packages. These range from hardware accessory libraries "
+#~ "for the Hokuyo laser scanners or Katana robotic arm to software "
+#~ "frameworks like Fawkes or Player and simulation environments such as "
+#~ "Stage and RoboCup Soccer Simulation Server 2D/3D. It also provides a "
+#~ "ready to use development environment for robotics including useful "
+#~ "libraries such as OpenCV computer vision library, Festival text to speech "
+#~ "system and MRPT."
+#~ msgstr ""
+#~ "Збірку Fedora Robotics («Робототехніка») складено з широкого діапазону "
+#~ "вільних пакунків з відкритим кодом, пов’язаних з робототехнікою. Серед "
+#~ "цих пакунків бібліотеки доступу до лазерних сканерів Hokuyo та "
+#~ "роботизованої руки Katana, а також програмні системи, зокрема Fawkes та "
+#~ "Player. Крім того, включено середовища імітації, зокрема Stage та RoboCup "
+#~ "Soccer Simulation Server 2D/3D. Також передбачено готове до використання "
+#~ "середовище розробки для робототехніки, до якого зокрема включено корисні "
+#~ "бібліотеки, зокрема бібліотеку комп’ютеризованого зору OpenCV, систему "
+#~ "синтезу мовлення з тексту Festival та MRPT."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Robotics spin is targeted at people just discovering their interest "
+#~ "in robotics as well as experienced roboticists. For the former we provide "
+#~ "a readily usable simulation environment with an introductory hands-on "
+#~ "demonstration, and for the latter we provide a full development "
+#~ "environment, to be used immediately."
+#~ msgstr ""
+#~ "Збірку «Робототехніка» призначено для тих, хто виявляє інтерес до "
+#~ "робототехніки, а також для досвідчених фахівців з робототехніки. Для "
+#~ "перших передбачено просте у користуванні середовище імітації з "
+#~ "демонстраціями початкового рівня. Фахівці ж зможуть знайти у збірці "
+#~ "повноцінне середовище розробки, яким можна користуватися без будь-яких "
+#~ "додаткових маніпуляцій."
+
+#~ msgctxt "Release|"
+#~ msgid "scientific"
+#~ msgstr "наукові"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Scientific"
+#~ msgstr "Fedora Scientific"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A bundle of open source scientific and numerical tools used in research."
+#~ msgstr ""
+#~ "Комплект наукових та обчислювальних дослідницьких інструментів із "
+#~ "відкритим кодом."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Wary of reinstalling all the essential tools for your scientific and "
+#~ "numerical work? The answer is here. Fedora Scientific Spin brings "
+#~ "together the most useful open source scientific and numerical tools atop "
+#~ "the goodness of the KDE desktop environment."
+#~ msgstr ""
+#~ "Втомилися перевстановлювати критично важливі інструменти для вашої "
+#~ "наукової та обчислювальної роботи? Ми маємо готове рішення. Збірка Fedora "
+#~ "Scientific поєднує у собі найкорисніші наукові та обчислювальні "
+#~ "інструменти із відкритим кодом на основі усіх переваг стільничного "
+#~ "середовища KDE."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Scientific currently ships with numerous applications and "
+#~ "libraries. These range from libraries such as the GNU Scientific library, "
+#~ "the SciPy libraries, tools like Octave and xfig to typesetting tools like "
+#~ "Kile and graphics programs such as Inkscape. The current set of packages "
+#~ "include an IDE, tools and libraries for programming in C, C++, Python, "
+#~ "Java and R. Also included along with are libraries for parallel computing "
+#~ "such as the OpenMPI and OpenMP. Tools for typesetting, writing and "
+#~ "publishing are included."
+#~ msgstr ""
+#~ "Поточна версія Fedora Scientific постачається із численними програмами та "
+#~ "бібліотеками. Діапазон їх є значним: від бібліотек, подібних до "
+#~ "бібліотеки GNU Scientific, бібліотек SciPy, інструментів, подібних до "
+#~ "Octave та xfig, до програм для верстання, подібних до Kile, і програм для "
+#~ "роботи з графікою, подібних до Inkscape. До поточного набору пакунків "
+#~ "включено комплексні середовища для розробки, інструменти та бібліотеки "
+#~ "для програмування мовами C, C++, Python, Java та R. Також до дистрибутива "
+#~ "включено бібліотеки для паралельного обчислення, зокрема OpenMPI та "
+#~ "OpenMP. Частиною дистрибутива також є програми для верстання, написання "
+#~ "текстів та приготування текстів до друку."
+
+#~ msgctxt "Release|"
+#~ msgid "security"
+#~ msgstr "безпека"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Security Lab"
+#~ msgstr "Лабораторія безпеки Fedora"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A safe test environment to work on security auditing, forensics, system "
+#~ "rescue and teaching security testing methodologies."
+#~ msgstr ""
+#~ "Безпечне тестове середовище для вивчення питань захисту даних, судової "
+#~ "експертизи, відновлення системи та навчання методології захисту даних."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Security Lab provides a safe test environment to work on "
+#~ "security auditing, forensics, system rescue and teaching security testing "
+#~ "methodologies in universities and other organizations."
+#~ msgstr ""
+#~ "Fedora Security Lab — безпечне тестове середовище для вивчення питань "
+#~ "захисту даних, судової експертизи, відновлення системи та навчання "
+#~ "методології захисту даних у навчальних та інших закладах."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The spin is maintained by a community of security testers and developers. "
+#~ "It comes with the clean and fast Xfce Desktop Environment and a "
+#~ "customized menu that provides all the instruments needed to follow a "
+#~ "proper test path for security testing or to rescue a broken system. The "
+#~ "Live image has been crafted to make it possible to install software while "
+#~ "running, and if you are running it from a USB stick created with LiveUSB "
+#~ "Creator using the overlay feature, you can install and update software "
+#~ "and save your test results permanently."
+#~ msgstr ""
+#~ "Створенням і підтриманням у належному стані цієї збірки займається "
+#~ "спільнота тестерів і розробників програмного забезпечення для захисту "
+#~ "системи. Збірка постачається з простим і швидким стільничним середовищем "
+#~ "Xfce та придатним до налаштовування меню, у якому передбачено всі "
+#~ "інструменти для належного тестування захисту та відновлення пошкоджених "
+#~ "систем. Спільнотою збірки створено образ портативної системи, у якому "
+#~ "передбачено встановлення програмного забезпечення під час його роботи. "
+#~ "Якщо запустити цей образ з флеш-носія USB, створеного за допомогою "
+#~ "LiveUSB Creator з можливістю накладання змін, ви зможете встановлювати і "
+#~ "оновлювати програмне забезпечення, зберігаючи внесені зміни для наступних "
+#~ "запусків системи."
 
 #~ msgctxt "[1].category"
 #~ msgid "product"

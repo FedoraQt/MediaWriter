@@ -2,11 +2,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-07 16:44+0200\n"
+"POT-Creation-Date: 2022-04-25 07:54+0200\n"
 "PO-Revision-Date: 2021-11-08 00:49+0000\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
-"Language-Team: Friulian <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/fur/>\n"
+"Language-Team: Friulian <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/fur/>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -15,89 +15,275 @@ msgstr ""
 "X-Generator: Weblate 4.8\n"
 "X-Qt-Contexts: true\n"
 
-#: ../src/app/qml/DeleteButton.qml:64
-msgctxt "DeleteButton|"
-msgid "Delete the Downloaded Image"
-msgstr "Elimine la imagjin discjariade"
+#: ../src/app/qml/AboutDialog.qml:49
+#, fuzzy
+#| msgctxt "ImageList|"
+#| msgid "About Fedora Media Writer"
+msgctxt "AboutDialog|"
+msgid "About Fedora Media Writer"
+msgstr "Informazions su Scritôr Supuarts di Fedora"
 
-#: ../src/app/downloadmanager.cpp:215
+#: ../src/app/qml/AboutDialog.qml:58
+#, fuzzy, qt-format
+#| msgctxt "ImageDetails|"
+#| msgid "Version %1"
+msgctxt "AboutDialog|"
+msgid "Version %1"
+msgstr "Version %1"
+
+#: ../src/app/qml/AboutDialog.qml:65
+#, fuzzy
+#| msgctxt "ImageList|"
+#| msgid "Fedora Media Writer is now checking for new releases"
+msgctxt "AboutDialog|"
+msgid "Fedora Media Writer is now checking for new releases"
+msgstr ""
+"Scritôrs Supuarts di Fedora al sta cumò controlant se a son gnovis versions"
+
+#: ../src/app/qml/AboutDialog.qml:71
+#, fuzzy, qt-format
+#| msgctxt "ImageList|"
+#| msgid "Please report bugs or your suggestions on %1"
+msgctxt "AboutDialog|"
+msgid "Please report bugs or your suggestions on %1"
+msgstr "Par plasê segnale i erôrs o i sugjeriments su %1"
+
+#: ../src/app/qml/AboutDialog.qml:94
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Close"
+msgctxt "AboutDialog|"
+msgid "Close"
+msgstr "Siere"
+
+#: ../src/app/qml/CancelDialog.qml:54
+msgctxt "CancelDialog|"
+msgid "Cancel Download?"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:56
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "CancelDialog|"
+msgid "Cancel Writing?"
+msgstr "Daûr a scrivi"
+
+#: ../src/app/qml/CancelDialog.qml:58
+msgctxt "CancelDialog|"
+msgid "Cancel Verification?"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:65
+msgctxt "CancelDialog|"
+msgid "Download progress will be lost and media writing will be aborted."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:67
+msgctxt "CancelDialog|"
+msgid ""
+"Writing process will be aborted and your drive will have to be restored "
+"afterwards."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:69
+msgctxt "CancelDialog|"
+msgid "This operation is safe to be cancelled."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:86
+msgctxt "CancelDialog|"
+msgid "Continue"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:104
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "CancelDialog|"
+msgid "Cancel Download"
+msgstr "Daûr a discjariâ"
+
+#: ../src/app/qml/CancelDialog.qml:106
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "CancelDialog|"
+msgid "Cancel Writing"
+msgstr "Daûr a scrivi"
+
+#: ../src/app/qml/CancelDialog.qml:108
+msgctxt "CancelDialog|"
+msgid "Cancel Verification"
+msgstr ""
+
+#: ../src/app/downloadmanager.cpp:216
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "Impussibil otignî la imagjin domandade."
 
-#: ../src/app/downloadmanager.cpp:311
+#: ../src/app/downloadmanager.cpp:316
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "Si à finît il spazi te cartele Discjariâts."
 
-#: ../src/app/downloadmanager.cpp:313
+#: ../src/app/downloadmanager.cpp:318
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "Il file discjariât nol à l'acès pe scriture."
 
-#: ../src/app/downloadmanager.cpp:399
+#: ../src/app/downloadmanager.cpp:404
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Conession scjadude"
 
-#: ../src/app/qml/DownloadDialog.qml:33
+#: ../src/app/qml/DownloadPage.qml:48
 #, qt-format
-msgctxt "DownloadDialog|"
-msgid "Write %1"
-msgstr "Scrîf %1"
+msgctxt "DownloadPage|"
+msgid "%1 Sucessfuly Written"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:141
-msgctxt "DownloadDialog|"
-msgid "Writing is not possible"
-msgstr "Impussibil scrivi"
+#: ../src/app/qml/DownloadPage.qml:50
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Writing %1"
+msgstr "Daûr a scrivi"
 
-#: ../src/app/qml/DownloadDialog.qml:216
-msgctxt "DownloadDialog|"
-msgid "Close"
-msgstr "Siere"
+#: ../src/app/qml/DownloadPage.qml:52
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the written data"
+msgctxt "DownloadPage|"
+msgid "Verifying written data"
+msgstr "Daûr a controlâ i dâts scrits"
 
-#: ../src/app/qml/DownloadDialog.qml:232 ../src/app/qml/DownloadDialog.qml:253
-#: ../src/app/qml/DownloadDialog.qml:274 ../src/app/qml/DownloadDialog.qml:285
-#: ../src/app/qml/DownloadDialog.qml:306
-msgctxt "DownloadDialog|"
-msgid "Retry"
-msgstr "Torne prove"
+#: ../src/app/qml/DownloadPage.qml:54
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "DownloadPage|"
+msgid "Downloading %1"
+msgstr "Daûr a discjariâ"
 
-#: ../src/app/qml/DownloadDialog.qml:356
-msgctxt "DownloadDialog|"
-msgid "The file will be saved to your Downloads folder."
+#: ../src/app/qml/DownloadPage.qml:56
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "The downloaded image is corrupted"
+msgctxt "DownloadPage|"
+msgid "Verifying downloaded image"
+msgstr "La imagjin discjariade e je ruvinade"
+
+#: ../src/app/qml/DownloadPage.qml:58
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Preparing"
+msgctxt "DownloadPage|"
+msgid "Preparing %1"
+msgstr "Daûr a prontâ"
+
+#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+msgctxt "DownloadPage|"
+msgid "Failed"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:72
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 B left)"
+msgctxt "DownloadPage|"
+msgid " B left)"
+msgstr "(ancjemò %1 B)"
+
+#: ../src/app/qml/DownloadPage.qml:73
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 KB left)"
+msgctxt "DownloadPage|"
+msgid " KB left)"
+msgstr "(ancjemò %1 KB)"
+
+#: ../src/app/qml/DownloadPage.qml:74
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 MB left)"
+msgctxt "DownloadPage|"
+msgid " MB left)"
+msgstr "(ancjemò %1 MB)"
+
+#: ../src/app/qml/DownloadPage.qml:75
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 GB left)"
+msgctxt "DownloadPage|"
+msgid " GB left)"
+msgstr "(ancjemò %1 GB)"
+
+#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
+#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#, qt-format
+msgctxt "DownloadPage|"
+msgid " (%1"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:124
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "The file will be saved to your Downloads folder."
+msgctxt "DownloadPage|"
+msgid "Downloads are saved to the downloads folder."
 msgstr "Il file al è stât salvât te cartele Discjariâts."
 
-#: ../src/app/qml/DownloadDialog.qml:363
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:132
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid "By writing, you will lose all of the data on %1."
+msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Lant a scrivi si pierdarà ducj i dâts su %1"
 
-#: ../src/app/qml/DownloadDialog.qml:370
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:140
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "Your drive will be resized to a smaller capacity. You may resize it back "
+#| "to normal by using Fedora Media Writer; this will remove installation "
+#| "media from your drive."
+msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using Fedora Media Writer; this will remove installation media "
+"normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
 "La unitât e vignarà ridimensionade a une capacitât inferiôr. Si podarà tornâ "
 "a ridimensionâle come prime doprant Scritôr Supuarts di Fedora; chest al "
 "gjavarà il supuart di instalazion de unitât."
 
-#: ../src/app/qml/DownloadDialog.qml:377
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:148
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Selezionât:"
 
-#: ../src/app/qml/DownloadDialog.qml:377
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:148
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "None"
+msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Nissun"
 
-#: ../src/app/qml/DownloadDialog.qml:384
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:156
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "Your board or device is not supported by Fedora Media Writer yet. Please "
+#| "check <a href=%1>this page</a> for more information about its "
+#| "compatibility with Fedora and how to create bootable media for it."
+msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
 "check <a href=%1>this page</a> for more information about its compatibility "
@@ -108,9 +294,13 @@ msgstr ""
 "informazions su la sô compatibilitât cun Fedora e su ce mût creâ cun lui un "
 "supuart inviabil."
 
-#: ../src/app/qml/DownloadDialog.qml:392
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:165
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "The selected drive's size is %1. It's possible you have selected an "
+#| "external drive by accident!"
+msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
@@ -118,223 +308,292 @@ msgstr ""
 "La dimension de unitât selezionade e je %1. Al è pussibil di vê selezionât "
 "une unitât esterne par erôr!"
 
-#: ../src/app/qml/DownloadDialog.qml:419
+#: ../src/app/qml/DownloadPage.qml:174
 #, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 B left)"
-msgstr "(ancjemò %1 B)"
+msgctxt "DownloadPage|"
+msgid "Restart and boot from %1 to start using %2."
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:420
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 KB left)"
-msgstr "(ancjemò %1 KB)"
+#: ../src/app/qml/DownloadPage.qml:262
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Writing is not possible"
+msgctxt "DownloadPage|"
+msgid "Writing not possible"
+msgstr "Impussibil scrivi"
 
-#: ../src/app/qml/DownloadDialog.qml:421
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 MB left)"
-msgstr "(ancjemò %1 MB)"
+#: ../src/app/qml/DownloadPage.qml:282
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Writing"
+msgstr "Daûr a scrivi"
 
-#: ../src/app/qml/DownloadDialog.qml:422
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 GB left)"
-msgstr "(ancjemò %1 GB)"
+#: ../src/app/qml/DownloadPage.qml:310
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Write verifying"
+msgstr "Daûr a scrivi"
 
-#: ../src/app/qml/DownloadDialog.qml:435
-msgctxt "DownloadDialog|"
-msgid "Write the image immediately when the download is finished"
-msgstr "Scrîf la imagjin daurman cuant che il discjariament al finìs"
+#: ../src/app/qml/DownloadPage.qml:334
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Finished!"
+msgctxt "DownloadPage|"
+msgid "Finish"
+msgstr "Finît!"
 
-#: ../src/app/qml/DownloadDialog.qml:509
-msgctxt "DownloadDialog|"
-msgid "There are no portable drives connected"
-msgstr "No son unitât portatii tacadis"
+#: ../src/app/qml/DownloadPage.qml:347
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Writing %1 was successful"
+msgctxt "DownloadPage|"
+msgid "Write Successful"
+msgstr "Scriture di %1 lade a bon fin"
 
-#: ../src/app/qml/DownloadDialog.qml:532
-msgctxt "DownloadDialog|"
-msgid "Other"
-msgstr "Altri"
+#: ../src/app/qml/DownloadPage.qml:365
+msgctxt "DownloadPage|"
+msgid "Failed verification no drives"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:561
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-msgstr "Nol è stât pussibil eliminâ<br>\"<a href=\"%1\">%2</a>\"."
+#: ../src/app/qml/DownloadPage.qml:381
+msgctxt "DownloadPage|"
+msgid "Failed verification"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:573
-msgctxt "DownloadDialog|"
-msgid "Cancel"
-msgstr "Anule"
+#: ../src/app/qml/DownloadPage.qml:393
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the download"
+msgctxt "DownloadPage|"
+msgid "Failed download"
+msgstr "Daûr a controlâ il discjariament"
 
-#: ../src/app/qml/DownloadDialog.qml:586
-msgctxt "DownloadDialog|"
-msgid "Write to Disk"
-msgstr "Scrîf sul Disc"
+#: ../src/app/qml/DownloadPage.qml:409
+msgctxt "DownloadPage|"
+msgid "Failed no drives"
+msgstr ""
 
-#: ../src/app/drivemanager.cpp:286
+#: ../src/app/drivemanager.cpp:288
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "Cheste unitât no je vonde grande."
 
-#: ../src/app/qml/ImageDetails.qml:98
-msgctxt "ImageDetails|"
-msgid "Back"
-msgstr "Indaûr"
+#: ../src/app/qml/DrivePage.qml:36
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Write to Disk"
+msgctxt "DrivePage|"
+msgid "Write Options"
+msgstr "Scrîf sul Disc"
 
-#: ../src/app/qml/ImageDetails.qml:105
-msgctxt "ImageDetails|"
-msgid "Create Live USB…"
-msgstr "Cree Live USB…"
-
-#. The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
-#: ../src/app/qml/ImageDetails.qml:167
-#, qt-format
-msgctxt "ImageDetails|"
-msgid "(%1 after writing)"
-msgstr "(%1 dopo de scriture)"
-
-#: ../src/app/qml/ImageDetails.qml:192
-#, qt-format
-msgctxt "ImageDetails|"
-msgid "Version %1"
+#: ../src/app/qml/DrivePage.qml:45
+#, fuzzy
+#| msgctxt "ImageDetails|"
+#| msgid "Version %1"
+msgctxt "DrivePage|"
+msgid "Version"
 msgstr "Version %1"
 
-#: ../src/app/qml/ImageDetails.qml:296
-#, qt-format
-msgctxt "ImageDetails|"
-msgid ""
-"Fedora %1 was released! Check it out!<br>If you want a stable, finished "
-"system, it's better to stay at version %2."
+#: ../src/app/qml/DrivePage.qml:62
+msgctxt "DrivePage|"
+msgid "Hardware Architecture"
 msgstr ""
-"Fedora %1 e je stade publicade! Controle!<br>Se si desidere un sisteme "
-"complet e stabil al è miôr restâ ae version %2"
 
-#: ../src/app/qml/ImageDetails.qml:314
-#, qt-format
-msgctxt "ImageDetails|"
-msgid ", released on %1"
-msgstr ", publicade al/ai %1"
+#: ../src/app/qml/DrivePage.qml:79
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DrivePage|"
+msgid "Selected file"
+msgstr "Selezionât:"
 
-#: ../src/app/qml/ImageDetails.qml:324
-msgctxt "ImageDetails|"
-msgid "Other variants..."
-msgstr "Altris variantis..."
+#: ../src/app/qml/DrivePage.qml:86
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "None"
+msgctxt "DrivePage|"
+msgid "None"
+msgstr "Nissun"
 
-#: ../src/app/qml/ImageList.qml:84
-msgctxt "ImageList|"
-msgid "Find an operating system image"
-msgstr "Cjate une imagjin di sisteme operatîf"
+#: ../src/app/qml/DrivePage.qml:94
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DrivePage|"
+msgid "Select..."
+msgstr "Selezionât:"
 
-#: ../src/app/qml/ImageList.qml:168
-msgctxt "ImageList|"
-msgid "Checking for new releases"
-msgstr "Daûr a controlâ gnovis versions"
+#: ../src/app/qml/DrivePage.qml:111
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Image files"
+msgctxt "DrivePage|"
+msgid "Image files"
+msgstr "File imagjin"
 
-#: ../src/app/qml/ImageList.qml:251
-msgctxt "ImageList|"
-msgid "About Fedora Media Writer"
-msgstr "Informazions su Scritôr Supuarts di Fedora"
+#: ../src/app/qml/DrivePage.qml:111
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "All files (*)"
+msgctxt "DrivePage|"
+msgid "All files (*)"
+msgstr "Ducj i file (*)"
 
-#: ../src/app/qml/ImageList.qml:275
-#, qt-format
-msgctxt "ImageList|"
-msgid "Version %1"
-msgstr "Version %1"
-
-#: ../src/app/qml/ImageList.qml:282
-msgctxt "ImageList|"
-msgid "Fedora Media Writer is now checking for new releases"
+#: ../src/app/qml/DrivePage.qml:122
+msgctxt "DrivePage|"
+msgid "USB Drive"
 msgstr ""
-"Scritôrs Supuarts di Fedora al sta cumò controlant se a son gnovis versions"
 
-#: ../src/app/qml/ImageList.qml:296
-#, qt-format
-msgctxt "ImageList|"
-msgid "Please report bugs or your suggestions on %1"
-msgstr "Par plasê segnale i erôrs o i sugjeriments su %1"
+#: ../src/app/qml/DrivePage.qml:130
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "There are no portable drives connected"
+msgctxt "DrivePage|"
+msgid "There are no portable drives connected"
+msgstr "No son unitât portatii tacadis"
 
-#: ../src/app/qml/ImageList.qml:356
-msgctxt "ImageList|"
-msgid "Display additional Fedora flavors"
-msgstr "Mostre savôrs di Fedora  adizionâi"
+#: ../src/app/qml/DrivePage.qml:149
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "DrivePage|"
+msgid "Download"
+msgstr "Daûr a discjariâ"
 
-#: ../src/app/linuxdrivemanager.cpp:181
+#: ../src/app/qml/DrivePage.qml:154
+#, fuzzy
+#| msgctxt "DeleteButton|"
+#| msgid "Delete the Downloaded Image"
+msgctxt "DrivePage|"
+msgid "Delete download after writing"
+msgstr "Elimine la imagjin discjariade"
+
+#: ../src/app/linuxdrivemanager.cpp:196
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
 msgstr "La unitât e je stade gjavade intat che si stave scrivint parsore."
 
-#: ../src/app/linuxdrivemanager.cpp:210
+#: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "Impussibil cjatâ il binari di jutori. Controle la instalazion."
 
-#: ../src/app/linuxdrivemanager.cpp:245
+#: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
 msgstr "Fermât prime che la scriture e fos finide."
 
-#: ../src/app/linuxdrivemanager.cpp:315 ../src/app/linuxdrivemanager.cpp:344
+#: ../src/app/linuxdrivemanager.cpp:329
 msgctxt "LinuxDrive|"
 msgid "Finished!"
 msgstr "Finît!"
 
-#: ../src/app/linuxdrivemanager.cpp:315 ../src/app/linuxdrivemanager.cpp:344
+#: ../src/app/linuxdrivemanager.cpp:329
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
 msgstr "Scriture di %1 lade a bon fin"
 
-#: ../src/app/linuxdrivemanager.cpp:337
+#: ../src/app/linuxdrivemanager.cpp:351
 msgctxt "LinuxDrive|"
 msgid "Error"
 msgstr "Erôr"
 
-#: ../src/app/linuxdrivemanager.cpp:337
+#: ../src/app/linuxdrivemanager.cpp:351
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
 msgstr "Scriture di %1 falide"
 
-#: ../src/app/linuxdrivemanager.cpp:116
+#: ../src/app/linuxdrivemanager.cpp:122
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr "Al semee che UDisks2 nol sedi disponibil o acessibil sul sisteme."
 
-#: ../src/app/macdrivemanager.cpp:101
+#: ../src/app/macdrivemanager.cpp:100
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "Impussibil cjatâ il binari di jutori. Controle la instalazion."
 
-#: ../src/app/macdrivemanager.cpp:188
+#: ../src/app/macdrivemanager.cpp:182
 msgctxt "MacDrive|"
 msgid "Error"
 msgstr "Erôr"
 
-#: ../src/app/macdrivemanager.cpp:188
+#: ../src/app/macdrivemanager.cpp:182
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
 msgstr "Scriture di %1 falide"
 
-#: ../src/app/macdrivemanager.cpp:192
+#: ../src/app/macdrivemanager.cpp:186
 msgctxt "MacDrive|"
 msgid "Finished!"
 msgstr "Finît!"
 
-#: ../src/app/macdrivemanager.cpp:192
+#: ../src/app/macdrivemanager.cpp:186
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
 msgstr "Scriture di %1 lade a bon fin"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/qml/MainPage.qml:43
+msgctxt "MainPage|"
+msgid "Select Image Source"
+msgstr ""
+
+#: ../src/app/qml/MainPage.qml:57
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
+msgctxt "MainPage|"
+msgid "Download automatically"
+msgstr "Discjariament falît"
+
+#: ../src/app/qml/MainPage.qml:65
+msgctxt "MainPage|"
+msgid "Select .iso file"
+msgstr ""
+
+#: ../src/app/qml/MainPage.qml:76
+#, fuzzy, qt-format
+#| msgctxt "RestoreDialog|"
+#| msgid "Restore %1?"
+msgctxt "MainPage|"
+msgid "Restore <b>%1</b>"
+msgstr "Ripristinâ %1?"
+
+#: ../src/app/portalfiledialog.cpp:145
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Image files"
+msgctxt "PortalFileDialog|"
+msgid "Image files"
+msgstr "File imagjin"
+
+#: ../src/app/portalfiledialog.cpp:155
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "All files (*)"
+msgctxt "PortalFileDialog|"
+msgid "All files"
+msgstr "Ducj i file (*)"
+
+#: ../src/app/portalfiledialog.cpp:165
+msgctxt "PortalFileDialog|"
+msgid "Open File"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Sielç un file de tô unitât(s)"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -345,180 +604,137 @@ msgstr ""
 "clavute</p><p>Pal moment e je supuartade dome la scriture di imagjins di "
 "discs grês (.iso o .bin)</p>"
 
-#: ../src/app/releasemanager.cpp:362
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora Spins"
 
-#: ../src/app/releasemanager.cpp:364
+#: ../src/app/releasemanager.cpp:399
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
-#: ../src/app/releasemanager.cpp:366
+#: ../src/app/releasemanager.cpp:401
+msgctxt "Release|"
+msgid "Emerging Fedora Editions"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:403
 msgctxt "Release|"
 msgid "Other"
 msgstr "Altri"
 
-#: ../src/app/releasemanager.cpp:936
+#: ../src/app/releasemanager.cpp:979
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 64bit"
 msgstr "Intel 64bit"
 
-#: ../src/app/releasemanager.cpp:936
+#: ../src/app/releasemanager.cpp:979
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "Imagjin formât ISO par Intel, AMD e altris PC compatibii (64-bit)"
 
-#: ../src/app/releasemanager.cpp:937
+#: ../src/app/releasemanager.cpp:980
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 32bit"
 msgstr "Intel 32bit"
 
-#: ../src/app/releasemanager.cpp:937
+#: ../src/app/releasemanager.cpp:980
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "Imagjin formât ISO par Intel, AMD e altris PC compatibii (32-bit)"
 
-#: ../src/app/releasemanager.cpp:938
+#: ../src/app/releasemanager.cpp:981
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:938
+#: ../src/app/releasemanager.cpp:981
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
 "Imagjin grese comprimude in LZMA par ARM v7-A machinis come Raspberry Pi2 e 3"
 
-#: ../src/app/releasemanager.cpp:939
+#: ../src/app/releasemanager.cpp:982
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:939
+#: ../src/app/releasemanager.cpp:982
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "Imagjin grese comprimude cun LZMA pes machinis AArch64"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Imagjin personalizade"
 
-#: ../src/app/releasemanager.cpp:797 ../src/app/releasemanager.cpp:809
+#: ../src/app/releasemanager.cpp:840 ../src/app/releasemanager.cpp:852
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "La imagjin discjariade e je ruvinade"
 
-#: ../src/app/releasemanager.cpp:814
+#: ../src/app/releasemanager.cpp:857
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Nol è pussibil lei il file discjariât."
 
-#: ../src/app/releasemanager.cpp:826
+#: ../src/app/releasemanager.cpp:869
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Impussibil cambiâ non al file temporani."
 
-#: ../src/app/releasemanager.h:386
-msgctxt "ReleaseVariant|"
-msgid "Preparing"
-msgstr "Daûr a prontâ"
-
-#: ../src/app/releasemanager.h:387
-msgctxt "ReleaseVariant|"
-msgid "Downloading"
-msgstr "Daûr a discjariâ"
-
-#: ../src/app/releasemanager.h:388
-msgctxt "ReleaseVariant|"
-msgid "Checking the download"
-msgstr "Daûr a controlâ il discjariament"
-
-#: ../src/app/releasemanager.h:389
-msgctxt "ReleaseVariant|"
-msgid "Ready to write"
-msgstr "Pront par scrivi"
-
-#: ../src/app/releasemanager.h:390
-msgctxt "ReleaseVariant|"
-msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr ""
-"Il file imagjin al è stât salvât te cartele dai file discjariâts. La "
-"scriture no je pussibile"
-
-#: ../src/app/releasemanager.h:391
-msgctxt "ReleaseVariant|"
-msgid "Writing"
-msgstr "Daûr a scrivi"
-
-#: ../src/app/releasemanager.h:392
-msgctxt "ReleaseVariant|"
-msgid "Checking the written data"
-msgstr "Daûr a controlâ i dâts scrits"
-
-#: ../src/app/releasemanager.h:393
-msgctxt "ReleaseVariant|"
-msgid "Finished!"
-msgstr "Finît!"
-
-#: ../src/app/releasemanager.h:394
-msgctxt "ReleaseVariant|"
-msgid "The written data is corrupted"
-msgstr "I dâts scrits a son ruvinâts"
-
-#: ../src/app/releasemanager.h:395
-msgctxt "ReleaseVariant|"
-msgid "Download failed"
-msgstr "Discjariament falît"
-
-#: ../src/app/releasemanager.h:396
-msgctxt "ReleaseVariant|"
-msgid "Error"
-msgstr "Erôr"
-
-#: ../src/app/releasemanager.cpp:607
+#: ../src/app/releasemanager.cpp:648
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../src/app/releasemanager.cpp:609
+#: ../src/app/releasemanager.cpp:650
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:611
+#: ../src/app/releasemanager.cpp:652
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "%1 Publicazion Candidade"
 
-#: ../src/app/qml/RestoreDialog.qml:31
+#: ../src/app/qml/RestorePage.qml:37
 #, qt-format
-msgctxt "RestoreDialog|"
-msgid "Restore %1?"
-msgstr "Ripristinâ %1?"
+msgctxt "RestorePage|"
+msgid "Restore Drive <b>%1</b>"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:73
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:49
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "<p align=\"justify\">\n"
+#| "                                                To reclaim all space "
+#| "available on the drive, it has to be restored to its factory settings.\n"
+#| "                                                The live system and all "
+#| "saved data will be deleted.\n"
+#| "                                            </p>\n"
+#| "                                            <p align=\"justify\">\n"
+#| "                                                You don't need to restore "
+#| "the drive if you want to write another live system to it.\n"
+#| "                                            </p>\n"
+#| "                                            <p align=\"justify\">\n"
+#| "                                                Do you want to continue?\n"
+#| "                                            </p>"
+msgctxt "RestorePage|"
 msgid ""
-"<p align=\"justify\">\n"
-"                                                To reclaim all space "
-"available on the drive, it has to be restored to its factory settings.\n"
-"                                                The live system and all "
-"saved data will be deleted.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                You don't need to restore "
-"the drive if you want to write another live system to it.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Do you want to continue?\n"
-"                                            </p>"
+"<p align=\"justify\"> To reclaim all space available on the drive, it has to "
+"be restored to its factory settings. The live system and all saved data will "
+"be deleted. </p> <p align=\"justify\"> You don't need to restore the drive "
+"if you want to write another live system to it. \n"
+"                </p> <p align=\"justify\"> Do you want to restore it to "
+"factory settings? </p>"
 msgstr ""
 "<p align=\"justify\">\n"
 "                                               Par recuperâ dut il spazi "
@@ -535,8 +751,13 @@ msgstr ""
 "                                                Continuâ?\n"
 "                                            </p>"
 
-#: ../src/app/qml/RestoreDialog.qml:105
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:67
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
+#| "portable drive.</p>"
+msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
@@ -544,34 +765,68 @@ msgstr ""
 "<p align=\"justify\">Par plasê spiete intant che Scritôr Supuarts di  Fedora "
 "al ripristini la unitât portatile.</p>"
 
-#: ../src/app/qml/RestoreDialog.qml:121
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:84
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid "Your drive was successfully restored!"
+msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "La unitât e je stade ripristinade!"
 
-#: ../src/app/qml/RestoreDialog.qml:138
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:94
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "Unfortunately, an error occurred during the process.<br>Please try "
+#| "restoring the drive using your system tools."
+msgctxt "RestorePage|"
 msgid ""
-"Unfortunately, an error occurred during the process.<br>Please try restoring "
+"Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
 "Purtrop al è capitât un erôr dilunc il procès.<br>Cîr di ripristinâ la "
 "unitât doprant i struments di sisteme."
 
-#: ../src/app/qml/RestoreDialog.qml:150
-msgctxt "RestoreDialog|"
-msgid "Cancel"
-msgstr "Anule"
+#: ../src/app/qml/RestorePage.qml:143
+msgctxt "RestorePage|"
+msgid "Restoring finished"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:159 ../src/app/qml/RestoreDialog.qml:170
-msgctxt "RestoreDialog|"
-msgid "Restore"
-msgstr "Ripristine"
+#: ../src/app/qml/VersionPage.qml:35
+msgctxt "VersionPage|"
+msgid "Select Fedora Release"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:159
-msgctxt "RestoreDialog|"
-msgid "Close"
-msgstr "Siere"
+#: ../src/app/qml/VersionPage.qml:48
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "VersionPage|"
+msgid "Select from:"
+msgstr "Selezionât:"
+
+#: ../src/app/qml/VersionPage.qml:53
+msgctxt "VersionPage|"
+msgid "Official Editions"
+msgstr ""
+
+#: ../src/app/qml/VersionPage.qml:59
+msgctxt "VersionPage|"
+msgid "Emerging Editions"
+msgstr ""
+
+#: ../src/app/qml/VersionPage.qml:65
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "spins"
+msgctxt "VersionPage|"
+msgid "Spins"
+msgstr "spins"
+
+#: ../src/app/qml/VersionPage.qml:71
+msgctxt "VersionPage|"
+msgid "Labs"
+msgstr ""
 
 #: ../src/app/windrivemanager.cpp:270
 msgctxt "WinDrive|"
@@ -589,153 +844,93 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "Scriture di %1 completade cun sucès"
 
-#: ../src/helper/linux/writejob.cpp:136 ../src/helper/win/writejob.cpp:271
-#: ../src/helper/mac/writejob.cpp:219
-msgctxt "WriteJob|"
-msgid "Failed to start decompressing."
-msgstr "No si è rivâts a tacâ la decompression."
-
-#: ../src/helper/linux/writejob.cpp:161 ../src/helper/linux/writejob.cpp:191
-#: ../src/helper/linux/writejob.cpp:228 ../src/helper/win/writejob.cpp:188
-#: ../src/helper/win/writejob.cpp:195 ../src/helper/mac/writejob.cpp:180
-#: ../src/helper/mac/writejob.cpp:244 ../src/helper/mac/writejob.cpp:274
-msgctxt "WriteJob|"
-msgid "Destination drive is not writable"
-msgstr "No si pues scrivi la unitât di destinazion"
-
-#: ../src/helper/linux/writejob.cpp:170 ../src/helper/win/writejob.cpp:315
-#: ../src/helper/mac/writejob.cpp:253
-msgctxt "WriteJob|"
-msgid "There is not enough memory to decompress the file."
-msgstr "No je vonde memorie par decomprimi il file."
-
-#: ../src/helper/linux/writejob.cpp:175 ../src/helper/win/writejob.cpp:320
-#: ../src/helper/mac/writejob.cpp:258
-msgctxt "WriteJob|"
-msgid "The downloaded compressed file is corrupted."
-msgstr "Il file comprimût discjariât al è ruvinât."
-
-#: ../src/helper/linux/writejob.cpp:178 ../src/helper/win/writejob.cpp:323
-#: ../src/helper/mac/writejob.cpp:261
-msgctxt "WriteJob|"
-msgid "Unsupported compression options."
-msgstr "Opzions di compression no supuartadis."
-
-#: ../src/helper/linux/writejob.cpp:181 ../src/helper/win/writejob.cpp:326
-#: ../src/helper/mac/writejob.cpp:264
-msgctxt "WriteJob|"
-msgid "Unknown decompression error."
-msgstr "Erôr di decompression no cognossût."
-
-#: ../src/helper/linux/writejob.cpp:206 ../src/helper/linux/writejob.cpp:221
-#: ../src/helper/win/writejob.cpp:361
-msgctxt "WriteJob|"
-msgid "Source image is not readable"
-msgstr "No si pues lei la imagjin sorzint"
-
-#: ../src/helper/linux/writejob.cpp:257 ../src/helper/win/writejob.cpp:406
-#: ../src/helper/mac/writejob.cpp:297
-msgctxt "WriteJob|"
-msgid "Your drive is probably damaged."
-msgstr "Al è probabil che la unitât e sedi ruvinade."
-
-#: ../src/helper/linux/writejob.cpp:262 ../src/helper/win/writejob.cpp:411
-#: ../src/helper/mac/writejob.cpp:302
-msgctxt "WriteJob|"
-msgid "Unexpected error occurred during media check."
-msgstr "Al è capitât un erôr inspietât dilunc il control dal supuart."
-
-#: ../src/helper/win/writejob.cpp:74
-msgctxt "WriteJob|"
-msgid "Couldn't open the drive for writing"
-msgstr "Impussibil vierzi la unitât pe scriture"
-
-#: ../src/helper/win/writejob.cpp:98
-msgctxt "WriteJob|"
-msgid "Couldn't lock the drive"
-msgstr "Impussibil blocâ la unitât"
-
-#: ../src/helper/win/writejob.cpp:134
-#, qt-format
-msgctxt "WriteJob|"
-msgid "Couldn't remove the drive %1:"
-msgstr "Impussibil gjavâ la unitât %1:"
-
-#: ../src/helper/win/writejob.cpp:209
-msgctxt "WriteJob|"
-msgid "Couldn't unlock the drive"
-msgstr "Impussibil sblocâ la unitât"
-
-#: ../src/helper/mac/writejob.cpp:82
-msgctxt "WriteJob|"
-msgid "Unable to allocate socket pair"
-msgstr "Impussibil assegnâ la cubie di socket"
-
-#: ../src/helper/mac/writejob.cpp:127
-msgctxt "WriteJob|"
-msgid "Unable to open destination for writing"
-msgstr "Impussibil vierzi la destinazion pe scriture"
-
-#: ../src/app/qml/main.qml:68
-#, qt-format
+#: ../src/app/qml/main.qml:116
+#, fuzzy
+#| msgid "Fedora Media Writer"
 msgctxt "main|"
-msgid ""
-"You inserted <b>%1</b> that already contains a live system.<br>Do you want "
-"to restore it to factory settings?"
-msgstr ""
-"Si à inserît <b>%1</b> che al conten za un sisteme \"live\".<br>Ripristinâ "
-"aes impostazions di fabriche?"
+msgid "Fedora Media Writer"
+msgstr "Scritôr Supuarts di Fedora"
 
-#: ../src/app/qml/main.qml:70
+#: ../src/app/qml/main.qml:154
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Workstation"
+msgctxt "main|"
+msgid "Select Fedora Version"
+msgstr "Fedora Workstation"
+
+#: ../src/app/qml/main.qml:170
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "main|"
+msgid "Select Drive"
+msgstr "Selezionât:"
+
+#: ../src/app/qml/main.qml:204
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "main|"
+msgid "Downloading"
+msgstr "Daûr a discjariâ"
+
+#: ../src/app/qml/main.qml:243 ../src/app/qml/main.qml:284
 msgctxt "main|"
 msgid "Restore"
 msgstr "Ripristine"
 
-#: ../src/app/qml/main.qml:146
-#, qt-format
+#: ../src/app/qml/main.qml:283
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Finished!"
 msgctxt "main|"
-msgid "Fedora Media Writer %1 Released"
-msgstr "Scritôr Supuarts di Fedora %1 Publicât"
+msgid "Finish"
+msgstr "Finît!"
 
-#: ../src/app/qml/main.qml:147
+#: ../src/app/qml/main.qml:286
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
 msgctxt "main|"
-msgid "Update for great new features and bugfixes!"
-msgstr "Inzorne par vê gnovis funzionalitâts e corezions di erôrs!"
+msgid "Download & Write"
+msgstr "Discjariament falît"
 
-#: ../src/app/qml/main.qml:148
+#: ../src/app/qml/main.qml:289 ../src/app/qml/main.qml:300
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Cancel"
 msgctxt "main|"
-msgid "Open Browser"
-msgstr "Vierç navigadôr"
+msgid "Cancel"
+msgstr "Anule"
 
-#: ../src/app/qml/main.qml:163
+#: ../src/app/qml/main.qml:291
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Retry"
 msgctxt "main|"
-msgid "Image files"
-msgstr "File imagjin"
+msgid "Retry"
+msgstr "Torne prove"
 
-#: ../src/app/qml/main.qml:163
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
-msgid "All files (*)"
-msgstr "Ducj i file (*)"
-
-#: ../src/app/qml/main.qml:192
-#, qt-format
-msgctxt "main|"
-msgid ""
-"%1<br>Writing images will not be possible.<br>You can still view Fedora "
-"flavors and download images to your hard drive."
+msgid "Next"
 msgstr ""
-"%1<br>La scriture des imagjins no sarà pussibile.<br>Però si podarà viodi i "
-"savôrs di Fedora e discjariâ lis imagjins su disc fis."
 
-#: ../src/app/qml/main.qml:196
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
-msgid "Ok"
-msgstr "Va ben"
+msgid "About"
+msgstr ""
+
+#: ../src/app/qml/main.qml:301
+msgctxt "main|"
+msgid "Previous"
+msgstr ""
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop.in:4
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
 msgid "Fedora Media Writer"
 msgstr "Scritôr Supuarts di Fedora"
 
@@ -756,10 +951,10 @@ msgid ""
 msgstr ""
 "Un strument par creâ une unitât USB Live inviabile cuntune edizion di "
 "Fedora. Scritor Supuarts di Fedora al pues no dome scrivi une imagjin su "
-"calvute, al pues ancje discjariâtile. Al ufrìs edizions uficiâi "
-"(Servidôr,Workstation), Fedora spins (KDE Plasma Desktop, Xfce Desktop, "
-"Cinnamon Desktop,...) e Fedora Labs (Design Suite, Security Lab,...). Al "
-"furnìs informazions di base su ogniune di lôr par fâti sielzi ben."
+"calvute, al pues ancje discjariâtile. Al ufrìs edizions uficiâi (Servidôr,"
+"Workstation), Fedora spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+"Desktop,...) e Fedora Labs (Design Suite, Security Lab,...). Al furnìs "
+"informazions di base su ogniune di lôr par fâti sielzi ben."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -771,1036 +966,1121 @@ msgstr ""
 "cjariadis sul disc fis locâl, ma ten iniments che al è stât provât dome cun "
 "lis imagjins di Fedora."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop.in:39
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:39
 msgid "Write Fedora images to your portable drives"
 msgstr "Scrîf lis imagjins di Fedora tes tôs unitâts portatilis"
 
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:77
+msgid "fmw;usb;iso;bootable;"
+msgstr ""
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Write %1"
+#~ msgstr "Scrîf %1"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Write the image immediately when the download is finished"
+#~ msgstr "Scrîf la imagjin daurman cuant che il discjariament al finìs"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Other"
+#~ msgstr "Altri"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
+#~ msgstr "Nol è stât pussibil eliminâ<br>\"<a href=\"%1\">%2</a>\"."
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "Back"
+#~ msgstr "Indaûr"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "Create Live USB…"
+#~ msgstr "Cree Live USB…"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "(%1 after writing)"
+#~ msgstr "(%1 dopo de scriture)"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid ""
+#~ "Fedora %1 was released! Check it out!<br>If you want a stable, finished "
+#~ "system, it's better to stay at version %2."
+#~ msgstr ""
+#~ "Fedora %1 e je stade publicade! Controle!<br>Se si desidere un sisteme "
+#~ "complet e stabil al è miôr restâ ae version %2"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid ", released on %1"
+#~ msgstr ", publicade al/ai %1"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "Other variants..."
+#~ msgstr "Altris variantis..."
+
+#~ msgctxt "ImageList|"
+#~ msgid "Find an operating system image"
+#~ msgstr "Cjate une imagjin di sisteme operatîf"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Checking for new releases"
+#~ msgstr "Daûr a controlâ gnovis versions"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Version %1"
+#~ msgstr "Version %1"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Display additional Fedora flavors"
+#~ msgstr "Mostre savôrs di Fedora  adizionâi"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Ready to write"
+#~ msgstr "Pront par scrivi"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid ""
+#~ "Image file was saved to your downloads folder. Writing is not possible"
+#~ msgstr ""
+#~ "Il file imagjin al è stât salvât te cartele dai file discjariâts. La "
+#~ "scriture no je pussibile"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Finished!"
+#~ msgstr "Finît!"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "The written data is corrupted"
+#~ msgstr "I dâts scrits a son ruvinâts"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Error"
+#~ msgstr "Erôr"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Cancel"
+#~ msgstr "Anule"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Restore"
+#~ msgstr "Ripristine"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Close"
+#~ msgstr "Siere"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Failed to start decompressing."
+#~ msgstr "No si è rivâts a tacâ la decompression."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Destination drive is not writable"
+#~ msgstr "No si pues scrivi la unitât di destinazion"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "There is not enough memory to decompress the file."
+#~ msgstr "No je vonde memorie par decomprimi il file."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "The downloaded compressed file is corrupted."
+#~ msgstr "Il file comprimût discjariât al è ruvinât."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unsupported compression options."
+#~ msgstr "Opzions di compression no supuartadis."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unknown decompression error."
+#~ msgstr "Erôr di decompression no cognossût."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Source image is not readable"
+#~ msgstr "No si pues lei la imagjin sorzint"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Your drive is probably damaged."
+#~ msgstr "Al è probabil che la unitât e sedi ruvinade."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unexpected error occurred during media check."
+#~ msgstr "Al è capitât un erôr inspietât dilunc il control dal supuart."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't open the drive for writing"
+#~ msgstr "Impussibil vierzi la unitât pe scriture"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't lock the drive"
+#~ msgstr "Impussibil blocâ la unitât"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't remove the drive %1:"
+#~ msgstr "Impussibil gjavâ la unitât %1:"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't unlock the drive"
+#~ msgstr "Impussibil sblocâ la unitât"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unable to allocate socket pair"
+#~ msgstr "Impussibil assegnâ la cubie di socket"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unable to open destination for writing"
+#~ msgstr "Impussibil vierzi la destinazion pe scriture"
+
+#~ msgctxt "main|"
+#~ msgid ""
+#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
+#~ "want to restore it to factory settings?"
+#~ msgstr ""
+#~ "Si à inserît <b>%1</b> che al conten za un sisteme \"live\"."
+#~ "<br>Ripristinâ aes impostazions di fabriche?"
+
+#~ msgctxt "main|"
+#~ msgid "Fedora Media Writer %1 Released"
+#~ msgstr "Scritôr Supuarts di Fedora %1 Publicât"
+
+#~ msgctxt "main|"
+#~ msgid "Update for great new features and bugfixes!"
+#~ msgstr "Inzorne par vê gnovis funzionalitâts e corezions di erôrs!"
+
+#~ msgctxt "main|"
+#~ msgid "Open Browser"
+#~ msgstr "Vierç navigadôr"
+
+#~ msgctxt "main|"
+#~ msgid ""
+#~ "%1<br>Writing images will not be possible.<br>You can still view Fedora "
+#~ "flavors and download images to your hard drive."
+#~ msgstr ""
+#~ "%1<br>La scriture des imagjins no sarà pussibile.<br>Però si podarà viodi "
+#~ "i savôrs di Fedora e discjariâ lis imagjins su disc fis."
+
+#~ msgctxt "main|"
+#~ msgid "Ok"
+#~ msgstr "Va ben"
+
 # ############## metadata.json ###############
-#: [Workstation].subvariant
-msgid "workstation"
-msgstr "workstation"
-
-#: [Workstation].category
-msgctxt "Release|"
-msgid "product"
-msgstr "prodot"
-
-#: [Workstation].name
-msgctxt "Release|"
-msgid "Fedora Workstation"
-msgstr "Fedora Workstation"
-
-#: [Workstation].summary
-msgctxt "Release|"
-msgid "This is the Linux workstation you've been waiting for."
-msgstr "Cheste e je la postazion di lavôr Linux che tu stavis spietant."
-
-#: [Workstation].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora Workstation is a reliable, user-friendly, and powerful operating "
-"system for your laptop or desktop computer. It supports a wide range of "
-"developers, from hobbyists and students to professionals in corporate "
-"environments."
-msgstr ""
-"Fedora Workstation al è un sisteme operatîf afidabil, facil e potent, adat "
-"ai portatii o ai computer fis. Al supuarte une grande schirie di "
-"svilupadôrs, da chei che a svilupin par passetimp e students, ai "
-"professioniscj in ambits aziendâi."
-
-#: [Workstation].description[1]
-msgctxt "Release|"
-msgid ""
-"“The plethora of tools provided by<br /> Fedora allows me to get the job "
-"done.<br /> It just works.”"
-msgstr ""
-"“La sorebondance di struments furnîts di <br /> Fedora mi permet di puartâ a "
-"tiermin il lavôr.<br /> Al funzione e vonde.”"
-
-#: [Workstation].description[2]
-msgctxt "Release|"
-msgid "JVM performance engineer"
-msgstr "Inzegnîr des prestazion di JVM"
-
-#: [Workstation].description[3]
-msgctxt "Release|"
-msgid "Sleek user interface"
-msgstr "Interface utent elegante"
-
-#: [Workstation].description[4]
-msgctxt "Release|"
-msgid ""
-"Focus on your code in the GNOME 3 desktop environment. GNOME is built with "
-"developer feedback and minimizes distractions, so you can concentrate on "
-"what's important."
-msgstr ""
-"Concentriti sul to codiç tal ambient scritori GNOME 3. GNOME al è costruît "
-"su la fonde dai parês dai svilupadôrs e al minimize lis distrazions, cussì "
-"che tu ti puedis concentrâ su ce che al è impuartant."
-
-#: [Workstation].description[5]
-msgctxt "Release|"
-msgid "Complete open source toolbox"
-msgstr "Cassele dai imprescj libars complete"
-
-#: [Workstation].description[6]
-msgctxt "Release|"
-msgid ""
-"Skip the drag of trying to find or build the tools you need. With Fedora's "
-"complete set of open source languages, tools, and utilities, everything is a "
-"click or command line away. There's even project hosting and repositories "
-"like COPR to make your code and builds available quickly to the community."
-msgstr ""
-"Evite il lavôr di cirî di cjatâ o costruî i imprescj che ti coventin. Cun la "
-"cumbinazion complete di Fedora di lengaçs libars, struments e utilitâts, dut "
-"al è a un clic (o a comant) di distance. Al inclût ancje un puest dulà "
-"ospitâ i progjets e i dipuesits come COPR par rindi il to codiç e lis "
-"versions costruidis disponibilis ae comunitât."
-
-#: [Workstation].description[7]
-msgctxt "Release|"
-msgid "GNOME Boxes & other virt tools"
-msgstr "GNOME Scjatulis e altris struments di virtualizazion"
-
-#: [Workstation].description[8]
-msgctxt "Release|"
-msgid ""
-"Get virtual machines up and running quickly to test your code on multiple "
-"platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization "
-"tools for even more control."
-msgstr ""
-"Configure e eseguìs lis machinis virtuâls subite, par provâ il to codiç su "
-"plui plateformis, doprant GNOME Scjatulis. O aprofondìs i potents struments "
-"di virtualizazion, che si puedin meti in script, par vê ancjemò plui control."
-
-#: [Workstation].description[9]
-msgctxt "Release|"
-msgid "Built-in Docker support"
-msgstr "Supuart par Docker incorporât"
-
-#: [Workstation].description[10]
-msgctxt "Release|"
-msgid ""
-"Containerize your own apps, or deploy containerized apps out of the box on "
-"Fedora, using the latest technology like Docker."
-msgstr ""
-"Met tai contignidôrs lis tôs aplicazions o distribuìs lis aplicazions tai "
-"contignidôrs prontis di doprâ su Fedora, doprant lis ultimis tecnologjiis "
-"come Docker."
-
-#: [Server].subvariant
-msgctxt "Release|"
-msgid "server"
-msgstr "servidôr"
-
-#: [Server].category [Server].name
-msgctxt "Release|"
-msgid "Fedora Server"
-msgstr "Fedora Server"
-
-#: [Server].summary
-msgctxt "Release|"
-msgid ""
-"The latest technology. A stable foundation. Together, for your applications "
-"and services."
-msgstr ""
-"Lis ultimis tecnologjiis. Une fonde stabile. Adun pes tôs aplicazions e i "
-"tiei servizis."
-
-#: [Server].description[0]
-msgctxt "Release|"
-msgid ""
-"“The simplicity introduced with rolekit and cockpit have made server "
-"deployments a breeze. What took me a few days on other operating systems "
-"took less than an hour with Fedora %(rel)s Server. It just works.”"
-msgstr ""
-"“La semplicitât introdote cun rolekit e cockpit e à fat in mût che meti "
-"impins i servidôrs al sedi un zûc di fruts. Ce che mi puartave vie un pôcs "
-"di dîs su altris sistemis operatîfs cun Fedora %(rel)s Server mi à puartât "
-"vie mancul di une ore. Al funzione e vonde!”"
-
-#: [Server].description[1]
-msgctxt "Release|"
-msgid "Systems Engineer"
-msgstr "Inzegnîr di sistemis"
-
-#: [Server].description[2]
-msgctxt "Release|"
-msgid ""
-"Fedora Server is a short-lifecycle, community-supported server operating "
-"system that enables seasoned system administrators experienced with any OS "
-"to make use of the very latest server-based technologies available in the "
-"open source community."
-msgstr ""
-"Fedora Server al è un sisteme operatîf a cicli di vite curt, supuartât de "
-"comunitât che al permet ai aministradôrs di sisteme esperts e cun esperience "
-"su cualsisei SO di doprâ lis ultimis tecnologjiis disponibilis par servidôrs "
-"te comunitât open source."
-
-#: [Server].description[3]
-msgctxt "Release|"
-msgid "Easy Administration"
-msgstr "Aministrazion facile"
-
-#: [Server].description[4]
-msgctxt "Release|"
-msgid ""
-"Manage your system simply with Cockpit's powerful, modern interface. View "
-"and monitor system performance and status, and deploy and manage container-"
-"based services."
-msgstr ""
-"Gjestìs il to sisteme in maniere semplice cu la interface moderne e potente "
-"di Cockpit. Viôt e ten di voli il stât e lis prestazion dal sisteme e met "
-"impins e gjestìs i servizis basâts su contignidôrs."
-
-#: [Server].description[5]
-msgctxt "Release|"
-msgid "Server Roles"
-msgstr "Rûi dai servidôrs"
-
-#: [Server].description[6]
-msgctxt "Release|"
-msgid ""
-"There's no need to set up your server from scratch when you use server "
-"roles. Server roles plug into your Fedora Server system, providing a well-"
-"integrated service on top of the Fedora Server platform. Deploy and manage "
-"these prepared roles simply using the Rolekit tool."
-msgstr ""
-"Nol covente tirâ sù il servidôr dal nuie cuant che tu dopris i rûi dai "
-"servidôrs. I rûi dai servidôrs si inserissin tal sisteme Fedora Server, "
-"furnint un servizi ben integrât parsore de plateforme Fedora Server. Met "
-"impins e gjestìs chescj rûi preparâts doprant semplicementri il strument "
-"Rolekit."
-
-#: [Server].description[7]
-msgctxt "Release|"
-msgid "Database Services"
-msgstr "Servizis de base di dâts"
-
-#: [Server].description[8]
-msgctxt "Release|"
-msgid ""
-"Fedora Server brings with it an enterprise-class, scalable database server "
-"powered by the open-source PostgreSQL project."
-msgstr ""
-"Fedora Server al puarte cun se un servidôr des basis di dâts di classe "
-"imprenditoriâl e scjalabil gracie al progjet a codiç viert PostgreSQL."
-
-#: [Server].description[9]
-msgctxt "Release|"
-msgid "Complete Enterprise Domain Solution"
-msgstr "Soluzion complete di domini di imprese"
-
-#: [Server].description[10]
-msgctxt "Release|"
-msgid ""
-"Level up your Linux network with advanced identity management, DNS, "
-"certificate services, Windows(TM) domain integration throughout your "
-"environment with FreeIPA, the engine that drives Fedora Server's Domain "
-"Controller role."
-msgstr ""
-"Miore la tô rêt Linux cu la gjestion avanzade des identitâts, il DNS, i "
-"servizis dai certificâts, la integrazion dai dominis Windows(TM) in dut il "
-"to ambient cun FreeIPA, il motôr che al vuide il rûl dal controlôr dal "
-"domini di Fedora Server."
-
-#: [Server].description[11]
-msgctxt "Release|"
-msgid ""
-"“The Docker Role for Fedora Server was simple and fast to install so that "
-"you can run your Docker images. This makes a great testbed for beginners and "
-"experts with docker so that they can develop their applications on the fly.”"
-msgstr ""
-"“Il Rûl di Docker par Fedora Server al è sempliç e svelt di instalâ cussì "
-"che tu puedis eseguî lis tôs imagjins Docker. Chest al è un maraveôs banc di "
-"prove pai novizis e pai esperts cun docker in mût che a puedin disvilupâ lis "
-"lôr aplicazions intun lamp.”"
-
-#: [Server].description[12]
-msgctxt "Release|"
-msgid "</p><p align=right> ― <em>John Unland, "
-msgstr "</p><p align=right> ― <em>John Unland, "
-
-#: [Server].description[13]
-msgctxt "Release|"
-msgid "Information Systems Student"
-msgstr "Student di sistemis di informazion"
-
-#: [Silverblue].subvariant
-msgctxt "Release|"
-msgid "silverblue"
-msgstr "silverblue"
-
-#: [Silverblue].category
-msgctxt "Release|"
-msgid "emerging"
-msgstr "emerging"
-
-#: [Silverblue].name
-msgctxt "Release|"
-msgid "Fedora Silverblue"
-msgstr "Fedora Silverblue"
-
-#: [Silverblue].summary
-msgctxt "Release|"
-msgid ""
-"An extremely stable and reliable desktop operating system, excellent for "
-"developers and for those using container-focused workflows."
-msgstr ""
-"Un sisteme operatîf par scritori une vore stabil e afidabil, ecelent pai "
-"svilupadôrs e par chei che a doprin flus di lavôr centrâts sui contignidôrs."
-
-#: [Silverblue].description[0]
-msgctxt "Release|"
-msgid ""
-"Silverblue is a variant of Fedora Workstation. It looks, feels and behaves "
-"like a regular desktop operating system, and the experience is similar to "
-"what you find with using a standard Fedora Workstation."
-msgstr ""
-"Silverblue e je une variante di Fedora Workstation. E somee e si compuarte "
-"come un sisteme operatîf di scritori regolâr e la esperience e je simil a "
-"chê che tu cjatis doprant une Fedora Workstation standard."
-
-#: [Silverblue].description[1]
-msgctxt "Release|"
-msgid ""
-"However, unlike other operating systems, Silverblue has reprovisionable "
-"infrastructure with anti-hysteresis properties. This means that every "
-"installation is identical to every other installation of the same version. "
-"The operating system that is on disk is exactly the same from one machine to "
-"the next, and it never changes as it is used."
-msgstr ""
-"Dut câs, a diference di chei altris sistemis operatîfs, Silverblue al à une "
-"infrastruture che si pues ripeti cun proprietâts anti-isteresi. Chest al "
-"significhe che ogni instalazion e je compagne di dutis lis altris "
-"instalazions de stesse version. Il sisteme operatîf che al sta sul disc al è "
-"il stes di machine in machine e nol cambie mai cuant che al ven doprât."
-
-#: [Silverblue].description[2]
-msgctxt "Release|"
-msgid ""
-"Silverblue’s design is intended to make it more stable, less prone to bugs, "
-"and easier to test and develop. The design also makes it an excellent "
-"platform for containerized applications as well as container-based software "
-"development. In each case, applications and containers are kept separate "
-"from the host system, improving stability and reliability."
-msgstr ""
-"Silverblue al è stât progjetât par jessi plui stabil, mancul puartât a vê "
-"erôrs e plui facil di provâ e disvilupâ. La sô struture lu rint ancje une "
-"plateforme ecelente par meti in contignidôr lis aplicazions e par disvilupâ "
-"software basât su contignidôrs. In ogni câs, lis aplicazions e i "
-"contignidôrs a vegnin tignûts separâts dal sisteme che ju ospite, miorant "
-"cussì la stabilitât e la afidabilitât."
-
-#: [Silverblue].description[3]
-msgctxt "Release|"
-msgid ""
-"Silverblue’s core technologies have some other helpful features. OS updates "
-"are fast and there’s no waiting around for them to install: just reboot as "
-"normal to start using the next version. With Silverblue, it is also possible "
-"to roll back to the previous version of the operating system, if something "
-"goes wrong."
-msgstr ""
-"Il cûr des tecnologjiis di Silverblue al à cualchi altre funzionalitât "
-"utile. I inzornaments dal SO a son svelts e no tu âs di spietâ par vêju "
-"instalâts: al baste tornâ a inviâ come simpri par tacâ a doprâ la version "
-"sucessive. Cun Silverblue, se alc al va strucj, al è ancje pussibil tornâ "
-"indaûr ae version precedente dal sisteme operatîf."
-
-#: [KDE].subvariant
-msgctxt "Release|"
-msgid "kde"
-msgstr "kde"
-
-#: [KDE].category
-msgctxt "Release|"
-msgid "spins"
-msgstr "spins"
-
-#: [KDE].name
-msgctxt "Release|"
-msgid "Fedora KDE Plasma Desktop"
-msgstr "Fedora KDE Plasma Desktop"
-
-#: [KDE].summary
-msgctxt "Release|"
-msgid "A complete, modern desktop built using the KDE Plasma Desktop."
-msgstr "Un scritori moderni e complet fat sù doprant il KDE Plasma Desktop."
-
-#: [KDE].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based operating "
-"system utilizing the KDE Plasma Desktop as the main user interface."
-msgstr ""
-"La edizion di Fedora KDE Plasma Desktop al è un sisteme operatîf potent "
-"basât su Fedora che al dopre il KDE Plasma Desktop tant che interface utent "
-"principâl."
-
-#: [KDE].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora KDE Plasma Desktop comes with many pre-selected top quality "
-"applications that suit all modern desktop use cases - from online "
-"communication like web browsing, instant messaging and electronic mail "
-"correspondence, through multimedia and entertainment, to an advanced "
-"productivity suite, including office applications and enterprise grade "
-"personal information management."
-msgstr ""
-"Fedora KDE Plasma Desktop al rive cun tantis aplicazions pre-selezionadis di "
-"cualitât superiôr che si adatin a ducj i câs di utilizazion dai scritoris "
-"modernis - partint des comunicazions in rêt come la navigazion web, il mandâ "
-"messaçs istantanis e la corispondence de pueste eletroniche e continuant cul "
-"divertiment e il multimedia rivant fin aes suite avanzadis di produtivitât, "
-"includudis lis aplicazions di ufici e la gjestion des informazions personâls "
-"di grât imprenditoriâl."
-
-#: [KDE].description[2]
-msgctxt "Release|"
-msgid ""
-"All KDE applications are well integrated, with a similar look and feel and "
-"an easy to use interface, accompanied by an outstanding graphical appearance."
-msgstr ""
-"Dutis lis aplicazions KDE a son ben integradis, cuntun aspiets e "
-"compuartaments simii e une interface facile di doprâ, il dut acompagnât di "
-"un aspiet grafic ecezionâl."
-
-#: [XFCE].subvariant
-msgctxt "Release|"
-msgid "xfce"
-msgstr "xfce"
-
-#: [XFCE].category [XFCE].name
-msgctxt "Release|"
-msgid "Fedora Xfce Desktop"
-msgstr "Fedora Xfce Desktop"
-
-#: [XFCE].summary
-msgctxt "Release|"
-msgid "A complete, well-integrated Xfce Desktop."
-msgstr "Xfce, un scritori complet e ben integrât."
-
-#: [XFCE].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast and "
-"lightweight, while still being visually appealing and user friendly."
-msgstr ""
-"La spin Fedora Xfce e met in mostre il scritori Xfce, che al ponte a jessi "
-"veloç e lizêr, ma tal stes timp inmagant a nivel grafic e facil di doprâ."
-
-#: [XFCE].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
-msgstr ""
-"Fedora Xfce al è un scritori complet a ducj i efiets che al dopre i "
-"standards freedesktop.org."
-
-#: [LXQT].subvariant
-msgctxt "Release|"
-msgid "lxqt"
-msgstr "lxqt"
-
-#: [LXQT].category [LXQT].name
-msgctxt "Release|"
-msgid "Fedora LXQt Desktop"
-msgstr "Fedora LXQt Desktop"
-
-#: [LXQT].summary
-msgctxt "Release|"
-msgid "A lightweight, well-integrated LXQt desktop environment."
-msgstr "LXQt, un ambient di scritori lizêr e ben integrât."
-
-#: [LXQT].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora LXQt provides a lightweight, well-integrated LXQt desktop "
-"environment. In addition to LXQt itself it provides a small, well selected "
-"collection of applications like the QupZilla browser, which combines "
-"Chromium's rendering engine with a nice Qt experience. Other applications "
-"include the Trojita mail client, the qBittorrent client, the Yarock music "
-"player and a set of some more commonly used applications. As all "
-"applications use the same Qt5 toolkit and the Breeze theme known from KDE, "
-"the desktop provides a unified and well-integrated style and theming. In "
-"addition breeze-gtk is provided to allow the user to integrate GTK "
-"applications too."
-msgstr ""
-"Fedora LXQt al furnìs un ambient di scritori LXQt lizêr e ben integrât. In "
-"zonte a LXQt al furnìs une piçule e ben selezionade colezion di aplicazions "
-"com il navigadôr QupZilla, che al cumbine il motôr di rapresentazion di "
-"Chromium cuntune esperience Qt ninine. Altris aplicazion includudis a son il "
-"client di pueste Trojita, il client qBittorrent, il riprodutôr musicâl "
-"Yarock e une cumbinazion di altris aplicazions dopradis dispès. Viodût che "
-"dutis lis aplicazions a doprin il stes toolkit Qt5 e il teme Breeze "
-"cognossût di KDE, il scritori al ufrìs un stîl e un teme unificât e ben "
-"integrât. In plui al ven furnît breeze-gtk par permeti al utent di integrâ "
-"ancje lis aplicazions GTK."
-
-#: [Mate].subvariant
-msgctxt "Release|"
-msgid "mate"
-msgstr "mate"
-
-#: [Mate].category [Mate].name
-msgctxt "Release|"
-msgid "Fedora MATE-Compiz Desktop"
-msgstr "Fedora MATE-Compiz Desktop"
-
-#: [Mate].summary
-msgctxt "Release|"
-msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
-msgstr "Un classic Fedora Desktop cuntun gjestôr di barcons 3D adizionâl."
-
-#: [Mate].description[0]
-msgctxt "Release|"
-msgid ""
-"The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE Desktop "
-"is a lightweight, powerful desktop designed with productivity and "
-"performance in mind. The default windows manager is Marco which is usable "
-"for all machines and VMs. Compiz Fusion is a beautiful 3D windowing manager "
-"with Emerald and GTK+ theming."
-msgstr ""
-"La spin MATE Compiz e met adun il scritori MATE cun Compiz Fusion. Il "
-"scritori Mate al è un scritori lizêr e potent progjetât pensant ae "
-"produtivitât e aes prestazions. Il gjestôr dai barcons predefinît al è Marco "
-"che si lu pues doprâ cun dutis lis machinis e MVs. Compiz Fusion al è un "
-"biel gjestôr di barcons 3D cun temis GTK+ e Emerald."
-
-#: [Mate].description[1]
-msgctxt "Release|"
-msgid ""
-"If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
-"should definitely try the MATE-Compiz spin."
-msgstr ""
-"Se tu vuelis un scritori Fedora potent e lizêr cun biei efiets 3D cence dubi "
-"tu âs di provâ la spin MATE-Compiz."
-
-#: [Cinnamon].subvariant
-msgctxt "Release|"
-msgid "cinnamon"
-msgstr "cinnamon"
-
-#: [Cinnamon].category [Cinnamon].name
-msgctxt "Release|"
-msgid "Fedora Cinnamon Desktop"
-msgstr "Fedora Cinnamon Desktop"
-
-#: [Cinnamon].summary
-msgctxt "Release|"
-msgid "A modern desktop featuring traditional Gnome user experience."
-msgstr ""
-"Un scritori moderni che al presente la tradizionâl esperience utent di Gnome."
-
-#: [Cinnamon].description[0]
-msgctxt "Release|"
-msgid ""
-"Cinnamon is a Linux desktop which provides advanced innovative features and "
-"a traditional user experience. The desktop layout is similar to Gnome 2. The "
-"underlying technology is forked from Gnome Shell. The emphasis is put on "
-"making users feel at home and providing them with an easy to use and "
-"comfortable desktop experience."
-msgstr ""
-"Cinnamon al è un scritori Linux che al furnìs funzionalitâts inovativis "
-"avanzadis e une esperience utent tradizionâl. La disposizion dal scritori e "
-"je simile a chê di Gnome 2. La tecnologjie che e sta sot e rive di Gnome "
-"Shell. La enfasi e je chê di fâ sintî i utents a cjase e dâur une esperience "
-"di scritori semplice e comude."
-
-#: [Cinnamon].description[1]
-msgctxt "Release|"
-msgid ""
-"Cinnamon is a popular desktop alternative to Gnome 3 and this spin provides "
-"the option to quickly try and install this desktop."
-msgstr ""
-"Cinnamon e je une popolâr alternative di scritori a Gnome 3 e cheste spin e "
-"ufrìs la opzion par provâ e instalâ daurman chest scritori."
-
-#: [LXDE].subvariant
-msgctxt "Release|"
-msgid "lxde"
-msgstr "lxde"
-
-#: [LXDE].category [LXDE].name
-msgctxt "Release|"
-msgid "Fedora LXDE Desktop"
-msgstr "Fedora LXDE Desktop"
-
-#: [LXDE].summary
-msgctxt "Release|"
-msgid "A light, fast, less-resource hungry desktop environment."
-msgstr "Un ambient di scritori snel, svelt e che al mangje mancul risorsis."
-
-#: [LXDE].description[0]
-msgctxt "Release|"
-msgid ""
-"LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
-"performant, and energy-saving desktop environment. It maintained by an "
-"international community of developers and comes with a beautiful interface, "
-"multi-language support, standard keyboard shortcuts and additional features "
-"like tabbed file browsing."
-msgstr ""
-"LXDE, il \"Lightweight X11 Desktop Environment\", al è un ambient di "
-"scritori une vore veloç, ad altis prestazions e che al sparagne energjiis. "
-"Al è mantignût di une comunitât internazionâl di svilupadôrs e si presente "
-"cuntune interface biele, cun supuart par plui lenghis, scurtis di tastiere "
-"standard e funzionalitâts adizionâls come la esplorazion dai file in schedis."
-
-#: [LXDE].description[1]
-msgctxt "Release|"
-msgid ""
-"LXDE is not designed to be powerful and bloated, but to be usable and slim. "
-"A main goal of LXDE is to keep computer resource usage low. It is especially "
-"designed for computers with low hardware specifications like netbooks, "
-"mobile devices (e.g. MIDs) or older computers."
-msgstr ""
-"LXDE nol è progjetât par jessi potent e sglonf, ma par jessi doprabil e "
-"snel. Un obietîf principâl di LXDE al è chel di tignî bassis lis risorsis "
-"dal computer dopradis. Al è soredut progjetât pai computers cun specifichis "
-"hardware bassis come i netbooks, i dispositîfs mobii (p.e. i MIDs: "
-"Dispositîfs Internet Mobii) o computers vecjos."
-
-#: [SOAS].subvariant
-msgctxt "Release|"
-msgid "soas"
-msgstr "soas"
-
-#: [SOAS].category [SOAS].name
-msgctxt "Release|"
-msgid "Fedora SoaS Desktop"
-msgstr "Fedora SoaS Desktop"
-
-#: [SOAS].summary
-msgctxt "Release|"
-msgid "Discover. Reflect. Share. Learn."
-msgstr "Scuvierç. Riflet. Condivît. Impare."
-
-#: [SOAS].description[0]
-msgctxt "Release|"
-msgid ""
-"Sugar on a Stick is a Fedora-based operating system featuring the award-"
-"winning Sugar Learning Platform and designed to fit on an ordinary USB "
-"thumbdrive (\"stick\")."
-msgstr ""
-"Sugar on a Stick al è un sisteme operatîf basât su Fedora che al presente la "
-"pluripremiade plateforme di aprendiment Sugar e al è progjetât par ficjâsi "
-"intune ordenarie clavute USB (\"stick\")."
-
-#: [SOAS].description[1]
-msgctxt "Release|"
-msgid ""
-"Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
-"child-friendly graphical environment. Sugar automatically saves your "
-"progress to a \"Journal\" on your stick, so teachers and parents can easily "
-"pull up \"all collaborative web browsing sessions done in the past week\" or "
-"\"papers written with Daniel and Sarah in the last 24 hours\" with a simple "
-"query rather than memorizing complex file/folder structures. Applications in "
-"Sugar are known as Activities, some of which are described below."
-msgstr ""
-"Sugar al met in bande la metafore tradizionâdi di \"scritori di ufici\", "
-"presentant un ambient grafic sempliç pai fruts. Sugar al salve in automatic "
-"i tiei avanzaments suntun \"Gjornâl\" te clavute, cussì che i insegnants e i "
-"gjenitôrs a puedin tirâ fûr cun facilitât \"dutis lis sessions di navigazion "
-"web colaborativis fatis inte setemane passade\" o \"lis cjartis scritis cun "
-"Denêl e Sara intes ultimis 24 oris\" cuntune semplice domande invezit di "
-"memorizâ la complesse struture di files/cartelis. Lis aplicazions in Sugar a "
-"son cognossudis come Ativitâts, cualchidune di chês a son descritis chi sot."
-
-#: [SOAS].description[2]
-msgctxt "Release|"
-msgid ""
-"It is now deployable for the cost of a stick rather than a laptop; students "
-"can take their Sugar on a Stick thumbdrive to any machine - at school, at "
-"home, at a library or community center - and boot their customized computing "
-"environment without touching the host machine’s hard disk or existing system "
-"at all."
-msgstr ""
-"Cumò al è pussibil distribuîlu pal cost di une clavute invezit che di un "
-"portatil; i students a puedin puartâ la lôr clavute Sugar on a Stick su "
-"cualsisei machine - a scuele, a cjase, in librarie o al centri ricreatîf - e "
-"inviâ il lôr ambient di elaborazion personalizât cence tocjâ il disc fis de "
-"machine host o il sisteme esistent."
-
-#: [i3].subvariant
-msgctxt "Release|"
-msgid "i3"
-msgstr "i3"
-
-#: [i3].category [i3].name
-msgctxt "Release|"
-msgid "Fedora i3 Desktop"
-msgstr "Fedora i3 Desktop"
-
-#: [i3].summary
-msgctxt "Release|"
-msgid "Simplicity over Complexity"
-msgstr "Semplicitât sore de complessitât"
-
-#: [i3].description[1]
-msgctxt "Release|"
-msgid "The Fedora i3 Spin provides the popular i3 tiling window manager."
-msgstr "La spin Fedora i3 e ufrìs il popolâr gjestôr di barcons piastrelâts i3."
-
-#: [i3].description[3]
-msgctxt "Release|"
-msgid ""
-"It makes i3 accessible and appealing to both novices and advanced users who "
-"prefer not to use a mouse, touchpad, or other pointing device to interact "
-"with their environment. Featuring lightweight applications for web browsing, "
-"text editing, and media playback, the Fedora i3 Spin offers a complete "
-"experience with a minimalist user interface."
-msgstr ""
-"i3 al è acesibil e atraent a novizis e utents avanzâts che a preferissin no "
-"doprâ il mouse, il touchpad o altris dispositîs di pontament par interagjî "
-"cul lôr ambient. Presentant aplicazions lizeris pe navigazion web, la "
-"modifiche dai tescj e la riproduzion multimediâl, la Spin Fedora i3 e ufrìs "
-"une esperience complete cuntune interface utent minimaliste."
-
-#: [Astronomy].subvariant
-msgctxt "Release|"
-msgid "astronomy"
-msgstr "astronomy"
-
-#: [Astronomy].category
-msgctxt "Release|"
-msgid "labs"
-msgstr "labs"
-
-#: [Astronomy].name
-msgctxt "Release|"
-msgid "Fedora Astronomy"
-msgstr "Fedora Astronomy"
-
-#: [Astronomy].summary
-msgctxt "Release|"
-msgid ""
-"Powerful completely open-source and free tool for amateurs and professionals."
-msgstr ""
-"Imprest potent dal dut libar, gratuit e a codiç viert pai amadôrs e "
-"professioniscj."
-
-#: [Astronomy].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora Astronomy brings a complete open source toolchain to both amateur and "
-"professional astronomers."
-msgstr ""
-"Fedora Astronomy al puarte une complete cjadene di struments a codiç viert "
-"sedi par astronoms amadôrs che par professioniscj."
-
-#: [Astronomy].description[1]
-msgctxt "Release|"
-msgid ""
-"The Spin provides the Fedora KDE desktop enhanced with a complete scientific "
-"Python environment and the AstrOmatic software for data analysis. KStars was "
-"added to provide a full featured astrophotography tool. As KStars uses the "
-"INDI library to control equipment, various telescopes, cameras etc. are "
-"supported. Summarized, Fedora Astronomy provides a complete set of software, "
-"from the observation planning to the final results."
-msgstr ""
-"La Spin e furnìs il scritori KDE di Fedora miorât cuntun ambient Python "
-"sientific complet e il software AstrOmatic pe analisi dai dâts. KStars al è "
-"stât zontât par dâ un strument astro-fotografic cun dutis lis "
-"funzionalitâts. Viodût che KStars al dopre la librarie INDI a son "
-"supuartadis strumentazions, varis telescopis, fotocjamaris e v.i. pal lôr "
-"control. In struc, Fedora Astronomy al furnìs une cumbinazion complete di "
-"software, partint de planificazion de osservazion par rivâ ai risultâts "
-"finâi."
-
-#: [DesignSuite].subvariant
-msgctxt "Release|"
-msgid "design_suite"
-msgstr "design_suite"
-
-#: [DesignSuite].category [DesignSuite].name
-msgctxt "Release|"
-msgid "Fedora Design Suite"
-msgstr "Fedora Design Suite"
-
-#: [DesignSuite].summary
-msgctxt "Release|"
-msgid ""
-"Visual design, multimedia production, and publishing suite of free and open "
-"source creative tools."
-msgstr ""
-"Suite di struments creatîfs libars e a codiç viert pe progjetazion grafiche, "
-"produzion multimediâl e publicazion."
-
-#: [DesignSuite].description[0]
-msgctxt "Release|"
-msgid ""
-"Looking for a ready-to-go desktop environment brimming with free and open "
-"source multimedia production and publishing tools? Try the Design Suite, a "
-"Fedora Spin created by designers, for designers."
-msgstr ""
-"Stâstu cirint un ambient di scritori pront pal ûs e plen di struments libars "
-"e open source pe produzion multimediâl e publicazion? Prove la Design Suite, "
-"une Spin di Fedora creade dai disegnadôrs, pai disegnadôrs."
-
-#: [DesignSuite].description[1]
-msgctxt "Release|"
-msgid ""
-"The Design Suite includes the favorite tools of the Fedora Design Team. "
-"These are the same programs we use to create all the artwork that you see "
-"within the Fedora Project, from desktop backgrounds to CD sleeves, web page "
-"designs, application interfaces, flyers, posters and more. From document "
-"publication to vector and bitmap editing or 3D modeling to photo management, "
-"the Design Suite has an application for you — and you can install thousands "
-"more from the Fedora universe of packages."
-msgstr ""
-"La Design Suite e inclût i struments preferîts dal grup di dissen di Fedora. "
-"Chescj a son i stes programs che o doprìn par creâ dutis lis oparis di art "
-"che tu viodis intal Progjet Fedora, dai fondâi dal scritori aes cuviertis "
-"dai CD, dissens des pagjinis web, interfacis di aplicazions, volantins, "
-"manifescj e altri. De publicazion di documents a modifichis di bitmap o "
-"vetoriâls o di modei 3D a gjestion di fotos, la Design Suite e à une "
-"aplicazion par te — e ancjemò tu puedis instalâ miârs di pachets dal "
-"univiers Fedora."
-
-#: [Games].subvariant
-msgctxt "Release|"
-msgid "games"
-msgstr "zûcs"
-
-#: [Games].category [Games].name
-msgid "Fedora Games"
-msgstr "Fedora Zûcs"
-
-#: [Games].summary
-msgctxt "Release|"
-msgid ""
-"A collection and perfect show-case of the best games available in Fedora."
-msgstr "Une colezion e une vetrine perfete dai miôrs zûcs disponibii su Fedora."
-
-#: [Games].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Games spin offers a perfect showcase of the best games available "
-"in Fedora. The included games span several genres, from first-person "
-"shooters to real-time and turn-based strategy games to puzzle games."
-msgstr ""
-"La spin Fedora Zûcs e ufrìs une vetrine perfete dai miôrs zûcs disponibii su "
-"Fedora. I zûcs includûts a cjapin dentri diviers gjenars, dai spare-dut in "
-"prime persone a chei di strategjie in timp reâl e a turnis, fin ai berdeis e "
-"puzzle."
-
-#: [Games].description[1]
-msgctxt "Release|"
-msgid ""
-"Not all the games available in Fedora are included on this spin, but trying "
-"out this spin will give you a fair impression of Fedora's ability to run "
-"great games."
-msgstr ""
-"In cheste spin no sonincludût ducj i zûcs disponibii su Fedora, ma provant "
-"cheste spin tu varâs une impression gjenerâl su ce che Fedora e pues fâ par "
-"fâ zirâ zûcs maraveôs."
-
-#: [Python].subvariant
-msgctxt "Release|"
-msgid "python"
-msgstr "python"
-
-#: [Python].category [Python].name
-msgctxt "Release|"
-msgid "Fedora Python Classroom"
-msgstr "Fedora Python Classroom"
-
-#: [Python].summary
-msgctxt "Release|"
-msgid ""
-"A classroom lab for teaching the Python programming language to students"
-msgstr ""
-"Une aule di laboratori par insegnâ ai students il lengaç di programazion "
-"Python"
-
-#: [Python].description[0]
-msgctxt "Release|"
-msgid ""
-"One of the benefits of Fedora for Python developers is the ease of setting "
-"up Python development. The Fedora Python Classroom Lab makes it even easier "
-"for teachers and instructors to use Fedora in their classrooms or workshops. "
-"Ready to use operating system with important stuff pre-installed - either "
-"with GNOME or as a headless environment for Docker or Vagrant. Teach Python "
-"on Fedora, with Fedora, using the stuff you love: IPython, Jupyter Notebook, "
-"multiple Pythons, virtualenvs, tox, git and more"
-msgstr ""
-"Un dai beneficis di Fedora pai disvilupadôrs di Python al è chel di facilitâ "
-"la metude in vore di un ambient di disvilup par Python. Il Fedora Python "
-"Classroom Lab al rint dut ancjemò plui facil, par insegnants e istrutôrs, "
-"l'ûs di Fedora tes classis o tai laboratoris. Al è un sisteme operatîf pront "
-"pal ûs cun robis pre-instaladis impuartantis - o cun GNOME opûr come ambient "
-"cence visôr par Docker o Vagrant. Insegne Python su Fedora, cun Fedora, "
-"doprant ce che ti plâs: IPython, Jupyter Notebook, multiple Pythons, "
-"virtualenvs, tox, git e tancj altris"
-
-#: [Python].description[1]
-msgctxt "Release|"
-msgid ""
-"The Fedora Python Classroom Lab comes in 3 variants. Either you can run it "
-"in graphical mode with GNOME, or you can virtualize it with Vagrant or run "
-"it in a Docker container. You choose what fits your teaching environment the "
-"best."
-msgstr ""
-"Il Fedora Python Classroom Lab al rive in 3 variantis. Tu puedis eseguîlu o "
-"in modalitât grafiche cun GNOME o virtualizâlu cun Vagrant o eseguîlu intun "
-"contignidôr Docker. Tu sielzis tu ce che ti comude pal to ambient di "
-"insegnament."
-
-#: [Robotics].subvariant
-msgctxt "Release|"
-msgid "robotics"
-msgstr "robotiche"
-
-#: [Robotics].category [Robotics].name
-msgctxt "Release|"
-msgid "Fedora Robotics Suite"
-msgstr "Fedora Robotics Suite"
-
-#: [Robotics].summary
-msgctxt "Release|"
-msgid ""
-"A wide variety of free and open robotics software packages for beginners and "
-"experts in robotics."
-msgstr ""
-"Une grande varietât di pachets software pe robotiche libars e vierts, par "
-"principiants e esperts in robotiche."
-
-#: [Robotics].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Robotics spin provides a wide variety of free and open robotics "
-"software packages. These range from hardware accessory libraries for the "
-"Hokuyo laser scanners or Katana robotic arm to software frameworks like "
-"Fawkes or Player and simulation environments such as Stage and RoboCup "
-"Soccer Simulation Server 2D/3D. It also provides a ready to use development "
-"environment for robotics including useful libraries such as OpenCV computer "
-"vision library, Festival text to speech system and MRPT."
-msgstr ""
-"La spin Fedora Robotics e ufrìs une grande varietât di pachets software pe "
-"robotiche, libars e vierts. Chescj a van des librariis acessoriis pal "
-"hardware dai scansionadôrs laser Hokuyo o dai braçs robotics Katana, ai "
-"software dai ambients di lavôr come Fawkes o Player e ambients di simulazion "
-"come Stage e RoboCup Soccer Simulation Server 2D/3D. La spin e ufrìs ancje "
-"un ambient di disvilup pront pal ûs pe robotiche, che al inclût librariis "
-"utilis come la librarie pe vision computerizade OpenCV, il sisteme par "
-"convertî il test in fevelade Festival e MRPT."
-
-#: [Robotics].description[1]
-msgctxt "Release|"
-msgid ""
-"The Robotics spin is targeted at people just discovering their interest in "
-"robotics as well as experienced roboticists. For the former we provide a "
-"readily usable simulation environment with an introductory hands-on "
-"demonstration, and for the latter we provide a full development environment, "
-"to be used immediately."
-msgstr ""
-"La spin Robotics e je destinade aes personis che a scuvierzin il lôr interès "
-"pe robotiche e ancje a chês che a àn za esperience. Pai prins o furnìn un "
-"ambient di simulazion pront di doprâ, cuntune dimostrazion introdutive "
-"pratiche, invezit pai ultins o furnìn un ambient di disvilup complet che a "
-"puedin doprâ daurman."
-
-#: [Scientific].subvariant
-msgctxt "Release|"
-msgid "scientific"
-msgstr "sientifiche"
-
-#: [Scientific].category [Scientific].name
-msgctxt "Release|"
-msgid "Fedora Scientific"
-msgstr "Fedora Scientific"
-
-#: [Scientific].summary
-msgctxt "Release|"
-msgid ""
-"A bundle of open source scientific and numerical tools used in research."
-msgstr ""
-"Un complès di struments numerics e sientifics a codiç viert doprâts pe "
-"ricercje."
-
-#: [Scientific].description[0]
-msgctxt "Release|"
-msgid ""
-"Wary of reinstalling all the essential tools for your scientific and "
-"numerical work? The answer is here. Fedora Scientific Spin brings together "
-"the most useful open source scientific and numerical tools atop the goodness "
-"of the KDE desktop environment."
-msgstr ""
-"No tu vûs tornâ a instalâ ducj i struments essenziâi pal to lavôr numeric o "
-"sientific? La rispueste e je achì. La spin Fedora Scientific e met adun i "
-"struments sientifics e numerics a codiç viert plui utii, sore de bontât dal "
-"ambient di scritori KDE."
-
-#: [Scientific].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora Scientific currently ships with numerous applications and libraries. "
-"These range from libraries such as the GNU Scientific library, the SciPy "
-"libraries, tools like Octave and xfig to typesetting tools like Kile and "
-"graphics programs such as Inkscape. The current set of packages include an "
-"IDE, tools and libraries for programming in C, C++, Python, Java and R. Also "
-"included along with are libraries for parallel computing such as the OpenMPI "
-"and OpenMP. Tools for typesetting, writing and publishing are included."
-msgstr ""
-"In chest moment Fedora Scientific al ven dât fûr cun numerosis aplicazions e "
-"librariis. Chestis a van da lis librariis come la librarie GNU Scientific, "
-"lis librariis SciPy, i struments come Octave e xfig, ai struments di "
-"composizion come Kile e programs grafics come Inkscape. La cumbinazion atuâl "
-"dai pachets a includin un IDE, struments e librariis di programazion in C, "
-"C++, Python, Java e R. A son includudis ancje librariis pe elaborazion "
-"paralele come OpenMPI e OpenMP. A son includûts struments pe composizion, "
-"scriture e publicazion."
-
-#: [Security].subvariant
-msgctxt "Release|"
-msgid "security"
-msgstr "sigurece"
-
-#: [Security].category [Security].name
-msgctxt "Release|"
-msgid "Fedora Security Lab"
-msgstr "Fedora Security Lab"
-
-#: [Security].summary
-msgctxt "Release|"
-msgid ""
-"A safe test environment to work on security auditing, forensics, system "
-"rescue and teaching security testing methodologies."
-msgstr ""
-"Un ambient di prove sigûr dulà lavorâ su revisions di sigurece, analisis "
-"forensis, salvaments di sistemis e insegnament di metodologjiis des provis "
-"di sigurece."
-
-#: [Security].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Security Lab provides a safe test environment to work on security "
-"auditing, forensics, system rescue and teaching security testing "
-"methodologies in universities and other organizations."
-msgstr ""
-"La spin Fedora Security Lab e furnìs un ambient di prove sigûr dulà lavorâ "
-"su revisions di sigurece, analisis forensis, salvaments di sistemis e "
-"insegnament di metodologjiis des provis di sigurece in universitâts e altris "
-"organizazions."
-
-#: [Security].description[1]
-msgctxt "Release|"
-msgid ""
-"The spin is maintained by a community of security testers and developers. It "
-"comes with the clean and fast Xfce Desktop Environment and a customized menu "
-"that provides all the instruments needed to follow a proper test path for "
-"security testing or to rescue a broken system. The Live image has been "
-"crafted to make it possible to install software while running, and if you "
-"are running it from a USB stick created with LiveUSB Creator using the "
-"overlay feature, you can install and update software and save your test "
-"results permanently."
-msgstr ""
-"La spin e je mantignude di une comunitât di svilupadôrs e int che e prove la "
-"sigurece. E ven dade cul ambient di scritori net e veloç Xfce e un menù "
-"personalizât che al ufrìs ducj i struments che a coventin par lâ daûr di un "
-"just percors pes provis di sigurece o par ripristinâ un sisteme rot. La "
-"imagjin Live e je stade modelade par rindi pussibile la instalazion di "
-"software intant che e je in esecuzion, e se tu le stâs eseguint di une "
-"clavute USB creade cun LiveUSB Creator e la funzion overlay (soreposizion), "
-"tu puedis instalâ e inzornâ il software e salvâ in maniere permanente i "
-"risultâts des tôs provis."
+#~ msgid "workstation"
+#~ msgstr "workstation"
+
+#~ msgctxt "Release|"
+#~ msgid "product"
+#~ msgstr "prodot"
+
+#~ msgctxt "Release|"
+#~ msgid "This is the Linux workstation you've been waiting for."
+#~ msgstr "Cheste e je la postazion di lavôr Linux che tu stavis spietant."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Workstation is a reliable, user-friendly, and powerful operating "
+#~ "system for your laptop or desktop computer. It supports a wide range of "
+#~ "developers, from hobbyists and students to professionals in corporate "
+#~ "environments."
+#~ msgstr ""
+#~ "Fedora Workstation al è un sisteme operatîf afidabil, facil e potent, "
+#~ "adat ai portatii o ai computer fis. Al supuarte une grande schirie di "
+#~ "svilupadôrs, da chei che a svilupin par passetimp e students, ai "
+#~ "professioniscj in ambits aziendâi."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "“The plethora of tools provided by<br /> Fedora allows me to get the job "
+#~ "done.<br /> It just works.”"
+#~ msgstr ""
+#~ "“La sorebondance di struments furnîts di <br /> Fedora mi permet di "
+#~ "puartâ a tiermin il lavôr.<br /> Al funzione e vonde.”"
+
+#~ msgctxt "Release|"
+#~ msgid "JVM performance engineer"
+#~ msgstr "Inzegnîr des prestazion di JVM"
+
+#~ msgctxt "Release|"
+#~ msgid "Sleek user interface"
+#~ msgstr "Interface utent elegante"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Focus on your code in the GNOME 3 desktop environment. GNOME is built "
+#~ "with developer feedback and minimizes distractions, so you can "
+#~ "concentrate on what's important."
+#~ msgstr ""
+#~ "Concentriti sul to codiç tal ambient scritori GNOME 3. GNOME al è "
+#~ "costruît su la fonde dai parês dai svilupadôrs e al minimize lis "
+#~ "distrazions, cussì che tu ti puedis concentrâ su ce che al è impuartant."
+
+#~ msgctxt "Release|"
+#~ msgid "Complete open source toolbox"
+#~ msgstr "Cassele dai imprescj libars complete"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Skip the drag of trying to find or build the tools you need. With "
+#~ "Fedora's complete set of open source languages, tools, and utilities, "
+#~ "everything is a click or command line away. There's even project hosting "
+#~ "and repositories like COPR to make your code and builds available quickly "
+#~ "to the community."
+#~ msgstr ""
+#~ "Evite il lavôr di cirî di cjatâ o costruî i imprescj che ti coventin. Cun "
+#~ "la cumbinazion complete di Fedora di lengaçs libars, struments e "
+#~ "utilitâts, dut al è a un clic (o a comant) di distance. Al inclût ancje "
+#~ "un puest dulà ospitâ i progjets e i dipuesits come COPR par rindi il to "
+#~ "codiç e lis versions costruidis disponibilis ae comunitât."
+
+#~ msgctxt "Release|"
+#~ msgid "GNOME Boxes & other virt tools"
+#~ msgstr "GNOME Scjatulis e altris struments di virtualizazion"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Get virtual machines up and running quickly to test your code on multiple "
+#~ "platforms using GNOME Boxes. Or dig into powerful, scriptable "
+#~ "virtualization tools for even more control."
+#~ msgstr ""
+#~ "Configure e eseguìs lis machinis virtuâls subite, par provâ il to codiç "
+#~ "su plui plateformis, doprant GNOME Scjatulis. O aprofondìs i potents "
+#~ "struments di virtualizazion, che si puedin meti in script, par vê ancjemò "
+#~ "plui control."
+
+#~ msgctxt "Release|"
+#~ msgid "Built-in Docker support"
+#~ msgstr "Supuart par Docker incorporât"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Containerize your own apps, or deploy containerized apps out of the box "
+#~ "on Fedora, using the latest technology like Docker."
+#~ msgstr ""
+#~ "Met tai contignidôrs lis tôs aplicazions o distribuìs lis aplicazions tai "
+#~ "contignidôrs prontis di doprâ su Fedora, doprant lis ultimis tecnologjiis "
+#~ "come Docker."
+
+#~ msgctxt "Release|"
+#~ msgid "server"
+#~ msgstr "servidôr"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Server"
+#~ msgstr "Fedora Server"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The latest technology. A stable foundation. Together, for your "
+#~ "applications and services."
+#~ msgstr ""
+#~ "Lis ultimis tecnologjiis. Une fonde stabile. Adun pes tôs aplicazions e i "
+#~ "tiei servizis."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "“The simplicity introduced with rolekit and cockpit have made server "
+#~ "deployments a breeze. What took me a few days on other operating systems "
+#~ "took less than an hour with Fedora %(rel)s Server. It just works.”"
+#~ msgstr ""
+#~ "“La semplicitât introdote cun rolekit e cockpit e à fat in mût che meti "
+#~ "impins i servidôrs al sedi un zûc di fruts. Ce che mi puartave vie un "
+#~ "pôcs di dîs su altris sistemis operatîfs cun Fedora %(rel)s Server mi à "
+#~ "puartât vie mancul di une ore. Al funzione e vonde!”"
+
+#~ msgctxt "Release|"
+#~ msgid "Systems Engineer"
+#~ msgstr "Inzegnîr di sistemis"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Server is a short-lifecycle, community-supported server operating "
+#~ "system that enables seasoned system administrators experienced with any "
+#~ "OS to make use of the very latest server-based technologies available in "
+#~ "the open source community."
+#~ msgstr ""
+#~ "Fedora Server al è un sisteme operatîf a cicli di vite curt, supuartât de "
+#~ "comunitât che al permet ai aministradôrs di sisteme esperts e cun "
+#~ "esperience su cualsisei SO di doprâ lis ultimis tecnologjiis disponibilis "
+#~ "par servidôrs te comunitât open source."
+
+#~ msgctxt "Release|"
+#~ msgid "Easy Administration"
+#~ msgstr "Aministrazion facile"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Manage your system simply with Cockpit's powerful, modern interface. View "
+#~ "and monitor system performance and status, and deploy and manage "
+#~ "container-based services."
+#~ msgstr ""
+#~ "Gjestìs il to sisteme in maniere semplice cu la interface moderne e "
+#~ "potente di Cockpit. Viôt e ten di voli il stât e lis prestazion dal "
+#~ "sisteme e met impins e gjestìs i servizis basâts su contignidôrs."
+
+#~ msgctxt "Release|"
+#~ msgid "Server Roles"
+#~ msgstr "Rûi dai servidôrs"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "There's no need to set up your server from scratch when you use server "
+#~ "roles. Server roles plug into your Fedora Server system, providing a well-"
+#~ "integrated service on top of the Fedora Server platform. Deploy and "
+#~ "manage these prepared roles simply using the Rolekit tool."
+#~ msgstr ""
+#~ "Nol covente tirâ sù il servidôr dal nuie cuant che tu dopris i rûi dai "
+#~ "servidôrs. I rûi dai servidôrs si inserissin tal sisteme Fedora Server, "
+#~ "furnint un servizi ben integrât parsore de plateforme Fedora Server. Met "
+#~ "impins e gjestìs chescj rûi preparâts doprant semplicementri il strument "
+#~ "Rolekit."
+
+#~ msgctxt "Release|"
+#~ msgid "Database Services"
+#~ msgstr "Servizis de base di dâts"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Server brings with it an enterprise-class, scalable database "
+#~ "server powered by the open-source PostgreSQL project."
+#~ msgstr ""
+#~ "Fedora Server al puarte cun se un servidôr des basis di dâts di classe "
+#~ "imprenditoriâl e scjalabil gracie al progjet a codiç viert PostgreSQL."
+
+#~ msgctxt "Release|"
+#~ msgid "Complete Enterprise Domain Solution"
+#~ msgstr "Soluzion complete di domini di imprese"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Level up your Linux network with advanced identity management, DNS, "
+#~ "certificate services, Windows(TM) domain integration throughout your "
+#~ "environment with FreeIPA, the engine that drives Fedora Server's Domain "
+#~ "Controller role."
+#~ msgstr ""
+#~ "Miore la tô rêt Linux cu la gjestion avanzade des identitâts, il DNS, i "
+#~ "servizis dai certificâts, la integrazion dai dominis Windows(TM) in dut "
+#~ "il to ambient cun FreeIPA, il motôr che al vuide il rûl dal controlôr dal "
+#~ "domini di Fedora Server."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "“The Docker Role for Fedora Server was simple and fast to install so that "
+#~ "you can run your Docker images. This makes a great testbed for beginners "
+#~ "and experts with docker so that they can develop their applications on "
+#~ "the fly.”"
+#~ msgstr ""
+#~ "“Il Rûl di Docker par Fedora Server al è sempliç e svelt di instalâ cussì "
+#~ "che tu puedis eseguî lis tôs imagjins Docker. Chest al è un maraveôs banc "
+#~ "di prove pai novizis e pai esperts cun docker in mût che a puedin "
+#~ "disvilupâ lis lôr aplicazions intun lamp.”"
+
+#~ msgctxt "Release|"
+#~ msgid "</p><p align=right> ― <em>John Unland, "
+#~ msgstr "</p><p align=right> ― <em>John Unland, "
+
+#~ msgctxt "Release|"
+#~ msgid "Information Systems Student"
+#~ msgstr "Student di sistemis di informazion"
+
+#~ msgctxt "Release|"
+#~ msgid "silverblue"
+#~ msgstr "silverblue"
+
+#~ msgctxt "Release|"
+#~ msgid "emerging"
+#~ msgstr "emerging"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Silverblue"
+#~ msgstr "Fedora Silverblue"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "An extremely stable and reliable desktop operating system, excellent for "
+#~ "developers and for those using container-focused workflows."
+#~ msgstr ""
+#~ "Un sisteme operatîf par scritori une vore stabil e afidabil, ecelent pai "
+#~ "svilupadôrs e par chei che a doprin flus di lavôr centrâts sui "
+#~ "contignidôrs."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Silverblue is a variant of Fedora Workstation. It looks, feels and "
+#~ "behaves like a regular desktop operating system, and the experience is "
+#~ "similar to what you find with using a standard Fedora Workstation."
+#~ msgstr ""
+#~ "Silverblue e je une variante di Fedora Workstation. E somee e si "
+#~ "compuarte come un sisteme operatîf di scritori regolâr e la esperience e "
+#~ "je simil a chê che tu cjatis doprant une Fedora Workstation standard."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "However, unlike other operating systems, Silverblue has reprovisionable "
+#~ "infrastructure with anti-hysteresis properties. This means that every "
+#~ "installation is identical to every other installation of the same "
+#~ "version. The operating system that is on disk is exactly the same from "
+#~ "one machine to the next, and it never changes as it is used."
+#~ msgstr ""
+#~ "Dut câs, a diference di chei altris sistemis operatîfs, Silverblue al à "
+#~ "une infrastruture che si pues ripeti cun proprietâts anti-isteresi. Chest "
+#~ "al significhe che ogni instalazion e je compagne di dutis lis altris "
+#~ "instalazions de stesse version. Il sisteme operatîf che al sta sul disc "
+#~ "al è il stes di machine in machine e nol cambie mai cuant che al ven "
+#~ "doprât."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Silverblue’s design is intended to make it more stable, less prone to "
+#~ "bugs, and easier to test and develop. The design also makes it an "
+#~ "excellent platform for containerized applications as well as container-"
+#~ "based software development. In each case, applications and containers are "
+#~ "kept separate from the host system, improving stability and reliability."
+#~ msgstr ""
+#~ "Silverblue al è stât progjetât par jessi plui stabil, mancul puartât a vê "
+#~ "erôrs e plui facil di provâ e disvilupâ. La sô struture lu rint ancje une "
+#~ "plateforme ecelente par meti in contignidôr lis aplicazions e par "
+#~ "disvilupâ software basât su contignidôrs. In ogni câs, lis aplicazions e "
+#~ "i contignidôrs a vegnin tignûts separâts dal sisteme che ju ospite, "
+#~ "miorant cussì la stabilitât e la afidabilitât."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Silverblue’s core technologies have some other helpful features. OS "
+#~ "updates are fast and there’s no waiting around for them to install: just "
+#~ "reboot as normal to start using the next version. With Silverblue, it is "
+#~ "also possible to roll back to the previous version of the operating "
+#~ "system, if something goes wrong."
+#~ msgstr ""
+#~ "Il cûr des tecnologjiis di Silverblue al à cualchi altre funzionalitât "
+#~ "utile. I inzornaments dal SO a son svelts e no tu âs di spietâ par vêju "
+#~ "instalâts: al baste tornâ a inviâ come simpri par tacâ a doprâ la version "
+#~ "sucessive. Cun Silverblue, se alc al va strucj, al è ancje pussibil tornâ "
+#~ "indaûr ae version precedente dal sisteme operatîf."
+
+#~ msgctxt "Release|"
+#~ msgid "kde"
+#~ msgstr "kde"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora KDE Plasma Desktop"
+#~ msgstr "Fedora KDE Plasma Desktop"
+
+#~ msgctxt "Release|"
+#~ msgid "A complete, modern desktop built using the KDE Plasma Desktop."
+#~ msgstr "Un scritori moderni e complet fat sù doprant il KDE Plasma Desktop."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based "
+#~ "operating system utilizing the KDE Plasma Desktop as the main user "
+#~ "interface."
+#~ msgstr ""
+#~ "La edizion di Fedora KDE Plasma Desktop al è un sisteme operatîf potent "
+#~ "basât su Fedora che al dopre il KDE Plasma Desktop tant che interface "
+#~ "utent principâl."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora KDE Plasma Desktop comes with many pre-selected top quality "
+#~ "applications that suit all modern desktop use cases - from online "
+#~ "communication like web browsing, instant messaging and electronic mail "
+#~ "correspondence, through multimedia and entertainment, to an advanced "
+#~ "productivity suite, including office applications and enterprise grade "
+#~ "personal information management."
+#~ msgstr ""
+#~ "Fedora KDE Plasma Desktop al rive cun tantis aplicazions pre-selezionadis "
+#~ "di cualitât superiôr che si adatin a ducj i câs di utilizazion dai "
+#~ "scritoris modernis - partint des comunicazions in rêt come la navigazion "
+#~ "web, il mandâ messaçs istantanis e la corispondence de pueste eletroniche "
+#~ "e continuant cul divertiment e il multimedia rivant fin aes suite "
+#~ "avanzadis di produtivitât, includudis lis aplicazions di ufici e la "
+#~ "gjestion des informazions personâls di grât imprenditoriâl."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "All KDE applications are well integrated, with a similar look and feel "
+#~ "and an easy to use interface, accompanied by an outstanding graphical "
+#~ "appearance."
+#~ msgstr ""
+#~ "Dutis lis aplicazions KDE a son ben integradis, cuntun aspiets e "
+#~ "compuartaments simii e une interface facile di doprâ, il dut acompagnât "
+#~ "di un aspiet grafic ecezionâl."
+
+#~ msgctxt "Release|"
+#~ msgid "xfce"
+#~ msgstr "xfce"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Xfce Desktop"
+#~ msgstr "Fedora Xfce Desktop"
+
+#~ msgctxt "Release|"
+#~ msgid "A complete, well-integrated Xfce Desktop."
+#~ msgstr "Xfce, un scritori complet e ben integrât."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast "
+#~ "and lightweight, while still being visually appealing and user friendly."
+#~ msgstr ""
+#~ "La spin Fedora Xfce e met in mostre il scritori Xfce, che al ponte a "
+#~ "jessi veloç e lizêr, ma tal stes timp inmagant a nivel grafic e facil di "
+#~ "doprâ."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
+#~ msgstr ""
+#~ "Fedora Xfce al è un scritori complet a ducj i efiets che al dopre i "
+#~ "standards freedesktop.org."
+
+#~ msgctxt "Release|"
+#~ msgid "lxqt"
+#~ msgstr "lxqt"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora LXQt Desktop"
+#~ msgstr "Fedora LXQt Desktop"
+
+#~ msgctxt "Release|"
+#~ msgid "A lightweight, well-integrated LXQt desktop environment."
+#~ msgstr "LXQt, un ambient di scritori lizêr e ben integrât."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora LXQt provides a lightweight, well-integrated LXQt desktop "
+#~ "environment. In addition to LXQt itself it provides a small, well "
+#~ "selected collection of applications like the QupZilla browser, which "
+#~ "combines Chromium's rendering engine with a nice Qt experience. Other "
+#~ "applications include the Trojita mail client, the qBittorrent client, the "
+#~ "Yarock music player and a set of some more commonly used applications. As "
+#~ "all applications use the same Qt5 toolkit and the Breeze theme known from "
+#~ "KDE, the desktop provides a unified and well-integrated style and "
+#~ "theming. In addition breeze-gtk is provided to allow the user to "
+#~ "integrate GTK applications too."
+#~ msgstr ""
+#~ "Fedora LXQt al furnìs un ambient di scritori LXQt lizêr e ben integrât. "
+#~ "In zonte a LXQt al furnìs une piçule e ben selezionade colezion di "
+#~ "aplicazions com il navigadôr QupZilla, che al cumbine il motôr di "
+#~ "rapresentazion di Chromium cuntune esperience Qt ninine. Altris "
+#~ "aplicazion includudis a son il client di pueste Trojita, il client "
+#~ "qBittorrent, il riprodutôr musicâl Yarock e une cumbinazion di altris "
+#~ "aplicazions dopradis dispès. Viodût che dutis lis aplicazions a doprin il "
+#~ "stes toolkit Qt5 e il teme Breeze cognossût di KDE, il scritori al ufrìs "
+#~ "un stîl e un teme unificât e ben integrât. In plui al ven furnît breeze-"
+#~ "gtk par permeti al utent di integrâ ancje lis aplicazions GTK."
+
+#~ msgctxt "Release|"
+#~ msgid "mate"
+#~ msgstr "mate"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora MATE-Compiz Desktop"
+#~ msgstr "Fedora MATE-Compiz Desktop"
+
+#~ msgctxt "Release|"
+#~ msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
+#~ msgstr "Un classic Fedora Desktop cuntun gjestôr di barcons 3D adizionâl."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE "
+#~ "Desktop is a lightweight, powerful desktop designed with productivity and "
+#~ "performance in mind. The default windows manager is Marco which is usable "
+#~ "for all machines and VMs. Compiz Fusion is a beautiful 3D windowing "
+#~ "manager with Emerald and GTK+ theming."
+#~ msgstr ""
+#~ "La spin MATE Compiz e met adun il scritori MATE cun Compiz Fusion. Il "
+#~ "scritori Mate al è un scritori lizêr e potent progjetât pensant ae "
+#~ "produtivitât e aes prestazions. Il gjestôr dai barcons predefinît al è "
+#~ "Marco che si lu pues doprâ cun dutis lis machinis e MVs. Compiz Fusion al "
+#~ "è un biel gjestôr di barcons 3D cun temis GTK+ e Emerald."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
+#~ "should definitely try the MATE-Compiz spin."
+#~ msgstr ""
+#~ "Se tu vuelis un scritori Fedora potent e lizêr cun biei efiets 3D cence "
+#~ "dubi tu âs di provâ la spin MATE-Compiz."
+
+#~ msgctxt "Release|"
+#~ msgid "cinnamon"
+#~ msgstr "cinnamon"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Cinnamon Desktop"
+#~ msgstr "Fedora Cinnamon Desktop"
+
+#~ msgctxt "Release|"
+#~ msgid "A modern desktop featuring traditional Gnome user experience."
+#~ msgstr ""
+#~ "Un scritori moderni che al presente la tradizionâl esperience utent di "
+#~ "Gnome."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Cinnamon is a Linux desktop which provides advanced innovative features "
+#~ "and a traditional user experience. The desktop layout is similar to Gnome "
+#~ "2. The underlying technology is forked from Gnome Shell. The emphasis is "
+#~ "put on making users feel at home and providing them with an easy to use "
+#~ "and comfortable desktop experience."
+#~ msgstr ""
+#~ "Cinnamon al è un scritori Linux che al furnìs funzionalitâts inovativis "
+#~ "avanzadis e une esperience utent tradizionâl. La disposizion dal scritori "
+#~ "e je simile a chê di Gnome 2. La tecnologjie che e sta sot e rive di "
+#~ "Gnome Shell. La enfasi e je chê di fâ sintî i utents a cjase e dâur une "
+#~ "esperience di scritori semplice e comude."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Cinnamon is a popular desktop alternative to Gnome 3 and this spin "
+#~ "provides the option to quickly try and install this desktop."
+#~ msgstr ""
+#~ "Cinnamon e je une popolâr alternative di scritori a Gnome 3 e cheste spin "
+#~ "e ufrìs la opzion par provâ e instalâ daurman chest scritori."
+
+#~ msgctxt "Release|"
+#~ msgid "lxde"
+#~ msgstr "lxde"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora LXDE Desktop"
+#~ msgstr "Fedora LXDE Desktop"
+
+#~ msgctxt "Release|"
+#~ msgid "A light, fast, less-resource hungry desktop environment."
+#~ msgstr "Un ambient di scritori snel, svelt e che al mangje mancul risorsis."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
+#~ "performant, and energy-saving desktop environment. It maintained by an "
+#~ "international community of developers and comes with a beautiful "
+#~ "interface, multi-language support, standard keyboard shortcuts and "
+#~ "additional features like tabbed file browsing."
+#~ msgstr ""
+#~ "LXDE, il \"Lightweight X11 Desktop Environment\", al è un ambient di "
+#~ "scritori une vore veloç, ad altis prestazions e che al sparagne "
+#~ "energjiis. Al è mantignût di une comunitât internazionâl di svilupadôrs e "
+#~ "si presente cuntune interface biele, cun supuart par plui lenghis, "
+#~ "scurtis di tastiere standard e funzionalitâts adizionâls come la "
+#~ "esplorazion dai file in schedis."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "LXDE is not designed to be powerful and bloated, but to be usable and "
+#~ "slim. A main goal of LXDE is to keep computer resource usage low. It is "
+#~ "especially designed for computers with low hardware specifications like "
+#~ "netbooks, mobile devices (e.g. MIDs) or older computers."
+#~ msgstr ""
+#~ "LXDE nol è progjetât par jessi potent e sglonf, ma par jessi doprabil e "
+#~ "snel. Un obietîf principâl di LXDE al è chel di tignî bassis lis risorsis "
+#~ "dal computer dopradis. Al è soredut progjetât pai computers cun "
+#~ "specifichis hardware bassis come i netbooks, i dispositîfs mobii (p.e. i "
+#~ "MIDs: Dispositîfs Internet Mobii) o computers vecjos."
+
+#~ msgctxt "Release|"
+#~ msgid "soas"
+#~ msgstr "soas"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora SoaS Desktop"
+#~ msgstr "Fedora SoaS Desktop"
+
+#~ msgctxt "Release|"
+#~ msgid "Discover. Reflect. Share. Learn."
+#~ msgstr "Scuvierç. Riflet. Condivît. Impare."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Sugar on a Stick is a Fedora-based operating system featuring the award-"
+#~ "winning Sugar Learning Platform and designed to fit on an ordinary USB "
+#~ "thumbdrive (\"stick\")."
+#~ msgstr ""
+#~ "Sugar on a Stick al è un sisteme operatîf basât su Fedora che al presente "
+#~ "la pluripremiade plateforme di aprendiment Sugar e al è progjetât par "
+#~ "ficjâsi intune ordenarie clavute USB (\"stick\")."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
+#~ "child-friendly graphical environment. Sugar automatically saves your "
+#~ "progress to a \"Journal\" on your stick, so teachers and parents can "
+#~ "easily pull up \"all collaborative web browsing sessions done in the past "
+#~ "week\" or \"papers written with Daniel and Sarah in the last 24 hours\" "
+#~ "with a simple query rather than memorizing complex file/folder "
+#~ "structures. Applications in Sugar are known as Activities, some of which "
+#~ "are described below."
+#~ msgstr ""
+#~ "Sugar al met in bande la metafore tradizionâdi di \"scritori di ufici\", "
+#~ "presentant un ambient grafic sempliç pai fruts. Sugar al salve in "
+#~ "automatic i tiei avanzaments suntun \"Gjornâl\" te clavute, cussì che i "
+#~ "insegnants e i gjenitôrs a puedin tirâ fûr cun facilitât \"dutis lis "
+#~ "sessions di navigazion web colaborativis fatis inte setemane passade\" o "
+#~ "\"lis cjartis scritis cun Denêl e Sara intes ultimis 24 oris\" cuntune "
+#~ "semplice domande invezit di memorizâ la complesse struture di files/"
+#~ "cartelis. Lis aplicazions in Sugar a son cognossudis come Ativitâts, "
+#~ "cualchidune di chês a son descritis chi sot."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "It is now deployable for the cost of a stick rather than a laptop; "
+#~ "students can take their Sugar on a Stick thumbdrive to any machine - at "
+#~ "school, at home, at a library or community center - and boot their "
+#~ "customized computing environment without touching the host machine’s hard "
+#~ "disk or existing system at all."
+#~ msgstr ""
+#~ "Cumò al è pussibil distribuîlu pal cost di une clavute invezit che di un "
+#~ "portatil; i students a puedin puartâ la lôr clavute Sugar on a Stick su "
+#~ "cualsisei machine - a scuele, a cjase, in librarie o al centri ricreatîf "
+#~ "- e inviâ il lôr ambient di elaborazion personalizât cence tocjâ il disc "
+#~ "fis de machine host o il sisteme esistent."
+
+#~ msgctxt "Release|"
+#~ msgid "i3"
+#~ msgstr "i3"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora i3 Desktop"
+#~ msgstr "Fedora i3 Desktop"
+
+#~ msgctxt "Release|"
+#~ msgid "Simplicity over Complexity"
+#~ msgstr "Semplicitât sore de complessitât"
+
+#~ msgctxt "Release|"
+#~ msgid "The Fedora i3 Spin provides the popular i3 tiling window manager."
+#~ msgstr ""
+#~ "La spin Fedora i3 e ufrìs il popolâr gjestôr di barcons piastrelâts i3."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "It makes i3 accessible and appealing to both novices and advanced users "
+#~ "who prefer not to use a mouse, touchpad, or other pointing device to "
+#~ "interact with their environment. Featuring lightweight applications for "
+#~ "web browsing, text editing, and media playback, the Fedora i3 Spin offers "
+#~ "a complete experience with a minimalist user interface."
+#~ msgstr ""
+#~ "i3 al è acesibil e atraent a novizis e utents avanzâts che a preferissin "
+#~ "no doprâ il mouse, il touchpad o altris dispositîs di pontament par "
+#~ "interagjî cul lôr ambient. Presentant aplicazions lizeris pe navigazion "
+#~ "web, la modifiche dai tescj e la riproduzion multimediâl, la Spin Fedora "
+#~ "i3 e ufrìs une esperience complete cuntune interface utent minimaliste."
+
+#~ msgctxt "Release|"
+#~ msgid "astronomy"
+#~ msgstr "astronomy"
+
+#~ msgctxt "Release|"
+#~ msgid "labs"
+#~ msgstr "labs"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Astronomy"
+#~ msgstr "Fedora Astronomy"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Powerful completely open-source and free tool for amateurs and "
+#~ "professionals."
+#~ msgstr ""
+#~ "Imprest potent dal dut libar, gratuit e a codiç viert pai amadôrs e "
+#~ "professioniscj."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Astronomy brings a complete open source toolchain to both amateur "
+#~ "and professional astronomers."
+#~ msgstr ""
+#~ "Fedora Astronomy al puarte une complete cjadene di struments a codiç "
+#~ "viert sedi par astronoms amadôrs che par professioniscj."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Spin provides the Fedora KDE desktop enhanced with a complete "
+#~ "scientific Python environment and the AstrOmatic software for data "
+#~ "analysis. KStars was added to provide a full featured astrophotography "
+#~ "tool. As KStars uses the INDI library to control equipment, various "
+#~ "telescopes, cameras etc. are supported. Summarized, Fedora Astronomy "
+#~ "provides a complete set of software, from the observation planning to the "
+#~ "final results."
+#~ msgstr ""
+#~ "La Spin e furnìs il scritori KDE di Fedora miorât cuntun ambient Python "
+#~ "sientific complet e il software AstrOmatic pe analisi dai dâts. KStars al "
+#~ "è stât zontât par dâ un strument astro-fotografic cun dutis lis "
+#~ "funzionalitâts. Viodût che KStars al dopre la librarie INDI a son "
+#~ "supuartadis strumentazions, varis telescopis, fotocjamaris e v.i. pal lôr "
+#~ "control. In struc, Fedora Astronomy al furnìs une cumbinazion complete di "
+#~ "software, partint de planificazion de osservazion par rivâ ai risultâts "
+#~ "finâi."
+
+#~ msgctxt "Release|"
+#~ msgid "design_suite"
+#~ msgstr "design_suite"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Design Suite"
+#~ msgstr "Fedora Design Suite"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Visual design, multimedia production, and publishing suite of free and "
+#~ "open source creative tools."
+#~ msgstr ""
+#~ "Suite di struments creatîfs libars e a codiç viert pe progjetazion "
+#~ "grafiche, produzion multimediâl e publicazion."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Looking for a ready-to-go desktop environment brimming with free and open "
+#~ "source multimedia production and publishing tools? Try the Design Suite, "
+#~ "a Fedora Spin created by designers, for designers."
+#~ msgstr ""
+#~ "Stâstu cirint un ambient di scritori pront pal ûs e plen di struments "
+#~ "libars e open source pe produzion multimediâl e publicazion? Prove la "
+#~ "Design Suite, une Spin di Fedora creade dai disegnadôrs, pai disegnadôrs."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Design Suite includes the favorite tools of the Fedora Design Team. "
+#~ "These are the same programs we use to create all the artwork that you see "
+#~ "within the Fedora Project, from desktop backgrounds to CD sleeves, web "
+#~ "page designs, application interfaces, flyers, posters and more. From "
+#~ "document publication to vector and bitmap editing or 3D modeling to photo "
+#~ "management, the Design Suite has an application for you — and you can "
+#~ "install thousands more from the Fedora universe of packages."
+#~ msgstr ""
+#~ "La Design Suite e inclût i struments preferîts dal grup di dissen di "
+#~ "Fedora. Chescj a son i stes programs che o doprìn par creâ dutis lis "
+#~ "oparis di art che tu viodis intal Progjet Fedora, dai fondâi dal scritori "
+#~ "aes cuviertis dai CD, dissens des pagjinis web, interfacis di "
+#~ "aplicazions, volantins, manifescj e altri. De publicazion di documents a "
+#~ "modifichis di bitmap o vetoriâls o di modei 3D a gjestion di fotos, la "
+#~ "Design Suite e à une aplicazion par te — e ancjemò tu puedis instalâ "
+#~ "miârs di pachets dal univiers Fedora."
+
+#~ msgctxt "Release|"
+#~ msgid "games"
+#~ msgstr "zûcs"
+
+#~ msgid "Fedora Games"
+#~ msgstr "Fedora Zûcs"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A collection and perfect show-case of the best games available in Fedora."
+#~ msgstr ""
+#~ "Une colezion e une vetrine perfete dai miôrs zûcs disponibii su Fedora."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Games spin offers a perfect showcase of the best games "
+#~ "available in Fedora. The included games span several genres, from first-"
+#~ "person shooters to real-time and turn-based strategy games to puzzle "
+#~ "games."
+#~ msgstr ""
+#~ "La spin Fedora Zûcs e ufrìs une vetrine perfete dai miôrs zûcs disponibii "
+#~ "su Fedora. I zûcs includûts a cjapin dentri diviers gjenars, dai spare-"
+#~ "dut in prime persone a chei di strategjie in timp reâl e a turnis, fin ai "
+#~ "berdeis e puzzle."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Not all the games available in Fedora are included on this spin, but "
+#~ "trying out this spin will give you a fair impression of Fedora's ability "
+#~ "to run great games."
+#~ msgstr ""
+#~ "In cheste spin no sonincludût ducj i zûcs disponibii su Fedora, ma "
+#~ "provant cheste spin tu varâs une impression gjenerâl su ce che Fedora e "
+#~ "pues fâ par fâ zirâ zûcs maraveôs."
+
+#~ msgctxt "Release|"
+#~ msgid "python"
+#~ msgstr "python"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Python Classroom"
+#~ msgstr "Fedora Python Classroom"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A classroom lab for teaching the Python programming language to students"
+#~ msgstr ""
+#~ "Une aule di laboratori par insegnâ ai students il lengaç di programazion "
+#~ "Python"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "One of the benefits of Fedora for Python developers is the ease of "
+#~ "setting up Python development. The Fedora Python Classroom Lab makes it "
+#~ "even easier for teachers and instructors to use Fedora in their "
+#~ "classrooms or workshops. Ready to use operating system with important "
+#~ "stuff pre-installed - either with GNOME or as a headless environment for "
+#~ "Docker or Vagrant. Teach Python on Fedora, with Fedora, using the stuff "
+#~ "you love: IPython, Jupyter Notebook, multiple Pythons, virtualenvs, tox, "
+#~ "git and more"
+#~ msgstr ""
+#~ "Un dai beneficis di Fedora pai disvilupadôrs di Python al è chel di "
+#~ "facilitâ la metude in vore di un ambient di disvilup par Python. Il "
+#~ "Fedora Python Classroom Lab al rint dut ancjemò plui facil, par "
+#~ "insegnants e istrutôrs, l'ûs di Fedora tes classis o tai laboratoris. Al "
+#~ "è un sisteme operatîf pront pal ûs cun robis pre-instaladis impuartantis "
+#~ "- o cun GNOME opûr come ambient cence visôr par Docker o Vagrant. Insegne "
+#~ "Python su Fedora, cun Fedora, doprant ce che ti plâs: IPython, Jupyter "
+#~ "Notebook, multiple Pythons, virtualenvs, tox, git e tancj altris"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Python Classroom Lab comes in 3 variants. Either you can run "
+#~ "it in graphical mode with GNOME, or you can virtualize it with Vagrant or "
+#~ "run it in a Docker container. You choose what fits your teaching "
+#~ "environment the best."
+#~ msgstr ""
+#~ "Il Fedora Python Classroom Lab al rive in 3 variantis. Tu puedis eseguîlu "
+#~ "o in modalitât grafiche cun GNOME o virtualizâlu cun Vagrant o eseguîlu "
+#~ "intun contignidôr Docker. Tu sielzis tu ce che ti comude pal to ambient "
+#~ "di insegnament."
+
+#~ msgctxt "Release|"
+#~ msgid "robotics"
+#~ msgstr "robotiche"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Robotics Suite"
+#~ msgstr "Fedora Robotics Suite"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A wide variety of free and open robotics software packages for beginners "
+#~ "and experts in robotics."
+#~ msgstr ""
+#~ "Une grande varietât di pachets software pe robotiche libars e vierts, par "
+#~ "principiants e esperts in robotiche."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Robotics spin provides a wide variety of free and open "
+#~ "robotics software packages. These range from hardware accessory libraries "
+#~ "for the Hokuyo laser scanners or Katana robotic arm to software "
+#~ "frameworks like Fawkes or Player and simulation environments such as "
+#~ "Stage and RoboCup Soccer Simulation Server 2D/3D. It also provides a "
+#~ "ready to use development environment for robotics including useful "
+#~ "libraries such as OpenCV computer vision library, Festival text to speech "
+#~ "system and MRPT."
+#~ msgstr ""
+#~ "La spin Fedora Robotics e ufrìs une grande varietât di pachets software "
+#~ "pe robotiche, libars e vierts. Chescj a van des librariis acessoriis pal "
+#~ "hardware dai scansionadôrs laser Hokuyo o dai braçs robotics Katana, ai "
+#~ "software dai ambients di lavôr come Fawkes o Player e ambients di "
+#~ "simulazion come Stage e RoboCup Soccer Simulation Server 2D/3D. La spin e "
+#~ "ufrìs ancje un ambient di disvilup pront pal ûs pe robotiche, che al "
+#~ "inclût librariis utilis come la librarie pe vision computerizade OpenCV, "
+#~ "il sisteme par convertî il test in fevelade Festival e MRPT."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Robotics spin is targeted at people just discovering their interest "
+#~ "in robotics as well as experienced roboticists. For the former we provide "
+#~ "a readily usable simulation environment with an introductory hands-on "
+#~ "demonstration, and for the latter we provide a full development "
+#~ "environment, to be used immediately."
+#~ msgstr ""
+#~ "La spin Robotics e je destinade aes personis che a scuvierzin il lôr "
+#~ "interès pe robotiche e ancje a chês che a àn za esperience. Pai prins o "
+#~ "furnìn un ambient di simulazion pront di doprâ, cuntune dimostrazion "
+#~ "introdutive pratiche, invezit pai ultins o furnìn un ambient di disvilup "
+#~ "complet che a puedin doprâ daurman."
+
+#~ msgctxt "Release|"
+#~ msgid "scientific"
+#~ msgstr "sientifiche"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Scientific"
+#~ msgstr "Fedora Scientific"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A bundle of open source scientific and numerical tools used in research."
+#~ msgstr ""
+#~ "Un complès di struments numerics e sientifics a codiç viert doprâts pe "
+#~ "ricercje."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Wary of reinstalling all the essential tools for your scientific and "
+#~ "numerical work? The answer is here. Fedora Scientific Spin brings "
+#~ "together the most useful open source scientific and numerical tools atop "
+#~ "the goodness of the KDE desktop environment."
+#~ msgstr ""
+#~ "No tu vûs tornâ a instalâ ducj i struments essenziâi pal to lavôr numeric "
+#~ "o sientific? La rispueste e je achì. La spin Fedora Scientific e met adun "
+#~ "i struments sientifics e numerics a codiç viert plui utii, sore de bontât "
+#~ "dal ambient di scritori KDE."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Scientific currently ships with numerous applications and "
+#~ "libraries. These range from libraries such as the GNU Scientific library, "
+#~ "the SciPy libraries, tools like Octave and xfig to typesetting tools like "
+#~ "Kile and graphics programs such as Inkscape. The current set of packages "
+#~ "include an IDE, tools and libraries for programming in C, C++, Python, "
+#~ "Java and R. Also included along with are libraries for parallel computing "
+#~ "such as the OpenMPI and OpenMP. Tools for typesetting, writing and "
+#~ "publishing are included."
+#~ msgstr ""
+#~ "In chest moment Fedora Scientific al ven dât fûr cun numerosis "
+#~ "aplicazions e librariis. Chestis a van da lis librariis come la librarie "
+#~ "GNU Scientific, lis librariis SciPy, i struments come Octave e xfig, ai "
+#~ "struments di composizion come Kile e programs grafics come Inkscape. La "
+#~ "cumbinazion atuâl dai pachets a includin un IDE, struments e librariis di "
+#~ "programazion in C, C++, Python, Java e R. A son includudis ancje "
+#~ "librariis pe elaborazion paralele come OpenMPI e OpenMP. A son includûts "
+#~ "struments pe composizion, scriture e publicazion."
+
+#~ msgctxt "Release|"
+#~ msgid "security"
+#~ msgstr "sigurece"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Security Lab"
+#~ msgstr "Fedora Security Lab"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A safe test environment to work on security auditing, forensics, system "
+#~ "rescue and teaching security testing methodologies."
+#~ msgstr ""
+#~ "Un ambient di prove sigûr dulà lavorâ su revisions di sigurece, analisis "
+#~ "forensis, salvaments di sistemis e insegnament di metodologjiis des "
+#~ "provis di sigurece."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Security Lab provides a safe test environment to work on "
+#~ "security auditing, forensics, system rescue and teaching security testing "
+#~ "methodologies in universities and other organizations."
+#~ msgstr ""
+#~ "La spin Fedora Security Lab e furnìs un ambient di prove sigûr dulà "
+#~ "lavorâ su revisions di sigurece, analisis forensis, salvaments di "
+#~ "sistemis e insegnament di metodologjiis des provis di sigurece in "
+#~ "universitâts e altris organizazions."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The spin is maintained by a community of security testers and developers. "
+#~ "It comes with the clean and fast Xfce Desktop Environment and a "
+#~ "customized menu that provides all the instruments needed to follow a "
+#~ "proper test path for security testing or to rescue a broken system. The "
+#~ "Live image has been crafted to make it possible to install software while "
+#~ "running, and if you are running it from a USB stick created with LiveUSB "
+#~ "Creator using the overlay feature, you can install and update software "
+#~ "and save your test results permanently."
+#~ msgstr ""
+#~ "La spin e je mantignude di une comunitât di svilupadôrs e int che e prove "
+#~ "la sigurece. E ven dade cul ambient di scritori net e veloç Xfce e un "
+#~ "menù personalizât che al ufrìs ducj i struments che a coventin par lâ "
+#~ "daûr di un just percors pes provis di sigurece o par ripristinâ un "
+#~ "sisteme rot. La imagjin Live e je stade modelade par rindi pussibile la "
+#~ "instalazion di software intant che e je in esecuzion, e se tu le stâs "
+#~ "eseguint di une clavute USB creade cun LiveUSB Creator e la funzion "
+#~ "overlay (soreposizion), tu puedis instalâ e inzornâ il software e salvâ "
+#~ "in maniere permanente i risultâts des tôs provis."

@@ -3,11 +3,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-07 16:44+0200\n"
+"POT-Creation-Date: 2022-04-25 07:54+0200\n"
 "PO-Revision-Date: 2021-11-02 23:05+0000\n"
 "Last-Translator: simmon <simmon@nplob.com>\n"
-"Language-Team: Korean <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/ko/>\n"
+"Language-Team: Korean <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,502 +16,728 @@ msgstr ""
 "X-Generator: Weblate 4.8\n"
 "X-Qt-Contexts: true\n"
 
-#: ../src/app/qml/DeleteButton.qml:64
-msgctxt "DeleteButton|"
-msgid "Delete the Downloaded Image"
-msgstr "내려받은 이미지 삭제"
+#: ../src/app/qml/AboutDialog.qml:49
+#, fuzzy
+#| msgctxt "ImageList|"
+#| msgid "About Fedora Media Writer"
+msgctxt "AboutDialog|"
+msgid "About Fedora Media Writer"
+msgstr "페도라 미디어 작성기 정보"
 
-#: ../src/app/downloadmanager.cpp:215
+#: ../src/app/qml/AboutDialog.qml:58
+#, fuzzy, qt-format
+#| msgctxt "ImageDetails|"
+#| msgid "Version %1"
+msgctxt "AboutDialog|"
+msgid "Version %1"
+msgstr "%1 버전"
+
+#: ../src/app/qml/AboutDialog.qml:65
+#, fuzzy
+#| msgctxt "ImageList|"
+#| msgid "Fedora Media Writer is now checking for new releases"
+msgctxt "AboutDialog|"
+msgid "Fedora Media Writer is now checking for new releases"
+msgstr "페도라 미디어 작성기는 현재 새로운 출시를 점검 중입니다"
+
+#: ../src/app/qml/AboutDialog.qml:71
+#, fuzzy, qt-format
+#| msgctxt "ImageList|"
+#| msgid "Please report bugs or your suggestions on %1"
+msgctxt "AboutDialog|"
+msgid "Please report bugs or your suggestions on %1"
+msgstr "%1에 결점이나 의견을 보고해 주세요"
+
+#: ../src/app/qml/AboutDialog.qml:94
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Close"
+msgctxt "AboutDialog|"
+msgid "Close"
+msgstr "닫기"
+
+#: ../src/app/qml/CancelDialog.qml:54
+msgctxt "CancelDialog|"
+msgid "Cancel Download?"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:56
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "CancelDialog|"
+msgid "Cancel Writing?"
+msgstr "작성하기"
+
+#: ../src/app/qml/CancelDialog.qml:58
+msgctxt "CancelDialog|"
+msgid "Cancel Verification?"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:65
+msgctxt "CancelDialog|"
+msgid "Download progress will be lost and media writing will be aborted."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:67
+msgctxt "CancelDialog|"
+msgid ""
+"Writing process will be aborted and your drive will have to be restored "
+"afterwards."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:69
+msgctxt "CancelDialog|"
+msgid "This operation is safe to be cancelled."
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:86
+msgctxt "CancelDialog|"
+msgid "Continue"
+msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:104
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "CancelDialog|"
+msgid "Cancel Download"
+msgstr "내려받기 중"
+
+#: ../src/app/qml/CancelDialog.qml:106
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "CancelDialog|"
+msgid "Cancel Writing"
+msgstr "작성하기"
+
+#: ../src/app/qml/CancelDialog.qml:108
+msgctxt "CancelDialog|"
+msgid "Cancel Verification"
+msgstr ""
+
+#: ../src/app/downloadmanager.cpp:216
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "요청된 이미지를 가져올 수 없습니다."
 
-#: ../src/app/downloadmanager.cpp:311
+#: ../src/app/downloadmanager.cpp:316
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "내려받아야 할 폴더에 공간이 부족합니다."
 
-#: ../src/app/downloadmanager.cpp:313
+#: ../src/app/downloadmanager.cpp:318
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "내려받은 파일을 작성 할 수 없습니다."
 
-#: ../src/app/downloadmanager.cpp:399
+#: ../src/app/downloadmanager.cpp:404
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "연결 시간 초과"
 
-#: ../src/app/qml/DownloadDialog.qml:33
+#: ../src/app/qml/DownloadPage.qml:48
 #, qt-format
-msgctxt "DownloadDialog|"
-msgid "Write %1"
-msgstr "쓰기 %1"
+msgctxt "DownloadPage|"
+msgid "%1 Sucessfuly Written"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:141
-msgctxt "DownloadDialog|"
-msgid "Writing is not possible"
-msgstr "작성이 불가능합니다"
+#: ../src/app/qml/DownloadPage.qml:50
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Writing %1"
+msgstr "작성하기"
 
-#: ../src/app/qml/DownloadDialog.qml:216
-msgctxt "DownloadDialog|"
-msgid "Close"
-msgstr "닫기"
+#: ../src/app/qml/DownloadPage.qml:52
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the written data"
+msgctxt "DownloadPage|"
+msgid "Verifying written data"
+msgstr "작성된 자료 확인 중"
 
-#: ../src/app/qml/DownloadDialog.qml:232 ../src/app/qml/DownloadDialog.qml:253
-#: ../src/app/qml/DownloadDialog.qml:274 ../src/app/qml/DownloadDialog.qml:285
-#: ../src/app/qml/DownloadDialog.qml:306
-msgctxt "DownloadDialog|"
-msgid "Retry"
-msgstr "다시 시도"
+#: ../src/app/qml/DownloadPage.qml:54
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "DownloadPage|"
+msgid "Downloading %1"
+msgstr "내려받기 중"
 
-#: ../src/app/qml/DownloadDialog.qml:356
-msgctxt "DownloadDialog|"
-msgid "The file will be saved to your Downloads folder."
+#: ../src/app/qml/DownloadPage.qml:56
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "The downloaded image is corrupted"
+msgctxt "DownloadPage|"
+msgid "Verifying downloaded image"
+msgstr "내려받은 이미지가 손상되었습니다"
+
+#: ../src/app/qml/DownloadPage.qml:58
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Preparing"
+msgctxt "DownloadPage|"
+msgid "Preparing %1"
+msgstr "준비 중"
+
+#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+msgctxt "DownloadPage|"
+msgid "Failed"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:72
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 B left)"
+msgctxt "DownloadPage|"
+msgid " B left)"
+msgstr "(%1 B 남음)"
+
+#: ../src/app/qml/DownloadPage.qml:73
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 KB left)"
+msgctxt "DownloadPage|"
+msgid " KB left)"
+msgstr "(%1 KB 남음)"
+
+#: ../src/app/qml/DownloadPage.qml:74
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 MB left)"
+msgctxt "DownloadPage|"
+msgid " MB left)"
+msgstr "(%1 MB 남음)"
+
+#: ../src/app/qml/DownloadPage.qml:75
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "(%1 GB left)"
+msgctxt "DownloadPage|"
+msgid " GB left)"
+msgstr "(%1 GB 남음)"
+
+#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
+#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#, qt-format
+msgctxt "DownloadPage|"
+msgid " (%1"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:124
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "The file will be saved to your Downloads folder."
+msgctxt "DownloadPage|"
+msgid "Downloads are saved to the downloads folder."
 msgstr "파일은 내려받기 폴더에 저장될 것입니다."
 
-#: ../src/app/qml/DownloadDialog.qml:363
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:132
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid "By writing, you will lose all of the data on %1."
+msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "작성시에 %1에서 모든 자료가 소실 될 것입니다."
 
-#: ../src/app/qml/DownloadDialog.qml:370
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:140
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "Your drive will be resized to a smaller capacity. You may resize it back "
+#| "to normal by using Fedora Media Writer; this will remove installation "
+#| "media from your drive."
+msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using Fedora Media Writer; this will remove installation media "
+"normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"당신의 드라이브가 더 작은 공간으로 크기가 조정 될 것입니다. 페도라 미디어 작성기를 사용 할 때에 정상적으로 크기가 재 조정 될 "
-"것입니다; 이는 당신의 드라이브에서 설치 미디어를 제거 할 것입니다."
+"당신의 드라이브가 더 작은 공간으로 크기가 조정 될 것입니다. 페도라 미디어 작"
+"성기를 사용 할 때에 정상적으로 크기가 재 조정 될 것입니다; 이는 당신의 드라이"
+"브에서 설치 미디어를 제거 할 것입니다."
 
-#: ../src/app/qml/DownloadDialog.qml:377
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:148
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "선택됨:"
 
-#: ../src/app/qml/DownloadDialog.qml:377
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:148
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "None"
+msgctxt "DownloadPage|"
 msgid "None"
 msgstr "없음"
 
-#: ../src/app/qml/DownloadDialog.qml:384
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:156
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "Your board or device is not supported by Fedora Media Writer yet. Please "
+#| "check <a href=%1>this page</a> for more information about its "
+#| "compatibility with Fedora and how to create bootable media for it."
+msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"보드 또는 장치가 아직 페도라 미디어 작성기를 지원하지 않으면, 페도라의 호환성과 이 부팅 미디어 생성 방법에 대해서 보다 더 자세히 "
-"<a href=%1>이 부분</a>를 확인해 주세요."
+"보드 또는 장치가 아직 페도라 미디어 작성기를 지원하지 않으면, 페도라의 호환성"
+"과 이 부팅 미디어 생성 방법에 대해서 보다 더 자세히 <a href=%1>이 부분</a>를 "
+"확인해 주세요."
 
-#: ../src/app/qml/DownloadDialog.qml:392
-#, qt-format
-msgctxt "DownloadDialog|"
+#: ../src/app/qml/DownloadPage.qml:165
+#, fuzzy, qt-format
+#| msgctxt "DownloadDialog|"
+#| msgid ""
+#| "The selected drive's size is %1. It's possible you have selected an "
+#| "external drive by accident!"
+msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
-msgstr "선택된 드라이버 크기가 %1입니다. 사고로 외부(외장) 드라이브를 선택 할 수 도 있습니다!"
+msgstr ""
+"선택된 드라이버 크기가 %1입니다. 사고로 외부(외장) 드라이브를 선택 할 수 도 "
+"있습니다!"
 
-#: ../src/app/qml/DownloadDialog.qml:419
+#: ../src/app/qml/DownloadPage.qml:174
 #, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 B left)"
-msgstr "(%1 B 남음)"
+msgctxt "DownloadPage|"
+msgid "Restart and boot from %1 to start using %2."
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:420
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 KB left)"
-msgstr "(%1 KB 남음)"
+#: ../src/app/qml/DownloadPage.qml:262
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Writing is not possible"
+msgctxt "DownloadPage|"
+msgid "Writing not possible"
+msgstr "작성이 불가능합니다"
 
-#: ../src/app/qml/DownloadDialog.qml:421
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 MB left)"
-msgstr "(%1 MB 남음)"
+#: ../src/app/qml/DownloadPage.qml:282
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Writing"
+msgstr "작성하기"
 
-#: ../src/app/qml/DownloadDialog.qml:422
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "(%1 GB left)"
-msgstr "(%1 GB 남음)"
+#: ../src/app/qml/DownloadPage.qml:310
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Writing"
+msgctxt "DownloadPage|"
+msgid "Write verifying"
+msgstr "작성하기"
 
-#: ../src/app/qml/DownloadDialog.qml:435
-msgctxt "DownloadDialog|"
-msgid "Write the image immediately when the download is finished"
-msgstr "내려받기 완료 후 즉시 이미지 작성"
+#: ../src/app/qml/DownloadPage.qml:334
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Finished!"
+msgctxt "DownloadPage|"
+msgid "Finish"
+msgstr "종료됨!"
 
-#: ../src/app/qml/DownloadDialog.qml:509
-msgctxt "DownloadDialog|"
-msgid "There are no portable drives connected"
-msgstr "연결된 이동식 드라이브가 없습니다"
+#: ../src/app/qml/DownloadPage.qml:347
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Writing %1 was successful"
+msgctxt "DownloadPage|"
+msgid "Write Successful"
+msgstr "작성 %1이 성공적으로 완료되었습니다"
 
-#: ../src/app/qml/DownloadDialog.qml:532
-msgctxt "DownloadDialog|"
-msgid "Other"
-msgstr "기타"
+#: ../src/app/qml/DownloadPage.qml:365
+msgctxt "DownloadPage|"
+msgid "Failed verification no drives"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:561
-#, qt-format
-msgctxt "DownloadDialog|"
-msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-msgstr "<br>\"<a href=\"%1\">%2</a>\"을 삭제 할 수 없습니다."
+#: ../src/app/qml/DownloadPage.qml:381
+msgctxt "DownloadPage|"
+msgid "Failed verification"
+msgstr ""
 
-#: ../src/app/qml/DownloadDialog.qml:573
-msgctxt "DownloadDialog|"
-msgid "Cancel"
-msgstr "취소"
+#: ../src/app/qml/DownloadPage.qml:393
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the download"
+msgctxt "DownloadPage|"
+msgid "Failed download"
+msgstr "내려받기 확인 중"
 
-#: ../src/app/qml/DownloadDialog.qml:586
-msgctxt "DownloadDialog|"
-msgid "Write to Disk"
-msgstr "디스크에 쓰기"
+#: ../src/app/qml/DownloadPage.qml:409
+msgctxt "DownloadPage|"
+msgid "Failed no drives"
+msgstr ""
 
-#: ../src/app/drivemanager.cpp:286
+#: ../src/app/drivemanager.cpp:288
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "이 드라이버는 충분히 크지 않습니다."
 
-#: ../src/app/qml/ImageDetails.qml:98
-msgctxt "ImageDetails|"
-msgid "Back"
-msgstr "돌아가기"
+#: ../src/app/qml/DrivePage.qml:36
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Write to Disk"
+msgctxt "DrivePage|"
+msgid "Write Options"
+msgstr "디스크에 쓰기"
 
-#: ../src/app/qml/ImageDetails.qml:105
-msgctxt "ImageDetails|"
-msgid "Create Live USB…"
-msgstr "라이브 USB 생성…"
-
-#. The downloaded image is compressed, this refers to the size which it will take after being decompressed and written to the drive
-#: ../src/app/qml/ImageDetails.qml:167
-#, qt-format
-msgctxt "ImageDetails|"
-msgid "(%1 after writing)"
-msgstr "(쓰기 후 %1 )"
-
-#: ../src/app/qml/ImageDetails.qml:192
-#, qt-format
-msgctxt "ImageDetails|"
-msgid "Version %1"
+#: ../src/app/qml/DrivePage.qml:45
+#, fuzzy
+#| msgctxt "ImageDetails|"
+#| msgid "Version %1"
+msgctxt "DrivePage|"
+msgid "Version"
 msgstr "%1 버전"
 
-#: ../src/app/qml/ImageDetails.qml:296
-#, qt-format
-msgctxt "ImageDetails|"
-msgid ""
-"Fedora %1 was released! Check it out!<br>If you want a stable, finished "
-"system, it's better to stay at version %2."
+#: ../src/app/qml/DrivePage.qml:62
+msgctxt "DrivePage|"
+msgid "Hardware Architecture"
 msgstr ""
-"페도라 %1이 출시 되었습니다! 확인해 주세요!<br>만약 안정적이고, 완성된 시스템을 원한다면 버전 %2를 유지하는 것이 좋습니다."
 
-#: ../src/app/qml/ImageDetails.qml:314
-#, qt-format
-msgctxt "ImageDetails|"
-msgid ", released on %1"
-msgstr ", %1에 출시 됨"
+#: ../src/app/qml/DrivePage.qml:79
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DrivePage|"
+msgid "Selected file"
+msgstr "선택됨:"
 
-#: ../src/app/qml/ImageDetails.qml:324
-msgctxt "ImageDetails|"
-msgid "Other variants..."
-msgstr "기타 변형..."
+#: ../src/app/qml/DrivePage.qml:86
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "None"
+msgctxt "DrivePage|"
+msgid "None"
+msgstr "없음"
 
-#: ../src/app/qml/ImageList.qml:84
-msgctxt "ImageList|"
-msgid "Find an operating system image"
-msgstr "운영 체제 이미지 찾기"
+#: ../src/app/qml/DrivePage.qml:94
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "DrivePage|"
+msgid "Select..."
+msgstr "선택됨:"
 
-#: ../src/app/qml/ImageList.qml:168
-msgctxt "ImageList|"
-msgid "Checking for new releases"
-msgstr "새로운 출시를 점검 중"
+#: ../src/app/qml/DrivePage.qml:111
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Image files"
+msgctxt "DrivePage|"
+msgid "Image files"
+msgstr "이미지 파일"
 
-#: ../src/app/qml/ImageList.qml:251
-msgctxt "ImageList|"
-msgid "About Fedora Media Writer"
-msgstr "페도라 미디어 작성기 정보"
+#: ../src/app/qml/DrivePage.qml:111
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "All files (*)"
+msgctxt "DrivePage|"
+msgid "All files (*)"
+msgstr "모든 파일 (*)"
 
-#: ../src/app/qml/ImageList.qml:275
-#, qt-format
-msgctxt "ImageList|"
-msgid "Version %1"
-msgstr "버전 %1"
+#: ../src/app/qml/DrivePage.qml:122
+msgctxt "DrivePage|"
+msgid "USB Drive"
+msgstr ""
 
-#: ../src/app/qml/ImageList.qml:282
-msgctxt "ImageList|"
-msgid "Fedora Media Writer is now checking for new releases"
-msgstr "페도라 미디어 작성기는 현재 새로운 출시를 점검 중입니다"
+#: ../src/app/qml/DrivePage.qml:130
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "There are no portable drives connected"
+msgctxt "DrivePage|"
+msgid "There are no portable drives connected"
+msgstr "연결된 이동식 드라이브가 없습니다"
 
-#: ../src/app/qml/ImageList.qml:296
-#, qt-format
-msgctxt "ImageList|"
-msgid "Please report bugs or your suggestions on %1"
-msgstr "%1에 결점이나 의견을 보고해 주세요"
+#: ../src/app/qml/DrivePage.qml:149
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "DrivePage|"
+msgid "Download"
+msgstr "내려받기 중"
 
-#: ../src/app/qml/ImageList.qml:356
-msgctxt "ImageList|"
-msgid "Display additional Fedora flavors"
-msgstr "추가적인 페도라 특징 표시"
+#: ../src/app/qml/DrivePage.qml:154
+#, fuzzy
+#| msgctxt "DeleteButton|"
+#| msgid "Delete the Downloaded Image"
+msgctxt "DrivePage|"
+msgid "Delete download after writing"
+msgstr "내려받은 이미지 삭제"
 
-#: ../src/app/linuxdrivemanager.cpp:181
+#: ../src/app/linuxdrivemanager.cpp:196
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
 msgstr "드라이브가 작성 중에 제거되었습니다."
 
-#: ../src/app/linuxdrivemanager.cpp:210
+#: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "도우미 바이너리를 찾을 수 없습니다. 설치 상태를 점검해주세요."
 
-#: ../src/app/linuxdrivemanager.cpp:245
+#: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
 msgstr "쓰기가 완료되기 전에 중지되었습니다."
 
-#: ../src/app/linuxdrivemanager.cpp:315 ../src/app/linuxdrivemanager.cpp:344
+#: ../src/app/linuxdrivemanager.cpp:329
 msgctxt "LinuxDrive|"
 msgid "Finished!"
 msgstr "종료됨!"
 
-#: ../src/app/linuxdrivemanager.cpp:315 ../src/app/linuxdrivemanager.cpp:344
+#: ../src/app/linuxdrivemanager.cpp:329
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
 msgstr "작성 %1이 성공적으로 완료되었습니다"
 
-#: ../src/app/linuxdrivemanager.cpp:337
+#: ../src/app/linuxdrivemanager.cpp:351
 msgctxt "LinuxDrive|"
 msgid "Error"
 msgstr "오류"
 
-#: ../src/app/linuxdrivemanager.cpp:337
+#: ../src/app/linuxdrivemanager.cpp:351
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
 msgstr "쓰기 %1이 실패함"
 
-#: ../src/app/linuxdrivemanager.cpp:116
+#: ../src/app/linuxdrivemanager.cpp:122
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr "UDisk2는 시스템에 사용 할 수 없거나 접근 할 수 없는 것으로 보입니다."
 
-#: ../src/app/macdrivemanager.cpp:101
+#: ../src/app/macdrivemanager.cpp:100
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "도우미 바이너리를 찾을 수 없습니다. 설치 상태를 점검해주세요."
 
-#: ../src/app/macdrivemanager.cpp:188
+#: ../src/app/macdrivemanager.cpp:182
 msgctxt "MacDrive|"
 msgid "Error"
 msgstr "오류"
 
-#: ../src/app/macdrivemanager.cpp:188
+#: ../src/app/macdrivemanager.cpp:182
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
 msgstr "쓰기%1이 실패함"
 
-#: ../src/app/macdrivemanager.cpp:192
+#: ../src/app/macdrivemanager.cpp:186
 msgctxt "MacDrive|"
 msgid "Finished!"
 msgstr "완료됨!"
 
-#: ../src/app/macdrivemanager.cpp:192
+#: ../src/app/macdrivemanager.cpp:186
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
 msgstr "쓰기 %1이 성공했습니다"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/qml/MainPage.qml:43
+msgctxt "MainPage|"
+msgid "Select Image Source"
+msgstr ""
+
+#: ../src/app/qml/MainPage.qml:57
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
+msgctxt "MainPage|"
+msgid "Download automatically"
+msgstr "내려받기 실패"
+
+#: ../src/app/qml/MainPage.qml:65
+msgctxt "MainPage|"
+msgid "Select .iso file"
+msgstr ""
+
+#: ../src/app/qml/MainPage.qml:76
+#, fuzzy, qt-format
+#| msgctxt "RestoreDialog|"
+#| msgid "Restore %1?"
+msgctxt "MainPage|"
+msgid "Restore <b>%1</b>"
+msgstr "복구 %1?"
+
+#: ../src/app/portalfiledialog.cpp:145
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Image files"
+msgctxt "PortalFileDialog|"
+msgid "Image files"
+msgstr "이미지 파일"
+
+#: ../src/app/portalfiledialog.cpp:155
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "All files (*)"
+msgctxt "PortalFileDialog|"
+msgid "All files"
+msgstr "모든 파일 (*)"
+
+#: ../src/app/portalfiledialog.cpp:165
+msgctxt "PortalFileDialog|"
+msgid "Open File"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "드라이버에서 파일 선택"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
-"<p>여기 하드디스크에서 USB 저장장치에 작성 할 수 있도록 OS 이미지를 선택 할 수 있습니다.</p><p>현재 단순 디스크 이미지만("
-".iso 또는 .bin)을 지원합니다. </p>"
+"<p>여기 하드디스크에서 USB 저장장치에 작성 할 수 있도록 OS 이미지를 선택 할 "
+"수 있습니다.</p><p>현재 단순 디스크 이미지만(.iso 또는 .bin)을 지원합니다. </"
+"p>"
 
-#: ../src/app/releasemanager.cpp:362
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "페도라 스핀"
 
-#: ../src/app/releasemanager.cpp:364
+#: ../src/app/releasemanager.cpp:399
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "페도라 랩"
 
-#: ../src/app/releasemanager.cpp:366
+#: ../src/app/releasemanager.cpp:401
+msgctxt "Release|"
+msgid "Emerging Fedora Editions"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:403
 msgctxt "Release|"
 msgid "Other"
 msgstr "기타"
 
-#: ../src/app/releasemanager.cpp:936
+#: ../src/app/releasemanager.cpp:979
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 64bit"
 msgstr "인텔 64비트"
 
-#: ../src/app/releasemanager.cpp:936
+#: ../src/app/releasemanager.cpp:979
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "인텔, AMD와 다른 호환 PC (64비트)를 위한 ISO 형식의 이미지"
 
-#: ../src/app/releasemanager.cpp:937
+#: ../src/app/releasemanager.cpp:980
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 32bit"
 msgstr "인텔 32비트"
 
-#: ../src/app/releasemanager.cpp:937
+#: ../src/app/releasemanager.cpp:980
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "인텔, AMD와 다른 호환 PC (32비트)를 위한 ISO 형식의 이미지"
 
-#: ../src/app/releasemanager.cpp:938
+#: ../src/app/releasemanager.cpp:981
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:938
+#: ../src/app/releasemanager.cpp:981
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr "라즈베리 파이 2와 3같은 암(arm) v7-A 장비를 위한 LZMA-압축된 단순 이미지"
+msgstr ""
+"라즈베리 파이 2와 3같은 암(arm) v7-A 장비를 위한 LZMA-압축된 단순 이미지"
 
-#: ../src/app/releasemanager.cpp:939
+#: ../src/app/releasemanager.cpp:982
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:939
+#: ../src/app/releasemanager.cpp:982
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "AArch64 장비를 위한 LZMA-압축된 이미지"
 
-#: ../src/app/releasemanager.cpp:330 ../src/app/releasemanager.cpp:336
+#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "사용자 정의 이미지"
 
-#: ../src/app/releasemanager.cpp:797 ../src/app/releasemanager.cpp:809
+#: ../src/app/releasemanager.cpp:840 ../src/app/releasemanager.cpp:852
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "내려받은 이미지가 손상되었습니다"
 
-#: ../src/app/releasemanager.cpp:814
+#: ../src/app/releasemanager.cpp:857
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "내려받은 파일을 읽을 수가 없습니다."
 
-#: ../src/app/releasemanager.cpp:826
+#: ../src/app/releasemanager.cpp:869
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "임시 파일 명칭을 변경 할 수 없음."
 
-#: ../src/app/releasemanager.h:386
-msgctxt "ReleaseVariant|"
-msgid "Preparing"
-msgstr "준비 중"
-
-#: ../src/app/releasemanager.h:387
-msgctxt "ReleaseVariant|"
-msgid "Downloading"
-msgstr "내려받기 중"
-
-#: ../src/app/releasemanager.h:388
-msgctxt "ReleaseVariant|"
-msgid "Checking the download"
-msgstr "내려받기 확인 중"
-
-#: ../src/app/releasemanager.h:389
-msgctxt "ReleaseVariant|"
-msgid "Ready to write"
-msgstr "작성 준비"
-
-#: ../src/app/releasemanager.h:390
-msgctxt "ReleaseVariant|"
-msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr "이미지 파일은 내려받기 폴더에 저장되어 있습니다. 쓰기는 실행 할 수 없습니다"
-
-#: ../src/app/releasemanager.h:391
-msgctxt "ReleaseVariant|"
-msgid "Writing"
-msgstr "작성하기"
-
-#: ../src/app/releasemanager.h:392
-msgctxt "ReleaseVariant|"
-msgid "Checking the written data"
-msgstr "작성된 자료 확인 중"
-
-#: ../src/app/releasemanager.h:393
-msgctxt "ReleaseVariant|"
-msgid "Finished!"
-msgstr "종료됨!"
-
-#: ../src/app/releasemanager.h:394
-msgctxt "ReleaseVariant|"
-msgid "The written data is corrupted"
-msgstr "작성된 자료가 손상되었습니다"
-
-#: ../src/app/releasemanager.h:395
-msgctxt "ReleaseVariant|"
-msgid "Download failed"
-msgstr "내려받기 실패"
-
-#: ../src/app/releasemanager.h:396
-msgctxt "ReleaseVariant|"
-msgid "Error"
-msgstr "오류"
-
-#: ../src/app/releasemanager.cpp:607
+#: ../src/app/releasemanager.cpp:648
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 알파"
 
-#: ../src/app/releasemanager.cpp:609
+#: ../src/app/releasemanager.cpp:650
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 베타"
 
-#: ../src/app/releasemanager.cpp:611
+#: ../src/app/releasemanager.cpp:652
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "%1 출시 후보"
 
-#: ../src/app/qml/RestoreDialog.qml:31
+#: ../src/app/qml/RestorePage.qml:37
 #, qt-format
-msgctxt "RestoreDialog|"
-msgid "Restore %1?"
-msgstr "복구 %1?"
+msgctxt "RestorePage|"
+msgid "Restore Drive <b>%1</b>"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:73
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:49
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "<p align=\"justify\">\n"
+#| "                                                To reclaim all space "
+#| "available on the drive, it has to be restored to its factory settings.\n"
+#| "                                                The live system and all "
+#| "saved data will be deleted.\n"
+#| "                                            </p>\n"
+#| "                                            <p align=\"justify\">\n"
+#| "                                                You don't need to restore "
+#| "the drive if you want to write another live system to it.\n"
+#| "                                            </p>\n"
+#| "                                            <p align=\"justify\">\n"
+#| "                                                Do you want to continue?\n"
+#| "                                            </p>"
+msgctxt "RestorePage|"
 msgid ""
-"<p align=\"justify\">\n"
-"                                                To reclaim all space "
-"available on the drive, it has to be restored to its factory settings.\n"
-"                                                The live system and all "
-"saved data will be deleted.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                You don't need to restore "
-"the drive if you want to write another live system to it.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Do you want to continue?\n"
-"                                            </p>"
+"<p align=\"justify\"> To reclaim all space available on the drive, it has to "
+"be restored to its factory settings. The live system and all saved data will "
+"be deleted. </p> <p align=\"justify\"> You don't need to restore the drive "
+"if you want to write another live system to it. \n"
+"                </p> <p align=\"justify\"> Do you want to restore it to "
+"factory settings? </p>"
 msgstr ""
 "<p align=\"justify\">\n"
-" 드라이브에 사용 할 수 있는 모든 공간을 확보 할 때에, 초기 출시 설정값(factory settings)으로 복구해야 합니다.\n"
+" 드라이브에 사용 할 수 있는 모든 공간을 확보 할 때에, 초기 출시 설정값"
+"(factory settings)으로 복구해야 합니다.\n"
 " 실시간 시스템과 모든 저정된 자료는 삭제 될 것입니다.\n"
 " </p>\n"
 " <p align=\"justify\">\n"
@@ -521,39 +747,82 @@ msgstr ""
 "진행 할까요?\n"
 " </p>"
 
-#: ../src/app/qml/RestoreDialog.qml:105
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:67
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
+#| "portable drive.</p>"
+msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
-msgstr "<p align=\"justify\">페도라 미디어 작성기가 이동식 드라이브를 복구 할 때에 기다려 주세요.</p>"
+msgstr ""
+"<p align=\"justify\">페도라 미디어 작성기가 이동식 드라이브를 복구 할 때에 기"
+"다려 주세요.</p>"
 
-#: ../src/app/qml/RestoreDialog.qml:121
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:84
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid "Your drive was successfully restored!"
+msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "드라이브가 성공적으로 복구되었습니다!"
 
-#: ../src/app/qml/RestoreDialog.qml:138
-msgctxt "RestoreDialog|"
+#: ../src/app/qml/RestorePage.qml:94
+#, fuzzy
+#| msgctxt "RestoreDialog|"
+#| msgid ""
+#| "Unfortunately, an error occurred during the process.<br>Please try "
+#| "restoring the drive using your system tools."
+msgctxt "RestorePage|"
 msgid ""
-"Unfortunately, an error occurred during the process.<br>Please try restoring "
+"Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
-msgstr "안타깝게도, 처리 중에 오류가 발생했습니다.<br>시스템 도구를 사용하여 드라이브 복구를 시도해주세요."
+msgstr ""
+"안타깝게도, 처리 중에 오류가 발생했습니다.<br>시스템 도구를 사용하여 드라이"
+"브 복구를 시도해주세요."
 
-#: ../src/app/qml/RestoreDialog.qml:150
-msgctxt "RestoreDialog|"
-msgid "Cancel"
-msgstr "취소"
+#: ../src/app/qml/RestorePage.qml:143
+msgctxt "RestorePage|"
+msgid "Restoring finished"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:159 ../src/app/qml/RestoreDialog.qml:170
-msgctxt "RestoreDialog|"
-msgid "Restore"
-msgstr "복구"
+#: ../src/app/qml/VersionPage.qml:35
+msgctxt "VersionPage|"
+msgid "Select Fedora Release"
+msgstr ""
 
-#: ../src/app/qml/RestoreDialog.qml:159
-msgctxt "RestoreDialog|"
-msgid "Close"
-msgstr "닫기"
+#: ../src/app/qml/VersionPage.qml:48
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "VersionPage|"
+msgid "Select from:"
+msgstr "선택됨:"
+
+#: ../src/app/qml/VersionPage.qml:53
+msgctxt "VersionPage|"
+msgid "Official Editions"
+msgstr ""
+
+#: ../src/app/qml/VersionPage.qml:59
+msgctxt "VersionPage|"
+msgid "Emerging Editions"
+msgstr ""
+
+#: ../src/app/qml/VersionPage.qml:65
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "spins"
+msgctxt "VersionPage|"
+msgid "Spins"
+msgstr "스핀"
+
+#: ../src/app/qml/VersionPage.qml:71
+msgctxt "VersionPage|"
+msgid "Labs"
+msgstr ""
 
 #: ../src/app/windrivemanager.cpp:270
 msgctxt "WinDrive|"
@@ -571,152 +840,93 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "작성 %1이 성공하였습니다"
 
-#: ../src/helper/linux/writejob.cpp:136 ../src/helper/win/writejob.cpp:271
-#: ../src/helper/mac/writejob.cpp:219
-msgctxt "WriteJob|"
-msgid "Failed to start decompressing."
-msgstr "압축 해제 시작에 실패."
-
-#: ../src/helper/linux/writejob.cpp:161 ../src/helper/linux/writejob.cpp:191
-#: ../src/helper/linux/writejob.cpp:228 ../src/helper/win/writejob.cpp:188
-#: ../src/helper/win/writejob.cpp:195 ../src/helper/mac/writejob.cpp:180
-#: ../src/helper/mac/writejob.cpp:244 ../src/helper/mac/writejob.cpp:274
-msgctxt "WriteJob|"
-msgid "Destination drive is not writable"
-msgstr "대상 드라이브를 작성 할 수 없습니다"
-
-#: ../src/helper/linux/writejob.cpp:170 ../src/helper/win/writejob.cpp:315
-#: ../src/helper/mac/writejob.cpp:253
-msgctxt "WriteJob|"
-msgid "There is not enough memory to decompress the file."
-msgstr "파일을 압축해제 할 때에 충분한 메모리가 없습니다."
-
-#: ../src/helper/linux/writejob.cpp:175 ../src/helper/win/writejob.cpp:320
-#: ../src/helper/mac/writejob.cpp:258
-msgctxt "WriteJob|"
-msgid "The downloaded compressed file is corrupted."
-msgstr "내려받은 압축 파일이 손상되었습니다."
-
-#: ../src/helper/linux/writejob.cpp:178 ../src/helper/win/writejob.cpp:323
-#: ../src/helper/mac/writejob.cpp:261
-msgctxt "WriteJob|"
-msgid "Unsupported compression options."
-msgstr "미지원 압축 선택."
-
-#: ../src/helper/linux/writejob.cpp:181 ../src/helper/win/writejob.cpp:326
-#: ../src/helper/mac/writejob.cpp:264
-msgctxt "WriteJob|"
-msgid "Unknown decompression error."
-msgstr "알지 못하는 압축해제 오류."
-
-#: ../src/helper/linux/writejob.cpp:206 ../src/helper/linux/writejob.cpp:221
-#: ../src/helper/win/writejob.cpp:361
-msgctxt "WriteJob|"
-msgid "Source image is not readable"
-msgstr "소스 이미지를 읽을 수 없습니다"
-
-#: ../src/helper/linux/writejob.cpp:257 ../src/helper/win/writejob.cpp:406
-#: ../src/helper/mac/writejob.cpp:297
-msgctxt "WriteJob|"
-msgid "Your drive is probably damaged."
-msgstr "드라이브가 아마도 손상되었을 수 있습니다."
-
-#: ../src/helper/linux/writejob.cpp:262 ../src/helper/win/writejob.cpp:411
-#: ../src/helper/mac/writejob.cpp:302
-msgctxt "WriteJob|"
-msgid "Unexpected error occurred during media check."
-msgstr "미디어 점검시에 예상하지 못한 오류가 발생되었습니다."
-
-#: ../src/helper/win/writejob.cpp:74
-msgctxt "WriteJob|"
-msgid "Couldn't open the drive for writing"
-msgstr "쓰기를 위해 드라이브를 열 수 없습니다"
-
-#: ../src/helper/win/writejob.cpp:98
-msgctxt "WriteJob|"
-msgid "Couldn't lock the drive"
-msgstr "드라이브를 잠글 수 없습니다"
-
-#: ../src/helper/win/writejob.cpp:134
-#, qt-format
-msgctxt "WriteJob|"
-msgid "Couldn't remove the drive %1:"
-msgstr "드라이브 %1을 제거 할 수 없습니다:"
-
-#: ../src/helper/win/writejob.cpp:209
-msgctxt "WriteJob|"
-msgid "Couldn't unlock the drive"
-msgstr "드라이브를 잠금해제 할 수 없습니다"
-
-#: ../src/helper/mac/writejob.cpp:82
-msgctxt "WriteJob|"
-msgid "Unable to allocate socket pair"
-msgstr "소켓 쌍을 할당 할 수 없음"
-
-#: ../src/helper/mac/writejob.cpp:127
-msgctxt "WriteJob|"
-msgid "Unable to open destination for writing"
-msgstr "쓰기를 위해 대상을 열 수 없습니다"
-
-#: ../src/app/qml/main.qml:68
-#, qt-format
+#: ../src/app/qml/main.qml:116
+#, fuzzy
+#| msgid "Fedora Media Writer"
 msgctxt "main|"
-msgid ""
-"You inserted <b>%1</b> that already contains a live system.<br>Do you want "
-"to restore it to factory settings?"
-msgstr ""
-"실시간 시스템에 이미 포함되어 있는 <b>%1</b>를 넣었습니다.<br>초기 설정(factory setting)으로 복구 할까요?"
+msgid "Fedora Media Writer"
+msgstr "페도라 미디어 작성기"
 
-#: ../src/app/qml/main.qml:70
+#: ../src/app/qml/main.qml:154
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Workstation"
+msgctxt "main|"
+msgid "Select Fedora Version"
+msgstr "페도라 웍스테이션"
+
+#: ../src/app/qml/main.qml:170
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Selected:"
+msgctxt "main|"
+msgid "Select Drive"
+msgstr "선택됨:"
+
+#: ../src/app/qml/main.qml:204
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
+msgctxt "main|"
+msgid "Downloading"
+msgstr "내려받기 중"
+
+#: ../src/app/qml/main.qml:243 ../src/app/qml/main.qml:284
 msgctxt "main|"
 msgid "Restore"
 msgstr "복구"
 
-#: ../src/app/qml/main.qml:146
-#, qt-format
+#: ../src/app/qml/main.qml:283
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Finished!"
 msgctxt "main|"
-msgid "Fedora Media Writer %1 Released"
-msgstr "페도라 미디어 작성시 %1 출시됨"
+msgid "Finish"
+msgstr "종료됨!"
 
-#: ../src/app/qml/main.qml:147
+#: ../src/app/qml/main.qml:286
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
 msgctxt "main|"
-msgid "Update for great new features and bugfixes!"
-msgstr "멋진 새로운 기능과 결점수정을 위해 최신화 하기!"
+msgid "Download & Write"
+msgstr "내려받기 실패"
 
-#: ../src/app/qml/main.qml:148
+#: ../src/app/qml/main.qml:289 ../src/app/qml/main.qml:300
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Cancel"
 msgctxt "main|"
-msgid "Open Browser"
-msgstr "검색기 열기"
+msgid "Cancel"
+msgstr "취소"
 
-#: ../src/app/qml/main.qml:163
+#: ../src/app/qml/main.qml:291
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Retry"
 msgctxt "main|"
-msgid "Image files"
-msgstr "이미지 파일"
+msgid "Retry"
+msgstr "다시 시도"
 
-#: ../src/app/qml/main.qml:163
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
-msgid "All files (*)"
-msgstr "모든 파일 (*)"
-
-#: ../src/app/qml/main.qml:192
-#, qt-format
-msgctxt "main|"
-msgid ""
-"%1<br>Writing images will not be possible.<br>You can still view Fedora "
-"flavors and download images to your hard drive."
+msgid "Next"
 msgstr ""
-"%1<br>쓰기 이미지는 실행 할 수 없을 것입니다.<br>당신은 여전히 페도라 특징을 보고 하드 드라이브에 이미지를 내려 받을 수 "
-"있습니다."
 
-#: ../src/app/qml/main.qml:196
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
-msgid "Ok"
-msgstr "확인"
+msgid "About"
+msgstr ""
+
+#: ../src/app/qml/main.qml:301
+msgctxt "main|"
+msgid "Previous"
+msgstr ""
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop.in:4
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
 msgid "Fedora Media Writer"
 msgstr "페도라 미디어 작성기"
 
@@ -735,10 +945,12 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
-"페도라 배포판으로 부팅 가능한 라이브 USB 드라이브를 생성하는 도구입니다. 페도라 미디어 작성기는 사용자의 플래시 드라이브에 이미지를 "
-"쓸 수도 있으며 사용자 대신에 그것을 내려 받을 수도 있습니다. 공식 배포판(서버, 웍스테이션), 페로라 스핀(KDE Plasma "
-"Desktop, Xfce Desktop, Cinnamon Desktop,...), 그리고 페도라 Labs(Design Suite, "
-"Security Lab,...) 등이 있습니다. 사용자에게 맞는 선택을 할 수 있도록 각 제품에 대한 기본 정보가 제공됩니다."
+"페도라 배포판으로 부팅 가능한 라이브 USB 드라이브를 생성하는 도구입니다. 페도"
+"라 미디어 작성기는 사용자의 플래시 드라이브에 이미지를 쓸 수도 있으며 사용자 "
+"대신에 그것을 내려 받을 수도 있습니다. 공식 배포판(서버, 웍스테이션), 페로라 "
+"스핀(KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), 그리고 페도라 "
+"Labs(Design Suite, Security Lab,...) 등이 있습니다. 사용자에게 맞는 선택을 "
+"할 수 있도록 각 제품에 대한 기본 정보가 제공됩니다."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -746,915 +958,1076 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
-"또한 페도라 미디어 작성기는 사용자의 로컬 디스크에서 적재된 다른 부팅 가능한 ISO에도 쓸 수 있지만 페도라 이미지만 시험되었으니 "
-"유의하시기 바랍니다."
+"또한 페도라 미디어 작성기는 사용자의 로컬 디스크에서 적재된 다른 부팅 가능한 "
+"ISO에도 쓸 수 있지만 페도라 이미지만 시험되었으니 유의하시기 바랍니다."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop.in:39
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:39
 msgid "Write Fedora images to your portable drives"
 msgstr "사용자의 이동식 드라이브에 페도라 이미지를 작성합니다"
 
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:77
+msgid "fmw;usb;iso;bootable;"
+msgstr ""
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Write %1"
+#~ msgstr "쓰기 %1"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Write the image immediately when the download is finished"
+#~ msgstr "내려받기 완료 후 즉시 이미지 작성"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "Other"
+#~ msgstr "기타"
+
+#~ msgctxt "DownloadDialog|"
+#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
+#~ msgstr "<br>\"<a href=\"%1\">%2</a>\"을 삭제 할 수 없습니다."
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "Back"
+#~ msgstr "돌아가기"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "Create Live USB…"
+#~ msgstr "라이브 USB 생성…"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "(%1 after writing)"
+#~ msgstr "(쓰기 후 %1 )"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid ""
+#~ "Fedora %1 was released! Check it out!<br>If you want a stable, finished "
+#~ "system, it's better to stay at version %2."
+#~ msgstr ""
+#~ "페도라 %1이 출시 되었습니다! 확인해 주세요!<br>만약 안정적이고, 완성된 시"
+#~ "스템을 원한다면 버전 %2를 유지하는 것이 좋습니다."
+
+#~ msgctxt "ImageDetails|"
+#~ msgid ", released on %1"
+#~ msgstr ", %1에 출시 됨"
+
+#~ msgctxt "ImageDetails|"
+#~ msgid "Other variants..."
+#~ msgstr "기타 변형..."
+
+#~ msgctxt "ImageList|"
+#~ msgid "Find an operating system image"
+#~ msgstr "운영 체제 이미지 찾기"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Checking for new releases"
+#~ msgstr "새로운 출시를 점검 중"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Version %1"
+#~ msgstr "버전 %1"
+
+#~ msgctxt "ImageList|"
+#~ msgid "Display additional Fedora flavors"
+#~ msgstr "추가적인 페도라 특징 표시"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Ready to write"
+#~ msgstr "작성 준비"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid ""
+#~ "Image file was saved to your downloads folder. Writing is not possible"
+#~ msgstr ""
+#~ "이미지 파일은 내려받기 폴더에 저장되어 있습니다. 쓰기는 실행 할 수 없습니"
+#~ "다"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Finished!"
+#~ msgstr "종료됨!"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "The written data is corrupted"
+#~ msgstr "작성된 자료가 손상되었습니다"
+
+#~ msgctxt "ReleaseVariant|"
+#~ msgid "Error"
+#~ msgstr "오류"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Cancel"
+#~ msgstr "취소"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Restore"
+#~ msgstr "복구"
+
+#~ msgctxt "RestoreDialog|"
+#~ msgid "Close"
+#~ msgstr "닫기"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Failed to start decompressing."
+#~ msgstr "압축 해제 시작에 실패."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Destination drive is not writable"
+#~ msgstr "대상 드라이브를 작성 할 수 없습니다"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "There is not enough memory to decompress the file."
+#~ msgstr "파일을 압축해제 할 때에 충분한 메모리가 없습니다."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "The downloaded compressed file is corrupted."
+#~ msgstr "내려받은 압축 파일이 손상되었습니다."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unsupported compression options."
+#~ msgstr "미지원 압축 선택."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unknown decompression error."
+#~ msgstr "알지 못하는 압축해제 오류."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Source image is not readable"
+#~ msgstr "소스 이미지를 읽을 수 없습니다"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Your drive is probably damaged."
+#~ msgstr "드라이브가 아마도 손상되었을 수 있습니다."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unexpected error occurred during media check."
+#~ msgstr "미디어 점검시에 예상하지 못한 오류가 발생되었습니다."
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't open the drive for writing"
+#~ msgstr "쓰기를 위해 드라이브를 열 수 없습니다"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't lock the drive"
+#~ msgstr "드라이브를 잠글 수 없습니다"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't remove the drive %1:"
+#~ msgstr "드라이브 %1을 제거 할 수 없습니다:"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Couldn't unlock the drive"
+#~ msgstr "드라이브를 잠금해제 할 수 없습니다"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unable to allocate socket pair"
+#~ msgstr "소켓 쌍을 할당 할 수 없음"
+
+#~ msgctxt "WriteJob|"
+#~ msgid "Unable to open destination for writing"
+#~ msgstr "쓰기를 위해 대상을 열 수 없습니다"
+
+#~ msgctxt "main|"
+#~ msgid ""
+#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
+#~ "want to restore it to factory settings?"
+#~ msgstr ""
+#~ "실시간 시스템에 이미 포함되어 있는 <b>%1</b>를 넣었습니다.<br>초기 설정"
+#~ "(factory setting)으로 복구 할까요?"
+
+#~ msgctxt "main|"
+#~ msgid "Fedora Media Writer %1 Released"
+#~ msgstr "페도라 미디어 작성시 %1 출시됨"
+
+#~ msgctxt "main|"
+#~ msgid "Update for great new features and bugfixes!"
+#~ msgstr "멋진 새로운 기능과 결점수정을 위해 최신화 하기!"
+
+#~ msgctxt "main|"
+#~ msgid "Open Browser"
+#~ msgstr "검색기 열기"
+
+#~ msgctxt "main|"
+#~ msgid ""
+#~ "%1<br>Writing images will not be possible.<br>You can still view Fedora "
+#~ "flavors and download images to your hard drive."
+#~ msgstr ""
+#~ "%1<br>쓰기 이미지는 실행 할 수 없을 것입니다.<br>당신은 여전히 페도라 특징"
+#~ "을 보고 하드 드라이브에 이미지를 내려 받을 수 있습니다."
+
+#~ msgctxt "main|"
+#~ msgid "Ok"
+#~ msgstr "확인"
+
 # ############## metadata.json ###############
-#: [Workstation].subvariant
-msgid "workstation"
-msgstr "웍스테이션"
-
-#: [Workstation].category
-msgctxt "Release|"
-msgid "product"
-msgstr "제품"
-
-#: [Workstation].name
-msgctxt "Release|"
-msgid "Fedora Workstation"
-msgstr "페도라 웍스테이션"
-
-#: [Workstation].summary
-msgctxt "Release|"
-msgid "This is the Linux workstation you've been waiting for."
-msgstr "기다리던 리눅스 웍스테이션."
-
-#: [Workstation].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora Workstation is a reliable, user-friendly, and powerful operating "
-"system for your laptop or desktop computer. It supports a wide range of "
-"developers, from hobbyists and students to professionals in corporate "
-"environments."
-msgstr ""
-"페도라 웍스테이션은 랩탑과 데스크톱을 위한 친화적이고, 신뢰할 수 있으며, 강력한 운영체제입니다. 개발자부터 취미로 하는 사람, 기업의 "
-"전문가까지 다양한 계층을 지원합니다."
-
-#: [Workstation].description[1]
-msgctxt "Release|"
-msgid ""
-"“The plethora of tools provided by<br /> Fedora allows me to get the job "
-"done.<br /> It just works.”"
-msgstr "<br /> 페도라에서 제공하는 수많은 도구를 통해 작업을 끝내도록 할 수 있다.<br /> 그냥 됩니다.”"
-
-#: [Workstation].description[2]
-msgctxt "Release|"
-msgid "JVM performance engineer"
-msgstr "JVM 성능 엔지니어"
-
-#: [Workstation].description[3]
-msgctxt "Release|"
-msgid "Sleek user interface"
-msgstr "세련된 사용자 연결장치"
-
-#: [Workstation].description[4]
-msgctxt "Release|"
-msgid ""
-"Focus on your code in the GNOME 3 desktop environment. GNOME is built with "
-"developer feedback and minimizes distractions, so you can concentrate on "
-"what's important."
-msgstr ""
-"그놈 3 데스크톱 환경에서 코드에 집중할 수 있습니다. 그놈은 개발자들의 개선 사항을 반영하고 시선 분산을 최소화 시켰기에 실제로 "
-"집중해야 하는 것에 더 집중할 수 있습니다."
-
-#: [Workstation].description[5]
-msgctxt "Release|"
-msgid "Complete open source toolbox"
-msgstr "준비된 오픈 소스 도구들"
-
-#: [Workstation].description[6]
-msgctxt "Release|"
-msgid ""
-"Skip the drag of trying to find or build the tools you need. With Fedora's "
-"complete set of open source languages, tools, and utilities, everything is a "
-"click or command line away. There's even project hosting and repositories "
-"like COPR to make your code and builds available quickly to the community."
-msgstr ""
-"필요한 도구가 어디 있는지 찾아다니고 직접 빌드 할 필요가 없습니다. 페도라의 준비된 오픈 소스 언어, 도구와 유틸리티 구성을 이용하면, "
-"한 번의 누름 혹은 명령 줄로 간단히 해결할 수 있습니다. COPR 같은 프로젝트 호스팅과 저장소도 준비되어 있어 커뮤니티에서 가용하도록 "
-"빠르게 빌드하고 코드를 만들 수 있습니다."
-
-#: [Workstation].description[7]
-msgctxt "Release|"
-msgid "GNOME Boxes & other virt tools"
-msgstr "그놈 박스 & 다른 가상 도구들"
-
-#: [Workstation].description[8]
-msgctxt "Release|"
-msgid ""
-"Get virtual machines up and running quickly to test your code on multiple "
-"platforms using GNOME Boxes. Or dig into powerful, scriptable virtualization "
-"tools for even more control."
-msgstr ""
-"그놈 박스를 이용하면 빠르게 가상 머신을 이용하여 다양한 플랫폼에서 소스 코드를 테스트할 수 있습니다. 혹은 강력하고 직접 스크립트 "
-"작성이 가능한 다른 가상환경 도구도 이용해보세요."
-
-#: [Workstation].description[9]
-msgctxt "Release|"
-msgid "Built-in Docker support"
-msgstr "내장 도커 지원"
-
-#: [Workstation].description[10]
-msgctxt "Release|"
-msgid ""
-"Containerize your own apps, or deploy containerized apps out of the box on "
-"Fedora, using the latest technology like Docker."
-msgstr "도커와 같은 최신 기술을 통해서, 자신의 앱을 콘테이너화 하거나 페도라에서 바로 컨테이너화된 앱을 배포 할 수 있습니다."
-
-#: [Server].subvariant
-msgctxt "Release|"
-msgid "server"
-msgstr "서버"
-
-#: [Server].category [Server].name
-msgctxt "Release|"
-msgid "Fedora Server"
-msgstr "페도라 서버"
-
-#: [Server].summary
-msgctxt "Release|"
-msgid ""
-"The latest technology. A stable foundation. Together, for your applications "
-"and services."
-msgstr "최신 기술. 안정된 기반. 응용프로그램과 서비스를 위해 함께."
-
-#: [Server].description[0]
-msgctxt "Release|"
-msgid ""
-"“The simplicity introduced with rolekit and cockpit have made server "
-"deployments a breeze. What took me a few days on other operating systems "
-"took less than an hour with Fedora %(rel)s Server. It just works.”"
-msgstr ""
-"“rolekit 및 cockpit으로 안내된 단순성 덕분에 서버 배포가 쉬워졌습니다. 다른 운영 체제에서 며칠이 걸렸던 것도 페도라 "
-"%(rel)s 서버에서 한 시간도 채 걸리지 않았습니다. 잘 작동합니다.”"
-
-#: [Server].description[1]
-msgctxt "Release|"
-msgid "Systems Engineer"
-msgstr "시스템 엔지니어"
-
-#: [Server].description[2]
-msgctxt "Release|"
-msgid ""
-"Fedora Server is a short-lifecycle, community-supported server operating "
-"system that enables seasoned system administrators experienced with any OS "
-"to make use of the very latest server-based technologies available in the "
-"open source community."
-msgstr ""
-"페도라 서버는 짧은 생명 주기와 커뮤니티-지원을 바탕으로 한 서버 운영체제로, 시스템 관리자뿐만 아니라 다른 운영체제를 사용했던 "
-"사용자들에게 오픈 소스 환경에서 가장 최신의 기술들을 제공합니다."
-
-#: [Server].description[3]
-msgctxt "Release|"
-msgid "Easy Administration"
-msgstr "쉬운 관리"
-
-#: [Server].description[4]
-msgctxt "Release|"
-msgid ""
-"Manage your system simply with Cockpit's powerful, modern interface. View "
-"and monitor system performance and status, and deploy and manage container-"
-"based services."
-msgstr ""
-"Cockpit의 강력하고 현대적인 연결장치를 이용하여 간단하게 시스템을 관리할 수 있습니다. 시스템의 성능과 상태를 보고 모니터링하며, "
-"컨테이너-기반의 서비스를 배포하고 관리할 수 있게 해줍니다."
-
-#: [Server].description[5]
-msgctxt "Release|"
-msgid "Server Roles"
-msgstr "서버 역할"
-
-#: [Server].description[6]
-msgctxt "Release|"
-msgid ""
-"There's no need to set up your server from scratch when you use server "
-"roles. Server roles plug into your Fedora Server system, providing a well-"
-"integrated service on top of the Fedora Server platform. Deploy and manage "
-"these prepared roles simply using the Rolekit tool."
-msgstr ""
-"서버 역할을 사용 할 때 처음부터 서버를 설정 할 필요가 없습니다. 서버 역할은 페도라 서버 시스템에 연결되어, 페도라 서버 기반의 "
-"위에서 잘-통합된 서비스를 제공합니다. Rolekit 도구를 사용하여 이 준비된 역할을 단순히 배포하고 관리합니다."
-
-#: [Server].description[7]
-msgctxt "Release|"
-msgid "Database Services"
-msgstr "데이타베이스 서비스"
-
-#: [Server].description[8]
-msgctxt "Release|"
-msgid ""
-"Fedora Server brings with it an enterprise-class, scalable database server "
-"powered by the open-source PostgreSQL project."
-msgstr "페도라 서버는 개방형-원천 PostgreSQL 프로젝트에 의해 제공되는 기업-등급, 확장성 데이타베이스 제공합니다."
-
-#: [Server].description[9]
-msgctxt "Release|"
-msgid "Complete Enterprise Domain Solution"
-msgstr "준비된 기업용 도메인 솔류션"
-
-#: [Server].description[10]
-msgctxt "Release|"
-msgid ""
-"Level up your Linux network with advanced identity management, DNS, "
-"certificate services, Windows(TM) domain integration throughout your "
-"environment with FreeIPA, the engine that drives Fedora Server's Domain "
-"Controller role."
-msgstr ""
-"발전된 식별 관리, DNS, 인증 서비스,FreeIPA와 함께 당신의 환경을 통한 Windows(TM) 도메인 통합, 페도라 서버의 "
-"도메인 제어기 역할을 구동하는 엔진과 함께 리눅스 네트워크 수준을 높입니다."
-
-#: [Server].description[11]
-msgctxt "Release|"
-msgid ""
-"“The Docker Role for Fedora Server was simple and fast to install so that "
-"you can run your Docker images. This makes a great testbed for beginners and "
-"experts with docker so that they can develop their applications on the fly.”"
-msgstr ""
-"“페도라 서버의 도커 역할은 도커 이미지를 실행 할 수 있도록 간단하고 설치가 빠르기 때문입니다. 이는 빨리 응용프로그램을 개발 할 수 "
-"있도록 도커로 초보자와 전문가를 위한 훌륭한 시험무대가 될 수 있습니다. \""
-
-#: [Server].description[12]
-msgctxt "Release|"
-msgid "</p><p align=right> ― <em>John Unland, "
-msgstr "</p><p align=right> ― <em>John Unland, "
-
-#: [Server].description[13]
-msgctxt "Release|"
-msgid "Information Systems Student"
-msgstr "정보 시스템 학생"
-
-#: [Silverblue].subvariant
-msgctxt "Release|"
-msgid "silverblue"
-msgstr "실버블루"
-
-#: [Silverblue].category
-msgctxt "Release|"
-msgid "emerging"
-msgstr "신흥"
-
-#: [Silverblue].name
-msgctxt "Release|"
-msgid "Fedora Silverblue"
-msgstr "페도라 실버블루"
-
-#: [Silverblue].summary
-msgctxt "Release|"
-msgid ""
-"An extremely stable and reliable desktop operating system, excellent for "
-"developers and for those using container-focused workflows."
-msgstr "극한의 안정성과 개발자와 컨테이너-중점의 작업흐름을 사용하는 이들을 위한 최고로 신뢰 할만한 데스크탑 운영체제."
-
-#: [Silverblue].description[0]
-msgctxt "Release|"
-msgid ""
-"Silverblue is a variant of Fedora Workstation. It looks, feels and behaves "
-"like a regular desktop operating system, and the experience is similar to "
-"what you find with using a standard Fedora Workstation."
-msgstr ""
-"실버블루는 페도라 웍스테이션의 변형입니다. 이는 일반 데스크탑 운영체제처럼 보이고, 느껴지며, 동작합니다. 그리고 경험은 표준 페도라 "
-"웍스테이션을 사용하여 찾은 것과 같이 유사합니다."
-
-#: [Silverblue].description[1]
-msgctxt "Release|"
-msgid ""
-"However, unlike other operating systems, Silverblue has reprovisionable "
-"infrastructure with anti-hysteresis properties. This means that every "
-"installation is identical to every other installation of the same version. "
-"The operating system that is on disk is exactly the same from one machine to "
-"the next, and it never changes as it is used."
-msgstr ""
-"아뭏튼, 다른 운영 체제와 달리, 실버블루는 비-히스테리시스 속성이 있는 재규정 가능한 인프라스트럭쳐를 가지고 있습니다. 이는 모든 "
-"설치가 동일한 버전의 다른 모든 설치와 동일하다는 것을 의미합니다. 디스크에 있는 운영체제는 하나의 시스템에서 다음 시스템까지 정확하게 "
-"동일하며, 그리고 사용 할 때에 변경되지 않습니다."
-
-#: [Silverblue].description[2]
-msgctxt "Release|"
-msgid ""
-"Silverblue’s design is intended to make it more stable, less prone to bugs, "
-"and easier to test and develop. The design also makes it an excellent "
-"platform for containerized applications as well as container-based software "
-"development. In each case, applications and containers are kept separate "
-"from the host system, improving stability and reliability."
-msgstr ""
-"실버블루의 디자인은 보다 안정적이고, 결점 발생 가능성이 적으며, 시험과 개발을 더 편리하게 합니다. 이 디자인은 또한 컨테이너 -기반 "
-"소프트웨어 개발 뿐만 아니라 컨테이너화된 응용프로그램을 위한 훌륭한 플랫폼이 됩니다. 각각의 경우, 응용프로그램과 컨테이너가 호스트 "
-"시스템에서 분리되어 있어, 안정성과 신뢰성이 향상됩니다."
-
-#: [Silverblue].description[3]
-msgctxt "Release|"
-msgid ""
-"Silverblue’s core technologies have some other helpful features. OS updates "
-"are fast and there’s no waiting around for them to install: just reboot as "
-"normal to start using the next version. With Silverblue, it is also possible "
-"to roll back to the previous version of the operating system, if something "
-"goes wrong."
-msgstr ""
-"실버블루의 핵심 기술에는 다른 유용한 기능이 있습니다. OS 최신화는 빠르고 설치를 기다릴 필요가 없습니다: 다음 버전을 사용하면 "
-"정상적으로 재시작만 하면 됩니다. 실버블루에서, 문제가 발생한 경우 이전 버전의 운영 체제로 되돌릴 수도 있습니다."
-
-#: [KDE].subvariant
-msgctxt "Release|"
-msgid "kde"
-msgstr "kde"
-
-#: [KDE].category
-msgctxt "Release|"
-msgid "spins"
-msgstr "스핀"
-
-#: [KDE].name
-msgctxt "Release|"
-msgid "Fedora KDE Plasma Desktop"
-msgstr "페도라 KDE 플래즈마 데스크탑"
-
-#: [KDE].summary
-msgctxt "Release|"
-msgid "A complete, modern desktop built using the KDE Plasma Desktop."
-msgstr "완전한, 현대적 데스크탑, KDE PLASMA 데스크탑을 탑재하였습니다."
-
-#: [KDE].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based operating "
-"system utilizing the KDE Plasma Desktop as the main user interface."
-msgstr ""
-"페도라 KDE 플래즈마 데스크탑 배포판은 주 사용자 연결장치로 KDE 플래즈마 데스크탑을 사용하는 강력한 페도라 기반 운영 체제입니다."
-
-#: [KDE].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora KDE Plasma Desktop comes with many pre-selected top quality "
-"applications that suit all modern desktop use cases - from online "
-"communication like web browsing, instant messaging and electronic mail "
-"correspondence, through multimedia and entertainment, to an advanced "
-"productivity suite, including office applications and enterprise grade "
-"personal information management."
-msgstr ""
-"페도라 KDE 플래즈마 데스크탑은 웹 검색기, 인스턴트 메시징과 전자우편 서신, 멀티미디어와 오락을 통해, 사무용 응용프로그램과 기업용 "
-"등급 개인용 정보관리를 포함하는 고급 생산성 제품군과 같은 온라인 통신에서 모든 최신 데스크탑 사용하는 경우에 많은 사전-선택된 최고의 "
-"품질의 응용프로그램을 제공합니다."
-
-#: [KDE].description[2]
-msgctxt "Release|"
-msgid ""
-"All KDE applications are well integrated, with a similar look and feel and "
-"an easy to use interface, accompanied by an outstanding graphical appearance."
-msgstr ""
-"모든 KDE 응용프로그램은 유사한 외형과 느낌을 가지며, 사용하기 쉬운 연결 장치, 훌륭한 그래픽 외형과 함께 잘 통합되어 있습니다."
-
-#: [XFCE].subvariant
-msgctxt "Release|"
-msgid "xfce"
-msgstr "xfce"
-
-#: [XFCE].category [XFCE].name
-msgctxt "Release|"
-msgid "Fedora Xfce Desktop"
-msgstr "페도라 Xfce 데스크탑"
-
-#: [XFCE].summary
-msgctxt "Release|"
-msgid "A complete, well-integrated Xfce Desktop."
-msgstr "완전한, 통합된 Xfce 데스크탑입니다."
-
-#: [XFCE].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast and "
-"lightweight, while still being visually appealing and user friendly."
-msgstr "페도라 Xfce 스핀은 빠르고 가벼우면서도 시각적으로 매력적이고 사용자 친화적인 Xfce 데스크탑을 보여줍니다."
-
-#: [XFCE].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
-msgstr "페도라 Xfce는 freedesktop.org 표준을 사용하는 완전한 데스크탑입니다."
-
-#: [LXQT].subvariant
-msgctxt "Release|"
-msgid "lxqt"
-msgstr "lxqt"
-
-#: [LXQT].category [LXQT].name
-msgctxt "Release|"
-msgid "Fedora LXQt Desktop"
-msgstr "페도라 LXQt 데스크탑"
-
-#: [LXQT].summary
-msgctxt "Release|"
-msgid "A lightweight, well-integrated LXQt desktop environment."
-msgstr "가볍고, 잘-통합된 LXQt 데스크탑 환경."
-
-#: [LXQT].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora LXQt provides a lightweight, well-integrated LXQt desktop "
-"environment. In addition to LXQt itself it provides a small, well selected "
-"collection of applications like the QupZilla browser, which combines "
-"Chromium's rendering engine with a nice Qt experience. Other applications "
-"include the Trojita mail client, the qBittorrent client, the Yarock music "
-"player and a set of some more commonly used applications. As all "
-"applications use the same Qt5 toolkit and the Breeze theme known from KDE, "
-"the desktop provides a unified and well-integrated style and theming. In "
-"addition breeze-gtk is provided to allow the user to integrate GTK "
-"applications too."
-msgstr ""
-"페도라 LXQt는 경량이고, 잘-통합된 LXQt 데스크탑 환경입니다. LXQt 자체 이외에도 멋진 QT 경험을 가진 크롬 렌더링 엔진을 "
-"갖는 QupZilla 검색기와 같은 응용프로그램의 작고, 잘 선택된 모음을 제공합니다. 다른 응용프로그램은 Trojita 전자우편 "
-"클라이언트, q비트토렌트 클라이언트, Yarock 음악 재생기와 보다 공통적으로 사용되는 응용프로그램의 집합을 포함합니다. 모든 "
-"응용프로그램은 동일한 QT 툴킷과 KDE에서 알려진 Breeze 테마를 사용 할 때에, 데스크탑은 정제 되고 잘-통합된 외향과 테마를 "
-"제공합니다. 추가로 breeze-gtk는 사용자가 GTK 응용프로그램을 잘 통합되도록 제공됩니다."
-
-#: [Mate].subvariant
-msgctxt "Release|"
-msgid "mate"
-msgstr "메이트"
-
-#: [Mate].category [Mate].name
-msgctxt "Release|"
-msgid "Fedora MATE-Compiz Desktop"
-msgstr "페도라 메이트-Compiz 데스크탑"
-
-#: [Mate].summary
-msgctxt "Release|"
-msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
-msgstr "추가적인 3D 윈도우 관리자가 있는 클래식 페도라 데스크탑."
-
-#: [Mate].description[0]
-msgctxt "Release|"
-msgid ""
-"The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE Desktop "
-"is a lightweight, powerful desktop designed with productivity and "
-"performance in mind. The default windows manager is Marco which is usable "
-"for all machines and VMs. Compiz Fusion is a beautiful 3D windowing manager "
-"with Emerald and GTK+ theming."
-msgstr ""
-"메이트 Compiz 스핀은 Compiz 퓨전을 갖는 메이트 데스크탑 묶음입니다. 메이트 데스크탑은 경량이고, 생산성과 성능에 역점을 두어 "
-"설계된 강력한 데스크탑입니다. 기본 창 관리자는 모든 장비와 가상화장비(VMs)를 위해 사용 할 수 있는 매크로입니다. Compiz "
-"퓨전은 에머랄드와 GTK+ 테마를 갖는 아름다운 창 관리자입니다."
-
-#: [Mate].description[1]
-msgctxt "Release|"
-msgid ""
-"If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
-"should definitely try the MATE-Compiz spin."
-msgstr ""
-"만약 3D eyecandy가 있는 강력하고 가벼운 페도라 데스크탑을 원한다면, 당신은 명백하게 MATE-Compiz 스핀을 시도해야 "
-"합니다."
-
-#: [Cinnamon].subvariant
-msgctxt "Release|"
-msgid "cinnamon"
-msgstr "시나몬"
-
-#: [Cinnamon].category [Cinnamon].name
-msgctxt "Release|"
-msgid "Fedora Cinnamon Desktop"
-msgstr "페도라 시나몬 데스크탑"
-
-#: [Cinnamon].summary
-msgctxt "Release|"
-msgid "A modern desktop featuring traditional Gnome user experience."
-msgstr "전통적인 그놈 환경을 갖춘 현대적인 데스크탑 환경."
-
-#: [Cinnamon].description[0]
-msgctxt "Release|"
-msgid ""
-"Cinnamon is a Linux desktop which provides advanced innovative features and "
-"a traditional user experience. The desktop layout is similar to Gnome 2. The "
-"underlying technology is forked from Gnome Shell. The emphasis is put on "
-"making users feel at home and providing them with an easy to use and "
-"comfortable desktop experience."
-msgstr ""
-"시나몬은 발전된 혁신적인 기능과 전통적인 사용자 경험을 제공하는 리눅스 데스크탑입니다. 데스크탑 배열은 그놈 2와 유사합니다. 지연없는 "
-"기술은 그놈 쉘에서 분기되었습니다. 강조하고 싶은 점은 사용자가 집에 있는 것처럼 느끼게 하고 이를 사용하기 쉽게 제공하며 편안한 "
-"데스크톱 경험을 제공하도록 중점을 둡니다."
-
-#: [Cinnamon].description[1]
-msgctxt "Release|"
-msgid ""
-"Cinnamon is a popular desktop alternative to Gnome 3 and this spin provides "
-"the option to quickly try and install this desktop."
-msgstr "시나몬은 그놈 3의 인기 있는 데스크탑 대안이고 이 스핀은 이 데스크탑을 빠르게 시도하고 설치 할 수 있는 선택을 제공합니다."
-
-#: [LXDE].subvariant
-msgctxt "Release|"
-msgid "lxde"
-msgstr "lxde"
-
-#: [LXDE].category [LXDE].name
-msgctxt "Release|"
-msgid "Fedora LXDE Desktop"
-msgstr "페도라 LXDE 데스크탑"
-
-#: [LXDE].summary
-msgctxt "Release|"
-msgid "A light, fast, less-resource hungry desktop environment."
-msgstr "가볍고, 빠른, 자원 소모가 적은 데스크탑 환경."
-
-#: [LXDE].description[0]
-msgctxt "Release|"
-msgid ""
-"LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
-"performant, and energy-saving desktop environment. It maintained by an "
-"international community of developers and comes with a beautiful interface, "
-"multi-language support, standard keyboard shortcuts and additional features "
-"like tabbed file browsing."
-msgstr ""
-"LXDE인 \"경량 X11 데스크탑 환경\"은 극도로 빠르고, 성능적이며, 에너지-절약형 데스크탑 환경입니다. 국제 개발자 커뮤니티에 "
-"의해 유지되고 아름다운 연결장치, 다중 언어 지원, 표준 키보드 단추키와 탭 파일 검색기와 같은 추가적인 기능이 함께 제공합니다."
-
-#: [LXDE].description[1]
-msgctxt "Release|"
-msgid ""
-"LXDE is not designed to be powerful and bloated, but to be usable and slim. "
-"A main goal of LXDE is to keep computer resource usage low. It is especially "
-"designed for computers with low hardware specifications like netbooks, "
-"mobile devices (e.g. MIDs) or older computers."
-msgstr ""
-"LXDE는 강력하고 부풀려서 설계되지 않았으나, 유용하고 간편합니다. LXDE의 주요 목표는 컴퓨터 자원 사용량을 낮게 유지하는 "
-"것입니다. 이는 특별히 노트북, 휴대 장치(예로, MIDs) 또는 오래된 컴퓨터와 같은 저사향 하드웨어를 갖고 있는 컴퓨터를 위해 "
-"설계되었습니다."
-
-#: [SOAS].subvariant
-msgctxt "Release|"
-msgid "soas"
-msgstr "soas"
-
-#: [SOAS].category [SOAS].name
-msgctxt "Release|"
-msgid "Fedora SoaS Desktop"
-msgstr "페도라 SoaS 데스크탑"
-
-#: [SOAS].summary
-msgctxt "Release|"
-msgid "Discover. Reflect. Share. Learn."
-msgstr "탐구. 변화. 공유. 학습."
-
-#: [SOAS].description[0]
-msgctxt "Release|"
-msgid ""
-"Sugar on a Stick is a Fedora-based operating system featuring the award-"
-"winning Sugar Learning Platform and designed to fit on an ordinary USB "
-"thumbdrive (\"stick\")."
-msgstr ""
-"스틱에 있는 슈가는 수상 경력에 빛나는 슈가 학습 플랫폼을 특징으로 하는 페도라 기반 운영 체제이며 일반적인 USB 썸드라이브 ( \"스틱"
-"\")에 맞도록 설계되었습니다."
-
-#: [SOAS].description[1]
-msgctxt "Release|"
-msgid ""
-"Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
-"child-friendly graphical environment. Sugar automatically saves your "
-"progress to a \"Journal\" on your stick, so teachers and parents can easily "
-"pull up \"all collaborative web browsing sessions done in the past week\" or "
-"\"papers written with Daniel and Sarah in the last 24 hours\" with a simple "
-"query rather than memorizing complex file/folder structures. Applications in "
-"Sugar are known as Activities, some of which are described below."
-msgstr ""
-"슈가는 전통적인 \"업무용-데스크탑\" 측면을 제외하면, 아동 친화적인 그래픽 환경을 표시하도록 설정합니다. 슈가는 자동으로 당신의 진행 "
-"상황을 스틱의 \"Journal\"에 저장하므로, 교사와 부모는 손쉽게 복잡한 파일/폴더 구조를 기억하는 것보다 간단한 쿼리를 통해 "
-"\"지난 주에 수행 한 모든 협업한 웹 검색 세 션\"또는 \"지난 24 시간 동안에 데니얼과 사라와 함께 작성한 문서\" 쉽게 가져올 "
-"수 있습니다리. 슈가에서 응용 프로그램은 활동(Activities)으로 알려져 있으며, 이 중 일부는 아래에 설명되어 있습니다."
-
-#: [SOAS].description[2]
-msgctxt "Release|"
-msgid ""
-"It is now deployable for the cost of a stick rather than a laptop; students "
-"can take their Sugar on a Stick thumbdrive to any machine - at school, at "
-"home, at a library or community center - and boot their customized computing "
-"environment without touching the host machine’s hard disk or existing system "
-"at all."
-msgstr ""
-"이는 이제 랩탑 보다 저렴한 스틱을 통해 배포 할 수 있습니다; - 학생들은 학교, 집, 도서관 또는 커뮤니티 센타에서 - 그리고 호스트 "
-"장비의 하드디스크 또는 기존 시스템을 건드리지 않고 자신이 정의한 컴퓨터 환경으로 부팅하여 어떤 장비에서도 USB 저장장치(스틱 "
-"썸드라이브)에서 이들 슈가를 동작 할 수 있습니다."
-
-#: [i3].subvariant
-msgctxt "Release|"
-msgid "i3"
-msgstr "i3"
-
-#: [i3].category [i3].name
-msgctxt "Release|"
-msgid "Fedora i3 Desktop"
-msgstr "페도라 i3 데스크탑"
-
-#: [i3].summary
-msgctxt "Release|"
-msgid "Simplicity over Complexity"
-msgstr "복잡성보다 단순함"
-
-#: [i3].description[1]
-msgctxt "Release|"
-msgid "The Fedora i3 Spin provides the popular i3 tiling window manager."
-msgstr "페도라 i3 스핀은 유명한 i3 타일형 창 관리자를 제공합니다."
-
-#: [i3].description[3]
-msgctxt "Release|"
-msgid ""
-"It makes i3 accessible and appealing to both novices and advanced users who "
-"prefer not to use a mouse, touchpad, or other pointing device to interact "
-"with their environment. Featuring lightweight applications for web browsing, "
-"text editing, and media playback, the Fedora i3 Spin offers a complete "
-"experience with a minimalist user interface."
-msgstr ""
-"페도라 i3 스핀은 유명한 i3 타일링 윈도우 관리자를 제공합니다. i3는 이들 환경과 상호 작용하기 위한 마우스, 터치 패드 또는 다른 "
-"지시 장치를 사용하지 않는 초보자와 고급 사용자 모두가 접근 가능하고 매력적입니다. 웹 검색기, 텍스트 편집 및 미디어 재생을 위한 경량 "
-"응용프로그램 기능을 갖고 있는 페도라 i3 스핀은 최소주의 사용자 연결장치로서 완벽한 경험을 제공합니다."
-
-#: [Astronomy].subvariant
-msgctxt "Release|"
-msgid "astronomy"
-msgstr "천문학"
-
-#: [Astronomy].category
-msgctxt "Release|"
-msgid "labs"
-msgstr "랩"
-
-#: [Astronomy].name
-msgctxt "Release|"
-msgid "Fedora Astronomy"
-msgstr "페도라 천문학"
-
-#: [Astronomy].summary
-msgctxt "Release|"
-msgid ""
-"Powerful completely open-source and free tool for amateurs and professionals."
-msgstr "아마추어와 전문가를 위해 강력하고 완전한 개방형-원천 및 무료 도구."
-
-#: [Astronomy].description[0]
-msgctxt "Release|"
-msgid ""
-"Fedora Astronomy brings a complete open source toolchain to both amateur and "
-"professional astronomers."
-msgstr "페도라 천문학은 아마추어 및 전문 천문학자 모두에게 완전한 개방형 원천 도구 모음을 제공합니다."
-
-#: [Astronomy].description[1]
-msgctxt "Release|"
-msgid ""
-"The Spin provides the Fedora KDE desktop enhanced with a complete scientific "
-"Python environment and the AstrOmatic software for data analysis. KStars was "
-"added to provide a full featured astrophotography tool. As KStars uses the "
-"INDI library to control equipment, various telescopes, cameras etc. are "
-"supported. Summarized, Fedora Astronomy provides a complete set of software, "
-"from the observation planning to the final results."
-msgstr ""
-"스핀은 완전한 과학용 파이썬 환경과 자료 분석을 위한 AstroOmatic(천체) 소프트웨어와 함께 발전된 페도라 KDE 데스크탑을 "
-"제공합니다. KStar는 모든 기능을 갖춘 천문사진 도구 제공이 추가되었습니다. KStars는 INDI 라이브러리를 제어 장치에 "
-"사용하여, 다양한 망원경, 사진기 등이 지원 되었습니다. 요약하면, 페도라 천문학은 관찰 계획에서 최종 결과까지 완전한 스프트웨어 묶음을 "
-"제공합니다."
-
-#: [DesignSuite].subvariant
-msgctxt "Release|"
-msgid "design_suite"
-msgstr "디자인_제품군"
-
-#: [DesignSuite].category [DesignSuite].name
-msgctxt "Release|"
-msgid "Fedora Design Suite"
-msgstr "페도라 디자인 제품군"
-
-#: [DesignSuite].summary
-msgctxt "Release|"
-msgid ""
-"Visual design, multimedia production, and publishing suite of free and open "
-"source creative tools."
-msgstr "시각 디자인, 멀티미디어 제작과 무료와 개방형 원천 창작 도구의 출판 제품군입니다."
-
-#: [DesignSuite].description[0]
-msgctxt "Release|"
-msgid ""
-"Looking for a ready-to-go desktop environment brimming with free and open "
-"source multimedia production and publishing tools? Try the Design Suite, a "
-"Fedora Spin created by designers, for designers."
-msgstr ""
-"무료이고 개방형 원천 멀티미디어 제작과 게시 도구로 가득한 바로 사용 할 수 있는 데스크탑 환경을 찾고 계시나요? 디자이너를 위해 "
-"디자이너가 생성한 페도라 스핀인 디자인 제품군을 사용해보세요."
-
-#: [DesignSuite].description[1]
-msgctxt "Release|"
-msgid ""
-"The Design Suite includes the favorite tools of the Fedora Design Team. "
-"These are the same programs we use to create all the artwork that you see "
-"within the Fedora Project, from desktop backgrounds to CD sleeves, web page "
-"designs, application interfaces, flyers, posters and more. From document "
-"publication to vector and bitmap editing or 3D modeling to photo management, "
-"the Design Suite has an application for you — and you can install thousands "
-"more from the Fedora universe of packages."
-msgstr ""
-"디자인 제품군은 페도라 디자인 팀이 가장 선호하는 도구를 포함합니다. 이들은 우리가 페도라 프로젝트, 데스크탑 배경에서 CD 보관, 웹 "
-"부분 디자인, 응용프로그램 연결장치, 전단지, 포스타와 등과 같은 것을 볼 수 있는 모든 시각 작품을 생성 하는데 사용합니다. 문서 "
-"출판에서 사진 관리에 벡터와 비트맵 편집 또는 3차원 모델링,디자인 제품군은 당신을 위한 응용프로그램을 갖고 있으며 페도라의 광대한 "
-"꾸러미에서 수천 개를 설치 할 수 있습니다."
-
-#: [Games].subvariant
-msgctxt "Release|"
-msgid "games"
-msgstr "게임"
-
-#: [Games].category [Games].name
-msgid "Fedora Games"
-msgstr "페도라 게임"
-
-#: [Games].summary
-msgctxt "Release|"
-msgid ""
-"A collection and perfect show-case of the best games available in Fedora."
-msgstr "페도라에서 사용 할 수 있는 최고의 게임 모음과 완벽한 전시물입니다."
-
-#: [Games].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Games spin offers a perfect showcase of the best games available "
-"in Fedora. The included games span several genres, from first-person "
-"shooters to real-time and turn-based strategy games to puzzle games."
-msgstr ""
-"페도라 게임 스핀은 페도라에서 사용 가능한 최고의 게임의 완벽한 진열장을 제공합니다. 포함되어 있는 게임은 1-인칭 슈팅 게임에서 실시간 "
-"턴-기반 전략 게임, 퍼즐 게임에 이르기까지 여러 장르에 걸쳐 있습니다."
-
-#: [Games].description[1]
-msgctxt "Release|"
-msgid ""
-"Not all the games available in Fedora are included on this spin, but trying "
-"out this spin will give you a fair impression of Fedora's ability to run "
-"great games."
-msgstr ""
-"페도라에서 사용 할 수 있는 모든 게임은 이 스핀에서 포함되지 않지만, 그러나 이 스핀을 시도하는 것은 훌륭한 게임을 실행하는 페도라 "
-"능력에 대한 공정한 인상을 줄 것입니다."
-
-#: [Python].subvariant
-msgctxt "Release|"
-msgid "python"
-msgstr "파이썬"
-
-#: [Python].category [Python].name
-msgctxt "Release|"
-msgid "Fedora Python Classroom"
-msgstr "페도라 파이썬 학급"
-
-#: [Python].summary
-msgctxt "Release|"
-msgid ""
-"A classroom lab for teaching the Python programming language to students"
-msgstr "학생에게 파이썬 프로그래밍 언어 교육을 위한 교실 실험실"
-
-#: [Python].description[0]
-msgctxt "Release|"
-msgid ""
-"One of the benefits of Fedora for Python developers is the ease of setting "
-"up Python development. The Fedora Python Classroom Lab makes it even easier "
-"for teachers and instructors to use Fedora in their classrooms or workshops. "
-"Ready to use operating system with important stuff pre-installed - either "
-"with GNOME or as a headless environment for Docker or Vagrant. Teach Python "
-"on Fedora, with Fedora, using the stuff you love: IPython, Jupyter Notebook, "
-"multiple Pythons, virtualenvs, tox, git and more"
-msgstr ""
-"파이썬 개발자를 위한 페도라의 장점 중 하나는 파이썬 개발 설정의 용이하게 합니다. 페도라 파이썬 교실 실험실(Python "
-"Classroom Lab)은 교사와 강사가 그들 학급 또는 워크샵에서 페도라를 사용하여 보다 쉽게 사용 할 수 있습니다. 그놈과 함께 "
-"또는 도커나 Vagrant를 위해 화면 없는 환경 중에 중요한 기능이 이미-설치된 운영 체제를 사용할 준비가되었습니다. 당신이 좋아하는 "
-"도구를 사용하여, 페도라와 함께, 페도라에서 파이썬을 교육 할 수 있습니다: IPython, 쥬피터 노트북, 여러 파이썬, 가상환경, "
-"tox, git 등"
-
-#: [Python].description[1]
-msgctxt "Release|"
-msgid ""
-"The Fedora Python Classroom Lab comes in 3 variants. Either you can run it "
-"in graphical mode with GNOME, or you can virtualize it with Vagrant or run "
-"it in a Docker container. You choose what fits your teaching environment the "
-"best."
-msgstr ""
-"페도라 파이썬 학급 랩은 3가지 변형이 있습니다. 당신은 그놈에서 그래픽 모드에서 실행하거나, 또는 Vargrant에서 이를 가상화 할 "
-"수 있거나 도커 컨테이너에서 실행 할 수 있습니다. 당신의 최고 교육 환경에 알맞는 것을 고를 수 있습니다."
-
-#: [Robotics].subvariant
-msgctxt "Release|"
-msgid "robotics"
-msgstr "로봇공학"
-
-#: [Robotics].category [Robotics].name
-msgctxt "Release|"
-msgid "Fedora Robotics Suite"
-msgstr "페도라 로봇 제품군"
-
-#: [Robotics].summary
-msgctxt "Release|"
-msgid ""
-"A wide variety of free and open robotics software packages for beginners and "
-"experts in robotics."
-msgstr "로봇공학에서 초보자와 전문가를 위한 자유롭고 개방적인 소프트웨어 꾸러미의 넓은 다양성."
-
-#: [Robotics].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Robotics spin provides a wide variety of free and open robotics "
-"software packages. These range from hardware accessory libraries for the "
-"Hokuyo laser scanners or Katana robotic arm to software frameworks like "
-"Fawkes or Player and simulation environments such as Stage and RoboCup "
-"Soccer Simulation Server 2D/3D. It also provides a ready to use development "
-"environment for robotics including useful libraries such as OpenCV computer "
-"vision library, Festival text to speech system and MRPT."
-msgstr ""
-"페도라 로보틱스 스핀은 다양한 무료 개방된 로봇 소프트웨어를 제공합니다. 이 것들은 Hokuyo 레이저 스캐너 또는 Fawkes 같은 "
-"프레임워크 소프트웨어에 Katana 로봇팔용 하드웨어 주변기기 라이브러리 또는 스테이지 및 로봇컵 축구 모의 실험 서버 2D/3D와 같은 "
-"모의 실험장치와 동작장치 같은 범위에 있습니다. 이 것은 또한 OpenCV 컴퓨터 시각 라이브러리, 페스티발 음성 시스템(text to "
-"speech)와 MRPT와 같은 유용한 라이브러리를 포함하여 로봇공학을 위한 개발 환경 사용할 준비를 제공합니다."
-
-#: [Robotics].description[1]
-msgctxt "Release|"
-msgid ""
-"The Robotics spin is targeted at people just discovering their interest in "
-"robotics as well as experienced roboticists. For the former we provide a "
-"readily usable simulation environment with an introductory hands-on "
-"demonstration, and for the latter we provide a full development environment, "
-"to be used immediately."
-msgstr ""
-"로봇공학 스핀(spin)은 로봇공학에 자신의 관심을 찾는 것 뿐만 아니라 로봇공학을 경험하고자 하는 사람들이 대상입니다. 앞전의 경우에 "
-"입문자가 직접 데모를 통해 쉽게 사용할 수 있는 가상 모의환경을 제공하고, 후자의 경우 우리는 바로 사용 할 수 있는 전체 개발 환경을 "
-"제공합니다."
-
-#: [Scientific].subvariant
-msgctxt "Release|"
-msgid "scientific"
-msgstr "과학적인"
-
-#: [Scientific].category [Scientific].name
-msgctxt "Release|"
-msgid "Fedora Scientific"
-msgstr "페도라 과학"
-
-#: [Scientific].summary
-msgctxt "Release|"
-msgid ""
-"A bundle of open source scientific and numerical tools used in research."
-msgstr "연구에 사용되는 오픈소스 과학과 수치 도구의 묶음(bundle)."
-
-#: [Scientific].description[0]
-msgctxt "Release|"
-msgid ""
-"Wary of reinstalling all the essential tools for your scientific and "
-"numerical work? The answer is here. Fedora Scientific Spin brings together "
-"the most useful open source scientific and numerical tools atop the goodness "
-"of the KDE desktop environment."
-msgstr ""
-"과학과 수치 작업에 필요한 모든 필수 도구를 다시 재설치해야하나요? 답이 여기에 있습니다. 페도라 Scientific 스핀은 KDE "
-"데스크탑 환경의 장점 위에서 가장 유용한 개방형 원천 과학 및 수치 도구를 제공합니다."
-
-#: [Scientific].description[1]
-msgctxt "Release|"
-msgid ""
-"Fedora Scientific currently ships with numerous applications and libraries. "
-"These range from libraries such as the GNU Scientific library, the SciPy "
-"libraries, tools like Octave and xfig to typesetting tools like Kile and "
-"graphics programs such as Inkscape. The current set of packages include an "
-"IDE, tools and libraries for programming in C, C++, Python, Java and R. Also "
-"included along with are libraries for parallel computing such as the OpenMPI "
-"and OpenMP. Tools for typesetting, writing and publishing are included."
-msgstr ""
-"페도라 과학은 현재 수많은 응용프로그램과 라이브러리와 함께 제공됩니다. 이들은 GNU 과학 라이브러리와 같은 라이브러리, SciPy "
-"라이브러리, Octave과 xfig와 같은 도구에서 Kile과 같은 조판 도구와 잉크스케이프와 같은 그래픽 프로그램에 이르기까지 범위가 "
-"넓습니다. 현재 꾸러미 구성에는 C, C ++, 파이썬, 자바와 R 프로그래밍을 위한 IDE, 도구와 라이브러리가 포함됩니다. 또한 "
-"OpenMPI와 OpenMP와 같은 병렬 컴퓨팅을 위한 라이브러리 등도 포함됩니다. 조판, 글쓰기와 출판을 위한 도구가 포함되어 있습니다."
-
-#: [Security].subvariant
-msgctxt "Release|"
-msgid "security"
-msgstr "보안"
-
-#: [Security].category [Security].name
-msgctxt "Release|"
-msgid "Fedora Security Lab"
-msgstr "페도라 보안 랩"
-
-#: [Security].summary
-msgctxt "Release|"
-msgid ""
-"A safe test environment to work on security auditing, forensics, system "
-"rescue and teaching security testing methodologies."
-msgstr "보안 감사, 포렌식, 시스템 구조와 보안 시험 방법론 교육을 위한 안전한 시험 환경입니다."
-
-#: [Security].description[0]
-msgctxt "Release|"
-msgid ""
-"The Fedora Security Lab provides a safe test environment to work on security "
-"auditing, forensics, system rescue and teaching security testing "
-"methodologies in universities and other organizations."
-msgstr ""
-"페도라 보안 랩은 보안감사, 포렌식, 시스템 복구와 대학과 다른 기관에서 보안 시험 방법론에 대한 업무에 안전한 시험 환경을 제공합니다."
-
-#: [Security].description[1]
-msgctxt "Release|"
-msgid ""
-"The spin is maintained by a community of security testers and developers. It "
-"comes with the clean and fast Xfce Desktop Environment and a customized menu "
-"that provides all the instruments needed to follow a proper test path for "
-"security testing or to rescue a broken system. The Live image has been "
-"crafted to make it possible to install software while running, and if you "
-"are running it from a USB stick created with LiveUSB Creator using the "
-"overlay feature, you can install and update software and save your test "
-"results permanently."
-msgstr ""
-"시험자와 개발자로 구성된 커뮤니티에 의해 스핀은 유지됩니다. 이는 깔끔하고 빠른 Xfce 데스크탑 환경과 사용자 정의된 보안 시험과 "
-"망가진 시스템 복구를 위한 적절한 시험 경로를 제공해줄 필요가 있는 모든 도구를 제공해주는 것과 같은 메뉴와 함께 있습니다. 실시간 "
-"이미지는 실행 할 때에 소프트웨어를 설치 할 수 있게 만들어 주는 것을 정교하게 해주며, 기능을 입히는데 사용하는 LiveUSB "
-"Creator와 함께 생성하는 USB 저장장치에서 이를 실행하면, 당신은 설치 할 수 있고 소프트웨어를 최신화하며 영구적으로 테스트한 "
-"결과를 저장합니다."
+#~ msgid "workstation"
+#~ msgstr "웍스테이션"
+
+#~ msgctxt "Release|"
+#~ msgid "product"
+#~ msgstr "제품"
+
+#~ msgctxt "Release|"
+#~ msgid "This is the Linux workstation you've been waiting for."
+#~ msgstr "기다리던 리눅스 웍스테이션."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Workstation is a reliable, user-friendly, and powerful operating "
+#~ "system for your laptop or desktop computer. It supports a wide range of "
+#~ "developers, from hobbyists and students to professionals in corporate "
+#~ "environments."
+#~ msgstr ""
+#~ "페도라 웍스테이션은 랩탑과 데스크톱을 위한 친화적이고, 신뢰할 수 있으며, "
+#~ "강력한 운영체제입니다. 개발자부터 취미로 하는 사람, 기업의 전문가까지 다양"
+#~ "한 계층을 지원합니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "“The plethora of tools provided by<br /> Fedora allows me to get the job "
+#~ "done.<br /> It just works.”"
+#~ msgstr ""
+#~ "<br /> 페도라에서 제공하는 수많은 도구를 통해 작업을 끝내도록 할 수 있다."
+#~ "<br /> 그냥 됩니다.”"
+
+#~ msgctxt "Release|"
+#~ msgid "JVM performance engineer"
+#~ msgstr "JVM 성능 엔지니어"
+
+#~ msgctxt "Release|"
+#~ msgid "Sleek user interface"
+#~ msgstr "세련된 사용자 연결장치"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Focus on your code in the GNOME 3 desktop environment. GNOME is built "
+#~ "with developer feedback and minimizes distractions, so you can "
+#~ "concentrate on what's important."
+#~ msgstr ""
+#~ "그놈 3 데스크톱 환경에서 코드에 집중할 수 있습니다. 그놈은 개발자들의 개"
+#~ "선 사항을 반영하고 시선 분산을 최소화 시켰기에 실제로 집중해야 하는 것에 "
+#~ "더 집중할 수 있습니다."
+
+#~ msgctxt "Release|"
+#~ msgid "Complete open source toolbox"
+#~ msgstr "준비된 오픈 소스 도구들"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Skip the drag of trying to find or build the tools you need. With "
+#~ "Fedora's complete set of open source languages, tools, and utilities, "
+#~ "everything is a click or command line away. There's even project hosting "
+#~ "and repositories like COPR to make your code and builds available quickly "
+#~ "to the community."
+#~ msgstr ""
+#~ "필요한 도구가 어디 있는지 찾아다니고 직접 빌드 할 필요가 없습니다. 페도라"
+#~ "의 준비된 오픈 소스 언어, 도구와 유틸리티 구성을 이용하면, 한 번의 누름 혹"
+#~ "은 명령 줄로 간단히 해결할 수 있습니다. COPR 같은 프로젝트 호스팅과 저장소"
+#~ "도 준비되어 있어 커뮤니티에서 가용하도록 빠르게 빌드하고 코드를 만들 수 있"
+#~ "습니다."
+
+#~ msgctxt "Release|"
+#~ msgid "GNOME Boxes & other virt tools"
+#~ msgstr "그놈 박스 & 다른 가상 도구들"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Get virtual machines up and running quickly to test your code on multiple "
+#~ "platforms using GNOME Boxes. Or dig into powerful, scriptable "
+#~ "virtualization tools for even more control."
+#~ msgstr ""
+#~ "그놈 박스를 이용하면 빠르게 가상 머신을 이용하여 다양한 플랫폼에서 소스 코"
+#~ "드를 테스트할 수 있습니다. 혹은 강력하고 직접 스크립트 작성이 가능한 다른 "
+#~ "가상환경 도구도 이용해보세요."
+
+#~ msgctxt "Release|"
+#~ msgid "Built-in Docker support"
+#~ msgstr "내장 도커 지원"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Containerize your own apps, or deploy containerized apps out of the box "
+#~ "on Fedora, using the latest technology like Docker."
+#~ msgstr ""
+#~ "도커와 같은 최신 기술을 통해서, 자신의 앱을 콘테이너화 하거나 페도라에서 "
+#~ "바로 컨테이너화된 앱을 배포 할 수 있습니다."
+
+#~ msgctxt "Release|"
+#~ msgid "server"
+#~ msgstr "서버"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Server"
+#~ msgstr "페도라 서버"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The latest technology. A stable foundation. Together, for your "
+#~ "applications and services."
+#~ msgstr "최신 기술. 안정된 기반. 응용프로그램과 서비스를 위해 함께."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "“The simplicity introduced with rolekit and cockpit have made server "
+#~ "deployments a breeze. What took me a few days on other operating systems "
+#~ "took less than an hour with Fedora %(rel)s Server. It just works.”"
+#~ msgstr ""
+#~ "“rolekit 및 cockpit으로 안내된 단순성 덕분에 서버 배포가 쉬워졌습니다. 다"
+#~ "른 운영 체제에서 며칠이 걸렸던 것도 페도라 %(rel)s 서버에서 한 시간도 채 "
+#~ "걸리지 않았습니다. 잘 작동합니다.”"
+
+#~ msgctxt "Release|"
+#~ msgid "Systems Engineer"
+#~ msgstr "시스템 엔지니어"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Server is a short-lifecycle, community-supported server operating "
+#~ "system that enables seasoned system administrators experienced with any "
+#~ "OS to make use of the very latest server-based technologies available in "
+#~ "the open source community."
+#~ msgstr ""
+#~ "페도라 서버는 짧은 생명 주기와 커뮤니티-지원을 바탕으로 한 서버 운영체제"
+#~ "로, 시스템 관리자뿐만 아니라 다른 운영체제를 사용했던 사용자들에게 오픈 소"
+#~ "스 환경에서 가장 최신의 기술들을 제공합니다."
+
+#~ msgctxt "Release|"
+#~ msgid "Easy Administration"
+#~ msgstr "쉬운 관리"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Manage your system simply with Cockpit's powerful, modern interface. View "
+#~ "and monitor system performance and status, and deploy and manage "
+#~ "container-based services."
+#~ msgstr ""
+#~ "Cockpit의 강력하고 현대적인 연결장치를 이용하여 간단하게 시스템을 관리할 "
+#~ "수 있습니다. 시스템의 성능과 상태를 보고 모니터링하며, 컨테이너-기반의 서"
+#~ "비스를 배포하고 관리할 수 있게 해줍니다."
+
+#~ msgctxt "Release|"
+#~ msgid "Server Roles"
+#~ msgstr "서버 역할"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "There's no need to set up your server from scratch when you use server "
+#~ "roles. Server roles plug into your Fedora Server system, providing a well-"
+#~ "integrated service on top of the Fedora Server platform. Deploy and "
+#~ "manage these prepared roles simply using the Rolekit tool."
+#~ msgstr ""
+#~ "서버 역할을 사용 할 때 처음부터 서버를 설정 할 필요가 없습니다. 서버 역할"
+#~ "은 페도라 서버 시스템에 연결되어, 페도라 서버 기반의 위에서 잘-통합된 서비"
+#~ "스를 제공합니다. Rolekit 도구를 사용하여 이 준비된 역할을 단순히 배포하고 "
+#~ "관리합니다."
+
+#~ msgctxt "Release|"
+#~ msgid "Database Services"
+#~ msgstr "데이타베이스 서비스"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Server brings with it an enterprise-class, scalable database "
+#~ "server powered by the open-source PostgreSQL project."
+#~ msgstr ""
+#~ "페도라 서버는 개방형-원천 PostgreSQL 프로젝트에 의해 제공되는 기업-등급, "
+#~ "확장성 데이타베이스 제공합니다."
+
+#~ msgctxt "Release|"
+#~ msgid "Complete Enterprise Domain Solution"
+#~ msgstr "준비된 기업용 도메인 솔류션"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Level up your Linux network with advanced identity management, DNS, "
+#~ "certificate services, Windows(TM) domain integration throughout your "
+#~ "environment with FreeIPA, the engine that drives Fedora Server's Domain "
+#~ "Controller role."
+#~ msgstr ""
+#~ "발전된 식별 관리, DNS, 인증 서비스,FreeIPA와 함께 당신의 환경을 통한 "
+#~ "Windows(TM) 도메인 통합, 페도라 서버의 도메인 제어기 역할을 구동하는 엔진"
+#~ "과 함께 리눅스 네트워크 수준을 높입니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "“The Docker Role for Fedora Server was simple and fast to install so that "
+#~ "you can run your Docker images. This makes a great testbed for beginners "
+#~ "and experts with docker so that they can develop their applications on "
+#~ "the fly.”"
+#~ msgstr ""
+#~ "“페도라 서버의 도커 역할은 도커 이미지를 실행 할 수 있도록 간단하고 설치"
+#~ "가 빠르기 때문입니다. 이는 빨리 응용프로그램을 개발 할 수 있도록 도커로 초"
+#~ "보자와 전문가를 위한 훌륭한 시험무대가 될 수 있습니다. \""
+
+#~ msgctxt "Release|"
+#~ msgid "</p><p align=right> ― <em>John Unland, "
+#~ msgstr "</p><p align=right> ― <em>John Unland, "
+
+#~ msgctxt "Release|"
+#~ msgid "Information Systems Student"
+#~ msgstr "정보 시스템 학생"
+
+#~ msgctxt "Release|"
+#~ msgid "silverblue"
+#~ msgstr "실버블루"
+
+#~ msgctxt "Release|"
+#~ msgid "emerging"
+#~ msgstr "신흥"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Silverblue"
+#~ msgstr "페도라 실버블루"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "An extremely stable and reliable desktop operating system, excellent for "
+#~ "developers and for those using container-focused workflows."
+#~ msgstr ""
+#~ "극한의 안정성과 개발자와 컨테이너-중점의 작업흐름을 사용하는 이들을 위한 "
+#~ "최고로 신뢰 할만한 데스크탑 운영체제."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Silverblue is a variant of Fedora Workstation. It looks, feels and "
+#~ "behaves like a regular desktop operating system, and the experience is "
+#~ "similar to what you find with using a standard Fedora Workstation."
+#~ msgstr ""
+#~ "실버블루는 페도라 웍스테이션의 변형입니다. 이는 일반 데스크탑 운영체제처"
+#~ "럼 보이고, 느껴지며, 동작합니다. 그리고 경험은 표준 페도라 웍스테이션을 사"
+#~ "용하여 찾은 것과 같이 유사합니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "However, unlike other operating systems, Silverblue has reprovisionable "
+#~ "infrastructure with anti-hysteresis properties. This means that every "
+#~ "installation is identical to every other installation of the same "
+#~ "version. The operating system that is on disk is exactly the same from "
+#~ "one machine to the next, and it never changes as it is used."
+#~ msgstr ""
+#~ "아뭏튼, 다른 운영 체제와 달리, 실버블루는 비-히스테리시스 속성이 있는 재규"
+#~ "정 가능한 인프라스트럭쳐를 가지고 있습니다. 이는 모든 설치가 동일한 버전"
+#~ "의 다른 모든 설치와 동일하다는 것을 의미합니다. 디스크에 있는 운영체제는 "
+#~ "하나의 시스템에서 다음 시스템까지 정확하게 동일하며, 그리고 사용 할 때에 "
+#~ "변경되지 않습니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Silverblue’s design is intended to make it more stable, less prone to "
+#~ "bugs, and easier to test and develop. The design also makes it an "
+#~ "excellent platform for containerized applications as well as container-"
+#~ "based software development. In each case, applications and containers are "
+#~ "kept separate from the host system, improving stability and reliability."
+#~ msgstr ""
+#~ "실버블루의 디자인은 보다 안정적이고, 결점 발생 가능성이 적으며, 시험과 개"
+#~ "발을 더 편리하게 합니다. 이 디자인은 또한 컨테이너 -기반 소프트웨어 개발 "
+#~ "뿐만 아니라 컨테이너화된 응용프로그램을 위한 훌륭한 플랫폼이 됩니다. 각각"
+#~ "의 경우, 응용프로그램과 컨테이너가 호스트 시스템에서 분리되어 있어, 안정성"
+#~ "과 신뢰성이 향상됩니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Silverblue’s core technologies have some other helpful features. OS "
+#~ "updates are fast and there’s no waiting around for them to install: just "
+#~ "reboot as normal to start using the next version. With Silverblue, it is "
+#~ "also possible to roll back to the previous version of the operating "
+#~ "system, if something goes wrong."
+#~ msgstr ""
+#~ "실버블루의 핵심 기술에는 다른 유용한 기능이 있습니다. OS 최신화는 빠르고 "
+#~ "설치를 기다릴 필요가 없습니다: 다음 버전을 사용하면 정상적으로 재시작만 하"
+#~ "면 됩니다. 실버블루에서, 문제가 발생한 경우 이전 버전의 운영 체제로 되돌"
+#~ "릴 수도 있습니다."
+
+#~ msgctxt "Release|"
+#~ msgid "kde"
+#~ msgstr "kde"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora KDE Plasma Desktop"
+#~ msgstr "페도라 KDE 플래즈마 데스크탑"
+
+#~ msgctxt "Release|"
+#~ msgid "A complete, modern desktop built using the KDE Plasma Desktop."
+#~ msgstr "완전한, 현대적 데스크탑, KDE PLASMA 데스크탑을 탑재하였습니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora KDE Plasma Desktop Edition is a powerful Fedora-based "
+#~ "operating system utilizing the KDE Plasma Desktop as the main user "
+#~ "interface."
+#~ msgstr ""
+#~ "페도라 KDE 플래즈마 데스크탑 배포판은 주 사용자 연결장치로 KDE 플래즈마 데"
+#~ "스크탑을 사용하는 강력한 페도라 기반 운영 체제입니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora KDE Plasma Desktop comes with many pre-selected top quality "
+#~ "applications that suit all modern desktop use cases - from online "
+#~ "communication like web browsing, instant messaging and electronic mail "
+#~ "correspondence, through multimedia and entertainment, to an advanced "
+#~ "productivity suite, including office applications and enterprise grade "
+#~ "personal information management."
+#~ msgstr ""
+#~ "페도라 KDE 플래즈마 데스크탑은 웹 검색기, 인스턴트 메시징과 전자우편 서"
+#~ "신, 멀티미디어와 오락을 통해, 사무용 응용프로그램과 기업용 등급 개인용 정"
+#~ "보관리를 포함하는 고급 생산성 제품군과 같은 온라인 통신에서 모든 최신 데스"
+#~ "크탑 사용하는 경우에 많은 사전-선택된 최고의 품질의 응용프로그램을 제공합"
+#~ "니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "All KDE applications are well integrated, with a similar look and feel "
+#~ "and an easy to use interface, accompanied by an outstanding graphical "
+#~ "appearance."
+#~ msgstr ""
+#~ "모든 KDE 응용프로그램은 유사한 외형과 느낌을 가지며, 사용하기 쉬운 연결 장"
+#~ "치, 훌륭한 그래픽 외형과 함께 잘 통합되어 있습니다."
+
+#~ msgctxt "Release|"
+#~ msgid "xfce"
+#~ msgstr "xfce"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Xfce Desktop"
+#~ msgstr "페도라 Xfce 데스크탑"
+
+#~ msgctxt "Release|"
+#~ msgid "A complete, well-integrated Xfce Desktop."
+#~ msgstr "완전한, 통합된 Xfce 데스크탑입니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Xfce spin showcases the Xfce desktop, which aims to be fast "
+#~ "and lightweight, while still being visually appealing and user friendly."
+#~ msgstr ""
+#~ "페도라 Xfce 스핀은 빠르고 가벼우면서도 시각적으로 매력적이고 사용자 친화적"
+#~ "인 Xfce 데스크탑을 보여줍니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Xfce is a full-fledged desktop using the freedesktop.org standards."
+#~ msgstr ""
+#~ "페도라 Xfce는 freedesktop.org 표준을 사용하는 완전한 데스크탑입니다."
+
+#~ msgctxt "Release|"
+#~ msgid "lxqt"
+#~ msgstr "lxqt"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora LXQt Desktop"
+#~ msgstr "페도라 LXQt 데스크탑"
+
+#~ msgctxt "Release|"
+#~ msgid "A lightweight, well-integrated LXQt desktop environment."
+#~ msgstr "가볍고, 잘-통합된 LXQt 데스크탑 환경."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora LXQt provides a lightweight, well-integrated LXQt desktop "
+#~ "environment. In addition to LXQt itself it provides a small, well "
+#~ "selected collection of applications like the QupZilla browser, which "
+#~ "combines Chromium's rendering engine with a nice Qt experience. Other "
+#~ "applications include the Trojita mail client, the qBittorrent client, the "
+#~ "Yarock music player and a set of some more commonly used applications. As "
+#~ "all applications use the same Qt5 toolkit and the Breeze theme known from "
+#~ "KDE, the desktop provides a unified and well-integrated style and "
+#~ "theming. In addition breeze-gtk is provided to allow the user to "
+#~ "integrate GTK applications too."
+#~ msgstr ""
+#~ "페도라 LXQt는 경량이고, 잘-통합된 LXQt 데스크탑 환경입니다. LXQt 자체 이외"
+#~ "에도 멋진 QT 경험을 가진 크롬 렌더링 엔진을 갖는 QupZilla 검색기와 같은 응"
+#~ "용프로그램의 작고, 잘 선택된 모음을 제공합니다. 다른 응용프로그램은 "
+#~ "Trojita 전자우편 클라이언트, q비트토렌트 클라이언트, Yarock 음악 재생기와 "
+#~ "보다 공통적으로 사용되는 응용프로그램의 집합을 포함합니다. 모든 응용프로그"
+#~ "램은 동일한 QT 툴킷과 KDE에서 알려진 Breeze 테마를 사용 할 때에, 데스크탑"
+#~ "은 정제 되고 잘-통합된 외향과 테마를 제공합니다. 추가로 breeze-gtk는 사용"
+#~ "자가 GTK 응용프로그램을 잘 통합되도록 제공됩니다."
+
+#~ msgctxt "Release|"
+#~ msgid "mate"
+#~ msgstr "메이트"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora MATE-Compiz Desktop"
+#~ msgstr "페도라 메이트-Compiz 데스크탑"
+
+#~ msgctxt "Release|"
+#~ msgid "A classic Fedora Desktop with an additional 3D Windows Manager."
+#~ msgstr "추가적인 3D 윈도우 관리자가 있는 클래식 페도라 데스크탑."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE "
+#~ "Desktop is a lightweight, powerful desktop designed with productivity and "
+#~ "performance in mind. The default windows manager is Marco which is usable "
+#~ "for all machines and VMs. Compiz Fusion is a beautiful 3D windowing "
+#~ "manager with Emerald and GTK+ theming."
+#~ msgstr ""
+#~ "메이트 Compiz 스핀은 Compiz 퓨전을 갖는 메이트 데스크탑 묶음입니다. 메이"
+#~ "트 데스크탑은 경량이고, 생산성과 성능에 역점을 두어 설계된 강력한 데스크탑"
+#~ "입니다. 기본 창 관리자는 모든 장비와 가상화장비(VMs)를 위해 사용 할 수 있"
+#~ "는 매크로입니다. Compiz 퓨전은 에머랄드와 GTK+ 테마를 갖는 아름다운 창 관"
+#~ "리자입니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "If you want a powerful, lightweight Fedora desktop with 3D eyecandy you "
+#~ "should definitely try the MATE-Compiz spin."
+#~ msgstr ""
+#~ "만약 3D eyecandy가 있는 강력하고 가벼운 페도라 데스크탑을 원한다면, 당신"
+#~ "은 명백하게 MATE-Compiz 스핀을 시도해야 합니다."
+
+#~ msgctxt "Release|"
+#~ msgid "cinnamon"
+#~ msgstr "시나몬"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Cinnamon Desktop"
+#~ msgstr "페도라 시나몬 데스크탑"
+
+#~ msgctxt "Release|"
+#~ msgid "A modern desktop featuring traditional Gnome user experience."
+#~ msgstr "전통적인 그놈 환경을 갖춘 현대적인 데스크탑 환경."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Cinnamon is a Linux desktop which provides advanced innovative features "
+#~ "and a traditional user experience. The desktop layout is similar to Gnome "
+#~ "2. The underlying technology is forked from Gnome Shell. The emphasis is "
+#~ "put on making users feel at home and providing them with an easy to use "
+#~ "and comfortable desktop experience."
+#~ msgstr ""
+#~ "시나몬은 발전된 혁신적인 기능과 전통적인 사용자 경험을 제공하는 리눅스 데"
+#~ "스크탑입니다. 데스크탑 배열은 그놈 2와 유사합니다. 지연없는 기술은 그놈 쉘"
+#~ "에서 분기되었습니다. 강조하고 싶은 점은 사용자가 집에 있는 것처럼 느끼게 "
+#~ "하고 이를 사용하기 쉽게 제공하며 편안한 데스크톱 경험을 제공하도록 중점을 "
+#~ "둡니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Cinnamon is a popular desktop alternative to Gnome 3 and this spin "
+#~ "provides the option to quickly try and install this desktop."
+#~ msgstr ""
+#~ "시나몬은 그놈 3의 인기 있는 데스크탑 대안이고 이 스핀은 이 데스크탑을 빠르"
+#~ "게 시도하고 설치 할 수 있는 선택을 제공합니다."
+
+#~ msgctxt "Release|"
+#~ msgid "lxde"
+#~ msgstr "lxde"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora LXDE Desktop"
+#~ msgstr "페도라 LXDE 데스크탑"
+
+#~ msgctxt "Release|"
+#~ msgid "A light, fast, less-resource hungry desktop environment."
+#~ msgstr "가볍고, 빠른, 자원 소모가 적은 데스크탑 환경."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
+#~ "performant, and energy-saving desktop environment. It maintained by an "
+#~ "international community of developers and comes with a beautiful "
+#~ "interface, multi-language support, standard keyboard shortcuts and "
+#~ "additional features like tabbed file browsing."
+#~ msgstr ""
+#~ "LXDE인 \"경량 X11 데스크탑 환경\"은 극도로 빠르고, 성능적이며, 에너지-절약"
+#~ "형 데스크탑 환경입니다. 국제 개발자 커뮤니티에 의해 유지되고 아름다운 연결"
+#~ "장치, 다중 언어 지원, 표준 키보드 단추키와 탭 파일 검색기와 같은 추가적인 "
+#~ "기능이 함께 제공합니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "LXDE is not designed to be powerful and bloated, but to be usable and "
+#~ "slim. A main goal of LXDE is to keep computer resource usage low. It is "
+#~ "especially designed for computers with low hardware specifications like "
+#~ "netbooks, mobile devices (e.g. MIDs) or older computers."
+#~ msgstr ""
+#~ "LXDE는 강력하고 부풀려서 설계되지 않았으나, 유용하고 간편합니다. LXDE의 주"
+#~ "요 목표는 컴퓨터 자원 사용량을 낮게 유지하는 것입니다. 이는 특별히 노트"
+#~ "북, 휴대 장치(예로, MIDs) 또는 오래된 컴퓨터와 같은 저사향 하드웨어를 갖"
+#~ "고 있는 컴퓨터를 위해 설계되었습니다."
+
+#~ msgctxt "Release|"
+#~ msgid "soas"
+#~ msgstr "soas"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora SoaS Desktop"
+#~ msgstr "페도라 SoaS 데스크탑"
+
+#~ msgctxt "Release|"
+#~ msgid "Discover. Reflect. Share. Learn."
+#~ msgstr "탐구. 변화. 공유. 학습."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Sugar on a Stick is a Fedora-based operating system featuring the award-"
+#~ "winning Sugar Learning Platform and designed to fit on an ordinary USB "
+#~ "thumbdrive (\"stick\")."
+#~ msgstr ""
+#~ "스틱에 있는 슈가는 수상 경력에 빛나는 슈가 학습 플랫폼을 특징으로 하는 페"
+#~ "도라 기반 운영 체제이며 일반적인 USB 썸드라이브 ( \"스틱\")에 맞도록 설계"
+#~ "되었습니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
+#~ "child-friendly graphical environment. Sugar automatically saves your "
+#~ "progress to a \"Journal\" on your stick, so teachers and parents can "
+#~ "easily pull up \"all collaborative web browsing sessions done in the past "
+#~ "week\" or \"papers written with Daniel and Sarah in the last 24 hours\" "
+#~ "with a simple query rather than memorizing complex file/folder "
+#~ "structures. Applications in Sugar are known as Activities, some of which "
+#~ "are described below."
+#~ msgstr ""
+#~ "슈가는 전통적인 \"업무용-데스크탑\" 측면을 제외하면, 아동 친화적인 그래픽 "
+#~ "환경을 표시하도록 설정합니다. 슈가는 자동으로 당신의 진행 상황을 스틱의 "
+#~ "\"Journal\"에 저장하므로, 교사와 부모는 손쉽게 복잡한 파일/폴더 구조를 기"
+#~ "억하는 것보다 간단한 쿼리를 통해 \"지난 주에 수행 한 모든 협업한 웹 검색 "
+#~ "세 션\"또는 \"지난 24 시간 동안에 데니얼과 사라와 함께 작성한 문서\" 쉽게 "
+#~ "가져올 수 있습니다리. 슈가에서 응용 프로그램은 활동(Activities)으로 알려"
+#~ "져 있으며, 이 중 일부는 아래에 설명되어 있습니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "It is now deployable for the cost of a stick rather than a laptop; "
+#~ "students can take their Sugar on a Stick thumbdrive to any machine - at "
+#~ "school, at home, at a library or community center - and boot their "
+#~ "customized computing environment without touching the host machine’s hard "
+#~ "disk or existing system at all."
+#~ msgstr ""
+#~ "이는 이제 랩탑 보다 저렴한 스틱을 통해 배포 할 수 있습니다; - 학생들은 학"
+#~ "교, 집, 도서관 또는 커뮤니티 센타에서 - 그리고 호스트 장비의 하드디스크 또"
+#~ "는 기존 시스템을 건드리지 않고 자신이 정의한 컴퓨터 환경으로 부팅하여 어"
+#~ "떤 장비에서도 USB 저장장치(스틱 썸드라이브)에서 이들 슈가를 동작 할 수 있"
+#~ "습니다."
+
+#~ msgctxt "Release|"
+#~ msgid "i3"
+#~ msgstr "i3"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora i3 Desktop"
+#~ msgstr "페도라 i3 데스크탑"
+
+#~ msgctxt "Release|"
+#~ msgid "Simplicity over Complexity"
+#~ msgstr "복잡성보다 단순함"
+
+#~ msgctxt "Release|"
+#~ msgid "The Fedora i3 Spin provides the popular i3 tiling window manager."
+#~ msgstr "페도라 i3 스핀은 유명한 i3 타일형 창 관리자를 제공합니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "It makes i3 accessible and appealing to both novices and advanced users "
+#~ "who prefer not to use a mouse, touchpad, or other pointing device to "
+#~ "interact with their environment. Featuring lightweight applications for "
+#~ "web browsing, text editing, and media playback, the Fedora i3 Spin offers "
+#~ "a complete experience with a minimalist user interface."
+#~ msgstr ""
+#~ "페도라 i3 스핀은 유명한 i3 타일링 윈도우 관리자를 제공합니다. i3는 이들 환"
+#~ "경과 상호 작용하기 위한 마우스, 터치 패드 또는 다른 지시 장치를 사용하지 "
+#~ "않는 초보자와 고급 사용자 모두가 접근 가능하고 매력적입니다. 웹 검색기, 텍"
+#~ "스트 편집 및 미디어 재생을 위한 경량 응용프로그램 기능을 갖고 있는 페도라 "
+#~ "i3 스핀은 최소주의 사용자 연결장치로서 완벽한 경험을 제공합니다."
+
+#~ msgctxt "Release|"
+#~ msgid "astronomy"
+#~ msgstr "천문학"
+
+#~ msgctxt "Release|"
+#~ msgid "labs"
+#~ msgstr "랩"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Astronomy"
+#~ msgstr "페도라 천문학"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Powerful completely open-source and free tool for amateurs and "
+#~ "professionals."
+#~ msgstr "아마추어와 전문가를 위해 강력하고 완전한 개방형-원천 및 무료 도구."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Astronomy brings a complete open source toolchain to both amateur "
+#~ "and professional astronomers."
+#~ msgstr ""
+#~ "페도라 천문학은 아마추어 및 전문 천문학자 모두에게 완전한 개방형 원천 도"
+#~ "구 모음을 제공합니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Spin provides the Fedora KDE desktop enhanced with a complete "
+#~ "scientific Python environment and the AstrOmatic software for data "
+#~ "analysis. KStars was added to provide a full featured astrophotography "
+#~ "tool. As KStars uses the INDI library to control equipment, various "
+#~ "telescopes, cameras etc. are supported. Summarized, Fedora Astronomy "
+#~ "provides a complete set of software, from the observation planning to the "
+#~ "final results."
+#~ msgstr ""
+#~ "스핀은 완전한 과학용 파이썬 환경과 자료 분석을 위한 AstroOmatic(천체) 소프"
+#~ "트웨어와 함께 발전된 페도라 KDE 데스크탑을 제공합니다. KStar는 모든 기능"
+#~ "을 갖춘 천문사진 도구 제공이 추가되었습니다. KStars는 INDI 라이브러리를 제"
+#~ "어 장치에 사용하여, 다양한 망원경, 사진기 등이 지원 되었습니다. 요약하면, "
+#~ "페도라 천문학은 관찰 계획에서 최종 결과까지 완전한 스프트웨어 묶음을 제공"
+#~ "합니다."
+
+#~ msgctxt "Release|"
+#~ msgid "design_suite"
+#~ msgstr "디자인_제품군"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Design Suite"
+#~ msgstr "페도라 디자인 제품군"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Visual design, multimedia production, and publishing suite of free and "
+#~ "open source creative tools."
+#~ msgstr ""
+#~ "시각 디자인, 멀티미디어 제작과 무료와 개방형 원천 창작 도구의 출판 제품군"
+#~ "입니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Looking for a ready-to-go desktop environment brimming with free and open "
+#~ "source multimedia production and publishing tools? Try the Design Suite, "
+#~ "a Fedora Spin created by designers, for designers."
+#~ msgstr ""
+#~ "무료이고 개방형 원천 멀티미디어 제작과 게시 도구로 가득한 바로 사용 할 수 "
+#~ "있는 데스크탑 환경을 찾고 계시나요? 디자이너를 위해 디자이너가 생성한 페도"
+#~ "라 스핀인 디자인 제품군을 사용해보세요."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Design Suite includes the favorite tools of the Fedora Design Team. "
+#~ "These are the same programs we use to create all the artwork that you see "
+#~ "within the Fedora Project, from desktop backgrounds to CD sleeves, web "
+#~ "page designs, application interfaces, flyers, posters and more. From "
+#~ "document publication to vector and bitmap editing or 3D modeling to photo "
+#~ "management, the Design Suite has an application for you — and you can "
+#~ "install thousands more from the Fedora universe of packages."
+#~ msgstr ""
+#~ "디자인 제품군은 페도라 디자인 팀이 가장 선호하는 도구를 포함합니다. 이들"
+#~ "은 우리가 페도라 프로젝트, 데스크탑 배경에서 CD 보관, 웹 부분 디자인, 응용"
+#~ "프로그램 연결장치, 전단지, 포스타와 등과 같은 것을 볼 수 있는 모든 시각 작"
+#~ "품을 생성 하는데 사용합니다. 문서 출판에서 사진 관리에 벡터와 비트맵 편집 "
+#~ "또는 3차원 모델링,디자인 제품군은 당신을 위한 응용프로그램을 갖고 있으며 "
+#~ "페도라의 광대한 꾸러미에서 수천 개를 설치 할 수 있습니다."
+
+#~ msgctxt "Release|"
+#~ msgid "games"
+#~ msgstr "게임"
+
+#~ msgid "Fedora Games"
+#~ msgstr "페도라 게임"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A collection and perfect show-case of the best games available in Fedora."
+#~ msgstr "페도라에서 사용 할 수 있는 최고의 게임 모음과 완벽한 전시물입니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Games spin offers a perfect showcase of the best games "
+#~ "available in Fedora. The included games span several genres, from first-"
+#~ "person shooters to real-time and turn-based strategy games to puzzle "
+#~ "games."
+#~ msgstr ""
+#~ "페도라 게임 스핀은 페도라에서 사용 가능한 최고의 게임의 완벽한 진열장을 제"
+#~ "공합니다. 포함되어 있는 게임은 1-인칭 슈팅 게임에서 실시간 턴-기반 전략 게"
+#~ "임, 퍼즐 게임에 이르기까지 여러 장르에 걸쳐 있습니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Not all the games available in Fedora are included on this spin, but "
+#~ "trying out this spin will give you a fair impression of Fedora's ability "
+#~ "to run great games."
+#~ msgstr ""
+#~ "페도라에서 사용 할 수 있는 모든 게임은 이 스핀에서 포함되지 않지만, 그러"
+#~ "나 이 스핀을 시도하는 것은 훌륭한 게임을 실행하는 페도라 능력에 대한 공정"
+#~ "한 인상을 줄 것입니다."
+
+#~ msgctxt "Release|"
+#~ msgid "python"
+#~ msgstr "파이썬"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Python Classroom"
+#~ msgstr "페도라 파이썬 학급"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A classroom lab for teaching the Python programming language to students"
+#~ msgstr "학생에게 파이썬 프로그래밍 언어 교육을 위한 교실 실험실"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "One of the benefits of Fedora for Python developers is the ease of "
+#~ "setting up Python development. The Fedora Python Classroom Lab makes it "
+#~ "even easier for teachers and instructors to use Fedora in their "
+#~ "classrooms or workshops. Ready to use operating system with important "
+#~ "stuff pre-installed - either with GNOME or as a headless environment for "
+#~ "Docker or Vagrant. Teach Python on Fedora, with Fedora, using the stuff "
+#~ "you love: IPython, Jupyter Notebook, multiple Pythons, virtualenvs, tox, "
+#~ "git and more"
+#~ msgstr ""
+#~ "파이썬 개발자를 위한 페도라의 장점 중 하나는 파이썬 개발 설정의 용이하게 "
+#~ "합니다. 페도라 파이썬 교실 실험실(Python Classroom Lab)은 교사와 강사가 그"
+#~ "들 학급 또는 워크샵에서 페도라를 사용하여 보다 쉽게 사용 할 수 있습니다. "
+#~ "그놈과 함께 또는 도커나 Vagrant를 위해 화면 없는 환경 중에 중요한 기능이 "
+#~ "이미-설치된 운영 체제를 사용할 준비가되었습니다. 당신이 좋아하는 도구를 사"
+#~ "용하여, 페도라와 함께, 페도라에서 파이썬을 교육 할 수 있습니다: IPython, "
+#~ "쥬피터 노트북, 여러 파이썬, 가상환경, tox, git 등"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Python Classroom Lab comes in 3 variants. Either you can run "
+#~ "it in graphical mode with GNOME, or you can virtualize it with Vagrant or "
+#~ "run it in a Docker container. You choose what fits your teaching "
+#~ "environment the best."
+#~ msgstr ""
+#~ "페도라 파이썬 학급 랩은 3가지 변형이 있습니다. 당신은 그놈에서 그래픽 모드"
+#~ "에서 실행하거나, 또는 Vargrant에서 이를 가상화 할 수 있거나 도커 컨테이너"
+#~ "에서 실행 할 수 있습니다. 당신의 최고 교육 환경에 알맞는 것을 고를 수 있습"
+#~ "니다."
+
+#~ msgctxt "Release|"
+#~ msgid "robotics"
+#~ msgstr "로봇공학"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Robotics Suite"
+#~ msgstr "페도라 로봇 제품군"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A wide variety of free and open robotics software packages for beginners "
+#~ "and experts in robotics."
+#~ msgstr ""
+#~ "로봇공학에서 초보자와 전문가를 위한 자유롭고 개방적인 소프트웨어 꾸러미의 "
+#~ "넓은 다양성."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Robotics spin provides a wide variety of free and open "
+#~ "robotics software packages. These range from hardware accessory libraries "
+#~ "for the Hokuyo laser scanners or Katana robotic arm to software "
+#~ "frameworks like Fawkes or Player and simulation environments such as "
+#~ "Stage and RoboCup Soccer Simulation Server 2D/3D. It also provides a "
+#~ "ready to use development environment for robotics including useful "
+#~ "libraries such as OpenCV computer vision library, Festival text to speech "
+#~ "system and MRPT."
+#~ msgstr ""
+#~ "페도라 로보틱스 스핀은 다양한 무료 개방된 로봇 소프트웨어를 제공합니다. "
+#~ "이 것들은 Hokuyo 레이저 스캐너 또는 Fawkes 같은 프레임워크 소프트웨어에 "
+#~ "Katana 로봇팔용 하드웨어 주변기기 라이브러리 또는 스테이지 및 로봇컵 축구 "
+#~ "모의 실험 서버 2D/3D와 같은 모의 실험장치와 동작장치 같은 범위에 있습니"
+#~ "다. 이 것은 또한 OpenCV 컴퓨터 시각 라이브러리, 페스티발 음성 시스템(text "
+#~ "to speech)와 MRPT와 같은 유용한 라이브러리를 포함하여 로봇공학을 위한 개"
+#~ "발 환경 사용할 준비를 제공합니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Robotics spin is targeted at people just discovering their interest "
+#~ "in robotics as well as experienced roboticists. For the former we provide "
+#~ "a readily usable simulation environment with an introductory hands-on "
+#~ "demonstration, and for the latter we provide a full development "
+#~ "environment, to be used immediately."
+#~ msgstr ""
+#~ "로봇공학 스핀(spin)은 로봇공학에 자신의 관심을 찾는 것 뿐만 아니라 로봇공"
+#~ "학을 경험하고자 하는 사람들이 대상입니다. 앞전의 경우에 입문자가 직접 데모"
+#~ "를 통해 쉽게 사용할 수 있는 가상 모의환경을 제공하고, 후자의 경우 우리는 "
+#~ "바로 사용 할 수 있는 전체 개발 환경을 제공합니다."
+
+#~ msgctxt "Release|"
+#~ msgid "scientific"
+#~ msgstr "과학적인"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Scientific"
+#~ msgstr "페도라 과학"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A bundle of open source scientific and numerical tools used in research."
+#~ msgstr "연구에 사용되는 오픈소스 과학과 수치 도구의 묶음(bundle)."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Wary of reinstalling all the essential tools for your scientific and "
+#~ "numerical work? The answer is here. Fedora Scientific Spin brings "
+#~ "together the most useful open source scientific and numerical tools atop "
+#~ "the goodness of the KDE desktop environment."
+#~ msgstr ""
+#~ "과학과 수치 작업에 필요한 모든 필수 도구를 다시 재설치해야하나요? 답이 여"
+#~ "기에 있습니다. 페도라 Scientific 스핀은 KDE 데스크탑 환경의 장점 위에서 가"
+#~ "장 유용한 개방형 원천 과학 및 수치 도구를 제공합니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "Fedora Scientific currently ships with numerous applications and "
+#~ "libraries. These range from libraries such as the GNU Scientific library, "
+#~ "the SciPy libraries, tools like Octave and xfig to typesetting tools like "
+#~ "Kile and graphics programs such as Inkscape. The current set of packages "
+#~ "include an IDE, tools and libraries for programming in C, C++, Python, "
+#~ "Java and R. Also included along with are libraries for parallel computing "
+#~ "such as the OpenMPI and OpenMP. Tools for typesetting, writing and "
+#~ "publishing are included."
+#~ msgstr ""
+#~ "페도라 과학은 현재 수많은 응용프로그램과 라이브러리와 함께 제공됩니다. 이"
+#~ "들은 GNU 과학 라이브러리와 같은 라이브러리, SciPy 라이브러리, Octave과 "
+#~ "xfig와 같은 도구에서 Kile과 같은 조판 도구와 잉크스케이프와 같은 그래픽 프"
+#~ "로그램에 이르기까지 범위가 넓습니다. 현재 꾸러미 구성에는 C, C ++, 파이"
+#~ "썬, 자바와 R 프로그래밍을 위한 IDE, 도구와 라이브러리가 포함됩니다. 또한 "
+#~ "OpenMPI와 OpenMP와 같은 병렬 컴퓨팅을 위한 라이브러리 등도 포함됩니다. 조"
+#~ "판, 글쓰기와 출판을 위한 도구가 포함되어 있습니다."
+
+#~ msgctxt "Release|"
+#~ msgid "security"
+#~ msgstr "보안"
+
+#~ msgctxt "Release|"
+#~ msgid "Fedora Security Lab"
+#~ msgstr "페도라 보안 랩"
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "A safe test environment to work on security auditing, forensics, system "
+#~ "rescue and teaching security testing methodologies."
+#~ msgstr ""
+#~ "보안 감사, 포렌식, 시스템 구조와 보안 시험 방법론 교육을 위한 안전한 시험 "
+#~ "환경입니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The Fedora Security Lab provides a safe test environment to work on "
+#~ "security auditing, forensics, system rescue and teaching security testing "
+#~ "methodologies in universities and other organizations."
+#~ msgstr ""
+#~ "페도라 보안 랩은 보안감사, 포렌식, 시스템 복구와 대학과 다른 기관에서 보"
+#~ "안 시험 방법론에 대한 업무에 안전한 시험 환경을 제공합니다."
+
+#~ msgctxt "Release|"
+#~ msgid ""
+#~ "The spin is maintained by a community of security testers and developers. "
+#~ "It comes with the clean and fast Xfce Desktop Environment and a "
+#~ "customized menu that provides all the instruments needed to follow a "
+#~ "proper test path for security testing or to rescue a broken system. The "
+#~ "Live image has been crafted to make it possible to install software while "
+#~ "running, and if you are running it from a USB stick created with LiveUSB "
+#~ "Creator using the overlay feature, you can install and update software "
+#~ "and save your test results permanently."
+#~ msgstr ""
+#~ "시험자와 개발자로 구성된 커뮤니티에 의해 스핀은 유지됩니다. 이는 깔끔하고 "
+#~ "빠른 Xfce 데스크탑 환경과 사용자 정의된 보안 시험과 망가진 시스템 복구를 "
+#~ "위한 적절한 시험 경로를 제공해줄 필요가 있는 모든 도구를 제공해주는 것과 "
+#~ "같은 메뉴와 함께 있습니다. 실시간 이미지는 실행 할 때에 소프트웨어를 설치 "
+#~ "할 수 있게 만들어 주는 것을 정교하게 해주며, 기능을 입히는데 사용하는 "
+#~ "LiveUSB Creator와 함께 생성하는 USB 저장장치에서 이를 실행하면, 당신은 설"
+#~ "치 할 수 있고 소프트웨어를 최신화하며 영구적으로 테스트한 결과를 저장합니"
+#~ "다."
 
 #~ msgctxt "[1].category"
 #~ msgid "product"
