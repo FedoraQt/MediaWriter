@@ -11,4 +11,4 @@ jobs:
       with:
         clang-format-version: '13'
         check-path: 'src'
-        exclude-regex: "src/helper/win"
+        exclude-regex: 'src/helper/win\|src/app/crashhandler.cpp'

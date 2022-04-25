@@ -21,50 +21,40 @@
 #include "utilities.h"
 
 #ifdef _WIN32
-#include <QDebug>
-#include <dbghelp.h>
-#include <windows.h>
+# include <QDebug>
+# include <windows.h>
+# include <dbghelp.h>
 
-void printStack(void)
-{
-    HANDLE process = GetCurrentProcess();
-    SymInitialize(process, NULL, TRUE);
+void printStack(void) {
+     HANDLE process = GetCurrentProcess();
+     SymInitialize( process, NULL, TRUE );
 
-    void *stack[64];
-    unsigned short frames = CaptureStackBackTrace(0, 64, stack, NULL);
+     void *stack[64];
+     unsigned short frames = CaptureStackBackTrace( 0, 64, stack, NULL );
 
-    SYMBOL_INFO *symbol = (SYMBOL_INFO *)calloc(sizeof(SYMBOL_INFO) + 256 * sizeof(char), 1);
-    symbol->MaxNameLen = 255;
-    symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
+     SYMBOL_INFO *symbol = (SYMBOL_INFO*) calloc(sizeof(SYMBOL_INFO) + 256 * sizeof(char), 1);
+     symbol->MaxNameLen = 255;
+     symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
 
-    mCritical() << "Backtrace:";
-    for (int i = 0; i < frames; i++) {
-        SymFromAddr(process, (DWORD64)(stack[i]), 0, symbol);
-        mCritical() << '\t' << frames - i - 1 << ':' << symbol->Name << (void *)symbol->Address;
-    }
+     mCritical() << "Backtrace:";
+     for(int i = 0; i < frames; i++) {
+         SymFromAddr(process, (DWORD64)(stack[i]), 0, symbol);
+         mCritical() << '\t' << frames - i - 1 << ':' << symbol->Name << (void*)symbol->Address;
+     }
 
-    free(symbol);
+     free(symbol);
 }
 
-LONG faultHandler(struct _EXCEPTION_POINTERS *info)
-{
+LONG faultHandler(struct _EXCEPTION_POINTERS *info) {
     int code = info->ExceptionRecord->ExceptionCode;
     int flags = info->ExceptionRecord->ExceptionFlags;
     void *address = info->ExceptionRecord->ExceptionAddress;
     const char *faultName = "";
-    switch (info->ExceptionRecord->ExceptionCode) {
-    case EXCEPTION_ACCESS_VIOLATION:
-        faultName = "ACCESS VIOLATION";
-        break;
-    case EXCEPTION_DATATYPE_MISALIGNMENT:
-        faultName = "DATATYPE MISALIGNMENT";
-        break;
-    case EXCEPTION_FLT_DIVIDE_BY_ZERO:
-        faultName = "FLT DIVIDE BY ZERO";
-        break;
-    default:
-        faultName = "(N/A)";
-        break;
+    switch(info->ExceptionRecord->ExceptionCode) {
+        case EXCEPTION_ACCESS_VIOLATION:      faultName = "ACCESS VIOLATION"     ; break;
+        case EXCEPTION_DATATYPE_MISALIGNMENT: faultName = "DATATYPE MISALIGNMENT"; break;
+        case EXCEPTION_FLT_DIVIDE_BY_ZERO:    faultName = "FLT DIVIDE BY ZERO"   ; break;
+        default:                              faultName = "(N/A)"                ; break;
     }
 
     mCritical() << "=== CRASH OCCURRED ===";
@@ -79,15 +69,14 @@ LONG faultHandler(struct _EXCEPTION_POINTERS *info)
     return EXCEPTION_EXECUTE_HANDLER;
 }
 
-void CrashHandler::install()
-{
-    SetUnhandledExceptionFilter((LPTOP_LEVEL_EXCEPTION_FILTER)faultHandler);
+void CrashHandler::install() {
+    SetUnhandledExceptionFilter((LPTOP_LEVEL_EXCEPTION_FILTER) faultHandler);
 }
 #else // _WIN32
 
-void CrashHandler::install()
-{
+void CrashHandler::install() {
     // do nothing
 }
 
 #endif // _WIN32
+
