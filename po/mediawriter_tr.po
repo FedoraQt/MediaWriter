@@ -10,58 +10,46 @@
 # Emin Tufan Çetin <etcetin@gmail.com>, 2017. #zanata
 # Serdar Sağlam <teknomobil@msn.com>, 2019. #zanata
 # Oğuz Ersen <oguzersen@protonmail.com>, 2021.
+# Oğuz Ersen <oguz@ersen.moe>, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-25 07:54+0200\n"
-"PO-Revision-Date: 2021-07-11 17:15+0000\n"
-"Last-Translator: Oğuz Ersen <oguzersen@protonmail.com>\n"
-"Language-Team: Turkish <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/tr/>\n"
+"PO-Revision-Date: 2022-04-26 04:42+0000\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
+"Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Weblate 4.7.1\n"
+"X-Generator: Weblate 4.12\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr "Fedora Ortam Yazıcı hakkında"
+msgstr "Fedora Ortam Yazıcı Hakkında"
 
 #: ../src/app/qml/AboutDialog.qml:58
-#, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Sürüm %1"
 
 #: ../src/app/qml/AboutDialog.qml:65
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "Fedora Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Fedora Ortam Yazıcı şimdi yeni sürümleri denetliyor"
 
 #: ../src/app/qml/AboutDialog.qml:71
-#, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr "Lütfen %1 üzerinden hataları ya da önerilerinizi bildirin"
+msgstr "Lütfen %1 üzerinden hataları veya önerilerinizi bildirin"
 
 #: ../src/app/qml/AboutDialog.qml:94
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Kapat"
@@ -69,25 +57,22 @@ msgstr "Kapat"
 #: ../src/app/qml/CancelDialog.qml:54
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "İndirme İptal Edilsin mi?"
 
 #: ../src/app/qml/CancelDialog.qml:56
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Yazılıyor"
+msgstr "Yazma İptal Edilsin mi?"
 
 #: ../src/app/qml/CancelDialog.qml:58
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "Doğrulama İptal Edilsin mi?"
 
 #: ../src/app/qml/CancelDialog.qml:65
 msgctxt "CancelDialog|"
 msgid "Download progress will be lost and media writing will be aborted."
-msgstr ""
+msgstr "İndirme ilerlemesi kaybedilecek ve ortam yazma işlemi iptal edilecek."
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
@@ -95,37 +80,32 @@ msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
+"Yazma işlemi iptal edilecek ve daha sonra sürücünüzün sıfırlanması gerekecek."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "Bu işlemin iptal edilmesi güvenlidir."
 
 #: ../src/app/qml/CancelDialog.qml:86
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "Devam et"
 
 #: ../src/app/qml/CancelDialog.qml:104
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "İndiriliyor"
+msgstr "İndirmeyi İptal Et"
 
 #: ../src/app/qml/CancelDialog.qml:106
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Yazılıyor"
+msgstr "Yazmayı İptal Et"
 
 #: ../src/app/qml/CancelDialog.qml:108
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "Doğrulamayı İptal Et"
 
 #: ../src/app/downloadmanager.cpp:216
 msgctxt "Download|"
@@ -151,115 +131,80 @@ msgstr "Bağlantı zaman aşımına uğradı"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Sucessfuly Written"
-msgstr ""
+msgstr "%1 Başarıyla Yazıldı"
 
 #: ../src/app/qml/DownloadPage.qml:50
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "Yazılıyor"
+msgstr "%1 Yazılıyor"
 
 #: ../src/app/qml/DownloadPage.qml:52
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
-msgstr "Yazılı veri denetleniyor"
+msgstr "Yazılan veri doğrulanıyor"
 
 #: ../src/app/qml/DownloadPage.qml:54
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "İndiriliyor"
+msgstr "%1 İndiriliyor"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
 msgctxt "DownloadPage|"
 msgid "Verifying downloaded image"
-msgstr "İndirilen görüntü bozulmuş"
+msgstr "İndirilen kalıp doğrulanıyor"
 
 #: ../src/app/qml/DownloadPage.qml:58
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "Hazırlanıyor"
+msgstr "%1 Hazırlanıyor"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
 msgctxt "DownloadPage|"
 msgid "Failed"
-msgstr ""
+msgstr "Başarısız oldu"
 
 #: ../src/app/qml/DownloadPage.qml:72
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr "(%1 B kaldı)"
+msgstr " B kaldı)"
 
 #: ../src/app/qml/DownloadPage.qml:73
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr "(%1 KB kaldı)"
+msgstr " KB kaldı)"
 
 #: ../src/app/qml/DownloadPage.qml:74
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr "(%1 MB kaldı)"
+msgstr " MB kaldı)"
 
 #: ../src/app/qml/DownloadPage.qml:75
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr "(%1 GB kaldı)"
+msgstr " GB kaldı)"
 
 #: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
 #: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:124
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "Dosya, İndirilenler klasörünüze kaydedilecek."
+msgstr "İndirilenler, indirilenler klasörüne kaydedilir."
 
 #: ../src/app/qml/DownloadPage.qml:132
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Yazarak, %1 içerisindeki tüm verileri kaybedeceksiniz."
 
 #: ../src/app/qml/DownloadPage.qml:140
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using Fedora Media Writer; this will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -267,32 +212,21 @@ msgid ""
 "from your drive."
 msgstr ""
 "Sürücünüz daha küçük bir kapasiteye boyutlandırılacak. Olağan boyutuna "
-"döndürmek için Fedora Ortam Yazıcı'yı kullanabilirsiniz; bu, kurulum "
+"döndürmek için Fedora Ortam Yazıcı'yı kullanabilirsiniz. Bu, kurulum "
 "ortamını sürücüden kaldıracaktır."
 
 #: ../src/app/qml/DownloadPage.qml:148
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
-msgstr "Seçildi:"
+msgstr "Seçilen:"
 
 #: ../src/app/qml/DownloadPage.qml:148
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Hiçbiri"
 
 #: ../src/app/qml/DownloadPage.qml:156
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your board or device is not supported by Fedora Media Writer yet. Please "
-#| "check <a href=%1>this page</a> for more information about its "
-#| "compatibility with Fedora and how to create bootable media for it."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
@@ -301,14 +235,11 @@ msgid ""
 msgstr ""
 "Kartınız veya aygıtınız henüz Fedora Ortam Yazıcı tarafından desteklenmiyor. "
 "Fedora ile uyumluluğu ve nasıl önyüklenebilir ortam oluşturulacağı ile "
-"ilgili daha çoğunu öğrenmek için lütfen <a href=%1>bu sayfaya</a> göz atın."
+"ilgili daha fazla bilgi edinmek için lütfen <a href=%1>bu sayfaya</a> göz "
+"atın."
 
 #: ../src/app/qml/DownloadPage.qml:165
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
@@ -321,70 +252,52 @@ msgstr ""
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "%2 kullanmaya başlamak için yeniden başlatın ve %1'den önyükleyin."
 
 #: ../src/app/qml/DownloadPage.qml:262
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Writing is not possible"
 msgctxt "DownloadPage|"
 msgid "Writing not possible"
-msgstr "Yazım olası değil"
+msgstr "Yazılamıyor"
 
 #: ../src/app/qml/DownloadPage.qml:282
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "Yazılıyor"
 
 #: ../src/app/qml/DownloadPage.qml:310
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "DownloadPage|"
 msgid "Write verifying"
-msgstr "Yazılıyor"
+msgstr "Yazma doğrulanıyor"
 
 #: ../src/app/qml/DownloadPage.qml:334
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "Bitti!"
+msgstr "Bitir"
 
 #: ../src/app/qml/DownloadPage.qml:347
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
 msgctxt "DownloadPage|"
 msgid "Write Successful"
-msgstr "%1 yazımı başarılı"
+msgstr "Yazıldı"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
 msgid "Failed verification no drives"
-msgstr ""
+msgstr "Doğrulanamadı, sürücü yok"
 
 #: ../src/app/qml/DownloadPage.qml:381
 msgctxt "DownloadPage|"
 msgid "Failed verification"
-msgstr ""
+msgstr "Doğrulanamadı"
 
 #: ../src/app/qml/DownloadPage.qml:393
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "DownloadPage|"
 msgid "Failed download"
-msgstr "İndirme denetleniyor"
+msgstr "İndirilemedi"
 
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
 msgid "Failed no drives"
-msgstr ""
+msgstr "Başarısız oldu, sürücü yok"
 
 #: ../src/app/drivemanager.cpp:288
 msgctxt "Drive|"
@@ -392,62 +305,41 @@ msgid "This drive is not large enough."
 msgstr "Sürücü yeterince büyük değil."
 
 #: ../src/app/qml/DrivePage.qml:36
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "Diske Yaz"
+msgstr "Yazma Seçenekleri"
 
 #: ../src/app/qml/DrivePage.qml:45
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "Sürüm %1"
+msgstr "Sürüm"
 
 #: ../src/app/qml/DrivePage.qml:62
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "Donanım Mimarisi"
 
 #: ../src/app/qml/DrivePage.qml:79
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "Seçildi:"
+msgstr "Seçilen dosya"
 
 #: ../src/app/qml/DrivePage.qml:86
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "Hiçbiri"
 
 #: ../src/app/qml/DrivePage.qml:94
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "Seçildi:"
+msgstr "Seç..."
 
 #: ../src/app/qml/DrivePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "DrivePage|"
 msgid "Image files"
-msgstr "Görüntü dosyaları"
+msgstr "Kalıp dosyaları"
 
 #: ../src/app/qml/DrivePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "Tüm dosyalar (*)"
@@ -455,31 +347,22 @@ msgstr "Tüm dosyalar (*)"
 #: ../src/app/qml/DrivePage.qml:122
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "USB Sürücü"
 
 #: ../src/app/qml/DrivePage.qml:130
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "Bağlı taşınabilir sürücü yok"
 
 #: ../src/app/qml/DrivePage.qml:149
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "İndiriliyor"
+msgstr "İndir"
 
 #: ../src/app/qml/DrivePage.qml:154
-#, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "İndirilen Görüntüyü Sil"
+msgstr "Yazdıktan sonra indirmeyi sil"
 
 #: ../src/app/linuxdrivemanager.cpp:196
 msgctxt "LinuxDrive|"
@@ -553,49 +436,38 @@ msgstr "%1 yazımı başarılı"
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Kalıp Kaynağını Seç"
 
 #: ../src/app/qml/MainPage.qml:57
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "İndirme başarısız"
+msgstr "Otomatik olarak indir"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr ".iso dosyası seç"
 
 #: ../src/app/qml/MainPage.qml:76
-#, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
+#, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "Sıfırla %1?"
+msgstr "<b>%1</b> sıfırla"
 
 #: ../src/app/portalfiledialog.cpp:145
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr "Görüntü dosyaları"
+msgstr "Kalıp dosyaları"
 
 #: ../src/app/portalfiledialog.cpp:155
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "Tüm dosyalar (*)"
+msgstr "Tüm dosyalar"
 
 #: ../src/app/portalfiledialog.cpp:165
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "Dosya Aç"
 
 #: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
 msgctxt "Release|"
@@ -626,7 +498,7 @@ msgstr "Fedora Labları"
 #: ../src/app/releasemanager.cpp:401
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
-msgstr ""
+msgstr "Yeni Geliştirilen Fedora Sürümleri"
 
 #: ../src/app/releasemanager.cpp:403
 msgctxt "Release|"
@@ -718,25 +590,9 @@ msgstr "%1 Sürüm Adayı"
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "<b>%1</b> Sürücüsünü Sıfırla"
 
 #: ../src/app/qml/RestorePage.qml:49
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -746,26 +602,14 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">\n"
-"                                                Sürücünün tüm alanının "
-"kullanılabilmesi için fabrika ayarlarına döndürülmesi gerekmektedir.\n"
-"                                                Canlı sistem ve kaydedilen "
-"veriler silinecektir.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Eğer başka bir canlı sistem "
-"oluşturmak istiyorsanız sürücüyü sıfırlamanıza gerek yoktur.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Devam etmek ister misiniz?\n"
-"                                            </p>"
+"<p align=\"justify\"> Sürücünün tüm alanının kullanılabilmesi için fabrika "
+"ayarlarına döndürülmesi gerekmektedir. Canlı sistem ve kaydedilen veriler "
+"silinecektir. </p> <p align=\"justify\"> Başka bir canlı sistem oluşturmak "
+"istiyorsanız sürücüyü sıfırlamanıza gerek yoktur. \n"
+"                </p> <p align=\"justify\"> Fabrika ayarlarına döndürmek "
+"istiyor musunuz? </p>"
 
 #: ../src/app/qml/RestorePage.qml:67
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
@@ -775,67 +619,53 @@ msgstr ""
 "lütfen bekleyin.</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "Sürücünüz başarıyla sıfırlandı!"
 
 #: ../src/app/qml/RestorePage.qml:94
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"Ne yazık ki işlem sırasında bir hata oluştu.<br>Lütfen sistem araçlarınızı "
+"Ne yazık ki işlem sırasında bir hata oluştu. Lütfen sistem araçlarınızı "
 "kullanarak sürücünüzü onarmayı deneyin."
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "Sıfırlama tamamlandı"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Fedora Sürümü Seç"
 
 #: ../src/app/qml/VersionPage.qml:48
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "Seçildi:"
+msgstr "Şuradan seç:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Resmi Sürümler"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Emerging Editions"
-msgstr ""
+msgstr "Yeni Geliştirilen Sürümler"
 
 #: ../src/app/qml/VersionPage.qml:65
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "spins"
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr "spinler"
+msgstr "Spinler"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Lablar"
 
 #: ../src/app/windrivemanager.cpp:270
 msgctxt "WinDrive|"
@@ -854,32 +684,21 @@ msgid "Writing %1 was successful"
 msgstr "%1 yazımı başarılı"
 
 #: ../src/app/qml/main.qml:116
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Ortam Yazıcı"
 
 #: ../src/app/qml/main.qml:154
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Workstation"
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Fedora Workstation"
+msgstr "Fedora Sürümü Seç"
 
 #: ../src/app/qml/main.qml:170
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "Seçildi:"
+msgstr "Sürücü Seç"
 
 #: ../src/app/qml/main.qml:204
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "main|"
 msgid "Downloading"
 msgstr "İndiriliyor"
@@ -890,51 +709,39 @@ msgid "Restore"
 msgstr "Sıfırla"
 
 #: ../src/app/qml/main.qml:283
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "main|"
 msgid "Finish"
-msgstr "Bitti!"
+msgstr "Bitir"
 
 #: ../src/app/qml/main.qml:286
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "İndirme başarısız"
+msgstr "İndir ve Yaz"
 
 #: ../src/app/qml/main.qml:289 ../src/app/qml/main.qml:300
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "main|"
 msgid "Cancel"
 msgstr "İptal"
 
 #: ../src/app/qml/main.qml:291
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
 msgctxt "main|"
 msgid "Retry"
-msgstr "Yeniden dene"
+msgstr "Yeniden Dene"
 
 #: ../src/app/qml/main.qml:293
 msgctxt "main|"
 msgid "Next"
-msgstr ""
+msgstr "Sonraki"
 
 #: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "About"
-msgstr ""
+msgstr "Hakkında"
 
 #: ../src/app/qml/main.qml:301
 msgctxt "main|"
 msgid "Previous"
-msgstr ""
+msgstr "Önceki"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
@@ -982,7 +789,7 @@ msgstr "Fedora görüntülerini taşınabilir aygıtlarınıza yazın"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:77
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;önyüklenebilir;"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write %1"
