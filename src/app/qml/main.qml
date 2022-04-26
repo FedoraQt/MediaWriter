@@ -283,8 +283,9 @@ ApplicationWindow {
                 return qsTr("Finish")
             return qsTr("Restore")
         } else if (mainLayout.state == "drivePage") {
-            //if Windows or Mac
-            if (Qt.platform.os === "windows") 
+            if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
+                return qsTr("Write")
+            if (Qt.platform.os === "windows" || Qt.platform.os === "osx") 
                 return qsTr("Download && Write")
             return qsTr("Download & Write") 
         } else if (mainLayout.state == "downloadPage") {
