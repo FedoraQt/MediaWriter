@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-25 07:54+0200\n"
+"POT-Creation-Date: 2022-04-26 08:12+0200\n"
 "PO-Revision-Date: 2022-04-26 04:42+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
@@ -24,30 +24,30 @@ msgstr ""
 "X-Generator: Weblate 4.12\n"
 "X-Qt-Contexts: true\n"
 
-#: ../src/app/qml/AboutDialog.qml:49
+#: ../src/app/qml/AboutDialog.qml:50
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
 msgstr "Про Fedora Media Writer"
 
-#: ../src/app/qml/AboutDialog.qml:58
+#: ../src/app/qml/AboutDialog.qml:59
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Версія %1"
 
-#: ../src/app/qml/AboutDialog.qml:65
+#: ../src/app/qml/AboutDialog.qml:66
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Зараз Fedora Media Writer шукає нові випуски"
 
-#: ../src/app/qml/AboutDialog.qml:71
+#: ../src/app/qml/AboutDialog.qml:72
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr ""
 "Будь ласка, повідомляйте про вади та ваші пропозиції за цією адресою: %1"
 
-#: ../src/app/qml/AboutDialog.qml:94
+#: ../src/app/qml/AboutDialog.qml:95
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Закрити"
@@ -106,22 +106,22 @@ msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Скасувати перевірку"
 
-#: ../src/app/downloadmanager.cpp:216
+#: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "Не вдалося отримати потрібний образ."
 
-#: ../src/app/downloadmanager.cpp:316
+#: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "У теці «Завантаження» не лишилося вільного місця."
 
-#: ../src/app/downloadmanager.cpp:318
+#: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "Файл, до якого слід було отримати дані, непридатний до запису."
 
-#: ../src/app/downloadmanager.cpp:404
+#: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Вичерпано час очікування на з’єднання"
@@ -300,7 +300,7 @@ msgctxt "DownloadPage|"
 msgid "Failed no drives"
 msgstr "Помилка — немає носіїв"
 
-#: ../src/app/drivemanager.cpp:288
+#: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "На цьому диску недостатньо місця."
@@ -365,7 +365,7 @@ msgctxt "DrivePage|"
 msgid "Delete download after writing"
 msgstr "Вилучити отримані дані після записування"
 
-#: ../src/app/linuxdrivemanager.cpp:196
+#: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
 msgstr "Диск було від’єднано до завершення запису."
@@ -377,62 +377,62 @@ msgstr ""
 "Не вдалося знайти допоміжного виконуваного файла. Перевірте, чи все "
 "встановлено належним чином."
 
-#: ../src/app/linuxdrivemanager.cpp:259
+#: ../src/app/linuxdrivemanager.cpp:258
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
 msgstr "Зупинено до завершення запису."
 
-#: ../src/app/linuxdrivemanager.cpp:329
+#: ../src/app/linuxdrivemanager.cpp:325
 msgctxt "LinuxDrive|"
 msgid "Finished!"
 msgstr "Завершено!"
 
-#: ../src/app/linuxdrivemanager.cpp:329
+#: ../src/app/linuxdrivemanager.cpp:325
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
 msgstr "Успішно записано %1"
 
-#: ../src/app/linuxdrivemanager.cpp:351
+#: ../src/app/linuxdrivemanager.cpp:347
 msgctxt "LinuxDrive|"
 msgid "Error"
 msgstr "Помилка"
 
-#: ../src/app/linuxdrivemanager.cpp:351
+#: ../src/app/linuxdrivemanager.cpp:347
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
 msgstr "Не вдалося записати %1"
 
-#: ../src/app/linuxdrivemanager.cpp:122
+#: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr "У вашій системі немає UDisks2 або відповідна програма недоступна."
 
-#: ../src/app/macdrivemanager.cpp:100
+#: ../src/app/macdrivemanager.cpp:103
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "Не вдалося знайти допоміжного виконуваного файла. Перевірте, чи все "
 "встановлено належним чином."
 
-#: ../src/app/macdrivemanager.cpp:182
+#: ../src/app/macdrivemanager.cpp:185
 msgctxt "MacDrive|"
 msgid "Error"
 msgstr "Помилка"
 
-#: ../src/app/macdrivemanager.cpp:182
+#: ../src/app/macdrivemanager.cpp:185
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
 msgstr "Не вдалося записати %1"
 
-#: ../src/app/macdrivemanager.cpp:186
+#: ../src/app/macdrivemanager.cpp:188
 msgctxt "MacDrive|"
 msgid "Finished!"
 msgstr "Завершено!"
 
-#: ../src/app/macdrivemanager.cpp:186
+#: ../src/app/macdrivemanager.cpp:188
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
@@ -459,27 +459,27 @@ msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
 msgstr "Відновити <b>%1</b>"
 
-#: ../src/app/portalfiledialog.cpp:145
+#: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "файли образів"
 
-#: ../src/app/portalfiledialog.cpp:155
+#: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
 msgid "All files"
 msgstr "усі файли"
 
-#: ../src/app/portalfiledialog.cpp:165
+#: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "Відкрити файл"
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:391 ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Виберіть файл на диску"
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:392 ../src/app/releasemanager.cpp:405
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -491,52 +491,52 @@ msgstr ""
 "передбачено підтримку запису лише простих образів дисків (у форматі .iso "
 "або .bin)</p>"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:436
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Збірки Fedora"
 
-#: ../src/app/releasemanager.cpp:399
+#: ../src/app/releasemanager.cpp:438
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
-#: ../src/app/releasemanager.cpp:401
+#: ../src/app/releasemanager.cpp:440
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
 msgstr "Нові редакції Fedora"
 
-#: ../src/app/releasemanager.cpp:403
+#: ../src/app/releasemanager.cpp:442
 msgctxt "Release|"
 msgid "Other"
 msgstr "Інше"
 
-#: ../src/app/releasemanager.cpp:979
+#: ../src/app/releasemanager.cpp:1086
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 64bit"
 msgstr "Intel 64-бітовий"
 
-#: ../src/app/releasemanager.cpp:979
+#: ../src/app/releasemanager.cpp:1086
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "Образ у форматі ISO для Intel-сумісних ПК (64-бітовий)"
 
-#: ../src/app/releasemanager.cpp:980
+#: ../src/app/releasemanager.cpp:1087
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 32bit"
 msgstr "Intel 32-бітовий"
 
-#: ../src/app/releasemanager.cpp:980
+#: ../src/app/releasemanager.cpp:1087
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "Образ у форматі ISO для Intel-сумісних ПК (32-бітовий)"
 
-#: ../src/app/releasemanager.cpp:981
+#: ../src/app/releasemanager.cpp:1088
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:981
+#: ../src/app/releasemanager.cpp:1088
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
@@ -544,49 +544,49 @@ msgstr ""
 "Стиснутий LZMA простий образ для комп’ютерів з процесором ARM v7-A, зокрема "
 "Raspberry Pi 2 і 3"
 
-#: ../src/app/releasemanager.cpp:982
+#: ../src/app/releasemanager.cpp:1089
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:982
+#: ../src/app/releasemanager.cpp:1089
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "Стиснений LZMA простий образ для архітектури AArch64"
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:390 ../src/app/releasemanager.cpp:403
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Нетиповий образ"
 
-#: ../src/app/releasemanager.cpp:840 ../src/app/releasemanager.cpp:852
+#: ../src/app/releasemanager.cpp:945 ../src/app/releasemanager.cpp:957
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Отримані дані образу пошкоджено"
 
-#: ../src/app/releasemanager.cpp:857
+#: ../src/app/releasemanager.cpp:961
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Отриманий файл непридатний до читання."
 
-#: ../src/app/releasemanager.cpp:869
+#: ../src/app/releasemanager.cpp:972
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Не вдалося перейменувати тимчасовий файл."
 
-#: ../src/app/releasemanager.cpp:648
+#: ../src/app/releasemanager.cpp:718
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../src/app/releasemanager.cpp:650
+#: ../src/app/releasemanager.cpp:720
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:652
+#: ../src/app/releasemanager.cpp:722
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -674,19 +674,19 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr "Лабораторія"
 
-#: ../src/app/windrivemanager.cpp:270
+#: ../src/app/windrivemanager.cpp:264
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "Не вдалося знайти допоміжного виконуваного файла. Перевірте, чи все "
 "встановлено належним чином."
 
-#: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
+#: ../src/app/windrivemanager.cpp:348 ../src/app/windrivemanager.cpp:399
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr "Завершено!"
 
-#: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
+#: ../src/app/windrivemanager.cpp:348 ../src/app/windrivemanager.cpp:399
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -722,32 +722,48 @@ msgctxt "main|"
 msgid "Finish"
 msgstr "Завершити"
 
-#: ../src/app/qml/main.qml:286
+#: ../src/app/qml/main.qml:287
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Write %1"
+msgctxt "main|"
+msgid "Write"
+msgstr "Записати %1"
+
+#: ../src/app/qml/main.qml:289
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Download & Write"
+msgctxt "main|"
+msgid "Download && Write"
+msgstr "Отримати і записати"
+
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "Отримати і записати"
 
-#: ../src/app/qml/main.qml:289 ../src/app/qml/main.qml:300
+#: ../src/app/qml/main.qml:293 ../src/app/qml/main.qml:304
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:295
 msgctxt "main|"
 msgid "Retry"
 msgstr "Повторити"
 
-#: ../src/app/qml/main.qml:293
+#: ../src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Next"
 msgstr "Далі"
 
-#: ../src/app/qml/main.qml:298
+#: ../src/app/qml/main.qml:302
 msgctxt "main|"
 msgid "About"
 msgstr "Відомості"
 
-#: ../src/app/qml/main.qml:301
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "Previous"
 msgstr "Назад"
@@ -800,10 +816,6 @@ msgstr "Запис образів Fedora на портативні пристр�
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
 "fmw;usb;iso;bootable;юесбі;флешка;ізо;образ;завантажувальний;завантаження;"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write %1"
-#~ msgstr "Записати %1"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"
