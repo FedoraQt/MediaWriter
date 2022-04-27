@@ -16,7 +16,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-25 07:54+0200\n"
+"POT-Creation-Date: 2022-04-26 08:12+0200\n"
 "PO-Revision-Date: 2021-10-10 13:05+0000\n"
 "Last-Translator: Titouan Bénard <itotutona@evta.fr>\n"
 "Language-Team: French <https://translate.fedoraproject.org/projects/fedora-"
@@ -29,7 +29,7 @@ msgstr ""
 "X-Generator: Weblate 4.8\n"
 "X-Qt-Contexts: true\n"
 
-#: ../src/app/qml/AboutDialog.qml:49
+#: ../src/app/qml/AboutDialog.qml:50
 #, fuzzy
 #| msgctxt "ImageList|"
 #| msgid "About Fedora Media Writer"
@@ -37,7 +37,7 @@ msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
 msgstr "À propos de Fedora Media Writer"
 
-#: ../src/app/qml/AboutDialog.qml:58
+#: ../src/app/qml/AboutDialog.qml:59
 #, fuzzy, qt-format
 #| msgctxt "ImageDetails|"
 #| msgid "Version %1"
@@ -45,7 +45,7 @@ msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Version %1"
 
-#: ../src/app/qml/AboutDialog.qml:65
+#: ../src/app/qml/AboutDialog.qml:66
 #, fuzzy
 #| msgctxt "ImageList|"
 #| msgid "Fedora Media Writer is now checking for new releases"
@@ -53,7 +53,7 @@ msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Fedora Media Writer vérifie la disponibilité de nouvelles versions"
 
-#: ../src/app/qml/AboutDialog.qml:71
+#: ../src/app/qml/AboutDialog.qml:72
 #, fuzzy, qt-format
 #| msgctxt "ImageList|"
 #| msgid "Please report bugs or your suggestions on %1"
@@ -61,7 +61,7 @@ msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Veuillez rapporter les bogues ou vos suggestions sur %1"
 
-#: ../src/app/qml/AboutDialog.qml:94
+#: ../src/app/qml/AboutDialog.qml:95
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Close"
@@ -130,22 +130,22 @@ msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr ""
 
-#: ../src/app/downloadmanager.cpp:216
+#: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "L’image requise n’a pu être récupérée."
 
-#: ../src/app/downloadmanager.cpp:316
+#: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "Vous n’avez plus d’espace dans votre dossier Téléchargements."
 
-#: ../src/app/downloadmanager.cpp:318
+#: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "Le fichier téléchargé n’est pas inscriptible."
 
-#: ../src/app/downloadmanager.cpp:404
+#: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Le délai de connexion a expiré"
@@ -389,7 +389,7 @@ msgctxt "DownloadPage|"
 msgid "Failed no drives"
 msgstr ""
 
-#: ../src/app/drivemanager.cpp:288
+#: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "Ce disque n’est pas assez large."
@@ -484,7 +484,7 @@ msgctxt "DrivePage|"
 msgid "Delete download after writing"
 msgstr "Supprimer l’image téléchargée"
 
-#: ../src/app/linuxdrivemanager.cpp:196
+#: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
 msgstr "Ce disque a été retiré pendant l’écriture."
@@ -496,62 +496,62 @@ msgstr ""
 "Le fichier binaire de l’assistant n’a pu être trouvé. Vérifiez votre "
 "installation."
 
-#: ../src/app/linuxdrivemanager.cpp:259
+#: ../src/app/linuxdrivemanager.cpp:258
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
 msgstr "Arrêté avant la fin de l’écriture."
 
-#: ../src/app/linuxdrivemanager.cpp:329
+#: ../src/app/linuxdrivemanager.cpp:325
 msgctxt "LinuxDrive|"
 msgid "Finished!"
 msgstr "C’est terminé !"
 
-#: ../src/app/linuxdrivemanager.cpp:329
+#: ../src/app/linuxdrivemanager.cpp:325
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
 msgstr "L’écriture de %1 a réussi"
 
-#: ../src/app/linuxdrivemanager.cpp:351
+#: ../src/app/linuxdrivemanager.cpp:347
 msgctxt "LinuxDrive|"
 msgid "Error"
 msgstr "Erreur"
 
-#: ../src/app/linuxdrivemanager.cpp:351
+#: ../src/app/linuxdrivemanager.cpp:347
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
 msgstr "L’écriture de %1 a échoué"
 
-#: ../src/app/linuxdrivemanager.cpp:122
+#: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr "UDisks2 semble être indisponible ou inaccessible sur votre système."
 
-#: ../src/app/macdrivemanager.cpp:100
+#: ../src/app/macdrivemanager.cpp:103
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "Le fichier binaire de l’assistant n’a pu être trouvé. Vérifiez votre "
 "installation."
 
-#: ../src/app/macdrivemanager.cpp:182
+#: ../src/app/macdrivemanager.cpp:185
 msgctxt "MacDrive|"
 msgid "Error"
 msgstr "Erreur"
 
-#: ../src/app/macdrivemanager.cpp:182
+#: ../src/app/macdrivemanager.cpp:185
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
 msgstr "L’écriture de %1 a échoué"
 
-#: ../src/app/macdrivemanager.cpp:186
+#: ../src/app/macdrivemanager.cpp:188
 msgctxt "MacDrive|"
 msgid "Finished!"
 msgstr "C’est terminé !"
 
-#: ../src/app/macdrivemanager.cpp:186
+#: ../src/app/macdrivemanager.cpp:188
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
@@ -583,7 +583,7 @@ msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
 msgstr "Restaurer %1 ?"
 
-#: ../src/app/portalfiledialog.cpp:145
+#: ../src/app/portalfiledialog.cpp:143
 #, fuzzy
 #| msgctxt "main|"
 #| msgid "Image files"
@@ -591,7 +591,7 @@ msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "Fichiers d’image"
 
-#: ../src/app/portalfiledialog.cpp:155
+#: ../src/app/portalfiledialog.cpp:153
 #, fuzzy
 #| msgctxt "main|"
 #| msgid "All files (*)"
@@ -599,17 +599,17 @@ msgctxt "PortalFileDialog|"
 msgid "All files"
 msgstr "Tous les fichiers (*)"
 
-#: ../src/app/portalfiledialog.cpp:165
+#: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:391 ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Sélectionnez un fichier sur vos disques"
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:392 ../src/app/releasemanager.cpp:405
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -620,52 +620,52 @@ msgstr ""
 "disque dur à écrire sur votre périphérique USB.</p><p>Pour le moment, seule "
 "l’écriture d’images disques brutes est prise en charge (.iso ou .bin).</p>"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:436
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora Spins"
 
-#: ../src/app/releasemanager.cpp:399
+#: ../src/app/releasemanager.cpp:438
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
-#: ../src/app/releasemanager.cpp:401
+#: ../src/app/releasemanager.cpp:440
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:403
+#: ../src/app/releasemanager.cpp:442
 msgctxt "Release|"
 msgid "Other"
 msgstr "Autre"
 
-#: ../src/app/releasemanager.cpp:979
+#: ../src/app/releasemanager.cpp:1086
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 64bit"
 msgstr "Intel 64 bits"
 
-#: ../src/app/releasemanager.cpp:979
+#: ../src/app/releasemanager.cpp:1086
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "Image au format ISO pour Intel, AMD et autres PC compatibles (64 bits)"
 
-#: ../src/app/releasemanager.cpp:980
+#: ../src/app/releasemanager.cpp:1087
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 32bit"
 msgstr "Intel 32 bits"
 
-#: ../src/app/releasemanager.cpp:980
+#: ../src/app/releasemanager.cpp:1087
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "Image au format ISO pour Intel, AMD et autres PC compatibles (32 bits)"
 
-#: ../src/app/releasemanager.cpp:981
+#: ../src/app/releasemanager.cpp:1088
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:981
+#: ../src/app/releasemanager.cpp:1088
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
@@ -673,49 +673,49 @@ msgstr ""
 "Image compressée en LZMA pour les machines ARM v7 telles que Raspberry Pi 2 "
 "et 3"
 
-#: ../src/app/releasemanager.cpp:982
+#: ../src/app/releasemanager.cpp:1089
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:982
+#: ../src/app/releasemanager.cpp:1089
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "Image brute compressée avec LZMA pour les machines AArch64"
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:390 ../src/app/releasemanager.cpp:403
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Image personnalisée"
 
-#: ../src/app/releasemanager.cpp:840 ../src/app/releasemanager.cpp:852
+#: ../src/app/releasemanager.cpp:945 ../src/app/releasemanager.cpp:957
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "L’image téléchargée est corrompue"
 
-#: ../src/app/releasemanager.cpp:857
+#: ../src/app/releasemanager.cpp:961
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Le fichier téléchargé n’est pas lisible."
 
-#: ../src/app/releasemanager.cpp:869
+#: ../src/app/releasemanager.cpp:972
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Impossible de renommer le fichier temporaire."
 
-#: ../src/app/releasemanager.cpp:648
+#: ../src/app/releasemanager.cpp:718
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../src/app/releasemanager.cpp:650
+#: ../src/app/releasemanager.cpp:720
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:652
+#: ../src/app/releasemanager.cpp:722
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -844,19 +844,19 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:270
+#: ../src/app/windrivemanager.cpp:264
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "Le fichier binaire de l’assistant n’a pu être trouvé. Vérifiez votre "
 "installation."
 
-#: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
+#: ../src/app/windrivemanager.cpp:348 ../src/app/windrivemanager.cpp:399
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr "C’est terminé !"
 
-#: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
+#: ../src/app/windrivemanager.cpp:348 ../src/app/windrivemanager.cpp:399
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -906,7 +906,23 @@ msgctxt "main|"
 msgid "Finish"
 msgstr "C’est terminé !"
 
-#: ../src/app/qml/main.qml:286
+#: ../src/app/qml/main.qml:287
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Write %1"
+msgctxt "main|"
+msgid "Write"
+msgstr "Écrire %1"
+
+#: ../src/app/qml/main.qml:289
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
+msgctxt "main|"
+msgid "Download && Write"
+msgstr "Le téléchargement a échoué"
+
+#: ../src/app/qml/main.qml:290
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -914,7 +930,7 @@ msgctxt "main|"
 msgid "Download & Write"
 msgstr "Le téléchargement a échoué"
 
-#: ../src/app/qml/main.qml:289 ../src/app/qml/main.qml:300
+#: ../src/app/qml/main.qml:293 ../src/app/qml/main.qml:304
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Cancel"
@@ -922,7 +938,7 @@ msgctxt "main|"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:295
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Retry"
@@ -930,17 +946,17 @@ msgctxt "main|"
 msgid "Retry"
 msgstr "Réessayer"
 
-#: ../src/app/qml/main.qml:293
+#: ../src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Next"
 msgstr ""
 
-#: ../src/app/qml/main.qml:298
+#: ../src/app/qml/main.qml:302
 msgctxt "main|"
 msgid "About"
 msgstr ""
 
-#: ../src/app/qml/main.qml:301
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "Previous"
 msgstr ""
@@ -992,10 +1008,6 @@ msgstr "Écrivez des images de Fedora sur vos disques amovibles"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:77
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write %1"
-#~ msgstr "Écrire %1"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"

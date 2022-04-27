@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-25 07:54+0200\n"
+"POT-Creation-Date: 2022-04-26 08:12+0200\n"
 "PO-Revision-Date: 2021-08-07 20:04+0000\n"
 "Last-Translator: Luna Jernberg <bittin@reimu.nl>\n"
 "Language-Team: Swedish <https://translate.fedoraproject.org/projects/fedora-"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Generator: Weblate 4.7.2\n"
 "X-Qt-Contexts: true\n"
 
-#: ../src/app/qml/AboutDialog.qml:49
+#: ../src/app/qml/AboutDialog.qml:50
 #, fuzzy
 #| msgctxt "ImageList|"
 #| msgid "About Fedora Media Writer"
@@ -32,7 +32,7 @@ msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
 msgstr "Om Fedora mediaskrivare"
 
-#: ../src/app/qml/AboutDialog.qml:58
+#: ../src/app/qml/AboutDialog.qml:59
 #, fuzzy, qt-format
 #| msgctxt "ImageDetails|"
 #| msgid "Version %1"
@@ -40,7 +40,7 @@ msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Version %1"
 
-#: ../src/app/qml/AboutDialog.qml:65
+#: ../src/app/qml/AboutDialog.qml:66
 #, fuzzy
 #| msgctxt "ImageList|"
 #| msgid "Fedora Media Writer is now checking for new releases"
@@ -48,7 +48,7 @@ msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Fedora Mediaskrivare letar nu efter nya utgåvor"
 
-#: ../src/app/qml/AboutDialog.qml:71
+#: ../src/app/qml/AboutDialog.qml:72
 #, fuzzy, qt-format
 #| msgctxt "ImageList|"
 #| msgid "Please report bugs or your suggestions on %1"
@@ -58,7 +58,7 @@ msgstr ""
 "Rapportera fel eller dina förslag till %1\n"
 "Rapportera synpunkter på översättningen till <tp-sv@listor.tp-sv.se>"
 
-#: ../src/app/qml/AboutDialog.qml:94
+#: ../src/app/qml/AboutDialog.qml:95
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Close"
@@ -127,22 +127,22 @@ msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr ""
 
-#: ../src/app/downloadmanager.cpp:216
+#: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "Kan inte hämta den begärda avbilden."
 
-#: ../src/app/downloadmanager.cpp:316
+#: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "Du fick slut på plats i din hämtningsmapp."
 
-#: ../src/app/downloadmanager.cpp:318
+#: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "Filen att hämta är inte skrivbar."
 
-#: ../src/app/downloadmanager.cpp:404
+#: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Anslutningens tidsgräns överskreds"
@@ -386,7 +386,7 @@ msgctxt "DownloadPage|"
 msgid "Failed no drives"
 msgstr ""
 
-#: ../src/app/drivemanager.cpp:288
+#: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "Enheten är inte stor nog."
@@ -481,7 +481,7 @@ msgctxt "DrivePage|"
 msgid "Delete download after writing"
 msgstr "Ta bort den hämtade avbilden"
 
-#: ../src/app/linuxdrivemanager.cpp:196
+#: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
 msgstr "Enheten togs bort medan den skrevs till."
@@ -491,61 +491,61 @@ msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "Kunde inte hitta hjälpbinären.  Kontrollera din installation."
 
-#: ../src/app/linuxdrivemanager.cpp:259
+#: ../src/app/linuxdrivemanager.cpp:258
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
 msgstr "Stoppad före skrivningen var klar."
 
-#: ../src/app/linuxdrivemanager.cpp:329
+#: ../src/app/linuxdrivemanager.cpp:325
 msgctxt "LinuxDrive|"
 msgid "Finished!"
 msgstr "Klar!"
 
-#: ../src/app/linuxdrivemanager.cpp:329
+#: ../src/app/linuxdrivemanager.cpp:325
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
 msgstr "Att skriva %1 lyckades"
 
-#: ../src/app/linuxdrivemanager.cpp:351
+#: ../src/app/linuxdrivemanager.cpp:347
 msgctxt "LinuxDrive|"
 msgid "Error"
 msgstr "Fel"
 
-#: ../src/app/linuxdrivemanager.cpp:351
+#: ../src/app/linuxdrivemanager.cpp:347
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
 msgstr "Att skriva %1 misslyckades"
 
-#: ../src/app/linuxdrivemanager.cpp:122
+#: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr ""
 "UDisks2 verkar inte vara tillgängligt eller inte åtkomligt på ditt system."
 
-#: ../src/app/macdrivemanager.cpp:100
+#: ../src/app/macdrivemanager.cpp:103
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "Kunde inte hitta hjälpbinären.  Kontrollera din installation."
 
-#: ../src/app/macdrivemanager.cpp:182
+#: ../src/app/macdrivemanager.cpp:185
 msgctxt "MacDrive|"
 msgid "Error"
 msgstr "Fel"
 
-#: ../src/app/macdrivemanager.cpp:182
+#: ../src/app/macdrivemanager.cpp:185
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
 msgstr "Att skriva %1 misslyckades"
 
-#: ../src/app/macdrivemanager.cpp:186
+#: ../src/app/macdrivemanager.cpp:188
 msgctxt "MacDrive|"
 msgid "Finished!"
 msgstr "Klar!"
 
-#: ../src/app/macdrivemanager.cpp:186
+#: ../src/app/macdrivemanager.cpp:188
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
@@ -577,7 +577,7 @@ msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
 msgstr "Återställ %1?"
 
-#: ../src/app/portalfiledialog.cpp:145
+#: ../src/app/portalfiledialog.cpp:143
 #, fuzzy
 #| msgctxt "main|"
 #| msgid "Image files"
@@ -585,7 +585,7 @@ msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "Avbildsfiler"
 
-#: ../src/app/portalfiledialog.cpp:155
+#: ../src/app/portalfiledialog.cpp:153
 #, fuzzy
 #| msgctxt "main|"
 #| msgid "All files (*)"
@@ -593,17 +593,17 @@ msgctxt "PortalFileDialog|"
 msgid "All files"
 msgstr "Alla filer (*)"
 
-#: ../src/app/portalfiledialog.cpp:165
+#: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:391 ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Välj en fil från din disk"
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:392 ../src/app/releasemanager.cpp:405
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -614,54 +614,54 @@ msgstr ""
 "flash-disk</p><p>För närvarande stödjs det bara att skriva råa diskavbilder "
 "(.iso eller .bin)</p>"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:436
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora-spinn"
 
-#: ../src/app/releasemanager.cpp:399
+#: ../src/app/releasemanager.cpp:438
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora labb"
 
-#: ../src/app/releasemanager.cpp:401
+#: ../src/app/releasemanager.cpp:440
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:403
+#: ../src/app/releasemanager.cpp:442
 msgctxt "Release|"
 msgid "Other"
 msgstr "Andra"
 
-#: ../src/app/releasemanager.cpp:979
+#: ../src/app/releasemanager.cpp:1086
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 64bit"
 msgstr "Intel 64-bitar"
 
-#: ../src/app/releasemanager.cpp:979
+#: ../src/app/releasemanager.cpp:1086
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
 "ISO-formatsavbild för Intel, AMD och andra kompatibla PC:ar (64-bitars)"
 
-#: ../src/app/releasemanager.cpp:980
+#: ../src/app/releasemanager.cpp:1087
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 32bit"
 msgstr "Intel 32-bitar"
 
-#: ../src/app/releasemanager.cpp:980
+#: ../src/app/releasemanager.cpp:1087
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
 "ISO-formatsavbild för Intel, AMD och andra kompatibla PC:ar (32-bitars)"
 
-#: ../src/app/releasemanager.cpp:981
+#: ../src/app/releasemanager.cpp:1088
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:981
+#: ../src/app/releasemanager.cpp:1088
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
@@ -669,49 +669,49 @@ msgstr ""
 "LZMA-komprimerade råa avbilder för ARM v7-A-maskiner såsom Raspberry Pi 2 "
 "och 3"
 
-#: ../src/app/releasemanager.cpp:982
+#: ../src/app/releasemanager.cpp:1089
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:982
+#: ../src/app/releasemanager.cpp:1089
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "LZMA-komprimerad rå avbild för AArch64-maskiner"
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:390 ../src/app/releasemanager.cpp:403
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Anpassad avbild"
 
-#: ../src/app/releasemanager.cpp:840 ../src/app/releasemanager.cpp:852
+#: ../src/app/releasemanager.cpp:945 ../src/app/releasemanager.cpp:957
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Den hämtade avbilden är trasig"
 
-#: ../src/app/releasemanager.cpp:857
+#: ../src/app/releasemanager.cpp:961
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Den hämtade filen är inte läsbar."
 
-#: ../src/app/releasemanager.cpp:869
+#: ../src/app/releasemanager.cpp:972
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Kan inte byta namn på temporärfilen."
 
-#: ../src/app/releasemanager.cpp:648
+#: ../src/app/releasemanager.cpp:718
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 alfa"
 
-#: ../src/app/releasemanager.cpp:650
+#: ../src/app/releasemanager.cpp:720
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 beta"
 
-#: ../src/app/releasemanager.cpp:652
+#: ../src/app/releasemanager.cpp:722
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -841,17 +841,17 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:270
+#: ../src/app/windrivemanager.cpp:264
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "Kunde inte hitta hjälpbinären.  Kontrollera din installation."
 
-#: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
+#: ../src/app/windrivemanager.cpp:348 ../src/app/windrivemanager.cpp:399
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr "Klar!"
 
-#: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
+#: ../src/app/windrivemanager.cpp:348 ../src/app/windrivemanager.cpp:399
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -901,7 +901,23 @@ msgctxt "main|"
 msgid "Finish"
 msgstr "Klar!"
 
-#: ../src/app/qml/main.qml:286
+#: ../src/app/qml/main.qml:287
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Write %1"
+msgctxt "main|"
+msgid "Write"
+msgstr "Skriv %1"
+
+#: ../src/app/qml/main.qml:289
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
+msgctxt "main|"
+msgid "Download && Write"
+msgstr "Misslyckades att hämta"
+
+#: ../src/app/qml/main.qml:290
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -909,7 +925,7 @@ msgctxt "main|"
 msgid "Download & Write"
 msgstr "Misslyckades att hämta"
 
-#: ../src/app/qml/main.qml:289 ../src/app/qml/main.qml:300
+#: ../src/app/qml/main.qml:293 ../src/app/qml/main.qml:304
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Cancel"
@@ -917,7 +933,7 @@ msgctxt "main|"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:295
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Retry"
@@ -925,17 +941,17 @@ msgctxt "main|"
 msgid "Retry"
 msgstr "Försök igen"
 
-#: ../src/app/qml/main.qml:293
+#: ../src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Next"
 msgstr ""
 
-#: ../src/app/qml/main.qml:298
+#: ../src/app/qml/main.qml:302
 msgctxt "main|"
 msgid "About"
 msgstr ""
 
-#: ../src/app/qml/main.qml:301
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "Previous"
 msgstr ""
@@ -986,10 +1002,6 @@ msgstr "Skriv Fedoraavbilder till dina portabla enheter"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:77
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write %1"
-#~ msgstr "Skriv %1"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"

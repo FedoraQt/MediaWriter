@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-25 07:54+0200\n"
+"POT-Creation-Date: 2022-04-26 08:12+0200\n"
 "PO-Revision-Date: 2021-10-23 08:05+0000\n"
 "Last-Translator: Charles Lee <lchopn@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Generator: Weblate 4.8\n"
 "X-Qt-Contexts: true\n"
 
-#: ../src/app/qml/AboutDialog.qml:49
+#: ../src/app/qml/AboutDialog.qml:50
 #, fuzzy
 #| msgctxt "ImageList|"
 #| msgid "About Fedora Media Writer"
@@ -32,7 +32,7 @@ msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
 msgstr "有关 Fedora Media Writer"
 
-#: ../src/app/qml/AboutDialog.qml:58
+#: ../src/app/qml/AboutDialog.qml:59
 #, fuzzy, qt-format
 #| msgctxt "ImageDetails|"
 #| msgid "Version %1"
@@ -40,7 +40,7 @@ msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "版本 %1"
 
-#: ../src/app/qml/AboutDialog.qml:65
+#: ../src/app/qml/AboutDialog.qml:66
 #, fuzzy
 #| msgctxt "ImageList|"
 #| msgid "Fedora Media Writer is now checking for new releases"
@@ -48,7 +48,7 @@ msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Fedora Media Writer 正在检查新版本"
 
-#: ../src/app/qml/AboutDialog.qml:71
+#: ../src/app/qml/AboutDialog.qml:72
 #, fuzzy, qt-format
 #| msgctxt "ImageList|"
 #| msgid "Please report bugs or your suggestions on %1"
@@ -56,7 +56,7 @@ msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "请您将 bug 和建议发到 %1"
 
-#: ../src/app/qml/AboutDialog.qml:94
+#: ../src/app/qml/AboutDialog.qml:95
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Close"
@@ -125,22 +125,22 @@ msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr ""
 
-#: ../src/app/downloadmanager.cpp:216
+#: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "无法获取请求的镜像。"
 
-#: ../src/app/downloadmanager.cpp:316
+#: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "您的“下载”文件夹空间不足。"
 
-#: ../src/app/downloadmanager.cpp:318
+#: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "下载的文件不可写。"
 
-#: ../src/app/downloadmanager.cpp:404
+#: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "连接超时"
@@ -380,7 +380,7 @@ msgctxt "DownloadPage|"
 msgid "Failed no drives"
 msgstr ""
 
-#: ../src/app/drivemanager.cpp:288
+#: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "此驱动器容量不足。"
@@ -475,7 +475,7 @@ msgctxt "DrivePage|"
 msgid "Delete download after writing"
 msgstr "删除已下载的镜像"
 
-#: ../src/app/linuxdrivemanager.cpp:196
+#: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
 msgstr "此驱动器将在其被写入的时候弹出。"
@@ -485,60 +485,60 @@ msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "找不到 helper 二进制文件，请检查是否已安装。"
 
-#: ../src/app/linuxdrivemanager.cpp:259
+#: ../src/app/linuxdrivemanager.cpp:258
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
 msgstr "在写入完成前被终止。"
 
-#: ../src/app/linuxdrivemanager.cpp:329
+#: ../src/app/linuxdrivemanager.cpp:325
 msgctxt "LinuxDrive|"
 msgid "Finished!"
 msgstr "完成！"
 
-#: ../src/app/linuxdrivemanager.cpp:329
+#: ../src/app/linuxdrivemanager.cpp:325
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
 msgstr "成功写入 %1"
 
-#: ../src/app/linuxdrivemanager.cpp:351
+#: ../src/app/linuxdrivemanager.cpp:347
 msgctxt "LinuxDrive|"
 msgid "Error"
 msgstr "错误！"
 
-#: ../src/app/linuxdrivemanager.cpp:351
+#: ../src/app/linuxdrivemanager.cpp:347
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
 msgstr "写入 %1 失败"
 
-#: ../src/app/linuxdrivemanager.cpp:122
+#: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr "UDisk2 似乎在您的系统上不可用或不被允许。"
 
-#: ../src/app/macdrivemanager.cpp:100
+#: ../src/app/macdrivemanager.cpp:103
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "找不到 helper 二进制文件，请检查是否已安装。"
 
-#: ../src/app/macdrivemanager.cpp:182
+#: ../src/app/macdrivemanager.cpp:185
 msgctxt "MacDrive|"
 msgid "Error"
 msgstr "错误"
 
-#: ../src/app/macdrivemanager.cpp:182
+#: ../src/app/macdrivemanager.cpp:185
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
 msgstr "写入 %1失败"
 
-#: ../src/app/macdrivemanager.cpp:186
+#: ../src/app/macdrivemanager.cpp:188
 msgctxt "MacDrive|"
 msgid "Finished!"
 msgstr "完成！"
 
-#: ../src/app/macdrivemanager.cpp:186
+#: ../src/app/macdrivemanager.cpp:188
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
@@ -570,7 +570,7 @@ msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
 msgstr "重置为 %1?"
 
-#: ../src/app/portalfiledialog.cpp:145
+#: ../src/app/portalfiledialog.cpp:143
 #, fuzzy
 #| msgctxt "main|"
 #| msgid "Image files"
@@ -578,7 +578,7 @@ msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "镜像文件"
 
-#: ../src/app/portalfiledialog.cpp:155
+#: ../src/app/portalfiledialog.cpp:153
 #, fuzzy
 #| msgctxt "main|"
 #| msgid "All files (*)"
@@ -586,17 +586,17 @@ msgctxt "PortalFileDialog|"
 msgid "All files"
 msgstr "全部文件(*)"
 
-#: ../src/app/portalfiledialog.cpp:165
+#: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:391 ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "选择一个文件"
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:392 ../src/app/releasemanager.cpp:405
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -606,100 +606,100 @@ msgstr ""
 "<p>可以从硬盘上选择一个打算写入优盘的操作系统镜像</p><p>当前只支持写入原生镜"
 "像 (.iso 或 .bin 文件)</p>"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:436
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora 定制版"
 
-#: ../src/app/releasemanager.cpp:399
+#: ../src/app/releasemanager.cpp:438
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora 实验室"
 
-#: ../src/app/releasemanager.cpp:401
+#: ../src/app/releasemanager.cpp:440
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:403
+#: ../src/app/releasemanager.cpp:442
 msgctxt "Release|"
 msgid "Other"
 msgstr "其他"
 
-#: ../src/app/releasemanager.cpp:979
+#: ../src/app/releasemanager.cpp:1086
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 64bit"
 msgstr "Intel 64 位"
 
-#: ../src/app/releasemanager.cpp:979
+#: ../src/app/releasemanager.cpp:1086
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "适用于 Intel、AMD 和其他兼容 PC (64 位) 的 ISO 格式的镜像"
 
-#: ../src/app/releasemanager.cpp:980
+#: ../src/app/releasemanager.cpp:1087
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 32bit"
 msgstr "Intel 32 位"
 
-#: ../src/app/releasemanager.cpp:980
+#: ../src/app/releasemanager.cpp:1087
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "适用于 Intel、AMD 和其他兼容 PC (32 位) 的 ISO 格式的镜像"
 
-#: ../src/app/releasemanager.cpp:981
+#: ../src/app/releasemanager.cpp:1088
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:981
+#: ../src/app/releasemanager.cpp:1088
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr "针对 ARM v7-A 架构，如树莓派 2 和 3 的 LZMA 压缩原生镜像"
 
-#: ../src/app/releasemanager.cpp:982
+#: ../src/app/releasemanager.cpp:1089
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:982
+#: ../src/app/releasemanager.cpp:1089
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "适用于 AArch64 机器的 LZMA 压缩格式 raw 镜像"
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:390 ../src/app/releasemanager.cpp:403
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "自定义镜像"
 
-#: ../src/app/releasemanager.cpp:840 ../src/app/releasemanager.cpp:852
+#: ../src/app/releasemanager.cpp:945 ../src/app/releasemanager.cpp:957
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "下载的镜像已损坏"
 
-#: ../src/app/releasemanager.cpp:857
+#: ../src/app/releasemanager.cpp:961
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "下载到的文件不可读。"
 
-#: ../src/app/releasemanager.cpp:869
+#: ../src/app/releasemanager.cpp:972
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "无法重命名临时文件。"
 
-#: ../src/app/releasemanager.cpp:648
+#: ../src/app/releasemanager.cpp:718
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha 版"
 
-#: ../src/app/releasemanager.cpp:650
+#: ../src/app/releasemanager.cpp:720
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta 版"
 
-#: ../src/app/releasemanager.cpp:652
+#: ../src/app/releasemanager.cpp:722
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -822,17 +822,17 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:270
+#: ../src/app/windrivemanager.cpp:264
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "找不到 helper 二进制文件，请检查是否已安装。"
 
-#: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
+#: ../src/app/windrivemanager.cpp:348 ../src/app/windrivemanager.cpp:399
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr "已完成！"
 
-#: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
+#: ../src/app/windrivemanager.cpp:348 ../src/app/windrivemanager.cpp:399
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -882,7 +882,23 @@ msgctxt "main|"
 msgid "Finish"
 msgstr "完成！"
 
-#: ../src/app/qml/main.qml:286
+#: ../src/app/qml/main.qml:287
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Write %1"
+msgctxt "main|"
+msgid "Write"
+msgstr "写入 %1"
+
+#: ../src/app/qml/main.qml:289
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
+msgctxt "main|"
+msgid "Download && Write"
+msgstr "下载失败"
+
+#: ../src/app/qml/main.qml:290
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -890,7 +906,7 @@ msgctxt "main|"
 msgid "Download & Write"
 msgstr "下载失败"
 
-#: ../src/app/qml/main.qml:289 ../src/app/qml/main.qml:300
+#: ../src/app/qml/main.qml:293 ../src/app/qml/main.qml:304
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Cancel"
@@ -898,7 +914,7 @@ msgctxt "main|"
 msgid "Cancel"
 msgstr "取消"
 
-#: ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:295
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Retry"
@@ -906,17 +922,17 @@ msgctxt "main|"
 msgid "Retry"
 msgstr "重试"
 
-#: ../src/app/qml/main.qml:293
+#: ../src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Next"
 msgstr ""
 
-#: ../src/app/qml/main.qml:298
+#: ../src/app/qml/main.qml:302
 msgctxt "main|"
 msgid "About"
 msgstr ""
 
-#: ../src/app/qml/main.qml:301
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "Previous"
 msgstr ""
@@ -965,10 +981,6 @@ msgstr "将 Fedora 镜像写入到你的移动存储设备"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:77
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write %1"
-#~ msgstr "写入 %1"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"

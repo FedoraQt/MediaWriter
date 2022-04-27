@@ -14,11 +14,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-25 07:54+0200\n"
+"POT-Creation-Date: 2022-04-26 08:12+0200\n"
 "PO-Revision-Date: 2022-04-26 04:42+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
-"Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/tr/>\n"
+"Language-Team: Turkish <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,29 +27,29 @@ msgstr ""
 "X-Generator: Weblate 4.12\n"
 "X-Qt-Contexts: true\n"
 
-#: ../src/app/qml/AboutDialog.qml:49
+#: ../src/app/qml/AboutDialog.qml:50
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
 msgstr "Fedora Ortam Yazıcı Hakkında"
 
-#: ../src/app/qml/AboutDialog.qml:58
+#: ../src/app/qml/AboutDialog.qml:59
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Sürüm %1"
 
-#: ../src/app/qml/AboutDialog.qml:65
+#: ../src/app/qml/AboutDialog.qml:66
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Fedora Ortam Yazıcı şimdi yeni sürümleri denetliyor"
 
-#: ../src/app/qml/AboutDialog.qml:71
+#: ../src/app/qml/AboutDialog.qml:72
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Lütfen %1 üzerinden hataları veya önerilerinizi bildirin"
 
-#: ../src/app/qml/AboutDialog.qml:94
+#: ../src/app/qml/AboutDialog.qml:95
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Kapat"
@@ -107,22 +107,22 @@ msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Doğrulamayı İptal Et"
 
-#: ../src/app/downloadmanager.cpp:216
+#: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "İstenen görüntü alınamıyor."
 
-#: ../src/app/downloadmanager.cpp:316
+#: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "İndirilenler klasörünüzdeki boş alan bitti."
 
-#: ../src/app/downloadmanager.cpp:318
+#: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "İndirilen dosya yazılabilir değil."
 
-#: ../src/app/downloadmanager.cpp:404
+#: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Bağlantı zaman aşımına uğradı"
@@ -299,7 +299,7 @@ msgctxt "DownloadPage|"
 msgid "Failed no drives"
 msgstr "Başarısız oldu, sürücü yok"
 
-#: ../src/app/drivemanager.cpp:288
+#: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "Sürücü yeterince büyük değil."
@@ -364,7 +364,7 @@ msgctxt "DrivePage|"
 msgid "Delete download after writing"
 msgstr "Yazdıktan sonra indirmeyi sil"
 
-#: ../src/app/linuxdrivemanager.cpp:196
+#: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
 msgstr "Sürücüye yazılırken, sürücü çıkarıldı."
@@ -374,60 +374,60 @@ msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "Yardımcı ikili dosyası bulunamadı. Kurulumunuzu denetleyin."
 
-#: ../src/app/linuxdrivemanager.cpp:259
+#: ../src/app/linuxdrivemanager.cpp:258
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
 msgstr "Yazım bitmeden önce durduruldu."
 
-#: ../src/app/linuxdrivemanager.cpp:329
+#: ../src/app/linuxdrivemanager.cpp:325
 msgctxt "LinuxDrive|"
 msgid "Finished!"
 msgstr "Bitti!"
 
-#: ../src/app/linuxdrivemanager.cpp:329
+#: ../src/app/linuxdrivemanager.cpp:325
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
 msgstr "%1 yazımı başarılı"
 
-#: ../src/app/linuxdrivemanager.cpp:351
+#: ../src/app/linuxdrivemanager.cpp:347
 msgctxt "LinuxDrive|"
 msgid "Error"
 msgstr "Hata"
 
-#: ../src/app/linuxdrivemanager.cpp:351
+#: ../src/app/linuxdrivemanager.cpp:347
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
 msgstr "%1 yazımı başarısız"
 
-#: ../src/app/linuxdrivemanager.cpp:122
+#: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr "UDisks2, sisteminizde kullanılamaz veya erişilemez gibi görünüyor."
 
-#: ../src/app/macdrivemanager.cpp:100
+#: ../src/app/macdrivemanager.cpp:103
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "Yardımcı ikili dosyası bulunamadı. Kurulumunuzu denetleyin."
 
-#: ../src/app/macdrivemanager.cpp:182
+#: ../src/app/macdrivemanager.cpp:185
 msgctxt "MacDrive|"
 msgid "Error"
 msgstr "Hata"
 
-#: ../src/app/macdrivemanager.cpp:182
+#: ../src/app/macdrivemanager.cpp:185
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
 msgstr "%1 yazımı başarısız"
 
-#: ../src/app/macdrivemanager.cpp:186
+#: ../src/app/macdrivemanager.cpp:188
 msgctxt "MacDrive|"
 msgid "Finished!"
 msgstr "Bitti!"
 
-#: ../src/app/macdrivemanager.cpp:186
+#: ../src/app/macdrivemanager.cpp:188
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
@@ -454,27 +454,27 @@ msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
 msgstr "<b>%1</b> sıfırla"
 
-#: ../src/app/portalfiledialog.cpp:145
+#: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "Kalıp dosyaları"
 
-#: ../src/app/portalfiledialog.cpp:155
+#: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
 msgid "All files"
 msgstr "Tüm dosyalar"
 
-#: ../src/app/portalfiledialog.cpp:165
+#: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "Dosya Aç"
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:391 ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Sürücülerinizden bir dosya seçin"
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:392 ../src/app/releasemanager.cpp:405
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -485,52 +485,52 @@ msgstr ""
 "seçebilirsiniz</p><p>Şimdilik yalnızca ham disk (.iso veya .bin) "
 "görüntülerin yazımı desteklenmektedir. </p>"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:436
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora Spinleri"
 
-#: ../src/app/releasemanager.cpp:399
+#: ../src/app/releasemanager.cpp:438
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora Labları"
 
-#: ../src/app/releasemanager.cpp:401
+#: ../src/app/releasemanager.cpp:440
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
 msgstr "Yeni Geliştirilen Fedora Sürümleri"
 
-#: ../src/app/releasemanager.cpp:403
+#: ../src/app/releasemanager.cpp:442
 msgctxt "Release|"
 msgid "Other"
 msgstr "Diğer"
 
-#: ../src/app/releasemanager.cpp:979
+#: ../src/app/releasemanager.cpp:1086
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 64bit"
 msgstr "Intel 64bit"
 
-#: ../src/app/releasemanager.cpp:979
+#: ../src/app/releasemanager.cpp:1086
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "Intel, AMD ve diğer uyumlu PC'ler için ISO biçimi (64-bit)"
 
-#: ../src/app/releasemanager.cpp:980
+#: ../src/app/releasemanager.cpp:1087
 msgctxt "ReleaseArchitecture|"
 msgid "Intel 32bit"
 msgstr "Intel 32bit"
 
-#: ../src/app/releasemanager.cpp:980
+#: ../src/app/releasemanager.cpp:1087
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "Intel, AMD ve diğer uyumlu PC'ler için ISO biçimi (32-bit)"
 
-#: ../src/app/releasemanager.cpp:981
+#: ../src/app/releasemanager.cpp:1088
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:981
+#: ../src/app/releasemanager.cpp:1088
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
@@ -538,49 +538,49 @@ msgstr ""
 "Raspberry Pi 2 ve 3 gibi ARM v7-A makineler için LZMA ile sıkıştırılmış ham "
 "görüntü"
 
-#: ../src/app/releasemanager.cpp:982
+#: ../src/app/releasemanager.cpp:1089
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:982
+#: ../src/app/releasemanager.cpp:1089
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "AArch64 makineleri için LZMA sıkıştırılmış ham kalıp"
 
-#: ../src/app/releasemanager.cpp:365 ../src/app/releasemanager.cpp:371
+#: ../src/app/releasemanager.cpp:390 ../src/app/releasemanager.cpp:403
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Özel görüntü"
 
-#: ../src/app/releasemanager.cpp:840 ../src/app/releasemanager.cpp:852
+#: ../src/app/releasemanager.cpp:945 ../src/app/releasemanager.cpp:957
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "İndirilen görüntü bozulmuş"
 
-#: ../src/app/releasemanager.cpp:857
+#: ../src/app/releasemanager.cpp:961
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "İndirilen dosya okunabilir değil."
 
-#: ../src/app/releasemanager.cpp:869
+#: ../src/app/releasemanager.cpp:972
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Geçici dosya yeniden adlandırılamıyor."
 
-#: ../src/app/releasemanager.cpp:648
+#: ../src/app/releasemanager.cpp:718
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../src/app/releasemanager.cpp:650
+#: ../src/app/releasemanager.cpp:720
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:652
+#: ../src/app/releasemanager.cpp:722
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -667,17 +667,17 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr "Lablar"
 
-#: ../src/app/windrivemanager.cpp:270
+#: ../src/app/windrivemanager.cpp:264
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "Yardımcı ikili dosyası bulunamadı. Kurulumunuzu denetleyin."
 
-#: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
+#: ../src/app/windrivemanager.cpp:348 ../src/app/windrivemanager.cpp:399
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr "Bitti!"
 
-#: ../src/app/windrivemanager.cpp:351 ../src/app/windrivemanager.cpp:403
+#: ../src/app/windrivemanager.cpp:348 ../src/app/windrivemanager.cpp:399
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -713,32 +713,48 @@ msgctxt "main|"
 msgid "Finish"
 msgstr "Bitir"
 
-#: ../src/app/qml/main.qml:286
+#: ../src/app/qml/main.qml:287
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Write %1"
+msgctxt "main|"
+msgid "Write"
+msgstr "Yazılıyor: %1"
+
+#: ../src/app/qml/main.qml:289
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Download & Write"
+msgctxt "main|"
+msgid "Download && Write"
+msgstr "İndir ve Yaz"
+
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "İndir ve Yaz"
 
-#: ../src/app/qml/main.qml:289 ../src/app/qml/main.qml:300
+#: ../src/app/qml/main.qml:293 ../src/app/qml/main.qml:304
 msgctxt "main|"
 msgid "Cancel"
 msgstr "İptal"
 
-#: ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:295
 msgctxt "main|"
 msgid "Retry"
 msgstr "Yeniden Dene"
 
-#: ../src/app/qml/main.qml:293
+#: ../src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Next"
 msgstr "Sonraki"
 
-#: ../src/app/qml/main.qml:298
+#: ../src/app/qml/main.qml:302
 msgctxt "main|"
 msgid "About"
 msgstr "Hakkında"
 
-#: ../src/app/qml/main.qml:301
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "Previous"
 msgstr "Önceki"
@@ -790,10 +806,6 @@ msgstr "Fedora görüntülerini taşınabilir aygıtlarınıza yazın"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:77
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;önyüklenebilir;"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write %1"
-#~ msgstr "Yazılıyor: %1"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"
