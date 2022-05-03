@@ -6,7 +6,7 @@ It is able to automatically download the required image for them and write them 
 
 This overwrites the drive's partition layout though so it also provides a way to restore a single-partition layout with a FAT32 partition.
 
-![Fedora Media Writer running, with expanded image list](/dist/screenshots/linux_main.png)
+![Fedora Media Writer running](/dist/screenshots/linux_main.png)
 
 ## Troubleshooting
 
