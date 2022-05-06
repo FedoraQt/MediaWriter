@@ -75,4 +75,11 @@ QtObject {
         Restore_Error,
         Restored
     }
+
+    enum Status {
+        FINAL,
+        RELEASE_CANDIDATE,
+        BETA,
+        ALPHA
+    }
 }

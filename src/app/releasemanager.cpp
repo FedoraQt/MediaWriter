@@ -568,11 +568,7 @@ QString Release::prerelease() const
 
 QQmlListProperty<ReleaseVersion> Release::versions()
 {
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
     return QQmlListProperty<ReleaseVersion>(this, &m_versions);
-#else
-    return QQmlListProperty<ReleaseVersion>(this, m_versions);
-#endif
 }
 
 QList<ReleaseVersion *> Release::versionList() const
