@@ -196,6 +196,7 @@ ApplicationWindow {
                     script: { 
                         stackView.push("DrivePage.qml") 
                         eraseVariant = false
+                        drives.selected.cancel()
                     }
                 }
             },
