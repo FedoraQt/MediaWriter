@@ -1083,8 +1083,8 @@ void ReleaseVariant::setErrorString(const QString &o)
 }
 
 ReleaseArchitecture ReleaseArchitecture::m_all[] = {
-    {{"x86_64"}, QT_TR_NOOP("Intel 64bit"), QT_TR_NOOP("ISO format image for Intel, AMD and other compatible PCs (64-bit)")},
-    {{"x86", "i386", "i686"}, QT_TR_NOOP("Intel 32bit"), QT_TR_NOOP("ISO format image for Intel, AMD and other compatible PCs (32-bit)")},
+    {{"x86_64"}, QT_TR_NOOP("Intel/AMD 64bit"), QT_TR_NOOP("ISO format image for Intel, AMD and other compatible PCs (64-bit)")},
+    {{"x86", "i386", "i686"}, QT_TR_NOOP("Intel/AMD 32bit"), QT_TR_NOOP("ISO format image for Intel, AMD and other compatible PCs (32-bit)")},
     {{"armv7hl", "armhfp"}, QT_TR_NOOP("ARM v7"), QT_TR_NOOP("LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3")},
     {{"aarch64"}, QT_TR_NOOP("AArch64"), QT_TR_NOOP("LZMA-compressed raw image for AArch64 machines")},
 };
