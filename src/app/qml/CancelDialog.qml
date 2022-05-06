@@ -25,10 +25,12 @@ import QtQml 6.2
 
 ApplicationWindow {
     id: cancelDialog
-    minimumWidth: 360
-    maximumWidth: 360
-    minimumHeight: 180
-    maximumHeight: 180
+
+    minimumWidth: units.gridUnit * 20
+    maximumWidth: units.gridUnit * 20
+    minimumHeight: units.gridUnit * 10
+    maximumHeight: units.gridUnit * 10
+
     modality: Qt.ApplicationModal
     x: Screen.width / 2 - width / 2
     y: Screen.height / 2 - height / 2
