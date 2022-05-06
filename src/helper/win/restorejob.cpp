@@ -44,7 +44,7 @@ void RestoreJob::work() {
     m_diskpart.write("convert gpt\r\n");
     m_diskpart.write("convert mbr\r\n");
     m_diskpart.write("create part pri\r\n");
-    m_diskpart.write("format fs=fat32 quick\r\n");
+    m_diskpart.write("format fs=exFAT quick\r\n");
     m_diskpart.write("assign\r\n");
     m_diskpart.write("exit\r\n");
 
