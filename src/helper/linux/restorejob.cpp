@@ -83,7 +83,7 @@ void RestoreJob::work()
     }
     QString partitionPath = partitionReply.value().path();
     QDBusInterface partition("org.freedesktop.UDisks2", partitionPath, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus(), this);
-    QDBusReply<void> formatPartitionReply = partition.call("Format", "vfat", Properties{{"update-partition-type", true}});
+    QDBusReply<void> formatPartitionReply = partition.call("Format", "exfat", Properties{{"update-partition-type", true}});
     if (!formatPartitionReply.isValid() && formatPartitionReply.error().type() != QDBusError::NoReply) {
         err << formatPartitionReply.error().message() << "\n";
         err.flush();
