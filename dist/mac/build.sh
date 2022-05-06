@@ -61,9 +61,6 @@ function deps() {
             while read library; do
             if [[ ! $library == @loader_path/* ]]; then
                 echo "Copying $(basename $library)"
-                if [[ "$library" == "/System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO" && ! -e "$library" ]]; then
-                    continue
-                fi
                 # fix for newer version of Mac
                 if [[ "$library" == "/usr/lib/liblzma.5.dylib" && ! -e "$library" ]]; then
                     library="/usr/local/lib/liblzma.5.dylib"
