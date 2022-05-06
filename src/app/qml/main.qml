@@ -193,7 +193,11 @@ ApplicationWindow {
                     }
                 }
                 StateChangeScript { 
-                    script: { stackView.push("DrivePage.qml") }
+                    script: { 
+                        stackView.push("DrivePage.qml") 
+                        eraseVariant = false
+                        drives.selected.cancel()
+                    }
                 }
             },
             State {

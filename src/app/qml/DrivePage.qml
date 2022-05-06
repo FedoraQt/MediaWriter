@@ -148,6 +148,7 @@ Page {
         }
         
         ColumnLayout {
+            visible: selectedOption != Units.MainSelect.Write
             Layout.bottomMargin: units.gridUnit * 5
             
             Heading {
@@ -159,6 +160,11 @@ Page {
                 text: qsTr("Delete download after writing")
                 onCheckedChanged: mainWindow.eraseVariant = !mainWindow.eraseVariant
             }
+        }
+        
+        Item {
+            visible: selectedOption == Units.MainSelect.Write
+            Layout.fillHeight: true
         }
     }
     
