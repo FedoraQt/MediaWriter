@@ -56,7 +56,7 @@ function deps() {
     # So far, this finds only liblzma but in the future it may be necessary for more libs
     for binary in "helper" "Fedora Media Writer"; do
         otool -L "src/app/Fedora Media Writer.app/Contents/MacOS/$binary" |\
-            grep -E "^\s" | grep -Ev "AppKit|Metal|Foundation|OpenGL|AGL|DiskArbitration|IOKit|libc\+\+|libobjc|libSystem|@rpath|$(basename $binary)" |\
+            grep -E "^\s" | grep -Ev "AppKit|Metal|Foundation|OpenGL|AGL|DiskArbitration|IOKit|ImageIO|libc\+\+|libobjc|libSystem|@rpath|$(basename $binary)" |\
             sed -e 's/[[:space:]]\([^[:space:]]*\).*/\1/' |\
             while read library; do
             if [[ ! $library == @loader_path/* ]]; then
