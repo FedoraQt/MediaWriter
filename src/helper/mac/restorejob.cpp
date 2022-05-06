@@ -43,7 +43,7 @@ void RestoreJob::work()
     diskUtil.setProcessChannelMode(QProcess::ForwardedChannels);
     diskUtil.setArguments(QStringList() << "partitionDisk" << where << "1"
                                         << "MBR"
-                                        << "fat32"
+                                        << "ExFAT"
                                         << "FLASHDISK"
                                         << "R");
     diskUtil.start();
