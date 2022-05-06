@@ -239,6 +239,7 @@ bool LinuxDrive::write(ReleaseVariant *data)
     connect(m_process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onFinished(int, QProcess::ExitStatus)));
     // TODO check if this is actually necessary - it should work just fine even without it
     connect(m_process, &QProcess::errorOccurred, this, &LinuxDrive::onErrorOccurred);
+    connect(qApp, &QCoreApplication::aboutToQuit, m_process, &QProcess::terminate);
 
     m_process->start(QIODevice::ReadOnly);
 
@@ -295,6 +296,7 @@ void LinuxDrive::restore()
 
     connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
     connect(m_process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int, QProcess::ExitStatus)));
+    connect(qApp, &QCoreApplication::aboutToQuit, m_process, &QProcess::terminate);
 
     m_process->start(QIODevice::ReadOnly);
 }

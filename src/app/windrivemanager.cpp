@@ -252,6 +252,7 @@ bool WinDrive::write(ReleaseVariant *data)
     m_child = new QProcess(this);
     connect(m_child, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &WinDrive::onFinished);
     connect(m_child, &QProcess::readyRead, this, &WinDrive::onReadyRead);
+    connect(qApp, &QCoreApplication::aboutToQuit, m_child, &QProcess::terminate);
 
     if (data->status() != ReleaseVariant::DOWNLOADING)
         m_image->setStatus(ReleaseVariant::WRITING);
@@ -317,6 +318,7 @@ void WinDrive::restore()
 
     // connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
     connect(m_child, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int, QProcess::ExitStatus)));
+    connect(qApp, &QCoreApplication::aboutToQuit, m_child, &QProcess::terminate);
 
     mDebug() << this->metaObject()->className() << "Starting" << m_child->program() << args;
 

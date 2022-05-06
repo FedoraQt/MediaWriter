@@ -94,6 +94,7 @@ bool MacDrive::write(ReleaseVariant *data)
     m_child = new QProcess(this);
     connect(m_child, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
     connect(m_child, &QProcess::readyRead, this, &MacDrive::onReadyRead);
+    connect(qApp, &QCoreApplication::aboutToQuit, m_child, &QProcess::terminate);
 
     if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
         m_child->setProgram(QString("%1/../../../../helper/mac/helper.app/Contents/MacOS/helper").arg(qApp->applicationDirPath()));
@@ -159,6 +160,7 @@ void MacDrive::restore()
     m_child->setProcessChannelMode(QProcess::ForwardedChannels);
 
     connect(m_child, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onRestoreFinished);
+    connect(qApp, &QCoreApplication::aboutToQuit, m_child, &QProcess::terminate);
 
     mCritical() << "The command is" << m_child->program() << args;
 
