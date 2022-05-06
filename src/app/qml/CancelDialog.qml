@@ -64,7 +64,7 @@ ApplicationWindow {
             Label {
                 text: {
                     if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
-                        qsTr("Download progress will be lost and media writing will be aborted.")
+                        qsTr("Download and media writing will be aborted. This process can be resumed any time later.")
                     else if (releases.variant.status == Units.DownloadStatus.Writing) 
                         qsTr("Writing process will be aborted and your drive will have to be restored afterwards.")
                     else
