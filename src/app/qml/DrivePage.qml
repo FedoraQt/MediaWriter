@@ -51,6 +51,11 @@ Page {
                 model: releases.selected.versions
                 textRole: "name"
                 onCurrentIndexChanged: releases.selected.versionIndex = currentIndex
+                Component.onCompleted: {
+                    if (releases.selected.version.status != Units.Status.FINAL && releases.selected.versions.length > 1) {
+                        currentIndex++
+                    }
+                }
             }
         }
         
