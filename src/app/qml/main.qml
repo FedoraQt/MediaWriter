@@ -26,11 +26,11 @@ import QtQml 6.2
 ApplicationWindow {
     id: mainWindow
     visible: true
-    minimumWidth: 640
-    maximumWidth: 640
-    minimumHeight: 480
-    maximumHeight: 480
-    
+    minimumWidth: units.gridUnit * 32
+    maximumWidth: units.gridUnit * 32
+    minimumHeight: units.gridUnit * 25
+    maximumHeight: units.gridUnit * 25
+
     property int selectedPage: Units.Page.MainPage
     property int selectedVersion: Units.Source.Product
     property int selectedOption: Units.MainSelect.Download

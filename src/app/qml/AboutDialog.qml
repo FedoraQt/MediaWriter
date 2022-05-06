@@ -25,10 +25,10 @@ import QtQml 6.2
 
 ApplicationWindow {    
     id: aboutDialog
-    minimumWidth: 420
-    maximumWidth: 420
-    minimumHeight: 240
-    maximumHeight: 240
+    minimumWidth: units.gridUnit * 22
+    maximumWidth: units.gridUnit * 22
+    minimumHeight: units.gridUnit * 12
+    maximumHeight: units.gridUnit * 12
     modality: Qt.ApplicationModal
     x: Screen.width / 2 - width / 2
     y: Screen.height / 2 - height / 2
