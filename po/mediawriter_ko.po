@@ -4,11 +4,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 08:12+0200\n"
+"POT-Creation-Date: 2022-05-06 08:12+0200\n"
 "PO-Revision-Date: 2022-04-29 02:18+0000\n"
 "Last-Translator: 김인수 <simmon@nplob.com>\n"
-"Language-Team: Korean <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/ko/>\n"
+"Language-Team: Korean <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,8 +61,10 @@ msgstr "검증을 취소 할 까요?"
 
 #: ../src/app/qml/CancelDialog.qml:65
 msgctxt "CancelDialog|"
-msgid "Download progress will be lost and media writing will be aborted."
-msgstr "내려 받기 진행이 소실되면 미디어 작성이 중지됩니다."
+msgid ""
+"Download and media writing will be aborted. This process can be resumed any "
+"time later."
+msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
@@ -200,9 +202,9 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"당신의 드라이브가 더 작은 공간으로 크기가 조정 될 것입니다. 페도라 미디어 "
-"작성기를 사용 할 때에 정상적으로 크기가 재 조정 될 것입니다. 당신의 "
-"드라이브에서 설치 미디어를 제거 할 것입니다."
+"당신의 드라이브가 더 작은 공간으로 크기가 조정 될 것입니다. 페도라 미디어 작"
+"성기를 사용 할 때에 정상적으로 크기가 재 조정 될 것입니다. 당신의 드라이브에"
+"서 설치 미디어를 제거 할 것입니다."
 
 #: ../src/app/qml/DownloadPage.qml:148
 msgctxt "DownloadPage|"
@@ -222,9 +224,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"보드 또는 장치가 아직 페도라 미디어 작성기를 지원하지 않습니다. 페도라의 "
-"호환성과 이 부팅 미디어 생성 방법에 대해서 보다 더 자세히 <a href=%1>이 "
-"부분</a>을 확인해 주세요."
+"보드 또는 장치가 아직 페도라 미디어 작성기를 지원하지 않습니다. 페도라의 호환"
+"성과 이 부팅 미디어 생성 방법에 대해서 보다 더 자세히 <a href=%1>이 부분</a>"
+"을 확인해 주세요."
 
 #: ../src/app/qml/DownloadPage.qml:165
 #, qt-format
@@ -232,7 +234,8 @@ msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
-msgstr "선택된 드라이버 크기가 %1입니다. 사고로 외부(외장) 드라이브를 선택 할 수 도 "
+msgstr ""
+"선택된 드라이버 크기가 %1입니다. 사고로 외부(외장) 드라이브를 선택 할 수 도 "
 "있습니다!"
 
 #: ../src/app/qml/DownloadPage.qml:174
@@ -493,8 +496,11 @@ msgid "Other"
 msgstr "기타"
 
 #: ../src/app/releasemanager.cpp:1086
+#, fuzzy
+#| msgctxt "ReleaseArchitecture|"
+#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
-msgid "Intel 64bit"
+msgid "Intel/AMD 64bit"
 msgstr "인텔 64비트"
 
 #: ../src/app/releasemanager.cpp:1086
@@ -503,8 +509,11 @@ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "인텔, AMD와 다른 호환 PC (64비트)를 위한 ISO 형식의 이미지"
 
 #: ../src/app/releasemanager.cpp:1087
+#, fuzzy
+#| msgctxt "ReleaseArchitecture|"
+#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
-msgid "Intel 32bit"
+msgid "Intel/AMD 32bit"
 msgstr "인텔 32비트"
 
 #: ../src/app/releasemanager.cpp:1087
@@ -599,8 +608,9 @@ msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
-msgstr "<p align=\"justify\">페도라 미디어 작성기가 이동식 드라이브를 복구 할 때에 "
-"기다려 주세요.</p>"
+msgstr ""
+"<p align=\"justify\">페도라 미디어 작성기가 이동식 드라이브를 복구 할 때에 기"
+"다려 주세요.</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
@@ -612,8 +622,9 @@ msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
-msgstr "안타깝게도, 처리 중에 오류가 발생했습니다. 시스템 도구를 사용하여 드라이브 "
-"복구를 시도해주세요."
+msgstr ""
+"안타깝게도, 처리 중에 오류가 발생했습니다. 시스템 도구를 사용하여 드라이브 복"
+"구를 시도해주세요."
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
@@ -781,6 +792,10 @@ msgstr "사용자의 이동식 드라이브에 페도라 이미지를 작성합�
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:77
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;"
+
+#~ msgctxt "CancelDialog|"
+#~ msgid "Download progress will be lost and media writing will be aborted."
+#~ msgstr "내려 받기 진행이 소실되면 미디어 작성이 중지됩니다."
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"
