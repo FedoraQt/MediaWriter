@@ -14,11 +14,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 08:12+0200\n"
+"POT-Creation-Date: 2022-05-06 08:12+0200\n"
 "PO-Revision-Date: 2022-04-28 01:49+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
-"Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/tr/>\n"
+"Language-Team: Turkish <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,8 +71,10 @@ msgstr "Doğrulama İptal Edilsin mi?"
 
 #: ../src/app/qml/CancelDialog.qml:65
 msgctxt "CancelDialog|"
-msgid "Download progress will be lost and media writing will be aborted."
-msgstr "İndirme ilerlemesi kaybedilecek ve ortam yazma işlemi iptal edilecek."
+msgid ""
+"Download and media writing will be aborted. This process can be resumed any "
+"time later."
+msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
@@ -506,8 +508,11 @@ msgid "Other"
 msgstr "Diğer"
 
 #: ../src/app/releasemanager.cpp:1086
+#, fuzzy
+#| msgctxt "ReleaseArchitecture|"
+#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
-msgid "Intel 64bit"
+msgid "Intel/AMD 64bit"
 msgstr "Intel 64bit"
 
 #: ../src/app/releasemanager.cpp:1086
@@ -516,8 +521,11 @@ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "Intel, AMD ve diğer uyumlu PC'ler için ISO biçimi (64-bit)"
 
 #: ../src/app/releasemanager.cpp:1087
+#, fuzzy
+#| msgctxt "ReleaseArchitecture|"
+#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
-msgid "Intel 32bit"
+msgid "Intel/AMD 32bit"
 msgstr "Intel 32bit"
 
 #: ../src/app/releasemanager.cpp:1087
@@ -800,6 +808,11 @@ msgstr "Fedora görüntülerini taşınabilir aygıtlarınıza yazın"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:77
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;önyüklenebilir;"
+
+#~ msgctxt "CancelDialog|"
+#~ msgid "Download progress will be lost and media writing will be aborted."
+#~ msgstr ""
+#~ "İndirme ilerlemesi kaybedilecek ve ortam yazma işlemi iptal edilecek."
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"

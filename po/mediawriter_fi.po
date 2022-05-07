@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-26 08:12+0200\n"
+"POT-Creation-Date: 2022-05-06 08:12+0200\n"
 "PO-Revision-Date: 2021-12-30 18:16+0000\n"
 "Last-Translator: Lumiukko Lumiukko <lokalisoija@luukku.com>\n"
 "Language-Team: Finnish <https://translate.fedoraproject.org/projects/fedora-"
@@ -85,7 +85,9 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:65
 msgctxt "CancelDialog|"
-msgid "Download progress will be lost and media writing will be aborted."
+msgid ""
+"Download and media writing will be aborted. This process can be resumed any "
+"time later."
 msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:67
@@ -634,8 +636,11 @@ msgid "Other"
 msgstr "Muut"
 
 #: ../src/app/releasemanager.cpp:1086
+#, fuzzy
+#| msgctxt "ReleaseArchitecture|"
+#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
-msgid "Intel 64bit"
+msgid "Intel/AMD 64bit"
 msgstr "64-bittinen Intel"
 
 #: ../src/app/releasemanager.cpp:1086
@@ -646,8 +651,11 @@ msgstr ""
 "(64-bit)"
 
 #: ../src/app/releasemanager.cpp:1087
+#, fuzzy
+#| msgctxt "ReleaseArchitecture|"
+#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
-msgid "Intel 32bit"
+msgid "Intel/AMD 32bit"
 msgstr "32-bittinen Intel"
 
 #: ../src/app/releasemanager.cpp:1087
