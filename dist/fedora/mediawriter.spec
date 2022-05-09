@@ -1,25 +1,39 @@
 Name:           mediawriter
-Version:        4.0
+Version:        5.0.0
 Release:        1%{?dist}
 Summary:        Fedora Media Writer
 
 License:        GPLv2+
-URL:            https://github.com/MartinBriza/MediaWriter
-Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+URL:            https://github.com/FedoraQt/MediaWriter
+Source0:        https://github.com/FedoraQt/MediaWriter/archive/MediaWriter-%{version}.tar.gz
 
-BuildRequires:  qt5-qtbase-devel
-BuildRequires:  qt5-qtdeclarative-devel
-BuildRequires:  gettext
-#BuildRequires:  libappstream-glib
+Provides:       liveusb-creator = %{version}-%{release}
+Obsoletes:      liveusb-creator <= 3.95.4-2
+
 BuildRequires:  gcc-c++
+BuildRequires:  gettext
+BuildRequires:  cmake
+BuildRequires:  make
+BuildRequires:  libappstream-glib
+BuildRequires:  libadwaita-qt6-devel
+BuildRequires:  qt6-qtbase-devel
+BuildRequires:  qt6-qtdeclarative-devel
+BuildRequires:  xz-devel
 
-Requires:       qt5-qtbase%{?_isa}
-Requires:       qt5-qtquickcontrols%{?_isa} >= 5.3.0
-Requires:       polkit%{?_isa}
-%if 0%{?fedora} && 0%{?fedora} < 25
-Requires: udisks2%{?_isa}
+Requires:       qt6-qtsvg
+Requires:       qt6-qtdeclarative
+
+%if !0%{?flatpak}
+Requires:       polkit
+%endif
+Requires:       xz-libs
+
+%if !0%{?flatpak}
+%if 0%{?fedora} && 0%{?fedora} != 25
+Requires: storaged
 %else
-Requires: storaged%{?_isa}
+Requires: udisks
+%endif
 %endif
 
 %description
@@ -27,24 +41,40 @@ A tool to write images of Fedora media to portable drives
 like flash drives or memory cards.
 
 %prep
-%autosetup -p1 -n MediaWriter-%{commit}
-mkdir %{_target_platform}
+%autosetup -p1 -n MediaWriter-%{version}
+
+# Install the theme into correct prefix when building for /app
+sed -i 's@\${QT6_INSTALL_QML}@%{_qt6_qmldir}@' src/theme/CMakeLists.txt
 
 %build
-pushd %{_target_platform}
-%{qmake_qt5} PREFIX=%{_prefix} MEDIAWRITER_VERSION=%{version}-%{dist} ..
-popd
-%make_build -C %{_target_platform}
+%cmake
+
+%cmake_build
 
 %install
-make install INSTALL_ROOT=%{buildroot} -C %{_target_platform}
+%cmake_install
 
+%check
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.fedoraproject.MediaWriter.appdata.xml
 
 %files
 %{_bindir}/%{name}
 %{_libexecdir}/%{name}/
+%{_datadir}/metainfo/org.fedoraproject.MediaWriter.appdata.xml
+%{_datadir}/applications/org.fedoraproject.MediaWriter.desktop
+%{_datadir}/icons/hicolor/16x16/apps/org.fedoraproject.MediaWriter.png
+%{_datadir}/icons/hicolor/22x22/apps/org.fedoraproject.MediaWriter.png
+%{_datadir}/icons/hicolor/24x24/apps/org.fedoraproject.MediaWriter.png
+%{_datadir}/icons/hicolor/32x32/apps/org.fedoraproject.MediaWriter.png
+%{_datadir}/icons/hicolor/48x48/apps/org.fedoraproject.MediaWriter.png
+%{_datadir}/icons/hicolor/64x64/apps/org.fedoraproject.MediaWriter.png
+%{_datadir}/icons/hicolor/128x128/apps/org.fedoraproject.MediaWriter.png
+%{_datadir}/icons/hicolor/256x256/apps/org.fedoraproject.MediaWriter.png
+%{_datadir}/icons/hicolor/512x512/apps/org.fedoraproject.MediaWriter.png
+%{_qt6_qmldir}/QtQuick/Controls/org/fedoraproject/AdwaitaTheme/
+%{_qt6_qmldir}/org/fedoraproject/AdwaitaTheme/libadwaitathemeplugin.so
+%{_qt6_qmldir}/org/fedoraproject/AdwaitaTheme/qmldir
 
 %changelog
-* Tue Aug 9 2016 Martin Bříza <mbriza@redhat.com> 4.0
-- Initial release
-
+* Mon May 09 06 2022 Jan Grulich <jgrulich@redhat.com> - 5.0.0-1
+- 5.0.0
