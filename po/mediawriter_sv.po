@@ -7,51 +7,41 @@
 # Göran Uddeborg <goeran@uddeborg.se>, 2017. #zanata, 2021.
 # Göran Uddeborg <goeran@uddeborg.se>, 2018. #zanata, 2021.
 # Göran Uddeborg <goeran@uddeborg.se>, 2019. #zanata, 2021.
-# Luna Jernberg <bittin@reimu.nl>, 2021.
+# Luna Jernberg <bittin@reimu.nl>, 2021, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2021-08-07 20:04+0000\n"
+"PO-Revision-Date: 2022-05-09 07:33+0000\n"
 "Last-Translator: Luna Jernberg <bittin@reimu.nl>\n"
-"Language-Team: Swedish <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/sv/>\n"
+"Language-Team: Swedish <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.2\n"
+"X-Generator: Weblate 4.12.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
 msgstr "Om Fedora mediaskrivare"
 
 #: ../src/app/qml/AboutDialog.qml:59
-#, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Version %1"
 
 #: ../src/app/qml/AboutDialog.qml:66
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "Fedora Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Fedora Mediaskrivare letar nu efter nya utgåvor"
 
 #: ../src/app/qml/AboutDialog.qml:72
-#, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr ""
@@ -59,9 +49,6 @@ msgstr ""
 "Rapportera synpunkter på översättningen till <tp-sv@listor.tp-sv.se>"
 
 #: ../src/app/qml/AboutDialog.qml:95
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Stäng"
@@ -69,20 +56,17 @@ msgstr "Stäng"
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "Avbryt Nedladdning?"
 
 #: ../src/app/qml/CancelDialog.qml:58
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Skriver"
+msgstr "Avbryt Skrivning?"
 
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "Avbryt Verifiering?"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
@@ -90,6 +74,8 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"Nedladdning och mediaskrivning kommer att avbrytas. Denna process kan "
+"återupptas när som helst senare."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
@@ -97,37 +83,32 @@ msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
+"Skrivprocessen kommer att avbrytas och din enhet måste återställas efteråt."
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "Denna operation är säker att avbrytas."
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "Fortsätt"
 
 #: ../src/app/qml/CancelDialog.qml:106
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "Hämtar"
+msgstr "Avbryt Nedladdning"
 
 #: ../src/app/qml/CancelDialog.qml:108
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Skriver"
+msgstr "Avbryt Skrivning"
 
 #: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "Avbryt Verifiering"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -153,240 +134,172 @@ msgstr "Anslutningens tidsgräns överskreds"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Sucessfuly Written"
-msgstr ""
+msgstr "%1 Framgångsrikt skrivet"
 
 #: ../src/app/qml/DownloadPage.qml:50
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "Skriver"
+msgstr "Skriver %1"
 
 #: ../src/app/qml/DownloadPage.qml:52
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
-msgstr "Kontrollerar skrivna data"
+msgstr "Verifiering av skriven data"
 
 #: ../src/app/qml/DownloadPage.qml:54
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "Hämtar"
+msgstr "Laddar ned %1"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
 msgctxt "DownloadPage|"
 msgid "Verifying downloaded image"
-msgstr "Den hämtade avbilden är trasig"
+msgstr "Verifierar nedladdad avbild"
 
 #: ../src/app/qml/DownloadPage.qml:58
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "Förbereder"
+msgstr "Förbereder %1"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
 msgctxt "DownloadPage|"
 msgid "Failed"
-msgstr ""
+msgstr "Misslyckades"
 
 #: ../src/app/qml/DownloadPage.qml:72
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr "(%1 B kvar)"
+msgstr " B kvar)"
 
 #: ../src/app/qml/DownloadPage.qml:73
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr "(%1 kB kvar)"
+msgstr " KB kvar)"
 
 #: ../src/app/qml/DownloadPage.qml:74
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr "(%1 MB kvar)"
+msgstr " MB kvar)"
 
 #: ../src/app/qml/DownloadPage.qml:75
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr "(%1 GB kvar)"
+msgstr " GB kvar)"
 
 #: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
 #: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:124
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "Filen kommer sparas i din hämtningsmapp."
+msgstr "Nedladdningar sparas i nedladdningsmappen."
 
 #: ../src/app/qml/DownloadPage.qml:132
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Genom att skriva kommer du förlora all data på %1."
 
 #: ../src/app/qml/DownloadPage.qml:140
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using Fedora Media Writer; this will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"Storleken på din enhet kommer ändras till än mindre kapacitet.  Du kan ändra "
-"tillbaka den till det vanliga med Fedora mediaskrivare; detta kommer ta bort "
-"installationsmediumet från enheten."
+"Din enhet kommer att ändras till en mindre kapacitet. Du kan ändra storleken "
+"tillbaka till det normala genom att använda Fedora Mediaskrivare. Detta tar "
+"bort installationsmedia från din enhet."
 
 #: ../src/app/qml/DownloadPage.qml:148
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Vald:"
 
 #: ../src/app/qml/DownloadPage.qml:148
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Ingen"
 
 #: ../src/app/qml/DownloadPage.qml:156
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your board or device is not supported by Fedora Media Writer yet. Please "
-#| "check <a href=%1>this page</a> for more information about its "
-#| "compatibility with Fedora and how to create bootable media for it."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"Ditt kort eller din enhet stödjs inte av Fedora mediaskrivare ännu.  Se <a "
+"Ditt kort eller din enhet stödjs inte av Fedora mediaskrivare ännu. Se <a "
 "href=%1>denna sida</a> för mer information om dess kompatibilitet med Fedora "
 "och hur man kan skapa ett startbart medium för den."
 
 #: ../src/app/qml/DownloadPage.qml:165
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
-"Den valda enhetsn storlek är %1.  Det är möjligt att du valt en extern enhet "
+"Den valda enhetsn storlek är %1. Det är möjligt att du valt en extern enhet "
 "av misstag!"
 
 #: ../src/app/qml/DownloadPage.qml:174
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "Starta om och starta upp från %1 för att börja använda%2."
 
 #: ../src/app/qml/DownloadPage.qml:262
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Writing is not possible"
 msgctxt "DownloadPage|"
 msgid "Writing not possible"
-msgstr "Att skriva är inte möjligt"
+msgstr "Skrivning är inte möjligt"
 
 #: ../src/app/qml/DownloadPage.qml:282
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "Skriver"
 
 #: ../src/app/qml/DownloadPage.qml:310
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "DownloadPage|"
 msgid "Write verifying"
-msgstr "Skriver"
+msgstr "Skriv verifiering"
 
 #: ../src/app/qml/DownloadPage.qml:334
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "Klar!"
+msgstr "Slutför"
 
 #: ../src/app/qml/DownloadPage.qml:347
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
 msgctxt "DownloadPage|"
 msgid "Write Successful"
-msgstr "Att skriva %1 lyckades"
+msgstr "Skrivning lyckades"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
 msgid "Failed verification no drives"
-msgstr ""
+msgstr "Misslyckad verifiering inga enheter"
 
 #: ../src/app/qml/DownloadPage.qml:381
 msgctxt "DownloadPage|"
 msgid "Failed verification"
-msgstr ""
+msgstr "Misslyckades verifiera"
 
 #: ../src/app/qml/DownloadPage.qml:393
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "DownloadPage|"
 msgid "Failed download"
-msgstr "Kontrollerar det hämtade"
+msgstr "Misslyckades ladda ner"
 
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
 msgid "Failed no drives"
-msgstr ""
+msgstr "Misslyckades inga enheter"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -394,62 +307,41 @@ msgid "This drive is not large enough."
 msgstr "Enheten är inte stor nog."
 
 #: ../src/app/qml/DrivePage.qml:36
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "Skriv till disk"
+msgstr "Skrivalternativ"
 
 #: ../src/app/qml/DrivePage.qml:45
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "Version %1"
+msgstr "Version"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "Hårdvaruarkitektur"
 
 #: ../src/app/qml/DrivePage.qml:84
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "Vald:"
+msgstr "Vald fil"
 
 #: ../src/app/qml/DrivePage.qml:91
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "Ingen"
 
 #: ../src/app/qml/DrivePage.qml:99
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "Vald:"
+msgstr "Välj …"
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr "Avbildsfiler"
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "Alla filer (*)"
@@ -457,31 +349,22 @@ msgstr "Alla filer (*)"
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "USB-enhet"
 
 #: ../src/app/qml/DrivePage.qml:135
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "Det finns inga portabla enheter anslutna"
 
 #: ../src/app/qml/DrivePage.qml:155
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "Hämtar"
+msgstr "Ladda ner"
 
 #: ../src/app/qml/DrivePage.qml:160
-#, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "Ta bort den hämtade avbilden"
+msgstr "Ta bort den nedladdade avbilden efter skrivning"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -491,7 +374,7 @@ msgstr "Enheten togs bort medan den skrevs till."
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "Kunde inte hitta hjälpbinären.  Kontrollera din installation."
+msgstr "Kunde inte hitta hjälpbinären. Kontrollera din installation."
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
@@ -529,7 +412,7 @@ msgstr ""
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "Kunde inte hitta hjälpbinären.  Kontrollera din installation."
+msgstr "Kunde inte hitta hjälpbinären. Kontrollera din installation."
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
@@ -556,49 +439,38 @@ msgstr "Att skriva %1 lyckades"
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Välj avbildskälla"
 
 #: ../src/app/qml/MainPage.qml:57
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Misslyckades att hämta"
+msgstr "Ladda ner automatiskt"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "Välj .iso fil"
 
 #: ../src/app/qml/MainPage.qml:76
-#, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
+#, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "Återställ %1?"
+msgstr "Återställ <b>%1</b>"
 
 #: ../src/app/portalfiledialog.cpp:143
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "Avbildsfiler"
 
 #: ../src/app/portalfiledialog.cpp:153
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "Alla filer (*)"
+msgstr "Alla filer"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "Öppna fil"
 
 #: ../src/app/releasemanager.cpp:392
 msgctxt "Release|"
@@ -629,7 +501,7 @@ msgstr "Fedora labb"
 #: ../src/app/releasemanager.cpp:427
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
-msgstr ""
+msgstr "Framträdande Fedora Utgåvor"
 
 #: ../src/app/releasemanager.cpp:429
 msgctxt "Release|"
@@ -637,12 +509,9 @@ msgid "Other"
 msgstr "Andra"
 
 #: ../src/app/releasemanager.cpp:1069
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Intel 64-bitar"
+msgstr "Intel/AMD 64-bitar"
 
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
@@ -651,12 +520,9 @@ msgstr ""
 "ISO-formatsavbild för Intel, AMD och andra kompatibla PC:ar (64-bitars)"
 
 #: ../src/app/releasemanager.cpp:1070
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Intel 32-bitar"
+msgstr "Intel/AMD 32-bitar"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
@@ -708,28 +574,19 @@ msgid "Unable to rename the temporary file."
 msgstr "Kan inte byta namn på temporärfilen."
 
 #: ../src/app/releasemanager.h:372
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Förbereder"
 
 #: ../src/app/releasemanager.h:373
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
-msgstr "Hämtar"
+msgstr "Laddar ner"
 
 #: ../src/app/releasemanager.h:374
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr "Kontrollerar det hämtade"
+msgstr "Kontrollerar nedladdningen"
 
 #: ../src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
@@ -742,20 +599,14 @@ msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr "Avbildsfilen sparades i din hämtningsmapp. Att skriva är inte möjligt"
 
 #: ../src/app/releasemanager.h:377
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "Skriver"
 
 #: ../src/app/releasemanager.h:378
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
-msgstr "Kontrollerar skrivna data"
+msgstr "Kontrollerar skriven data"
 
 #: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
@@ -768,12 +619,9 @@ msgid "The written data is corrupted"
 msgstr "Skrivna data är trasiga"
 
 #: ../src/app/releasemanager.h:381
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr "Misslyckades att hämta"
+msgstr "Nedladdning misslyckades"
 
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
@@ -802,25 +650,9 @@ msgstr "%1 utgåvekandidat"
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "Återställ enhet <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:49
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -830,102 +662,75 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">\n"
-"                                                För att återvinna allt "
-"tillgängligt utrymme på enheten måste den återställas till sina "
-"fabriksinställningar.\n"
-"                                                Live-systemet och alla "
-"sparade data kommer att raderas.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Du behöver inte återställa "
-"enheten om du vill skriva ett annat live-system på den.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Vill du fortsätta?\n"
-"                                            </p>"
+"<p align=\"justify\"> För att återta allt tillgängligt utrymme på enheten "
+"måste den återställas till fabriksinställningarna. Livesystemet och all "
+"sparad data kommer att raderas. </p> <p align=\"justify\"> Du behöver inte "
+"återställa enheten om du vill skriva ett annat livesystem till den.\n"
+"                </p> <p align=\"justify\"> Vill du återställa den till "
+"fabriksinställningarna? </p>"
 
 #: ../src/app/qml/RestorePage.qml:67
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
 "<p align=\"justify\">Vänta medan Fedora mediaskrivare återställer din "
-"bärbara enhet.</p>"
+"portabla enhet.</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "Din enhet har återställts!"
 
 #: ../src/app/qml/RestorePage.qml:94
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"Tyvärr inträffade ett fel under processen.<br>Försök att återställa enheten "
-"med dina systemverktyg."
+"Tyvärr inträffade ett fel under processen. Försök att återställa enheten med "
+"dina systemverktyg."
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "Återställningen slutförd"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Välj Fedora släpp"
 
 #: ../src/app/qml/VersionPage.qml:48
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "Vald:"
+msgstr "Vald från:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Officiella utgåvor"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Emerging Editions"
-msgstr ""
+msgstr "Framträdande utgåvor"
 
 #: ../src/app/qml/VersionPage.qml:65
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "spins"
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr "spins"
+msgstr "Spins"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Labb"
 
 #: ../src/app/windrivemanager.cpp:265
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "Kunde inte hitta hjälpbinären.  Kontrollera din installation."
+msgstr "Kunde inte hitta hjälpbinären. Kontrollera din installation."
 
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 msgctxt "WinDrive|"
@@ -939,35 +744,24 @@ msgid "Writing %1 was successful"
 msgstr "Att skriva %1 lyckades"
 
 #: ../src/app/qml/main.qml:117
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Mediaskrivare"
 
 #: ../src/app/qml/main.qml:157
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Workstation"
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Fedora Workstation"
+msgstr "Välj Fedora Version"
 
 #: ../src/app/qml/main.qml:173
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "Vald:"
+msgstr "Vald enhet"
 
 #: ../src/app/qml/main.qml:211
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "main|"
 msgid "Downloading"
-msgstr "Hämtar"
+msgstr "Laddar ner"
 
 #: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
@@ -975,49 +769,31 @@ msgid "Restore"
 msgstr "Återställ"
 
 #: ../src/app/qml/main.qml:290
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "main|"
 msgid "Finish"
-msgstr "Klar!"
+msgstr "Slutför"
 
 #: ../src/app/qml/main.qml:294
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "main|"
 msgid "Write"
-msgstr "Skriv %1"
+msgstr "Skriv"
 
 #: ../src/app/qml/main.qml:296
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download && Write"
-msgstr "Misslyckades att hämta"
+msgstr "Ladda ner && Skriv"
 
 #: ../src/app/qml/main.qml:297
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "Misslyckades att hämta"
+msgstr "Ladda ner & Skriv"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Avbryt"
 
 #: ../src/app/qml/main.qml:302
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
 msgctxt "main|"
 msgid "Retry"
 msgstr "Försök igen"
@@ -1025,17 +801,17 @@ msgstr "Försök igen"
 #: ../src/app/qml/main.qml:304
 msgctxt "main|"
 msgid "Next"
-msgstr ""
+msgstr "Nästa"
 
 #: ../src/app/qml/main.qml:309
 msgctxt "main|"
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 #: ../src/app/qml/main.qml:312
 msgctxt "main|"
 msgid "Previous"
-msgstr ""
+msgstr "Föregående"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
@@ -1060,12 +836,12 @@ msgid ""
 "about each of them to help you make the right choice."
 msgstr ""
 "Ett verktyg för att skapa en startbar live-USB-enhet med en utgåva av "
-"Fedora. Fedora Mediaskrivare kan inte bara skriva en avbild till din flash-"
-"enhet, den kan hämta den åt dig också. Den erbjuder officiella utgåvor "
-"(Server, Workstation), Fedoraspinn (KDE Plasma-skrivbord, Xfce-skrivbord, "
-"Cinnamon-skrivbord, …), och Fedora Labb (Designsvit, Säkerhetslabb, …). Det "
-"erbjuder grundläggande information om var och en av dem för att hjälpa dig "
-"välja rätt."
+"Fedora. Inte endast kan Fedora Mediaskrivare kan inte bara skriva en avbild "
+"till din flash-enhet, den kan hämta den åt dig också. Den erbjuder "
+"officiella utgåvor (Server, Workstation), Fedoraspins (KDE Plasma-skrivbord, "
+"Xfce-skrivbord, Cinnamon-skrivbord, …), och Fedora Labb (Designsvit, "
+"Säkerhetslabb, …). Det erbjuder grundläggande information om var och en av "
+"dem för att hjälpa dig att göra rätt val."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -1082,7 +858,7 @@ msgstr "Skriv Fedoraavbilder till dina portabla enheter"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootbar;"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"
