@@ -36,7 +36,6 @@ ApplicationWindow {
     property int selectedOption: Units.MainSelect.Download
     property QtObject lastRestoreable
     property bool eraseVariant: false
-    property QtObject drivesSelected: drives.selected
     
     ColumnLayout {
         id: mainLayout
@@ -146,8 +145,6 @@ ApplicationWindow {
                                 stackView.pop()
                             }
                         }
-                        drives.lastRestoreable = drivesSelected
-                        drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
                     }
                 }
             },
@@ -199,7 +196,6 @@ ApplicationWindow {
                     script: { 
                         stackView.push("DrivePage.qml") 
                         eraseVariant = false
-                        drives.selected.cancel()
                     }
                 }
             },
