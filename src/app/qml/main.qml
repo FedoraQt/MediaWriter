@@ -26,10 +26,10 @@ import QtQml 6.2
 ApplicationWindow {
     id: mainWindow
     visible: true
-    minimumWidth: units.gridUnit * 32
-    maximumWidth: units.gridUnit * 32
-    minimumHeight: units.gridUnit * 25
-    maximumHeight: units.gridUnit * 25
+    minimumWidth: Math.max(640, units.gridUnit * 32)
+    maximumWidth: Math.max(640, units.gridUnit * 32)
+    minimumHeight: Math.max(480, units.gridUnit * 25)
+    maximumHeight: Math.max(480, units.gridUnit * 25)
 
     property int selectedPage: Units.Page.MainPage
     property int selectedVersion: Units.Source.Product
