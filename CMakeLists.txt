@@ -1,3 +1,7 @@
+if(APPLE)
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.14" CACHE STRING "Minimum OS X deployment version")
+endif()
+
 project(MediaWriter)
 
 cmake_minimum_required(VERSION 3.17)
@@ -33,7 +37,7 @@ if (UNIX AND NOT APPLE)
     add_definitions(-DLIBEXECDIR="${CMAKE_INSTALL_FULL_LIBEXECDIR}/mediawriter")
 endif()
 
-find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Network Qml Quick QuickControls2 Widgets)
+find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Network Svg Qml Quick QuickControls2 Widgets)
 
 if (UNIX AND NOT APPLE)
     find_package(AdwaitaQt6 "1.4.1" REQUIRED)
