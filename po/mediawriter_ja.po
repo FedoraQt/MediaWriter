@@ -1,27 +1,25 @@
 # Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>, 2018. #zanata
+# Hajime Taira <htaira@pantora.net>, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2021-07-11 17:14+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Japanese <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/ja/>\n"
+"PO-Revision-Date: 2022-05-11 02:54+0000\n"
+"Last-Translator: Hajime Taira <htaira@pantora.net>\n"
+"Language-Team: Japanese <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.7.1\n"
+"X-Generator: Weblate 4.12.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr "Fedora Media Writer について"
+msgstr "Fedora Media Writerについて"
 
 #: ../src/app/qml/AboutDialog.qml:59
 #, fuzzy, qt-format
@@ -34,7 +32,7 @@ msgstr "バージョン %1"
 #: ../src/app/qml/AboutDialog.qml:66
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr ""
+msgstr "Fedora Media Writerは新しいリリースを現在確認中です"
 
 #: ../src/app/qml/AboutDialog.qml:72
 #, fuzzy, qt-format
@@ -55,170 +53,148 @@ msgstr "閉じる"
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "ダウンロードを中止しますか？"
 
 #: ../src/app/qml/CancelDialog.qml:58
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr ""
+msgstr "書き込みを中止しますか？"
 
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "検証を中止しますか？"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
 msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
-msgstr ""
+msgstr "ダウンロードとメディアの書き込みが中断されました。処理を後日継続することがで"
+"きます。"
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr ""
+msgstr "書き込みプロセスが中止されたので、あとでメディアを修復する必要があります。"
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "処理を安全に中止できました。"
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "続行"
 
 #: ../src/app/qml/CancelDialog.qml:106
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "ダウンロード中"
+msgstr "ダウンロードを中止します"
 
 #: ../src/app/qml/CancelDialog.qml:108
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr ""
+msgstr "書き込みを中止します"
 
 #: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "検証を中止します"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr ""
+msgstr "要求されたイメージを取得することができません。"
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr ""
+msgstr "ダウンロードに必要な空き容量が不足しています。"
 
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
-msgstr ""
+msgstr "ダウンロードされたファイルを保存できません。"
 
 #: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
-msgstr ""
+msgstr "接続がタイムアウトしました"
 
 #: ../src/app/qml/DownloadPage.qml:48
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Sucessfuly Written"
-msgstr ""
+msgstr "%1 の書き込みに成功しました"
 
 #: ../src/app/qml/DownloadPage.qml:50
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr ""
+msgstr "書き込み中: %1"
 
 #: ../src/app/qml/DownloadPage.qml:52
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
-msgstr ""
+msgstr "書き込んだデータを検証中"
 
 #: ../src/app/qml/DownloadPage.qml:54
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "ダウンロード中"
+msgstr "ダウンロード中: %1"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DownloadPage|"
 msgid "Verifying downloaded image"
-msgstr "ダウンロードしたイメージを削除する"
+msgstr "ダウンロードしたイメージを検証中"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr ""
+msgstr "準備中: %1"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
 msgctxt "DownloadPage|"
 msgid "Failed"
-msgstr ""
+msgstr "失敗"
 
 #: ../src/app/qml/DownloadPage.qml:72
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr "( 残り %1 B)"
+msgstr " B 残り)"
 
 #: ../src/app/qml/DownloadPage.qml:73
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr "(残り %1 KB)"
+msgstr " KB 残り)"
 
 #: ../src/app/qml/DownloadPage.qml:74
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr "(残り %1 MB)"
+msgstr " MB 残り)"
 
 #: ../src/app/qml/DownloadPage.qml:75
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr "(残り %1 GB)"
+msgstr " GB 残り)"
 
 #: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
 #: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:124
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "ダウンロードフォルダーに当ファイルが保存されます。"
+msgstr "ダウンロードフォルダにダウンロード済みのファイルが保存されます。"
 
 #: ../src/app/qml/DownloadPage.qml:132
 #, fuzzy, qt-format
@@ -235,16 +211,19 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
+"メディアのサイズが変更されて容量が小さくなります。 Fedora Media "
+"Writerを使用して、サイズを通常に戻すことができます。 "
+"これによりメディアからインストールメディアが削除されます。"
 
 #: ../src/app/qml/DownloadPage.qml:148
 msgctxt "DownloadPage|"
 msgid "Selected:"
-msgstr ""
+msgstr "選択済み:"
 
 #: ../src/app/qml/DownloadPage.qml:148
 msgctxt "DownloadPage|"
 msgid "None"
-msgstr ""
+msgstr "なし"
 
 #: ../src/app/qml/DownloadPage.qml:156
 #, qt-format
@@ -267,35 +246,32 @@ msgstr ""
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "再起動し、%1 から %2 を起動します。"
 
 #: ../src/app/qml/DownloadPage.qml:262
 msgctxt "DownloadPage|"
 msgid "Writing not possible"
-msgstr ""
+msgstr "書き込み不可"
 
 #: ../src/app/qml/DownloadPage.qml:282
 msgctxt "DownloadPage|"
 msgid "Writing"
-msgstr ""
+msgstr "書き込み中"
 
 #: ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Write verifying"
-msgstr ""
+msgstr "書き込み後の検証中"
 
 #: ../src/app/qml/DownloadPage.qml:334
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Finished!"
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "終わりました!"
+msgstr "完了しました"
 
 #: ../src/app/qml/DownloadPage.qml:347
 msgctxt "DownloadPage|"
 msgid "Write Successful"
-msgstr ""
+msgstr "書き込みに成功しました"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
@@ -305,56 +281,47 @@ msgstr ""
 #: ../src/app/qml/DownloadPage.qml:381
 msgctxt "DownloadPage|"
 msgid "Failed verification"
-msgstr ""
+msgstr "検証に失敗しました"
 
 #: ../src/app/qml/DownloadPage.qml:393
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "DownloadPage|"
 msgid "Failed download"
-msgstr "ダウンロードのチェック"
+msgstr "ダウンロードに失敗しました"
 
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
 msgid "Failed no drives"
-msgstr ""
+msgstr "メディアが見つかりません"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
 msgid "This drive is not large enough."
-msgstr ""
+msgstr "メディアの容量が足りません。"
 
 #: ../src/app/qml/DrivePage.qml:36
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "書き込み"
+msgstr "書き込みオプション"
 
 #: ../src/app/qml/DrivePage.qml:45
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "バージョン %1"
+msgstr "バージョン"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "ハードウェアアーキテクチャ"
 
 #: ../src/app/qml/DrivePage.qml:84
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr ""
+msgstr "選択されたファイル"
 
 #: ../src/app/qml/DrivePage.qml:91
 msgctxt "DrivePage|"
 msgid "None"
-msgstr ""
+msgstr "なし"
 
 #: ../src/app/qml/DrivePage.qml:99
 msgctxt "DrivePage|"
