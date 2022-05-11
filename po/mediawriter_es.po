@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2022-05-10 13:17+0000\n"
-"Last-Translator: Alejandro Alcaide <alex@blueselene.com>\n"
+"PO-Revision-Date: 2022-05-11 02:54+0000\n"
+"Last-Translator: Martin Torres <emtorres1@gmail.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/es/>\n"
 "Language: es\n"
@@ -108,25 +108,19 @@ msgid "Continue"
 msgstr "Continuar"
 
 #: ../src/app/qml/CancelDialog.qml:106
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "Descargando"
+msgstr "Cancelar Descarga"
 
 #: ../src/app/qml/CancelDialog.qml:108
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Escribiendo"
+msgstr "Cancelar Escritura"
 
 #: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "Cancelar Verificación"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -149,18 +143,16 @@ msgid "Connection timed out"
 msgstr "Conexión caducada"
 
 #: ../src/app/qml/DownloadPage.qml:48
-#, qt-format
+#, fuzzy, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Sucessfuly Written"
-msgstr ""
+msgstr "%1 Escrito con éxito"
 
 #: ../src/app/qml/DownloadPage.qml:50
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "Escribiendo"
+msgstr "Escribiendo %1"
 
 #: ../src/app/qml/DownloadPage.qml:52
 #, fuzzy
@@ -177,25 +169,20 @@ msgid "Downloading %1"
 msgstr "Descargando %1"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
 msgctxt "DownloadPage|"
 msgid "Verifying downloaded image"
-msgstr "La imagen descargada está corrupta"
+msgstr "Verificando la imagen descargada"
 
 #: ../src/app/qml/DownloadPage.qml:58
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "Preparando"
+msgstr "Preparando %1"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
 msgctxt "DownloadPage|"
 msgid "Failed"
-msgstr ""
+msgstr "Falló"
 
 #: ../src/app/qml/DownloadPage.qml:72
 #, fuzzy
@@ -541,12 +528,9 @@ msgid "Select Image Source"
 msgstr ""
 
 #: ../src/app/qml/MainPage.qml:57
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Descarga fallida"
+msgstr "Descargar automáticamente"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
@@ -961,20 +945,14 @@ msgid "Write"
 msgstr "Escribir %1"
 
 #: ../src/app/qml/main.qml:296
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download && Write"
-msgstr "Descarga fallida"
+msgstr "Descargar y Escribir"
 
 #: ../src/app/qml/main.qml:297
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "Descarga fallida"
+msgstr "Descargar y Escribir"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
 #, fuzzy
