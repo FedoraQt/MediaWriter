@@ -4,59 +4,46 @@
 # Niv Baehr <bloop93@gmail.com>, 2016. #zanata
 # #-#-#-#-#  mediawriter_he.po  #-#-#-#-#
 # Niv Baehr <bloop93@gmail.com>, 2016. #zanata
-# Yaron Shahrabani <sh.yaron@gmail.com>, 2018. #zanata, 2021.
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2018. #zanata, 2021, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2021-07-11 17:14+0000\n"
+"PO-Revision-Date: 2022-05-12 20:18+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/he/>\n"
+"Language-Team: Hebrew <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 2 : 1;\n"
-"X-Generator: Weblate 4.7.1\n"
+"X-Generator: Weblate 4.12.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr "על אודות כותב המדיה של Fedora"
+msgstr "על כותב המדיה של Fedora"
 
 #: ../src/app/qml/AboutDialog.qml:59
-#, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "גרסה %1"
 
 #: ../src/app/qml/AboutDialog.qml:66
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "Fedora Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "כותב המדיה של Fedora מבצע בדיקה עבור שחרורים חדשים"
+msgstr "כותב המדיה של Fedora מחפש מהדורות חדשות"
 
 #: ../src/app/qml/AboutDialog.qml:72
-#, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "נא לדווח על תקלות או הצעות ב־%1"
 
 #: ../src/app/qml/AboutDialog.qml:95
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "סגירה"
@@ -64,65 +51,56 @@ msgstr "סגירה"
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "לבטל את ההורדה?"
 
 #: ../src/app/qml/CancelDialog.qml:58
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "מתבצעת כתיבה"
+msgstr "לבטל את הכתיבה?"
 
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "לבטל את הבדיקה?"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
 msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
-msgstr ""
+msgstr "ההורדה והכתיבה של המדיה יבוטלו. אפשר להמשיך בתהליך הזה בכלל עת."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr ""
+msgstr "תהליך הכתיבה יבוטל ולאחר מכן יהיה עליך לשחזר את הכונן שלך."
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "ביטול הפעולה הזאת נחשב בטוח."
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "המשך"
 
 #: ../src/app/qml/CancelDialog.qml:106
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "בהורדה"
+msgstr "ביטול ההורדה"
 
 #: ../src/app/qml/CancelDialog.qml:108
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "מתבצעת כתיבה"
+msgstr "ביטול כתיבה"
 
 #: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "ביטול בדיקה"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -148,31 +126,24 @@ msgstr "תם הזמן להתחברות"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Sucessfuly Written"
-msgstr ""
+msgstr "%1 נכתב בהצלחה"
 
 #: ../src/app/qml/DownloadPage.qml:50
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "מתבצעת כתיבה"
+msgstr "%1 נכתב"
 
 #: ../src/app/qml/DownloadPage.qml:52
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
 msgstr "הנתונים שנכתבו נבדקים"
 
 #: ../src/app/qml/DownloadPage.qml:54
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "בהורדה"
+msgstr "%1 בהורדה"
 
 #: ../src/app/qml/DownloadPage.qml:56
 #, fuzzy
