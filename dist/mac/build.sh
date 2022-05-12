@@ -3,15 +3,17 @@
 set -x
 set -e
 
-PATH="/usr/local/opt/qt/bin:/usr/local/opt/git/bin:/usr/local/bin:$PATH"
+# TODO: add your Qt location into LD_LIBRARY_PATH
+PATH="/usr/local/opt/qt/6.2.4/macos/bin:$PATH"
+LD_LIBRARY_PATH="/usr/local/opt/qt/6.2.4/macos/lib:$LD_LIBRARY_PATH"
+Qt6_DIR="/usr/local/opt/qt/6.2.4/macos"
 
-DEVELOPER_ID="Developer ID Application: Martin Briza (Z52EFCPL6D)"
-QT_ROOT="/usr/local/opt/qt"
-QMAKE="${QT_ROOT}/bin/qmake"
-MACDEPLOYQT="${QT_ROOT}/bin/macdeployqt"
-NOTARIZATION_EMAIL=""
+# === SIGNING ===
+# TODO: set in order to sign binaries
+DEVELOPER_ID=""
 NOTARIZATION_KEYCHAIN_ITEM="XCODE_NOTARY"
 NOTARIZATION_ITUNES_ORGID=""
+NOTARIZATION_EMAIL=""
 
 pushd $(dirname $0) >/dev/null
 SCRIPTDIR=$(pwd -P)
@@ -20,31 +22,30 @@ popd >/dev/null
 cd "${SCRIPTDIR}/../.."
 
 if [[ "$TAG_NAME" == "" ]]; then
-    VERSION=$(git describe --tags --always)
+    VERSION=$(git rev-parse HEAD | cut -c 1-8)
 else
     VERSION="$TAG_NAME"
 fi
 
 INSTALLER="$SCRIPTDIR/FedoraMediaWriter-osx-$VERSION.dmg"
 
-function configure() {
-    # Bug in macdeployqt
-    # HACK https://github.com/Homebrew/discussions/discussions/2823
-    pushd "/usr/local/lib/QtGui.framework/Versions/A"
-    install_name_tool -id '@rpath/QtGui.framework/Versions/A/QtGui' 'QtGui'
-    popd >/dev/null
-
-    rm -fr "build"
-    mkdir -p "build"
-    pushd build >/dev/null
-    
-    echo "=== Building ==="
-    cmake .. -DCREATE_STANDALONE_MAC_BUNDLE=true 
+function install_deps() {
+    brew install cmake
+    brew install xz
+    mkdir -p /usr/local/opt/qt
+    pushd /usr/local/opt/qt >/dev/null
+    pip3 install aqtinstall
+    aqt install-qt mac desktop 6.2.4 -m qtimageformats
     popd >/dev/null
 }
 
 function build() {
+    rm -fr "build"
+    mkdir -p "build"
+
+    echo "=== Building ==="
     pushd build >/dev/null
+    cmake .. -DCREATE_STANDALONE_MAC_BUNDLE=true
     make -j9
     popd >/dev/null
 }
@@ -63,15 +64,14 @@ function deps() {
                 echo "Copying $(basename $library)"
                 # fix for newer version of Mac
                 if [[ "$library" == "/usr/lib/liblzma.5.dylib" && ! -e "$library" ]]; then
-                    library="/usr/local/lib/liblzma.5.dylib"
+                    cp "/usr/local/lib/liblzma.5.dylib" "src/app/Fedora Media Writer.app/Contents/Frameworks"
+                else
+                    cp $library "src/app/Fedora Media Writer.app/Contents/Frameworks"
                 fi
-                cp $library "src/app/Fedora Media Writer.app/Contents/Frameworks"
                 install_name_tool -change "$library" "@executable_path/../Frameworks/$(basename ${library})" "src/app/Fedora Media Writer.app/Contents/MacOS/$binary"
             fi
         done
     done
-    echo "Copy libbrotlicommon.1.dylib"
-    cp "/usr/local/opt/brotli/lib/libbrotlicommon.1.dylib" "src/app/Fedora Media Writer.app/Contents/Frameworks"        
     popd >/dev/null
 }
 
@@ -93,7 +93,7 @@ function dmg() {
     pushd build >/dev/null
     echo "=== Creating a disk image ==="
     # create the .dmg package - beware, it won't work while FMW is running (blocks partition mounting)
-    rm -f "../FedoraMediaWriter-osx-$VERSION.unnotarized.dmg"
+    rm -f "../*.dmg"
     hdiutil create -srcfolder src/app/Fedora\ Media\ Writer.app  -format UDCO -imagekey zlib-level=9 -scrub -volname FedoraMediaWriter-osx ../FedoraMediaWriter-osx-$VERSION.unnotarized.dmg
     popd >/dev/null
 }
@@ -108,7 +108,7 @@ function notarize() {
 }
 
 if [[ $# -eq 0 ]]; then
-    configure
+    install_deps
     build
     deps
     sign
