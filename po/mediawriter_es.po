@@ -9,20 +9,22 @@
 # Máximo Castañeda Riloba <mcrcctm@gmail.com>, 2017. #zanata
 # Santiago Gil <santix91@gmail.com>, 2021.
 # Emilio Herrera <ehespinosa57@gmail.com>, 2021.
+# Martin Torres <emtorres1@gmail.com>, 2022.
+# Alejandro Alcaide <alex@blueselene.com>, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2021-11-27 18:16+0000\n"
-"Last-Translator: Emilio Herrera <ehespinosa57@gmail.com>\n"
-"Language-Team: Spanish <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/es/>\n"
+"PO-Revision-Date: 2022-05-11 02:54+0000\n"
+"Last-Translator: Martin Torres <emtorres1@gmail.com>\n"
+"Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.9.1\n"
+"X-Generator: Weblate 4.12.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -58,9 +60,6 @@ msgid "Please report bugs or your suggestions on %1"
 msgstr "Informe de errores o de sus sugerencias en %1"
 
 #: ../src/app/qml/AboutDialog.qml:95
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Cerrar"
@@ -68,20 +67,17 @@ msgstr "Cerrar"
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "¿Cancelar Descarga?"
 
 #: ../src/app/qml/CancelDialog.qml:58
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Escribiendo"
+msgstr "¿Cancelar escritura?"
 
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "¿Cancelar verificación?"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
@@ -89,44 +85,42 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"Se cancelará la descarga y la escritura. Este proceso se puede reanudar "
+"luego."
 
 #: ../src/app/qml/CancelDialog.qml:69
+#, fuzzy
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
+"El proceso de escritura se cancelará y su unidad deberá ser restaurada luego."
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "Es seguro cancelar esta operación."
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
 
 #: ../src/app/qml/CancelDialog.qml:106
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "Descargando"
+msgstr "Cancelar Descarga"
 
 #: ../src/app/qml/CancelDialog.qml:108
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Escribiendo"
+msgstr "Cancelar Escritura"
 
 #: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "Cancelar Verificación"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -149,18 +143,16 @@ msgid "Connection timed out"
 msgstr "Conexión caducada"
 
 #: ../src/app/qml/DownloadPage.qml:48
-#, qt-format
+#, fuzzy, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Sucessfuly Written"
-msgstr ""
+msgstr "%1 Escrito con éxito"
 
 #: ../src/app/qml/DownloadPage.qml:50
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "Escribiendo"
+msgstr "Escribiendo %1"
 
 #: ../src/app/qml/DownloadPage.qml:52
 #, fuzzy
@@ -171,33 +163,26 @@ msgid "Verifying written data"
 msgstr "Comprobando los datos grabados"
 
 #: ../src/app/qml/DownloadPage.qml:54
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "Descargando"
+msgstr "Descargando %1"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
 msgctxt "DownloadPage|"
 msgid "Verifying downloaded image"
-msgstr "La imagen descargada está corrupta"
+msgstr "Verificando la imagen descargada"
 
 #: ../src/app/qml/DownloadPage.qml:58
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "Preparando"
+msgstr "Preparando %1"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
 msgctxt "DownloadPage|"
 msgid "Failed"
-msgstr ""
+msgstr "Falló"
 
 #: ../src/app/qml/DownloadPage.qml:72
 #, fuzzy
@@ -247,12 +232,10 @@ msgid "Downloads are saved to the downloads folder."
 msgstr "El fichero se guardará en su directorio de descargas."
 
 #: ../src/app/qml/DownloadPage.qml:132
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "Perderá todos sus datos de %1 al escribir."
+msgstr "Perderá todos los datos en %1 al escribir."
 
 #: ../src/app/qml/DownloadPage.qml:140
 #, fuzzy
@@ -272,9 +255,6 @@ msgstr ""
 "unidad."
 
 #: ../src/app/qml/DownloadPage.qml:148
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Seleccionado:"
@@ -305,18 +285,14 @@ msgstr ""
 "de generar un medio de arranque."
 
 #: ../src/app/qml/DownloadPage.qml:165
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
-"El tamaño de la unidad seleccionada es %1. Es posible que haya elegido una "
-"unidad externa por error."
+"El tamaño de la unidad seleccionada es %1. ¡Es posible que haya elegido una "
+"unidad externa por error!"
 
 #: ../src/app/qml/DownloadPage.qml:174
 #, qt-format
@@ -325,9 +301,6 @@ msgid "Restart and boot from %1 to start using %2."
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:262
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Writing is not possible"
 msgctxt "DownloadPage|"
 msgid "Writing not possible"
 msgstr "No se puede escribir"
@@ -401,12 +374,9 @@ msgid "Write Options"
 msgstr "Escribir al disco"
 
 #: ../src/app/qml/DrivePage.qml:45
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "Versión %1"
+msgstr "Versión"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
@@ -467,12 +437,9 @@ msgid "There are no portable drives connected"
 msgstr "No hay discos portátiles conectados"
 
 #: ../src/app/qml/DrivePage.qml:155
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "Descargando"
+msgstr "Descargar"
 
 #: ../src/app/qml/DrivePage.qml:160
 #, fuzzy
@@ -561,12 +528,9 @@ msgid "Select Image Source"
 msgstr ""
 
 #: ../src/app/qml/MainPage.qml:57
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Descarga fallida"
+msgstr "Descargar automáticamente"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
@@ -590,12 +554,9 @@ msgid "Image files"
 msgstr "Archivos de imagen"
 
 #: ../src/app/portalfiledialog.cpp:153
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "Todos los archivos (*)"
+msgstr "Todos los archivos"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
@@ -869,18 +830,13 @@ msgid "Your drive was successfully restored!"
 msgstr "¡Su disco fue restaurado con éxito!"
 
 #: ../src/app/qml/RestorePage.qml:94
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"Desafortunadamente se produjo un error en el proceso.<br>Intente restaurar "
-"el disco usando las herramientas de sistema."
+"Desafortunadamente se produjo un error en el proceso. Intente restaurar el "
+"disco usando las herramientas de sistema."
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
@@ -903,7 +859,7 @@ msgstr "Seleccionado:"
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Ediciones oficiales"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
@@ -911,17 +867,14 @@ msgid "Emerging Editions"
 msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:65
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "spins"
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr "giros"
+msgstr "Spins"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Labs"
 
 #: ../src/app/windrivemanager.cpp:265
 msgctxt "WinDrive|"
@@ -942,8 +895,6 @@ msgid "Writing %1 was successful"
 msgstr "La escritura de %1 finalizó correctamente"
 
 #: ../src/app/qml/main.qml:117
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
@@ -994,20 +945,14 @@ msgid "Write"
 msgstr "Escribir %1"
 
 #: ../src/app/qml/main.qml:296
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download && Write"
-msgstr "Descarga fallida"
+msgstr "Descargar y Escribir"
 
 #: ../src/app/qml/main.qml:297
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "Descarga fallida"
+msgstr "Descargar y Escribir"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
 #, fuzzy
@@ -1028,17 +973,17 @@ msgstr "Reintentar"
 #: ../src/app/qml/main.qml:304
 msgctxt "main|"
 msgid "Next"
-msgstr ""
+msgstr "Siguiente"
 
 #: ../src/app/qml/main.qml:309
 msgctxt "main|"
 msgid "About"
-msgstr ""
+msgstr "Acerca de"
 
 #: ../src/app/qml/main.qml:312
 msgctxt "main|"
 msgid "Previous"
-msgstr ""
+msgstr "Anterior"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
