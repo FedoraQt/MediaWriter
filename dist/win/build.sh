@@ -51,7 +51,7 @@ if ! $opt_nosign; then
     fi
 fi
 
-PACKAGES="cmake mingw32-filesystem mingw32-qt6-qtbase mingw32-qt6-qtdeclarative mingw32-xz-libs mingw32-qt6-qtsvg mingw32-nsis osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
+PACKAGES="cmake mingw32-filesystem mingw32-qt5-qtbase mingw32-qt6-qtbase mingw32-qt6-qtdeclarative mingw32-xz-libs mingw32-qt6-qtsvg mingw32-nsis osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
 
 if ! $opt_local; then
     PACKAGES="$PACKAGES mingw32-mediawriter"
@@ -79,7 +79,7 @@ if [ $DEPENDENCIES -ne 0 ]; then exit 1; fi
 
 BINARIES="libstdc++-6.dll libgcc_s_dw2-1.dll libssp-0.dll iconv.dll libwinpthread-1.dll libcrypto-1_1.dll libssl-1_1.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre2-16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll icui18n69.dll icuuc69.dll icudata69.dll Qt6Core.dll Qt6Gui.dll Qt6Network.dll Qt6Concurrent.dll Qt6Qml.dll Qt6QmlModels.dll Qt6Quick.dll Qt6QuickControls2.dll Qt6QuickControls2Impl.dll Qt6QuickShapes.dll Qt6QuickTemplates2.dll Qt6QmlWorkerScript.dll Qt6Svg.dll Qt6Widgets.dll Qt6OpenGL.dll Qt6QuickLayouts.dll Qt6QmlLocalStorage.dll Qt6QuickDialogs2.dll Qt6QuickDialogs2QuickImpl.dll Qt6QuickDialogs2Utils.dll" 
 
-PLUGINS="imageformats/qjpeg.dll imageformats/qsvg.dll platforms/qwindows.dll tls/qcertonlybackend.dll tls/qopensslbackend.dll tls/qschannelbackend.dll"
+PLUGINS="iconengines/qsvgicon.dll imageformats/qjpeg.dll imageformats/qsvg.dll imageformats/qico.dll platforms/qwindows.dll tls/qcertonlybackend.dll tls/qopensslbackend.dll tls/qschannelbackend.dll"
 
 QMLMODULES="Qt QtQml QtQuick/Controls/impl QtQuick/Controls/Windows QtQuick/NativeStyle QtQuick/Window QtQuick/Dialogs QtQuick/Layouts QtQuick/Shapes QtQuick/Templates QtQuick/Controls/Basic QtQuick/Controls/Fusion"
 
@@ -143,6 +143,9 @@ if [ ! -f "$MEDIAWRITER" ] || [ ! -f "$HELPER" ]; then
     exit 1
 fi
 
+echo "=== Copying icon "
+cp -r "$ROOTPATH/src/app/data/icons/mediawriter.ico" .
+
 echo "=== Removing object and MOC files"
 rm -f *.cpp
 rm -f *.o
@@ -171,7 +174,7 @@ for i in $QMLMODULES; do
     mkdir -p $(dirname $i)
     cp -r "${QML_PREFIX}/${i}" "$(dirname $i)"
 done
-    
+
 cp -r "${BIN_PREFIX}/lib/qt6/qml/QtQuick/Controls/qtquickcontrols2plugin.dll" "QtQuick/Controls" 
 cp -r "${BIN_PREFIX}/lib/qt6/qml/QtQuick/Controls/qmldir" "QtQuick/Controls" 
 cp -r "${BIN_PREFIX}/lib/qt6/qml/QtQuick/Controls/plugins.qmltypes" "QtQuick/Controls" 

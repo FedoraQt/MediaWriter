@@ -72,6 +72,7 @@ endif()
 target_link_libraries(mediawriter
     Qt6::Core
     Qt6::Network
+    Qt6::Svg # Needed for macdeployqt to pick svg plugin
     Qt6::QuickControls2
     Qt6::Widgets
     isomd5
@@ -109,5 +110,6 @@ if (APPLE AND CREATE_STANDALONE_MAC_BUNDLE)
                                "${CMAKE_BINARY_DIR}/src/app/Fedora Media Writer.app"
                                -qmldir="${CMAKE_SOURCE_DIR}/src/app/qml"
                                -executable=\"${CMAKE_BINARY_DIR}/src/app/Fedora Media Writer.app/Contents/MacOS/helper\"
-                        COMMENT "Deploying Qt...")
+                               -appstore-compliant
+                               COMMENT "Deploying Qt...")
 endif()
