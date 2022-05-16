@@ -18,11 +18,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
+"POT-Creation-Date: 2022-05-16 08:43+0200\n"
 "PO-Revision-Date: 2022-05-15 05:32+0000\n"
 "Last-Translator: Francois Andrieu <darknao@drkn.ninja>\n"
-"Language-Team: French <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/fr/>\n"
+"Language-Team: French <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -101,17 +101,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "Poursuivre"
 
-#: ../src/app/qml/CancelDialog.qml:106
+#: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Annuler le téléchargement"
 
-#: ../src/app/qml/CancelDialog.qml:108
+#: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Annuler l’écriture"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Annuler la vérification"
@@ -148,7 +148,7 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Écriture de %1"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
 msgstr "Vérification des données écrites"
@@ -272,39 +272,46 @@ msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "Écriture"
 
-#: ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "Vérification de l'écriture"
-
 #: ../src/app/qml/DownloadPage.qml:334
 msgctxt "DownloadPage|"
 msgid "Finish"
 msgstr "Terminé"
 
 #: ../src/app/qml/DownloadPage.qml:347
+#, fuzzy
+#| msgctxt "DownloadPage|"
+#| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
-msgid "Write Successful"
-msgstr "L’écriture a réussi"
+msgid "Sucessfuly written"
+msgstr "%1 a été écrit avec succès"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
-msgstr "La vérification à échouée : aucun disque"
+msgid "Verification failed due to missing drives"
+msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:381
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Writing %1 failed"
 msgctxt "DownloadPage|"
-msgid "Failed verification"
-msgstr "La vérification à échouée"
+msgid "Verification failed"
+msgstr "L’écriture de %1 a échoué"
 
 #: ../src/app/qml/DownloadPage.qml:393
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
 msgctxt "DownloadPage|"
-msgid "Failed download"
-msgstr "Echec du téléchargement"
+msgid "Download failed"
+msgstr "Le téléchargement a échoué"
 
 #: ../src/app/qml/DownloadPage.qml:409
+#, fuzzy
+#| msgctxt "DownloadPage|"
+#| msgid "Failed no drives"
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
+msgid "Failed due to missing drives"
 msgstr "Échec : aucun disque"
 
 #: ../src/app/drivemanager.cpp:308
@@ -604,8 +611,8 @@ msgstr "Prêt à écrire"
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
-"Le fichier d’image a été sauvegardé dans votre dossier Téléchargements. L’"
-"écriture n’est pas possible"
+"Le fichier d’image a été sauvegardé dans votre dossier Téléchargements. "
+"L’écriture n’est pas possible"
 
 #: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
@@ -755,72 +762,72 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "L’écriture de %1 a réussi"
 
-#: ../src/app/qml/main.qml:117
+#: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
 
-#: ../src/app/qml/main.qml:157
+#: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr "Choisir la version de Fedora"
 
-#: ../src/app/qml/main.qml:173
+#: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
 msgstr "Disque sélectionné"
 
-#: ../src/app/qml/main.qml:211
+#: ../src/app/qml/main.qml:207
 msgctxt "main|"
 msgid "Downloading"
 msgstr "Téléchargement"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
 msgstr "Restaurer"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:286
 msgctxt "main|"
 msgid "Finish"
 msgstr "Terminé"
 
-#: ../src/app/qml/main.qml:294
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Write"
 msgstr "Écrire"
 
-#: ../src/app/qml/main.qml:296
+#: ../src/app/qml/main.qml:292
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "Télécharger && Écrire"
 
-#: ../src/app/qml/main.qml:297
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "Télécharger & Écrire"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: ../src/app/qml/main.qml:302
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "Retry"
 msgstr "Réessayer"
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
 msgstr "Suivant"
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
 msgstr "À propos"
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
 msgstr "Précédent"
@@ -872,6 +879,26 @@ msgstr "Écrivez des images de Fedora sur vos disques amovibles"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "Vérification de l'écriture"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "L’écriture a réussi"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification no drives"
+#~ msgstr "La vérification à échouée : aucun disque"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification"
+#~ msgstr "La vérification à échouée"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "Echec du téléchargement"
 
 #, fuzzy
 #~ msgctxt "CancelDialog|"

@@ -8,11 +8,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
+"POT-Creation-Date: 2022-05-16 08:43+0200\n"
 "PO-Revision-Date: 2022-05-16 11:16+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/he/>\n"
+"Language-Team: Hebrew <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -87,17 +87,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "המשך"
 
-#: ../src/app/qml/CancelDialog.qml:106
+#: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "ביטול ההורדה"
 
-#: ../src/app/qml/CancelDialog.qml:108
+#: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "ביטול כתיבה"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "ביטול בדיקה"
@@ -134,7 +134,7 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "%1 נכתב"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
 msgstr "הנתונים שנכתבו נבדקים"
@@ -227,9 +227,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"הלוח או ההתקן שלך אינו נתמך על ידי כותב המדיה של פדורה. נא לעיין ב<a "
-"href=%1>עמוד הזה</a> לקבלת מידע נוסף על התאימות של ההתקן עם פדורה וכיצד "
-"ליצור מדיה להתקנה עבורו."
+"הלוח או ההתקן שלך אינו נתמך על ידי כותב המדיה של פדורה. נא לעיין ב<a href="
+"%1>עמוד הזה</a> לקבלת מידע נוסף על התאימות של ההתקן עם פדורה וכיצד ליצור "
+"מדיה להתקנה עבורו."
 
 #: ../src/app/qml/DownloadPage.qml:165
 #, qt-format
@@ -255,39 +255,46 @@ msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "מתבצעת כתיבה"
 
-#: ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "הכתיבה נבדקת"
-
 #: ../src/app/qml/DownloadPage.qml:334
 msgctxt "DownloadPage|"
 msgid "Finish"
 msgstr "סיום"
 
 #: ../src/app/qml/DownloadPage.qml:347
+#, fuzzy
+#| msgctxt "DownloadPage|"
+#| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
-msgid "Write Successful"
-msgstr "הכתיבה הצליחה"
+msgid "Sucessfuly written"
+msgstr "%1 נכתב בהצלחה"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
-msgstr "הבדיקה נכשלה בהעדר בכוננים"
+msgid "Verification failed due to missing drives"
+msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:381
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Writing %1 failed"
 msgctxt "DownloadPage|"
-msgid "Failed verification"
-msgstr "הבדיקה נכשלה"
+msgid "Verification failed"
+msgstr "הכתיבה אל %1 נכשלה"
 
 #: ../src/app/qml/DownloadPage.qml:393
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
 msgctxt "DownloadPage|"
-msgid "Failed download"
+msgid "Download failed"
 msgstr "ההורדה נכשלה"
 
 #: ../src/app/qml/DownloadPage.qml:409
+#, fuzzy
+#| msgctxt "DownloadPage|"
+#| msgid "Failed no drives"
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
+msgid "Failed due to missing drives"
 msgstr "נכשל בהעדר כוננים"
 
 #: ../src/app/drivemanager.cpp:308
@@ -725,72 +732,72 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "הכתיבה של %1 הצליחה"
 
-#: ../src/app/qml/main.qml:117
+#: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "כותב המדיה של פדורה"
 
-#: ../src/app/qml/main.qml:157
+#: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr "בחירת גרסת פדורה"
 
-#: ../src/app/qml/main.qml:173
+#: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
 msgstr "בחירת כונן"
 
-#: ../src/app/qml/main.qml:211
+#: ../src/app/qml/main.qml:207
 msgctxt "main|"
 msgid "Downloading"
 msgstr "בהורדה"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
 msgstr "שחזור"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:286
 msgctxt "main|"
 msgid "Finish"
 msgstr "סיום"
 
-#: ../src/app/qml/main.qml:294
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Write"
 msgstr "כתיבה"
 
-#: ../src/app/qml/main.qml:296
+#: ../src/app/qml/main.qml:292
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "הורדה וכתיבה"
 
-#: ../src/app/qml/main.qml:297
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "הורדה וכתיבה"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 msgctxt "main|"
 msgid "Cancel"
 msgstr "ביטול"
 
-#: ../src/app/qml/main.qml:302
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "Retry"
 msgstr "ניסיון חוזר"
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
 msgstr "הבא"
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
 msgstr "על אודות"
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
 msgstr "הקודם"
@@ -839,6 +846,26 @@ msgstr "כתיבת דמויות Fedora אל כוננים ניידים"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;אתחול;טעינה;הפעלה;איתחול;בוט;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "הכתיבה נבדקת"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "הכתיבה הצליחה"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification no drives"
+#~ msgstr "הבדיקה נכשלה בהעדר בכוננים"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification"
+#~ msgstr "הבדיקה נכשלה"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "ההורדה נכשלה"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"

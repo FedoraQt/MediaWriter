@@ -3,11 +3,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
+"POT-Creation-Date: 2022-05-16 08:43+0200\n"
 "PO-Revision-Date: 2022-05-11 02:54+0000\n"
 "Last-Translator: Hajime Taira <htaira@pantora.net>\n"
-"Language-Team: Japanese <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/ja/>\n"
+"Language-Team: Japanese <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,7 +70,8 @@ msgctxt "CancelDialog|"
 msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
-msgstr "ダウンロードとメディアの書き込みが中断されました。処理を後日継続することがで"
+msgstr ""
+"ダウンロードとメディアの書き込みが中断されました。処理を後日継続することがで"
 "きます。"
 
 #: ../src/app/qml/CancelDialog.qml:69
@@ -78,7 +79,8 @@ msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr "書き込みプロセスが中止されたので、あとでメディアを修復する必要があります。"
+msgstr ""
+"書き込みプロセスが中止されたので、あとでメディアを修復する必要があります。"
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
@@ -90,17 +92,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "続行"
 
-#: ../src/app/qml/CancelDialog.qml:106
+#: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "ダウンロードを中止します"
 
-#: ../src/app/qml/CancelDialog.qml:108
+#: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "書き込みを中止します"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "検証を中止します"
@@ -137,7 +139,7 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "書き込み中: %1"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
 msgstr "書き込んだデータを検証中"
@@ -211,9 +213,9 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"メディアのサイズが変更されて容量が小さくなります。 Fedora Media "
-"Writerを使用して、サイズを通常に戻すことができます。 "
-"これによりメディアからインストールメディアが削除されます。"
+"メディアのサイズが変更されて容量が小さくなります。 Fedora Media Writerを使用"
+"して、サイズを通常に戻すことができます。 これによりメディアからインストールメ"
+"ディアが削除されます。"
 
 #: ../src/app/qml/DownloadPage.qml:148
 msgctxt "DownloadPage|"
@@ -258,39 +260,46 @@ msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "書き込み中"
 
-#: ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "書き込み後の検証中"
-
 #: ../src/app/qml/DownloadPage.qml:334
 msgctxt "DownloadPage|"
 msgid "Finish"
 msgstr "完了しました"
 
 #: ../src/app/qml/DownloadPage.qml:347
+#, fuzzy
+#| msgctxt "DownloadPage|"
+#| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
-msgid "Write Successful"
-msgstr "書き込みに成功しました"
+msgid "Sucessfuly written"
+msgstr "%1 の書き込みに成功しました"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
+msgid "Verification failed due to missing drives"
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:381
+#, fuzzy
+#| msgctxt "CancelDialog|"
+#| msgid "Cancel Verification"
 msgctxt "DownloadPage|"
-msgid "Failed verification"
-msgstr "検証に失敗しました"
+msgid "Verification failed"
+msgstr "検証を中止します"
 
 #: ../src/app/qml/DownloadPage.qml:393
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
 msgctxt "DownloadPage|"
-msgid "Failed download"
-msgstr "ダウンロードに失敗しました"
+msgid "Download failed"
+msgstr "ダウンロード中"
 
 #: ../src/app/qml/DownloadPage.qml:409
+#, fuzzy
+#| msgctxt "DownloadPage|"
+#| msgid "Failed no drives"
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
+msgid "Failed due to missing drives"
 msgstr "メディアが見つかりません"
 
 #: ../src/app/drivemanager.cpp:308
@@ -738,7 +747,7 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr ""
 
-#: ../src/app/qml/main.qml:117
+#: ../src/app/qml/main.qml:116
 #, fuzzy
 #| msgctxt "ImageList|"
 #| msgid "About Fedora Media Writer"
@@ -746,17 +755,17 @@ msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer について"
 
-#: ../src/app/qml/main.qml:157
+#: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr ""
 
-#: ../src/app/qml/main.qml:173
+#: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
 msgstr ""
 
-#: ../src/app/qml/main.qml:211
+#: ../src/app/qml/main.qml:207
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -764,12 +773,12 @@ msgctxt "main|"
 msgid "Downloading"
 msgstr "ダウンロード中"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
 msgstr ""
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:286
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Finished!"
@@ -777,12 +786,12 @@ msgctxt "main|"
 msgid "Finish"
 msgstr "終わりました!"
 
-#: ../src/app/qml/main.qml:294
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Write"
 msgstr ""
 
-#: ../src/app/qml/main.qml:296
+#: ../src/app/qml/main.qml:292
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -790,7 +799,7 @@ msgctxt "main|"
 msgid "Download && Write"
 msgstr "ダウンロード中"
 
-#: ../src/app/qml/main.qml:297
+#: ../src/app/qml/main.qml:293
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -798,7 +807,7 @@ msgctxt "main|"
 msgid "Download & Write"
 msgstr "ダウンロード中"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Cancel"
@@ -806,22 +815,22 @@ msgctxt "main|"
 msgid "Cancel"
 msgstr "取り消し"
 
-#: ../src/app/qml/main.qml:302
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "Retry"
 msgstr ""
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
 msgstr ""
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
 msgstr ""
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
 msgstr ""
@@ -866,6 +875,22 @@ msgstr ""
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "書き込み後の検証中"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "書き込みに成功しました"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification"
+#~ msgstr "検証に失敗しました"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "ダウンロードに失敗しました"
 
 #~ msgctxt "ImageDetails|"
 #~ msgid "Other variants..."
