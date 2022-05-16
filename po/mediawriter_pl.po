@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2022-05-09 07:33+0000\n"
+"POT-Creation-Date: 2022-05-16 08:43+0200\n"
+"PO-Revision-Date: 2022-05-16 16:00+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/pl/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 4.12.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -94,17 +94,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "Kontynuuj"
 
-#: ../src/app/qml/CancelDialog.qml:106
+#: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Anuluj pobieranie"
 
-#: ../src/app/qml/CancelDialog.qml:108
+#: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Anuluj zapisywanie"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Anuluj weryfikację"
@@ -141,7 +141,7 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Zapisywanie %1"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
 msgstr "Weryfikowanie zapisanych danych"
@@ -265,11 +265,6 @@ msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "Zapisywanie"
 
-#: ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "Weryfikowanie zapisu"
-
 #: ../src/app/qml/DownloadPage.qml:334
 msgctxt "DownloadPage|"
 msgid "Finish"
@@ -277,28 +272,28 @@ msgstr "Ukończ"
 
 #: ../src/app/qml/DownloadPage.qml:347
 msgctxt "DownloadPage|"
-msgid "Write Successful"
+msgid "Sucessfuly written"
 msgstr "Pomyślnie zapisano"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
-msgstr "Weryfikacja się nie powiodła, brak dysków"
+msgid "Verification failed due to missing drives"
+msgstr "Weryfikacja się nie powiodła z powodu braku dysków"
 
 #: ../src/app/qml/DownloadPage.qml:381
 msgctxt "DownloadPage|"
-msgid "Failed verification"
+msgid "Verification failed"
 msgstr "Weryfikacja się nie powiodła"
 
 #: ../src/app/qml/DownloadPage.qml:393
 msgctxt "DownloadPage|"
-msgid "Failed download"
+msgid "Download failed"
 msgstr "Pobranie się nie powiodło"
 
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
-msgstr "Niepowodzenie, brak dysków"
+msgid "Failed due to missing drives"
+msgstr "Niepowodzenie z powodu brak dysków"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -750,72 +745,72 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "Pomyślnie zapisano %1"
 
-#: ../src/app/qml/main.qml:117
+#: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
 
-#: ../src/app/qml/main.qml:157
+#: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr "Wybór wersji Fedory"
 
-#: ../src/app/qml/main.qml:173
+#: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
 msgstr "Wybór dysku"
 
-#: ../src/app/qml/main.qml:211
+#: ../src/app/qml/main.qml:207
 msgctxt "main|"
 msgid "Downloading"
 msgstr "Pobieranie"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
 msgstr "Przywróć"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:286
 msgctxt "main|"
 msgid "Finish"
 msgstr "Ukończ"
 
-#: ../src/app/qml/main.qml:294
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Write"
 msgstr "Zapisz"
 
-#: ../src/app/qml/main.qml:296
+#: ../src/app/qml/main.qml:292
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "Pobierz i zapisz"
 
-#: ../src/app/qml/main.qml:297
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "Pobierz i zapisz"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: ../src/app/qml/main.qml:302
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "Retry"
 msgstr "Ponów"
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
 msgstr "Dalej"
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
 msgstr "Informacje"
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
 msgstr "Wstecz"
@@ -864,6 +859,26 @@ msgstr "Zapisywanie obrazów Fedory na dyskach USB"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;uruchamianie;zapisywanie;nośnik;media;live;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "Weryfikowanie zapisu"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "Pomyślnie zapisano"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification no drives"
+#~ msgstr "Weryfikacja się nie powiodła, brak dysków"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification"
+#~ msgstr "Weryfikacja się nie powiodła"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "Pobranie się nie powiodło"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"

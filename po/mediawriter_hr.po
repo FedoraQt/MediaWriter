@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
+"POT-Creation-Date: 2022-05-16 08:43+0200\n"
 "PO-Revision-Date: 2021-10-18 00:48+0000\n"
 "Last-Translator: Gogo Gogsi <linux.hr@protonmail.com>\n"
 "Language-Team: Croatian <https://translate.fedoraproject.org/projects/fedora-"
@@ -103,7 +103,7 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:106
+#: ../src/app/qml/CancelDialog.qml:110
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -111,7 +111,7 @@ msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Preuzimanje"
 
-#: ../src/app/qml/CancelDialog.qml:108
+#: ../src/app/qml/CancelDialog.qml:112
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Writing"
@@ -119,7 +119,7 @@ msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Zapisivanje"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr ""
@@ -158,7 +158,7 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Zapisivanje"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Checking the written data"
@@ -336,14 +336,6 @@ msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "Zapisivanje"
 
-#: ../src/app/qml/DownloadPage.qml:310
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "Zapisivanje"
-
 #: ../src/app/qml/DownloadPage.qml:334
 #, fuzzy
 #| msgctxt "LinuxDrive|"
@@ -353,34 +345,34 @@ msgid "Finish"
 msgstr "Završeno!"
 
 #: ../src/app/qml/DownloadPage.qml:347
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
 msgctxt "DownloadPage|"
-msgid "Write Successful"
-msgstr "Zapisivanje %1 je uspješno"
+msgid "Sucessfuly written"
+msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
+msgid "Verification failed due to missing drives"
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:381
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Writing %1 failed"
 msgctxt "DownloadPage|"
-msgid "Failed verification"
-msgstr ""
+msgid "Verification failed"
+msgstr "Zapisivanje %1 nije uspjelo"
 
 #: ../src/app/qml/DownloadPage.qml:393
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
+#| msgid "Download failed"
 msgctxt "DownloadPage|"
-msgid "Failed download"
-msgstr "Provjera preuzimanja"
+msgid "Download failed"
+msgstr "Preuzimanje neuspjelo"
 
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
+msgid "Failed due to missing drives"
 msgstr ""
 
 #: ../src/app/drivemanager.cpp:308
@@ -934,14 +926,14 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "Zapisivanje %1 je uspješno"
 
-#: ../src/app/qml/main.qml:117
+#: ../src/app/qml/main.qml:116
 #, fuzzy
 #| msgid "Fedora Media Writer"
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora zapisnik medija"
 
-#: ../src/app/qml/main.qml:157
+#: ../src/app/qml/main.qml:154
 #, fuzzy
 #| msgctxt "Release|"
 #| msgid "Fedora Workstation"
@@ -949,7 +941,7 @@ msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr "Fedora Workstation"
 
-#: ../src/app/qml/main.qml:173
+#: ../src/app/qml/main.qml:170
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Selected:"
@@ -957,7 +949,7 @@ msgctxt "main|"
 msgid "Select Drive"
 msgstr "Odabrano:"
 
-#: ../src/app/qml/main.qml:211
+#: ../src/app/qml/main.qml:207
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -965,12 +957,12 @@ msgctxt "main|"
 msgid "Downloading"
 msgstr "Preuzimanje"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
 msgstr "Obnovi"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:286
 #, fuzzy
 #| msgctxt "LinuxDrive|"
 #| msgid "Finished!"
@@ -978,7 +970,7 @@ msgctxt "main|"
 msgid "Finish"
 msgstr "Završeno!"
 
-#: ../src/app/qml/main.qml:294
+#: ../src/app/qml/main.qml:290
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Write %1"
@@ -986,7 +978,7 @@ msgctxt "main|"
 msgid "Write"
 msgstr "Zapisujem %1"
 
-#: ../src/app/qml/main.qml:296
+#: ../src/app/qml/main.qml:292
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -994,7 +986,7 @@ msgctxt "main|"
 msgid "Download && Write"
 msgstr "Preuzimanje neuspjelo"
 
-#: ../src/app/qml/main.qml:297
+#: ../src/app/qml/main.qml:293
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -1002,7 +994,7 @@ msgctxt "main|"
 msgid "Download & Write"
 msgstr "Preuzimanje neuspjelo"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Cancel"
@@ -1010,7 +1002,7 @@ msgctxt "main|"
 msgid "Cancel"
 msgstr "Odustani"
 
-#: ../src/app/qml/main.qml:302
+#: ../src/app/qml/main.qml:298
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Retry"
@@ -1018,17 +1010,17 @@ msgctxt "main|"
 msgid "Retry"
 msgstr "Pokušaj ponovno"
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
 msgstr ""
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
 msgstr ""
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
 msgstr ""
@@ -1078,6 +1070,27 @@ msgstr "Zapišite Fedora slike na vaše uklonjive uređaje"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Writing"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "Zapisivanje"
+
+#, fuzzy
+#~| msgctxt "LinuxDrive|"
+#~| msgid "Writing %1 was successful"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "Zapisivanje %1 je uspješno"
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Checking the download"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "Provjera preuzimanja"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"
