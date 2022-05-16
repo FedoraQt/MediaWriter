@@ -45,7 +45,7 @@ Page {
             Layout.alignment: Qt.AlignHCenter
             text: {
                 if (releases.variant.status === Units.DownloadStatus.Finished)
-                    qsTr("%1 Sucessfuly Written").arg(file)
+                    qsTr("%1 Successfully Written").arg(file)
                 else if (releases.variant.status === Units.DownloadStatus.Writing)
                     qsTr("Writing %1").arg(file)
                 else if (releases.variant.status === Units.DownloadStatus.Write_Verifying)
@@ -344,7 +344,7 @@ Page {
             }
             PropertyChanges {
                 target: mainWindow;
-                title: qsTr("Sucessfuly written")
+                title: qsTr("Successfully written")
             }
             StateChangeScript {
                 script: { 
