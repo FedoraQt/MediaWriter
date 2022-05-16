@@ -307,7 +307,7 @@ Page {
             }
             PropertyChanges {
                 target: mainWindow;
-                title: qsTr("Write verifying")
+                title: qsTr("Verifying written data")
             }
             PropertyChanges {
                 target: nextButton
@@ -344,7 +344,7 @@ Page {
             }
             PropertyChanges {
                 target: mainWindow;
-                title: qsTr("Write Successful")
+                title: qsTr("Sucessfuly written")
             }
             StateChangeScript {
                 script: { 
@@ -362,7 +362,7 @@ Page {
             when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length <= 0
             PropertyChanges {
                 target: mainWindow;
-                title: qsTr("Failed verification no drives")
+                title: qsTr("Verification failed due to missing drives")
             }
         },
         State {
@@ -378,7 +378,7 @@ Page {
             }
             PropertyChanges {
                 target: mainWindow;
-                title: qsTr("Failed verification")
+                title: qsTr("Verification failed")
             }
         },
         State {
@@ -390,7 +390,7 @@ Page {
             }
             PropertyChanges {
                 target: mainWindow;
-                title: qsTr("Failed download")
+                title: qsTr("Download failed")
             }
         },
         State {
@@ -406,7 +406,7 @@ Page {
             }
             PropertyChanges {
                 target: mainWindow;
-                title: qsTr("Failed no drives")
+                title: qsTr("Failed due to missing drives")
             }
         },
         State {
