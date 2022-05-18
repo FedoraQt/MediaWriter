@@ -6,8 +6,8 @@ msgstr ""
 "POT-Creation-Date: 2022-05-16 08:43+0200\n"
 "PO-Revision-Date: 2022-05-18 10:18+0000\n"
 "Last-Translator: Hajime Taira <htaira@pantora.net>\n"
-"Language-Team: Japanese <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/ja/>\n"
+"Language-Team: Japanese <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -128,9 +128,11 @@ msgid "Connection timed out"
 msgstr "接続がタイムアウトしました"
 
 #: ../src/app/qml/DownloadPage.qml:48
-#, qt-format
+#, fuzzy, qt-format
+#| msgctxt "DownloadPage|"
+#| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
-msgid "%1 Sucessfuly Written"
+msgid "%1 Successfully Written"
 msgstr "%1 の書き込みに成功しました"
 
 #: ../src/app/qml/DownloadPage.qml:50
@@ -242,8 +244,9 @@ msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
-msgstr "選択したメディアのサイズは %1 です。 "
-"間違えて外付けドライブを選択した可能性があります!"
+msgstr ""
+"選択したメディアのサイズは %1 です。 間違えて外付けドライブを選択した可能性が"
+"あります!"
 
 #: ../src/app/qml/DownloadPage.qml:174
 #, qt-format
@@ -271,7 +274,7 @@ msgstr "完了しました"
 #| msgctxt "DownloadPage|"
 #| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
-msgid "Sucessfuly written"
+msgid "Successfully written"
 msgstr "%1 の書き込みに成功しました"
 
 #: ../src/app/qml/DownloadPage.qml:365
@@ -385,8 +388,9 @@ msgstr "書き込み中にメディアが取り外されました。"
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "ヘルパーバイナリーが見つかりませんでした。インストール環境を確認してください"
-"。"
+msgstr ""
+"ヘルパーバイナリーが見つかりませんでした。インストール環境を確認してくださ"
+"い。"
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
@@ -545,7 +549,8 @@ msgstr "ARM v7"
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr "LZMA圧縮RAWイメージはRaspberry Pi2/Pi3などのARM v7-Aマシン向けイメージです"
+msgstr ""
+"LZMA圧縮RAWイメージはRaspberry Pi2/Pi3などのARM v7-Aマシン向けイメージです"
 
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
@@ -606,7 +611,8 @@ msgstr "書き込みの準備ができています"
 #: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr "イメージファイルがダウンロードフォルダに保存されました。書き込みは行っていま"
+msgstr ""
+"イメージファイルがダウンロードフォルダに保存されました。書き込みは行っていま"
 "せん。"
 
 #: ../src/app/releasemanager.h:377
@@ -685,8 +691,9 @@ msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
-msgstr "<p align=\"justify\">Fedora Media "
-"Writerがポータブルドライブを復元するまでお待ちください。</p>"
+msgstr ""
+"<p align=\"justify\">Fedora Media Writerがポータブルドライブを復元するまでお"
+"待ちください。</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
@@ -698,8 +705,9 @@ msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
-msgstr "残念ながら、処理中にエラーが発生しました。 "
-"システムツールを使用してドライブを復元できるか試みてください。"
+msgstr ""
+"残念ながら、処理中にエラーが発生しました。 システムツールを使用してドライブを"
+"復元できるか試みてください。"
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
@@ -739,7 +747,8 @@ msgstr "Labs"
 #: ../src/app/windrivemanager.cpp:265
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "ヘルパーバイナリが見つかりませんでした。 インストール環境を確認してください。"
+msgstr ""
+"ヘルパーバイナリが見つかりませんでした。 インストール環境を確認してください。"
 
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 msgctxt "WinDrive|"

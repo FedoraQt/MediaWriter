@@ -126,9 +126,11 @@ msgid "Connection timed out"
 msgstr "連線超過時間"
 
 #: ../src/app/qml/DownloadPage.qml:48
-#, qt-format
+#, fuzzy, qt-format
+#| msgctxt "DownloadPage|"
+#| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
-msgid "%1 Sucessfuly Written"
+msgid "%1 Successfully Written"
 msgstr "已成功寫入 %1"
 
 #: ../src/app/qml/DownloadPage.qml:50
@@ -208,8 +210,9 @@ msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
-msgstr "您的裝置將調整成較小的容量。您可以利用 Fedora "
-"媒體寫入器調整回正常大小。這個動作會從您的裝置中移除安裝媒體。"
+msgstr ""
+"您的裝置將調整成較小的容量。您可以利用 Fedora 媒體寫入器調整回正常大小。這個"
+"動作會從您的裝置中移除安裝媒體。"
 
 #: ../src/app/qml/DownloadPage.qml:148
 msgctxt "DownloadPage|"
@@ -229,8 +232,8 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"Fedora 媒體寫入器尚未支援您的主機板或裝置。請查看<a href=%1>此頁面</"
-"a>瞭解更多其與 Fedora 的相容性資訊，以及製作可開機媒體的方法。"
+"Fedora 媒體寫入器尚未支援您的主機板或裝置。請查看<a href=%1>此頁面</a>瞭解更"
+"多其與 Fedora 的相容性資訊，以及製作可開機媒體的方法。"
 
 #: ../src/app/qml/DownloadPage.qml:165
 #, qt-format
@@ -262,8 +265,11 @@ msgid "Finish"
 msgstr "完成"
 
 #: ../src/app/qml/DownloadPage.qml:347
+#, fuzzy
+#| msgctxt "DownloadPage|"
+#| msgid "Sucessfuly written"
 msgctxt "DownloadPage|"
-msgid "Sucessfuly written"
+msgid "Successfully written"
 msgstr "成功寫入"
 
 #: ../src/app/qml/DownloadPage.qml:365
@@ -651,7 +657,8 @@ msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
-msgstr "<p align=\"justify\">請稍候，Fedora 媒體寫入器正在還原您的卸除式裝置。</p>"
+msgstr ""
+"<p align=\"justify\">請稍候，Fedora 媒體寫入器正在還原您的卸除式裝置。</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
@@ -809,10 +816,10 @@ msgid ""
 "about each of them to help you make the right choice."
 msgstr ""
 "為各種 Fedora 版本製作可開機 Live USB 裝置的工具。Fedora 媒體寫入器不只能將映"
-"像檔寫入您的快閃裝置中，它還能替您下載映像檔。它提供官方版（Server、Workstati"
-"on）、Fedora Spins（KDE Plasma 桌面、Xfce 桌面、Cinnamon 桌面……等）、和 "
-"Fedora "
-"Labs（設計套組、安全實驗室……等）。它提供各版本的基本資訊來幫助您作選擇。"
+"像檔寫入您的快閃裝置中，它還能替您下載映像檔。它提供官方版（Server、"
+"Workstation）、Fedora Spins（KDE Plasma 桌面、Xfce 桌面、Cinnamon 桌面……"
+"等）、和 Fedora Labs（設計套組、安全實驗室……等）。它提供各版本的基本資訊來幫"
+"助您作選擇。"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
