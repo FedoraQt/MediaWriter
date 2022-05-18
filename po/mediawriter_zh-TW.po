@@ -7,12 +7,13 @@
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2016. #zanata
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2017. #zanata
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2018. #zanata
+# Yi-Jyun Pan <pan93412@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-16 08:43+0200\n"
-"PO-Revision-Date: 2021-07-11 17:15+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2022-05-18 10:18+0000\n"
+"Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/"
 "projects/fedora-media-writer/mediawriter/zh_TW/>\n"
 "Language: zh-TW\n"
@@ -20,45 +21,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.7.1\n"
+"X-Generator: Weblate 4.12.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
 msgstr "關於 Fedora 媒體寫入器"
 
 #: ../src/app/qml/AboutDialog.qml:59
-#, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "版本 %1"
 
 #: ../src/app/qml/AboutDialog.qml:66
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "Fedora Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Fedora 媒體寫入器正在檢查是否有新的發行版"
 
 #: ../src/app/qml/AboutDialog.qml:72
-#, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "若要回報臭蟲或給予建議，請前往 %1"
 
 #: ../src/app/qml/AboutDialog.qml:95
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "關閉"
@@ -66,70 +54,61 @@ msgstr "關閉"
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "是否取消下載程序？"
 
 #: ../src/app/qml/CancelDialog.qml:58
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "寫入中"
+msgstr "是否取消寫入程序？"
 
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "是否取消驗證程序？"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
 msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
-msgstr ""
+msgstr "將取消下載及媒體寫入程序。事後仍可隨時繼續本程序。"
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr ""
+msgstr "寫入程序將會終止，且您的磁碟機之後會需要還原。"
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "本動作可安全取消。"
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "繼續"
 
 #: ../src/app/qml/CancelDialog.qml:110
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "下載中"
+msgstr "取消下載"
 
 #: ../src/app/qml/CancelDialog.qml:112
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "寫入中"
+msgstr "取消寫入"
 
 #: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "取消驗證"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr "無法擷取請求的映像檔。"
+msgstr "無法取得請求映像檔。"
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
@@ -150,220 +129,154 @@ msgstr "連線超過時間"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Sucessfuly Written"
-msgstr ""
+msgstr "已成功寫入 %1"
 
 #: ../src/app/qml/DownloadPage.qml:50
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "寫入中"
+msgstr "正在寫入 %1"
 
 #: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
-msgstr "正檢查寫入的資料"
+msgstr "正在驗證已經寫入的資料"
 
 #: ../src/app/qml/DownloadPage.qml:54
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "下載中"
+msgstr "正在下載 %1"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
 msgctxt "DownloadPage|"
 msgid "Verifying downloaded image"
-msgstr "下載的映像檔有所損壞"
+msgstr "正在驗證下載的映像檔"
 
 #: ../src/app/qml/DownloadPage.qml:58
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "準備中"
+msgstr "正在準備 %1"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
 msgctxt "DownloadPage|"
 msgid "Failed"
-msgstr ""
+msgstr "失敗"
 
 #: ../src/app/qml/DownloadPage.qml:72
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr "(剩餘 %1 B)"
+msgstr " B 剩餘）"
 
 #: ../src/app/qml/DownloadPage.qml:73
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr "(剩餘 %1 KB)"
+msgstr " KB 剩餘）"
 
 #: ../src/app/qml/DownloadPage.qml:74
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr "(剩餘 %1 MB)"
+msgstr " MB 剩餘）"
 
 #: ../src/app/qml/DownloadPage.qml:75
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr "(剩餘 %1 GB)"
+msgstr " GB 剩餘）"
 
 #: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
 #: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " （%1"
 
 #: ../src/app/qml/DownloadPage.qml:124
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "檔案將儲存至您的「下載」資料夾。"
+msgstr "下載的檔案已存至「下載」資料夾中。"
 
 #: ../src/app/qml/DownloadPage.qml:132
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "如果寫入，您將喪失 %1 上存的所有資料。"
+msgstr "如果寫入，您將遺失 %1 上存的所有資料。"
 
 #: ../src/app/qml/DownloadPage.qml:140
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using Fedora Media Writer; this will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
-msgstr ""
-"您的裝置將調整成較小的容量。您可以利用 Fedora 媒體寫入器調整回正常大小；這個"
-"動作會從您的裝置中移除安裝媒體。"
+msgstr "您的裝置將調整成較小的容量。您可以利用 Fedora "
+"媒體寫入器調整回正常大小。這個動作會從您的裝置中移除安裝媒體。"
 
 #: ../src/app/qml/DownloadPage.qml:148
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "已選取："
 
 #: ../src/app/qml/DownloadPage.qml:148
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "無"
 
 #: ../src/app/qml/DownloadPage.qml:156
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your board or device is not supported by Fedora Media Writer yet. Please "
-#| "check <a href=%1>this page</a> for more information about its "
-#| "compatibility with Fedora and how to create bootable media for it."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"Fedora 媒體寫入器尚未支援您的主機板或裝置。請查看<a href=%1>此頁面</a>瞭解更"
-"多 Fedora 的相容性資訊，以及製作可開機媒體的方法。"
+"Fedora 媒體寫入器尚未支援您的主機板或裝置。請查看<a href=%1>此頁面</"
+"a>瞭解更多其與 Fedora 的相容性資訊，以及製作可開機媒體的方法。"
 
 #: ../src/app/qml/DownloadPage.qml:165
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
-msgstr "選取的裝置大小為 %1。您可能意外選成外接裝置了！"
+msgstr "選取的裝置大小為 %1。您可能意外選成外接磁碟機了！"
 
 #: ../src/app/qml/DownloadPage.qml:174
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "重新開機，並選擇用 %1 啟動，即可開始使用 %2。"
 
 #: ../src/app/qml/DownloadPage.qml:262
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Writing is not possible"
 msgctxt "DownloadPage|"
 msgid "Writing not possible"
 msgstr "無法寫入"
 
 #: ../src/app/qml/DownloadPage.qml:282
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "DownloadPage|"
 msgid "Writing"
-msgstr "寫入中"
+msgstr "正在寫入"
 
 #: ../src/app/qml/DownloadPage.qml:334
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "完成！"
+msgstr "完成"
 
 #: ../src/app/qml/DownloadPage.qml:347
 msgctxt "DownloadPage|"
 msgid "Sucessfuly written"
-msgstr ""
+msgstr "成功寫入"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
 msgid "Verification failed due to missing drives"
-msgstr ""
+msgstr "驗證失敗，因缺少磁碟機"
 
 #: ../src/app/qml/DownloadPage.qml:381
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "DownloadPage|"
 msgid "Verification failed"
-msgstr "%1 寫入失敗"
+msgstr "驗證失敗"
 
 #: ../src/app/qml/DownloadPage.qml:393
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "DownloadPage|"
 msgid "Download failed"
 msgstr "下載失敗"
@@ -371,70 +284,49 @@ msgstr "下載失敗"
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
 msgid "Failed due to missing drives"
-msgstr ""
+msgstr "失敗，因缺少磁碟機"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
 msgid "This drive is not large enough."
-msgstr "裝置不夠大。"
+msgstr "此磁碟機空間不足。"
 
 #: ../src/app/qml/DrivePage.qml:36
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "寫入磁碟"
+msgstr "寫入選項"
 
 #: ../src/app/qml/DrivePage.qml:45
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "版本 %1"
+msgstr "版本"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "硬體架構"
 
 #: ../src/app/qml/DrivePage.qml:84
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "已選取："
+msgstr "選擇的檔案"
 
 #: ../src/app/qml/DrivePage.qml:91
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "無"
 
 #: ../src/app/qml/DrivePage.qml:99
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "已選取："
+msgstr "選擇…"
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr "映像檔"
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "所有檔案 (*)"
@@ -442,46 +334,37 @@ msgstr "所有檔案 (*)"
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "USB 磁碟機"
 
 #: ../src/app/qml/DrivePage.qml:135
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "尚未連接卸除式裝置"
 
 #: ../src/app/qml/DrivePage.qml:155
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "下載中"
+msgstr "下載"
 
 #: ../src/app/qml/DrivePage.qml:160
-#, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "刪除下載的映像檔"
+msgstr "寫入後刪除下載檔案"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr "裝置在寫入時被移除。"
+msgstr "磁碟機在寫入過程中被移除。"
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "找不到輔助程式二進位檔。請檢查您的安裝是否完整。"
+msgstr "找不到 helper 二進位檔案。請檢查您的安裝是否完整。"
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr "在寫入完成之前已停止。"
+msgstr "寫入完成前被停止。"
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
@@ -513,7 +396,7 @@ msgstr "您系統上的 UDisk2 似乎無法使用或無法存取。"
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "找不到輔助程式二進位檔。請檢查您的安裝是否完整。"
+msgstr "找不到 helper 二進位檔案。請檢查您的安裝是否完整。"
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
@@ -540,49 +423,38 @@ msgstr "%1 寫入成功"
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "選擇映像檔來源"
 
 #: ../src/app/qml/MainPage.qml:57
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "下載失敗"
+msgstr "自動下載"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "選擇 .iso 檔案"
 
 #: ../src/app/qml/MainPage.qml:76
-#, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
+#, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "還原 %1？"
+msgstr "還原 <b>%1</b>"
 
 #: ../src/app/portalfiledialog.cpp:143
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "映像檔"
 
 #: ../src/app/portalfiledialog.cpp:153
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "所有檔案 (*)"
+msgstr "所有檔案"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "開啟檔案"
 
 #: ../src/app/releasemanager.cpp:392
 msgctxt "Release|"
@@ -602,17 +474,17 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:423
 msgctxt "Release|"
 msgid "Fedora Spins"
-msgstr "Fedora Spins 思變版"
+msgstr "Fedora Spins"
 
 #: ../src/app/releasemanager.cpp:425
 msgctxt "Release|"
 msgid "Fedora Labs"
-msgstr "Fedora Labs 實驗室"
+msgstr "Fedora Labs"
 
 #: ../src/app/releasemanager.cpp:427
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
-msgstr ""
+msgstr "Fedora 新秀版本"
 
 #: ../src/app/releasemanager.cpp:429
 msgctxt "Release|"
@@ -620,30 +492,24 @@ msgid "Other"
 msgstr "其他"
 
 #: ../src/app/releasemanager.cpp:1069
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Intel 64位元"
+msgstr "Intel/AMD 64 位元"
 
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr "適合 Intel、AMD 和其他相容個人電腦的 ISO 映像檔格式（64 位元）"
+msgstr "適合 Intel、AMD 和其他相容 PC 的 ISO 映像檔格式（64 位元）"
 
 #: ../src/app/releasemanager.cpp:1070
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Intel 32位元"
+msgstr "Intel/AMD 32 位元"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr "適合 Intel、AMD 和其他相容個人電腦的 ISO 映像檔格式（32 位元）"
+msgstr "適合 Intel、AMD 和其他相容 PC 的 ISO 映像檔格式（32 位元）"
 
 #: ../src/app/releasemanager.cpp:1071
 msgctxt "ReleaseArchitecture|"
@@ -654,17 +520,17 @@ msgstr "ARM v7"
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr "適用於 ARM v7-A 機器的 LZMA 壓縮後原生映像檔，如 Raspberry Pi 2 和 3"
+msgstr "適用於 ARM v7-A 機器的 LZMA 壓縮原生映像檔，如 Raspberry Pi 2 和 3"
 
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
-msgstr ""
+msgstr "AArch64"
 
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr ""
+msgstr "適用於 AArch64 機器的 LZMA 壓縮原始映像檔"
 
 #: ../src/app/releasemanager.cpp:391
 msgctxt "ReleaseListModel|"
@@ -684,36 +550,27 @@ msgstr "下載的檔案無法讀取。"
 #: ../src/app/releasemanager.cpp:955
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr "無法重新命名該暫存檔。"
+msgstr "無法重新命名暫存檔案。"
 
 #: ../src/app/releasemanager.h:372
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
-msgstr "準備中"
+msgstr "正在準備"
 
 #: ../src/app/releasemanager.h:373
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
-msgstr "下載中"
+msgstr "正在下載"
 
 #: ../src/app/releasemanager.h:374
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr "檢查下載中"
+msgstr "正在檢查下載檔案"
 
 #: ../src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
-msgstr "準備寫入"
+msgstr "準備進行寫入"
 
 #: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
@@ -721,20 +578,14 @@ msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr "映像檔已儲存至您的下載資料夾。無法寫入"
 
 #: ../src/app/releasemanager.h:377
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
-msgstr "寫入中"
+msgstr "正在寫入"
 
 #: ../src/app/releasemanager.h:378
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
-msgstr "正檢查寫入的資料"
+msgstr "正在檢查已經寫入的資料"
 
 #: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
@@ -744,12 +595,9 @@ msgstr "完成！"
 #: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
-msgstr "寫入的資料已損毀"
+msgstr "寫入的資料有損毀"
 
 #: ../src/app/releasemanager.h:381
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "下載失敗"
@@ -775,31 +623,15 @@ msgstr "%1 Beta"
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr "%1 發行候選（RC）"
+msgstr "%1 發行候選 (RC)"
 
 #: ../src/app/qml/RestorePage.qml:37
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "還原磁碟機 <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:49
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -809,137 +641,100 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">\n"
-"                                                若要取回裝置上的所有可用空"
-"間，則其必須回復出廠設定。\n"
-"                                                Live 系統和所有儲存於其上的資"
-"料終將刪除。\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                若您希望寫入另一種 Live 系"
-"統，您無須還原該裝置。\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                您是否要繼續？\n"
-"                                            </p>"
+"<p align=\"justify\">若要取得磁碟機可用的所有空間，其得還原至出廠設定。Live "
+"系統和所有儲存資料都將刪除。</p> <p align=\"justify\">若您想寫入另一個 Live "
+"系統，則無需還原磁碟機。 \n"
+"                </p> <p align=\"justify\">是否要還原至出廠設定呢？</p>"
 
 #: ../src/app/qml/RestorePage.qml:67
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
-msgstr ""
-"<p align=\"justify\">請稍候，Fedora 媒體寫入器正在還原您的卸除式裝置時。</p>"
+msgstr "<p align=\"justify\">請稍候，Fedora 媒體寫入器正在還原您的卸除式裝置。</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "您的裝置已成功還原！"
 
 #: ../src/app/qml/RestorePage.qml:94
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
-msgstr "不幸地，我們在過程中遭遇錯誤。<br>請嘗試使用您的系統工具復原該裝置。"
+msgstr "不幸地，過程中有遭遇錯誤。<br>請嘗試使用您的系統工具還原磁碟機。"
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "還原完成"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "選擇 Fedora 發行版"
 
 #: ../src/app/qml/VersionPage.qml:48
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "已選取："
+msgstr "選擇自："
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "官方版本"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Emerging Editions"
-msgstr ""
+msgstr "新秀版本"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr ""
+msgstr "Spins"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Labs"
 
 #: ../src/app/windrivemanager.cpp:265
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "無法尋找輔助程式二進位檔。檢查您的安裝。"
+msgstr "無法尋找 helper 二進位檔案。請檢查您的安裝是否完整。"
 
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "完成！"
 
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "%1 寫入成功"
 
 #: ../src/app/qml/main.qml:116
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora 媒體寫入器"
 
 #: ../src/app/qml/main.qml:154
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Fedora Spins 思變版"
+msgstr "選擇 Fedora 版本"
 
 #: ../src/app/qml/main.qml:170
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "已選取："
+msgstr "選擇磁碟機"
 
 #: ../src/app/qml/main.qml:207
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "main|"
 msgid "Downloading"
-msgstr "下載中"
+msgstr "正在下載"
 
 #: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
@@ -947,49 +742,31 @@ msgid "Restore"
 msgstr "還原"
 
 #: ../src/app/qml/main.qml:286
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "main|"
 msgid "Finish"
-msgstr "完成！"
+msgstr "完成"
 
 #: ../src/app/qml/main.qml:290
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "main|"
 msgid "Write"
-msgstr "寫入 %1"
+msgstr "寫入"
 
 #: ../src/app/qml/main.qml:292
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download && Write"
-msgstr "下載失敗"
+msgstr "下載並寫入"
 
 #: ../src/app/qml/main.qml:293
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "下載失敗"
+msgstr "下載並寫入"
 
 #: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "main|"
 msgid "Cancel"
 msgstr "取消"
 
 #: ../src/app/qml/main.qml:298
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
 msgctxt "main|"
 msgid "Retry"
 msgstr "重試"
@@ -997,17 +774,17 @@ msgstr "重試"
 #: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
-msgstr ""
+msgstr "下一步"
 
 #: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
-msgstr ""
+msgstr "關於"
 
 #: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
-msgstr ""
+msgstr "上一步"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
@@ -1032,10 +809,10 @@ msgid ""
 "about each of them to help you make the right choice."
 msgstr ""
 "為各種 Fedora 版本製作可開機 Live USB 裝置的工具。Fedora 媒體寫入器不只能將映"
-"像檔寫入您的快閃裝置中，它還能替您下載映像檔。它提供官方版（Server、"
-"Workstation）、Fedora Spin 思變版（KDE Plasma 桌面、Xfce 桌面、Cinnamon 桌面…"
-"等）、和 Fedora Labs 實驗室（設計套組、安全實驗室…等）。它提供各版本的基本資"
-"訊來幫助您作選擇。"
+"像檔寫入您的快閃裝置中，它還能替您下載映像檔。它提供官方版（Server、Workstati"
+"on）、Fedora Spins（KDE Plasma 桌面、Xfce 桌面、Cinnamon 桌面……等）、和 "
+"Fedora "
+"Labs（設計套組、安全實驗室……等）。它提供各版本的基本資訊來幫助您作選擇。"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -1052,7 +829,7 @@ msgstr "將 Fedora 映像檔寫入您的卸除式裝置中"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;可開機;"
 
 #, fuzzy
 #~| msgctxt "ReleaseVariant|"
