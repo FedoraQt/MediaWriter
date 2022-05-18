@@ -4,10 +4,10 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-16 08:43+0200\n"
-"PO-Revision-Date: 2022-05-16 11:16+0000\n"
+"PO-Revision-Date: 2022-05-18 10:18+0000\n"
 "Last-Translator: Pikhosh <pikhosh@gmail.com>\n"
-"Language-Team: Persian <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/fa/>\n"
+"Language-Team: Persian <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,17 +17,12 @@ msgstr ""
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr "دربارهٔ Fedora Media Writer"
+msgstr "درباره Fedora Media Writer"
 
 #: ../src/app/qml/AboutDialog.qml:59
-#, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "نسخه %1"
@@ -49,9 +44,6 @@ msgid "Please report bugs or your suggestions on %1"
 msgstr "لطفا، مشکلات یا پیشنهادات خود را در %1 اعلام کنید"
 
 #: ../src/app/qml/AboutDialog.qml:95
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "بستن"
@@ -88,7 +80,7 @@ msgstr ""
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "این عملیات برای لغو ایمن است."
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
@@ -134,7 +126,7 @@ msgstr "ارتباط منقضی شد"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Sucessfuly Written"
-msgstr ""
+msgstr "%1 با موفقیت نوشته شد"
 
 #: ../src/app/qml/DownloadPage.qml:50
 #, qt-format
@@ -274,33 +266,27 @@ msgstr "اتمام"
 #: ../src/app/qml/DownloadPage.qml:347
 msgctxt "DownloadPage|"
 msgid "Sucessfuly written"
-msgstr ""
+msgstr "با موفقیت نوشته شد"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
 msgid "Verification failed due to missing drives"
-msgstr ""
+msgstr "تایید صحت به علت درایو های گم شده ناموفق بود"
 
 #: ../src/app/qml/DownloadPage.qml:381
-#, fuzzy
-#| msgctxt "CancelDialog|"
-#| msgid "Cancel Verification"
 msgctxt "DownloadPage|"
 msgid "Verification failed"
-msgstr "لغو تایید صحت"
+msgstr "تایید صحت ناموفق"
 
 #: ../src/app/qml/DownloadPage.qml:393
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DownloadPage|"
 msgid "Download failed"
-msgstr "دانلود و نوشتن"
+msgstr "دانلود ناموفق"
 
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
 msgid "Failed due to missing drives"
-msgstr ""
+msgstr "ناموفق به علت درایو های گم شده"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -308,38 +294,26 @@ msgid "This drive is not large enough."
 msgstr "این درایو به اندازه کافی بزرگ نیست."
 
 #: ../src/app/qml/DrivePage.qml:36
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "رایت روی دیسک"
+msgstr "گزینه های نوشتن"
 
 #: ../src/app/qml/DrivePage.qml:45
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "نسخه %1"
+msgstr "نسخه"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "معماری سخت افزار"
 
 #: ../src/app/qml/DrivePage.qml:84
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "انتخاب شده:"
+msgstr "فایل انتخاب شده"
 
 #: ../src/app/qml/DrivePage.qml:91
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "هیچ"
@@ -382,7 +356,7 @@ msgstr "حذف دانلود پس از نوشتن"
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr ""
+msgstr "درایو در حال نوشتن بر روی آن حذف شد."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
@@ -392,18 +366,18 @@ msgstr ""
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr ""
+msgstr "پیش از اتمام نوشتن متوقف شد."
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "به پایان رسید!"
 
 #: ../src/app/linuxdrivemanager.cpp:327
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "نوشتن %1 موفق بود"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
@@ -414,7 +388,7 @@ msgstr "خطا"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "نوشتن %1 ناموفق بود"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
@@ -429,50 +403,50 @@ msgstr ""
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
 msgid "Error"
-msgstr ""
+msgstr "خطا"
 
 #: ../src/app/macdrivemanager.cpp:187
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "نوشتن %1 ناموفق بود"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "به پایان رسید!"
 
 #: ../src/app/macdrivemanager.cpp:190
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "نوشتن %1 موفق بود"
 
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "انتخاب منبع ایمیج"
 
 #: ../src/app/qml/MainPage.qml:57
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr ""
+msgstr "دانلود خودکار"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "انتخاب فایل .iso"
 
 #: ../src/app/qml/MainPage.qml:76
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr ""
+msgstr "بازیابی <b>%1</b>"
 
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr ""
+msgstr "فایل های ایمیج"
 
 #: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
@@ -561,7 +535,7 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:391
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
-msgstr ""
+msgstr "ایمیج سفارشی"
 
 #: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
 msgctxt "ReleaseVariant|"
@@ -571,12 +545,12 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:944
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
-msgstr ""
+msgstr "فایل دانلود شده قابل خواندن نیست."
 
 #: ../src/app/releasemanager.cpp:955
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr ""
+msgstr "ناتوان در تغییر نام فایل موقت."
 
 #: ../src/app/releasemanager.h:372
 msgctxt "ReleaseVariant|"
@@ -601,7 +575,7 @@ msgstr "آماده برای نوشتن"
 #: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr ""
+msgstr "فایل ایمیج در پوشه Downloads شما ذخیره شده. نوشتن امکان پذیر نیست"
 
 #: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
@@ -616,7 +590,7 @@ msgstr "بررسی داده های نوشته شده"
 #: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
-msgstr ""
+msgstr "به پایان رسید!"
 
 #: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
@@ -626,7 +600,7 @@ msgstr ""
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr ""
+msgstr "دانلود ناموفق"
 
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
@@ -655,7 +629,7 @@ msgstr ""
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "بازیابی درایو <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:49
 msgctxt "RestorePage|"
@@ -730,20 +704,18 @@ msgstr ""
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "به پایان رسید!"
 
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "نوشتن %1 موفق بود"
 
 #: ../src/app/qml/main.qml:116
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "main|"
 msgid "Fedora Media Writer"
-msgstr "Fedora Media Writer"
+msgstr ""
 
 #: ../src/app/qml/main.qml:154
 msgctxt "main|"
