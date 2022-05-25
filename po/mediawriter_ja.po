@@ -4,10 +4,10 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-16 08:43+0200\n"
-"PO-Revision-Date: 2022-05-18 10:18+0000\n"
+"PO-Revision-Date: 2022-05-25 07:18+0000\n"
 "Last-Translator: Hajime Taira <htaira@pantora.net>\n"
-"Language-Team: Japanese <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/ja/>\n"
+"Language-Team: Japanese <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -237,6 +237,10 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
+"お使いの環境もしくはお使いのデバイスはFedora Media "
+"Writerでサポートされておりません。"
+"Fedoraとブートメディアの作成に関する要件について詳しくは<a "
+"href=%1>こちらのページ</a>をご確認ください。"
 
 #: ../src/app/qml/DownloadPage.qml:165
 #, qt-format
@@ -406,81 +410,82 @@ msgstr "完了!"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "%1 の書き込みが完了しました"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
 msgid "Error"
-msgstr ""
+msgstr "エラー"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "%1 の書き込みに失敗しました"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
-msgstr ""
+msgstr "UDisks2はシステムから使用できないか、アクセスできないようです。"
 
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
+msgstr "ヘルパーバイナリーが見つかりませんでした。インストール環境を確認してください"
+"。"
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
 msgid "Error"
-msgstr ""
+msgstr "エラー"
 
 #: ../src/app/macdrivemanager.cpp:187
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "%1の書き込みに失敗しました"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "完了しました！"
 
 #: ../src/app/macdrivemanager.cpp:190
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "%1 の書き込みが完了しました。"
 
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "イメージソースを選択する"
 
 #: ../src/app/qml/MainPage.qml:57
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr ""
+msgstr "ダウンロードが自動的に行われます"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr ".isoファイルを選択する"
 
 #: ../src/app/qml/MainPage.qml:76
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr ""
+msgstr "<b>%1</b>を修復する"
 
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr ""
+msgstr "イメージファイル"
 
 #: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr ""
+msgstr "すべてのファイル"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
@@ -499,6 +504,9 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
+"<p>ハードディスク上のOSイメージを選択頂き、USBメモリーもしくはSDカードに書き"
+"込むことができます。</p><p>現在のところ無圧縮のディスクイメージ(.isoもしくは."
+"bin)をサポートしています</p>"
 
 #: ../src/app/releasemanager.cpp:423
 msgctxt "Release|"
@@ -528,7 +536,7 @@ msgstr "Intel/AMD 64bit"
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr ""
+msgstr "Intel/AMDおよび互換PC(64bit)向けのISO形式イメージ"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
@@ -570,17 +578,17 @@ msgstr "カスタムイメージ"
 #: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
-msgstr ""
+msgstr "ダウンロードしたイメージが壊れています"
 
 #: ../src/app/releasemanager.cpp:944
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
-msgstr ""
+msgstr "ダウンロードしたファイルが読み込みできません。"
 
 #: ../src/app/releasemanager.cpp:955
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr ""
+msgstr "一時的作業ファイルをリネームできません。"
 
 #: ../src/app/releasemanager.h:372
 msgctxt "ReleaseVariant|"
@@ -685,6 +693,13 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
+"<p align=\"justify\">メディアで使用可能なすべての領域の再利用を行なうには、デ"
+"ィアを工場出荷時の設定に復元する必要があります。 "
+"Liveブートで保存されたすべてのデータが削除されます。</p> <p align = \"justify"
+"\">別のLiveイメージをメディアに書き込む場合は、メディアを復元する必要はありま"
+"せん。 \n"
+"                </p> <p align=\"justify\""
+">メディアを工場出荷時の状態に戻しますか？</p>"
 
 #: ../src/app/qml/RestorePage.qml:67
 msgctxt "RestorePage|"
@@ -842,7 +857,7 @@ msgstr "次へ"
 #: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
-msgstr ""
+msgstr "このアプリケーションについて"
 
 #: ../src/app/qml/main.qml:308
 msgctxt "main|"
@@ -874,6 +889,13 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
+"このツールではFedoraのさまざまなエディションのLive "
+"USBメディアを作成することができます。Fedora Media Writerはイメージの書き込み"
+"だけではなくイメージのダウンロードも行なうことができます。オフィシャルイメー"
+"ジ(Server, Workstation)およびFedora Spin(KDE Plasma Desktop, Xfce Desktop, "
+"Cinnamon Desktopなど)や、Fedora Labs(Design Suite, Security Labなど)に対応し"
+"ています。確かな選択が行えるように、それぞれについての基本的な情報を提供しま"
+"す。"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
