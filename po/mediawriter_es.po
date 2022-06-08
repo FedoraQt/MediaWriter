@@ -15,11 +15,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-16 08:43+0200\n"
+"POT-Creation-Date: 2022-06-07 09:00+0200\n"
 "PO-Revision-Date: 2022-06-04 18:18+0000\n"
 "Last-Translator: Alejandro Alcaide <alex@blueselene.com>\n"
-"Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/es/>\n"
+"Language-Team: Spanish <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -744,6 +744,95 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "La escritura de %1 finalizó correctamente"
 
+#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/win/writejob.cpp:271
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
+msgstr "Error al descomprimir."
+
+#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
+#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
+#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "No se puede escribir en la unidad de destino"
+
+#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/win/writejob.cpp:315
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr "No hay memoria suficiente para descomprimir el archivo."
+
+#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/win/writejob.cpp:320
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "Hay errores en el archivo comprimido de la descarga."
+
+#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/win/writejob.cpp:323
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr "No hay soporte para las opciones de compresión."
+
+#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/win/writejob.cpp:326
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr "Error desconocido al descomprimir."
+
+#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/win/writejob.cpp:361
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "No se puede leer la imagen"
+
+#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:406
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr "Puede que su unidad esté dañada."
+
+#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:411
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr ""
+"Se produjo un error inesperado durante la comprobación del medio de "
+"almacenamiento."
+
+#: ../src/helper/mac/writejob.cpp:86
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr "no es posible crear un par de socket"
+
+#: ../src/helper/mac/writejob.cpp:131
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr "No es posible abrir el destino para escritura"
+
+#: ../src/helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr "No se pudo abrir la unidad en modo de escritura"
+
+#: ../src/helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr "No se pudo bloquear la unidad"
+
+#: ../src/helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr "No se pudo quitar la unidad %1:"
+
+#: ../src/helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr "No se pudo desbloquear la unidad"
+
 #: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
@@ -950,68 +1039,6 @@ msgstr "fmw;usb;iso;bootable;"
 #~ msgctxt "RestoreDialog|"
 #~ msgid "Close"
 #~ msgstr "Cerrar"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Failed to start decompressing."
-#~ msgstr "Error al descomprimir."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Destination drive is not writable"
-#~ msgstr "No se puede escribir en la unidad de destino"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "There is not enough memory to decompress the file."
-#~ msgstr "No hay memoria suficiente para descomprimir el archivo."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "The downloaded compressed file is corrupted."
-#~ msgstr "Hay errores en el archivo comprimido de la descarga."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unsupported compression options."
-#~ msgstr "No hay soporte para las opciones de compresión."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unknown decompression error."
-#~ msgstr "Error desconocido al descomprimir."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Source image is not readable"
-#~ msgstr "No se puede leer la imagen"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Your drive is probably damaged."
-#~ msgstr "Puede que su unidad esté dañada."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unexpected error occurred during media check."
-#~ msgstr ""
-#~ "Se produjo un error inesperado durante la comprobación del medio de "
-#~ "almacenamiento."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't open the drive for writing"
-#~ msgstr "No se pudo abrir la unidad en modo de escritura"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't lock the drive"
-#~ msgstr "No se pudo bloquear la unidad"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't remove the drive %1:"
-#~ msgstr "No se pudo quitar la unidad %1:"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't unlock the drive"
-#~ msgstr "No se pudo desbloquear la unidad"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to allocate socket pair"
-#~ msgstr "no es posible crear un par de socket"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to open destination for writing"
-#~ msgstr "No es posible abrir el destino para escritura"
 
 #~ msgctxt "main|"
 #~ msgid ""

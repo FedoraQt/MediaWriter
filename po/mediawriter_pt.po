@@ -5,12 +5,12 @@
 # #-#-#-#-#  mediawriter_pt.po  #-#-#-#-#
 # Joao Almeida <intjalmeida@gmail.com>, 2017. #zanata
 # Manuela Silva <mmsrs@sky.com>, 2019. #zanata
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2021.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-16 08:43+0200\n"
-"PO-Revision-Date: 2021-09-09 14:04+0000\n"
+"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"PO-Revision-Date: 2022-06-08 12:23+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/pt/>\n"
@@ -19,45 +19,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.8\n"
+"X-Generator: Weblate 4.12.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr "Sobre Fedora Media Writer"
+msgstr "Acerca do Fedora Media Writer"
 
 #: ../src/app/qml/AboutDialog.qml:59
-#, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Versão %1"
 
 #: ../src/app/qml/AboutDialog.qml:66
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "Fedora Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "O Fedora Media Writer está agora a verificar se há novos lançamentos"
+msgstr ""
+"O Fedora Media Writer está agora a verificar se existem novos lançamentos"
 
 #: ../src/app/qml/AboutDialog.qml:72
-#, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr "Por favor, reporte erros ou as suas sugestões em %1"
+msgstr "Reportar erros ou sugestões em %1"
 
 #: ../src/app/qml/AboutDialog.qml:95
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Fechar"
@@ -65,20 +53,17 @@ msgstr "Fechar"
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "Cancelar a transferência?"
 
 #: ../src/app/qml/CancelDialog.qml:58
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "A gravar"
+msgstr "Cancelar a gravação?"
 
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "Cancelar a verificação?"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
@@ -102,23 +87,17 @@ msgstr ""
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
 
 #: ../src/app/qml/CancelDialog.qml:110
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "A transferir"
+msgstr "Cancelar a transferência"
 
 #: ../src/app/qml/CancelDialog.qml:112
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "A gravar"
+msgstr "Cancelar a gravação"
 
 #: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
@@ -930,6 +909,93 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "A gravação %1 foi bem sucedida"
 
+#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/win/writejob.cpp:271
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
+msgstr "Não foi possível iniciar a descompressão."
+
+#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
+#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
+#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "A unidade de destino não é gravável"
+
+#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/win/writejob.cpp:315
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr "Não tem memória suficiente para descomprimir o ficheiro."
+
+#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/win/writejob.cpp:320
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "O ficheiro comprimido transferido está corrompido."
+
+#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/win/writejob.cpp:323
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr "Opções de compressão não suportadas."
+
+#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/win/writejob.cpp:326
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr "Erro de descompressão desconhecido."
+
+#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/win/writejob.cpp:361
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "A imagem fonte não é legível"
+
+#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:406
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr "A sua unidade provavelmente está danificada."
+
+#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:411
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr "Ocorreu um erro inesperado durante a verificação dos dados."
+
+#: ../src/helper/mac/writejob.cpp:86
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr "Não foi possível atribuir par de sockets"
+
+#: ../src/helper/mac/writejob.cpp:131
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr "Não foi possível abrir o destino para gravação"
+
+#: ../src/helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr "Não foi possível abrir a unidade para gravação"
+
+#: ../src/helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr "Não foi possível bloquear a unidade"
+
+#: ../src/helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr "Não foi possível remover a unidade %1:"
+
+#: ../src/helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr "Não foi possível desbloquear a unidade"
+
 #: ../src/app/qml/main.qml:116
 #, fuzzy
 #| msgid "Fedora Media Writer"
@@ -1167,66 +1233,6 @@ msgstr ""
 #~ msgctxt "RestoreDialog|"
 #~ msgid "Close"
 #~ msgstr "Fechar"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Failed to start decompressing."
-#~ msgstr "Não foi possível iniciar a descompressão."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Destination drive is not writable"
-#~ msgstr "A unidade de destino não é gravável"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "There is not enough memory to decompress the file."
-#~ msgstr "Não tem memória suficiente para descomprimir o ficheiro."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "The downloaded compressed file is corrupted."
-#~ msgstr "O ficheiro comprimido transferido está corrompido."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unsupported compression options."
-#~ msgstr "Opções de compressão não suportadas."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unknown decompression error."
-#~ msgstr "Erro de descompressão desconhecido."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Source image is not readable"
-#~ msgstr "A imagem fonte não é legível"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Your drive is probably damaged."
-#~ msgstr "A sua unidade provavelmente está danificada."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unexpected error occurred during media check."
-#~ msgstr "Ocorreu um erro inesperado durante a verificação dos dados."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't open the drive for writing"
-#~ msgstr "Não foi possível abrir a unidade para gravação"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't lock the drive"
-#~ msgstr "Não foi possível bloquear a unidade"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't remove the drive %1:"
-#~ msgstr "Não foi possível remover a unidade %1:"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't unlock the drive"
-#~ msgstr "Não foi possível desbloquear a unidade"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to allocate socket pair"
-#~ msgstr "Não foi possível atribuir par de sockets"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to open destination for writing"
-#~ msgstr "Não foi possível abrir o destino para gravação"
 
 #~ msgctxt "main|"
 #~ msgid ""
