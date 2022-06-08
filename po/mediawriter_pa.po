@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-16 08:43+0200\n"
+"POT-Creation-Date: 2022-06-07 09:00+0200\n"
 "PO-Revision-Date: 2022-05-06 23:36+0000\n"
 "Last-Translator: A S Alam <amanpreet.alam@gmail.com>\n"
 "Language-Team: Punjabi <https://translate.fedoraproject.org/projects/fedora-"
@@ -853,6 +853,93 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "%1 ਨੂੰ ਲਿਖਣਾ ਕਾਮਯਾਬ ਰਿਹਾ"
 
+#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/win/writejob.cpp:271
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
+msgstr "ਡੀਕੰਪੈਰਸ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਫ਼ਲ ਹੈ।"
+
+#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
+#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
+#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "ਟਿਕਾਣਾ ਡਰਾਇਵ ਲਿਖਣਯੋਗ ਨਹੀਂ"
+
+#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/win/writejob.cpp:315
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr "ਫ਼ਾਇਲ ਨੂੰ ਖਿਲਾਰਨ ਲਈ ਚਾਹੀਦੀ ਮੈਮੋਰੀ ਨਹੀਂ ਹੈ।"
+
+#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/win/writejob.cpp:320
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "ਡਾਊਨਲੋਡ ਕੀਤੀ ਕੰਪਰੈਸ ਫ਼ਾਇਲ ਖ਼ਰਾਬ ਹੈ।"
+
+#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/win/writejob.cpp:323
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr "ਗ਼ੈਰਸਹਾਇਕ ਨਪੀੜਨ ਚੋਣਾਂ।"
+
+#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/win/writejob.cpp:326
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr "ਅਣਪਛਾਤੀ ਡੀਕੰਪਰੈਸ਼ਨ ਗਲਤੀ।"
+
+#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/win/writejob.cpp:361
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "ਸਰੋਤ ਈਮੇਜ਼ ਪੜ੍ਹਨਯੋਗ ਨਹੀਂ ਹੈ"
+
+#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:406
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr "ਸ਼ਾਇਦ ਤੁਹਾਡੀ ਡਰਾਇਵ ਖ਼ਰਾਬ ਹੋ ਗਈ ਹੈ।"
+
+#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:411
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr "ਮੀਡੀਆ ਜਾਂਚ ਦੇ ਦੌਰਾਨ ਅਣਪਛਾਤੀ ਗਲਤੀ ਆਈ ਹੈ।"
+
+#: ../src/helper/mac/writejob.cpp:86
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr ""
+
+#: ../src/helper/mac/writejob.cpp:131
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr "ਲਿਖਣ ਲਈ ਟਿਕਾਣੇ ਨੂੰ ਖੋਲ੍ਹਣ ਵਾਸਤੇ ਅਸਮਰੱਥ ਹੈ"
+
+#: ../src/helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr "ਲਿਖਣ ਲਈ ਡਰਾਇਵ ਖੋਲ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕੀ"
+
+#: ../src/helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr "ਡਰਾਇਵ ਲਾਕ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ"
+
+#: ../src/helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr "%1 ਡਰਾਇਵ ਹਟਾਈ ਨਹੀਂ ਜਾ ਸਕੀ:"
+
+#: ../src/helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr "ਡਰਾਇਵ ਅਣ-ਲਾਕ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ"
+
 #: ../src/app/qml/main.qml:116
 #, fuzzy
 #| msgid "Fedora Media Writer"
@@ -1080,62 +1167,6 @@ msgstr "fmw;usb;iso;ਬੂਟ-ਹੋਣਯੋਗ;"
 #~ msgctxt "RestoreDialog|"
 #~ msgid "Close"
 #~ msgstr "ਬੰਦ ਕਰੋ"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Failed to start decompressing."
-#~ msgstr "ਡੀਕੰਪੈਰਸ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਫ਼ਲ ਹੈ।"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Destination drive is not writable"
-#~ msgstr "ਟਿਕਾਣਾ ਡਰਾਇਵ ਲਿਖਣਯੋਗ ਨਹੀਂ"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "There is not enough memory to decompress the file."
-#~ msgstr "ਫ਼ਾਇਲ ਨੂੰ ਖਿਲਾਰਨ ਲਈ ਚਾਹੀਦੀ ਮੈਮੋਰੀ ਨਹੀਂ ਹੈ।"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "The downloaded compressed file is corrupted."
-#~ msgstr "ਡਾਊਨਲੋਡ ਕੀਤੀ ਕੰਪਰੈਸ ਫ਼ਾਇਲ ਖ਼ਰਾਬ ਹੈ।"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unsupported compression options."
-#~ msgstr "ਗ਼ੈਰਸਹਾਇਕ ਨਪੀੜਨ ਚੋਣਾਂ।"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unknown decompression error."
-#~ msgstr "ਅਣਪਛਾਤੀ ਡੀਕੰਪਰੈਸ਼ਨ ਗਲਤੀ।"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Source image is not readable"
-#~ msgstr "ਸਰੋਤ ਈਮੇਜ਼ ਪੜ੍ਹਨਯੋਗ ਨਹੀਂ ਹੈ"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Your drive is probably damaged."
-#~ msgstr "ਸ਼ਾਇਦ ਤੁਹਾਡੀ ਡਰਾਇਵ ਖ਼ਰਾਬ ਹੋ ਗਈ ਹੈ।"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unexpected error occurred during media check."
-#~ msgstr "ਮੀਡੀਆ ਜਾਂਚ ਦੇ ਦੌਰਾਨ ਅਣਪਛਾਤੀ ਗਲਤੀ ਆਈ ਹੈ।"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't open the drive for writing"
-#~ msgstr "ਲਿਖਣ ਲਈ ਡਰਾਇਵ ਖੋਲ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕੀ"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't lock the drive"
-#~ msgstr "ਡਰਾਇਵ ਲਾਕ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't remove the drive %1:"
-#~ msgstr "%1 ਡਰਾਇਵ ਹਟਾਈ ਨਹੀਂ ਜਾ ਸਕੀ:"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't unlock the drive"
-#~ msgstr "ਡਰਾਇਵ ਅਣ-ਲਾਕ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to open destination for writing"
-#~ msgstr "ਲਿਖਣ ਲਈ ਟਿਕਾਣੇ ਨੂੰ ਖੋਲ੍ਹਣ ਵਾਸਤੇ ਅਸਮਰੱਥ ਹੈ"
 
 #~ msgctxt "main|"
 #~ msgid ""
