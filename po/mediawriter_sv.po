@@ -11,17 +11,17 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2022-05-09 07:33+0000\n"
+"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"PO-Revision-Date: 2022-05-18 16:21+0000\n"
 "Last-Translator: Luna Jernberg <bittin@reimu.nl>\n"
-"Language-Team: Swedish <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/sv/>\n"
+"Language-Team: Swedish <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 4.12.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -95,17 +95,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "Fortsätt"
 
-#: ../src/app/qml/CancelDialog.qml:106
+#: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Avbryt Nedladdning"
 
-#: ../src/app/qml/CancelDialog.qml:108
+#: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Avbryt Skrivning"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Avbryt Verifiering"
@@ -133,7 +133,7 @@ msgstr "Anslutningens tidsgräns överskreds"
 #: ../src/app/qml/DownloadPage.qml:48
 #, qt-format
 msgctxt "DownloadPage|"
-msgid "%1 Sucessfuly Written"
+msgid "%1 Successfully Written"
 msgstr "%1 Framgångsrikt skrivet"
 
 #: ../src/app/qml/DownloadPage.qml:50
@@ -142,7 +142,7 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Skriver %1"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
 msgstr "Verifiering av skriven data"
@@ -266,11 +266,6 @@ msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "Skriver"
 
-#: ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "Skriv verifiering"
-
 #: ../src/app/qml/DownloadPage.qml:334
 msgctxt "DownloadPage|"
 msgid "Finish"
@@ -278,28 +273,28 @@ msgstr "Slutför"
 
 #: ../src/app/qml/DownloadPage.qml:347
 msgctxt "DownloadPage|"
-msgid "Write Successful"
-msgstr "Skrivning lyckades"
+msgid "Successfully written"
+msgstr "Framgångsrikt skrivet"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
-msgstr "Misslyckad verifiering inga enheter"
+msgid "Verification failed due to missing drives"
+msgstr "Verifiering misslyckades på grund av saknade diskar"
 
 #: ../src/app/qml/DownloadPage.qml:381
 msgctxt "DownloadPage|"
-msgid "Failed verification"
-msgstr "Misslyckades verifiera"
+msgid "Verification failed"
+msgstr "Verifiering misslyckades"
 
 #: ../src/app/qml/DownloadPage.qml:393
 msgctxt "DownloadPage|"
-msgid "Failed download"
-msgstr "Misslyckades ladda ner"
+msgid "Download failed"
+msgstr "Nedladdning misslyckades"
 
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
-msgstr "Misslyckades inga enheter"
+msgid "Failed due to missing drives"
+msgstr "Misslyckades pga av saknade diskar"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -743,72 +738,159 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "Att skriva %1 lyckades"
 
-#: ../src/app/qml/main.qml:117
+#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/win/writejob.cpp:271
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
+msgstr "Misslyckades att starta dekomprimeringen."
+
+#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
+#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
+#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "Destinationsenheten är inte skrivbar"
+
+#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/win/writejob.cpp:315
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr "Det finns inte tillräckligt med minne för att dekomprimera filen."
+
+#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/win/writejob.cpp:320
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "Den hämtade komprimerade filen är trasig."
+
+#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/win/writejob.cpp:323
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr "Komprimeringsalternativ som ej stödjs."
+
+#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/win/writejob.cpp:326
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr "Okänt dekomprimeringsfel."
+
+#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/win/writejob.cpp:361
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "Källavbilden är inte läsbar"
+
+#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:406
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr "Din enhet är förmodligen skadad."
+
+#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:411
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr "Ett oväntat fel inträffade under mediakontrollen."
+
+#: ../src/helper/mac/writejob.cpp:86
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr "kan inte skapa uttagspar"
+
+#: ../src/helper/mac/writejob.cpp:131
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr "Kunde inte öppna destinationen för att skriva"
+
+#: ../src/helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr "Kunde inte öppna enheten för skrivning"
+
+#: ../src/helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr "Kunde inte låsa enheten"
+
+#: ../src/helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr "Kunde inte ta bort enheten %1:"
+
+#: ../src/helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr "Kunde inte låsa upp enheten"
+
+#: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Mediaskrivare"
 
-#: ../src/app/qml/main.qml:157
+#: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr "Välj Fedora Version"
 
-#: ../src/app/qml/main.qml:173
+#: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
 msgstr "Vald enhet"
 
-#: ../src/app/qml/main.qml:211
+#: ../src/app/qml/main.qml:207
 msgctxt "main|"
 msgid "Downloading"
 msgstr "Laddar ner"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
 msgstr "Återställ"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:286
 msgctxt "main|"
 msgid "Finish"
 msgstr "Slutför"
 
-#: ../src/app/qml/main.qml:294
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Write"
 msgstr "Skriv"
 
-#: ../src/app/qml/main.qml:296
+#: ../src/app/qml/main.qml:292
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "Ladda ner && Skriv"
 
-#: ../src/app/qml/main.qml:297
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "Ladda ner & Skriv"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../src/app/qml/main.qml:302
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "Retry"
 msgstr "Försök igen"
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
 msgstr "Nästa"
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
 msgstr "Om"
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
 msgstr "Föregående"
@@ -859,6 +941,26 @@ msgstr "Skriv Fedoraavbilder till dina portabla enheter"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootbar;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "Skriv verifiering"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "Skrivning lyckades"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification no drives"
+#~ msgstr "Misslyckad verifiering inga enheter"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification"
+#~ msgstr "Misslyckades verifiera"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "Misslyckades ladda ner"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"
@@ -927,66 +1029,6 @@ msgstr "fmw;usb;iso;bootbar;"
 #~ msgctxt "RestoreDialog|"
 #~ msgid "Close"
 #~ msgstr "Stäng"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Failed to start decompressing."
-#~ msgstr "Misslyckades att starta dekomprimeringen."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Destination drive is not writable"
-#~ msgstr "Destinationsenheten är inte skrivbar"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "There is not enough memory to decompress the file."
-#~ msgstr "Det finns inte tillräckligt med minne för att dekomprimera filen."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "The downloaded compressed file is corrupted."
-#~ msgstr "Den hämtade komprimerade filen är trasig."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unsupported compression options."
-#~ msgstr "Komprimeringsalternativ som ej stödjs."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unknown decompression error."
-#~ msgstr "Okänt dekomprimeringsfel."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Source image is not readable"
-#~ msgstr "Källavbilden är inte läsbar"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Your drive is probably damaged."
-#~ msgstr "Din enhet är förmodligen skadad."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unexpected error occurred during media check."
-#~ msgstr "Ett oväntat fel inträffade under mediakontrollen."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't open the drive for writing"
-#~ msgstr "Kunde inte öppna enheten för skrivning"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't lock the drive"
-#~ msgstr "Kunde inte låsa enheten"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't remove the drive %1:"
-#~ msgstr "Kunde inte ta bort enheten %1:"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't unlock the drive"
-#~ msgstr "Kunde inte låsa upp enheten"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to allocate socket pair"
-#~ msgstr "kan inte skapa uttagspar"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to open destination for writing"
-#~ msgstr "Kunde inte öppna destinationen för att skriva"
 
 #~ msgctxt "main|"
 #~ msgid ""

@@ -8,11 +8,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2022-05-12 20:18+0000\n"
+"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"PO-Revision-Date: 2022-05-18 10:18+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/he/>\n"
+"Language-Team: Hebrew <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: ../src/app/qml/AboutDialog.qml:50
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr "על כותב המדיה של Fedora"
+msgstr "על כותב המדיה של פדורה"
 
 #: ../src/app/qml/AboutDialog.qml:59
 #, qt-format
@@ -35,7 +35,7 @@ msgstr "גרסה %1"
 #: ../src/app/qml/AboutDialog.qml:66
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "כותב המדיה של Fedora מחפש מהדורות חדשות"
+msgstr "כותב המדיה של פדורה מחפש מהדורות חדשות"
 
 #: ../src/app/qml/AboutDialog.qml:72
 #, qt-format
@@ -87,17 +87,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "המשך"
 
-#: ../src/app/qml/CancelDialog.qml:106
+#: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "ביטול ההורדה"
 
-#: ../src/app/qml/CancelDialog.qml:108
+#: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "ביטול כתיבה"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "ביטול בדיקה"
@@ -123,9 +123,11 @@ msgid "Connection timed out"
 msgstr "תם הזמן להתחברות"
 
 #: ../src/app/qml/DownloadPage.qml:48
-#, qt-format
+#, fuzzy, qt-format
+#| msgctxt "DownloadPage|"
+#| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
-msgid "%1 Sucessfuly Written"
+msgid "%1 Successfully Written"
 msgstr "%1 נכתב בהצלחה"
 
 #: ../src/app/qml/DownloadPage.qml:50
@@ -134,7 +136,7 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "%1 נכתב"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
 msgstr "הנתונים שנכתבו נבדקים"
@@ -146,88 +148,60 @@ msgid "Downloading %1"
 msgstr "%1 בהורדה"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
 msgctxt "DownloadPage|"
 msgid "Verifying downloaded image"
-msgstr "הדמות שירדה פגומה"
+msgstr "קובץ הדמות שירד עובר אימות"
 
 #: ../src/app/qml/DownloadPage.qml:58
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "בהכנה"
+msgstr "%1 בהכנה"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
 msgctxt "DownloadPage|"
 msgid "Failed"
-msgstr ""
+msgstr "נכשל"
 
 #: ../src/app/qml/DownloadPage.qml:72
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr "(נותרו %1 בתים)"
+msgstr " בתים נותרו)"
 
 #: ../src/app/qml/DownloadPage.qml:73
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr "(נותרו %1 ק״ב)"
+msgstr " ק״ב נותרו)"
 
 #: ../src/app/qml/DownloadPage.qml:74
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr "(נותרו %1 מ״ב)"
+msgstr " מ״ב נותרו)"
 
 #: ../src/app/qml/DownloadPage.qml:75
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr "(נותרו %1 ג״ב)"
+msgstr " ג״ב נותרו)"
 
 #: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
 #: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:124
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "הקובץ יישמר לתיקיית ההורדות שלך."
+msgstr "ההורדות נשמרות לתיקיית ההורדות."
 
 #: ../src/app/qml/DownloadPage.qml:132
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "הכתיבה תגרום לאבדן כל המידע שעל %1."
 
 #: ../src/app/qml/DownloadPage.qml:140
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using Fedora Media Writer; this will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -235,47 +209,32 @@ msgid ""
 "from your drive."
 msgstr ""
 "גודל הכונן שלך יוקטן. ניתן לשנות את הגודל בחזרה על ידי שימוש בכותב המדיה של "
-"פדורה, פעולה זו תסיר את המדיה של ההתקנה מהכונן שלך."
+"פדורה. פעולה זו תסיר את המדיה של ההתקנה מהכונן שלך."
 
 #: ../src/app/qml/DownloadPage.qml:148
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "נבחר:"
 
 #: ../src/app/qml/DownloadPage.qml:148
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "ללא"
 
 #: ../src/app/qml/DownloadPage.qml:156
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your board or device is not supported by Fedora Media Writer yet. Please "
-#| "check <a href=%1>this page</a> for more information about its "
-#| "compatibility with Fedora and how to create bootable media for it."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"הלוח או ההתקן שלך אינו נתמך באופן מלא על ידי כותב המדיה של פדורה. נא לעיין "
-"ב<a href=%1>עמוד הזה</a> לקבלת מידע נוסף על התאימות של הכלי עם פדורה וכיצד "
-"ליצור מדיה להתקנה עבורו."
+"הלוח או ההתקן שלך אינו נתמך על ידי כותב המדיה של פדורה. נא לעיין ב<a href="
+"%1>עמוד הזה</a> לקבלת מידע נוסף על התאימות של ההתקן עם פדורה וכיצד ליצור "
+"מדיה להתקנה עבורו."
 
 #: ../src/app/qml/DownloadPage.qml:165
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
@@ -286,70 +245,50 @@ msgstr "גודל הכונן הנבחר הוא %1. יכול להיות שבחרת
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "יש להפעיל מחדש ולטעון את המערכת דרך %1 כדי להתחיל להשתמש ב־%2."
 
 #: ../src/app/qml/DownloadPage.qml:262
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Writing is not possible"
 msgctxt "DownloadPage|"
 msgid "Writing not possible"
-msgstr "כתיבה אינה אפשרית"
+msgstr "אי אפשר לכתוב"
 
 #: ../src/app/qml/DownloadPage.qml:282
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "מתבצעת כתיבה"
 
-#: ../src/app/qml/DownloadPage.qml:310
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "מתבצעת כתיבה"
-
 #: ../src/app/qml/DownloadPage.qml:334
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "הסתיים!"
+msgstr "סיום"
 
 #: ../src/app/qml/DownloadPage.qml:347
 #, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
+#| msgctxt "DownloadPage|"
+#| msgid "Sucessfuly written"
 msgctxt "DownloadPage|"
-msgid "Write Successful"
-msgstr "הכתיבה של %1 הצליחה"
+msgid "Successfully written"
+msgstr "נכתב בהצלחה"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
-msgstr ""
+msgid "Verification failed due to missing drives"
+msgstr "הבדיקה נכשלה עקב מחסור בכוננים"
 
 #: ../src/app/qml/DownloadPage.qml:381
 msgctxt "DownloadPage|"
-msgid "Failed verification"
-msgstr ""
+msgid "Verification failed"
+msgstr "הבדיקה נכשלה"
 
 #: ../src/app/qml/DownloadPage.qml:393
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "DownloadPage|"
-msgid "Failed download"
-msgstr "ההורדה נבדקת"
+msgid "Download failed"
+msgstr "ההורדה נכשלה"
 
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
-msgstr ""
+msgid "Failed due to missing drives"
+msgstr "נכשל עקב כוננים חסרים"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -357,62 +296,41 @@ msgid "This drive is not large enough."
 msgstr "הכונן הזה לא גדול מספיק."
 
 #: ../src/app/qml/DrivePage.qml:36
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "כתיבה לכונן"
+msgstr "אפשרויות כתיבה"
 
 #: ../src/app/qml/DrivePage.qml:45
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "גרסה %1"
+msgstr "גרסה"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "ארכיטקטורת חומרה"
 
 #: ../src/app/qml/DrivePage.qml:84
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "נבחר:"
+msgstr "קובץ נבחר"
 
 #: ../src/app/qml/DrivePage.qml:91
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "ללא"
 
 #: ../src/app/qml/DrivePage.qml:99
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "נבחר:"
+msgstr "בחירה…"
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr "קובצי דמויות"
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "כל הקבצים (*)"
@@ -420,31 +338,22 @@ msgstr "כל הקבצים (*)"
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "כונן USB"
 
 #: ../src/app/qml/DrivePage.qml:135
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr "אין התקנים ניידים מחוברים"
+msgstr "אין כוננים ניידים מחוברים"
 
 #: ../src/app/qml/DrivePage.qml:155
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "בהורדה"
+msgstr "הורדה"
 
 #: ../src/app/qml/DrivePage.qml:160
-#, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "מחיקת הדמות שהתקבלה"
+msgstr "מחיקת הורדה לאחר הכתיבה"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -518,49 +427,38 @@ msgstr "הכתיבה של %1 הצליחה"
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "בחירת מקור דמות"
 
 #: ../src/app/qml/MainPage.qml:57
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "ההורדה נכשלה"
+msgstr "הורדה אוטומטית"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "בחירת קובץ ‎.iso"
 
 #: ../src/app/qml/MainPage.qml:76
-#, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
+#, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "שחזור %1?"
+msgstr "שחזור של <b>%1</b>"
 
 #: ../src/app/portalfiledialog.cpp:143
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "קובצי דמויות"
 
 #: ../src/app/portalfiledialog.cpp:153
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "כל הקבצים (*)"
+msgstr "כל הקבצים"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "פתיחת קובץ"
 
 #: ../src/app/releasemanager.cpp:392
 msgctxt "Release|"
@@ -590,7 +488,7 @@ msgstr "מעבדות פדורה"
 #: ../src/app/releasemanager.cpp:427
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
-msgstr ""
+msgstr "מהדורות מתפתחות של פדורה"
 
 #: ../src/app/releasemanager.cpp:429
 msgctxt "Release|"
@@ -598,12 +496,9 @@ msgid "Other"
 msgstr "אחר"
 
 #: ../src/app/releasemanager.cpp:1069
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Intel 64 סיביות"
+msgstr "Intel/AMD‏ 64 סיביות"
 
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
@@ -611,12 +506,9 @@ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "דמות ISO עבור Intel, AMD ושאר מחשבים אישיים תואמים (64 סיביות)"
 
 #: ../src/app/releasemanager.cpp:1070
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Intel 32 סיביות"
+msgstr "Intel/AMD‏ 32 סיביות"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
@@ -665,25 +557,16 @@ msgid "Unable to rename the temporary file."
 msgstr "לא ניתן לשנות את שם הקובץ הזמני."
 
 #: ../src/app/releasemanager.h:372
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "בהכנה"
 
 #: ../src/app/releasemanager.h:373
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "בהורדה"
 
 #: ../src/app/releasemanager.h:374
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "ההורדה נבדקת"
@@ -699,17 +582,11 @@ msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr "קובץ הדמות נשמר לתיקיית ההורדות שלך. אין אפשרות לכתוב"
 
 #: ../src/app/releasemanager.h:377
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "מתבצעת כתיבה"
 
 #: ../src/app/releasemanager.h:378
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "הנתונים שנכתבו נבדקים"
@@ -725,9 +602,6 @@ msgid "The written data is corrupted"
 msgstr "הנתונים שנכתב פגומים"
 
 #: ../src/app/releasemanager.h:381
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "ההורדה נכשלה"
@@ -759,25 +633,9 @@ msgstr "%1 מועמדות להוצא לאור"
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "שחזור הכונן <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:49
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -787,93 +645,69 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">\n"
-"                                                להשבת כל המקום הזמין בכונן, "
-"יש לשחזרו להגדרות היצרן.\n"
-"                                                מערכת הקבצים וכל הנתונים "
-"השמורים ימחקו.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                אין צורך לשחזר את הכונן אם "
-"ברצונך לכתוב אליו מערכת חיה נוספת.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                להמשיך?\n"
-"                                            </p>"
+"<p align=\"justify\"> להשבת כל המקום הזמין בכונן, יש לשחזרו להגדרות היצרן. "
+"המערכת החיה וכל הנתונים השמורים יימחקו. </p> <p align=\"justify\"> אין צורך "
+"לשחזר את הכונן כדי לכתוב אליו מערכת חיה נוספת.\n"
+"                                            </p> <p align=\"justify\"> לשחזר "
+"אותו להגדרות היצרן? </p>"
 
 #: ../src/app/qml/RestorePage.qml:67
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
-"<p align=\"justify\">נא לחכות בעוד כותב המדיה של פדורה משחזר את הכונן הנייד."
-"</p>"
+"<p align=\"justify\">נא להמתין בזמן שכותב המדיה של פדורה משחזר את הכונן "
+"הנייד.</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr "הכונן שוחזר בהצלחה!"
+msgstr "הכונן שלך שוחזר בהצלחה!"
 
 #: ../src/app/qml/RestorePage.qml:94
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"למרבה הצער, אירעה שגיאה תוך כדי התהליך.<br>נא לנסות לשחזר את הכונן באמצעות "
-"כלי המערכת."
+"לרוע המזל, התהליך נתקל בשגיאה. נא לנסות לשחזר את הכונן באמצעות כלי המערכת "
+"שלך."
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "השחזור הושלם"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "בחירת מהדורה של פדורה"
 
 #: ../src/app/qml/VersionPage.qml:48
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "נבחר:"
+msgstr "בחירה מתוך:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "מהדורות רשמיות"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Emerging Editions"
-msgstr ""
+msgstr "מהדורות מתפתחות"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr ""
+msgstr "ערבובים"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "מעבדות"
 
 #: ../src/app/windrivemanager.cpp:265
 msgctxt "WinDrive|"
@@ -891,104 +725,162 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "הכתיבה של %1 הצליחה"
 
-#: ../src/app/qml/main.qml:117
-#, fuzzy
-#| msgid "Fedora Media Writer"
+#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/win/writejob.cpp:271
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
+msgstr "התחלת החילוץ נכשלה."
+
+#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
+#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
+#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "כונן היעד אינו נגיש לכתיבה"
+
+#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/win/writejob.cpp:315
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr "אין די זיכרון לחילוץ הקובץ."
+
+#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/win/writejob.cpp:320
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "הקובץ הדחוס שהתקבל פגום."
+
+#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/win/writejob.cpp:323
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr "אפשרויות דחיסה בלתי נתמכות."
+
+#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/win/writejob.cpp:326
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr "שגיאת חילוץ בלתי ידועה."
+
+#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/win/writejob.cpp:361
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "דמות המקור אינה זמינה לקריאה"
+
+#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:406
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr "הכונן כנראה ניזוק."
+
+#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:411
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr "שגיאה בלתי צפויה אירעה במהלך בדיקת המדיה."
+
+#: ../src/helper/mac/writejob.cpp:86
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr "לא ניתן להקצות צמד שקעים"
+
+#: ../src/helper/mac/writejob.cpp:131
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr "לא ניתן לפתוח את היעד לכתיבה"
+
+#: ../src/helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr "לא ניתן לפתוח את הכונן לכתיבה"
+
+#: ../src/helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr "לא ניתן לטעון את הכונן"
+
+#: ../src/helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr "לא ניתן להסיר את הכונן %1:"
+
+#: ../src/helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr "לא ניתן לשחרר את הכונן"
+
+#: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
-msgstr "כותב המדיה של Fedora"
+msgstr "כותב המדיה של פדורה"
 
-#: ../src/app/qml/main.qml:157
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
+#: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "מהדורות פדורה"
+msgstr "בחירת גרסת פדורה"
 
-#: ../src/app/qml/main.qml:173
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
+#: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "נבחר:"
+msgstr "בחירת כונן"
 
-#: ../src/app/qml/main.qml:211
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#: ../src/app/qml/main.qml:207
 msgctxt "main|"
 msgid "Downloading"
 msgstr "בהורדה"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
 msgstr "שחזור"
 
-#: ../src/app/qml/main.qml:290
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
+#: ../src/app/qml/main.qml:286
 msgctxt "main|"
 msgid "Finish"
-msgstr "הסתיים!"
+msgstr "סיום"
 
-#: ../src/app/qml/main.qml:294
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Write"
-msgstr "כתיבת %1"
+msgstr "כתיבה"
 
-#: ../src/app/qml/main.qml:296
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
+#: ../src/app/qml/main.qml:292
 msgctxt "main|"
 msgid "Download && Write"
-msgstr "ההורדה נכשלה"
+msgstr "הורדה וכתיבה"
 
-#: ../src/app/qml/main.qml:297
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "ההורדה נכשלה"
+msgstr "הורדה וכתיבה"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 msgctxt "main|"
 msgid "Cancel"
 msgstr "ביטול"
 
-#: ../src/app/qml/main.qml:302
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "Retry"
 msgstr "ניסיון חוזר"
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
-msgstr ""
+msgstr "הבא"
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
-msgstr ""
+msgstr "על אודות"
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
-msgstr ""
+msgstr "הקודם"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
@@ -1033,7 +925,27 @@ msgstr "כתיבת דמויות Fedora אל כוננים ניידים"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;אתחול;טעינה;הפעלה;איתחול;בוט;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "הכתיבה נבדקת"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "הכתיבה הצליחה"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification no drives"
+#~ msgstr "הבדיקה נכשלה בהעדר בכוננים"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification"
+#~ msgstr "הבדיקה נכשלה"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "ההורדה נכשלה"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"
@@ -1102,66 +1014,6 @@ msgstr ""
 #~ msgctxt "RestoreDialog|"
 #~ msgid "Close"
 #~ msgstr "סגירה"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Failed to start decompressing."
-#~ msgstr "התחלת החילוץ נכשלה."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Destination drive is not writable"
-#~ msgstr "כונן היעד אינו נגיש לכתיבה"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "There is not enough memory to decompress the file."
-#~ msgstr "אין די זיכרון לחילוץ הקובץ."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "The downloaded compressed file is corrupted."
-#~ msgstr "הקובץ הדחוס שהתקבל פגום."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unsupported compression options."
-#~ msgstr "אפשרויות דחיסה בלתי נתמכות."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unknown decompression error."
-#~ msgstr "שגיאת חילוץ בלתי ידועה."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Source image is not readable"
-#~ msgstr "דמות המקור אינה זמינה לקריאה"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Your drive is probably damaged."
-#~ msgstr "הכונן כנראה ניזוק."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unexpected error occurred during media check."
-#~ msgstr "שגיאה בלתי צפויה אירעה במהלך בדיקת המדיה."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't open the drive for writing"
-#~ msgstr "לא ניתן לפתוח את הכונן לכתיבה"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't lock the drive"
-#~ msgstr "לא ניתן לטעון את הכונן"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't remove the drive %1:"
-#~ msgstr "לא ניתן להסיר את הכונן %1:"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't unlock the drive"
-#~ msgstr "לא ניתן לשחרר את הכונן"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to allocate socket pair"
-#~ msgstr "לא ניתן להקצות צמד שקעים"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to open destination for writing"
-#~ msgstr "לא ניתן לפתוח את היעד לכתיבה"
 
 #~ msgctxt "main|"
 #~ msgid ""

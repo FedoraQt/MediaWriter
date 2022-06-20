@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2022-05-09 07:33+0000\n"
+"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"PO-Revision-Date: 2022-05-18 16:22+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/uk/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 4.12.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -95,17 +95,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "Продовжити"
 
-#: ../src/app/qml/CancelDialog.qml:106
+#: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Скасувати отримання"
 
-#: ../src/app/qml/CancelDialog.qml:108
+#: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Скасувати записування"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Скасувати перевірку"
@@ -133,7 +133,7 @@ msgstr "Вичерпано час очікування на з’єднання"
 #: ../src/app/qml/DownloadPage.qml:48
 #, qt-format
 msgctxt "DownloadPage|"
-msgid "%1 Sucessfuly Written"
+msgid "%1 Successfully Written"
 msgstr "%1 успішно записано"
 
 #: ../src/app/qml/DownloadPage.qml:50
@@ -142,7 +142,7 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Записуємо %1"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
 msgstr "Перевіряємо записані дані"
@@ -269,11 +269,6 @@ msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "Записуємо"
 
-#: ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "Перевіряємо записане"
-
 #: ../src/app/qml/DownloadPage.qml:334
 msgctxt "DownloadPage|"
 msgid "Finish"
@@ -281,28 +276,28 @@ msgstr "Завершено"
 
 #: ../src/app/qml/DownloadPage.qml:347
 msgctxt "DownloadPage|"
-msgid "Write Successful"
+msgid "Successfully written"
 msgstr "Успішно записано"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
-msgstr "Не вдалося перевірити — немає носія"
+msgid "Verification failed due to missing drives"
+msgstr "Перевірку не пройдено через нестачу дисків"
 
 #: ../src/app/qml/DownloadPage.qml:381
 msgctxt "DownloadPage|"
-msgid "Failed verification"
+msgid "Verification failed"
 msgstr "Перевірку не пройдено"
 
 #: ../src/app/qml/DownloadPage.qml:393
 msgctxt "DownloadPage|"
-msgid "Failed download"
+msgid "Download failed"
 msgstr "Не вдалося отримати"
 
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
-msgstr "Помилка — немає носіїв"
+msgid "Failed due to missing drives"
+msgstr "Помилка через нестачу дисків"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -753,72 +748,159 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "%1 успішно записано"
 
-#: ../src/app/qml/main.qml:117
+#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/win/writejob.cpp:271
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
+msgstr "Не вдалося розпочати розпаковування."
+
+#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
+#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
+#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "Непридатний до запису диск призначення"
+
+#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/win/writejob.cpp:315
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr "Недостатньо пам’яті для розпаковування файла."
+
+#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/win/writejob.cpp:320
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "Отриманий стиснений файл виявився пошкодженим."
+
+#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/win/writejob.cpp:323
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr "Непідтримувані параметри стискання."
+
+#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/win/writejob.cpp:326
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr "Невідома помилка під час спроби розпакувати."
+
+#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/win/writejob.cpp:361
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "Непридатний до читання образ джерела"
+
+#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:406
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr "Ймовірно, флешка непрацездатна."
+
+#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:411
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr "Під час перевірки носія даних сталася неочікувана помилка."
+
+#: ../src/helper/mac/writejob.cpp:86
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr "не вдалося створити пару сокетів"
+
+#: ../src/helper/mac/writejob.cpp:131
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr "Не вдалося відкрити файл призначення для запису"
+
+#: ../src/helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr "Не вдалося відкрити диск для запису"
+
+#: ../src/helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr "Не вдалося заблокувати диск"
+
+#: ../src/helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr "Не вдалося вилучити диск %1:"
+
+#: ../src/helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr "Не вдалося розблокувати диск"
+
+#: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
 
-#: ../src/app/qml/main.qml:157
+#: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr "Виберіть версію Fedora"
 
-#: ../src/app/qml/main.qml:173
+#: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
 msgstr "Виберіть носій"
 
-#: ../src/app/qml/main.qml:211
+#: ../src/app/qml/main.qml:207
 msgctxt "main|"
 msgid "Downloading"
 msgstr "Отримуємо"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
 msgstr "Відновити"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:286
 msgctxt "main|"
 msgid "Finish"
 msgstr "Завершити"
 
-#: ../src/app/qml/main.qml:294
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Write"
 msgstr "Записати"
 
-#: ../src/app/qml/main.qml:296
+#: ../src/app/qml/main.qml:292
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "Отримати і записати"
 
-#: ../src/app/qml/main.qml:297
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "Отримати і записати"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: ../src/app/qml/main.qml:302
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "Retry"
 msgstr "Повторити"
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
 msgstr "Далі"
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
 msgstr "Відомості"
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
 msgstr "Назад"
@@ -871,6 +953,26 @@ msgstr "Запис образів Fedora на портативні пристр�
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
 "fmw;usb;iso;bootable;юесбі;флешка;ізо;образ;завантажувальний;завантаження;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "Перевіряємо записане"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "Успішно записано"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification no drives"
+#~ msgstr "Не вдалося перевірити — немає носія"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification"
+#~ msgstr "Перевірку не пройдено"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "Не вдалося отримати"
 
 #~ msgctxt "CancelDialog|"
 #~ msgid "Download progress will be lost and media writing will be aborted."
@@ -943,66 +1045,6 @@ msgstr ""
 #~ msgctxt "RestoreDialog|"
 #~ msgid "Close"
 #~ msgstr "Закрити"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Failed to start decompressing."
-#~ msgstr "Не вдалося розпочати розпаковування."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Destination drive is not writable"
-#~ msgstr "Непридатний до запису диск призначення"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "There is not enough memory to decompress the file."
-#~ msgstr "Недостатньо пам’яті для розпаковування файла."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "The downloaded compressed file is corrupted."
-#~ msgstr "Отриманий стиснений файл виявився пошкодженим."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unsupported compression options."
-#~ msgstr "Непідтримувані параметри стискання."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unknown decompression error."
-#~ msgstr "Невідома помилка під час спроби розпакувати."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Source image is not readable"
-#~ msgstr "Непридатний до читання образ джерела"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Your drive is probably damaged."
-#~ msgstr "Ймовірно, флешка непрацездатна."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unexpected error occurred during media check."
-#~ msgstr "Під час перевірки носія даних сталася неочікувана помилка."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't open the drive for writing"
-#~ msgstr "Не вдалося відкрити диск для запису"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't lock the drive"
-#~ msgstr "Не вдалося заблокувати диск"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't remove the drive %1:"
-#~ msgstr "Не вдалося вилучити диск %1:"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't unlock the drive"
-#~ msgstr "Не вдалося розблокувати диск"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to allocate socket pair"
-#~ msgstr "не вдалося створити пару сокетів"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to open destination for writing"
-#~ msgstr "Не вдалося відкрити файл призначення для запису"
 
 #~ msgctxt "main|"
 #~ msgid ""

@@ -14,17 +14,17 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2022-05-10 13:17+0000\n"
+"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"PO-Revision-Date: 2022-05-20 18:18+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
-"Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/tr/>\n"
+"Language-Team: Turkish <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 4.12.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -96,17 +96,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "Devam et"
 
-#: ../src/app/qml/CancelDialog.qml:106
+#: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "İndirmeyi İptal Et"
 
-#: ../src/app/qml/CancelDialog.qml:108
+#: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Yazmayı İptal Et"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Doğrulamayı İptal Et"
@@ -134,7 +134,7 @@ msgstr "Bağlantı zaman aşımına uğradı"
 #: ../src/app/qml/DownloadPage.qml:48
 #, qt-format
 msgctxt "DownloadPage|"
-msgid "%1 Sucessfuly Written"
+msgid "%1 Successfully Written"
 msgstr "%1 Başarıyla Yazıldı"
 
 #: ../src/app/qml/DownloadPage.qml:50
@@ -143,7 +143,7 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "%1 Yazılıyor"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
 msgstr "Yazılan veri doğrulanıyor"
@@ -268,11 +268,6 @@ msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "Yazılıyor"
 
-#: ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "Yazma doğrulanıyor"
-
 #: ../src/app/qml/DownloadPage.qml:334
 msgctxt "DownloadPage|"
 msgid "Finish"
@@ -280,28 +275,28 @@ msgstr "Bitir"
 
 #: ../src/app/qml/DownloadPage.qml:347
 msgctxt "DownloadPage|"
-msgid "Write Successful"
-msgstr "Yazıldı"
+msgid "Successfully written"
+msgstr "Başarıyla yazıldı"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
-msgstr "Doğrulanamadı, sürücü yok"
+msgid "Verification failed due to missing drives"
+msgstr "Eksik sürücüler nedeniyle doğrulama başarısız oldu"
 
 #: ../src/app/qml/DownloadPage.qml:381
 msgctxt "DownloadPage|"
-msgid "Failed verification"
-msgstr "Doğrulanamadı"
+msgid "Verification failed"
+msgstr "Doğrulama başarısız"
 
 #: ../src/app/qml/DownloadPage.qml:393
 msgctxt "DownloadPage|"
-msgid "Failed download"
+msgid "Download failed"
 msgstr "İndirilemedi"
 
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
-msgstr "Başarısız oldu, sürücü yok"
+msgid "Failed due to missing drives"
+msgstr "Eksik sürücüler nedeniyle başarısız oldu"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -742,72 +737,159 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "%1 yazımı başarılı"
 
-#: ../src/app/qml/main.qml:117
+#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/win/writejob.cpp:271
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
+msgstr "Açmaya başlama başarısız."
+
+#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
+#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
+#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "Hedef sürücü yazılabilir değil"
+
+#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/win/writejob.cpp:315
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr "Dosyayı açacak yeterli bellek yok."
+
+#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/win/writejob.cpp:320
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "İndirilen sıkıştırılmış dosya bozuk."
+
+#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/win/writejob.cpp:323
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr "Desteklenmeyen sıkıştırma seçenekleri."
+
+#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/win/writejob.cpp:326
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr "Bilinmeyen açma hatası."
+
+#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/win/writejob.cpp:361
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "Kaynak görüntü okunabilir değil"
+
+#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:406
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr "Sürücünüz büyük olasılıkla hasar görmüş."
+
+#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:411
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr "Ortam denetimi sırasında beklenmedik bir hata oluştu."
+
+#: ../src/helper/mac/writejob.cpp:86
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr "Soket çifti tahsis edilemiyor"
+
+#: ../src/helper/mac/writejob.cpp:131
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr "Yazmak için hedef açılamıyor"
+
+#: ../src/helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr "Sürücü yazım için açılamıyor"
+
+#: ../src/helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr "Sürücü kilitlenemiyor"
+
+#: ../src/helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr "%1 sürücüsü çıkarılamadı:"
+
+#: ../src/helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr "Sürücü kilidi açılamıyor"
+
+#: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Ortam Yazıcı"
 
-#: ../src/app/qml/main.qml:157
+#: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr "Fedora Sürümü Seç"
 
-#: ../src/app/qml/main.qml:173
+#: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
 msgstr "Sürücü Seç"
 
-#: ../src/app/qml/main.qml:211
+#: ../src/app/qml/main.qml:207
 msgctxt "main|"
 msgid "Downloading"
 msgstr "İndiriliyor"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
 msgstr "Sıfırla"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:286
 msgctxt "main|"
 msgid "Finish"
 msgstr "Bitir"
 
-#: ../src/app/qml/main.qml:294
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Write"
 msgstr "Yaz"
 
-#: ../src/app/qml/main.qml:296
+#: ../src/app/qml/main.qml:292
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "İndir ve Yaz"
 
-#: ../src/app/qml/main.qml:297
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "İndir ve Yaz"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 msgctxt "main|"
 msgid "Cancel"
 msgstr "İptal"
 
-#: ../src/app/qml/main.qml:302
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "Retry"
 msgstr "Yeniden Dene"
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
 msgstr "Sonraki"
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
 msgstr "Hakkında"
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
 msgstr "Önceki"
@@ -859,6 +941,26 @@ msgstr "Fedora görüntülerini taşınabilir aygıtlarınıza yazın"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;önyüklenebilir;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "Yazma doğrulanıyor"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "Yazıldı"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification no drives"
+#~ msgstr "Doğrulanamadı, sürücü yok"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification"
+#~ msgstr "Doğrulanamadı"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "İndirilemedi"
 
 #~ msgctxt "CancelDialog|"
 #~ msgid "Download progress will be lost and media writing will be aborted."
@@ -932,66 +1034,6 @@ msgstr "fmw;usb;iso;bootable;önyüklenebilir;"
 #~ msgctxt "RestoreDialog|"
 #~ msgid "Close"
 #~ msgstr "Kapat"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Failed to start decompressing."
-#~ msgstr "Açmaya başlama başarısız."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Destination drive is not writable"
-#~ msgstr "Hedef sürücü yazılabilir değil"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "There is not enough memory to decompress the file."
-#~ msgstr "Dosyayı açacak yeterli bellek yok."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "The downloaded compressed file is corrupted."
-#~ msgstr "İndirilen sıkıştırılmış dosya bozuk."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unsupported compression options."
-#~ msgstr "Desteklenmeyen sıkıştırma seçenekleri."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unknown decompression error."
-#~ msgstr "Bilinmeyen açma hatası."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Source image is not readable"
-#~ msgstr "Kaynak görüntü okunabilir değil"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Your drive is probably damaged."
-#~ msgstr "Sürücünüz büyük olasılıkla hasar görmüş."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unexpected error occurred during media check."
-#~ msgstr "Ortam denetimi sırasında beklenmedik bir hata oluştu."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't open the drive for writing"
-#~ msgstr "Sürücü yazım için açılamıyor"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't lock the drive"
-#~ msgstr "Sürücü kilitlenemiyor"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't remove the drive %1:"
-#~ msgstr "%1 sürücüsü çıkarılamadı:"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't unlock the drive"
-#~ msgstr "Sürücü kilidi açılamıyor"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to allocate socket pair"
-#~ msgstr "Soket çifti tahsis edilemiyor"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to open destination for writing"
-#~ msgstr "Yazmak için hedef açılamıyor"
 
 #~ msgctxt "main|"
 #~ msgid ""

@@ -11,14 +11,15 @@
 # Luca Ciavatta <luca.ciavatta@gmail.com>, 2017. #zanata
 # Nathan <nathan95@live.it>, 2021, 2022.
 # Alessio <alciregi@posteo.net>, 2022.
+# Emanuele Petriglia <fedora@emanuelepetriglia.com>, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2022-05-12 20:18+0000\n"
+"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"PO-Revision-Date: 2022-05-18 16:21+0000\n"
 "Last-Translator: Alessio <alciregi@posteo.net>\n"
-"Language-Team: Italian <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/it/>\n"
+"Language-Team: Italian <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,41 +29,28 @@ msgstr ""
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
 msgstr "Informazioni su Fedora Media Writer"
 
 #: ../src/app/qml/AboutDialog.qml:59
-#, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Versione %1"
 
 #: ../src/app/qml/AboutDialog.qml:66
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "Fedora Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Fedora Media Writer sta cercando nuove release"
+msgstr "Fedora Media Writer sta cercando nuovi rilasci"
 
 #: ../src/app/qml/AboutDialog.qml:72
-#, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Segnala bug o suggerimenti su %1"
 
 #: ../src/app/qml/AboutDialog.qml:95
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Chiudi"
@@ -73,12 +61,9 @@ msgid "Cancel Download?"
 msgstr "Annulla il Download?"
 
 #: ../src/app/qml/CancelDialog.qml:58
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Scrittura"
+msgstr "Annulla la Scrittura?"
 
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
@@ -113,23 +98,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "Continua"
 
-#: ../src/app/qml/CancelDialog.qml:106
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "Download"
+msgstr "Annulla il Download"
 
-#: ../src/app/qml/CancelDialog.qml:108
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Scrittura"
+msgstr "Annulla la Scrittura"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Annulla la Verifica"
@@ -157,48 +136,36 @@ msgstr "Connessione scaduta"
 #: ../src/app/qml/DownloadPage.qml:48
 #, qt-format
 msgctxt "DownloadPage|"
-msgid "%1 Sucessfuly Written"
+msgid "%1 Successfully Written"
 msgstr "%1 Scrittura effettuata con successo"
 
 #: ../src/app/qml/DownloadPage.qml:50
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "Scrittura"
+msgstr "Scrittura in corso %1"
 
-#: ../src/app/qml/DownloadPage.qml:52
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
-msgstr "Verifica dei dati scritti"
+msgstr "Verifica dei dati scritti in corso"
 
 #: ../src/app/qml/DownloadPage.qml:54
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "Download"
+msgstr "Download in corso %1"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
 msgctxt "DownloadPage|"
 msgid "Verifying downloaded image"
-msgstr "L'immagine scaricata è corrotta "
+msgstr "Verifica dell'immagine scaricata in corso"
 
 #: ../src/app/qml/DownloadPage.qml:58
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "Preparazione"
+msgstr "Preparazione in corso %1"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
 msgctxt "DownloadPage|"
@@ -206,123 +173,85 @@ msgid "Failed"
 msgstr "Fallito"
 
 #: ../src/app/qml/DownloadPage.qml:72
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr "(%1 B libero)"
+msgstr " 1 B libero)"
 
 #: ../src/app/qml/DownloadPage.qml:73
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr "(%1 KB liberi)"
+msgstr " KB liberi)"
 
 #: ../src/app/qml/DownloadPage.qml:74
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr "(%1 MB liberi)"
+msgstr " MB liberi)"
 
 #: ../src/app/qml/DownloadPage.qml:75
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr "(%1 GB liberi)"
+msgstr " GB liberi)"
 
 #: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
 #: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
 msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:124
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "Il file verrà. salvato nella cartella Download."
+msgstr "I file sono salvati nella cartella dei download."
 
 #: ../src/app/qml/DownloadPage.qml:132
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Avviando la scrittura, tutti i dati su %1 verranno persi."
 
 #: ../src/app/qml/DownloadPage.qml:140
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using Fedora Media Writer; this will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"Il drive verrà ridimensionato ad una capacità inferiore. È possibile "
-"riportarlo alla capacità normale utilizzando Fedora Media Writer; questa "
-"operazione rimuoverà il media di installazione dal dispositivo."
+"L'unità verrà ridimensionata a una capacità inferiore. È possibile "
+"riportarla alla capacità normale utilizzando Fedora Media Writer. Questa "
+"operazione rimuoverà il media di installazione dall'unità."
 
 #: ../src/app/qml/DownloadPage.qml:148
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
-msgstr "Selezionato:"
+msgstr "Selezione:"
 
 #: ../src/app/qml/DownloadPage.qml:148
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Nessuno"
 
 #: ../src/app/qml/DownloadPage.qml:156
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your board or device is not supported by Fedora Media Writer yet. Please "
-#| "check <a href=%1>this page</a> for more information about its "
-#| "compatibility with Fedora and how to create bootable media for it."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"La scheda o il drive non è supportato da Fedora Media Writer. Per ulteriori "
-"informazioni sulla compatibilità con Fedora e su come creare un media "
-"avviabile, visitare <a href=%1>this page</a>."
+"La scheda o il dispositivo non è supportato da Fedora Media Writer. Per "
+"ulteriori informazioni sulla compatibilità con Fedora e su come creare un "
+"media avviabile, visitare <a href=%1>this page</a>."
 
 #: ../src/app/qml/DownloadPage.qml:165
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
-"La dimensione del drive selezionato è di %1. È possibile che sia stato "
-"selezionato un drive esterno per errore!"
+"La dimensione dell'unità selezionata è di %1. È possibile che sia stato "
+"selezionato un'unità esterna per errore!"
 
 #: ../src/app/qml/DownloadPage.qml:174
 #, qt-format
@@ -331,132 +260,86 @@ msgid "Restart and boot from %1 to start using %2."
 msgstr "Riavvia e fai boot da %1 per iniziare a usare %2."
 
 #: ../src/app/qml/DownloadPage.qml:262
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Writing is not possible"
 msgctxt "DownloadPage|"
 msgid "Writing not possible"
 msgstr "Impossibile eseguire la scrittura"
 
 #: ../src/app/qml/DownloadPage.qml:282
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "DownloadPage|"
 msgid "Writing"
-msgstr "Scrittura"
-
-#: ../src/app/qml/DownloadPage.qml:310
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "Scrittura"
+msgstr "Scrittura in corso"
 
 #: ../src/app/qml/DownloadPage.qml:334
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "Finito!"
+msgstr "Fine"
 
 #: ../src/app/qml/DownloadPage.qml:347
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
 msgctxt "DownloadPage|"
-msgid "Write Successful"
-msgstr "Scrittura di %1 completata"
+msgid "Successfully written"
+msgstr "Scrittura effettuata con successo"
 
 #: ../src/app/qml/DownloadPage.qml:365
-#, fuzzy
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
-msgstr "Verifica fallita: nessun dispositivo"
+msgid "Verification failed due to missing drives"
+msgstr "Verifica fallita a causa della mancanza di dispositivi"
 
 #: ../src/app/qml/DownloadPage.qml:381
 msgctxt "DownloadPage|"
-msgid "Failed verification"
+msgid "Verification failed"
 msgstr "Verifica fallita"
 
 #: ../src/app/qml/DownloadPage.qml:393
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "DownloadPage|"
-msgid "Failed download"
-msgstr "Verifica del download"
+msgid "Download failed"
+msgstr "Download fallito"
 
 #: ../src/app/qml/DownloadPage.qml:409
-#, fuzzy
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
-msgstr "Fallito: nessun dispositivo"
+msgid "Failed due to missing drives"
+msgstr "Fallito a causa di dispositivi falliti"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
 msgid "This drive is not large enough."
-msgstr "Il drive non è sufficientemente grande."
+msgstr "L'unità non è sufficientemente grande."
 
 #: ../src/app/qml/DrivePage.qml:36
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "Scrivi su Disco"
+msgstr "Opzioni di scrittura"
 
 #: ../src/app/qml/DrivePage.qml:45
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "Versione %1"
+msgstr "Versione"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "Architettura Hardware"
 
 #: ../src/app/qml/DrivePage.qml:84
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "Selezionato:"
+msgstr "File selezionato"
 
 #: ../src/app/qml/DrivePage.qml:91
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "Nessuno"
 
 #: ../src/app/qml/DrivePage.qml:99
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "Selezionato:"
+msgstr "Seleziona..."
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr "File immagine"
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "Tutti i file (*)"
@@ -464,36 +347,27 @@ msgstr "Tutti i file (*)"
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "Unità USB"
 
 #: ../src/app/qml/DrivePage.qml:135
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "Nessuna unità rimovibile rilevata"
 
 #: ../src/app/qml/DrivePage.qml:155
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
 msgstr "Download"
 
 #: ../src/app/qml/DrivePage.qml:160
-#, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "Cancella l'immagine scaricata"
+msgstr "Elimina l'immagine scaricata dopo la scrittura"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr "Il drive è stato rimosso durante la scrittura."
+msgstr "L'unità è stata rimossa durante la scrittura."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
@@ -563,49 +437,38 @@ msgstr "Scrittura di %1 completata con successo"
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Seleziona l'immagina sorgente"
 
 #: ../src/app/qml/MainPage.qml:57
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Download fallito"
+msgstr "Download automatico"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "Seleziona file .iso"
 
 #: ../src/app/qml/MainPage.qml:76
-#, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
+#, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "Ripristinare %1?"
+msgstr "Ripristina <b>%1</b>"
 
 #: ../src/app/portalfiledialog.cpp:143
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "File immagine"
 
 #: ../src/app/portalfiledialog.cpp:153
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "Tutti i file (*)"
+msgstr "Tutti i file"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "Apri File"
 
 #: ../src/app/releasemanager.cpp:392
 msgctxt "Release|"
@@ -636,7 +499,7 @@ msgstr "Fedora Labs"
 #: ../src/app/releasemanager.cpp:427
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
-msgstr ""
+msgstr "Edizioni emergenti di Fedora"
 
 #: ../src/app/releasemanager.cpp:429
 msgctxt "Release|"
@@ -644,12 +507,9 @@ msgid "Other"
 msgstr "Altro"
 
 #: ../src/app/releasemanager.cpp:1069
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Intel 64bit"
+msgstr "Intel/AMD 64bit"
 
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
@@ -658,12 +518,9 @@ msgstr ""
 "Formato immagine ISO per Intel, AMD e altre architetture compatibili (64-bit)"
 
 #: ../src/app/releasemanager.cpp:1070
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Intel 32bit"
+msgstr "Intel/AMD 32bit"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
@@ -691,7 +548,7 @@ msgstr "AArch64"
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "Immagine grezza LZMA-compressa per computer AArch64"
+msgstr "Immagine raw compressa nel formato LZMA per computer AArch64"
 
 #: ../src/app/releasemanager.cpp:391
 msgctxt "ReleaseListModel|"
@@ -701,7 +558,7 @@ msgstr "Immagine personalizzata"
 #: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
-msgstr "L'immagine scaricata è corrotta "
+msgstr "L'immagine scaricata è corrotta"
 
 #: ../src/app/releasemanager.cpp:944
 msgctxt "ReleaseVariant|"
@@ -714,28 +571,19 @@ msgid "Unable to rename the temporary file."
 msgstr "Impossibile rinominare il file temporaneo."
 
 #: ../src/app/releasemanager.h:372
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
-msgstr "Preparazione"
+msgstr "Preparazione in corso"
 
 #: ../src/app/releasemanager.h:373
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
-msgstr "Download"
+msgstr "Download in corso"
 
 #: ../src/app/releasemanager.h:374
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr "Verifica del download"
+msgstr "Verifica del download in corso"
 
 #: ../src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
@@ -750,20 +598,14 @@ msgstr ""
 "effettuare la scrittura"
 
 #: ../src/app/releasemanager.h:377
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
-msgstr "Scrittura"
+msgstr "Scrittura in corso"
 
 #: ../src/app/releasemanager.h:378
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
-msgstr "Verifica dei dati scritti"
+msgstr "Verifica dei dati scritti in corso"
 
 #: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
@@ -776,9 +618,6 @@ msgid "The written data is corrupted"
 msgstr "I dati scritti sono corrotti"
 
 #: ../src/app/releasemanager.h:381
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "Download fallito"
@@ -810,25 +649,9 @@ msgstr "%1 Release Candidate"
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "Ripristina Unità <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:49
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -838,95 +661,71 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">\n"
-"                                                Per recuperare tutto lo "
-"spazio disponibile, il disco deve essere ripristinato alle impostazioni di "
-"fabbrica.\n"
-"                                                Il sistema live e tutti i "
-"dati salvati saranno cancellati.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Non è necessario "
-"ripristinare l'unità se si desidera scrivere un altro sistema live su di "
-"essa.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Continuare?\n"
-"                                            </p>"
+"<p align=\"justify\">Per recuperare tutto lo spazio disponibile, l'unità "
+"deve essere ripristinate alle impostazioni di fabbrica. Il sistema live e "
+"tutti i dati salvati saranno cancellati. </p> <p align=\"justify\"> Non è "
+"necessario ripristinare l'unità se si desidera scrivere un altro sistema "
+"live su di essa.\n"
+"</p><p align=\"justify\">Ripristinare l'unità alle impostazioni di fabbrica?"
+"</p>"
 
 #: ../src/app/qml/RestorePage.qml:67
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
 "<p align=\"justify\">Si prega di attendere il ripristino dell'unità "
-"portatile da parte di  Fedora Media Writer.</p>"
+"portatile da parte di Fedora Media Writer.</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "L'unità è stata ripristinata con successo!"
 
 #: ../src/app/qml/RestorePage.qml:94
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"Si è verificato un errore durante il processo.<br>Si prega di ripristinare "
+"Si è verificato un errore durante il processo. Si prega di ripristinare "
 "l'unità utilizzando gli strumenti di sistema."
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "Ripristino terminato"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Selezionare il rilascio di Fedora"
 
 #: ../src/app/qml/VersionPage.qml:48
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "Selezionato:"
+msgstr "Seleziona da:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Edizioni Ufficiali"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Emerging Editions"
-msgstr ""
+msgstr "Edizioni Emergenti"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr ""
+msgstr "Spin"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Labs"
 
 #: ../src/app/windrivemanager.cpp:265
 msgctxt "WinDrive|"
@@ -945,104 +744,162 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "Scrittura di %1 completata con successo"
 
-#: ../src/app/qml/main.qml:117
-#, fuzzy
-#| msgid "Fedora Media Writer"
+#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/win/writejob.cpp:271
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
+msgstr "Impossibile avviare la decompressione."
+
+#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
+#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
+#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "Il disco di destinazione non è scrivibile."
+
+#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/win/writejob.cpp:315
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr "Memoria insufficiente per la decompressione il file."
+
+#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/win/writejob.cpp:320
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "Il file compresso scaricato non è leggibile."
+
+#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/win/writejob.cpp:323
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr "Opzioni di compressione non supportate."
+
+#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/win/writejob.cpp:326
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr "Errore di decompressione sconosciuto."
+
+#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/win/writejob.cpp:361
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "L'immagine sorgente non è leggibile."
+
+#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:406
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr "L'unità è probabilmente danneggiata."
+
+#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:411
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr "Si è verificato un errore sconosciuto durante il controllo del media."
+
+#: ../src/helper/mac/writejob.cpp:86
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr "Impossibile allocare la coppia di socket"
+
+#: ../src/helper/mac/writejob.cpp:131
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr "Impossibile aprire la destinazione per la scrittura"
+
+#: ../src/helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr "Impossibile utilizzare l'unità per la scrittura"
+
+#: ../src/helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr "Impossibile bloccare l'unità"
+
+#: ../src/helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr "Impossibile rimuovere l'unità %1:"
+
+#: ../src/helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr "Impossibile sbloccare il drive"
+
+#: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
 
-#: ../src/app/qml/main.qml:157
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Workstation"
+#: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Fedora Workstation"
+msgstr "Seleziona la versione di Fedora"
 
-#: ../src/app/qml/main.qml:173
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
+#: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "Selezionato:"
+msgstr "Seleziona unità"
 
-#: ../src/app/qml/main.qml:211
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#: ../src/app/qml/main.qml:207
 msgctxt "main|"
 msgid "Downloading"
-msgstr "Download"
+msgstr "Download in corso"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
 msgstr "Ripristina"
 
-#: ../src/app/qml/main.qml:290
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
+#: ../src/app/qml/main.qml:286
 msgctxt "main|"
 msgid "Finish"
-msgstr "Finito!"
+msgstr "Fine"
 
-#: ../src/app/qml/main.qml:294
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Write"
-msgstr "Scrittura %1"
+msgstr "Scrivi"
 
-#: ../src/app/qml/main.qml:296
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
+#: ../src/app/qml/main.qml:292
 msgctxt "main|"
 msgid "Download && Write"
-msgstr "Download fallito"
+msgstr "Download && Scrittura"
 
-#: ../src/app/qml/main.qml:297
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "Download fallito"
+msgstr "Download & Scrittura"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Annulla"
 
-#: ../src/app/qml/main.qml:302
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "Retry"
 msgstr "Riprova"
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
-msgstr ""
+msgstr "Avanti"
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
-msgstr ""
+msgstr "Informazioni"
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
-msgstr ""
+msgstr "Precedente"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
@@ -1091,7 +948,27 @@ msgstr "Scrive le immagini Fedora sulle unità portatili"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "Verifica della scrittura in corso"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "Scrittura completata"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification no drives"
+#~ msgstr "Verifica fallita: nessun dispositivo"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification"
+#~ msgstr "Verifica fallita"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "Download fallito"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"
@@ -1162,67 +1039,6 @@ msgstr ""
 #~ msgctxt "RestoreDialog|"
 #~ msgid "Close"
 #~ msgstr "Chiudi"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Failed to start decompressing."
-#~ msgstr "Impossibile avviare la decompressione."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Destination drive is not writable"
-#~ msgstr "Il disco di destinazione non è scrivibile."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "There is not enough memory to decompress the file."
-#~ msgstr "Memoria insufficiente per la decompressione il file."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "The downloaded compressed file is corrupted."
-#~ msgstr "Il file compresso scaricato non è leggibile."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unsupported compression options."
-#~ msgstr "Opzioni di compressione non supportate."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unknown decompression error."
-#~ msgstr "Errore di decompressione sconosciuto."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Source image is not readable"
-#~ msgstr "L'immagine sorgente non è leggibile."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Your drive is probably damaged."
-#~ msgstr "L'unità è probabilmente danneggiata."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unexpected error occurred during media check."
-#~ msgstr ""
-#~ "Si è verificato un errore sconosciuto durante il controllo del media."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't open the drive for writing"
-#~ msgstr "Impossibile utilizzare l'unità per la scrittura"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't lock the drive"
-#~ msgstr "Impossibile bloccare l'unità"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't remove the drive %1:"
-#~ msgstr "Impossibile rimuovere l'unità %1:"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't unlock the drive"
-#~ msgstr "Impossibile sbloccare il drive"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to allocate socket pair"
-#~ msgstr "Impossibile allocare la coppia di socket"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to open destination for writing"
-#~ msgstr "Impossibile aprire la destinazione per la scrittura"
 
 #~ msgctxt "main|"
 #~ msgid ""

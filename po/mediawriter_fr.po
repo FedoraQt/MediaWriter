@@ -18,17 +18,17 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2022-05-11 02:54+0000\n"
-"Last-Translator: Julien Humbert <julroy67@gmail.com>\n"
-"Language-Team: French <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/fr/>\n"
+"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"PO-Revision-Date: 2022-06-04 18:18+0000\n"
+"Last-Translator: Francois Andrieu <darknao@drkn.ninja>\n"
+"Language-Team: French <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 4.12.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -101,17 +101,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "Poursuivre"
 
-#: ../src/app/qml/CancelDialog.qml:106
+#: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Annuler le téléchargement"
 
-#: ../src/app/qml/CancelDialog.qml:108
+#: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Annuler l’écriture"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Annuler la vérification"
@@ -139,7 +139,7 @@ msgstr "Le délai de connexion a expiré"
 #: ../src/app/qml/DownloadPage.qml:48
 #, qt-format
 msgctxt "DownloadPage|"
-msgid "%1 Sucessfuly Written"
+msgid "%1 Successfully Written"
 msgstr "%1 a été écrit avec succès"
 
 #: ../src/app/qml/DownloadPage.qml:50
@@ -148,7 +148,7 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Écriture de %1"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
 msgstr "Vérification des données écrites"
@@ -205,7 +205,7 @@ msgstr " (%1"
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "Les téléchargements sont enregistrés dans le dossier téléchargements."
+msgstr "Les téléchargements sont enregistrés dans le dossier Téléchargements."
 
 #: ../src/app/qml/DownloadPage.qml:132
 #, qt-format
@@ -272,11 +272,6 @@ msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "Écriture"
 
-#: ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "Vérification de l'écriture"
-
 #: ../src/app/qml/DownloadPage.qml:334
 msgctxt "DownloadPage|"
 msgid "Finish"
@@ -284,28 +279,28 @@ msgstr "Terminé"
 
 #: ../src/app/qml/DownloadPage.qml:347
 msgctxt "DownloadPage|"
-msgid "Write Successful"
-msgstr "L’écriture a réussi"
+msgid "Successfully written"
+msgstr "Écrit avec succès"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
-msgstr "La vérification à échouée : aucun disque"
+msgid "Verification failed due to missing drives"
+msgstr "La vérification a échoué à cause d'un disque manquant"
 
 #: ../src/app/qml/DownloadPage.qml:381
 msgctxt "DownloadPage|"
-msgid "Failed verification"
-msgstr "La vérification à échouée"
+msgid "Verification failed"
+msgstr "La vérification a échoué"
 
 #: ../src/app/qml/DownloadPage.qml:393
 msgctxt "DownloadPage|"
-msgid "Failed download"
-msgstr "Echec du téléchargement"
+msgid "Download failed"
+msgstr "Le téléchargement a échoué"
 
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
-msgstr "Échec : aucun disque"
+msgid "Failed due to missing drives"
+msgstr "Échec pour cause de disque manquant"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -604,8 +599,8 @@ msgstr "Prêt à écrire"
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
-"Le fichier d’image a été sauvegardé dans votre dossier de téléchargements. "
-"L’écriture n’est pas possible."
+"Le fichier d’image a été sauvegardé dans votre dossier Téléchargements. "
+"L’écriture n’est pas possible"
 
 #: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
@@ -755,72 +750,159 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "L’écriture de %1 a réussi"
 
-#: ../src/app/qml/main.qml:117
+#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/win/writejob.cpp:271
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
+msgstr "Impossible de démarrer la décompression."
+
+#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
+#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
+#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "Le disque cible n’est pas inscriptible"
+
+#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/win/writejob.cpp:315
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr "Il n’y a pas suffisamment de mémoire pour décompresser le fichier."
+
+#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/win/writejob.cpp:320
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "Le fichier compressé qui a été téléchargé est corrompu."
+
+#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/win/writejob.cpp:323
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr "Les options de compression ne sont pas prises en charge."
+
+#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/win/writejob.cpp:326
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr "Erreur inconnue de décompression."
+
+#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/win/writejob.cpp:361
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "L’image source n’est pas lisible"
+
+#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:406
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr "Votre disque est probablement abîmé."
+
+#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:411
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr "Une erreur inattendue a eu lieu pendant la vérification du média."
+
+#: ../src/helper/mac/writejob.cpp:86
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr "Impossible d’allouer le socket pair"
+
+#: ../src/helper/mac/writejob.cpp:131
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr "Impossible d’ouvrir la destination pour écriture"
+
+#: ../src/helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr "Impossible d’ouvrir le disque pour écrire"
+
+#: ../src/helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr "Impossible de verrouiller le disque"
+
+#: ../src/helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr "Impossible de retirer le disque %1 :"
+
+#: ../src/helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr "Impossible de déverrouiller le disque"
+
+#: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
 
-#: ../src/app/qml/main.qml:157
+#: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr "Choisir la version de Fedora"
 
-#: ../src/app/qml/main.qml:173
+#: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
 msgstr "Disque sélectionné"
 
-#: ../src/app/qml/main.qml:211
+#: ../src/app/qml/main.qml:207
 msgctxt "main|"
 msgid "Downloading"
 msgstr "Téléchargement"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
 msgstr "Restaurer"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:286
 msgctxt "main|"
 msgid "Finish"
 msgstr "Terminé"
 
-#: ../src/app/qml/main.qml:294
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Write"
 msgstr "Écrire"
 
-#: ../src/app/qml/main.qml:296
+#: ../src/app/qml/main.qml:292
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "Télécharger && Écrire"
 
-#: ../src/app/qml/main.qml:297
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "Télécharger & Écrire"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: ../src/app/qml/main.qml:302
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "Retry"
 msgstr "Réessayer"
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
 msgstr "Suivant"
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
 msgstr "À propos"
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
 msgstr "Précédent"
@@ -872,6 +954,26 @@ msgstr "Écrivez des images de Fedora sur vos disques amovibles"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "Vérification de l'écriture"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "L’écriture a réussi"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification no drives"
+#~ msgstr "La vérification à échouée : aucun disque"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification"
+#~ msgstr "La vérification à échouée"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "Echec du téléchargement"
 
 #, fuzzy
 #~ msgctxt "CancelDialog|"
@@ -946,66 +1048,6 @@ msgstr "fmw;usb;iso;bootable;"
 #~ msgctxt "RestoreDialog|"
 #~ msgid "Close"
 #~ msgstr "Fermer"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Failed to start decompressing."
-#~ msgstr "Impossible de démarrer la décompression."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Destination drive is not writable"
-#~ msgstr "Le disque cible n’est pas inscriptible"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "There is not enough memory to decompress the file."
-#~ msgstr "Il n’y a pas suffisamment de mémoire pour décompresser le fichier."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "The downloaded compressed file is corrupted."
-#~ msgstr "Le fichier compressé qui a été téléchargé est corrompu."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unsupported compression options."
-#~ msgstr "Les options de compression ne sont pas prises en charge."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unknown decompression error."
-#~ msgstr "Erreur inconnue de décompression."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Source image is not readable"
-#~ msgstr "L’image source n’est pas lisible"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Your drive is probably damaged."
-#~ msgstr "Votre disque est probablement abîmé."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unexpected error occurred during media check."
-#~ msgstr "Une erreur inattendue a eu lieu pendant la vérification du média."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't open the drive for writing"
-#~ msgstr "Impossible d’ouvrir le disque pour écrire"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't lock the drive"
-#~ msgstr "Impossible de verrouiller le disque"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't remove the drive %1:"
-#~ msgstr "Impossible de retirer le disque %1 :"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't unlock the drive"
-#~ msgstr "Impossible de déverrouiller le disque"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to allocate socket pair"
-#~ msgstr "Impossible d’allouer le socket pair"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to open destination for writing"
-#~ msgstr "Impossible d’ouvrir la destination pour écriture"
 
 #~ msgctxt "main|"
 #~ msgid ""

@@ -1,74 +1,67 @@
-# #-#-#-#-#  appstream_cs.po  #-#-#-#-#
-# Martin Bříza <mbriza@redhat.com>, 2016. #zanata
-# #-#-#-#-#  desktop_cs.po  #-#-#-#-#
-# Martin Bříza <mbriza@redhat.com>, 2016. #zanata
-# #-#-#-#-#  mediawriter_cs.po  #-#-#-#-#
-# František Zatloukal <Zatloukal.Frantisek@gmail.com>, 2016. #zanata
-# Josef Hruška <hrusjos@gmail.com>, 2016. #zanata
-# Martin Bříza <mbriza@redhat.com>, 2016. #zanata
-# Zdenek <chmelarz@gmail.com>, 2016. #zanata
-# Marek Suchánek <m.suchanek.2@gmail.com>, 2017. #zanata
-# Martin Bříza <mbriza@redhat.com>, 2017. #zanata
-# Michal Konečný <michalkonec666@gmail.com>, 2019. #zanata
-# Jan Grulich <jgrulich@redhat.com>, 2021, 2022.
-# Josef Hruska <hrusjos@gmail.com>, 2022.
+# #-#-#-#-#  desktop.pot (PACKAGE VERSION)  #-#-#-#-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# "#-#-#-#-#  mediawriter.pot (PACKAGE VERSION)  #-#-#-#-#\n"
+# Alvin Abuke <abuke.ac@gmail.com>, 2022.
 msgid ""
 msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-07 09:00+0200\n"
-"PO-Revision-Date: 2022-05-20 18:18+0000\n"
-"Last-Translator: Josef Hruska <hrusjos@gmail.com>\n"
-"Language-Team: Czech <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/cs/>\n"
-"Language: cs\n"
+"PO-Revision-Date: 2022-05-15 05:32+0000\n"
+"Last-Translator: Alvin Abuke <abuke.ac@gmail.com>\n"
+"Language-Team: Filipino <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/fil/>\n"
+"Language: fil\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 "
+"|| n % 10 == 6 || n % 10 == 9);\n"
 "X-Generator: Weblate 4.12.2\n"
-"X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr "O Fedora Media Writer"
+msgstr "Tungkol sa Fedora Media Writer"
 
 #: ../src/app/qml/AboutDialog.qml:59
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
-msgstr "Verze %1"
+msgstr "Bersyon %1"
 
 #: ../src/app/qml/AboutDialog.qml:66
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Fedora Media Writer nyní hledá nově vydané verze."
+msgstr "Fedora Media Writer ay nagsusuri ng mga bagong labas"
 
 #: ../src/app/qml/AboutDialog.qml:72
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr "Prosíme, hlašte chyby nebo pište své návrhy na %1"
+msgstr "Pakiusap na mag-ulat ng mga bug o iyong suhestion sa %1"
 
 #: ../src/app/qml/AboutDialog.qml:95
 msgctxt "AboutDialog|"
 msgid "Close"
-msgstr "Zavřít"
+msgstr "Isara"
 
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr "Přerušit Stahování?"
+msgstr "Kanselahin ang pag-Download?"
 
 #: ../src/app/qml/CancelDialog.qml:58
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Přerušit Zápis?"
+msgstr "Kanselahin ang Pagsusulat?"
 
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr "Přerušit Ověřování?"
+msgstr "Kanselahin ang beripikasyon?"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
@@ -76,119 +69,123 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
-"Stahování a zápis souboru budou zrušeny. V tomto procesu lze kdykoliv "
-"pokračovat."
+"I-download at ang pagsusulat sa media ay ititigil. Ang proseso ay maaring "
+"ituloy anumang oras sa ibang pagkakataon."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr "Proces zápisu bude zrušen a disk bude potřeba později obnovit."
+msgstr ""
+"Ang proseso ng pagsusulat ay ititigil at ang iyong drive ay kailangang ma-"
+"restore pagkatapos."
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr "Je bezpečné tuto operaci ukončit."
+msgstr "Ang operasyong ito ay ligtas na kanselahin."
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr "Pokračovat"
+msgstr "Magpatuloy"
 
 #: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "Přerušit stahování"
+msgstr "Kanselahin ang Pag-Download"
 
 #: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Přerušit zápis"
+msgstr "Kanselahin ang Pagsusulat"
 
 #: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr "Přerušit ověřování"
+msgstr "Kanselahin ang Beripikasyon"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr "Nepodařilo se získat požadovaný obraz."
+msgstr "Hindi makuha ang hiniling na imahe."
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr "Ve vaší složce pro stažené soubory došlo místo."
+msgstr "Naubusan ka ng espasyo sa iyong folder ng Mga Download."
 
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
-msgstr "Není možné zapisovat do stahovaného souboru."
+msgstr "Ang download file ay hindi maisusulat."
 
 #: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
-msgstr "Čas k připojení vypršel"
+msgstr "Nag-time out ang koneksyon"
 
 #: ../src/app/qml/DownloadPage.qml:48
-#, qt-format
+#, fuzzy, qt-format
+#| msgctxt "DownloadPage|"
+#| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr "%1 Úspěšně Zapsán"
+msgstr "%1 Matagumpay na Naisulat"
 
 #: ../src/app/qml/DownloadPage.qml:50
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "Zapisuji %1"
+msgstr "Pagsusulat %1"
 
 #: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
-msgstr "Ověřování zapsaných dat"
+msgstr "Bineberipika ang nakasulat na data"
 
 #: ../src/app/qml/DownloadPage.qml:54
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "Stahuje se %1"
+msgstr "Na-Download %1"
 
 #: ../src/app/qml/DownloadPage.qml:56
 msgctxt "DownloadPage|"
 msgid "Verifying downloaded image"
-msgstr "Ověřování staženého obrazu"
+msgstr "Bineberipika ang na-download na imahe"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "Připravuje se %1"
+msgstr "Naghahanda %1"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
 msgctxt "DownloadPage|"
 msgid "Failed"
-msgstr "Neúspěšné"
+msgstr "Nabigo"
 
 #: ../src/app/qml/DownloadPage.qml:72
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr " B zbývá)"
+msgstr " B nalalabi)"
 
 #: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr " KB zbývá)"
+msgstr " KB nalalabi)"
 
 #: ../src/app/qml/DownloadPage.qml:74
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr " MB zbývá)"
+msgstr " MB nalalabi)"
 
 #: ../src/app/qml/DownloadPage.qml:75
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr " GB zbývá)"
+msgstr " GB nalalabi)"
 
 #: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
 #: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
@@ -200,13 +197,13 @@ msgstr " (%1"
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "Tento soubor bude uložený ve vaší složce pro stažené soubory."
+msgstr "Ang mga na-Download ay nai-save sa folder ng mga download."
 
 #: ../src/app/qml/DownloadPage.qml:132
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "Zápisem ztratíte všechna data na disku %1."
+msgstr "Sa pamamagitan ng pagsulat, mawawala ang lahat ng data sa %1."
 
 #: ../src/app/qml/DownloadPage.qml:140
 msgctxt "DownloadPage|"
@@ -215,18 +212,19 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"Kapacita vašeho disku bude snížena. Fedora Media Writer ho pro vás může "
-"vrátit do původního stavu; tím z něj zároveň odstraníte instalační médium."
+"Ire-resize ang iyong drive sa mas maliit na kapasidad. Maaari mong baguhin "
+"ang laki nito pabalik sa normal sa pamamagitan ng paggamit ng Fedora Media "
+"Writer. Aalisin nito ang installation media mula sa iyong drive."
 
 #: ../src/app/qml/DownloadPage.qml:148
 msgctxt "DownloadPage|"
 msgid "Selected:"
-msgstr "Vybráno:"
+msgstr "Pinili:"
 
 #: ../src/app/qml/DownloadPage.qml:148
 msgctxt "DownloadPage|"
 msgid "None"
-msgstr "Žádné"
+msgstr "Wala"
 
 #: ../src/app/qml/DownloadPage.qml:156
 #, qt-format
@@ -236,10 +234,10 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"Fedora Media Writer zatím nepodporuje vaše zařízení nebo desku. Prosím, "
-"navštivte <a href=%1>tuto stránku</a> pro více informací o kompatibilitě "
-"vašeho zařízení s Fedorou a případné informace o tom, jak pro něj vytvořit "
-"spustitelné médium."
+"Ang iyong board o device ay hindi pa sinusuportahan ng Fedora Media Writer. "
+"Pakitingnan ang <a href=%1>pahinang ito</a> para sa higit pang impormasyon "
+"tungkol sa compatibility nito sa Fedora at kung paano lumikha ng bootable na "
+"media para dito."
 
 #: ../src/app/qml/DownloadPage.qml:165
 #, qt-format
@@ -248,229 +246,242 @@ msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
-"Vybraný disk je velký %1. Je možné, že jste omylem vybrali externí pevný "
-"disk!"
+"Ang laki ng napiling drive ay %1. Posibleng nakapili ka ng external na drive "
+"nang hindi sinasadya!"
 
 #: ../src/app/qml/DownloadPage.qml:174
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr "Restartujte a spusťte systém z %1 abyste začali používat %2."
+msgstr "I-restart at mag-boot mula sa %1 upang simulan ang paggamit ng %2."
 
 #: ../src/app/qml/DownloadPage.qml:262
 msgctxt "DownloadPage|"
 msgid "Writing not possible"
-msgstr "Zapisování není možné"
+msgstr "Hindi maaari ang pagsusulat"
 
 #: ../src/app/qml/DownloadPage.qml:282
 msgctxt "DownloadPage|"
 msgid "Writing"
-msgstr "Zápis"
+msgstr "Nagsusulat"
 
 #: ../src/app/qml/DownloadPage.qml:334
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "Dokončit"
+msgstr "Tapos na"
 
 #: ../src/app/qml/DownloadPage.qml:347
+#, fuzzy
+#| msgctxt "DownloadPage|"
+#| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
 msgid "Successfully written"
-msgstr "%1 Úspěšně zapsáno"
+msgstr "%1 Matagumpay na Naisulat"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
 msgid "Verification failed due to missing drives"
-msgstr "Ověření selhalo kvůli chybějícím diskům"
+msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:381
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Writing %1 failed"
 msgctxt "DownloadPage|"
 msgid "Verification failed"
-msgstr "Ověření selhalo"
+msgstr "Pagsusulat %1 na bigo"
 
 #: ../src/app/qml/DownloadPage.qml:393
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Download failed"
 msgctxt "DownloadPage|"
 msgid "Download failed"
-msgstr "Stahování selhalo"
+msgstr "Nabigo ang pag-download"
 
 #: ../src/app/qml/DownloadPage.qml:409
+#, fuzzy
+#| msgctxt "DownloadPage|"
+#| msgid "Failed no drives"
 msgctxt "DownloadPage|"
 msgid "Failed due to missing drives"
-msgstr "Selhalo kvůli chybějícím diskům"
+msgstr "Nabigo walang drive"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
 msgid "This drive is not large enough."
-msgstr "Tento disk není dostatečně velký."
+msgstr "Ang drive na ito ay hindi sapat ang laki."
 
 #: ../src/app/qml/DrivePage.qml:36
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "Možnosti Zápisu"
+msgstr "Isulat ang mga Opsyon"
 
 #: ../src/app/qml/DrivePage.qml:45
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "Verze"
+msgstr "Bersyon"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr "Hardwarová Architektura"
+msgstr "Arkitektura ng Hardware"
 
 #: ../src/app/qml/DrivePage.qml:84
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "Vybraný soubor"
+msgstr "Napiling file"
 
 #: ../src/app/qml/DrivePage.qml:91
 msgctxt "DrivePage|"
 msgid "None"
-msgstr "Žádné"
+msgstr "Wala"
 
 #: ../src/app/qml/DrivePage.qml:99
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "Vybrat..."
+msgstr "Pumili..."
 
 #: ../src/app/qml/DrivePage.qml:116
 msgctxt "DrivePage|"
 msgid "Image files"
-msgstr "Soubory obrazů"
+msgstr "Imahe ng mga file"
 
 #: ../src/app/qml/DrivePage.qml:116
 msgctxt "DrivePage|"
 msgid "All files (*)"
-msgstr "Všechny soubory (*)"
+msgstr "lahat ng mga file (*)"
 
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr "USB Disk"
+msgstr "USB Drive"
 
 #: ../src/app/qml/DrivePage.qml:135
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr "Nejsou připojeny žádné přenosné disky"
+msgstr "Walang nakakonektang portable drive"
 
 #: ../src/app/qml/DrivePage.qml:155
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "Stažený obraz"
+msgstr "Pag-Download"
 
 #: ../src/app/qml/DrivePage.qml:160
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "Smazat stažený obraz po dokončení zápisu"
+msgstr "Tanggalin ang na-download pagkatapos magsulat"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr "Disk byl odpojen v průběhu zápisu."
+msgstr "Inalis ang drive habang sinusulatan ito."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "Nelze nalézt pomocný binární soubor. Zkontrolujte svou instalaci."
+msgstr "Hindi mahanap ang helper binary. Suriin ang iyong pag-install."
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr "Zastaveno ještě před koncem zápisu."
+msgstr "Ihininto bago matapos ang pagsusulat."
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
 msgid "Finished!"
-msgstr "Dokončeno!"
+msgstr "Tapos na!"
 
 #: ../src/app/linuxdrivemanager.cpp:327
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr "Zapisování %1 bylo úspěšné"
+msgstr "Ang pagsulat ng %1 ay matagumpay"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
 msgid "Error"
-msgstr "Chyba"
+msgstr "Pagkakamali"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr "Zapisování %1 bylo neúspěšné"
+msgstr "Pagsusulat %1 na bigo"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
-msgstr "Zdá se, že je na vašem systému UDisks2 nedostupný či nepřístupný."
+msgstr ""
+"Mukhang hindi available o hindi naa-access ang UDisks2 sa iyong system."
 
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "Nelze nalézt pomocný binární soubor. Zkontrolujte svou instalaci."
+msgstr "Hindi mahanap ang helper binary. Suriin ang iyong pag-install."
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
 msgid "Error"
-msgstr "Chyba"
+msgstr "Pagkakamali"
 
 #: ../src/app/macdrivemanager.cpp:187
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr "Zapisování %1 selhalo"
+msgstr "Pagsusulat %1 na bigo"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
 msgid "Finished!"
-msgstr "Hotovo!"
+msgstr "Tapos na!"
 
 #: ../src/app/macdrivemanager.cpp:190
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr "Zapisování %1 bylo úspěšné"
+msgstr "Pagsusulat ng %1 ay matagumpay"
 
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr "Vyberete Zdroj"
+msgstr "Piliin ang Pinagmulan ng Imahe"
 
 #: ../src/app/qml/MainPage.qml:57
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Stáhnout automaticky"
+msgstr "Awtomatikong i-download"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr "Vyberte .iso soubor"
+msgstr "Piliin ang .iso file"
 
 #: ../src/app/qml/MainPage.qml:76
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "Obnovit <b>%1</b>"
+msgstr "Ibalik ang <b>%1</b>"
 
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr "Soubory obrazů"
+msgstr "Imahe ng mga file"
 
 #: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "všechny soubory"
+msgstr "Lahat ng mga file"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr "Otevřít Soubor"
+msgstr "Buksan ang File"
 
 #: ../src/app/releasemanager.cpp:392
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
-msgstr "Vyberte soubor ze svého disku (nebo disků)"
+msgstr "Pumili ng file sa iyong drive o mga drive"
 
 #: ../src/app/releasemanager.cpp:393
 msgctxt "Release|"
@@ -479,14 +490,14 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
-"<p>Zde můžete pro zapsání vybrat obraz operačního systému z vašeho pevného "
-"disku.</p><p>V současné době je podporováno pouze zapisování surových obrazů "
-"disků (.iso nebo .bin)</p>"
+"<p>Dito maaari kang pumili ng OS na imahe mula sa iyong hard drive na "
+"isusulat sa iyong flash disk</p><p>Sa kasalukuyan ay sinusuportahan lamang "
+"ang pagsulat ng mga raw na Imahe sa disk (.iso o .bin)</p>"
 
 #: ../src/app/releasemanager.cpp:423
 msgctxt "Release|"
 msgid "Fedora Spins"
-msgstr "Spiny Fedory"
+msgstr "Fedora Spins"
 
 #: ../src/app/releasemanager.cpp:425
 msgctxt "Release|"
@@ -496,12 +507,12 @@ msgstr "Fedora Labs"
 #: ../src/app/releasemanager.cpp:427
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
-msgstr "Vznikající edice Fedory"
+msgstr "Umuusbong na Edisyon ng Fedora"
 
 #: ../src/app/releasemanager.cpp:429
 msgctxt "Release|"
 msgid "Other"
-msgstr "Ostatní"
+msgstr "Iba pa"
 
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
@@ -511,7 +522,8 @@ msgstr "Intel/AMD 64bit"
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr "ISO obraz pro Intel, AMD a další kompatibilní PC (64-bit)"
+msgstr ""
+"ISO format na imahe para sa Intel, AMD at iba pang mga katugmang PC (64-bit)"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
@@ -521,7 +533,8 @@ msgstr "Intel/AMD 32bit"
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr "ISO obraz pro Intel, AMD a další kompatibilní PC (32-bit)"
+msgstr ""
+"ISO format na imahe para sa Intel, AMD at iba pang mga katugmang PC (32-bit)"
 
 #: ../src/app/releasemanager.cpp:1071
 msgctxt "ReleaseArchitecture|"
@@ -533,8 +546,8 @@ msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
-"Surový obraz pro stroje s procesory ARM v7-A (například Raspberry Pi 2 a 3), "
-"komprimovaný pomocí LZMA"
+"LZMA-compressed raw image para sa ARM v7-A machine tulad ng Raspberry Pi 2 "
+"at 3"
 
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
@@ -544,83 +557,84 @@ msgstr "AArch64"
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "LZMA - komprimovaný surový obraz pro AArch64"
+msgstr "LZMA-compressed raw na imahe para sa AArch64 machine"
 
 #: ../src/app/releasemanager.cpp:391
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
-msgstr "Vlastní obraz"
+msgstr "Custom na imahe"
 
 #: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
-msgstr "Stažený obraz je poškozený"
+msgstr "Ang na-download na imahe ay sira"
 
 #: ../src/app/releasemanager.cpp:944
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
-msgstr "Není možné přečíst stažený soubor."
+msgstr "Hindi nababasa ang na-download na file."
 
 #: ../src/app/releasemanager.cpp:955
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr "Nepovedlo se přejmenovat dočasný soubor."
+msgstr "Hindi mapalitan ang pangalan ng pansamantalang file."
 
 #: ../src/app/releasemanager.h:372
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
-msgstr "Připravuje se"
+msgstr "Naghahanda"
 
 #: ../src/app/releasemanager.h:373
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
-msgstr "Stahuje se"
+msgstr "Nagda-download"
 
 #: ../src/app/releasemanager.h:374
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr "Ověřování stažených dat"
+msgstr "Sinusuri ang na-download"
 
 #: ../src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
-msgstr "Připraveno k zápisu"
+msgstr "Handa nang magsulat"
 
 #: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
-"Soubor obrazu byl uložen do vaší složky stahování. Není možné zapisovat."
+"Na-save ang file ng imahe sa iyong folder ng mga download. Hindi pwede ang "
+"pagsusulat"
 
 #: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
 msgid "Writing"
-msgstr "Zápis"
+msgstr "Nagsusulat"
 
 #: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
-msgstr "Ověřování zapsaných dat"
+msgstr "Sinusuri ang nakasulat na datos"
 
 #: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
-msgstr "Dokončeno!"
+msgstr "Tapos na!"
 
 #: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
-msgstr "Zapsaná data jsou poškozená"
+msgstr "Ang nakasulat na data ay sira"
 
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr "Stahování selhalo"
+msgstr "Nabigo ang pag-download"
 
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Error"
-msgstr "Chyba"
+msgstr "Error"
 
 #: ../src/app/releasemanager.cpp:701
 #, qt-format
@@ -638,13 +652,13 @@ msgstr "%1 Beta"
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr "%1 Release Candidate"
+msgstr "%1 Kandidato na ma-Release"
 
 #: ../src/app/qml/RestorePage.qml:37
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr "Obnovit Disk <b>%1</b>"
+msgstr "I-restore ang Drive <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:49
 msgctxt "RestorePage|"
@@ -656,19 +670,13 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">\n"
-"                                                Pro získání všeho volného "
-"místa na disku je potřeba jej obnovit do továrního nastavení.\n"
-"                                                Živý systém a všechna "
-"uložená data budou smazána.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Pokud chcete na disk zapsat "
-"jiný živý systém, tak disk obnovovat nemusíte.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Chcete pokračovat?\n"
-"                                            </p>"
+"<p align=\"justify\"> Upang mabawi ang lahat ng espasyong available sa "
+"drive, kailangan itong ibalik sa mga factory setting nito. Ang live na "
+"system at lahat ng naka-save na data ay tatanggalin. </p> <p align=\"justify"
+"\"> Hindi mo kailangang ibalik ang drive kung gusto mong magsulat ng isa "
+"pang live na system.\n"
+"                </p> <p align=\"justify\"> Gusto mo bang ibalik ito sa mga "
+"factory setting? </p>"
 
 #: ../src/app/qml/RestorePage.qml:67
 msgctxt "RestorePage|"
@@ -676,13 +684,13 @@ msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
-"<p align=\"justify\">Prosím počkejte, dokud Fedora Media Writer neobnoví váš "
-"přenosný disk.</p>"
+"<p align=\"justify\">Mangyaring maghintay habang nire-restore ng Fedora "
+"Media Writer ang iyong portable drive.</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr "Váš disk byl úspěšně obnoven!"
+msgstr "Matagumpay na naibalik ang iyong drive!"
 
 #: ../src/app/qml/RestorePage.qml:94
 msgctxt "RestorePage|"
@@ -690,38 +698,38 @@ msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"Bohužel, v průběhu obnovování nastala chyba.<br>Pokuste se prosím o obnovu "
-"pomocí nástrojů vašeho systému."
+"Sa kasamaang palad, may naganap na error sa proseso. Pakisubukang ibalik ang "
+"drive gamit ang iyong mga tool sa system."
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr "Obnova dokončena"
+msgstr "Tapos na ang Pag-restore"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr "Vyberte Verzi Fedory"
+msgstr "Piliin ang Fedora Release"
 
 #: ../src/app/qml/VersionPage.qml:48
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "Vyberte:"
+msgstr "Pumili mula sa:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr "Oficiální Edice"
+msgstr "Mga Opisyal na Edisyon"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Emerging Editions"
-msgstr "Vznikající Edice"
+msgstr "Mga Umuusbong na Edisyon"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr "Spiny"
+msgstr "Spins"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
@@ -731,105 +739,114 @@ msgstr "Labs"
 #: ../src/app/windrivemanager.cpp:265
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "Nelze nalézt pomocný binární soubor. Zkontrolujte svou instalaci."
+msgstr "Hindi mahanap ang helper binary. Suriin ang iyong pag-install."
 
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr "Dokončeno!"
+msgstr "Tapos na!"
 
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr "Zapisování %1 bylo úspěšné"
+msgstr "Pagsusulat %1 na matagumpay"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:271
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr "Nebylo možné začít s dekompresí archivu"
+msgstr ""
 
 #: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
 #: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+#, fuzzy
+#| msgctxt "Download|"
+#| msgid "The download file is not writable."
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
-msgstr "Na cílový disk nelze zapisovat"
+msgstr "Ang download file ay hindi maisusulat."
 
 #: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:315
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
-msgstr "Tento systém nemá dostatek paměti pro dekompresi tohoto souboru."
+msgstr ""
 
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:320
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "The downloaded image is corrupted"
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
-msgstr "Stažený archiv je poškozený."
+msgstr "Ang na-download na imahe ay sira"
 
 #: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:323
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
-msgstr "Nepodporované nastavení komprese."
+msgstr ""
 
 #: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:326
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
-msgstr "Neznámá chyba při dekompresi."
+msgstr ""
 
 #: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
 #: ../src/helper/win/writejob.cpp:361
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "The downloaded file is not readable."
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
-msgstr "Zdrojový obraz nelze přečíst"
+msgstr "Hindi nababasa ang na-download na file."
 
 #: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
 #: ../src/helper/win/writejob.cpp:406
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr "Cílový disk je pravděpodobně poškozený."
+msgstr ""
 
 #: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
 #: ../src/helper/win/writejob.cpp:411
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr "V průběhu ověřování nastala neočekávaná chyba."
+msgstr ""
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr "nedaří se vytvořit dvojici soketů"
+msgstr ""
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr "Nelze otevřít cíl pro zápis"
+msgstr ""
 
 #: ../src/helper/win/writejob.cpp:74
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for writing"
-msgstr "Disk nelze otevřít pro psaní"
+msgstr ""
 
 #: ../src/helper/win/writejob.cpp:98
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr "Disk nelze zamknout"
+msgstr ""
 
 #: ../src/helper/win/writejob.cpp:134
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't remove the drive %1:"
-msgstr "Nepodařilo se odpojit disk %1:"
+msgstr ""
 
 #: ../src/helper/win/writejob.cpp:209
 msgctxt "WriteJob|"
 msgid "Couldn't unlock the drive"
-msgstr "Disk nelze odemknout"
+msgstr ""
 
 #: ../src/app/qml/main.qml:116
 msgctxt "main|"
@@ -839,67 +856,67 @@ msgstr "Fedora Media Writer"
 #: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Vyberte Verzi Fedory"
+msgstr "Piliin ang Bersyon ng Fedora"
 
 #: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "Vybrat Disk"
+msgstr "Pumili ng Drive"
 
 #: ../src/app/qml/main.qml:207
 msgctxt "main|"
 msgid "Downloading"
-msgstr "Stahuje se"
+msgstr "Nag-Download"
 
 #: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
-msgstr "Obnovit"
+msgstr "Ibalik"
 
 #: ../src/app/qml/main.qml:286
 msgctxt "main|"
 msgid "Finish"
-msgstr "Dokončit"
+msgstr "Tapos na"
 
 #: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Write"
-msgstr "Zápis"
+msgstr "Magsulat"
 
 #: ../src/app/qml/main.qml:292
 msgctxt "main|"
 msgid "Download && Write"
-msgstr "Stáhnout a Zapsat"
+msgstr "MagDownload && Magsulat"
 
 #: ../src/app/qml/main.qml:293
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "Stáhnout a Zapsat"
+msgstr "MagDownload & Magsulat"
 
 #: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 msgctxt "main|"
 msgid "Cancel"
-msgstr "Storno"
+msgstr "Kanselahin"
 
 #: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "Retry"
-msgstr "Opakovat"
+msgstr "Subukan muli"
 
 #: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
-msgstr "Následující"
+msgstr "Susunod"
 
 #: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
-msgstr "O Aplikaci…"
+msgstr "Tungkol sa"
 
 #: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
-msgstr "Předchozí"
+msgstr "Nakaraan"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
@@ -911,7 +928,7 @@ msgstr "Fedora Media Writer"
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
-msgstr "Nástroj pro vytváření živých USB disků s některou z edicí Fedory"
+msgstr "Isang tool para gumawa ng live USB drive na may edisyon ng Fedora"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -923,12 +940,13 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
-"Nástroj pro vytváření živých USB disků s některou z edicí Fedory. Nejen, že "
-"Fedora Media Writer zapíše obraz na váš disk, ale také ho pro vás stáhne. "
-"Nabízí oficiální vydání (Server, Workstation), Spiny Fedory (KDE Plasma "
-"Desktop, Xfce Desktop, Cinnamon Desktop,...) a Fedora Labs (Design Suite, "
-"Security Lab,...). Obsahuje základní informace o každém z nich, aby pro vás "
-"bylo snažší udělat správnou volbu."
+"Isang tool para gumawa ng bootable na live USB drive na may edisyon ng "
+"Fedora. Hindi lamang maaaring magsulat ng imahe ang Fedora Media Writer sa "
+"iyong flash drive, maaari rin itong mag-download para sa iyo. Nag-aalok ito "
+"ng mga opisyal na edisyon (Server, Workstation), Fedora spins (KDE Plasma "
+"Desktop, Xfce Desktop, Cinnamon Desktop,...), at Fedora Labs (Design Suite, "
+"Security Lab,...). Nagbibigay ito ng pangunahing impormasyon tungkol sa "
+"bawat isa sa kanila upang matulungan kang na pumili ng wasto."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -936,270 +954,34 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
-"Fedora Media Writer také dokáže zapsat jiné bootovatelné ISO obrazy z vašeho "
-"disku, ale mějte na paměti, že byl testovaný pouze s obrazy Fedory."
+"Ang Fedora Media Writer ay maaari ding magsulat ng iba pang mga bootable na "
+"ISO na na-load mula sa iyong lokal na disk, ngunit tandaan na ito ay nasubok "
+"lamang sa mga larawan ng Fedora."
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
 msgid "Write Fedora images to your portable drives"
-msgstr "Zapisujte obrazy Fedory na přenosná média"
+msgstr "Sumulat ng mga imahe ng Fedora sa iyong mga portable drive"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
-msgstr "fmw;usb;iso;spustitelné;"
+msgstr "fmw;usb;iso;bootable;"
 
 #~ msgctxt "DownloadPage|"
 #~ msgid "Write verifying"
-#~ msgstr "Ověřování zápisu"
+#~ msgstr "Beripikasyon ng pagsusulat"
 
 #~ msgctxt "DownloadPage|"
 #~ msgid "Write Successful"
-#~ msgstr "Zapisování %1 bylo úspěšné"
+#~ msgstr "Tagumpay ang Pagsusulat"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification no drives"
+#~ msgstr "Nabigong pag-beripika walang drive"
 
 #~ msgctxt "DownloadPage|"
 #~ msgid "Failed verification"
-#~ msgstr "Ověřování selhalo"
+#~ msgstr "Nabigong beripikasyon"
 
 #~ msgctxt "DownloadPage|"
 #~ msgid "Failed download"
-#~ msgstr "Stahování selhalo"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write the image immediately when the download is finished"
-#~ msgstr "Zapsat obraz hned, jakmile bude stahování dokončeno"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Other"
-#~ msgstr "Jiné"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-#~ msgstr "Nebylo možné smazat<br>\"<a href=\"%1\">%2</a>\"."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Back"
-#~ msgstr "Zpět"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Create Live USB…"
-#~ msgstr "Vytvořit Live USB..."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "(%1 after writing)"
-#~ msgstr "(po zapsání %1)"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ""
-#~ "Fedora %1 was released! Check it out!<br>If you want a stable, finished "
-#~ "system, it's better to stay at version %2."
-#~ msgstr ""
-#~ "Byla vydána Fedora %1! Můžete ji vyzkoušet!<br>\n"
-#~ "Pokud ale chcete stabilní a dokončený systém, bude lepší zůstat u verze "
-#~ "%2."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ", released on %1"
-#~ msgstr ", vydaná dne %1"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "Další varianty..."
-
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "Zvolit obraz operačního systému"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Checking for new releases"
-#~ msgstr "Hledání nově vydaných verzí"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Version %1"
-#~ msgstr "Verze %1"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Display additional Fedora flavors"
-#~ msgstr "Zobrazit další odnože Fedory"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Cancel"
-#~ msgstr "Storno"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Restore"
-#~ msgstr "Obnovit"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Close"
-#~ msgstr "Zavřít"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
-#~ "want to restore it to factory settings?"
-#~ msgstr ""
-#~ "Vložili jste <b>%1</b>, který už živý systém obsahuje.<br>Chcete jej "
-#~ "obnovit do továrního nastavení?"
-
-#~ msgctxt "main|"
-#~ msgid "Fedora Media Writer %1 Released"
-#~ msgstr "Byl vydán Fedora Media Writer %1"
-
-#~ msgctxt "main|"
-#~ msgid "Update for great new features and bugfixes!"
-#~ msgstr "Aktualizujte pro nové možnosti a opravené chyby!"
-
-#~ msgctxt "main|"
-#~ msgid "Open Browser"
-#~ msgstr "Otevřít prohlížeč"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "%1<br>Writing images will not be possible.<br>You can still view Fedora "
-#~ "flavors and download images to your hard drive."
-#~ msgstr ""
-#~ "%1<br>Nebude možné zapisovat obrazy.<br>Můžete si však prohlížet odrůdy "
-#~ "Fedory a stahovat obrazy na disk."
-
-#~ msgctxt "main|"
-#~ msgid "Ok"
-#~ msgstr "Budiž"
-
-# ############## metadata.json ###############
-#~ msgid "workstation"
-#~ msgstr "Workstation"
-
-#~ msgctxt "Release|"
-#~ msgid "product"
-#~ msgstr "produkt"
-
-#~ msgctxt "Release|"
-#~ msgid "This is the Linux workstation you've been waiting for."
-#~ msgstr "Linuxová pracovní stanice, na kterou jste čekali."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Fedora Workstation is a reliable, user-friendly, and powerful operating "
-#~ "system for your laptop or desktop computer. It supports a wide range of "
-#~ "developers, from hobbyists and students to professionals in corporate "
-#~ "environments."
-#~ msgstr ""
-#~ "Fedora Workstation je spolehlivý, uživatelsky přívětivý a výkonný "
-#~ "operační systém pro laptop a stolní počítač. Poskytne podporu široké "
-#~ "škále vývojářů od nadšenců a studentů po profesionály v podnikových "
-#~ "prostředích."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The plethora of tools provided by<br /> Fedora allows me to get the job "
-#~ "done.<br /> It just works.”"
-#~ msgstr ""
-#~ "\"Množství nástrojů poskytovaných<br /> Fedorou mi umožňuje dokončit svou "
-#~ "práci.<br /> Prostě to funguje.\""
-
-#~ msgctxt "Release|"
-#~ msgid "JVM performance engineer"
-#~ msgstr "technik pro výkon JVM"
-
-#~ msgctxt "Release|"
-#~ msgid "Sleek user interface"
-#~ msgstr "Elegantní uživatelské rozhraní"
-
-#, fuzzy
-#~| msgid "Fedora Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "Fedora Server"
-#~ msgstr "Fedora Media Writer"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Spins"
-#~ msgctxt "Release|"
-#~ msgid "silverblue"
-#~ msgstr "Spiny Fedory"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Spins"
-#~ msgctxt "Release|"
-#~ msgid "Fedora Silverblue"
-#~ msgstr "Spiny Fedory"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
-#~ msgctxt "Release|"
-#~ msgid "Fedora LXQt Desktop"
-#~ msgstr "Fedora Labs"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
-#~ msgctxt "Release|"
-#~ msgid "Fedora Cinnamon Desktop"
-#~ msgstr "Fedora Labs"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
-#~ msgctxt "Release|"
-#~ msgid "Fedora LXDE Desktop"
-#~ msgstr "Fedora Labs"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
-#~ msgctxt "Release|"
-#~ msgid "Fedora SoaS Desktop"
-#~ msgstr "Fedora Labs"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
-#~ msgctxt "Release|"
-#~ msgid "Fedora i3 Desktop"
-#~ msgstr "Fedora Labs"
-
-#, fuzzy
-#~| msgid "Fedora Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "design_suite"
-#~ msgstr "Fedora Media Writer"
-
-#, fuzzy
-#~| msgid "Fedora Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "Fedora Design Suite"
-#~ msgstr "Fedora Media Writer"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
-#~ msgid "Fedora Games"
-#~ msgstr "Fedora Labs"
-
-#, fuzzy
-#~| msgid "Fedora Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "Fedora Robotics Suite"
-#~ msgstr "Fedora Media Writer"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Spins"
-#~ msgctxt "Release|"
-#~ msgid "scientific"
-#~ msgstr "Spiny Fedory"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Spins"
-#~ msgctxt "Release|"
-#~ msgid "Fedora Scientific"
-#~ msgstr "Spiny Fedory"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
-#~ msgctxt "Release|"
-#~ msgid "Fedora Security Lab"
-#~ msgstr "Fedora Labs"
+#~ msgstr "Nabigong pag-download"

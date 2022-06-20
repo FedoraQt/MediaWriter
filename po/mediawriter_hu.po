@@ -14,7 +14,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
+"POT-Creation-Date: 2022-06-07 09:00+0200\n"
 "PO-Revision-Date: 2021-11-04 22:05+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://translate.fedoraproject.org/projects/"
@@ -109,7 +109,7 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:106
+#: ../src/app/qml/CancelDialog.qml:110
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -117,7 +117,7 @@ msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Letöltés"
 
-#: ../src/app/qml/CancelDialog.qml:108
+#: ../src/app/qml/CancelDialog.qml:112
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Writing"
@@ -125,7 +125,7 @@ msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Kiírás"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr ""
@@ -153,7 +153,7 @@ msgstr "Kapcsolat megszakadt"
 #: ../src/app/qml/DownloadPage.qml:48
 #, qt-format
 msgctxt "DownloadPage|"
-msgid "%1 Sucessfuly Written"
+msgid "%1 Successfully Written"
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:50
@@ -164,7 +164,7 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Kiírás"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Checking the written data"
@@ -342,14 +342,6 @@ msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "Kiírás"
 
-#: ../src/app/qml/DownloadPage.qml:310
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "Kiírás"
-
 #: ../src/app/qml/DownloadPage.qml:334
 #, fuzzy
 #| msgctxt "LinuxDrive|"
@@ -359,34 +351,34 @@ msgid "Finish"
 msgstr "Művelet befejezve!"
 
 #: ../src/app/qml/DownloadPage.qml:347
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
 msgctxt "DownloadPage|"
-msgid "Write Successful"
-msgstr "%1 kiírása sikeres volt"
+msgid "Successfully written"
+msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
+msgid "Verification failed due to missing drives"
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:381
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Writing %1 failed"
 msgctxt "DownloadPage|"
-msgid "Failed verification"
-msgstr ""
+msgid "Verification failed"
+msgstr "%1 kiírása sikertelen"
 
 #: ../src/app/qml/DownloadPage.qml:393
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
+#| msgid "Download failed"
 msgctxt "DownloadPage|"
-msgid "Failed download"
-msgstr "Letöltés ellenőrzése"
+msgid "Download failed"
+msgstr "Letöltés sikertelen"
 
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
+msgid "Failed due to missing drives"
 msgstr ""
 
 #: ../src/app/drivemanager.cpp:308
@@ -936,14 +928,104 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "%1 kiírása sikeres volt"
 
-#: ../src/app/qml/main.qml:117
+#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/win/writejob.cpp:271
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
+msgstr "Kibontást nem sikerült elindítani."
+
+#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
+#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
+#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "A céleszköz írásvédett"
+
+#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/win/writejob.cpp:315
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr "Nincs elegendő memória a fájl kibontásához."
+
+#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/win/writejob.cpp:320
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "A letöltött tömörített fájl sérült."
+
+#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/win/writejob.cpp:323
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr "Nem támogatott tömörítési opciók."
+
+#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/win/writejob.cpp:326
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr "Ismeretlen kibontási hiba."
+
+#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/win/writejob.cpp:361
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "Forrás lemezkép olvashatatlan"
+
+#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:406
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr "Az eszköz valószínüleg sérült."
+
+#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:411
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr "Váratlan hiba lépett fel a média ellenőrzése közben."
+
+#: ../src/helper/mac/writejob.cpp:86
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr ""
+
+#: ../src/helper/mac/writejob.cpp:131
+#, fuzzy
+#| msgctxt "WriteJob|"
+#| msgid "Couldn't open the drive for writing"
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr "Meghajtó megnyitása íráshoz nem sikerült"
+
+#: ../src/helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr "Meghajtó megnyitása íráshoz nem sikerült"
+
+#: ../src/helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr "Meghajtó nem zárolható"
+
+#: ../src/helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr "%1 meghajtó nem eltávolítható:"
+
+#: ../src/helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr "A meghajtó felszabadítása nem sikerült"
+
+#: ../src/app/qml/main.qml:116
 #, fuzzy
 #| msgid "Fedora Media Writer"
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora médiaíró"
 
-#: ../src/app/qml/main.qml:157
+#: ../src/app/qml/main.qml:154
 #, fuzzy
 #| msgctxt "Release|"
 #| msgid "Fedora Workstation"
@@ -951,7 +1033,7 @@ msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr "Fedora Workstation"
 
-#: ../src/app/qml/main.qml:173
+#: ../src/app/qml/main.qml:170
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Selected:"
@@ -959,7 +1041,7 @@ msgctxt "main|"
 msgid "Select Drive"
 msgstr "Kiválasztva:"
 
-#: ../src/app/qml/main.qml:211
+#: ../src/app/qml/main.qml:207
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -967,12 +1049,12 @@ msgctxt "main|"
 msgid "Downloading"
 msgstr "Letöltés"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
 msgstr "Helyreállítás"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:286
 #, fuzzy
 #| msgctxt "LinuxDrive|"
 #| msgid "Finished!"
@@ -980,7 +1062,7 @@ msgctxt "main|"
 msgid "Finish"
 msgstr "Művelet befejezve!"
 
-#: ../src/app/qml/main.qml:294
+#: ../src/app/qml/main.qml:290
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Write %1"
@@ -988,7 +1070,7 @@ msgctxt "main|"
 msgid "Write"
 msgstr "%1 kiírása"
 
-#: ../src/app/qml/main.qml:296
+#: ../src/app/qml/main.qml:292
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -996,7 +1078,7 @@ msgctxt "main|"
 msgid "Download && Write"
 msgstr "Letöltés sikertelen"
 
-#: ../src/app/qml/main.qml:297
+#: ../src/app/qml/main.qml:293
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -1004,7 +1086,7 @@ msgctxt "main|"
 msgid "Download & Write"
 msgstr "Letöltés sikertelen"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Cancel"
@@ -1012,7 +1094,7 @@ msgctxt "main|"
 msgid "Cancel"
 msgstr "Mégse"
 
-#: ../src/app/qml/main.qml:302
+#: ../src/app/qml/main.qml:298
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Retry"
@@ -1020,17 +1102,17 @@ msgctxt "main|"
 msgid "Retry"
 msgstr "Visszavonás"
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
 msgstr ""
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
 msgstr ""
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
 msgstr ""
@@ -1083,6 +1165,27 @@ msgstr "Írjon Fedora lemezképeket a hordozható meghajtóira"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Writing"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "Kiírás"
+
+#, fuzzy
+#~| msgctxt "LinuxDrive|"
+#~| msgid "Writing %1 was successful"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "%1 kiírása sikeres volt"
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Checking the download"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "Letöltés ellenőrzése"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"
@@ -1151,58 +1254,6 @@ msgstr ""
 #~ msgctxt "RestoreDialog|"
 #~ msgid "Close"
 #~ msgstr "Bezárás"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Failed to start decompressing."
-#~ msgstr "Kibontást nem sikerült elindítani."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Destination drive is not writable"
-#~ msgstr "A céleszköz írásvédett"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "There is not enough memory to decompress the file."
-#~ msgstr "Nincs elegendő memória a fájl kibontásához."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "The downloaded compressed file is corrupted."
-#~ msgstr "A letöltött tömörített fájl sérült."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unsupported compression options."
-#~ msgstr "Nem támogatott tömörítési opciók."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unknown decompression error."
-#~ msgstr "Ismeretlen kibontási hiba."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Source image is not readable"
-#~ msgstr "Forrás lemezkép olvashatatlan"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Your drive is probably damaged."
-#~ msgstr "Az eszköz valószínüleg sérült."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unexpected error occurred during media check."
-#~ msgstr "Váratlan hiba lépett fel a média ellenőrzése közben."
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't open the drive for writing"
-#~ msgstr "Meghajtó megnyitása íráshoz nem sikerült"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't lock the drive"
-#~ msgstr "Meghajtó nem zárolható"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't remove the drive %1:"
-#~ msgstr "%1 meghajtó nem eltávolítható:"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't unlock the drive"
-#~ msgstr "A meghajtó felszabadítása nem sikerült"
 
 #~ msgctxt "main|"
 #~ msgid ""

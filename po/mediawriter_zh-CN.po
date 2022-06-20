@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2022-05-11 02:54+0000\n"
+"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"PO-Revision-Date: 2022-05-18 10:18+0000\n"
 "Last-Translator: Pany <geekpany@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
 "projects/fedora-media-writer/mediawriter/zh_CN/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 4.12.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -91,17 +91,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "继续"
 
-#: ../src/app/qml/CancelDialog.qml:106
+#: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "取消下载"
 
-#: ../src/app/qml/CancelDialog.qml:108
+#: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "取消写入"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "取消验证"
@@ -127,9 +127,11 @@ msgid "Connection timed out"
 msgstr "连接超时"
 
 #: ../src/app/qml/DownloadPage.qml:48
-#, qt-format
+#, fuzzy, qt-format
+#| msgctxt "DownloadPage|"
+#| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
-msgid "%1 Sucessfuly Written"
+msgid "%1 Successfully Written"
 msgstr "已成功写入 %1"
 
 #: ../src/app/qml/DownloadPage.qml:50
@@ -138,7 +140,7 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "写入中 %1"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
 msgstr "正在验证已写入的数据"
@@ -209,8 +211,9 @@ msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
-msgstr "你的驱动器将被调整至较小容量。你也可以使用 Fedora Media Writer "
-"将其调整回其正常容量，但这也将从驱动器上抹除安装介质。"
+msgstr ""
+"你的驱动器将被调整至较小容量。你也可以使用 Fedora Media Writer 将其调整回其正"
+"常容量，但这也将从驱动器上抹除安装介质。"
 
 #: ../src/app/qml/DownloadPage.qml:148
 msgctxt "DownloadPage|"
@@ -257,40 +260,38 @@ msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "写入中"
 
-#: ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "验证写入"
-
 #: ../src/app/qml/DownloadPage.qml:334
 msgctxt "DownloadPage|"
 msgid "Finish"
 msgstr "完成"
 
 #: ../src/app/qml/DownloadPage.qml:347
+#, fuzzy
+#| msgctxt "DownloadPage|"
+#| msgid "Sucessfuly written"
 msgctxt "DownloadPage|"
-msgid "Write Successful"
+msgid "Successfully written"
 msgstr "成功写入"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
-msgstr "验证失败：没有驱动器"
+msgid "Verification failed due to missing drives"
+msgstr "验证失败，由于缺少驱动器"
 
 #: ../src/app/qml/DownloadPage.qml:381
 msgctxt "DownloadPage|"
-msgid "Failed verification"
+msgid "Verification failed"
 msgstr "验证失败"
 
 #: ../src/app/qml/DownloadPage.qml:393
 msgctxt "DownloadPage|"
-msgid "Failed download"
+msgid "Download failed"
 msgstr "下载失败"
 
 #: ../src/app/qml/DownloadPage.qml:409
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
-msgstr "失败：没有驱动器"
+msgid "Failed due to missing drives"
+msgstr "失败，由于缺失驱动器"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -473,7 +474,8 @@ msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
-msgstr "<p>在这里你可以从硬盘上选择一个想要写入优盘的操作系统镜像</p><p>当前只支持写"
+msgstr ""
+"<p>在这里你可以从硬盘上选择一个想要写入优盘的操作系统镜像</p><p>当前只支持写"
 "入原始磁盘镜像（.iso 或 .bin 文件）</p>"
 
 #: ../src/app/releasemanager.cpp:423
@@ -647,8 +649,8 @@ msgid ""
 "factory settings? </p>"
 msgstr ""
 "<p align=\"justify\"> 为了使用全部可用空间，该驱动器必须恢复到出厂设置。Live "
-"系统及所有存储数据都会被删除。</p><p align=\"justify\""
-">如果你只是希望写入其他 live 系统，便不需要重置。\n"
+"系统及所有存储数据都会被删除。</p><p align=\"justify\">如果你只是希望写入其"
+"他 live 系统，便不需要重置。\n"
 "                </p><p align=\"justify\">要恢复到出厂设置吗？</p>"
 
 #: ../src/app/qml/RestorePage.qml:67
@@ -721,72 +723,159 @@ msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "成功写入 %1"
 
-#: ../src/app/qml/main.qml:117
+#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/win/writejob.cpp:271
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
+msgstr "无法进行解压。"
+
+#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
+#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
+#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "目标设备不可写"
+
+#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/win/writejob.cpp:315
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr "没有足够的空间来解压文件。"
+
+#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/win/writejob.cpp:320
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "下载到的压缩文件已损坏。"
+
+#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/win/writejob.cpp:323
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr "不被支持的压缩选项。"
+
+#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/win/writejob.cpp:326
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr "未知的解压错误。"
+
+#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/win/writejob.cpp:361
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "源文件不可读"
+
+#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:406
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr "您的驱动器可能已被损坏。"
+
+#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:411
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr "介质检查中出现意外错误。"
+
+#: ../src/helper/mac/writejob.cpp:86
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr "无法分配套接字对"
+
+#: ../src/helper/mac/writejob.cpp:131
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr "无法打开写入的目的地"
+
+#: ../src/helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr "无法打开设备来写入数据"
+
+#: ../src/helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr "无法锁定设备"
+
+#: ../src/helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr "无法移除设备 %1："
+
+#: ../src/helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr "无法解锁设备"
+
+#: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
 
-#: ../src/app/qml/main.qml:157
+#: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr "选择 Fedora 版本"
 
-#: ../src/app/qml/main.qml:173
+#: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
 msgstr "选择驱动器"
 
-#: ../src/app/qml/main.qml:211
+#: ../src/app/qml/main.qml:207
 msgctxt "main|"
 msgid "Downloading"
 msgstr "下载中"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
 msgstr "重置"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:286
 msgctxt "main|"
 msgid "Finish"
 msgstr "完成"
 
-#: ../src/app/qml/main.qml:294
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Write"
 msgstr "写入"
 
-#: ../src/app/qml/main.qml:296
+#: ../src/app/qml/main.qml:292
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "下载并写入"
 
-#: ../src/app/qml/main.qml:297
+#: ../src/app/qml/main.qml:293
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "下载并写入"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 msgctxt "main|"
 msgid "Cancel"
 msgstr "取消"
 
-#: ../src/app/qml/main.qml:302
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "Retry"
 msgstr "重试"
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
 msgstr "下一步"
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
 msgstr "关于"
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
 msgstr "上一步"
@@ -815,8 +904,8 @@ msgid ""
 msgstr ""
 "一个为各种 Fedora 版本制作可启动 Live USB 设备的工具。Fedora Media Writer 不"
 "仅能将镜像写入优盘中，还能为你下载镜像。它提供官方版（Server、Workstation）、"
-"Fedora 定制版（KDE Plasma 桌面、Xfce 桌面、Cinnamon 桌面等）以及 Fedora "
-"实验室（设计套件、安全实验室等）。它还提供各版本的基本信息来帮助你做选择。"
+"Fedora 定制版（KDE Plasma 桌面、Xfce 桌面、Cinnamon 桌面等）以及 Fedora 实验"
+"室（设计套件、安全实验室等）。它还提供各版本的基本信息来帮助你做选择。"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -834,6 +923,26 @@ msgstr "将 Fedora 镜像写入到可移动驱动器中"
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "验证写入"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "成功写入"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification no drives"
+#~ msgstr "验证失败：没有驱动器"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification"
+#~ msgstr "验证失败"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "下载失败"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"
@@ -902,66 +1011,6 @@ msgstr "fmw;usb;iso;bootable;"
 #~ msgctxt "RestoreDialog|"
 #~ msgid "Close"
 #~ msgstr "关闭"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Failed to start decompressing."
-#~ msgstr "无法进行解压。"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Destination drive is not writable"
-#~ msgstr "目标设备不可写"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "There is not enough memory to decompress the file."
-#~ msgstr "没有足够的空间来解压文件。"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "The downloaded compressed file is corrupted."
-#~ msgstr "下载到的压缩文件已损坏。"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unsupported compression options."
-#~ msgstr "不被支持的压缩选项。"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unknown decompression error."
-#~ msgstr "未知的解压错误。"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Source image is not readable"
-#~ msgstr "源文件不可读"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Your drive is probably damaged."
-#~ msgstr "您的驱动器可能已被损坏。"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unexpected error occurred during media check."
-#~ msgstr "介质检查中出现意外错误。"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't open the drive for writing"
-#~ msgstr "无法打开设备来写入数据"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't lock the drive"
-#~ msgstr "无法锁定设备"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't remove the drive %1:"
-#~ msgstr "无法移除设备 %1："
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Couldn't unlock the drive"
-#~ msgstr "无法解锁设备"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to allocate socket pair"
-#~ msgstr "无法分配套接字对"
-
-#~ msgctxt "WriteJob|"
-#~ msgid "Unable to open destination for writing"
-#~ msgstr "无法打开写入的目的地"
 
 #~ msgctxt "main|"
 #~ msgid ""

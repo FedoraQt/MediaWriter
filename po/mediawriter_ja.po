@@ -3,17 +3,17 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-09 08:55+0200\n"
-"PO-Revision-Date: 2022-05-11 02:54+0000\n"
+"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"PO-Revision-Date: 2022-05-25 07:18+0000\n"
 "Last-Translator: Hajime Taira <htaira@pantora.net>\n"
-"Language-Team: Japanese <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/ja/>\n"
+"Language-Team: Japanese <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 4.12.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -70,7 +70,8 @@ msgctxt "CancelDialog|"
 msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
-msgstr "ダウンロードとメディアの書き込みが中断されました。処理を後日継続することがで"
+msgstr ""
+"ダウンロードとメディアの書き込みが中断されました。処理を後日継続することがで"
 "きます。"
 
 #: ../src/app/qml/CancelDialog.qml:69
@@ -78,7 +79,8 @@ msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr "書き込みプロセスが中止されたので、あとでメディアを修復する必要があります。"
+msgstr ""
+"書き込みプロセスが中止されたので、あとでメディアを修復する必要があります。"
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
@@ -90,17 +92,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "続行"
 
-#: ../src/app/qml/CancelDialog.qml:106
+#: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "ダウンロードを中止します"
 
-#: ../src/app/qml/CancelDialog.qml:108
+#: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "書き込みを中止します"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "検証を中止します"
@@ -126,9 +128,11 @@ msgid "Connection timed out"
 msgstr "接続がタイムアウトしました"
 
 #: ../src/app/qml/DownloadPage.qml:48
-#, qt-format
+#, fuzzy, qt-format
+#| msgctxt "DownloadPage|"
+#| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
-msgid "%1 Sucessfuly Written"
+msgid "%1 Successfully Written"
 msgstr "%1 の書き込みに成功しました"
 
 #: ../src/app/qml/DownloadPage.qml:50
@@ -137,7 +141,7 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "書き込み中: %1"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
 msgctxt "DownloadPage|"
 msgid "Verifying written data"
 msgstr "書き込んだデータを検証中"
@@ -211,9 +215,9 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"メディアのサイズが変更されて容量が小さくなります。 Fedora Media "
-"Writerを使用して、サイズを通常に戻すことができます。 "
-"これによりメディアからインストールメディアが削除されます。"
+"メディアのサイズが変更されて容量が小さくなります。 Fedora Media Writerを使用"
+"して、サイズを通常に戻すことができます。 これによりメディアからインストールメ"
+"ディアが削除されます。"
 
 #: ../src/app/qml/DownloadPage.qml:148
 msgctxt "DownloadPage|"
@@ -233,6 +237,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
+"お使いの環境もしくはお使いのデバイスはFedora Media Writerでサポートされており"
+"ません。Fedoraとブートメディアの作成に関する要件について詳しくは<a href=%1>こ"
+"ちらのページ</a>をご確認ください。"
 
 #: ../src/app/qml/DownloadPage.qml:165
 #, qt-format
@@ -241,6 +248,8 @@ msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
+"選択したメディアのサイズは %1 です。 間違えて外付けドライブを選択した可能性が"
+"あります!"
 
 #: ../src/app/qml/DownloadPage.qml:174
 #, qt-format
@@ -258,39 +267,46 @@ msgctxt "DownloadPage|"
 msgid "Writing"
 msgstr "書き込み中"
 
-#: ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Write verifying"
-msgstr "書き込み後の検証中"
-
 #: ../src/app/qml/DownloadPage.qml:334
 msgctxt "DownloadPage|"
 msgid "Finish"
 msgstr "完了しました"
 
 #: ../src/app/qml/DownloadPage.qml:347
+#, fuzzy
+#| msgctxt "DownloadPage|"
+#| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
-msgid "Write Successful"
-msgstr "書き込みに成功しました"
+msgid "Successfully written"
+msgstr "%1 の書き込みに成功しました"
 
 #: ../src/app/qml/DownloadPage.qml:365
 msgctxt "DownloadPage|"
-msgid "Failed verification no drives"
-msgstr ""
+msgid "Verification failed due to missing drives"
+msgstr "メディアを見失ったため検証に失敗しました"
 
 #: ../src/app/qml/DownloadPage.qml:381
+#, fuzzy
+#| msgctxt "CancelDialog|"
+#| msgid "Cancel Verification"
 msgctxt "DownloadPage|"
-msgid "Failed verification"
-msgstr "検証に失敗しました"
+msgid "Verification failed"
+msgstr "検証を中止します"
 
 #: ../src/app/qml/DownloadPage.qml:393
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Downloading"
 msgctxt "DownloadPage|"
-msgid "Failed download"
-msgstr "ダウンロードに失敗しました"
+msgid "Download failed"
+msgstr "ダウンロード中"
 
 #: ../src/app/qml/DownloadPage.qml:409
+#, fuzzy
+#| msgctxt "DownloadPage|"
+#| msgid "Failed no drives"
 msgctxt "DownloadPage|"
-msgid "Failed no drives"
+msgid "Failed due to missing drives"
 msgstr "メディアが見つかりません"
 
 #: ../src/app/drivemanager.cpp:308
@@ -326,22 +342,22 @@ msgstr "なし"
 #: ../src/app/qml/DrivePage.qml:99
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr ""
+msgstr "選択..."
 
 #: ../src/app/qml/DrivePage.qml:116
 msgctxt "DrivePage|"
 msgid "Image files"
-msgstr ""
+msgstr "イメージファイル"
 
 #: ../src/app/qml/DrivePage.qml:116
 msgctxt "DrivePage|"
 msgid "All files (*)"
-msgstr ""
+msgstr "すべてのファイル(*)"
 
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "USBドライブ"
 
 #: ../src/app/qml/DrivePage.qml:135
 #, fuzzy
@@ -370,107 +386,111 @@ msgstr "ダウンロードしたイメージを削除する"
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr ""
+msgstr "書き込み中にメディアが取り外されました。"
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
+"ヘルパーバイナリーが見つかりませんでした。インストール環境を確認してくださ"
+"い。"
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr ""
+msgstr "書き込み完了前に停止しました。"
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "完了!"
 
 #: ../src/app/linuxdrivemanager.cpp:327
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "%1 の書き込みが完了しました"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
 msgid "Error"
-msgstr ""
+msgstr "エラー"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "%1 の書き込みに失敗しました"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
-msgstr ""
+msgstr "UDisks2はシステムから使用できないか、アクセスできないようです。"
 
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
+"ヘルパーバイナリーが見つかりませんでした。インストール環境を確認してくださ"
+"い。"
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
 msgid "Error"
-msgstr ""
+msgstr "エラー"
 
 #: ../src/app/macdrivemanager.cpp:187
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "%1の書き込みに失敗しました"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "完了しました！"
 
 #: ../src/app/macdrivemanager.cpp:190
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "%1 の書き込みが完了しました。"
 
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "イメージソースを選択する"
 
 #: ../src/app/qml/MainPage.qml:57
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr ""
+msgstr "ダウンロードが自動的に行われます"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr ".isoファイルを選択する"
 
 #: ../src/app/qml/MainPage.qml:76
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr ""
+msgstr "<b>%1</b>を修復する"
 
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr ""
+msgstr "イメージファイル"
 
 #: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr ""
+msgstr "すべてのファイル"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "ファイルを開く"
 
 #: ../src/app/releasemanager.cpp:392
 msgctxt "Release|"
@@ -484,92 +504,96 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
+"<p>ハードディスク上のOSイメージを選択頂き、USBメモリーもしくはSDカードに書き"
+"込むことができます。</p><p>現在のところ無圧縮のディスクイメージ(.isoもしくは."
+"bin)をサポートしています</p>"
 
 #: ../src/app/releasemanager.cpp:423
 msgctxt "Release|"
 msgid "Fedora Spins"
-msgstr ""
+msgstr "Fedora Spins"
 
 #: ../src/app/releasemanager.cpp:425
 msgctxt "Release|"
 msgid "Fedora Labs"
-msgstr ""
+msgstr "Fedora Labs"
 
 #: ../src/app/releasemanager.cpp:427
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
-msgstr ""
+msgstr "新しいFedoraエディション"
 
 #: ../src/app/releasemanager.cpp:429
 msgctxt "Release|"
 msgid "Other"
-msgstr ""
+msgstr "その他"
 
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr ""
+msgstr "Intel/AMD 64bit"
 
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr ""
+msgstr "Intel/AMDおよび互換PC(64bit)向けのISO形式イメージ"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr ""
+msgstr "Intel/AMD 32bit"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr ""
+msgstr "Intel/AMDおよびその他の互換性PC用のISO形式イメージ(32ビット)"
 
 #: ../src/app/releasemanager.cpp:1071
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
-msgstr ""
+msgstr "ARM v7"
 
 #: ../src/app/releasemanager.cpp:1071
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
+"LZMA圧縮RAWイメージはRaspberry Pi2/Pi3などのARM v7-Aマシン向けイメージです"
 
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
-msgstr ""
+msgstr "AArch64"
 
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr ""
+msgstr "LZMA圧縮されたRAWイメージはAArch64向けのものです"
 
 #: ../src/app/releasemanager.cpp:391
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
-msgstr ""
+msgstr "カスタムイメージ"
 
 #: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
-msgstr ""
+msgstr "ダウンロードしたイメージが壊れています"
 
 #: ../src/app/releasemanager.cpp:944
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
-msgstr ""
+msgstr "ダウンロードしたファイルが読み込みできません。"
 
 #: ../src/app/releasemanager.cpp:955
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr ""
+msgstr "一時的作業ファイルをリネームできません。"
 
 #: ../src/app/releasemanager.h:372
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
-msgstr ""
+msgstr "準備中"
 
 #: ../src/app/releasemanager.h:373
 #, fuzzy
@@ -596,16 +620,18 @@ msgstr "書き込みの準備ができています"
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
+"イメージファイルがダウンロードフォルダに保存されました。書き込みは行っていま"
+"せん。"
 
 #: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
 msgid "Writing"
-msgstr ""
+msgstr "書き込み中"
 
 #: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
-msgstr ""
+msgstr "書き込まれたデータを検証中です"
 
 #: ../src/app/releasemanager.h:379
 #, fuzzy
@@ -618,7 +644,7 @@ msgstr "終わりました!"
 #: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
-msgstr ""
+msgstr "書き込まれたデータが破損しています"
 
 #: ../src/app/releasemanager.h:381
 #, fuzzy
@@ -631,31 +657,31 @@ msgstr "ダウンロード中"
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Error"
-msgstr ""
+msgstr "エラー"
 
 #: ../src/app/releasemanager.cpp:701
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
-msgstr ""
+msgstr "%1 Alpha"
 
 #: ../src/app/releasemanager.cpp:703
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
-msgstr ""
+msgstr "%1 Beta"
 
 #: ../src/app/releasemanager.cpp:705
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr ""
+msgstr "%1 Release Candidate"
 
 #: ../src/app/qml/RestorePage.qml:37
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "ドライブ <b>%1</b> に復元する"
 
 #: ../src/app/qml/RestorePage.qml:49
 msgctxt "RestorePage|"
@@ -667,6 +693,12 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
+"<p align=\"justify\">メディアで使用可能なすべての領域の再利用を行なうには、"
+"ディアを工場出荷時の設定に復元する必要があります。 Liveブートで保存されたすべ"
+"てのデータが削除されます。</p> <p align = \"justify\">別のLiveイメージをメ"
+"ディアに書き込む場合は、メディアを復元する必要はありません。 \n"
+"                </p> <p align=\"justify\">メディアを工場出荷時の状態に戻しま"
+"すか？</p>"
 
 #: ../src/app/qml/RestorePage.qml:67
 msgctxt "RestorePage|"
@@ -674,11 +706,13 @@ msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
+"<p align=\"justify\">Fedora Media Writerがポータブルドライブを復元するまでお"
+"待ちください。</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr ""
+msgstr "ドライブが正常に復元されました!"
 
 #: ../src/app/qml/RestorePage.qml:94
 msgctxt "RestorePage|"
@@ -686,59 +720,158 @@ msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
+"残念ながら、処理中にエラーが発生しました。 システムツールを使用してドライブを"
+"復元できるか試みてください。"
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "復元が完了しました"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Fedoraのリリースを選択してください"
 
 #: ../src/app/qml/VersionPage.qml:48
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr ""
+msgstr "選択肢:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Official Editions"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Emerging Editions"
-msgstr ""
+msgstr "Emerging Editions"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr ""
+msgstr "Spins"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Labs"
 
 #: ../src/app/windrivemanager.cpp:265
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
+"ヘルパーバイナリが見つかりませんでした。 インストール環境を確認してください。"
 
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "完了しました!"
 
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
+msgstr "%1 の書き込みが完了しました。"
+
+#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/win/writejob.cpp:271
+msgctxt "WriteJob|"
+msgid "Failed to start decompressing."
 msgstr ""
 
-#: ../src/app/qml/main.qml:117
+#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
+#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
+#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+#, fuzzy
+#| msgctxt "Download|"
+#| msgid "The download file is not writable."
+msgctxt "WriteJob|"
+msgid "Destination drive is not writable"
+msgstr "ダウンロードされたファイルを保存できません。"
+
+#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/win/writejob.cpp:315
+msgctxt "WriteJob|"
+msgid "There is not enough memory to decompress the file."
+msgstr ""
+
+#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/win/writejob.cpp:320
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "The downloaded image is corrupted"
+msgctxt "WriteJob|"
+msgid "The downloaded compressed file is corrupted."
+msgstr "ダウンロードしたイメージが壊れています"
+
+#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/win/writejob.cpp:323
+msgctxt "WriteJob|"
+msgid "Unsupported compression options."
+msgstr ""
+
+#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/win/writejob.cpp:326
+msgctxt "WriteJob|"
+msgid "Unknown decompression error."
+msgstr ""
+
+#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/win/writejob.cpp:361
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "The downloaded file is not readable."
+msgctxt "WriteJob|"
+msgid "Source image is not readable"
+msgstr "ダウンロードしたファイルが読み込みできません。"
+
+#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:406
+msgctxt "WriteJob|"
+msgid "Your drive is probably damaged."
+msgstr ""
+
+#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:411
+msgctxt "WriteJob|"
+msgid "Unexpected error occurred during media check."
+msgstr ""
+
+#: ../src/helper/mac/writejob.cpp:86
+msgctxt "WriteJob|"
+msgid "Unable to allocate socket pair"
+msgstr ""
+
+#: ../src/helper/mac/writejob.cpp:131
+msgctxt "WriteJob|"
+msgid "Unable to open destination for writing"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:74
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for writing"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:98
+msgctxt "WriteJob|"
+msgid "Couldn't lock the drive"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:134
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't remove the drive %1:"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:209
+msgctxt "WriteJob|"
+msgid "Couldn't unlock the drive"
+msgstr ""
+
+#: ../src/app/qml/main.qml:116
 #, fuzzy
 #| msgctxt "ImageList|"
 #| msgid "About Fedora Media Writer"
@@ -746,17 +879,17 @@ msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer について"
 
-#: ../src/app/qml/main.qml:157
+#: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr ""
+msgstr "Fedoraのバージョンを選択してください"
 
-#: ../src/app/qml/main.qml:173
+#: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
-msgstr ""
+msgstr "ドライブを選択してください"
 
-#: ../src/app/qml/main.qml:211
+#: ../src/app/qml/main.qml:207
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -764,12 +897,12 @@ msgctxt "main|"
 msgid "Downloading"
 msgstr "ダウンロード中"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
 msgctxt "main|"
 msgid "Restore"
-msgstr ""
+msgstr "復元する"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:286
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Finished!"
@@ -777,12 +910,12 @@ msgctxt "main|"
 msgid "Finish"
 msgstr "終わりました!"
 
-#: ../src/app/qml/main.qml:294
+#: ../src/app/qml/main.qml:290
 msgctxt "main|"
 msgid "Write"
-msgstr ""
+msgstr "書き込み"
 
-#: ../src/app/qml/main.qml:296
+#: ../src/app/qml/main.qml:292
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -790,7 +923,7 @@ msgctxt "main|"
 msgid "Download && Write"
 msgstr "ダウンロード中"
 
-#: ../src/app/qml/main.qml:297
+#: ../src/app/qml/main.qml:293
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -798,7 +931,7 @@ msgctxt "main|"
 msgid "Download & Write"
 msgstr "ダウンロード中"
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:311
+#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Cancel"
@@ -806,25 +939,25 @@ msgctxt "main|"
 msgid "Cancel"
 msgstr "取り消し"
 
-#: ../src/app/qml/main.qml:302
+#: ../src/app/qml/main.qml:298
 msgctxt "main|"
 msgid "Retry"
-msgstr ""
+msgstr "やり直す"
 
-#: ../src/app/qml/main.qml:304
+#: ../src/app/qml/main.qml:300
 msgctxt "main|"
 msgid "Next"
-msgstr ""
+msgstr "次へ"
 
-#: ../src/app/qml/main.qml:309
+#: ../src/app/qml/main.qml:305
 msgctxt "main|"
 msgid "About"
-msgstr ""
+msgstr "このアプリケーションについて"
 
-#: ../src/app/qml/main.qml:312
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Previous"
-msgstr ""
+msgstr "前へ"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
@@ -839,7 +972,7 @@ msgstr "Fedora Media Writer について"
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
-msgstr ""
+msgstr "Fedoraの特定のエディションのLive USBドライブを作成できるツールです"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -851,6 +984,12 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
+"このツールではFedoraのさまざまなエディションのLive USBメディアを作成すること"
+"ができます。Fedora Media Writerはイメージの書き込みだけではなくイメージのダウ"
+"ンロードも行なうことができます。オフィシャルイメージ(Server, Workstation)およ"
+"びFedora Spin(KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktopなど)や、"
+"Fedora Labs(Design Suite, Security Labなど)に対応しています。確かな選択が行え"
+"るように、それぞれについての基本的な情報を提供します。"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -858,14 +997,33 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
+"Fedora Media Writerはローカルディスクから読み込まれた他の起動可能なISOイメー"
+"ジを書き込むこともできますが、このツールはFedoraイメージでのみテストされてい"
+"ることに注意してください。"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
 msgid "Write Fedora images to your portable drives"
-msgstr ""
+msgstr "Fedoraイメージをお使いのポータブルメディアに書き込みます"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write verifying"
+#~ msgstr "書き込み後の検証中"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Write Successful"
+#~ msgstr "書き込みに成功しました"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed verification"
+#~ msgstr "検証に失敗しました"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed download"
+#~ msgstr "ダウンロードに失敗しました"
 
 #~ msgctxt "ImageDetails|"
 #~ msgid "Other variants..."
