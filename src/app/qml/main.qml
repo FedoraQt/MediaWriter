@@ -36,6 +36,7 @@ ApplicationWindow {
     property int selectedOption: Units.MainSelect.Download
     property QtObject lastRestoreable
     property bool eraseVariant: false
+    property bool canOnlyDownloadFile: drives.length <= 0 && !downloadManager.isDownloaded(releases.selected.version.variant.url)
     
     ColumnLayout {
         id: mainLayout
@@ -176,8 +177,10 @@ ApplicationWindow {
                         selectedPage = Units.Page.DownloadPage 
                         if (selectedOption != Units.MainSelect.Write) 
                             releases.variant.download()
-                        drives.selected.setImage(releases.variant)
-                        drives.selected.write(releases.variant)
+                        if (!canOnlyDownloadFile) {
+                            drives.selected.setImage(releases.variant)
+                            drives.selected.write(releases.variant)
+                        }
                     }
                 }
                 PropertyChanges {
@@ -288,6 +291,8 @@ ApplicationWindow {
         } else if (mainLayout.state == "drivePage") {
             if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
                 return qsTr("Write")
+            if (canOnlyDownloadFile) 
+                return qsTr("Download")
             if (Qt.platform.os === "windows" || Qt.platform.os === "osx") 
                 return qsTr("Download && Write")
             return qsTr("Download & Write") 

@@ -408,7 +408,7 @@ public:
 
     Status status() const;
     QString statusString() const;
-    void setStatus(Status s);
+    //void setStatus(Status s);
     QString errorString() const;
     void setErrorString(const QString &o);
 
@@ -420,6 +420,7 @@ public:
     int onMediaCheckAdvanced(long long offset, long long total);
 
     Q_INVOKABLE bool erase();
+    Q_INVOKABLE void setStatus(Status s);
 
 signals:
     void isoChanged();

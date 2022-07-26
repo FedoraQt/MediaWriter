@@ -237,6 +237,17 @@ Page {
                 target: prevButton
                 visible: true
             }
+            StateChangeScript {
+                script: {
+                    if (mainWindow.canOnlyDownloadFile) {
+                        releases.variant.setStatus(Units.DownloadStatus.Finished)
+                        //downloadPage.state = "finished"
+                    }
+                    //console.error("curent state: " + downloadPage.state)
+//                     console.error(mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Finished)
+//                     console.error(mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Ready && drives.length <= 0)
+                }
+            }
         },
         State {
             name: "ready"
@@ -352,8 +363,6 @@ Page {
                         cancelDialog.close()
                     if (mainWindow.eraseVariant)
                         releases.variant.erase()
-                    else
-                        releases.variant
                 }   
             }
         },
