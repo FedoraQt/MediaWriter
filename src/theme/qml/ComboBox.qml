@@ -44,7 +44,7 @@ T.ComboBox {
     hoverEnabled: true
 
     delegate: MenuItem {
-        width: parent.width - theme.frameWidth
+        width: parent ? parent.width - theme.frameWidth : 0
         text: control.textRole ? (Array.isArray(control.model) ? modelData[control.textRole] : model[control.textRole]) : modelData
         font.weight: control.currentIndex === index ? Font.DemiBold : Font.Normal
         highlighted: control.highlightedIndex == index
