@@ -346,7 +346,7 @@ void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
     mDebug() << m_child->errorString();
 
     if (exitCode == 0) {
-        m_image->setStatus(ReleaseVariant::FINISHED);
+        m_image->setStatus(ReleaseVariant::WRITE_FINISHED);
         Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
     } else {
         m_image->setErrorString(m_child->readAllStandardError().trimmed());
@@ -397,7 +397,7 @@ void WinDrive::onReadyRead()
             m_image->setStatus(ReleaseVariant::WRITING);
         } else if (line == "DONE") {
             m_progress->setValue(m_image->size());
-            m_image->setStatus(ReleaseVariant::FINISHED);
+            m_image->setStatus(ReleaseVariant::WRITE_FINISHED);
             Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
         } else {
             bool ok;

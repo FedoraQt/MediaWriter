@@ -33,6 +33,7 @@ QtObject {
     
     enum MainSelect {
         Download,
+        Download_And_Write,
         Write,
         Restore
     }
@@ -62,7 +63,8 @@ QtObject {
         Writing_Not_Possible,
         Writing,
         Write_Verifying,
-        Finished,
+        Download_Finished,
+        Write_Finished,
         Failed_Verification,
         Failed_Download,
         Failed

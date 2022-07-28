@@ -207,7 +207,7 @@ bool LinuxDrive::write(ReleaseVariant *data)
 
     if (!Drive::write(data))
         return false;
-    if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED || m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
+    if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED || m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::WRITE_FINISHED)
         m_image->setStatus(ReleaseVariant::WRITING);
 
     if (!m_process)
@@ -254,7 +254,7 @@ void LinuxDrive::cancel()
         beingCancelled = true;
         if (m_image) {
             if (m_image->status() == ReleaseVariant::WRITE_VERIFYING) {
-                m_image->setStatus(ReleaseVariant::FINISHED);
+                m_image->setStatus(ReleaseVariant::WRITE_FINISHED);
             } else if (m_image->status() != ReleaseVariant::DOWNLOADING && m_image->status() != ReleaseVariant::DOWNLOAD_VERIFYING) {
                 m_image->setErrorString(tr("Stopped before writing has finished."));
                 m_image->setStatus(ReleaseVariant::FAILED);
@@ -323,7 +323,7 @@ void LinuxDrive::onReadyRead()
             m_image->setStatus(ReleaseVariant::WRITING);
         } else if (line == "DONE") {
             m_progress->setValue(m_image->size());
-            m_image->setStatus(ReleaseVariant::FINISHED);
+            m_image->setStatus(ReleaseVariant::WRITE_FINISHED);
             Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
         } else {
             bool ok = false;

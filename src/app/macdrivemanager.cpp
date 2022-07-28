@@ -84,7 +84,7 @@ bool MacDrive::write(ReleaseVariant *data)
     if (!Drive::write(data))
         return false;
 
-    if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED || m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
+    if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED || m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::WRITE_FINISHED)
         m_image->setStatus(ReleaseVariant::WRITING);
 
     if (m_child) {
@@ -188,7 +188,7 @@ void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
         m_image->setStatus(ReleaseVariant::FAILED);
     } else {
         Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
-        m_image->setStatus(ReleaseVariant::FINISHED);
+        m_image->setStatus(ReleaseVariant::WRITE_FINISHED);
     }
 }
 

@@ -36,7 +36,7 @@ ApplicationWindow {
     property int selectedOption: Units.MainSelect.Download
     property QtObject lastRestoreable
     property bool eraseVariant: false
-    property bool canOnlyDownloadFile: drives.length <= 0 && !downloadManager.isDownloaded(releases.selected.version.variant.url)
+    property bool canOnlyDownloadFile: !drives.length && !downloadManager.isDownloaded(releases.selected.version.variant.url)
     
     ColumnLayout {
         id: mainLayout
@@ -178,6 +178,7 @@ ApplicationWindow {
                         if (selectedOption != Units.MainSelect.Write) 
                             releases.variant.download()
                         if (!canOnlyDownloadFile) {
+                            selectedOption = Units.MainSelect.Download_And_Write
                             drives.selected.setImage(releases.variant)
                             drives.selected.write(releases.variant)
                         }
@@ -226,9 +227,10 @@ ApplicationWindow {
                     onClicked: {
                         if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
                             cancelDialog.show()
-                        else if (releases.variant.status === Units.DownloadStatus.Finished) {
+                        else if (releases.variant.status === Units.DownloadStatus.Write_Finished || releases.variant.status === Units.DownloadStatus.Download_Finished) {
                             drives.lastRestoreable = drives.selected
-                            drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
+                            if (drives.lastRestoreable) 
+                                drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
                             releases.variant.resetStatus()
                             downloadManager.cancel()
                             selectedPage = Units.Page.MainPage
@@ -299,8 +301,8 @@ ApplicationWindow {
         } else if (mainLayout.state == "downloadPage") {
             if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
                 return qsTr("Cancel")
-            else
-                return qsTr("Retry")
+            else 
+                return mainWindow.selectedOption == Units.MainSelect.Download ? qsTr("Write") : qsTr("Retry")
         }
         return qsTr("Next")
     }

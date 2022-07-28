@@ -26,6 +26,7 @@ import QtQml 6.2
 
 Page {
     id: downloadPage
+    property int numberOfDrives: drives.length
     
     ColumnLayout {
         id: mainColumn
@@ -44,7 +45,9 @@ Page {
             
             Layout.alignment: Qt.AlignHCenter
             text: {
-                if (releases.variant.status === Units.DownloadStatus.Finished)
+                if (releases.variant.status === Units.DownloadStatus.Download_Finished)
+                    qsTr("%1 Successfully Downloaded").arg(file)
+                else if (releases.variant.status === Units.DownloadStatus.Write_Finished) 
                     qsTr("%1 Successfully Written").arg(file)
                 else if (releases.variant.status === Units.DownloadStatus.Writing)
                     qsTr("Writing %1").arg(file)
@@ -56,6 +59,8 @@ Page {
                     qsTr("Verifying downloaded image")
                 else if (releases.variant.status === Units.DownloadStatus.Preparing)
                     qsTr("Preparing %1").arg(file)
+                else if (releases.variant.status === Units.DownloadStatus.Ready)
+                    downloadPage.numberOfDrives ? qsTr("Ready to write") : qsTr("No drives")
                 else
                     qsTr("Failed")
             }
@@ -91,7 +96,7 @@ Page {
 
                 Label {
                     id: refLabel
-                    text: releases.variant.statusString
+                    text: downloadPage.state == "ready_no_drives" ? qsTr("No drives") : qsTr(releases.variant.statusString)
                 }
 
                 Label {
@@ -129,7 +134,7 @@ Page {
             Label {
                 id: messageLoseData
                 visible: false
-                text: qsTr("By writing, you will lose all of the data on %1.").arg(drives.selected.name)
+                text: qsTr("By writing, you will lose all of the data on %1.").arg(drives.selected ? drives.selected.name : "")
                 wrapMode: Label.Wrap
                 width: mainColumn.width
             }
@@ -177,7 +182,7 @@ Page {
             }
 
             Label {
-                visible: releases.variant && releases.variant.errorString.length > 0
+                visible: releases.variant && releases.variant.errorString.length > 0 && downloadPage.state != "ready"
                 text: releases.variant ? releases.variant.errorString : ""
                 wrapMode: Label.Wrap
                 width: mainColumn.width
@@ -185,6 +190,11 @@ Page {
         }
     }
     
+    onNumberOfDrivesChanged: {
+        if (numberOfDrives && downloadPage.state != "downloading" && downloadPage.state != "downloading_verifying")
+            releases.variant.setStatus(Units.DownloadStatus.Ready)
+    }
+
     states: [
         State {
             name: "preparing"
@@ -237,15 +247,14 @@ Page {
                 target: prevButton
                 visible: true
             }
+            PropertyChanges {
+                target: nextButton
+                visible: false
+            }
             StateChangeScript {
                 script: {
-                    if (mainWindow.canOnlyDownloadFile) {
-                        releases.variant.setStatus(Units.DownloadStatus.Finished)
-                        //downloadPage.state = "finished"
-                    }
-                    //console.error("curent state: " + downloadPage.state)
-//                     console.error(mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Finished)
-//                     console.error(mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Ready && drives.length <= 0)
+                    if (selectedOption == Units.MainSelect.Download) 
+                        releases.variant.setStatus(Units.DownloadStatus.Download_Finished)
                 }
             }
         },
@@ -255,6 +264,18 @@ Page {
             PropertyChanges {
                 target: messageLoseData;
                 visible: true
+            }
+            PropertyChanges {
+                target: messageDownload;
+                visible: false
+            }
+            PropertyChanges {
+                target: mainWindow;
+                title: qsTr("Ready")
+            }
+            PropertyChanges {
+                target: progressBar;
+                value: 0
             }
             PropertyChanges {
                 target: nextButton
@@ -283,6 +304,10 @@ Page {
             PropertyChanges {
                 target: messageRestore;
                 visible: true
+            }
+            PropertyChanges {
+                target: messageDownload;
+                visible: false
             }
             PropertyChanges {
                 target: progressBar;
@@ -330,14 +355,18 @@ Page {
             }
         },
         State {
-            name: "finished"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Finished
+            name: "download_finished"
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Download_Finished
             PropertyChanges {
                 target: messageDriveSize;
                 enabled: false
             }
             PropertyChanges {
                 target: messageFinished;
+                visible: false
+            }
+            PropertyChanges {
+                target: messageDownload;
                 visible: true
             }
             PropertyChanges {
@@ -355,7 +384,46 @@ Page {
             }
             PropertyChanges {
                 target: mainWindow;
-                title: qsTr("Successfully written")
+                title: qsTr("Successfully downloaded") 
+            }
+            StateChangeScript {
+                script: { 
+                    if (cancelDialog.visible)
+                        cancelDialog.close()
+                }   
+            }
+        },
+        State {
+            name: "write_finished"
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Write_Finished
+            PropertyChanges {
+                target: messageDriveSize;
+                enabled: false
+            }
+            PropertyChanges {
+                target: messageFinished;
+                visible: true
+            }
+            PropertyChanges {
+                target: messageDownload;
+                visible: false
+            }
+            PropertyChanges {
+                target: nextButton;
+                text: qsTr("Finish");
+                visible: true
+            }
+            PropertyChanges {
+                target: prevButton;
+                visible: false
+            }
+            PropertyChanges {
+                target: progressBar;
+                value: 100;
+            }
+            PropertyChanges {
+                target: mainWindow;
+                title: qsTr("Successfully written") 
             }
             StateChangeScript {
                 script: { 
@@ -417,6 +485,10 @@ Page {
                 target: mainWindow;
                 title: qsTr("Failed due to missing drives")
             }
+            PropertyChanges {
+                target: messageDownload;
+                visible: false
+            }
         },
         State {
             name: "failed"
@@ -424,6 +496,10 @@ Page {
             PropertyChanges {
                 target: messageLoseData;
                 visible: true
+            }
+            PropertyChanges {
+                target: messageDownload;
+                visible: false
             }
             PropertyChanges {
                 target: nextButton;
@@ -438,6 +514,10 @@ Page {
                 title: qsTr("Failed")
             }
         }
-    ]    
+    ]
+
+    //HACK for switching states in qml
+    //https://stackoverflow.com/questions/59904863/qml-how-can-the-state-of-an-item-be-assigned-when-the-state-of-a-different-item
+    transitions: Transition { }
 }
 

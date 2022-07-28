@@ -82,7 +82,7 @@ void FakeDrive::writingAdvanced()
 {
     m_progress->setValue(m_progress->value() + 123456789);
     if (m_progress->value() >= m_size) {
-        m_image->setStatus(ReleaseVariant::FINISHED);
+        m_image->setStatus(ReleaseVariant::WRITE_FINISHED);
         Notifications::notify("Success", "Yes!");
     } else if (m_name == "Fails" && m_progress->value() >= m_size / 2) {
         m_image->setStatus(ReleaseVariant::FAILED);
