@@ -36,7 +36,7 @@ ApplicationWindow {
     property int selectedOption: Units.MainSelect.Download
     property QtObject lastRestoreable
     property bool eraseVariant: false
-    
+
     ColumnLayout {
         id: mainLayout
         anchors.fill: parent
@@ -176,8 +176,10 @@ ApplicationWindow {
                         selectedPage = Units.Page.DownloadPage 
                         if (selectedOption != Units.MainSelect.Write) 
                             releases.variant.download()
-                        drives.selected.setImage(releases.variant)
-                        drives.selected.write(releases.variant)
+                        if (drives.length) {
+                            drives.selected.setImage(releases.variant)
+                            drives.selected.write(releases.variant)
+                        }
                     }
                 }
                 PropertyChanges {
@@ -204,7 +206,7 @@ ApplicationWindow {
                 when: selectedPage == Units.Page.DownloadPage
                 PropertyChanges {  
                     target: mainWindow
-                    title: qsTr("Downloading") 
+                    title: releases.variant.statusString
                 }
                 StateChangeScript {
                     script: { stackView.push("DownloadPage.qml") }
@@ -294,6 +296,8 @@ ApplicationWindow {
         } else if (mainLayout.state == "downloadPage") {
             if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
                 return qsTr("Cancel")
+            else if (releases.variant.status == Units.DownloadStatus.Ready)
+                return qsTr("Write")
             else
                 return qsTr("Retry")
         }

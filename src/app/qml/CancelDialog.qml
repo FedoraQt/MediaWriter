@@ -95,7 +95,8 @@ ApplicationWindow {
                     // Store release state locally as drives.selected.cancel() makes
                     // it go to failed state if we cancel the writing process
                     var releaseState = releases.variant.status
-                    drives.selected.cancel()
+                    if (drives.selected)
+                        drives.selected.cancel()
                     if (mainWindow.selectedPage == Units.Page.DownloadPage &&
                         (releaseState === Units.DownloadStatus.Writing || releaseState === Units.DownloadStatus.Write_Verifying || releaseState === Units.DownloadStatus.Writing_Not_Possible)) {
                         drives.lastRestoreable = drivesSelected
