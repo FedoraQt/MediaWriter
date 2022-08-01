@@ -8,12 +8,13 @@
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2017. #zanata
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2018. #zanata
 # Yi-Jyun Pan <pan93412@gmail.com>, 2022.
+# yangyangdaji <1504305527@qq.com>, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-07 09:00+0200\n"
-"PO-Revision-Date: 2022-05-18 10:18+0000\n"
-"Last-Translator: Yi-Jyun Pan <pan93412@gmail.com>\n"
+"PO-Revision-Date: 2022-08-01 03:19+0000\n"
+"Last-Translator: yangyangdaji <1504305527@qq.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/"
 "projects/fedora-media-writer/mediawriter/zh_TW/>\n"
 "Language: zh-TW\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.13\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -126,9 +127,7 @@ msgid "Connection timed out"
 msgstr "連線超過時間"
 
 #: ../src/app/qml/DownloadPage.qml:48
-#, fuzzy, qt-format
-#| msgctxt "DownloadPage|"
-#| msgid "%1 Sucessfuly Written"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr "已成功寫入 %1"
@@ -265,9 +264,6 @@ msgid "Finish"
 msgstr "完成"
 
 #: ../src/app/qml/DownloadPage.qml:347
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Sucessfuly written"
 msgctxt "DownloadPage|"
 msgid "Successfully written"
 msgstr "成功寫入"
@@ -782,15 +778,12 @@ msgstr "檢查媒體時遭遇未預期的錯誤。"
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "無法分配套接字對"
 
 #: ../src/helper/mac/writejob.cpp:131
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr "無法開啟裝置以供寫入"
+msgstr "無法打開寫入目標"
 
 #: ../src/helper/win/writejob.cpp:74
 msgctxt "WriteJob|"
