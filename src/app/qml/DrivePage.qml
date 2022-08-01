@@ -172,7 +172,7 @@ Page {
         State {
             name: "Downloading"
             when: selectedOption != Units.MainSelect.Write && selectedPage == Units.Page.DrivePage
-            PropertyChanges { target: nextButton; enabled: driveCombo.enabled && hwArchCombo.currentIndex + 1 }
+            PropertyChanges { target: nextButton; enabled: true }
             StateChangeScript { script: releases.setSelectedVariantIndex = 0 }
         },
         State {

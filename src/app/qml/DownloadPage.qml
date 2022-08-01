@@ -26,7 +26,7 @@ import QtQml 6.2
 
 Page {
     id: downloadPage
-    
+
     ColumnLayout {
         id: mainColumn
         anchors.fill: parent
@@ -40,6 +40,7 @@ Page {
         }
         
         Heading {
+            id: heading
             property string file: mainWindow.selectedOption == Units.MainSelect.Write ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : releases.selected.name + " " + releases.selected.version.number
             
             Layout.alignment: Qt.AlignHCenter
@@ -48,16 +49,16 @@ Page {
                     qsTr("%1 Successfully Written").arg(file)
                 else if (releases.variant.status === Units.DownloadStatus.Writing)
                     qsTr("Writing %1").arg(file)
-                else if (releases.variant.status === Units.DownloadStatus.Write_Verifying)
-                    qsTr("Verifying written data")
                 else if (releases.variant.status === Units.DownloadStatus.Downloading)
                     qsTr("Downloading %1").arg(file)
-                else if (releases.variant.status === Units.DownloadStatus.Download_Verifying)
-                    qsTr("Verifying downloaded image")
                 else if (releases.variant.status === Units.DownloadStatus.Preparing)
                     qsTr("Preparing %1").arg(file)
+                else if (releases.variant.status === Units.DownloadStatus.Ready)
+                    qsTr("Ready to write %1").arg(file)
+                else if (releases.variant.status == Units.DownloadStatus.Failed_Download)
+                    qsTr("Failed to download %1").arg(file)
                 else
-                    qsTr("Failed")
+                    releases.variant.statusString
             }
             level: 4
             Layout.preferredWidth: mainColumn.width
@@ -91,7 +92,14 @@ Page {
 
                 Label {
                     id: refLabel
-                    text: releases.variant.statusString
+                    text: {
+                        if ((releases.variant.status == Units.DownloadStatus.Failed_Verification ||
+                             releases.variant.status == Units.DownloadStatus.Failed) && drives.length <= 0)
+                            qsTr("Your drive was unplugged during the process")
+                        else
+                            releases.variant.statusString
+                    }
+                    visible: text !== heading.text
                 }
 
                 Label {
@@ -130,6 +138,14 @@ Page {
                 id: messageLoseData
                 visible: false
                 text: qsTr("By writing, you will lose all of the data on %1.").arg(drives.selected.name)
+                wrapMode: Label.Wrap
+                width: mainColumn.width
+            }
+
+            Label {
+                id: messageInsertDrive
+                visible: false
+                text: qsTr("Please insert an USB drive.")
                 wrapMode: Label.Wrap
                 width: mainColumn.width
             }
@@ -237,6 +253,14 @@ Page {
                 target: prevButton
                 visible: true
             }
+            PropertyChanges {
+                target: nextButton
+                visible: false
+            }
+            PropertyChanges {
+                target: messageInsertDrive
+                visible: true
+            }
         },
         State {
             name: "ready"
@@ -257,10 +281,6 @@ Page {
         State {
             name: "writing_not_possible"
             when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Writing_Not_Possible
-            PropertyChanges {
-                target: mainWindow;
-                title: qsTr("Writing not possible")
-            }
         },
         State {
             name: "writing"
@@ -276,10 +296,6 @@ Page {
             PropertyChanges {
                 target: progressBar;
                 value: drives.selected.progress.ratio;
-            }
-            PropertyChanges {
-                target: mainWindow;
-                title: qsTr("Writing")
             }
             PropertyChanges {
                 target: nextButton
@@ -304,10 +320,6 @@ Page {
             PropertyChanges {
                 target: progressBar;
                 value: drives.selected.progress.ratio;
-            }
-            PropertyChanges {
-                target: mainWindow;
-                title: qsTr("Verifying written data")
             }
             PropertyChanges {
                 target: nextButton
@@ -342,10 +354,6 @@ Page {
                 target: progressBar;
                 value: 100;
             }
-            PropertyChanges {
-                target: mainWindow;
-                title: qsTr("Successfully written")
-            }
             StateChangeScript {
                 script: { 
                     if (cancelDialog.visible)
@@ -360,10 +368,6 @@ Page {
         State {
             name: "failed_verification_no_drives"
             when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length <= 0
-            PropertyChanges {
-                target: mainWindow;
-                title: qsTr("Verification failed due to missing drives")
-            }
         },
         State {
             name: "failed_verification"
@@ -376,10 +380,6 @@ Page {
                 target: nextButton;
                 visible: true
             }
-            PropertyChanges {
-                target: mainWindow;
-                title: qsTr("Verification failed")
-            }
         },
         State {
             name: "failed_download"
@@ -387,10 +387,6 @@ Page {
             PropertyChanges {
                 target: nextButton;
                 visible: true
-            }
-            PropertyChanges {
-                target: mainWindow;
-                title: qsTr("Download failed")
             }
         },
         State {
@@ -403,10 +399,6 @@ Page {
             PropertyChanges {
                 target: prevButton;
                 visible: true
-            }
-            PropertyChanges {
-                target: mainWindow;
-                title: qsTr("Failed due to missing drives")
             }
         },
         State {
@@ -423,10 +415,6 @@ Page {
             PropertyChanges {
                 target: prevButton;
                 visible: true
-            }
-            PropertyChanges {
-                target: mainWindow;
-                title: qsTr("Failed")
             }
         }
     ]    
