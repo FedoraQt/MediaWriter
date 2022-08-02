@@ -231,7 +231,7 @@ ApplicationWindow {
                             releases.variant.resetStatus()
                             downloadManager.cancel()
                             selectedPage = Units.Page.MainPage
-                        } else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Failed_Download || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Ready) {
+                        } else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length) || releases.variant.status === Units.DownloadStatus.Failed_Download || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length) || releases.variant.status === Units.DownloadStatus.Ready) {
                             if (selectedOption != Units.MainSelect.Write)
                                 releases.variant.download()
                             drives.selected.setImage(releases.variant)

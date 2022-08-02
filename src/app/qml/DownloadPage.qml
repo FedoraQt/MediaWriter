@@ -94,7 +94,7 @@ Page {
                     id: refLabel
                     text: {
                         if ((releases.variant.status == Units.DownloadStatus.Failed_Verification ||
-                             releases.variant.status == Units.DownloadStatus.Failed) && drives.length <= 0)
+                             releases.variant.status == Units.DownloadStatus.Failed) && !drives.length)
                             qsTr("Your drive was unplugged during the process")
                         else
                             releases.variant.statusString
@@ -248,7 +248,7 @@ Page {
         },
         State {
             name: "ready_no_drives"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Ready && drives.length <= 0
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Ready && !drives.length
             PropertyChanges {
                 target: prevButton
                 visible: true
@@ -264,7 +264,7 @@ Page {
         },
         State {
             name: "ready"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Ready && drives.length > 0
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Ready && drives.length
             PropertyChanges {
                 target: messageLoseData;
                 visible: true
@@ -367,11 +367,11 @@ Page {
         },
         State {
             name: "failed_verification_no_drives"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length <= 0
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed_Verification && !drives.length
         },
         State {
             name: "failed_verification"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length > 0
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length
             PropertyChanges {
                 target: messageLoseData;
                 visible: true
@@ -391,7 +391,7 @@ Page {
         },
         State {
             name: "failed_no_drives"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed && drives.length <= 0
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed && !drives.length
             PropertyChanges {
                 target: nextButton;
                 visible: false
@@ -403,7 +403,7 @@ Page {
         },
         State {
             name: "failed"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed && drives.length > 0
+            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed && drives.length
             PropertyChanges {
                 target: messageLoseData;
                 visible: true
