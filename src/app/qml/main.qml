@@ -214,24 +214,26 @@ ApplicationWindow {
                 PropertyChanges {
                     target: prevButton
                     visible: true
-                    onClicked: {  
-                        releases.variant.resetStatus()
-                        downloadManager.cancel()
-                        mainWindow.selectedPage = Units.Page.MainPage
+                    onClicked: {
+                        if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying) {
+                            cancelDialog.show()
+                        } else {
+                            releases.variant.resetStatus()
+                            downloadManager.cancel()
+                            mainWindow.selectedPage = Units.Page.MainPage
+                        }
                     }
                 }
                 PropertyChanges {
                     target: nextButton
                     onClicked: {
-                        if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
-                            cancelDialog.show()
-                        else if (releases.variant.status === Units.DownloadStatus.Finished) {
+                        if (releases.variant.status === Units.DownloadStatus.Finished) {
                             drives.lastRestoreable = drives.selected
                             drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
                             releases.variant.resetStatus()
                             downloadManager.cancel()
                             selectedPage = Units.Page.MainPage
-                        } else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Failed_Download || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length > 0) || releases.variant.status === Units.DownloadStatus.Ready) {
+                        } else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length) || releases.variant.status === Units.DownloadStatus.Failed_Download || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length) || releases.variant.status === Units.DownloadStatus.Ready) {
                             if (selectedOption != Units.MainSelect.Write)
                                 releases.variant.download()
                             drives.selected.setImage(releases.variant)
@@ -298,6 +300,8 @@ ApplicationWindow {
                 return qsTr("Cancel")
             else if (releases.variant.status == Units.DownloadStatus.Ready)
                 return qsTr("Write")
+            else if (releases.variant.status === Units.DownloadStatus.Finished)
+                return qsTr("Finish")
             else
                 return qsTr("Retry")
         }
