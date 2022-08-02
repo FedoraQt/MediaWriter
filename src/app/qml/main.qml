@@ -214,18 +214,20 @@ ApplicationWindow {
                 PropertyChanges {
                     target: prevButton
                     visible: true
-                    onClicked: {  
-                        releases.variant.resetStatus()
-                        downloadManager.cancel()
-                        mainWindow.selectedPage = Units.Page.MainPage
+                    onClicked: {
+                        if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying) {
+                            cancelDialog.show()
+                        } else {
+                            releases.variant.resetStatus()
+                            downloadManager.cancel()
+                            mainWindow.selectedPage = Units.Page.MainPage
+                        }
                     }
                 }
                 PropertyChanges {
                     target: nextButton
                     onClicked: {
-                        if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
-                            cancelDialog.show()
-                        else if (releases.variant.status === Units.DownloadStatus.Finished) {
+                        if (releases.variant.status === Units.DownloadStatus.Finished) {
                             drives.lastRestoreable = drives.selected
                             drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
                             releases.variant.resetStatus()
@@ -298,6 +300,8 @@ ApplicationWindow {
                 return qsTr("Cancel")
             else if (releases.variant.status == Units.DownloadStatus.Ready)
                 return qsTr("Write")
+            else if (releases.variant.status === Units.DownloadStatus.Finished)
+                return qsTr("Finish")
             else
                 return qsTr("Retry")
         }

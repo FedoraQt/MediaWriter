@@ -27,6 +27,9 @@ import QtQml 6.2
 Page {
     id: downloadPage
 
+    property int availableDrives: drives.length
+    property int currentStatus: releases.variant.status
+
     ColumnLayout {
         id: mainColumn
         anchors.fill: parent
@@ -45,17 +48,17 @@ Page {
             
             Layout.alignment: Qt.AlignHCenter
             text: {
-                if (releases.variant.status === Units.DownloadStatus.Finished)
+                if (currentStatus === Units.DownloadStatus.Finished)
                     qsTr("%1 Successfully Written").arg(file)
-                else if (releases.variant.status === Units.DownloadStatus.Writing)
+                else if (currentStatus === Units.DownloadStatus.Writing)
                     qsTr("Writing %1").arg(file)
-                else if (releases.variant.status === Units.DownloadStatus.Downloading)
+                else if (currentStatus === Units.DownloadStatus.Downloading)
                     qsTr("Downloading %1").arg(file)
-                else if (releases.variant.status === Units.DownloadStatus.Preparing)
+                else if (currentStatus === Units.DownloadStatus.Preparing)
                     qsTr("Preparing %1").arg(file)
-                else if (releases.variant.status === Units.DownloadStatus.Ready)
+                else if (currentStatus === Units.DownloadStatus.Ready)
                     qsTr("Ready to write %1").arg(file)
-                else if (releases.variant.status == Units.DownloadStatus.Failed_Download)
+                else if (currentStatus == Units.DownloadStatus.Failed_Download)
                     qsTr("Failed to download %1").arg(file)
                 else
                     releases.variant.statusString
@@ -93,8 +96,8 @@ Page {
                 Label {
                     id: refLabel
                     text: {
-                        if ((releases.variant.status == Units.DownloadStatus.Failed_Verification ||
-                             releases.variant.status == Units.DownloadStatus.Failed) && !drives.length)
+                        if ((currentStatus == Units.DownloadStatus.Failed_Verification ||
+                             currentStatus == Units.DownloadStatus.Failed) && !availableDrives)
                             qsTr("Your drive was unplugged during the process")
                         else
                             releases.variant.statusString
@@ -103,13 +106,13 @@ Page {
                 }
 
                 Label {
-                    visible: releases.variant.status == Units.DownloadStatus.Downloading
+                    visible: currentStatus == Units.DownloadStatus.Downloading
                     Layout.preferredWidth: fontMetrics.width
                     text: progressColumn.leftStr
                 }
 
                 Label {
-                    visible: releases.variant.status == Units.DownloadStatus.Downloading
+                    visible: currentStatus == Units.DownloadStatus.Downloading
                     text: progressColumn.rightStr
                 }
             }
@@ -203,12 +206,8 @@ Page {
     
     states: [
         State {
-            name: "preparing"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Preparing
-        },
-        State {
             name: "downloading"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Downloading
+            when: currentStatus === Units.DownloadStatus.Downloading
             PropertyChanges {
                 target: messageDownload
                 visible: true
@@ -216,19 +215,11 @@ Page {
             PropertyChanges {
                 target: progressBar;
                 value: releases.variant.progress.ratio
-            }
-            PropertyChanges {
-                target: nextButton
-                visible: true
-            }
-            PropertyChanges {
-                target: prevButton
-                visible: false
             }
         },
         State {
             name: "download_verifying"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Download_Verifying
+            when: currentStatus === Units.DownloadStatus.Download_Verifying
             PropertyChanges {
                 target: messageDownload
                 visible: true
@@ -237,26 +228,10 @@ Page {
                 target: progressBar;
                 value: releases.variant.progress.ratio
             }
-            PropertyChanges {
-                target: nextButton
-                visible: true
-            }
-            PropertyChanges {
-                target: prevButton
-                visible: false
-            }
         },
         State {
             name: "ready_no_drives"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Ready && !drives.length
-            PropertyChanges {
-                target: prevButton
-                visible: true
-            }
-            PropertyChanges {
-                target: nextButton
-                visible: false
-            }
+            when: currentStatus === Units.DownloadStatus.Ready && !availableDrives
             PropertyChanges {
                 target: messageInsertDrive
                 visible: true
@@ -264,27 +239,15 @@ Page {
         },
         State {
             name: "ready"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Ready && drives.length
+            when: currentStatus === Units.DownloadStatus.Ready && availableDrives
             PropertyChanges {
                 target: messageLoseData;
                 visible: true
             }
-            PropertyChanges {
-                target: nextButton
-                visible: true
-            }
-            PropertyChanges {
-                target: prevButton
-                visible: true
-            }
-        },
-        State {
-            name: "writing_not_possible"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Writing_Not_Possible
         },
         State {
             name: "writing"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Writing
+            when: currentStatus === Units.DownloadStatus.Writing
             PropertyChanges {
                 target: messageDriveSize
                 enabled: false
@@ -296,19 +259,11 @@ Page {
             PropertyChanges {
                 target: progressBar;
                 value: drives.selected.progress.ratio;
-            }
-            PropertyChanges {
-                target: nextButton
-                visible: true
-            }
-            PropertyChanges {
-                target: prevButton
-                visible: false
             }
         },
         State {
             name: "write_verifying"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Write_Verifying
+            when: currentStatus === Units.DownloadStatus.Write_Verifying
             PropertyChanges {
                 target: messageDriveSize
                 enabled: false
@@ -321,18 +276,10 @@ Page {
                 target: progressBar;
                 value: drives.selected.progress.ratio;
             }
-            PropertyChanges {
-                target: nextButton
-                visible: true
-            }
-            PropertyChanges {
-                target: prevButton;
-                visible: false
-            }
         },
         State {
             name: "finished"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Finished
+            when: currentStatus === Units.DownloadStatus.Finished
             PropertyChanges {
                 target: messageDriveSize;
                 enabled: false
@@ -340,15 +287,6 @@ Page {
             PropertyChanges {
                 target: messageFinished;
                 visible: true
-            }
-            PropertyChanges {
-                target: nextButton;
-                text: qsTr("Finish");
-                visible: true
-            }
-            PropertyChanges {
-                target: prevButton;
-                visible: false
             }
             PropertyChanges {
                 target: progressBar;
@@ -366,57 +304,58 @@ Page {
             }
         },
         State {
-            name: "failed_verification_no_drives"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed_Verification && !drives.length
-        },
-        State {
             name: "failed_verification"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length
+            when: currentStatus === Units.DownloadStatus.Failed_Verification && availableDrives
             PropertyChanges {
                 target: messageLoseData;
-                visible: true
-            }
-            PropertyChanges {
-                target: nextButton;
-                visible: true
-            }
-        },
-        State {
-            name: "failed_download"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed_Download
-            PropertyChanges {
-                target: nextButton;
-                visible: true
-            }
-        },
-        State {
-            name: "failed_no_drives"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed && !drives.length
-            PropertyChanges {
-                target: nextButton;
-                visible: false
-            }
-            PropertyChanges {
-                target: prevButton;
                 visible: true
             }
         },
         State {
             name: "failed"
-            when: mainWindow.selectedPage == Units.Page.DownloadPage && releases.variant.status === Units.DownloadStatus.Failed && drives.length
+            when: currentStatus === Units.DownloadStatus.Failed && availableDrives
             PropertyChanges {
                 target: messageLoseData;
                 visible: true
             }
-            PropertyChanges {
-                target: nextButton;
-                visible: true
-            }
-            PropertyChanges {
-                target: prevButton;
-                visible: true
-            }
         }
+        // Unhandled states:
+        // preparing. writing_not_possible, failed_verification_no_drives,failed_download, failed_no_drives
     ]    
+
+    onCurrentStatusChanged: {
+        // Not sure it's necessary, but it doesn't hurt to be safe
+        if (mainWindow.selectedPage == Units.Page.DownloadPage) {
+            prevButton.visible = getPrevButtonState()
+            nextButton.visible = getNextButtonState()
+        }
+    }
+
+    onAvailableDrivesChanged: {
+        // Not sure it's necessary, but it doesn't hurt to be safe
+        if (mainWindow.selectedPage == Units.Page.DownloadPage) {
+            nextButton.visible = getNextButtonState()
+        }
+    }
+
+    function getPrevButtonState() {
+        // There will be only [Finish] button on the right side so [Cancel] button
+        // is not necessary
+        return currentStatus != Units.DownloadStatus.Finished
+    }
+
+    function getNextButtonState() {
+        // This will be [Finish] button to successfully go to the main page
+        if (currentStatus == Units.DownloadStatus.Finished)
+            return true
+        // This will be [Retry] button to start the process again if there is a drive plugged in
+        else if (currentStatus == Units.DownloadStatus.Ready ||
+            currentStatus == Units.DownloadStatus.Failed_Verification ||
+            currentStatus == Units.DownloadStatus.Failed) {
+            return availableDrives
+        }
+
+        return false
+    }
 }
 
