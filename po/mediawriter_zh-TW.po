@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"POT-Creation-Date: 2022-08-03 13:56+0200\n"
 "PO-Revision-Date: 2022-08-01 03:19+0000\n"
 "Last-Translator: yangyangdaji <1504305527@qq.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/"
@@ -91,17 +91,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "繼續"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:111
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "取消下載"
 
-#: ../src/app/qml/CancelDialog.qml:112
+#: ../src/app/qml/CancelDialog.qml:113
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "取消寫入"
 
-#: ../src/app/qml/CancelDialog.qml:114
+#: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "取消驗證"
@@ -126,33 +126,23 @@ msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "連線超過時間"
 
-#: ../src/app/qml/DownloadPage.qml:48
+#: ../src/app/qml/DownloadPage.qml:52
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr "已成功寫入 %1"
 
-#: ../src/app/qml/DownloadPage.qml:50
+#: ../src/app/qml/DownloadPage.qml:54
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "正在寫入 %1"
 
-#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Verifying written data"
-msgstr "正在驗證已經寫入的資料"
-
-#: ../src/app/qml/DownloadPage.qml:54
+#: ../src/app/qml/DownloadPage.qml:56
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr "正在下載 %1"
-
-#: ../src/app/qml/DownloadPage.qml:56
-msgctxt "DownloadPage|"
-msgid "Verifying downloaded image"
-msgstr "正在驗證下載的映像檔"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, qt-format
@@ -160,50 +150,71 @@ msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr "正在準備 %1"
 
-#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+#: ../src/app/qml/DownloadPage.qml:60
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Ready to write"
 msgctxt "DownloadPage|"
-msgid "Failed"
-msgstr "失敗"
+msgid "Ready to write %1"
+msgstr "準備進行寫入"
 
-#: ../src/app/qml/DownloadPage.qml:72
+#: ../src/app/qml/DownloadPage.qml:62
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the download"
+msgctxt "DownloadPage|"
+msgid "Failed to download %1"
+msgstr "檢查下載中"
+
+#: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr " B 剩餘）"
 
-#: ../src/app/qml/DownloadPage.qml:73
+#: ../src/app/qml/DownloadPage.qml:77
 msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr " KB 剩餘）"
 
-#: ../src/app/qml/DownloadPage.qml:74
+#: ../src/app/qml/DownloadPage.qml:78
 msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr " MB 剩餘）"
 
-#: ../src/app/qml/DownloadPage.qml:75
+#: ../src/app/qml/DownloadPage.qml:79
 msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr " GB 剩餘）"
 
-#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
-#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
+#: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
 msgstr " （%1"
 
-#: ../src/app/qml/DownloadPage.qml:124
+#: ../src/app/qml/DownloadPage.qml:101
+msgctxt "DownloadPage|"
+msgid "Your drive was unplugged during the process"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
 msgstr "下載的檔案已存至「下載」資料夾中。"
 
-#: ../src/app/qml/DownloadPage.qml:132
+#: ../src/app/qml/DownloadPage.qml:143
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "如果寫入，您將遺失 %1 上存的所有資料。"
 
-#: ../src/app/qml/DownloadPage.qml:140
+#: ../src/app/qml/DownloadPage.qml:151
+msgctxt "DownloadPage|"
+msgid "Please insert an USB drive."
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -213,17 +224,17 @@ msgstr ""
 "您的裝置將調整成較小的容量。您可以利用 Fedora 媒體寫入器調整回正常大小。這個"
 "動作會從您的裝置中移除安裝媒體。"
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "已選取："
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "無"
 
-#: ../src/app/qml/DownloadPage.qml:156
+#: ../src/app/qml/DownloadPage.qml:175
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -234,7 +245,7 @@ msgstr ""
 "Fedora 媒體寫入器尚未支援您的主機板或裝置。請查看<a href=%1>此頁面</a>瞭解更"
 "多其與 Fedora 的相容性資訊，以及製作可開機媒體的方法。"
 
-#: ../src/app/qml/DownloadPage.qml:165
+#: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -242,51 +253,11 @@ msgid ""
 "drive by accident!"
 msgstr "選取的裝置大小為 %1。您可能意外選成外接磁碟機了！"
 
-#: ../src/app/qml/DownloadPage.qml:174
+#: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr "重新開機，並選擇用 %1 啟動，即可開始使用 %2。"
-
-#: ../src/app/qml/DownloadPage.qml:262
-msgctxt "DownloadPage|"
-msgid "Writing not possible"
-msgstr "無法寫入"
-
-#: ../src/app/qml/DownloadPage.qml:282
-msgctxt "DownloadPage|"
-msgid "Writing"
-msgstr "正在寫入"
-
-#: ../src/app/qml/DownloadPage.qml:334
-msgctxt "DownloadPage|"
-msgid "Finish"
-msgstr "完成"
-
-#: ../src/app/qml/DownloadPage.qml:347
-msgctxt "DownloadPage|"
-msgid "Successfully written"
-msgstr "成功寫入"
-
-#: ../src/app/qml/DownloadPage.qml:365
-msgctxt "DownloadPage|"
-msgid "Verification failed due to missing drives"
-msgstr "驗證失敗，因缺少磁碟機"
-
-#: ../src/app/qml/DownloadPage.qml:381
-msgctxt "DownloadPage|"
-msgid "Verification failed"
-msgstr "驗證失敗"
-
-#: ../src/app/qml/DownloadPage.qml:393
-msgctxt "DownloadPage|"
-msgid "Download failed"
-msgstr "下載失敗"
-
-#: ../src/app/qml/DownloadPage.qml:409
-msgctxt "DownloadPage|"
-msgid "Failed due to missing drives"
-msgstr "失敗，因缺少磁碟機"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -821,57 +792,52 @@ msgctxt "main|"
 msgid "Select Drive"
 msgstr "選擇磁碟機"
 
-#: ../src/app/qml/main.qml:207
-msgctxt "main|"
-msgid "Downloading"
-msgstr "正在下載"
-
-#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
+#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
 msgid "Restore"
 msgstr "還原"
 
-#: ../src/app/qml/main.qml:286
+#: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 msgctxt "main|"
 msgid "Finish"
 msgstr "完成"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 msgctxt "main|"
 msgid "Write"
 msgstr "寫入"
 
-#: ../src/app/qml/main.qml:292
+#: ../src/app/qml/main.qml:296
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "下載並寫入"
 
-#: ../src/app/qml/main.qml:293
+#: ../src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "下載並寫入"
 
-#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
+#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 msgctxt "main|"
 msgid "Cancel"
 msgstr "取消"
 
-#: ../src/app/qml/main.qml:298
+#: ../src/app/qml/main.qml:306
 msgctxt "main|"
 msgid "Retry"
 msgstr "重試"
 
-#: ../src/app/qml/main.qml:300
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Next"
 msgstr "下一步"
 
-#: ../src/app/qml/main.qml:305
+#: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
 msgstr "關於"
 
-#: ../src/app/qml/main.qml:308
+#: ../src/app/qml/main.qml:316
 msgctxt "main|"
 msgid "Previous"
 msgstr "上一步"
@@ -917,9 +883,57 @@ msgstr ""
 msgid "Write Fedora images to your portable drives"
 msgstr "將 Fedora 映像檔寫入您的卸除式裝置中"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;可開機;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying written data"
+#~ msgstr "正在驗證已經寫入的資料"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying downloaded image"
+#~ msgstr "正在驗證下載的映像檔"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed"
+#~ msgstr "失敗"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing not possible"
+#~ msgstr "無法寫入"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing"
+#~ msgstr "正在寫入"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Finish"
+#~ msgstr "完成"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Successfully written"
+#~ msgstr "成功寫入"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verification failed due to missing drives"
+#~ msgstr "驗證失敗，因缺少磁碟機"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verification failed"
+#~ msgstr "驗證失敗"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Download failed"
+#~ msgstr "下載失敗"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed due to missing drives"
+#~ msgstr "失敗，因缺少磁碟機"
+
+#~ msgctxt "main|"
+#~ msgid "Downloading"
+#~ msgstr "正在下載"
 
 #, fuzzy
 #~| msgctxt "ReleaseVariant|"
@@ -934,13 +948,6 @@ msgstr "fmw;usb;iso;bootable;可開機;"
 #~ msgctxt "DownloadPage|"
 #~ msgid "Write Successful"
 #~ msgstr "%1 寫入成功"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Checking the download"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed download"
-#~ msgstr "檢查下載中"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"

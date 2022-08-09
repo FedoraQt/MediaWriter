@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"POT-Creation-Date: 2022-08-03 13:56+0200\n"
 "PO-Revision-Date: 2021-07-11 17:15+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://translate.fedoraproject.org/projects/fedora-"
@@ -97,7 +97,7 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:111
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -105,7 +105,7 @@ msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "பதிவேற்றப்படுகிறது"
 
-#: ../src/app/qml/CancelDialog.qml:112
+#: ../src/app/qml/CancelDialog.qml:113
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Writing"
@@ -113,7 +113,7 @@ msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "எழுதுகிறது"
 
-#: ../src/app/qml/CancelDialog.qml:114
+#: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr ""
@@ -138,13 +138,13 @@ msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "இணைப்பு காலாவதியானது"
 
-#: ../src/app/qml/DownloadPage.qml:48
+#: ../src/app/qml/DownloadPage.qml:52
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:50
+#: ../src/app/qml/DownloadPage.qml:54
 #, fuzzy, qt-format
 #| msgctxt "ReleaseVariant|"
 #| msgid "Writing"
@@ -152,26 +152,13 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "எழுதுகிறது"
 
-#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Verifying written data"
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:54
+#: ../src/app/qml/DownloadPage.qml:56
 #, fuzzy, qt-format
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr "பதிவேற்றப்படுகிறது"
-
-#: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
-msgctxt "DownloadPage|"
-msgid "Verifying downloaded image"
-msgstr "பதிவேற்றப்பட்ட பிரதிமை சிதைவுற்றது."
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, fuzzy, qt-format
@@ -181,50 +168,71 @@ msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr "தயாராகிறது"
 
-#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+#: ../src/app/qml/DownloadPage.qml:60
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Ready to write"
 msgctxt "DownloadPage|"
-msgid "Failed"
-msgstr ""
+msgid "Ready to write %1"
+msgstr "எழுதுவதற்குத் தாயாரானது"
 
-#: ../src/app/qml/DownloadPage.qml:72
+#: ../src/app/qml/DownloadPage.qml:62
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the download"
+msgctxt "DownloadPage|"
+msgid "Failed to download %1"
+msgstr "பதிவேற்றை சோதிக்கிறது"
+
+#: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:73
+#: ../src/app/qml/DownloadPage.qml:77
 msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:74
+#: ../src/app/qml/DownloadPage.qml:78
 msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:75
+#: ../src/app/qml/DownloadPage.qml:79
 msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
-#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
+#: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:124
+#: ../src/app/qml/DownloadPage.qml:101
+msgctxt "DownloadPage|"
+msgid "Your drive was unplugged during the process"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:132
+#: ../src/app/qml/DownloadPage.qml:143
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:140
+#: ../src/app/qml/DownloadPage.qml:151
+msgctxt "DownloadPage|"
+msgid "Please insert an USB drive."
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -232,17 +240,17 @@ msgid ""
 "from your drive."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:156
+#: ../src/app/qml/DownloadPage.qml:175
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -251,7 +259,7 @@ msgid ""
 "with Fedora and how to create bootable media for it."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:165
+#: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -259,59 +267,10 @@ msgid ""
 "drive by accident!"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:174
+#: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:262
-msgctxt "DownloadPage|"
-msgid "Writing not possible"
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:282
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
-msgctxt "DownloadPage|"
-msgid "Writing"
-msgstr "எழுதுகிறது"
-
-#: ../src/app/qml/DownloadPage.qml:334
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Finished!"
-msgctxt "DownloadPage|"
-msgid "Finish"
-msgstr "முடிவுற்றது!"
-
-#: ../src/app/qml/DownloadPage.qml:347
-msgctxt "DownloadPage|"
-msgid "Successfully written"
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:365
-msgctxt "DownloadPage|"
-msgid "Verification failed due to missing drives"
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:381
-msgctxt "DownloadPage|"
-msgid "Verification failed"
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:393
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
-msgctxt "DownloadPage|"
-msgid "Download failed"
-msgstr "பதிவேற்றம் தோல்வியடைந்தது"
-
-#: ../src/app/qml/DownloadPage.qml:409
-msgctxt "DownloadPage|"
-msgid "Failed due to missing drives"
 msgstr ""
 
 #: ../src/app/drivemanager.cpp:308
@@ -928,20 +887,12 @@ msgctxt "main|"
 msgid "Select Drive"
 msgstr ""
 
-#: ../src/app/qml/main.qml:207
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
-msgctxt "main|"
-msgid "Downloading"
-msgstr "பதிவேற்றப்படுகிறது"
-
-#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
+#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
 msgid "Restore"
 msgstr "மீட்டெடு "
 
-#: ../src/app/qml/main.qml:286
+#: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Finished!"
@@ -949,7 +900,7 @@ msgctxt "main|"
 msgid "Finish"
 msgstr "முடிவுற்றது!"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Write %1"
@@ -957,7 +908,7 @@ msgctxt "main|"
 msgid "Write"
 msgstr "எழுது %1"
 
-#: ../src/app/qml/main.qml:292
+#: ../src/app/qml/main.qml:296
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -965,7 +916,7 @@ msgctxt "main|"
 msgid "Download && Write"
 msgstr "பதிவேற்றம் தோல்வியடைந்தது"
 
-#: ../src/app/qml/main.qml:293
+#: ../src/app/qml/main.qml:297
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -973,7 +924,7 @@ msgctxt "main|"
 msgid "Download & Write"
 msgstr "பதிவேற்றம் தோல்வியடைந்தது"
 
-#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
+#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Cancel"
@@ -981,7 +932,7 @@ msgctxt "main|"
 msgid "Cancel"
 msgstr "ரத்து"
 
-#: ../src/app/qml/main.qml:298
+#: ../src/app/qml/main.qml:306
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Retry"
@@ -989,17 +940,17 @@ msgctxt "main|"
 msgid "Retry"
 msgstr "மீண்டும் முயற்சி "
 
-#: ../src/app/qml/main.qml:300
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Next"
 msgstr ""
 
-#: ../src/app/qml/main.qml:305
+#: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
 msgstr ""
 
-#: ../src/app/qml/main.qml:308
+#: ../src/app/qml/main.qml:316
 msgctxt "main|"
 msgid "Previous"
 msgstr ""
@@ -1046,9 +997,44 @@ msgstr ""
 msgid "Write Fedora images to your portable drives"
 msgstr "ஃபெடோராவை உங்கள் பெயரத்தகு சாதனத்தில் எழுதுக"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "The downloaded image is corrupted"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying downloaded image"
+#~ msgstr "பதிவேற்றப்பட்ட பிரதிமை சிதைவுற்றது."
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Writing"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing"
+#~ msgstr "எழுதுகிறது"
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Finished!"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Finish"
+#~ msgstr "முடிவுற்றது!"
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Download failed"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Download failed"
+#~ msgstr "பதிவேற்றம் தோல்வியடைந்தது"
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Downloading"
+#~ msgctxt "main|"
+#~ msgid "Downloading"
+#~ msgstr "பதிவேற்றப்படுகிறது"
 
 #, fuzzy
 #~| msgctxt "ReleaseVariant|"
@@ -1056,13 +1042,6 @@ msgstr ""
 #~ msgctxt "DownloadPage|"
 #~ msgid "Write verifying"
 #~ msgstr "எழுதுகிறது"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Checking the download"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed download"
-#~ msgstr "பதிவேற்றை சோதிக்கிறது"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"
