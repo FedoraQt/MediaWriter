@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-07 09:00+0200\n"
-"PO-Revision-Date: 2022-06-24 05:18+0000\n"
+"POT-Creation-Date: 2022-08-03 13:56+0200\n"
+"PO-Revision-Date: 2022-08-09 12:19+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
-"Language-Team: Georgian <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/ka/>\n"
+"Language-Team: Georgian <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,7 +40,7 @@ msgstr "Fedora Media Writer ახალ რელიზებს ამოწ�
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr ""
+msgstr "შეცდომები და თქვენი რჩევები %1-ზე გამოაგზავნეთ"
 
 #: ../src/app/qml/AboutDialog.qml:95
 msgctxt "AboutDialog|"
@@ -68,6 +68,8 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"გადმოწერა და მედიაზე ჩაწერა გაუქმდება. პროცესის გაგრძელება მოგვიანებითაც "
+"შეგიძლიათ."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
@@ -75,6 +77,7 @@ msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
+"ჩაწერის პროცესი გაუქმდება და მოგვიანებით თქვენი დისკის აღდგენა მოგიწევთ."
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
@@ -86,17 +89,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "გაგრძელება"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:111
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "გადმოწერის გაუქმება"
 
-#: ../src/app/qml/CancelDialog.qml:112
+#: ../src/app/qml/CancelDialog.qml:113
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "ჩაწერის გაუქმება"
 
-#: ../src/app/qml/CancelDialog.qml:114
+#: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "შემოწმების გაუქმება"
@@ -109,7 +112,7 @@ msgstr "მოთხოვნილი ასლის მოთხოვნი�
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr ""
+msgstr "გადმოწერების თქვენს საქაღალდეში ადგილი აღარაა."
 
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
@@ -121,33 +124,23 @@ msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "კავშირის ვადა გავიდა"
 
-#: ../src/app/qml/DownloadPage.qml:48
+#: ../src/app/qml/DownloadPage.qml:52
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr "%1 წარმატებით ჩაიწერა"
 
-#: ../src/app/qml/DownloadPage.qml:50
+#: ../src/app/qml/DownloadPage.qml:54
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "%1-ის ჩაწერა"
 
-#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Verifying written data"
-msgstr "ჩაწერილი მონაცემების შემოწმება"
-
-#: ../src/app/qml/DownloadPage.qml:54
+#: ../src/app/qml/DownloadPage.qml:56
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr "%1-ის გადმოწერა"
-
-#: ../src/app/qml/DownloadPage.qml:56
-msgctxt "DownloadPage|"
-msgid "Verifying downloaded image"
-msgstr "გადმოწერილი ასლის შემოწმება"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, qt-format
@@ -155,50 +148,69 @@ msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr "%1-ის მომზადება"
 
-#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+#: ../src/app/qml/DownloadPage.qml:60
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Ready to write"
 msgctxt "DownloadPage|"
-msgid "Failed"
-msgstr "შეცდომა"
+msgid "Ready to write %1"
+msgstr "ჩასაწერად მზადაა"
 
-#: ../src/app/qml/DownloadPage.qml:72
+#: ../src/app/qml/DownloadPage.qml:62
+#, qt-format
+msgctxt "DownloadPage|"
+msgid "Failed to download %1"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr " ბ დარჩენილია)"
 
-#: ../src/app/qml/DownloadPage.qml:73
+#: ../src/app/qml/DownloadPage.qml:77
 msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr " კბ დარჩენილია)"
 
-#: ../src/app/qml/DownloadPage.qml:74
+#: ../src/app/qml/DownloadPage.qml:78
 msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr " მბ დარჩენილია)"
 
-#: ../src/app/qml/DownloadPage.qml:75
+#: ../src/app/qml/DownloadPage.qml:79
 msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr " გბ დარჩენილია)"
 
-#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
-#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
+#: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
 msgstr " (%1"
 
-#: ../src/app/qml/DownloadPage.qml:124
+#: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
-msgid "Downloads are saved to the downloads folder."
+msgid "Your drive was unplugged during the process"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:132
+#: ../src/app/qml/DownloadPage.qml:135
+msgctxt "DownloadPage|"
+msgid "Downloads are saved to the downloads folder."
+msgstr "გადმოწერილი ფაილები \"downloads\" საქაღალდეში იქნება შენახული."
+
+#: ../src/app/qml/DownloadPage.qml:143
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
+msgstr "ჩაწერის შემთხვევაში %1-ზე არსებული მონაცემები დაიკარგება."
+
+#: ../src/app/qml/DownloadPage.qml:151
+msgctxt "DownloadPage|"
+msgid "Please insert an USB drive."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:140
+#: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -206,17 +218,17 @@ msgid ""
 "from your drive."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "არჩეულია:"
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "არცერთი"
 
-#: ../src/app/qml/DownloadPage.qml:156
+#: ../src/app/qml/DownloadPage.qml:175
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -225,7 +237,7 @@ msgid ""
 "with Fedora and how to create bootable media for it."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:165
+#: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -233,51 +245,11 @@ msgid ""
 "drive by accident!"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:174
+#: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:262
-msgctxt "DownloadPage|"
-msgid "Writing not possible"
-msgstr "ჩაწერა შეუძლებელია"
-
-#: ../src/app/qml/DownloadPage.qml:282
-msgctxt "DownloadPage|"
-msgid "Writing"
-msgstr "ჩაწერა"
-
-#: ../src/app/qml/DownloadPage.qml:334
-msgctxt "DownloadPage|"
-msgid "Finish"
-msgstr "დასრულება"
-
-#: ../src/app/qml/DownloadPage.qml:347
-msgctxt "DownloadPage|"
-msgid "Successfully written"
-msgstr "წარმატებით ჩაიწერა"
-
-#: ../src/app/qml/DownloadPage.qml:365
-msgctxt "DownloadPage|"
-msgid "Verification failed due to missing drives"
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:381
-msgctxt "DownloadPage|"
-msgid "Verification failed"
-msgstr "შემოწმების შეცდომა"
-
-#: ../src/app/qml/DownloadPage.qml:393
-msgctxt "DownloadPage|"
-msgid "Download failed"
-msgstr "გადმოწერის შეცდომა"
-
-#: ../src/app/qml/DownloadPage.qml:409
-msgctxt "DownloadPage|"
-msgid "Failed due to missing drives"
-msgstr ""
+msgstr "%2-ის გამოყენების დასაწყებად გადატვირთეთ და ჩაიტვირთეთ %1-დან."
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -332,7 +304,7 @@ msgstr "USB დისკი"
 #: ../src/app/qml/DrivePage.qml:135
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr ""
+msgstr "გადატანადი დისკები ვერ ვიპოვე"
 
 #: ../src/app/qml/DrivePage.qml:155
 msgctxt "DrivePage|"
@@ -347,17 +319,17 @@ msgstr "ჩაწერის შემდეგ წაშლა"
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr ""
+msgstr "დისკი ჩაწერის დროს გაითიშა."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
+msgstr "დამხმარე გამშვები ფაილი ვერ ვიპოვე. შეამოწმეთ თქვენი ფაილები."
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr ""
+msgstr "ჩაწერის დასრულებამდე შეჩერდა."
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
@@ -384,12 +356,12 @@ msgstr "%1-ის ჩაწერის შეცდომა"
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
-msgstr ""
+msgstr "UDisks2 მიუწვდომელია თქვენს სისტემაზე."
 
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
+msgstr "დამხმარე გამშვები ფაილი ვერ ვიპოვე. შეამოწმეთ თქვენი ფაილები."
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
@@ -452,7 +424,7 @@ msgstr "ფაილის გახსნა"
 #: ../src/app/releasemanager.cpp:392
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
-msgstr ""
+msgstr "აირჩიეთ ფაილი თქვენი დისკებიდან"
 
 #: ../src/app/releasemanager.cpp:393
 msgctxt "Release|"
@@ -465,17 +437,17 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:423
 msgctxt "Release|"
 msgid "Fedora Spins"
-msgstr ""
+msgstr "Fedora-ის ანაწყობები"
 
 #: ../src/app/releasemanager.cpp:425
 msgctxt "Release|"
 msgid "Fedora Labs"
-msgstr ""
+msgstr "Fedora-ის ლაბორატორიები"
 
 #: ../src/app/releasemanager.cpp:427
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
-msgstr ""
+msgstr "Fedora-ის ახალი ვერსიები"
 
 #: ../src/app/releasemanager.cpp:429
 msgctxt "Release|"
@@ -491,6 +463,7 @@ msgstr "Intel/AMD 64-ბიტიანი"
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
+"ISO ფორმატის ასლი intel, AMD და თავსებადი კომპიუტერებისთვის (64-ბიტიანი)"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
@@ -501,6 +474,7 @@ msgstr "Intel/AMD 32-ბიტიანი"
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
+"ISO ფორმატის ასლი intel, AMD და თავსებადი კომპიუტერებისთვის (32-ბიტიანი)"
 
 #: ../src/app/releasemanager.cpp:1071
 msgctxt "ReleaseArchitecture|"
@@ -512,6 +486,8 @@ msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
+"LZMA-ით შეკუმშული ასლი ARM v7-A მანქანებისთვის, როგორებიცაა Raspberry Pi 2 "
+"და 3"
 
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
@@ -521,7 +497,7 @@ msgstr "AArch64"
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr ""
+msgstr "LZMA-ით შეკუმშული ასლი AArch64 ტიპის მანქანებისთვის"
 
 #: ../src/app/releasemanager.cpp:391
 msgctxt "ReleaseListModel|"
@@ -567,6 +543,7 @@ msgstr "ჩასაწერად მზადაა"
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
+"ასლის ფაილი შენახულია თქვენი გადმოწერების საქაღლდეში. ჩაწერა შეუძლებელია"
 
 #: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
@@ -643,7 +620,7 @@ msgstr ""
 #: ../src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr ""
+msgstr "თქვენი დისკი წარმატებით აღდგა!"
 
 #: ../src/app/qml/RestorePage.qml:94
 msgctxt "RestorePage|"
@@ -651,6 +628,8 @@ msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
+"სამწუხაროდ, პროცესის მიმდინარეობის დროს დაფიქსირდა შეცდომა. სცადეთ დისკი "
+"თქვენი სისტემის ხელსაწყოებით აღადგინოთ."
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
@@ -675,22 +654,22 @@ msgstr "ოფიციალური გამოცემები"
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Emerging Editions"
-msgstr ""
+msgstr "მომავალი გამოცემები"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr ""
+msgstr "ნაკრებები"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "ლაბი"
 
 #: ../src/app/windrivemanager.cpp:265
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
+msgstr "დამხმარე გამშვები ფაილი ვერ ვიპოვე. შეამოწმეთ თქვენი ფაილები."
 
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 msgctxt "WinDrive|"
@@ -707,7 +686,7 @@ msgstr "%1 წარმატებით ჩაიწერა"
 #: ../src/helper/win/writejob.cpp:271
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr ""
+msgstr "გაშლის დაწყენის შეცდომა."
 
 #: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
 #: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
@@ -715,31 +694,31 @@ msgstr ""
 #: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
-msgstr ""
+msgstr "სამიზნე დისკი ჩაწერადი არაა"
 
 #: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:315
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
-msgstr ""
+msgstr "არასაკმარისი მეხსიერება ფალის გასაშლელად."
 
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:320
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
-msgstr ""
+msgstr "გადმოწერილი შეკუმშული ფაილი დაზიანებულია."
 
 #: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:323
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
-msgstr ""
+msgstr "შეკუმშვის არასწორი პარამეტრები."
 
 #: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:326
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
-msgstr ""
+msgstr "გაშლის უცნობი შეცდომა."
 
 #: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
 #: ../src/helper/win/writejob.cpp:361
@@ -757,7 +736,7 @@ msgstr "თქვენი დისკი ალბათ გაფუჭებ
 #: ../src/helper/win/writejob.cpp:411
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr ""
+msgstr "მოულოდნელი შეცდომა მედიის შემოწმებისას."
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
@@ -767,12 +746,12 @@ msgstr "სოკეტების წყვილის გამოყოფ�
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "სამიზნე ფაილის ჩასაწერად გახსნის შეცდომა"
 
 #: ../src/helper/win/writejob.cpp:74
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for writing"
-msgstr ""
+msgstr "დისკის ჩასაწერად გახსნის შეცდომა"
 
 #: ../src/helper/win/writejob.cpp:98
 msgctxt "WriteJob|"
@@ -805,57 +784,52 @@ msgctxt "main|"
 msgid "Select Drive"
 msgstr "აირჩეთ დისკი"
 
-#: ../src/app/qml/main.qml:207
-msgctxt "main|"
-msgid "Downloading"
-msgstr "გადმოწერა"
-
-#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
+#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
 msgid "Restore"
 msgstr "აღდგენა"
 
-#: ../src/app/qml/main.qml:286
+#: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 msgctxt "main|"
 msgid "Finish"
 msgstr "დასრულება"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 msgctxt "main|"
 msgid "Write"
 msgstr "ჩაწერა"
 
-#: ../src/app/qml/main.qml:292
+#: ../src/app/qml/main.qml:296
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "გადმოწერა && ჩაწერა"
 
-#: ../src/app/qml/main.qml:293
+#: ../src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "გადმოწერა & ჩაწერა"
 
-#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
+#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 msgctxt "main|"
 msgid "Cancel"
 msgstr "გაუქმება"
 
-#: ../src/app/qml/main.qml:298
+#: ../src/app/qml/main.qml:306
 msgctxt "main|"
 msgid "Retry"
 msgstr "თავიდან ცდა"
 
-#: ../src/app/qml/main.qml:300
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Next"
 msgstr "შემდეგი"
 
-#: ../src/app/qml/main.qml:305
+#: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
 msgstr "შესახებ"
 
-#: ../src/app/qml/main.qml:308
+#: ../src/app/qml/main.qml:316
 msgctxt "main|"
 msgid "Previous"
 msgstr "წინა"
@@ -870,7 +844,7 @@ msgstr "Fedora Media Writer"
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
-msgstr ""
+msgstr "ხელსაწყო Fedora-ის ცოცხალი USB დისკის შესაქმნელად"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -892,8 +866,56 @@ msgstr ""
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
 msgid "Write Fedora images to your portable drives"
-msgstr ""
+msgstr "Fedora-ის ასლის გადატანად დისკებზე ჩაწერა"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying written data"
+#~ msgstr "ჩაწერილი მონაცემების შემოწმება"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying downloaded image"
+#~ msgstr "გადმოწერილი ასლის შემოწმება"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed"
+#~ msgstr "შეცდომა"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing not possible"
+#~ msgstr "ჩაწერა შეუძლებელია"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing"
+#~ msgstr "ჩაწერა"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Finish"
+#~ msgstr "დასრულება"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Successfully written"
+#~ msgstr "წარმატებით ჩაიწერა"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verification failed due to missing drives"
+#~ msgstr "შემოწმება ვერ მოხერხდა დაკარგული დისკების გამო"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verification failed"
+#~ msgstr "შემოწმების შეცდომა"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Download failed"
+#~ msgstr "გადმოწერის შეცდომა"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed due to missing drives"
+#~ msgstr "შეცდომა ნაკლული დისკების გამო"
+
+#~ msgctxt "main|"
+#~ msgid "Downloading"
+#~ msgstr "გადმოწერა"

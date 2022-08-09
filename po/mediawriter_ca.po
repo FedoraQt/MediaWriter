@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"POT-Creation-Date: 2022-08-03 13:56+0200\n"
 "PO-Revision-Date: 2021-07-11 17:14+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Catalan <https://translate.fedoraproject.org/projects/fedora-"
@@ -103,7 +103,7 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:111
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -111,7 +111,7 @@ msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Baixada"
 
-#: ../src/app/qml/CancelDialog.qml:112
+#: ../src/app/qml/CancelDialog.qml:113
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Writing"
@@ -119,7 +119,7 @@ msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Escriptura"
 
-#: ../src/app/qml/CancelDialog.qml:114
+#: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr ""
@@ -144,13 +144,13 @@ msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Expiració de temps de connexió"
 
-#: ../src/app/qml/DownloadPage.qml:48
+#: ../src/app/qml/DownloadPage.qml:52
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:50
+#: ../src/app/qml/DownloadPage.qml:54
 #, fuzzy, qt-format
 #| msgctxt "ReleaseVariant|"
 #| msgid "Writing"
@@ -158,29 +158,13 @@ msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Escriptura"
 
-#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
-msgctxt "DownloadPage|"
-msgid "Verifying written data"
-msgstr "Comprovació de les dades escrites"
-
-#: ../src/app/qml/DownloadPage.qml:54
+#: ../src/app/qml/DownloadPage.qml:56
 #, fuzzy, qt-format
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr "Baixada"
-
-#: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
-msgctxt "DownloadPage|"
-msgid "Verifying downloaded image"
-msgstr "La imatge baixada està malmesa"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, fuzzy, qt-format
@@ -190,12 +174,23 @@ msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr "Preparació"
 
-#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+#: ../src/app/qml/DownloadPage.qml:60
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Ready to write"
 msgctxt "DownloadPage|"
-msgid "Failed"
-msgstr ""
+msgid "Ready to write %1"
+msgstr "Preparat per escriure"
 
-#: ../src/app/qml/DownloadPage.qml:72
+#: ../src/app/qml/DownloadPage.qml:62
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the download"
+msgctxt "DownloadPage|"
+msgid "Failed to download %1"
+msgstr "Comprovació de la baixada"
+
+#: ../src/app/qml/DownloadPage.qml:76
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "(%1 B left)"
@@ -203,7 +198,7 @@ msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr "(queden %1 B)"
 
-#: ../src/app/qml/DownloadPage.qml:73
+#: ../src/app/qml/DownloadPage.qml:77
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "(%1 KB left)"
@@ -211,7 +206,7 @@ msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr "(queden %1 KB)"
 
-#: ../src/app/qml/DownloadPage.qml:74
+#: ../src/app/qml/DownloadPage.qml:78
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "(%1 MB left)"
@@ -219,7 +214,7 @@ msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr "(queden %1 MB)"
 
-#: ../src/app/qml/DownloadPage.qml:75
+#: ../src/app/qml/DownloadPage.qml:79
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "(%1 GB left)"
@@ -227,14 +222,19 @@ msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr "(queden %1 GB)"
 
-#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
-#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
+#: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:124
+#: ../src/app/qml/DownloadPage.qml:101
+msgctxt "DownloadPage|"
+msgid "Your drive was unplugged during the process"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:135
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "The file will be saved to your Downloads folder."
@@ -242,7 +242,7 @@ msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
 msgstr "Es desarà el fitxer a la vostra carpeta de Baixades."
 
-#: ../src/app/qml/DownloadPage.qml:132
+#: ../src/app/qml/DownloadPage.qml:143
 #, fuzzy, qt-format
 #| msgctxt "DownloadDialog|"
 #| msgid "By writing, you will lose all of the data on %1."
@@ -250,7 +250,12 @@ msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Amb l'escriptura, perdreu totes les dades en %1."
 
-#: ../src/app/qml/DownloadPage.qml:140
+#: ../src/app/qml/DownloadPage.qml:151
+msgctxt "DownloadPage|"
+msgid "Please insert an USB drive."
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:159
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid ""
@@ -267,7 +272,7 @@ msgstr ""
 "redimensionar a la mida normal amb Fedora Media Writer; això eliminarà els "
 "mitjans d'instal·lació de la vostra unitat."
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Selected:"
@@ -275,7 +280,7 @@ msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Selecció:"
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "None"
@@ -283,7 +288,7 @@ msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Cap"
 
-#: ../src/app/qml/DownloadPage.qml:156
+#: ../src/app/qml/DownloadPage.qml:175
 #, fuzzy, qt-format
 #| msgctxt "DownloadDialog|"
 #| msgid ""
@@ -301,7 +306,7 @@ msgstr ""
 "informació sobre la seva compatibilitat amb Fedora i com crear mitjans "
 "d'arrencada."
 
-#: ../src/app/qml/DownloadPage.qml:165
+#: ../src/app/qml/DownloadPage.qml:184
 #, fuzzy, qt-format
 #| msgctxt "DownloadDialog|"
 #| msgid ""
@@ -315,65 +320,10 @@ msgstr ""
 "La mida de la unitat seleccionada és %1. És possible que hàgiu seleccionat "
 "una unitat externa per accident!"
 
-#: ../src/app/qml/DownloadPage.qml:174
+#: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:262
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Writing is not possible"
-msgctxt "DownloadPage|"
-msgid "Writing not possible"
-msgstr "No és possible l'escriptura"
-
-#: ../src/app/qml/DownloadPage.qml:282
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
-msgctxt "DownloadPage|"
-msgid "Writing"
-msgstr "Escriptura"
-
-#: ../src/app/qml/DownloadPage.qml:334
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
-msgctxt "DownloadPage|"
-msgid "Finish"
-msgstr "Ha acabat!"
-
-#: ../src/app/qml/DownloadPage.qml:347
-msgctxt "DownloadPage|"
-msgid "Successfully written"
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:365
-msgctxt "DownloadPage|"
-msgid "Verification failed due to missing drives"
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:381
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
-msgctxt "DownloadPage|"
-msgid "Verification failed"
-msgstr "Escriptura fallida de %1"
-
-#: ../src/app/qml/DownloadPage.qml:393
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
-msgctxt "DownloadPage|"
-msgid "Download failed"
-msgstr "Baixada fallida"
-
-#: ../src/app/qml/DownloadPage.qml:409
-msgctxt "DownloadPage|"
-msgid "Failed due to missing drives"
 msgstr ""
 
 #: ../src/app/drivemanager.cpp:308
@@ -1045,20 +995,12 @@ msgctxt "main|"
 msgid "Select Drive"
 msgstr "Selecció:"
 
-#: ../src/app/qml/main.qml:207
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
-msgctxt "main|"
-msgid "Downloading"
-msgstr "Baixada"
-
-#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
+#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
 msgid "Restore"
 msgstr "Restaura"
 
-#: ../src/app/qml/main.qml:286
+#: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 #, fuzzy
 #| msgctxt "LinuxDrive|"
 #| msgid "Finished!"
@@ -1066,7 +1008,7 @@ msgctxt "main|"
 msgid "Finish"
 msgstr "Ha acabat!"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Write %1"
@@ -1074,7 +1016,7 @@ msgctxt "main|"
 msgid "Write"
 msgstr "Escriu %1"
 
-#: ../src/app/qml/main.qml:292
+#: ../src/app/qml/main.qml:296
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -1082,7 +1024,7 @@ msgctxt "main|"
 msgid "Download && Write"
 msgstr "Baixada fallida"
 
-#: ../src/app/qml/main.qml:293
+#: ../src/app/qml/main.qml:297
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -1090,7 +1032,7 @@ msgctxt "main|"
 msgid "Download & Write"
 msgstr "Baixada fallida"
 
-#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
+#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Cancel"
@@ -1098,7 +1040,7 @@ msgctxt "main|"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: ../src/app/qml/main.qml:298
+#: ../src/app/qml/main.qml:306
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Retry"
@@ -1106,17 +1048,17 @@ msgctxt "main|"
 msgid "Retry"
 msgstr "Torna a intentar-ho"
 
-#: ../src/app/qml/main.qml:300
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Next"
 msgstr ""
 
-#: ../src/app/qml/main.qml:305
+#: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
 msgstr ""
 
-#: ../src/app/qml/main.qml:308
+#: ../src/app/qml/main.qml:316
 msgctxt "main|"
 msgid "Previous"
 msgstr ""
@@ -1166,9 +1108,65 @@ msgstr ""
 msgid "Write Fedora images to your portable drives"
 msgstr "Escriviu imatges de Fedora a les vostres unitats portàtils"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Checking the written data"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying written data"
+#~ msgstr "Comprovació de les dades escrites"
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "The downloaded image is corrupted"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying downloaded image"
+#~ msgstr "La imatge baixada està malmesa"
+
+#, fuzzy
+#~| msgctxt "DownloadDialog|"
+#~| msgid "Writing is not possible"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing not possible"
+#~ msgstr "No és possible l'escriptura"
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Writing"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing"
+#~ msgstr "Escriptura"
+
+#, fuzzy
+#~| msgctxt "LinuxDrive|"
+#~| msgid "Finished!"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Finish"
+#~ msgstr "Ha acabat!"
+
+#, fuzzy
+#~| msgctxt "LinuxDrive|"
+#~| msgid "Writing %1 failed"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verification failed"
+#~ msgstr "Escriptura fallida de %1"
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Download failed"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Download failed"
+#~ msgstr "Baixada fallida"
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Downloading"
+#~ msgctxt "main|"
+#~ msgid "Downloading"
+#~ msgstr "Baixada"
 
 #, fuzzy
 #~| msgctxt "ReleaseVariant|"
@@ -1183,13 +1181,6 @@ msgstr ""
 #~ msgctxt "DownloadPage|"
 #~ msgid "Write Successful"
 #~ msgstr "Escriptura reeixida de %1"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Checking the download"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed download"
-#~ msgstr "Comprovació de la baixada"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"

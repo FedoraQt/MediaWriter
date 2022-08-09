@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"POT-Creation-Date: 2022-08-03 13:56+0200\n"
 "PO-Revision-Date: 2022-05-18 10:18+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://translate.fedoraproject.org/projects/fedora-"
@@ -87,17 +87,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "המשך"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:111
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "ביטול ההורדה"
 
-#: ../src/app/qml/CancelDialog.qml:112
+#: ../src/app/qml/CancelDialog.qml:113
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "ביטול כתיבה"
 
-#: ../src/app/qml/CancelDialog.qml:114
+#: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "ביטול בדיקה"
@@ -122,7 +122,7 @@ msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "תם הזמן להתחברות"
 
-#: ../src/app/qml/DownloadPage.qml:48
+#: ../src/app/qml/DownloadPage.qml:52
 #, fuzzy, qt-format
 #| msgctxt "DownloadPage|"
 #| msgid "%1 Sucessfuly Written"
@@ -130,27 +130,17 @@ msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr "%1 נכתב בהצלחה"
 
-#: ../src/app/qml/DownloadPage.qml:50
+#: ../src/app/qml/DownloadPage.qml:54
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "%1 נכתב"
 
-#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Verifying written data"
-msgstr "הנתונים שנכתבו נבדקים"
-
-#: ../src/app/qml/DownloadPage.qml:54
+#: ../src/app/qml/DownloadPage.qml:56
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr "%1 בהורדה"
-
-#: ../src/app/qml/DownloadPage.qml:56
-msgctxt "DownloadPage|"
-msgid "Verifying downloaded image"
-msgstr "קובץ הדמות שירד עובר אימות"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, qt-format
@@ -158,50 +148,71 @@ msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr "%1 בהכנה"
 
-#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+#: ../src/app/qml/DownloadPage.qml:60
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Ready to write"
 msgctxt "DownloadPage|"
-msgid "Failed"
-msgstr "נכשל"
+msgid "Ready to write %1"
+msgstr "מוכן לכתיבה"
 
-#: ../src/app/qml/DownloadPage.qml:72
+#: ../src/app/qml/DownloadPage.qml:62
+#, fuzzy, qt-format
+#| msgctxt "DownloadPage|"
+#| msgid "Failed download"
+msgctxt "DownloadPage|"
+msgid "Failed to download %1"
+msgstr "ההורדה נכשלה"
+
+#: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr " בתים נותרו)"
 
-#: ../src/app/qml/DownloadPage.qml:73
+#: ../src/app/qml/DownloadPage.qml:77
 msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr " ק״ב נותרו)"
 
-#: ../src/app/qml/DownloadPage.qml:74
+#: ../src/app/qml/DownloadPage.qml:78
 msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr " מ״ב נותרו)"
 
-#: ../src/app/qml/DownloadPage.qml:75
+#: ../src/app/qml/DownloadPage.qml:79
 msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr " ג״ב נותרו)"
 
-#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
-#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
+#: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
 msgstr " (%1"
 
-#: ../src/app/qml/DownloadPage.qml:124
+#: ../src/app/qml/DownloadPage.qml:101
+msgctxt "DownloadPage|"
+msgid "Your drive was unplugged during the process"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
 msgstr "ההורדות נשמרות לתיקיית ההורדות."
 
-#: ../src/app/qml/DownloadPage.qml:132
+#: ../src/app/qml/DownloadPage.qml:143
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "הכתיבה תגרום לאבדן כל המידע שעל %1."
 
-#: ../src/app/qml/DownloadPage.qml:140
+#: ../src/app/qml/DownloadPage.qml:151
+msgctxt "DownloadPage|"
+msgid "Please insert an USB drive."
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -211,17 +222,17 @@ msgstr ""
 "גודל הכונן שלך יוקטן. ניתן לשנות את הגודל בחזרה על ידי שימוש בכותב המדיה של "
 "פדורה. פעולה זו תסיר את המדיה של ההתקנה מהכונן שלך."
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "נבחר:"
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "ללא"
 
-#: ../src/app/qml/DownloadPage.qml:156
+#: ../src/app/qml/DownloadPage.qml:175
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -233,7 +244,7 @@ msgstr ""
 "%1>עמוד הזה</a> לקבלת מידע נוסף על התאימות של ההתקן עם פדורה וכיצד ליצור "
 "מדיה להתקנה עבורו."
 
-#: ../src/app/qml/DownloadPage.qml:165
+#: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -241,54 +252,11 @@ msgid ""
 "drive by accident!"
 msgstr "גודל הכונן הנבחר הוא %1. יכול להיות שבחרת בכונן חיצוני בטעות!"
 
-#: ../src/app/qml/DownloadPage.qml:174
+#: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr "יש להפעיל מחדש ולטעון את המערכת דרך %1 כדי להתחיל להשתמש ב־%2."
-
-#: ../src/app/qml/DownloadPage.qml:262
-msgctxt "DownloadPage|"
-msgid "Writing not possible"
-msgstr "אי אפשר לכתוב"
-
-#: ../src/app/qml/DownloadPage.qml:282
-msgctxt "DownloadPage|"
-msgid "Writing"
-msgstr "מתבצעת כתיבה"
-
-#: ../src/app/qml/DownloadPage.qml:334
-msgctxt "DownloadPage|"
-msgid "Finish"
-msgstr "סיום"
-
-#: ../src/app/qml/DownloadPage.qml:347
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Sucessfuly written"
-msgctxt "DownloadPage|"
-msgid "Successfully written"
-msgstr "נכתב בהצלחה"
-
-#: ../src/app/qml/DownloadPage.qml:365
-msgctxt "DownloadPage|"
-msgid "Verification failed due to missing drives"
-msgstr "הבדיקה נכשלה עקב מחסור בכוננים"
-
-#: ../src/app/qml/DownloadPage.qml:381
-msgctxt "DownloadPage|"
-msgid "Verification failed"
-msgstr "הבדיקה נכשלה"
-
-#: ../src/app/qml/DownloadPage.qml:393
-msgctxt "DownloadPage|"
-msgid "Download failed"
-msgstr "ההורדה נכשלה"
-
-#: ../src/app/qml/DownloadPage.qml:409
-msgctxt "DownloadPage|"
-msgid "Failed due to missing drives"
-msgstr "נכשל עקב כוננים חסרים"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -827,57 +795,52 @@ msgctxt "main|"
 msgid "Select Drive"
 msgstr "בחירת כונן"
 
-#: ../src/app/qml/main.qml:207
-msgctxt "main|"
-msgid "Downloading"
-msgstr "בהורדה"
-
-#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
+#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
 msgid "Restore"
 msgstr "שחזור"
 
-#: ../src/app/qml/main.qml:286
+#: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 msgctxt "main|"
 msgid "Finish"
 msgstr "סיום"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 msgctxt "main|"
 msgid "Write"
 msgstr "כתיבה"
 
-#: ../src/app/qml/main.qml:292
+#: ../src/app/qml/main.qml:296
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "הורדה וכתיבה"
 
-#: ../src/app/qml/main.qml:293
+#: ../src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "הורדה וכתיבה"
 
-#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
+#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 msgctxt "main|"
 msgid "Cancel"
 msgstr "ביטול"
 
-#: ../src/app/qml/main.qml:298
+#: ../src/app/qml/main.qml:306
 msgctxt "main|"
 msgid "Retry"
 msgstr "ניסיון חוזר"
 
-#: ../src/app/qml/main.qml:300
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Next"
 msgstr "הבא"
 
-#: ../src/app/qml/main.qml:305
+#: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
 msgstr "על אודות"
 
-#: ../src/app/qml/main.qml:308
+#: ../src/app/qml/main.qml:316
 msgctxt "main|"
 msgid "Previous"
 msgstr "הקודם"
@@ -923,9 +886,60 @@ msgstr ""
 msgid "Write Fedora images to your portable drives"
 msgstr "כתיבת דמויות Fedora אל כוננים ניידים"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;אתחול;טעינה;הפעלה;איתחול;בוט;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying written data"
+#~ msgstr "הנתונים שנכתבו נבדקים"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying downloaded image"
+#~ msgstr "קובץ הדמות שירד עובר אימות"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed"
+#~ msgstr "נכשל"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing not possible"
+#~ msgstr "אי אפשר לכתוב"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing"
+#~ msgstr "מתבצעת כתיבה"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Finish"
+#~ msgstr "סיום"
+
+#, fuzzy
+#~| msgctxt "DownloadPage|"
+#~| msgid "Sucessfuly written"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Successfully written"
+#~ msgstr "נכתב בהצלחה"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verification failed due to missing drives"
+#~ msgstr "הבדיקה נכשלה עקב מחסור בכוננים"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verification failed"
+#~ msgstr "הבדיקה נכשלה"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Download failed"
+#~ msgstr "ההורדה נכשלה"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed due to missing drives"
+#~ msgstr "נכשל עקב כוננים חסרים"
+
+#~ msgctxt "main|"
+#~ msgid "Downloading"
+#~ msgstr "בהורדה"
 
 #~ msgctxt "DownloadPage|"
 #~ msgid "Write verifying"
@@ -942,10 +956,6 @@ msgstr "fmw;usb;iso;אתחול;טעינה;הפעלה;איתחול;בוט;"
 #~ msgctxt "DownloadPage|"
 #~ msgid "Failed verification"
 #~ msgstr "הבדיקה נכשלה"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed download"
-#~ msgstr "ההורדה נכשלה"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"

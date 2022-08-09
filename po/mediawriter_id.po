@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"POT-Creation-Date: 2022-08-03 13:56+0200\n"
 "PO-Revision-Date: 2022-05-10 13:17+0000\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.fedoraproject.org/projects/"
@@ -98,17 +98,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "Lanjutkan"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:111
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Batalkan Pengunduhan"
 
-#: ../src/app/qml/CancelDialog.qml:112
+#: ../src/app/qml/CancelDialog.qml:113
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Batalkan Penulisan"
 
-#: ../src/app/qml/CancelDialog.qml:114
+#: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Batalkan Verifikasi"
@@ -133,7 +133,7 @@ msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Koneksi habis waktu"
 
-#: ../src/app/qml/DownloadPage.qml:48
+#: ../src/app/qml/DownloadPage.qml:52
 #, fuzzy, qt-format
 #| msgctxt "DownloadPage|"
 #| msgid "%1 Sucessfuly Written"
@@ -141,27 +141,17 @@ msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr "%1 Sukses Ditulis"
 
-#: ../src/app/qml/DownloadPage.qml:50
+#: ../src/app/qml/DownloadPage.qml:54
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Menulis %1"
 
-#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Verifying written data"
-msgstr "Memeriksa data yang ditulis"
-
-#: ../src/app/qml/DownloadPage.qml:54
+#: ../src/app/qml/DownloadPage.qml:56
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr "Mengunduh %1"
-
-#: ../src/app/qml/DownloadPage.qml:56
-msgctxt "DownloadPage|"
-msgid "Verifying downloaded image"
-msgstr "Memverifikasi image yang diunduh"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, qt-format
@@ -169,50 +159,71 @@ msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr "Menyiapkan %1"
 
-#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+#: ../src/app/qml/DownloadPage.qml:60
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Ready to write"
 msgctxt "DownloadPage|"
-msgid "Failed"
-msgstr "Gagal"
+msgid "Ready to write %1"
+msgstr "Siap menulis"
 
-#: ../src/app/qml/DownloadPage.qml:72
+#: ../src/app/qml/DownloadPage.qml:62
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the download"
+msgctxt "DownloadPage|"
+msgid "Failed to download %1"
+msgstr "Memeriksa unduhan"
+
+#: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr " B tersisa)"
 
-#: ../src/app/qml/DownloadPage.qml:73
+#: ../src/app/qml/DownloadPage.qml:77
 msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr " kB tersisa)"
 
-#: ../src/app/qml/DownloadPage.qml:74
+#: ../src/app/qml/DownloadPage.qml:78
 msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr " MB tersisa)"
 
-#: ../src/app/qml/DownloadPage.qml:75
+#: ../src/app/qml/DownloadPage.qml:79
 msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr " GB tersisa)"
 
-#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
-#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
+#: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
 msgstr " (%1"
 
-#: ../src/app/qml/DownloadPage.qml:124
+#: ../src/app/qml/DownloadPage.qml:101
+msgctxt "DownloadPage|"
+msgid "Your drive was unplugged during the process"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
 msgstr "Unduhan disimpan ke folder download Anda."
 
-#: ../src/app/qml/DownloadPage.qml:132
+#: ../src/app/qml/DownloadPage.qml:143
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Dengan menulis, Anda akan kehilangan semua data pada %1."
 
-#: ../src/app/qml/DownloadPage.qml:140
+#: ../src/app/qml/DownloadPage.qml:151
+msgctxt "DownloadPage|"
+msgid "Please insert an USB drive."
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -223,17 +234,17 @@ msgstr ""
 "mengubah balik ukuran ke normal dengan memakai Fedora Media Writer. Ini akan "
 "menghapus media instalasi dari drive Anda."
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Dipilih:"
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Nihil"
 
-#: ../src/app/qml/DownloadPage.qml:156
+#: ../src/app/qml/DownloadPage.qml:175
 #, fuzzy, qt-format
 #| msgctxt "DownloadDialog|"
 #| msgid ""
@@ -251,7 +262,7 @@ msgstr ""
 "kompatibilitasnya dengan Fedora dan bagaimana membuat media bootable "
 "untuknya."
 
-#: ../src/app/qml/DownloadPage.qml:165
+#: ../src/app/qml/DownloadPage.qml:184
 #, fuzzy, qt-format
 #| msgctxt "DownloadDialog|"
 #| msgid ""
@@ -265,68 +276,10 @@ msgstr ""
 "Ukuran drive yang dipilih adalah %1. Mungkin Anda tidak sengaja memilih "
 "suatu drive eksternal!"
 
-#: ../src/app/qml/DownloadPage.qml:174
+#: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:262
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Writing is not possible"
-msgctxt "DownloadPage|"
-msgid "Writing not possible"
-msgstr "Menulis tidak dimungkinkan"
-
-#: ../src/app/qml/DownloadPage.qml:282
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
-msgctxt "DownloadPage|"
-msgid "Writing"
-msgstr "Menulis"
-
-#: ../src/app/qml/DownloadPage.qml:334
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
-msgctxt "DownloadPage|"
-msgid "Finish"
-msgstr "Selesai!"
-
-#: ../src/app/qml/DownloadPage.qml:347
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "%1 Sucessfuly Written"
-msgctxt "DownloadPage|"
-msgid "Successfully written"
-msgstr "%1 Sukses Ditulis"
-
-#: ../src/app/qml/DownloadPage.qml:365
-msgctxt "DownloadPage|"
-msgid "Verification failed due to missing drives"
-msgstr ""
-
-#: ../src/app/qml/DownloadPage.qml:381
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
-msgctxt "DownloadPage|"
-msgid "Verification failed"
-msgstr "Penulisan %1 gagal"
-
-#: ../src/app/qml/DownloadPage.qml:393
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
-msgctxt "DownloadPage|"
-msgid "Download failed"
-msgstr "Pengunduhan gagal"
-
-#: ../src/app/qml/DownloadPage.qml:409
-msgctxt "DownloadPage|"
-msgid "Failed due to missing drives"
 msgstr ""
 
 #: ../src/app/drivemanager.cpp:308
@@ -984,20 +937,12 @@ msgctxt "main|"
 msgid "Select Drive"
 msgstr "Dipilih:"
 
-#: ../src/app/qml/main.qml:207
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
-msgctxt "main|"
-msgid "Downloading"
-msgstr "Mengunduh"
-
-#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
+#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
 msgid "Restore"
 msgstr "Pulihkan"
 
-#: ../src/app/qml/main.qml:286
+#: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 #, fuzzy
 #| msgctxt "LinuxDrive|"
 #| msgid "Finished!"
@@ -1005,7 +950,7 @@ msgctxt "main|"
 msgid "Finish"
 msgstr "Selesai!"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Write %1"
@@ -1013,7 +958,7 @@ msgctxt "main|"
 msgid "Write"
 msgstr "Tulis %1"
 
-#: ../src/app/qml/main.qml:292
+#: ../src/app/qml/main.qml:296
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -1021,7 +966,7 @@ msgctxt "main|"
 msgid "Download && Write"
 msgstr "Pengunduhan gagal"
 
-#: ../src/app/qml/main.qml:293
+#: ../src/app/qml/main.qml:297
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -1029,7 +974,7 @@ msgctxt "main|"
 msgid "Download & Write"
 msgstr "Pengunduhan gagal"
 
-#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
+#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Cancel"
@@ -1037,7 +982,7 @@ msgctxt "main|"
 msgid "Cancel"
 msgstr "Batal"
 
-#: ../src/app/qml/main.qml:298
+#: ../src/app/qml/main.qml:306
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Retry"
@@ -1045,17 +990,17 @@ msgctxt "main|"
 msgid "Retry"
 msgstr "Coba Lagi"
 
-#: ../src/app/qml/main.qml:300
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Next"
 msgstr ""
 
-#: ../src/app/qml/main.qml:305
+#: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
 msgstr ""
 
-#: ../src/app/qml/main.qml:308
+#: ../src/app/qml/main.qml:316
 msgctxt "main|"
 msgid "Previous"
 msgstr ""
@@ -1103,9 +1048,70 @@ msgstr ""
 msgid "Write Fedora images to your portable drives"
 msgstr "Tulis image Fedora ke drive portabel Anda"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying written data"
+#~ msgstr "Memeriksa data yang ditulis"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying downloaded image"
+#~ msgstr "Memverifikasi image yang diunduh"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed"
+#~ msgstr "Gagal"
+
+#, fuzzy
+#~| msgctxt "DownloadDialog|"
+#~| msgid "Writing is not possible"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing not possible"
+#~ msgstr "Menulis tidak dimungkinkan"
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Writing"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing"
+#~ msgstr "Menulis"
+
+#, fuzzy
+#~| msgctxt "LinuxDrive|"
+#~| msgid "Finished!"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Finish"
+#~ msgstr "Selesai!"
+
+#, fuzzy
+#~| msgctxt "DownloadPage|"
+#~| msgid "%1 Sucessfuly Written"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Successfully written"
+#~ msgstr "%1 Sukses Ditulis"
+
+#, fuzzy
+#~| msgctxt "LinuxDrive|"
+#~| msgid "Writing %1 failed"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verification failed"
+#~ msgstr "Penulisan %1 gagal"
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Download failed"
+#~ msgctxt "DownloadPage|"
+#~ msgid "Download failed"
+#~ msgstr "Pengunduhan gagal"
+
+#, fuzzy
+#~| msgctxt "ReleaseVariant|"
+#~| msgid "Downloading"
+#~ msgctxt "main|"
+#~ msgid "Downloading"
+#~ msgstr "Mengunduh"
 
 #, fuzzy
 #~| msgctxt "ReleaseVariant|"
@@ -1120,13 +1126,6 @@ msgstr ""
 #~ msgctxt "DownloadPage|"
 #~ msgid "Write Successful"
 #~ msgstr "Penulisan %1 sukses"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Checking the download"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed download"
-#~ msgstr "Memeriksa unduhan"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"

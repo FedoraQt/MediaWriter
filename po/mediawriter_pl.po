@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"POT-Creation-Date: 2022-08-03 13:56+0200\n"
 "PO-Revision-Date: 2022-05-18 16:21+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <https://translate.fedoraproject.org/projects/fedora-"
@@ -94,17 +94,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "Kontynuuj"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:111
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Anuluj pobieranie"
 
-#: ../src/app/qml/CancelDialog.qml:112
+#: ../src/app/qml/CancelDialog.qml:113
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Anuluj zapisywanie"
 
-#: ../src/app/qml/CancelDialog.qml:114
+#: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Anuluj weryfikację"
@@ -129,33 +129,23 @@ msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Przekroczono czas oczekiwania połączenia"
 
-#: ../src/app/qml/DownloadPage.qml:48
+#: ../src/app/qml/DownloadPage.qml:52
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr "Pomyślnie zapisano %1"
 
-#: ../src/app/qml/DownloadPage.qml:50
+#: ../src/app/qml/DownloadPage.qml:54
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Zapisywanie %1"
 
-#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Verifying written data"
-msgstr "Weryfikowanie zapisanych danych"
-
-#: ../src/app/qml/DownloadPage.qml:54
+#: ../src/app/qml/DownloadPage.qml:56
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr "Pobieranie %1"
-
-#: ../src/app/qml/DownloadPage.qml:56
-msgctxt "DownloadPage|"
-msgid "Verifying downloaded image"
-msgstr "Weryfikowanie pobranego obrazu"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, qt-format
@@ -163,50 +153,71 @@ msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr "Przygotowywanie %1"
 
-#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+#: ../src/app/qml/DownloadPage.qml:60
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Ready to write"
 msgctxt "DownloadPage|"
-msgid "Failed"
-msgstr "Niepowodzenie"
+msgid "Ready to write %1"
+msgstr "Gotowe do zapisu"
 
-#: ../src/app/qml/DownloadPage.qml:72
+#: ../src/app/qml/DownloadPage.qml:62
+#, fuzzy, qt-format
+#| msgctxt "DownloadPage|"
+#| msgid "Failed download"
+msgctxt "DownloadPage|"
+msgid "Failed to download %1"
+msgstr "Pobranie się nie powiodło"
+
+#: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr " B)"
 
-#: ../src/app/qml/DownloadPage.qml:73
+#: ../src/app/qml/DownloadPage.qml:77
 msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr " KB)"
 
-#: ../src/app/qml/DownloadPage.qml:74
+#: ../src/app/qml/DownloadPage.qml:78
 msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr " MB)"
 
-#: ../src/app/qml/DownloadPage.qml:75
+#: ../src/app/qml/DownloadPage.qml:79
 msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr " GB)"
 
-#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
-#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
+#: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
 msgstr " (pozostało: %1"
 
-#: ../src/app/qml/DownloadPage.qml:124
+#: ../src/app/qml/DownloadPage.qml:101
+msgctxt "DownloadPage|"
+msgid "Your drive was unplugged during the process"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
 msgstr "Pobrane pliki są zapisywane w katalogu Pobrane."
 
-#: ../src/app/qml/DownloadPage.qml:132
+#: ../src/app/qml/DownloadPage.qml:143
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Zapisując, wszystkie dane na dysku %1 zostaną usunięte."
 
-#: ../src/app/qml/DownloadPage.qml:140
+#: ../src/app/qml/DownloadPage.qml:151
+msgctxt "DownloadPage|"
+msgid "Please insert an USB drive."
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -216,17 +227,17 @@ msgstr ""
 "Rozmiar dysku zostanie zmniejszony. Można przywrócić jego rozmiar za pomocą "
 "programu Fedora Media Writer, co usunie z niego nośnik instalacji."
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Wybrano:"
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Brak"
 
-#: ../src/app/qml/DownloadPage.qml:156
+#: ../src/app/qml/DownloadPage.qml:175
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -238,7 +249,7 @@ msgstr ""
 "Writer. <a href=%1>Ta strona</a> zawiera więcej informacji o jego zgodności "
 "z Fedorą i sposobie utworzenia nośnika startowego."
 
-#: ../src/app/qml/DownloadPage.qml:165
+#: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -248,52 +259,12 @@ msgstr ""
 "Rozmiar wybranego dysku to %1. Możliwe, że przypadkowo wybrano dysk "
 "zewnętrzny."
 
-#: ../src/app/qml/DownloadPage.qml:174
+#: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr ""
 "Należy uruchomić ponownie z nośnika %1, aby zacząć korzystać z systemu %2."
-
-#: ../src/app/qml/DownloadPage.qml:262
-msgctxt "DownloadPage|"
-msgid "Writing not possible"
-msgstr "Zapisanie jest niemożliwe"
-
-#: ../src/app/qml/DownloadPage.qml:282
-msgctxt "DownloadPage|"
-msgid "Writing"
-msgstr "Zapisywanie"
-
-#: ../src/app/qml/DownloadPage.qml:334
-msgctxt "DownloadPage|"
-msgid "Finish"
-msgstr "Ukończ"
-
-#: ../src/app/qml/DownloadPage.qml:347
-msgctxt "DownloadPage|"
-msgid "Successfully written"
-msgstr "Pomyślnie zapisano"
-
-#: ../src/app/qml/DownloadPage.qml:365
-msgctxt "DownloadPage|"
-msgid "Verification failed due to missing drives"
-msgstr "Weryfikacja się nie powiodła z powodu braku dysków"
-
-#: ../src/app/qml/DownloadPage.qml:381
-msgctxt "DownloadPage|"
-msgid "Verification failed"
-msgstr "Weryfikacja się nie powiodła"
-
-#: ../src/app/qml/DownloadPage.qml:393
-msgctxt "DownloadPage|"
-msgid "Download failed"
-msgstr "Pobranie się nie powiodło"
-
-#: ../src/app/qml/DownloadPage.qml:409
-msgctxt "DownloadPage|"
-msgid "Failed due to missing drives"
-msgstr "Niepowodzenie z powodu brak dysków"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -847,57 +818,52 @@ msgctxt "main|"
 msgid "Select Drive"
 msgstr "Wybór dysku"
 
-#: ../src/app/qml/main.qml:207
-msgctxt "main|"
-msgid "Downloading"
-msgstr "Pobieranie"
-
-#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
+#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
 msgid "Restore"
 msgstr "Przywróć"
 
-#: ../src/app/qml/main.qml:286
+#: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 msgctxt "main|"
 msgid "Finish"
 msgstr "Ukończ"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 msgctxt "main|"
 msgid "Write"
 msgstr "Zapisz"
 
-#: ../src/app/qml/main.qml:292
+#: ../src/app/qml/main.qml:296
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "Pobierz i zapisz"
 
-#: ../src/app/qml/main.qml:293
+#: ../src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "Pobierz i zapisz"
 
-#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
+#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: ../src/app/qml/main.qml:298
+#: ../src/app/qml/main.qml:306
 msgctxt "main|"
 msgid "Retry"
 msgstr "Ponów"
 
-#: ../src/app/qml/main.qml:300
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Next"
 msgstr "Dalej"
 
-#: ../src/app/qml/main.qml:305
+#: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
 msgstr "Informacje"
 
-#: ../src/app/qml/main.qml:308
+#: ../src/app/qml/main.qml:316
 msgctxt "main|"
 msgid "Previous"
 msgstr "Wstecz"
@@ -943,9 +909,57 @@ msgstr ""
 msgid "Write Fedora images to your portable drives"
 msgstr "Zapisywanie obrazów Fedory na dyskach USB"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;uruchamianie;zapisywanie;nośnik;media;live;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying written data"
+#~ msgstr "Weryfikowanie zapisanych danych"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying downloaded image"
+#~ msgstr "Weryfikowanie pobranego obrazu"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed"
+#~ msgstr "Niepowodzenie"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing not possible"
+#~ msgstr "Zapisanie jest niemożliwe"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing"
+#~ msgstr "Zapisywanie"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Finish"
+#~ msgstr "Ukończ"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Successfully written"
+#~ msgstr "Pomyślnie zapisano"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verification failed due to missing drives"
+#~ msgstr "Weryfikacja się nie powiodła z powodu braku dysków"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verification failed"
+#~ msgstr "Weryfikacja się nie powiodła"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Download failed"
+#~ msgstr "Pobranie się nie powiodło"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed due to missing drives"
+#~ msgstr "Niepowodzenie z powodu brak dysków"
+
+#~ msgctxt "main|"
+#~ msgid "Downloading"
+#~ msgstr "Pobieranie"
 
 #~ msgctxt "DownloadPage|"
 #~ msgid "Write verifying"
@@ -962,10 +976,6 @@ msgstr "fmw;usb;iso;bootable;uruchamianie;zapisywanie;nośnik;media;live;"
 #~ msgctxt "DownloadPage|"
 #~ msgid "Failed verification"
 #~ msgstr "Weryfikacja się nie powiodła"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed download"
-#~ msgstr "Pobranie się nie powiodło"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"

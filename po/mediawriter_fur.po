@@ -2,11 +2,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-07 09:00+0200\n"
+"POT-Creation-Date: 2022-08-03 13:56+0200\n"
 "PO-Revision-Date: 2022-06-14 12:18+0000\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
-"Language-Team: Friulian <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/fur/>\n"
+"Language-Team: Friulian <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/fur/>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -86,17 +86,17 @@ msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "Continue"
 
-#: ../src/app/qml/CancelDialog.qml:110
+#: ../src/app/qml/CancelDialog.qml:111
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Anule il discjariament"
 
-#: ../src/app/qml/CancelDialog.qml:112
+#: ../src/app/qml/CancelDialog.qml:113
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Anule la scriture"
 
-#: ../src/app/qml/CancelDialog.qml:114
+#: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Anule la verifiche"
@@ -121,33 +121,23 @@ msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Conession scjadude"
 
-#: ../src/app/qml/DownloadPage.qml:48
+#: ../src/app/qml/DownloadPage.qml:52
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr "%1 Scriture eseguide cun sucès"
 
-#: ../src/app/qml/DownloadPage.qml:50
+#: ../src/app/qml/DownloadPage.qml:54
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Daûr a scrivi %1"
 
-#: ../src/app/qml/DownloadPage.qml:52 ../src/app/qml/DownloadPage.qml:310
-msgctxt "DownloadPage|"
-msgid "Verifying written data"
-msgstr "Daûr a v erificâ i dâts scrits"
-
-#: ../src/app/qml/DownloadPage.qml:54
+#: ../src/app/qml/DownloadPage.qml:56
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr "Daûr a discjariâ %1"
-
-#: ../src/app/qml/DownloadPage.qml:56
-msgctxt "DownloadPage|"
-msgid "Verifying downloaded image"
-msgstr "Daûr a verificâ la imagjin discjariade"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, qt-format
@@ -155,50 +145,71 @@ msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr "Daûr a prontâ %1"
 
-#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:429
+#: ../src/app/qml/DownloadPage.qml:60
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Ready to write"
 msgctxt "DownloadPage|"
-msgid "Failed"
-msgstr "Falît"
+msgid "Ready to write %1"
+msgstr "Pront par scrivi"
 
-#: ../src/app/qml/DownloadPage.qml:72
+#: ../src/app/qml/DownloadPage.qml:62
+#, fuzzy, qt-format
+#| msgctxt "ReleaseVariant|"
+#| msgid "Checking the download"
+msgctxt "DownloadPage|"
+msgid "Failed to download %1"
+msgstr "Daûr a controlâ il discjariament"
+
+#: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr " B)"
 
-#: ../src/app/qml/DownloadPage.qml:73
+#: ../src/app/qml/DownloadPage.qml:77
 msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr " KB)"
 
-#: ../src/app/qml/DownloadPage.qml:74
+#: ../src/app/qml/DownloadPage.qml:78
 msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr " MB)"
 
-#: ../src/app/qml/DownloadPage.qml:75
+#: ../src/app/qml/DownloadPage.qml:79
 msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr " GB)"
 
-#: ../src/app/qml/DownloadPage.qml:78 ../src/app/qml/DownloadPage.qml:79
-#: ../src/app/qml/DownloadPage.qml:80 ../src/app/qml/DownloadPage.qml:81
+#: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
+#: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
 msgstr " (ancjemò %1"
 
-#: ../src/app/qml/DownloadPage.qml:124
+#: ../src/app/qml/DownloadPage.qml:101
+msgctxt "DownloadPage|"
+msgid "Your drive was unplugged during the process"
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
 msgstr "Il files discjamâts a son stâts salvâts te cartele Discjariâts."
 
-#: ../src/app/qml/DownloadPage.qml:132
+#: ../src/app/qml/DownloadPage.qml:143
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Lant a scrivi tu pierdarâs ducj i dâts su %1."
 
-#: ../src/app/qml/DownloadPage.qml:140
+#: ../src/app/qml/DownloadPage.qml:151
+msgctxt "DownloadPage|"
+msgid "Please insert an USB drive."
+msgstr ""
+
+#: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -209,17 +220,17 @@ msgstr ""
 "tornâ a ridimensionâle come prime doprant Scritôr Supuarts di Fedora. Chest "
 "al gjavarà il supuart di instalazion de unitât."
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Selezionât:"
 
-#: ../src/app/qml/DownloadPage.qml:148
+#: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Nissun"
 
-#: ../src/app/qml/DownloadPage.qml:156
+#: ../src/app/qml/DownloadPage.qml:175
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -232,7 +243,7 @@ msgstr ""
 "informazions su la sô compatibilitât cun Fedora e su ce mût creâ cun lui un "
 "supuart inviabil."
 
-#: ../src/app/qml/DownloadPage.qml:165
+#: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -242,51 +253,11 @@ msgstr ""
 "La dimension de unitât selezionade e je %1. Al è pussibil che tu vedis "
 "selezionât une unitât esterne par erôr!"
 
-#: ../src/app/qml/DownloadPage.qml:174
+#: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr "Torne invie e fâs partî di %1 par tacâ a doprâ %2."
-
-#: ../src/app/qml/DownloadPage.qml:262
-msgctxt "DownloadPage|"
-msgid "Writing not possible"
-msgstr "Impussibil eseguî la scriture"
-
-#: ../src/app/qml/DownloadPage.qml:282
-msgctxt "DownloadPage|"
-msgid "Writing"
-msgstr "Daûr a scrivi"
-
-#: ../src/app/qml/DownloadPage.qml:334
-msgctxt "DownloadPage|"
-msgid "Finish"
-msgstr "Finît!"
-
-#: ../src/app/qml/DownloadPage.qml:347
-msgctxt "DownloadPage|"
-msgid "Successfully written"
-msgstr "Scriture eseguide cun sucès"
-
-#: ../src/app/qml/DownloadPage.qml:365
-msgctxt "DownloadPage|"
-msgid "Verification failed due to missing drives"
-msgstr "Verifiche falide parcè che a mancjin unitâts"
-
-#: ../src/app/qml/DownloadPage.qml:381
-msgctxt "DownloadPage|"
-msgid "Verification failed"
-msgstr "Verifiche falide"
-
-#: ../src/app/qml/DownloadPage.qml:393
-msgctxt "DownloadPage|"
-msgid "Download failed"
-msgstr "Discjariament falît"
-
-#: ../src/app/qml/DownloadPage.qml:409
-msgctxt "DownloadPage|"
-msgid "Failed due to missing drives"
-msgstr "Falît parcè che a mancjin unitâts"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -831,57 +802,52 @@ msgctxt "main|"
 msgid "Select Drive"
 msgstr "Selezione la unitât"
 
-#: ../src/app/qml/main.qml:207
-msgctxt "main|"
-msgid "Downloading"
-msgstr "Daûr a discjariâ"
-
-#: ../src/app/qml/main.qml:246 ../src/app/qml/main.qml:287
+#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
 msgid "Restore"
 msgstr "Ripristine"
 
-#: ../src/app/qml/main.qml:286
+#: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 msgctxt "main|"
 msgid "Finish"
 msgstr "Fin"
 
-#: ../src/app/qml/main.qml:290
+#: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 msgctxt "main|"
 msgid "Write"
 msgstr "Scrîf"
 
-#: ../src/app/qml/main.qml:292
+#: ../src/app/qml/main.qml:296
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "Discjamâ && scrîvi"
 
-#: ../src/app/qml/main.qml:293
+#: ../src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "Discjamâ e scrivi"
 
-#: ../src/app/qml/main.qml:296 ../src/app/qml/main.qml:307
+#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Anule"
 
-#: ../src/app/qml/main.qml:298
+#: ../src/app/qml/main.qml:306
 msgctxt "main|"
 msgid "Retry"
 msgstr "Torne prove"
 
-#: ../src/app/qml/main.qml:300
+#: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Next"
 msgstr "Indevant"
 
-#: ../src/app/qml/main.qml:305
+#: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
 msgstr "Informazions"
 
-#: ../src/app/qml/main.qml:308
+#: ../src/app/qml/main.qml:316
 msgctxt "main|"
 msgid "Previous"
 msgstr "Precedent"
@@ -929,9 +895,57 @@ msgstr ""
 msgid "Write Fedora images to your portable drives"
 msgstr "Scrîf lis imagjins di Fedora tes tôs unitâts portatilis"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:79
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;inviabil;bootable;"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying written data"
+#~ msgstr "Daûr a v erificâ i dâts scrits"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verifying downloaded image"
+#~ msgstr "Daûr a verificâ la imagjin discjariade"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed"
+#~ msgstr "Falît"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing not possible"
+#~ msgstr "Impussibil eseguî la scriture"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Writing"
+#~ msgstr "Daûr a scrivi"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Finish"
+#~ msgstr "Finît!"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Successfully written"
+#~ msgstr "Scriture eseguide cun sucès"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verification failed due to missing drives"
+#~ msgstr "Verifiche falide parcè che a mancjin unitâts"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Verification failed"
+#~ msgstr "Verifiche falide"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Download failed"
+#~ msgstr "Discjariament falît"
+
+#~ msgctxt "DownloadPage|"
+#~ msgid "Failed due to missing drives"
+#~ msgstr "Falît parcè che a mancjin unitâts"
+
+#~ msgctxt "main|"
+#~ msgid "Downloading"
+#~ msgstr "Daûr a discjariâ"
 
 #, fuzzy
 #~| msgctxt "ReleaseVariant|"
@@ -946,13 +960,6 @@ msgstr "fmw;usb;iso;inviabil;bootable;"
 #~ msgctxt "DownloadPage|"
 #~ msgid "Write Successful"
 #~ msgstr "Scriture di %1 lade a bon fin"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Checking the download"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed download"
-#~ msgstr "Daûr a controlâ il discjariament"
 
 #~ msgctxt "DownloadDialog|"
 #~ msgid "Write the image immediately when the download is finished"
