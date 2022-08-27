@@ -14,20 +14,21 @@
 # Ettore Atalan <atalanttore@googlemail.com>, 2021, 2022.
 # Philipp Trulson <philipp@trulson.de>, 2022.
 # Lukas Iselor <lukas.iselor@tutanota.com>, 2022.
+# Joachim Philipp <joachim.philipp@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-03 13:56+0200\n"
-"PO-Revision-Date: 2022-07-28 15:19+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
-"Language-Team: German <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/de/>\n"
+"PO-Revision-Date: 2022-08-27 19:40+0000\n"
+"Last-Translator: Joachim Philipp <joachim.philipp@gmail.com>\n"
+"Language-Team: German <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Weblate 4.14\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -161,20 +162,16 @@ msgid "Preparing %1"
 msgstr "%1 vorbereiten"
 
 #: ../src/app/qml/DownloadPage.qml:60
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "Bereit zum Schreiben"
+msgstr "Bereit zum Schreiben %1"
 
 #: ../src/app/qml/DownloadPage.qml:62
-#, fuzzy, qt-format
-#| msgctxt "DownloadPage|"
-#| msgid "Failed download"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "Fehlgeschlagener Download"
+msgstr "Fehlgeschlagener Download von %1"
 
 #: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
@@ -206,7 +203,7 @@ msgstr " (noch %1"
 #: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "Ihr Laufwerk wurde während des Prozesses entfernt"
 
 #: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
@@ -222,7 +219,7 @@ msgstr "Beim Schreiben gehen alle Daten auf %1 verloren."
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "Bitte schliessen Sie ein USB Laufwerk an."
 
 #: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
@@ -782,7 +779,7 @@ msgstr "Unerwarteter Fehler beim Überprüfen des Mediums."
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "Verbundene Sockets konnten nicht zugeordnet werden"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
