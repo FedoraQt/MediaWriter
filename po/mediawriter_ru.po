@@ -7,21 +7,22 @@
 # Alexey Rubtsov <rushills@gmail.com>, 2021.
 # David Antaryan <antaryand@yandex.ru>, 2021.
 # Igor Kuzmenkov <igor.kuzmenkov.05@mail.ru>, 2022.
+# V I <xasertop@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-03 13:56+0200\n"
-"PO-Revision-Date: 2022-05-27 20:18+0000\n"
-"Last-Translator: Igor Gorbounov <igor.gorbounov@gmail.com>\n"
-"Language-Team: Russian <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/ru/>\n"
+"PO-Revision-Date: 2022-08-27 19:40+0000\n"
+"Last-Translator: V I <xasertop@gmail.com>\n"
+"Language-Team: Russian <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 4.14\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -38,7 +39,7 @@ msgstr "Версия %1"
 #: ../src/app/qml/AboutDialog.qml:66
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Сейчас Fedora Media Writer проверяет наличие новых версий"
+msgstr "Fedora Media Writer проверяет наличие новых версий"
 
 #: ../src/app/qml/AboutDialog.qml:72
 #, qt-format
@@ -144,7 +145,7 @@ msgstr "Записывается %1"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "Загружается %1"
+msgstr "Загрузка %1"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, qt-format
@@ -153,20 +154,16 @@ msgid "Preparing %1"
 msgstr "Подготовка %1"
 
 #: ../src/app/qml/DownloadPage.qml:60
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "Готово для записи"
+msgstr "Готово для записи %1"
 
 #: ../src/app/qml/DownloadPage.qml:62
-#, fuzzy, qt-format
-#| msgctxt "DownloadPage|"
-#| msgid "Failed download"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "Сбой загрузки"
+msgstr "Сбой загрузки %1"
 
 #: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
@@ -198,7 +195,7 @@ msgstr " (%1"
 #: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "Ваш диск был отключен во время процесса"
 
 #: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
@@ -214,7 +211,7 @@ msgstr "Запись приведет к потере всех данных на
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "Вставьте USB-накопитель."
 
 #: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
@@ -223,7 +220,7 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"Емкость вашего диска будет уменьшена. Можно вернуть ее нормальное значение с "
+"Емкость вашего диска будет уменьшена. Ее нормальное значение можно вернуть с "
 "помощью Fedora Media Writer. Это приведет к удалению дистрибутива с вашего "
 "диска."
 
@@ -411,7 +408,7 @@ msgstr "Выберите источник образа"
 #: ../src/app/qml/MainPage.qml:57
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Загружать автоматически"
+msgstr "Загрузить автоматически"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
@@ -658,8 +655,8 @@ msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"К сожалению, произошла ошика во время этого процесса. Попробуйте "
-"восстановить диск своими системными средствами."
+"К сожалению, во время этого процесса произошла ошибка. Попробуйте "
+"восстановить диск средствами системы."
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
@@ -842,7 +839,7 @@ msgstr "Загрузить и записать"
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 msgctxt "main|"
 msgid "Cancel"
-msgstr "Отменить"
+msgstr "Отмена"
 
 #: ../src/app/qml/main.qml:306
 msgctxt "main|"
@@ -857,7 +854,7 @@ msgstr "Дальше"
 #: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
-msgstr "Сведения"
+msgstr "О программе"
 
 #: ../src/app/qml/main.qml:316
 msgctxt "main|"
