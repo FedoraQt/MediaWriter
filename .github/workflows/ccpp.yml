@@ -249,7 +249,23 @@ jobs:
       shell: bash
       run: |
         TAG_NAME=$(bash ./dist/get-tag-name.sh)
-        bash ./dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="$TAG_NAME" filename="FedoraMediaWriter-win64-$TAG_NAME.exe"        
+        bash ./dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="$TAG_NAME" filename="FedoraMediaWriter-win64-$TAG_NAME.exe"
+
+    - name: Get version for WinGet publish (release)
+      id: get-version
+      if: github.event_name == 'release'
+      run: |
+        $WINGET_VER=$(bash ./dist/get-tag-name.sh)
+        echo "::set-output name=version::$WINGET_VER"
+      shell: bash
+
+    - name: Publish to WinGet (release)
+      if: github.event_name == 'release'
+      uses: vedantmgoyal2009/winget-releaser@latest
+      with:
+        identifier: Fedora.FedoraMediaWriter
+        version: ${{ steps.get-version.outputs.version }}
+        token: ${{ secrets.WINGET_TOKEN }}
 
     - name: Upload to GitHub (Development build)
       if: github.event_name == 'push'
