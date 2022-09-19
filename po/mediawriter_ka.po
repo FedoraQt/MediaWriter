@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-03 13:56+0200\n"
-"PO-Revision-Date: 2022-08-09 12:19+0000\n"
+"PO-Revision-Date: 2022-09-16 19:19+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
-"Language-Team: Georgian <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/ka/>\n"
+"Language-Team: Georgian <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Weblate 4.14\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
 msgctxt "AboutDialog|"
@@ -149,18 +149,16 @@ msgid "Preparing %1"
 msgstr "%1-ის მომზადება"
 
 #: ../src/app/qml/DownloadPage.qml:60
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "ჩასაწერად მზადაა"
+msgstr "%1 ჩასაწერად მზადაა"
 
 #: ../src/app/qml/DownloadPage.qml:62
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr ""
+msgstr "%1-ის გადმოწერის შეცდომა"
 
 #: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
@@ -192,7 +190,7 @@ msgstr " (%1"
 #: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "დისკი გამოერთებულია პროცესის დროს"
 
 #: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
@@ -208,7 +206,7 @@ msgstr "ჩაწერის შემთხვევაში %1-ზე არ
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "შეაერთეთ USB დისკი."
 
 #: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
@@ -217,6 +215,9 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
+"თქვენი დისკი უფრო მცირე მოცულობამდე შეიცვლის ზომას. მისი ნორმალურ ზომამდე "
+"გადიდება Fedora Media Writer-ით შეგიძლიათ. ეს ოპერაცია დისკიდან დაყენების "
+"ყველა ფაილს წაშლის."
 
 #: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
@@ -236,6 +237,10 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
+"თქვენი დაფა ან მოწყობილობა Fedora Media Writer-ს მიერ ჯერჯერობით "
+"მხარდაჭერილი არაა. Fedora-სთან თავსებადობის შესახებ ინფორმაციის მისაღებად და "
+"მისი დაყენებისთვის საჭირო მედიის შესაქმნელად შეამოწმეთ ეს <a "
+"href=%1>ვებგვერდი</a>."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -243,7 +248,7 @@ msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
-msgstr ""
+msgstr "არჩეული დისკის ზომაა %1. შეიძლება შემთხვევით გარე დისკი მონიშნეთ!"
 
 #: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
@@ -433,6 +438,9 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
+"<p>აქ შეგიძლიათ მყარი დისკიდან აირჩიოთ გადატანად დისკზე ჩასაწერი ოს-ის ასლი</"
+"p><p>ამჟამად მხარდაჭერილია მხოლოდ დაუმუშავებელი ასლების (.iso და .bin) "
+"ჩაწერა.</p>"
 
 #: ../src/app/releasemanager.cpp:423
 msgctxt "Release|"
@@ -609,6 +617,12 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
+"<p align=\"justify\">დისკზე არსებული სრული ადგილის გამოსაყენებლად ის ქარხნულ "
+"პარამეტრებზე უნდა დაბრუნდეს. დისკზე არსებული ცოცხალი სისტემა და შენახული "
+"მონაცემები წაიშლება.</p><p align=\"justify\">თუ აპირებთ, დისკზე სხვა ცოცხალი "
+"სისტემა ჩაწეროთ, მონაცემების აღდგენა არ გჭირდებათ.\n"
+"          </p><p align=\"justify\">გნებავთ ქარხნული პარამეტრების "
+"დაბრუნება?</p>"
 
 #: ../src/app/qml/RestorePage.qml:67
 msgctxt "RestorePage|"
@@ -616,6 +630,8 @@ msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
+"<p align=\"justify\">მოითმინეთ, სანამ Fedora Media Writer თქვენს გადატანად "
+"დისკს ქარხნულ პარამეტრებზე დააბრუნებს.</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
@@ -856,6 +872,12 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
+"ხელსაწყო Fedora-სთვის ცოცხალი USB დისკის შესაქმნელად. Fedora Media Writer-ს "
+"არა მხოლოდ ასლების ჩაწერა შეუძლია, არამედ მათი გადმოწერაც. ის გთავაზობთ "
+"ოფიციალურ გამოცემებს (სერვერი, სამუშაო მაგიდა), სპინები (KDE Plasma Desktop, "
+"Xfce Desktop, Cinnamon Desktop და ა.შ.) და Fedora Labs-ი (დიზაინი, "
+"უსაფრთხოება და ა.შ.). ის გაჩვენებთ ძირითად ინფორმაციას ყველაფერზე, რასაც "
+"მონიშნავთ, რათა სწორი არჩევანის გაკეთებაში დაგეხმაროთ."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -863,6 +885,9 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
+"Fedora Media Writer-ს თქვენი დისკიდან წაკითხული სხვა ჩატვირთვადი ISO "
+"ფაილების ჩაწერაც შეუძლია, მაგრამ, დაიმახსოვრეთ, რომ ის მხოლოდ Fedora-ის "
+"ასლებზეა დატესტილი."
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
 msgid "Write Fedora images to your portable drives"
