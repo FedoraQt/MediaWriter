@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-03 13:56+0200\n"
-"PO-Revision-Date: 2022-08-27 19:40+0000\n"
+"PO-Revision-Date: 2022-09-20 10:21+0000\n"
 "Last-Translator: V I <xasertop@gmail.com>\n"
 "Language-Team: Russian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/ru/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14\n"
+"X-Generator: Weblate 4.14.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -475,7 +475,7 @@ msgstr "Другое"
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Intel/AMD 64 разряда"
+msgstr "Intel/AMD 64-битные"
 
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
@@ -487,7 +487,7 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Intel/AMD 32 разряда"
+msgstr "Intel/AMD 32-битные"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
@@ -506,8 +506,8 @@ msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
-"Сжатый методом LZMA raw-образ для компьютеров с ARM v7-A (например, "
-"Raspberry Pi 2 и 3)"
+"Сжатый методом LZMA, raw-образ для компьютеров с ARM v7-A, например, "
+"Raspberry Pi 2 и 3"
 
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
@@ -517,7 +517,7 @@ msgstr "AArch64"
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "Сжатый методом LZMA raw-образ для компьютеров с AArch64"
+msgstr "Сжатый методом LZMA, raw-образ для компьютеров с AArch64"
 
 #: ../src/app/releasemanager.cpp:391
 msgctxt "ReleaseListModel|"
@@ -577,12 +577,12 @@ msgstr "Проверка записанных данных"
 #: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
-msgstr "Закончено!"
+msgstr "Завершено!"
 
 #: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
-msgstr "Загруженные данные повреждены"
+msgstr "Записанные данные повреждены"
 
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
@@ -598,13 +598,13 @@ msgstr "Ошибка"
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
-msgstr "%1 Альфа"
+msgstr "Альфа %1"
 
 #: ../src/app/releasemanager.cpp:703
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
-msgstr "%1 Бета"
+msgstr "Бета %1"
 
 #: ../src/app/releasemanager.cpp:705
 #, qt-format
@@ -773,7 +773,7 @@ msgstr "Не удалось создать пару сокетов"
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr "Не удалось открыть целевую локацию для записи"
+msgstr "Не удалось открыть место назначения для записи"
 
 #: ../src/helper/win/writejob.cpp:74
 msgctxt "WriteJob|"
@@ -871,7 +871,7 @@ msgstr "Fedora Media Writer"
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
-msgstr "Инструмент для создания live USB-диска с вариантом Fedora"
+msgstr "Инструмент для создания live USB-накопителя с версией Fedora"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -883,12 +883,12 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
-"Инструмент для создания загрузочных live USB-дисков с вариантом Fedora. "
-"Media Writer может не только записать образ на флэш-диск, но и загрузить "
-"его. Предлагаются официальные версии (Server, Workstation), сборки Fedora "
-"(KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...) и Fedora Labs "
-"(Design Suite, Security Lab,...). Предоставляется основная информация по "
-"каждому из них, помогающая сделать правильный выбор."
+"Инструмент для создания загрузочных live USB-накопителей с версией Fedora. "
+"Fedora Media Writer может не только записать образ на флэш-накопитель, но и "
+"загрузить его. Предлагаются официальные версии (Server, Workstation), сборки "
+"Fedora (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...) и Fedora "
+"Labs (Design Suite, Security Lab,...). Предоставляется основная информация "
+"по каждому из них, помогающая сделать правильный выбор."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
