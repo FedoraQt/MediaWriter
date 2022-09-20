@@ -6,59 +6,46 @@
 # feonsu <feonsu@gmail.com>, 2016. #zanata
 # feonsu <feonsu@gmail.com>, 2017. #zanata
 # feonsu <feonsu@gmail.com>, 2019. #zanata
-# Ondrej Sulek <feonsu@gmail.com>, 2021.
+# Ondrej Sulek <feonsu@gmail.com>, 2021, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-03 13:56+0200\n"
-"PO-Revision-Date: 2021-10-08 14:05+0000\n"
+"PO-Revision-Date: 2022-09-20 10:21+0000\n"
 "Last-Translator: Ondrej Sulek <feonsu@gmail.com>\n"
-"Language-Team: Slovak <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/sk/>\n"
+"Language-Team: Slovak <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.8\n"
+"X-Generator: Weblate 4.14.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr "O aplikácii Fedora Media Writer"
+msgstr "O Fedora Media Writer"
 
 #: ../src/app/qml/AboutDialog.qml:59
-#, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Verzia %1"
 
 #: ../src/app/qml/AboutDialog.qml:66
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "Fedora Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Fedora Media Writer teraz kontroluje nové vydania"
 
 #: ../src/app/qml/AboutDialog.qml:72
-#, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Chyby a svoje návrhy nahláste prosím na %1"
 
 #: ../src/app/qml/AboutDialog.qml:95
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Zavrieť"
@@ -66,20 +53,17 @@ msgstr "Zavrieť"
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "Zrušiť sťahovanie?"
 
 #: ../src/app/qml/CancelDialog.qml:58
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Zapisovanie"
+msgstr "Zrušiť zapisovanie?"
 
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "Zrušiť overenie?"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
@@ -87,44 +71,40 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"Sťahovanie a zápis na médium budú prerušené. V tomto procese je možné "
+"kedykoľvek pokračovať."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr ""
+msgstr "Proces zápisu bude prerušený a disk bude potrebné následne obnoviť."
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "Túto operáciu je možné bezpečne zrušiť."
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "Pokračovať"
 
 #: ../src/app/qml/CancelDialog.qml:111
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "Sťahovanie"
+msgstr "Zrušiť sťahovanie"
 
 #: ../src/app/qml/CancelDialog.qml:113
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Zapisovanie"
+msgstr "Zrušiť zapisovanie"
 
 #: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "Zrušiť overenie"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -150,104 +130,77 @@ msgstr "Časový limit spojenia vypršal"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr ""
+msgstr "%1 Úspešne zapísané"
 
 #: ../src/app/qml/DownloadPage.qml:54
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "Zapisovanie"
+msgstr "Zapisovanie %1"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "Sťahovanie"
+msgstr "Sťahovanie %1"
 
 #: ../src/app/qml/DownloadPage.qml:58
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "Príprava"
+msgstr "Príprava %1"
 
 #: ../src/app/qml/DownloadPage.qml:60
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "Pripravené na zápis"
+msgstr "Pripravené na zápis %1"
 
 #: ../src/app/qml/DownloadPage.qml:62
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "Overovanie stiahnutého súboru"
+msgstr "Nepodarilo sa stiahnuť %1"
 
 #: ../src/app/qml/DownloadPage.qml:76
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr "(zostáva %1 B)"
+msgstr " B zostáva)"
 
 #: ../src/app/qml/DownloadPage.qml:77
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr "(zostáva %1 KB)"
+msgstr " KB zostáva)"
 
 #: ../src/app/qml/DownloadPage.qml:78
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr "(zostáva %1 MB)"
+msgstr " MB zostáva)"
 
 #: ../src/app/qml/DownloadPage.qml:79
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr "(zostáva %1 GB)"
+msgstr " GB zostáva)"
 
 #: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
 #: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "Disk bol odpojený počas tohto procesu"
 
 #: ../src/app/qml/DownloadPage.qml:135
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "Súbor bude uložený do adresára so stiahnutými súbormi."
+msgstr "Stiahnuté súbory budú uložené do adresára so stiahnutými súbormi."
 
 #: ../src/app/qml/DownloadPage.qml:143
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Zápisom prídete o všetky dáta na disku %1."
@@ -255,15 +208,9 @@ msgstr "Zápisom prídete o všetky dáta na disku %1."
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "Vložte USB disk."
 
 #: ../src/app/qml/DownloadPage.qml:159
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using Fedora Media Writer; this will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -274,28 +221,17 @@ msgstr ""
 "jeho veľkosť späť na pôvodnú, to však vymaže inštalačné médiu z disku."
 
 #: ../src/app/qml/DownloadPage.qml:167
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Vybrané:"
 
 #: ../src/app/qml/DownloadPage.qml:167
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Nič"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your board or device is not supported by Fedora Media Writer yet. Please "
-#| "check <a href=%1>this page</a> for more information about its "
-#| "compatibility with Fedora and how to create bootable media for it."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
@@ -307,11 +243,7 @@ msgstr ""
 "médium, nájdete na <a href=%1>tejto stránke</a>."
 
 #: ../src/app/qml/DownloadPage.qml:184
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
@@ -323,7 +255,7 @@ msgstr ""
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "Reštartujte a spustite systém z %1 pokiaľ chcete začať používať %2."
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -331,62 +263,41 @@ msgid "This drive is not large enough."
 msgstr "Tento disk nie je dostatočne veľký."
 
 #: ../src/app/qml/DrivePage.qml:36
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "Zapísať na disk"
+msgstr "Možnosti zápisu"
 
 #: ../src/app/qml/DrivePage.qml:45
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "Verzia %1"
+msgstr "Verzia"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "Hardvérová architektúra"
 
 #: ../src/app/qml/DrivePage.qml:84
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "Vybrané:"
+msgstr "Vybraný súbor"
 
 #: ../src/app/qml/DrivePage.qml:91
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
-msgstr "Nič"
+msgstr "Žiadny"
 
 #: ../src/app/qml/DrivePage.qml:99
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "Vybrané:"
+msgstr "Vybrať..."
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr "Súbory obrazov"
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "Všetky súbory (*)"
@@ -394,31 +305,22 @@ msgstr "Všetky súbory (*)"
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "USB disk"
 
 #: ../src/app/qml/DrivePage.qml:135
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "Nie sú pripojené žiadne prenosné disky"
 
 #: ../src/app/qml/DrivePage.qml:155
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
 msgstr "Sťahovanie"
 
 #: ../src/app/qml/DrivePage.qml:160
-#, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "Vymazať stiahnutý obraz"
+msgstr "Vymazať stiahnutý obraz po zápise"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -492,49 +394,38 @@ msgstr "Zapisovanie %1 bolo úspešné"
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Vyberte zdroj obrazu"
 
 #: ../src/app/qml/MainPage.qml:57
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Sťahovanie zlyhalo"
+msgstr "Stiahnuť automaticky"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "Vybrať .iso súbor"
 
 #: ../src/app/qml/MainPage.qml:76
-#, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
+#, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "Obnoviť %1?"
+msgstr "Obnoviť <b>%1</b>"
 
 #: ../src/app/portalfiledialog.cpp:143
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "Súbory obrazov"
 
 #: ../src/app/portalfiledialog.cpp:153
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "Všetky súbory (*)"
+msgstr "Všetky súbory"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "Otvoriť súbor"
 
 #: ../src/app/releasemanager.cpp:392
 msgctxt "Release|"
@@ -565,7 +456,7 @@ msgstr "Laboratóriá Fedora"
 #: ../src/app/releasemanager.cpp:427
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
-msgstr ""
+msgstr "Novovznikajúce edície Fedory"
 
 #: ../src/app/releasemanager.cpp:429
 msgctxt "Release|"
@@ -573,12 +464,9 @@ msgid "Other"
 msgstr "Ostatné"
 
 #: ../src/app/releasemanager.cpp:1069
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Intel 64-bit"
+msgstr "Intel/AMD 64bit"
 
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
@@ -586,12 +474,9 @@ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "ISO formát obrazu pre Intel, AMD a ďalšie kompatibilné PC (64-bit)"
 
 #: ../src/app/releasemanager.cpp:1070
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Intel 32-bit"
+msgstr "Intel/AMD 32bit"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
@@ -641,25 +526,16 @@ msgid "Unable to rename the temporary file."
 msgstr "Nepodarilo sa premenovať dočasný súbor."
 
 #: ../src/app/releasemanager.h:372
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Príprava"
 
 #: ../src/app/releasemanager.h:373
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "Sťahovanie"
 
 #: ../src/app/releasemanager.h:374
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "Overovanie stiahnutého súboru"
@@ -677,17 +553,11 @@ msgstr ""
 "zapisovanie nebolo možné"
 
 #: ../src/app/releasemanager.h:377
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "Zapisovanie"
 
 #: ../src/app/releasemanager.h:378
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "Overovanie zapísaných údajov"
@@ -703,9 +573,6 @@ msgid "The written data is corrupted"
 msgstr "Zapísané údaje sú poškodené"
 
 #: ../src/app/releasemanager.h:381
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "Sťahovanie zlyhalo"
@@ -737,25 +604,9 @@ msgstr "%1 RC"
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "Obnoviť disk <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:49
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -765,26 +616,14 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">\n"
-"                                                Pre získanie všetkého "
-"voľného miesta na disku je ho potrebné obnoviť do výrobných nastavení.\n"
-"                                                Live systém a všetky uložené "
-"dáta budú vymazané.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Ak chcete na disk zapísať "
-"iný live systém, tak disk nemusíte obnovovať.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Chcete pokračovať?\n"
-"                                            </p>"
+"<p align=\"justify\"> Pre získanie všetkého dostupného miesta na disku je ho "
+"potrebné obnoviť do výrobných nastavení. Live systém a všetky uložené dáta "
+"budú vymazané. </p> <p align=\"justify\"> Ak chcete na disk zapísať iný live "
+"systém, tak disk nemusíte obnovovať. \n"
+"                </p> <p align=\"justify\"> Chcete obnoviť disk do výrobných "
+"nastavení? </p>"
 
 #: ../src/app/qml/RestorePage.qml:67
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
@@ -794,67 +633,53 @@ msgstr ""
 "prenosný disk.</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "Váš disk bol úspešne obnovený!"
 
 #: ../src/app/qml/RestorePage.qml:94
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"Bohužiaľ, počas spracovania sa vyskytla chyba.<br>Vyskúšajte prosím obnoviť "
+"Bohužiaľ, počas spracovania sa vyskytla chyba. Vyskúšajte prosím obnoviť "
 "disk pomocou systémových nástrojov."
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "Obnova dokončená"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Vyberte vydanie Fedory"
 
 #: ../src/app/qml/VersionPage.qml:48
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "Vybrané:"
+msgstr "Vyberte:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Oficiálne edície"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Emerging Editions"
-msgstr ""
+msgstr "Novovznikajúce edície"
 
 #: ../src/app/qml/VersionPage.qml:65
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "spins"
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr "spiny"
+msgstr "Spiny"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Labs"
 
 #: ../src/app/windrivemanager.cpp:265
 msgctxt "WinDrive|"
@@ -960,27 +785,19 @@ msgid "Couldn't unlock the drive"
 msgstr "Nepodarilo sa odomknúť disk"
 
 #: ../src/app/qml/main.qml:116
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
 
 #: ../src/app/qml/main.qml:154
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Workstation"
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Fedora Workstation"
+msgstr "Vyberte verziu Fedory"
 
 #: ../src/app/qml/main.qml:170
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "Vybrané:"
+msgstr "Vybrať disk"
 
 #: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
@@ -988,49 +805,31 @@ msgid "Restore"
 msgstr "Obnoviť"
 
 #: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "main|"
 msgid "Finish"
-msgstr "Dokončené!"
+msgstr "Dokončiť"
 
 #: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "main|"
 msgid "Write"
-msgstr "Zapísať %1"
+msgstr "Zapísať"
 
 #: ../src/app/qml/main.qml:296
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download && Write"
-msgstr "Sťahovanie zlyhalo"
+msgstr "Stiahnuť a zapísať"
 
 #: ../src/app/qml/main.qml:297
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "Sťahovanie zlyhalo"
+msgstr "Stiahnuť a zapísať"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Zrušiť"
 
 #: ../src/app/qml/main.qml:306
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
 msgctxt "main|"
 msgid "Retry"
 msgstr "Opakovať"
@@ -1038,17 +837,17 @@ msgstr "Opakovať"
 #: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Next"
-msgstr ""
+msgstr "Ďalej"
 
 #: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
-msgstr ""
+msgstr "O aplikácii"
 
 #: ../src/app/qml/main.qml:316
 msgctxt "main|"
 msgid "Previous"
-msgstr ""
+msgstr "Späť"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
@@ -1094,7 +893,7 @@ msgstr "Zapisujte obrazy Fedory na vaše prenosné disky"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;"
 
 #, fuzzy
 #~| msgctxt "ReleaseVariant|"
