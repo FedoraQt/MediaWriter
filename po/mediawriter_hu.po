@@ -11,12 +11,13 @@
 # Meskó Balázs <meskobalazs@gmail.com>, 2019. #zanata
 # Dankaházi (ifj.) István <dankahazi.istvan@gmail.com>, 2021.
 # Balázs Meskó <meskobalazs@mailbox.org>, 2021.
+# Hoppár Zoltán <hopparz@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-03 13:56+0200\n"
-"PO-Revision-Date: 2021-11-04 22:05+0000\n"
-"Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
+"PO-Revision-Date: 2022-09-23 19:19+0000\n"
+"Last-Translator: Hoppár Zoltán <hopparz@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/hu/>\n"
 "Language: hu\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8\n"
+"X-Generator: Weblate 4.14.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -36,33 +37,23 @@ msgid "About Fedora Media Writer"
 msgstr "A Fedora Media Writer alkalmazásról"
 
 #: ../src/app/qml/AboutDialog.qml:59
-#, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Verzió: %1"
 
 #: ../src/app/qml/AboutDialog.qml:66
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "Fedora Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Fedora Media Writer most új kiadást keres"
+msgstr "Fedora Media Writer most újabb kiadásokat keres"
 
 #: ../src/app/qml/AboutDialog.qml:72
-#, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Kérjük jelentse be a hibákat vagy javaslatait ide: %1"
 
 #: ../src/app/qml/AboutDialog.qml:95
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Bezárás"
@@ -70,7 +61,7 @@ msgstr "Bezárás"
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "Letöltés megszakítása?"
 
 #: ../src/app/qml/CancelDialog.qml:58
 #, fuzzy
@@ -83,7 +74,7 @@ msgstr "Kiírás"
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "Ellenőrzés megszakítása?"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
@@ -91,6 +82,8 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"A letöltés és a médiaírás megszakad. Ez a folyamat később bármikor "
+"folytatható."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
@@ -98,16 +91,17 @@ msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
+"Az írási folyamat megszakad, és a meghajtót ezután vissza kell állítani."
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "Ez a művelet biztonságosan megszakítható."
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "Folytatás"
 
 #: ../src/app/qml/CancelDialog.qml:111
 #, fuzzy
@@ -128,7 +122,7 @@ msgstr "Kiírás"
 #: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "Ellenőrzés megszakítása"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -154,7 +148,7 @@ msgstr "Kapcsolat megszakadt"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr ""
+msgstr "%1 sikeresen kiírva"
 
 #: ../src/app/qml/DownloadPage.qml:54
 #, fuzzy, qt-format
@@ -165,12 +159,10 @@ msgid "Writing %1"
 msgstr "Kiírás"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "Letöltés"
+msgstr "Letöltés %1"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, fuzzy, qt-format
@@ -230,15 +222,15 @@ msgstr "(%1 GB van hátra)"
 
 #: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
 #: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
-#, qt-format
+#, fuzzy, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "A meghajtó a folyamat során leválasztásra került"
 
 #: ../src/app/qml/DownloadPage.qml:135
 #, fuzzy
@@ -249,9 +241,7 @@ msgid "Downloads are saved to the downloads folder."
 msgstr "A fájl mentésre kerül a Letöltések mappába."
 
 #: ../src/app/qml/DownloadPage.qml:143
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "A kiírással, minden adatot elveszít itt: %1."
@@ -259,15 +249,9 @@ msgstr "A kiírással, minden adatot elveszít itt: %1."
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "Kérjük, helyezzen be egy USB-meghajtót."
 
 #: ../src/app/qml/DownloadPage.qml:159
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using Fedora Media Writer; this will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -279,28 +263,17 @@ msgstr ""
 "meghajtóból."
 
 #: ../src/app/qml/DownloadPage.qml:167
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Kiválasztva:"
 
 #: ../src/app/qml/DownloadPage.qml:167
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Nincs"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your board or device is not supported by Fedora Media Writer yet. Please "
-#| "check <a href=%1>this page</a> for more information about its "
-#| "compatibility with Fedora and how to create bootable media for it."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
@@ -312,11 +285,7 @@ msgstr ""
 "médiát készíteni hozzá, keresse fel <a href=%1>ezt az oldalt</a>."
 
 #: ../src/app/qml/DownloadPage.qml:184
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
@@ -330,6 +299,7 @@ msgstr ""
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr ""
+"Indítson újra és bootoljon be %1 eszközéről %2 használatának megkezdéséhez."
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -345,17 +315,14 @@ msgid "Write Options"
 msgstr "Kiírás lemezre"
 
 #: ../src/app/qml/DrivePage.qml:45
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "Verzió: %1"
+msgstr "Verzió"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "Hardver architektúra"
 
 #: ../src/app/qml/DrivePage.qml:84
 #, fuzzy
@@ -382,17 +349,11 @@ msgid "Select..."
 msgstr "Kiválasztva:"
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr "Lemezképek"
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "Minden fájl (*)"
@@ -400,20 +361,14 @@ msgstr "Minden fájl (*)"
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "USB meghajtó"
 
 #: ../src/app/qml/DrivePage.qml:135
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "Még nincsenek hordozható meghajtók csatlakoztatva"
 
 #: ../src/app/qml/DrivePage.qml:155
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
 msgstr "Letöltés"
@@ -498,7 +453,7 @@ msgstr "%1 kiírása sikeres volt"
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Válassza ki a lemezkép forrását"
 
 #: ../src/app/qml/MainPage.qml:57
 #, fuzzy
@@ -511,7 +466,7 @@ msgstr "Letöltés sikertelen"
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "ISO fájl kiválasztása"
 
 #: ../src/app/qml/MainPage.qml:76
 #, fuzzy, qt-format
@@ -522,25 +477,19 @@ msgid "Restore <b>%1</b>"
 msgstr "%1 helyreállítása?"
 
 #: ../src/app/portalfiledialog.cpp:143
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "Lemezképek"
 
 #: ../src/app/portalfiledialog.cpp:153
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "Minden fájl (*)"
+msgstr "Minden fájl"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "Fájl megnyitása"
 
 #: ../src/app/releasemanager.cpp:392
 msgctxt "Release|"
@@ -571,7 +520,7 @@ msgstr "Fedora Labs"
 #: ../src/app/releasemanager.cpp:427
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
-msgstr ""
+msgstr "Aktuális Fedora összeállítások"
 
 #: ../src/app/releasemanager.cpp:429
 msgctxt "Release|"
@@ -649,25 +598,16 @@ msgid "Unable to rename the temporary file."
 msgstr "Az átmeneti fájl átnevezése nem lehetséges."
 
 #: ../src/app/releasemanager.h:372
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Előkészítés"
 
 #: ../src/app/releasemanager.h:373
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "Letöltés"
 
 #: ../src/app/releasemanager.h:374
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "Letöltés ellenőrzése"
@@ -743,7 +683,7 @@ msgstr "%1 RC"
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "Meghajtó helyreállítása <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:49
 #, fuzzy
@@ -824,12 +764,12 @@ msgstr ""
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "Helyreállítás befejeződött"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Fedora kiadás kiválasztása"
 
 #: ../src/app/qml/VersionPage.qml:48
 #, fuzzy
@@ -842,12 +782,12 @@ msgstr "Kiválasztva:"
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Hivatalos kiadások"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Emerging Editions"
-msgstr ""
+msgstr "Aktuális kiadások"
 
 #: ../src/app/qml/VersionPage.qml:65
 #, fuzzy
@@ -860,7 +800,7 @@ msgstr "spinek"
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Labs összeállítás"
 
 #: ../src/app/windrivemanager.cpp:265
 msgctxt "WinDrive|"
@@ -935,9 +875,10 @@ msgid "Unexpected error occurred during media check."
 msgstr "Váratlan hiba lépett fel a média ellenőrzése közben."
 
 #: ../src/helper/mac/writejob.cpp:86
+#, fuzzy
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "Csatlakozó párosítás nem meghatározható"
 
 #: ../src/helper/mac/writejob.cpp:131
 #, fuzzy
@@ -1047,17 +988,17 @@ msgstr "Visszavonás"
 #: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Next"
-msgstr ""
+msgstr "Következő"
 
 #: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
-msgstr ""
+msgstr "Névjegy"
 
 #: ../src/app/qml/main.qml:316
 msgctxt "main|"
 msgid "Previous"
-msgstr ""
+msgstr "Előző"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
@@ -1106,7 +1047,7 @@ msgstr "Írjon Fedora lemezképeket a hordozható meghajtóira"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootolható;"
 
 #, fuzzy
 #~| msgctxt "ReleaseVariant|"
