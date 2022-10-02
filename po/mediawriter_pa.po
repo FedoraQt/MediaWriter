@@ -10,16 +10,16 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-03 13:56+0200\n"
-"PO-Revision-Date: 2022-05-06 23:36+0000\n"
+"PO-Revision-Date: 2022-10-02 21:19+0000\n"
 "Last-Translator: A S Alam <amanpreet.alam@gmail.com>\n"
-"Language-Team: Punjabi <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/pa/>\n"
+"Language-Team: Punjabi <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/pa/>\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.12.1\n"
+"X-Generator: Weblate 4.14.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -70,6 +70,8 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"ਡਾਊਨਲੋਡ ਅਤੇ ਮੀਡੀਆ ਰਾਈਟਰਿੰਗ ਨੂੰ ਅਧੂਰਾ ਛੱਡਿਆ ਜਾਵੇਗਾ। ਇਹ ਕਾਰਵਾਈ ਨੂੰ ਕਿਸੇ ਵੀ ਵੇਲੇ"
+" ਮੁੜ-ਚਾਲੂ ਕੀਤਾ ਸਕਦਾ ਹੈ।"
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
@@ -77,11 +79,13 @@ msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
+"ਲਿਖਣ ਦੀ ਕਾਰਵਾਈ ਨੂੰ ਅਧੂਰਾ ਛੱਡਿਆ ਜਾਵੇਗਾ ਅਤੇ ਤੁਹਾਡੀ ਡਰਾਇਵ ਨੂੰ ਬਾਅਦ ਵਿੱਚ ਬਹਾਲ "
+"ਕੀਤਾ ਜਾਵੇਗਾ।"
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "ਇਹ ਕਾਰਵਾਈ ਰੱਦ ਕਰਨ ਲਈ ਸੁਰੱਖਿਅਤ ਹੈ।"
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
@@ -89,20 +93,14 @@ msgid "Continue"
 msgstr "ਜਾਰੀ ਰੱਖੋ"
 
 #: ../src/app/qml/CancelDialog.qml:111
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "ਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
+msgstr "ਡਾਊਨਲੋਡ ਰੱਦ ਕਰੋ"
 
 #: ../src/app/qml/CancelDialog.qml:113
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "ਲਿਖਿਆ ਜਾ ਰਿਹਾ ਹੈ"
+msgstr "ਲਿਖਿਆ ਰੱਦ ਕਰੋ"
 
 #: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
@@ -130,84 +128,60 @@ msgid "Connection timed out"
 msgstr "ਕਨੈਕਸ਼ਨ ਲਈ ਸਮਾਂ ਸਮਾਪਤ ਹੋਇਆ"
 
 #: ../src/app/qml/DownloadPage.qml:52
-#, fuzzy, qt-format
-#| msgctxt "DownloadPage|"
-#| msgid "%1 Sucessfuly Written"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr "%1 ਕਾਮਯਾਬੀ ਨਾਲ ਲਿਖਿਆ"
+msgstr "%1 ਕਾਮਯਾਬੀ ਨਾਲ ਲਿਖੀ"
 
 #: ../src/app/qml/DownloadPage.qml:54
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "ਲਿਖਿਆ ਜਾ ਰਿਹਾ ਹੈ"
+msgstr "%1 ਲਿਖਿਆ ਜਾ ਰਿਹਾ ਹੈ"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "ਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
+msgstr "%1 ਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
 #: ../src/app/qml/DownloadPage.qml:58
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "ਤਿਆਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
+msgstr "%1 ਤਿਆਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
 #: ../src/app/qml/DownloadPage.qml:60
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "ਲਿਖਣ ਲਈ ਤਿਆਰ"
+msgstr "%1 ਲਿਖਣ ਲਈ ਤਿਆਰ"
 
 #: ../src/app/qml/DownloadPage.qml:62
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "ਡਾਊਨਲੋਡ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
+msgstr "%1 ਡਾਊਨਲੋਡ ਲਈ ਅਸਫ਼ਲ ਹੈ"
 
 #: ../src/app/qml/DownloadPage.qml:76
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr "(%1 ਬਾਇਟ ਬਾਕੀ)"
+msgstr " ਬਾਇਟ ਬਾਕੀ)"
 
 #: ../src/app/qml/DownloadPage.qml:77
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr "(%1 KB ਬਾਕੀ)"
+msgstr " KB ਬਾਕੀ)"
 
 #: ../src/app/qml/DownloadPage.qml:78
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr "(%1 MB ਬਾਕੀ)"
+msgstr " MB ਬਾਕੀ)"
 
 #: ../src/app/qml/DownloadPage.qml:79
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr "(%1 GB ਬਾਕੀ)"
+msgstr " GB ਬਾਕੀ)"
 
 #: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
 #: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
@@ -219,20 +193,15 @@ msgstr " (%1"
 #: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "ਕਾਰਵਾਈ ਦੇ ਦੌਰਾਨ ਤੁਹਾਡੀ ਡਰਾਇਵ ਨੂੰ ਅਣ-ਪਲੱਗ ਕੀਤਾ ਗਿਆ"
 
 #: ../src/app/qml/DownloadPage.qml:135
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "ਫਾਇਲ ਨੂੰ ਤੁਹਾਡੇ ਡਾਊਨਲੋਡ ਫ਼ੋਲਡਰ 'ਚ ਸੰਭਾਲਿਆ ਜਾਵੇਗਾ।"
+msgstr "ਡਾਊਨਲੋਡਾਂ ਨੂੰ ਡਾਊਨਲੋਡ ਫ਼ੋਲਡਰ 'ਚ ਸੰਭਾਲਿਆ ਜਾਂਦਾ ਹੈ।"
 
 #: ../src/app/qml/DownloadPage.qml:143
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "ਲਿਖਣ ਨਾਲ ਤੁਸੀਂ %1 ਤੋਂ ਸਾਰਾ ਡਾਟਾ ਗੁਆ ਦਿਓਂਗੇ।"
@@ -240,7 +209,7 @@ msgstr "ਲਿਖਣ ਨਾਲ ਤੁਸੀਂ %1 ਤੋਂ ਸਾਰਾ ਡਾ�
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "USB ਡਰਾਇਵ ਪਾਓ ਜੀ।"
 
 #: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
@@ -249,19 +218,16 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
+"ਤੁਹਾਡੀ ਡਰਾਇਵ ਨੂੰ ਘੱਟ ਸਮਰੱਥਾ ਲਈ ਮੁੜ ਆਕਾਰ ਕੀਤਾ ਜਾਵੇਗਾ। ਤੁਸੀਂ ਫੇਡੋਰਾ ਮੀਡੀਆ ਰਾ"
+"ਇਟਰ ਵਰਤ ਕੇ ਇਸ ਨੂੰ ਆਮ ਮੁਤਾਬਕ ਮੁੜ-ਆਕਾਰ ਸਕਦੇ ਹੋ। ਇਹ ਤੁਹਾਡੀ ਡਰਾਇਵ ਤੋਂ ਇੰਸਟਾਲੇਸ਼ਨ "
+"ਮੀਡੀਏ ਨੂੰ ਹਟਾਏਗਾ।"
 
 #: ../src/app/qml/DownloadPage.qml:167
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "ਚੁਣੇ:"
 
 #: ../src/app/qml/DownloadPage.qml:167
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
@@ -276,22 +242,20 @@ msgid ""
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:184
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
-msgstr "ਚੁਣੀ ਡਰਾਇਵ ਦਾ ਆਕਾਰ %1 ਹੈ। ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਤੁਸੀਂ ਗਲਤੀ ਨਾਲ ਬਾਹਰੀ ਡਰਾਇਵ ਚੁਣ ਲਈ ਹੋਵੇ!"
+msgstr ""
+"ਚੁਣੀ ਡਰਾਇਵ ਦਾ ਆਕਾਰ %1 ਹੈ। ਹੋ ਸਕਦਾ ਹੈ ਕਿ ਤੁਸੀਂ ਗਲਤੀ ਨਾਲ ਬਾਹਰੀ ਡਰਾਇਵ ਚੁਣ ਲਈ "
+"ਹੋਵੇ!"
 
 #: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "%2 ਵਰਤਣਾ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਮੁੜ-ਚਾਲੂ ਕਰੋ ਅਤੇ %1 ਤੋਂ ਬੂਟ ਕਰੋ।"
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
@@ -299,65 +263,44 @@ msgid "This drive is not large enough."
 msgstr "ਇਹ ਡਰਾਇਵ ਲੋੜ ਮੁਤਾਬਕ ਵੱਡੀ ਨਹੀਂ ਹੈ।"
 
 #: ../src/app/qml/DrivePage.qml:36
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "ਡਿਸਕ 'ਤੇ ਲਿਖੋ"
+msgstr "ਲਿਖਣ ਲਈ ਚੋਣਾਂ"
 
 #: ../src/app/qml/DrivePage.qml:45
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "ਵਰਜ਼ਨ %1"
+msgstr "ਵਰਜ਼ਨ"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "ਹਾਰਡਵੇਅਰ ਆਰਚੀਟੈਕਚਰ"
 
 #: ../src/app/qml/DrivePage.qml:84
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "ਚੁਣੇ:"
+msgstr "ਚੁਣੀ ਫ਼ਾਇਲ"
 
 #: ../src/app/qml/DrivePage.qml:91
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
 #: ../src/app/qml/DrivePage.qml:99
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "ਚੁਣੇ:"
+msgstr "...ਚੁਣੋ"
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr "ਈਮੇਜ਼ ਫਾਇਲਾਂ"
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
-msgstr "ਸਾਰੀਆਂ ਫਾਇਲਾਂ (*)"
+msgstr "ਸਭ ਫਾਇਲਾਂ (*)"
 
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
@@ -365,28 +308,19 @@ msgid "USB Drive"
 msgstr "USB ਡਰਾਇਵ"
 
 #: ../src/app/qml/DrivePage.qml:135
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "ਕੋਈ ਵੀ ਪੋਰਟੇਬਲ ਡਰਾਇਵ ਕਨੈਕਟ ਨਹੀਂ ਹੈ"
 
 #: ../src/app/qml/DrivePage.qml:155
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "ਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
+msgstr "ਡਾਊਨਲੋਡ"
 
 #: ../src/app/qml/DrivePage.qml:160
-#, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "ਡਾਊਨਲੋਡ ਕੀਤਾ ਈਮੇਜ਼ ਹਟਾਓ"
+msgstr "ਲਿਖਣ ਦੇ ਬਾਅਦ ਡਾਊਨਲੋਡ ਹਟਾਓ"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -463,12 +397,9 @@ msgid "Select Image Source"
 msgstr "ਈਮੇਜ਼ ਦਾ ਸਰੋਤ ਚੁਣੋ"
 
 #: ../src/app/qml/MainPage.qml:57
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "ਡਾਊਨਲੋਡ ਕਰਨਾ ਅਸਫ਼ਲ"
+msgstr "ਆਪਣੇ-ਆਪ ਡਾਊਨਲੋਡ ਕਰੋ"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
@@ -476,28 +407,20 @@ msgid "Select .iso file"
 msgstr ".iso ਫਾਇਲ ਚੁਣੋ"
 
 #: ../src/app/qml/MainPage.qml:76
-#, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
+#, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "%1 ਬਹਾਲ ਕਰਨਾ ਹੈ?"
+msgstr "<b>%1</b> ਬਹਾਲ ਕਰੋ"
 
 #: ../src/app/portalfiledialog.cpp:143
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "ਈਮੇਜ਼ ਫਾਇਲਾਂ"
 
 #: ../src/app/portalfiledialog.cpp:153
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "ਸਾਰੀਆਂ ਫਾਇਲਾਂ (*)"
+msgstr "ਸਭ ਫਾਇਲਾਂ"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
@@ -540,12 +463,9 @@ msgid "Other"
 msgstr "ਹੋਰ"
 
 #: ../src/app/releasemanager.cpp:1069
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Intel 64ਬਿੱਟ"
+msgstr "Intel/AMD 64-ਬਿੱਟ"
 
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
@@ -553,12 +473,9 @@ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "ਇੰਟੈੱਲ, AMD ਅਤੇ ਹੋਰ PC (64-ਬਿੱਟ) ਲਈ ਮੁਆਫ਼ਕ ISO ਫਾਰਮੈਟ ਈਮੇਜ਼"
 
 #: ../src/app/releasemanager.cpp:1070
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "ਇੰਟੈੱਲ 32-ਬਿੱਟ"
+msgstr "Intel/AMD 32-ਬਿੱਟ"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
@@ -607,25 +524,16 @@ msgid "Unable to rename the temporary file."
 msgstr "ਆਰਜ਼ੀ ਫ਼ਾਇਲ ਦਾ ਨਾਂ ਬਦਲਣ ਲਈ ਅਸਮਰੱਥ ਹੈ।"
 
 #: ../src/app/releasemanager.h:372
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "ਤਿਆਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
 #: ../src/app/releasemanager.h:373
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "ਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
 #: ../src/app/releasemanager.h:374
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "ਡਾਊਨਲੋਡ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
@@ -641,17 +549,11 @@ msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr "ਈਮੇਜ਼ ਫ਼ਾਇਲ ਨੂੰ ਤੁਹਾਡੇ ਡਾਊਨਲੋਡ ਫ਼ੋਲਡਰ 'ਚ ਸੰਭਾਲਿਆ ਗਿਆ ਸੀ। ਲਿਖਣਾ ਸੰਭਵ ਨਹੀਂ"
 
 #: ../src/app/releasemanager.h:377
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "ਲਿਖਿਆ ਜਾ ਰਿਹਾ ਹੈ"
 
 #: ../src/app/releasemanager.h:378
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "ਲਿਖੇ ਗਏ ਡਾਟੇ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
@@ -667,9 +569,6 @@ msgid "The written data is corrupted"
 msgstr "ਲਿਖਿਆ ਗਿਆ ਡਾਟਾ ਖ਼ਰਾਬ ਹੋ ਗਿਆ ਹੈ"
 
 #: ../src/app/releasemanager.h:381
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "ਡਾਊਨਲੋਡ ਕਰਨਾ ਅਸਫ਼ਲ"
@@ -715,23 +614,15 @@ msgid ""
 msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:67
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
-"<p align=\"justify\">ਤੁਹਾਡੀ ਪੋਰਟੇਬਲ ਡਰਾਇਵ ਨੂੰ ਫੇਡੋਰਾ ਮੀਡੀਆ ਰਾਈਟਰ ਵਲੋਂ ਬਹਾਲ ਕੀਤੇ ਜਾਣ ਤੱਕ "
-"ਉਡੀਕੋ।</p>"
+"<p align=\"justify\">ਤੁਹਾਡੀ ਪੋਰਟੇਬਲ ਡਰਾਇਵ ਨੂੰ ਫੇਡੋਰਾ ਮੀਡੀਆ ਰਾਈਟਰ ਵਲੋਂ ਬਹਾਲ "
+"ਕੀਤੇ ਜਾਣ ਤੱਕ ਉਡੀਕੋ।</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "ਤੁਹਾਡੀ ਡਰਾਇਵ ਕਾਮਯਾਬੀ ਨਾਲ ਬਹਾਲ ਕੀਤੀ ਗਈ!"
@@ -746,7 +637,7 @@ msgstr ""
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "ਬਹਾਲ ਕਰਨਾ ਪੂਰਾ ਹੋਇਆ"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
@@ -754,12 +645,9 @@ msgid "Select Fedora Release"
 msgstr "ਫੇਡੋਰਾ ਰੀਲਿਜ਼ ਚੁਣੋ"
 
 #: ../src/app/qml/VersionPage.qml:48
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "ਚੁਣੇ:"
+msgstr "ਇਸ ਤੋਂ ਚੁਣੋ:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
@@ -772,12 +660,9 @@ msgid "Emerging Editions"
 msgstr "ਨਵੀਆਂ ਤਕਨੀਕਾਂ ਵਾਲੇ ਐਡੀਸ਼ਨ"
 
 #: ../src/app/qml/VersionPage.qml:65
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "spins"
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr "ਸਪਿਨ"
+msgstr "ਰੂਪ"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
@@ -888,27 +773,19 @@ msgid "Couldn't unlock the drive"
 msgstr "ਡਰਾਇਵ ਅਣ-ਲਾਕ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ"
 
 #: ../src/app/qml/main.qml:116
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "ਫੇਡੋਰਾ ਮੀਡੀਆ ਰਾਇਟਰ"
 
 #: ../src/app/qml/main.qml:154
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Workstation"
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "ਫੇਡੋਰਾ ਵਰਕਸਟੇਸ਼ਨ"
+msgstr "ਫੇਡੋਰਾ ਵਰਜ਼ਨ ਚੁਣੋ"
 
 #: ../src/app/qml/main.qml:170
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "ਚੁਣੇ:"
+msgstr "ਡਰਾਇਵ ਚੁਣੋ"
 
 #: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
@@ -916,49 +793,31 @@ msgid "Restore"
 msgstr "ਬਹਾਲ ਕਰੋ"
 
 #: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "main|"
 msgid "Finish"
 msgstr "ਪੂਰਾ ਹੋਇਆ!"
 
 #: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "main|"
 msgid "Write"
-msgstr "%1 ਨੂੰ ਲਿਖੋ"
+msgstr "ਲਿਖੋ"
 
 #: ../src/app/qml/main.qml:296
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download && Write"
-msgstr "ਡਾਊਨਲੋਡ ਕਰਨਾ ਅਸਫ਼ਲ"
+msgstr "ਡਾਊਨਲੋਡ ਕਰੋ ਤੇ ਲਿਖੋ"
 
 #: ../src/app/qml/main.qml:297
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "ਡਾਊਨਲੋਡ ਕਰਨਾ ਅਸਫ਼ਲ"
+msgstr "ਡਾਊਨਲੋਡ ਕਰੋ ਤੇ ਲਿਖੋ"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "main|"
 msgid "Cancel"
 msgstr "ਰੱਦ ਕਰੋ"
 
 #: ../src/app/qml/main.qml:306
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
 msgctxt "main|"
 msgid "Retry"
 msgstr "ਮੁੜ-ਕੋਸ਼ਿਸ਼ ਕਰੋ"
