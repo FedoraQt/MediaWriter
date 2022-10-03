@@ -261,7 +261,7 @@ jobs:
 
     - name: Publish to WinGet (release)
       if: github.event_name == 'release'
-      uses: vedantmgoyal2009/winget-releaser@latest
+      uses: vedantmgoyal2009/winget-releaser@v1
       with:
         identifier: Fedora.FedoraMediaWriter
         version: ${{ steps.get-version.outputs.version }}
