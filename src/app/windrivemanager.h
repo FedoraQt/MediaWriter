@@ -38,7 +38,8 @@ public slots:
 
 private:
     QSet<int> findPhysicalDrive(char driveLetter);
-    bool describeDrive(int driveNumber, bool hasLetter, bool verbose);
+    bool describeDrive(int driveNumber, bool verbose);
+    bool isMountable(int driveNumber);
 
     QMap<int, WinDrive *> m_drives;
 };

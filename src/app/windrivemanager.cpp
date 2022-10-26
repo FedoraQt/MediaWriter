@@ -1,5 +1,7 @@
 /*
  * Fedora Media Writer
+ * Copyright (C) 2022 Jan Grulich <jgrulich@redhat.com>
+ * Copyright (C) 2011-2022 Pete Batard <pete@akeo.ie>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -21,11 +23,19 @@
 #include "notifications.h"
 
 #include <QDebug>
+#include <QStringList>
 #include <QTimer>
 
 #include <windows.h>
+#define INITGUID
+#include <guiddef.h>
 
 #include <cmath>
+#include <cstring>
+
+const int maxPartitionCount = 16;
+
+DEFINE_GUID(PARTITION_MICROSOFT_DATA, 0xEBD0A0A2, 0xB9E5, 0x4433, 0x87, 0xC0, 0x68, 0xB6, 0xB7, 0x26, 0x99, 0xC7);
 
 WinDriveProvider::WinDriveProvider(DriveManager *parent)
     : DriveProvider(parent)
@@ -37,22 +47,12 @@ WinDriveProvider::WinDriveProvider(DriveManager *parent)
 void WinDriveProvider::checkDrives()
 {
     static bool firstRun = true;
-    QSet<int> drivesWithLetters;
+
     if (firstRun)
         mDebug() << this->metaObject()->className() << "Looking for the drives for the first time";
 
-    DWORD drives = ::GetLogicalDrives();
-    for (char i = 0; i < 26; i++) {
-        if (drives & (1 << i)) {
-            drivesWithLetters.unite(findPhysicalDrive('A' + i));
-        }
-    }
-
-    if (firstRun)
-        mDebug() << this->metaObject()->className() << "Finished looking at drive letters";
-
     for (int i = 0; i < 64; i++) {
-        bool present = describeDrive(i, drivesWithLetters.contains(i), firstRun);
+        bool present = describeDrive(i, firstRun);
         if (!present && m_drives.contains(i)) {
             emit driveRemoved(m_drives[i]);
             m_drives[i]->deleteLater();
@@ -66,50 +66,104 @@ void WinDriveProvider::checkDrives()
     QTimer::singleShot(2500, this, &WinDriveProvider::checkDrives);
 }
 
-QSet<int> WinDriveProvider::findPhysicalDrive(char driveLetter)
+QString getPhysicalName(int driveNumber)
 {
-    static QMap<char, char> warningMap;
-    QSet<int> ret;
-
-    QString drivePath = QString("\\\\.\\%1:").arg(driveLetter);
-
-    HANDLE hDevice = ::CreateFile(drivePath.toStdWString().c_str(), 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
-    if (hDevice == INVALID_HANDLE_VALUE)
-        return ret;
-
-    DWORD bytesReturned;
-    VOLUME_DISK_EXTENTS vde; // TODO FIXME: handle ERROR_MORE_DATA (this is an extending structure)
-    BOOL bResult = DeviceIoControl(hDevice, IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS, NULL, 0, &vde, sizeof(vde), &bytesReturned, NULL);
-
-    if (!bResult) {
-        // warn just three times, it spams the log
-        if (warningMap[driveLetter] <= 3) {
-            warningMap[driveLetter]++;
-            mWarning() << "Could not get disk extents for" << drivePath;
-        }
-        ::CloseHandle(hDevice);
-        return ret;
-    } else {
-        warningMap[driveLetter] = 0;
-    }
-
-    for (uint i = 0; i < vde.NumberOfDiskExtents; i++) {
-        /*
-         * FIXME?
-         * This is a bit more complicated matter.
-         * Windows doesn't seem to provide the complete information about the drive (not just in this API).
-         * That's the reason I chose to detect it by looking at the partition's size.
-         * An even better approach would be to compare it to the size of the drive itself but for now this will have to suffice.
-         */
-        if (vde.Extents[i].ExtentLength.QuadPart > 100 * 1024 * 1024) // only partitions bigger than 100MB
-            ret.insert(vde.Extents[i].DiskNumber);
-    }
-
-    ::CloseHandle(hDevice);
-    return ret;
+    return QString("\\\\.\\PhysicalDrive%0").arg(driveNumber);
 }
 
-bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter, bool verbose)
+HANDLE getPhysicalHandle(int driveNumber)
+{
+    HANDLE physicalHandle = INVALID_HANDLE_VALUE;
+    QString physicalPath = getPhysicalName(driveNumber);
+    physicalHandle = CreateFileA(physicalPath.toStdString().c_str(), GENERIC_READ, FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    return physicalHandle;
+}
+
+bool WinDriveProvider::isMountable(int driveNumber)
+{
+    mDebug() << this->metaObject()->className() << "Checking whether " << getPhysicalName(driveNumber) << " is mountable";
+
+    HANDLE physicalHandle = getPhysicalHandle(driveNumber);
+    if (physicalHandle == INVALID_HANDLE_VALUE) {
+        mDebug() << this->metaObject()->className() << "Could not get physical handle for drive " << getPhysicalName(driveNumber);
+        return false;
+    }
+
+    DWORD size;
+    BYTE geometry[256];
+    bool ret = DeviceIoControl(physicalHandle, IOCTL_DISK_GET_DRIVE_GEOMETRY_EX, NULL, 0, geometry, sizeof(geometry), &size, NULL);
+    if (!ret || size <= 0) {
+        mDebug() << this->metaObject()->className() << "Could not get geometry for drive " << getPhysicalName(driveNumber);
+        CloseHandle(physicalHandle);
+        return false;
+    }
+
+    PDISK_GEOMETRY_EX diskGeometry = (PDISK_GEOMETRY_EX)(void *)geometry;
+    // Drive info
+    LONGLONG diskSize;
+    DWORD sectorSize;
+    DWORD sectorsPerTrack;
+    DWORD firstDataSector;
+    MEDIA_TYPE mediaType;
+
+    diskSize = diskGeometry->DiskSize.QuadPart;
+    sectorSize = diskGeometry->Geometry.BytesPerSector;
+    firstDataSector = MAXDWORD;
+    if (sectorSize < 512) {
+        mDebug() << this->metaObject()->className() << "Warning: Drive " << getPhysicalName(driveNumber) << " reports a sector size of " << sectorSize << " - Correcting to 512 bytes.";
+        sectorSize = 512;
+    }
+    sectorsPerTrack = diskGeometry->Geometry.SectorsPerTrack;
+    mediaType = diskGeometry->Geometry.MediaType;
+
+    BYTE layout[4096] = {0};
+    ret = DeviceIoControl(physicalHandle, IOCTL_DISK_GET_DRIVE_LAYOUT_EX, NULL, 0, layout, sizeof(layout), &size, NULL);
+    if (!ret || size <= 0) {
+        mDebug() << this->metaObject()->className() << "Could not get layout for drive " << getPhysicalName(driveNumber);
+        CloseHandle(physicalHandle);
+        return false;
+    }
+
+    PDRIVE_LAYOUT_INFORMATION_EX driveLayout = (PDRIVE_LAYOUT_INFORMATION_EX)(void *)layout;
+
+    switch (driveLayout->PartitionStyle) {
+    case PARTITION_STYLE_MBR:
+        mDebug() << this->metaObject()->className() << "MBR partition style";
+        for (int i = 0; i < driveLayout->PartitionCount; i++) {
+            if (driveLayout->PartitionEntry[i].Mbr.PartitionType != PARTITION_ENTRY_UNUSED) {
+                QVector<uint8_t> mbrMountable = {0x01, 0x04, 0x06, 0x07, 0x0b, 0x0c, 0x0e};
+                BYTE partType = driveLayout->PartitionEntry[i].Mbr.PartitionType;
+                mDebug() << this->metaObject()->className() << "Partition type: " << partType;
+                if (!mbrMountable.contains(partType)) {
+                    CloseHandle(physicalHandle);
+                    mDebug() << this->metaObject()->className() << getPhysicalName(driveNumber) << " is not mountable";
+                    return false;
+                }
+            }
+        }
+        break;
+    case PARTITION_STYLE_GPT:
+        mDebug() << this->metaObject()->className() << "GPT partition style";
+        for (int i = 0; i < driveLayout->PartitionCount; i++) {
+            if (memcmp(&driveLayout->PartitionEntry[i].Gpt.PartitionType, &PARTITION_MICROSOFT_DATA, sizeof(GUID)) != 0) {
+                CloseHandle(physicalHandle);
+                mDebug() << this->metaObject()->className() << getPhysicalName(driveNumber) << " is not mountable";
+                return false;
+            }
+        }
+        break;
+    default:
+        mDebug() << this->metaObject()->className() << "Partition type: RAW";
+        break;
+    }
+
+    mDebug() << this->metaObject()->className() << getPhysicalName(driveNumber) << " is mountable";
+
+    CloseHandle(physicalHandle);
+    return true;
+}
+
+bool WinDriveProvider::describeDrive(int nDriveNumber, bool verbose)
 {
     BOOL removable;
     QString productVendor;
@@ -122,7 +176,7 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter, bool verb
     // DWORD dwRet = NO_ERROR;
 
     // Format physical drive path (may be '\\.\PhysicalDrive0', '\\.\PhysicalDrive1' and so on).
-    QString strDrivePath = QString("\\\\.\\PhysicalDrive%0").arg(nDriveNumber);
+    QString strDrivePath = getPhysicalName(nDriveNumber);
 
     // Get a handle to physical drive
     HANDLE hDevice = ::CreateFile(strDrivePath.toStdWString().c_str(), 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
@@ -209,7 +263,7 @@ bool WinDriveProvider::describeDrive(int nDriveNumber, bool hasLetter, bool verb
     delete[] pOutBuffer;
     ::CloseHandle(hDevice);
 
-    WinDrive *currentDrive = new WinDrive(this, productVendor + " " + productId, deviceBytes, !hasLetter, nDriveNumber, serialNumber);
+    WinDrive *currentDrive = new WinDrive(this, productVendor + " " + productId, deviceBytes, !isMountable(nDriveNumber), nDriveNumber, serialNumber);
     if (m_drives.contains(nDriveNumber) && *m_drives[nDriveNumber] == *currentDrive) {
         currentDrive->deleteLater();
         return true;
