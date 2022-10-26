@@ -11,7 +11,7 @@ on:
     types: [ created ]
 
 env:
-    QT_VERSION: '6.2.3'
+    QT_VERSION: '6.4.2'
 
 jobs:
   Linux:
@@ -26,7 +26,7 @@ jobs:
         sudo apt update
         sudo apt install libxss1 libgstreamer-plugins-base1.0-0 libgstreamer1.0-0 binutils cmake pkg-config libx11-dev xcb libx11-xcb-dev libxkbcommon-x11-dev libssl-dev libxss-dev libxmu-dev
     - name: Install Qt
-      uses: jurplel/install-qt-action@v2
+      uses: jurplel/install-qt-action@v3
       with:
         version: ${{env.QT_VERSION}}
     - name: Install Adwaita-qt
@@ -51,7 +51,7 @@ jobs:
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     container:
-      image: docker.io/bilelmoussaoui/flatpak-github-actions:kde-6.2
+      image: docker.io/bilelmoussaoui/flatpak-github-actions:kde-6.4
       options: --privileged
     steps:
     - uses: actions/checkout@v2
@@ -109,7 +109,7 @@ jobs:
       with:
         fetch-depth: 1
     - name: Install Qt
-      uses: jurplel/install-qt-action@v2
+      uses: jurplel/install-qt-action@v3
       with:
         version: ${{env.QT_VERSION}}
         modules: qtimageformats
@@ -171,11 +171,11 @@ jobs:
         choco install nsis
         choco install dos2unix
     - name: Install Qt
-      uses: jurplel/install-qt-action@v2
+      uses: jurplel/install-qt-action@v3
       with:
         cached: ${{ steps.cache-qt.outputs.cache-hit }}
-        arch: win64_mingw81
-        version: '6.2.0'
+        arch: win64_mingw
+        version: ${{env.QT_VERSION}}
     - name: Build xz-utils
       shell: bash
       if: ${{ !steps.cache-qt.outputs.cache-hit }}
@@ -195,6 +195,7 @@ jobs:
     - name: Build MediaWriter
       shell: bash
       run: |
+        find /d -name libstdc++-6.dll
         mkdir build
         cd build
         cmake -DCMAKE_SH="CMAKE_SH-NOTFOUND" -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt6_DIR" ..
@@ -207,10 +208,10 @@ jobs:
         cd build/app/release
         mv ../../src/app/helper.exe .
         mv ../../src/app/mediawriter.exe .
-        $Qt6_DIR/bin/windeployqt.exe --release --qmldir ../../.. mediawriter.exe
-        cp $Qt6_DIR/bin/libstdc*.dll .
-        cp $Qt6_DIR/bin/libwinpthread*.dll .
-        cp $Qt6_DIR/bin/libgcc*.dll .
+        $Qt6_DIR/bin/windeployqt.exe --qmldir ../../.. mediawriter.exe
+        cp $Qt6_DIR/bin/libstdc++-6.dll .
+        cp $Qt6_DIR/bin/libwinpthread-1.dll .
+        cp $Qt6_DIR/bin/libgcc_s_seh-1.dll .
         cp $Qt6_DIR/bin/liblzma.dll .
         cp /c/Program\ Files/OpenSSL/bin/*.dll .
     - name: Installer
