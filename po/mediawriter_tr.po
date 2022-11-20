@@ -1,13 +1,13 @@
 # #-#-#-#-#  appstream_tr.po  #-#-#-#-#
-# Emin Tufan Çetin <etcetin@gmail.com>, 2016. #zanata
-# Emin Tufan Çetin <etcetin@gmail.com>, 2017. #zanata
+# Emin Tufan Çetin <etcetin@gmail.com>, 2016. #zanata, 2022.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2017. #zanata, 2022.
 # #-#-#-#-#  desktop_tr.po  #-#-#-#-#
-# Emin Tufan Çetin <etcetin@gmail.com>, 2016. #zanata
+# Emin Tufan Çetin <etcetin@gmail.com>, 2016. #zanata, 2022.
 # #-#-#-#-#  mediawriter_tr.po  #-#-#-#-#
 # Akın Ömeroğlu <akinomeroglu@gmail.com>, 2016. #zanata
-# Emin Tufan Çetin <etcetin@gmail.com>, 2016. #zanata
+# Emin Tufan Çetin <etcetin@gmail.com>, 2016. #zanata, 2022.
 # Altan Unsal <altanunsal@gmail.com>, 2017. #zanata
-# Emin Tufan Çetin <etcetin@gmail.com>, 2017. #zanata
+# Emin Tufan Çetin <etcetin@gmail.com>, 2017. #zanata, 2022.
 # Serdar Sağlam <teknomobil@msn.com>, 2019. #zanata
 # Oğuz Ersen <oguzersen@protonmail.com>, 2021.
 # Oğuz Ersen <oguz@ersen.moe>, 2022.
@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-03 13:56+0200\n"
-"PO-Revision-Date: 2022-08-09 15:19+0000\n"
-"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
+"PO-Revision-Date: 2022-11-20 09:19+0000\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/tr/>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Weblate 4.14.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -57,17 +57,17 @@ msgstr "Kapat"
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr "İndirme İptal Edilsin mi?"
+msgstr "İndirme İptal Edilsin Mi?"
 
 #: ../src/app/qml/CancelDialog.qml:58
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Yazma İptal Edilsin mi?"
+msgstr "Yazma İptal Edilsin Mi?"
 
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr "Doğrulama İptal Edilsin mi?"
+msgstr "Doğrulama İptal Edilsin Mi?"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
@@ -76,7 +76,7 @@ msgid ""
 "time later."
 msgstr ""
 "İndirme ve ortam yazma işlemi iptal edilecek. Bu işlem daha sonra herhangi "
-"bir zamanda devam ettirilebilir."
+"bir zamanda sürdürülebilir."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
@@ -94,7 +94,7 @@ msgstr "Bu işlemin iptal edilmesi güvenlidir."
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr "Devam et"
+msgstr "Sürdür"
 
 #: ../src/app/qml/CancelDialog.qml:111
 msgctxt "CancelDialog|"
@@ -208,12 +208,12 @@ msgstr "İndirilenler, indirilenler klasörüne kaydedilir."
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "Yazarak, %1 içerisindeki tüm verileri kaybedeceksiniz."
+msgstr "Yazarak, %1 içindeki tüm veriyi yitireceksiniz."
 
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr "Lütfen bir USB sürücü takın."
+msgstr "Lütfen USB sürücü takın."
 
 #: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
@@ -245,9 +245,8 @@ msgid ""
 "with Fedora and how to create bootable media for it."
 msgstr ""
 "Kartınız veya aygıtınız henüz Fedora Ortam Yazıcı tarafından desteklenmiyor. "
-"Fedora ile uyumluluğu ve nasıl önyüklenebilir ortam oluşturulacağı ile "
-"ilgili daha fazla bilgi edinmek için lütfen <a href=%1>bu sayfaya</a> göz "
-"atın."
+"Fedora ile uyumluluğu ve nasıl önyüklenebilir ortam oluşturulacağıyla ilgili "
+"daha çok bilgi için lütfen <a href=%1>bu sayfaya</a> göz atın."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -256,8 +255,7 @@ msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
-"Seçilen sürücünün boyutu %1. Yanlışlıkla bir harici sürücüyü seçmiş "
-"olabilirsiniz!"
+"Seçilen sürücünün boyutu %1. Yanlışlıkla dış sürücü seçmiş olabilirsiniz!"
 
 #: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
@@ -303,7 +301,7 @@ msgstr "Seç..."
 #: ../src/app/qml/DrivePage.qml:116
 msgctxt "DrivePage|"
 msgid "Image files"
-msgstr "Kalıp dosyaları"
+msgstr "Görüntü dosyaları"
 
 #: ../src/app/qml/DrivePage.qml:116
 msgctxt "DrivePage|"
@@ -402,12 +400,12 @@ msgstr "%1 yazımı başarılı"
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr "Kalıp Kaynağını Seç"
+msgstr "Görüntü Kaynağını Seç"
 
 #: ../src/app/qml/MainPage.qml:57
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Otomatik olarak indir"
+msgstr "Kendiliğinden indir"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
@@ -418,12 +416,12 @@ msgstr ".iso dosyası seç"
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "<b>%1</b> sıfırla"
+msgstr "<b>%1</b> sürücüsünü sıfırla"
 
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr "Kalıp dosyaları"
+msgstr "Görüntü dosyaları"
 
 #: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
@@ -438,7 +436,7 @@ msgstr "Dosya Aç"
 #: ../src/app/releasemanager.cpp:392
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
-msgstr "Sürücülerinizden bir dosya seçin"
+msgstr "Sürücülerinizden dosya seçin"
 
 #: ../src/app/releasemanager.cpp:393
 msgctxt "Release|"
@@ -447,7 +445,7 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
-"<p>Burada sabit sürücünüzden flash diskinize yazılacak bir İS görüntüsü "
+"<p>Burada sabit sürücünüzden flaş diskinize yazılacak bir İS görüntüsü "
 "seçebilirsiniz</p><p>Şimdilik yalnızca ham disk (.iso veya .bin) "
 "görüntülerin yazımı desteklenmektedir. </p>"
 
@@ -512,7 +510,7 @@ msgstr "AArch64"
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "AArch64 makineleri için LZMA sıkıştırılmış ham kalıp"
+msgstr "AArch64 makineleri için LZMA sıkıştırılmış ham görüntü"
 
 #: ../src/app/releasemanager.cpp:391
 msgctxt "ReleaseListModel|"
@@ -625,7 +623,7 @@ msgid ""
 msgstr ""
 "<p align=\"justify\"> Sürücünün tüm alanının kullanılabilmesi için fabrika "
 "ayarlarına döndürülmesi gerekmektedir. Canlı sistem ve kaydedilen veriler "
-"silinecektir. </p> <p align=\"justify\"> Başka bir canlı sistem oluşturmak "
+"silinecektir. </p> <p align=\"justify\"> Başka canlı sistem oluşturmak "
 "istiyorsanız sürücüyü sıfırlamanıza gerek yoktur. \n"
 "                </p> <p align=\"justify\"> Fabrika ayarlarına döndürmek "
 "istiyor musunuz? </p>"
@@ -650,7 +648,7 @@ msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"Ne yazık ki işlem sırasında bir hata oluştu. Lütfen sistem araçlarınızı "
+"Ne yazık ki işlem sırasında hata oluştu. Lütfen sistem araçlarınızı "
 "kullanarak sürücünüzü onarmayı deneyin."
 
 #: ../src/app/qml/RestorePage.qml:143
@@ -758,12 +756,12 @@ msgstr "Sürücünüz büyük olasılıkla hasar görmüş."
 #: ../src/helper/win/writejob.cpp:411
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr "Ortam denetimi sırasında beklenmedik bir hata oluştu."
+msgstr "Ortam denetimi sırasında beklenmedik hata oluştu."
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr "Soket çifti tahsis edilemiyor"
+msgstr "Yuva çifti özgülenemiyor"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
