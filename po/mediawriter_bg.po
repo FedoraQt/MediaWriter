@@ -1,10 +1,11 @@
 # Valentin Laskov <laskov@festa.bg>, 2016. #zanata
+# Bogomil Shopov <bogomil.fedora@gmail.com>, 2022.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-03 13:56+0200\n"
-"PO-Revision-Date: 2021-07-11 17:14+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2022-12-20 18:37+0000\n"
+"Last-Translator: Bogomil Shopov <bogomil.fedora@gmail.com>\n"
 "Language-Team: Bulgarian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/bg/>\n"
 "Language: bg\n"
@@ -12,66 +13,50 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.1\n"
+"X-Generator: Weblate 4.15\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
 msgstr "Относно Fedora Media Writer"
 
 #: ../src/app/qml/AboutDialog.qml:59
-#, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Версия %1"
 
 #: ../src/app/qml/AboutDialog.qml:66
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "Fedora Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Fedora Media Writer проверява за нови издания"
 
 #: ../src/app/qml/AboutDialog.qml:72
-#, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr "Моля, докладвайте грешките и Вашите предложения на %1"
+msgstr "Моля, докладвайте грешките и вашите предложения на %1"
 
 #: ../src/app/qml/AboutDialog.qml:95
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
-msgstr "Затвори"
+msgstr "Затваряне"
 
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "Отмяна на изтеглянето?"
 
 #: ../src/app/qml/CancelDialog.qml:58
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Записвам"
+msgstr "Отмяна на записването?"
 
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "Отмяна на проверката?"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
@@ -79,6 +64,8 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"Изтеглянето и записването на мултимедия ще бъдат прекратени. Този процес "
+"може да бъде възобновен по всяко време по-късно."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
@@ -86,37 +73,33 @@ msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
+"Процесът на записване ще бъде прекратен и вашето устройство ще трябва да "
+"бъде възстановено след това."
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "Тази операция е безопасна за отменяне."
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "Продължаване"
 
 #: ../src/app/qml/CancelDialog.qml:111
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "Сваляне"
+msgstr "Отмяна на изтеглянето"
 
 #: ../src/app/qml/CancelDialog.qml:113
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Записвам"
+msgstr "Отмяна на записването"
 
 #: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "Отмяна на проверката"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -126,12 +109,12 @@ msgstr "Не може да бъде получен искания образ."
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr ""
+msgstr "Свърши ви мястото в папката \"Изтегляния\"."
 
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
-msgstr ""
+msgstr "Файлът за изтегляне не може да се записва."
 
 #: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
@@ -142,107 +125,85 @@ msgstr "Времето за връзка изтече"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr ""
+msgstr "Успешно записване на %1"
 
 #: ../src/app/qml/DownloadPage.qml:54
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "Записвам"
+msgstr "Записване на %1"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "Сваляне"
+msgstr "Изтегляне на %1"
 
 #: ../src/app/qml/DownloadPage.qml:58
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "Подготовка"
+msgstr "Подготвне на %1"
 
 #: ../src/app/qml/DownloadPage.qml:60
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "Готов съм за запис"
+msgstr "Готовност за записване на %1"
 
 #: ../src/app/qml/DownloadPage.qml:62
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "Проверка на сваленото"
+msgstr "Неуспешно изтегляне на %1"
 
 #: ../src/app/qml/DownloadPage.qml:76
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr "(остават %1 B)"
+msgstr " B още)"
 
 #: ../src/app/qml/DownloadPage.qml:77
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr "(остават %1 KB)"
+msgstr " KB още)"
 
 #: ../src/app/qml/DownloadPage.qml:78
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr "(остават %1 MB)"
+msgstr " MB още)"
 
 #: ../src/app/qml/DownloadPage.qml:79
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr "(остават %1 GB)"
+msgstr " GB още)"
 
 #: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
 #: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "Вашето устройство бе изключено по време на процеса"
 
 #: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr ""
+msgstr "Изтеглянията се записват в папката за изтегляне."
 
 #: ../src/app/qml/DownloadPage.qml:143
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr ""
+msgstr "При записване, ще се загубят всички данни на %1."
 
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "Моля, предоставете USB устройство."
 
 #: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
@@ -251,19 +212,16 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
+"Вашето устройство ще бъде преоразмерено до по-малък капацитет. Можете да го "
+"преоразмерите обратно към нормалното, като използвате Fedora Media Writer. "
+"Това ще премахне инсталационния носител от устройството."
 
 #: ../src/app/qml/DownloadPage.qml:167
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
-msgstr "Избрано:"
+msgstr "Избран файл:"
 
 #: ../src/app/qml/DownloadPage.qml:167
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Нищо"
@@ -276,6 +234,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
+"Вашето устройство все още не се поддържа от Fedora Media Writer. Моля, "
+"проверете <a href=%1>тази страница</a> за повече информация относно "
+"съвместимостта му с Fedora и как да създадете стартиращ носител за него."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -284,69 +245,56 @@ msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
+"Размерът на избраното устройство е %1. Възможно ли е случайно да сте избрали "
+"външно устройство!"
 
 #: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "Рестартирайте и заредете %1, за да започнете да използвате %2."
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
 msgid "This drive is not large enough."
-msgstr ""
+msgstr "Това устройство няма достатъчен капацитет."
 
 #: ../src/app/qml/DrivePage.qml:36
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr ""
+msgstr "Възможности за записване"
 
 #: ../src/app/qml/DrivePage.qml:45
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "Версия %1"
+msgstr "Версия"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "Хардуерна архитектура"
 
 #: ../src/app/qml/DrivePage.qml:84
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "Избрано:"
+msgstr "Избран файл"
 
 #: ../src/app/qml/DrivePage.qml:91
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "Нищо"
 
 #: ../src/app/qml/DrivePage.qml:99
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "Избрано:"
+msgstr "Избор..."
 
 #: ../src/app/qml/DrivePage.qml:116
 msgctxt "DrivePage|"
 msgid "Image files"
-msgstr ""
+msgstr "Файлове за запис"
 
 #: ../src/app/qml/DrivePage.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "Всички файлове (*)"
@@ -354,33 +302,27 @@ msgstr "Всички файлове (*)"
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "USB устройство"
 
 #: ../src/app/qml/DrivePage.qml:135
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr "Няма свързани преносими устройства"
+msgstr "Няма свързани преносими дискове"
 
 #: ../src/app/qml/DrivePage.qml:155
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "Сваляне"
+msgstr "Изтегляне"
 
 #: ../src/app/qml/DrivePage.qml:160
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr ""
+msgstr "Изтриване на свалените файлове след запис"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr ""
+msgstr "Дискът беше премахнат в процес на писане."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
@@ -391,34 +333,34 @@ msgstr ""
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr ""
+msgstr "Спиране преди писането да е довършено."
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "Готово!"
 
 #: ../src/app/linuxdrivemanager.cpp:327
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Записването на %1 беше успешно"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
 msgid "Error"
-msgstr ""
+msgstr "Грешка"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "Записването на %1 не се осъществи"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
-msgstr ""
+msgstr "UDisks2 изглежда неналичен или недостъпен във вашата система."
 
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
@@ -429,73 +371,65 @@ msgstr ""
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
 msgid "Error"
-msgstr ""
+msgstr "Грешка"
 
 #: ../src/app/macdrivemanager.cpp:187
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "Записването на %1 не се осъществи"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "Готово!"
 
 #: ../src/app/macdrivemanager.cpp:190
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Записването на %1 беше успешно"
 
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Изберете източник на файла"
 
 #: ../src/app/qml/MainPage.qml:57
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Свалянето се провали"
+msgstr "Автоматично изтегляне от Интернет"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "Избор на .iso файл от вашата система"
 
 #: ../src/app/qml/MainPage.qml:76
-#, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
+#, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "Възстановяване на %1?"
+msgstr "Възстановяване от <b>%1</b>"
 
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr ""
+msgstr "Файлове с образ"
 
 #: ../src/app/portalfiledialog.cpp:153
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "Всички файлове (*)"
+msgstr "Всички файлове"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "Отваряне"
 
 #: ../src/app/releasemanager.cpp:392
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
-msgstr "Изберете файл от Вашето устройство(а)"
+msgstr "Изберете файл от вашето устройство(а)"
 
 #: ../src/app/releasemanager.cpp:393
 msgctxt "Release|"
@@ -504,14 +438,14 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
-"<p>Тук можете да изберете образ на OS от твърдия Ви диск, който да бъде "
+"<p>Тук можете да изберете образ на OS от твърдия ви диск, който да бъде "
 "записан на флашката Ви</p><p>Към момента могат да се записват само raw disk "
 "образи (.iso или .bin)</p>"
 
 #: ../src/app/releasemanager.cpp:423
 msgctxt "Release|"
 msgid "Fedora Spins"
-msgstr "Fedora Разновидности"
+msgstr "Fedora компилации"
 
 #: ../src/app/releasemanager.cpp:425
 msgctxt "Release|"
@@ -521,7 +455,7 @@ msgstr "Fedora Labs"
 #: ../src/app/releasemanager.cpp:427
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
-msgstr ""
+msgstr "Нововъзникнали издания на Fedora"
 
 #: ../src/app/releasemanager.cpp:429
 msgctxt "Release|"
@@ -529,12 +463,9 @@ msgid "Other"
 msgstr "Друг"
 
 #: ../src/app/releasemanager.cpp:1069
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Intel 64bit"
+msgstr "Intel/AMD 64bit"
 
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
@@ -542,12 +473,9 @@ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "ISO образ за Intel, AMD и други съвместими PC-та (64-bit)"
 
 #: ../src/app/releasemanager.cpp:1070
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Intel 32bit"
+msgstr "Intel/AMD 32bit"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
@@ -569,12 +497,12 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
-msgstr ""
+msgstr "AArch64"
 
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr ""
+msgstr "LZMA-компресиран образ за AArch64 машини"
 
 #: ../src/app/releasemanager.cpp:391
 msgctxt "ReleaseListModel|"
@@ -589,46 +517,39 @@ msgstr "Сваленият образ е повреден"
 #: ../src/app/releasemanager.cpp:944
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
-msgstr ""
+msgstr "Сваленият файл е недостъпен."
 
 #: ../src/app/releasemanager.cpp:955
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr ""
+msgstr "Временният файл не може да се преименова."
 
 #: ../src/app/releasemanager.h:372
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
-msgstr "Подготовка"
+msgstr "Подготване"
 
 #: ../src/app/releasemanager.h:373
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
-msgstr "Сваляне"
+msgstr "Изтегляне"
 
 #: ../src/app/releasemanager.h:374
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr "Проверка на сваленото"
+msgstr "Проверка на изтегленото"
 
 #: ../src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
-msgstr "Готов съм за запис"
+msgstr "Готово за запис"
 
 #: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
+"Файлът с образа е записан във вашата папка за изтегляне. Записването не е "
+"възможно"
 
 #: ../src/app/releasemanager.h:377
 #, fuzzy
@@ -694,7 +615,7 @@ msgstr "%1 Release Candidate"
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "Диск за възстановяване <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:49
 #, fuzzy
@@ -776,12 +697,12 @@ msgstr ""
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "Успешно възстановяване"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Избор на версия на Fedora"
 
 #: ../src/app/qml/VersionPage.qml:48
 #, fuzzy
@@ -794,22 +715,22 @@ msgstr "Избрано:"
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Официални издания"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Emerging Editions"
-msgstr ""
+msgstr "Нововъзникнали издания"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr ""
+msgstr "Компилации"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Тестови издания"
 
 #: ../src/app/windrivemanager.cpp:265
 msgctxt "WinDrive|"
@@ -820,19 +741,19 @@ msgstr ""
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "Готово!"
 
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Записването на %1 беше успешно"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:271
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr ""
+msgstr "Неуспешно стартиране на декомпресирането."
 
 #: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
 #: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
@@ -846,7 +767,7 @@ msgstr "На назначеното устройство не може да се
 #: ../src/helper/win/writejob.cpp:315
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
-msgstr ""
+msgstr "Няма достатъчно памет за декомпресиране на файла."
 
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:320
@@ -861,13 +782,13 @@ msgstr "Сваленият образ е повреден"
 #: ../src/helper/win/writejob.cpp:323
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
-msgstr ""
+msgstr "Неподдържани опции за компресиране."
 
 #: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:326
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
-msgstr ""
+msgstr "Непозната грешка при декомпресирането."
 
 #: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
 #: ../src/helper/win/writejob.cpp:361
@@ -1002,17 +923,17 @@ msgstr "Отново"
 #: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Next"
-msgstr ""
+msgstr "Следваща стъпка"
 
 #: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
-msgstr ""
+msgstr "Относно"
 
 #: ../src/app/qml/main.qml:316
 msgctxt "main|"
 msgid "Previous"
-msgstr ""
+msgstr "Предишна стъпка"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
@@ -1060,7 +981,7 @@ msgstr "Записва образи на Fedora на преносими устр
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;"
 
 #, fuzzy
 #~| msgctxt "ReleaseVariant|"
