@@ -1,10 +1,10 @@
 # Valentin Laskov <laskov@festa.bg>, 2016. #zanata
-# Bogomil Shopov <bogomil.fedora@gmail.com>, 2022.
+# Bogomil Shopov <bogomil.fedora@gmail.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-03 13:56+0200\n"
-"PO-Revision-Date: 2022-12-20 18:37+0000\n"
+"PO-Revision-Date: 2023-01-04 10:20+0000\n"
 "Last-Translator: Bogomil Shopov <bogomil.fedora@gmail.com>\n"
 "Language-Team: Bulgarian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/bg/>\n"
@@ -527,7 +527,7 @@ msgstr "Временният файл не може да се преименов
 #: ../src/app/releasemanager.h:372
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
-msgstr "Подготване"
+msgstr "Подготовка"
 
 #: ../src/app/releasemanager.h:373
 msgctxt "ReleaseVariant|"
@@ -552,25 +552,16 @@ msgstr ""
 "възможно"
 
 #: ../src/app/releasemanager.h:377
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
-msgstr "Записвам"
+msgstr "Записване"
 
 #: ../src/app/releasemanager.h:378
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
-msgstr "Проверявам записаните данни"
+msgstr "Проверка на записаните данни"
 
 #: ../src/app/releasemanager.h:379
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Finished!"
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "Готово!"
@@ -581,12 +572,9 @@ msgid "The written data is corrupted"
 msgstr "Записаните данни са повредени"
 
 #: ../src/app/releasemanager.h:381
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr "Свалянето се провали"
+msgstr "Изтеглянето е неуспешно"
 
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
@@ -618,22 +606,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Диск за възстановяване <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:49
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -643,55 +615,35 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">\n"
-"                                                За да се възстанови цялото "
-"налично пространство на диска, трябва той да се върне към фабричното му "
-"състояние.\n"
-"                                                Живата система и всички "
-"записани данни ще бъдат изтрити.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Не е нужно да възстановявате "
-"диска, ако искате да запишете на него друга жива система.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Искате ли да продължите?\n"
-"                                            </p>"
+"<p align=\"justify\"> За да се възстанови цялото налично пространство на "
+"диска, трябва той да се върне към фабричното му състояние. Живата система и "
+"всички записани данни ще бъдат изтрити. </p> <p align=\"justify\"> Не е "
+"нужно да възстановявате диска, ако искате да запишете на него друга жива "
+"система.\n"
+"                </p>  <p align=\"justify\"> Искате ли да го възстановите до "
+"фабричните настройки? </p>"
 
 #: ../src/app/qml/RestorePage.qml:67
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
 "<p align=\"justify\">Моля изчакайте, докато Fedora Media Writer възстановява "
-"преносимото Ви устройство.</p>"
+"преносимото ви устройство.</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr "Устройството Ви е успешно възстановено."
+msgstr "Устройството ви е успешно възстановено!"
 
 #: ../src/app/qml/RestorePage.qml:94
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"За съжаление, получи се грешка по време на процеса.<br>Моля, опитайте да "
+"За съжаление, се получи грешка по време на процеса. Моля, опитайте да "
 "възстановите устройството чрез инструментите на системата."
 
 #: ../src/app/qml/RestorePage.qml:143
@@ -705,12 +657,9 @@ msgid "Select Fedora Release"
 msgstr "Избор на версия на Fedora"
 
 #: ../src/app/qml/VersionPage.qml:48
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "Избрано:"
+msgstr "Избор от:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
@@ -771,12 +720,9 @@ msgstr "Няма достатъчно памет за декомпресиран
 
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:320
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
-msgstr "Сваленият образ е повреден"
+msgstr "Изтегленият компресиран файл е повреден."
 
 #: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:323
@@ -811,12 +757,9 @@ msgstr "Възникна неочаквана грешка при проверк
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "Невъзможност за намиране на връзка"
 
 #: ../src/helper/mac/writejob.cpp:131
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
 msgstr "Не мога да отворя устройството за запис"
@@ -832,12 +775,10 @@ msgid "Couldn't lock the drive"
 msgstr "Не мога да заключа устройството"
 
 #: ../src/helper/win/writejob.cpp:134
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't remove the drive %1:"
-msgstr "Не мога да заключа устройството"
+msgstr "Не мога да премахна устройство %1:"
 
 #: ../src/helper/win/writejob.cpp:209
 msgctxt "WriteJob|"
@@ -845,27 +786,19 @@ msgid "Couldn't unlock the drive"
 msgstr "Не мога да отключа устройството"
 
 #: ../src/app/qml/main.qml:116
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
 
 #: ../src/app/qml/main.qml:154
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Fedora Разновидности"
+msgstr "Избор на версия на Fedora"
 
 #: ../src/app/qml/main.qml:170
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "Избрано:"
+msgstr "Избор на диск"
 
 #: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
@@ -873,49 +806,31 @@ msgid "Restore"
 msgstr "Възстанови"
 
 #: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Finished!"
 msgctxt "main|"
 msgid "Finish"
-msgstr "Готово!"
+msgstr "Край"
 
 #: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "main|"
 msgid "Write"
-msgstr "Запис на %1"
+msgstr "Записване"
 
 #: ../src/app/qml/main.qml:296
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download && Write"
-msgstr "Свалянето се провали"
+msgstr "Изтегляне && Записване"
 
 #: ../src/app/qml/main.qml:297
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "Свалянето се провали"
+msgstr "Изтегляне и записване"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Отказ"
 
 #: ../src/app/qml/main.qml:306
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
 msgctxt "main|"
 msgid "Retry"
 msgstr "Отново"
@@ -960,10 +875,10 @@ msgstr ""
 "Инструмент за създаване на зареждащо живо USB устройство с Fedora. Fedora "
 "Media Writer записва образ на Вашия флаш диск, но също може и да го свали "
 "вместо Вас. Той предлага основните предназначения (Server, Workstation), "
-"Fedora разновидности (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
-"Desktop,...) и Fedora Labs (Design Suite, Security Lab,...). Програмата "
-"предоставя основна информация за всяка от версиите, за да Ви помогне да "
-"направите правилния избор."
+"Fedora компилации (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...) и "
+"Fedora Labs (Design Suite, Security Lab,...). Програмата предоставя основна "
+"информация за всяка от версиите, за да Ви помогне да направите правилния "
+"избор."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
