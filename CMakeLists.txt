@@ -1,5 +1,5 @@
 if(APPLE)
-    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.14" CACHE STRING "Minimum OS X deployment version")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15" CACHE STRING "Minimum OS X deployment version")
 endif()
 
 project(MediaWriter)
@@ -40,7 +40,7 @@ endif()
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Network Svg Qml Quick QuickControls2 Widgets)
 
 if (UNIX AND NOT APPLE)
-    find_package(AdwaitaQt6 "1.4.1" REQUIRED)
+    find_package(AdwaitaQt6 "1.4.2" REQUIRED)
 endif()
 
 add_subdirectory(src)
