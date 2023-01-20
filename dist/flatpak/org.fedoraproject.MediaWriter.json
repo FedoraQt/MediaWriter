@@ -7,13 +7,18 @@
     "finish-args": [
         "--socket=x11",
         "--socket=wayland",
-        "--device=dri",
+        "--device=all",
         "--filesystem=host",
         "--share=network",
         "--share=ipc",
         "--talk-name=org.freedesktop.Notifications",
         "--system-talk-name=org.freedesktop.UDisks2",
         "--env=QML2_IMPORT_PATH=/app/lib/qt6/qml"
+    ],
+    "cleanup": [
+        "/include",
+        "/lib/cmake",
+        "/lib/pkgconfig"
     ],
     "modules": [
         {
@@ -23,7 +28,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/FedoraQt/adwaita-qt.git"
+                    "url": "https://github.com/FedoraQt/adwaita-qt.git",
+                    "tag": "1.4.2"
                 },
                 {
                     "type": "shell",

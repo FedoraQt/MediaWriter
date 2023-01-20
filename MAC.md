@@ -8,9 +8,9 @@ The process of running Fedora Media Writer on a Mac computer is the same as ever
 
 ### System configuration
 
-The application has been developed and tested on macOS Big Sur  (version 11.6.5). We recommend you to use the latest release possible.
+The application has been developed and tested on macOS Monterey. We recommend you to use the latest release possible.
 
-Oldest supported release is OS X Mojave (10.14).
+Oldest supported release is OS X 10.15.
 
 Resource-wise, every Intel-based Mac computer should be able to run Fedora Media Writer.
 
@@ -24,9 +24,7 @@ To avoid this problem, control-click the "Fedora Media Writer" application and u
 
 ### Known issues 
 
-There are several issues or things that are known to need to be improved in the future:
-
-* `osascript` is used instead of the proper way of acquiring privileged access to the system ([#25](../../issues/25))
+There is currently no known issue.
 
 ## Building
 
@@ -34,7 +32,7 @@ You can build Fedora Media Writer yourself. It has just a few dependencies and b
 
 ### Dependencies
 
-* `Qt6` (`qtbase`, `qtdeclarative` and `qtquickcontrols`)
+* `Qt6` (`qtbase`, `qtdeclarative`, `qtsvg` and `qtquickcontrols2`)
 
 ### Steps
 
