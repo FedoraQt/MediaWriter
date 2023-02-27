@@ -1,4 +1,5 @@
 !include "MUI2.nsh"
+ManifestDPIAware true
 XPStyle on
 
 # If you change the names "app.exe", "logo.ico", or "license.rtf" you should do a search and replace - they
