@@ -114,7 +114,7 @@ jobs:
         version: ${{env.QT_VERSION}}
         modules: qtimageformats
     - name: Set env (push)
-      if: github.event_name == 'push'
+      if: github.event_name == 'push' || github.event_name == 'release'
       run: echo "TAG_NAME=$(git rev-parse HEAD | cut -c 1-8)" >> $GITHUB_ENV
     - name: Set env (release)
       if: github.event_name == 'release'
@@ -165,6 +165,9 @@ jobs:
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
+    - name: Set env (push)
+      if: github.event_name == 'push' || github.event_name == 'release'
+      run: echo "TAG_NAME=$(git rev-parse HEAD | cut -c 1-8)" >> $GITHUB_ENV
     - name: Install dependencies
       shell: bash
       run: |
@@ -216,10 +219,10 @@ jobs:
         cp /c/Program\ Files/OpenSSL/bin/*.dll .
     - name: Installer
       if: github.event_name == 'push' || github.event_name == 'release'
+      env:
+        TAG_NAME: ${{ env.TAG_NAME }}
       shell: bash
       run: |
-        TAG_NAME=$(bash ./dist/get-tag-name.sh)
-
         VERSION_STRIPPED=$(sed "s/-.*//" <<< "${TAG_NAME}")
         if [[ "$VERSION_STRIPPED" == "" ]]; then
             VERSION_STRIPPED=0.0.0
@@ -247,9 +250,10 @@ jobs:
         
     - name: Upload to GitHub (release)
       if: github.event_name == 'release'
+      env:
+        TAG_NAME: ${{ env.TAG_NAME }}
       shell: bash
       run: |
-        TAG_NAME=$(bash ./dist/get-tag-name.sh)
         bash ./dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="$TAG_NAME" filename="FedoraMediaWriter-win64-$TAG_NAME.exe"
 
     - name: Get version for WinGet publish (release)
