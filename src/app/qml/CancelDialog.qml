@@ -113,6 +113,8 @@ ApplicationWindow {
                         qsTr("Cancel Writing")
                     else if (releases.variant.status == Units.DownloadStatus.Write_Verifying)
                         qsTr("Cancel Verification")
+                    else
+                        qsTr("Cancel")
                 }  
             }
         }
