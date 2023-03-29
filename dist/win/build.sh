@@ -51,7 +51,7 @@ if ! $opt_nosign; then
     fi
 fi
 
-PACKAGES="cmake mingw32-filesystem mingw32-qt5-qtbase mingw32-qt6-qtbase mingw32-qt6-qtdeclarative mingw32-xz-libs mingw32-qt6-qtsvg mingw32-nsis osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
+PACKAGES="cmake mingw32-filesystem mingw32-qt5-qtbase mingw32-qt6-qtbase mingw32-qt6-qtdeclarative mingw32-xz-libs mingw32-qt6-qtsvg mingw32-nsis mingw32-pcre mingw32-pcre2 dos2unix osslsigncode wine-core.i686 mingw32-angleproject wine-systemd"
 
 if ! $opt_local; then
     PACKAGES="$PACKAGES mingw32-mediawriter"
@@ -77,7 +77,7 @@ for i in $PACKAGES; do
 done
 if [ $DEPENDENCIES -ne 0 ]; then exit 1; fi
 
-BINARIES="libstdc++-6.dll libgcc_s_dw2-1.dll libssp-0.dll iconv.dll libwinpthread-1.dll libcrypto-3.dll libssl-3.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre2-16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll icui18n71.dll icuuc71.dll icudata71.dll Qt6Core.dll Qt6Gui.dll Qt6Network.dll Qt6Concurrent.dll Qt6Qml.dll Qt6QmlModels.dll Qt6Quick.dll Qt6QuickControls2.dll Qt6QuickControls2Impl.dll Qt6QuickShapes.dll Qt6QuickTemplates2.dll Qt6QmlWorkerScript.dll Qt6Svg.dll Qt6Widgets.dll Qt6OpenGL.dll Qt6QuickLayouts.dll Qt6QmlLocalStorage.dll Qt6QuickDialogs2.dll Qt6QuickDialogs2QuickImpl.dll Qt6QuickDialogs2Utils.dll"
+BINARIES="libstdc++-6.dll libgcc_s_dw2-1.dll libssp-0.dll iconv.dll libwinpthread-1.dll libcrypto-3.dll libssl-3.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre2-8-0.dll libpcre2-16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll icui18n72.dll icuuc72.dll icudata72.dll Qt6Core.dll Qt6Gui.dll Qt6Network.dll Qt6Concurrent.dll Qt6Qml.dll Qt6QmlModels.dll Qt6Quick.dll Qt6QuickControls2.dll Qt6QuickControls2Impl.dll Qt6QuickShapes.dll Qt6QuickTemplates2.dll Qt6QmlWorkerScript.dll Qt6Svg.dll Qt6Widgets.dll Qt6OpenGL.dll Qt6QuickLayouts.dll Qt6QmlLocalStorage.dll Qt6QuickDialogs2.dll Qt6QuickDialogs2QuickImpl.dll Qt6QuickDialogs2Utils.dll"
 
 PLUGINS="iconengines/qsvgicon.dll imageformats/qjpeg.dll imageformats/qsvg.dll imageformats/qico.dll platforms/qwindows.dll tls/qcertonlybackend.dll tls/qopensslbackend.dll tls/qschannelbackend.dll"
 
