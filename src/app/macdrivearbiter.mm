@@ -97,7 +97,7 @@ static void OnDiskAppeared(DADiskRef disk, void *__attribute__((__unused__)) ctx
 
         if (isWhole != nil && [isWhole integerValue] != 0) {
             if ((isInternal != nil && [isInternal integerValue] == 0 && isRemovable != nil && [isRemovable integerValue] != 0)
-                || (deviceProtocol != nil && [deviceProtocol isEqual:@"USB"])) {
+                || (deviceProtocol != nil && ([deviceProtocol isEqual:@"USB"] || [deviceProtocol isEqual:@"Secure Digital"]))) {
                     bool isRestoreable = (lastS1 || lastS2)  & [bsdName isEqualToString:lastPrefix];
                     onAdded([bsdName UTF8String], [diskVendor UTF8String], [diskModel UTF8String], [diskSize integerValue], isRestoreable);
             }
