@@ -4,9 +4,9 @@ set -x
 set -e
 
 # TODO: add your Qt location into LD_LIBRARY_PATH
-PATH="/usr/local/opt/qt/6.2.4/macos/bin:$PATH"
-LD_LIBRARY_PATH="/usr/local/opt/qt/6.2.4/macos/lib:$LD_LIBRARY_PATH"
-Qt6_DIR="/usr/local/opt/qt/6.2.4/macos"
+PATH="/usr/local/opt/qt/6.5.2/macos/bin:$PATH"
+LD_LIBRARY_PATH="/usr/local/opt/qt/6.5.2/macos/lib:$LD_LIBRARY_PATH"
+Qt6_DIR="/usr/local/opt/qt/6.5.2/macos"
 
 # === SIGNING ===
 # TODO: set in order to sign binaries
@@ -35,7 +35,7 @@ function install_deps() {
     mkdir -p /usr/local/opt/qt
     pushd /usr/local/opt/qt >/dev/null
     pip3 install aqtinstall
-    aqt install-qt mac desktop 6.2.4 -m qtimageformats
+    aqt install-qt mac desktop 6.5.2 -m qtimageformats
     popd >/dev/null
 }
 
@@ -94,7 +94,12 @@ function dmg() {
     echo "=== Creating a disk image ==="
     # create the .dmg package - beware, it won't work while FMW is running (blocks partition mounting)
     rm -f "../*.dmg"
-    hdiutil create -srcfolder src/app/Fedora\ Media\ Writer.app  -format UDCO -imagekey zlib-level=9 -scrub -volname FedoraMediaWriter-osx ../FedoraMediaWriter-osx-$VERSION.unnotarized.dmg
+    STAGING_DIR="$SCRIPTDIR/staging"
+    mkdir -p $STAGING_DIR
+    cp -R src/app/Fedora\ Media\ Writer.app $STAGING_DIR
+    ln -s /Applications $STAGING_DIR/Applications
+    hdiutil create -srcfolder $STAGING_DIR -format UDCO -imagekey zlib-level=9 -scrub -volname FedoraMediaWriter-osx ../FedoraMediaWriter-osx-$VERSION.unnotarized.dmg
+    rm -rf $STAGING_DIR
     popd >/dev/null
 }
 
