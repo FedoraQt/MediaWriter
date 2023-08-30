@@ -51,25 +51,25 @@ Page {
             RadioButton {
                 checked: true
                 text: qsTr("Official Editions")
-                onClicked: releases.filterSource = Units.Source.Product
+                onClicked: changeFilter(Units.Source.Product)
                 ButtonGroup.group: radioGroup
             }
     
             RadioButton {
                 text: qsTr("Emerging Editions")
-                onClicked: releases.filterSource = Units.Source.Emerging
+                onClicked: changeFilter(Units.Source.Emerging)
                 ButtonGroup.group: radioGroup
             }
             
             RadioButton {
                 text: qsTr("Spins")
-                onClicked: releases.filterSource = Units.Source.Spins
+                onClicked: changeFilter(Units.Source.Spins)
                 ButtonGroup.group: radioGroup
             }
             
             RadioButton {
                 text: qsTr("Labs")
-                onClicked: releases.filterSource = Units.Source.Labs
+                onClicked: changeFilter(Units.Source.Labs)
                 ButtonGroup.group: radioGroup
             }
         
@@ -79,18 +79,27 @@ Page {
                 Layout.fillWidth: true
                 Layout.topMargin: units.gridUnit / 2
                 textRole: "name"
+                valueRole: "sourceIndex"
                 model: releases
-                onCurrentIndexChanged: getComboText()
+                onCurrentValueChanged: updateSelectedIndex()
+
             }
         }
     }
     
-    function getComboText() {        
+    function changeFilter(filter) {
+        releases.filterSource = filter
         if (releases.filterSource != prevSource) {
             prevSource = releases.filterSource
             selectFromComboBox.currentIndex = 0
         }
-        releases.selectedIndex = releases.firstSource + selectFromComboBox.currentIndex
-       
+    }
+
+    function updateSelectedIndex() {
+        // Guard passing an invalid value we get when resetting
+        // index while changing filter above
+        if (selectFromComboBox.currentValue) {
+            releases.selectedIndex = parseInt(selectFromComboBox.currentValue)
+        }
     }
 }
