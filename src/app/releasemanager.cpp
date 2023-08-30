@@ -320,8 +320,10 @@ QVariant ReleaseListModel::headerData(int section, Qt::Orientation orientation, 
     Q_UNUSED(section);
     Q_UNUSED(orientation);
 
-    if (role == Qt::UserRole + 1)
+    if (role == ReleaseRole)
         return "release";
+    if (role == SourceIndexRole)
+        return "sourceIndex";
     if (role == Qt::DisplayRole)
         return "name";
 
@@ -331,7 +333,8 @@ QVariant ReleaseListModel::headerData(int section, Qt::Orientation orientation, 
 QHash<int, QByteArray> ReleaseListModel::roleNames() const
 {
     QHash<int, QByteArray> ret;
-    ret.insert(Qt::UserRole + 1, "release");
+    ret.insert(ReleaseRole, "release");
+    ret.insert(SourceIndexRole, "sourceIndex");
     ret.insert(Qt::DisplayRole, "name");
     return ret;
 }
@@ -347,8 +350,10 @@ QVariant ReleaseListModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    if (role == Qt::UserRole + 1)
+    if (role == ReleaseRole)
         return QVariant::fromValue(m_releases[index.row()]);
+    else if (role == SourceIndexRole)
+        return QVariant::fromValue(QString::number(index.row()));
     else if (role == Qt::DisplayRole)
         return m_releases[index.row()]->name();
 
