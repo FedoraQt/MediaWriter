@@ -11,7 +11,7 @@ on:
     types: [ created ]
 
 env:
-    QT_VERSION: '6.4.2'
+    QT_VERSION: '6.5.2'
 
 jobs:
   Linux:
@@ -71,37 +71,6 @@ jobs:
         title: "Development Build (Flatpak)"
         files: org.fedoraproject.MediaWriter.flatpak
 
-  #Flatpak:
-    #if: github.event_name == 'release'
-    #runs-on: ubuntu-latest
-    #steps:
-    #- uses: actions/checkout@v1
-      #with:
-        #fetch-depth: 1
-    #- name: Install dependencies
-      #run: |
-        #sudo apt update
-        #sudo apt install flatpak flatpak-builder
-    #- name: Install Flatpak KDE SDK
-      #run: |
-        #sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        #sudo flatpak install --system -y flathub org.kde.Platform//5.15
-        #sudo flatpak install --system -y flathub org.kde.Sdk//5.15
-    #- name: Build the Flatpak package
-      #run: |
-        #TAG_NAME=$(bash ./dist/get-tag-name.sh)
-        #pushd dist/flatpak
-        #sudo flatpak-builder --repo=flatpak-repo --force-clean flatpak-build org.fedoraproject.MediaWriter.json
-        #flatpak build-bundle flatpak-repo org.fedoraproject.MediaWriter.flatpak org.fedoraproject.MediaWriter
-        #mv org.fedoraproject.MediaWriter.flatpak ../../org.fedoraproject.MediaWriter-$TAG_NAME.flatpak
-        #popd
-    #- name: Upload to GitHub
-      #if: github.event_name == 'release'
-      #shell: bash
-      #run: |
-        #TAG_NAME=$(bash ./dist/get-tag-name.sh)
-        #bash ./dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="$TAG_NAME" filename="org.fedoraproject.MediaWriter-$TAG_NAME.flatpak"
-
   macOS:
     runs-on: macos-latest
     steps:
@@ -114,19 +83,17 @@ jobs:
         version: ${{env.QT_VERSION}}
         modules: qtimageformats
     - name: Set env (push)
-      if: github.event_name == 'push' || github.event_name == 'release'
+      if: github.event_name == 'push' || github.event_name == 'pull_request'
       run: echo "TAG_NAME=$(git rev-parse HEAD | cut -c 1-8)" >> $GITHUB_ENV
     - name: Set env (release)
       if: github.event_name == 'release'
       run: echo "TAG_NAME=$(bash ./dist/get-tag-name.sh)" >> $GITHUB_ENV
     - name: Build
-      if: github.event_name == 'push' || github.event_name == 'release'
       env:
         TAG_NAME: ${{ env.TAG_NAME }}
       run: |
         bash dist/mac/build.sh build
     - name:  Insert dependencies
-      if: github.event_name == 'push' || github.event_name == 'release'
       run: |
         bash dist/mac/build.sh deps
     - name: Sign (TBD)
@@ -134,7 +101,6 @@ jobs:
       run: |
         true # bash dist/mac/build.sh sign
     - name: Package
-      if: github.event_name == 'push' || github.event_name == 'release'
       env:
         TAG_NAME: ${{ env.TAG_NAME }}
       run: |
