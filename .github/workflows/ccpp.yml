@@ -51,7 +51,7 @@ jobs:
     if: github.event_name == 'push' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     container:
-      image: docker.io/bilelmoussaoui/flatpak-github-actions:kde-6.4
+      image: docker.io/bilelmoussaoui/flatpak-github-actions:kde-6.5
       options: --privileged
     steps:
     - uses: actions/checkout@v2
