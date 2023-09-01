@@ -20,7 +20,17 @@ XPStyle on
 # This is the size (in kB) of all the files copied into "Program Files"
 #!define INSTALLSIZE
 
+VIProductVersion "0.5.50.0"
+VIAddVersionKey "ProductName" "${APPNAME}"
+VIAddVersionKey "Comments" "${DESCRIPTION}"
+VIAddVersionKey "CompanyName" "${COMPANYNAME}"
+VIAddVersionKey "LegalCopyright" "${COMPANYNAME}"
+VIAddVersionKey "FileDescription" "${APPNAME}"
+VIAddVersionKey "FileVersion" "0.5.50"
 
+;Set the name of the uninstall log
+!define UninstLog "uninstall.log"
+Var UninstLog
 
 !ifdef INNER
     !echo "Inner invocation"                  ; just to see what's going on
@@ -73,61 +83,61 @@ Icon "../../src/app/data/icons/mediawriter.ico"
 !insertmacro MUI_UNPAGE_INSTFILES
 
 !insertmacro MUI_LANGUAGE "English" ;first language is the default language
+!insertmacro MUI_LANGUAGE "Afrikaans"
+!insertmacro MUI_LANGUAGE "Albanian"
+!insertmacro MUI_LANGUAGE "Arabic"
+!insertmacro MUI_LANGUAGE "Belarusian"
+!insertmacro MUI_LANGUAGE "Bosnian"
+!insertmacro MUI_LANGUAGE "Breton"
+!insertmacro MUI_LANGUAGE "Bulgarian"
+!insertmacro MUI_LANGUAGE "Catalan"
+!insertmacro MUI_LANGUAGE "Croatian"
+!insertmacro MUI_LANGUAGE "Czech"
+!insertmacro MUI_LANGUAGE "Danish"
+!insertmacro MUI_LANGUAGE "Dutch"
+!insertmacro MUI_LANGUAGE "Esperanto"
+!insertmacro MUI_LANGUAGE "Estonian"
+!insertmacro MUI_LANGUAGE "Farsi"
+!insertmacro MUI_LANGUAGE "Finnish"
 !insertmacro MUI_LANGUAGE "French"
+!insertmacro MUI_LANGUAGE "Galician"
 !insertmacro MUI_LANGUAGE "German"
-!insertmacro MUI_LANGUAGE "Spanish"
-!insertmacro MUI_LANGUAGE "SpanishInternational"
-!insertmacro MUI_LANGUAGE "SimpChinese"
-!insertmacro MUI_LANGUAGE "TradChinese"
+!insertmacro MUI_LANGUAGE "Greek"
+!insertmacro MUI_LANGUAGE "Hebrew"
+!insertmacro MUI_LANGUAGE "Hungarian"
+!insertmacro MUI_LANGUAGE "Icelandic"
+!insertmacro MUI_LANGUAGE "Indonesian"
+!insertmacro MUI_LANGUAGE "Irish"
+!insertmacro MUI_LANGUAGE "Italian"
 !insertmacro MUI_LANGUAGE "Japanese"
 !insertmacro MUI_LANGUAGE "Korean"
-!insertmacro MUI_LANGUAGE "Italian"
-!insertmacro MUI_LANGUAGE "Dutch"
-!insertmacro MUI_LANGUAGE "Danish"
-!insertmacro MUI_LANGUAGE "Swedish"
+!insertmacro MUI_LANGUAGE "Kurdish"
+!insertmacro MUI_LANGUAGE "Latvian"
+!insertmacro MUI_LANGUAGE "Lithuanian"
+!insertmacro MUI_LANGUAGE "Luxembourgish"
+!insertmacro MUI_LANGUAGE "Macedonian"
+!insertmacro MUI_LANGUAGE "Malay"
+!insertmacro MUI_LANGUAGE "Mongolian"
 !insertmacro MUI_LANGUAGE "Norwegian"
 !insertmacro MUI_LANGUAGE "NorwegianNynorsk"
-!insertmacro MUI_LANGUAGE "Finnish"
-!insertmacro MUI_LANGUAGE "Greek"
-!insertmacro MUI_LANGUAGE "Russian"
+!insertmacro MUI_LANGUAGE "Polish"
 !insertmacro MUI_LANGUAGE "Portuguese"
 !insertmacro MUI_LANGUAGE "PortugueseBR"
-!insertmacro MUI_LANGUAGE "Polish"
-!insertmacro MUI_LANGUAGE "Ukrainian"
-!insertmacro MUI_LANGUAGE "Czech"
-!insertmacro MUI_LANGUAGE "Slovak"
-!insertmacro MUI_LANGUAGE "Croatian"
-!insertmacro MUI_LANGUAGE "Bulgarian"
-!insertmacro MUI_LANGUAGE "Hungarian"
-!insertmacro MUI_LANGUAGE "Thai"
 !insertmacro MUI_LANGUAGE "Romanian"
-!insertmacro MUI_LANGUAGE "Latvian"
-!insertmacro MUI_LANGUAGE "Macedonian"
-!insertmacro MUI_LANGUAGE "Estonian"
-!insertmacro MUI_LANGUAGE "Turkish"
-!insertmacro MUI_LANGUAGE "Lithuanian"
-!insertmacro MUI_LANGUAGE "Slovenian"
+!insertmacro MUI_LANGUAGE "Russian"
 !insertmacro MUI_LANGUAGE "Serbian"
 !insertmacro MUI_LANGUAGE "SerbianLatin"
-!insertmacro MUI_LANGUAGE "Arabic"
-!insertmacro MUI_LANGUAGE "Farsi"
-!insertmacro MUI_LANGUAGE "Hebrew"
-!insertmacro MUI_LANGUAGE "Indonesian"
-!insertmacro MUI_LANGUAGE "Mongolian"
-!insertmacro MUI_LANGUAGE "Luxembourgish"
-!insertmacro MUI_LANGUAGE "Albanian"
-!insertmacro MUI_LANGUAGE "Breton"
-!insertmacro MUI_LANGUAGE "Belarusian"
-!insertmacro MUI_LANGUAGE "Icelandic"
-!insertmacro MUI_LANGUAGE "Malay"
-!insertmacro MUI_LANGUAGE "Bosnian"
-!insertmacro MUI_LANGUAGE "Kurdish"
-!insertmacro MUI_LANGUAGE "Irish"
+!insertmacro MUI_LANGUAGE "SimpChinese"
+!insertmacro MUI_LANGUAGE "Slovak"
+!insertmacro MUI_LANGUAGE "Slovenian"
+!insertmacro MUI_LANGUAGE "Spanish"
+!insertmacro MUI_LANGUAGE "SpanishInternational"
+!insertmacro MUI_LANGUAGE "Swedish"
+!insertmacro MUI_LANGUAGE "Thai"
+!insertmacro MUI_LANGUAGE "TradChinese"
+!insertmacro MUI_LANGUAGE "Turkish"
+!insertmacro MUI_LANGUAGE "Ukrainian"
 !insertmacro MUI_LANGUAGE "Uzbek"
-!insertmacro MUI_LANGUAGE "Galician"
-!insertmacro MUI_LANGUAGE "Afrikaans"
-!insertmacro MUI_LANGUAGE "Catalan"
-!insertmacro MUI_LANGUAGE "Esperanto"
 
 !macro VerifyUserIsAdmin
 UserInfo::GetAccountType
@@ -209,11 +219,50 @@ sectionEnd
         # Remove Start Menu launcher
         delete "$SMPROGRAMS\${APPNAME}.lnk"
 
-        # Remove files
-        delete $INSTDIR\*
+        ;Can't uninstall if uninstall log is missing!
+        IfFileExists "$INSTDIR\${UninstLog}" +3
+            MessageBox MB_OK|MB_ICONSTOP "$(UninstLogMissing)"
+            Abort
+
+        Push $R0
+        Push $R1
+        Push $R2
+        SetFileAttributes "$INSTDIR\${UninstLog}" NORMAL
+        FileOpen $UninstLog "$INSTDIR\${UninstLog}" r
+        StrCpy $R1 -1
+
+        GetLineCount:
+            ClearErrors
+            FileRead $UninstLog $R0
+            IntOp $R1 $R1 + 1
+            StrCpy $R0 $R0 -1
+            Push $R0
+            IfErrors 0 GetLineCount
+
+        Pop $R0
+
+        LoopRead:
+            StrCmp $R1 0 LoopDone
+            Pop $R0
+
+            IfFileExists "$INSTDIR\$R0\*.*" 0 +3
+                RMDir /r "$INSTDIR\$R0"  #is dir
+            Goto +3
+            IfFileExists "$INSTDIR\$R0" 0 +2
+                Delete "$INSTDIR\$R0" #is file
+            IntOp $R1 $R1 - 1
+            Goto LoopRead
+        LoopDone:
+        FileClose $UninstLog
+        Delete "$INSTDIR\mediawriter.ico"
+        Delete "$INSTDIR\${UninstLog}"
+        Delete "$INSTDIR\uninstall.exe"
+        Pop $R2
+        Pop $R1
+        Pop $R0
 
         # Try to remove the install directory - this will only happen if it is empty
-        rmDir /r $INSTDIR
+        rmDir $INSTDIR
 
         # Remove uninstaller information from the registry
         DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"
