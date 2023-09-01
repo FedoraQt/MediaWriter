@@ -77,7 +77,7 @@ for i in $PACKAGES; do
 done
 if [ $DEPENDENCIES -ne 0 ]; then exit 1; fi
 
-BINARIES="libstdc++-6.dll libgcc_s_dw2-1.dll libssp-0.dll iconv.dll libwinpthread-1.dll libcrypto-3.dll libssl-3.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre2-8-0.dll libpcre2-16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll icui18n72.dll icuuc72.dll icudata72.dll Qt6Core.dll Qt6Gui.dll Qt6Network.dll Qt6Concurrent.dll Qt6Qml.dll Qt6QmlModels.dll Qt6Quick.dll Qt6QuickControls2.dll Qt6QuickControls2Impl.dll Qt6QuickShapes.dll Qt6QuickTemplates2.dll Qt6QmlWorkerScript.dll Qt6Svg.dll Qt6Widgets.dll Qt6OpenGL.dll Qt6QuickLayouts.dll Qt6QmlLocalStorage.dll Qt6QuickDialogs2.dll Qt6QuickDialogs2QuickImpl.dll Qt6QuickDialogs2Utils.dll"
+BINARIES="libstdc++-6.dll libgcc_s_dw2-1.dll libssp-0.dll libexpat-1.dll libfontconfig-1.dll iconv.dll libwinpthread-1.dll libcrypto-3.dll libssl-3.dll libpng16-16.dll liblzma-5.dll libharfbuzz-0.dll libpcre-1.dll libintl-8.dll iconv.dll libpcre2-8-0.dll libpcre2-16-0.dll libfreetype-6.dll libbz2-1.dll libjpeg-62.dll libEGL.dll libglib-2.0-0.dll libGLESv2.dll zlib1.dll icui18n73.dll icuuc73.dll icudata73.dll Qt6Core.dll Qt6Gui.dll Qt6Network.dll Qt6Concurrent.dll Qt6Qml.dll Qt6QmlModels.dll Qt6Quick.dll Qt6QuickControls2.dll Qt6QuickControls2Impl.dll Qt6QuickShapes.dll Qt6QuickTemplates2.dll Qt6QmlWorkerScript.dll Qt6Svg.dll Qt6Widgets.dll Qt6OpenGL.dll Qt6QuickLayouts.dll Qt6QmlLocalStorage.dll Qt6QuickDialogs2.dll Qt6QuickDialogs2QuickImpl.dll Qt6QuickDialogs2Utils.dll"
 
 PLUGINS="iconengines/qsvgicon.dll imageformats/qjpeg.dll imageformats/qsvg.dll imageformats/qico.dll platforms/qwindows.dll tls/qcertonlybackend.dll tls/qopensslbackend.dll tls/qschannelbackend.dll"
 
@@ -85,7 +85,7 @@ QMLMODULES="Qt QtQml QtQuick/Controls/impl QtQuick/Controls/Windows QtQuick/Nati
 
 # QMAKE_BIN=/usr/lib64/qt6/bin/qmake
 # INSTALL_PREFIX=$($QMAKE_BIN -query QT_INSTALL_PREFIX)
-INSTALL_PREFIX=$(mingw32-cmake -L | grep CMAKE_INSTALL_PREFIX | cut -d "=" -f2) 
+INSTALL_PREFIX=$(mingw32-cmake -L | grep CMAKE_INSTALL_PREFIX | cut -d "=" -f2)
 BIN_PREFIX=$(mingw32-cmake -L | grep CMAKE_INSTALL_PREFIX | cut -d "=" -f2)
 PLUGIN_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_PLUGINS | tr 5 6)
 QML_PREFIX=$(mingw32-qmake-qt5 -query QT_INSTALL_QML | tr 5 6)
@@ -186,6 +186,11 @@ cp -r "${BIN_PREFIX}/lib/qt6/qml/QtQml/WorkerScript/workerscriptplugin.dll" "QtQ
 #echo "=== Compressing binaries"
 #upx $(find . -name "*.exe")
 #upx $(find . -name "*.dll")
+
+echo "=== Creating uninstall.log"
+rm -f uninstall.log
+find . -type d -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | grep -v "^.$" > uninstall.log
+find . -type f -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | sort >> uninstall.log
 
 # See http://stackoverflow.com/questions/18287960/signing-windows-application-on-linux-based-distros for details
 echo "=== Signing binaries"
