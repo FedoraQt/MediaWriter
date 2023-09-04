@@ -180,6 +180,8 @@ jobs:
         cp $Qt6_DIR/bin/libgcc_s_seh-1.dll .
         cp $Qt6_DIR/bin/liblzma.dll .
         cp /c/Program\ Files/OpenSSL/bin/*.dll .
+        find . -type d -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | grep -v "^.$" > uninstall.log
+        find . -type f -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | sort >> uninstall.log
     - name: Installer
       if: github.event_name == 'push' || github.event_name == 'release'
       shell: bash
@@ -205,8 +207,8 @@ jobs:
         unix2dos < "LICENSE.GPL-2" > "build/app/release/LICENSE.GPL-2.txt"
         unix2dos < "LICENSE.LGPL-2" > "build/app/release/LICENSE.LGPL-2.txt"
 
-        find . -type d -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | grep -v "^.$" > build/app/release/uninstall.log
-        find . -type f -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | sort >> build/app/release/uninstall.log
+        echo "LICENSE.GPL-2.txt" >> build/app/release/uninstall.log
+        echo "LICENSE.LGPL-2.txt" >> build/app/release/uninstall.log
 
         makensis -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
         if [[ "$TAG_NAME" != "" ]]; then
@@ -246,4 +248,4 @@ jobs:
         automatic_release_tag: "latest-windows"
         prerelease: true
         title: "Development Build (Windows)"
-        files: FedoraMediaWriter-win64.exe  
+        files: FedoraMediaWriter-win64.exe
