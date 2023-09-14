@@ -163,6 +163,9 @@ class ReleaseListModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
+    enum ItemRole { ReleaseRole = Qt::UserRole + 1, SourceIndexRole };
+    Q_ENUMS(ItemRole)
+
     explicit ReleaseListModel(ReleaseManager *parent = 0);
     ReleaseManager *manager();
 
