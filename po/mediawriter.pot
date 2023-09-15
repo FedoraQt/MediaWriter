@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 13:56+0200\n"
+"POT-Creation-Date: 2023-09-15 13:43-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,192 +17,197 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/app/qml/AboutDialog.qml:50
+#: src/app/qml/AboutDialog.qml:50
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
 msgstr ""
 
-#: ../src/app/qml/AboutDialog.qml:59
+#: src/app/qml/AboutDialog.qml:59
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr ""
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: src/app/qml/AboutDialog.qml:66
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr ""
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: src/app/qml/AboutDialog.qml:72
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr ""
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: src/app/qml/AboutDialog.qml:95
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:56
+#: src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:58
+#: src/app/qml/CancelDialog.qml:58
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:60
+#: src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:67
+#: src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
 msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:69
+#: src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:71
+#: src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:88
+#: src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:111
+#: src/app/qml/CancelDialog.qml:111
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:113
+#: src/app/qml/CancelDialog.qml:113
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:115
+#: src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr ""
 
-#: ../src/app/downloadmanager.cpp:235
+#: src/app/qml/CancelDialog.qml:117
+msgctxt "CancelDialog|"
+msgid "Cancel"
+msgstr ""
+
+#: src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr ""
 
-#: ../src/app/downloadmanager.cpp:335
+#: src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr ""
 
-#: ../src/app/downloadmanager.cpp:337
+#: src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr ""
 
-#: ../src/app/downloadmanager.cpp:425
+#: src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: src/app/qml/DownloadPage.qml:52
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:54
+#: src/app/qml/DownloadPage.qml:54
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:56
+#: src/app/qml/DownloadPage.qml:56
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:58
+#: src/app/qml/DownloadPage.qml:58
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:60
+#: src/app/qml/DownloadPage.qml:60
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:62
+#: src/app/qml/DownloadPage.qml:62
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:76
+#: src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:77
+#: src/app/qml/DownloadPage.qml:77
 msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:78
+#: src/app/qml/DownloadPage.qml:78
 msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:79
+#: src/app/qml/DownloadPage.qml:79
 msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
-#: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
+#: src/app/qml/DownloadPage.qml:82 src/app/qml/DownloadPage.qml:83
+#: src/app/qml/DownloadPage.qml:84 src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:101
+#: src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:135
+#: src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:143
+#: src/app/qml/DownloadPage.qml:143
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:151
+#: src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:159
+#: src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -210,17 +215,17 @@ msgid ""
 "from your drive."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:167
+#: src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:167
+#: src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:175
+#: src/app/qml/DownloadPage.qml:175
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -229,7 +234,7 @@ msgid ""
 "with Fedora and how to create bootable media for it."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:184
+#: src/app/qml/DownloadPage.qml:184
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -237,188 +242,188 @@ msgid ""
 "drive by accident!"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:193
+#: src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr ""
 
-#: ../src/app/drivemanager.cpp:308
+#: src/app/drivemanager.cpp:308
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:36
+#: src/app/qml/DrivePage.qml:36
 msgctxt "DrivePage|"
 msgid "Write Options"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:45
+#: src/app/qml/DrivePage.qml:45
 msgctxt "DrivePage|"
 msgid "Version"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:67
+#: src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:84
+#: src/app/qml/DrivePage.qml:84
 msgctxt "DrivePage|"
 msgid "Selected file"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:91
+#: src/app/qml/DrivePage.qml:91
 msgctxt "DrivePage|"
 msgid "None"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:99
+#: src/app/qml/DrivePage.qml:99
 msgctxt "DrivePage|"
 msgid "Select..."
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:116
+#: src/app/qml/DrivePage.qml:116
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:116
+#: src/app/qml/DrivePage.qml:116
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:127
+#: src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "USB Drive"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:135
+#: src/app/qml/DrivePage.qml:135
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:155
+#: src/app/qml/DrivePage.qml:155
 msgctxt "DrivePage|"
 msgid "Download"
 msgstr ""
 
-#: ../src/app/qml/DrivePage.qml:160
+#: src/app/qml/DrivePage.qml:160
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
 msgstr ""
 
-#: ../src/app/linuxdrivemanager.cpp:199
+#: src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
 msgstr ""
 
-#: ../src/app/linuxdrivemanager.cpp:224
+#: src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 
-#: ../src/app/linuxdrivemanager.cpp:259
+#: src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
 msgstr ""
 
-#: ../src/app/linuxdrivemanager.cpp:327
+#: src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
 msgid "Finished!"
 msgstr ""
 
-#: ../src/app/linuxdrivemanager.cpp:327
+#: src/app/linuxdrivemanager.cpp:327
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
 msgstr ""
 
-#: ../src/app/linuxdrivemanager.cpp:349
+#: src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
 msgid "Error"
 msgstr ""
 
-#: ../src/app/linuxdrivemanager.cpp:349
+#: src/app/linuxdrivemanager.cpp:349
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
 msgstr ""
 
-#: ../src/app/linuxdrivemanager.cpp:121
+#: src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr ""
 
-#: ../src/app/macdrivemanager.cpp:104
+#: src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 
-#: ../src/app/macdrivemanager.cpp:187
+#: src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
 msgid "Error"
 msgstr ""
 
-#: ../src/app/macdrivemanager.cpp:187
+#: src/app/macdrivemanager.cpp:187
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
 msgstr ""
 
-#: ../src/app/macdrivemanager.cpp:190
+#: src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
 msgid "Finished!"
 msgstr ""
 
-#: ../src/app/macdrivemanager.cpp:190
+#: src/app/macdrivemanager.cpp:190
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
 msgstr ""
 
-#: ../src/app/qml/MainPage.qml:43
+#: src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
 msgstr ""
 
-#: ../src/app/qml/MainPage.qml:57
+#: src/app/qml/MainPage.qml:57
 msgctxt "MainPage|"
 msgid "Download automatically"
 msgstr ""
 
-#: ../src/app/qml/MainPage.qml:65
+#: src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
 msgstr ""
 
-#: ../src/app/qml/MainPage.qml:76
+#: src/app/qml/MainPage.qml:76
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
 msgstr ""
 
-#: ../src/app/portalfiledialog.cpp:143
+#: src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr ""
 
-#: ../src/app/portalfiledialog.cpp:153
+#: src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
 msgid "All files"
 msgstr ""
 
-#: ../src/app/portalfiledialog.cpp:162
+#: src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:392
+#: src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:393
+#: src/app/releasemanager.cpp:398
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -426,167 +431,167 @@ msgid ""
 "iso or .bin)</p>"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:423
+#: src/app/releasemanager.cpp:428
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:425
+#: src/app/releasemanager.cpp:430
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:427
+#: src/app/releasemanager.cpp:432
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:429
+#: src/app/releasemanager.cpp:434
 msgctxt "Release|"
 msgid "Other"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1069
+#: src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1069
+#: src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1070
+#: src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1070
+#: src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1071
+#: src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1071
+#: src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1072
+#: src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1072
+#: src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:391
+#: src/app/releasemanager.cpp:396
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
+#: src/app/releasemanager.cpp:933 src/app/releasemanager.cpp:945
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:944
+#: src/app/releasemanager.cpp:949
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:955
+#: src/app/releasemanager.cpp:960
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr ""
 
-#: ../src/app/releasemanager.h:372
+#: src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr ""
 
-#: ../src/app/releasemanager.h:373
+#: src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr ""
 
-#: ../src/app/releasemanager.h:374
+#: src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr ""
 
-#: ../src/app/releasemanager.h:375
+#: src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
 msgstr ""
 
-#: ../src/app/releasemanager.h:376
+#: src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
 
-#: ../src/app/releasemanager.h:377
+#: src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr ""
 
-#: ../src/app/releasemanager.h:378
+#: src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr ""
 
-#: ../src/app/releasemanager.h:379
+#: src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr ""
 
-#: ../src/app/releasemanager.h:380
+#: src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
 msgstr ""
 
-#: ../src/app/releasemanager.h:381
+#: src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr ""
 
-#: ../src/app/releasemanager.h:382
+#: src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:701
+#: src/app/releasemanager.cpp:706
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:703
+#: src/app/releasemanager.cpp:708
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:705
+#: src/app/releasemanager.cpp:710
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:37
+#: src/app/qml/RestorePage.qml:37
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:49
+#: src/app/qml/RestorePage.qml:49
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -597,224 +602,224 @@ msgid ""
 "factory settings? </p>"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:67
+#: src/app/qml/RestorePage.qml:67
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:84
+#: src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:94
+#: src/app/qml/RestorePage.qml:94
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:143
+#: src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
 msgstr ""
 
-#: ../src/app/qml/VersionPage.qml:35
+#: src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
 msgstr ""
 
-#: ../src/app/qml/VersionPage.qml:48
+#: src/app/qml/VersionPage.qml:48
 msgctxt "VersionPage|"
 msgid "Select from:"
 msgstr ""
 
-#: ../src/app/qml/VersionPage.qml:53
+#: src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
 msgid "Official Editions"
 msgstr ""
 
-#: ../src/app/qml/VersionPage.qml:59
+#: src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Emerging Editions"
 msgstr ""
 
-#: ../src/app/qml/VersionPage.qml:65
+#: src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
 msgid "Spins"
 msgstr ""
 
-#: ../src/app/qml/VersionPage.qml:71
+#: src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
 msgid "Labs"
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:265
+#: src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: src/app/windrivemanager.cpp:404 src/app/windrivemanager.cpp:455
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: src/app/windrivemanager.cpp:404 src/app/windrivemanager.cpp:455
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr ""
 
-#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
-#: ../src/helper/win/writejob.cpp:271
+#: src/helper/linux/writejob.cpp:143 src/helper/mac/writejob.cpp:225
+#: src/helper/win/writejob.cpp:271
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
 msgstr ""
 
-#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
-#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
-#: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
-#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+#: src/helper/linux/writejob.cpp:168 src/helper/linux/writejob.cpp:198
+#: src/helper/linux/writejob.cpp:236 src/helper/mac/writejob.cpp:185
+#: src/helper/mac/writejob.cpp:250 src/helper/mac/writejob.cpp:280
+#: src/helper/win/writejob.cpp:188 src/helper/win/writejob.cpp:195
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
 msgstr ""
 
-#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
-#: ../src/helper/win/writejob.cpp:315
+#: src/helper/linux/writejob.cpp:177 src/helper/mac/writejob.cpp:259
+#: src/helper/win/writejob.cpp:315
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
 msgstr ""
 
-#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
-#: ../src/helper/win/writejob.cpp:320
+#: src/helper/linux/writejob.cpp:182 src/helper/mac/writejob.cpp:264
+#: src/helper/win/writejob.cpp:320
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr ""
 
-#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
-#: ../src/helper/win/writejob.cpp:323
+#: src/helper/linux/writejob.cpp:185 src/helper/mac/writejob.cpp:267
+#: src/helper/win/writejob.cpp:323
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
 msgstr ""
 
-#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
-#: ../src/helper/win/writejob.cpp:326
+#: src/helper/linux/writejob.cpp:188 src/helper/mac/writejob.cpp:270
+#: src/helper/win/writejob.cpp:326
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
 msgstr ""
 
-#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
-#: ../src/helper/win/writejob.cpp:361
+#: src/helper/linux/writejob.cpp:214 src/helper/linux/writejob.cpp:229
+#: src/helper/win/writejob.cpp:361
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
 msgstr ""
 
-#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
-#: ../src/helper/win/writejob.cpp:406
+#: src/helper/linux/writejob.cpp:266 src/helper/mac/writejob.cpp:304
+#: src/helper/win/writejob.cpp:406
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
 msgstr ""
 
-#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
-#: ../src/helper/win/writejob.cpp:411
+#: src/helper/linux/writejob.cpp:271 src/helper/mac/writejob.cpp:309
+#: src/helper/win/writejob.cpp:411
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
 msgstr ""
 
-#: ../src/helper/mac/writejob.cpp:86
+#: src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
 msgstr ""
 
-#: ../src/helper/mac/writejob.cpp:131
+#: src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
 msgstr ""
 
-#: ../src/helper/win/writejob.cpp:74
+#: src/helper/win/writejob.cpp:74
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for writing"
 msgstr ""
 
-#: ../src/helper/win/writejob.cpp:98
+#: src/helper/win/writejob.cpp:98
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
 msgstr ""
 
-#: ../src/helper/win/writejob.cpp:134
+#: src/helper/win/writejob.cpp:134
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't remove the drive %1:"
 msgstr ""
 
-#: ../src/helper/win/writejob.cpp:209
+#: src/helper/win/writejob.cpp:209
 msgctxt "WriteJob|"
 msgid "Couldn't unlock the drive"
 msgstr ""
 
-#: ../src/app/qml/main.qml:116
+#: src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr ""
 
-#: ../src/app/qml/main.qml:154
+#: src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr ""
 
-#: ../src/app/qml/main.qml:170
+#: src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
 msgstr ""
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: src/app/qml/main.qml:250 src/app/qml/main.qml:291
 msgctxt "main|"
 msgid "Restore"
 msgstr ""
 
-#: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
+#: src/app/qml/main.qml:290 src/app/qml/main.qml:304
 msgctxt "main|"
 msgid "Finish"
 msgstr ""
 
-#: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
+#: src/app/qml/main.qml:294 src/app/qml/main.qml:302
 msgctxt "main|"
 msgid "Write"
 msgstr ""
 
-#: ../src/app/qml/main.qml:296
+#: src/app/qml/main.qml:296
 msgctxt "main|"
 msgid "Download && Write"
 msgstr ""
 
-#: ../src/app/qml/main.qml:297
+#: src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Download & Write"
 msgstr ""
 
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
+#: src/app/qml/main.qml:300 src/app/qml/main.qml:315
 msgctxt "main|"
 msgid "Cancel"
 msgstr ""
 
-#: ../src/app/qml/main.qml:306
+#: src/app/qml/main.qml:306
 msgctxt "main|"
 msgid "Retry"
 msgstr ""
 
-#: ../src/app/qml/main.qml:308
+#: src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Next"
 msgstr ""
 
-#: ../src/app/qml/main.qml:313
+#: src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
 msgstr ""
 
-#: ../src/app/qml/main.qml:316
+#: src/app/qml/main.qml:316
 msgctxt "main|"
 msgid "Previous"
 msgstr ""
@@ -849,10 +854,10 @@ msgid ""
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
 msgstr ""
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
