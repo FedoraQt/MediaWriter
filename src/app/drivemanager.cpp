@@ -245,7 +245,9 @@ void Drive::updateDrive(const QString &name, uint64_t size, bool containsLive)
 {
     m_name = name;
     m_size = size;
-    setRestoreStatus(containsLive ? CONTAINS_LIVE : CLEAN);
+    // Only update status when we are not in the "restoration" process
+    if (m_restoreStatus == CONTAINS_LIVE || m_restoreStatus == CLEAN)
+        setRestoreStatus(containsLive ? CONTAINS_LIVE : CLEAN);
 }
 
 QString Drive::name() const
