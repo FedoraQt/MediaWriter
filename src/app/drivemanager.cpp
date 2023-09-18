@@ -241,6 +241,13 @@ Progress *Drive::progress() const
     return m_progress;
 }
 
+void Drive::updateDrive(const QString &name, uint64_t size, bool containsLive)
+{
+    m_name = name;
+    m_size = size;
+    setRestoreStatus(containsLive ? CONTAINS_LIVE : CLEAN);
+}
+
 QString Drive::name() const
 {
     return QString("%1 (%2)").arg(m_name).arg(readableSize());
