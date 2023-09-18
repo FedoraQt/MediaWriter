@@ -162,6 +162,8 @@ public:
 
     Progress *progress() const;
 
+    virtual void updateDrive(const QString &name, uint64_t size, bool containsLive = false);
+
     virtual QString name() const;
     virtual QString readableSize() const;
     virtual qreal size() const;

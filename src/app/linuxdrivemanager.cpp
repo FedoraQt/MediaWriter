@@ -88,11 +88,11 @@ QDBusObjectPath LinuxDriveProvider::handleObject(const QDBusObjectPath &object_p
         mDebug() << this->metaObject()->className() << "New drive" << driveId.path() << "-" << name << "(" << size << "bytes;" << (isValid ? "removable;" : "nonremovable;") << connectionBus << ")";
 
         if (isValid) {
-            // TODO find out why do I do this
             if (m_drives.contains(object_path)) {
-                LinuxDrive *tmp = m_drives[object_path];
-                emit DriveProvider::driveRemoved(tmp);
+                m_drives[object_path]->updateDrive(name, size, isoLayout);
+                return object_path;
             }
+
             LinuxDrive *d = new LinuxDrive(this, object_path.path(), name, size, isoLayout);
             m_drives[object_path] = d;
             emit DriveProvider::driveConnected(d);
