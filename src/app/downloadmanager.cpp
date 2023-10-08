@@ -153,7 +153,8 @@ void DownloadManager::onStringDownloaded(const QString &text)
 
     QStringList mirrors;
     for (const QString &i : text.split("\n")) {
-        if (!i.trimmed().startsWith("#") && !i.trimmed().isEmpty()) {
+        if (!i.trimmed().startsWith("#") && !i.trimmed().isEmpty())
+        {
             mirrors.append(i.trimmed());
             if (mirrors.count() == 8)
                 break;
@@ -231,7 +232,8 @@ DownloadManager *Download::manager()
 
 void Download::handleNewReply(QNetworkReply *reply)
 {
-    if (!reply) {
+    if (!reply)
+    {
         m_receiver->onDownloadError(tr("Unable to fetch the requested image."));
         return;
     }
@@ -252,7 +254,8 @@ void Download::handleNewReply(QNetworkReply *reply)
 #endif
     connect(m_reply, &QNetworkReply::sslErrors, this, &Download::onSslErrors);
     connect(m_reply, &QNetworkReply::finished, this, &Download::onFinished);
-    if (m_progress) {
+    if (m_progress)
+    {
         connect(reply, &QNetworkReply::downloadProgress, this, &Download::onDownloadProgress);
     }
 
@@ -274,7 +277,8 @@ bool Download::hasCatchedUp()
 
 void Download::start()
 {
-    if (m_catchingUp) {
+    if (m_catchingUp)
+    {
         mDebug() << this->metaObject()->className() << "Will need to precompute the hash of the previously downloaded part";
         // first precompute the SHA hash of the already downloaded part
         m_file->open(QIODevice::ReadOnly);
@@ -314,7 +318,8 @@ void Download::onReadyRead()
     if (!m_reply)
         return;
     QByteArray buf = m_reply->read(1024 * 64);
-    if (m_reply->error() == QNetworkReply::NoError && buf.size() > 0) {
+    if (m_reply->error() == QNetworkReply::NoError && buf.size() > 0)
+    {
         m_bytesDownloaded += buf.size();
 
         if (m_progress && m_reply->header(QNetworkRequest::ContentLengthHeader).isValid())
