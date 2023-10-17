@@ -22,24 +22,6 @@
     ],
     "modules": [
         {
-            "name": "Adwaita-qt",
-            "buildsystem": "cmake",
-            "config-opts": ["-DUSE_QT6=ON"],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/FedoraQt/adwaita-qt.git",
-                    "tag": "1.4.2"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "sed -i 's@add_subdirectory(style)@#add_subdirectory(style)@' src/CMakeLists.txt"
-                    ]
-                }
-            ]
-        },
-        {
             "name": "MediaWriter",
             "buildsystem": "cmake",
             "sources": [
@@ -47,10 +29,6 @@
                     "type": "git",
                     "url": "https://github.com/FedoraQt/MediaWriter.git",
                     "branch": "main"
-                },
-                {
-                    "type": "patch",
-                    "path": "fmw-paths.patch"
                 }
             ]
         }
