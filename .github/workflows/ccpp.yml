@@ -29,15 +29,6 @@ jobs:
       uses: jurplel/install-qt-action@v3
       with:
         version: ${{env.QT_VERSION}}
-    - name: Install Adwaita-qt
-      run: |
-        git clone https://github.com/FedoraQt/adwaita-qt.git adwaita-qt
-        cd adwaita-qt
-        mkdir build
-        cd build
-        cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=ON
-        make -j2
-        sudo make install
 
     - name: Build
       run: |

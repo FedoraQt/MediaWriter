@@ -39,10 +39,6 @@ endif()
 
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED Core DBus Gui Network Svg Qml Quick QuickControls2 Widgets)
 
-if (UNIX AND NOT APPLE)
-    find_package(AdwaitaQt6 "1.4.2" REQUIRED)
-endif()
-
 add_subdirectory(src)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

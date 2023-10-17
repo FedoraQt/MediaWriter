@@ -31,15 +31,10 @@
 
 #include "crashhandler.h"
 #include "drivemanager.h"
-#include "icon.h"
 #include "portalfiledialog.h"
 #include "releasemanager.h"
 #include "units.h"
 #include "versionchecker.h"
-
-#if (defined(__linux))
-#include <AdwaitaQt6/adwaitacolors.h>
-#endif
 
 #ifdef QT_STATIC
 Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
@@ -74,10 +69,6 @@ int main(int argc, char **argv)
     QApplication::setOrganizationName("fedoraproject.org");
     QApplication::setApplicationName("MediaWriter");
 
-#if (defined(__linux))
-    QQuickStyle::setStyle("QtQuick.Controls.org.fedoraproject.AdwaitaTheme");
-#endif
-
     QApplication app(argc, argv);
     options.parse(app.arguments());
 
@@ -87,10 +78,6 @@ int main(int argc, char **argv)
     if (translator.load(QLocale(QLocale().language(), QLocale().country()), QLatin1String(), QLatin1String(), ":/translations"))
         app.installTranslator(&translator);
 
-#if (defined(__linux))
-    QPalette adwaitaPalette = Adwaita::Colors::palette();
-    QGuiApplication::setPalette(adwaitaPalette);
-#endif
     QGuiApplication::setDesktopFileName("org.fedoraproject.MediaWriter.desktop");
 
     mDebug() << "Injecting QML context properties";
@@ -108,8 +95,6 @@ int main(int argc, char **argv)
 #else
     engine.rootContext()->setContextProperty("platformSupportsDelayedWriting", false);
 #endif
-
-    qmlRegisterType<Icon>("MediaWriter", 1, 0, "Icon");
 
     mDebug() << "Loading the QML source code";
 

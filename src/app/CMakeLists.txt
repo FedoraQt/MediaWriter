@@ -1,8 +1,6 @@
 
 include_directories(
     ${CMAKE_SOURCE_DIR}/src/lib
-    ${CMAKE_SOURCE_DIR}/src/theme
-    ${ADWAITAQT_INCLUDE_DIRS}
 )
 
 set(MEDIAWRITER_SRCS
@@ -17,8 +15,6 @@ set(MEDIAWRITER_SRCS
     units.cpp
     utilities.cpp
     versionchecker.cpp
-    # From theme
-    ${CMAKE_SOURCE_DIR}/src/theme/icon.cpp
 )
 
 if (UNIX AND NOT APPLE)
@@ -81,7 +77,6 @@ target_link_libraries(mediawriter
 if (UNIX AND NOT APPLE)
     target_link_libraries(mediawriter 
     Qt6::DBus
-    ${ADWAITAQT_LIBRARIES}
 )
 endif()
 
