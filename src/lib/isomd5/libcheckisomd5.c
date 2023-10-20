@@ -30,13 +30,21 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#ifdef _WIN32
+#include <io.h>
+#else
 #include <unistd.h>
+#endif
 
 #include "libcheckisomd5.h"
 #include "md5.h"
 
 #ifdef __APPLE__
 #define lseek64 lseek
+#endif
+
+#ifdef _WIN32
+#define lseek64 _lseeki64
 #endif
 
 #ifdef _WIN32

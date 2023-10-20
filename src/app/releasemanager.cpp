@@ -926,7 +926,7 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash)
     if (m_progress)
         m_progress->setValue(size());
     setStatus(DOWNLOAD_VERIFYING);
-    m_progress->setValue(0.0 / 0.0, 1.0);
+    m_progress->setValue(0.0, 1.0);
 
     if (!shaHash().isEmpty() && shaHash() != hash) {
         mWarning() << "Computed SHA256 hash of" << path << " - " << hash << "does not match expected" << shaHash();
