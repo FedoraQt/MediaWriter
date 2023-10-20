@@ -56,10 +56,12 @@ if (APPLE)
     set(ICON_PATH ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/mediawriter.icns)
     add_executable(mediawriter MACOSX_BUNDLE ${MEDIAWRITER_SRCS} ${ICON_PATH})
     set_target_properties(mediawriter PROPERTIES
-      OUTPUT_NAME "Fedora Media Writer"
+      OUTPUT_NAME FedoraMediaWriter
       MACOSX_BUNDLE TRUE
+      MACOSX_BUNDLE_BUNDLE_NAME FedoraMediaWriter
+      MACOSX_BUNDLE_BUNDLE_VERSION ${MEDIAWRITER_VERSION}
+      MACOSX_BUNDLE_SHORT_VERSION_STRING ${MEDIAWRITER_VERSION}
       MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/data/Info.plist
-      MACOSX_DEPLOYMENT_TARGET 10.14
       MACOSX_PACKAGE_LOCATION "Resources"
     )
     set_source_files_properties(${ICON_PATH} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
@@ -88,23 +90,13 @@ if (APPLE)
     target_link_libraries(mediawriter "-framework Foundation" "-framework DiskArbitration")
 endif()
 
-install(TARGETS mediawriter DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
+
+install(TARGETS mediawriter
+    DESTINATION ${CMAKE_INSTALL_FULL_BINDIR}
+)
 
 if (UNIX AND NOT APPLE)
     install(DIRECTORY data/icons/hicolor/ DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/icons/hicolor)
     install(FILES data/org.fedoraproject.MediaWriter.desktop DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/applications)
     install(FILES data/org.fedoraproject.MediaWriter.appdata.xml DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/metainfo)
-endif()
-
-if (APPLE AND CREATE_STANDALONE_MAC_BUNDLE)
-    get_target_property(QMAKE_EXECUTABLE Qt6::qmake IMPORTED_LOCATION)
-    get_filename_component(QT_BIN_DIR "${QMAKE_EXECUTABLE}" DIRECTORY)
-    find_program(MACDEPLOYQT_EXECUTABLE macdeployqt HINTS "${QT_BIN_DIR}")
-    add_custom_command(TARGET mediawriter POST_BUILD
-                       COMMAND "${MACDEPLOYQT_EXECUTABLE}"
-                               "${CMAKE_BINARY_DIR}/src/app/Fedora Media Writer.app"
-                               -qmldir="${CMAKE_SOURCE_DIR}/src/app/qml"
-                               -executable=\"${CMAKE_BINARY_DIR}/src/app/Fedora Media Writer.app/Contents/MacOS/helper\"
-                               -appstore-compliant
-                               COMMENT "Deploying Qt...")
 endif()
