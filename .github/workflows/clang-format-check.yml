@@ -7,8 +7,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run clang-format style check for C/C++/Protobuf programs.
-      uses: jidicula/clang-format-action@v4.5.0
+      uses: jidicula/clang-format-action@v4.11.0
       with:
-        clang-format-version: '13'
+        clang-format-version: '17'
         check-path: 'src'
-        exclude-regex: 'src/helper/win\|src/app/crashhandler.cpp'
+        exclude-regex: 'src\/helper\/win|src\/app\/crashhandler.cpp'
