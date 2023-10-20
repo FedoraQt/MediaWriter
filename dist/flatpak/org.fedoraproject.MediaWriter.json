@@ -12,18 +12,12 @@
         "--share=network",
         "--share=ipc",
         "--talk-name=org.freedesktop.Notifications",
-        "--system-talk-name=org.freedesktop.UDisks2",
-        "--env=QML2_IMPORT_PATH=/app/lib/qt6/qml"
-    ],
-    "cleanup": [
-        "/include",
-        "/lib/cmake",
-        "/lib/pkgconfig"
+        "--system-talk-name=org.freedesktop.UDisks2"
     ],
     "modules": [
         {
             "name": "MediaWriter",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "sources": [
                 {
                     "type": "git",

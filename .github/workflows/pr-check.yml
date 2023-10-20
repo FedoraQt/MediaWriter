@@ -1,0 +1,173 @@
+name: pr-check
+
+on: [pull_request]
+
+env:
+    QT_VERSION: '6.5.3'
+
+jobs:
+  Linux:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{env.QT_VERSION}}
+          cache: true
+          cache-key-prefix: ${{ github.job }}-qt
+
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make -j5
+
+  Flatpak:
+    runs-on: ubuntu-22.04
+    container:
+      image: docker.io/bilelmoussaoui/flatpak-github-actions:kde-6.5
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
+        with:
+          bundle: "org.fedoraproject.MediaWriter.flatpak"
+          manifest-path: "dist/flatpak/org.fedoraproject.MediaWriter.json"
+          cache-key: flatpak-builder-${{ github.sha }}
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: org.fedoraproject.MediaWriter.flatpak
+          path: org.fedoraproject.MediaWriter.flatpak
+
+
+  macOS:
+    runs-on: macos-12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{env.QT_VERSION}}
+          modules: qtimageformats
+          cache: true
+          cache-key-prefix: ${{ github.job }}-qt
+
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --parallel
+
+      - name: Bundle
+        run: |
+          "$Qt6_DIR"/bin/macdeployqt build/src/app/FedoraMediaWriter.app -qmldir=src/app/qml -appstore-compliant
+          # No idea why but macdeployqt deploys debug libs too, just remove them, maybe fix this sometimes
+          # for i in `find build/src/app/FedoraMediaWriter.app/ -name '*.dSYM'`; do rm -fr "$i"; done
+          cd build/src/app/
+          "$Qt6_DIR"/bin/macdeployqt FedoraMediaWriter.app -dmg -always-overwrite -appstore-compliant
+          mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-osx.dmg
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: FedoraMediaWriter-osx.dmg
+          path: FedoraMediaWriter-osx.dmg
+
+  Windows-MSVC:
+    runs-on: windows-2019
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          choco install nsis
+          choco install dos2unix
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{env.QT_VERSION}}
+          arch: win64_msvc2019_64
+          cache: true
+          cache-key-prefix: ${{ github.job }}-qt
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Build xz-utils
+        shell: bash
+        if: ${{ !steps.cache-qt.outputs.cache-hit }}
+        run: |
+          eval "$(./dist/win/make-vs2019-env.bat)"
+          git clone https://git.tukaani.org/xz.git
+          cd xz
+          git checkout v5.2
+          sed -i 's/#include "config.h"//' src/common/common_w32res.rc
+          sed -i 's/PACKAGE_NAME/"liblzma"/' src/common/common_w32res.rc
+          sed -i 's/PACKAGE_URL/"https:\/\/tukaani.org\/xz\/"/' src/common/common_w32res.rc
+          mkdir build
+          cd build
+          cmake .. -GNinja -DCMAKE_INSTALL_PREFIX="$Qt6_DIR" -DBUILD_SHARED_LIBS=ON ..
+          cmake --build .
+          cmake --install .
+
+      - name: Build MediaWriter
+        shell: bash
+        run: |
+          eval "$(./dist/win/make-vs2019-env.bat)"
+          mkdir build
+          cd build
+          cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt6_DIR" ..
+          cmake --build .
+          cmake --install .
+
+      - name: Windeployqt
+        shell: bash
+        run: |
+          mkdir -p build/app/release
+          cd build/app/release
+          mv ../../src/app/helper.exe .
+          mv ../../src/app/mediawriter.exe .
+          $Qt6_DIR/bin/windeployqt.exe mediawriter.exe --verbose 2 --qmldir ../../.. --compiler-runtime --release
+          find . -type d -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | grep -v "^.$" > uninstall.log
+          find . -type f -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | sort >> uninstall.log
+
+      - name: Installer
+        shell: bash
+        run: |
+          VERSION_STRIPPED=$(sed "s/-.*//" <<< "${{ env.TAG_NAME }}")
+          if [[ "$VERSION_STRIPPED" == "" ]]; then
+              VERSION_STRIPPED=0.0.0
+          fi
+          VERSION_MAJOR=$(cut -d. -f1 <<< "${VERSION_STRIPPED}")
+          VERSION_MINOR=$(cut -d. -f2 <<< "${VERSION_STRIPPED}")
+          VERSION_BUILD=$(cut -d. -f3 <<< "${VERSION_STRIPPED}")
+          INSTALLED_SIZE=$(du -k -d0 "build/app/release" | cut -f1)
+
+          cp "dist/win/mediawriter_native.nsi" "dist/win/mediawriter_native.tmp.nsi"
+
+          sed -i "s/#!define VERSIONMAJOR/!define VERSIONMAJOR ${VERSION_MAJOR}/" "dist/win/mediawriter_native.tmp.nsi"
+          sed -i "s/#!define VERSIONMINOR/!define VERSIONMINOR ${VERSION_MINOR}/" "dist/win/mediawriter_native.tmp.nsi"
+          sed -i "s/#!define VERSIONBUILD/!define VERSIONBUILD ${VERSION_BUILD}/" "dist/win/mediawriter_native.tmp.nsi"
+          sed -i "s/#!define INSTALLSIZE/!define INSTALLSIZE ${INSTALLED_SIZE}/" "dist/win/mediawriter_native.tmp.nsi"
+
+          unix2dos < "LICENSE.GPL-2" > "build/app/release/LICENSE.GPL-2.txt"
+          unix2dos < "LICENSE.LGPL-2" > "build/app/release/LICENSE.LGPL-2.txt"
+
+          echo "LICENSE.GPL-2.txt" >> build/app/release/uninstall.log
+          echo "LICENSE.LGPL-2.txt" >> build/app/release/uninstall.log
+
+          makensis -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
+          mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64.exe"
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: FedoraMediaWriter-win64.exe
+          path: FedoraMediaWriter-win64.exe
