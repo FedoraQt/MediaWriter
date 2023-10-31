@@ -165,6 +165,9 @@ function .onInit
 functionEnd
 
 section "install"
+        ; Uninstall previous version when installing to same directory
+        ExecWait '"$INSTDIR\uninstall.exe" /S _?=$INSTDIR'
+
         # Files for the install directory - to build the installer, these should be in the same directory as the install script (this file)
         SetOutPath $INSTDIR
         SetOverwrite on
@@ -209,7 +212,7 @@ sectionEnd
         SetShellVarContext all
 
         #Verify the uninstaller - last chance to back out
-        MessageBox MB_OKCANCEL "Permanently remove ${APPNAME}?" IDOK next
+        MessageBox MB_OKCANCEL "Do you want to uninstall ${APPNAME}?" IDOK next
                 Abort
         next:
         !insertmacro VerifyUserIsAdmin
