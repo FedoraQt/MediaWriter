@@ -62,7 +62,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake .. -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_BUILD_TYPE=Release
+          cmake .. -DCMAKE_OSX_ARCHITECTURES="x86_64" -DCMAKE_BUILD_TYPE=Release
           cmake --build . --parallel
 
       - name: Bundle
@@ -78,6 +78,40 @@ jobs:
         with:
           name: FedoraMediaWriter-osx.dmg
           path: FedoraMediaWriter-osx.dmg
+
+  macOS-arm64:
+    runs-on: macos-12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{env.QT_VERSION}}
+          modules: qtimageformats
+          cache: true
+          cache-key-prefix: ${{ github.job }}-qt
+
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_OSX_ARCHITECTURES="arm64" -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --parallel
+
+      - name: Bundle
+        run: |
+          "$Qt6_DIR"/bin/macdeployqt build/src/app/FedoraMediaWriter.app -qmldir=src/app/qml -appstore-compliant
+          # No idea why but macdeployqt deploys debug libs too, just remove them, maybe fix this sometimes
+          # for i in `find build/src/app/FedoraMediaWriter.app/ -name '*.dSYM'`; do rm -fr "$i"; done
+          cd build/src/app/
+          "$Qt6_DIR"/bin/macdeployqt FedoraMediaWriter.app -dmg -always-overwrite -appstore-compliant
+          mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-osx-arm64.dmg
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: FedoraMediaWriter-osx-arm64.dmg
+          path: FedoraMediaWriter-osx-arm64.dmg
 
   Windows-MSVC:
     runs-on: windows-2019
