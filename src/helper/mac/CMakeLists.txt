@@ -17,7 +17,6 @@ qt6_add_resources(HELPER_SRCS ${CMAKE_SOURCE_DIR}/src/translations/translations.
 add_executable(helper ${HELPER_SRCS})
 target_link_libraries(helper
     Qt6::Core
-    Qt6::DBus
     isomd5
     ${LIBLZMA_LIBRARIES}
 )
