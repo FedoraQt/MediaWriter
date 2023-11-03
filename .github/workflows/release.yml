@@ -28,7 +28,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake .. -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_BUILD_TYPE=Release
+          cmake .. -DCMAKE_OSX_ARCHITECTURES="x86_64" -DCMAKE_BUILD_TYPE=Release
           cmake --build . --parallel
 
       - name: Bundle
@@ -43,6 +43,42 @@ jobs:
       - name: Upload to GitHub (release)
         run: |
           bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-osx-${{ env.TAG_NAME }}.dmg"
+
+  macOS-arm64:
+    runs-on: macos-12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set env
+        run: echo "TAG_NAME=$(bash ./dist/get-tag-name.sh)" >> $GITHUB_ENV
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{env.QT_VERSION}}
+          modules: qtimageformats
+          cache: true
+          cache-key-prefix: ${{ github.job }}-qt
+
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_OSX_ARCHITECTURES="arm64" -DCMAKE_BUILD_TYPE=Release
+          cmake --build . --parallel
+
+      - name: Bundle
+        run: |
+          "$Qt6_DIR"/bin/macdeployqt build/src/app/FedoraMediaWriter.app -qmldir=src/app/qml -executable=build/src/app/FedoraMediaWriter.app/Contents/MacOS/helper -appstore-compliant
+          # No idea why but macdeployqt deploys debug libs too, just remove them, maybe fix this sometimes
+          # for i in `find build/src/app/FedoraMediaWriter.app/ -name '*.dSYM'`; do rm -fr "$i"; done
+          cd build/src/app/
+          "$Qt6_DIR"/bin/macdeployqt FedoraMediaWriter.app -dmg -always-overwrite -appstore-compliant
+          mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-osx-arm64-${{ env.TAG_NAME }}.dmg
+
+      - name: Upload to GitHub (release)
+        run: |
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-osx-arm64-${{ env.TAG_NAME }}.dmg"
 
   Windows-MSVC:
     runs-on: windows-2019
