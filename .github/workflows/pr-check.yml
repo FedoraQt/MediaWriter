@@ -3,7 +3,7 @@ name: pr-check
 on: [pull_request]
 
 env:
-    QT_VERSION: '6.5.3'
+    QT_VERSION: '6.6.0'
 
 jobs:
   Linux:
@@ -142,13 +142,13 @@ jobs:
           eval "$(./dist/win/make-vs2019-env.bat)"
           git clone https://git.tukaani.org/xz.git
           cd xz
-          git checkout v5.2
+          git checkout v5.4.5
           sed -i 's/#include "config.h"//' src/common/common_w32res.rc
           sed -i 's/PACKAGE_NAME/"liblzma"/' src/common/common_w32res.rc
           sed -i 's/PACKAGE_URL/"https:\/\/tukaani.org\/xz\/"/' src/common/common_w32res.rc
           mkdir build
           cd build
-          cmake .. -GNinja -DCMAKE_INSTALL_PREFIX="$Qt6_DIR" -DBUILD_SHARED_LIBS=ON ..
+          cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt6_DIR" -DBUILD_SHARED_LIBS=ON ..
           cmake --build .
           cmake --install .
 
@@ -169,7 +169,8 @@ jobs:
           cd build/app/release
           mv ../../src/app/helper.exe .
           mv ../../src/app/mediawriter.exe .
-          $Qt6_DIR/bin/windeployqt.exe mediawriter.exe --verbose 2 --qmldir ../../.. --compiler-runtime --release
+          cp $Qt6_DIR/bin/liblzma.dll .
+          $Qt6_DIR/bin/windeployqt.exe mediawriter.exe helper.exe liblzma.dll --verbose 2 --qmldir ../../.. --compiler-runtime --release
           find . -type d -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | grep -v "^.$" > uninstall.log
           find . -type f -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | sort >> uninstall.log
 
