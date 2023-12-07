@@ -20,13 +20,13 @@ XPStyle on
 # This is the size (in kB) of all the files copied into "Program Files"
 #!define INSTALLSIZE
 
-VIProductVersion "5.0.7.0"
+VIProductVersion "5.0.9.0"
 VIAddVersionKey "ProductName" "${APPNAME}"
 VIAddVersionKey "Comments" "${DESCRIPTION}"
 VIAddVersionKey "CompanyName" "${COMPANYNAME}"
 VIAddVersionKey "LegalCopyright" "${COMPANYNAME}"
 VIAddVersionKey "FileDescription" "${APPNAME}"
-VIAddVersionKey "FileVersion" "5.0.7"
+VIAddVersionKey "FileVersion" "5.0.9"
 
 ;Set the name of the uninstall log
 !define UninstLog "uninstall.log"
