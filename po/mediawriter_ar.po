@@ -2,12 +2,14 @@
 # Ahmed M. Farrag <a.m.farrag@gmail.com>, 2022.
 # Mostafa Gamal <mostafa.2c6@gmail.com>, 2022.
 # Amro Hatem <amro_hatem_1@outlook.com>, 2023.
+# Eyad Mahmoud <eyadmahm0ud@users.noreply.translate.fedoraproject.org>, 2023.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-03 13:56+0200\n"
-"PO-Revision-Date: 2023-01-14 16:20+0000\n"
-"Last-Translator: Amro Hatem <amro_hatem_1@outlook.com>\n"
+"PO-Revision-Date: 2023-12-26 19:02+0000\n"
+"Last-Translator: Eyad Mahmoud <eyadmahm0ud@users.noreply.translate."
+"fedoraproject.org>\n"
 "Language-Team: Arabic <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/ar/>\n"
 "Language: ar\n"
@@ -16,13 +18,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 4.15\n"
+"X-Generator: Weblate 5.3\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr "عن كاتب وسائط فيدورا"
+msgstr "لمحة عن كاتب وسائط فيدورا"
 
 #: ../src/app/qml/AboutDialog.qml:59
 #, qt-format
@@ -33,23 +35,23 @@ msgstr "الإصدار %1"
 #: ../src/app/qml/AboutDialog.qml:66
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "يتفقّد كاتب وسائط فيدورا وجود إصدارات جديدة"
+msgstr "يتحقق كاتب وسائط فيدورا الآن من وجود إصدارات جديدة"
 
 #: ../src/app/qml/AboutDialog.qml:72
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr "رجاءً بلّغ عن الأخطاء أو الاقتراحات على %1"
+msgstr "الرجاء الإبلاغ عن الأخطاء أو الاقتراحات على %1"
 
 #: ../src/app/qml/AboutDialog.qml:95
 msgctxt "AboutDialog|"
 msgid "Close"
-msgstr "أغلق"
+msgstr "إغلاق"
 
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr "إلغاء التحميل؟"
+msgstr "إلغاء التنزيل؟"
 
 #: ../src/app/qml/CancelDialog.qml:58
 msgctxt "CancelDialog|"
@@ -66,14 +68,15 @@ msgctxt "CancelDialog|"
 msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
-msgstr "سيُلغى التحميل وكتابة الوسائط. يمكن استئناف هذه العملية في أي وقت لاحق."
+msgstr ""
+"سيتم إيقاف تنزيل وكتابة الوسائط. يمكن استئناف هذه العملية في أي وقت لاحق."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr "ستُلغى عملية الكتابة وسيتعيّن على قرصك أن يُستعاد بعد ذلك."
+msgstr "سيتم إلغاء عملية الكتابة وسيتعين استعادة محرك أقراصك بعد ذلك."
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
@@ -83,12 +86,12 @@ msgstr "يمكن إلغاء هذه العملية بأمان."
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr "استمر"
+msgstr "متابعة"
 
 #: ../src/app/qml/CancelDialog.qml:111
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "إلغاء التحميل"
+msgstr "إلغاء التنزيل"
 
 #: ../src/app/qml/CancelDialog.qml:113
 msgctxt "CancelDialog|"
@@ -103,22 +106,22 @@ msgstr "إلغاء التحقق"
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr "لم يمكن جلب الصورة المطلوبة."
+msgstr "تعذر جلب صورة القرص المطلوبة."
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr "لقد نفدت مساحة التخزين في مجلد التحميلات."
+msgstr "لقد نفدت مساحة التخزين بمجلد التنزيلات."
 
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
-msgstr "ملف التحميل غير قابل للكتابة."
+msgstr "ملف التنزيل غير قابل للكتابة."
 
 #: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
-msgstr "انتهت مدة الاتصال"
+msgstr "انتهت مهلة الاتصال"
 
 #: ../src/app/qml/DownloadPage.qml:52
 #, qt-format
@@ -130,83 +133,79 @@ msgstr "تمت كتابة %1 بنجاح"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "كتابة %1"
+msgstr "قيد كتابة %1"
 
 #: ../src/app/qml/DownloadPage.qml:56
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "تحميل %1"
+msgstr "قيد تنزيل %1"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "تحضير %1"
+msgstr "قيد الإعداد %1"
 
 #: ../src/app/qml/DownloadPage.qml:60
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "جاهز للكتابة"
+msgstr "جاهز لكتابة %1"
 
 #: ../src/app/qml/DownloadPage.qml:62
-#, fuzzy, qt-format
-#| msgctxt "DownloadPage|"
-#| msgid "Failed download"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "فشل التحميل"
+msgstr "فشل تنزيل %1"
 
 #: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr " .B تبقى)"
+msgstr " بايت)"
 
 #: ../src/app/qml/DownloadPage.qml:77
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr " B تبقى)"
+msgstr " كيلوبايت)"
 
 #: ../src/app/qml/DownloadPage.qml:78
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr " ميغابايت متبقية)"
+msgstr " ميجابايت)"
 
 #: ../src/app/qml/DownloadPage.qml:79
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr " غيغابايت متبقية)"
+msgstr " جيجابايت)"
 
 #: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
 #: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr " (%1"
+msgstr " (تبقى %1"
 
 #: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "تم فصل محرك الأقراص أثناء العملية"
 
 #: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "تُحفظ التحميلات في مجلد التحميلات."
+msgstr "يتم حفظ التنزيلات في مجلد التنزيلات."
 
 #: ../src/app/qml/DownloadPage.qml:143
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "الكتابة ستُفقِدك كل البيانات المخزنة على %1."
+msgstr "بمجرد بدء الكتابة، سيتم خسارة جميع البيانات المخزنة على %1."
 
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "الرجاء إدخال محرك أقراص USB."
 
 #: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
@@ -215,18 +214,18 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"سيُصغَّر قرصك إلى مساحة أقل. يمكنك إعادته إلى طبيعته باستخدام كاتب وسائط "
-"فيدورا. سيزيل هذا وسائط التثبيت من القرص."
+"سيتقلص محرك الأقراص إلى مساحة أقل. يمكنك إعادته إلى طبيعته باستخدام كاتب "
+"وسائط فيدورا. حيث يزيل وسائط التثبيت من محرك الأقراص."
 
 #: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "Selected:"
-msgstr "قد اخترت:"
+msgstr "تم اختيار:"
 
 #: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "None"
-msgstr "بلا"
+msgstr "لم يتم الاختيار"
 
 #: ../src/app/qml/DownloadPage.qml:175
 #, qt-format
@@ -236,9 +235,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"لا يدعم كاتب وسائط فيدورا هذه الرقاقة أو الجهاز حتى الآن. رجاءً تفقّد <a href="
-"%1>هذه الصفحة</a> لمزيد المعلومات عن توافقيته مع فيدورا وكيفية كتابة وسائط "
-"قابلة للإقلاع عليه."
+"لا يدعم كاتب وسائط فيدورا هذه الرقاقة أو الجهاز حتى الآن. الرجاء تفقد <a "
+"href=%1>هذه الصفحة</a> لمزيد المعلومات عن توافقيته مع فيدورا وكيفية كتابة "
+"وسائط قابلة للإقلاع عليه."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -246,18 +245,19 @@ msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
-msgstr "القرص المُختار سعته %1. لربما اخترت قرصا خارجيا عن طريق الخطأ!"
+msgstr ""
+"لقد اخترت محرك أقراص سعته %1. لربما اخترت محرك أقراص خارجي عن طريق الخطأ!"
 
 #: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr "أعد التشغيل وأقلع من %1 لتبدأ استخدام %2."
+msgstr "إعادة التشغيل والإقلاع من %1 لبدء استخدام %2."
 
 #: ../src/app/drivemanager.cpp:308
 msgctxt "Drive|"
 msgid "This drive is not large enough."
-msgstr "هذا القرص ليس كبيرا بما يكفي."
+msgstr "محرك الأقراص هذا ليس كبيرًا بما يكفي."
 
 #: ../src/app/qml/DrivePage.qml:36
 msgctxt "DrivePage|"
@@ -272,7 +272,7 @@ msgstr "الإصدار"
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr "بنية العتاد"
+msgstr "بنية الجهاز"
 
 #: ../src/app/qml/DrivePage.qml:84
 msgctxt "DrivePage|"
@@ -282,17 +282,17 @@ msgstr "الملف المختار"
 #: ../src/app/qml/DrivePage.qml:91
 msgctxt "DrivePage|"
 msgid "None"
-msgstr "بلا"
+msgstr "لم يتم الاختيار"
 
 #: ../src/app/qml/DrivePage.qml:99
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "اختر..."
+msgstr "اختيار..."
 
 #: ../src/app/qml/DrivePage.qml:116
 msgctxt "DrivePage|"
 msgid "Image files"
-msgstr "ملفات الصور"
+msgstr "ملفات صور الأقراص"
 
 #: ../src/app/qml/DrivePage.qml:116
 msgctxt "DrivePage|"
@@ -302,48 +302,48 @@ msgstr "جميع الملفات (*)"
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr "قرص USB"
+msgstr "محرك أقراص USB"
 
 #: ../src/app/qml/DrivePage.qml:135
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr "لا توجد أقراص محمولة متصلة"
+msgstr "لا يوجد أي محرك أقراص محمول متصل"
 
 #: ../src/app/qml/DrivePage.qml:155
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "تحميل"
+msgstr "تنزيل"
 
 #: ../src/app/qml/DrivePage.qml:160
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "حذف الصورة المُحمّلة بعد الكتابة"
+msgstr "حذف الصورة القرص التي سيتم تنزيلها بعد الكتابة"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr "أُزيل القرص أثناء الكتابة عليه."
+msgstr "تمت إزالة محرك الأقراص أثناء الكتابة."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "لم يُعثر على الملف المساعد. تحقق من التثبيت."
+msgstr "لم يتم العثور على الملف المساعد. التحقق من التثبيت."
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr "أوقف قبل انتهاء الكتابة."
+msgstr "تم الإيقاف قبل إكمال الكتابة."
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
 msgid "Finished!"
-msgstr "انتهى!"
+msgstr "اكتمل!"
 
 #: ../src/app/linuxdrivemanager.cpp:327
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr "تمت كتابة %1 بنجاح"
+msgstr "كتابة %1 كانت ناجحة"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
@@ -364,7 +364,7 @@ msgstr "يبدو أن UDisks2 غير متاح أو لا يمكن الوصول إ
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "لم يُعثر على الملف المساعد. تحقق من التثبيت."
+msgstr "لم يتم العثور على الملف المساعد. التحقق من التثبيت."
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
@@ -380,28 +380,28 @@ msgstr "فشلت كتابة %1"
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
 msgid "Finished!"
-msgstr "انتهى!"
+msgstr "اكتمل!"
 
 #: ../src/app/macdrivemanager.cpp:190
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr "تمت كتابة %1 بنجاح"
+msgstr "كتابة %1 كانت ناجحة"
 
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr "اختر مصدر الصورة"
+msgstr "اختيار مصدر صورة القرص"
 
 #: ../src/app/qml/MainPage.qml:57
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "التحميل تلقائيا"
+msgstr "التنزيل تلقائيًا"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr "اختر ملف .iso"
+msgstr "اختيار ملف ISO"
 
 #: ../src/app/qml/MainPage.qml:76
 #, qt-format
@@ -412,12 +412,12 @@ msgstr "استعادة <b>%1</b>"
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr "ملفات الصور"
+msgstr "ملفات صور الأقراص"
 
 #: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "كل الملفات"
+msgstr "جميع الملفات"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
@@ -427,7 +427,7 @@ msgstr "فتح ملف"
 #: ../src/app/releasemanager.cpp:392
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
-msgstr "اختر ملفا من أقراصك"
+msgstr "اختيار ملف من محرك(ات) أقراصك"
 
 #: ../src/app/releasemanager.cpp:393
 msgctxt "Release|"
@@ -436,13 +436,13 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
-"<p>يمكنك هنا اختيار صورة نظام تشغيل من قرصك الصلب لتُكتب على قرص USB.</"
-"p><p>حاليا يمكن فقط كتابة الصور الخام (.iso أو .bin)</p>"
+"<p>يمكنك هنا اختيار صورة نظام تشغيل من قرصك الصلب لكتابته على محرك أقراص "
+"USB.</p><p>حاليًا يمكن فقط كتابة الصور الأقراص الخامة (ISO أو BIN)</p>"
 
 #: ../src/app/releasemanager.cpp:423
 msgctxt "Release|"
 msgid "Fedora Spins"
-msgstr "انبثاقات فيدورا"
+msgstr "متحورات فيدورا"
 
 #: ../src/app/releasemanager.cpp:425
 msgctxt "Release|"
@@ -452,32 +452,32 @@ msgstr "مختبرات فيدورا"
 #: ../src/app/releasemanager.cpp:427
 msgctxt "Release|"
 msgid "Emerging Fedora Editions"
-msgstr "إصدارات فيدورا المستجدة"
+msgstr "إصدارات فيدورا المستحدثة"
 
 #: ../src/app/releasemanager.cpp:429
 msgctxt "Release|"
 msgid "Other"
-msgstr "أخرى"
+msgstr "غير ذلك"
 
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "إنتل/AMD 64بِت"
+msgstr "Intel/AMD (64 بت)"
 
 #: ../src/app/releasemanager.cpp:1069
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr "صورة ISO لإنتل وAMD والبنى المتوافقة الأخرى (64بت)"
+msgstr "صورة قرص بصيغة ISO لـ Intel وAMD وأجهزة كمبيوتر متوافقة أخرى (64 بت)"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "إنتل/AMD 32بِت"
+msgstr "Intel/AMD (32 بت)"
 
 #: ../src/app/releasemanager.cpp:1070
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr "صورة ISO لإنتل وAMD والبنى المتوافقة الأخرى (32بت)"
+msgstr "صورة قرص بصيغة ISO لـ Intel وAMD وأجهزة كمبيوتر متوافقة أخرى (32 بت)"
 
 #: ../src/app/releasemanager.cpp:1071
 msgctxt "ReleaseArchitecture|"
@@ -488,7 +488,7 @@ msgstr "ARM v7"
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr "صور خام مضغوطة بـLZMA لأجهزة ARM v7 مثل راسبيري باي 2 و 3"
+msgstr "صورة قرص خامة مضغوطة بـ LZMA لأجهزة ARM v7 مثل Raspberry Pi 2/3"
 
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
@@ -498,42 +498,42 @@ msgstr "AArch64"
 #: ../src/app/releasemanager.cpp:1072
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "صور خام مضغوطة بـLZMA لأجهزة ببنية AArch64"
+msgstr "صورة قرص خامة مضغوطة بـ LZMA لأجهزة AArch64"
 
 #: ../src/app/releasemanager.cpp:391
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
-msgstr "صور مخصصة"
+msgstr "صورة قرص مخصصة"
 
 #: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
-msgstr "الصورة التي تم تحميلها فاسدة"
+msgstr "صورة القرص التي تم تنزيلها تالفة"
 
 #: ../src/app/releasemanager.cpp:944
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
-msgstr "الملف المُحمّل لا يمكن قراءته."
+msgstr "الملف الذي تم تنزيله غير قابل للقراءة."
 
 #: ../src/app/releasemanager.cpp:955
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr "إعادة تسمية الملف المؤقت غير ممكنة."
+msgstr "تعذر إعادة تسمية الملف المؤقت."
 
 #: ../src/app/releasemanager.h:372
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
-msgstr "تحضير"
+msgstr "قيد الإعداد"
 
 #: ../src/app/releasemanager.h:373
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
-msgstr "تحميل"
+msgstr "قيد التنزيل"
 
 #: ../src/app/releasemanager.h:374
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr "التحقق من التحميل"
+msgstr "قيد التحقق من التنزيل"
 
 #: ../src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
@@ -543,32 +543,32 @@ msgstr "جاهز للكتابة"
 #: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr "حُفظ ملف الصورة إلى مجلد تحميلاتك. الكتابة غير ممكنة"
+msgstr "تم حفظ ملف صورة القرص إلى مجلد التنزيلات. الكتابة غير ممكنة"
 
 #: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
 msgid "Writing"
-msgstr "كتابة"
+msgstr "قيد الكتابة"
 
 #: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
-msgstr "يجري التحقق من البيانات التي كتبت"
+msgstr "قيد التحقق من البيانات المكتوبة"
 
 #: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
-msgstr "انتهى!"
+msgstr "اكتمل!"
 
 #: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
-msgstr "البيانات المكتوبة فاسدة"
+msgstr "البيانات المكتوبة تالفة"
 
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr "فشل التحميل"
+msgstr "فشل التنزيل"
 
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
@@ -591,13 +591,13 @@ msgstr "%1 بيتا"
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr "%1مرشحة للإصدار"
+msgstr "%1 مرشح للإصدار"
 
 #: ../src/app/qml/RestorePage.qml:37
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr "استعادة القرص <b>%1</b>"
+msgstr "استعادة محرك الأقراص <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:49
 msgctxt "RestorePage|"
@@ -609,11 +609,10 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">لاستعادة كامل المساحة المتوفرة على القرص، ينبغي "
-"استعادته إلى أعدادات مُصنِّعه. سيُحذف نظام الإقلاع الحي وكافة البيانات "
-"المحفوظة.\n"
-"</p> <p align=\"justify\">لست بحاجة إلى استعادة القرص إذا كنت تريد كتابة "
-"نظام حيّ آخر عليه.</p><p align=\"justify\">هل تريد استعادته إلى إعدادات "
+"<p align=\"justify\">يضطر استعادة كامل المساحة المتوفرة على محرك الأقراص إلى "
+"تهيئته. سيتم حذف نظام الإقلاع المباشر وجميع البيانات المحفوظة.\n"
+"</p> <p align=\"justify\">لا حاجة إلى استعادة محرك الأقراص إذا كانت لكتابة "
+"نظام آخر عليه.</p><p align=\"justify\">هل يجب استعادته إلى إعدادات "
 "المصنع؟</p>"
 
 #: ../src/app/qml/RestorePage.qml:67
@@ -622,8 +621,8 @@ msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
-"<p align=\"justify\">يرجى الانتظار ريثما يستعيد كاتب وسائط فيدورا قرصك "
-"المحمول.</p>"
+"<p align=\"justify\">الرجاء الانتظار ريثما يستعيد كاتب وسائط فيدورا محرك "
+"أقراصك المحمول.</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
@@ -636,22 +635,23 @@ msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"للأسف، وقع خطأ أثناء العملية. رجاءً حاول استعادة القرص باستخدام أدوات النظام."
+"للأسف، وقع خطأ ما أثناء العملية. الرجاء محاولة استعادة محرك الأقراص باستخدام "
+"أدوات النظام."
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr "انتهت الاستعادة"
+msgstr "اكتملت الاستعادة"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr "اختر اصدار فيدورا"
+msgstr "اختيار اصدار فيدورا"
 
 #: ../src/app/qml/VersionPage.qml:48
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "اختر من:"
+msgstr "اختيار من:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
@@ -666,7 +666,7 @@ msgstr "الإصدارات المستحدثة"
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr "الانبثاقات"
+msgstr "المحتورات"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
@@ -676,114 +676,105 @@ msgstr "المختبرات"
 #: ../src/app/windrivemanager.cpp:265
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "لم يُعثر على الملف المساعد. تحقق من التثبيت."
+msgstr "لم يتم العثور على الملف المساعد. التحقق من التثبيت."
 
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr "انتهى!"
+msgstr "اكتمل!"
 
 #: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr "تمت كتابة %1 بنجاح"
+msgstr "كتابة %1 كانت ناجحة"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:271
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr ""
+msgstr "فشل بدء فك الضغط."
 
 #: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
 #: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
-#, fuzzy
-#| msgctxt "Download|"
-#| msgid "The download file is not writable."
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
-msgstr "ملف التحميل غير قابل للكتابة."
+msgstr "محرك الأقراص غير قابل للكتابة"
 
 #: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:315
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
-msgstr ""
+msgstr "لا توجد مساحة كافية لفك ضغط الملف."
 
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:320
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
-msgstr "الصورة التي تم تحميلها فاسدة"
+msgstr "الملف المضغوط الذي تم تنزيله تالف."
 
 #: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:323
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
-msgstr ""
+msgstr "خيارات فك الضغط غير مدعومة."
 
 #: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:326
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
-msgstr ""
+msgstr "خطأ غير معروف خلال فك الضغط."
 
 #: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
 #: ../src/helper/win/writejob.cpp:361
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded file is not readable."
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
-msgstr "الملف المُحمّل لا يمكن قراءته."
+msgstr "صورة القرص المصدر غير قابل للقراءة"
 
 #: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
 #: ../src/helper/win/writejob.cpp:406
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr ""
+msgstr "ربما محرك أقراصك تالف."
 
 #: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
 #: ../src/helper/win/writejob.cpp:411
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr ""
+msgstr "حدث خطأ غير متوقع خلال التحقق من الوسائط."
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "تعذر تخصيص زوج من المقابس"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "تعذر فتح الوجهة للكتابة"
 
 #: ../src/helper/win/writejob.cpp:74
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for writing"
-msgstr ""
+msgstr "تعذر فتح محرك الأقراص للكتابة"
 
 #: ../src/helper/win/writejob.cpp:98
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr ""
+msgstr "تعذر قفل محرك الأقراص"
 
 #: ../src/helper/win/writejob.cpp:134
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't remove the drive %1:"
-msgstr ""
+msgstr "تعذر إزالة محرك الأقراص %1:"
 
 #: ../src/helper/win/writejob.cpp:209
 msgctxt "WriteJob|"
 msgid "Couldn't unlock the drive"
-msgstr ""
+msgstr "تعذر فك قفل محرك الأقراص"
 
 #: ../src/app/qml/main.qml:116
 msgctxt "main|"
@@ -793,12 +784,12 @@ msgstr "كاتب وسائط فيدورا"
 #: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "اختر إصدار فيدورا"
+msgstr "اختيار إصدار فيدورا"
 
 #: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "اختر قرصا"
+msgstr "اختيار محرك أقراص"
 
 #: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
@@ -813,27 +804,27 @@ msgstr "إنهاء"
 #: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 msgctxt "main|"
 msgid "Write"
-msgstr "الكتابة"
+msgstr "كتابة"
 
 #: ../src/app/qml/main.qml:296
 msgctxt "main|"
 msgid "Download && Write"
-msgstr "تحميل وكتابة"
+msgstr "تنزيل وكتابة"
 
 #: ../src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "تحميل وكتابة"
+msgstr "تنزيل وكتابة"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 msgctxt "main|"
 msgid "Cancel"
-msgstr "الغاء"
+msgstr "إلغاء"
 
 #: ../src/app/qml/main.qml:306
 msgctxt "main|"
 msgid "Retry"
-msgstr "أعِد المحاولة"
+msgstr "إعادة المحاولة"
 
 #: ../src/app/qml/main.qml:308
 msgctxt "main|"
@@ -843,7 +834,7 @@ msgstr "التالي"
 #: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
-msgstr "عن"
+msgstr "لمحة"
 
 #: ../src/app/qml/main.qml:316
 msgctxt "main|"
@@ -860,7 +851,7 @@ msgstr "كاتب وسائط فيدورا"
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
-msgstr "أداة لإنشاء قرص USB حيّ بإحدى إصدارات فيدورا"
+msgstr "أداة لإنشاء محرك أقراص USB يقوم بتشغيل إحدى إصدارات فيدورا مباشرةً"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -872,12 +863,11 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
-"أداة لإنشاء قرص USB حيّ قابل للإقلاع بإحدى إصدارات فيدورا. ليس بوسع كاتب "
-"وسائط فيدورا كتابة صورة لقرصك المحمول فحسب، بل بوسعه أيضا تحميلها لك. يدعم "
-"الإصدارات الرسمية (الخادم ومحطة العمل) وانبثاقات فيدورا (أسطح مكتب كيدي "
-"بلازما، إكسفس، سينامون، ...) ومختبرات فيدورا (جناح التصميم، مختبر "
-"الأمن، ...). كما يعطيك معلومات أساسية عن كل واحد منها لمساعدتك في اختيار "
-"الأنسب."
+"أداة لإنشاء محرك أقراص USB مباشر قابل للإقلاع بإحدى إصدارات فيدورا. لا يقوم "
+"كاتب وسائط فيدورا بكتابة صورة القرص وحسب، بل بوسعه أيضًا تنزيلها لك. يدعم "
+"الإصدارات الرسمية (Server وWorkstation)، ومتحورات فيدورا (أسطح مكتب KDE "
+"وXfce وCinnamon...) ومختبرات فيدورا (Desgin Suite وSecurity Lab...). كما "
+"يعطيك معلومات أساسية عن كل واحد منهم لمساعدتك في اختيار الأنسب."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -885,12 +875,12 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
-"بوسع كاتب وسائط فيدورا أيضا كتابة صور ISO الأخرى القابلة للإقلاع من قرصك "
-"المحليّ، لكن تذكر أنه لم يُختبر سوى على صور فيدورا."
+"بوسع كاتب وسائط فيدورا أيضًا كتابة صور الأقراص الأخرى القابلة للإقلاع من "
+"قرصك المحلي، مع العلم أنه لم يُختبر سوى على صور أقراص فيدورا."
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
 msgid "Write Fedora images to your portable drives"
-msgstr "كتابة نسخ فيدروا الى الاقراص المحمولة"
+msgstr "كتابة صور أقراص فيدروا على محرك أقراصك المحمولة"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
 msgid "fmw;usb;iso;bootable;"
