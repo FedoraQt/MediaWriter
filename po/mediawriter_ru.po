@@ -9,12 +9,13 @@
 # Igor Kuzmenkov <igor.kuzmenkov.05@mail.ru>, 2022.
 # V I <xasertop@gmail.com>, 2022.
 # Vi <xasertop@gmail.com>, 2023.
+# Makar Razin <makarrazin14@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-03 13:56+0200\n"
-"PO-Revision-Date: 2023-09-05 15:21+0000\n"
-"Last-Translator: Vi <xasertop@gmail.com>\n"
+"PO-Revision-Date: 2024-01-10 22:36+0000\n"
+"Last-Translator: Makar Razin <makarrazin14@gmail.com>\n"
 "Language-Team: Russian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/ru/>\n"
 "Language: ru\n"
@@ -23,7 +24,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.18.2\n"
+"X-Generator: Weblate 5.3.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -46,7 +47,7 @@ msgstr "Fedora Media Writer проверяет наличие новых вер�
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr "Передавайте сообщения об ошибках или ваши предложения на %1"
+msgstr "Пожалуйста, сообщайте об ошибках и о ваших предложениях на %1"
 
 #: ../src/app/qml/AboutDialog.qml:95
 msgctxt "AboutDialog|"
@@ -75,7 +76,7 @@ msgid ""
 "time later."
 msgstr ""
 "Загрузка и запись на носитель будут прерваны. Этот процесс может быть "
-"возобновлен в дальнейшем в любое время."
+"возобновлён в дальнейшем в любое время."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
@@ -83,7 +84,7 @@ msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
-"Процесс записи будет прерван, после чего ваш диск придется восстанавливать."
+"Процесс записи будет прерван, после чего ваш диск придётся восстанавливать."
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
@@ -113,12 +114,12 @@ msgstr "Отменить проверку"
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr "Не удается получить требуемый образ."
+msgstr "Не удаётся получить требуемый образ."
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr "Может кончиться место в папке Загрузки."
+msgstr "Может закончиться место в папке Загрузки."
 
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
@@ -196,7 +197,7 @@ msgstr " (%1"
 #: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr "Ваш диск был отключен во время процесса"
+msgstr "Ваш диск был отключён во время процесса"
 
 #: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
@@ -207,7 +208,7 @@ msgstr "Загрузки сохраняются в папку загрузок."
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "Запись приведет к потере всех данных на %1."
+msgstr "Запись приведёт к потере всех данных на %1."
 
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
@@ -221,8 +222,8 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"Емкость вашего диска будет уменьшена. Ее нормальное значение можно вернуть с "
-"помощью Fedora Media Writer. Это приведет к удалению дистрибутива с вашего "
+"Ёмкость вашего диска будет уменьшена. Её нормальное значение можно вернуть с "
+"помощью Fedora Media Writer. Это приведёт к удалению дистрибутива с вашего "
 "диска."
 
 #: ../src/app/qml/DownloadPage.qml:167
@@ -319,7 +320,7 @@ msgstr "USB-накопитель"
 #: ../src/app/qml/DrivePage.qml:135
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr "Нет подключенных переносных накопителей"
+msgstr "Нет подключённых переносных накопителей"
 
 #: ../src/app/qml/DrivePage.qml:155
 msgctxt "DrivePage|"
@@ -329,12 +330,12 @@ msgstr "Загрузить"
 #: ../src/app/qml/DrivePage.qml:160
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "Удалить загруженное после записи"
+msgstr "Удалить загруженный образ после записи"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr "Диск был удален во время записи."
+msgstr "Диск был удалён во время записи."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
@@ -449,14 +450,14 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
-"<p>Здесь можно выбрать образ ОС с жесткого диска для записи на флэш-"
-"накопитель</p><p>В настоящее время поддерживается только запись raw-образов "
-"диска (.iso или .bin)</p>"
+"<p>Здесь можно выбрать образ ОС с жёсткого диска для записи на "
+"флэш-накопитель</p><p>В настоящее время поддерживается только запись raw-"
+"образов диска (.iso или .bin)</p>"
 
 #: ../src/app/releasemanager.cpp:423
 msgctxt "Release|"
 msgid "Fedora Spins"
-msgstr "Сборки Fedora"
+msgstr "Fedora Spins"
 
 #: ../src/app/releasemanager.cpp:425
 msgctxt "Release|"
@@ -528,7 +529,7 @@ msgstr "Другой образ"
 #: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
-msgstr "Загруженный образ поврежден"
+msgstr "Загруженный образ повреждён"
 
 #: ../src/app/releasemanager.cpp:944
 msgctxt "ReleaseVariant|"
@@ -538,7 +539,7 @@ msgstr "Загруженный файл не читается."
 #: ../src/app/releasemanager.cpp:955
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr "Не удается переименовать временный файл."
+msgstr "Не удаётся переименовать временный файл."
 
 #: ../src/app/releasemanager.h:372
 msgctxt "ReleaseVariant|"
@@ -563,7 +564,7 @@ msgstr "Готово для записи"
 #: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr "Файл образа сохранен в вашу папку для загрузок. Запись невозможна"
+msgstr "Файл образа сохранён в вашу папку для загрузок. Запись невозможна"
 
 #: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
@@ -629,10 +630,10 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
-"<p align=\"justify\"> Чтобы вернуть все имеющееся на диске пространство, "
+"<p align=\"justify\"> Чтобы вернуть всё имеющееся на диске пространство, "
 "нужно восстановить заводские настройки диска. Будут удалены live-система и "
-"все сохраненные данные. </p> <p align=\"justify\"> Не нужно восстанавливать "
-"диск, если вы хотите записать на него еще одну live-систему.\n"
+"все сохранённые данные. </p> <p align=\"justify\"> Не нужно восстанавливать "
+"диск, если вы хотите записать на него ещё одну live-систему.\n"
 "                     </p> <p align=\"justify\"> Хотите восстановить "
 "заводские настройки? </p>"
 
@@ -734,7 +735,7 @@ msgstr "Недостаточно памяти для распаковки фай
 #: ../src/helper/win/writejob.cpp:320
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
-msgstr "Загруженный сжатый файл поврежден."
+msgstr "Загруженный сжатый файл повреждён."
 
 #: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:323
@@ -758,7 +759,7 @@ msgstr "Исходный образ не читается"
 #: ../src/helper/win/writejob.cpp:406
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr "Ваш диск, вероятно, поврежден."
+msgstr "Ваш диск, вероятно, повреждён."
 
 #: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
 #: ../src/helper/win/writejob.cpp:411
