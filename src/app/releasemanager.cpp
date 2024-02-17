@@ -429,7 +429,7 @@ QString Release::sourceString()
     case LABS:
         return tr("Fedora Labs");
     case EMERGING:
-        return tr("Emerging Fedora Editions");
+        return tr("Fedora Atomic Desktops");
     default:
         return tr("Other");
     }

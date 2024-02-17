@@ -26,53 +26,53 @@ import QtQml 6.2
 Page {
     id: versionPage
     property int prevSource: 0
-    
+
     ColumnLayout {
         anchors.fill: parent
-        
+
         Heading {
             Layout.alignment: Qt.AlignHCenter
             text: qsTr("Select Fedora Release")
             level: 5
         }
-        
+
         ButtonGroup {
             id: radioGroup
         }
-        
+
         ColumnLayout {
             id: radioColumn
             Layout.alignment: Qt.AlignTop
-            
+
             Label {
                 text: qsTr("Select from:")
             }
-        
+
             RadioButton {
                 checked: true
                 text: qsTr("Official Editions")
                 onClicked: changeFilter(Units.Source.Product)
                 ButtonGroup.group: radioGroup
             }
-    
+
             RadioButton {
-                text: qsTr("Emerging Editions")
+                text: qsTr("Atomic Desktops")
                 onClicked: changeFilter(Units.Source.Emerging)
                 ButtonGroup.group: radioGroup
             }
-            
+
             RadioButton {
                 text: qsTr("Spins")
                 onClicked: changeFilter(Units.Source.Spins)
                 ButtonGroup.group: radioGroup
             }
-            
+
             RadioButton {
                 text: qsTr("Labs")
                 onClicked: changeFilter(Units.Source.Labs)
                 ButtonGroup.group: radioGroup
             }
-        
+
             ComboBox {
                 id: selectFromComboBox
                 Layout.alignment: Qt.AlignHCenter
@@ -86,7 +86,7 @@ Page {
             }
         }
     }
-    
+
     function changeFilter(filter) {
         releases.filterSource = filter
         if (releases.filterSource != prevSource) {
