@@ -8,11 +8,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 13:56+0200\n"
+"POT-Creation-Date: 2024-03-12 21:31+0100\n"
 "PO-Revision-Date: 2023-02-17 14:20+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/he/>\n"
+"Language-Team: Hebrew <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -101,6 +101,14 @@ msgstr "ביטול כתיבה"
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "ביטול בדיקה"
+
+#: ../src/app/qml/CancelDialog.qml:117
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Cancel"
+msgctxt "CancelDialog|"
+msgid "Cancel"
+msgstr "ביטול"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -234,9 +242,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"הלוח או ההתקן שלך אינו נתמך על ידי כותב המדיה של פדורה. נא לעיין ב<a href="
-"%1>עמוד הזה</a> לקבלת מידע נוסף על התאימות של ההתקן עם פדורה וכיצד ליצור "
-"מדיה להתקנה עבורו."
+"הלוח או ההתקן שלך אינו נתמך על ידי כותב המדיה של פדורה. נא לעיין ב<a "
+"href=%1>עמוד הזה</a> לקבלת מידע נוסף על התאימות של ההתקן עם פדורה וכיצד "
+"ליצור מדיה להתקנה עבורו."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -252,7 +260,7 @@ msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr "יש להפעיל מחדש ולטעון את המערכת דרך %1 כדי להתחיל להשתמש ב־%2."
 
-#: ../src/app/drivemanager.cpp:308
+#: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "הכונן הזה לא גדול מספיק."
@@ -422,12 +430,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "פתיחת קובץ"
 
-#: ../src/app/releasemanager.cpp:392
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "יש לבחור קובץ מהכונן"
 
-#: ../src/app/releasemanager.cpp:393
+#: ../src/app/releasemanager.cpp:398
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -437,155 +445,158 @@ msgstr ""
 "<p>כאן ניתן לבחור דמות מערכת הפעלה מהכונן הקשיח אותה יש לכתוב לכונן ההבזק</"
 "p><p>כרגע נתמך רק בכתיבת דמות כונן גולמית (.iso או .bin)</p>"
 
-#: ../src/app/releasemanager.cpp:423
+#: ../src/app/releasemanager.cpp:428
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "מהדורות פדורה"
 
-#: ../src/app/releasemanager.cpp:425
+#: ../src/app/releasemanager.cpp:430
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "מעבדות פדורה"
 
-#: ../src/app/releasemanager.cpp:427
+#: ../src/app/releasemanager.cpp:432
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Labs"
 msgctxt "Release|"
-msgid "Emerging Fedora Editions"
-msgstr "מהדורות מתפתחות של פדורה"
+msgid "Fedora Atomic Desktops"
+msgstr "מעבדות פדורה"
 
-#: ../src/app/releasemanager.cpp:429
+#: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
 msgid "Other"
 msgstr "אחר"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr "Intel/AMD‏ 64 סיביות"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "דמות ISO עבור Intel, AMD ושאר מחשבים אישיים תואמים (64 סיביות)"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr "Intel/AMD‏ 32 סיביות"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "דמות ISO עבור Intel, AMD ושאר מחשבים אישיים תואמים (32 סיביות)"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr "דמות גולמית בדחיסת LZMA עבור מכונות ARM v7-A כגון Raspberry Pi 2 ו־3"
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "דמות גולמית בדחיסת LZMA למכונות AArch64"
 
-#: ../src/app/releasemanager.cpp:391
+#: ../src/app/releasemanager.cpp:396
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "דמות בהתאמה אישית"
 
-#: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
+#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "הדמות שירדה פגומה"
 
-#: ../src/app/releasemanager.cpp:944
+#: ../src/app/releasemanager.cpp:949
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "הקובץ שהתקבל אינו זמין לקריאה."
 
-#: ../src/app/releasemanager.cpp:955
+#: ../src/app/releasemanager.cpp:960
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "לא ניתן לשנות את שם הקובץ הזמני."
 
-#: ../src/app/releasemanager.h:372
+#: ../src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "בהכנה"
 
-#: ../src/app/releasemanager.h:373
+#: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "בהורדה"
 
-#: ../src/app/releasemanager.h:374
+#: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "ההורדה נבדקת"
 
-#: ../src/app/releasemanager.h:375
+#: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
 msgstr "מוכן לכתיבה"
 
-#: ../src/app/releasemanager.h:376
+#: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr "קובץ הדמות נשמר לתיקיית ההורדות שלך. אין אפשרות לכתוב"
 
-#: ../src/app/releasemanager.h:377
+#: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "מתבצעת כתיבה"
 
-#: ../src/app/releasemanager.h:378
+#: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "הנתונים שנכתבו נבדקים"
 
-#: ../src/app/releasemanager.h:379
+#: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "הסתיים!"
 
-#: ../src/app/releasemanager.h:380
+#: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
 msgstr "הנתונים שנכתב פגומים"
 
-#: ../src/app/releasemanager.h:381
+#: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "ההורדה נכשלה"
 
-#: ../src/app/releasemanager.h:382
+#: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "שגיאה"
 
-#: ../src/app/releasemanager.cpp:701
+#: ../src/app/releasemanager.cpp:706
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 אלפא"
 
-#: ../src/app/releasemanager.cpp:703
+#: ../src/app/releasemanager.cpp:708
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 בטא"
 
-#: ../src/app/releasemanager.cpp:705
+#: ../src/app/releasemanager.cpp:710
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -657,9 +668,12 @@ msgid "Official Editions"
 msgstr "מהדורות רשמיות"
 
 #: ../src/app/qml/VersionPage.qml:59
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Labs"
 msgctxt "VersionPage|"
-msgid "Emerging Editions"
-msgstr "מהדורות מתפתחות"
+msgid "Atomic Desktops"
+msgstr "מעבדות פדורה"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
@@ -671,17 +685,17 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr "מעבדות"
 
-#: ../src/app/windrivemanager.cpp:265
+#: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "קובץ ההרצה של המסייע אינו נמצא. יש לבדוק את ההתקנה."
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr "הסתיימה!"
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -876,13 +890,21 @@ msgstr ""
 "כותב המדיה של Fedora מסוגל גם לכתוב דמויות ISO ניתנות לאתחול אחרות מהכונן "
 "המקומי, אך מוטב לזכור שהוא נבדק רק עם דמויות של Fedora."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
 msgstr "כתיבת דמויות Fedora אל כוננים ניידים"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;אתחול;טעינה;הפעלה;איתחול;בוט;"
+
+#~ msgctxt "Release|"
+#~ msgid "Emerging Fedora Editions"
+#~ msgstr "מהדורות מתפתחות של פדורה"
+
+#~ msgctxt "VersionPage|"
+#~ msgid "Emerging Editions"
+#~ msgstr "מהדורות מתפתחות"
 
 #~ msgctxt "DownloadPage|"
 #~ msgid "Verifying written data"
@@ -1096,13 +1118,6 @@ msgstr "fmw;usb;iso;אתחול;טעינה;הפעלה;איתחול;בוט;"
 #~| msgid "Fedora Labs"
 #~ msgctxt "Release|"
 #~ msgid "Fedora SoaS Desktop"
-#~ msgstr "מעבדות פדורה"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
-#~ msgctxt "Release|"
-#~ msgid "Fedora i3 Desktop"
 #~ msgstr "מעבדות פדורה"
 
 #, fuzzy

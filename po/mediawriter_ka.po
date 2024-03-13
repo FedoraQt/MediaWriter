@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 13:56+0200\n"
+"POT-Creation-Date: 2024-03-12 21:31+0100\n"
 "PO-Revision-Date: 2023-07-05 14:21+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
-"Language-Team: Georgian <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/ka/>\n"
+"Language-Team: Georgian <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,6 +103,14 @@ msgstr "ჩაწერის გაუქმება"
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "შემოწმების გაუქმება"
+
+#: ../src/app/qml/CancelDialog.qml:117
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Cancel"
+msgctxt "CancelDialog|"
+msgid "Cancel"
+msgstr "გაუქმება"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -256,7 +264,7 @@ msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr "%2-ის გამოყენების დასაწყებად გადატვირთეთ და ჩაიტვირთეთ %1-დან."
 
-#: ../src/app/drivemanager.cpp:308
+#: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "დისკი საკმარისად დიდი არაა."
@@ -426,12 +434,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "ფაილის გახსნა"
 
-#: ../src/app/releasemanager.cpp:392
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "აირჩიეთ ფაილი თქვენი დისკებიდან"
 
-#: ../src/app/releasemanager.cpp:393
+#: ../src/app/releasemanager.cpp:398
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -442,54 +450,54 @@ msgstr ""
 "p><p>ამჟამად მხარდაჭერილია მხოლოდ დაუმუშავებელი ასლების (.iso და .bin) "
 "ჩაწერა.</p>"
 
-#: ../src/app/releasemanager.cpp:423
+#: ../src/app/releasemanager.cpp:428
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora-ის ანაწყობები"
 
-#: ../src/app/releasemanager.cpp:425
+#: ../src/app/releasemanager.cpp:430
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora-ის ლაბორატორიები"
 
-#: ../src/app/releasemanager.cpp:427
+#: ../src/app/releasemanager.cpp:432
 msgctxt "Release|"
-msgid "Emerging Fedora Editions"
-msgstr "Fedora-ის ახალი ვერსიები"
+msgid "Fedora Atomic Desktops"
+msgstr ""
 
-#: ../src/app/releasemanager.cpp:429
+#: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
 msgid "Other"
 msgstr "სხვა"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr "Intel/AMD 64-ბიტიანი"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
 "ISO ფორმატის ასლი intel, AMD და თავსებადი კომპიუტერებისთვის (64-ბიტიანი)"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr "Intel/AMD 32-ბიტიანი"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
 "ISO ფორმატის ასლი intel, AMD და თავსებადი კომპიუტერებისთვის (32-ბიტიანი)"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
@@ -497,105 +505,105 @@ msgstr ""
 "LZMA-ით შეკუმშული ასლი ARM v7-A მანქანებისთვის, როგორებიცაა Raspberry Pi 2 "
 "და 3"
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "LZMA-ით შეკუმშული ასლი AArch64 ტიპის მანქანებისთვის"
 
-#: ../src/app/releasemanager.cpp:391
+#: ../src/app/releasemanager.cpp:396
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "ხელით მითითებული ასლი"
 
-#: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
+#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "გადმოწერილი ასლი დაზიანებულია"
 
-#: ../src/app/releasemanager.cpp:944
+#: ../src/app/releasemanager.cpp:949
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "გადმოწერილი ფაილი წაკითხვადი არაა."
 
-#: ../src/app/releasemanager.cpp:955
+#: ../src/app/releasemanager.cpp:960
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "დროებითი ფაილისთვის სახელის გადარქმევის შეცდომა."
 
-#: ../src/app/releasemanager.h:372
+#: ../src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "მომზადება"
 
-#: ../src/app/releasemanager.h:373
+#: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "მიმდინარეობს გადმოწერა"
 
-#: ../src/app/releasemanager.h:374
+#: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "გადმოწერილის შემოწმება"
 
-#: ../src/app/releasemanager.h:375
+#: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
 msgstr "ჩასაწერად მზადაა"
 
-#: ../src/app/releasemanager.h:376
+#: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
 "ასლის ფაილი შენახულია თქვენი გადმოწერების საქაღლდეში. ჩაწერა შეუძლებელია"
 
-#: ../src/app/releasemanager.h:377
+#: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "მიმდინარეობს ჩაწერა"
 
-#: ../src/app/releasemanager.h:378
+#: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "ჩაწერილი მონაცემების შემოწმება"
 
-#: ../src/app/releasemanager.h:379
+#: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "დასრულებულია!"
 
-#: ../src/app/releasemanager.h:380
+#: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
 msgstr "გადმოწერილი მონაცემების დაზიანებულია"
 
-#: ../src/app/releasemanager.h:381
+#: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "გადმოწერის შეცდომა"
 
-#: ../src/app/releasemanager.h:382
+#: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "შეცდომა"
 
-#: ../src/app/releasemanager.cpp:701
+#: ../src/app/releasemanager.cpp:706
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 ალფა"
 
-#: ../src/app/releasemanager.cpp:703
+#: ../src/app/releasemanager.cpp:708
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 ბეტა"
 
-#: ../src/app/releasemanager.cpp:705
+#: ../src/app/releasemanager.cpp:710
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -621,8 +629,8 @@ msgstr ""
 "პარამეტრებზე უნდა დაბრუნდეს. დისკზე არსებული ცოცხალი სისტემა და შენახული "
 "მონაცემები წაიშლება.</p><p align=\"justify\">თუ აპირებთ, დისკზე სხვა ცოცხალი "
 "სისტემა ჩაწეროთ, მონაცემების აღდგენა არ გჭირდებათ.\n"
-"          </p><p align=\"justify\">გნებავთ ქარხნული პარამეტრების "
-"დაბრუნება?</p>"
+"          </p><p align=\"justify\">გნებავთ ქარხნული პარამეტრების დაბრუნება?</"
+"p>"
 
 #: ../src/app/qml/RestorePage.qml:67
 msgctxt "RestorePage|"
@@ -669,8 +677,8 @@ msgstr "ოფიციალური გამოცემები"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
-msgid "Emerging Editions"
-msgstr "მომავალი გამოცემები"
+msgid "Atomic Desktops"
+msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
@@ -682,17 +690,17 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr "ლაბი"
 
-#: ../src/app/windrivemanager.cpp:265
+#: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "დამხმარე გამშვები ფაილი ვერ ვიპოვე. შეამოწმეთ თქვენი ფაილები."
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr "დასრულებულია!"
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -889,13 +897,21 @@ msgstr ""
 "ფაილების ჩაწერაც შეუძლია, მაგრამ, დაიმახსოვრეთ, რომ ის მხოლოდ Fedora-ის "
 "ასლებზეა დატესტილი."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
 msgstr "Fedora-ის ასლის გადატანად დისკებზე ჩაწერა"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;"
+
+#~ msgctxt "Release|"
+#~ msgid "Emerging Fedora Editions"
+#~ msgstr "Fedora-ის ახალი ვერსიები"
+
+#~ msgctxt "VersionPage|"
+#~ msgid "Emerging Editions"
+#~ msgstr "მომავალი გამოცემები"
 
 #~ msgctxt "DownloadPage|"
 #~ msgid "Verifying written data"

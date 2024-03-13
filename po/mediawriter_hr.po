@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 13:56+0200\n"
+"POT-Creation-Date: 2024-03-12 21:31+0100\n"
 "PO-Revision-Date: 2022-08-25 06:19+0000\n"
 "Last-Translator: Gogo Gogsi <linux.hr@protonmail.com>\n"
-"Language-Team: Croatian <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/hr/>\n"
+"Language-Team: Croatian <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.13\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -105,6 +105,14 @@ msgstr "Prekini zapisivanje"
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Prekini provjeru"
+
+#: ../src/app/qml/CancelDialog.qml:117
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Cancel"
+msgctxt "CancelDialog|"
+msgid "Cancel"
+msgstr "Odustani"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -259,7 +267,7 @@ msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr "Ponovno pokreni s %1 kako bi počeli koristiti %2."
 
-#: ../src/app/drivemanager.cpp:308
+#: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "Ovaj disk nije dovoljno velik."
@@ -431,12 +439,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "Otvori datoteku"
 
-#: ../src/app/releasemanager.cpp:392
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Odaberite datoteku sa svojeg uređaja"
 
-#: ../src/app/releasemanager.cpp:393
+#: ../src/app/releasemanager.cpp:398
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -447,158 +455,161 @@ msgstr ""
 "zapisana na vašu usb uređaj</p><p>Trenutno je podržano samo zapisivanje "
 "slika raw diska (.iso ili .bin)</p>"
 
-#: ../src/app/releasemanager.cpp:423
+#: ../src/app/releasemanager.cpp:428
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora spinovi"
 
-#: ../src/app/releasemanager.cpp:425
+#: ../src/app/releasemanager.cpp:430
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora labos"
 
-#: ../src/app/releasemanager.cpp:427
+#: ../src/app/releasemanager.cpp:432
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora i3 Desktop"
 msgctxt "Release|"
-msgid "Emerging Fedora Editions"
-msgstr "Buduća Fedora izdanja"
+msgid "Fedora Atomic Desktops"
+msgstr "Fedora i3 Desktop"
 
-#: ../src/app/releasemanager.cpp:429
+#: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
 msgid "Other"
 msgstr "Ostalo"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr "Intel/AMD 64bitni"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
 "Slika ISO formata za Intel, AMD i ostale kompatibilne PC-ove (64-bitne)"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr "Intel/AMD 32bitni"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
 "Slika ISO formata za Intel, AMD i ostale kompatibilne PC-ove (32-bitne)"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr "LZMA-sažeta raw slika za ARM v7-A računala poput Raspberry Pi 2 i 3"
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "LZMA-sažeta raw slika za AArch64 računala"
 
-#: ../src/app/releasemanager.cpp:391
+#: ../src/app/releasemanager.cpp:396
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Prilagođena slika"
 
-#: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
+#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Preuzeta slika je oštećena"
 
-#: ../src/app/releasemanager.cpp:944
+#: ../src/app/releasemanager.cpp:949
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Preuzeta datoteka se ne može čitati."
 
-#: ../src/app/releasemanager.cpp:955
+#: ../src/app/releasemanager.cpp:960
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Nemoguće preimenovanje privremene datoteke."
 
-#: ../src/app/releasemanager.h:372
+#: ../src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Pripremanje"
 
-#: ../src/app/releasemanager.h:373
+#: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "Preuzimanje"
 
-#: ../src/app/releasemanager.h:374
+#: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "Provjera preuzimanja"
 
-#: ../src/app/releasemanager.h:375
+#: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
 msgstr "Spremno za zapisivanje"
 
-#: ../src/app/releasemanager.h:376
+#: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
 "Datoteka slike je spremljena u vašu mapu preuzimanja. Zapisivanje nije moguće"
 
-#: ../src/app/releasemanager.h:377
+#: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "Zapisivanje"
 
-#: ../src/app/releasemanager.h:378
+#: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "Provjera zapisanih podataka"
 
-#: ../src/app/releasemanager.h:379
+#: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "Završeno!"
 
-#: ../src/app/releasemanager.h:380
+#: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
 msgstr "Zapisani podaci su oštećeni"
 
-#: ../src/app/releasemanager.h:381
+#: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "Preuzimanje neuspjelo"
 
-#: ../src/app/releasemanager.h:382
+#: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Greška"
 
-#: ../src/app/releasemanager.cpp:701
+#: ../src/app/releasemanager.cpp:706
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alfa"
 
-#: ../src/app/releasemanager.cpp:703
+#: ../src/app/releasemanager.cpp:708
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:705
+#: ../src/app/releasemanager.cpp:710
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -672,9 +683,12 @@ msgid "Official Editions"
 msgstr "Službenih izdanja"
 
 #: ../src/app/qml/VersionPage.qml:59
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora i3 Desktop"
 msgctxt "VersionPage|"
-msgid "Emerging Editions"
-msgstr "Buduća izdanja"
+msgid "Atomic Desktops"
+msgstr "Fedora i3 Desktop"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
@@ -686,18 +700,18 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr "Laboratorij"
 
-#: ../src/app/windrivemanager.cpp:265
+#: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "Nemoguće je pronaći binarnu datoteku pomoći. Provjerite svoju instalaciju."
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr "Završeno!"
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -879,10 +893,10 @@ msgid ""
 msgstr ""
 "Alat stvaranja pokretljivog USB uređaja za izdanja Fedore. Fedora zapisnik "
 "medija uz zapisivanje slika na vaš usb uređaj može i preuzimati slike "
-"umjesto vas. Nudi službena izdanja (Server, Workstation), Fedora spinove ("
-"KDE Plasma radnu površinu, Xfce radnu površinu, Cinnamon radnu površinu,...) "
-"i Fedora labos (Paket za dizajn, Sigurnosni labos,...). Omogućuje osnovne "
-"informacije o svakom izdanju kako bi vam olakšao odabir."
+"umjesto vas. Nudi službena izdanja (Server, Workstation), Fedora spinove "
+"(KDE Plasma radnu površinu, Xfce radnu površinu, Cinnamon radnu "
+"površinu,...) i Fedora labos (Paket za dizajn, Sigurnosni labos,...). "
+"Omogućuje osnovne informacije o svakom izdanju kako bi vam olakšao odabir."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -893,13 +907,21 @@ msgstr ""
 "Fedora zapisnik medija može zapisivati i druge pokretljive ISO slike učitane "
 "s vašeg čvrstog diska, ali zapamtite da je samo testiran s Fedora slikama."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
 msgstr "Zapišite Fedora slike na vaše uklonjive uređaje"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;pokretljivo;"
+
+#~ msgctxt "Release|"
+#~ msgid "Emerging Fedora Editions"
+#~ msgstr "Buduća Fedora izdanja"
+
+#~ msgctxt "VersionPage|"
+#~ msgid "Emerging Editions"
+#~ msgstr "Buduća izdanja"
 
 #, fuzzy
 #~| msgctxt "ReleaseVariant|"
@@ -1642,10 +1664,6 @@ msgstr "fmw;usb;iso;pokretljivo;"
 #~ msgctxt "Release|"
 #~ msgid "i3"
 #~ msgstr "i3"
-
-#~ msgctxt "Release|"
-#~ msgid "Fedora i3 Desktop"
-#~ msgstr "Fedora i3 Desktop"
 
 #~ msgctxt "Release|"
 #~ msgid "Simplicity over Complexity"

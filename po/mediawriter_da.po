@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 13:56+0200\n"
+"POT-Creation-Date: 2024-03-12 21:31+0100\n"
 "PO-Revision-Date: 2021-07-11 17:14+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Danish <https://translate.fedoraproject.org/projects/fedora-"
@@ -125,6 +125,14 @@ msgstr "Skriver"
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:117
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Cancel"
+msgctxt "CancelDialog|"
+msgid "Cancel"
+msgstr "Annuller"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -328,7 +336,7 @@ msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr ""
 
-#: ../src/app/drivemanager.cpp:308
+#: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "Drevet er ikke stort nok."
@@ -541,12 +549,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:392
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Vælg en fil fra dine drev"
 
-#: ../src/app/releasemanager.cpp:393
+#: ../src/app/releasemanager.cpp:398
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -557,27 +565,30 @@ msgstr ""
 "flashdisk</p><p>I øjeblikket understøttes kun skrivning af rå diskaftryk (."
 "iso eller .bin)</p>"
 
-#: ../src/app/releasemanager.cpp:423
+#: ../src/app/releasemanager.cpp:428
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora Spins"
 
-#: ../src/app/releasemanager.cpp:425
+#: ../src/app/releasemanager.cpp:430
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
-#: ../src/app/releasemanager.cpp:427
+#: ../src/app/releasemanager.cpp:432
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Labs"
 msgctxt "Release|"
-msgid "Emerging Fedora Editions"
-msgstr ""
+msgid "Fedora Atomic Desktops"
+msgstr "Fedora Labs"
 
-#: ../src/app/releasemanager.cpp:429
+#: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
 msgid "Other"
 msgstr "Andre"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 #, fuzzy
 #| msgctxt "ReleaseArchitecture|"
 #| msgid "Intel 64bit"
@@ -585,13 +596,13 @@ msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr "Intel 64-bit"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
 "ISO-formateret aftryk til Intel, AMD og andre kompatible PC'er (64-bit)"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 #, fuzzy
 #| msgctxt "ReleaseArchitecture|"
 #| msgid "Intel 32bit"
@@ -599,18 +610,18 @@ msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr "Intel 32-bit"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
 "ISO-formateret aftryk til Intel, AMD og andre kompatible PC'er (32-bit)"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
@@ -618,37 +629,37 @@ msgstr ""
 "LZMA-komprimeret råt aftryk til ARM v7-A-maskiner, såsom Raspberry Pi 2 "
 "eller 3"
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "LZMA-komprimeret råt aftryk til AArch64-maskiner"
 
-#: ../src/app/releasemanager.cpp:391
+#: ../src/app/releasemanager.cpp:396
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Brugerdefineret aftryk"
 
-#: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
+#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Det downloadede aftryk er ødelagt"
 
-#: ../src/app/releasemanager.cpp:944
+#: ../src/app/releasemanager.cpp:949
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Den downloadede fil kan ikke læses."
 
-#: ../src/app/releasemanager.cpp:955
+#: ../src/app/releasemanager.cpp:960
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Kan ikke omdøbe den midlertidige fil."
 
-#: ../src/app/releasemanager.h:372
+#: ../src/app/releasemanager.h:375
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Preparing"
@@ -656,7 +667,7 @@ msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Forbereder"
 
-#: ../src/app/releasemanager.h:373
+#: ../src/app/releasemanager.h:376
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -664,7 +675,7 @@ msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "Downloader"
 
-#: ../src/app/releasemanager.h:374
+#: ../src/app/releasemanager.h:377
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Checking the download"
@@ -672,17 +683,17 @@ msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "Tjekker det downloadede"
 
-#: ../src/app/releasemanager.h:375
+#: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
 msgstr "Klar til at skrive"
 
-#: ../src/app/releasemanager.h:376
+#: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr "Aftryksfil blev gemt i din Downloads-mappe. Skrivning er ikke muligt"
 
-#: ../src/app/releasemanager.h:377
+#: ../src/app/releasemanager.h:380
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Writing"
@@ -690,7 +701,7 @@ msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "Skriver"
 
-#: ../src/app/releasemanager.h:378
+#: ../src/app/releasemanager.h:381
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Checking the written data"
@@ -698,17 +709,17 @@ msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "Tjekker den skrevne data"
 
-#: ../src/app/releasemanager.h:379
+#: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "Færdig!"
 
-#: ../src/app/releasemanager.h:380
+#: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
 msgstr "Den skrevne data er ødelagt"
 
-#: ../src/app/releasemanager.h:381
+#: ../src/app/releasemanager.h:384
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -716,24 +727,24 @@ msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "Download mislykkedes"
 
-#: ../src/app/releasemanager.h:382
+#: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Fejl"
 
-#: ../src/app/releasemanager.cpp:701
+#: ../src/app/releasemanager.cpp:706
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../src/app/releasemanager.cpp:703
+#: ../src/app/releasemanager.cpp:708
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:705
+#: ../src/app/releasemanager.cpp:710
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -846,9 +857,12 @@ msgid "Official Editions"
 msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:59
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Labs"
 msgctxt "VersionPage|"
-msgid "Emerging Editions"
-msgstr ""
+msgid "Atomic Desktops"
+msgstr "Fedora Labs"
 
 #: ../src/app/qml/VersionPage.qml:65
 #, fuzzy
@@ -863,17 +877,17 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:265
+#: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "Kunne ikke finde hjælperbinæren. Tjek din installation."
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr "Færdig!"
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -1096,11 +1110,11 @@ msgstr ""
 "Fedora-medieskriver kan også skrive andre opstartsbare ISO'er indlæst fra "
 "din lokale disk, men husk på at den kun er testet med Fedora-aftryk."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
 msgstr "Skriv Fedora-aftryk på dine flytbare drev"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
 
@@ -1417,13 +1431,6 @@ msgstr ""
 #~ msgctxt "Release|"
 #~ msgid "i3"
 #~ msgstr "i3"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
-#~ msgctxt "Release|"
-#~ msgid "Fedora i3 Desktop"
-#~ msgstr "Fedora Labs"
 
 #~ msgctxt "Release|"
 #~ msgid ""
