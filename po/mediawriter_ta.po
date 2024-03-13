@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 13:56+0200\n"
+"POT-Creation-Date: 2024-03-12 21:31+0100\n"
 "PO-Revision-Date: 2021-07-11 17:15+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://translate.fedoraproject.org/projects/fedora-"
@@ -117,6 +117,14 @@ msgstr "எழுதுகிறது"
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:117
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Cancel"
+msgctxt "CancelDialog|"
+msgid "Cancel"
+msgstr "ரத்து"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -273,7 +281,7 @@ msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr ""
 
-#: ../src/app/drivemanager.cpp:308
+#: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr ""
@@ -457,12 +465,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:392
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:393
+#: ../src/app/releasemanager.cpp:398
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -470,27 +478,29 @@ msgid ""
 "iso or .bin)</p>"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:423
+#: ../src/app/releasemanager.cpp:428
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:425
+#: ../src/app/releasemanager.cpp:430
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:427
+#: ../src/app/releasemanager.cpp:432
+#, fuzzy
+#| msgid "Fedora Media Writer"
 msgctxt "Release|"
-msgid "Emerging Fedora Editions"
-msgstr ""
+msgid "Fedora Atomic Desktops"
+msgstr "ஃபெடோரா ஊடக எழுதி "
 
-#: ../src/app/releasemanager.cpp:429
+#: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
 msgid "Other"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 #, fuzzy
 #| msgctxt "ReleaseArchitecture|"
 #| msgid "Intel 64bit"
@@ -498,12 +508,12 @@ msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr "இன்டெல் 64பிட்டு "
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "இன்டெல், ஏஎம்டி (ம) மற்ற ஏற்கத்தகு கணினிகளுக்கான ISO வகை  பிரதிமை (64பிட்டு)"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 #, fuzzy
 #| msgctxt "ReleaseArchitecture|"
 #| msgid "Intel 32bit"
@@ -511,53 +521,53 @@ msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr "இன்டெல் 32பிட்டு "
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "இன்டெல், ஏஎம்டி (ம) மற்ற ஏற்கத்தகு கணினிகளுக்கான ISO வகை  பிரதிமை (32பிட்டு)"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:391
+#: ../src/app/releasemanager.cpp:396
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "சுயவிருப்ப பிரதிமை"
 
-#: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
+#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "பதிவேற்றப்பட்ட பிரதிமை சிதைவுற்றது."
 
-#: ../src/app/releasemanager.cpp:944
+#: ../src/app/releasemanager.cpp:949
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:955
+#: ../src/app/releasemanager.cpp:960
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr ""
 
-#: ../src/app/releasemanager.h:372
+#: ../src/app/releasemanager.h:375
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Preparing"
@@ -565,7 +575,7 @@ msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "தயாராகிறது"
 
-#: ../src/app/releasemanager.h:373
+#: ../src/app/releasemanager.h:376
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -573,7 +583,7 @@ msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "பதிவேற்றப்படுகிறது"
 
-#: ../src/app/releasemanager.h:374
+#: ../src/app/releasemanager.h:377
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Checking the download"
@@ -581,17 +591,17 @@ msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "பதிவேற்றை சோதிக்கிறது"
 
-#: ../src/app/releasemanager.h:375
+#: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
 msgstr "எழுதுவதற்குத் தாயாரானது"
 
-#: ../src/app/releasemanager.h:376
+#: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
 
-#: ../src/app/releasemanager.h:377
+#: ../src/app/releasemanager.h:380
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Writing"
@@ -599,12 +609,12 @@ msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "எழுதுகிறது"
 
-#: ../src/app/releasemanager.h:378
+#: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr ""
 
-#: ../src/app/releasemanager.h:379
+#: ../src/app/releasemanager.h:382
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Finished!"
@@ -612,7 +622,7 @@ msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "முடிவுற்றது!"
 
-#: ../src/app/releasemanager.h:380
+#: ../src/app/releasemanager.h:383
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "The downloaded image is corrupted"
@@ -620,7 +630,7 @@ msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
 msgstr "பதிவேற்றப்பட்ட பிரதிமை சிதைவுற்றது."
 
-#: ../src/app/releasemanager.h:381
+#: ../src/app/releasemanager.h:384
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -628,24 +638,24 @@ msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "பதிவேற்றம் தோல்வியடைந்தது"
 
-#: ../src/app/releasemanager.h:382
+#: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "பிழை "
 
-#: ../src/app/releasemanager.cpp:701
+#: ../src/app/releasemanager.cpp:706
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:703
+#: ../src/app/releasemanager.cpp:708
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:705
+#: ../src/app/releasemanager.cpp:710
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -747,9 +757,11 @@ msgid "Official Editions"
 msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:59
+#, fuzzy
+#| msgid "Fedora Media Writer"
 msgctxt "VersionPage|"
-msgid "Emerging Editions"
-msgstr ""
+msgid "Atomic Desktops"
+msgstr "ஃபெடோரா ஊடக எழுதி "
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
@@ -761,17 +773,17 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:265
+#: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "தேவைப்படும் ரும உதவியைக் கண்டறிய இயலவில்லை. நிறுவலை சரிபார்க்கவும்."
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -993,11 +1005,11 @@ msgstr ""
 "ஃபெடோரா ஊடக இயக்கி மற்ற ISOக்களையும் இயக்கவல்லது. ஆனால் இது ஃபெடோரா வகை ISO-க்களை "
 "வைத்து மட்டுமே சோதிக்கப்பட்டது என்பதனை நினைவில் கொள்ளவும்."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
 msgstr "ஃபெடோராவை உங்கள் பெயரத்தகு சாதனத்தில் எழுதுக"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
 
@@ -1093,12 +1105,6 @@ msgstr ""
 #~| msgid "Fedora Media Writer"
 #~ msgctxt "Release|"
 #~ msgid "Fedora Silverblue"
-#~ msgstr "ஃபெடோரா ஊடக எழுதி "
-
-#, fuzzy
-#~| msgid "Fedora Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "Fedora i3 Desktop"
 #~ msgstr "ஃபெடோரா ஊடக எழுதி "
 
 #, fuzzy

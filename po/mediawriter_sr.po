@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 13:56+0200\n"
+"POT-Creation-Date: 2024-03-12 21:31+0100\n"
 "PO-Revision-Date: 2021-07-11 17:15+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Serbian <https://translate.fedoraproject.org/projects/fedora-"
@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.7.1\n"
 "X-Qt-Contexts: true\n"
 
@@ -124,6 +124,14 @@ msgstr "Пишем"
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:117
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Cancel"
+msgctxt "CancelDialog|"
+msgid "Cancel"
+msgstr "Откажи"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -326,7 +334,7 @@ msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr ""
 
-#: ../src/app/drivemanager.cpp:308
+#: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "Овај уређај није довољно велик."
@@ -539,12 +547,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:392
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Изаберите датотеку са ваших уређаја"
 
-#: ../src/app/releasemanager.cpp:393
+#: ../src/app/releasemanager.cpp:398
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -555,27 +563,30 @@ msgstr ""
 "уписали на флеш уређај.</p><p>Тренутно је могуће само писање сирових слика "
 "система (.iso или .bin)</p>"
 
-#: ../src/app/releasemanager.cpp:423
+#: ../src/app/releasemanager.cpp:428
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora Спинови"
 
-#: ../src/app/releasemanager.cpp:425
+#: ../src/app/releasemanager.cpp:430
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora Лабораторије"
 
-#: ../src/app/releasemanager.cpp:427
+#: ../src/app/releasemanager.cpp:432
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Labs"
 msgctxt "Release|"
-msgid "Emerging Fedora Editions"
-msgstr ""
+msgid "Fedora Atomic Desktops"
+msgstr "Fedora Лабораторије"
 
-#: ../src/app/releasemanager.cpp:429
+#: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
 msgid "Other"
 msgstr "Друго"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 #, fuzzy
 #| msgctxt "ReleaseArchitecture|"
 #| msgid "Intel 64bit"
@@ -583,14 +594,14 @@ msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr "Интел 64-бита"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
 "ISO формат слике за Интелове, АМД-ове и друге подударне личне рачунаре (64-"
 "бита)"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 #, fuzzy
 #| msgctxt "ReleaseArchitecture|"
 #| msgid "Intel 32bit"
@@ -598,19 +609,19 @@ msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr "Интел 32-бита"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
 "ISO формат слике за Интелове, АМД-ове и друге подударне личне рачунаре (32-"
 "бита)"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "АРМ вер.7"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
@@ -618,37 +629,37 @@ msgstr ""
 "LZMA-запакована сирова слика за АРМ вер.7-А машине као што су то Raspberry "
 "Pi 2 и 3"
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:391
+#: ../src/app/releasemanager.cpp:396
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Прилагођена слика"
 
-#: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
+#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Преузета слика је покварена"
 
-#: ../src/app/releasemanager.cpp:944
+#: ../src/app/releasemanager.cpp:949
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Преузета датотека није читљива."
 
-#: ../src/app/releasemanager.cpp:955
+#: ../src/app/releasemanager.cpp:960
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Не могу да преименујем привремену датотеку."
 
-#: ../src/app/releasemanager.h:372
+#: ../src/app/releasemanager.h:375
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Preparing"
@@ -656,7 +667,7 @@ msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Припремам"
 
-#: ../src/app/releasemanager.h:373
+#: ../src/app/releasemanager.h:376
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Downloading"
@@ -664,7 +675,7 @@ msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "Преузимам"
 
-#: ../src/app/releasemanager.h:374
+#: ../src/app/releasemanager.h:377
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Checking the download"
@@ -672,17 +683,17 @@ msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "Проверавам преузето"
 
-#: ../src/app/releasemanager.h:375
+#: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
 msgstr "Спреман за писање"
 
-#: ../src/app/releasemanager.h:376
+#: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr "Слика је сачувана у вашу фасциклу са преузимањима. Писање није могуће"
 
-#: ../src/app/releasemanager.h:377
+#: ../src/app/releasemanager.h:380
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Writing"
@@ -690,7 +701,7 @@ msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "Пишем"
 
-#: ../src/app/releasemanager.h:378
+#: ../src/app/releasemanager.h:381
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Checking the written data"
@@ -698,17 +709,17 @@ msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "Проверавам уписане податке"
 
-#: ../src/app/releasemanager.h:379
+#: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "Завршено!"
 
-#: ../src/app/releasemanager.h:380
+#: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
 msgstr "Уписани подаци су покварени"
 
-#: ../src/app/releasemanager.h:381
+#: ../src/app/releasemanager.h:384
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "Download failed"
@@ -716,24 +727,24 @@ msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "Преузимање није успело"
 
-#: ../src/app/releasemanager.h:382
+#: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Грешка"
 
-#: ../src/app/releasemanager.cpp:701
+#: ../src/app/releasemanager.cpp:706
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Алфа"
 
-#: ../src/app/releasemanager.cpp:703
+#: ../src/app/releasemanager.cpp:708
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Бета"
 
-#: ../src/app/releasemanager.cpp:705
+#: ../src/app/releasemanager.cpp:710
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -846,9 +857,12 @@ msgid "Official Editions"
 msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:59
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Labs"
 msgctxt "VersionPage|"
-msgid "Emerging Editions"
-msgstr ""
+msgid "Atomic Desktops"
+msgstr "Fedora Лабораторије"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
@@ -860,18 +874,18 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:265
+#: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "Нисам могао да нађем помоћну бинарну датотеку. Проверите вашу инсталацију."
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -1096,11 +1110,11 @@ msgstr ""
 "Fedora Писач Медија такође може писати друге подизне ISO-е учитане са вашег "
 "локалног диска али знајте да се испробава само са Fedora сликама система."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
 msgstr "Пишите Fedora слике на ваше преносне уређаје"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
 
@@ -1312,13 +1326,6 @@ msgstr ""
 #~| msgid "Fedora Labs"
 #~ msgctxt "Release|"
 #~ msgid "Fedora SoaS Desktop"
-#~ msgstr "Fedora Лабораторије"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
-#~ msgctxt "Release|"
-#~ msgid "Fedora i3 Desktop"
 #~ msgstr "Fedora Лабораторије"
 
 #, fuzzy

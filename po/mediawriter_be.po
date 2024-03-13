@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 13:56+0200\n"
+"POT-Creation-Date: 2024-03-12 21:31+0100\n"
 "PO-Revision-Date: 2024-01-10 22:36+0000\n"
 "Last-Translator: Makar Razin <makarrazin14@gmail.com>\n"
 "Language-Team: Belarusian <https://translate.fedoraproject.org/projects/"
@@ -105,6 +105,14 @@ msgstr "Скасаваць запіс"
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Адмяніць праверку"
+
+#: ../src/app/qml/CancelDialog.qml:117
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Cancel"
+msgctxt "CancelDialog|"
+msgid "Cancel"
+msgstr "Адмена"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -259,7 +267,7 @@ msgstr ""
 "Перазапусціце камп'ютар і загрузіце сістэму з %1, каб пачаць выкарыстоўваць "
 "%2."
 
-#: ../src/app/drivemanager.cpp:308
+#: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "На гэтым дыску недастаткова месца."
@@ -429,12 +437,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "Адкрыць файл"
 
-#: ../src/app/releasemanager.cpp:392
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Выберыце файл са свайго дыска"
 
-#: ../src/app/releasemanager.cpp:393
+#: ../src/app/releasemanager.cpp:398
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -442,59 +450,59 @@ msgid ""
 "iso or .bin)</p>"
 msgstr ""
 "<p>Тут можна абраць вобраз АС з дыску для запісу на флэш-накапляльнік</"
-"p><p>Зараз падтрымліваецца толькі запіс raw-вобразаў дыску (.iso або ."
-"bin)</p>"
+"p><p>Зараз падтрымліваецца толькі запіс raw-вобразаў дыску (.iso або .bin)</"
+"p>"
 
-#: ../src/app/releasemanager.cpp:423
+#: ../src/app/releasemanager.cpp:428
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora Spins"
 
-#: ../src/app/releasemanager.cpp:425
+#: ../src/app/releasemanager.cpp:430
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
-#: ../src/app/releasemanager.cpp:427
+#: ../src/app/releasemanager.cpp:432
 msgctxt "Release|"
-msgid "Emerging Fedora Editions"
-msgstr "Новыя выпускі Fedora"
+msgid "Fedora Atomic Desktops"
+msgstr ""
 
-#: ../src/app/releasemanager.cpp:429
+#: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
 msgid "Other"
 msgstr "Іншае"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr "Intel/AMD 64-бітныя"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
-"Вобраз у фармаце ISO для ПК на базе Intel, AMD і іншых сумяшчальных ПК "
-"(64-разрадных)"
+"Вобраз у фармаце ISO для ПК на базе Intel, AMD і іншых сумяшчальных ПК (64-"
+"разрадных)"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr "Intel/AMD 32-бітныя"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
-"Вобраз у фармаце ISO для ПК на базе Intel, AMD і іншых сумяшчальных ПК "
-"(32-разрадных)"
+"Вобраз у фармаце ISO для ПК на базе Intel, AMD і іншых сумяшчальных ПК (32-"
+"разрадных)"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
@@ -502,104 +510,104 @@ msgstr ""
 "Сціснуты метадам LZMA, raw-вобраз для камп'ютараў з ARM v7-A, напрыклад, "
 "Raspberry Pi 2 і 3"
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "Сціснуты метадам LZMA, raw-вобраз для камп'ютараў з AArch64"
 
-#: ../src/app/releasemanager.cpp:391
+#: ../src/app/releasemanager.cpp:396
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Іншы вобраз"
 
-#: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
+#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Загружаны вобраз пашкоджаны"
 
-#: ../src/app/releasemanager.cpp:944
+#: ../src/app/releasemanager.cpp:949
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Спампаваны файл не чытаецца."
 
-#: ../src/app/releasemanager.cpp:955
+#: ../src/app/releasemanager.cpp:960
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Немагчыма перайменаваць часовы файл."
 
-#: ../src/app/releasemanager.h:372
+#: ../src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Падрыхтоўка"
 
-#: ../src/app/releasemanager.h:373
+#: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "Спампоўка"
 
-#: ../src/app/releasemanager.h:374
+#: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "Праверка спампоўкі"
 
-#: ../src/app/releasemanager.h:375
+#: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
 msgstr "Гатова да запісу"
 
-#: ../src/app/releasemanager.h:376
+#: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr "Файл вобраза захаваны ў вашу папку для спамповак. Запіс немагчымы"
 
-#: ../src/app/releasemanager.h:377
+#: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "Запіс"
 
-#: ../src/app/releasemanager.h:378
+#: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "Праверка запісаных даных"
 
-#: ../src/app/releasemanager.h:379
+#: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "Гатова!"
 
-#: ../src/app/releasemanager.h:380
+#: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
 msgstr "Запісаныя даныя пашкоджаны"
 
-#: ../src/app/releasemanager.h:381
+#: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "Памылка спампоўкі"
 
-#: ../src/app/releasemanager.h:382
+#: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Памылка"
 
-#: ../src/app/releasemanager.cpp:701
+#: ../src/app/releasemanager.cpp:706
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../src/app/releasemanager.cpp:703
+#: ../src/app/releasemanager.cpp:708
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:705
+#: ../src/app/releasemanager.cpp:710
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -673,8 +681,8 @@ msgstr "Афіцыйныя рэдакцыі"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
-msgid "Emerging Editions"
-msgstr "Новыя рэдакцыі"
+msgid "Atomic Desktops"
+msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
@@ -686,17 +694,17 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr "Labs"
 
-#: ../src/app/windrivemanager.cpp:265
+#: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "Не ўдалося знайсці дапаможны бінарны файл. Праверце ўсталяванне."
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr "Гатова!"
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -893,10 +901,18 @@ msgstr ""
 "з вашага лакальнага дыска, але майце на ўвазе, што ён правераны толькі з "
 "вобразамі Fedora."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
 msgstr "Запіс вобразаў Fedora на пераносныя дыскі"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;"
+
+#~ msgctxt "Release|"
+#~ msgid "Emerging Fedora Editions"
+#~ msgstr "Новыя выпускі Fedora"
+
+#~ msgctxt "VersionPage|"
+#~ msgid "Emerging Editions"
+#~ msgstr "Новыя рэдакцыі"

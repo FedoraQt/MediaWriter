@@ -16,11 +16,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 13:56+0200\n"
+"POT-Creation-Date: 2024-03-12 21:31+0100\n"
 "PO-Revision-Date: 2023-04-19 06:13+0000\n"
 "Last-Translator: Nelson Benitez <nbenitezl@gmail.com>\n"
-"Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/es/>\n"
+"Language-Team: Spanish <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -112,6 +112,14 @@ msgstr "Cancelar Escritura"
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "Cancelar Verificación"
+
+#: ../src/app/qml/CancelDialog.qml:117
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Cancel"
+msgctxt "CancelDialog|"
+msgid "Cancel"
+msgstr "Cancelar"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -246,9 +254,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"Fedora Media Writer no funciona aún con su dispositivo. Compruebe en <a href="
-"%1>esta página</a> la compatibilidad del mismo con Fedora, así como la forma "
-"de generar un medio de arranque."
+"Fedora Media Writer no funciona aún con su dispositivo. Compruebe en <a "
+"href=%1>esta página</a> la compatibilidad del mismo con Fedora, así como la "
+"forma de generar un medio de arranque."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -266,7 +274,7 @@ msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr "Reiniciar y arrancar desde %1 para empezar a usar %2."
 
-#: ../src/app/drivemanager.cpp:308
+#: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "La unidad no es suficientemente grande."
@@ -440,12 +448,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "Abrir Archivo"
 
-#: ../src/app/releasemanager.cpp:392
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Seleccione un archivo desde disco"
 
-#: ../src/app/releasemanager.cpp:393
+#: ../src/app/releasemanager.cpp:398
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -456,158 +464,161 @@ msgstr ""
 "p><p>Actualmente sólo se aceptan imágenes de disco \"puras\" (.iso o .bin)</"
 "p>"
 
-#: ../src/app/releasemanager.cpp:423
+#: ../src/app/releasemanager.cpp:428
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora Spins"
 
-#: ../src/app/releasemanager.cpp:425
+#: ../src/app/releasemanager.cpp:430
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
-#: ../src/app/releasemanager.cpp:427
+#: ../src/app/releasemanager.cpp:432
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora i3 Desktop"
 msgctxt "Release|"
-msgid "Emerging Fedora Editions"
-msgstr "Ediciones de Fedora Emergentes"
+msgid "Fedora Atomic Desktops"
+msgstr "Fedora Escritorio i3"
 
-#: ../src/app/releasemanager.cpp:429
+#: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
 msgid "Other"
 msgstr "Otra"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr "Intel/AMD 64 bits"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "Imagen en formato ISO para Intel, AMD y compatibles (64 bits)"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr "Intel/AMD 32 bits"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "Imagen en formato ISO para Intel, AMD y compatibles (32 bits)"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
 "Imagen comprimida por LZMA para sistemas ARM v7-A, como Raspberry Pi 2 y 3"
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "Imagen comprimida por LZMA para sistemas AArch64"
 
-#: ../src/app/releasemanager.cpp:391
+#: ../src/app/releasemanager.cpp:396
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Imagen personalizada"
 
-#: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
+#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "La imagen descargada está corrupta"
 
-#: ../src/app/releasemanager.cpp:944
+#: ../src/app/releasemanager.cpp:949
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "No se puede leer el archivo descargado."
 
-#: ../src/app/releasemanager.cpp:955
+#: ../src/app/releasemanager.cpp:960
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "No se pudo renombrar el archivo temporal."
 
-#: ../src/app/releasemanager.h:372
+#: ../src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Preparando"
 
-#: ../src/app/releasemanager.h:373
+#: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "Descargando"
 
-#: ../src/app/releasemanager.h:374
+#: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "Comprobando la descarga"
 
-#: ../src/app/releasemanager.h:375
+#: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
 msgstr "Listo para escribir"
 
-#: ../src/app/releasemanager.h:376
+#: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
 "Se ha descargado la imagen a su directorio de descargas. La escritura no es "
 "posible"
 
-#: ../src/app/releasemanager.h:377
+#: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "Escribiendo"
 
-#: ../src/app/releasemanager.h:378
+#: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "Comprobando los datos grabados"
 
-#: ../src/app/releasemanager.h:379
+#: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "¡Terminado!"
 
-#: ../src/app/releasemanager.h:380
+#: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
 msgstr "Los datos grabados están corruptos"
 
-#: ../src/app/releasemanager.h:381
+#: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "Descarga fallida"
 
-#: ../src/app/releasemanager.h:382
+#: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Error"
 
-#: ../src/app/releasemanager.cpp:701
+#: ../src/app/releasemanager.cpp:706
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alfa"
 
-#: ../src/app/releasemanager.cpp:703
+#: ../src/app/releasemanager.cpp:708
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:705
+#: ../src/app/releasemanager.cpp:710
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -680,9 +691,12 @@ msgid "Official Editions"
 msgstr "Ediciones oficiales"
 
 #: ../src/app/qml/VersionPage.qml:59
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora i3 Desktop"
 msgctxt "VersionPage|"
-msgid "Emerging Editions"
-msgstr "Ediciones Emergentes"
+msgid "Atomic Desktops"
+msgstr "Fedora Escritorio i3"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
@@ -694,19 +708,19 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr "Labs"
 
-#: ../src/app/windrivemanager.cpp:265
+#: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "No se pudo encontrar el ejecutable específico del sistema. Compruebe su "
 "instalación."
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr "¡Fin!"
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -907,13 +921,21 @@ msgstr ""
 "en su disco duro, pero tenga en cuenta que solo se prueba con imágenes de "
 "Fedora."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
 msgstr "Grabe imágenes de Fedora en sus unidades portátiles"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;"
+
+#~ msgctxt "Release|"
+#~ msgid "Emerging Fedora Editions"
+#~ msgstr "Ediciones de Fedora Emergentes"
+
+#~ msgctxt "VersionPage|"
+#~ msgid "Emerging Editions"
+#~ msgstr "Ediciones Emergentes"
 
 #~ msgctxt "DownloadPage|"
 #~ msgid "Verifying written data"
@@ -1658,10 +1680,6 @@ msgstr "fmw;usb;iso;bootable;"
 #~ msgctxt "Release|"
 #~ msgid "i3"
 #~ msgstr "i3"
-
-#~ msgctxt "Release|"
-#~ msgid "Fedora i3 Desktop"
-#~ msgstr "Fedora Escritorio i3"
 
 #~ msgctxt "Release|"
 #~ msgid "Simplicity over Complexity"

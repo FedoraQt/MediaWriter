@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-03 13:56+0200\n"
+"POT-Creation-Date: 2024-03-12 21:31+0100\n"
 "PO-Revision-Date: 2021-07-11 17:15+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Malayalam <https://translate.fedoraproject.org/projects/"
@@ -108,6 +108,14 @@ msgstr ""
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr ""
+
+#: ../src/app/qml/CancelDialog.qml:117
+#, fuzzy
+#| msgctxt "DownloadDialog|"
+#| msgid "Cancel"
+msgctxt "CancelDialog|"
+msgid "Cancel"
+msgstr "റദ്ദാക്കുക"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -276,7 +284,7 @@ msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr ""
 
-#: ../src/app/drivemanager.cpp:308
+#: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr ""
@@ -461,12 +469,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:392
+#: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "നിങ്ങളുടെ ഡ്രൈവിൽ നിന്ന് ഒരു ഫയൽ തിരഞ്ഞെടുക്കുക"
 
-#: ../src/app/releasemanager.cpp:393
+#: ../src/app/releasemanager.cpp:398
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -477,27 +485,30 @@ msgstr ""
 "ചിത്രം തിരഞ്ഞെടുക്കാം.</p> <p> നിലവിൽ ഡിസ്ക് ഇമേജുകൾ (.iso അല്ലെങ്കിൽ .bin) എഴുതാൻ "
 "മാത്രം പിന്തുണയ്ക്കുന്നു </p>"
 
-#: ../src/app/releasemanager.cpp:423
+#: ../src/app/releasemanager.cpp:428
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora സ്പിന്നുകള്‍"
 
-#: ../src/app/releasemanager.cpp:425
+#: ../src/app/releasemanager.cpp:430
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora ലാബ്സ്"
 
-#: ../src/app/releasemanager.cpp:427
+#: ../src/app/releasemanager.cpp:432
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Labs"
 msgctxt "Release|"
-msgid "Emerging Fedora Editions"
-msgstr ""
+msgid "Fedora Atomic Desktops"
+msgstr "Fedora ലാബ്സ്"
 
-#: ../src/app/releasemanager.cpp:429
+#: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
 msgid "Other"
 msgstr "മറ്റു്"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 #, fuzzy
 #| msgctxt "ReleaseArchitecture|"
 #| msgid "Intel 64bit"
@@ -505,12 +516,12 @@ msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr "ഇന്റൽ 64  bit"
 
-#: ../src/app/releasemanager.cpp:1069
+#: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 #, fuzzy
 #| msgctxt "ReleaseArchitecture|"
 #| msgid "Intel 64bit"
@@ -518,78 +529,78 @@ msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr "ഇന്റൽ 64  bit"
 
-#: ../src/app/releasemanager.cpp:1070
+#: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1071
+#: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1072
+#: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:391
+#: ../src/app/releasemanager.cpp:396
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:928 ../src/app/releasemanager.cpp:940
+#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:944
+#: ../src/app/releasemanager.cpp:949
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:955
+#: ../src/app/releasemanager.cpp:960
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr ""
 
-#: ../src/app/releasemanager.h:372
+#: ../src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr ""
 
-#: ../src/app/releasemanager.h:373
+#: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr ""
 
-#: ../src/app/releasemanager.h:374
+#: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr ""
 
-#: ../src/app/releasemanager.h:375
+#: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
 msgstr ""
 
-#: ../src/app/releasemanager.h:376
+#: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
 
-#: ../src/app/releasemanager.h:377
+#: ../src/app/releasemanager.h:380
 #, fuzzy
 #| msgctxt "DownloadDialog|"
 #| msgid "Write %1"
@@ -597,12 +608,12 @@ msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "എഴുത് %1"
 
-#: ../src/app/releasemanager.h:378
+#: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr ""
 
-#: ../src/app/releasemanager.h:379
+#: ../src/app/releasemanager.h:382
 #, fuzzy
 #| msgctxt "LinuxDrive|"
 #| msgid "Finished!"
@@ -610,17 +621,17 @@ msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "പൂർത്തിയായി!"
 
-#: ../src/app/releasemanager.h:380
+#: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
 msgstr ""
 
-#: ../src/app/releasemanager.h:381
+#: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr ""
 
-#: ../src/app/releasemanager.h:382
+#: ../src/app/releasemanager.h:385
 #, fuzzy
 #| msgctxt "LinuxDrive|"
 #| msgid "Error"
@@ -628,19 +639,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "പിശക്"
 
-#: ../src/app/releasemanager.cpp:701
+#: ../src/app/releasemanager.cpp:706
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:703
+#: ../src/app/releasemanager.cpp:708
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:705
+#: ../src/app/releasemanager.cpp:710
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -706,9 +717,12 @@ msgid "Official Editions"
 msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:59
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Fedora Labs"
 msgctxt "VersionPage|"
-msgid "Emerging Editions"
-msgstr ""
+msgid "Atomic Desktops"
+msgstr "Fedora ലാബ്സ്"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
@@ -720,17 +734,17 @@ msgctxt "VersionPage|"
 msgid "Labs"
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:265
+#: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:350 ../src/app/windrivemanager.cpp:401
+#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
@@ -948,11 +962,11 @@ msgstr ""
 "ഫെഡോറ മാധ്യമ എഴുതുപകരണം ഉപയോഗിച്ച് ലോക്കൽ ഡിസ്കിലുള്ള ഐസോ എഴുതാനുള്ള സവിശേഷത ലഭ്യമാണ്, "
 "പക്ഷെ ഫെഡോറ ഡിസ്ക് ഇമേജ് മാത്രം പരിശോധന വിദേയം."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:40
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
 msgstr "ഫെഡോറ ഡിസ്ക് ചിത്രത്തിനെ പെന് ഡ്രൈവിൽ എഴുത്തു"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:81
+#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
 
@@ -1070,13 +1084,6 @@ msgstr ""
 #~| msgid "Fedora Labs"
 #~ msgctxt "Release|"
 #~ msgid "Fedora SoaS Desktop"
-#~ msgstr "Fedora ലാബ്സ്"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
-#~ msgctxt "Release|"
-#~ msgid "Fedora i3 Desktop"
 #~ msgstr "Fedora ലാബ്സ്"
 
 #, fuzzy
