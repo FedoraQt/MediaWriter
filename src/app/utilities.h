@@ -83,7 +83,7 @@ public:
 #else
     bool logging{true};
 #endif
-    QString releasesUrl{"https://fedoraproject.org/releases.json"};
+    QString releasesUrl{"https://releases.aosc.io/manifest/livekit.json"};
     bool noUserAgent{false}; // disables sending the custom Fedora Media Writer user agent header
 };
 

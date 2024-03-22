@@ -21,6 +21,7 @@
 #include "drivemanager.h"
 
 #include "isomd5/libcheckisomd5.h"
+#include "utilities.h"
 
 #include <QAbstractEventDispatcher>
 #include <QApplication>
@@ -47,7 +48,7 @@ ReleaseManager::ReleaseManager(QObject *parent)
     releases.close();
 
     connect(this, SIGNAL(selectedChanged()), this, SLOT(variantChangedFilter()));
-    QTimer::singleShot(0, this, SLOT(fetchReleases()));
+    // QTimer::singleShot(0, this, SLOT(fetchReleases()));
 }
 
 bool ReleaseManager::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
@@ -83,7 +84,7 @@ void ReleaseManager::fetchReleases()
     m_beingUpdated = true;
     emit beingUpdatedChanged();
 
-    DownloadManager::instance()->fetchPageAsync(this, options.releasesUrl);
+    // DownloadManager::instance()->fetchPageAsync(this, options.releasesUrl);
 }
 
 void ReleaseManager::variantChangedFilter()
@@ -268,32 +269,11 @@ void ReleaseManager::onStringDownloaded(const QString &text)
         QDateTime releaseDate = QDateTime::fromString((obj["releaseDate"].toString()), "yyyy-MM-dd");
         int64_t size = obj["size"].toString().toLongLong();
         int version;
-        QString status;
+        QString status = versionWithStatus;
 
-        if (QStringList{"cloud", "cloud_base", "atomic", "everything", "minimal", "docker", "docker_base"}.contains(release))
-            continue;
+        version = versionWithStatus.toInt();
 
-        release.replace(QRegularExpression("_kde$"), "");
-        release.replace("_", " ");
-
-        if (!re.match(versionWithStatus).hasMatch())
-            continue;
-
-        if (release.contains("workstation") && !url.contains("Live") && !url.contains("armhfp"))
-            continue;
-
-        if (release.contains("server")) {
-            // we want a DVD for x86 but we don't want it for ARM
-            if (!arch.contains("arm") && !url.contains("dvd"))
-                continue;
-            else if (arch.contains("arm") && url.contains("dvd"))
-                continue;
-        }
-
-        version = re.match(versionWithStatus).captured(1).toInt();
-        status = re.match(versionWithStatus).captured(2);
-
-        mDebug() << this->metaObject()->className() << "Adding" << release << versionWithStatus << arch;
+        mInfo() << this->metaObject()->className() << "Adding" << release << url << arch;
 
         if (!release.isEmpty() && !url.isEmpty() && !arch.isEmpty())
             updateUrl(release, version, status, type, releaseDate, arch, url, sha256, size);

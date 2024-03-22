@@ -50,28 +50,11 @@ Page {
 
             RadioButton {
                 checked: true
-                text: qsTr("Official Editions")
+                text: qsTr("Livekit")
                 onClicked: changeFilter(Units.Source.Product)
                 ButtonGroup.group: radioGroup
             }
 
-            RadioButton {
-                text: qsTr("Atomic Desktops")
-                onClicked: changeFilter(Units.Source.Emerging)
-                ButtonGroup.group: radioGroup
-            }
-
-            RadioButton {
-                text: qsTr("Spins")
-                onClicked: changeFilter(Units.Source.Spins)
-                ButtonGroup.group: radioGroup
-            }
-
-            RadioButton {
-                text: qsTr("Labs")
-                onClicked: changeFilter(Units.Source.Labs)
-                ButtonGroup.group: radioGroup
-            }
 
             ComboBox {
                 id: selectFromComboBox
@@ -82,7 +65,6 @@ Page {
                 valueRole: "sourceIndex"
                 model: releases
                 onCurrentValueChanged: updateSelectedIndex()
-
             }
         }
     }
