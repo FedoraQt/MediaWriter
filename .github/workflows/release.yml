@@ -172,20 +172,11 @@ jobs:
           makensis -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
           mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64-${{ env.TAG_NAME }}.exe"
 
-      - name: Upload to GitHub (release)
-        run: |
-          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-win64-${{ env.TAG_NAME }}.exe"
-
-      - name: Get version for WinGet
-        id: get-version
-        shell: bash
-        run: |
-          $WINGET_VER=$(bash ./dist/get-tag-name.sh)
-          echo "::set-output name=version::$WINGET_VER"
-
-      - name: Publish to WinGet
-        uses: vedantmgoyal2009/winget-releaser@v2
+      - name: pload to GitHub (release)
+        uses: svenstaro/upload-release-action@v2
         with:
-          identifier: Fedora.FedoraMediaWriter
-          version: ${{ steps.get-version.outputs.version }}
-          token: ${{ secrets.WINGET_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: FedoraMediaWriter-win64-${{ env.TAG_NAME }}.exe
+          file_glob: true
+          tag: ${{ github.ref }}
+          overwrite: true
