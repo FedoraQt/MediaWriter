@@ -62,10 +62,10 @@ QString DownloadManager::userAgent()
 /*
  * TODO explain how this works
  */
-QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder, Progress *progress)
+QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QString &url, const QString &folder, Progress *progress)
 {
-    mDebug() << this->metaObject()->className() << "Going to download" << url;
-    QString bareFileName = QString("%1/%2").arg(folder).arg(url.fileName());
+    mInfo() << this->metaObject()->className() << "Going to download";
+    QString bareFileName = url.split('/').last();
 
     QDir dir;
     dir.mkpath(folder);
@@ -76,7 +76,11 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &ur
     }
 
     m_mirrorCache.clear();
-    m_mirrorCache << url.toString();
+
+    QString s;
+    s.push_back("https://mirrors.qvq.net.cn/anthon/aosc-os/");
+    s.push_back(url);
+    m_mirrorCache << s;
 
     if (m_current)
         m_current->deleteLater();
@@ -85,8 +89,6 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &ur
     connect(m_current, &QObject::destroyed, [&]() {
         m_current = nullptr;
     });
-
-    fetchPageAsync(this, "https://mirrors.qvq.net.cn/anthon/aosc-os/" + url.path());
 
     return bareFileName + ".part";
 }
@@ -151,7 +153,7 @@ void DownloadManager::onStringDownloaded(const QString &text)
     if (!m_current)
         return;
 
-    mDebug() << this->metaObject()->className() << "Received a list of mirrors";
+    mInfo() << this->metaObject()->className() << "Received a list of mirrors";
 
     QStringList mirrors;
     for (const QString &i : text.split("\n")) {
@@ -237,7 +239,7 @@ void Download::handleNewReply(QNetworkReply *reply)
         m_receiver->onDownloadError(tr("Unable to fetch the requested image."));
         return;
     }
-    mDebug() << this->metaObject()->className() << "Trying to download from a mirror:" << reply->url();
+    mInfo() << this->metaObject()->className() << "Trying to download from a mirror";
 
     if (m_reply)
         m_reply->deleteLater();
@@ -383,7 +385,7 @@ void Download::onFinished()
             onReadyRead();
             qApp->eventDispatcher()->processEvents(QEventLoop::ExcludeSocketNotifiers);
         }
-        mDebug() << this->metaObject()->className() << "Finished successfully";
+        mInfo() << this->metaObject()->className() << "Finished successfully";
         if (m_file) {
             m_file->close();
             m_receiver->onFileDownloaded(m_file->fileName(), m_hash.result().toHex());
@@ -391,6 +393,7 @@ void Download::onFinished()
             m_reply = nullptr;
             deleteLater();
         } else {
+            mInfo() << 111;
             m_receiver->onStringDownloaded(m_buf);
             m_reply->deleteLater();
             m_reply = nullptr;
