@@ -18,6 +18,7 @@
  */
 
 #include "downloadmanager.h"
+#include "utilities.h"
 
 #include <QAbstractEventDispatcher>
 #include <QApplication>
@@ -84,7 +85,8 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &ur
     connect(m_current, &QObject::destroyed, [&]() {
         m_current = nullptr;
     });
-    fetchPageAsync(this, "https://mirrors.qvq.net.cn/anthon" + url.path());
+
+    fetchPageAsync(this, "https://mirrors.qvq.net.cn/anthon/aosc-os/" + url.path());
 
     return bareFileName + ".part";
 }
