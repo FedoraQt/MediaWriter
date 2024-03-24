@@ -48,7 +48,7 @@ ReleaseManager::ReleaseManager(QObject *parent)
     releases.close();
 
     connect(this, SIGNAL(selectedChanged()), this, SLOT(variantChangedFilter()));
-    // QTimer::singleShot(0, this, SLOT(fetchReleases()));
+    QTimer::singleShot(0, this, SLOT(fetchReleases()));
 }
 
 bool ReleaseManager::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
@@ -84,7 +84,7 @@ void ReleaseManager::fetchReleases()
     m_beingUpdated = true;
     emit beingUpdatedChanged();
 
-    // DownloadManager::instance()->fetchPageAsync(this, options.releasesUrl);
+    DownloadManager::instance()->fetchPageAsync(this, options.releasesUrl);
 }
 
 void ReleaseManager::variantChangedFilter()
@@ -1051,10 +1051,12 @@ void ReleaseVariant::setErrorString(const QString &o)
 }
 
 ReleaseArchitecture ReleaseArchitecture::m_all[] = {
-    {{"x86_64"}, QT_TR_NOOP("Intel/AMD 64bit"), QT_TR_NOOP("ISO format image for Intel, AMD and other compatible PCs (64-bit)")},
-    {{"x86", "i386", "i686"}, QT_TR_NOOP("Intel/AMD 32bit"), QT_TR_NOOP("ISO format image for Intel, AMD and other compatible PCs (32-bit)")},
-    {{"armv7hl", "armhfp"}, QT_TR_NOOP("ARM v7"), QT_TR_NOOP("LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3")},
-    {{"aarch64"}, QT_TR_NOOP("AArch64"), QT_TR_NOOP("LZMA-compressed raw image for AArch64 machines")},
+    {{"amd64"}, QT_TR_NOOP("Intel/AMD 64bit"), QT_TR_NOOP("ISO format image for Intel, AMD and other compatible PCs (64-bit)")},
+    {{"arm64"}, QT_TR_NOOP("AArch64"), QT_TR_NOOP("ISO format image for AArch64 machine")},
+    {{"loongarch64"}, QT_TR_NOOP("AArch64"), QT_TR_NOOP("ISO format image for LoongArch64 machine")},
+    {{"ppc64el"}, QT_TR_NOOP("POWER"), QT_TR_NOOP("ISO format image for POWER machine")},
+    {{"loongson3"}, QT_TR_NOOP("Loongson 3"), QT_TR_NOOP("ISO format image for Loongson 3 machine")},
+    {{"riscv64"}, QT_TR_NOOP("RISCV 64bit"), QT_TR_NOOP("ISO format image for RISCV-64bit machine")},
 };
 
 ReleaseArchitecture::ReleaseArchitecture(const QStringList &abbreviation, const char *description, const char *details)
