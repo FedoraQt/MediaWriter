@@ -108,7 +108,7 @@ public:
     Q_INVOKABLE void selectLocalFile(const QString &path = QString());
     ReleaseVariant *localFile() const;
 
-    bool updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
+    bool updateUrl(int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
 
     QStringList architectures() const;
     int filterArchitecture() const;
@@ -470,10 +470,12 @@ class ReleaseArchitecture : public QObject
     Q_PROPERTY(Id id READ id CONSTANT)
 public:
     enum Id {
-        X86_64 = 0,
-        X86,
-        ARM,
+        AMD64 = 0,
         AARCH64,
+        LOONGARCH64,
+        PPC64EL,
+        LOONGSON3,
+        RISCV64,
         _ARCHCOUNT,
     };
     Q_ENUMS(Id);

@@ -177,7 +177,7 @@ ReleaseVariant *ReleaseManager::localFile() const
     return nullptr;
 }
 
-bool ReleaseManager::updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size)
+bool ReleaseManager::updateUrl(int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size)
 {
     if (!ReleaseArchitecture::isKnown(architecture)) {
         mWarning() << "Architecture" << architecture << "is not known!";
@@ -185,8 +185,7 @@ bool ReleaseManager::updateUrl(const QString &release, int version, const QStrin
     }
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = get(i);
-        if (r->name().toLower().contains(release))
-            return r->updateUrl(version, status, type, releaseDate, architecture, url, sha256, size);
+        return r->updateUrl(version, status, type, releaseDate, architecture, url, sha256, size);
     }
     return false;
 }
@@ -260,23 +259,20 @@ void ReleaseManager::onStringDownloaded(const QString &text)
     for (auto i : doc.array()) {
         QJsonObject obj = i.toObject();
         QString arch = obj["arch"].toString().toLower();
-        QString url = obj["link"].toString();
-        QString category = obj["variant"].toString().toLower();
-        QString release = obj["subvariant"].toString().toLower();
-        QString versionWithStatus = obj["version"].toString().toLower();
-        QString sha256 = obj["sha256"].toString();
+        QString url = obj["path"].toString();
+        QString versionWithStatus = obj["date"].toString().toLower();
+        QString sha256 = obj["sha256sum"].toString();
         QString type = "live";
-        QDateTime releaseDate = QDateTime::fromString((obj["releaseDate"].toString()), "yyyy-MM-dd");
-        int64_t size = obj["size"].toString().toLongLong();
+        QDateTime releaseDate = QDateTime::fromString((obj["date"].toString()), "yyyy-MM-dd");
+        int64_t size = obj["downloadSize"].toString().toLongLong();
         int version;
         QString status = versionWithStatus;
 
         version = versionWithStatus.toInt();
 
-        mInfo() << this->metaObject()->className() << "Adding" << release << url << arch;
+        mInfo() << this->metaObject()->className() << "Adding" << versionWithStatus << url << arch;
 
-        if (!release.isEmpty() && !url.isEmpty() && !arch.isEmpty())
-            updateUrl(release, version, status, type, releaseDate, arch, url, sha256, size);
+        updateUrl(version, status, type, releaseDate, arch, url, sha256, size);
     }
 
     m_beingUpdated = false;
@@ -383,7 +379,7 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
 
     ReleaseVersion *customVersion = new ReleaseVersion(custom, 0);
     custom->addVersion(customVersion);
-    customVersion->addVariant(new ReleaseVariant(customVersion, QString(), QString(), 0, ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64)));
+    customVersion->addVariant(new ReleaseVariant(customVersion, QString(), QString(), 0, ReleaseArchitecture::fromId(ReleaseArchitecture::AMD64)));
 }
 
 ReleaseManager *ReleaseListModel::manager()
@@ -759,7 +755,7 @@ ReleaseVariant::ReleaseVariant(ReleaseVersion *parent, QString url, QString shaH
 ReleaseVariant::ReleaseVariant(ReleaseVersion *parent, const QString &file, int64_t size)
     : QObject(parent)
     , m_iso(file)
-    , m_arch(ReleaseArchitecture::fromId(ReleaseArchitecture::X86_64))
+    , m_arch(ReleaseArchitecture::fromId(ReleaseArchitecture::AMD64))
     , m_size(size)
 {
     connect(this, &ReleaseVariant::sizeChanged, this, &ReleaseVariant::realSizeChanged);
