@@ -393,7 +393,6 @@ void Download::onFinished()
             m_reply = nullptr;
             deleteLater();
         } else {
-            mInfo() << 111;
             m_receiver->onStringDownloaded(m_buf);
             m_reply->deleteLater();
             m_reply = nullptr;
