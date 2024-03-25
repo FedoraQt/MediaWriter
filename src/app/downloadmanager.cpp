@@ -78,7 +78,7 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QString 
     QString downloadPath = downlaodDir.absoluteFilePath(bareFileName);
 
     if (QFile::exists(downloadPath)) {
-        mDebug() << this->metaObject()->className() << "The file already exists on" << bareFileName;
+        mInfo() << this->metaObject()->className() << "The file already exists on" << bareFileName;
         return downloadPath;
     }
 
@@ -92,12 +92,15 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QString 
     if (m_current)
         m_current->deleteLater();
 
-    m_current = new Download(this, receiver, downloadPath, progress);
-    connect(m_current, &QObject::destroyed, [&]() {
-        m_current = nullptr;
-    });
+    QNetworkRequest request;
+    request.setUrl(QUrl(s));
 
-    return bareFileName + ".part";
+    m_current = new Download(this, receiver, downloadPath, progress);
+
+    auto reply = m_manager.get(request);
+    m_current->handleNewReply(reply);
+
+    return downloadPath + ".part";
 }
 
 void DownloadManager::fetchPageAsync(DownloadReceiver *receiver, const QString &url)
@@ -286,14 +289,14 @@ bool Download::hasCatchedUp()
 void Download::start()
 {
     if (m_catchingUp) {
-        mDebug() << this->metaObject()->className() << "Will need to precompute the hash of the previously downloaded part";
+        mInfo() << this->metaObject()->className() << "Will need to precompute the hash of the previously downloaded part";
         // first precompute the SHA hash of the already downloaded part
         m_file->open(QIODevice::ReadOnly);
         m_previousSize = 0;
 
         QTimer::singleShot(0, this, SLOT(catchUp()));
     } else if (!m_path.isEmpty()) {
-        mDebug() << this->metaObject()->className() << "Creating a new empty file";
+        mInfo() << this->metaObject()->className() << "Creating a new empty file";
         m_file->open(QIODevice::WriteOnly);
     }
 }
