@@ -29,7 +29,6 @@
 #include <QStorageInfo>
 #include <QSysInfo>
 #include <qdir.h>
-#include <qtpreprocessorsupport.h>
 #include <qurl.h>
 
 DownloadManager *DownloadManager::_self = nullptr;
@@ -102,13 +101,11 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QString 
     }
 
     QNetworkRequest request;
-    // request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setUrl(QUrl(s));
 
 
     auto reply = m_manager.get(request);
 
-    // m_mirrorCache.removeFirst();
     m_current->handleNewReply(reply);
     Q_UNUSED(m_current);
 
