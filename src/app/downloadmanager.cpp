@@ -29,6 +29,7 @@
 #include <QStorageInfo>
 #include <QSysInfo>
 #include <qdir.h>
+#include <qtpreprocessorsupport.h>
 #include <qurl.h>
 
 DownloadManager *DownloadManager::_self = nullptr;
@@ -73,7 +74,7 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QString 
 
     QDir dir;
     dir.mkpath(folder);
-    
+
     QDir downlaodDir = QDir(folder);
     QString downloadPath = downlaodDir.absoluteFilePath(bareFileName);
 
@@ -89,16 +90,27 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QString 
     s.push_back(url);
     m_mirrorCache << s;
 
-    if (m_current)
+    if (m_current) {
         m_current->deleteLater();
-
-    QNetworkRequest request;
-    request.setUrl(QUrl(s));
+    }
 
     m_current = new Download(this, receiver, downloadPath, progress);
 
+    if (QFile::exists(downloadPath + ".part")) {
+        mInfo() << this->metaObject()->className() << "The file already exists on" << downloadPath + ".part";
+        return downloadPath + ".part";
+    }
+
+    QNetworkRequest request;
+    // request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+    request.setUrl(QUrl(s));
+
+
     auto reply = m_manager.get(request);
+
+    // m_mirrorCache.removeFirst();
     m_current->handleNewReply(reply);
+    Q_UNUSED(m_current);
 
     return downloadPath + ".part";
 }
