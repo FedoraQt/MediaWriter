@@ -107,7 +107,6 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QString 
     auto reply = m_manager.get(request);
 
     m_current->handleNewReply(reply);
-    Q_UNUSED(m_current);
 
     return downloadPath + ".part";
 }
