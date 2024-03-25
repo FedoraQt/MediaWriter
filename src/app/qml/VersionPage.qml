@@ -1,5 +1,5 @@
 /*
- * Fedora Media Writer
+ * AOSC Media Writer
  * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
@@ -32,7 +32,7 @@ Page {
 
         Heading {
             Layout.alignment: Qt.AlignHCenter
-            text: qsTr("Select Fedora Release")
+            text: qsTr("Select AOSC Release")
             level: 5
         }
 

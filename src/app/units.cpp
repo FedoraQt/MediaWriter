@@ -1,5 +1,5 @@
 /*
- * Fedora Media Writer
+ * AOSC Media Writer
  * Copyright 2013 Marco Martin <mart@kde.org>
  * Copyright 2014 Sebastian Kügler <sebas@kde.org>
  * Copyright 2014 David Edmundson <davidedmunsdon@kde.org>

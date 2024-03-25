@@ -102,13 +102,13 @@ VERSION_FULL=''
 if $opt_local; then
     VERSION_FULL=$(git describe --tags)
     if $opt_debug; then
-        INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-${VERSION_FULL}-debug.exe"
+        INSTALLER="$SCRIPTDIR/AOSCMediaWriter-win32-${VERSION_FULL}-debug.exe"
     else
-        INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-${VERSION_FULL}.exe"
+        INSTALLER="$SCRIPTDIR/AOSCMediaWriter-win32-${VERSION_FULL}.exe"
     fi
 else
     VERSION_FULL=$(rpm -q mingw32-mediawriter --queryformat '%{VERSION}\n')
-    INSTALLER="$SCRIPTDIR/FedoraMediaWriter-win32-${VERSION_FULL}.exe"
+    INSTALLER="$SCRIPTDIR/AOSCMediaWriter-win32-${VERSION_FULL}.exe"
 fi
 
 VERSION_STRIPPED=$(sed "s/-.*//" <<< "${VERSION_FULL}")
@@ -196,10 +196,10 @@ find . -type f -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | sort >>
 echo "=== Signing binaries"
 
 if ! $opt_nosign; then
-    osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "$MEDIAWRITER" -out "$MEDIAWRITER.signed" >/dev/null
+    osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "AOSC Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "$MEDIAWRITER" -out "$MEDIAWRITER.signed" >/dev/null
     mv "$MEDIAWRITER.signed" "$MEDIAWRITER"
 
-    osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "$HELPER" -out "$HELPER.signed" >/dev/null
+    osslsigncode sign -pkcs12 $CERTPATH/authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "AOSC Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "$HELPER" -out "$HELPER.signed" >/dev/null
     mv "$HELPER.signed" "$HELPER"
 fi
 
@@ -221,7 +221,7 @@ rm "$SCRIPTDIR/mediawriter.tmp.nsi"
 mv "$SCRIPTDIR/FMW-setup.exe" "$INSTALLER"
 
 if ! $opt_nosign; then
-    osslsigncode sign -pkcs12 $CERTPATH//authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "$INSTALLER" -out "$INSTALLER.signed" >/dev/null
+    osslsigncode sign -pkcs12 $CERTPATH//authenticode.pfx -readpass "$CERTPASS" -h sha256 -n "AOSC Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "$INSTALLER" -out "$INSTALLER.signed" >/dev/null
     mv "$INSTALLER.signed" "$INSTALLER"
 fi
 

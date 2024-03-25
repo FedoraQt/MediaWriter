@@ -1,5 +1,5 @@
 /*
- * Fedora Media Writer
+ * AOSC Media Writer
  * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
@@ -156,7 +156,7 @@ Page {
             Label {
                 id: messageRestore
                 visible: false
-                text: qsTr("Your drive will be resized to a smaller capacity. You may resize it back to normal by using Fedora Media Writer. This will remove installation media from your drive.")
+                text: qsTr("Your drive will be resized to a smaller capacity. You may resize it back to normal by using AOSC Media Writer. This will remove installation media from your drive.")
                 wrapMode: Label.Wrap
                 width: mainColumn.width
             }
@@ -172,7 +172,7 @@ Page {
             Label {
                 id: messageArmBoard
                 visible: false //boardCombo.otherSelected
-                text: qsTr("Your board or device is not supported by Fedora Media Writer yet. Please check <a href=%1>this page</a> for more information about its compatibility with Fedora and how to create bootable media for it.").arg("https://fedoraproject.org/wiki/Architectures/ARM")
+                text: qsTr("Your board or device is not supported by AOSC Media Writer yet. Please check <a href=%1>this page</a> for more information about its compatibility with AOSC and how to create bootable media for it.").arg("https://fedoraproject.org/wiki/Architectures/ARM")
                 wrapMode: Label.Wrap
                 width: mainColumn.width
             }

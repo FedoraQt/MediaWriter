@@ -31,8 +31,8 @@ msgstr ""
 
 #: ../src/app/qml/AboutDialog.qml:50
 msgctxt "AboutDialog|"
-msgid "About Fedora Media Writer"
-msgstr "O Fedora Media Writer"
+msgid "About AOSC Media Writer"
+msgstr "O AOSC Media Writer"
 
 #: ../src/app/qml/AboutDialog.qml:59
 #, qt-format
@@ -42,8 +42,8 @@ msgstr "Verze %1"
 
 #: ../src/app/qml/AboutDialog.qml:66
 msgctxt "AboutDialog|"
-msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Fedora Media Writer nyní hledá nově vydané verze"
+msgid "AOSC Media Writer is now checking for new releases"
+msgstr "AOSC Media Writer nyní hledá nově vydané verze"
 
 #: ../src/app/qml/AboutDialog.qml:72
 #, qt-format
@@ -225,10 +225,10 @@ msgstr "Prosím, připojte USB úložiště."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using Fedora Media Writer. This will remove installation media "
+"normal by using AOSC Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"Kapacita vašeho disku bude snížena. Fedora Media Writer ho pro vás může "
+"Kapacita vašeho disku bude snížena. AOSC Media Writer ho pro vás může "
 "vrátit do původního stavu; tím z něj zároveň odstraníte instalační médium."
 
 #: ../src/app/qml/DownloadPage.qml:167
@@ -245,11 +245,11 @@ msgstr "Žádné"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
-"Your board or device is not supported by Fedora Media Writer yet. Please "
+"Your board or device is not supported by AOSC Media Writer yet. Please "
 "check <a href=%1>this page</a> for more information about its compatibility "
-"with Fedora and how to create bootable media for it."
+"with AOSC and how to create bootable media for it."
 msgstr ""
-"Fedora Media Writer zatím nepodporuje vaše zařízení nebo desku. Prosím, "
+"AOSC Media Writer zatím nepodporuje vaše zařízení nebo desku. Prosím, "
 "navštivte <a href=%1>tuto stránku</a> pro více informací o kompatibilitě "
 "vašeho zařízení s Fedorou a případné informace o tom, jak pro něj vytvořit "
 "spustitelné médium."
@@ -458,17 +458,17 @@ msgstr ""
 
 #: ../src/app/releasemanager.cpp:428
 msgctxt "Release|"
-msgid "Fedora Spins"
+msgid "AOSC Spins"
 msgstr "Spiny Fedory"
 
 #: ../src/app/releasemanager.cpp:430
 msgctxt "Release|"
-msgid "Fedora Labs"
-msgstr "Fedora Labs"
+msgid "AOSC Labs"
+msgstr "AOSC Labs"
 
 #: ../src/app/releasemanager.cpp:432
 msgctxt "Release|"
-msgid "Fedora Atomic Desktops"
+msgid "AOSC Atomic Desktops"
 msgstr "Atomické Desktopy Fedory"
 
 #: ../src/app/releasemanager.cpp:434
@@ -638,10 +638,10 @@ msgstr ""
 #: ../src/app/qml/RestorePage.qml:67
 msgctxt "RestorePage|"
 msgid ""
-"<p align=\"justify\">Please wait while Fedora Media Writer restores your "
+"<p align=\"justify\">Please wait while AOSC Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
-"<p align=\"justify\">Prosím počkejte, dokud Fedora Media Writer neobnoví váš "
+"<p align=\"justify\">Prosím počkejte, dokud AOSC Media Writer neobnoví váš "
 "přenosný disk.</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
@@ -665,7 +665,7 @@ msgstr "Obnova dokončena"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
-msgid "Select Fedora Release"
+msgid "Select AOSC Release"
 msgstr "Vyberte Verzi Fedory"
 
 #: ../src/app/qml/VersionPage.qml:48
@@ -798,12 +798,12 @@ msgstr "Disk nelze odemknout"
 
 #: ../src/app/qml/main.qml:116
 msgctxt "main|"
-msgid "Fedora Media Writer"
-msgstr "Fedora Media Writer"
+msgid "AOSC Media Writer"
+msgstr "AOSC Media Writer"
 
 #: ../src/app/qml/main.qml:154
 msgctxt "main|"
-msgid "Select Fedora Version"
+msgid "Select AOSC Version"
 msgstr "Vyberte Verzi Fedory"
 
 #: ../src/app/qml/main.qml:170
@@ -865,42 +865,42 @@ msgstr "Předchozí"
 #. (itstool) path: application/name
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
-msgid "Fedora Media Writer"
-msgstr "Fedora Media Writer"
+msgid "AOSC Media Writer"
+msgstr "AOSC Media Writer"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of Fedora"
+msgid "A tool to create a live USB drive with an edition of AOSC"
 msgstr "Nástroj pro vytváření živých USB disků s některou z edicí Fedory"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of Fedora. Not "
-"only can Fedora Media Writer write an image to your flash drive, it can also "
+"A tool to create a bootable live USB drive with an edition of AOSC. Not "
+"only can AOSC Media Writer write an image to your flash drive, it can also "
 "download it for you. It offers official editions (Server, Workstation), "
-"Fedora spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
+"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
+"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
 "Nástroj pro vytváření živých USB disků s některou z edicí Fedory. Nejen, že "
-"Fedora Media Writer zapíše obraz na váš disk, ale také ho pro vás stáhne. "
+"AOSC Media Writer zapíše obraz na váš disk, ale také ho pro vás stáhne. "
 "Nabízí oficiální vydání (Server, Workstation), Spiny Fedory (KDE Plasma "
-"Desktop, Xfce Desktop, Cinnamon Desktop,...) a Fedora Labs (Design Suite, "
+"Desktop, Xfce Desktop, Cinnamon Desktop,...) a AOSC Labs (Design Suite, "
 "Security Lab,...). Obsahuje základní informace o každém z nich, aby pro vás "
 "bylo snažší udělat správnou volbu."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
 msgid ""
-"Fedora Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with Fedora images."
+"AOSC Media Writer can also write other bootable ISOs loaded from your "
+"local disk, but keep in mind that it's only tested with AOSC images."
 msgstr ""
-"Fedora Media Writer také dokáže zapsat jiné bootovatelné ISO obrazy z vašeho "
+"AOSC Media Writer také dokáže zapsat jiné bootovatelné ISO obrazy z vašeho "
 "disku, ale mějte na paměti, že byl testovaný pouze s obrazy Fedory."
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
-msgid "Write Fedora images to your portable drives"
+msgid "Write AOSC images to your portable drives"
 msgstr "Zapisujte obrazy Fedory na přenosná média"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
@@ -908,7 +908,7 @@ msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;spustitelné;"
 
 #~ msgctxt "Release|"
-#~ msgid "Emerging Fedora Editions"
+#~ msgid "Emerging AOSC Editions"
 #~ msgstr "Vznikající edice Fedory"
 
 #~ msgctxt "VersionPage|"
@@ -1001,10 +1001,10 @@ msgstr "fmw;usb;iso;spustitelné;"
 
 #~ msgctxt "ImageDetails|"
 #~ msgid ""
-#~ "Fedora %1 was released! Check it out!<br>If you want a stable, finished "
+#~ "AOSC %1 was released! Check it out!<br>If you want a stable, finished "
 #~ "system, it's better to stay at version %2."
 #~ msgstr ""
-#~ "Byla vydána Fedora %1! Můžete ji vyzkoušet!<br>\n"
+#~ "Byla vydána AOSC %1! Můžete ji vyzkoušet!<br>\n"
 #~ "Pokud ale chcete stabilní a dokončený systém, bude lepší zůstat u verze "
 #~ "%2."
 
@@ -1029,7 +1029,7 @@ msgstr "fmw;usb;iso;spustitelné;"
 #~ msgstr "Verze %1"
 
 #~ msgctxt "ImageList|"
-#~ msgid "Display additional Fedora flavors"
+#~ msgid "Display additional AOSC flavors"
 #~ msgstr "Zobrazit další odnože Fedory"
 
 #~ msgctxt "RestoreDialog|"
@@ -1053,8 +1053,8 @@ msgstr "fmw;usb;iso;spustitelné;"
 #~ "obnovit do továrního nastavení?"
 
 #~ msgctxt "main|"
-#~ msgid "Fedora Media Writer %1 Released"
-#~ msgstr "Byl vydán Fedora Media Writer %1"
+#~ msgid "AOSC Media Writer %1 Released"
+#~ msgstr "Byl vydán AOSC Media Writer %1"
 
 #~ msgctxt "main|"
 #~ msgid "Update for great new features and bugfixes!"
@@ -1066,7 +1066,7 @@ msgstr "fmw;usb;iso;spustitelné;"
 
 #~ msgctxt "main|"
 #~ msgid ""
-#~ "%1<br>Writing images will not be possible.<br>You can still view Fedora "
+#~ "%1<br>Writing images will not be possible.<br>You can still view AOSC "
 #~ "flavors and download images to your hard drive."
 #~ msgstr ""
 #~ "%1<br>Nebude možné zapisovat obrazy.<br>Můžete si však prohlížet odrůdy "
@@ -1090,19 +1090,19 @@ msgstr "fmw;usb;iso;spustitelné;"
 
 #~ msgctxt "Release|"
 #~ msgid ""
-#~ "Fedora Workstation is a reliable, user-friendly, and powerful operating "
+#~ "AOSC Workstation is a reliable, user-friendly, and powerful operating "
 #~ "system for your laptop or desktop computer. It supports a wide range of "
 #~ "developers, from hobbyists and students to professionals in corporate "
 #~ "environments."
 #~ msgstr ""
-#~ "Fedora Workstation je spolehlivý, uživatelsky přívětivý a výkonný "
+#~ "AOSC Workstation je spolehlivý, uživatelsky přívětivý a výkonný "
 #~ "operační systém pro laptop a stolní počítač. Poskytne podporu široké "
 #~ "škále vývojářů od nadšenců a studentů po profesionály v podnikových "
 #~ "prostředích."
 
 #~ msgctxt "Release|"
 #~ msgid ""
-#~ "“The plethora of tools provided by<br /> Fedora allows me to get the job "
+#~ "“The plethora of tools provided by<br /> AOSC allows me to get the job "
 #~ "done.<br /> It just works.”"
 #~ msgstr ""
 #~ "\"Množství nástrojů poskytovaných<br /> Fedorou mi umožňuje dokončit svou "
@@ -1117,94 +1117,94 @@ msgstr "fmw;usb;iso;spustitelné;"
 #~ msgstr "Elegantní uživatelské rozhraní"
 
 #, fuzzy
-#~| msgid "Fedora Media Writer"
+#~| msgid "AOSC Media Writer"
 #~ msgctxt "Release|"
-#~ msgid "Fedora Server"
-#~ msgstr "Fedora Media Writer"
+#~ msgid "AOSC Server"
+#~ msgstr "AOSC Media Writer"
 
 #, fuzzy
 #~| msgctxt "Release|"
-#~| msgid "Fedora Spins"
+#~| msgid "AOSC Spins"
 #~ msgctxt "Release|"
 #~ msgid "silverblue"
 #~ msgstr "Spiny Fedory"
 
 #, fuzzy
 #~| msgctxt "Release|"
-#~| msgid "Fedora Spins"
+#~| msgid "AOSC Spins"
 #~ msgctxt "Release|"
-#~ msgid "Fedora Silverblue"
+#~ msgid "AOSC Silverblue"
 #~ msgstr "Spiny Fedory"
 
 #, fuzzy
 #~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
+#~| msgid "AOSC Labs"
 #~ msgctxt "Release|"
-#~ msgid "Fedora LXQt Desktop"
-#~ msgstr "Fedora Labs"
+#~ msgid "AOSC LXQt Desktop"
+#~ msgstr "AOSC Labs"
 
 #, fuzzy
 #~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
+#~| msgid "AOSC Labs"
 #~ msgctxt "Release|"
-#~ msgid "Fedora Cinnamon Desktop"
-#~ msgstr "Fedora Labs"
+#~ msgid "AOSC Cinnamon Desktop"
+#~ msgstr "AOSC Labs"
 
 #, fuzzy
 #~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
+#~| msgid "AOSC Labs"
 #~ msgctxt "Release|"
-#~ msgid "Fedora LXDE Desktop"
-#~ msgstr "Fedora Labs"
+#~ msgid "AOSC LXDE Desktop"
+#~ msgstr "AOSC Labs"
 
 #, fuzzy
 #~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
+#~| msgid "AOSC Labs"
 #~ msgctxt "Release|"
-#~ msgid "Fedora SoaS Desktop"
-#~ msgstr "Fedora Labs"
+#~ msgid "AOSC SoaS Desktop"
+#~ msgstr "AOSC Labs"
 
 #, fuzzy
-#~| msgid "Fedora Media Writer"
+#~| msgid "AOSC Media Writer"
 #~ msgctxt "Release|"
 #~ msgid "design_suite"
-#~ msgstr "Fedora Media Writer"
+#~ msgstr "AOSC Media Writer"
 
 #, fuzzy
-#~| msgid "Fedora Media Writer"
+#~| msgid "AOSC Media Writer"
 #~ msgctxt "Release|"
-#~ msgid "Fedora Design Suite"
-#~ msgstr "Fedora Media Writer"
+#~ msgid "AOSC Design Suite"
+#~ msgstr "AOSC Media Writer"
 
 #, fuzzy
 #~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
-#~ msgid "Fedora Games"
-#~ msgstr "Fedora Labs"
+#~| msgid "AOSC Labs"
+#~ msgid "AOSC Games"
+#~ msgstr "AOSC Labs"
 
 #, fuzzy
-#~| msgid "Fedora Media Writer"
+#~| msgid "AOSC Media Writer"
 #~ msgctxt "Release|"
-#~ msgid "Fedora Robotics Suite"
-#~ msgstr "Fedora Media Writer"
+#~ msgid "AOSC Robotics Suite"
+#~ msgstr "AOSC Media Writer"
 
 #, fuzzy
 #~| msgctxt "Release|"
-#~| msgid "Fedora Spins"
+#~| msgid "AOSC Spins"
 #~ msgctxt "Release|"
 #~ msgid "scientific"
 #~ msgstr "Spiny Fedory"
 
 #, fuzzy
 #~| msgctxt "Release|"
-#~| msgid "Fedora Spins"
+#~| msgid "AOSC Spins"
 #~ msgctxt "Release|"
-#~ msgid "Fedora Scientific"
+#~ msgid "AOSC Scientific"
 #~ msgstr "Spiny Fedory"
 
 #, fuzzy
 #~| msgctxt "Release|"
-#~| msgid "Fedora Labs"
+#~| msgid "AOSC Labs"
 #~ msgctxt "Release|"
-#~ msgid "Fedora Security Lab"
-#~ msgstr "Fedora Labs"
+#~ msgid "AOSC Security Lab"
+#~ msgstr "AOSC Labs"

@@ -1,5 +1,5 @@
 /*
- * Fedora Media Writer
+ * AOSC Media Writer
  * Copyright (C) 2021 Jan Grulich <jgrulich@redhat.com>
  *
  * This program is free software; you can redistribute it and/or

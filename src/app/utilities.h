@@ -1,5 +1,5 @@
 /*
- * Fedora Media Writer
+ * AOSC Media Writer
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -84,7 +84,7 @@ public:
     bool logging{true};
 #endif
     QString releasesUrl{"https://releases.aosc.io/manifest/livekit.json"};
-    bool noUserAgent{false}; // disables sending the custom Fedora Media Writer user agent header
+    bool noUserAgent{false}; // disables sending the custom AOSC Media Writer user agent header
 };
 
 class MessageHandler

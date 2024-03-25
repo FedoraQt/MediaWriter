@@ -27,7 +27,7 @@ else
     VERSION="$TAG_NAME"
 fi
 
-INSTALLER="$SCRIPTDIR/FedoraMediaWriter-osx-$VERSION.dmg"
+INSTALLER="$SCRIPTDIR/AOSCMediaWriter-osx-$VERSION.dmg"
 
 function install_deps() {
     brew install cmake
@@ -55,8 +55,8 @@ function deps() {
     echo "=== Checking unresolved library deps ==="
     # Look at the binaries and search for dynamic library dependencies that are not included on every system
     # So far, this finds only liblzma but in the future it may be necessary for more libs
-    for binary in "helper" "Fedora Media Writer"; do
-        otool -L "src/app/Fedora Media Writer.app/Contents/MacOS/$binary" |\
+    for binary in "helper" "AOSC Media Writer"; do
+        otool -L "src/app/AOSC Media Writer.app/Contents/MacOS/$binary" |\
             grep -E "^\s" | grep -Ev "AppKit|Metal|Foundation|OpenGL|AGL|DiskArbitration|IOKit|ImageIO|libc\+\+|libobjc|libSystem|@rpath|$(basename $binary)" |\
             sed -e 's/[[:space:]]\([^[:space:]]*\).*/\1/' |\
             while read library; do
@@ -64,11 +64,11 @@ function deps() {
                 echo "Copying $(basename $library)"
                 # fix for newer version of Mac
                 if [[ "$library" == "/usr/lib/liblzma.5.dylib" && ! -e "$library" ]]; then
-                    cp "/usr/local/lib/liblzma.5.dylib" "src/app/Fedora Media Writer.app/Contents/Frameworks"
+                    cp "/usr/local/lib/liblzma.5.dylib" "src/app/AOSC Media Writer.app/Contents/Frameworks"
                 else
-                    cp $library "src/app/Fedora Media Writer.app/Contents/Frameworks"
+                    cp $library "src/app/AOSC Media Writer.app/Contents/Frameworks"
                 fi
-                install_name_tool -change "$library" "@executable_path/../Frameworks/$(basename ${library})" "src/app/Fedora Media Writer.app/Contents/MacOS/$binary"
+                install_name_tool -change "$library" "@executable_path/../Frameworks/$(basename ${library})" "src/app/AOSC Media Writer.app/Contents/MacOS/$binary"
             fi
         done
     done
@@ -79,13 +79,13 @@ function sign() {
     pushd build >/dev/null
     echo "=== Signing the package ==="
     # sign all frameworks and then the package
-    find src/app/Fedora\ Media\ Writer.app -name "*framework" | while read framework; do
+    find src/app/AOSC\ Media\ Writer.app -name "*framework" | while read framework; do
         codesign -s "$DEVELOPER_ID" --deep -v -f "$framework/Versions/Current/" -o runtime
     done
 
-    codesign -s "$DEVELOPER_ID" --deep -v -f src/app/Fedora\ Media\ Writer.app/Contents/MacOS/Fedora\ Media\ Writer -o runtime
-    codesign -s "$DEVELOPER_ID" --deep -v -f src/app/Fedora\ Media\ Writer.app/Contents/MacOS/helper -o runtime
-    codesign -s "$DEVELOPER_ID" --deep -v -f src/app/Fedora\ Media\ Writer.app/ -o runtime
+    codesign -s "$DEVELOPER_ID" --deep -v -f src/app/AOSC\ Media\ Writer.app/Contents/MacOS/AOSC\ Media\ Writer -o runtime
+    codesign -s "$DEVELOPER_ID" --deep -v -f src/app/AOSC\ Media\ Writer.app/Contents/MacOS/helper -o runtime
+    codesign -s "$DEVELOPER_ID" --deep -v -f src/app/AOSC\ Media\ Writer.app/ -o runtime
     popd >/dev/null
 }
 
@@ -96,20 +96,20 @@ function dmg() {
     rm -f "../*.dmg"
     STAGING_DIR="$SCRIPTDIR/staging"
     mkdir -p $STAGING_DIR
-    cp -R src/app/Fedora\ Media\ Writer.app $STAGING_DIR
+    cp -R src/app/AOSC\ Media\ Writer.app $STAGING_DIR
     ln -s /Applications $STAGING_DIR/Applications
-    hdiutil create -srcfolder $STAGING_DIR -format UDCO -imagekey zlib-level=9 -scrub -volname FedoraMediaWriter-osx ../FedoraMediaWriter-osx-$VERSION.unnotarized.dmg
+    hdiutil create -srcfolder $STAGING_DIR -format UDCO -imagekey zlib-level=9 -scrub -volname AOSCMediaWriter-osx ../AOSCMediaWriter-osx-$VERSION.unnotarized.dmg
     rm -rf $STAGING_DIR
     popd >/dev/null
 }
 
 function notarize() {
     echo "=== Submitting for notarization ==="
-    xcrun altool --notarize-app --primary-bundle-id "org.fedoraproject.mediawriter" --username "${NOTARIZATION_EMAIL}" --password "@keychain:${NOTARIZATION_KEYCHAIN_ITEM}" --asc-provider "${NOTARIZATION_ITUNES_ORGID}" --file "../FedoraMediaWriter-osx-$VERSION.unnotarized.dmg"
+    xcrun altool --notarize-app --primary-bundle-id "org.fedoraproject.mediawriter" --username "${NOTARIZATION_EMAIL}" --password "@keychain:${NOTARIZATION_KEYCHAIN_ITEM}" --asc-provider "${NOTARIZATION_ITUNES_ORGID}" --file "../AOSCMediaWriter-osx-$VERSION.unnotarized.dmg"
 
     echo "DONE. After notarization finished (you'll get an email), run:"
-    echo "$ xcrun stabler stable app/Fedora\ Media\ Writer.app"
-    echo "$ hdiutil create -srcfolder app/Fedora\ Media\ Writer.app  -format UDCO -imagekey zlib-level=9 -scrub -volname FedoraMediaWriter-osx ../FedoraMediaWriter-osx-$VERSION.dmg"
+    echo "$ xcrun stabler stable app/AOSC\ Media\ Writer.app"
+    echo "$ hdiutil create -srcfolder app/AOSC\ Media\ Writer.app  -format UDCO -imagekey zlib-level=9 -scrub -volname AOSCMediaWriter-osx ../AOSCMediaWriter-osx-$VERSION.dmg"
 }
 
 if [[ $# -eq 0 ]]; then

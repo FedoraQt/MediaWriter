@@ -1,5 +1,5 @@
 /*
- * Fedora Media Writer
+ * AOSC Media Writer
  * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
@@ -113,7 +113,7 @@ ApplicationWindow {
                 when: selectedPage == Units.Page.MainPage
                 PropertyChanges { 
                     target: mainWindow
-                    title: qsTr("Fedora Media Writer") 
+                    title: qsTr("AOSC Media Writer") 
                 }
                 //When comming back from restore page, after successfull restoring a USB drive
                 PropertyChanges { 
@@ -151,7 +151,7 @@ ApplicationWindow {
             State {
                 name: "versionPage"
                 when: selectedPage == Units.Page.VersionPage
-                PropertyChanges { target: mainWindow; title: qsTr("Select Fedora Version") }
+                PropertyChanges { target: mainWindow; title: qsTr("Select AOSC Version") }
                 PropertyChanges { target: nextButton; visible: true; onClicked: selectedPage += 1 } 
                 PropertyChanges { target: prevButton; visible: true; onClicked: selectedPage -= 1 }
                 StateChangeScript {

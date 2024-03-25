@@ -23,7 +23,7 @@ msgstr ""
 
 #: ../src/app/qml/AboutDialog.qml:50
 msgctxt "AboutDialog|"
-msgid "About Fedora Media Writer"
+msgid "About AOSC Media Writer"
 msgstr "لمحة عن كاتب وسائط فيدورا"
 
 #: ../src/app/qml/AboutDialog.qml:59
@@ -34,7 +34,7 @@ msgstr "الإصدار %1"
 
 #: ../src/app/qml/AboutDialog.qml:66
 msgctxt "AboutDialog|"
-msgid "Fedora Media Writer is now checking for new releases"
+msgid "AOSC Media Writer is now checking for new releases"
 msgstr "يتحقق كاتب وسائط فيدورا الآن من وجود إصدارات جديدة"
 
 #: ../src/app/qml/AboutDialog.qml:72
@@ -219,7 +219,7 @@ msgstr "الرجاء إدخال محرك أقراص USB."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using Fedora Media Writer. This will remove installation media "
+"normal by using AOSC Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
 "سيتقلص محرك الأقراص إلى مساحة أقل. يمكنك إعادته إلى طبيعته باستخدام كاتب "
@@ -239,9 +239,9 @@ msgstr "لم يتم الاختيار"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
-"Your board or device is not supported by Fedora Media Writer yet. Please "
+"Your board or device is not supported by AOSC Media Writer yet. Please "
 "check <a href=%1>this page</a> for more information about its compatibility "
-"with Fedora and how to create bootable media for it."
+"with AOSC and how to create bootable media for it."
 msgstr ""
 "لا يدعم كاتب وسائط فيدورا هذه الرقاقة أو الجهاز حتى الآن. الرجاء تفقد <a "
 "href=%1>هذه الصفحة</a> لمزيد المعلومات عن توافقيته مع فيدورا وكيفية كتابة "
@@ -449,20 +449,20 @@ msgstr ""
 
 #: ../src/app/releasemanager.cpp:428
 msgctxt "Release|"
-msgid "Fedora Spins"
+msgid "AOSC Spins"
 msgstr "متحورات فيدورا"
 
 #: ../src/app/releasemanager.cpp:430
 msgctxt "Release|"
-msgid "Fedora Labs"
+msgid "AOSC Labs"
 msgstr "مختبرات فيدورا"
 
 #: ../src/app/releasemanager.cpp:432
 #, fuzzy
-#| msgid "Fedora Media Writer"
+#| msgid "AOSC Media Writer"
 msgctxt "Release|"
-msgid "Fedora Atomic Desktops"
-msgstr "Fedora Media Writer"
+msgid "AOSC Atomic Desktops"
+msgstr "AOSC Media Writer"
 
 #: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
@@ -628,7 +628,7 @@ msgstr ""
 #: ../src/app/qml/RestorePage.qml:67
 msgctxt "RestorePage|"
 msgid ""
-"<p align=\"justify\">Please wait while Fedora Media Writer restores your "
+"<p align=\"justify\">Please wait while AOSC Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
 "<p align=\"justify\">الرجاء الانتظار ريثما يستعيد كاتب وسائط فيدورا محرك "
@@ -655,7 +655,7 @@ msgstr "اكتملت الاستعادة"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
-msgid "Select Fedora Release"
+msgid "Select AOSC Release"
 msgstr "اختيار اصدار فيدورا"
 
 #: ../src/app/qml/VersionPage.qml:48
@@ -670,10 +670,10 @@ msgstr "الإصدارات الرسمية"
 
 #: ../src/app/qml/VersionPage.qml:59
 #, fuzzy
-#| msgid "Fedora Media Writer"
+#| msgid "AOSC Media Writer"
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr "Fedora Media Writer"
+msgstr "AOSC Media Writer"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
@@ -790,12 +790,12 @@ msgstr "تعذر فك قفل محرك الأقراص"
 
 #: ../src/app/qml/main.qml:116
 msgctxt "main|"
-msgid "Fedora Media Writer"
+msgid "AOSC Media Writer"
 msgstr "كاتب وسائط فيدورا"
 
 #: ../src/app/qml/main.qml:154
 msgctxt "main|"
-msgid "Select Fedora Version"
+msgid "Select AOSC Version"
 msgstr "اختيار إصدار فيدورا"
 
 #: ../src/app/qml/main.qml:170
@@ -857,22 +857,22 @@ msgstr "السابق"
 #. (itstool) path: application/name
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
-msgid "Fedora Media Writer"
+msgid "AOSC Media Writer"
 msgstr "كاتب وسائط فيدورا"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of Fedora"
+msgid "A tool to create a live USB drive with an edition of AOSC"
 msgstr "أداة لإنشاء محرك أقراص USB يقوم بتشغيل إحدى إصدارات فيدورا مباشرةً"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of Fedora. Not "
-"only can Fedora Media Writer write an image to your flash drive, it can also "
+"A tool to create a bootable live USB drive with an edition of AOSC. Not "
+"only can AOSC Media Writer write an image to your flash drive, it can also "
 "download it for you. It offers official editions (Server, Workstation), "
-"Fedora spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
+"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
+"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
 "أداة لإنشاء محرك أقراص USB مباشر قابل للإقلاع بإحدى إصدارات فيدورا. لا يقوم "
@@ -884,14 +884,14 @@ msgstr ""
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
 msgid ""
-"Fedora Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with Fedora images."
+"AOSC Media Writer can also write other bootable ISOs loaded from your "
+"local disk, but keep in mind that it's only tested with AOSC images."
 msgstr ""
 "بوسع كاتب وسائط فيدورا أيضًا كتابة صور الأقراص الأخرى القابلة للإقلاع من قرصك "
 "المحلي، مع العلم أنه لم يُختبر سوى على صور أقراص فيدورا."
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
-msgid "Write Fedora images to your portable drives"
+msgid "Write AOSC images to your portable drives"
 msgstr "كتابة صور أقراص فيدروا على محرك أقراصك المحمولة"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
@@ -899,7 +899,7 @@ msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;"
 
 #~ msgctxt "Release|"
-#~ msgid "Emerging Fedora Editions"
+#~ msgid "Emerging AOSC Editions"
 #~ msgstr "إصدارات فيدورا المستحدثة"
 
 #~ msgctxt "VersionPage|"
@@ -978,47 +978,47 @@ msgstr "fmw;usb;iso;bootable;"
 #~ msgstr "حرق النسخة مباشرة بعد الانتهاء من التحميل"
 
 #~ msgctxt "ImageList|"
-#~ msgid "Display additional Fedora flavors"
+#~ msgid "Display additional AOSC flavors"
 #~ msgstr "عرض نكهات فيدروا الاخرى"
 
 #, fuzzy
-#~| msgid "Fedora Media Writer"
+#~| msgid "AOSC Media Writer"
 #~ msgctxt "Release|"
-#~ msgid "Fedora Server"
-#~ msgstr "Fedora Media Writer"
+#~ msgid "AOSC Server"
+#~ msgstr "AOSC Media Writer"
 
 #, fuzzy
-#~| msgid "Fedora Media Writer"
+#~| msgid "AOSC Media Writer"
 #~ msgctxt "Release|"
-#~ msgid "Fedora Silverblue"
-#~ msgstr "Fedora Media Writer"
+#~ msgid "AOSC Silverblue"
+#~ msgstr "AOSC Media Writer"
 
 #, fuzzy
-#~| msgid "Fedora Media Writer"
+#~| msgid "AOSC Media Writer"
 #~ msgctxt "Release|"
 #~ msgid "design_suite"
-#~ msgstr "Fedora Media Writer"
+#~ msgstr "AOSC Media Writer"
 
 #, fuzzy
-#~| msgid "Fedora Media Writer"
+#~| msgid "AOSC Media Writer"
 #~ msgctxt "Release|"
-#~ msgid "Fedora Design Suite"
-#~ msgstr "Fedora Media Writer"
+#~ msgid "AOSC Design Suite"
+#~ msgstr "AOSC Media Writer"
 
 #, fuzzy
-#~| msgid "Fedora Media Writer"
+#~| msgid "AOSC Media Writer"
 #~ msgctxt "Release|"
-#~ msgid "Fedora Robotics Suite"
-#~ msgstr "Fedora Media Writer"
+#~ msgid "AOSC Robotics Suite"
+#~ msgstr "AOSC Media Writer"
 
 #, fuzzy
-#~| msgid "Fedora Media Writer"
+#~| msgid "AOSC Media Writer"
 #~ msgctxt "Release|"
-#~ msgid "Fedora Scientific"
-#~ msgstr "Fedora Media Writer"
+#~ msgid "AOSC Scientific"
+#~ msgstr "AOSC Media Writer"
 
 #, fuzzy
-#~| msgid "Fedora Media Writer"
+#~| msgid "AOSC Media Writer"
 #~ msgctxt "Release|"
-#~ msgid "Fedora Security Lab"
-#~ msgstr "Fedora Media Writer"
+#~ msgid "AOSC Security Lab"
+#~ msgstr "AOSC Media Writer"

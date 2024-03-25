@@ -1,5 +1,5 @@
 /*
- * Fedora Media Writer
+ * AOSC Media Writer
  * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
@@ -64,7 +64,7 @@ Page {
                         horizontalAlignment: Label.AlignHCenter
                         wrapMode: Label.Wrap
                         width: warningText.width
-                        text: qsTr("<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
+                        text: qsTr("<p align=\"justify\">Please wait while AOSC Media Writer restores your portable drive.</p>")
                     }
                 }
                 

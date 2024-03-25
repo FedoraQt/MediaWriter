@@ -1,5 +1,5 @@
 /*
- * Fedora Media Writer
+ * AOSC Media Writer
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or

@@ -1,5 +1,5 @@
 /*
- * Fedora Media Writer
+ * AOSC Media Writer
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -401,11 +401,11 @@ QString Release::sourceString()
     case PRODUCT:
         return QString();
     case SPINS:
-        return tr("Fedora Spins");
+        return tr("AOSC Spins");
     case LABS:
-        return tr("Fedora Labs");
+        return tr("AOSC Labs");
     case EMERGING:
-        return tr("Fedora Atomic Desktops");
+        return tr("AOSC Atomic Desktops");
     default:
         return tr("Other");
     }

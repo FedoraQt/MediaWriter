@@ -1,5 +1,5 @@
 /*
- * Fedora Media Writer
+ * AOSC Media Writer
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -124,7 +124,7 @@ void Options::parse(QStringList argv)
     }
 
     if (options.logging) {
-        QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/FedoraMediaWriter.log";
+        QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/AOSCMediaWriter.log";
         debugFile = fopen(debugFileName.toStdString().c_str(), "w");
         if (!debugFile) {
             debugFile = stderr;

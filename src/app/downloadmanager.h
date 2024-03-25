@@ -1,5 +1,5 @@
 /*
- * Fedora Media Writer
+ * AOSC Media Writer
  * Copyright (C) 2017 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -54,7 +54,7 @@ class DownloadManager;
  *  or you can get a path to a file where all the data from the link will be stored.
  * Getting strings is pretty straightforward while downloading files is not easy at all.
  *
- * When downloading a file, the Manager asks the Fedora mirror service for a list of mirrors first.
+ * When downloading a file, the Manager asks the AOSC mirror service for a list of mirrors first.
  * At the same time, it creates a Download object (there can be only one at a time) and waits.
  * After getting the mirrosr, it inserts a new QNetworkReply inside the Download which starts
  *  crunching the incoming data. That means it stores it to a .part file while also computing a SHA256 hash.
@@ -146,7 +146,7 @@ private:
  *
  * You can either get a string of the data cointained at an URL or save the data as a file on your hard drive.
  *
- * For files hosted on Fedora servers, it also tries to get a list of mirrors to download the file from.
+ * For files hosted on AOSC servers, it also tries to get a list of mirrors to download the file from.
  */
 class DownloadManager : public QObject, public DownloadReceiver
 {

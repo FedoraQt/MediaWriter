@@ -5,16 +5,16 @@ XPStyle on
 # If you change the names "app.exe", "logo.ico", or "license.rtf" you should do a search and replace - they
 # show up in a few places.
 # All the other settings can be tweaked by editing the !defines at the top of this script
-!define APPNAME "Fedora Media Writer"
-!define COMPANYNAME "Fedora Project"
-!define DESCRIPTION "Tool to write Fedora images to flash drives"
+!define APPNAME "AOSC Media Writer"
+!define COMPANYNAME "AOSC Project"
+!define DESCRIPTION "Tool to write AOSC images to flash drives"
 # These three must be defined from command line
 #!define VERSIONMAJOR
 #!define VERSIONMINOR
 #!define VERSIONBUILD
 # These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
 # It is possible to use "mailto:" links in here to open the email client
-!define HELPURL "https://github.com/FedoraQt/MediaWriter" # "Support Information" link
+!define HELPURL "https://github.com/AOSCQt/MediaWriter" # "Support Information" link
 !define UPDATEURL "https://getfedora.org" # "Product Updates" link
 !define ABOUTURL "https://getfedora.org" # "Publisher" link
 # This is the size (in kB) of all the files copied into "Program Files"
@@ -48,7 +48,7 @@ Var UninstLog
     !system "chmod +x tempinstaller.exe" = 0
     !system "tempinstaller.exe" = 2
     !if "${CERTPASS}" != ""
-        !system 'osslsigncode sign -pkcs12 "${CERTPATH}/authenticode.pfx" -readpass "${CERTPASS}" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "/c/uninstall.unsigned.exe" -out "/c/uninstall.exe" ' = 0
+        !system 'osslsigncode sign -pkcs12 "${CERTPATH}/authenticode.pfx" -readpass "${CERTPASS}" -h sha256 -n "AOSC Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "/c/uninstall.unsigned.exe" -out "/c/uninstall.exe" ' = 0
     !else
         !system 'mv "/c/uninstall.unsigned.exe" "/c/uninstall.exe"' = 0
     !endif

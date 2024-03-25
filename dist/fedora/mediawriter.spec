@@ -1,11 +1,11 @@
 Name:           mediawriter
 Version:        5.0.0
 Release:        1%{?dist}
-Summary:        Fedora Media Writer
+Summary:        AOSC Media Writer
 
 License:        GPLv2+
-URL:            https://github.com/FedoraQt/MediaWriter
-Source0:        https://github.com/FedoraQt/MediaWriter/archive/MediaWriter-%{version}.tar.gz
+URL:            https://github.com/AOSCQt/MediaWriter
+Source0:        https://github.com/AOSCQt/MediaWriter/archive/MediaWriter-%{version}.tar.gz
 
 Provides:       liveusb-creator = %{version}-%{release}
 Obsoletes:      liveusb-creator <= 3.95.4-2
@@ -36,7 +36,7 @@ Requires: udisks
 %endif
 
 %description
-A tool to write images of Fedora media to portable drives
+A tool to write images of AOSC media to portable drives
 like flash drives or memory cards.
 
 %prep
