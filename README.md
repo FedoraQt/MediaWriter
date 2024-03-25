@@ -16,7 +16,7 @@ Please don't forget to attach the AOSCMediaWriter.log file that will appear in y
 
 ## Building
 
-You can build FMW using the default Qt `cmake` build system. The gist for all three platforms is written below. For a more thorough look into how the releases are composed, you can read our [GitHub Actions configuration](https://github.com/AOSCQt/MediaWriter/blob/master/.github/workflows/ccpp.yml).
+You can build FMW using the default Qt `cmake` build system. The gist for all three platforms is written below. For a more thorough look into how the releases are composed, you can read our [GitHub Actions configuration](https://github.com/AOSC-Dev/MediaWriter/blob/master/.github/workflows/ccpp.yml).
 
 ### Linux
 

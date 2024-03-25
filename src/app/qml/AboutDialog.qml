@@ -69,7 +69,7 @@ ApplicationWindow {
             Label {
                 width: mainColumn.width - units.gridUnit * 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/AOSCQt/MediaWriter/issues\">https://github.com/AOSCQt/MediaWriter/</a>")
+                text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/AOSC-Dev/MediaWriter/issues\">https://github.com/AOSC-Dev/MediaWriter/</a>")
                 textFormat: Text.RichText
                 onLinkActivated: Qt.openUrlExternally(link)
                 opacity: 0.6
