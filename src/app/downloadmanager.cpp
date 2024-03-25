@@ -28,6 +28,7 @@
 #include <QStandardPaths>
 #include <QStorageInfo>
 #include <QSysInfo>
+#include <qdir.h>
 #include <qurl.h>
 
 DownloadManager *DownloadManager::_self = nullptr;
@@ -72,16 +73,9 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QString 
 
     QDir dir;
     dir.mkpath(folder);
-    QString downloadPath;
-
-    if (folder.endsWith('/')) {
-        downloadPath.push_back(folder);
-        downloadPath.push_back(bareFileName);
-    } else {
-        downloadPath.push_back(folder);
-        downloadPath.push_back('/');
-        downloadPath.push_back(bareFileName);
-    }
+    
+    QDir downlaodDir = QDir(folder);
+    QString downloadPath = downlaodDir.absoluteFilePath(bareFileName);
 
     if (QFile::exists(downloadPath)) {
         mDebug() << this->metaObject()->className() << "The file already exists on" << bareFileName;
