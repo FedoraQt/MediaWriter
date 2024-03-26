@@ -20,7 +20,11 @@ XPStyle on
 # This is the size (in kB) of all the files copied into "Program Files"
 #!define INSTALLSIZE
 
+<<<<<<< Updated upstream
 VIProductVersion "0.5.50.0"
+=======
+VIProductVersion "0.5.1.0"
+>>>>>>> Stashed changes
 VIAddVersionKey "ProductName" "${APPNAME}"
 VIAddVersionKey "Comments" "${DESCRIPTION}"
 VIAddVersionKey "CompanyName" "${COMPANYNAME}"
