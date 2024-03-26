@@ -31,6 +31,6 @@ target_link_libraries(helper
 
 set_target_properties(helper PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/src/app
-    LINK_FLAGS "/level='requireAdministrator' /uiAccess='false'")
+    LINK_FLAGS "/MANIFESTUAC:\"level='requireAdministrator' uiAccess='false'\"")
 
 install(TARGETS helper DESTINATION ${CMAKE_INSTALL_FULL_LIBEXECDIR}/mediawriter)
