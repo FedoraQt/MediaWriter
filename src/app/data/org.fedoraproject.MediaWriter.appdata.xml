@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright 2016 Jiri Eischmann <eischmann@redhat.com> -->
-<application>
+<component type="desktop">
 	<id type="desktop">org.fedoraproject.MediaWriter.desktop</id>
 	<project_license>GPL-2.0+</project_license>
 	<metadata_license>CC0-1.0</metadata_license>
@@ -178,12 +178,12 @@
     </keywords>
 	<url type="homepage">https://github.com/FedoraQt/MediaWriter</url>
 	<screenshots>
-		<screenshot type="default">https://github.com/FedoraQt/MediaWriter/raw/main/dist/screenshots/linux_main.png</screenshot>
-		<screenshot>https://github.com/FedoraQt/MediaWriter/raw/main/dist/screenshots/linux_select_release.png</screenshot>
+	    <screenshot type="default"><image type="source">https://github.com/FedoraQt/MediaWriter/raw/main/dist/screenshots/linux_main.png</image></screenshot>
+	    <screenshot><image type="source">https://github.com/FedoraQt/MediaWriter/raw/main/dist/screenshots/linux_select_release.png</image></screenshot>
 	</screenshots>
 	<update_contact>jgrulich@redhat.com</update_contact>
 	<content_rating type="oars-1.1"/>
 	<releases>
 		<release version="5.1.0" date="2024-03-26"/>
 	</releases>
-</application>
+</component>
