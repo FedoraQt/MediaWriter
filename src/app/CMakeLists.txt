@@ -41,7 +41,16 @@ if (NOT APPLE)
 endif()
 
 if (WIN32)
-    set_target_properties(mediawriter PROPERTIES WIN32_EXECUTABLE TRUE)
+    # NOTE: QProcess::start() can not start a new process with UAC level
+    # requireAdministrator, since it is using CreateProcess. There is one
+    # API that can trigger the UAC prompt, ShellExecute or ShellExecuteEx,
+    # but process started by them can not be managed by QProcess.
+    # There are some workarounds but since the QProcess instance is connected
+    # to various slots, it would require a rewrite to apply the workarounds.
+    # We simply specify the main app to require administrator privilege in
+    # the manifest.
+    set_target_properties(mediawriter PROPERTIES WIN32_EXECUTABLE TRUE
+        LINK_FLAGS "/MANIFESTUAC:\"level='requireAdministrator' uiAccess='false'\"")
 endif()
 
 if (WIN32)
