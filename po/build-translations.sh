@@ -21,7 +21,7 @@ for i in `ls mediawriter_*.po`; do
     msgfmt $i -o "${LANGCODE}.mo"
 done
 
-itstool -i as-metainfo.its -j ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in -o ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml *.mo
+itstool -i as-metainfo.its -j ../src/app/data/io.aosc.MediaWriter.appdata.xml.in -o ../src/app/data/io.aosc.MediaWriter.appdata.xml *.mo
 
 rm -f *.mo
 
@@ -37,7 +37,7 @@ for i in `ls mediawriter_*.po`; do
     mv "$i" "$LANGCODE.po"
 done
 
-intltool-merge -d . ../../src/app/data/org.fedoraproject.MediaWriter.desktop.in ../../src/app/data/org.fedoraproject.MediaWriter.desktop
+intltool-merge -d . ../../src/app/data/io.aosc.MediaWriter.desktop.in ../../src/app/data/io.aosc.MediaWriter.desktop
 popd
 
 rm -rf desktop-file

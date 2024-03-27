@@ -35,14 +35,14 @@ jobs:
 
       - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
         with:
-          bundle: "org.fedoraproject.MediaWriter.flatpak"
-          manifest-path: "dist/flatpak/org.fedoraproject.MediaWriter.json"
+          bundle: "io.aosc.MediaWriter.flatpak"
+          manifest-path: "dist/flatpak/io.aosc.MediaWriter.json"
           cache-key: flatpak-builder-${{ github.sha }}
 
       - uses: actions/upload-artifact@v3
         with:
-          name: org.fedoraproject.MediaWriter.flatpak
-          path: org.fedoraproject.MediaWriter.flatpak
+          name: io.aosc.MediaWriter.flatpak
+          path: io.aosc.MediaWriter.flatpak
 
 
   macOS:

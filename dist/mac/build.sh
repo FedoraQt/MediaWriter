@@ -105,7 +105,7 @@ function dmg() {
 
 function notarize() {
     echo "=== Submitting for notarization ==="
-    xcrun altool --notarize-app --primary-bundle-id "org.fedoraproject.mediawriter" --username "${NOTARIZATION_EMAIL}" --password "@keychain:${NOTARIZATION_KEYCHAIN_ITEM}" --asc-provider "${NOTARIZATION_ITUNES_ORGID}" --file "../AOSCMediaWriter-osx-$VERSION.unnotarized.dmg"
+    xcrun altool --notarize-app --primary-bundle-id "io.aosc.mediawriter" --username "${NOTARIZATION_EMAIL}" --password "@keychain:${NOTARIZATION_KEYCHAIN_ITEM}" --asc-provider "${NOTARIZATION_ITUNES_ORGID}" --file "../AOSCMediaWriter-osx-$VERSION.unnotarized.dmg"
 
     echo "DONE. After notarization finished (you'll get an email), run:"
     echo "$ xcrun stabler stable app/AOSC\ Media\ Writer.app"

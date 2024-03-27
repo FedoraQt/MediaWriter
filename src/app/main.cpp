@@ -78,7 +78,7 @@ int main(int argc, char **argv)
     if (translator.load(QLocale(QLocale().language(), QLocale().country()), QLatin1String(), QLatin1String(), ":/translations"))
         app.installTranslator(&translator);
 
-    QGuiApplication::setDesktopFileName("org.fedoraproject.MediaWriter.desktop");
+    QGuiApplication::setDesktopFileName("io.aosc.MediaWriter.desktop");
 
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;

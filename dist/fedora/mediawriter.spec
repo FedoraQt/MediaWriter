@@ -51,22 +51,22 @@ like flash drives or memory cards.
 %cmake_install
 
 %check
-appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.fedoraproject.MediaWriter.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/io.aosc.MediaWriter.appdata.xml
 
 %files
 %{_bindir}/%{name}
 %{_libexecdir}/%{name}/
-%{_datadir}/metainfo/org.fedoraproject.MediaWriter.appdata.xml
-%{_datadir}/applications/org.fedoraproject.MediaWriter.desktop
-%{_datadir}/icons/hicolor/16x16/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/22x22/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/24x24/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/32x32/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/48x48/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/64x64/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/128x128/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/256x256/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/512x512/apps/org.fedoraproject.MediaWriter.png
+%{_datadir}/metainfo/io.aosc.MediaWriter.appdata.xml
+%{_datadir}/applications/io.aosc.MediaWriter.desktop
+%{_datadir}/icons/hicolor/16x16/apps/io.aosc.MediaWriter.png
+%{_datadir}/icons/hicolor/22x22/apps/io.aosc.MediaWriter.png
+%{_datadir}/icons/hicolor/24x24/apps/io.aosc.MediaWriter.png
+%{_datadir}/icons/hicolor/32x32/apps/io.aosc.MediaWriter.png
+%{_datadir}/icons/hicolor/48x48/apps/io.aosc.MediaWriter.png
+%{_datadir}/icons/hicolor/64x64/apps/io.aosc.MediaWriter.png
+%{_datadir}/icons/hicolor/128x128/apps/io.aosc.MediaWriter.png
+%{_datadir}/icons/hicolor/256x256/apps/io.aosc.MediaWriter.png
+%{_datadir}/icons/hicolor/512x512/apps/io.aosc.MediaWriter.png
 
 %changelog
 * Mon May 09 06 2022 Jan Grulich <jgrulich@redhat.com> - 5.0.0-1
