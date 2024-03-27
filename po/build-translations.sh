@@ -3,16 +3,17 @@
 ####### App translations
 rm -f *.qm
 
-echo -e '<RCC>' > translations.qrc
-echo -e '\t<qresource prefix="/translations/">' >> translations.qrc
+echo -e '<RCC>\n\t<qresource prefix="/translations/">' > ../src/translations/translations.qrc
 for i in `ls mediawriter_*.po`; do
     echo $i
     LANGCODE=$(sed 's/mediawriter_\([^.]*\).po/\1/' <<< "$i")
-    lrelease-qt5 $i -qm $LANGCODE.qm
-    echo -e "\t\t<file>${LANGCODE}.qm</file>" >> translations.qrc
+    if [[ "$LANGCODE" = "pt-BR" || "$LANGCODE" = "zh-CN" || "$LANGCODE" = "zh-TW" ]]; then
+        LANGCODE=${LANGCODE/-/_}
+    fi
+    lrelease-qt5 $i -qm ../src/translations/$LANGCODE.qm
+    echo -e "\t\t<file>${LANGCODE}.qm</file>" >> ../src/translations/translations.qrc
 done
-echo -e '\t</qresource>' >> translations.qrc
-echo -e '</RCC>' >> translations.qrc
+echo -e '\t</qresource>\n</RCC>' >> ../src/translations/translations.qrc
 
 ####### Appstream metadata
 for i in `ls mediawriter_*.po`; do
