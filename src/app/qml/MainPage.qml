@@ -58,7 +58,7 @@ Page {
             
             RadioButton {
                 checked: mainWindow.selectedOption == Units.MainSelect.Download
-                text: qsTr("Download automatically")
+                text: qsTr("Download and write image")
                 onClicked: {
                     selectedOption = Units.MainSelect.Download
                 }

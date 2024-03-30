@@ -118,110 +118,110 @@
 <context>
     <name>DownloadPage</name>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="52"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="56"/>
         <source>%1 Successfully Written</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="54"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="58"/>
         <source>Writing %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="56"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="60"/>
         <source>Downloading %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="58"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="62"/>
         <source>Preparing %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="60"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="64"/>
         <source>Ready to write %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="62"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="66"/>
         <source>Failed to download %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="76"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="80"/>
         <source> B left)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="77"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="81"/>
         <source> KB left)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="78"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="82"/>
         <source> MB left)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="79"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="83"/>
         <source> GB left)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="82"/>
-        <location filename="../src/app/qml/DownloadPage.qml" line="83"/>
-        <location filename="../src/app/qml/DownloadPage.qml" line="84"/>
-        <location filename="../src/app/qml/DownloadPage.qml" line="85"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="86"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="87"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="88"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="89"/>
         <source> (%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="101"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="105"/>
         <source>Your drive was unplugged during the process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="135"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="139"/>
         <source>Downloads are saved to the downloads folder.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="143"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="147"/>
         <source>By writing, you will lose all of the data on %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="151"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="155"/>
         <source>Please insert an USB drive.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="159"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="163"/>
         <source>Your drive will be resized to a smaller capacity. You may resize it back to normal by using AOSC Media Writer. This will remove installation media from your drive.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="167"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="171"/>
         <source>Selected:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="167"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="171"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="175"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="179"/>
         <source>Your board or device is not supported by AOSC Media Writer yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="184"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="188"/>
         <source>The selected drive&apos;s size is %1. It&apos;s possible you have selected an external drive by accident!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/DownloadPage.qml" line="193"/>
+        <location filename="../src/app/qml/DownloadPage.qml" line="197"/>
         <source>Restart and boot from %1 to start using %2.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -374,22 +374,22 @@
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../src/app/qml/MainPage.qml" line="43"/>
+        <location filename="../src/app/qml/MainPage.qml" line="47"/>
         <source>Select Image Source</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/MainPage.qml" line="57"/>
-        <source>Download automatically</source>
+        <location filename="../src/app/qml/MainPage.qml" line="61"/>
+        <source>Download and write image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/MainPage.qml" line="65"/>
+        <location filename="../src/app/qml/MainPage.qml" line="69"/>
         <source>Select .iso file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/MainPage.qml" line="76"/>
+        <location filename="../src/app/qml/MainPage.qml" line="80"/>
         <source>Restore &lt;b&gt;%1&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -643,24 +643,6 @@
     </message>
 </context>
 <context>
-    <name>VersionPage</name>
-    <message>
-        <location filename="../src/app/qml/VersionPage.qml" line="35"/>
-        <source>Select AOSC Release</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/app/qml/VersionPage.qml" line="48"/>
-        <source>Select from:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/app/qml/VersionPage.qml" line="53"/>
-        <source>Livekit</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>WinDrive</name>
     <message>
         <location filename="../src/app/windrivemanager.cpp" line="319"/>
@@ -789,66 +771,61 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/main.qml" line="154"/>
-        <source>Select AOSC Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/app/qml/main.qml" line="170"/>
+        <location filename="../src/app/qml/main.qml" line="156"/>
         <source>Select Drive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/main.qml" line="250"/>
-        <location filename="../src/app/qml/main.qml" line="291"/>
+        <location filename="../src/app/qml/main.qml" line="236"/>
+        <location filename="../src/app/qml/main.qml" line="277"/>
         <source>Restore</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/app/qml/main.qml" line="276"/>
         <location filename="../src/app/qml/main.qml" line="290"/>
-        <location filename="../src/app/qml/main.qml" line="304"/>
         <source>Finish</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/main.qml" line="294"/>
-        <location filename="../src/app/qml/main.qml" line="302"/>
+        <location filename="../src/app/qml/main.qml" line="280"/>
+        <location filename="../src/app/qml/main.qml" line="288"/>
         <source>Write</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/main.qml" line="296"/>
+        <location filename="../src/app/qml/main.qml" line="282"/>
         <source>Download &amp;&amp; Write</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/main.qml" line="297"/>
+        <location filename="../src/app/qml/main.qml" line="283"/>
         <source>Download &amp; Write</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/main.qml" line="300"/>
-        <location filename="../src/app/qml/main.qml" line="315"/>
+        <location filename="../src/app/qml/main.qml" line="286"/>
+        <location filename="../src/app/qml/main.qml" line="301"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/main.qml" line="306"/>
+        <location filename="../src/app/qml/main.qml" line="292"/>
         <source>Retry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/main.qml" line="308"/>
+        <location filename="../src/app/qml/main.qml" line="294"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/main.qml" line="313"/>
+        <location filename="../src/app/qml/main.qml" line="299"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/qml/main.qml" line="316"/>
+        <location filename="../src/app/qml/main.qml" line="302"/>
         <source>Previous</source>
         <translation type="unfinished"></translation>
     </message>
