@@ -183,7 +183,7 @@ private:
 /**
  * @brief The Release class
  *
- * The class representing a fedora flavor, like for example Workstation or KDE Plasma Desktop spin.
+ * The class representing an AOSC OS flavor, like for example Workstation or KDE Plasma Desktop spin.
  *
  * It can have multiple versions.
  *

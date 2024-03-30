@@ -65,8 +65,8 @@ int main(int argc, char **argv)
     }
 #endif
 
-    QApplication::setOrganizationDomain("fedoraproject.org");
-    QApplication::setOrganizationName("fedoraproject.org");
+    QApplication::setOrganizationDomain("aosc.io");
+    QApplication::setOrganizationName("AOSC");
     QApplication::setApplicationName("MediaWriter");
 
     QApplication app(argc, argv);
