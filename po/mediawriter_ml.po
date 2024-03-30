@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
+"POT-Creation-Date: 2024-03-30 22:58+0800\n"
 "PO-Revision-Date: 2021-07-11 17:15+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Malayalam <https://translate.fedoraproject.org/projects/"
@@ -17,40 +17,35 @@ msgstr ""
 
 #: ../src/app/qml/AboutDialog.qml:50
 #, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About AOSC Media Writer"
 msgctxt "AboutDialog|"
 msgid "About AOSC Media Writer"
 msgstr "ഫെഡോറ മാധ്യമ ഉപകരണത്തിനെ കുറിച്ച്."
 
 #: ../src/app/qml/AboutDialog.qml:59
 #, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "വേര്‍ഷന്‍ %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
+msgctxt "AboutDialog|"
+msgid "Based on Fedora Media Writer"
+msgstr ""
+
+#: ../src/app/qml/AboutDialog.qml:72
 #, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "AOSC Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "AOSC Media Writer is now checking for new releases"
 msgstr "ഫെഡോറ മാധ്യമ എഴുതുപകരണം ഇപ്പോൾ പുതിയ റിലീസുകൾ പരിശോധിക്കുന്നു."
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: ../src/app/qml/AboutDialog.qml:78
 #, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "%s-ലേക്കു് ബഗുകളും വിലപ്പെട്ട നിർദേശങ്ങളും രേഖപ്പെടുത്തുക."
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:101
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "അടയ്ക്കുക"
@@ -72,9 +67,7 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
-msgid ""
-"Download and media writing will be aborted. This process can be resumed any "
-"time later."
+msgid "Download and media writing will be aborted."
 msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:69
@@ -111,28 +104,26 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:117
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "റദ്ദാക്കുക"
 
-#: ../src/app/downloadmanager.cpp:235
+#: ../src/app/downloadmanager.cpp:257
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "ഇന്‍സ്റ്റോള്‍ ഇമേജ് ലഭ്യമാക്കുവാന്‍ അസാധ്യം."
 
-#: ../src/app/downloadmanager.cpp:335
+#: ../src/app/downloadmanager.cpp:357
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr ""
 
-#: ../src/app/downloadmanager.cpp:337
+#: ../src/app/downloadmanager.cpp:359
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "ഡൌൺലോഡ് ഫയൽ ഡറിടാബ്‌ലെ അല്ല."
 
-#: ../src/app/downloadmanager.cpp:425
+#: ../src/app/downloadmanager.cpp:447
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "കണക്ഷൻ ടൈംഔട് ആയിരിക്കുന്നു "
@@ -145,8 +136,6 @@ msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:54
 #, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "എഴുത് %1"
@@ -177,32 +166,24 @@ msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:76
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr "(%1 B അവശേഷിക്കുന്നു)"
 
 #: ../src/app/qml/DownloadPage.qml:77
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr "(%1 KB അവശേഷിക്കുന്നു)"
 
 #: ../src/app/qml/DownloadPage.qml:78
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr "(%1 MB അവശേഷിക്കുന്നു)"
 
 #: ../src/app/qml/DownloadPage.qml:79
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr "(%1 GB അവശേഷിക്കുന്നു)"
@@ -226,8 +207,6 @@ msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:143
 #, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "എഴുതാൻ തുടങ്ങിയാൽ %1 ടാറ്റ നഷ്ടമാകുമെന്നതാണ് "
@@ -241,33 +220,25 @@ msgstr ""
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using AOSC Media Writer. This will remove installation media "
-"from your drive."
+"normal by using AOSC Media Writer. This will remove installation media from "
+"your drive."
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:167
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "തെരഞ്ഞെടുത്തവ:"
 
 #: ../src/app/qml/DownloadPage.qml:167
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "ശൂന്യം"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, qt-format
 msgctxt "DownloadPage|"
-msgid ""
-"Your board or device is not supported by AOSC Media Writer yet. Please "
-"check <a href=%1>this page</a> for more information about its compatibility "
-"with AOSC and how to create bootable media for it."
+msgid "Your board or device is not supported by AOSC Media Writer yet."
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:184
@@ -296,8 +267,6 @@ msgstr ""
 
 #: ../src/app/qml/DrivePage.qml:45
 #, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
 msgstr "വേര്‍ഷന്‍ %1"
@@ -309,24 +278,18 @@ msgstr ""
 
 #: ../src/app/qml/DrivePage.qml:84
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
 msgstr "തെരഞ്ഞെടുത്തവ:"
 
 #: ../src/app/qml/DrivePage.qml:91
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "ശൂന്യം"
 
 #: ../src/app/qml/DrivePage.qml:99
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
 msgstr "തെരഞ്ഞെടുത്തവ:"
@@ -348,8 +311,6 @@ msgstr ""
 
 #: ../src/app/qml/DrivePage.qml:135
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "പോർട്ടൽ ഡേവിസ് ഒന്നും കണ്ണെക്ടഡ് അല്ല."
@@ -469,12 +430,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:373
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "നിങ്ങളുടെ ഡ്രൈവിൽ നിന്ന് ഒരു ഫയൽ തിരഞ്ഞെടുക്കുക"
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:374
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -485,92 +446,103 @@ msgstr ""
 "ചിത്രം തിരഞ്ഞെടുക്കാം.</p> <p> നിലവിൽ ഡിസ്ക് ഇമേജുകൾ (.iso അല്ലെങ്കിൽ .bin) എഴുതാൻ "
 "മാത്രം പിന്തുണയ്ക്കുന്നു </p>"
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "AOSC Spins"
 msgstr "AOSC സ്പിന്നുകള്‍"
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:406
 msgctxt "Release|"
 msgid "AOSC Labs"
 msgstr "AOSC ലാബ്സ്"
 
-#: ../src/app/releasemanager.cpp:432
+#: ../src/app/releasemanager.cpp:408
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC Labs"
 msgctxt "Release|"
 msgid "AOSC Atomic Desktops"
 msgstr "AOSC ലാബ്സ്"
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:410
 msgctxt "Release|"
 msgid "Other"
 msgstr "മറ്റു്"
 
-#: ../src/app/releasemanager.cpp:1074
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 64bit"
-msgstr "ഇന്റൽ 64  bit"
-
-#: ../src/app/releasemanager.cpp:1074
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+msgid "x86-64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1075
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 32bit"
-msgstr "ഇന്റൽ 64  bit"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
+msgid "System releases for 64-bit x86 devices"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid "ARM v7"
-msgstr ""
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid ""
-"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr ""
-
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
-msgid "LZMA-compressed raw image for AArch64 machines"
+msgid "System releases for AArch64 devices"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "LoongArch"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for LoongArch devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "POWER"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for IBM POWER devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "MIPS-based Loongson 3"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for MIPS-based Loongson 3 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "RISC-V (64bit)"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit RISC-V devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:372
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:909 ../src/app/releasemanager.cpp:921
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:925
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr ""
@@ -602,8 +574,6 @@ msgstr ""
 
 #: ../src/app/releasemanager.h:380
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "എഴുത് %1"
@@ -615,8 +585,6 @@ msgstr ""
 
 #: ../src/app/releasemanager.h:382
 #, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "പൂർത്തിയായി!"
@@ -633,25 +601,23 @@ msgstr ""
 
 #: ../src/app/releasemanager.h:385
 #, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Error"
 msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "പിശക്"
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:682
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:684
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:686
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -705,33 +671,13 @@ msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:48
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
 msgstr "തെരഞ്ഞെടുത്തവ:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
-msgid "Official Editions"
-msgstr ""
-
-#: ../src/app/qml/VersionPage.qml:59
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC Labs"
-msgctxt "VersionPage|"
-msgid "Atomic Desktops"
-msgstr "AOSC ലാബ്സ്"
-
-#: ../src/app/qml/VersionPage.qml:65
-msgctxt "VersionPage|"
-msgid "Spins"
-msgstr ""
-
-#: ../src/app/qml/VersionPage.qml:71
-msgctxt "VersionPage|"
-msgid "Labs"
+msgid "Livekit"
 msgstr ""
 
 #: ../src/app/windrivemanager.cpp:319
@@ -761,8 +707,6 @@ msgstr ""
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
 #, fuzzy
-#| msgctxt "Download|"
-#| msgid "The download file is not writable."
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
 msgstr "ഡൌൺലോഡ് ഫയൽ ഡറിടാബ്‌ലെ അല്ല."
@@ -776,8 +720,6 @@ msgstr ""
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:320
 #, fuzzy
-#| msgctxt "Download|"
-#| msgid "The download file is not writable."
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "ഡൌൺലോഡ് ഫയൽ ഡറിടാബ്‌ലെ അല്ല."
@@ -845,23 +787,18 @@ msgstr ""
 
 #: ../src/app/qml/main.qml:116
 #, fuzzy
-#| msgid "AOSC Media Writer"
 msgctxt "main|"
 msgid "AOSC Media Writer"
 msgstr "ഫെഡോറ മാധ്യമ എഴുതുപകരണം "
 
 #: ../src/app/qml/main.qml:154
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC Spins"
 msgctxt "main|"
 msgid "Select AOSC Version"
 msgstr "AOSC സ്പിന്നുകള്‍"
 
 #: ../src/app/qml/main.qml:170
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
 msgstr "തെരഞ്ഞെടുത്തവ:"
@@ -873,8 +810,6 @@ msgstr ""
 
 #: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 #, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "main|"
 msgid "Finish"
 msgstr "പൂർത്തിയായി!"
@@ -896,16 +831,12 @@ msgstr ""
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "main|"
 msgid "Cancel"
 msgstr "റദ്ദാക്കുക"
 
 #: ../src/app/qml/main.qml:306
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
 msgctxt "main|"
 msgid "Retry"
 msgstr "തിരികെ ശ്രമിക്കുക."
@@ -925,208 +856,65 @@ msgctxt "main|"
 msgid "Previous"
 msgstr ""
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/io.aosc.MediaWriter.desktop:4
 msgid "AOSC Media Writer"
 msgstr "ഫെഡോറ മാധ്യമ എഴുതുപകരണം "
 
 #. (itstool) path: application/summary
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of AOSC"
-msgstr "ലൈവ് ആയ ഇമേജ് ഡിസ്കിനെ USB ഡ്രൈവ് ആകുന്ന ഉപകരണം "
+msgid "A tool to create AOSC OS boot media"
+msgstr ""
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of AOSC. Not "
-"only can AOSC Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
+"Automatically downloads, writes, and verifies AOSC OS boot media from disk "
+"images"
 msgstr ""
-"ലൈവ് ആയ ഇമേജ് ഡിസ്കിനെ USB ഡ്രൈവ് ആകുന്ന ഉപകരണം. ഫെഡോറ മീഡിയ റൈറ്റർ ഉപയോഗിച്ച് കൊണ്ടു "
-"ഫെഡോറ ലൈവ് ഇമേജ് ഡൌൺലോഡ് ചെയ്യാനും സാദിക്കും. ഫെഡോറ വർക്സ്റ്റേഷൻ, ഫെഡോറ സെർവർ എന്നുള്ള "
-"ഔദ്യോഗിക ഇമേജുകൾ, ഫെഡോറ റെസ്പിൻ ഇമേജുകൾ (KDE Plasma ഡെസ്ക്ടോപ്പ്, Xfce ഡെസ്ക്ടോപ്പ്, "
-"Cinnamon ഡെസ്ക്ടോപ്പ്) , ഫെഡോറ ലാബ് ( ഡിസൈൻ Suite , സുരക്ഷാ ലാബ് ) എന്നിവ ഡൌൺലോഡ് "
-"ചെയ്യാനുള്ള ഓപ്ഷനും ലഭ്യമാണ്."
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"AOSC Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with AOSC images."
+"AOSC Media Writer can also write other bootable ISOs, but keep in mind that "
+"this tool is only tested with AOSC OS images."
 msgstr ""
 "ഫെഡോറ മാധ്യമ എഴുതുപകരണം ഉപയോഗിച്ച് ലോക്കൽ ഡിസ്കിലുള്ള ഐസോ എഴുതാനുള്ള സവിശേഷത ലഭ്യമാണ്, "
 "പക്ഷെ ഫെഡോറ ഡിസ്ക് ഇമേജ് മാത്രം പരിശോധന വിദേയം."
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:43
-msgid "Write AOSC images to your portable drives"
+#: ../src/app/data/io.aosc.MediaWriter.desktop:4
+#, fuzzy
+msgid "Media Writer"
+msgstr "ഫെഡോറ മാധ്യമ എഴുതുപകരണം "
+
+#: ../src/app/data/io.aosc.MediaWriter.desktop:44
+#, fuzzy
+msgid "Write images to your portable drives"
 msgstr "ഫെഡോറ ഡിസ്ക് ചിത്രത്തിനെ പെന് ഡ്രൈവിൽ എഴുത്തു"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:87
+#: ../src/app/data/io.aosc.MediaWriter.desktop:89
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
 
 #, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Writing %1 failed"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing not possible"
-#~ msgstr "% 1 എഴുതുന്നത് പരാജയപ്പെട്ടു"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "Intel/AMD 64bit"
+#~ msgstr "ഇന്റൽ 64  bit"
 
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Finished!"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "പൂർത്തിയായി!"
+#~ msgid "A tool to create a live USB drive with an edition of AOSC"
+#~ msgstr "ലൈവ് ആയ ഇമേജ് ഡിസ്കിനെ USB ഡ്രൈവ് ആകുന്ന ഉപകരണം "
 
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Writing %1 failed"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed"
-#~ msgstr "% 1 എഴുതുന്നത് പരാജയപ്പെട്ടു"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Writing %1 was successful"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write Successful"
-#~ msgstr "%1 എഴുതുന്നത് വിജയകരമായിരുന്നു"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write the image immediately when the download is finished"
-#~ msgstr "ഡൗൺലോഡ് പൂർത്തിയാകുമ്പോൾ ചിത്രം ഉടനെ എഴുതുക"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "(%1 after writing)"
-#~ msgstr "( %1 എഴുതിയ ശേഷം)"
-
-#~ msgctxt "ImageDetails|"
 #~ msgid ""
-#~ "AOSC %1 was released! Check it out!<br>If you want a stable, finished "
-#~ "system, it's better to stay at version %2."
+#~ "A tool to create a bootable live USB drive with an edition of AOSC. Not "
+#~ "only can AOSC Media Writer write an image to your flash drive, it can "
+#~ "also download it for you. It offers official editions (Server, "
+#~ "Workstation), AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktop,...), and AOSC Labs (Design Suite, Security Lab,...). It provides "
+#~ "basic information about each of them to help you make the right choice."
 #~ msgstr ""
-#~ "ഫെഡോറ% %1 പുറത്തിറങ്ങി! ഇത് പരിശോധിക്കുക! <br> നിങ്ങൾ സ്ഥിരതയുള്ള, ഫിനിഷ്ഡ് സിസ്റ്റം "
-#~ "ആഗ്രഹിക്കുന്നുവെങ്കിൽ, വേർഷൻ %൨ ഉപയോഗിക്കുക. "
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ", released on %1"
-#~ msgstr ", %1 തീയതി പുറത്തിറങ്ങി"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "മറ്റ് വകഭേദങ്ങൾ..."
-
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "ഒരു ഓപ്പറേറ്റിംഗ് സിസ്റ്റം ഇമേജ് കണ്ടെത്തുക"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Checking for new releases"
-#~ msgstr "പുതിയ റിലീസുകൾ പരിശോധിക്കുന്നു"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Version %1"
-#~ msgstr "വേര്‍ഷന്‍ %1"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Display additional AOSC flavors"
-#~ msgstr "അധിക ഫെഡോറ സുഗന്ധങ്ങൾ പ്രദർശിപ്പിക്കുക"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Server"
-#~ msgstr "ഫെഡോറ മാധ്യമ എഴുതുപകരണം "
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "silverblue"
-#~ msgstr "AOSC സ്പിന്നുകള്‍"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Silverblue"
-#~ msgstr "AOSC സ്പിന്നുകള്‍"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXQt Desktop"
-#~ msgstr "AOSC ലാബ്സ്"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Cinnamon Desktop"
-#~ msgstr "AOSC ലാബ്സ്"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXDE Desktop"
-#~ msgstr "AOSC ലാബ്സ്"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC SoaS Desktop"
-#~ msgstr "AOSC ലാബ്സ്"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "design_suite"
-#~ msgstr "ഫെഡോറ മാധ്യമ എഴുതുപകരണം "
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Design Suite"
-#~ msgstr "ഫെഡോറ മാധ്യമ എഴുതുപകരണം "
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgid "AOSC Games"
-#~ msgstr "AOSC ലാബ്സ്"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Robotics Suite"
-#~ msgstr "ഫെഡോറ മാധ്യമ എഴുതുപകരണം "
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "scientific"
-#~ msgstr "AOSC സ്പിന്നുകള്‍"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Scientific"
-#~ msgstr "AOSC സ്പിന്നുകള്‍"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Security Lab"
-#~ msgstr "AOSC ലാബ്സ്"
+#~ "ലൈവ് ആയ ഇമേജ് ഡിസ്കിനെ USB ഡ്രൈവ് ആകുന്ന ഉപകരണം. ഫെഡോറ മീഡിയ റൈറ്റർ ഉപയോഗിച്ച് കൊണ്ടു "
+#~ "ഫെഡോറ ലൈവ് ഇമേജ് ഡൌൺലോഡ് ചെയ്യാനും സാദിക്കും. ഫെഡോറ വർക്സ്റ്റേഷൻ, ഫെഡോറ സെർവർ എന്നുള്ള "
+#~ "ഔദ്യോഗിക ഇമേജുകൾ, ഫെഡോറ റെസ്പിൻ ഇമേജുകൾ (KDE Plasma ഡെസ്ക്ടോപ്പ്, Xfce ഡെസ്ക്ടോപ്പ്, "
+#~ "Cinnamon ഡെസ്ക്ടോപ്പ്) , ഫെഡോറ ലാബ് ( ഡിസൈൻ Suite , സുരക്ഷാ ലാബ് ) എന്നിവ ഡൌൺലോഡ് "
+#~ "ചെയ്യാനുള്ള ഓപ്ഷനും ലഭ്യമാണ്."

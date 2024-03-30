@@ -52,11 +52,17 @@ ApplicationWindow {
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 width: mainColumn.width - units.gridUnit * 2
             }
-        
+
             Label {
                 width: mainColumn.width - units.gridUnit * 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 text: qsTr("Version %1").arg(mediawriterVersion)
+            }
+        
+            Label {
+                width: mainColumn.width - units.gridUnit * 2
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                text: qsTr("Based on Fedora Media Writer")
             }
             
             Label {

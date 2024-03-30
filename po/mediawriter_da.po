@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
+"POT-Creation-Date: 2024-03-30 22:58+0800\n"
 "PO-Revision-Date: 2021-07-11 17:14+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Danish <https://translate.fedoraproject.org/projects/fedora-"
@@ -25,40 +25,35 @@ msgstr ""
 
 #: ../src/app/qml/AboutDialog.qml:50
 #, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About AOSC Media Writer"
 msgctxt "AboutDialog|"
 msgid "About AOSC Media Writer"
 msgstr "Om AOSC-medieskriver"
 
 #: ../src/app/qml/AboutDialog.qml:59
 #, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Version %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
+msgctxt "AboutDialog|"
+msgid "Based on Fedora Media Writer"
+msgstr ""
+
+#: ../src/app/qml/AboutDialog.qml:72
 #, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "AOSC Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "AOSC Media Writer is now checking for new releases"
 msgstr "AOSC-medieskriver søger nu efter nye udgivelser"
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: ../src/app/qml/AboutDialog.qml:78
 #, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Rapportér venligst fejl og forslag på %1"
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:101
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Luk"
@@ -70,8 +65,6 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:58
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
 msgstr "Skriver"
@@ -83,9 +76,7 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
-msgid ""
-"Download and media writing will be aborted. This process can be resumed any "
-"time later."
+msgid "Download and media writing will be aborted."
 msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:69
@@ -107,16 +98,12 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:111
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Downloader"
 
 #: ../src/app/qml/CancelDialog.qml:113
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Skriver"
@@ -128,28 +115,26 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:117
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Annuller"
 
-#: ../src/app/downloadmanager.cpp:235
+#: ../src/app/downloadmanager.cpp:257
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "Kan ikke hente det ønskede aftryk."
 
-#: ../src/app/downloadmanager.cpp:335
+#: ../src/app/downloadmanager.cpp:357
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "Du løb tør for plads i din Downloads-mappe."
 
-#: ../src/app/downloadmanager.cpp:337
+#: ../src/app/downloadmanager.cpp:359
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "Downloadfilen er skrivebeskyttet."
 
-#: ../src/app/downloadmanager.cpp:425
+#: ../src/app/downloadmanager.cpp:447
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Forbindelsen fik timeout"
@@ -162,72 +147,54 @@ msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:54
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Skriver"
 
 #: ../src/app/qml/DownloadPage.qml:56
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr "Downloader"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr "Forbereder"
 
 #: ../src/app/qml/DownloadPage.qml:60
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
 msgstr "Klar til at skrive"
 
 #: ../src/app/qml/DownloadPage.qml:62
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
 msgstr "Tjekker det downloadede"
 
 #: ../src/app/qml/DownloadPage.qml:76
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr "(%1 B tilbage)"
 
 #: ../src/app/qml/DownloadPage.qml:77
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr "(%1 KB tilbage)"
 
 #: ../src/app/qml/DownloadPage.qml:78
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr "(%1 MB tilbage)"
 
 #: ../src/app/qml/DownloadPage.qml:79
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr "(%1 GB tilbage)"
@@ -246,16 +213,12 @@ msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:135
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
 msgstr "Filen gemmes i din Downloads-mappe."
 
 #: ../src/app/qml/DownloadPage.qml:143
 #, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Ved skrivning vil du miste alle dataene på %1."
@@ -267,61 +230,35 @@ msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:159
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using AOSC Media Writer; this will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using AOSC Media Writer. This will remove installation media "
-"from your drive."
+"normal by using AOSC Media Writer. This will remove installation media from "
+"your drive."
 msgstr ""
 "Dit drev ændres til en mindre kapacitet. Du kan ændre kapaciteten tilbage "
-"til normal med AOSC-medieskriver; det vil fjerne installationsmediet fra "
-"dit drev."
+"til normal med AOSC-medieskriver; det vil fjerne installationsmediet fra dit "
+"drev."
 
 #: ../src/app/qml/DownloadPage.qml:167
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Valgt:"
 
 #: ../src/app/qml/DownloadPage.qml:167
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Ingen"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your board or device is not supported by AOSC Media Writer yet. Please "
-#| "check <a href=%1>this page</a> for more information about its "
-#| "compatibility with AOSC and how to create bootable media for it."
 msgctxt "DownloadPage|"
-msgid ""
-"Your board or device is not supported by AOSC Media Writer yet. Please "
-"check <a href=%1>this page</a> for more information about its compatibility "
-"with AOSC and how to create bootable media for it."
+msgid "Your board or device is not supported by AOSC Media Writer yet."
 msgstr ""
-"Dit bundkort eller din enhed understøttes endnu ikke af AOSC-medieskriver. "
-"Tjek venligst <a href=%1>denne side</a> for mere information om dens "
-"kompatibilitet med AOSC og hvordan bruger det til at oprette et medie der "
-"kan startes fra."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
@@ -343,16 +280,12 @@ msgstr "Drevet er ikke stort nok."
 
 #: ../src/app/qml/DrivePage.qml:36
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
 msgstr "Skriv til disk"
 
 #: ../src/app/qml/DrivePage.qml:45
 #, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
 msgstr "Version %1"
@@ -364,40 +297,30 @@ msgstr ""
 
 #: ../src/app/qml/DrivePage.qml:84
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
 msgstr "Valgt:"
 
 #: ../src/app/qml/DrivePage.qml:91
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "Ingen"
 
 #: ../src/app/qml/DrivePage.qml:99
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
 msgstr "Valgt:"
 
 #: ../src/app/qml/DrivePage.qml:116
 #, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr "Aftryksfiler"
 
 #: ../src/app/qml/DrivePage.qml:116
 #, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "Alle filer (*)"
@@ -409,24 +332,18 @@ msgstr ""
 
 #: ../src/app/qml/DrivePage.qml:135
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "Der er ikke tilsluttet nogen flytbare drev"
 
 #: ../src/app/qml/DrivePage.qml:155
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
 msgstr "Downloader"
 
 #: ../src/app/qml/DrivePage.qml:160
 #, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
 msgstr "Slet det downloadede aftryk"
@@ -509,8 +426,6 @@ msgstr ""
 
 #: ../src/app/qml/MainPage.qml:57
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
 msgstr "Download mislykkedes"
@@ -522,24 +437,18 @@ msgstr ""
 
 #: ../src/app/qml/MainPage.qml:76
 #, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
 msgstr "Gendan %1?"
 
 #: ../src/app/portalfiledialog.cpp:143
 #, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "Aftryksfiler"
 
 #: ../src/app/portalfiledialog.cpp:153
 #, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
 msgstr "Alle filer (*)"
@@ -549,12 +458,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:373
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Vælg en fil fra dine drev"
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:374
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -565,120 +474,122 @@ msgstr ""
 "flashdisk</p><p>I øjeblikket understøttes kun skrivning af rå diskaftryk (."
 "iso eller .bin)</p>"
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "AOSC Spins"
 msgstr "AOSC Spins"
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:406
 msgctxt "Release|"
 msgid "AOSC Labs"
 msgstr "AOSC Labs"
 
-#: ../src/app/releasemanager.cpp:432
+#: ../src/app/releasemanager.cpp:408
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC Labs"
 msgctxt "Release|"
 msgid "AOSC Atomic Desktops"
 msgstr "AOSC Labs"
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:410
 msgctxt "Release|"
 msgid "Other"
 msgstr "Andre"
 
-#: ../src/app/releasemanager.cpp:1074
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 64bit"
-msgstr "Intel 64-bit"
-
-#: ../src/app/releasemanager.cpp:1074
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+msgid "x86-64"
 msgstr ""
-"ISO-formateret aftryk til Intel, AMD og andre kompatible PC'er (64-bit)"
 
-#: ../src/app/releasemanager.cpp:1075
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 32bit"
-msgstr "Intel 32-bit"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
+msgid "System releases for 64-bit x86 devices"
 msgstr ""
-"ISO-formateret aftryk til Intel, AMD og andre kompatible PC'er (32-bit)"
 
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid "ARM v7"
-msgstr "ARM v7"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid ""
-"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr ""
-"LZMA-komprimeret råt aftryk til ARM v7-A-maskiner, såsom Raspberry Pi 2 "
-"eller 3"
-
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
-msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "LZMA-komprimeret råt aftryk til AArch64-maskiner"
+msgid "System releases for AArch64 devices"
+msgstr ""
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:1052
+#, fuzzy
+msgctxt "ReleaseArchitecture|"
+msgid "LoongArch"
+msgstr "AArch64"
+
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for LoongArch devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "POWER"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for IBM POWER devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "MIPS-based Loongson 3"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for MIPS-based Loongson 3 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "RISC-V (64bit)"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit RISC-V devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:372
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Brugerdefineret aftryk"
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:909 ../src/app/releasemanager.cpp:921
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Det downloadede aftryk er ødelagt"
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:925
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Den downloadede fil kan ikke læses."
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Kan ikke omdøbe den midlertidige fil."
 
 #: ../src/app/releasemanager.h:375
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Forbereder"
 
 #: ../src/app/releasemanager.h:376
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "Downloader"
 
 #: ../src/app/releasemanager.h:377
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "Tjekker det downloadede"
@@ -695,16 +606,12 @@ msgstr "Aftryksfil blev gemt i din Downloads-mappe. Skrivning er ikke muligt"
 
 #: ../src/app/releasemanager.h:380
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "Skriver"
 
 #: ../src/app/releasemanager.h:381
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "Tjekker den skrevne data"
@@ -721,8 +628,6 @@ msgstr "Den skrevne data er ødelagt"
 
 #: ../src/app/releasemanager.h:384
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "Download mislykkedes"
@@ -732,19 +637,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Fejl"
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:682
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:684
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:686
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -758,21 +663,6 @@ msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:49
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -799,10 +689,6 @@ msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:67
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while AOSC Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while AOSC Media Writer restores your "
@@ -813,18 +699,12 @@ msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:84
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "Det lykkedes at gendanne dit drev!"
 
 #: ../src/app/qml/RestorePage.qml:94
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
@@ -845,36 +725,13 @@ msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:48
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
 msgstr "Valgt:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
-msgid "Official Editions"
-msgstr ""
-
-#: ../src/app/qml/VersionPage.qml:59
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC Labs"
-msgctxt "VersionPage|"
-msgid "Atomic Desktops"
-msgstr "AOSC Labs"
-
-#: ../src/app/qml/VersionPage.qml:65
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "spins"
-msgctxt "VersionPage|"
-msgid "Spins"
-msgstr "spins"
-
-#: ../src/app/qml/VersionPage.qml:71
-msgctxt "VersionPage|"
-msgid "Labs"
+msgid "Livekit"
 msgstr ""
 
 #: ../src/app/windrivemanager.cpp:319
@@ -982,23 +839,18 @@ msgstr "Kunne ikke låse drevet op"
 
 #: ../src/app/qml/main.qml:116
 #, fuzzy
-#| msgid "AOSC Media Writer"
 msgctxt "main|"
 msgid "AOSC Media Writer"
 msgstr "AOSC-medieskriver"
 
 #: ../src/app/qml/main.qml:154
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC Workstation"
 msgctxt "main|"
 msgid "Select AOSC Version"
 msgstr "AOSC Workstation"
 
 #: ../src/app/qml/main.qml:170
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
 msgstr "Valgt:"
@@ -1010,48 +862,36 @@ msgstr "Gendan"
 
 #: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 #, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "main|"
 msgid "Finish"
 msgstr "Færdig!"
 
 #: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "main|"
 msgid "Write"
 msgstr "Skriv %1"
 
 #: ../src/app/qml/main.qml:296
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "Download mislykkedes"
 
 #: ../src/app/qml/main.qml:297
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "Download mislykkedes"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Annuller"
 
 #: ../src/app/qml/main.qml:306
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
 msgctxt "main|"
 msgid "Retry"
 msgstr "Prøv igen"
@@ -1071,440 +911,82 @@ msgctxt "main|"
 msgid "Previous"
 msgstr ""
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/io.aosc.MediaWriter.desktop:4
 msgid "AOSC Media Writer"
 msgstr "AOSC-medieskriver"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of AOSC"
-msgstr "Et værktøj til at oprette et live-USB-drev med en udgave af AOSC"
+msgid "A tool to create AOSC OS boot media"
+msgstr ""
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of AOSC. Not "
-"only can AOSC Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
+"Automatically downloads, writes, and verifies AOSC OS boot media from disk "
+"images"
 msgstr ""
-"Et værktøj til at oprette et opstartsbart live-USB-drev med en udgave af "
-"AOSC. AOSC-medieskriver kan ikke blot skrive et aftryk til dit flash-"
-"drev, den kan også downloade det for dig. Den tilbyder officielle udgaver "
-"(Server, Workstation), AOSC-spins (KDE Plasma-skrivebord, Xfce-skrivebord, "
-"Cinnamon-skrivebord, ...) og AOSC Labs (designpakke, "
-"sikkerhedslaboratorie, ...). Den giver grundlæggende information om hver af "
-"dem for at hjælpe dig med at træffe det rigtige valg."
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"AOSC Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with AOSC images."
+"AOSC Media Writer can also write other bootable ISOs, but keep in mind that "
+"this tool is only tested with AOSC OS images."
 msgstr ""
-"AOSC-medieskriver kan også skrive andre opstartsbare ISO'er indlæst fra "
-"din lokale disk, men husk på at den kun er testet med AOSC-aftryk."
+"AOSC-medieskriver kan også skrive andre opstartsbare ISO'er indlæst fra din "
+"lokale disk, men husk på at den kun er testet med AOSC-aftryk."
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:43
-msgid "Write AOSC images to your portable drives"
+#: ../src/app/data/io.aosc.MediaWriter.desktop:4
+#, fuzzy
+msgid "Media Writer"
+msgstr "AOSC-medieskriver"
+
+#: ../src/app/data/io.aosc.MediaWriter.desktop:44
+#, fuzzy
+msgid "Write images to your portable drives"
 msgstr "Skriv AOSC-aftryk på dine flytbare drev"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:87
+#: ../src/app/data/io.aosc.MediaWriter.desktop:89
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
 
 #, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Checking the written data"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying written data"
-#~ msgstr "Tjekker den skrevne data"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "Intel/AMD 64bit"
+#~ msgstr "Intel 64-bit"
 
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "The downloaded image is corrupted"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying downloaded image"
-#~ msgstr "Det downloadede aftryk er ødelagt"
-
-#, fuzzy
-#~| msgctxt "DownloadDialog|"
-#~| msgid "Writing is not possible"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing not possible"
-#~ msgstr "Det er ikke muligt at skrive"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Writing"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing"
-#~ msgstr "Skriver"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Finished!"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "Færdig!"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Writing %1 failed"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed"
-#~ msgstr "Skrivning af %1 mislykkedes"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Download failed"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Download failed"
-#~ msgstr "Download mislykkedes"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Downloading"
-#~ msgctxt "main|"
-#~ msgid "Downloading"
-#~ msgstr "Downloader"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Writing"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write verifying"
-#~ msgstr "Skriver"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Writing %1 was successful"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write Successful"
-#~ msgstr "Skrivning af %1 lykkedes"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write the image immediately when the download is finished"
-#~ msgstr "Skriv aftrykket så snart det er downloadet"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Other"
-#~ msgstr "Andet"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-#~ msgstr "Det var ikke muligt at slette<br>\"<a href=\"%1\">%2</a>\"."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Back"
-#~ msgstr "Tilbage"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Create Live USB…"
-#~ msgstr "Opret live-USB…"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "(%1 after writing)"
-#~ msgstr "(%1 efter skrivning)"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ""
-#~ "AOSC %1 was released! Check it out!<br>If you want a stable, finished "
-#~ "system, it's better to stay at version %2."
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 #~ msgstr ""
-#~ "AOSC %1 blev udgivet! Tjek den ud!<br>Hvis du ønsker et stabilt, "
-#~ "færdigt system, så er det bedre at blive på version %2."
+#~ "ISO-formateret aftryk til Intel, AMD og andre kompatible PC'er (64-bit)"
 
-#~ msgctxt "ImageDetails|"
-#~ msgid ", released on %1"
-#~ msgstr ", udgivet %1"
+#, fuzzy
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for AArch64 machine"
+#~ msgstr "LZMA-komprimeret råt aftryk til AArch64-maskiner"
 
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "Andre varianter..."
+#, fuzzy
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for LoongArch64 machine"
+#~ msgstr "LZMA-komprimeret råt aftryk til AArch64-maskiner"
 
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "Find et styresystemaftryk"
+#~ msgid "A tool to create a live USB drive with an edition of AOSC"
+#~ msgstr "Et værktøj til at oprette et live-USB-drev med en udgave af AOSC"
 
-#~ msgctxt "ImageList|"
-#~ msgid "Checking for new releases"
-#~ msgstr "Søger efter nye udgivelser"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Version %1"
-#~ msgstr "Version %1"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Display additional AOSC flavors"
-#~ msgstr "Vis yderligere AOSC-varianter"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Cancel"
-#~ msgstr "Annuller"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Restore"
-#~ msgstr "Gendan"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Close"
-#~ msgstr "Luk"
-
-#~ msgctxt "main|"
 #~ msgid ""
-#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
-#~ "want to restore it to factory settings?"
+#~ "A tool to create a bootable live USB drive with an edition of AOSC. Not "
+#~ "only can AOSC Media Writer write an image to your flash drive, it can "
+#~ "also download it for you. It offers official editions (Server, "
+#~ "Workstation), AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktop,...), and AOSC Labs (Design Suite, Security Lab,...). It provides "
+#~ "basic information about each of them to help you make the right choice."
 #~ msgstr ""
-#~ "Du indsatte <b>%1</b> som allerede indeholde et live-system.<br>Vil du "
-#~ "gendanne den til fabriksindstillingerne?"
-
-#~ msgctxt "main|"
-#~ msgid "AOSC Media Writer %1 Released"
-#~ msgstr "AOSC-medieskriver %1 er blevet udgivet"
-
-#~ msgctxt "main|"
-#~ msgid "Update for great new features and bugfixes!"
-#~ msgstr "Opdater for at få nye fantastiske faciliteter og fejlrettelser!"
-
-#~ msgctxt "main|"
-#~ msgid "Open Browser"
-#~ msgstr "Åbn browser"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "%1<br>Writing images will not be possible.<br>You can still view AOSC "
-#~ "flavors and download images to your hard drive."
-#~ msgstr ""
-#~ "%1<br>Det vil ikke være muligt at skrive aftryk.<br>Du kan stadig vise "
-#~ "AOSC-varianter og downloade aftryk til din harddisk."
-
-#~ msgctxt "main|"
-#~ msgid "Ok"
-#~ msgstr "OK"
-
-# ############## metadata.json ###############
-#~ msgid "workstation"
-#~ msgstr "workstation"
-
-#~ msgctxt "Release|"
-#~ msgid "product"
-#~ msgstr "produkt"
-
-#~ msgctxt "Release|"
-#~ msgid "This is the Linux workstation you've been waiting for."
-#~ msgstr "Linux-arbejdstationen som du har ventet på."
-
-#~ msgctxt "Release|"
-#~ msgid "Sleek user interface"
-#~ msgstr "Elegant brugergrænseflade"
-
-#~ msgctxt "Release|"
-#~ msgid "Complete open source toolbox"
-#~ msgstr "Komplet open source-værktøjskasse"
-
-#~ msgctxt "Release|"
-#~ msgid "GNOME Boxes & other virt tools"
-#~ msgstr "GNOME Boxes og andre virtualiseringsværktøjer"
-
-#~ msgctxt "Release|"
-#~ msgid "Built-in Docker support"
-#~ msgstr "Indbygget understøttelse af Docker"
-
-#~ msgctxt "Release|"
-#~ msgid "server"
-#~ msgstr "server"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Server"
-#~ msgstr "AOSC Server"
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "Nem administration"
-
-#~ msgctxt "Release|"
-#~ msgid "Server Roles"
-#~ msgstr "Serverroller"
-
-#~ msgctxt "Release|"
-#~ msgid "Database Services"
-#~ msgstr "Databasetjenester"
-
-#~ msgctxt "Release|"
-#~ msgid "silverblue"
-#~ msgstr "silverblue"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Silverblue"
-#~ msgstr "AOSC Silverblue"
-
-#~ msgctxt "Release|"
-#~ msgid "kde"
-#~ msgstr "kde"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC KDE Plasma Desktop"
-#~ msgstr "AOSC KDE Plasma-skrivebord"
-
-#~ msgctxt "Release|"
-#~ msgid "A complete, modern desktop built using the KDE Plasma Desktop."
-#~ msgstr "Et komplet, moderne skrivebord bygget med KDE Plasma-skrivebordet."
-
-#~ msgctxt "Release|"
-#~ msgid "xfce"
-#~ msgstr "xfce"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Xfce Desktop"
-#~ msgstr "AOSC Xfce-skrivebord"
-
-#~ msgctxt "Release|"
-#~ msgid "A complete, well-integrated Xfce Desktop."
-#~ msgstr "Et komplet, velintegreret Xfce-skrivebord."
-
-#~ msgctxt "Release|"
-#~ msgid "lxqt"
-#~ msgstr "lxqt"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXQt Desktop"
-#~ msgstr "AOSC LXQt-skrivebord"
-
-#~ msgctxt "Release|"
-#~ msgid "A lightweight, well-integrated LXQt desktop environment."
-#~ msgstr "Et letvægts, velintegreret LXQt-skrivebordsmiljø."
-
-#~ msgctxt "Release|"
-#~ msgid "mate"
-#~ msgstr "mate"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC MATE-Compiz Desktop"
-#~ msgstr "AOSC MATE-Compiz-skrivebord"
-
-#~ msgctxt "Release|"
-#~ msgid "A classic AOSC Desktop with an additional 3D Windows Manager."
-#~ msgstr "Et klassisk AOSC-skrivebord med 3D-vindueshåndtering."
-
-#~ msgctxt "Release|"
-#~ msgid "cinnamon"
-#~ msgstr "cinnamon"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Cinnamon Desktop"
-#~ msgstr "AOSC Cinnamon-skrivebord"
-
-#~ msgctxt "Release|"
-#~ msgid "A modern desktop featuring traditional Gnome user experience."
-#~ msgstr "Et moderne skrivebord med traditionel Gnome-brugeroplevelse."
-
-#~ msgctxt "Release|"
-#~ msgid "lxde"
-#~ msgstr "lxde"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXDE Desktop"
-#~ msgstr "AOSC LXDE-skrivebord"
-
-#~ msgctxt "Release|"
-#~ msgid "A light, fast, less-resource hungry desktop environment."
-#~ msgstr "Et let, hurtigt, mindre ressourcekrævende skrivebordsmiljø."
-
-#~ msgctxt "Release|"
-#~ msgid "soas"
-#~ msgstr "soas"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC SoaS Desktop"
-#~ msgstr "AOSC SoaS-skrivebord"
-
-#~ msgctxt "Release|"
-#~ msgid "Discover. Reflect. Share. Learn."
-#~ msgstr "Opdag. Tænk. Del. Lær."
-
-#~ msgctxt "Release|"
-#~ msgid "i3"
-#~ msgstr "i3"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Powerful completely open-source and free tool for amateurs and "
-#~ "professionals."
-#~ msgstr ""
-#~ "Kraftfuld komplet open-source og gratis værktøj for amatørere og "
-#~ "professionelle."
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "design_suite"
-#~ msgstr "AOSC-medieskriver"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Design Suite"
-#~ msgstr "AOSC-medieskriver"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Visual design, multimedia production, and publishing suite of free and "
-#~ "open source creative tools."
-#~ msgstr ""
-#~ "Pakke med creative værtøjet til visuelt design, multimedieproduktion og "
-#~ "publishing som er gratis og open source."
-
-#~ msgctxt "Release|"
-#~ msgid "games"
-#~ msgstr "spil"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgid "AOSC Games"
-#~ msgstr "AOSC Labs"
-
-#~ msgctxt "Release|"
-#~ msgid "python"
-#~ msgstr "python"
-
-#~ msgctxt "Release|"
-#~ msgid "robotics"
-#~ msgstr "robotteknik"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Robotics Suite"
-#~ msgstr "AOSC-medieskriver"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "scientific"
-#~ msgstr "AOSC Spins"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Scientific"
-#~ msgstr "AOSC Spins"
-
-#~ msgctxt "Release|"
-#~ msgid "security"
-#~ msgstr "sikkerhed"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Security Lab"
-#~ msgstr "AOSC Labs"
+#~ "Et værktøj til at oprette et opstartsbart live-USB-drev med en udgave af "
+#~ "AOSC. AOSC-medieskriver kan ikke blot skrive et aftryk til dit flash-"
+#~ "drev, den kan også downloade det for dig. Den tilbyder officielle udgaver "
+#~ "(Server, Workstation), AOSC-spins (KDE Plasma-skrivebord, Xfce-"
+#~ "skrivebord, Cinnamon-skrivebord, ...) og AOSC Labs (designpakke, "
+#~ "sikkerhedslaboratorie, ...). Den giver grundlæggende information om hver "
+#~ "af dem for at hjælpe dig med at træffe det rigtige valg."

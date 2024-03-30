@@ -16,7 +16,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
+"POT-Creation-Date: 2024-03-30 22:58+0800\n"
 "PO-Revision-Date: 2023-06-22 09:20+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://translate.fedoraproject.org/projects/"
@@ -40,18 +40,23 @@ msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Verzió: %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
+msgctxt "AboutDialog|"
+msgid "Based on Fedora Media Writer"
+msgstr ""
+
+#: ../src/app/qml/AboutDialog.qml:72
 msgctxt "AboutDialog|"
 msgid "AOSC Media Writer is now checking for new releases"
 msgstr "A AOSC médiaíró most újabb kiadásokat keres"
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: ../src/app/qml/AboutDialog.qml:78
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Jelentse be a hibákat vagy küldjön javaslatokat itt: %1"
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:101
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Bezárás"
@@ -72,10 +77,9 @@ msgid "Cancel Verification?"
 msgstr "Ellenőrzés megszakítása?"
 
 #: ../src/app/qml/CancelDialog.qml:67
+#, fuzzy
 msgctxt "CancelDialog|"
-msgid ""
-"Download and media writing will be aborted. This process can be resumed any "
-"time later."
+msgid "Download and media writing will be aborted."
 msgstr ""
 "A letöltés és a médiaírás megszakad. Ez a folyamat később bármikor "
 "folytatható."
@@ -115,28 +119,26 @@ msgstr "Ellenőrzés megszakítása"
 
 #: ../src/app/qml/CancelDialog.qml:117
 #, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Mégse"
 
-#: ../src/app/downloadmanager.cpp:235
+#: ../src/app/downloadmanager.cpp:257
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "A kért lemezkép jelenleg elérhetetlen."
 
-#: ../src/app/downloadmanager.cpp:335
+#: ../src/app/downloadmanager.cpp:357
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "Elfogyott a hely a Letöltések mappában."
 
-#: ../src/app/downloadmanager.cpp:337
+#: ../src/app/downloadmanager.cpp:359
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "A letöltött fájl nem írható."
 
-#: ../src/app/downloadmanager.cpp:425
+#: ../src/app/downloadmanager.cpp:447
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "A kapcsolat időtúllépés miatt megszakadt"
@@ -229,8 +231,8 @@ msgstr "Helyezzen be egy USB-meghajtót."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using AOSC Media Writer. This will remove installation media "
-"from your drive."
+"normal by using AOSC Media Writer. This will remove installation media from "
+"your drive."
 msgstr ""
 "A meghajtó kisebb kapacitásra lesz átméretezve. Később újra átméretezheti az "
 "eredetire a AOSC médiaíróval; ez el fogja távolítani a telepítési médiát a "
@@ -247,16 +249,9 @@ msgid "None"
 msgstr "Nincs"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, qt-format
 msgctxt "DownloadPage|"
-msgid ""
-"Your board or device is not supported by AOSC Media Writer yet. Please "
-"check <a href=%1>this page</a> for more information about its compatibility "
-"with AOSC and how to create bootable media for it."
+msgid "Your board or device is not supported by AOSC Media Writer yet."
 msgstr ""
-"Az alaplapját vagy eszközét még nem támogatja a AOSC médiaíró. További "
-"információkért arról, hogy támogatja-e a Fedorát, és hogyan kell indítható "
-"médiát készíteni hozzá, keresse fel <a href=%1>ezt az oldalt</a>."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -446,12 +441,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "Fájl megnyitása"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:373
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Válasszon egy fájlt a meghajtókról"
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:374
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -462,89 +457,104 @@ msgstr ""
 "p><p>Jelenleg csak a nyers lemezképformátumok támogatottak (.iso vagy .bin)</"
 "p>"
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "AOSC Spins"
 msgstr "AOSC Spinek"
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:406
 msgctxt "Release|"
 msgid "AOSC Labs"
 msgstr "AOSC Labs"
 
-#: ../src/app/releasemanager.cpp:432
+#: ../src/app/releasemanager.cpp:408
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC i3 Desktop"
 msgctxt "Release|"
 msgid "AOSC Atomic Desktops"
 msgstr "AOSC i3 asztal"
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:410
 msgctxt "Release|"
 msgid "Other"
 msgstr "Egyéb"
 
-#: ../src/app/releasemanager.cpp:1074
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 64bit"
-msgstr "64 bites Intel/AMD"
-
-#: ../src/app/releasemanager.cpp:1074
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+msgid "x86-64"
 msgstr ""
-"ISO formátumú lemezkép Intel, AMD és egyéb kompatibilis PC-khez (64 bites)"
 
-#: ../src/app/releasemanager.cpp:1075
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 32bit"
-msgstr "32 bites Intel/AMD"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
+msgid "System releases for 64-bit x86 devices"
 msgstr ""
-"ISO formátumú lemezkép Intel, AMD és egyéb kompatibilis PC-khez (32 bites)"
 
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid "ARM v7"
-msgstr "ARM v7"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid ""
-"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr ""
-"LZMA-tömörítésű nyers lemezkép ARM v7 gépekhez, mint a Raspberry Pi 2 és 3"
-
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
-msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "LZMA-tömörítésű nyers lemezkép AArch64 gépekhez"
+msgid "System releases for AArch64 devices"
+msgstr ""
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:1052
+#, fuzzy
+msgctxt "ReleaseArchitecture|"
+msgid "LoongArch"
+msgstr "AArch64"
+
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for LoongArch devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "POWER"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for IBM POWER devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "MIPS-based Loongson 3"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for MIPS-based Loongson 3 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "RISC-V (64bit)"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit RISC-V devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:372
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Egyéni lemezkép"
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:909 ../src/app/releasemanager.cpp:921
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "A letöltött lemezkép sérült"
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:925
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "A letöltött fájl nem olvasható."
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Az átmeneti fájl átnevezése nem lehetséges."
@@ -604,19 +614,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Hiba"
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:682
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 alfa"
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:684
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 béta"
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:686
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -651,8 +661,8 @@ msgid ""
 "<p align=\"justify\">Please wait while AOSC Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
-"<p align=\"justify\">Várjon amíg a AOSC médiaíró helyreállítja a "
-"hordozható meghajtót.</p>"
+"<p align=\"justify\">Várjon amíg a AOSC médiaíró helyreállítja a hordozható "
+"meghajtót.</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
@@ -685,26 +695,8 @@ msgstr "Kiválasztás innen:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
-msgid "Official Editions"
-msgstr "Hivatalos kiadások"
-
-#: ../src/app/qml/VersionPage.qml:59
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC i3 Desktop"
-msgctxt "VersionPage|"
-msgid "Atomic Desktops"
-msgstr "AOSC i3 asztal"
-
-#: ../src/app/qml/VersionPage.qml:65
-msgctxt "VersionPage|"
-msgid "Spins"
-msgstr "Spinek"
-
-#: ../src/app/qml/VersionPage.qml:71
-msgctxt "VersionPage|"
-msgid "Labs"
-msgstr "Labs"
+msgid "Livekit"
+msgstr ""
 
 #: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
@@ -874,501 +866,83 @@ msgctxt "main|"
 msgid "Previous"
 msgstr "Előző"
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/io.aosc.MediaWriter.desktop:4
 msgid "AOSC Media Writer"
 msgstr "AOSC médiaíró"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of AOSC"
+msgid "A tool to create AOSC OS boot media"
 msgstr ""
-"Egy eszköz indítható live USB meghajtó készítéséhez a AOSC egy változatával"
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of AOSC. Not "
-"only can AOSC Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
+"Automatically downloads, writes, and verifies AOSC OS boot media from disk "
+"images"
 msgstr ""
-"Egy eszköz indítható live USB meghajtó készítéséhez a AOSC egy "
-"változatával. A AOSC médiaíró nem csak ki tudja írni a lemezképet, hanem "
-"le is tudja tölteni azt. A hivatalos, támogatott verziókat (Server, "
-"Workstation), a AOSC Spineket (KDE Plasma Desktop, XFCE Desktop, Cinnamon "
-"Desktop,...), és a AOSC Labs (Design Suite, Security Lab, …) lemezképeit "
-"nyújtja. Alapinformációkat is nyújt mindegyikről, hogy helyesen "
-"választhasson."
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"AOSC Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with AOSC images."
+"AOSC Media Writer can also write other bootable ISOs, but keep in mind that "
+"this tool is only tested with AOSC OS images."
 msgstr ""
-"A AOSC médiaíró képes más indítható ISO-kat is kiírni a helyi lemezéről, "
-"de tartsa észben, hogy az alkalmazás csak AOSC lemezképekkel lett "
-"tesztelve."
+"A AOSC médiaíró képes más indítható ISO-kat is kiírni a helyi lemezéről, de "
+"tartsa észben, hogy az alkalmazás csak AOSC lemezképekkel lett tesztelve."
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:43
-msgid "Write AOSC images to your portable drives"
+#: ../src/app/data/io.aosc.MediaWriter.desktop:4
+#, fuzzy
+msgid "Media Writer"
+msgstr "AOSC médiaíró"
+
+#: ../src/app/data/io.aosc.MediaWriter.desktop:44
+#, fuzzy
+msgid "Write images to your portable drives"
 msgstr "Írjon AOSC lemezképeket a hordozható meghajtóira"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:87
+#: ../src/app/data/io.aosc.MediaWriter.desktop:89
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootolható;"
 
-#~ msgctxt "Release|"
-#~ msgid "Emerging AOSC Editions"
-#~ msgstr "Feltörekvő AOSC kiadások"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "Intel/AMD 64bit"
+#~ msgstr "64 bites Intel/AMD"
 
-#~ msgctxt "VersionPage|"
-#~ msgid "Emerging Editions"
-#~ msgstr "Feltörekvő kiadások"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+#~ msgstr ""
+#~ "ISO formátumú lemezkép Intel, AMD és egyéb kompatibilis PC-khez (64 bites)"
 
 #, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Checking the written data"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying written data"
-#~ msgstr "Kiírt adatok ellenőrzése"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for AArch64 machine"
+#~ msgstr "LZMA-tömörítésű nyers lemezkép AArch64 gépekhez"
 
 #, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "The downloaded image is corrupted"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying downloaded image"
-#~ msgstr "A letöltött lemezkép sérült"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for LoongArch64 machine"
+#~ msgstr "LZMA-tömörítésű nyers lemezkép AArch64 gépekhez"
 
-#, fuzzy
-#~| msgctxt "DownloadDialog|"
-#~| msgid "Writing is not possible"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing not possible"
-#~ msgstr "Az írás nem lehetséges"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Writing"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing"
-#~ msgstr "Kiírás"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Finished!"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "Művelet befejezve!"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Writing %1 failed"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed"
-#~ msgstr "%1 kiírása sikertelen"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Download failed"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Download failed"
-#~ msgstr "Letöltés sikertelen"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Downloading"
-#~ msgctxt "main|"
-#~ msgid "Downloading"
-#~ msgstr "Letöltés"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Writing"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write verifying"
-#~ msgstr "Kiírás"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Writing %1 was successful"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write Successful"
-#~ msgstr "%1 kiírása sikeres volt"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write the image immediately when the download is finished"
-#~ msgstr "Azonnal írja ki a lemezképet, amint a letöltés befejeződött"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Other"
-#~ msgstr "Egyéb"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-#~ msgstr "Nem volt lehetséges törölni:<br>„<a href=\"%1\">%2</a>”."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Back"
-#~ msgstr "Vissza"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Create Live USB…"
-#~ msgstr "Live USB létrehozása…"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "(%1 after writing)"
-#~ msgstr "(%1 kiírás után)"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ""
-#~ "AOSC %1 was released! Check it out!<br>If you want a stable, finished "
-#~ "system, it's better to stay at version %2."
+#~ msgid "A tool to create a live USB drive with an edition of AOSC"
 #~ msgstr ""
-#~ "AOSC %1 megjelent! Töltse le! <br>Ha egy stabil, befejezett rendszert "
-#~ "használna, jobb ha megmarad a %2 verziónál."
+#~ "Egy eszköz indítható live USB meghajtó készítéséhez a AOSC egy "
+#~ "változatával"
 
-#~ msgctxt "ImageDetails|"
-#~ msgid ", released on %1"
-#~ msgstr ", megjelent: %1"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "Egyéb változatok…"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "Keressen egy operációs rendszer lemezképet"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Checking for new releases"
-#~ msgstr "Új verziók keresése"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Version %1"
-#~ msgstr "Version %1"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Display additional AOSC flavors"
-#~ msgstr "Jelenítse meg a többi AOSC változatot is"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Cancel"
-#~ msgstr "Mégse"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Restore"
-#~ msgstr "Visszaállítás"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Close"
-#~ msgstr "Bezárás"
-
-#~ msgctxt "main|"
 #~ msgid ""
-#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
-#~ "want to restore it to factory settings?"
+#~ "A tool to create a bootable live USB drive with an edition of AOSC. Not "
+#~ "only can AOSC Media Writer write an image to your flash drive, it can "
+#~ "also download it for you. It offers official editions (Server, "
+#~ "Workstation), AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktop,...), and AOSC Labs (Design Suite, Security Lab,...). It provides "
+#~ "basic information about each of them to help you make the right choice."
 #~ msgstr ""
-#~ "Csatlakoztatta a <b>%1</b> eszközt, ami már tartalmaz egy live rendszert."
-#~ "<br>Kívánja visszaállítani a gyári állapotát?"
-
-#~ msgctxt "main|"
-#~ msgid "AOSC Media Writer %1 Released"
-#~ msgstr "Megjelent a AOSC médiaíró %1"
-
-#~ msgctxt "main|"
-#~ msgid "Update for great new features and bugfixes!"
-#~ msgstr "Frissítsen a nagyszerű új funkciókért, és a hibajavításokért!"
-
-#~ msgctxt "main|"
-#~ msgid "Open Browser"
-#~ msgstr "Böngésző megnyitása"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "%1<br>Writing images will not be possible.<br>You can still view AOSC "
-#~ "flavors and download images to your hard drive."
-#~ msgstr ""
-#~ "%1<br>Lemezképek kiírása nem lesz elérhető. <br> Viszont még mindig "
-#~ "megtekintheti és letöthet különféle AOSC változatokat a merevlemezére."
-
-#~ msgctxt "main|"
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-# ############## metadata.json ###############
-#~ msgid "workstation"
-#~ msgstr "workstation"
-
-#~ msgctxt "Release|"
-#~ msgid "product"
-#~ msgstr "termék"
-
-#~ msgctxt "Release|"
-#~ msgid "This is the Linux workstation you've been waiting for."
-#~ msgstr "Ez a Linux munkaállomás, amelyre várt."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Workstation is a reliable, user-friendly, and powerful operating "
-#~ "system for your laptop or desktop computer. It supports a wide range of "
-#~ "developers, from hobbyists and students to professionals in corporate "
-#~ "environments."
-#~ msgstr ""
-#~ "A AOSC Workstation egy megbízható, felhasználóbarát és hatékony "
-#~ "operációs rendszer a laptopjára vagy asztali számítógépére. Fejlesztők, "
-#~ "hobbisták széles skáláját támogatja, a tanulóktól kezdve a céges "
-#~ "környezetben dolgozó szakemberekig."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The plethora of tools provided by<br /> AOSC allows me to get the job "
-#~ "done.<br /> It just works.”"
-#~ msgstr ""
-#~ "„A AOSC által biztosított eszközök<br /> sokasága segít elvégezni a "
-#~ "munkámat.<br /> Egyszerűen működik.”"
-
-#~ msgctxt "Release|"
-#~ msgid "JVM performance engineer"
-#~ msgstr "JVM teljesítménymérnök"
-
-#~ msgctxt "Release|"
-#~ msgid "Sleek user interface"
-#~ msgstr "Elegáns felhasználó felület"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Focus on your code in the GNOME 3 desktop environment. GNOME is built "
-#~ "with developer feedback and minimizes distractions, so you can "
-#~ "concentrate on what's important."
-#~ msgstr ""
-#~ "Fókuszáljon a kódjára a GNOME 3 asztali környezetben. A GNOME fejlesztői "
-#~ "visszajelzés alapján készült, és minimalizálja a zavaró tényezőket, így a "
-#~ "fontos dolgokra koncentrálhat."
-
-#~ msgctxt "Release|"
-#~ msgid "Complete open source toolbox"
-#~ msgstr "Teljes nyílt forráskódú eszközkészlet"
-
-#~ msgctxt "Release|"
-#~ msgid "GNOME Boxes & other virt tools"
-#~ msgstr "GNOME Gépek és egyéb virtualizáció eszközök"
-
-#~ msgctxt "Release|"
-#~ msgid "Built-in Docker support"
-#~ msgstr "Beépített Docker támogatás"
-
-#~ msgctxt "Release|"
-#~ msgid "server"
-#~ msgstr "server"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Server"
-#~ msgstr "AOSC Server"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The latest technology. A stable foundation. Together, for your "
-#~ "applications and services."
-#~ msgstr ""
-#~ "A legfrissebb technológia. Egy stabil alap. Együtt, az alkalmazásainak és "
-#~ "szolgáltatásainak."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The simplicity introduced with rolekit and cockpit have made server "
-#~ "deployments a breeze. What took me a few days on other operating systems "
-#~ "took less than an hour with AOSC %(rel)s Server. It just works.”"
-#~ msgstr ""
-#~ "„A rolekittel és cockpittal bevezetett egyszerűség gyerekjátékká teszi a "
-#~ "kiszolgálótelepítéseket. Ami más operációs rendszerekkel napokig tartott, "
-#~ "az a AOSC %(rel)s Serverrel kevesebb mint egy órába telik. Egyszerűen "
-#~ "működik.”"
-
-#~ msgctxt "Release|"
-#~ msgid "Systems Engineer"
-#~ msgstr "Rendszermérnök"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Server is a short-lifecycle, community-supported server operating "
-#~ "system that enables seasoned system administrators experienced with any "
-#~ "OS to make use of the very latest server-based technologies available in "
-#~ "the open source community."
-#~ msgstr ""
-#~ "A AOSC Server egy rövid életciklusú, közösségileg támogatott kiszolgáló "
-#~ "operációs rendszer, amely lehetővé teszi, hogy a (bármilyen OS "
-#~ "használatában) tapasztalt rendszergazdák a nyílt forráskódú közösségben "
-#~ "elérhető legfrissebb kiszolgáló-alapú technológiákat használják."
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "Könnyű adminisztráció"
-
-#~ msgctxt "Release|"
-#~ msgid "Server Roles"
-#~ msgstr "Kiszolgáló szerepkörök"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "There's no need to set up your server from scratch when you use server "
-#~ "roles. Server roles plug into your AOSC Server system, providing a well-"
-#~ "integrated service on top of the AOSC Server platform. Deploy and "
-#~ "manage these prepared roles simply using the Rolekit tool."
-#~ msgstr ""
-#~ "Nem kell a semmiből beállítania a kiszolgálóját, ha szerepköröket "
-#~ "használ. A szerepkörök a AOSC Server rendszerbe épülnek, jól integrált "
-#~ "szolgáltatást biztosítva a AOSC Server platform felett. Telepítse és "
-#~ "kezelje ezeket az előre elkészített szerepköröket a Rolekit eszközzel."
-
-#~ msgctxt "Release|"
-#~ msgid "Database Services"
-#~ msgstr "Adatbázis szolgáltatások"
-
-#~ msgctxt "Release|"
-#~ msgid "Complete Enterprise Domain Solution"
-#~ msgstr "Teljes vállalati tartománymegoldás"
-
-#~ msgctxt "Release|"
-#~ msgid "</p><p align=right> ― <em>John Unland, "
-#~ msgstr "</p><p align=right> ― <em>John Unland, "
-
-#~ msgctxt "Release|"
-#~ msgid "Information Systems Student"
-#~ msgstr "Informatikahallgató"
-
-#~ msgctxt "Release|"
-#~ msgid "silverblue"
-#~ msgstr "silverblue"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Silverblue"
-#~ msgstr "AOSC Silverblue"
-
-#~ msgctxt "Release|"
-#~ msgid "kde"
-#~ msgstr "kde"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC KDE Plasma Desktop"
-#~ msgstr "AOSC KDE Plasma asztal"
-
-#~ msgctxt "Release|"
-#~ msgid "xfce"
-#~ msgstr "xfce"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Xfce Desktop"
-#~ msgstr "AOSC Xfce asztal"
-
-#~ msgctxt "Release|"
-#~ msgid "lxqt"
-#~ msgstr "lxqt"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXQt Desktop"
-#~ msgstr "AOSC LXQt asztal"
-
-#~ msgctxt "Release|"
-#~ msgid "mate"
-#~ msgstr "mate"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC MATE-Compiz Desktop"
-#~ msgstr "AOSC MATE-Compiz asztal"
-
-#~ msgctxt "Release|"
-#~ msgid "cinnamon"
-#~ msgstr "cinnamon"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Cinnamon Desktop"
-#~ msgstr "AOSC Cinnamon asztal"
-
-#~ msgctxt "Release|"
-#~ msgid "lxde"
-#~ msgstr "lxde"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXDE Desktop"
-#~ msgstr "AOSC LXDE asztal"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC SoaS Desktop"
-#~ msgstr "AOSC SoaS asztal"
-
-#~ msgctxt "Release|"
-#~ msgid "i3"
-#~ msgstr "i3"
-
-#~ msgctxt "Release|"
-#~ msgid "Simplicity over Complexity"
-#~ msgstr "Egyszerűség az összetettség helyett"
-
-#~ msgctxt "Release|"
-#~ msgid "The AOSC i3 Spin provides the popular i3 tiling window manager."
-#~ msgstr "A AOSC i3 Spin a népszerű i3 ablakkezelőt biztosítja."
-
-#~ msgctxt "Release|"
-#~ msgid "astronomy"
-#~ msgstr "astronomy"
-
-#~ msgctxt "Release|"
-#~ msgid "labs"
-#~ msgstr "labs"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Astronomy"
-#~ msgstr "AOSC Astronomy"
-
-#~ msgctxt "Release|"
-#~ msgid "design_suite"
-#~ msgstr "design_suite"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Design Suite"
-#~ msgstr "AOSC Design Suite"
-
-#~ msgctxt "Release|"
-#~ msgid "games"
-#~ msgstr "games"
-
-#~ msgid "AOSC Games"
-#~ msgstr "AOSC Games"
-
-#~ msgctxt "Release|"
-#~ msgid "python"
-#~ msgstr "python"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Python Classroom"
-#~ msgstr "AOSC Python Classroom"
-
-#~ msgctxt "Release|"
-#~ msgid "robotics"
-#~ msgstr "robotics"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Robotics Suite"
-#~ msgstr "AOSC Robotics Suite"
-
-#~ msgctxt "Release|"
-#~ msgid "scientific"
-#~ msgstr "scientific"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Scientific"
-#~ msgstr "AOSC Scientific"
-
-#~ msgctxt "Release|"
-#~ msgid "security"
-#~ msgstr "security"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Security Lab"
-#~ msgstr "AOSC Security Lab"
+#~ "Egy eszköz indítható live USB meghajtó készítéséhez a AOSC egy "
+#~ "változatával. A AOSC médiaíró nem csak ki tudja írni a lemezképet, hanem "
+#~ "le is tudja tölteni azt. A hivatalos, támogatott verziókat (Server, "
+#~ "Workstation), a AOSC Spineket (KDE Plasma Desktop, XFCE Desktop, Cinnamon "
+#~ "Desktop,...), és a AOSC Labs (Design Suite, Security Lab, …) lemezképeit "
+#~ "nyújtja. Alapinformációkat is nyújt mindegyikről, hogy helyesen "
+#~ "választhasson."

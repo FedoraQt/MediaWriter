@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
+"POT-Creation-Date: 2024-03-30 22:58+0800\n"
 "PO-Revision-Date: 2022-05-25 07:18+0000\n"
 "Last-Translator: Hajime Taira <htaira@pantora.net>\n"
 "Language-Team: Japanese <https://translate.fedoraproject.org/projects/fedora-"
@@ -23,29 +23,28 @@ msgstr "AOSC Media Writerについて"
 
 #: ../src/app/qml/AboutDialog.qml:59
 #, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "バージョン %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
+msgctxt "AboutDialog|"
+msgid "Based on Fedora Media Writer"
+msgstr ""
+
+#: ../src/app/qml/AboutDialog.qml:72
 msgctxt "AboutDialog|"
 msgid "AOSC Media Writer is now checking for new releases"
 msgstr "AOSC Media Writerは新しいリリースを現在確認中です"
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: ../src/app/qml/AboutDialog.qml:78
 #, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "バグや意見があれば %1 に報告してください"
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:101
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "閉じる"
@@ -66,10 +65,9 @@ msgid "Cancel Verification?"
 msgstr "検証を中止しますか？"
 
 #: ../src/app/qml/CancelDialog.qml:67
+#, fuzzy
 msgctxt "CancelDialog|"
-msgid ""
-"Download and media writing will be aborted. This process can be resumed any "
-"time later."
+msgid "Download and media writing will be aborted."
 msgstr ""
 "ダウンロードとメディアの書き込みが中断されました。処理を後日継続することがで"
 "きます。"
@@ -109,36 +107,32 @@ msgstr "検証を中止します"
 
 #: ../src/app/qml/CancelDialog.qml:117
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "取り消し"
 
-#: ../src/app/downloadmanager.cpp:235
+#: ../src/app/downloadmanager.cpp:257
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "要求されたイメージを取得することができません。"
 
-#: ../src/app/downloadmanager.cpp:335
+#: ../src/app/downloadmanager.cpp:357
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "ダウンロードに必要な空き容量が不足しています。"
 
-#: ../src/app/downloadmanager.cpp:337
+#: ../src/app/downloadmanager.cpp:359
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "ダウンロードされたファイルを保存できません。"
 
-#: ../src/app/downloadmanager.cpp:425
+#: ../src/app/downloadmanager.cpp:447
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "接続がタイムアウトしました"
 
 #: ../src/app/qml/DownloadPage.qml:52
 #, fuzzy, qt-format
-#| msgctxt "DownloadPage|"
-#| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr "%1 の書き込みに成功しました"
@@ -163,16 +157,12 @@ msgstr "準備中: %1"
 
 #: ../src/app/qml/DownloadPage.qml:60
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
 msgstr "書き込みの準備ができています"
 
 #: ../src/app/qml/DownloadPage.qml:62
 #, fuzzy, qt-format
-#| msgctxt "DownloadPage|"
-#| msgid "Failed download"
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
 msgstr "ダウンロードに失敗しました"
@@ -216,8 +206,6 @@ msgstr "ダウンロードフォルダにダウンロード済みのファイル
 
 #: ../src/app/qml/DownloadPage.qml:143
 #, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "もし書き込みをすれば、%1 のデータは消去されます。"
@@ -231,11 +219,11 @@ msgstr ""
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using AOSC Media Writer. This will remove installation media "
-"from your drive."
+"normal by using AOSC Media Writer. This will remove installation media from "
+"your drive."
 msgstr ""
-"メディアのサイズが変更されて容量が小さくなります。 AOSC Media Writerを使用"
-"して、サイズを通常に戻すことができます。 これによりメディアからインストールメ"
+"メディアのサイズが変更されて容量が小さくなります。 AOSC Media Writerを使用し"
+"て、サイズを通常に戻すことができます。 これによりメディアからインストールメ"
 "ディアが削除されます。"
 
 #: ../src/app/qml/DownloadPage.qml:167
@@ -249,16 +237,9 @@ msgid "None"
 msgstr "なし"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, qt-format
 msgctxt "DownloadPage|"
-msgid ""
-"Your board or device is not supported by AOSC Media Writer yet. Please "
-"check <a href=%1>this page</a> for more information about its compatibility "
-"with AOSC and how to create bootable media for it."
+msgid "Your board or device is not supported by AOSC Media Writer yet."
 msgstr ""
-"お使いの環境もしくはお使いのデバイスはAOSC Media Writerでサポートされており"
-"ません。AOSCとブートメディアの作成に関する要件について詳しくは<a href=%1>こ"
-"ちらのページ</a>をご確認ください。"
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -328,24 +309,18 @@ msgstr "USBドライブ"
 
 #: ../src/app/qml/DrivePage.qml:135
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "ポータブルデバイスが接続されていません。"
 
 #: ../src/app/qml/DrivePage.qml:155
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
 msgstr "ダウンロード中"
 
 #: ../src/app/qml/DrivePage.qml:160
 #, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
 msgstr "ダウンロードしたイメージを削除する"
@@ -459,12 +434,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "ファイルを開く"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:373
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "記録デバイスからファイルを選択"
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:374
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -475,87 +450,104 @@ msgstr ""
 "込むことができます。</p><p>現在のところ無圧縮のディスクイメージ(.isoもしくは."
 "bin)をサポートしています</p>"
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "AOSC Spins"
 msgstr "AOSC Spins"
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:406
 msgctxt "Release|"
 msgid "AOSC Labs"
 msgstr "AOSC Labs"
 
-#: ../src/app/releasemanager.cpp:432
+#: ../src/app/releasemanager.cpp:408
 #, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About AOSC Media Writer"
 msgctxt "Release|"
 msgid "AOSC Atomic Desktops"
 msgstr "AOSC Media Writer について"
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:410
 msgctxt "Release|"
 msgid "Other"
 msgstr "その他"
 
-#: ../src/app/releasemanager.cpp:1074
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 64bit"
-msgstr "Intel/AMD 64bit"
-
-#: ../src/app/releasemanager.cpp:1074
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr "Intel/AMDおよび互換PC(64bit)向けのISO形式イメージ"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 32bit"
-msgstr "Intel/AMD 32bit"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr "Intel/AMDおよびその他の互換性PC用のISO形式イメージ(32ビット)"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid "ARM v7"
-msgstr "ARM v7"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid ""
-"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
+msgid "x86-64"
 msgstr ""
-"LZMA圧縮RAWイメージはRaspberry Pi2/Pi3などのARM v7-Aマシン向けイメージです"
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1050
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit x86 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
-msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "LZMA圧縮されたRAWイメージはAArch64向けのものです"
+msgid "System releases for AArch64 devices"
+msgstr ""
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:1052
+#, fuzzy
+msgctxt "ReleaseArchitecture|"
+msgid "LoongArch"
+msgstr "AArch64"
+
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for LoongArch devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "POWER"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for IBM POWER devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "MIPS-based Loongson 3"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for MIPS-based Loongson 3 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "RISC-V (64bit)"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit RISC-V devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:372
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "カスタムイメージ"
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:909 ../src/app/releasemanager.cpp:921
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "ダウンロードしたイメージが壊れています"
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:925
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "ダウンロードしたファイルが読み込みできません。"
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "一時的作業ファイルをリネームできません。"
@@ -567,16 +559,12 @@ msgstr "準備中"
 
 #: ../src/app/releasemanager.h:376
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "ダウンロード中"
 
 #: ../src/app/releasemanager.h:377
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "ダウンロードのチェック"
@@ -605,8 +593,6 @@ msgstr "書き込まれたデータを検証中です"
 
 #: ../src/app/releasemanager.h:382
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Finished!"
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "終わりました!"
@@ -618,8 +604,6 @@ msgstr "書き込まれたデータが破損しています"
 
 #: ../src/app/releasemanager.h:384
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "ダウンロード中"
@@ -629,19 +613,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "エラー"
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:682
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:684
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:686
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -676,8 +660,8 @@ msgid ""
 "<p align=\"justify\">Please wait while AOSC Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
-"<p align=\"justify\">AOSC Media Writerがポータブルドライブを復元するまでお"
-"待ちください。</p>"
+"<p align=\"justify\">AOSC Media Writerがポータブルドライブを復元するまでお待"
+"ちください。</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
@@ -710,26 +694,8 @@ msgstr "選択肢:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
-msgid "Official Editions"
-msgstr "Official Editions"
-
-#: ../src/app/qml/VersionPage.qml:59
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About AOSC Media Writer"
-msgctxt "VersionPage|"
-msgid "Atomic Desktops"
-msgstr "AOSC Media Writer について"
-
-#: ../src/app/qml/VersionPage.qml:65
-msgctxt "VersionPage|"
-msgid "Spins"
-msgstr "Spins"
-
-#: ../src/app/qml/VersionPage.qml:71
-msgctxt "VersionPage|"
-msgid "Labs"
-msgstr "Labs"
+msgid "Livekit"
+msgstr ""
 
 #: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
@@ -759,8 +725,6 @@ msgstr ""
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
 #, fuzzy
-#| msgctxt "Download|"
-#| msgid "The download file is not writable."
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
 msgstr "ダウンロードされたファイルを保存できません。"
@@ -774,8 +738,6 @@ msgstr ""
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:320
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "ダウンロードしたイメージが壊れています"
@@ -795,8 +757,6 @@ msgstr ""
 #: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
 #: ../src/helper/win/writejob.cpp:361
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded file is not readable."
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
 msgstr "ダウンロードしたファイルが読み込みできません。"
@@ -846,8 +806,6 @@ msgstr ""
 
 #: ../src/app/qml/main.qml:116
 #, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About AOSC Media Writer"
 msgctxt "main|"
 msgid "AOSC Media Writer"
 msgstr "AOSC Media Writer について"
@@ -869,8 +827,6 @@ msgstr "復元する"
 
 #: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Finished!"
 msgctxt "main|"
 msgid "Finish"
 msgstr "終わりました!"
@@ -882,24 +838,18 @@ msgstr "書き込み"
 
 #: ../src/app/qml/main.qml:296
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "ダウンロード中"
 
 #: ../src/app/qml/main.qml:297
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "ダウンロード中"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "main|"
 msgid "Cancel"
 msgstr "取り消し"
@@ -924,176 +874,81 @@ msgctxt "main|"
 msgid "Previous"
 msgstr "前へ"
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/io.aosc.MediaWriter.desktop:4
 #, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About AOSC Media Writer"
 msgid "AOSC Media Writer"
 msgstr "AOSC Media Writer について"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of AOSC"
-msgstr "AOSCの特定のエディションのLive USBドライブを作成できるツールです"
+msgid "A tool to create AOSC OS boot media"
+msgstr ""
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of AOSC. Not "
-"only can AOSC Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
+"Automatically downloads, writes, and verifies AOSC OS boot media from disk "
+"images"
 msgstr ""
-"このツールではAOSCのさまざまなエディションのLive USBメディアを作成すること"
-"ができます。AOSC Media Writerはイメージの書き込みだけではなくイメージのダウ"
-"ンロードも行なうことができます。オフィシャルイメージ(Server, Workstation)およ"
-"びAOSC Spin(KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktopなど)や、"
-"AOSC Labs(Design Suite, Security Labなど)に対応しています。確かな選択が行え"
-"るように、それぞれについての基本的な情報を提供します。"
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"AOSC Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with AOSC images."
+"AOSC Media Writer can also write other bootable ISOs, but keep in mind that "
+"this tool is only tested with AOSC OS images."
 msgstr ""
-"AOSC Media Writerはローカルディスクから読み込まれた他の起動可能なISOイメー"
-"ジを書き込むこともできますが、このツールはAOSCイメージでのみテストされてい"
-"ることに注意してください。"
+"AOSC Media Writerはローカルディスクから読み込まれた他の起動可能なISOイメージ"
+"を書き込むこともできますが、このツールはAOSCイメージでのみテストされているこ"
+"とに注意してください。"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:43
-msgid "Write AOSC images to your portable drives"
+#: ../src/app/data/io.aosc.MediaWriter.desktop:4
+#, fuzzy
+msgid "Media Writer"
+msgstr "AOSC Media Writer について"
+
+#: ../src/app/data/io.aosc.MediaWriter.desktop:44
+#, fuzzy
+msgid "Write images to your portable drives"
 msgstr "AOSCイメージをお使いのポータブルメディアに書き込みます"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:87
+#: ../src/app/data/io.aosc.MediaWriter.desktop:89
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;"
 
-#~ msgctxt "Release|"
-#~ msgid "Emerging AOSC Editions"
-#~ msgstr "新しいAOSCエディション"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "Intel/AMD 64bit"
+#~ msgstr "Intel/AMD 64bit"
 
-#~ msgctxt "VersionPage|"
-#~ msgid "Emerging Editions"
-#~ msgstr "Emerging Editions"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying written data"
-#~ msgstr "書き込んだデータを検証中"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying downloaded image"
-#~ msgstr "ダウンロードしたイメージを検証中"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed"
-#~ msgstr "失敗"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing not possible"
-#~ msgstr "書き込み不可"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing"
-#~ msgstr "書き込み中"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "完了しました"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+#~ msgstr "Intel/AMDおよび互換PC(64bit)向けのISO形式イメージ"
 
 #, fuzzy
-#~| msgctxt "DownloadPage|"
-#~| msgid "%1 Sucessfuly Written"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Successfully written"
-#~ msgstr "%1 の書き込みに成功しました"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed due to missing drives"
-#~ msgstr "メディアを見失ったため検証に失敗しました"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for AArch64 machine"
+#~ msgstr "LZMA圧縮されたRAWイメージはAArch64向けのものです"
 
 #, fuzzy
-#~| msgctxt "CancelDialog|"
-#~| msgid "Cancel Verification"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed"
-#~ msgstr "検証を中止します"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for LoongArch64 machine"
+#~ msgstr "LZMA圧縮されたRAWイメージはAArch64向けのものです"
 
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Downloading"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Download failed"
-#~ msgstr "ダウンロード中"
+#~ msgid "A tool to create a live USB drive with an edition of AOSC"
+#~ msgstr "AOSCの特定のエディションのLive USBドライブを作成できるツールです"
 
-#, fuzzy
-#~| msgctxt "DownloadPage|"
-#~| msgid "Failed no drives"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed due to missing drives"
-#~ msgstr "メディアが見つかりません"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Downloading"
-#~ msgctxt "main|"
-#~ msgid "Downloading"
-#~ msgstr "ダウンロード中"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write verifying"
-#~ msgstr "書き込み後の検証中"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write Successful"
-#~ msgstr "書き込みに成功しました"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed verification"
-#~ msgstr "検証に失敗しました"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "その他のバリエーション..."
-
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "オペレーティングシステムのイメージを検索"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Display additional AOSC flavors"
-#~ msgstr "AOSC のフレーバーの表示を追加"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Cancel"
-#~ msgstr "取り消し"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Close"
-#~ msgstr "閉じる"
-
-#, fuzzy
-#~| msgctxt "ImageList|"
-#~| msgid "About AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Server"
-#~ msgstr "AOSC Media Writer について"
-
-#, fuzzy
-#~| msgctxt "ImageList|"
-#~| msgid "About AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Design Suite"
-#~ msgstr "AOSC Media Writer について"
-
-#, fuzzy
-#~| msgctxt "ImageList|"
-#~| msgid "About AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Robotics Suite"
-#~ msgstr "AOSC Media Writer について"
+#~ msgid ""
+#~ "A tool to create a bootable live USB drive with an edition of AOSC. Not "
+#~ "only can AOSC Media Writer write an image to your flash drive, it can "
+#~ "also download it for you. It offers official editions (Server, "
+#~ "Workstation), AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktop,...), and AOSC Labs (Design Suite, Security Lab,...). It provides "
+#~ "basic information about each of them to help you make the right choice."
+#~ msgstr ""
+#~ "このツールではAOSCのさまざまなエディションのLive USBメディアを作成すること"
+#~ "ができます。AOSC Media Writerはイメージの書き込みだけではなくイメージのダ"
+#~ "ウンロードも行なうことができます。オフィシャルイメージ(Server, "
+#~ "Workstation)およびAOSC Spin(KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktopなど)や、AOSC Labs(Design Suite, Security Labなど)に対応していま"
+#~ "す。確かな選択が行えるように、それぞれについての基本的な情報を提供します。"

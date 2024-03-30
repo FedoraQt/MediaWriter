@@ -172,7 +172,7 @@ Page {
             Label {
                 id: messageArmBoard
                 visible: false //boardCombo.otherSelected
-                text: qsTr("Your board or device is not supported by AOSC Media Writer yet. Please check <a href=%1>this page</a> for more information about its compatibility with AOSC and how to create bootable media for it.").arg("https://fedoraproject.org/wiki/Architectures/ARM")
+                text: qsTr("Your board or device is not supported by AOSC Media Writer yet.")
                 wrapMode: Label.Wrap
                 width: mainColumn.width
             }

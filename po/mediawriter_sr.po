@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
+"POT-Creation-Date: 2024-03-30 22:58+0800\n"
 "PO-Revision-Date: 2021-07-11 17:15+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Serbian <https://translate.fedoraproject.org/projects/fedora-"
@@ -24,40 +24,35 @@ msgstr ""
 
 #: ../src/app/qml/AboutDialog.qml:50
 #, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About AOSC Media Writer"
 msgctxt "AboutDialog|"
 msgid "About AOSC Media Writer"
 msgstr "О AOSC Писачу Медија"
 
 #: ../src/app/qml/AboutDialog.qml:59
 #, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Издање %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
+msgctxt "AboutDialog|"
+msgid "Based on Fedora Media Writer"
+msgstr ""
+
+#: ../src/app/qml/AboutDialog.qml:72
 #, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "AOSC Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "AOSC Media Writer is now checking for new releases"
 msgstr "AOSC Писач Медија сада тражи нова издања"
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: ../src/app/qml/AboutDialog.qml:78
 #, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Пријавите грешке или примедбе на адреси %1"
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:101
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Затвори"
@@ -69,8 +64,6 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:58
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
 msgstr "Пишем"
@@ -82,9 +75,7 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
-msgid ""
-"Download and media writing will be aborted. This process can be resumed any "
-"time later."
+msgid "Download and media writing will be aborted."
 msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:69
@@ -106,16 +97,12 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:111
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Преузимам"
 
 #: ../src/app/qml/CancelDialog.qml:113
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Пишем"
@@ -127,28 +114,26 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:117
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Откажи"
 
-#: ../src/app/downloadmanager.cpp:235
+#: ../src/app/downloadmanager.cpp:257
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "Нисам могао да добавим захтевану слику."
 
-#: ../src/app/downloadmanager.cpp:335
+#: ../src/app/downloadmanager.cpp:357
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "Немате више простора у вашој фасцикли „Преузимања“."
 
-#: ../src/app/downloadmanager.cpp:337
+#: ../src/app/downloadmanager.cpp:359
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "Датотека за преузимање није уписива."
 
-#: ../src/app/downloadmanager.cpp:425
+#: ../src/app/downloadmanager.cpp:447
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Веза је истекла."
@@ -161,72 +146,54 @@ msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:54
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Пишем"
 
 #: ../src/app/qml/DownloadPage.qml:56
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr "Преузимам"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr "Припремам"
 
 #: ../src/app/qml/DownloadPage.qml:60
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
 msgstr "Спреман за писање"
 
 #: ../src/app/qml/DownloadPage.qml:62
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
 msgstr "Проверавам преузето"
 
 #: ../src/app/qml/DownloadPage.qml:76
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr "(%1 бајта преостало)"
 
 #: ../src/app/qml/DownloadPage.qml:77
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr "(%1 килобајта преостало)"
 
 #: ../src/app/qml/DownloadPage.qml:78
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr "(%1 мегабајта преостало)"
 
 #: ../src/app/qml/DownloadPage.qml:79
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr "(%1 гигабајта преостало)"
@@ -245,16 +212,12 @@ msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:135
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
 msgstr "Ова датотека ће бити сачувана у вашој фасцикли за преузимања."
 
 #: ../src/app/qml/DownloadPage.qml:143
 #, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Писањем ћете изгубити све податке на уређају %1"
@@ -266,16 +229,11 @@ msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:159
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using AOSC Media Writer; this will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using AOSC Media Writer. This will remove installation media "
-"from your drive."
+"normal by using AOSC Media Writer. This will remove installation media from "
+"your drive."
 msgstr ""
 "Ваш уређај ће бити умањен. Можете га поново проширити на његову величину "
 "преко AOSC Media Writer алатке. Овим ћете уклонити инсталацију са вашег "
@@ -283,43 +241,23 @@ msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:167
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Изабрано:"
 
 #: ../src/app/qml/DownloadPage.qml:167
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Ништа"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your board or device is not supported by AOSC Media Writer yet. Please "
-#| "check <a href=%1>this page</a> for more information about its "
-#| "compatibility with AOSC and how to create bootable media for it."
 msgctxt "DownloadPage|"
-msgid ""
-"Your board or device is not supported by AOSC Media Writer yet. Please "
-"check <a href=%1>this page</a> for more information about its compatibility "
-"with AOSC and how to create bootable media for it."
+msgid "Your board or device is not supported by AOSC Media Writer yet."
 msgstr ""
-"Ваша плоча или уређај још није подржан од стране алатке AOSC Media Writer. "
-"Погледајте <a href=%1>ову страницу</a> за више података о усклађености ове "
-"алатке са Федором и о другим начинима стварања подизних медијума."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
@@ -341,16 +279,12 @@ msgstr "Овај уређај није довољно велик."
 
 #: ../src/app/qml/DrivePage.qml:36
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
 msgstr "Упиши на диск"
 
 #: ../src/app/qml/DrivePage.qml:45
 #, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
 msgstr "Издање %1"
@@ -362,40 +296,30 @@ msgstr ""
 
 #: ../src/app/qml/DrivePage.qml:84
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
 msgstr "Изабрано:"
 
 #: ../src/app/qml/DrivePage.qml:91
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "Ништа"
 
 #: ../src/app/qml/DrivePage.qml:99
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
 msgstr "Изабрано:"
 
 #: ../src/app/qml/DrivePage.qml:116
 #, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr "Датотеке са сликама"
 
 #: ../src/app/qml/DrivePage.qml:116
 #, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "Све датотеке (*)"
@@ -407,24 +331,18 @@ msgstr ""
 
 #: ../src/app/qml/DrivePage.qml:135
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "Ниједан преносиви уређај није закачен"
 
 #: ../src/app/qml/DrivePage.qml:155
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
 msgstr "Преузимам"
 
 #: ../src/app/qml/DrivePage.qml:160
 #, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
 msgstr "Обриши преузету слику"
@@ -507,8 +425,6 @@ msgstr ""
 
 #: ../src/app/qml/MainPage.qml:57
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
 msgstr "Преузимање није успело"
@@ -520,24 +436,18 @@ msgstr ""
 
 #: ../src/app/qml/MainPage.qml:76
 #, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
 msgstr "Повратити %1?"
 
 #: ../src/app/portalfiledialog.cpp:143
 #, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "Датотеке са сликама"
 
 #: ../src/app/portalfiledialog.cpp:153
 #, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
 msgstr "Све датотеке (*)"
@@ -547,12 +457,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:373
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Изаберите датотеку са ваших уређаја"
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:374
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -563,122 +473,121 @@ msgstr ""
 "уписали на флеш уређај.</p><p>Тренутно је могуће само писање сирових слика "
 "система (.iso или .bin)</p>"
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "AOSC Spins"
 msgstr "AOSC Спинови"
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:406
 msgctxt "Release|"
 msgid "AOSC Labs"
 msgstr "AOSC Лабораторије"
 
-#: ../src/app/releasemanager.cpp:432
+#: ../src/app/releasemanager.cpp:408
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC Labs"
 msgctxt "Release|"
 msgid "AOSC Atomic Desktops"
 msgstr "AOSC Лабораторије"
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:410
 msgctxt "Release|"
 msgid "Other"
 msgstr "Друго"
 
-#: ../src/app/releasemanager.cpp:1074
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 64bit"
-msgstr "Интел 64-бита"
-
-#: ../src/app/releasemanager.cpp:1074
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+msgid "x86-64"
 msgstr ""
-"ISO формат слике за Интелове, АМД-ове и друге подударне личне рачунаре (64-"
-"бита)"
 
-#: ../src/app/releasemanager.cpp:1075
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 32bit"
-msgstr "Интел 32-бита"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
+msgid "System releases for 64-bit x86 devices"
 msgstr ""
-"ISO формат слике за Интелове, АМД-ове и друге подударне личне рачунаре (32-"
-"бита)"
 
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid "ARM v7"
-msgstr "АРМ вер.7"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid ""
-"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr ""
-"LZMA-запакована сирова слика за АРМ вер.7-А машине као што су то Raspberry "
-"Pi 2 и 3"
-
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
-msgid "LZMA-compressed raw image for AArch64 machines"
+msgid "System releases for AArch64 devices"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "LoongArch"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for LoongArch devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "POWER"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for IBM POWER devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "MIPS-based Loongson 3"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for MIPS-based Loongson 3 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "RISC-V (64bit)"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit RISC-V devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:372
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Прилагођена слика"
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:909 ../src/app/releasemanager.cpp:921
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Преузета слика је покварена"
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:925
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Преузета датотека није читљива."
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Не могу да преименујем привремену датотеку."
 
 #: ../src/app/releasemanager.h:375
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Припремам"
 
 #: ../src/app/releasemanager.h:376
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "Преузимам"
 
 #: ../src/app/releasemanager.h:377
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "Проверавам преузето"
@@ -695,16 +604,12 @@ msgstr "Слика је сачувана у вашу фасциклу са пр�
 
 #: ../src/app/releasemanager.h:380
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "Пишем"
 
 #: ../src/app/releasemanager.h:381
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "Проверавам уписане податке"
@@ -721,8 +626,6 @@ msgstr "Уписани подаци су покварени"
 
 #: ../src/app/releasemanager.h:384
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "Преузимање није успело"
@@ -732,19 +635,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Грешка"
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:682
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Алфа"
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:684
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Бета"
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:686
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -758,21 +661,6 @@ msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:49
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -799,10 +687,6 @@ msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:67
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while AOSC Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while AOSC Media Writer restores your "
@@ -813,18 +697,12 @@ msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:84
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "Ваш уређај је успешно враћен на фабричка подешавања!"
 
 #: ../src/app/qml/RestorePage.qml:94
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
@@ -845,33 +723,13 @@ msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:48
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
 msgstr "Изабрано:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
-msgid "Official Editions"
-msgstr ""
-
-#: ../src/app/qml/VersionPage.qml:59
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC Labs"
-msgctxt "VersionPage|"
-msgid "Atomic Desktops"
-msgstr "AOSC Лабораторије"
-
-#: ../src/app/qml/VersionPage.qml:65
-msgctxt "VersionPage|"
-msgid "Spins"
-msgstr ""
-
-#: ../src/app/qml/VersionPage.qml:71
-msgctxt "VersionPage|"
-msgid "Labs"
+msgid "Livekit"
 msgstr ""
 
 #: ../src/app/windrivemanager.cpp:319
@@ -954,8 +812,6 @@ msgstr ""
 
 #: ../src/helper/mac/writejob.cpp:131
 #, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
 msgstr "Не могу да отворим уређај за писање"
@@ -983,23 +839,18 @@ msgstr "Не могу да откључам уређај"
 
 #: ../src/app/qml/main.qml:116
 #, fuzzy
-#| msgid "AOSC Media Writer"
 msgctxt "main|"
 msgid "AOSC Media Writer"
 msgstr "AOSC Писач Медија"
 
 #: ../src/app/qml/main.qml:154
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC Spins"
 msgctxt "main|"
 msgid "Select AOSC Version"
 msgstr "AOSC Спинови"
 
 #: ../src/app/qml/main.qml:170
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
 msgstr "Изабрано:"
@@ -1011,48 +862,36 @@ msgstr "Поврати"
 
 #: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 #, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "main|"
 msgid "Finish"
 msgstr "Завршено!"
 
 #: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "main|"
 msgid "Write"
 msgstr "Упиши %1"
 
 #: ../src/app/qml/main.qml:296
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "Преузимање није успело"
 
 #: ../src/app/qml/main.qml:297
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "Преузимање није успело"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Откажи"
 
 #: ../src/app/qml/main.qml:306
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
 msgctxt "main|"
 msgid "Retry"
 msgstr "Поново покушај"
@@ -1072,303 +911,73 @@ msgctxt "main|"
 msgid "Previous"
 msgstr ""
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/io.aosc.MediaWriter.desktop:4
 msgid "AOSC Media Writer"
 msgstr "AOSC Писач Медија"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of AOSC"
-msgstr "Алатка за стварање живих УСБ уређаја са издањима AOSC-е"
+msgid "A tool to create AOSC OS boot media"
+msgstr ""
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of AOSC. Not "
-"only can AOSC Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
+"Automatically downloads, writes, and verifies AOSC OS boot media from disk "
+"images"
 msgstr ""
-"Алатка за стварање подизних, живих УСБ уређаја са издањима AOSC-е. Не само "
-"што AOSC Писач Медија може писати слике на ваш флеш уређај, он их такође "
-"може преузети уместо вас. Пружа званична издања (за сервере, радне станице), "
-"AOSC спинове (КДЕ Плазма окружење, Xfce окружење, Цинамон окружење,...) и "
-"AOSC Лабораторије (Design Suite, Security Lab,...). Такође пружа основне "
-"податке о сваком од издања и тиме вам помаже да направите добар избор."
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"AOSC Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with AOSC images."
+"AOSC Media Writer can also write other bootable ISOs, but keep in mind that "
+"this tool is only tested with AOSC OS images."
 msgstr ""
 "AOSC Писач Медија такође може писати друге подизне ISO-е учитане са вашег "
 "локалног диска али знајте да се испробава само са AOSC сликама система."
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:43
-msgid "Write AOSC images to your portable drives"
+#: ../src/app/data/io.aosc.MediaWriter.desktop:4
+#, fuzzy
+msgid "Media Writer"
+msgstr "AOSC Писач Медија"
+
+#: ../src/app/data/io.aosc.MediaWriter.desktop:44
+#, fuzzy
+msgid "Write images to your portable drives"
 msgstr "Пишите AOSC слике на ваше преносне уређаје"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:87
+#: ../src/app/data/io.aosc.MediaWriter.desktop:89
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
 
 #, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Checking the written data"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying written data"
-#~ msgstr "Проверавам уписане податке"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "Intel/AMD 64bit"
+#~ msgstr "Интел 64-бита"
 
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "The downloaded image is corrupted"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying downloaded image"
-#~ msgstr "Преузета слика је покварена"
-
-#, fuzzy
-#~| msgctxt "DownloadDialog|"
-#~| msgid "Writing is not possible"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing not possible"
-#~ msgstr "Писање није могуће"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Writing"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing"
-#~ msgstr "Пишем"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Finished!"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "Завршено!"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Writing %1 failed"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed"
-#~ msgstr "Уписивање ставке %1 није успело"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Download failed"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Download failed"
-#~ msgstr "Преузимање није успело"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Downloading"
-#~ msgctxt "main|"
-#~ msgid "Downloading"
-#~ msgstr "Преузимам"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Writing"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write verifying"
-#~ msgstr "Пишем"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Writing %1 was successful"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write Successful"
-#~ msgstr "Уписивање ставке %1 је успешно"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write the image immediately when the download is finished"
-#~ msgstr "Упиши слику одмах након што се преузимање заврши"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Other"
-#~ msgstr "Друго"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-#~ msgstr "Није било могуће обрисати<br>\"<a href=\"%1\">%2</a>\"."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "(%1 after writing)"
-#~ msgstr "(%1 после писања)"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ""
-#~ "AOSC %1 was released! Check it out!<br>If you want a stable, finished "
-#~ "system, it's better to stay at version %2."
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 #~ msgstr ""
-#~ "AOSC %1 је издата! Баците поглед!<br>Уколико желите стабилан, завршен "
-#~ "систем, боље је да останете на издању %2."
+#~ "ISO формат слике за Интелове, АМД-ове и друге подударне личне рачунаре "
+#~ "(64-бита)"
 
-#~ msgctxt "ImageDetails|"
-#~ msgid ", released on %1"
-#~ msgstr ", издата дана %1"
+#~ msgid "A tool to create a live USB drive with an edition of AOSC"
+#~ msgstr "Алатка за стварање живих УСБ уређаја са издањима AOSC-е"
 
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "Друга издања..."
-
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "Нађите слику оперативног система"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Checking for new releases"
-#~ msgstr "Тражим нова издања"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Version %1"
-#~ msgstr "Издање %1"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Display additional AOSC flavors"
-#~ msgstr "Прикажи додатне укусе AOSC-е"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Cancel"
-#~ msgstr "Откажи"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Restore"
-#~ msgstr "Поврати"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Close"
-#~ msgstr "Затвори"
-
-#~ msgctxt "main|"
 #~ msgid ""
-#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
-#~ "want to restore it to factory settings?"
+#~ "A tool to create a bootable live USB drive with an edition of AOSC. Not "
+#~ "only can AOSC Media Writer write an image to your flash drive, it can "
+#~ "also download it for you. It offers official editions (Server, "
+#~ "Workstation), AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktop,...), and AOSC Labs (Design Suite, Security Lab,...). It provides "
+#~ "basic information about each of them to help you make the right choice."
 #~ msgstr ""
-#~ "Убацили сте <b>%1</b> који већ садржи живи систем.<br>Да ли желите да га "
-#~ "вратите на фабричка подешавања?"
-
-#~ msgctxt "main|"
-#~ msgid "AOSC Media Writer %1 Released"
-#~ msgstr "AOSC Писач Медија %1 је објављен"
-
-#~ msgctxt "main|"
-#~ msgid "Update for great new features and bugfixes!"
-#~ msgstr "Ажурирајте се да бисте добили нове могућности и исправке грешака!"
-
-#~ msgctxt "main|"
-#~ msgid "Open Browser"
-#~ msgstr "Отвори прегледач"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "%1<br>Writing images will not be possible.<br>You can still view AOSC "
-#~ "flavors and download images to your hard drive."
-#~ msgstr ""
-#~ "%1<br>Писање слика неће бити могуће.<br>Можете и даље прегледати AOSC "
-#~ "укусе и преузете слике на ваш хард диск."
-
-#~ msgctxt "main|"
-#~ msgid "Ok"
-#~ msgstr "У реду"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Server"
-#~ msgstr "AOSC Писач Медија"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "silverblue"
-#~ msgstr "AOSC Спинови"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Silverblue"
-#~ msgstr "AOSC Спинови"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXQt Desktop"
-#~ msgstr "AOSC Лабораторије"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Cinnamon Desktop"
-#~ msgstr "AOSC Лабораторије"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXDE Desktop"
-#~ msgstr "AOSC Лабораторије"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC SoaS Desktop"
-#~ msgstr "AOSC Лабораторије"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "design_suite"
-#~ msgstr "AOSC Писач Медија"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Design Suite"
-#~ msgstr "AOSC Писач Медија"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgid "AOSC Games"
-#~ msgstr "AOSC Лабораторије"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Robotics Suite"
-#~ msgstr "AOSC Писач Медија"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "scientific"
-#~ msgstr "AOSC Спинови"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Scientific"
-#~ msgstr "AOSC Спинови"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Security Lab"
-#~ msgstr "AOSC Лабораторије"
+#~ "Алатка за стварање подизних, живих УСБ уређаја са издањима AOSC-е. Не "
+#~ "само што AOSC Писач Медија може писати слике на ваш флеш уређај, он их "
+#~ "такође може преузети уместо вас. Пружа званична издања (за сервере, радне "
+#~ "станице), AOSC спинове (КДЕ Плазма окружење, Xfce окружење, Цинамон "
+#~ "окружење,...) и AOSC Лабораторије (Design Suite, Security Lab,...). "
+#~ "Такође пружа основне податке о сваком од издања и тиме вам помаже да "
+#~ "направите добар избор."

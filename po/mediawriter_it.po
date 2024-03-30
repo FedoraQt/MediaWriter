@@ -16,11 +16,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
+"POT-Creation-Date: 2024-03-30 22:58+0800\n"
 "PO-Revision-Date: 2024-03-15 11:36+0000\n"
 "Last-Translator: ROBERTO BORIOTTI <bovirus@gmail.com>\n"
-"Language-Team: Italian <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/it/>\n"
+"Language-Team: Italian <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,18 +40,23 @@ msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Versione %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
+msgctxt "AboutDialog|"
+msgid "Based on Fedora Media Writer"
+msgstr ""
+
+#: ../src/app/qml/AboutDialog.qml:72
 msgctxt "AboutDialog|"
 msgid "AOSC Media Writer is now checking for new releases"
 msgstr "Controllo disponibilità nuove versioni AOSC Media Writer"
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: ../src/app/qml/AboutDialog.qml:78
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Segnala bug o suggerimenti su %1"
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:101
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Chiudi"
@@ -72,10 +77,9 @@ msgid "Cancel Verification?"
 msgstr "Vuoi annullare la verifica?"
 
 #: ../src/app/qml/CancelDialog.qml:67
+#, fuzzy
 msgctxt "CancelDialog|"
-msgid ""
-"Download and media writing will be aborted. This process can be resumed any "
-"time later."
+msgid "Download and media writing will be aborted."
 msgstr ""
 "Il download e la scrittura verranno interrotti. Questo processo potrà essere "
 "ripreso più tardi."
@@ -119,22 +123,22 @@ msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Annulla"
 
-#: ../src/app/downloadmanager.cpp:235
+#: ../src/app/downloadmanager.cpp:257
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "Impossibile recuperare l'immagine richiesta."
 
-#: ../src/app/downloadmanager.cpp:335
+#: ../src/app/downloadmanager.cpp:357
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "Spazio esaurito nella cartella download."
 
-#: ../src/app/downloadmanager.cpp:337
+#: ../src/app/downloadmanager.cpp:359
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "Il file scaricato non è scrivibile."
 
-#: ../src/app/downloadmanager.cpp:425
+#: ../src/app/downloadmanager.cpp:447
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Timeout connessione"
@@ -227,12 +231,12 @@ msgstr "Collega una unità USB."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using AOSC Media Writer. This will remove installation media "
-"from your drive."
+"normal by using AOSC Media Writer. This will remove installation media from "
+"your drive."
 msgstr ""
 "L'unità verrà ridimensionata ad una capacità inferiore. È possibile "
-"riportarla alla capacità normale usando AOSC Media Writer. Questa "
-"operazione rimuoverà il media di installazione dall'unità."
+"riportarla alla capacità normale usando AOSC Media Writer. Questa operazione "
+"rimuoverà il media di installazione dall'unità."
 
 #: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
@@ -245,16 +249,9 @@ msgid "None"
 msgstr "Nessuno"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, qt-format
 msgctxt "DownloadPage|"
-msgid ""
-"Your board or device is not supported by AOSC Media Writer yet. Please "
-"check <a href=%1>this page</a> for more information about its compatibility "
-"with AOSC and how to create bootable media for it."
+msgid "Your board or device is not supported by AOSC Media Writer yet."
 msgstr ""
-"La scheda o il dispositivo non sono supportati da AOSC Media Writer. Per "
-"ulteriori informazioni sulla compatibilità con AOSC e su come creare un "
-"media avviabile, visitare <a href=%1>questa pagina</a>."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -445,12 +442,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "Apri file"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:373
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Seleziona un file nei dischi locali"
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:374
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -461,86 +458,103 @@ msgstr ""
 "</p><p>Al momento sono supportate solo immagini disco di tipo RAW (.iso o ."
 "bin).</p>"
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "AOSC Spins"
 msgstr "AOSC Spin"
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:406
 msgctxt "Release|"
 msgid "AOSC Labs"
 msgstr "AOSC Lab"
 
-#: ../src/app/releasemanager.cpp:432
+#: ../src/app/releasemanager.cpp:408
 msgctxt "Release|"
 msgid "AOSC Atomic Desktops"
 msgstr "AOSC Atomic Desktop"
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:410
 msgctxt "Release|"
 msgid "Other"
 msgstr "Altre"
 
-#: ../src/app/releasemanager.cpp:1074
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 64bit"
-msgstr "Intel/AMD 64bit"
-
-#: ../src/app/releasemanager.cpp:1074
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+msgid "x86-64"
 msgstr ""
-"Formato immagine ISO per Intel, AMD e altre architetture compatibili (64bit)"
 
-#: ../src/app/releasemanager.cpp:1075
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 32bit"
-msgstr "Intel/AMD 32bit"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
+msgid "System releases for 64-bit x86 devices"
 msgstr ""
-"File immagine ISO per Intel, AMD e altre architetture compatibili (32bit)"
 
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid "ARM v7"
-msgstr "ARM v7"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid ""
-"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr ""
-"File immagine compressa con LZMA per sistemi ARM v7-A come Raspberry Pi 2 e 3"
-
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
-msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "File immagine RAW compressa nel formato LZMA per sistemi AArch64"
+msgid "System releases for AArch64 devices"
+msgstr ""
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:1052
+#, fuzzy
+msgctxt "ReleaseArchitecture|"
+msgid "LoongArch"
+msgstr "AArch64"
+
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for LoongArch devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "POWER"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for IBM POWER devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "MIPS-based Loongson 3"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for MIPS-based Loongson 3 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "RISC-V (64bit)"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit RISC-V devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:372
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "File immagine personalizzata"
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:909 ../src/app/releasemanager.cpp:921
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Il file dell'immagine scaricata è corrotto"
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:925
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Il file scaricato non è leggibile."
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Impossibile rinominare il file temporaneo."
@@ -602,19 +616,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Errore"
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:682
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 alpha"
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:684
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 beta"
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:686
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -684,23 +698,8 @@ msgstr "Seleziona da:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
-msgid "Official Editions"
-msgstr "Edizioni stabili"
-
-#: ../src/app/qml/VersionPage.qml:59
-msgctxt "VersionPage|"
-msgid "Atomic Desktops"
-msgstr "AOSC Lab"
-
-#: ../src/app/qml/VersionPage.qml:65
-msgctxt "VersionPage|"
-msgid "Spins"
-msgstr "Spin"
-
-#: ../src/app/qml/VersionPage.qml:71
-msgctxt "VersionPage|"
-msgid "Labs"
-msgstr "Lab"
+msgid "Livekit"
+msgstr ""
 
 #: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
@@ -873,446 +872,83 @@ msgctxt "main|"
 msgid "Previous"
 msgstr "Indietro"
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/io.aosc.MediaWriter.desktop:4
 msgid "AOSC Media Writer"
 msgstr "AOSC Media Writer"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of AOSC"
-msgstr "Uno strumento per creare unità USB live con una edizione di AOSC"
+msgid "A tool to create AOSC OS boot media"
+msgstr ""
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of AOSC. Not "
-"only can AOSC Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
+"Automatically downloads, writes, and verifies AOSC OS boot media from disk "
+"images"
 msgstr ""
-"Uno strumento per creare unità USB live con una edizione di AOSC. E non "
-"solo. AOSC Media Writer è in grado di scrivere immagini su unità flash "
-"USB, ma anche di effettuarne il download. Mette a disposizione le edizioni "
-"ufficiali (Server, Workstation), le spin di AOSC (KDE Plasma Desktop, Xfce "
-"Desktop, Cinnamon Desktop,...), e le edizioni AOSC Lab (Design Suite, "
-"Security Lab,...). Fornisce inoltre informazioni di base su ciascuna di esse "
-"per aiutarti a fare la scelta giusta."
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"AOSC Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with AOSC images."
+"AOSC Media Writer can also write other bootable ISOs, but keep in mind that "
+"this tool is only tested with AOSC OS images."
 msgstr ""
 "AOSC Media Writer può inoltre creare altre ISO avviabili da immagini "
 "caricate dai dischi locali, ma va tenuto presente che è testato solo con le "
 "immagini AOSC."
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:43
-msgid "Write AOSC images to your portable drives"
+#: ../src/app/data/io.aosc.MediaWriter.desktop:4
+#, fuzzy
+msgid "Media Writer"
+msgstr "AOSC Media Writer"
+
+#: ../src/app/data/io.aosc.MediaWriter.desktop:44
+#, fuzzy
+msgid "Write images to your portable drives"
 msgstr "Scrive le immagini AOSC su unità portatili"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:87
+#: ../src/app/data/io.aosc.MediaWriter.desktop:89
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;"
 
-#~ msgctxt "Release|"
-#~ msgid "Emerging AOSC Editions"
-#~ msgstr "Edizioni emergenti di AOSC"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "Intel/AMD 64bit"
+#~ msgstr "Intel/AMD 64bit"
 
-#~ msgctxt "VersionPage|"
-#~ msgid "Emerging Editions"
-#~ msgstr "Edizioni beta"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying written data"
-#~ msgstr "Verifica dei dati scritti in corso"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying downloaded image"
-#~ msgstr "Verifica dell'immagine scaricata in corso"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed"
-#~ msgstr "Fallito"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing not possible"
-#~ msgstr "Impossibile eseguire la scrittura"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing"
-#~ msgstr "Scrittura in corso"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "Fine"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Successfully written"
-#~ msgstr "Scrittura effettuata con successo"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed due to missing drives"
-#~ msgstr "Verifica fallita a causa della mancanza di dispositivi"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed"
-#~ msgstr "Verifica fallita"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Download failed"
-#~ msgstr "Download fallito"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed due to missing drives"
-#~ msgstr "Fallito a causa di dispositivi falliti"
-
-#~ msgctxt "main|"
-#~ msgid "Downloading"
-#~ msgstr "Download in corso"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write verifying"
-#~ msgstr "Verifica della scrittura in corso"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write Successful"
-#~ msgstr "Scrittura completata"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed verification no drives"
-#~ msgstr "Verifica fallita: nessun dispositivo"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed verification"
-#~ msgstr "Verifica fallita"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write the image immediately when the download is finished"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 #~ msgstr ""
-#~ "Esegue immediatamente la scrittura dell'immagine al completamento del "
-#~ "download"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Other"
-#~ msgstr "Altro"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-#~ msgstr "Non è stato possibile cancellare <br>\"<a href=\"%1\">%2</a>\"."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Back"
-#~ msgstr "Indietro"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Create Live USB…"
-#~ msgstr "Crea Live USB…"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "(%1 after writing)"
-#~ msgstr "(%1 dopo la scrittura)"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ""
-#~ "AOSC %1 was released! Check it out!<br>If you want a stable, finished "
-#~ "system, it's better to stay at version %2."
-#~ msgstr ""
-#~ "AOSC %1 è stata rilasciata! Provala!<br>Se vuoi un sistema stabile e "
-#~ "completo, è meglio rimanere alla versione %2."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ", released on %1"
-#~ msgstr ", rilasciato il %1"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "Altre varianti..."
-
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "Trova una immagine di sistema operativo"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Checking for new releases"
-#~ msgstr "Controllo di nuove release"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Version %1"
-#~ msgstr "Versione %1"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Display additional AOSC flavors"
-#~ msgstr "Mostra altre varianti AOSC"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Cancel"
-#~ msgstr "Annulla"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Restore"
-#~ msgstr "Ripristina"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Close"
-#~ msgstr "Chiudi"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
-#~ "want to restore it to factory settings?"
-#~ msgstr ""
-#~ " <b>%1</b> contiene già un sistema live.<br>Si desidera procedere al "
-#~ "ripristino delle impostazioni di fabbrica?"
-
-#~ msgctxt "main|"
-#~ msgid "AOSC Media Writer %1 Released"
-#~ msgstr "Rilasciato AOSC Media Writer %1"
-
-#~ msgctxt "main|"
-#~ msgid "Update for great new features and bugfixes!"
-#~ msgstr "Aggiorna per le nuove feature ed i bug fix!"
-
-#~ msgctxt "main|"
-#~ msgid "Open Browser"
-#~ msgstr "Apri Browser"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "%1<br>Writing images will not be possible.<br>You can still view AOSC "
-#~ "flavors and download images to your hard drive."
-#~ msgstr ""
-#~ "%1<br>Non è possibile scrivere le immagini.<br>È possibile visualizzare "
-#~ "le varianti di AOSC ed effettuare il download delle immagini sul "
-#~ "proprio disco rigido."
-
-#~ msgctxt "main|"
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-# ############## metadata.json ###############
-#~ msgid "workstation"
-#~ msgstr "workstation"
-
-#~ msgctxt "Release|"
-#~ msgid "product"
-#~ msgstr "prodotto"
-
-#~ msgctxt "Release|"
-#~ msgid "This is the Linux workstation you've been waiting for."
-#~ msgstr "Questa è la workstation Linux che stavi aspettando."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Workstation is a reliable, user-friendly, and powerful operating "
-#~ "system for your laptop or desktop computer. It supports a wide range of "
-#~ "developers, from hobbyists and students to professionals in corporate "
-#~ "environments."
-#~ msgstr ""
-#~ "AOSC Workstation è un sistema operativo affidabile, user-friendly e "
-#~ "potente per il tuo laptop o computer desktop. Supporta una grande varietà "
-#~ "di sviluppatori, dagli hobbisti e studenti ai professionisti in ambienti "
-#~ "aziendali."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The plethora of tools provided by<br /> AOSC allows me to get the job "
-#~ "done.<br /> It just works.”"
-#~ msgstr ""
-#~ "\"La pletora di strumenti forniti da <br /> AOSC mi permette di portare "
-#~ "a termine il lavoro.<br /> Semplicemente funziona.\""
-
-#~ msgctxt "Release|"
-#~ msgid "Sleek user interface"
-#~ msgstr "Interfaccia utente elegante"
-
-#~ msgctxt "Release|"
-#~ msgid "Complete open source toolbox"
-#~ msgstr "Toolbox opensource completo"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Get virtual machines up and running quickly to test your code on multiple "
-#~ "platforms using GNOME Boxes. Or dig into powerful, scriptable "
-#~ "virtualization tools for even more control."
-#~ msgstr ""
-#~ "Avvia velocemente macchine virtuali per testare il tuo codice su diverse "
-#~ "piattaforme con GNOME Boxes. Oppure ottieni ancora più controllo grazie "
-#~ "agli strumenti di virtualizzazione potenti e con supporto agli script."
-
-#~ msgctxt "Release|"
-#~ msgid "Built-in Docker support"
-#~ msgstr "Supporto a Docker integrato"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Containerize your own apps, or deploy containerized apps out of the box "
-#~ "on AOSC, using the latest technology like Docker."
-#~ msgstr ""
-#~ "Containerizza le tue app, o distribuisci app containerizzate out of the "
-#~ "box su AOSC, usando le ultime tecnologie come Docker."
-
-#~ msgctxt "Release|"
-#~ msgid "server"
-#~ msgstr "server"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Server"
-#~ msgstr "AOSC Server"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The latest technology. A stable foundation. Together, for your "
-#~ "applications and services."
-#~ msgstr ""
-#~ "L'ultima tecnologia. Una base stabile. Insieme, per le vostre "
-#~ "applicazioni e servizi."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The simplicity introduced with rolekit and cockpit have made server "
-#~ "deployments a breeze. What took me a few days on other operating systems "
-#~ "took less than an hour with AOSC %(rel)s Server. It just works.”"
-#~ msgstr ""
-#~ "\"La semplicità introdotta con rolekit e cockpit ha reso l'installazione "
-#~ "dei server un gioco da ragazzi. Ciò che mi ha richiesto alcuni giorni su "
-#~ "altri sistemi operativi ha richiesto meno di un'ora con AOSC %(rel)s "
-#~ "Server. Funziona e basta\"."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Server is a short-lifecycle, community-supported server operating "
-#~ "system that enables seasoned system administrators experienced with any "
-#~ "OS to make use of the very latest server-based technologies available in "
-#~ "the open source community."
-#~ msgstr ""
-#~ "AOSC Server ha un ciclo di vita breve ed è un sistema operativo "
-#~ "supportato dalla community, che abilita qualunque amministratore di "
-#~ "sistemi all'uso delle ultime tecnologie disponibili nella community open "
-#~ "source."
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "Amministrazione semplificata"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Manage your system simply with Cockpit's powerful, modern interface. View "
-#~ "and monitor system performance and status, and deploy and manage "
-#~ "container-based services."
-#~ msgstr ""
-#~ "Gestisci semplicemente il tuo sistema con l'interfaccia potente e moderna "
-#~ "di Cockpit. Visualizza e controlla le prestazioni e lo stato del sistema, "
-#~ "esegui il deploy e gestisci servizi basati su container."
-
-#~ msgctxt "Release|"
-#~ msgid "Server Roles"
-#~ msgstr "Ruoli Server"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Server brings with it an enterprise-class, scalable database "
-#~ "server powered by the open-source PostgreSQL project."
-#~ msgstr ""
-#~ "AOSC Server porta con sé un database scalabile di classe enterprise "
-#~ "basato sul progetto open-source PostgreSQL."
-
-#~ msgctxt "Release|"
-#~ msgid "silverblue"
-#~ msgstr "siverblue"
-
-#~ msgctxt "Release|"
-#~ msgid "emerging"
-#~ msgstr "emergente"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Silverblue"
-#~ msgstr "AOSC Siverblue"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "An extremely stable and reliable desktop operating system, excellent for "
-#~ "developers and for those using container-focused workflows."
-#~ msgstr ""
-#~ "Un sistema operativo desktop estremamente stabile e affidabile, "
-#~ "eccellente per gli sviluppatori e per coloro che utilizzano flussi di "
-#~ "lavoro incentrati sui container."
+#~ "Formato immagine ISO per Intel, AMD e altre architetture compatibili "
+#~ "(64bit)"
 
 #, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXQt Desktop"
-#~ msgstr "AOSC Labs"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for AArch64 machine"
+#~ msgstr "File immagine RAW compressa nel formato LZMA per sistemi AArch64"
 
 #, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Cinnamon Desktop"
-#~ msgstr "AOSC Labs"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for LoongArch64 machine"
+#~ msgstr "File immagine RAW compressa nel formato LZMA per sistemi AArch64"
 
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXDE Desktop"
-#~ msgstr "AOSC Labs"
+#~ msgid "A tool to create a live USB drive with an edition of AOSC"
+#~ msgstr "Uno strumento per creare unità USB live con una edizione di AOSC"
 
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC SoaS Desktop"
-#~ msgstr "AOSC Labs"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "design_suite"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Design Suite"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgid "AOSC Games"
-#~ msgstr "AOSC Labs"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Robotics Suite"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "scientific"
-#~ msgstr "AOSC Spins"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Scientific"
-#~ msgstr "AOSC Spins"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Security Lab"
-#~ msgstr "AOSC Labs"
+#~ msgid ""
+#~ "A tool to create a bootable live USB drive with an edition of AOSC. Not "
+#~ "only can AOSC Media Writer write an image to your flash drive, it can "
+#~ "also download it for you. It offers official editions (Server, "
+#~ "Workstation), AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktop,...), and AOSC Labs (Design Suite, Security Lab,...). It provides "
+#~ "basic information about each of them to help you make the right choice."
+#~ msgstr ""
+#~ "Uno strumento per creare unità USB live con una edizione di AOSC. E non "
+#~ "solo. AOSC Media Writer è in grado di scrivere immagini su unità flash "
+#~ "USB, ma anche di effettuarne il download. Mette a disposizione le "
+#~ "edizioni ufficiali (Server, Workstation), le spin di AOSC (KDE Plasma "
+#~ "Desktop, Xfce Desktop, Cinnamon Desktop,...), e le edizioni AOSC Lab "
+#~ "(Design Suite, Security Lab,...). Fornisce inoltre informazioni di base "
+#~ "su ciascuna di esse per aiutarti a fare la scelta giusta."

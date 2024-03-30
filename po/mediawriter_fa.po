@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
+"POT-Creation-Date: 2024-03-30 22:58+0800\n"
 "PO-Revision-Date: 2022-05-18 10:18+0000\n"
 "Last-Translator: Pikhosh <pikhosh@gmail.com>\n"
 "Language-Team: Persian <https://translate.fedoraproject.org/projects/fedora-"
@@ -27,23 +27,24 @@ msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "نسخه %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
+msgctxt "AboutDialog|"
+msgid "Based on Fedora Media Writer"
+msgstr ""
+
+#: ../src/app/qml/AboutDialog.qml:72
 #, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "AOSC Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "AOSC Media Writer is now checking for new releases"
 msgstr "AOSC Media Writer در حال بررسی برای نسخه جدید تر است"
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: ../src/app/qml/AboutDialog.qml:78
 #, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "لطفا، مشکلات یا پیشنهادات خود را در %1 اعلام کنید"
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:101
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "بستن"
@@ -65,9 +66,7 @@ msgstr "لغو تایید صحت؟"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
-msgid ""
-"Download and media writing will be aborted. This process can be resumed any "
-"time later."
+msgid "Download and media writing will be aborted."
 msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:69
@@ -104,36 +103,32 @@ msgstr "لغو تایید صحت"
 
 #: ../src/app/qml/CancelDialog.qml:117
 #, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "لغو"
 
-#: ../src/app/downloadmanager.cpp:235
+#: ../src/app/downloadmanager.cpp:257
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "قادر به یافتن ایمیج درخواستی نمی باشد."
 
-#: ../src/app/downloadmanager.cpp:335
+#: ../src/app/downloadmanager.cpp:357
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "شما فضای کافی در پوشه Downloads خود ندارید."
 
-#: ../src/app/downloadmanager.cpp:337
+#: ../src/app/downloadmanager.cpp:359
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "فایل دانلود قابل نوشتن نمی باشد."
 
-#: ../src/app/downloadmanager.cpp:425
+#: ../src/app/downloadmanager.cpp:447
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "ارتباط منقضی شد"
 
 #: ../src/app/qml/DownloadPage.qml:52
 #, fuzzy, qt-format
-#| msgctxt "DownloadPage|"
-#| msgid "%1 Sucessfuly Written"
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr "%1 با موفقیت نوشته شد"
@@ -158,8 +153,6 @@ msgstr "در حال آماده سازی %1"
 
 #: ../src/app/qml/DownloadPage.qml:60
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
 msgstr "آماده برای نوشتن"
@@ -222,8 +215,8 @@ msgstr ""
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using AOSC Media Writer. This will remove installation media "
-"from your drive."
+"normal by using AOSC Media Writer. This will remove installation media from "
+"your drive."
 msgstr ""
 "درایو شما به ظرفیت کمتری تغییر اندازه پیدا خواهد کرد. این امکان را دارید که "
 "با استفاده از AOSC Media Writer آن را به حالت قبلی تغییر اندازه بدهید. این "
@@ -240,16 +233,9 @@ msgid "None"
 msgstr "هیچ"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, qt-format
 msgctxt "DownloadPage|"
-msgid ""
-"Your board or device is not supported by AOSC Media Writer yet. Please "
-"check <a href=%1>this page</a> for more information about its compatibility "
-"with AOSC and how to create bootable media for it."
+msgid "Your board or device is not supported by AOSC Media Writer yet."
 msgstr ""
-"بورد یا دستگاه شما هنوز توسط AOSC Media Writer پشتیبانی نمی شود. لطفا <a "
-"href=%1>این صفحه</a> را برای اطلاعات بیشتر درباره سازگاری آن با فدورا و نحوه "
-"ایجاد یک مدیا قابل بوت برای آن بررسی کنید."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -437,12 +423,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "باز کردن فایل"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:373
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "یک فایل از درایو(های) خود انتخاب کنید"
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:374
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -450,85 +436,103 @@ msgid ""
 "iso or .bin)</p>"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "AOSC Spins"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:406
 msgctxt "Release|"
 msgid "AOSC Labs"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:432
+#: ../src/app/releasemanager.cpp:408
 #, fuzzy
-#| msgid "AOSC Media Writer"
 msgctxt "Release|"
 msgid "AOSC Atomic Desktops"
 msgstr "AOSC Media Writer"
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:410
 msgctxt "Release|"
 msgid "Other"
 msgstr "سایر"
 
-#: ../src/app/releasemanager.cpp:1074
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 64bit"
+msgid "x86-64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1074
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+msgid "System releases for 64-bit x86 devices"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 32bit"
-msgstr ""
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr ""
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid "ARM v7"
-msgstr ""
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid ""
-"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr ""
-
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
-msgid "LZMA-compressed raw image for AArch64 machines"
+msgid "System releases for AArch64 devices"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "LoongArch"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for LoongArch devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "POWER"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for IBM POWER devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "MIPS-based Loongson 3"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for MIPS-based Loongson 3 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "RISC-V (64bit)"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit RISC-V devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:372
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "ایمیج سفارشی"
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:909 ../src/app/releasemanager.cpp:921
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:925
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "فایل دانلود شده قابل خواندن نیست."
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "ناتوان در تغییر نام فایل موقت."
@@ -588,19 +592,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "خطا"
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:682
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 آلفا"
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:684
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 بتا"
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:686
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -659,24 +663,7 @@ msgstr "انتخاب از:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
-msgid "Official Editions"
-msgstr "ویرایش های رسمی"
-
-#: ../src/app/qml/VersionPage.qml:59
-#, fuzzy
-#| msgid "AOSC Media Writer"
-msgctxt "VersionPage|"
-msgid "Atomic Desktops"
-msgstr "AOSC Media Writer"
-
-#: ../src/app/qml/VersionPage.qml:65
-msgctxt "VersionPage|"
-msgid "Spins"
-msgstr ""
-
-#: ../src/app/qml/VersionPage.qml:71
-msgctxt "VersionPage|"
-msgid "Labs"
+msgid "Livekit"
 msgstr ""
 
 #: ../src/app/windrivemanager.cpp:319
@@ -706,8 +693,6 @@ msgstr ""
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
 #, fuzzy
-#| msgctxt "Download|"
-#| msgid "The download file is not writable."
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
 msgstr "فایل دانلود قابل نوشتن نمی باشد."
@@ -721,8 +706,6 @@ msgstr ""
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:320
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded file is not readable."
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "فایل دانلود شده قابل خواندن نیست."
@@ -742,8 +725,6 @@ msgstr ""
 #: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
 #: ../src/helper/win/writejob.cpp:361
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded file is not readable."
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
 msgstr "فایل دانلود شده قابل خواندن نیست."
@@ -856,202 +837,63 @@ msgctxt "main|"
 msgid "Previous"
 msgstr "قبلی"
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/io.aosc.MediaWriter.desktop:4
 msgid "AOSC Media Writer"
 msgstr ""
 
 #. (itstool) path: application/summary
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of AOSC"
-msgstr "یک ابزار برای ایجاد یک USB لایو با یک نسخهٔ فدورا"
+msgid "A tool to create AOSC OS boot media"
+msgstr ""
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of AOSC. Not "
-"only can AOSC Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
+"Automatically downloads, writes, and verifies AOSC OS boot media from disk "
+"images"
 msgstr ""
-"یک ابزار برای ایجاد یک USB لایو با یک نسخهٔ فدورا. نه تنها AOSC Media "
-"Writer ایمیج را بر روی فلش مموری رایت کند، بلکه می تواند آن را برای شما "
-"دانلود نیز بکند. این نسخه های رسمی فدورا (سرور و استگاه کار)، چرخه های فدورا "
-"(KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop و ...) و آزمایشگاه های "
-"فدورا ( مجموعهٔ طراحی، آزمایشگاه امنیت و ...) را شامل می شود. این اطلاعات "
-"پایه ای در مورد هر یک از این موارد ارائه می دهد تا به شما در انتخاب کمک کند."
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"AOSC Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with AOSC images."
+"AOSC Media Writer can also write other bootable ISOs, but keep in mind that "
+"this tool is only tested with AOSC OS images."
 msgstr ""
 "همچنین AOSC Media Writer می تواند دیگر فایل های ISO قابل بوت موجود در دیسک "
 "محلی شما را رایت کند، اما در نظر داشته باشید که این فقط با فدورا آزمایش شده "
 "است."
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:43
-msgid "Write AOSC images to your portable drives"
+#: ../src/app/data/io.aosc.MediaWriter.desktop:4
+#, fuzzy
+msgid "Media Writer"
+msgstr "درباره AOSC Media Writer"
+
+#: ../src/app/data/io.aosc.MediaWriter.desktop:44
+#, fuzzy
+msgid "Write images to your portable drives"
 msgstr "ایمیج فدورا را روی درایو های قابل حمل خود رایت کنید"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:87
+#: ../src/app/data/io.aosc.MediaWriter.desktop:89
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
 
-#~ msgctxt "VersionPage|"
-#~ msgid "Emerging Editions"
-#~ msgstr "ویرایش های نوظهور"
+#~ msgid "A tool to create a live USB drive with an edition of AOSC"
+#~ msgstr "یک ابزار برای ایجاد یک USB لایو با یک نسخهٔ فدورا"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying written data"
-#~ msgstr "در حال تایید صحت داده های نوشته شده"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying downloaded image"
-#~ msgstr "در حال تایید صحت ایمیج دانلود شده"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed"
-#~ msgstr "ناموفق"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing not possible"
-#~ msgstr "نوشتن ممکن نیست"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing"
-#~ msgstr "نوشتن"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "اتمام"
-
-#, fuzzy
-#~| msgctxt "DownloadPage|"
-#~| msgid "Sucessfuly written"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Successfully written"
-#~ msgstr "با موفقیت نوشته شد"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed due to missing drives"
-#~ msgstr "تایید صحت به علت درایو های گم شده ناموفق بود"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed"
-#~ msgstr "تایید صحت ناموفق"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Download failed"
-#~ msgstr "دانلود ناموفق"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed due to missing drives"
-#~ msgstr "ناموفق به علت درایو های گم شده"
-
-#~ msgctxt "main|"
-#~ msgid "Downloading"
-#~ msgstr "در حال دانلود"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write verifying"
-#~ msgstr "تایید صحت نوشتن"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write Successful"
-#~ msgstr "نوشتن موفق"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write the image immediately when the download is finished"
-#~ msgstr "ایمیج را فورا پس از اتمام دانلود رایت کن"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Other"
-#~ msgstr "دیگر"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-#~ msgstr "حذف کردن <br>\"<a href=\"%1\">%2</a>\" ممکن نیست"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Create Live USB…"
-#~ msgstr "ساخت یو‌اس‌بی لایو"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "(%1 after writing)"
-#~ msgstr "(%1 بعد از نوشتن)"
-
-#~ msgctxt "ImageDetails|"
 #~ msgid ""
-#~ "AOSC %1 was released! Check it out!<br>If you want a stable, finished "
-#~ "system, it's better to stay at version %2."
+#~ "A tool to create a bootable live USB drive with an edition of AOSC. Not "
+#~ "only can AOSC Media Writer write an image to your flash drive, it can "
+#~ "also download it for you. It offers official editions (Server, "
+#~ "Workstation), AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktop,...), and AOSC Labs (Design Suite, Security Lab,...). It provides "
+#~ "basic information about each of them to help you make the right choice."
 #~ msgstr ""
-#~ "فدورا %1 منتشر شد! آن را ببینید! <br>اگر شما یک نسخه مطمئن و کامل می "
-#~ "خواهید، بهتر است هنوز از نسخهٔ %2 استفاده کنید."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ", released on %1"
-#~ msgstr "، عرضه شده در %1"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "انواع دیگر..."
-
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "یک ایمیج سیستم عامل دیگر پیدا کنید"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Checking for new releases"
-#~ msgstr "در حال بررسی برای نسخه جدید تر"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Version %1"
-#~ msgstr "نسخه %1"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Server"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Silverblue"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "design_suite"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Design Suite"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Robotics Suite"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Scientific"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Security Lab"
-#~ msgstr "AOSC Media Writer"
+#~ "یک ابزار برای ایجاد یک USB لایو با یک نسخهٔ فدورا. نه تنها AOSC Media "
+#~ "Writer ایمیج را بر روی فلش مموری رایت کند، بلکه می تواند آن را برای شما "
+#~ "دانلود نیز بکند. این نسخه های رسمی فدورا (سرور و استگاه کار)، چرخه های "
+#~ "فدورا (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop و ...) و "
+#~ "آزمایشگاه های فدورا ( مجموعهٔ طراحی، آزمایشگاه امنیت و ...) را شامل می "
+#~ "شود. این اطلاعات پایه ای در مورد هر یک از این موارد ارائه می دهد تا به "
+#~ "شما در انتخاب کمک کند."

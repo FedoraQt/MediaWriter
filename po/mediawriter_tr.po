@@ -14,11 +14,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
+"POT-Creation-Date: 2024-03-30 22:58+0800\n"
 "PO-Revision-Date: 2024-03-14 08:36+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
-"Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/tr/>\n"
+"Language-Team: Turkish <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,18 +38,23 @@ msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Sürüm %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
+msgctxt "AboutDialog|"
+msgid "Based on Fedora Media Writer"
+msgstr ""
+
+#: ../src/app/qml/AboutDialog.qml:72
 msgctxt "AboutDialog|"
 msgid "AOSC Media Writer is now checking for new releases"
 msgstr "AOSC Ortam Yazıcı şimdi yeni sürümleri denetliyor"
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: ../src/app/qml/AboutDialog.qml:78
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Lütfen %1 üzerinden hataları veya önerilerinizi bildirin"
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:101
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Kapat"
@@ -70,13 +75,10 @@ msgid "Cancel Verification?"
 msgstr "Doğrulama İptal Edilsin Mi?"
 
 #: ../src/app/qml/CancelDialog.qml:67
+#, fuzzy
 msgctxt "CancelDialog|"
-msgid ""
-"Download and media writing will be aborted. This process can be resumed any "
-"time later."
-msgstr ""
-"İndirme ve ortam yazma işlemi iptal edilecek. Bu işlem daha sonra herhangi "
-"bir zamanda sürdürülebilir."
+msgid "Download and media writing will be aborted."
+msgstr "İndirme ilerlemesi kaybedilecek ve ortam yazma işlemi iptal edilecek."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
@@ -116,22 +118,22 @@ msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "İptal"
 
-#: ../src/app/downloadmanager.cpp:235
+#: ../src/app/downloadmanager.cpp:257
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "İstenen görüntü alınamıyor."
 
-#: ../src/app/downloadmanager.cpp:335
+#: ../src/app/downloadmanager.cpp:357
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "İndirilenler klasörünüzdeki boş alan bitti."
 
-#: ../src/app/downloadmanager.cpp:337
+#: ../src/app/downloadmanager.cpp:359
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "İndirilen dosya yazılabilir değil."
 
-#: ../src/app/downloadmanager.cpp:425
+#: ../src/app/downloadmanager.cpp:447
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Bağlantı zaman aşımına uğradı"
@@ -224,12 +226,12 @@ msgstr "Lütfen USB sürücü takın."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using AOSC Media Writer. This will remove installation media "
-"from your drive."
+"normal by using AOSC Media Writer. This will remove installation media from "
+"your drive."
 msgstr ""
 "Sürücünüz daha küçük bir kapasiteye boyutlandırılacak. Olağan boyutuna "
-"döndürmek için AOSC Ortam Yazıcı'yı kullanabilirsiniz. Bu, kurulum "
-"ortamını sürücüden kaldıracaktır."
+"döndürmek için AOSC Ortam Yazıcı'yı kullanabilirsiniz. Bu, kurulum ortamını "
+"sürücüden kaldıracaktır."
 
 #: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
@@ -242,16 +244,9 @@ msgid "None"
 msgstr "Hiçbiri"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, qt-format
 msgctxt "DownloadPage|"
-msgid ""
-"Your board or device is not supported by AOSC Media Writer yet. Please "
-"check <a href=%1>this page</a> for more information about its compatibility "
-"with AOSC and how to create bootable media for it."
+msgid "Your board or device is not supported by AOSC Media Writer yet."
 msgstr ""
-"Kartınız veya aygıtınız henüz AOSC Ortam Yazıcı tarafından desteklenmiyor. "
-"AOSC ile uyumluluğu ve nasıl önyüklenebilir ortam oluşturulacağıyla ilgili "
-"daha çok bilgi için lütfen <a href=%1>bu sayfaya</a> göz atın."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -438,12 +433,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "Dosya Aç"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:373
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Sürücülerinizden dosya seçin"
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:374
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -454,85 +449,103 @@ msgstr ""
 "seçebilirsiniz</p><p>Şimdilik yalnızca ham disk (.iso veya .bin) "
 "görüntülerin yazımı desteklenmektedir. </p>"
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "AOSC Spins"
 msgstr "AOSC Spinleri"
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:406
 msgctxt "Release|"
 msgid "AOSC Labs"
 msgstr "AOSC Labları"
 
-#: ../src/app/releasemanager.cpp:432
+#: ../src/app/releasemanager.cpp:408
 msgctxt "Release|"
 msgid "AOSC Atomic Desktops"
 msgstr "AOSC Atomik Masaüstleri"
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:410
 msgctxt "Release|"
 msgid "Other"
 msgstr "Diğer"
 
-#: ../src/app/releasemanager.cpp:1074
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 64bit"
-msgstr "Intel/AMD 64bit"
-
-#: ../src/app/releasemanager.cpp:1074
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr "Intel, AMD ve diğer uyumlu PC'ler için ISO biçimi (64-bit)"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 32bit"
-msgstr "Intel/AMD 32bit"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr "Intel, AMD ve diğer uyumlu PC'ler için ISO biçimi (32-bit)"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid "ARM v7"
-msgstr "ARM v7"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid ""
-"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
+msgid "x86-64"
 msgstr ""
-"Raspberry Pi 2 ve 3 gibi ARM v7-A makineler için LZMA ile sıkıştırılmış ham "
-"görüntü"
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1050
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit x86 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
-msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "AArch64 makineleri için LZMA sıkıştırılmış ham görüntü"
+msgid "System releases for AArch64 devices"
+msgstr ""
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:1052
+#, fuzzy
+msgctxt "ReleaseArchitecture|"
+msgid "LoongArch"
+msgstr "AArch64"
+
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for LoongArch devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "POWER"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for IBM POWER devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "MIPS-based Loongson 3"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for MIPS-based Loongson 3 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "RISC-V (64bit)"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit RISC-V devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:372
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Özel görüntü"
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:909 ../src/app/releasemanager.cpp:921
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "İndirilen görüntü bozulmuş"
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:925
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "İndirilen dosya okunabilir değil."
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Geçici dosya yeniden adlandırılamıyor."
@@ -592,19 +605,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Hata"
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:682
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:684
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:686
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -673,23 +686,8 @@ msgstr "Şuradan seç:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
-msgid "Official Editions"
-msgstr "Resmi Sürümler"
-
-#: ../src/app/qml/VersionPage.qml:59
-msgctxt "VersionPage|"
-msgid "Atomic Desktops"
-msgstr "Atomik Masaüstleri"
-
-#: ../src/app/qml/VersionPage.qml:65
-msgctxt "VersionPage|"
-msgid "Spins"
-msgstr "Spinler"
-
-#: ../src/app/qml/VersionPage.qml:71
-msgctxt "VersionPage|"
-msgid "Labs"
-msgstr "Lablar"
+msgid "Livekit"
+msgstr ""
 
 #: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
@@ -859,1136 +857,81 @@ msgctxt "main|"
 msgid "Previous"
 msgstr "Önceki"
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/io.aosc.MediaWriter.desktop:4
 msgid "AOSC Media Writer"
 msgstr "AOSC Ortam Yazıcı"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of AOSC"
-msgstr "AOSC sürümünü içeren canlı USB aygıtı yaratmanızı sağlayan araç"
+msgid "A tool to create AOSC OS boot media"
+msgstr ""
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of AOSC. Not "
-"only can AOSC Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
+"Automatically downloads, writes, and verifies AOSC OS boot media from disk "
+"images"
 msgstr ""
-"Bir AOSC sürümünü içeren canlı USB aygıtı yaratmanızı sağlayan bu araçla "
-"yalnızca görüntünün aygıtınıza yazılmasını değil aynı zamanda sizin için "
-"indirilmesini de sağlayabilirsiniz. Resmi sürümlerin (Sunucu, Masaüstü) yanı "
-"sıra AOSC seçkilerini (KDE Plasma Masaüstü, Xfce masaüstü, Cinnamon "
-"Masaüstü...) ve AOSC Lab'larını (Tasarım paketi, güvenlik paketi...) da "
-"indirebilir ve doğru seçimi yapmanızı sağlayacak temel bilgileri "
-"bulabilirsiniz."
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"AOSC Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with AOSC images."
+"AOSC Media Writer can also write other bootable ISOs, but keep in mind that "
+"this tool is only tested with AOSC OS images."
 msgstr ""
 "AOSC Ortam Yazıcı aygıtınızda yer alan önyüklenebilen diğer ISO "
 "görüntülerinin yazılmasında da kullanılabilir ama aracın yalnızca AOSC "
 "görüntüleri ile denendiğini lütfen aklınızda bulundurun."
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:43
-msgid "Write AOSC images to your portable drives"
+#: ../src/app/data/io.aosc.MediaWriter.desktop:4
+#, fuzzy
+msgid "Media Writer"
+msgstr "AOSC Ortam Yazıcı"
+
+#: ../src/app/data/io.aosc.MediaWriter.desktop:44
+#, fuzzy
+msgid "Write images to your portable drives"
 msgstr "AOSC görüntülerini taşınabilir aygıtlarınıza yazın"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:87
+#: ../src/app/data/io.aosc.MediaWriter.desktop:89
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;önyüklenebilir;"
 
-#~ msgctxt "Release|"
-#~ msgid "Emerging AOSC Editions"
-#~ msgstr "Yeni Geliştirilen AOSC Sürümleri"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "Intel/AMD 64bit"
+#~ msgstr "Intel/AMD 64bit"
 
-#~ msgctxt "VersionPage|"
-#~ msgid "Emerging Editions"
-#~ msgstr "Yeni Geliştirilen Sürümler"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+#~ msgstr "Intel, AMD ve diğer uyumlu PC'ler için ISO biçimi (64-bit)"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying written data"
-#~ msgstr "Yazılan veri doğrulanıyor"
+#, fuzzy
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for AArch64 machine"
+#~ msgstr "AArch64 makineleri için LZMA sıkıştırılmış ham görüntü"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying downloaded image"
-#~ msgstr "İndirilen kalıp doğrulanıyor"
+#, fuzzy
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for LoongArch64 machine"
+#~ msgstr "AArch64 makineleri için LZMA sıkıştırılmış ham görüntü"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed"
-#~ msgstr "Başarısız oldu"
+#~ msgid "A tool to create a live USB drive with an edition of AOSC"
+#~ msgstr "AOSC sürümünü içeren canlı USB aygıtı yaratmanızı sağlayan araç"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing not possible"
-#~ msgstr "Yazılamıyor"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing"
-#~ msgstr "Yazılıyor"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "Bitir"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Successfully written"
-#~ msgstr "Başarıyla yazıldı"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed due to missing drives"
-#~ msgstr "Eksik sürücüler nedeniyle doğrulama başarısız oldu"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed"
-#~ msgstr "Doğrulama başarısız"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Download failed"
-#~ msgstr "İndirilemedi"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed due to missing drives"
-#~ msgstr "Eksik sürücüler nedeniyle başarısız oldu"
-
-#~ msgctxt "main|"
-#~ msgid "Downloading"
-#~ msgstr "İndiriliyor"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write verifying"
-#~ msgstr "Yazma doğrulanıyor"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write Successful"
-#~ msgstr "Yazıldı"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed verification no drives"
-#~ msgstr "Doğrulanamadı, sürücü yok"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed verification"
-#~ msgstr "Doğrulanamadı"
-
-#~ msgctxt "CancelDialog|"
-#~ msgid "Download progress will be lost and media writing will be aborted."
-#~ msgstr ""
-#~ "İndirme ilerlemesi kaybedilecek ve ortam yazma işlemi iptal edilecek."
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write the image immediately when the download is finished"
-#~ msgstr "İndirme bittiğinde görüntüyü hemen yaz"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Other"
-#~ msgstr "Diğer"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-#~ msgstr "Silmek olası değil<br>\"<a href=\"%1\">%2</a>\"."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Back"
-#~ msgstr "Geri"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Create Live USB…"
-#~ msgstr "Canlı USB Oluştur…"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "(%1 after writing)"
-#~ msgstr "(Yazdıktan sonra %1)"
-
-#~ msgctxt "ImageDetails|"
 #~ msgid ""
-#~ "AOSC %1 was released! Check it out!<br>If you want a stable, finished "
-#~ "system, it's better to stay at version %2."
+#~ "A tool to create a bootable live USB drive with an edition of AOSC. Not "
+#~ "only can AOSC Media Writer write an image to your flash drive, it can "
+#~ "also download it for you. It offers official editions (Server, "
+#~ "Workstation), AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktop,...), and AOSC Labs (Design Suite, Security Lab,...). It provides "
+#~ "basic information about each of them to help you make the right choice."
 #~ msgstr ""
-#~ "AOSC %1 yayımlandı! Göz atın!<br>Eğer kararlı, bitmiş sistem "
-#~ "istiyorsanız, %2 sürümünde kalmanız daha iyidir."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ", released on %1"
-#~ msgstr ", %1 tarihinde yayınlamdı"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "Diğer çeşitler..."
-
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "Bir işletim sistemi görüntüsü bul"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Checking for new releases"
-#~ msgstr "Yeni sürümler denetleniyor"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Version %1"
-#~ msgstr "Sürüm %1"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Display additional AOSC flavors"
-#~ msgstr "Diğer AOSC çeşitlemelerini göster"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Cancel"
-#~ msgstr "İptal"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Restore"
-#~ msgstr "Sıfırla"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Close"
-#~ msgstr "Kapat"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
-#~ "want to restore it to factory settings?"
-#~ msgstr ""
-#~ "Takmış olduğunuz <b>%1</b> isimli sürücü zaten canlı bir sistem içeriyor."
-#~ "<br>Fabrika ayarlarına geri döndürmek ister misiniz?"
-
-#~ msgctxt "main|"
-#~ msgid "AOSC Media Writer %1 Released"
-#~ msgstr "AOSC Ortam Yazıcı %1 Yayımlandı"
-
-#~ msgctxt "main|"
-#~ msgid "Update for great new features and bugfixes!"
-#~ msgstr "Harika yeni özellikler ve hata düzeltmeleri için güncelleyin!"
-
-#~ msgctxt "main|"
-#~ msgid "Open Browser"
-#~ msgstr "Tarayıcıyı Aç"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "%1<br>Writing images will not be possible.<br>You can still view AOSC "
-#~ "flavors and download images to your hard drive."
-#~ msgstr ""
-#~ "%1<br>Görüntüleri yazmak mümkün olmayacak.<br>Yine de AOSC çeşitlerini "
-#~ "görebilir ve görüntüleri sabit diskinize indirebilirsiniz."
-
-#~ msgctxt "main|"
-#~ msgid "Ok"
-#~ msgstr "Tamam"
-
-# ############## metadata.json ###############
-#~ msgid "workstation"
-#~ msgstr "workstation"
-
-#~ msgctxt "Release|"
-#~ msgid "product"
-#~ msgstr "ürün"
-
-#~ msgctxt "Release|"
-#~ msgid "This is the Linux workstation you've been waiting for."
-#~ msgstr "Beklediğiniz Linux iş istasyonu işte budur."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Workstation is a reliable, user-friendly, and powerful operating "
-#~ "system for your laptop or desktop computer. It supports a wide range of "
-#~ "developers, from hobbyists and students to professionals in corporate "
-#~ "environments."
-#~ msgstr ""
-#~ "AOSC Workstation, dizüstü veya masaüstü bilgisayarınız için güvenilir, "
-#~ "kullanıcı dostu ve güçlü bir işletim sistemidir. Amatörler ve "
-#~ "öğrencilerden şirket ortamlarındaki profesyonellere kadar çok çeşitli "
-#~ "geliştiricileri desteklemektedir."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The plethora of tools provided by<br /> AOSC allows me to get the job "
-#~ "done.<br /> It just works.”"
-#~ msgstr ""
-#~ "“AOSC tarafından sağlanan araçların<br /> bolluğu işimi halletmeme "
-#~ "olanak tanıyor.<br /> Sorunsuz bir şekilde çalışıyor.”"
-
-#~ msgctxt "Release|"
-#~ msgid "JVM performance engineer"
-#~ msgstr "JVM performans mühendisi"
-
-#~ msgctxt "Release|"
-#~ msgid "Sleek user interface"
-#~ msgstr "Şık kullanıcı arayüzü"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Focus on your code in the GNOME 3 desktop environment. GNOME is built "
-#~ "with developer feedback and minimizes distractions, so you can "
-#~ "concentrate on what's important."
-#~ msgstr ""
-#~ "GNOME 3 masaüstü ortamında kodunuza odaklanın. GNOME, geliştirici geri "
-#~ "bildirimleriyle oluşturulmuştur ve dikkat dağıtıcı unsurları en aza "
-#~ "indirir, böylece önemli olana konsantre olabilirsiniz."
-
-#~ msgctxt "Release|"
-#~ msgid "Complete open source toolbox"
-#~ msgstr "Tamamen açık kaynaklı araçlar"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Skip the drag of trying to find or build the tools you need. With "
-#~ "AOSC's complete set of open source languages, tools, and utilities, "
-#~ "everything is a click or command line away. There's even project hosting "
-#~ "and repositories like COPR to make your code and builds available quickly "
-#~ "to the community."
-#~ msgstr ""
-#~ "İhtiyacınız olan araçları bulmaya veya oluşturmaya çalışmanın "
-#~ "yoruculuğunu unutun. AOSC'nın eksiksiz açık kaynak dilleri, araçları ve "
-#~ "yardımcı programlarıyla, her şey bir tıklama veya komut satırı uzaklıkta. "
-#~ "Kodunuzu ve derlemelerinizi topluluğa hızlı bir şekilde sunabilmek için "
-#~ "proje barındırma ve COPR gibi depolar bile var."
-
-#~ msgctxt "Release|"
-#~ msgid "GNOME Boxes & other virt tools"
-#~ msgstr "GNOME Boxes ve diğer sanallaştırma araçları"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Get virtual machines up and running quickly to test your code on multiple "
-#~ "platforms using GNOME Boxes. Or dig into powerful, scriptable "
-#~ "virtualization tools for even more control."
-#~ msgstr ""
-#~ "GNOME Boxes'ı kullanarak kodunuzu birden fazla platformda test etmek için "
-#~ "sanal makineleri hızla kurun ve çalıştırın. Ya da daha fazla denetim için "
-#~ "güçlü, betikler oluşturulabilen sanallaştırma araçlarına göz atın."
-
-#~ msgctxt "Release|"
-#~ msgid "Built-in Docker support"
-#~ msgstr "Yerleşik Docker desteği"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Containerize your own apps, or deploy containerized apps out of the box "
-#~ "on AOSC, using the latest technology like Docker."
-#~ msgstr ""
-#~ "Docker gibi en son teknolojileri kullanarak kendi uygulamalarınızı "
-#~ "konteynerleştirin veya AOSC'da konteynerleştirilmiş uygulamaları "
-#~ "sorunsuz bir şekilde dağıtın."
-
-#~ msgctxt "Release|"
-#~ msgid "server"
-#~ msgstr "server"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Server"
-#~ msgstr "AOSC Server"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The latest technology. A stable foundation. Together, for your "
-#~ "applications and services."
-#~ msgstr ""
-#~ "En son teknoloji. Sağlam bir temel. Uygulamalarınız ve hizmetleriniz için "
-#~ "bir arada."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The simplicity introduced with rolekit and cockpit have made server "
-#~ "deployments a breeze. What took me a few days on other operating systems "
-#~ "took less than an hour with AOSC %(rel)s Server. It just works.”"
-#~ msgstr ""
-#~ "“Rolekit ve cockpit ile sunulan basitlik, sunucu kurulumlarını çok basit "
-#~ "bir hale getirdi. Diğer işletim sistemlerinde birkaç günümü alan şey, "
-#~ "AOSC %(rel)s Server ile bir saatten daha kısa sürdü. Sorunsuz bir "
-#~ "şekilde çalışıyor.”"
-
-#~ msgctxt "Release|"
-#~ msgid "Systems Engineer"
-#~ msgstr "Sistem Mühendisi"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Server is a short-lifecycle, community-supported server operating "
-#~ "system that enables seasoned system administrators experienced with any "
-#~ "OS to make use of the very latest server-based technologies available in "
-#~ "the open source community."
-#~ msgstr ""
-#~ "AOSC Server, herhangi bir işletim sisteminde tecrübe sahibi deneyimli "
-#~ "sistem yöneticilerinin açık kaynak topluluğunda bulunan en son "
-#~ "teknolojileri kullanmasını sağlayan kısa ömürlü, topluluk destekli bir "
-#~ "sunucu işletim sistemidir."
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "Kolay Yönetim"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Manage your system simply with Cockpit's powerful, modern interface. View "
-#~ "and monitor system performance and status, and deploy and manage "
-#~ "container-based services."
-#~ msgstr ""
-#~ "Sisteminizi Cockpit'in güçlü, modern arayüzü ile basit bir şekilde "
-#~ "yönetin. Sistem performansını ve durumunu görüntüleyin ve izleyin, "
-#~ "konteyner tabanlı hizmetleri dağıtın ve yönetin."
-
-#~ msgctxt "Release|"
-#~ msgid "Server Roles"
-#~ msgstr "Sunucu Rolleri"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "There's no need to set up your server from scratch when you use server "
-#~ "roles. Server roles plug into your AOSC Server system, providing a well-"
-#~ "integrated service on top of the AOSC Server platform. Deploy and "
-#~ "manage these prepared roles simply using the Rolekit tool."
-#~ msgstr ""
-#~ "Sunucu rollerini kullanırken sunucunuzu sıfırdan kurmanıza gerek yoktur. "
-#~ "Sunucu rolleri, AOSC Server sisteminize bağlanarak, AOSC Server "
-#~ "platformunun üzerinde iyi bütünleşmiş bir hizmet sağlar. Bu hazırlanmış "
-#~ "rolleri sadece Rolekit aracını kullanarak dağıtın ve yönetin."
-
-#~ msgctxt "Release|"
-#~ msgid "Database Services"
-#~ msgstr "Veri Tabanı Hizmetleri"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Server brings with it an enterprise-class, scalable database "
-#~ "server powered by the open-source PostgreSQL project."
-#~ msgstr ""
-#~ "AOSC Server, açık kaynaklı PostgreSQL projesi tarafından desteklenen "
-#~ "kurumsal sınıfta, ölçeklenebilir bir veri tabanı sunucusuyla birlikte "
-#~ "gelmektedir."
-
-#~ msgctxt "Release|"
-#~ msgid "Complete Enterprise Domain Solution"
-#~ msgstr "Eksiksiz Kurumsal Etki Alanı Çözümü"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Level up your Linux network with advanced identity management, DNS, "
-#~ "certificate services, Windows(TM) domain integration throughout your "
-#~ "environment with FreeIPA, the engine that drives AOSC Server's Domain "
-#~ "Controller role."
-#~ msgstr ""
-#~ "AOSC Server Etki Alanı Denetleyicisi rolünü yürüten motor olan FreeIPA "
-#~ "ile, gelişmiş kimlik yönetimi, DNS, sertifika hizmetleri ve Windows(TM) "
-#~ "etki alanı bütünleşmesi kullanarak Linux ağınıza seviye atlatın."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The Docker Role for AOSC Server was simple and fast to install so that "
-#~ "you can run your Docker images. This makes a great testbed for beginners "
-#~ "and experts with docker so that they can develop their applications on "
-#~ "the fly.”"
-#~ msgstr ""
-#~ "“AOSC Server için Docker Rolü, Docker kalıplarınızı çalıştırabilmeniz "
-#~ "için basit ve hızlı bir şekilde kurulur. Bu, docker kullanmaya yeni "
-#~ "başlayanlar ve uzmanlara uygulamalarını anında geliştirebilmeleri için "
-#~ "harika bir test ortamı sağlar.”"
-
-#~ msgctxt "Release|"
-#~ msgid "</p><p align=right> ― <em>John Unland, "
-#~ msgstr "</p><p align=right> ― <em>John Unland, "
-
-#~ msgctxt "Release|"
-#~ msgid "Information Systems Student"
-#~ msgstr "Bilgi Sistemleri Öğrencisi"
-
-#~ msgctxt "Release|"
-#~ msgid "silverblue"
-#~ msgstr "silverblue"
-
-#~ msgctxt "Release|"
-#~ msgid "emerging"
-#~ msgstr "yeni geliştirilen"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Silverblue"
-#~ msgstr "AOSC Silverblue"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "An extremely stable and reliable desktop operating system, excellent for "
-#~ "developers and for those using container-focused workflows."
-#~ msgstr ""
-#~ "Geliştiriciler ve konteyner odaklı iş akışları kullananlar için mükemmel, "
-#~ "son derece kararlı ve güvenilir bir masaüstü işletim sistemi."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Silverblue is a variant of AOSC Workstation. It looks, feels and "
-#~ "behaves like a regular desktop operating system, and the experience is "
-#~ "similar to what you find with using a standard AOSC Workstation."
-#~ msgstr ""
-#~ "Silverblue, AOSC Workstation'ın bir çeşididir. Normal bir masaüstü "
-#~ "işletim sistemi gibi görünür, hissettirir ve davranır; ve standart bir "
-#~ "AOSC Workstation kullanırken yaşadığınıza benzer bir deneyim sunar."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "However, unlike other operating systems, Silverblue has reprovisionable "
-#~ "infrastructure with anti-hysteresis properties. This means that every "
-#~ "installation is identical to every other installation of the same "
-#~ "version. The operating system that is on disk is exactly the same from "
-#~ "one machine to the next, and it never changes as it is used."
-#~ msgstr ""
-#~ "Bununla birlikte, diğer işletim sistemlerinden farklı olarak Silverblue, "
-#~ "farklılığı önleyici özelliklere sahip yeniden dağıtılabilir bir altyapıya "
-#~ "sahiptir. Bu, her kurulumun aynı sürümün diğer tüm kurulumlarıyla aynı "
-#~ "olduğu anlamına gelir. Diskteki işletim sistemi bir makineden diğerine "
-#~ "tamamen aynıdır ve kullanıldıkça asla değişmez."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Silverblue’s design is intended to make it more stable, less prone to "
-#~ "bugs, and easier to test and develop. The design also makes it an "
-#~ "excellent platform for containerized applications as well as container-"
-#~ "based software development. In each case, applications and containers are "
-#~ "kept separate from the host system, improving stability and reliability."
-#~ msgstr ""
-#~ "Silverblue’nun tasarımı, onu daha kararlı, hatalara daha az eğilimli ve "
-#~ "test etmeyi ve geliştirmeyi daha kolay hale getirmeyi amaçlamaktadır. "
-#~ "Tasarım aynı zamanda onu konteyner tabanlı uygulamalar ve konteyner "
-#~ "tabanlı yazılım geliştirme için mükemmel bir platform haline "
-#~ "getirmektedir. Her durumda, uygulamalar ve konteynerler ana sistemden "
-#~ "ayrı tutularak kararlılık ve güvenilirlik iyileştirilmektedir."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Silverblue’s core technologies have some other helpful features. OS "
-#~ "updates are fast and there’s no waiting around for them to install: just "
-#~ "reboot as normal to start using the next version. With Silverblue, it is "
-#~ "also possible to roll back to the previous version of the operating "
-#~ "system, if something goes wrong."
-#~ msgstr ""
-#~ "Silverblue’nun temel teknolojileri başka kullanışlı özelliklere de "
-#~ "sahiptir. İşletim sistemi güncellemeleri hızlıdır ve bunların kurulması "
-#~ "için beklemek gerekmez: bir sonraki sürümü kullanmaya başlamak için "
-#~ "normal şekilde yeniden başlatın. Silverblue ile, bir şeyler ters giderse "
-#~ "işletim sisteminin önceki sürümüne geri dönmek de mümkündür."
-
-#~ msgctxt "Release|"
-#~ msgid "kde"
-#~ msgstr "kde"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC KDE Plasma Desktop"
-#~ msgstr "AOSC KDE Plasma Masasüstü"
-
-#~ msgctxt "Release|"
-#~ msgid "A complete, modern desktop built using the KDE Plasma Desktop."
-#~ msgstr "KDE Plasma Masaüstü ile oluşturulmuş eksiksiz, çağdaş bir masaüstü."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC KDE Plasma Desktop Edition is a powerful AOSC-based "
-#~ "operating system utilizing the KDE Plasma Desktop as the main user "
-#~ "interface."
-#~ msgstr ""
-#~ "AOSC KDE Plasma Masaüstü Sürümü, ana kullanıcı arabirimi olarak KDE "
-#~ "Plasma Masaüstü'nü kullanan güçlü bir AOSC tabanlı işletim sistemidir."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC KDE Plasma Desktop comes with many pre-selected top quality "
-#~ "applications that suit all modern desktop use cases - from online "
-#~ "communication like web browsing, instant messaging and electronic mail "
-#~ "correspondence, through multimedia and entertainment, to an advanced "
-#~ "productivity suite, including office applications and enterprise grade "
-#~ "personal information management."
-#~ msgstr ""
-#~ "AOSC KDE Plasma Masaüstü, web tarama, anlık mesajlaşma ve elektronik "
-#~ "posta yazışmaları gibi çevrim içi iletişimden, multimedya ve eğlenceye, "
-#~ "ofis uygulamaları ve kurumsal düzeyde kişisel bilgi yönetimi dahil "
-#~ "gelişmiş bir üretkenlik paketine kadar tüm modern masaüstü kullanım "
-#~ "durumlarına uyan önceden seçilmiş birçok yüksek kalitede uygulama ile "
-#~ "birlikte gelmektedir."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "All KDE applications are well integrated, with a similar look and feel "
-#~ "and an easy to use interface, accompanied by an outstanding graphical "
-#~ "appearance."
-#~ msgstr ""
-#~ "Tüm KDE uygulamaları, mükemmel bir grafik görünümün yanı sıra benzer bir "
-#~ "görünüşe sahip kullanımı kolay bir arayüzle iyi bütünleştirilmiştir."
-
-#~ msgctxt "Release|"
-#~ msgid "xfce"
-#~ msgstr "xfce"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Xfce Desktop"
-#~ msgstr "AOSC Xfce Masaüstü"
-
-#~ msgctxt "Release|"
-#~ msgid "A complete, well-integrated Xfce Desktop."
-#~ msgstr "Eksiksiz, iyi bütünleştirilmiş bir Xfce Masaüstü."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Xfce spin showcases the Xfce desktop, which aims to be fast "
-#~ "and lightweight, while still being visually appealing and user friendly."
-#~ msgstr ""
-#~ "AOSC Xfce spini, görsel olarak çekici ve kullanıcı dostu olmakla "
-#~ "birlikte hızlı ve hafif olmayı amaçlayan Xfce masaüstünü sunmaktadır."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Xfce is a full-fledged desktop using the freedesktop.org standards."
-#~ msgstr ""
-#~ "AOSC Xfce, freedesktop.org standartlarını kullanan tam teşekküllü bir "
-#~ "masaüstüdür."
-
-#~ msgctxt "Release|"
-#~ msgid "lxqt"
-#~ msgstr "lxqt"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXQt Desktop"
-#~ msgstr "AOSC LXQt Masaüstü"
-
-#~ msgctxt "Release|"
-#~ msgid "A lightweight, well-integrated LXQt desktop environment."
-#~ msgstr "Hafif, iyi bütünleştirilmiş bir LXQt masaüstü ortamı."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC LXQt provides a lightweight, well-integrated LXQt desktop "
-#~ "environment. In addition to LXQt itself it provides a small, well "
-#~ "selected collection of applications like the QupZilla browser, which "
-#~ "combines Chromium's rendering engine with a nice Qt experience. Other "
-#~ "applications include the Trojita mail client, the qBittorrent client, the "
-#~ "Yarock music player and a set of some more commonly used applications. As "
-#~ "all applications use the same Qt5 toolkit and the Breeze theme known from "
-#~ "KDE, the desktop provides a unified and well-integrated style and "
-#~ "theming. In addition breeze-gtk is provided to allow the user to "
-#~ "integrate GTK applications too."
-#~ msgstr ""
-#~ "AOSC LXQt hafif, iyi bütünleştirilmiş bir LXQt masaüstü ortamı sağlar. "
-#~ "LXQt'nin kendisinin yanı sıra, Chromium'un görselleştirme motorunu güzel "
-#~ "bir Qt deneyimi ile birleştiren QupZilla tarayıcısı gibi iyi seçilmiş "
-#~ "küçük bir uygulama koleksiyonu sunmaktadır. Diğer uygulamalar arasında "
-#~ "Trojita posta istemcisi, qBittorrent istemcisi, Yarock müzik çalar ve "
-#~ "daha yaygın olarak kullanılan bazı uygulamalar yer almaktadır. Tüm "
-#~ "uygulamalar aynı Qt5 araç takımını ve KDE'den bilinen Breeze temasını "
-#~ "kullandığından, masaüstü birleşik ve iyi bütünleştirilmiş bir tarz ve "
-#~ "tema sağlamaktadır. Ayrıca, kullanıcının GTK uygulamalarını da "
-#~ "bütünleştirmesine izin vermek için breeze-gtk sağlanmıştır."
-
-#~ msgctxt "Release|"
-#~ msgid "mate"
-#~ msgstr "mate"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC MATE-Compiz Desktop"
-#~ msgstr "AOSC MATE-Compiz Masaüstü"
-
-#~ msgctxt "Release|"
-#~ msgid "A classic AOSC Desktop with an additional 3D Windows Manager."
-#~ msgstr "İlave bir 3D Pencere Yöneticisi ile klasik bir AOSC Masaüstü."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE "
-#~ "Desktop is a lightweight, powerful desktop designed with productivity and "
-#~ "performance in mind. The default windows manager is Marco which is usable "
-#~ "for all machines and VMs. Compiz Fusion is a beautiful 3D windowing "
-#~ "manager with Emerald and GTK+ theming."
-#~ msgstr ""
-#~ "MATE Compiz spini, MATE Masaüstü'nü Compiz Fusion ile bir araya getirir. "
-#~ "MATE Masaüstü, verimlilik ve performans göz önünde bulundurularak "
-#~ "tasarlanmış hafif, güçlü bir masaüstüdür. Varsayılan windows yöneticisi, "
-#~ "tüm makineler ve sanal makineler için kullanılabilen Marco'dur. Compiz "
-#~ "Fusion, Emerald ve GTK+ tema yapılandırmasına sahip güzel bir 3B pencere "
-#~ "yöneticisidir."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "If you want a powerful, lightweight AOSC desktop with 3D eyecandy you "
-#~ "should definitely try the MATE-Compiz spin."
-#~ msgstr ""
-#~ "3D görsel efektlere sahip güçlü, hafif bir AOSC masaüstü istiyorsanız, "
-#~ "kesinlikle MATE-Compiz spinini denemelisiniz."
-
-#~ msgctxt "Release|"
-#~ msgid "cinnamon"
-#~ msgstr "cinnamon"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Cinnamon Desktop"
-#~ msgstr "AOSC Cinnamon Masaüstü"
-
-#~ msgctxt "Release|"
-#~ msgid "A modern desktop featuring traditional Gnome user experience."
-#~ msgstr "Geleneksel Gnome kullanıcı deneyimine sahip modern bir masaüstü."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Cinnamon is a Linux desktop which provides advanced innovative features "
-#~ "and a traditional user experience. The desktop layout is similar to Gnome "
-#~ "2. The underlying technology is forked from Gnome Shell. The emphasis is "
-#~ "put on making users feel at home and providing them with an easy to use "
-#~ "and comfortable desktop experience."
-#~ msgstr ""
-#~ "Cinnamon, gelişmiş yenilikçi özellikler ve geleneksel bir kullanıcı "
-#~ "deneyimi sunan bir Linux masaüstüdür. Masaüstü düzeni Gnome 2'ye "
-#~ "benzemektedir. Altında yatan teknoloji Gnome Shell'den alınmıştır. "
-#~ "Kullanıcıların kendilerini evlerinde hissetmelerini sağlamayı ve onlara "
-#~ "kullanımı kolay ve rahat bir masaüstü deneyimi sunmayı amaçlamaktadır."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Cinnamon is a popular desktop alternative to Gnome 3 and this spin "
-#~ "provides the option to quickly try and install this desktop."
-#~ msgstr ""
-#~ "Cinnamon, Gnome 3'e alternatif popüler bir masaüstüdür ve bu spin onu "
-#~ "hızlı bir şekilde deneme ve kurma seçeneği sunmaktadır."
-
-#~ msgctxt "Release|"
-#~ msgid "lxde"
-#~ msgstr "lxde"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXDE Desktop"
-#~ msgstr "AOSC LXDE Masaüstü"
-
-#~ msgctxt "Release|"
-#~ msgid "A light, fast, less-resource hungry desktop environment."
-#~ msgstr "Hafif, hızlı, daha az kaynak gerektiren bir masaüstü ortamı."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
-#~ "performant, and energy-saving desktop environment. It maintained by an "
-#~ "international community of developers and comes with a beautiful "
-#~ "interface, multi-language support, standard keyboard shortcuts and "
-#~ "additional features like tabbed file browsing."
-#~ msgstr ""
-#~ "LXDE, \"Lightweight X11 Desktop Environment (Hafif X11 Masaüstü "
-#~ "Ortamı)\", son derece hızlı, performanslı ve enerji tasarruflu bir "
-#~ "masaüstü ortamıdır. Uluslararası bir geliştiriciler topluluğu tarafından "
-#~ "yürütülmekte ve güzel bir arayüz, çoklu dil desteği, standart klavye "
-#~ "kısayolları ve sekmeli dosya tarama gibi ek özellikler ile birlikte "
-#~ "gelmektedir."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "LXDE is not designed to be powerful and bloated, but to be usable and "
-#~ "slim. A main goal of LXDE is to keep computer resource usage low. It is "
-#~ "especially designed for computers with low hardware specifications like "
-#~ "netbooks, mobile devices (e.g. MIDs) or older computers."
-#~ msgstr ""
-#~ "LXDE güçlü ve şişirilmiş olmak için değil, kullanışlı ve küçük olacak "
-#~ "şekilde tasarlanmıştır. LXDE'nin temel amacı bilgisayar kaynak "
-#~ "kullanımını düşük tutmaktır. Özellikle mini dizüstü bilgisayarlar, mobil "
-#~ "cihazlar (örn. mobil bilgilendirme cihazları) veya daha eski "
-#~ "bilgisayarlar gibi donanım özellikleri düşük bilgisayarlar için "
-#~ "tasarlanmıştır."
-
-#~ msgctxt "Release|"
-#~ msgid "soas"
-#~ msgstr "soas"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC SoaS Desktop"
-#~ msgstr "AOSC SoaS Masaüstü"
-
-#~ msgctxt "Release|"
-#~ msgid "Discover. Reflect. Share. Learn."
-#~ msgstr "Keşfet. Yansıt. Paylaş. Öğren."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Sugar on a Stick is a AOSC-based operating system featuring the award-"
-#~ "winning Sugar Learning Platform and designed to fit on an ordinary USB "
-#~ "thumbdrive (\"stick\")."
-#~ msgstr ""
-#~ "Sugar on a Stick, ödüllü Sugar Öğrenme Platformu'nu içeren ve sıradan bir "
-#~ "USB belleğe (\"stick\", çubuk anlamına gelmektedir) sığacak şekilde "
-#~ "tasarlanmış AOSC tabanlı bir işletim sistemidir."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
-#~ "child-friendly graphical environment. Sugar automatically saves your "
-#~ "progress to a \"Journal\" on your stick, so teachers and parents can "
-#~ "easily pull up \"all collaborative web browsing sessions done in the past "
-#~ "week\" or \"papers written with Daniel and Sarah in the last 24 hours\" "
-#~ "with a simple query rather than memorizing complex file/folder "
-#~ "structures. Applications in Sugar are known as Activities, some of which "
-#~ "are described below."
-#~ msgstr ""
-#~ "Sugar, geleneksel “ofis-masaüstü” metaforunu bir kenara bırakarak çocuk "
-#~ "dostu bir grafiksel ortam sunmaktadır. Sugar, ilerlemenizi otomatik "
-#~ "olarak çubuğunuzdaki bir \"Günlüğe\" kaydeder, böylece öğretmenler ve "
-#~ "ebeveynler \"geçen hafta birlikte yapılan tüm web tarama oturumlarına\" "
-#~ "veya \"son 24 saat içinde Daniel ve Sarah ile birlikte yazılmış "
-#~ "kağıtlara\" karmaşık dosya/klasör yapılarını ezberlemek yerine basit bir "
-#~ "sorgu ile ulaşabilirler. Bazıları aşağıda açıklanan Sugar'daki "
-#~ "uygulamalar, Etkinlikler olarak bilinir."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "It is now deployable for the cost of a stick rather than a laptop; "
-#~ "students can take their Sugar on a Stick thumbdrive to any machine - at "
-#~ "school, at home, at a library or community center - and boot their "
-#~ "customized computing environment without touching the host machine’s hard "
-#~ "disk or existing system at all."
-#~ msgstr ""
-#~ "Şimdi bir dizüstü bilgisayar yerine bir USB bellek maliyeti ile "
-#~ "dağıtılabilir; öğrenciler Sugar on a Stick belleklerini okuldaki, evdeki, "
-#~ "bir kütüphane veya toplum merkezindeki herhangi bir makineye götürebilir "
-#~ "ve ana bilgisayardaki sabit diske veya mevcut sisteme hiç dokunmadan "
-#~ "özelleştirilmiş bilgisayar ortamlarını başlatabilirler."
-
-#~ msgctxt "Release|"
-#~ msgid "i3"
-#~ msgstr "i3"
-
-#~ msgctxt "Release|"
-#~ msgid "Simplicity over Complexity"
-#~ msgstr "Karmaşıklık Yerine Sadelik"
-
-#~ msgctxt "Release|"
-#~ msgid "The AOSC i3 Spin provides the popular i3 tiling window manager."
-#~ msgstr "AOSC i3 Spini, popüler i3 döşeyen penceresi yöneticisini sağlar."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "It makes i3 accessible and appealing to both novices and advanced users "
-#~ "who prefer not to use a mouse, touchpad, or other pointing device to "
-#~ "interact with their environment. Featuring lightweight applications for "
-#~ "web browsing, text editing, and media playback, the AOSC i3 Spin offers "
-#~ "a complete experience with a minimalist user interface."
-#~ msgstr ""
-#~ "Bu spin, ortamlarıyla etkileşim kurmak için fare, dokunmatik yüzey veya "
-#~ "başka bir gösterme aygıtı kullanmayı tercih etmeyen hem acemi hem de "
-#~ "ileri düzey kullanıcılar için i3'yi erişilebilir ve çekici kılmaktadır. "
-#~ "İnternette gezinme, metin düzenleme ve medya oynatma için hafif "
-#~ "uygulamalar içeren AOSC i3 Spini, sade bir kullanıcı arayüzü ile "
-#~ "eksiksiz bir deneyim sunmaktadır."
-
-#~ msgctxt "Release|"
-#~ msgid "astronomy"
-#~ msgstr "astronomy"
-
-#~ msgctxt "Release|"
-#~ msgid "labs"
-#~ msgstr "lablar"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Astronomy"
-#~ msgstr "AOSC Astronomy"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Powerful completely open-source and free tool for amateurs and "
-#~ "professionals."
-#~ msgstr ""
-#~ "Amatörler ve profesyoneller için güçlü, tamamen açık kaynaklı ve özgür "
-#~ "bir araç."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Astronomy brings a complete open source toolchain to both amateur "
-#~ "and professional astronomers."
-#~ msgstr ""
-#~ "AOSC Astronomy, hem amatör hem de profesyonel astronomlara eksiksiz bir "
-#~ "açık kaynaklı araç zinciri sunmaktadır."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The Spin provides the AOSC KDE desktop enhanced with a complete "
-#~ "scientific Python environment and the AstrOmatic software for data "
-#~ "analysis. KStars was added to provide a full featured astrophotography "
-#~ "tool. As KStars uses the INDI library to control equipment, various "
-#~ "telescopes, cameras etc. are supported. Summarized, AOSC Astronomy "
-#~ "provides a complete set of software, from the observation planning to the "
-#~ "final results."
-#~ msgstr ""
-#~ "Spin, eksiksiz bir bilimsel Python ortamı ve veri analizi için AstrOmatic "
-#~ "yazılımı ile geliştirilmiş AOSC KDE masaüstünü sunmaktadır. Tam "
-#~ "donanımlı bir astrofotografi aracı sağlamak için KStars eklenmiştir. "
-#~ "KStars ekipmanı denetlemek için INDI kütüphanesini kullandığından, "
-#~ "çeşitli teleskoplar, kameralar vs. desteklenmektedir. Özetle, AOSC "
-#~ "Astronomy, gözlem planlamasından nihai sonuçlara kadar eksiksiz bir "
-#~ "yazılım seti sağlamaktadır."
-
-#~ msgctxt "Release|"
-#~ msgid "design_suite"
-#~ msgstr "design_suite"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Design Suite"
-#~ msgstr "AOSC Design Suite"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Visual design, multimedia production, and publishing suite of free and "
-#~ "open source creative tools."
-#~ msgstr ""
-#~ "Özgür ve açık kaynaklı görsel tasarım, multimedya prodüksiyonu ve "
-#~ "yayıncılık araçları."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Looking for a ready-to-go desktop environment brimming with free and open "
-#~ "source multimedia production and publishing tools? Try the Design Suite, "
-#~ "a AOSC Spin created by designers, for designers."
-#~ msgstr ""
-#~ "Özgür ve açık kaynaklı multimedya prodüksiyon ve yayınlama araçlarına "
-#~ "sahip kullanıma hazır bir masaüstü ortamı mı arıyorsunuz? Tasarımcılar "
-#~ "tarafından tasarımcılar için oluşturulan bir AOSC Spini olan Design "
-#~ "Suite'i deneyin."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The Design Suite includes the favorite tools of the AOSC Design Team. "
-#~ "These are the same programs we use to create all the artwork that you see "
-#~ "within the AOSC Project, from desktop backgrounds to CD sleeves, web "
-#~ "page designs, application interfaces, flyers, posters and more. From "
-#~ "document publication to vector and bitmap editing or 3D modeling to photo "
-#~ "management, the Design Suite has an application for you — and you can "
-#~ "install thousands more from the AOSC universe of packages."
-#~ msgstr ""
-#~ "Design Suite, AOSC Tasarım Ekibinin favori araçlarını içermektedir. "
-#~ "Bunlar, masaüstü arka planlarından CD kılıflarına, web sayfası "
-#~ "tasarımlarına, uygulama arayüzlerine, el ilanlarına, posterlere ve daha "
-#~ "fazlasına kadar AOSC Projesi'nde gördüğünüz tüm çizimleri oluşturmak "
-#~ "için kullandığımız programlardır. Belge yayınlamadan vektör ve bitmap "
-#~ "düzenlemeye veya 3B modellemeden fotoğraf yönetimine kadar, Design "
-#~ "Suite'in sizin için bir uygulaması vardır — ve AOSC paket evreninden "
-#~ "binlercesini daha kurabilirsiniz."
-
-#~ msgctxt "Release|"
-#~ msgid "games"
-#~ msgstr "games"
-
-#~ msgid "AOSC Games"
-#~ msgstr "AOSC Games"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A collection and perfect show-case of the best games available in AOSC."
-#~ msgstr ""
-#~ "AOSC'da bulunan en iyi oyunların bir koleksiyonu ve mükemmel bir "
-#~ "vitrini."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Games spin offers a perfect showcase of the best games "
-#~ "available in AOSC. The included games span several genres, from first-"
-#~ "person shooters to real-time and turn-based strategy games to puzzle "
-#~ "games."
-#~ msgstr ""
-#~ "AOSC Games spini, AOSC'da bulunan en iyi oyunların mükemmel bir "
-#~ "gösterimini sunar. Dahil edilen oyunlar, birinci şahıs nişancı "
-#~ "oyunlarından gerçek zamanlı ve sıra tabanlı strateji oyunları ile bulmaca "
-#~ "oyunlarına kadar çeşitli türleri kapsar."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Not all the games available in AOSC are included on this spin, but "
-#~ "trying out this spin will give you a fair impression of AOSC's ability "
-#~ "to run great games."
-#~ msgstr ""
-#~ "AOSC'da bulunan tüm oyunlar bu spine dahil edilmemiştir, ancak bu spini "
-#~ "denemek size AOSC'nın harika oyunlar çalıştırma yeteneği hakkında iyi "
-#~ "bir izlenim verecektir."
-
-#~ msgctxt "Release|"
-#~ msgid "python"
-#~ msgstr "python"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Python Classroom"
-#~ msgstr "AOSC Python Classroom"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A classroom lab for teaching the Python programming language to students"
-#~ msgstr ""
-#~ "Öğrencilere Python programlama dilini öğretmek için bir sınıf laboratuvarı"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "One of the benefits of AOSC for Python developers is the ease of "
-#~ "setting up Python development. The AOSC Python Classroom Lab makes it "
-#~ "even easier for teachers and instructors to use AOSC in their "
-#~ "classrooms or workshops. Ready to use operating system with important "
-#~ "stuff pre-installed - either with GNOME or as a headless environment for "
-#~ "Docker or Vagrant. Teach Python on AOSC, with AOSC, using the stuff "
-#~ "you love: IPython, Jupyter Notebook, multiple Pythons, virtualenvs, tox, "
-#~ "git and more"
-#~ msgstr ""
-#~ "AOSC'nın Python geliştiricileri için avantajlarından biri, Python "
-#~ "geliştirme ortamının kurulum kolaylığıdır. AOSC Python Classroom Labı, "
-#~ "öğretmenlerin ve eğitmenlerin AOSC'yı sınıflarında veya atölyelerinde "
-#~ "kullanmasını daha da kolaylaştırmaktadır. GNOME ile ya da Docker veya "
-#~ "Vagrant için başsız bir ortam olarak önemli şeyler önceden kurulmuş "
-#~ "şekilde kullanıma hazır işletim sistemi. Sevdiğiniz şeyleri kullanarak "
-#~ "AOSC ile AOSC'da Python öğretin: IPython, Jupyter Notebook, birden "
-#~ "fazla Python sürümü, virtualenv'ler, tox, git ve daha fazlası"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Python Classroom Lab comes in 3 variants. Either you can run "
-#~ "it in graphical mode with GNOME, or you can virtualize it with Vagrant or "
-#~ "run it in a Docker container. You choose what fits your teaching "
-#~ "environment the best."
-#~ msgstr ""
-#~ "AOSC Python Classroom Labı 3 çeşittir. GNOME ile grafiksel modda "
-#~ "çalıştırabilir, Vagrant ile sanallaştırabilir veya bir Docker "
-#~ "konteynerinde çalıştırabilirsiniz. Öğretme ortamınıza en uygun olanı siz "
-#~ "seçersiniz."
-
-#~ msgctxt "Release|"
-#~ msgid "robotics"
-#~ msgstr "robotics"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Robotics Suite"
-#~ msgstr "AOSC Robotics Suite"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A wide variety of free and open robotics software packages for beginners "
-#~ "and experts in robotics."
-#~ msgstr ""
-#~ "Yeni başlayanlar ve robotik uzmanları için çok çeşitli özgür ve açık "
-#~ "kaynaklı robotik yazılım paketleri."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Robotics spin provides a wide variety of free and open "
-#~ "robotics software packages. These range from hardware accessory libraries "
-#~ "for the Hokuyo laser scanners or Katana robotic arm to software "
-#~ "frameworks like Fawkes or Player and simulation environments such as "
-#~ "Stage and RoboCup Soccer Simulation Server 2D/3D. It also provides a "
-#~ "ready to use development environment for robotics including useful "
-#~ "libraries such as OpenCV computer vision library, Festival text to speech "
-#~ "system and MRPT."
-#~ msgstr ""
-#~ "AOSC Robotics labı, çok çeşitli özgür ve açık kaynaklı robotik yazılım "
-#~ "paketleri sağlar. Bunlar, Hokuyo lazer tarayıcıları veya Katana robotik "
-#~ "kolu için donanım erişim kütüphanelerinden Fawkes veya Player gibi "
-#~ "yazılım çerçevelerine ve Stage ve RoboCup Soccer Simulation Server 2D/3D "
-#~ "gibi simülasyon ortamlarına kadar uzanmaktadır. Ayrıca OpenCV bilgisayar "
-#~ "görme kütüphanesi gibi faydalı kütüphaneler, Festival metinden konuşmaya "
-#~ "çeviri sistemi ve MRPT'yi içeren robotik için kullanıma hazır bir "
-#~ "geliştirme ortamı sağlamaktadır."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The Robotics spin is targeted at people just discovering their interest "
-#~ "in robotics as well as experienced roboticists. For the former we provide "
-#~ "a readily usable simulation environment with an introductory hands-on "
-#~ "demonstration, and for the latter we provide a full development "
-#~ "environment, to be used immediately."
-#~ msgstr ""
-#~ "Robotics labı, deneyimli robot bilimcilerin yanı sıra robotiğe ilgilerini "
-#~ "yeni keşfeden kişileri de hedeflemektedir. Birinci grupdakiler için, "
-#~ "hemen kullanılmak üzere eksiksiz bir geliştirme ortamı, ve ikinci "
-#~ "gruptakiler için tanıtıcı bir uygulamalı gösterim ile birlikte hali "
-#~ "hazırda kullanılabilir bir simülasyon ortamı sağlıyoruz."
-
-#~ msgctxt "Release|"
-#~ msgid "scientific"
-#~ msgstr "scientific"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Scientific"
-#~ msgstr "AOSC Scientific"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A bundle of open source scientific and numerical tools used in research."
-#~ msgstr ""
-#~ "Araştırmada kullanılan açık kaynaklı bilimsel ve sayısal araçlar paketi."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Wary of reinstalling all the essential tools for your scientific and "
-#~ "numerical work? The answer is here. AOSC Scientific Spin brings "
-#~ "together the most useful open source scientific and numerical tools atop "
-#~ "the goodness of the KDE desktop environment."
-#~ msgstr ""
-#~ "Bilimsel ve sayısal çalışmalarınız için gerekli tüm araçları yeniden "
-#~ "kurmaktan çekiniyor musunuz? Cevap burada. AOSC Scientific Spini, KDE "
-#~ "masaüstü ortamının iyiliği üzerine en yararlı açık kaynaklı bilimsel ve "
-#~ "sayısal araçları bir araya getirir."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Scientific currently ships with numerous applications and "
-#~ "libraries. These range from libraries such as the GNU Scientific library, "
-#~ "the SciPy libraries, tools like Octave and xfig to typesetting tools like "
-#~ "Kile and graphics programs such as Inkscape. The current set of packages "
-#~ "include an IDE, tools and libraries for programming in C, C++, Python, "
-#~ "Java and R. Also included along with are libraries for parallel computing "
-#~ "such as the OpenMPI and OpenMP. Tools for typesetting, writing and "
-#~ "publishing are included."
-#~ msgstr ""
-#~ "AOSC Scientific şu anda çok sayıda uygulama ve kütüphane ile birlikte "
-#~ "gelmektedir. Bunlar, GNU Scientific kütüphanesi, SciPy kütüphaneleri, "
-#~ "Octave ve xfig gibi araçlardan Kile gibi dizgi araçlarına ve Inkscape "
-#~ "gibi grafik programlarına kadar çeşitlilik gösterir. Şu anki paket seti, "
-#~ "bir tümleşik geliştirme ortamı (IDE), C, C++, Python, Java ve R'de "
-#~ "programlama için araçlar ve kütüphaneleri içerir. Ayrıca OpenMPI ve "
-#~ "OpenMP gibi paralel hesaplama için kütüphaneler da dahil edilmiştir. "
-#~ "Dizgi, yazma ve yayınlama araçları da dahil edilmiştir."
-
-#~ msgctxt "Release|"
-#~ msgid "security"
-#~ msgstr "security"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Security Lab"
-#~ msgstr "AOSC Security Lab"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A safe test environment to work on security auditing, forensics, system "
-#~ "rescue and teaching security testing methodologies."
-#~ msgstr ""
-#~ "Güvenlik denetimi, adli bilişim, sistem kurtarma ve güvenlik testi "
-#~ "metodolojilerini öğretmek için güvenli bir test ortamı."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Security Lab provides a safe test environment to work on "
-#~ "security auditing, forensics, system rescue and teaching security testing "
-#~ "methodologies in universities and other organizations."
-#~ msgstr ""
-#~ "AOSC Security Lab, güvenlik denetimi, adli bilişim, sistem kurtarma ve "
-#~ "üniversitelerde ve diğer organizasyonlarda güvenlik testi "
-#~ "metodolojilerini öğretmek üzerine çalışmak için güvenli bir test ortamı "
-#~ "sağlar."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The spin is maintained by a community of security testers and developers. "
-#~ "It comes with the clean and fast Xfce Desktop Environment and a "
-#~ "customized menu that provides all the instruments needed to follow a "
-#~ "proper test path for security testing or to rescue a broken system. The "
-#~ "Live image has been crafted to make it possible to install software while "
-#~ "running, and if you are running it from a USB stick created with LiveUSB "
-#~ "Creator using the overlay feature, you can install and update software "
-#~ "and save your test results permanently."
-#~ msgstr ""
-#~ "Bu lab, bir güvenlik testçileri ve geliştiricileri topluluğu tarafından "
-#~ "sürdürülmektedir. Sade ve hızlı Xfce Masaüstü Ortamı ve güvenlik testi "
-#~ "için uygun bir test yolunu takip etmek veya bozuk bir sistemi kurtarmak "
-#~ "için gereken tüm araçları sağlayan özelleştirilmiş bir menü ile birlikte "
-#~ "gelir. Canlı kalıp, çalışırken yazılım kurmayı mümkün kılacak şekilde "
-#~ "hazırlanmıştır ve LiveUSB Creator ile bindirme (overlay) özelliğini "
-#~ "kullanarak oluşturulan bir USB bellekten çalıştırıyorsanız, yazılım "
-#~ "kurabilir ve güncelleyebilir ve test sonuçlarınızı kalıcı olarak "
-#~ "kaydedebilirsiniz."
+#~ "Bir AOSC sürümünü içeren canlı USB aygıtı yaratmanızı sağlayan bu araçla "
+#~ "yalnızca görüntünün aygıtınıza yazılmasını değil aynı zamanda sizin için "
+#~ "indirilmesini de sağlayabilirsiniz. Resmi sürümlerin (Sunucu, Masaüstü) "
+#~ "yanı sıra AOSC seçkilerini (KDE Plasma Masaüstü, Xfce masaüstü, Cinnamon "
+#~ "Masaüstü...) ve AOSC Lab'larını (Tasarım paketi, güvenlik paketi...) da "
+#~ "indirebilir ve doğru seçimi yapmanızı sağlayacak temel bilgileri "
+#~ "bulabilirsiniz."

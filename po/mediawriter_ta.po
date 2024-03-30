@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
+"POT-Creation-Date: 2024-03-30 22:58+0800\n"
 "PO-Revision-Date: 2021-07-11 17:15+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://translate.fedoraproject.org/projects/fedora-"
@@ -23,34 +23,34 @@ msgstr ""
 
 #: ../src/app/qml/AboutDialog.qml:50
 #, fuzzy
-#| msgid "AOSC Media Writer"
 msgctxt "AboutDialog|"
 msgid "About AOSC Media Writer"
 msgstr "ஃபெடோரா ஊடக எழுதி "
 
 #: ../src/app/qml/AboutDialog.qml:59
 #, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "பதிப்பு %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
+msgctxt "AboutDialog|"
+msgid "Based on Fedora Media Writer"
+msgstr ""
+
+#: ../src/app/qml/AboutDialog.qml:72
 msgctxt "AboutDialog|"
 msgid "AOSC Media Writer is now checking for new releases"
 msgstr ""
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: ../src/app/qml/AboutDialog.qml:78
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr ""
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:101
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "மூடு "
@@ -62,8 +62,6 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:58
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
 msgstr "எழுதுகிறது"
@@ -75,9 +73,7 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
-msgid ""
-"Download and media writing will be aborted. This process can be resumed any "
-"time later."
+msgid "Download and media writing will be aborted."
 msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:69
@@ -99,16 +95,12 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:111
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "பதிவேற்றப்படுகிறது"
 
 #: ../src/app/qml/CancelDialog.qml:113
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "எழுதுகிறது"
@@ -120,28 +112,26 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:117
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "ரத்து"
 
-#: ../src/app/downloadmanager.cpp:235
+#: ../src/app/downloadmanager.cpp:257
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "தேவைப்பட்ட பிரதிமையை நிறுவ இயலவில்லை"
 
-#: ../src/app/downloadmanager.cpp:335
+#: ../src/app/downloadmanager.cpp:357
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr ""
 
-#: ../src/app/downloadmanager.cpp:337
+#: ../src/app/downloadmanager.cpp:359
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "பதிவிறக்கப்பட்ட கோப்பை எழுத இயலவில்லை"
 
-#: ../src/app/downloadmanager.cpp:425
+#: ../src/app/downloadmanager.cpp:447
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "இணைப்பு காலாவதியானது"
@@ -154,40 +144,30 @@ msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:54
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "எழுதுகிறது"
 
 #: ../src/app/qml/DownloadPage.qml:56
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr "பதிவேற்றப்படுகிறது"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr "தயாராகிறது"
 
 #: ../src/app/qml/DownloadPage.qml:60
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
 msgstr "எழுதுவதற்குத் தாயாரானது"
 
 #: ../src/app/qml/DownloadPage.qml:62
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
 msgstr "பதிவேற்றை சோதிக்கிறது"
@@ -244,8 +224,8 @@ msgstr ""
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using AOSC Media Writer. This will remove installation media "
-"from your drive."
+"normal by using AOSC Media Writer. This will remove installation media from "
+"your drive."
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:167
@@ -259,12 +239,8 @@ msgid "None"
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, qt-format
 msgctxt "DownloadPage|"
-msgid ""
-"Your board or device is not supported by AOSC Media Writer yet. Please "
-"check <a href=%1>this page</a> for more information about its compatibility "
-"with AOSC and how to create bootable media for it."
+msgid "Your board or device is not supported by AOSC Media Writer yet."
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:184
@@ -293,8 +269,6 @@ msgstr ""
 
 #: ../src/app/qml/DrivePage.qml:45
 #, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
 msgstr "பதிப்பு %1"
@@ -336,16 +310,12 @@ msgstr ""
 
 #: ../src/app/qml/DrivePage.qml:135
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "பெயரத்தகு சாதனம் எதுவும் இணைக்கப்படவில்லை"
 
 #: ../src/app/qml/DrivePage.qml:155
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
 msgstr "பதிவேற்றப்படுகிறது"
@@ -431,8 +401,6 @@ msgstr ""
 
 #: ../src/app/qml/MainPage.qml:57
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
 msgstr "பதிவேற்றம் தோல்வியடைந்தது"
@@ -444,8 +412,6 @@ msgstr ""
 
 #: ../src/app/qml/MainPage.qml:76
 #, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
 msgstr "மீட்பு %1?"
@@ -465,12 +431,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:373
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:374
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -478,115 +444,121 @@ msgid ""
 "iso or .bin)</p>"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "AOSC Spins"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:406
 msgctxt "Release|"
 msgid "AOSC Labs"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:432
+#: ../src/app/releasemanager.cpp:408
 #, fuzzy
-#| msgid "AOSC Media Writer"
 msgctxt "Release|"
 msgid "AOSC Atomic Desktops"
 msgstr "ஃபெடோரா ஊடக எழுதி "
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:410
 msgctxt "Release|"
 msgid "Other"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1074
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 64bit"
-msgstr "இன்டெல் 64பிட்டு "
-
-#: ../src/app/releasemanager.cpp:1074
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr "இன்டெல், ஏஎம்டி (ம) மற்ற ஏற்கத்தகு கணினிகளுக்கான ISO வகை  பிரதிமை (64பிட்டு)"
-
-#: ../src/app/releasemanager.cpp:1075
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
-msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 32bit"
-msgstr "இன்டெல் 32பிட்டு "
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr "இன்டெல், ஏஎம்டி (ம) மற்ற ஏற்கத்தகு கணினிகளுக்கான ISO வகை  பிரதிமை (32பிட்டு)"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid "ARM v7"
+msgid "x86-64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1076
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid ""
-"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
+msgid "System releases for 64-bit x86 devices"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
-msgid "LZMA-compressed raw image for AArch64 machines"
+msgid "System releases for AArch64 devices"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "LoongArch"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for LoongArch devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "POWER"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for IBM POWER devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "MIPS-based Loongson 3"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for MIPS-based Loongson 3 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "RISC-V (64bit)"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit RISC-V devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:372
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "சுயவிருப்ப பிரதிமை"
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:909 ../src/app/releasemanager.cpp:921
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "பதிவேற்றப்பட்ட பிரதிமை சிதைவுற்றது."
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:925
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr ""
 
 #: ../src/app/releasemanager.h:375
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "தயாராகிறது"
 
 #: ../src/app/releasemanager.h:376
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "பதிவேற்றப்படுகிறது"
 
 #: ../src/app/releasemanager.h:377
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "பதிவேற்றை சோதிக்கிறது"
@@ -603,8 +575,6 @@ msgstr ""
 
 #: ../src/app/releasemanager.h:380
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "எழுதுகிறது"
@@ -616,24 +586,18 @@ msgstr ""
 
 #: ../src/app/releasemanager.h:382
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Finished!"
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "முடிவுற்றது!"
 
 #: ../src/app/releasemanager.h:383
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
 msgstr "பதிவேற்றப்பட்ட பிரதிமை சிதைவுற்றது."
 
 #: ../src/app/releasemanager.h:384
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "பதிவேற்றம் தோல்வியடைந்தது"
@@ -643,19 +607,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "பிழை "
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:682
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:684
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:686
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -669,21 +633,6 @@ msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:49
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -709,10 +658,6 @@ msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:67
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while AOSC Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while AOSC Media Writer restores your "
@@ -723,8 +668,6 @@ msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:84
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "உங்கள் வட்டு வெற்றிகரமாக மீட்டெடுக்கப்பட்டது!"
@@ -753,24 +696,7 @@ msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
-msgid "Official Editions"
-msgstr ""
-
-#: ../src/app/qml/VersionPage.qml:59
-#, fuzzy
-#| msgid "AOSC Media Writer"
-msgctxt "VersionPage|"
-msgid "Atomic Desktops"
-msgstr "ஃபெடோரா ஊடக எழுதி "
-
-#: ../src/app/qml/VersionPage.qml:65
-msgctxt "VersionPage|"
-msgid "Spins"
-msgstr ""
-
-#: ../src/app/qml/VersionPage.qml:71
-msgctxt "VersionPage|"
-msgid "Labs"
+msgid "Livekit"
 msgstr ""
 
 #: ../src/app/windrivemanager.cpp:319
@@ -800,8 +726,6 @@ msgstr ""
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
 #, fuzzy
-#| msgctxt "Download|"
-#| msgid "The download file is not writable."
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
 msgstr "பதிவிறக்கப்பட்ட கோப்பை எழுத இயலவில்லை"
@@ -815,8 +739,6 @@ msgstr ""
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:320
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "பதிவேற்றப்பட்ட பிரதிமை சிதைவுற்றது."
@@ -884,7 +806,6 @@ msgstr ""
 
 #: ../src/app/qml/main.qml:116
 #, fuzzy
-#| msgid "AOSC Media Writer"
 msgctxt "main|"
 msgid "AOSC Media Writer"
 msgstr "ஃபெடோரா ஊடக எழுதி "
@@ -906,48 +827,36 @@ msgstr "மீட்டெடு "
 
 #: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Finished!"
 msgctxt "main|"
 msgid "Finish"
 msgstr "முடிவுற்றது!"
 
 #: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "main|"
 msgid "Write"
 msgstr "எழுது %1"
 
 #: ../src/app/qml/main.qml:296
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "பதிவேற்றம் தோல்வியடைந்தது"
 
 #: ../src/app/qml/main.qml:297
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "பதிவேற்றம் தோல்வியடைந்தது"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "main|"
 msgid "Cancel"
 msgstr "ரத்து"
 
 #: ../src/app/qml/main.qml:306
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
 msgctxt "main|"
 msgid "Retry"
 msgstr "மீண்டும் முயற்சி "
@@ -967,172 +876,71 @@ msgctxt "main|"
 msgid "Previous"
 msgstr ""
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/io.aosc.MediaWriter.desktop:4
 msgid "AOSC Media Writer"
 msgstr "ஃபெடோரா ஊடக எழுதி "
 
 #. (itstool) path: application/summary
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of AOSC"
-msgstr "ஃபெடோரா பதிப்புடன் வரும் நேரடி இயக்கக USB வட்டை உருவாக்கும் ஒரு கருவி."
+msgid "A tool to create AOSC OS boot media"
+msgstr ""
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of AOSC. Not "
-"only can AOSC Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
+"Automatically downloads, writes, and verifies AOSC OS boot media from disk "
+"images"
 msgstr ""
-"ஃபெடோரா பதிப்புடன் வரும் நேரடி இயக்கக USB வட்டை உருவாக்கும் ஒரு கருவி. ஃபெடோரா ஊடக "
-"இயக்கி உங்கள் USB வட்டை எழுதுவதற்கு மட்டுமல்ல, கூடுதலாக  பதிவிறக்கவும் செய்யலாம். இது "
-"Server, Workstation,  AOSC spins (KDE Plasma Desktop, Xfce Desktop, "
-"Cinnamon Desktop,...), மற்றும் AOSC Labs (Design Suite, Security Lab,...) "
-"போன்ற பதிப்புகளையும் அளிக்கவல்லது. இது உங்களுக்கு உதவ  ஒவ்வொன்றின் அடி ப்படை "
-"தகவல்களையும்  அளிக்கும்."
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"AOSC Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with AOSC images."
+"AOSC Media Writer can also write other bootable ISOs, but keep in mind that "
+"this tool is only tested with AOSC OS images."
 msgstr ""
 "ஃபெடோரா ஊடக இயக்கி மற்ற ISOக்களையும் இயக்கவல்லது. ஆனால் இது ஃபெடோரா வகை ISO-க்களை "
 "வைத்து மட்டுமே சோதிக்கப்பட்டது என்பதனை நினைவில் கொள்ளவும்."
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:43
-msgid "Write AOSC images to your portable drives"
+#: ../src/app/data/io.aosc.MediaWriter.desktop:4
+#, fuzzy
+msgid "Media Writer"
+msgstr "ஃபெடோரா ஊடக எழுதி "
+
+#: ../src/app/data/io.aosc.MediaWriter.desktop:44
+#, fuzzy
+msgid "Write images to your portable drives"
 msgstr "ஃபெடோராவை உங்கள் பெயரத்தகு சாதனத்தில் எழுதுக"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:87
+#: ../src/app/data/io.aosc.MediaWriter.desktop:89
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
 
 #, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "The downloaded image is corrupted"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying downloaded image"
-#~ msgstr "பதிவேற்றப்பட்ட பிரதிமை சிதைவுற்றது."
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "Intel/AMD 64bit"
+#~ msgstr "இன்டெல் 64பிட்டு "
 
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Writing"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing"
-#~ msgstr "எழுதுகிறது"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Finished!"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "முடிவுற்றது!"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Download failed"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Download failed"
-#~ msgstr "பதிவேற்றம் தோல்வியடைந்தது"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Downloading"
-#~ msgctxt "main|"
-#~ msgid "Downloading"
-#~ msgstr "பதிவேற்றப்படுகிறது"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Writing"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write verifying"
-#~ msgstr "எழுதுகிறது"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write the image immediately when the download is finished"
-#~ msgstr "பதிவிறக்கம் முடிந்தவுடன்  உடனடியாக பிரதிமையை நிறுவு"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ", released on %1"
-#~ msgstr ", %1 இல் வெளியானது"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "வேறு வகைகள்"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "இயங்குதள பிரதிமையை கண்டறி"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Display additional AOSC flavors"
-#~ msgstr "கூடுதல் ஃபெடோரா வகைகளைக் காட்டு"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Cancel"
-#~ msgstr "ரத்து"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Restore"
-#~ msgstr "மீட்டெடு"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Close"
-#~ msgstr "மூடு"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
-#~ "want to restore it to factory settings?"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 #~ msgstr ""
-#~ "நீங்கள் சொருவிது <b>%1</b> முன்பே நேரடி இயக்ககம் கொண்ட வட்டு.<br>நீங்கள் மீட்பு "
-#~ "நிலைக்கு கொண்டு வர வேண்டுமா?"
+#~ "இன்டெல், ஏஎம்டி (ம) மற்ற ஏற்கத்தகு கணினிகளுக்கான ISO வகை  பிரதிமை (64பிட்டு)"
 
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Server"
-#~ msgstr "ஃபெடோரா ஊடக எழுதி "
+#~ msgid "A tool to create a live USB drive with an edition of AOSC"
+#~ msgstr "ஃபெடோரா பதிப்புடன் வரும் நேரடி இயக்கக USB வட்டை உருவாக்கும் ஒரு கருவி."
 
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Silverblue"
-#~ msgstr "ஃபெடோரா ஊடக எழுதி "
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "design_suite"
-#~ msgstr "ஃபெடோரா ஊடக எழுதி "
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Design Suite"
-#~ msgstr "ஃபெடோரா ஊடக எழுதி "
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Robotics Suite"
-#~ msgstr "ஃபெடோரா ஊடக எழுதி "
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Scientific"
-#~ msgstr "ஃபெடோரா ஊடக எழுதி "
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Security Lab"
-#~ msgstr "ஃபெடோரா ஊடக எழுதி "
+#~ msgid ""
+#~ "A tool to create a bootable live USB drive with an edition of AOSC. Not "
+#~ "only can AOSC Media Writer write an image to your flash drive, it can "
+#~ "also download it for you. It offers official editions (Server, "
+#~ "Workstation), AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktop,...), and AOSC Labs (Design Suite, Security Lab,...). It provides "
+#~ "basic information about each of them to help you make the right choice."
+#~ msgstr ""
+#~ "ஃபெடோரா பதிப்புடன் வரும் நேரடி இயக்கக USB வட்டை உருவாக்கும் ஒரு கருவி. ஃபெடோரா "
+#~ "ஊடக இயக்கி உங்கள் USB வட்டை எழுதுவதற்கு மட்டுமல்ல, கூடுதலாக  பதிவிறக்கவும் "
+#~ "செய்யலாம். இது Server, Workstation,  AOSC spins (KDE Plasma Desktop, Xfce "
+#~ "Desktop, Cinnamon Desktop,...), மற்றும் AOSC Labs (Design Suite, Security "
+#~ "Lab,...) போன்ற பதிப்புகளையும் அளிக்கவல்லது. இது உங்களுக்கு உதவ  ஒவ்வொன்றின் அடி "
+#~ "ப்படை தகவல்களையும்  அளிக்கும்."

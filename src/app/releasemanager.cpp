@@ -1047,12 +1047,12 @@ void ReleaseVariant::setErrorString(const QString &o)
 }
 
 ReleaseArchitecture ReleaseArchitecture::m_all[] = {
-    {{"amd64"}, QT_TR_NOOP("Intel/AMD 64bit"), QT_TR_NOOP("ISO format image for Intel, AMD and other compatible PCs (64-bit)")},
-    {{"arm64"}, QT_TR_NOOP("AArch64"), QT_TR_NOOP("ISO format image for AArch64 machine")},
-    {{"loongarch64"}, QT_TR_NOOP("LoongArch64"), QT_TR_NOOP("ISO format image for LoongArch64 machine")},
-    {{"ppc64el"}, QT_TR_NOOP("POWER"), QT_TR_NOOP("ISO format image for POWER machine")},
-    {{"loongson3"}, QT_TR_NOOP("Loongson 3"), QT_TR_NOOP("ISO format image for Loongson 3 machine")},
-    {{"riscv64"}, QT_TR_NOOP("RISCV 64bit"), QT_TR_NOOP("ISO format image for RISCV-64bit machine")},
+    {{"amd64"}, QT_TR_NOOP("x86-64"), QT_TR_NOOP("System releases for 64-bit x86 devices")},
+    {{"arm64"}, QT_TR_NOOP("AArch64"), QT_TR_NOOP("System releases for AArch64 devices")},
+    {{"loongarch64"}, QT_TR_NOOP("LoongArch"), QT_TR_NOOP("System releases for LoongArch devices")},
+    {{"ppc64el"}, QT_TR_NOOP("POWER"), QT_TR_NOOP("System releases for IBM POWER devices")},
+    {{"loongson3"}, QT_TR_NOOP("MIPS-based Loongson 3"), QT_TR_NOOP("System releases for MIPS-based Loongson 3 devices")},
+    {{"riscv64"}, QT_TR_NOOP("RISC-V (64bit)"), QT_TR_NOOP("System releases for 64-bit RISC-V devices")},
 };
 
 ReleaseArchitecture::ReleaseArchitecture(const QStringList &abbreviation, const char *description, const char *details)

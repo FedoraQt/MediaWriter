@@ -4,11 +4,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
+"POT-Creation-Date: 2024-03-30 22:58+0800\n"
 "PO-Revision-Date: 2024-03-14 10:56+0000\n"
 "Last-Translator: 김인수 <simmon@nplob.com>\n"
-"Language-Team: Korean <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/ko/>\n"
+"Language-Team: Korean <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,18 +28,23 @@ msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "버전 %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
+msgctxt "AboutDialog|"
+msgid "Based on Fedora Media Writer"
+msgstr ""
+
+#: ../src/app/qml/AboutDialog.qml:72
 msgctxt "AboutDialog|"
 msgid "AOSC Media Writer is now checking for new releases"
 msgstr "페도라 미디어 작성기는 현재 새로운 출시를 점검 중입니다"
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: ../src/app/qml/AboutDialog.qml:78
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "%1에 결점이나 의견을 보고해 주세요"
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:101
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "닫기"
@@ -60,13 +65,10 @@ msgid "Cancel Verification?"
 msgstr "검증을 취소할까요?"
 
 #: ../src/app/qml/CancelDialog.qml:67
+#, fuzzy
 msgctxt "CancelDialog|"
-msgid ""
-"Download and media writing will be aborted. This process can be resumed any "
-"time later."
-msgstr ""
-"내려 받기와 미디어 쓰기가 중지됩니다. 이와 같은 처리는 다음에 언제든지 다시 "
-"진행 할 수 있습니다."
+msgid "Download and media writing will be aborted."
+msgstr "내려 받기 진행이 소실되면 미디어 작성이 중지됩니다."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
@@ -105,22 +107,22 @@ msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "취소"
 
-#: ../src/app/downloadmanager.cpp:235
+#: ../src/app/downloadmanager.cpp:257
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "요청된 이미지를 가져올 수 없습니다."
 
-#: ../src/app/downloadmanager.cpp:335
+#: ../src/app/downloadmanager.cpp:357
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "내려받기 폴더에 공간이 부족합니다."
 
-#: ../src/app/downloadmanager.cpp:337
+#: ../src/app/downloadmanager.cpp:359
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "내려받은 파일을 작성 할 수 없습니다."
 
-#: ../src/app/downloadmanager.cpp:425
+#: ../src/app/downloadmanager.cpp:447
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "연결 시간 초과"
@@ -213,8 +215,8 @@ msgstr "USB 드라이브를 넣어주세요."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using AOSC Media Writer. This will remove installation media "
-"from your drive."
+"normal by using AOSC Media Writer. This will remove installation media from "
+"your drive."
 msgstr ""
 "당신의 드라이브가 더 작은 공간으로 크기가 조정 될 것입니다. 페도라 미디어 작"
 "성기를 사용 할 때에 정상적으로 크기가 재 조정 될 것입니다. 당신의 드라이브에"
@@ -231,16 +233,9 @@ msgid "None"
 msgstr "없음"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, qt-format
 msgctxt "DownloadPage|"
-msgid ""
-"Your board or device is not supported by AOSC Media Writer yet. Please "
-"check <a href=%1>this page</a> for more information about its compatibility "
-"with AOSC and how to create bootable media for it."
+msgid "Your board or device is not supported by AOSC Media Writer yet."
 msgstr ""
-"보드 또는 장치가 아직 페도라 미디어 작성기를 지원하지 않습니다. 페도라의 호환"
-"성과 이 부팅 미디어 생성 방법에 대해서 보다 더 자세히 <a href=%1>이 부분</a>"
-"을 확인해 주세요."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -428,12 +423,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "파일 열기"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:373
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "드라이버에서 파일 선택"
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:374
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -444,84 +439,103 @@ msgstr ""
 "수 있습니다.</p><p>현재 단순 디스크 이미지만(.iso 또는 .bin)을 지원합니다. </"
 "p>"
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "AOSC Spins"
 msgstr "페도라 스핀"
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:406
 msgctxt "Release|"
 msgid "AOSC Labs"
 msgstr "페도라 랩"
 
-#: ../src/app/releasemanager.cpp:432
+#: ../src/app/releasemanager.cpp:408
 msgctxt "Release|"
 msgid "AOSC Atomic Desktops"
 msgstr "페도라 아토믹 데스크탑"
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:410
 msgctxt "Release|"
 msgid "Other"
 msgstr "기타"
 
-#: ../src/app/releasemanager.cpp:1074
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 64bit"
-msgstr "인텔/AMD 64비트"
-
-#: ../src/app/releasemanager.cpp:1074
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr "인텔, AMD와 다른 호환 PC (64비트)를 위한 ISO 형식의 이미지"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 32bit"
-msgstr "인텔/AMD 32비트"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr "인텔, AMD와 다른 호환 PC (32비트)를 위한 ISO 형식의 이미지"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid "ARM v7"
-msgstr "ARM v7"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid ""
-"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
+msgid "x86-64"
 msgstr ""
-"라즈베리 파이 2와 3같은 암(arm) v7-A 장비를 위한 LZMA-압축된 단순 이미지"
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1050
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit x86 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
-msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "AArch64 장비를 위한 LZMA-압축된 이미지"
+msgid "System releases for AArch64 devices"
+msgstr ""
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:1052
+#, fuzzy
+msgctxt "ReleaseArchitecture|"
+msgid "LoongArch"
+msgstr "AArch64"
+
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for LoongArch devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "POWER"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for IBM POWER devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "MIPS-based Loongson 3"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for MIPS-based Loongson 3 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "RISC-V (64bit)"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit RISC-V devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:372
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "사용자 정의 이미지"
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:909 ../src/app/releasemanager.cpp:921
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "내려받은 이미지가 손상되었습니다"
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:925
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "내려받은 파일을 읽을 수가 없습니다."
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "임시 파일 명칭을 변경 할 수 없음."
@@ -582,19 +596,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "오류"
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:682
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 알파"
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:684
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 베타"
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:686
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -662,23 +676,8 @@ msgstr "다음에서 선택합니다:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
-msgid "Official Editions"
-msgstr "공식 배포판"
-
-#: ../src/app/qml/VersionPage.qml:59
-msgctxt "VersionPage|"
-msgid "Atomic Desktops"
-msgstr "아토믹 데스크탑"
-
-#: ../src/app/qml/VersionPage.qml:65
-msgctxt "VersionPage|"
-msgid "Spins"
-msgstr "스핀"
-
-#: ../src/app/qml/VersionPage.qml:71
-msgctxt "VersionPage|"
-msgid "Labs"
-msgstr "랩"
+msgid "Livekit"
+msgstr ""
 
 #: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
@@ -848,1159 +847,79 @@ msgctxt "main|"
 msgid "Previous"
 msgstr "이전"
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/io.aosc.MediaWriter.desktop:4
 msgid "AOSC Media Writer"
 msgstr "페도라 미디어 작성기"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of AOSC"
-msgstr "페도라 배포판을 실시간 USB 드라이브를 생성하는 도구"
+msgid "A tool to create AOSC OS boot media"
+msgstr ""
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of AOSC. Not "
-"only can AOSC Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
+"Automatically downloads, writes, and verifies AOSC OS boot media from disk "
+"images"
 msgstr ""
-"페도라 배포판으로 부팅 가능한 라이브 USB 드라이브를 생성하는 도구입니다. 페도"
-"라 미디어 작성기는 사용자의 플래시 드라이브에 이미지를 쓸 수 있을 뿐만 아니"
-"라, 이를 내려 받을 수도 있습니다. 공식 배포판(서버, 웍스테이션), 페도라 스핀"
-"(KDE 플래즈마 데스크탑, Xfce 데스크탑, 시나몬 데스크탑,...), 그리고 페도라 "
-"Labs(디자인 제품군, 보안 랩,...) 등이 있습니다. 사용자에게 맞는 선택을 할 수 "
-"있도록 각 제품에 대한 기본 정보가 제공됩니다."
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"AOSC Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with AOSC images."
+"AOSC Media Writer can also write other bootable ISOs, but keep in mind that "
+"this tool is only tested with AOSC OS images."
 msgstr ""
 "페도라 미디어 작성기는 또한 사용자의 로컬 디스크에서 적재된 다른 부팅 가능한 "
 "ISO에도 쓸 수 있지만, 페도라 이미지만 시험 되었으니 유의하기 바랍니다."
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:43
-msgid "Write AOSC images to your portable drives"
+#: ../src/app/data/io.aosc.MediaWriter.desktop:4
+#, fuzzy
+msgid "Media Writer"
+msgstr "페도라 미디어 작성기"
+
+#: ../src/app/data/io.aosc.MediaWriter.desktop:44
+#, fuzzy
+msgid "Write images to your portable drives"
 msgstr "사용자의 이동식 드라이브에 페도라 이미지를 작성합니다"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:87
+#: ../src/app/data/io.aosc.MediaWriter.desktop:89
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;부팅가능;"
 
-#~ msgctxt "Release|"
-#~ msgid "Emerging AOSC Editions"
-#~ msgstr "새로운 페도라 배포판"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "Intel/AMD 64bit"
+#~ msgstr "인텔/AMD 64비트"
 
-#~ msgctxt "VersionPage|"
-#~ msgid "Emerging Editions"
-#~ msgstr "새로운 배포판"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+#~ msgstr "인텔, AMD와 다른 호환 PC (64비트)를 위한 ISO 형식의 이미지"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying written data"
-#~ msgstr "작성된 자료 확인 중"
+#, fuzzy
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for AArch64 machine"
+#~ msgstr "AArch64 장비를 위한 LZMA-압축된 이미지"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying downloaded image"
-#~ msgstr "내려받은 이미지를 확인 중"
+#, fuzzy
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for LoongArch64 machine"
+#~ msgstr "AArch64 장비를 위한 LZMA-압축된 이미지"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed"
-#~ msgstr "실패하였습니다"
+#~ msgid "A tool to create a live USB drive with an edition of AOSC"
+#~ msgstr "페도라 배포판을 실시간 USB 드라이브를 생성하는 도구"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing not possible"
-#~ msgstr "작성이 불가능합니다"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing"
-#~ msgstr "쓰기"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "종료"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Successfully written"
-#~ msgstr "성공적으로 작성됨"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed due to missing drives"
-#~ msgstr "누락된 드라이브로 인하여 검증에 실패함"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed"
-#~ msgstr "검증에 실패함"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Download failed"
-#~ msgstr "내려받기가 실패됨"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed due to missing drives"
-#~ msgstr "누락된 드라이브로 인해 실패함"
-
-#~ msgctxt "main|"
-#~ msgid "Downloading"
-#~ msgstr "내려받기 중"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write verifying"
-#~ msgstr "쓰기 확인하기"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write Successful"
-#~ msgstr "성공적으로 작성되었습니다"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed verification no drives"
-#~ msgstr "검증 실패된 드라이브가 없습니다"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed verification"
-#~ msgstr "검증이 실패됨"
-
-#~ msgctxt "CancelDialog|"
-#~ msgid "Download progress will be lost and media writing will be aborted."
-#~ msgstr "내려 받기 진행이 소실되면 미디어 작성이 중지됩니다."
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write the image immediately when the download is finished"
-#~ msgstr "내려받기 완료 후 즉시 이미지 작성"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Other"
-#~ msgstr "기타"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-#~ msgstr "<br>\"<a href=\"%1\">%2</a>\"을 삭제 할 수 없습니다."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Back"
-#~ msgstr "돌아가기"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Create Live USB…"
-#~ msgstr "라이브 USB 생성…"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "(%1 after writing)"
-#~ msgstr "(쓰기 후 %1 )"
-
-#~ msgctxt "ImageDetails|"
 #~ msgid ""
-#~ "AOSC %1 was released! Check it out!<br>If you want a stable, finished "
-#~ "system, it's better to stay at version %2."
+#~ "A tool to create a bootable live USB drive with an edition of AOSC. Not "
+#~ "only can AOSC Media Writer write an image to your flash drive, it can "
+#~ "also download it for you. It offers official editions (Server, "
+#~ "Workstation), AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktop,...), and AOSC Labs (Design Suite, Security Lab,...). It provides "
+#~ "basic information about each of them to help you make the right choice."
 #~ msgstr ""
-#~ "페도라 %1이 출시 되었습니다! 확인해 주세요!<br>만약 안정적이고, 완성된 시"
-#~ "스템을 원한다면 버전 %2를 유지하는 것이 좋습니다."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ", released on %1"
-#~ msgstr ", %1에 출시 됨"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "기타 변형..."
-
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "운영 체제 이미지 찾기"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Checking for new releases"
-#~ msgstr "새로운 출시를 점검 중"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Version %1"
-#~ msgstr "버전 %1"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Display additional AOSC flavors"
-#~ msgstr "추가적인 페도라 특징 표시"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Cancel"
-#~ msgstr "취소"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Restore"
-#~ msgstr "복구"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Close"
-#~ msgstr "닫기"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
-#~ "want to restore it to factory settings?"
-#~ msgstr ""
-#~ "실시간 시스템에 이미 포함되어 있는 <b>%1</b>를 넣었습니다.<br>초기 설정"
-#~ "(factory setting)으로 복구 할까요?"
-
-#~ msgctxt "main|"
-#~ msgid "AOSC Media Writer %1 Released"
-#~ msgstr "페도라 미디어 작성시 %1 출시됨"
-
-#~ msgctxt "main|"
-#~ msgid "Update for great new features and bugfixes!"
-#~ msgstr "멋진 새로운 기능과 결점수정을 위해 최신화 하기!"
-
-#~ msgctxt "main|"
-#~ msgid "Open Browser"
-#~ msgstr "검색기 열기"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "%1<br>Writing images will not be possible.<br>You can still view AOSC "
-#~ "flavors and download images to your hard drive."
-#~ msgstr ""
-#~ "%1<br>쓰기 이미지는 실행 할 수 없을 것입니다.<br>당신은 여전히 페도라 특징"
-#~ "을 보고 하드 드라이브에 이미지를 내려 받을 수 있습니다."
-
-#~ msgctxt "main|"
-#~ msgid "Ok"
-#~ msgstr "확인"
-
-# ############## metadata.json ###############
-#~ msgid "workstation"
-#~ msgstr "웍스테이션"
-
-#~ msgctxt "Release|"
-#~ msgid "product"
-#~ msgstr "제품"
-
-#~ msgctxt "Release|"
-#~ msgid "This is the Linux workstation you've been waiting for."
-#~ msgstr "기다리던 리눅스 웍스테이션."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Workstation is a reliable, user-friendly, and powerful operating "
-#~ "system for your laptop or desktop computer. It supports a wide range of "
-#~ "developers, from hobbyists and students to professionals in corporate "
-#~ "environments."
-#~ msgstr ""
-#~ "페도라 웍스테이션은 랩탑과 데스크톱을 위한 친화적이고, 신뢰할 수 있으며, "
-#~ "강력한 운영체제입니다. 개발자부터 취미로 하는 사람, 기업의 전문가까지 다양"
-#~ "한 계층을 지원합니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The plethora of tools provided by<br /> AOSC allows me to get the job "
-#~ "done.<br /> It just works.”"
-#~ msgstr ""
-#~ "<br /> 페도라에서 제공하는 수많은 도구를 통해 작업을 끝내도록 할 수 있다."
-#~ "<br /> 그냥 됩니다.”"
-
-#~ msgctxt "Release|"
-#~ msgid "JVM performance engineer"
-#~ msgstr "JVM 성능 엔지니어"
-
-#~ msgctxt "Release|"
-#~ msgid "Sleek user interface"
-#~ msgstr "세련된 사용자 연결장치"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Focus on your code in the GNOME 3 desktop environment. GNOME is built "
-#~ "with developer feedback and minimizes distractions, so you can "
-#~ "concentrate on what's important."
-#~ msgstr ""
-#~ "그놈 3 데스크톱 환경에서 코드에 집중할 수 있습니다. 그놈은 개발자들의 개"
-#~ "선 사항을 반영하고 시선 분산을 최소화 시켰기에 실제로 집중해야 하는 것에 "
-#~ "더 집중할 수 있습니다."
-
-#~ msgctxt "Release|"
-#~ msgid "Complete open source toolbox"
-#~ msgstr "준비된 오픈 소스 도구들"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Skip the drag of trying to find or build the tools you need. With "
-#~ "AOSC's complete set of open source languages, tools, and utilities, "
-#~ "everything is a click or command line away. There's even project hosting "
-#~ "and repositories like COPR to make your code and builds available quickly "
-#~ "to the community."
-#~ msgstr ""
-#~ "필요한 도구가 어디 있는지 찾아다니고 직접 빌드 할 필요가 없습니다. 페도라"
-#~ "의 준비된 오픈 소스 언어, 도구와 유틸리티 구성을 이용하면, 한 번의 누름 혹"
-#~ "은 명령 줄로 간단히 해결할 수 있습니다. COPR 같은 프로젝트 호스팅과 저장소"
-#~ "도 준비되어 있어 커뮤니티에서 가용하도록 빠르게 빌드하고 코드를 만들 수 있"
-#~ "습니다."
-
-#~ msgctxt "Release|"
-#~ msgid "GNOME Boxes & other virt tools"
-#~ msgstr "그놈 박스 & 다른 가상 도구들"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Get virtual machines up and running quickly to test your code on multiple "
-#~ "platforms using GNOME Boxes. Or dig into powerful, scriptable "
-#~ "virtualization tools for even more control."
-#~ msgstr ""
-#~ "그놈 박스를 이용하면 빠르게 가상 머신을 이용하여 다양한 플랫폼에서 소스 코"
-#~ "드를 테스트할 수 있습니다. 혹은 강력하고 직접 스크립트 작성이 가능한 다른 "
-#~ "가상환경 도구도 이용해보세요."
-
-#~ msgctxt "Release|"
-#~ msgid "Built-in Docker support"
-#~ msgstr "내장 도커 지원"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Containerize your own apps, or deploy containerized apps out of the box "
-#~ "on AOSC, using the latest technology like Docker."
-#~ msgstr ""
-#~ "도커와 같은 최신 기술을 통해서, 자신의 앱을 콘테이너화 하거나 페도라에서 "
-#~ "바로 컨테이너화된 앱을 배포 할 수 있습니다."
-
-#~ msgctxt "Release|"
-#~ msgid "server"
-#~ msgstr "서버"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Server"
-#~ msgstr "페도라 서버"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The latest technology. A stable foundation. Together, for your "
-#~ "applications and services."
-#~ msgstr "최신 기술. 안정된 기반. 응용프로그램과 서비스를 위해 함께."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The simplicity introduced with rolekit and cockpit have made server "
-#~ "deployments a breeze. What took me a few days on other operating systems "
-#~ "took less than an hour with AOSC %(rel)s Server. It just works.”"
-#~ msgstr ""
-#~ "“rolekit 및 cockpit으로 안내된 단순성 덕분에 서버 배포가 쉬워졌습니다. 다"
-#~ "른 운영 체제에서 며칠이 걸렸던 것도 페도라 %(rel)s 서버에서 한 시간도 채 "
-#~ "걸리지 않았습니다. 잘 작동합니다.”"
-
-#~ msgctxt "Release|"
-#~ msgid "Systems Engineer"
-#~ msgstr "시스템 엔지니어"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Server is a short-lifecycle, community-supported server operating "
-#~ "system that enables seasoned system administrators experienced with any "
-#~ "OS to make use of the very latest server-based technologies available in "
-#~ "the open source community."
-#~ msgstr ""
-#~ "페도라 서버는 짧은 생명 주기와 커뮤니티-지원을 바탕으로 한 서버 운영체제"
-#~ "로, 시스템 관리자뿐만 아니라 다른 운영체제를 사용했던 사용자들에게 오픈 소"
-#~ "스 환경에서 가장 최신의 기술들을 제공합니다."
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "쉬운 관리"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Manage your system simply with Cockpit's powerful, modern interface. View "
-#~ "and monitor system performance and status, and deploy and manage "
-#~ "container-based services."
-#~ msgstr ""
-#~ "Cockpit의 강력하고 현대적인 연결장치를 이용하여 간단하게 시스템을 관리할 "
-#~ "수 있습니다. 시스템의 성능과 상태를 보고 모니터링하며, 컨테이너-기반의 서"
-#~ "비스를 배포하고 관리할 수 있게 해줍니다."
-
-#~ msgctxt "Release|"
-#~ msgid "Server Roles"
-#~ msgstr "서버 역할"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "There's no need to set up your server from scratch when you use server "
-#~ "roles. Server roles plug into your AOSC Server system, providing a well-"
-#~ "integrated service on top of the AOSC Server platform. Deploy and "
-#~ "manage these prepared roles simply using the Rolekit tool."
-#~ msgstr ""
-#~ "서버 역할을 사용 할 때 처음부터 서버를 설정 할 필요가 없습니다. 서버 역할"
-#~ "은 페도라 서버 시스템에 연결되어, 페도라 서버 기반의 위에서 잘-통합된 서비"
-#~ "스를 제공합니다. Rolekit 도구를 사용하여 이 준비된 역할을 단순히 배포하고 "
-#~ "관리합니다."
-
-#~ msgctxt "Release|"
-#~ msgid "Database Services"
-#~ msgstr "데이타베이스 서비스"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Server brings with it an enterprise-class, scalable database "
-#~ "server powered by the open-source PostgreSQL project."
-#~ msgstr ""
-#~ "페도라 서버는 개방형-원천 PostgreSQL 프로젝트에 의해 제공되는 기업-등급, "
-#~ "확장성 데이타베이스 제공합니다."
-
-#~ msgctxt "Release|"
-#~ msgid "Complete Enterprise Domain Solution"
-#~ msgstr "준비된 기업용 도메인 솔류션"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Level up your Linux network with advanced identity management, DNS, "
-#~ "certificate services, Windows(TM) domain integration throughout your "
-#~ "environment with FreeIPA, the engine that drives AOSC Server's Domain "
-#~ "Controller role."
-#~ msgstr ""
-#~ "발전된 식별 관리, DNS, 인증 서비스,FreeIPA와 함께 당신의 환경을 통한 "
-#~ "Windows(TM) 도메인 통합, 페도라 서버의 도메인 제어기 역할을 구동하는 엔진"
-#~ "과 함께 리눅스 네트워크 수준을 높입니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The Docker Role for AOSC Server was simple and fast to install so that "
-#~ "you can run your Docker images. This makes a great testbed for beginners "
-#~ "and experts with docker so that they can develop their applications on "
-#~ "the fly.”"
-#~ msgstr ""
-#~ "“페도라 서버의 도커 역할은 도커 이미지를 실행 할 수 있도록 간단하고 설치"
-#~ "가 빠르기 때문입니다. 이는 빨리 응용프로그램을 개발 할 수 있도록 도커로 초"
-#~ "보자와 전문가를 위한 훌륭한 시험무대가 될 수 있습니다. \""
-
-#~ msgctxt "Release|"
-#~ msgid "</p><p align=right> ― <em>John Unland, "
-#~ msgstr "</p><p align=right> ― <em>John Unland, "
-
-#~ msgctxt "Release|"
-#~ msgid "Information Systems Student"
-#~ msgstr "정보 시스템 학생"
-
-#~ msgctxt "Release|"
-#~ msgid "silverblue"
-#~ msgstr "실버블루"
-
-#~ msgctxt "Release|"
-#~ msgid "emerging"
-#~ msgstr "신흥"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Silverblue"
-#~ msgstr "페도라 실버블루"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "An extremely stable and reliable desktop operating system, excellent for "
-#~ "developers and for those using container-focused workflows."
-#~ msgstr ""
-#~ "극한의 안정성과 개발자와 컨테이너-중점의 작업흐름을 사용하는 이들을 위한 "
-#~ "최고로 신뢰 할만한 데스크탑 운영체제."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Silverblue is a variant of AOSC Workstation. It looks, feels and "
-#~ "behaves like a regular desktop operating system, and the experience is "
-#~ "similar to what you find with using a standard AOSC Workstation."
-#~ msgstr ""
-#~ "실버블루는 페도라 웍스테이션의 변형입니다. 이는 일반 데스크탑 운영체제처"
-#~ "럼 보이고, 느껴지며, 동작합니다. 그리고 경험은 표준 페도라 웍스테이션을 사"
-#~ "용하여 찾은 것과 같이 유사합니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "However, unlike other operating systems, Silverblue has reprovisionable "
-#~ "infrastructure with anti-hysteresis properties. This means that every "
-#~ "installation is identical to every other installation of the same "
-#~ "version. The operating system that is on disk is exactly the same from "
-#~ "one machine to the next, and it never changes as it is used."
-#~ msgstr ""
-#~ "아뭏튼, 다른 운영 체제와 달리, 실버블루는 비-히스테리시스 속성이 있는 재규"
-#~ "정 가능한 인프라스트럭쳐를 가지고 있습니다. 이는 모든 설치가 동일한 버전"
-#~ "의 다른 모든 설치와 동일하다는 것을 의미합니다. 디스크에 있는 운영체제는 "
-#~ "하나의 시스템에서 다음 시스템까지 정확하게 동일하며, 그리고 사용 할 때에 "
-#~ "변경되지 않습니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Silverblue’s design is intended to make it more stable, less prone to "
-#~ "bugs, and easier to test and develop. The design also makes it an "
-#~ "excellent platform for containerized applications as well as container-"
-#~ "based software development. In each case, applications and containers are "
-#~ "kept separate from the host system, improving stability and reliability."
-#~ msgstr ""
-#~ "실버블루의 디자인은 보다 안정적이고, 결점 발생 가능성이 적으며, 시험과 개"
-#~ "발을 더 편리하게 합니다. 이 디자인은 또한 컨테이너 -기반 소프트웨어 개발 "
-#~ "뿐만 아니라 컨테이너화된 응용프로그램을 위한 훌륭한 플랫폼이 됩니다. 각각"
-#~ "의 경우, 응용프로그램과 컨테이너가 호스트 시스템에서 분리되어 있어, 안정성"
-#~ "과 신뢰성이 향상됩니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Silverblue’s core technologies have some other helpful features. OS "
-#~ "updates are fast and there’s no waiting around for them to install: just "
-#~ "reboot as normal to start using the next version. With Silverblue, it is "
-#~ "also possible to roll back to the previous version of the operating "
-#~ "system, if something goes wrong."
-#~ msgstr ""
-#~ "실버블루의 핵심 기술에는 다른 유용한 기능이 있습니다. OS 최신화는 빠르고 "
-#~ "설치를 기다릴 필요가 없습니다: 다음 버전을 사용하면 정상적으로 재시작만 하"
-#~ "면 됩니다. 실버블루에서, 문제가 발생한 경우 이전 버전의 운영 체제로 되돌"
-#~ "릴 수도 있습니다."
-
-#~ msgctxt "Release|"
-#~ msgid "kde"
-#~ msgstr "kde"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC KDE Plasma Desktop"
-#~ msgstr "페도라 KDE 플래즈마 데스크탑"
-
-#~ msgctxt "Release|"
-#~ msgid "A complete, modern desktop built using the KDE Plasma Desktop."
-#~ msgstr "완전한, 현대적 데스크탑, KDE PLASMA 데스크탑을 탑재하였습니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC KDE Plasma Desktop Edition is a powerful AOSC-based "
-#~ "operating system utilizing the KDE Plasma Desktop as the main user "
-#~ "interface."
-#~ msgstr ""
-#~ "페도라 KDE 플래즈마 데스크탑 배포판은 주 사용자 연결장치로 KDE 플래즈마 데"
-#~ "스크탑을 사용하는 강력한 페도라 기반 운영 체제입니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC KDE Plasma Desktop comes with many pre-selected top quality "
-#~ "applications that suit all modern desktop use cases - from online "
-#~ "communication like web browsing, instant messaging and electronic mail "
-#~ "correspondence, through multimedia and entertainment, to an advanced "
-#~ "productivity suite, including office applications and enterprise grade "
-#~ "personal information management."
-#~ msgstr ""
-#~ "페도라 KDE 플래즈마 데스크탑은 웹 검색기, 인스턴트 메시징과 전자우편 서"
-#~ "신, 멀티미디어와 오락을 통해, 사무용 응용프로그램과 기업용 등급 개인용 정"
-#~ "보관리를 포함하는 고급 생산성 제품군과 같은 온라인 통신에서 모든 최신 데스"
-#~ "크탑 사용하는 경우에 많은 사전-선택된 최고의 품질의 응용프로그램을 제공합"
-#~ "니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "All KDE applications are well integrated, with a similar look and feel "
-#~ "and an easy to use interface, accompanied by an outstanding graphical "
-#~ "appearance."
-#~ msgstr ""
-#~ "모든 KDE 응용프로그램은 유사한 외형과 느낌을 가지며, 사용하기 쉬운 연결 장"
-#~ "치, 훌륭한 그래픽 외형과 함께 잘 통합되어 있습니다."
-
-#~ msgctxt "Release|"
-#~ msgid "xfce"
-#~ msgstr "xfce"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Xfce Desktop"
-#~ msgstr "페도라 Xfce 데스크탑"
-
-#~ msgctxt "Release|"
-#~ msgid "A complete, well-integrated Xfce Desktop."
-#~ msgstr "완전한, 통합된 Xfce 데스크탑입니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Xfce spin showcases the Xfce desktop, which aims to be fast "
-#~ "and lightweight, while still being visually appealing and user friendly."
-#~ msgstr ""
-#~ "페도라 Xfce 스핀은 빠르고 가벼우면서도 시각적으로 매력적이고 사용자 친화적"
-#~ "인 Xfce 데스크탑을 보여줍니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Xfce is a full-fledged desktop using the freedesktop.org standards."
-#~ msgstr ""
-#~ "페도라 Xfce는 freedesktop.org 표준을 사용하는 완전한 데스크탑입니다."
-
-#~ msgctxt "Release|"
-#~ msgid "lxqt"
-#~ msgstr "lxqt"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXQt Desktop"
-#~ msgstr "페도라 LXQt 데스크탑"
-
-#~ msgctxt "Release|"
-#~ msgid "A lightweight, well-integrated LXQt desktop environment."
-#~ msgstr "가볍고, 잘-통합된 LXQt 데스크탑 환경."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC LXQt provides a lightweight, well-integrated LXQt desktop "
-#~ "environment. In addition to LXQt itself it provides a small, well "
-#~ "selected collection of applications like the QupZilla browser, which "
-#~ "combines Chromium's rendering engine with a nice Qt experience. Other "
-#~ "applications include the Trojita mail client, the qBittorrent client, the "
-#~ "Yarock music player and a set of some more commonly used applications. As "
-#~ "all applications use the same Qt5 toolkit and the Breeze theme known from "
-#~ "KDE, the desktop provides a unified and well-integrated style and "
-#~ "theming. In addition breeze-gtk is provided to allow the user to "
-#~ "integrate GTK applications too."
-#~ msgstr ""
-#~ "페도라 LXQt는 경량이고, 잘-통합된 LXQt 데스크탑 환경입니다. LXQt 자체 이외"
-#~ "에도 멋진 QT 경험을 가진 크롬 렌더링 엔진을 갖는 QupZilla 검색기와 같은 응"
-#~ "용프로그램의 작고, 잘 선택된 모음을 제공합니다. 다른 응용프로그램은 "
-#~ "Trojita 전자우편 클라이언트, q비트토렌트 클라이언트, Yarock 음악 재생기와 "
-#~ "보다 공통적으로 사용되는 응용프로그램의 집합을 포함합니다. 모든 응용프로그"
-#~ "램은 동일한 QT 툴킷과 KDE에서 알려진 Breeze 테마를 사용 할 때에, 데스크탑"
-#~ "은 정제 되고 잘-통합된 외향과 테마를 제공합니다. 추가로 breeze-gtk는 사용"
-#~ "자가 GTK 응용프로그램을 잘 통합되도록 제공됩니다."
-
-#~ msgctxt "Release|"
-#~ msgid "mate"
-#~ msgstr "메이트"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC MATE-Compiz Desktop"
-#~ msgstr "페도라 메이트-Compiz 데스크탑"
-
-#~ msgctxt "Release|"
-#~ msgid "A classic AOSC Desktop with an additional 3D Windows Manager."
-#~ msgstr "추가적인 3D 윈도우 관리자가 있는 클래식 페도라 데스크탑."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE "
-#~ "Desktop is a lightweight, powerful desktop designed with productivity and "
-#~ "performance in mind. The default windows manager is Marco which is usable "
-#~ "for all machines and VMs. Compiz Fusion is a beautiful 3D windowing "
-#~ "manager with Emerald and GTK+ theming."
-#~ msgstr ""
-#~ "메이트 Compiz 스핀은 Compiz 퓨전을 갖는 메이트 데스크탑 묶음입니다. 메이"
-#~ "트 데스크탑은 경량이고, 생산성과 성능에 역점을 두어 설계된 강력한 데스크탑"
-#~ "입니다. 기본 창 관리자는 모든 장비와 가상화장비(VMs)를 위해 사용 할 수 있"
-#~ "는 매크로입니다. Compiz 퓨전은 에머랄드와 GTK+ 테마를 갖는 아름다운 창 관"
-#~ "리자입니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "If you want a powerful, lightweight AOSC desktop with 3D eyecandy you "
-#~ "should definitely try the MATE-Compiz spin."
-#~ msgstr ""
-#~ "만약 3D eyecandy가 있는 강력하고 가벼운 페도라 데스크탑을 원한다면, 당신"
-#~ "은 명백하게 MATE-Compiz 스핀을 시도해야 합니다."
-
-#~ msgctxt "Release|"
-#~ msgid "cinnamon"
-#~ msgstr "시나몬"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Cinnamon Desktop"
-#~ msgstr "페도라 시나몬 데스크탑"
-
-#~ msgctxt "Release|"
-#~ msgid "A modern desktop featuring traditional Gnome user experience."
-#~ msgstr "전통적인 그놈 환경을 갖춘 현대적인 데스크탑 환경."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Cinnamon is a Linux desktop which provides advanced innovative features "
-#~ "and a traditional user experience. The desktop layout is similar to Gnome "
-#~ "2. The underlying technology is forked from Gnome Shell. The emphasis is "
-#~ "put on making users feel at home and providing them with an easy to use "
-#~ "and comfortable desktop experience."
-#~ msgstr ""
-#~ "시나몬은 발전된 혁신적인 기능과 전통적인 사용자 경험을 제공하는 리눅스 데"
-#~ "스크탑입니다. 데스크탑 배열은 그놈 2와 유사합니다. 지연없는 기술은 그놈 쉘"
-#~ "에서 분기되었습니다. 강조하고 싶은 점은 사용자가 집에 있는 것처럼 느끼게 "
-#~ "하고 이를 사용하기 쉽게 제공하며 편안한 데스크톱 경험을 제공하도록 중점을 "
-#~ "둡니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Cinnamon is a popular desktop alternative to Gnome 3 and this spin "
-#~ "provides the option to quickly try and install this desktop."
-#~ msgstr ""
-#~ "시나몬은 그놈 3의 인기 있는 데스크탑 대안이고 이 스핀은 이 데스크탑을 빠르"
-#~ "게 시도하고 설치 할 수 있는 선택을 제공합니다."
-
-#~ msgctxt "Release|"
-#~ msgid "lxde"
-#~ msgstr "lxde"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXDE Desktop"
-#~ msgstr "페도라 LXDE 데스크탑"
-
-#~ msgctxt "Release|"
-#~ msgid "A light, fast, less-resource hungry desktop environment."
-#~ msgstr "가볍고, 빠른, 자원 소모가 적은 데스크탑 환경."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
-#~ "performant, and energy-saving desktop environment. It maintained by an "
-#~ "international community of developers and comes with a beautiful "
-#~ "interface, multi-language support, standard keyboard shortcuts and "
-#~ "additional features like tabbed file browsing."
-#~ msgstr ""
-#~ "LXDE인 \"경량 X11 데스크탑 환경\"은 극도로 빠르고, 성능적이며, 에너지-절약"
-#~ "형 데스크탑 환경입니다. 국제 개발자 커뮤니티에 의해 유지되고 아름다운 연결"
-#~ "장치, 다중 언어 지원, 표준 키보드 단추키와 탭 파일 검색기와 같은 추가적인 "
-#~ "기능이 함께 제공합니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "LXDE is not designed to be powerful and bloated, but to be usable and "
-#~ "slim. A main goal of LXDE is to keep computer resource usage low. It is "
-#~ "especially designed for computers with low hardware specifications like "
-#~ "netbooks, mobile devices (e.g. MIDs) or older computers."
-#~ msgstr ""
-#~ "LXDE는 강력하고 부풀려서 설계되지 않았으나, 유용하고 간편합니다. LXDE의 주"
-#~ "요 목표는 컴퓨터 자원 사용량을 낮게 유지하는 것입니다. 이는 특별히 노트"
-#~ "북, 휴대 장치(예로, MIDs) 또는 오래된 컴퓨터와 같은 저사향 하드웨어를 갖"
-#~ "고 있는 컴퓨터를 위해 설계되었습니다."
-
-#~ msgctxt "Release|"
-#~ msgid "soas"
-#~ msgstr "soas"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC SoaS Desktop"
-#~ msgstr "페도라 SoaS 데스크탑"
-
-#~ msgctxt "Release|"
-#~ msgid "Discover. Reflect. Share. Learn."
-#~ msgstr "탐구. 변화. 공유. 학습."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Sugar on a Stick is a AOSC-based operating system featuring the award-"
-#~ "winning Sugar Learning Platform and designed to fit on an ordinary USB "
-#~ "thumbdrive (\"stick\")."
-#~ msgstr ""
-#~ "스틱에 있는 슈가는 수상 경력에 빛나는 슈가 학습 플랫폼을 특징으로 하는 페"
-#~ "도라 기반 운영 체제이며 일반적인 USB 썸드라이브 ( \"스틱\")에 맞도록 설계"
-#~ "되었습니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
-#~ "child-friendly graphical environment. Sugar automatically saves your "
-#~ "progress to a \"Journal\" on your stick, so teachers and parents can "
-#~ "easily pull up \"all collaborative web browsing sessions done in the past "
-#~ "week\" or \"papers written with Daniel and Sarah in the last 24 hours\" "
-#~ "with a simple query rather than memorizing complex file/folder "
-#~ "structures. Applications in Sugar are known as Activities, some of which "
-#~ "are described below."
-#~ msgstr ""
-#~ "슈가는 전통적인 \"업무용-데스크탑\" 측면을 제외하면, 아동 친화적인 그래픽 "
-#~ "환경을 표시하도록 설정합니다. 슈가는 자동으로 당신의 진행 상황을 스틱의 "
-#~ "\"Journal\"에 저장하므로, 교사와 부모는 손쉽게 복잡한 파일/폴더 구조를 기"
-#~ "억하는 것보다 간단한 쿼리를 통해 \"지난 주에 수행 한 모든 협업한 웹 검색 "
-#~ "세 션\"또는 \"지난 24 시간 동안에 데니얼과 사라와 함께 작성한 문서\" 쉽게 "
-#~ "가져올 수 있습니다리. 슈가에서 응용 프로그램은 활동(Activities)으로 알려"
-#~ "져 있으며, 이 중 일부는 아래에 설명되어 있습니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "It is now deployable for the cost of a stick rather than a laptop; "
-#~ "students can take their Sugar on a Stick thumbdrive to any machine - at "
-#~ "school, at home, at a library or community center - and boot their "
-#~ "customized computing environment without touching the host machine’s hard "
-#~ "disk or existing system at all."
-#~ msgstr ""
-#~ "이는 이제 랩탑 보다 저렴한 스틱을 통해 배포 할 수 있습니다; - 학생들은 학"
-#~ "교, 집, 도서관 또는 커뮤니티 센타에서 - 그리고 호스트 장비의 하드디스크 또"
-#~ "는 기존 시스템을 건드리지 않고 자신이 정의한 컴퓨터 환경으로 부팅하여 어"
-#~ "떤 장비에서도 USB 저장장치(스틱 썸드라이브)에서 이들 슈가를 동작 할 수 있"
-#~ "습니다."
-
-#~ msgctxt "Release|"
-#~ msgid "i3"
-#~ msgstr "i3"
-
-#~ msgctxt "Release|"
-#~ msgid "Simplicity over Complexity"
-#~ msgstr "복잡성보다 단순함"
-
-#~ msgctxt "Release|"
-#~ msgid "The AOSC i3 Spin provides the popular i3 tiling window manager."
-#~ msgstr "페도라 i3 스핀은 유명한 i3 타일형 창 관리자를 제공합니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "It makes i3 accessible and appealing to both novices and advanced users "
-#~ "who prefer not to use a mouse, touchpad, or other pointing device to "
-#~ "interact with their environment. Featuring lightweight applications for "
-#~ "web browsing, text editing, and media playback, the AOSC i3 Spin offers "
-#~ "a complete experience with a minimalist user interface."
-#~ msgstr ""
-#~ "페도라 i3 스핀은 유명한 i3 타일링 윈도우 관리자를 제공합니다. i3는 이들 환"
-#~ "경과 상호 작용하기 위한 마우스, 터치 패드 또는 다른 지시 장치를 사용하지 "
-#~ "않는 초보자와 고급 사용자 모두가 접근 가능하고 매력적입니다. 웹 검색기, 텍"
-#~ "스트 편집 및 미디어 재생을 위한 경량 응용프로그램 기능을 갖고 있는 페도라 "
-#~ "i3 스핀은 최소주의 사용자 연결장치로서 완벽한 경험을 제공합니다."
-
-#~ msgctxt "Release|"
-#~ msgid "astronomy"
-#~ msgstr "천문학"
-
-#~ msgctxt "Release|"
-#~ msgid "labs"
-#~ msgstr "랩"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Astronomy"
-#~ msgstr "페도라 천문학"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Powerful completely open-source and free tool for amateurs and "
-#~ "professionals."
-#~ msgstr "아마추어와 전문가를 위해 강력하고 완전한 개방형-원천 및 무료 도구."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Astronomy brings a complete open source toolchain to both amateur "
-#~ "and professional astronomers."
-#~ msgstr ""
-#~ "페도라 천문학은 아마추어 및 전문 천문학자 모두에게 완전한 개방형 원천 도"
-#~ "구 모음을 제공합니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The Spin provides the AOSC KDE desktop enhanced with a complete "
-#~ "scientific Python environment and the AstrOmatic software for data "
-#~ "analysis. KStars was added to provide a full featured astrophotography "
-#~ "tool. As KStars uses the INDI library to control equipment, various "
-#~ "telescopes, cameras etc. are supported. Summarized, AOSC Astronomy "
-#~ "provides a complete set of software, from the observation planning to the "
-#~ "final results."
-#~ msgstr ""
-#~ "스핀은 완전한 과학용 파이썬 환경과 자료 분석을 위한 AstroOmatic(천체) 소프"
-#~ "트웨어와 함께 발전된 페도라 KDE 데스크탑을 제공합니다. KStar는 모든 기능"
-#~ "을 갖춘 천문사진 도구 제공이 추가되었습니다. KStars는 INDI 라이브러리를 제"
-#~ "어 장치에 사용하여, 다양한 망원경, 사진기 등이 지원 되었습니다. 요약하면, "
-#~ "페도라 천문학은 관찰 계획에서 최종 결과까지 완전한 스프트웨어 묶음을 제공"
-#~ "합니다."
-
-#~ msgctxt "Release|"
-#~ msgid "design_suite"
-#~ msgstr "디자인_제품군"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Design Suite"
-#~ msgstr "페도라 디자인 제품군"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Visual design, multimedia production, and publishing suite of free and "
-#~ "open source creative tools."
-#~ msgstr ""
-#~ "시각 디자인, 멀티미디어 제작과 무료와 개방형 원천 창작 도구의 출판 제품군"
-#~ "입니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Looking for a ready-to-go desktop environment brimming with free and open "
-#~ "source multimedia production and publishing tools? Try the Design Suite, "
-#~ "a AOSC Spin created by designers, for designers."
-#~ msgstr ""
-#~ "무료이고 개방형 원천 멀티미디어 제작과 게시 도구로 가득한 바로 사용 할 수 "
-#~ "있는 데스크탑 환경을 찾고 계시나요? 디자이너를 위해 디자이너가 생성한 페도"
-#~ "라 스핀인 디자인 제품군을 사용해보세요."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The Design Suite includes the favorite tools of the AOSC Design Team. "
-#~ "These are the same programs we use to create all the artwork that you see "
-#~ "within the AOSC Project, from desktop backgrounds to CD sleeves, web "
-#~ "page designs, application interfaces, flyers, posters and more. From "
-#~ "document publication to vector and bitmap editing or 3D modeling to photo "
-#~ "management, the Design Suite has an application for you — and you can "
-#~ "install thousands more from the AOSC universe of packages."
-#~ msgstr ""
-#~ "디자인 제품군은 페도라 디자인 팀이 가장 선호하는 도구를 포함합니다. 이들"
-#~ "은 우리가 페도라 프로젝트, 데스크탑 배경에서 CD 보관, 웹 부분 디자인, 응용"
-#~ "프로그램 연결장치, 전단지, 포스타와 등과 같은 것을 볼 수 있는 모든 시각 작"
-#~ "품을 생성 하는데 사용합니다. 문서 출판에서 사진 관리에 벡터와 비트맵 편집 "
-#~ "또는 3차원 모델링,디자인 제품군은 당신을 위한 응용프로그램을 갖고 있으며 "
-#~ "페도라의 광대한 꾸러미에서 수천 개를 설치 할 수 있습니다."
-
-#~ msgctxt "Release|"
-#~ msgid "games"
-#~ msgstr "게임"
-
-#~ msgid "AOSC Games"
-#~ msgstr "페도라 게임"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A collection and perfect show-case of the best games available in AOSC."
-#~ msgstr "페도라에서 사용 할 수 있는 최고의 게임 모음과 완벽한 전시물입니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Games spin offers a perfect showcase of the best games "
-#~ "available in AOSC. The included games span several genres, from first-"
-#~ "person shooters to real-time and turn-based strategy games to puzzle "
-#~ "games."
-#~ msgstr ""
-#~ "페도라 게임 스핀은 페도라에서 사용 가능한 최고의 게임의 완벽한 진열장을 제"
-#~ "공합니다. 포함되어 있는 게임은 1-인칭 슈팅 게임에서 실시간 턴-기반 전략 게"
-#~ "임, 퍼즐 게임에 이르기까지 여러 장르에 걸쳐 있습니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Not all the games available in AOSC are included on this spin, but "
-#~ "trying out this spin will give you a fair impression of AOSC's ability "
-#~ "to run great games."
-#~ msgstr ""
-#~ "페도라에서 사용 할 수 있는 모든 게임은 이 스핀에서 포함되지 않지만, 그러"
-#~ "나 이 스핀을 시도하는 것은 훌륭한 게임을 실행하는 페도라 능력에 대한 공정"
-#~ "한 인상을 줄 것입니다."
-
-#~ msgctxt "Release|"
-#~ msgid "python"
-#~ msgstr "파이썬"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Python Classroom"
-#~ msgstr "페도라 파이썬 학급"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A classroom lab for teaching the Python programming language to students"
-#~ msgstr "학생에게 파이썬 프로그래밍 언어 교육을 위한 교실 실험실"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "One of the benefits of AOSC for Python developers is the ease of "
-#~ "setting up Python development. The AOSC Python Classroom Lab makes it "
-#~ "even easier for teachers and instructors to use AOSC in their "
-#~ "classrooms or workshops. Ready to use operating system with important "
-#~ "stuff pre-installed - either with GNOME or as a headless environment for "
-#~ "Docker or Vagrant. Teach Python on AOSC, with AOSC, using the stuff "
-#~ "you love: IPython, Jupyter Notebook, multiple Pythons, virtualenvs, tox, "
-#~ "git and more"
-#~ msgstr ""
-#~ "파이썬 개발자를 위한 페도라의 장점 중 하나는 파이썬 개발 설정의 용이하게 "
-#~ "합니다. 페도라 파이썬 교실 실험실(Python Classroom Lab)은 교사와 강사가 그"
-#~ "들 학급 또는 워크샵에서 페도라를 사용하여 보다 쉽게 사용 할 수 있습니다. "
-#~ "그놈과 함께 또는 도커나 Vagrant를 위해 화면 없는 환경 중에 중요한 기능이 "
-#~ "이미-설치된 운영 체제를 사용할 준비가되었습니다. 당신이 좋아하는 도구를 사"
-#~ "용하여, 페도라와 함께, 페도라에서 파이썬을 교육 할 수 있습니다: IPython, "
-#~ "쥬피터 노트북, 여러 파이썬, 가상환경, tox, git 등"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Python Classroom Lab comes in 3 variants. Either you can run "
-#~ "it in graphical mode with GNOME, or you can virtualize it with Vagrant or "
-#~ "run it in a Docker container. You choose what fits your teaching "
-#~ "environment the best."
-#~ msgstr ""
-#~ "페도라 파이썬 학급 랩은 3가지 변형이 있습니다. 당신은 그놈에서 그래픽 모드"
-#~ "에서 실행하거나, 또는 Vargrant에서 이를 가상화 할 수 있거나 도커 컨테이너"
-#~ "에서 실행 할 수 있습니다. 당신의 최고 교육 환경에 알맞는 것을 고를 수 있습"
-#~ "니다."
-
-#~ msgctxt "Release|"
-#~ msgid "robotics"
-#~ msgstr "로봇공학"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Robotics Suite"
-#~ msgstr "페도라 로봇 제품군"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A wide variety of free and open robotics software packages for beginners "
-#~ "and experts in robotics."
-#~ msgstr ""
-#~ "로봇공학에서 초보자와 전문가를 위한 자유롭고 개방적인 소프트웨어 꾸러미의 "
-#~ "넓은 다양성."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Robotics spin provides a wide variety of free and open "
-#~ "robotics software packages. These range from hardware accessory libraries "
-#~ "for the Hokuyo laser scanners or Katana robotic arm to software "
-#~ "frameworks like Fawkes or Player and simulation environments such as "
-#~ "Stage and RoboCup Soccer Simulation Server 2D/3D. It also provides a "
-#~ "ready to use development environment for robotics including useful "
-#~ "libraries such as OpenCV computer vision library, Festival text to speech "
-#~ "system and MRPT."
-#~ msgstr ""
-#~ "페도라 로보틱스 스핀은 다양한 무료 개방된 로봇 소프트웨어를 제공합니다. "
-#~ "이 것들은 Hokuyo 레이저 스캐너 또는 Fawkes 같은 프레임워크 소프트웨어에 "
-#~ "Katana 로봇팔용 하드웨어 주변기기 라이브러리 또는 스테이지 및 로봇컵 축구 "
-#~ "모의 실험 서버 2D/3D와 같은 모의 실험장치와 동작장치 같은 범위에 있습니"
-#~ "다. 이 것은 또한 OpenCV 컴퓨터 시각 라이브러리, 페스티발 음성 시스템(text "
-#~ "to speech)와 MRPT와 같은 유용한 라이브러리를 포함하여 로봇공학을 위한 개"
-#~ "발 환경 사용할 준비를 제공합니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The Robotics spin is targeted at people just discovering their interest "
-#~ "in robotics as well as experienced roboticists. For the former we provide "
-#~ "a readily usable simulation environment with an introductory hands-on "
-#~ "demonstration, and for the latter we provide a full development "
-#~ "environment, to be used immediately."
-#~ msgstr ""
-#~ "로봇공학 스핀(spin)은 로봇공학에 자신의 관심을 찾는 것 뿐만 아니라 로봇공"
-#~ "학을 경험하고자 하는 사람들이 대상입니다. 앞전의 경우에 입문자가 직접 데모"
-#~ "를 통해 쉽게 사용할 수 있는 가상 모의환경을 제공하고, 후자의 경우 우리는 "
-#~ "바로 사용 할 수 있는 전체 개발 환경을 제공합니다."
-
-#~ msgctxt "Release|"
-#~ msgid "scientific"
-#~ msgstr "과학적인"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Scientific"
-#~ msgstr "페도라 과학"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A bundle of open source scientific and numerical tools used in research."
-#~ msgstr "연구에 사용되는 오픈소스 과학과 수치 도구의 묶음(bundle)."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Wary of reinstalling all the essential tools for your scientific and "
-#~ "numerical work? The answer is here. AOSC Scientific Spin brings "
-#~ "together the most useful open source scientific and numerical tools atop "
-#~ "the goodness of the KDE desktop environment."
-#~ msgstr ""
-#~ "과학과 수치 작업에 필요한 모든 필수 도구를 다시 재설치해야하나요? 답이 여"
-#~ "기에 있습니다. 페도라 Scientific 스핀은 KDE 데스크탑 환경의 장점 위에서 가"
-#~ "장 유용한 개방형 원천 과학 및 수치 도구를 제공합니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Scientific currently ships with numerous applications and "
-#~ "libraries. These range from libraries such as the GNU Scientific library, "
-#~ "the SciPy libraries, tools like Octave and xfig to typesetting tools like "
-#~ "Kile and graphics programs such as Inkscape. The current set of packages "
-#~ "include an IDE, tools and libraries for programming in C, C++, Python, "
-#~ "Java and R. Also included along with are libraries for parallel computing "
-#~ "such as the OpenMPI and OpenMP. Tools for typesetting, writing and "
-#~ "publishing are included."
-#~ msgstr ""
-#~ "페도라 과학은 현재 수많은 응용프로그램과 라이브러리와 함께 제공됩니다. 이"
-#~ "들은 GNU 과학 라이브러리와 같은 라이브러리, SciPy 라이브러리, Octave과 "
-#~ "xfig와 같은 도구에서 Kile과 같은 조판 도구와 잉크스케이프와 같은 그래픽 프"
-#~ "로그램에 이르기까지 범위가 넓습니다. 현재 꾸러미 구성에는 C, C ++, 파이"
-#~ "썬, 자바와 R 프로그래밍을 위한 IDE, 도구와 라이브러리가 포함됩니다. 또한 "
-#~ "OpenMPI와 OpenMP와 같은 병렬 컴퓨팅을 위한 라이브러리 등도 포함됩니다. 조"
-#~ "판, 글쓰기와 출판을 위한 도구가 포함되어 있습니다."
-
-#~ msgctxt "Release|"
-#~ msgid "security"
-#~ msgstr "보안"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Security Lab"
-#~ msgstr "페도라 보안 랩"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A safe test environment to work on security auditing, forensics, system "
-#~ "rescue and teaching security testing methodologies."
-#~ msgstr ""
-#~ "보안 감사, 포렌식, 시스템 구조와 보안 시험 방법론 교육을 위한 안전한 시험 "
-#~ "환경입니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Security Lab provides a safe test environment to work on "
-#~ "security auditing, forensics, system rescue and teaching security testing "
-#~ "methodologies in universities and other organizations."
-#~ msgstr ""
-#~ "페도라 보안 랩은 보안감사, 포렌식, 시스템 복구와 대학과 다른 기관에서 보"
-#~ "안 시험 방법론에 대한 업무에 안전한 시험 환경을 제공합니다."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The spin is maintained by a community of security testers and developers. "
-#~ "It comes with the clean and fast Xfce Desktop Environment and a "
-#~ "customized menu that provides all the instruments needed to follow a "
-#~ "proper test path for security testing or to rescue a broken system. The "
-#~ "Live image has been crafted to make it possible to install software while "
-#~ "running, and if you are running it from a USB stick created with LiveUSB "
-#~ "Creator using the overlay feature, you can install and update software "
-#~ "and save your test results permanently."
-#~ msgstr ""
-#~ "시험자와 개발자로 구성된 커뮤니티에 의해 스핀은 유지됩니다. 이는 깔끔하고 "
-#~ "빠른 Xfce 데스크탑 환경과 사용자 정의된 보안 시험과 망가진 시스템 복구를 "
-#~ "위한 적절한 시험 경로를 제공해줄 필요가 있는 모든 도구를 제공해주는 것과 "
-#~ "같은 메뉴와 함께 있습니다. 실시간 이미지는 실행 할 때에 소프트웨어를 설치 "
-#~ "할 수 있게 만들어 주는 것을 정교하게 해주며, 기능을 입히는데 사용하는 "
-#~ "LiveUSB Creator와 함께 생성하는 USB 저장장치에서 이를 실행하면, 당신은 설"
-#~ "치 할 수 있고 소프트웨어를 최신화하며 영구적으로 테스트한 결과를 저장합니"
-#~ "다."
-
-#~ msgctxt "[1].category"
-#~ msgid "product"
-#~ msgstr "제품"
-
-#~ msgctxt "[4].category"
-#~ msgid "spins"
-#~ msgstr "스핀"
-
-#~ msgctxt "[5].category"
-#~ msgid "spins"
-#~ msgstr "스핀"
-
-#~ msgctxt "[6].category"
-#~ msgid "spins"
-#~ msgstr "스핀"
-
-#~ msgctxt "[7].category"
-#~ msgid "spins"
-#~ msgstr "스핀"
-
-#~ msgid ""
-#~ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-"
-#~ "cinnamon.jpg"
-#~ msgstr ""
-#~ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-"
-#~ "cinnamon.jpg"
-
-#~ msgctxt "[8].category"
-#~ msgid "spins"
-#~ msgstr "스핀"
-
-#~ msgid ""
-#~ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-lxde."
-#~ "jpg"
-#~ msgstr ""
-#~ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-lxde."
-#~ "jpg"
-
-#~ msgctxt "[9].category"
-#~ msgid "spins"
-#~ msgstr "스핀"
-
-#~ msgctxt "[11].category"
-#~ msgid "labs"
-#~ msgstr "랩"
-
-#~ msgctxt "[12].category"
-#~ msgid "labs"
-#~ msgstr "랩"
-
-#~ msgctxt "[13].category"
-#~ msgid "labs"
-#~ msgstr "랩"
-
-#~ msgctxt "[14].category"
-#~ msgid "labs"
-#~ msgstr "랩"
-
-#~ msgctxt "[15].category"
-#~ msgid "labs"
-#~ msgstr "랩"
-
-#~ msgctxt "[16].category"
-#~ msgid "labs"
-#~ msgstr "랩"
+#~ "페도라 배포판으로 부팅 가능한 라이브 USB 드라이브를 생성하는 도구입니다. "
+#~ "페도라 미디어 작성기는 사용자의 플래시 드라이브에 이미지를 쓸 수 있을 뿐"
+#~ "만 아니라, 이를 내려 받을 수도 있습니다. 공식 배포판(서버, 웍스테이션), 페"
+#~ "도라 스핀(KDE 플래즈마 데스크탑, Xfce 데스크탑, 시나몬 데스크탑,...), 그리"
+#~ "고 페도라 Labs(디자인 제품군, 보안 랩,...) 등이 있습니다. 사용자에게 맞는 "
+#~ "선택을 할 수 있도록 각 제품에 대한 기본 정보가 제공됩니다."

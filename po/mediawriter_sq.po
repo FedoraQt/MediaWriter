@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
+"POT-Creation-Date: 2024-03-30 22:58+0800\n"
 "PO-Revision-Date: 2021-07-11 17:15+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Albanian <https://translate.fedoraproject.org/projects/fedora-"
@@ -24,40 +24,35 @@ msgstr ""
 
 #: ../src/app/qml/AboutDialog.qml:50
 #, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About AOSC Media Writer"
 msgctxt "AboutDialog|"
 msgid "About AOSC Media Writer"
 msgstr "Rreth AOSC Media Writer"
 
 #: ../src/app/qml/AboutDialog.qml:59
 #, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Versioni %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
+msgctxt "AboutDialog|"
+msgid "Based on Fedora Media Writer"
+msgstr ""
+
+#: ../src/app/qml/AboutDialog.qml:72
 #, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "AOSC Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "AOSC Media Writer is now checking for new releases"
 msgstr "AOSC Media Writer është  tani duke kontrolluar për njoftime të reja"
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: ../src/app/qml/AboutDialog.qml:78
 #, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Ju lutem raportoni metat apo sugjerimet tuaja mbi %1"
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:101
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Mbylle"
@@ -69,8 +64,6 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:58
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
 msgstr "Shkrim"
@@ -82,9 +75,7 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
-msgid ""
-"Download and media writing will be aborted. This process can be resumed any "
-"time later."
+msgid "Download and media writing will be aborted."
 msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:69
@@ -106,16 +97,12 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:111
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "Po shkarkohet"
 
 #: ../src/app/qml/CancelDialog.qml:113
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "Shkrim"
@@ -127,28 +114,26 @@ msgstr ""
 
 #: ../src/app/qml/CancelDialog.qml:117
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Anulojeni"
 
-#: ../src/app/downloadmanager.cpp:235
+#: ../src/app/downloadmanager.cpp:257
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "I pazoti të sjellë pamjen e kërkuar."
 
-#: ../src/app/downloadmanager.cpp:335
+#: ../src/app/downloadmanager.cpp:357
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr ""
 
-#: ../src/app/downloadmanager.cpp:337
+#: ../src/app/downloadmanager.cpp:359
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr ""
 
-#: ../src/app/downloadmanager.cpp:425
+#: ../src/app/downloadmanager.cpp:447
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Ndërlidhjes i mbaroi koha"
@@ -161,72 +146,54 @@ msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:54
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "Shkrim"
 
 #: ../src/app/qml/DownloadPage.qml:56
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr "Po shkarkohet"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr "Po përgatitet"
 
 #: ../src/app/qml/DownloadPage.qml:60
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
 msgstr "Gati për shkrim"
 
 #: ../src/app/qml/DownloadPage.qml:62
 #, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
 msgstr "Po kontrollohet shkarkimi"
 
 #: ../src/app/qml/DownloadPage.qml:76
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr "(%1 B ngelur)"
 
 #: ../src/app/qml/DownloadPage.qml:77
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr "(%1 B ngelur)"
 
 #: ../src/app/qml/DownloadPage.qml:78
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr "(%1 B ngelur)"
 
 #: ../src/app/qml/DownloadPage.qml:79
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr "(%1 B ngelur)"
@@ -250,8 +217,6 @@ msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:143
 #, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "Duke shkruar, ju do të humbisni të gjitha të dhënat në %1."
@@ -265,33 +230,25 @@ msgstr ""
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using AOSC Media Writer. This will remove installation media "
-"from your drive."
+"normal by using AOSC Media Writer. This will remove installation media from "
+"your drive."
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:167
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Përzgjedhur:"
 
 #: ../src/app/qml/DownloadPage.qml:167
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Asnjë"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, qt-format
 msgctxt "DownloadPage|"
-msgid ""
-"Your board or device is not supported by AOSC Media Writer yet. Please "
-"check <a href=%1>this page</a> for more information about its compatibility "
-"with AOSC and how to create bootable media for it."
+msgid "Your board or device is not supported by AOSC Media Writer yet."
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:184
@@ -320,8 +277,6 @@ msgstr ""
 
 #: ../src/app/qml/DrivePage.qml:45
 #, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
 msgstr "Versioni %1"
@@ -333,24 +288,18 @@ msgstr ""
 
 #: ../src/app/qml/DrivePage.qml:84
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
 msgstr "Përzgjedhur:"
 
 #: ../src/app/qml/DrivePage.qml:91
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "Asnjë"
 
 #: ../src/app/qml/DrivePage.qml:99
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
 msgstr "Përzgjedhur:"
@@ -362,8 +311,6 @@ msgstr ""
 
 #: ../src/app/qml/DrivePage.qml:116
 #, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "Të gjithë skedarët"
@@ -375,16 +322,12 @@ msgstr ""
 
 #: ../src/app/qml/DrivePage.qml:135
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "Nuk ka disqe portativë të lidhur"
 
 #: ../src/app/qml/DrivePage.qml:155
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
 msgstr "Po shkarkohet"
@@ -471,8 +414,6 @@ msgstr ""
 
 #: ../src/app/qml/MainPage.qml:57
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
 msgstr "Shkarkimi dështoi"
@@ -484,8 +425,6 @@ msgstr ""
 
 #: ../src/app/qml/MainPage.qml:76
 #, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
 msgstr "Të rikthehet %1?"
@@ -497,8 +436,6 @@ msgstr ""
 
 #: ../src/app/portalfiledialog.cpp:153
 #, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
 msgstr "Të gjithë skedarët"
@@ -508,13 +445,13 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:373
 #, fuzzy
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Zgjidh një skedar nga drive"
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:374
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -522,118 +459,121 @@ msgid ""
 "iso or .bin)</p>"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "AOSC Spins"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:406
 msgctxt "Release|"
 msgid "AOSC Labs"
 msgstr "Laboratorët e AOSC"
 
-#: ../src/app/releasemanager.cpp:432
+#: ../src/app/releasemanager.cpp:408
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC Labs"
 msgctxt "Release|"
 msgid "AOSC Atomic Desktops"
 msgstr "Laboratorët e AOSC"
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:410
 msgctxt "Release|"
 msgid "Other"
 msgstr "Të tjera"
 
-#: ../src/app/releasemanager.cpp:1074
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 64bit"
-msgstr "Intel 64bit"
-
-#: ../src/app/releasemanager.cpp:1074
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr ""
-"Pamje në format ISO për Intel, AMD dhe të tjerë PC të përputhshëm (64-bit)"
-
-#: ../src/app/releasemanager.cpp:1075
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
-msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 32bit"
-msgstr "Intel 32bit"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr ""
-"Pamje në format ISO për Intel, AMD dhe PC të tjerë të përputhshëm (32-bit)"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid "ARM v7"
-msgstr "ARM v7"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid ""
-"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
+msgid "x86-64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1050
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit x86 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
-msgid "LZMA-compressed raw image for AArch64 machines"
+msgid "System releases for AArch64 devices"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "LoongArch"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for LoongArch devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "POWER"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for IBM POWER devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "MIPS-based Loongson 3"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for MIPS-based Loongson 3 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "RISC-V (64bit)"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit RISC-V devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:372
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Pamje vetjake"
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:909 ../src/app/releasemanager.cpp:921
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Pamja e shkarkuar është e dëmtuar"
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:925
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Skedari i  shkarkuar nuk është i lexueshëm."
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "E pamundur  për të ndërruar emrin e skedarit  të përkohshëm."
 
 #: ../src/app/releasemanager.h:375
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Po përgatitet"
 
 #: ../src/app/releasemanager.h:376
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "Po shkarkohet"
 
 #: ../src/app/releasemanager.h:377
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "Po kontrollohet shkarkimi"
@@ -650,16 +590,12 @@ msgstr ""
 
 #: ../src/app/releasemanager.h:380
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "Shkrim"
 
 #: ../src/app/releasemanager.h:381
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "Duke kontrolluar të dhënat e shkruara"
@@ -676,8 +612,6 @@ msgstr "E dhëna e shkruar  është  korruptuar"
 
 #: ../src/app/releasemanager.h:384
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "Shkarkimi dështoi"
@@ -687,19 +621,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Gabim"
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:682
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:684
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:686
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -713,21 +647,6 @@ msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:49
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -755,10 +674,6 @@ msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:67
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while AOSC Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while AOSC Media Writer restores your "
@@ -769,8 +684,6 @@ msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:84
 #, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "Disku juaj u rikthye me sukses në gjendjen e mëparshme!"
@@ -794,33 +707,13 @@ msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:48
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
 msgstr "Përzgjedhur:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
-msgid "Official Editions"
-msgstr ""
-
-#: ../src/app/qml/VersionPage.qml:59
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC Labs"
-msgctxt "VersionPage|"
-msgid "Atomic Desktops"
-msgstr "Laboratorët e AOSC"
-
-#: ../src/app/qml/VersionPage.qml:65
-msgctxt "VersionPage|"
-msgid "Spins"
-msgstr ""
-
-#: ../src/app/qml/VersionPage.qml:71
-msgctxt "VersionPage|"
-msgid "Labs"
+msgid "Livekit"
 msgstr ""
 
 #: ../src/app/windrivemanager.cpp:319
@@ -863,8 +756,6 @@ msgstr ""
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:320
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "The downloaded image is corrupted"
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "Pamja e shkarkuar është e dëmtuar"
@@ -906,8 +797,6 @@ msgstr ""
 
 #: ../src/helper/mac/writejob.cpp:131
 #, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
 msgstr "Nuk mund të hapë diskun për të shkruar"
@@ -924,23 +813,18 @@ msgstr "Nuk mund të bllokoj diskun"
 
 #: ../src/helper/win/writejob.cpp:134
 #, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't remove the drive %1:"
 msgstr "Nuk mund të bllokoj diskun"
 
 #: ../src/helper/win/writejob.cpp:209
 #, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unlock the drive"
 msgstr "Nuk mund të bllokoj diskun"
 
 #: ../src/app/qml/main.qml:116
 #, fuzzy
-#| msgid "AOSC Media Writer"
 msgctxt "main|"
 msgid "AOSC Media Writer"
 msgstr "AOSC Media Writer"
@@ -952,8 +836,6 @@ msgstr ""
 
 #: ../src/app/qml/main.qml:170
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
 msgstr "Përzgjedhur:"
@@ -965,48 +847,36 @@ msgstr "Riktheje"
 
 #: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 #, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "main|"
 msgid "Finish"
 msgstr "Përfundoi!"
 
 #: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "main|"
 msgid "Write"
 msgstr "Shkruaje %1"
 
 #: ../src/app/qml/main.qml:296
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download && Write"
 msgstr "Shkarkimi dështoi"
 
 #: ../src/app/qml/main.qml:297
 #, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download & Write"
 msgstr "Shkarkimi dështoi"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "main|"
 msgid "Cancel"
 msgstr "Anulojeni"
 
 #: ../src/app/qml/main.qml:306
 #, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
 msgctxt "main|"
 msgid "Retry"
 msgstr "Riprovo"
@@ -1026,249 +896,72 @@ msgctxt "main|"
 msgid "Previous"
 msgstr ""
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/io.aosc.MediaWriter.desktop:4
 msgid "AOSC Media Writer"
 msgstr "AOSC Media Writer"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of AOSC"
-msgstr "Një mjet për krijim diskthi USB live me një version AOSC"
+msgid "A tool to create AOSC OS boot media"
+msgstr ""
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of AOSC. Not "
-"only can AOSC Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
+"Automatically downloads, writes, and verifies AOSC OS boot media from disk "
+"images"
 msgstr ""
-"Një mjet për krijim diskthi USB live me një version AOSC. AOSC Media "
-"Writer jo vetëm që mund të shkruajë një pamje te diskthi juaj, mundet edhe "
-"ta shkarkojë atë për ju. Ju ofron versione zyrtare (Server, Workstation), "
-"degëzime AOSC(Desktop KDE Plasma, Desktop Xfce, Desktop Cinnamon,…), dhe "
-"AOSC Labs (Design Suite, Security Lab,...). Furnizon të dhëna bazë rreth "
-"secilit prej tyre për t’ju ndihmuar të bëni zgjedhjen e duhur."
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"AOSC Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with AOSC images."
+"AOSC Media Writer can also write other bootable ISOs, but keep in mind that "
+"this tool is only tested with AOSC OS images."
 msgstr ""
-"AOSC Media Writer mund të shkruajë edhe ISO të tjera të nisshme të "
-"ngarkuara mga disku juaj vendor, por mos harroni se është provuar vetëm me "
-"pamje AOSC."
+"AOSC Media Writer mund të shkruajë edhe ISO të tjera të nisshme të ngarkuara "
+"mga disku juaj vendor, por mos harroni se është provuar vetëm me pamje AOSC."
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:43
-msgid "Write AOSC images to your portable drives"
+#: ../src/app/data/io.aosc.MediaWriter.desktop:4
+#, fuzzy
+msgid "Media Writer"
+msgstr "AOSC Media Writer"
+
+#: ../src/app/data/io.aosc.MediaWriter.desktop:44
+#, fuzzy
+msgid "Write images to your portable drives"
 msgstr "Shkruani pamje AOSC te disqet tuaj portativë"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:87
+#: ../src/app/data/io.aosc.MediaWriter.desktop:89
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
 
 #, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Checking the written data"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying written data"
-#~ msgstr "Duke kontrolluar të dhënat e shkruara"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "Intel/AMD 64bit"
+#~ msgstr "Intel 64bit"
 
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "The downloaded image is corrupted"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying downloaded image"
-#~ msgstr "Pamja e shkarkuar është e dëmtuar"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Writing %1 failed"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing not possible"
-#~ msgstr "Shkrimi %1 dështoi"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Writing"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing"
-#~ msgstr "Shkrim"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Finished!"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "Përfundoi!"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Writing %1 failed"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed"
-#~ msgstr "Shkrimi %1 dështoi"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Download failed"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Download failed"
-#~ msgstr "Shkarkimi dështoi"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Downloading"
-#~ msgctxt "main|"
-#~ msgid "Downloading"
-#~ msgstr "Po shkarkohet"
-
-#, fuzzy
-#~| msgctxt "ReleaseVariant|"
-#~| msgid "Writing"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write verifying"
-#~ msgstr "Shkrim"
-
-#, fuzzy
-#~| msgctxt "LinuxDrive|"
-#~| msgid "Writing %1 was successful"
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write Successful"
-#~ msgstr "Shkrimi %1 ishte i suksesshëm"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write the image immediately when the download is finished"
-#~ msgstr "Shkruaje pamjen menjëherë sapo të përfundojë shkarkimi"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "(%1 after writing)"
-#~ msgstr "(%1 pas shkrimit)"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ", released on %1"
-#~ msgstr ", hedhur në qarkullim më %1"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "Variante të tjera…"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "Gjeni një pamje për një sistem operativ"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Version %1"
-#~ msgstr "Versioni %1"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Display additional AOSC flavors"
-#~ msgstr "Shfaq variante të tjera AOSC"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Cancel"
-#~ msgstr "Anulojeni"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Restore"
-#~ msgstr "Riktheje"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Close"
-#~ msgstr "Mbylle"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
-#~ "want to restore it to factory settings?"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 #~ msgstr ""
-#~ "Futët <b>%1</b> që përmban tashmë një sistem live.<br>Doni të rikthehet "
-#~ "në gjendjen që doli nga fabrika?"
+#~ "Pamje në format ISO për Intel, AMD dhe të tjerë PC të përputhshëm (64-bit)"
 
-#~ msgctxt "main|"
-#~ msgid "Ok"
-#~ msgstr "Ok"
+#~ msgid "A tool to create a live USB drive with an edition of AOSC"
+#~ msgstr "Një mjet për krijim diskthi USB live me një version AOSC"
 
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Server"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Silverblue"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXQt Desktop"
-#~ msgstr "Laboratorët e AOSC"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Cinnamon Desktop"
-#~ msgstr "Laboratorët e AOSC"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXDE Desktop"
-#~ msgstr "Laboratorët e AOSC"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC SoaS Desktop"
-#~ msgstr "Laboratorët e AOSC"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "design_suite"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Design Suite"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgid "AOSC Games"
-#~ msgstr "Laboratorët e AOSC"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Robotics Suite"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Scientific"
-#~ msgstr "Laboratorët e AOSC"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Security Lab"
-#~ msgstr "Laboratorët e AOSC"
+#~ msgid ""
+#~ "A tool to create a bootable live USB drive with an edition of AOSC. Not "
+#~ "only can AOSC Media Writer write an image to your flash drive, it can "
+#~ "also download it for you. It offers official editions (Server, "
+#~ "Workstation), AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktop,...), and AOSC Labs (Design Suite, Security Lab,...). It provides "
+#~ "basic information about each of them to help you make the right choice."
+#~ msgstr ""
+#~ "Një mjet për krijim diskthi USB live me një version AOSC. AOSC Media "
+#~ "Writer jo vetëm që mund të shkruajë një pamje te diskthi juaj, mundet "
+#~ "edhe ta shkarkojë atë për ju. Ju ofron versione zyrtare (Server, "
+#~ "Workstation), degëzime AOSC(Desktop KDE Plasma, Desktop Xfce, Desktop "
+#~ "Cinnamon,…), dhe AOSC Labs (Design Suite, Security Lab,...). Furnizon të "
+#~ "dhëna bazë rreth secilit prej tyre për t’ju ndihmuar të bëni zgjedhjen e "
+#~ "duhur."

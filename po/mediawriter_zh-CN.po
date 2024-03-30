@@ -12,24 +12,25 @@
 # yangyangdaji <1504305527@qq.com>, 2022.
 msgid ""
 msgstr ""
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
-"PO-Revision-Date: 2022-08-13 16:19+0000\n"
-"Last-Translator: yangyangdaji <1504305527@qq.com>\n"
+"POT-Creation-Date: 2024-03-30 22:58+0800\n"
+"PO-Revision-Date: 2024-03-30 23:03+0800\n"
+"Last-Translator: Mingcong Bai <jeffbai@aosc.io>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
 "projects/fedora-media-writer/mediawriter/zh_CN/>\n"
-"Language: zh-CN\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Poedit 3.4.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
 msgctxt "AboutDialog|"
 msgid "About AOSC Media Writer"
-msgstr "关于 AOSC Media Writer"
+msgstr "关于 AOSC 启动盘制作向导"
 
 #: ../src/app/qml/AboutDialog.qml:59
 #, qt-format
@@ -37,18 +38,23 @@ msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "版本 %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
 msgctxt "AboutDialog|"
-msgid "AOSC Media Writer is now checking for new releases"
-msgstr "AOSC Media Writer 正在检查新版本"
+msgid "Based on Fedora Media Writer"
+msgstr "本写入向导基于 Fedora Media Writer 制作"
 
 #: ../src/app/qml/AboutDialog.qml:72
+msgctxt "AboutDialog|"
+msgid "AOSC Media Writer is now checking for new releases"
+msgstr "AOSC 启动盘制作向导正在检查版本更新"
+
+#: ../src/app/qml/AboutDialog.qml:78
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr "问题反馈与建议请访问 %1"
+msgstr "请于 %1 报告问题或提交建议"
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:101
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "关闭"
@@ -70,22 +76,20 @@ msgstr "取消验证？"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
-msgid ""
-"Download and media writing will be aborted. This process can be resumed any "
-"time later."
-msgstr "下载及写入已中止。之后仍可以随时继续。"
+msgid "Download and media writing will be aborted."
+msgstr "此时取消将中止下载及写入。"
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr "写入程序将会中止且你的驱动器需要重置。"
+msgstr "此时取消将中止写入操作，您的驱动器将需要恢复。"
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr "该操作可以安全取消。"
+msgstr "该操作可安全取消。"
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
@@ -108,29 +112,26 @@ msgid "Cancel Verification"
 msgstr "取消验证"
 
 #: ../src/app/qml/CancelDialog.qml:117
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "取消"
 
-#: ../src/app/downloadmanager.cpp:235
+#: ../src/app/downloadmanager.cpp:257
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr "无法获取请求的镜像。"
+msgstr "无法获取您请求的镜像。"
 
-#: ../src/app/downloadmanager.cpp:335
+#: ../src/app/downloadmanager.cpp:357
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr "你的“下载”文件夹空间不足。"
+msgstr "“下载”文件夹空间不足。"
 
-#: ../src/app/downloadmanager.cpp:337
+#: ../src/app/downloadmanager.cpp:359
 msgctxt "Download|"
 msgid "The download file is not writable."
-msgstr "该下载文件不可写。"
+msgstr "下载文件不可写。"
 
-#: ../src/app/downloadmanager.cpp:425
+#: ../src/app/downloadmanager.cpp:447
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "连接超时"
@@ -145,94 +146,94 @@ msgstr "已成功写入 %1"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "写入中 %1"
+msgstr "正在写入 %1"
 
 #: ../src/app/qml/DownloadPage.qml:56
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "下载中 %1"
+msgstr "正在下载 %1"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "准备中 %1"
+msgstr "正在准备 %1"
 
 #: ../src/app/qml/DownloadPage.qml:60
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "写入准备就绪 %1"
+msgstr "已准备好写入 %1"
 
 #: ../src/app/qml/DownloadPage.qml:62
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "下载 %1 失败"
+msgstr "无法下载 %1"
 
 #: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr " B 剩余）"
+msgstr " B 尚需下载）"
 
 #: ../src/app/qml/DownloadPage.qml:77
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr " KB 剩余）"
+msgstr " KB 尚需下载）"
 
 #: ../src/app/qml/DownloadPage.qml:78
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr " MB 剩余）"
+msgstr " MB 尚需下载）"
 
 #: ../src/app/qml/DownloadPage.qml:79
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr " GB 剩余）"
+msgstr " GB 尚需下载）"
 
 #: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
 #: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr " （%1"
+msgstr "（%1"
 
 #: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr "你的驱动器在这个过程中被拔掉了"
+msgstr "您的驱动器似乎中途被拔除"
 
 #: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "下载的文件已保存到“下载”文件夹中。"
+msgstr "系统镜像将保存于“下载”文件夹。"
 
 #: ../src/app/qml/DownloadPage.qml:143
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "一旦开始写入，%1 上所有的数据便会丢失。"
+msgstr "一经写入，%1 上所有的数据将会丢失。"
 
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr "请插入一个USB驱动器。"
+msgstr "请插入 USB 驱动器。"
 
 #: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using AOSC Media Writer. This will remove installation media "
-"from your drive."
+"normal by using AOSC Media Writer. This will remove installation media from "
+"your drive."
 msgstr ""
-"你的驱动器将被调整至较小容量。你也可以使用 AOSC Media Writer 将其调整回其正"
-"常容量，但这也将从驱动器上抹除安装介质。"
+"本向导将会缩小您的驱动器容量。在使用启动盘后，您可以使用本向导将其复位至正常"
+"容量。"
 
 #: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "Selected:"
-msgstr "已选择："
+msgstr "系统镜像："
 
 #: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
@@ -240,15 +241,9 @@ msgid "None"
 msgstr "无"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, qt-format
 msgctxt "DownloadPage|"
-msgid ""
-"Your board or device is not supported by AOSC Media Writer yet. Please "
-"check <a href=%1>this page</a> for more information about its compatibility "
-"with AOSC and how to create bootable media for it."
-msgstr ""
-"AOSC Media Writer 不支持你的主板或设备。请参考<a href=%1>此页面</a>了解 "
-"AOSC 兼容性及如何为其创建可启动介质的更多信息。"
+msgid "Your board or device is not supported by AOSC Media Writer yet."
+msgstr "AOSC 启动盘制作向导尚未支持您的设备或主板。"
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -256,13 +251,13 @@ msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
-msgstr "已选驱动器的容量为 %1。你可能不小心选择了一个外部驱动器！"
+msgstr "已选驱动器的容量为 %1。您可能不小心选择了外接驱动器！"
 
 #: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr "重启并从 %1 引导，开始使用 %2。"
+msgstr "重启并从 %1 引导即可开始使用 %2。"
 
 #: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
@@ -317,7 +312,7 @@ msgstr "USB 驱动器"
 #: ../src/app/qml/DrivePage.qml:135
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr "没有已连接的可移动磁盘"
+msgstr "未探测到可移动驱动器"
 
 #: ../src/app/qml/DrivePage.qml:155
 msgctxt "DrivePage|"
@@ -327,7 +322,7 @@ msgstr "下载"
 #: ../src/app/qml/DrivePage.qml:160
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "写入完成后删除下载"
+msgstr "写入完成后删除下载的系统镜像"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -337,23 +332,23 @@ msgstr "此驱动器在写入过程中被移除。"
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "找不到 helper 二进制文件，请检查是否已安装。"
+msgstr "找不到 helper 二进制文件，请检查您的启动向导是否完整。"
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr "在写入完成前已被停止。"
+msgstr "写入被中止。"
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
 msgid "Finished!"
-msgstr "完成！"
+msgstr "成功完成！"
 
 #: ../src/app/linuxdrivemanager.cpp:327
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr "成功写入 %1"
+msgstr "已成功写入 %1"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
@@ -364,17 +359,17 @@ msgstr "错误"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr "写入 %1 失败"
+msgstr "无法写入 %1"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
-msgstr "UDisk2 似乎在你的系统上不可用或无法访问。"
+msgstr "UDisk2 系统服务不可用或无法访问。"
 
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "找不到 helper 二进制文件，请检查是否已安装。"
+msgstr "找不到 helper 二进制文件，请检查您的启动向导是否完整。"
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
@@ -385,23 +380,23 @@ msgstr "错误"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr "写入 %1失败"
+msgstr "无法写入 %1"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
 msgid "Finished!"
-msgstr "完成！"
+msgstr "成功完成！"
 
 #: ../src/app/macdrivemanager.cpp:190
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr "成功写入%1"
+msgstr "已成功写入 %1"
 
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr "选择源镜像"
+msgstr "选择系统镜像来源"
 
 #: ../src/app/qml/MainPage.qml:57
 msgctxt "MainPage|"
@@ -417,7 +412,7 @@ msgstr "选择 .iso 文件"
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "重置 <b>%1</b>"
+msgstr "恢复 <b>%1</b> 的原始容量"
 
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
@@ -434,101 +429,117 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "打开文件"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:373
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
-msgstr "从驱动器中选择一个文件"
+msgstr "从驱动器中选择镜像文件"
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:374
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
-"<p>在这里你可以从硬盘上选择一个想要写入优盘的操作系统镜像</p><p>当前只支持写"
-"入原始磁盘镜像（.iso 或 .bin 文件）</p>"
+"<p>请从硬盘上选择想要写入启动盘的系统镜像</p><p>当前只支持写入磁盘镜像（即 ."
+"iso 或 .bin 文件）</p>"
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "AOSC Spins"
-msgstr "AOSC 定制版"
+msgstr ""
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:406
 msgctxt "Release|"
 msgid "AOSC Labs"
-msgstr "AOSC 实验室"
+msgstr ""
 
-#: ../src/app/releasemanager.cpp:432
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC Labs"
+#: ../src/app/releasemanager.cpp:408
 msgctxt "Release|"
 msgid "AOSC Atomic Desktops"
-msgstr "AOSC 实验室"
+msgstr ""
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:410
 msgctxt "Release|"
 msgid "Other"
 msgstr "其他"
 
-#: ../src/app/releasemanager.cpp:1074
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 64bit"
-msgstr "Intel/AMD 64 位"
+msgid "x86-64"
+msgstr "x86-64"
 
-#: ../src/app/releasemanager.cpp:1074
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr "适用于 Intel、AMD 和其他兼容 PC（64 位）的 ISO 格式的镜像"
+msgid "System releases for 64-bit x86 devices"
+msgstr "供 64 位 x86 设备使用的系统镜像"
 
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 32bit"
-msgstr "Intel/AMD 32 位"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr "适用于 Intel、AMD 和其他兼容 PC（32 位）的 ISO 格式的镜像"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid "ARM v7"
-msgstr "ARM v7"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid ""
-"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr "适用于 ARM v7-A 架构，如树莓派 2 和 3 的 LZMA 压缩 raw 镜像"
-
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
-msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "适用于 AArch64 架构的 LZMA 压缩 raw 镜像"
+msgid "System releases for AArch64 devices"
+msgstr "供 AArch64 设备使用的系统镜像"
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "LoongArch"
+msgstr "龙架构"
+
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for LoongArch devices"
+msgstr "供龙架构 (LoongArch) 设备使用的系统镜像"
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "POWER"
+msgstr "POWER"
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for IBM POWER devices"
+msgstr "供 IBM POWER 设备使用的系统镜像"
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "MIPS-based Loongson 3"
+msgstr "基于 MIPS 的龙芯三号"
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for MIPS-based Loongson 3 devices"
+msgstr "供基于 MIPS 的龙芯三号设备使用的系统镜像"
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "RISC-V (64bit)"
+msgstr "RISC-V（64 位）"
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit RISC-V devices"
+msgstr "供 64 位 RISC-V 设备使用的系统镜像"
+
+#: ../src/app/releasemanager.cpp:372
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "自定义镜像"
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:909 ../src/app/releasemanager.cpp:921
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
-msgstr "下载的镜像已损坏"
+msgstr "镜像文件损坏或不完整"
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:925
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
-msgstr "下载到的文件不可读。"
+msgstr "无法读取镜像文件。"
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "无法重命名临时文件。"
@@ -546,7 +557,7 @@ msgstr "下载中"
 #: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr "正在检查下载"
+msgstr "正在检查镜像文件"
 
 #: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
@@ -571,12 +582,12 @@ msgstr "正在检查已写入的数据"
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
-msgstr "完成！"
+msgstr "成功完成！"
 
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
-msgstr "已写入的数据有损坏"
+msgstr "已写入的数据损坏或不完整"
 
 #: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
@@ -588,19 +599,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "错误"
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:682
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha 版"
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:684
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta 版"
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:686
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -610,7 +621,7 @@ msgstr "%1 发布候选版"
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr "重置驱动器 <b>%1</b>"
+msgstr "恢复 <b>%1</b> 的原始容量"
 
 #: ../src/app/qml/RestorePage.qml:49
 msgctxt "RestorePage|"
@@ -622,39 +633,39 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
-"<p align=\"justify\"> 为了使用全部可用空间，该驱动器必须恢复到出厂设置。Live "
-"系统及所有存储数据都会被删除。</p><p align=\"justify\">如果你只是希望写入其"
-"他 live 系统，便不需要重置。\n"
-"                </p><p align=\"justify\">要恢复到出厂设置吗？</p>"
+"<p align=\"justify\"> 要恢复驱动器上的可用空间，必须复位该驱动器。Live 系统及"
+"所有存储数据都会被删除。</p><p align=\"justify\">如果你只是希望写入其他 Live "
+"系统，无需恢复该驱动器。\n"
+"                </p><p align=\"justify\">要复位驱动器吗？</p>"
 
 #: ../src/app/qml/RestorePage.qml:67
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while AOSC Media Writer restores your "
 "portable drive.</p>"
-msgstr "<p align=\"justify\">请等待 AOSC Media Writer 完成重置此驱动器。</p>"
+msgstr "<p align=\"justify\">请耐心等待 AOSC 启动盘制作向导完成恢复。</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr "驱动器已重置成功！"
+msgstr "驱动器已成功恢复！"
 
 #: ../src/app/qml/RestorePage.qml:94
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
-msgstr "很不幸，此过程中发生了错误。请使用系统工具重置此驱动器。"
+msgstr "驱动器恢复失败，请使用系统工具恢复该驱动器。"
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr "重置完成"
+msgstr "成功恢复"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select AOSC Release"
-msgstr "选择 AOSC 版本"
+msgstr "选择安同 OS 版本"
 
 #: ../src/app/qml/VersionPage.qml:48
 msgctxt "VersionPage|"
@@ -663,36 +674,18 @@ msgstr "选择："
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
-msgid "Official Editions"
-msgstr "官方版本"
-
-#: ../src/app/qml/VersionPage.qml:59
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC Labs"
-msgctxt "VersionPage|"
-msgid "Atomic Desktops"
-msgstr "AOSC 实验室"
-
-#: ../src/app/qml/VersionPage.qml:65
-msgctxt "VersionPage|"
-msgid "Spins"
-msgstr "定制版"
-
-#: ../src/app/qml/VersionPage.qml:71
-msgctxt "VersionPage|"
-msgid "Labs"
-msgstr "实验室"
+msgid "Livekit"
+msgstr "LiveKit"
 
 #: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "找不到 helper 二进制文件，请检查是否已安装。"
+msgstr "找不到 helper 二进制文件，请检查您的启动向导是否完整。"
 
 #: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr "已完成！"
+msgstr "成功完成！"
 
 #: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 #, qt-format
@@ -704,7 +697,7 @@ msgstr "成功写入 %1"
 #: ../src/helper/win/writejob.cpp:271
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr "无法进行解压。"
+msgstr "无法解压镜像。"
 
 #: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
 #: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
@@ -712,49 +705,49 @@ msgstr "无法进行解压。"
 #: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
-msgstr "目标设备不可写"
+msgstr "目标驱动器不可写"
 
 #: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:315
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
-msgstr "没有足够的空间来解压文件。"
+msgstr "没有足够的空间来解压镜像文件。"
 
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:320
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
-msgstr "下载到的压缩文件已损坏。"
+msgstr "压缩文件损坏或不完整。"
 
 #: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:323
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
-msgstr "不被支持的压缩选项。"
+msgstr "压缩选项不受支持。"
 
 #: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:326
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
-msgstr "未知的解压错误。"
+msgstr "未知解压错误。"
 
 #: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
 #: ../src/helper/win/writejob.cpp:361
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
-msgstr "源文件不可读"
+msgstr "镜像文件不可读"
 
 #: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
 #: ../src/helper/win/writejob.cpp:406
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr "您的驱动器可能已被损坏。"
+msgstr "您的驱动器可能存在故障。"
 
 #: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
 #: ../src/helper/win/writejob.cpp:411
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr "介质检查中出现意外错误。"
+msgstr "校验启动盘时发生意外错误。"
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
@@ -764,12 +757,12 @@ msgstr "无法分配套接字对"
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr "无法打开写入的目的地"
+msgstr "无法打开写入目标"
 
 #: ../src/helper/win/writejob.cpp:74
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for writing"
-msgstr "无法打开设备来写入数据"
+msgstr "打开设备出错，无法写入数据"
 
 #: ../src/helper/win/writejob.cpp:98
 msgctxt "WriteJob|"
@@ -790,12 +783,12 @@ msgstr "无法解锁设备"
 #: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "AOSC Media Writer"
-msgstr "AOSC Media Writer"
+msgstr "AOSC 启动盘制作向导"
 
 #: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select AOSC Version"
-msgstr "选择 AOSC 版本"
+msgstr "选择安同 OS 版本"
 
 #: ../src/app/qml/main.qml:170
 msgctxt "main|"
@@ -805,7 +798,7 @@ msgstr "选择驱动器"
 #: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
 msgid "Restore"
-msgstr "重置"
+msgstr "恢复驱动器"
 
 #: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 msgctxt "main|"
@@ -852,325 +845,85 @@ msgctxt "main|"
 msgid "Previous"
 msgstr "上一步"
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/io.aosc.MediaWriter.desktop:4
 msgid "AOSC Media Writer"
-msgstr "AOSC Media Writer"
+msgstr "AOSC 启动盘制作向导"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of AOSC"
-msgstr "一个用来创建 Live USB 启动盘的 AOSC 版工具"
+msgid "A tool to create AOSC OS boot media"
+msgstr "安同 OS 启动盘创建工具"
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of AOSC. Not "
-"only can AOSC Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
-msgstr ""
-"一个为各种 AOSC 版本制作可启动 Live USB 设备的工具。AOSC Media Writer 不"
-"仅能将镜像写入优盘中，还能为你下载镜像。它提供官方版（Server、Workstation）、"
-"AOSC 定制版（KDE Plasma 桌面、Xfce 桌面、Cinnamon 桌面等）以及 AOSC 实验"
-"室（设计套件、安全实验室等）。它还提供各版本的基本信息来帮助你做选择。"
+"Automatically downloads, writes, and verifies AOSC OS boot media from disk "
+"images"
+msgstr "该工具可自动下载、写入和校验安同 OS 启动盘和系统镜像"
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:12
 msgid ""
-"AOSC Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with AOSC images."
+"AOSC Media Writer can also write other bootable ISOs, but keep in mind that "
+"this tool is only tested with AOSC OS images."
 msgstr ""
-"AOSC Media Writer 也可以从你本地磁盘载入可启动的 ISO 文件，但请注意这个工具"
-"只测试过 AOSC 镜像。"
+"AOSC 启动盘制作向导亦支持写入其他可启动 ISO 文件，但本工具仅测试过安同 OS 系"
+"统镜像的写入功能。"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:43
-msgid "Write AOSC images to your portable drives"
-msgstr "将 AOSC 镜像写入到可移动驱动器中"
+#: ../src/app/data/io.aosc.MediaWriter.desktop:4
+msgid "Media Writer"
+msgstr "启动盘制作向导"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:87
+#: ../src/app/data/io.aosc.MediaWriter.desktop:44
+msgid "Write images to your portable drives"
+msgstr "将系统镜像写入至可移动驱动器中"
+
+#: ../src/app/data/io.aosc.MediaWriter.desktop:89
 msgid "fmw;usb;iso;bootable;"
-msgstr "fmw;usb;iso;bootable;"
+msgstr "fmw;usb;iso;bootable;启动盘;写入;向导;"
 
-#~ msgctxt "Release|"
-#~ msgid "Emerging AOSC Editions"
-#~ msgstr "AOSC 新秀版本"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "Intel/AMD 64bit"
+#~ msgstr "64 位 Intel/AMD"
 
-#~ msgctxt "VersionPage|"
-#~ msgid "Emerging Editions"
-#~ msgstr "新秀版本"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+#~ msgstr "适用于 Intel、AMD 和其他 64 位 PC 兼容机的 ISO 镜像"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying written data"
-#~ msgstr "正在验证已写入的数据"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for AArch64 machine"
+#~ msgstr "适用于 AArch64 设备的 ISO 镜像"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying downloaded image"
-#~ msgstr "正在验证已下载的镜像"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for LoongArch64 machine"
+#~ msgstr "适用于龙架构 (LoongArch) 设备的 ISO 镜像"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed"
-#~ msgstr "失败"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for POWER machine"
+#~ msgstr "适用于 IBM POWER 设备的 ISO 镜像"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing not possible"
-#~ msgstr "无法写入"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for Loongson 3 machine"
+#~ msgstr "适用于基于 MIPS 的龙芯三号设备的 ISO 镜像"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing"
-#~ msgstr "写入中"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for RISCV-64bit machine"
+#~ msgstr "适用于 64 位 RISC-V 设备的 ISO 镜像"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "完成"
+#~ msgid "A tool to create a live USB drive with an edition of AOSC"
+#~ msgstr "一个用来创建 Live USB 启动盘的 AOSC 版工具"
 
-#~ msgctxt "DownloadPage|"
-#~ msgid "Successfully written"
-#~ msgstr "成功写入"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed due to missing drives"
-#~ msgstr "验证失败，由于缺少驱动器"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed"
-#~ msgstr "验证失败"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Download failed"
-#~ msgstr "下载失败"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed due to missing drives"
-#~ msgstr "失败，由于缺失驱动器"
-
-#~ msgctxt "main|"
-#~ msgid "Downloading"
-#~ msgstr "下载中"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write verifying"
-#~ msgstr "验证写入"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write Successful"
-#~ msgstr "成功写入"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed verification no drives"
-#~ msgstr "验证失败：没有驱动器"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed verification"
-#~ msgstr "验证失败"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write the image immediately when the download is finished"
-#~ msgstr "下载完成后，立刻将镜像写入 USB"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Other"
-#~ msgstr "其他"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-#~ msgstr "无法删除 <br>\"<a href=\"%1\">%2</a>\"."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Back"
-#~ msgstr "返回"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Create Live USB…"
-#~ msgstr "创建 Live USB…"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "(%1 after writing)"
-#~ msgstr "（已写入 %1）"
-
-#~ msgctxt "ImageDetails|"
 #~ msgid ""
-#~ "AOSC %1 was released! Check it out!<br>If you want a stable, finished "
-#~ "system, it's better to stay at version %2."
+#~ "A tool to create a bootable live USB drive with an edition of AOSC. Not "
+#~ "only can AOSC Media Writer write an image to your flash drive, it can "
+#~ "also download it for you. It offers official editions (Server, "
+#~ "Workstation), AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktop,...), and AOSC Labs (Design Suite, Security Lab,...). It provides "
+#~ "basic information about each of them to help you make the right choice."
 #~ msgstr ""
-#~ "AOSC %1 已发布！ 看看吧！<br>当然您要是需要一个稳定完善的系统，最好还是"
-#~ "使用 %2。"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ", released on %1"
-#~ msgstr "于 %1 发布"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "其他版本..."
-
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "查找操作系统镜像"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Checking for new releases"
-#~ msgstr "正在检查新版本"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Version %1"
-#~ msgstr "版本 %1"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Display additional AOSC flavors"
-#~ msgstr "显示额外的 AOSC 套餐"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Cancel"
-#~ msgstr "取消"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Restore"
-#~ msgstr "重置"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Close"
-#~ msgstr "关闭"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
-#~ "want to restore it to factory settings?"
-#~ msgstr ""
-#~ "你插入的 <b>%1</b> 已包含一个 live 系统。<br>你是否希望重置其到出厂设置？"
-
-#~ msgctxt "main|"
-#~ msgid "AOSC Media Writer %1 Released"
-#~ msgstr "AOSC Media Writer %1 现已发布"
-
-#~ msgctxt "main|"
-#~ msgid "Update for great new features and bugfixes!"
-#~ msgstr "更新以获取新特性以及 bug 修复"
-
-#~ msgctxt "main|"
-#~ msgid "Open Browser"
-#~ msgstr "打开浏览器"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "%1<br>Writing images will not be possible.<br>You can still view AOSC "
-#~ "flavors and download images to your hard drive."
-#~ msgstr ""
-#~ "%1 <br> 无法写入镜像。 <br> 你可以继续查看 AOSC 版本并下载镜像到您的硬"
-#~ "盘。"
-
-#~ msgctxt "main|"
-#~ msgid "Ok"
-#~ msgstr "确定"
-
-#~ msgctxt "Release|"
-#~ msgid "This is the Linux workstation you've been waiting for."
-#~ msgstr "这是您一直期盼的 Linux 工作站。"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Server"
-#~ msgstr "AOSC Server"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The latest technology. A stable foundation. Together, for your "
-#~ "applications and services."
-#~ msgstr "最新的技术。稳定的基础。结合二者以支持您的应用与服务。"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "silverblue"
-#~ msgstr "AOSC 定制版"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Silverblue"
-#~ msgstr "AOSC Silverblue"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "An extremely stable and reliable desktop operating system, excellent for "
-#~ "developers and for those using container-focused workflows."
-#~ msgstr "极其稳定和可靠的桌面操作系统，面向开发者和容器工作流的用户。"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC KDE Plasma Desktop"
-#~ msgstr "AOSC KDE Plasma 桌面"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXQt Desktop"
-#~ msgstr "AOSC 实验室"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Cinnamon Desktop"
-#~ msgstr "AOSC 实验室"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXDE Desktop"
-#~ msgstr "AOSC 实验室"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC SoaS Desktop"
-#~ msgstr "AOSC 实验室"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "design_suite"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Design Suite"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgid "AOSC Games"
-#~ msgstr "AOSC 实验室"
-
-#, fuzzy
-#~| msgid "AOSC Media Writer"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Robotics Suite"
-#~ msgstr "AOSC Media Writer"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "scientific"
-#~ msgstr "AOSC 定制版"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Spins"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Scientific"
-#~ msgstr "AOSC 定制版"
-
-#, fuzzy
-#~| msgctxt "Release|"
-#~| msgid "AOSC Labs"
-#~ msgctxt "Release|"
-#~ msgid "AOSC Security Lab"
-#~ msgstr "AOSC 实验室"
+#~ "一个为各种 AOSC 版本制作可启动 Live USB 设备的工具。AOSC Media Writer 不仅"
+#~ "能将镜像写入优盘中，还能为你下载镜像。它提供官方版（Server、"
+#~ "Workstation）、AOSC 定制版（KDE Plasma 桌面、Xfce 桌面、Cinnamon 桌面等）"
+#~ "以及 AOSC 实验室（设计套件、安全实验室等）。它还提供各版本的基本信息来帮助"
+#~ "你做选择。"

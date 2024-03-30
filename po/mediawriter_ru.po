@@ -13,7 +13,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
+"POT-Creation-Date: 2024-03-30 22:58+0800\n"
 "PO-Revision-Date: 2024-01-10 22:36+0000\n"
 "Last-Translator: Makar Razin <makarrazin14@gmail.com>\n"
 "Language-Team: Russian <https://translate.fedoraproject.org/projects/fedora-"
@@ -38,18 +38,23 @@ msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Версия %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
+msgctxt "AboutDialog|"
+msgid "Based on Fedora Media Writer"
+msgstr ""
+
+#: ../src/app/qml/AboutDialog.qml:72
 msgctxt "AboutDialog|"
 msgid "AOSC Media Writer is now checking for new releases"
 msgstr "AOSC Media Writer проверяет наличие новых версий"
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: ../src/app/qml/AboutDialog.qml:78
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Пожалуйста, сообщайте об ошибках и о ваших предложениях на %1"
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:101
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Закрыть"
@@ -70,10 +75,9 @@ msgid "Cancel Verification?"
 msgstr "Отменить проверку?"
 
 #: ../src/app/qml/CancelDialog.qml:67
+#, fuzzy
 msgctxt "CancelDialog|"
-msgid ""
-"Download and media writing will be aborted. This process can be resumed any "
-"time later."
+msgid "Download and media writing will be aborted."
 msgstr ""
 "Загрузка и запись на носитель будут прерваны. Этот процесс может быть "
 "возобновлён в дальнейшем в любое время."
@@ -113,28 +117,26 @@ msgstr "Отменить проверку"
 
 #: ../src/app/qml/CancelDialog.qml:117
 #, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Отмена"
 
-#: ../src/app/downloadmanager.cpp:235
+#: ../src/app/downloadmanager.cpp:257
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
 msgstr "Не удаётся получить требуемый образ."
 
-#: ../src/app/downloadmanager.cpp:335
+#: ../src/app/downloadmanager.cpp:357
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
 msgstr "Может закончиться место в папке Загрузки."
 
-#: ../src/app/downloadmanager.cpp:337
+#: ../src/app/downloadmanager.cpp:359
 msgctxt "Download|"
 msgid "The download file is not writable."
 msgstr "Файл для загрузки недоступен для записи."
 
-#: ../src/app/downloadmanager.cpp:425
+#: ../src/app/downloadmanager.cpp:447
 msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "Время ожидания соединения истекло"
@@ -227,8 +229,8 @@ msgstr "Вставьте USB-накопитель."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using AOSC Media Writer. This will remove installation media "
-"from your drive."
+"normal by using AOSC Media Writer. This will remove installation media from "
+"your drive."
 msgstr ""
 "Ёмкость вашего диска будет уменьшена. Её нормальное значение можно вернуть с "
 "помощью AOSC Media Writer. Это приведёт к удалению дистрибутива с вашего "
@@ -245,17 +247,9 @@ msgid "None"
 msgstr "Нет"
 
 #: ../src/app/qml/DownloadPage.qml:175
-#, qt-format
 msgctxt "DownloadPage|"
-msgid ""
-"Your board or device is not supported by AOSC Media Writer yet. Please "
-"check <a href=%1>this page</a> for more information about its compatibility "
-"with AOSC and how to create bootable media for it."
+msgid "Your board or device is not supported by AOSC Media Writer yet."
 msgstr ""
-"AOSC Media Writer пока не поддерживает вашу плату или устройство. "
-"Проверьте <a href=%1>эту страницу</a> для получения дополнительной "
-"информации об их совместимости с AOSC и о том, как создать для них "
-"загрузочный носитель."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -446,12 +440,12 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "Открыть файл"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/app/releasemanager.cpp:373
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Выберите файл со своего диска"
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:374
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -462,92 +456,104 @@ msgstr ""
 "накопитель</p><p>В настоящее время поддерживается только запись raw-образов "
 "диска (.iso или .bin)</p>"
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:404
 msgctxt "Release|"
 msgid "AOSC Spins"
 msgstr "AOSC Spins"
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:406
 msgctxt "Release|"
 msgid "AOSC Labs"
 msgstr "AOSC Labs"
 
-#: ../src/app/releasemanager.cpp:432
+#: ../src/app/releasemanager.cpp:408
 #, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC i3 Desktop"
 msgctxt "Release|"
 msgid "AOSC Atomic Desktops"
 msgstr "AOSC i3 Desktop"
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:410
 msgctxt "Release|"
 msgid "Other"
 msgstr "Другое"
 
-#: ../src/app/releasemanager.cpp:1074
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 64bit"
-msgstr "Intel/AMD 64-битные"
-
-#: ../src/app/releasemanager.cpp:1074
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
+msgid "x86-64"
 msgstr ""
-"Образ в формате ISO для ПК на базе Intel, AMD и других совместимых ПК (64-"
-"разрядных)"
 
-#: ../src/app/releasemanager.cpp:1075
+#: ../src/app/releasemanager.cpp:1050
 msgctxt "ReleaseArchitecture|"
-msgid "Intel/AMD 32bit"
-msgstr "Intel/AMD 32-битные"
-
-#: ../src/app/releasemanager.cpp:1075
-msgctxt "ReleaseArchitecture|"
-msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
+msgid "System releases for 64-bit x86 devices"
 msgstr ""
-"Образ в формате ISO для ПК на базе Intel, AMD и других совместимых ПК (32-"
-"разрядных)"
 
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid "ARM v7"
-msgstr "ARM v7"
-
-#: ../src/app/releasemanager.cpp:1076
-msgctxt "ReleaseArchitecture|"
-msgid ""
-"LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr ""
-"Сжатый методом LZMA, raw-образ для компьютеров с ARM v7-A, например, "
-"Raspberry Pi 2 и 3"
-
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1051
 msgctxt "ReleaseArchitecture|"
-msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "Сжатый методом LZMA, raw-образ для компьютеров с AArch64"
+msgid "System releases for AArch64 devices"
+msgstr ""
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:1052
+#, fuzzy
+msgctxt "ReleaseArchitecture|"
+msgid "LoongArch"
+msgstr "AArch64"
+
+#: ../src/app/releasemanager.cpp:1052
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for LoongArch devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "POWER"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1053
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for IBM POWER devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "MIPS-based Loongson 3"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1054
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for MIPS-based Loongson 3 devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "RISC-V (64bit)"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:1055
+msgctxt "ReleaseArchitecture|"
+msgid "System releases for 64-bit RISC-V devices"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:372
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Другой образ"
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:909 ../src/app/releasemanager.cpp:921
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Загруженный образ повреждён"
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:925
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Загруженный файл не читается."
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:936
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Не удаётся переименовать временный файл."
@@ -607,19 +613,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Ошибка"
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:682
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "Альфа %1"
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:684
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "Бета %1"
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:686
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -688,26 +694,8 @@ msgstr "Выбрать из:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
-msgid "Official Editions"
-msgstr "Официальные редакции"
-
-#: ../src/app/qml/VersionPage.qml:59
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "AOSC i3 Desktop"
-msgctxt "VersionPage|"
-msgid "Atomic Desktops"
-msgstr "AOSC i3 Desktop"
-
-#: ../src/app/qml/VersionPage.qml:65
-msgctxt "VersionPage|"
-msgid "Spins"
-msgstr "Сборки"
-
-#: ../src/app/qml/VersionPage.qml:71
-msgctxt "VersionPage|"
-msgid "Labs"
-msgstr "Labs"
+msgid "Livekit"
+msgstr ""
 
 #: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
@@ -877,1144 +865,82 @@ msgctxt "main|"
 msgid "Previous"
 msgstr "Назад"
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/io.aosc.MediaWriter.desktop:4
 msgid "AOSC Media Writer"
 msgstr "AOSC Media Writer"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:9
-msgid "A tool to create a live USB drive with an edition of AOSC"
-msgstr "Инструмент для создания Live USB-накопителя с AOSC"
+msgid "A tool to create AOSC OS boot media"
+msgstr ""
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:11
 msgid ""
-"A tool to create a bootable live USB drive with an edition of AOSC. Not "
-"only can AOSC Media Writer write an image to your flash drive, it can also "
-"download it for you. It offers official editions (Server, Workstation), "
-"AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...), and "
-"AOSC Labs (Design Suite, Security Lab,...). It provides basic information "
-"about each of them to help you make the right choice."
+"Automatically downloads, writes, and verifies AOSC OS boot media from disk "
+"images"
 msgstr ""
-"Инструмент для создания загрузочных Live USB-накопителей с версией AOSC. "
-"AOSC Media Writer может не только записать образ на флеш-накопитель, но и "
-"загрузить его. Предлагаются официальные версии (Server, Workstation), AOSC "
-"Spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...) и AOSC Labs "
-"(Design Suite, Security Lab,...). Предоставляется основная информация по "
-"каждому из них, помогающая сделать правильный выбор."
 
 #. (itstool) path: description/p
 #: ../src/app/data/io.aosc.MediaWriter.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"AOSC Media Writer can also write other bootable ISOs loaded from your "
-"local disk, but keep in mind that it's only tested with AOSC images."
+"AOSC Media Writer can also write other bootable ISOs, but keep in mind that "
+"this tool is only tested with AOSC OS images."
 msgstr ""
 "AOSC Media Writer может записать и другие загрузочные ISO-файлы, которые "
 "берутся с вашего локального диска, но имейте в виду, что он проверен только "
 "с образами AOSC."
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:43
-msgid "Write AOSC images to your portable drives"
+#: ../src/app/data/io.aosc.MediaWriter.desktop:4
+#, fuzzy
+msgid "Media Writer"
+msgstr "AOSC Media Writer"
+
+#: ../src/app/data/io.aosc.MediaWriter.desktop:44
+#, fuzzy
+msgid "Write images to your portable drives"
 msgstr "Запись образов AOSC на переносные диски"
 
-#: ../src/app/data/io.aosc.MediaWriter.desktop:87
+#: ../src/app/data/io.aosc.MediaWriter.desktop:89
 msgid "fmw;usb;iso;bootable;"
 msgstr "fmw;usb;iso;bootable;"
 
-#~ msgctxt "Release|"
-#~ msgid "Emerging AOSC Editions"
-#~ msgstr "Новые редакции AOSC"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "Intel/AMD 64bit"
+#~ msgstr "Intel/AMD 64-битные"
 
-#~ msgctxt "VersionPage|"
-#~ msgid "Emerging Editions"
-#~ msgstr "Новые редакции"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying written data"
-#~ msgstr "Проверка записанных данных"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verifying downloaded image"
-#~ msgstr "Проверяется загруженный образ"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed"
-#~ msgstr "Сбой"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing not possible"
-#~ msgstr "Запись невозможна"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Writing"
-#~ msgstr "Запись"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "Готово"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Successfully written"
-#~ msgstr "Успешно записано"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed due to missing drives"
-#~ msgstr "Проверка не удалась из-за отсутствия дисков"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Verification failed"
-#~ msgstr "Проверка не удалась"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Download failed"
-#~ msgstr "Ошибка загрузки"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed due to missing drives"
-#~ msgstr "Сбой - нет дисков"
-
-#~ msgctxt "main|"
-#~ msgid "Downloading"
-#~ msgstr "Загрузка"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write verifying"
-#~ msgstr "Проверка записи"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Write Successful"
-#~ msgstr "Успешная запись"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed verification no drives"
-#~ msgstr "Не удалось проверить - нет дисков"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Failed verification"
-#~ msgstr "Сбой проверки"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Write the image immediately when the download is finished"
-#~ msgstr "Записать образ сразу после завершения загрузки"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "Other"
-#~ msgstr "Другой"
-
-#~ msgctxt "DownloadDialog|"
-#~ msgid "It was not possible to delete<br>\"<a href=\"%1\">%2</a>\"."
-#~ msgstr "Не удалось удалить<br>\"<a href=\"%1\">%2</a>\"."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Back"
-#~ msgstr "Назад"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Create Live USB…"
-#~ msgstr "Создать Live USB…"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "(%1 after writing)"
-#~ msgstr "(%1 после записи)"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ""
-#~ "AOSC %1 was released! Check it out!<br>If you want a stable, finished "
-#~ "system, it's better to stay at version %2."
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 #~ msgstr ""
-#~ "Вышла AOSC %1! Проверьте ее!<br>Если вам нужна стабильная, законченная "
-#~ "система, лучше оставаться на версии %2."
-
-#~ msgctxt "ImageDetails|"
-#~ msgid ", released on %1"
-#~ msgstr ", выпущено на %1"
-
-#~ msgctxt "ImageDetails|"
-#~ msgid "Other variants..."
-#~ msgstr "Другие варианты..."
-
-#~ msgctxt "ImageList|"
-#~ msgid "Find an operating system image"
-#~ msgstr "Найти образ операционной системы"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Checking for new releases"
-#~ msgstr "Проверка наличия новых версий"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Version %1"
-#~ msgstr "Версия %1"
-
-#~ msgctxt "ImageList|"
-#~ msgid "Display additional AOSC flavors"
-#~ msgstr "Показать дополнительные разновидности AOSC"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Cancel"
-#~ msgstr "Отмена"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Restore"
-#~ msgstr "Восстановить"
-
-#~ msgctxt "RestoreDialog|"
-#~ msgid "Close"
-#~ msgstr "Закрыть"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "You inserted <b>%1</b> that already contains a live system.<br>Do you "
-#~ "want to restore it to factory settings?"
-#~ msgstr ""
-#~ "Вы вставили <b>%1</b>, на котором уже есть live-система.<br>Хотите "
-#~ "восстановить его в исходное состояние, соответствующее заводским "
-#~ "настройкам?"
-
-#~ msgctxt "main|"
-#~ msgid "AOSC Media Writer %1 Released"
-#~ msgstr "Выпущен AOSC Media Writer %1"
-
-#~ msgctxt "main|"
-#~ msgid "Update for great new features and bugfixes!"
-#~ msgstr "Обновите для получения новых отличных функций и исправления ошибок!"
-
-#~ msgctxt "main|"
-#~ msgid "Open Browser"
-#~ msgstr "Открыть браузер"
-
-#~ msgctxt "main|"
-#~ msgid ""
-#~ "%1<br>Writing images will not be possible.<br>You can still view AOSC "
-#~ "flavors and download images to your hard drive."
-#~ msgstr ""
-#~ "%1<br>Запись образов будет невозможна.<br>И все же вы можете "
-#~ "просматривать варианты AOSC и загружать образы на свой жесткий диск."
-
-#~ msgctxt "main|"
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-# ############## metadata.json ###############
-#~ msgid "workstation"
-#~ msgstr "workstation"
-
-#~ msgctxt "Release|"
-#~ msgid "This is the Linux workstation you've been waiting for."
-#~ msgstr "Это долгожданная рабочая станция на Linux."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Workstation is a reliable, user-friendly, and powerful operating "
-#~ "system for your laptop or desktop computer. It supports a wide range of "
-#~ "developers, from hobbyists and students to professionals in corporate "
-#~ "environments."
-#~ msgstr ""
-#~ "AOSC Workstation - надежная, удобная и мощная операционная система для "
-#~ "ноутбука или настольного компьютера. Она поддерживает широкий спектр "
-#~ "разработчиков, от любителей и студентов до профессионалов в корпоративных "
-#~ "средах."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The plethora of tools provided by<br /> AOSC allows me to get the job "
-#~ "done.<br /> It just works.”"
-#~ msgstr ""
-#~ "\"Множество инструментов, предоставляемых<br />AOSC, позволяют мне "
-#~ "работать правильно.\"."
-
-#~ msgctxt "Release|"
-#~ msgid "JVM performance engineer"
-#~ msgstr "Инженер по исполнению JVM"
-
-#~ msgctxt "Release|"
-#~ msgid "Sleek user interface"
-#~ msgstr "Элегантный пользовательский интерфейс"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Focus on your code in the GNOME 3 desktop environment. GNOME is built "
-#~ "with developer feedback and minimizes distractions, so you can "
-#~ "concentrate on what's important."
-#~ msgstr ""
-#~ "Сосредоточьтесь на своей программе в рабочей среде GNOME 3. GNOME "
-#~ "построен с поддержкой обратной связи с разработчиками и сводит к минимуму "
-#~ "отвлекающие факторы, поэтому вы можете сосредоточиться на том, что важно."
-
-#~ msgctxt "Release|"
-#~ msgid "Complete open source toolbox"
-#~ msgstr "Законченный набор инструментов с открытым исходным кодом"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Skip the drag of trying to find or build the tools you need. With "
-#~ "AOSC's complete set of open source languages, tools, and utilities, "
-#~ "everything is a click or command line away. There's even project hosting "
-#~ "and repositories like COPR to make your code and builds available quickly "
-#~ "to the community."
-#~ msgstr ""
-#~ "Не отвлекайтесь на попытки отыскать или собрать нужные инструменты. Имея "
-#~ "в AOSC полный комплект языков программирования, инструментов и утилит с "
-#~ "открытым исходным кодом, всё можно найти на расстоянии одного нажатия или "
-#~ "одной команды. Есть даже услуги по размещению проектов и репозитории, "
-#~ "например, COPR, чтобы сообщество могло быстрее получить доступ к текстам "
-#~ "программ и сборкам."
-
-#~ msgctxt "Release|"
-#~ msgid "GNOME Boxes & other virt tools"
-#~ msgstr "Боксы и другие инструменты виртуализации"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Get virtual machines up and running quickly to test your code on multiple "
-#~ "platforms using GNOME Boxes. Or dig into powerful, scriptable "
-#~ "virtualization tools for even more control."
-#~ msgstr ""
-#~ "С помощью GNOME Boxes можно быстро настраивать и запускать виртуальные "
-#~ "машины, чтобы тестировать свои программы на различных платформах. Или "
-#~ "погрузиться в мощные инструменты виртуализации с поддержкой скриптового "
-#~ "языка для получения еще большего контроля."
-
-#~ msgctxt "Release|"
-#~ msgid "Built-in Docker support"
-#~ msgstr "Встроенная поддержка Docker"
+#~ "Образ в формате ISO для ПК на базе Intel, AMD и других совместимых ПК (64-"
+#~ "разрядных)"
 
 #, fuzzy
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Containerize your own apps, or deploy containerized apps out of the box "
-#~ "on AOSC, using the latest technology like Docker."
-#~ msgstr ""
-#~ "Поместите свои приложения в контейнер, или распространяйте упакованные "
-#~ "приложения на AOSC без установки дополнительного ПО, используя "
-#~ "современные технологии, такие как Docker."
-
-#~ msgctxt "Release|"
-#~ msgid "server"
-#~ msgstr "server"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Server"
-#~ msgstr "AOSC Server"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The latest technology. A stable foundation. Together, for your "
-#~ "applications and services."
-#~ msgstr ""
-#~ "Свежая технология. Стабильный фундамент. Вместе - для ваших приложений и "
-#~ "сервисов."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The simplicity introduced with rolekit and cockpit have made server "
-#~ "deployments a breeze. What took me a few days on other operating systems "
-#~ "took less than an hour with AOSC %(rel)s Server. It just works.”"
-#~ msgstr ""
-#~ "\"Простота, представленная с помощью rolekit и cockpit, облегчила "
-#~ "развертывание сервера. То, на что в других операционных системах у меня "
-#~ "уходило несколько дней, в AOSC %(rel)s Server заняло меньше часа. Это "
-#~ "работает.\""
-
-#~ msgctxt "Release|"
-#~ msgid "Systems Engineer"
-#~ msgstr "Системный инженер"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Server is a short-lifecycle, community-supported server operating "
-#~ "system that enables seasoned system administrators experienced with any "
-#~ "OS to make use of the very latest server-based technologies available in "
-#~ "the open source community."
-#~ msgstr ""
-#~ "AOSC Server - серверная операционная система с коротким жизненым "
-#~ "циклом, поддерживаемая сообществом, которая дает возможность опытным "
-#~ "системным администраторам, имеющим навыки работы с любой ОС, использовать "
-#~ "новейшие технологии с открытым исходным кодом."
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "Лёгкое администрирование"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Manage your system simply with Cockpit's powerful, modern interface. View "
-#~ "and monitor system performance and status, and deploy and manage "
-#~ "container-based services."
-#~ msgstr ""
-#~ "Простое управление системой с помощью мощного, современного интерфейса "
-#~ "Cockpit. Просмотр и контроль работы и состояния системы, а также "
-#~ "развертывание и управление услугами на базе контейнеров."
-
-#~ msgctxt "Release|"
-#~ msgid "Server Roles"
-#~ msgstr "Роли сервера"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "There's no need to set up your server from scratch when you use server "
-#~ "roles. Server roles plug into your AOSC Server system, providing a well-"
-#~ "integrated service on top of the AOSC Server platform. Deploy and "
-#~ "manage these prepared roles simply using the Rolekit tool."
-#~ msgstr ""
-#~ "Для использования серверных ролей нет необходимости настраивать сервер с "
-#~ "нуля. Роли сервера подключаются к вашей системе AOSC Server, "
-#~ "предоставляя хорошо интегрированный сервис поверх её платформы. "
-#~ "Развертывание и управление этими готовыми ролями осуществляется просто с "
-#~ "помощью инструмента Rolekit."
-
-#~ msgctxt "Release|"
-#~ msgid "Database Services"
-#~ msgstr "Сервисы баз данных"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Server brings with it an enterprise-class, scalable database "
-#~ "server powered by the open-source PostgreSQL project."
-#~ msgstr ""
-#~ "AOSC Server - это масштабируемый сервер баз данных корпоративного "
-#~ "класса на базе проекта PostgreSQL с открытым исходным кодом."
-
-#~ msgctxt "Release|"
-#~ msgid "Complete Enterprise Domain Solution"
-#~ msgstr "Комплексное решение для домена предприятия"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Level up your Linux network with advanced identity management, DNS, "
-#~ "certificate services, Windows(TM) domain integration throughout your "
-#~ "environment with FreeIPA, the engine that drives AOSC Server's Domain "
-#~ "Controller role."
-#~ msgstr ""
-#~ "Повысьте уровень своей Linux-сети с помощью расширенного управления "
-#~ "идентификацией, DNS, служб сертификатов, интеграции домена Windows(TM) во "
-#~ "всей вашей среде с помощью FreeIPA, движка, который управляет ролью "
-#~ "контроллера домена AOSC Server."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "“The Docker Role for AOSC Server was simple and fast to install so that "
-#~ "you can run your Docker images. This makes a great testbed for beginners "
-#~ "and experts with docker so that they can develop their applications on "
-#~ "the fly.”"
-#~ msgstr ""
-#~ "\"Задача Docker для AOSC Server - простая и быстрая установка, чтобы вы "
-#~ "могли запускать свои образы Docker. Это отличный тестовый стенд для "
-#~ "новичков и экспертов в области docker, чтобы они могли разрабатывать свои "
-#~ "приложения на лету.\""
-
-#~ msgctxt "Release|"
-#~ msgid "</p><p align=right> ― <em>John Unland, "
-#~ msgstr "</p><p align=right> ― <em>Джон Анлэнд, "
-
-#~ msgctxt "Release|"
-#~ msgid "Information Systems Student"
-#~ msgstr "Студент факультета информационных систем"
-
-#~ msgctxt "Release|"
-#~ msgid "silverblue"
-#~ msgstr "silverblue"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for AArch64 machine"
+#~ msgstr "Сжатый методом LZMA, raw-образ для компьютеров с AArch64"
 
 #, fuzzy
-#~ msgctxt "Release|"
-#~ msgid "emerging"
-#~ msgstr "возникающий"
+#~ msgctxt "ReleaseArchitecture|"
+#~ msgid "ISO format image for LoongArch64 machine"
+#~ msgstr "Сжатый методом LZMA, raw-образ для компьютеров с AArch64"
 
-#~ msgctxt "Release|"
-#~ msgid "AOSC Silverblue"
-#~ msgstr "AOSC Silverblue"
+#~ msgid "A tool to create a live USB drive with an edition of AOSC"
+#~ msgstr "Инструмент для создания Live USB-накопителя с AOSC"
 
-#~ msgctxt "Release|"
 #~ msgid ""
-#~ "An extremely stable and reliable desktop operating system, excellent for "
-#~ "developers and for those using container-focused workflows."
+#~ "A tool to create a bootable live USB drive with an edition of AOSC. Not "
+#~ "only can AOSC Media Writer write an image to your flash drive, it can "
+#~ "also download it for you. It offers official editions (Server, "
+#~ "Workstation), AOSC spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+#~ "Desktop,...), and AOSC Labs (Design Suite, Security Lab,...). It provides "
+#~ "basic information about each of them to help you make the right choice."
 #~ msgstr ""
-#~ "Чрезвычайно стабильная и надежная настольная операционная система, "
-#~ "отлично подходящая для разработчиков и для тех, кто использует рабочие "
-#~ "процессы, ориентированные на контейнеры."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Silverblue is a variant of AOSC Workstation. It looks, feels and "
-#~ "behaves like a regular desktop operating system, and the experience is "
-#~ "similar to what you find with using a standard AOSC Workstation."
-#~ msgstr ""
-#~ "Silverblue - это вариант AOSC Workstation. Он выглядит, ощущается и "
-#~ "ведет себя как обычная настольная операционная система, а впечатления от "
-#~ "работы с ним аналогичны тем, которые вы получаете при использовании "
-#~ "стандартной AOSC Workstation."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "However, unlike other operating systems, Silverblue has reprovisionable "
-#~ "infrastructure with anti-hysteresis properties. This means that every "
-#~ "installation is identical to every other installation of the same "
-#~ "version. The operating system that is on disk is exactly the same from "
-#~ "one machine to the next, and it never changes as it is used."
-#~ msgstr ""
-#~ "Однако, в отличие от других операционных систем, Silverblue имеет "
-#~ "восстанавливаемую инфраструктуру с антигистерезисными свойствами. Это "
-#~ "означает, что каждая установка идентична любой другой установке той же "
-#~ "версии. Операционная система, находящаяся на диске, остается точно такой "
-#~ "же и работает одинаково на любом устройстве, и она никогда не меняется по "
-#~ "мере ее использования."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Silverblue’s design is intended to make it more stable, less prone to "
-#~ "bugs, and easier to test and develop. The design also makes it an "
-#~ "excellent platform for containerized applications as well as container-"
-#~ "based software development. In each case, applications and containers are "
-#~ "kept separate from the host system, improving stability and reliability."
-#~ msgstr ""
-#~ "Дизайн Silverblue призван сделать его более стабильным, менее "
-#~ "подверженным ошибкам, а также более простым для тестирования и "
-#~ "разработки. Дизайн также делает его отличной платформой для контейнерных "
-#~ "приложений и разработки программного обеспечения на основе контейнеров. В "
-#~ "каждом случае приложения и контейнеры хранятся отдельно от основной "
-#~ "системы, что повышает стабильность и надежность."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Silverblue’s core technologies have some other helpful features. OS "
-#~ "updates are fast and there’s no waiting around for them to install: just "
-#~ "reboot as normal to start using the next version. With Silverblue, it is "
-#~ "also possible to roll back to the previous version of the operating "
-#~ "system, if something goes wrong."
-#~ msgstr ""
-#~ "Основные технологии Silverblue имеют и другие полезные особенности. "
-#~ "Обновления ОС происходят быстро, и не нужно ждать, пока они установятся: "
-#~ "достаточно перезагрузиться, как обычно, чтобы начать использовать новую "
-#~ "версию. С Silverblue также возможен откат к предыдущей версии "
-#~ "операционной системы, если что-то пошло не так."
-
-#~ msgctxt "Release|"
-#~ msgid "kde"
-#~ msgstr "kde"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC KDE Plasma Desktop"
-#~ msgstr "Рабочая среда AOSC KDE Plasma"
-
-#~ msgctxt "Release|"
-#~ msgid "A complete, modern desktop built using the KDE Plasma Desktop."
-#~ msgstr "Полноценный, современный рабочий стол, построенный на KDE Plasma."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC KDE Plasma Desktop Edition is a powerful AOSC-based "
-#~ "operating system utilizing the KDE Plasma Desktop as the main user "
-#~ "interface."
-#~ msgstr ""
-#~ "Вариант AOSC с рабочим столом KDE Plasma - это производительная "
-#~ "операционная система на основе AOSC, в которой в качестве главного "
-#~ "пользовательского интерфейса используется KDE Plasma."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC KDE Plasma Desktop comes with many pre-selected top quality "
-#~ "applications that suit all modern desktop use cases - from online "
-#~ "communication like web browsing, instant messaging and electronic mail "
-#~ "correspondence, through multimedia and entertainment, to an advanced "
-#~ "productivity suite, including office applications and enterprise grade "
-#~ "personal information management."
-#~ msgstr ""
-#~ "Вместе с AOSC KDE Plasma Desktop поставляется большое число отобранных "
-#~ "высококачественных приложений, которые могут потребоваться на современном "
-#~ "настольном компьютере - от работы с интернетом в виде просмотра веб-"
-#~ "страниц, мгновенных сообщений и электронной почты и до мультимедиа и "
-#~ "развлечений, а также развитым набором для работы, включая офисные "
-#~ "приложения и приложения для управления информацией корпоративного уровня."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "All KDE applications are well integrated, with a similar look and feel "
-#~ "and an easy to use interface, accompanied by an outstanding graphical "
-#~ "appearance."
-#~ msgstr ""
-#~ "Все приложения KDE хорошо интегрированы, имеют одинаковый внешний вид и "
-#~ "простой в применении интерфейс пользователя с отменным графическим "
-#~ "оформлением."
-
-#~ msgctxt "Release|"
-#~ msgid "xfce"
-#~ msgstr "xfce"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Xfce Desktop"
-#~ msgstr "AOSC Xfce Desktop"
-
-#~ msgctxt "Release|"
-#~ msgid "A complete, well-integrated Xfce Desktop."
-#~ msgstr "Полноценный, прекрасно интегрированный рабочий стол Xfce."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Xfce spin showcases the Xfce desktop, which aims to be fast "
-#~ "and lightweight, while still being visually appealing and user friendly."
-#~ msgstr ""
-#~ "В состав этой сборки AOSC включена рабочая среда Xfce, задача которой — "
-#~ "оставаться быстрой и легкой, обладая при этом привлекательным внешним "
-#~ "видом и создавая удобства для пользователя."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Xfce is a full-fledged desktop using the freedesktop.org standards."
-#~ msgstr ""
-#~ "AOSC Xfce — полноценная рабочая среда, созданная на основе "
-#~ "рекоммендаций инициативной группы freedesktop.org."
-
-#~ msgctxt "Release|"
-#~ msgid "lxqt"
-#~ msgstr "lxqt"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXQt Desktop"
-#~ msgstr "AOSC LXQt Desktop"
-
-#~ msgctxt "Release|"
-#~ msgid "A lightweight, well-integrated LXQt desktop environment."
-#~ msgstr "Легкая, хорошо интегрированная среда рабочего стола LXQt."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC LXQt provides a lightweight, well-integrated LXQt desktop "
-#~ "environment. In addition to LXQt itself it provides a small, well "
-#~ "selected collection of applications like the QupZilla browser, which "
-#~ "combines Chromium's rendering engine with a nice Qt experience. Other "
-#~ "applications include the Trojita mail client, the qBittorrent client, the "
-#~ "Yarock music player and a set of some more commonly used applications. As "
-#~ "all applications use the same Qt5 toolkit and the Breeze theme known from "
-#~ "KDE, the desktop provides a unified and well-integrated style and "
-#~ "theming. In addition breeze-gtk is provided to allow the user to "
-#~ "integrate GTK applications too."
-#~ msgstr ""
-#~ "AOSC LXQt предоставляет легкую, хорошо интегрированную среду рабочего "
-#~ "стола LXQt. Кроме самого LXQt, это еще и небольшая, хорошо подобранная "
-#~ "сборка приложений, например, браузер QupZilla, который сочетает механизм "
-#~ "рендеринга Chromium с приятным впечатлением от Qt. Другие приложения: "
-#~ "почтовый клиент Trojita, клиент qBittorrent, музыкальный проигрыватель "
-#~ "Yarock и ряд наиболее часто используемых приложений. Поскольку все "
-#~ "приложения используют один набор инструментов Qt5 и тему Breeze, "
-#~ "известную по KDE, этот рабочий стол обеспечивает унифицированный и хорошо "
-#~ "интегрированный стиль и тему. В добавление предоставляется breeze-gtk, "
-#~ "дающий пользователю возможность интегрировать и приложения GTK."
-
-#~ msgctxt "Release|"
-#~ msgid "mate"
-#~ msgstr "mate"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC MATE-Compiz Desktop"
-#~ msgstr "AOSC MATE-Compiz Desktop"
-
-#~ msgctxt "Release|"
-#~ msgid "A classic AOSC Desktop with an additional 3D Windows Manager."
-#~ msgstr ""
-#~ "Классический рабочий стол AOSC Desktop с дополнительным 3D-менеджером "
-#~ "окон."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The MATE Compiz spin bundles MATE Desktop with Compiz Fusion. MATE "
-#~ "Desktop is a lightweight, powerful desktop designed with productivity and "
-#~ "performance in mind. The default windows manager is Marco which is usable "
-#~ "for all machines and VMs. Compiz Fusion is a beautiful 3D windowing "
-#~ "manager with Emerald and GTK+ theming."
-#~ msgstr ""
-#~ "В сборке MATE Compiz связываются вместе MATE Desktop и Compiz Fusion. "
-#~ "MATE Desktop - это легкая, полнофункциональная рабочая среда, "
-#~ "разработанная с целью достижения производительности и эффективности. "
-#~ "Диспетчер окон по умолчанию - Marco, который может использоваться со "
-#~ "всеми компьютерами и виртуальными машинами. Compiz Fusion - красивый "
-#~ "трехмерный оконный менеджер с темами Emerald и GTK+."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "If you want a powerful, lightweight AOSC desktop with 3D eyecandy you "
-#~ "should definitely try the MATE-Compiz spin."
-#~ msgstr ""
-#~ "Если вам нужна эффективная легкая рабочая среда в AOSC с 3D-эффектами, "
-#~ "вам определенно нужно попробовать сборку MATE-Compiz."
-
-#~ msgctxt "Release|"
-#~ msgid "cinnamon"
-#~ msgstr "cinnamon"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Cinnamon Desktop"
-#~ msgstr "AOSC Cinnamon Desktop"
-
-#~ msgctxt "Release|"
-#~ msgid "A modern desktop featuring traditional Gnome user experience."
-#~ msgstr ""
-#~ "Современный рабочий стол с традиционным пользовательским интерфейсом "
-#~ "Gnome."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Cinnamon is a Linux desktop which provides advanced innovative features "
-#~ "and a traditional user experience. The desktop layout is similar to Gnome "
-#~ "2. The underlying technology is forked from Gnome Shell. The emphasis is "
-#~ "put on making users feel at home and providing them with an easy to use "
-#~ "and comfortable desktop experience."
-#~ msgstr ""
-#~ "Cinnamon - это графическая рабочая среда Linux, предоставляющая "
-#~ "расширенные инновационные возможности и традиционный пользовательский "
-#~ "интерфейс. Внешний вид рабочего стола схож с Gnome 2. Лежащая в его "
-#~ "основе технология - разветвление от Gnome Shell. Особое значение "
-#~ "придается тому, чтобы пользователи чувствовали себя как дома и получили "
-#~ "легкий в использовании и удобный интерфейс рабочего стола."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Cinnamon is a popular desktop alternative to Gnome 3 and this spin "
-#~ "provides the option to quickly try and install this desktop."
-#~ msgstr ""
-#~ "Cinnamon - популярный рабочий стол, альтернативный Gnome 3, и эта сборка "
-#~ "предоставляет возможность его быстро попробовать и установить."
-
-#~ msgctxt "Release|"
-#~ msgid "lxde"
-#~ msgstr "lxde"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC LXDE Desktop"
-#~ msgstr "AOSC LXDE Desktop"
-
-#~ msgctxt "Release|"
-#~ msgid "A light, fast, less-resource hungry desktop environment."
-#~ msgstr ""
-#~ "Легкое, быстрое, нетребовательное к ресурсам окружение рабочего стола."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "LXDE, the \"Lightweight X11 Desktop Environment\", is an extremely fast, "
-#~ "performant, and energy-saving desktop environment. It maintained by an "
-#~ "international community of developers and comes with a beautiful "
-#~ "interface, multi-language support, standard keyboard shortcuts and "
-#~ "additional features like tabbed file browsing."
-#~ msgstr ""
-#~ "LXDE (Lightweight X11 Desktop Environment - «легкая среда рабочего стола "
-#~ "X11») - это очень быстрая, производительная и энергосберегающая среда "
-#~ "рабочего стола. Она поддерживается международным сообществом "
-#~ "разработчиков и поставляется с красивым интерфейсом, языковой поддержкой, "
-#~ "стандартными сочетаниями клавиш и такими дополнительными возможностями, "
-#~ "как управление файлами во вкладках."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "LXDE is not designed to be powerful and bloated, but to be usable and "
-#~ "slim. A main goal of LXDE is to keep computer resource usage low. It is "
-#~ "especially designed for computers with low hardware specifications like "
-#~ "netbooks, mobile devices (e.g. MIDs) or older computers."
-#~ msgstr ""
-#~ "Предназначение LXDE не в нагрузке мощным функционалом, а в удобстве и "
-#~ "легкости. Главная цель LXDE — использовать минимум ресурсов компьютера. "
-#~ "Это окружение особенно подходит для компьютеров с невысокими техническими "
-#~ "характеристиками, таких как нетбуки, мобильные устройства (MID) или "
-#~ "ранние модели компьютеров."
-
-#~ msgctxt "Release|"
-#~ msgid "soas"
-#~ msgstr "soas"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC SoaS Desktop"
-#~ msgstr "AOSC SoaS Desktop"
-
-#~ msgctxt "Release|"
-#~ msgid "Discover. Reflect. Share. Learn."
-#~ msgstr "Открывай. Учись. Размышляй. Делись."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Sugar on a Stick is a AOSC-based operating system featuring the award-"
-#~ "winning Sugar Learning Platform and designed to fit on an ordinary USB "
-#~ "thumbdrive (\"stick\")."
-#~ msgstr ""
-#~ "Sugar on a Stick - операционная система на основе AOSC с превосходной "
-#~ "обучающей платформой Sugar, умещающейся на обычном USB-накопителе "
-#~ "(\"флэшке\")."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Sugar sets aside the traditional “office-desktop” metaphor, presenting a "
-#~ "child-friendly graphical environment. Sugar automatically saves your "
-#~ "progress to a \"Journal\" on your stick, so teachers and parents can "
-#~ "easily pull up \"all collaborative web browsing sessions done in the past "
-#~ "week\" or \"papers written with Daniel and Sarah in the last 24 hours\" "
-#~ "with a simple query rather than memorizing complex file/folder "
-#~ "structures. Applications in Sugar are known as Activities, some of which "
-#~ "are described below."
-#~ msgstr ""
-#~ "Sugar отвергает традиционный образ «офисного рабочего стола», представляя "
-#~ "удобную для детей графическую среду. Sugar автоматически сохраняет ваши "
-#~ "действия в «журнал» на флэшке, так что учителя и родители легко могут "
-#~ "вытянуть «все совместные сессии веб-просмотра, сделанные на прошлой "
-#~ "неделе» или «документы, написанные вместе с Даниелем или Сарой за "
-#~ "последние 24 часа» с помощью простого запроса, а не путем запоминания "
-#~ "сложных структур файлов и папок. Приложения в Sugar обозначаются как "
-#~ "Активности, некоторые из которых описываются ниже."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "It is now deployable for the cost of a stick rather than a laptop; "
-#~ "students can take their Sugar on a Stick thumbdrive to any machine - at "
-#~ "school, at home, at a library or community center - and boot their "
-#~ "customized computing environment without touching the host machine’s hard "
-#~ "disk or existing system at all."
-#~ msgstr ""
-#~ "Теперь эта система может использоваться по цене флэшки, а не ноутбука; "
-#~ "ученики могут принести свой флэш-накопитель с Sugar on a Stick к любому "
-#~ "компьютеру - в школе, дома, в библиотеке или общественном центре - и "
-#~ "загрузить свою настроенную вычислительную среду, совсем не затрагивая "
-#~ "жесткий диск компьютера или существующую систему."
-
-#~ msgctxt "Release|"
-#~ msgid "i3"
-#~ msgstr "i3"
-
-#~ msgctxt "Release|"
-#~ msgid "Simplicity over Complexity"
-#~ msgstr "Простота превыше сложности"
-
-#~ msgctxt "Release|"
-#~ msgid "The AOSC i3 Spin provides the popular i3 tiling window manager."
-#~ msgstr ""
-#~ "Сборка AOSC i3 предоставляет популярный плиточный оконный менеджер i3."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "It makes i3 accessible and appealing to both novices and advanced users "
-#~ "who prefer not to use a mouse, touchpad, or other pointing device to "
-#~ "interact with their environment. Featuring lightweight applications for "
-#~ "web browsing, text editing, and media playback, the AOSC i3 Spin offers "
-#~ "a complete experience with a minimalist user interface."
-#~ msgstr ""
-#~ "Это делает i3 доступным и привлекательным как для новичков, так и для "
-#~ "опытных пользователей, которые предпочитают не использовать мышь, тачпад "
-#~ "или другие указывающие устройства для взаимодействия с окружением. "
-#~ "Благодаря легким приложениям для просмотра веб-страниц, редактирования "
-#~ "текста и воспроизведения мультимедиа, сборка AOSC i3 предлагает "
-#~ "полноценный опыт работы с минималистичным пользовательским интерфейсом."
-
-#~ msgctxt "Release|"
-#~ msgid "astronomy"
-#~ msgstr "astronomy"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Astronomy"
-#~ msgstr "AOSC Astronomy"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Powerful completely open-source and free tool for amateurs and "
-#~ "professionals."
-#~ msgstr ""
-#~ "Функциональный полностью открытый и свободный инструмент для любителей и "
-#~ "профессионалов."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Astronomy brings a complete open source toolchain to both amateur "
-#~ "and professional astronomers."
-#~ msgstr ""
-#~ "AOSC Astronomy предлагает полный набор инструментов с открытым исходным "
-#~ "текстом как для любителей, так и для профессиональных астрономов."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The Spin provides the AOSC KDE desktop enhanced with a complete "
-#~ "scientific Python environment and the AstrOmatic software for data "
-#~ "analysis. KStars was added to provide a full featured astrophotography "
-#~ "tool. As KStars uses the INDI library to control equipment, various "
-#~ "telescopes, cameras etc. are supported. Summarized, AOSC Astronomy "
-#~ "provides a complete set of software, from the observation planning to the "
-#~ "final results."
-#~ msgstr ""
-#~ "Эта сборка предоставляет рабочую среду AOSC KDE с полнофункциональной "
-#~ "научной средой на Python и программами AstrOmatic для анализа данных. "
-#~ "KStars добавлен в качестве полнофункционального инструмента для "
-#~ "астрономической фотографии. Так как KStars использует библиотеку INDI для "
-#~ "управления оборудованием, поддерживаются различные телескопы, камеры и т."
-#~ "п. В общем, AOSC Astronomy предоставляет полный комплект программ, от "
-#~ "планирования наблюдений до конечных результатов."
-
-#~ msgctxt "Release|"
-#~ msgid "design_suite"
-#~ msgstr "design_suite"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Design Suite"
-#~ msgstr "AOSC Design Suite"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Visual design, multimedia production, and publishing suite of free and "
-#~ "open source creative tools."
-#~ msgstr ""
-#~ "Набор свободных с открытым исходным текстом творческих инструментов для "
-#~ "визуального проектирования, производства мультимедийных продуктов и "
-#~ "публикации."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Looking for a ready-to-go desktop environment brimming with free and open "
-#~ "source multimedia production and publishing tools? Try the Design Suite, "
-#~ "a AOSC Spin created by designers, for designers."
-#~ msgstr ""
-#~ "Ищете готовое для работы окружение, полное свободными и открытыми "
-#~ "инструментами для мультимедийной и издательской продукции? Попробуйте "
-#~ "сборку AOSC Design Suite, созданную дизайнерами для дизайнеров."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The Design Suite includes the favorite tools of the AOSC Design Team. "
-#~ "These are the same programs we use to create all the artwork that you see "
-#~ "within the AOSC Project, from desktop backgrounds to CD sleeves, web "
-#~ "page designs, application interfaces, flyers, posters and more. From "
-#~ "document publication to vector and bitmap editing or 3D modeling to photo "
-#~ "management, the Design Suite has an application for you — and you can "
-#~ "install thousands more from the AOSC universe of packages."
-#~ msgstr ""
-#~ "Design Suite содержит любимые инструменты команды дизайнеров AOSC. "
-#~ "Здесь находятся те же программы, которые мы используем для той работы, "
-#~ "которую вы видите в Проекте AOSC, от фонов рабочего стола до конвертов "
-#~ "компакт-дисков, дизайнов веб-страниц, интерфейсов приложений, флаеров, "
-#~ "постеров, и многого другого. От публикации документов до векторного и "
-#~ "точечного рисования или от 3D моделирования до управления фотографиями, в "
-#~ "Design Suite найдется приложение для вас — и вы можете устанавливать ещё "
-#~ "тысячи из набора пакетов AOSC."
-
-#~ msgctxt "Release|"
-#~ msgid "games"
-#~ msgstr "games"
-
-#~ msgid "AOSC Games"
-#~ msgstr "AOSC Games"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A collection and perfect show-case of the best games available in AOSC."
-#~ msgstr "Подборка и идеальная витрина лучших игр, доступных в AOSC."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Games spin offers a perfect showcase of the best games "
-#~ "available in AOSC. The included games span several genres, from first-"
-#~ "person shooters to real-time and turn-based strategy games to puzzle "
-#~ "games."
-#~ msgstr ""
-#~ "Сборка AOSC Games предлагает идеальный демонстрационный комплект лучших "
-#~ "игр, доступных в AOSC. В сборку включены игры разных жанров от шутеров "
-#~ "от первого лица и стратегий в реальном времени до пошаговых стратегий и "
-#~ "головоломок."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Not all the games available in AOSC are included on this spin, but "
-#~ "trying out this spin will give you a fair impression of AOSC's ability "
-#~ "to run great games."
-#~ msgstr ""
-#~ "Не все игры, имеющиеся в AOSC, вошли в эту сборку, но с ее помощью "
-#~ "можно получить хорошее впечатление о возможностях запуска отличных игр на "
-#~ "AOSC."
-
-#~ msgctxt "Release|"
-#~ msgid "python"
-#~ msgstr "python"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Python Classroom"
-#~ msgstr "AOSC Python Classroom"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A classroom lab for teaching the Python programming language to students"
-#~ msgstr ""
-#~ "Лабораторный класс для преподавания студентам языка программирования "
-#~ "Python"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "One of the benefits of AOSC for Python developers is the ease of "
-#~ "setting up Python development. The AOSC Python Classroom Lab makes it "
-#~ "even easier for teachers and instructors to use AOSC in their "
-#~ "classrooms or workshops. Ready to use operating system with important "
-#~ "stuff pre-installed - either with GNOME or as a headless environment for "
-#~ "Docker or Vagrant. Teach Python on AOSC, with AOSC, using the stuff "
-#~ "you love: IPython, Jupyter Notebook, multiple Pythons, virtualenvs, tox, "
-#~ "git and more"
-#~ msgstr ""
-#~ "Одним из преимуществ AOSC для разработчиков на Python является простота "
-#~ "настройки среды для разработки на Python. Python Classroom Lab из AOSC "
-#~ "еще больше упрощает преподавателям и инструкторам использование AOSC в "
-#~ "своих классах и мастерских. Готовая к использованию операционная система "
-#~ "с важными предустановленными компонентами - либо с GNOME, либо без "
-#~ "графической среды для Docker или Vagrant. Обучайте Python на AOSC, с "
-#~ "AOSC, используя то, что вы любите: IPython, Jupyter Notebook, несколько "
-#~ "версий Python, virtualenvs, tox, git и другие"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Python Classroom Lab comes in 3 variants. Either you can run "
-#~ "it in graphical mode with GNOME, or you can virtualize it with Vagrant or "
-#~ "run it in a Docker container. You choose what fits your teaching "
-#~ "environment the best."
-#~ msgstr ""
-#~ "AOSC Python Classroom Lab поставляется в 3 вариантах. Вы можете либо "
-#~ "запускать ее в графическом режиме с GNOME, либо можете ее "
-#~ "виртуализировать с помощью Vagrant или запускать в контейнере Docker. Вы "
-#~ "выбираете, что больше всего подходит для вашей учебной среды."
-
-#~ msgctxt "Release|"
-#~ msgid "robotics"
-#~ msgstr "robotics"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Robotics Suite"
-#~ msgstr "AOSC Robotics Suite"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A wide variety of free and open robotics software packages for beginners "
-#~ "and experts in robotics."
-#~ msgstr ""
-#~ "Большое разнообразие свободных и открытых програмных пакетов для "
-#~ "начинающих и экспертов в области робототехнике."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Robotics spin provides a wide variety of free and open "
-#~ "robotics software packages. These range from hardware accessory libraries "
-#~ "for the Hokuyo laser scanners or Katana robotic arm to software "
-#~ "frameworks like Fawkes or Player and simulation environments such as "
-#~ "Stage and RoboCup Soccer Simulation Server 2D/3D. It also provides a "
-#~ "ready to use development environment for robotics including useful "
-#~ "libraries such as OpenCV computer vision library, Festival text to speech "
-#~ "system and MRPT."
-#~ msgstr ""
-#~ "Сборка AOSC Robotics предоставляет широкий спектр бесплатных и открытых "
-#~ "пакетов программного обеспечения для робототехники. Они варьируются от "
-#~ "библиотек аппаратных аксессуаров для лазерных сканеров Hokuyo или "
-#~ "роботизированной руки Katana до программных фреймворков, таких как Fawkes "
-#~ "или Player, и сред моделирования, таких как Stage и RoboCup Soccer "
-#~ "Simulation Server 2D/3D. Она также предоставляет готовую к использованию "
-#~ "среду разработки для робототехники, включая такие полезные библиотеки, "
-#~ "как библиотека компьютерного зрения OpenCV, система преобразования текста "
-#~ "в речь Festival и MRPT."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The Robotics spin is targeted at people just discovering their interest "
-#~ "in robotics as well as experienced roboticists. For the former we provide "
-#~ "a readily usable simulation environment with an introductory hands-on "
-#~ "demonstration, and for the latter we provide a full development "
-#~ "environment, to be used immediately."
-#~ msgstr ""
-#~ "Сборка Robotics предназначена как для тех, кто только начинает "
-#~ "интересоваться робототехникой, так и для опытных робототехников. Для "
-#~ "первых мы предоставляем легко используемую среду моделирования с вводной "
-#~ "практической демонстрацией, а для вторых - полную среду разработки, "
-#~ "которая \"работает из коробки\"."
-
-#~ msgctxt "Release|"
-#~ msgid "scientific"
-#~ msgstr "scientific"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Scientific"
-#~ msgstr "AOSC Scientific"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A bundle of open source scientific and numerical tools used in research."
-#~ msgstr ""
-#~ "Пакет средств с открытым исходным кодом для научных и численных расчетов, "
-#~ "используемых при исследованиях."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "Wary of reinstalling all the essential tools for your scientific and "
-#~ "numerical work? The answer is here. AOSC Scientific Spin brings "
-#~ "together the most useful open source scientific and numerical tools atop "
-#~ "the goodness of the KDE desktop environment."
-#~ msgstr ""
-#~ "Боитесь переустанавливать все необходимые инструменты для научной и "
-#~ "вычислительной работы? Вы попали по адресу! Сборка AOSC Scientific "
-#~ "объединяет самые полезные научные и вычислительные инструменты с открытым "
-#~ "исходным кодом на базе хорошего окружения рабочего стола KDE."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "AOSC Scientific currently ships with numerous applications and "
-#~ "libraries. These range from libraries such as the GNU Scientific library, "
-#~ "the SciPy libraries, tools like Octave and xfig to typesetting tools like "
-#~ "Kile and graphics programs such as Inkscape. The current set of packages "
-#~ "include an IDE, tools and libraries for programming in C, C++, Python, "
-#~ "Java and R. Also included along with are libraries for parallel computing "
-#~ "such as the OpenMPI and OpenMP. Tools for typesetting, writing and "
-#~ "publishing are included."
-#~ msgstr ""
-#~ "В настоящее время AOSC Scientific поставляется с многочисленными "
-#~ "приложениями и библиотеками. Они варьируются от библиотек, таких как "
-#~ "библиотека GNU Scientific, библиотеки SciPy, инструментов, таких как "
-#~ "Octave и xfig, до инструментов набора текста, таких как Kile, и "
-#~ "графических программ, таких как Inkscape. Текущий набор пакетов включает "
-#~ "IDE, инструменты и библиотеки для программирования на C, C++, Python, "
-#~ "Java и R. Также включены библиотеки для параллельных вычислений, такие "
-#~ "как OpenMPI и OpenMP. Включены инструменты для набора, написания и "
-#~ "публикации текстов."
-
-#~ msgctxt "Release|"
-#~ msgid "security"
-#~ msgstr "security"
-
-#~ msgctxt "Release|"
-#~ msgid "AOSC Security Lab"
-#~ msgstr "AOSC Security Lab"
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "A safe test environment to work on security auditing, forensics, system "
-#~ "rescue and teaching security testing methodologies."
-#~ msgstr ""
-#~ "Безопасная тестовая среда для работы в области проверки безопасности, "
-#~ "криминалистики, восстановления систем  и преподавания методов "
-#~ "тестирования безопасности."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The AOSC Security Lab provides a safe test environment to work on "
-#~ "security auditing, forensics, system rescue and teaching security testing "
-#~ "methodologies in universities and other organizations."
-#~ msgstr ""
-#~ "Лаборатория безопасности AOSC предоставляет безопасную тестовую среду "
-#~ "для работы по аудиту безопасности, криминалистике, спасению систем и "
-#~ "обучению методологии тестирования безопасности в университетах и других "
-#~ "организациях."
-
-#~ msgctxt "Release|"
-#~ msgid ""
-#~ "The spin is maintained by a community of security testers and developers. "
-#~ "It comes with the clean and fast Xfce Desktop Environment and a "
-#~ "customized menu that provides all the instruments needed to follow a "
-#~ "proper test path for security testing or to rescue a broken system. The "
-#~ "Live image has been crafted to make it possible to install software while "
-#~ "running, and if you are running it from a USB stick created with LiveUSB "
-#~ "Creator using the overlay feature, you can install and update software "
-#~ "and save your test results permanently."
-#~ msgstr ""
-#~ "Сборка поддерживается сообществом тестировщиков и разработчиков "
-#~ "безопасности. Он поставляется с чистой и быстрой средой рабочего стола "
-#~ "Xfce и настраиваемым меню, которое предоставляет все инструменты, "
-#~ "необходимые для правильного пути тестирования безопасности или для "
-#~ "\"спасения\" сломанной системы. Образ live-usb был разработан таким "
-#~ "образом, чтобы обеспечить возможность установки программного обеспечения "
-#~ "во время работы, а если вы запускаете его с USB-накопителя, созданного с "
-#~ "помощью LiveUSB Creator с использованием функции наложения, вы можете "
-#~ "устанавливать и обновлять программное обеспечение и сохранять результаты "
-#~ "тестирования навсегда."
+#~ "Инструмент для создания загрузочных Live USB-накопителей с версией AOSC. "
+#~ "AOSC Media Writer может не только записать образ на флеш-накопитель, но и "
+#~ "загрузить его. Предлагаются официальные версии (Server, Workstation), "
+#~ "AOSC Spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...) и "
+#~ "AOSC Labs (Design Suite, Security Lab,...). Предоставляется основная "
+#~ "информация по каждому из них, помогающая сделать правильный выбор."
