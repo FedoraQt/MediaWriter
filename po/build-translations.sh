@@ -4,21 +4,18 @@
 rm -f *.qm
 
 echo -e '<RCC>\n\t<qresource prefix="/translations/">' > ../src/translations/translations.qrc
-for i in `ls mediawriter_*.po`; do
+for i in mediawriter-*.po; do
     echo $i
-    LANGCODE=$(sed 's/mediawriter_\([^.]*\).po/\1/' <<< "$i")
-    if [[ "$LANGCODE" = "pt-BR" || "$LANGCODE" = "zh-CN" || "$LANGCODE" = "zh-TW" ]]; then
-        LANGCODE=${LANGCODE/-/_}
-    fi
+    LANGCODE=$(sed 's/mediawriter-\([^.]*\).po/\1/' <<< "$i")
     lrelease-qt5 $i -qm ../src/translations/$LANGCODE.qm
     echo -e "\t\t<file>${LANGCODE}.qm</file>" >> ../src/translations/translations.qrc
 done
 echo -e '\t</qresource>\n</RCC>' >> ../src/translations/translations.qrc
 
 ####### Appstream metadata
-for i in `ls mediawriter_*.po`; do
+for i in mediawriter-*.po; do
     echo $i
-    LANGCODE=$(sed 's/mediawriter_\([^.]*\).po/\1/' <<< "$i")
+    LANGCODE=$(sed 's/mediawriter-\([^.]*\).po/\1/' <<< "$i")
     msgfmt $i -o "${LANGCODE}.mo"
 done
 
@@ -32,9 +29,9 @@ cp -r *.po desktop-file
 
 pushd desktop-file
 
-for i in `ls mediawriter_*.po`; do
+for i in mediawriter-*.po; do
     echo $i
-    LANGCODE=$(sed 's/mediawriter_\([^.]*\).po/\1/' <<< "$i")
+    LANGCODE=$(sed 's/mediawriter-\([^.]*\).po/\1/' <<< "$i")
     mv "$i" "$LANGCODE.po"
 done
 
