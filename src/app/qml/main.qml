@@ -132,7 +132,7 @@ ApplicationWindow {
                         } else if (selectedOption == Units.MainSelect.Restore)
                             selectedPage = Units.Page.RestorePage
                         else
-                            selectedPage = Units.Page.VersionPage 
+                            selectedPage = Units.Page.DrivePage 
                     }
                 }
                 StateChangeScript {
@@ -145,20 +145,6 @@ ApplicationWindow {
                                 stackView.pop()
                             }
                         }
-                    }
-                }
-            },
-            State {
-                name: "versionPage"
-                when: selectedPage == Units.Page.VersionPage
-                PropertyChanges { target: mainWindow; title: qsTr("Select AOSC Version") }
-                PropertyChanges { target: nextButton; visible: true; onClicked: selectedPage += 1 } 
-                PropertyChanges { target: prevButton; visible: true; onClicked: selectedPage -= 1 }
-                StateChangeScript {
-                    script: {
-                        //state was pushing same page when returing from drivePage
-                        if (stackView.depth <= 1)  
-                            stackView.push("VersionPage.qml")
                     }
                 }
             },
