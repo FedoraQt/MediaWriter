@@ -107,6 +107,7 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QString 
     auto reply = m_manager.get(request);
 
     m_current->handleNewReply(reply);
+    Q_UNUSED(m_current);
 
     return downloadPath + ".part";
 }
@@ -153,7 +154,6 @@ QNetworkReply *DownloadManager::tryAnotherMirror()
 void DownloadManager::cancel()
 {
     if (m_current) {
-        m_current->deleteLater();
         m_current = nullptr;
         mDebug() << this->metaObject()->className() << "Cancelling";
     }
