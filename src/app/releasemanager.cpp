@@ -467,17 +467,7 @@ bool Release::updateUrl(int version, const QString &status, const QString &type,
     addVersion(ver);
     if (ver->status() == ReleaseVersion::FINAL)
         finalVersions++;
-    if (finalVersions > 2) {
-        int min = INT32_MAX;
-        ReleaseVersion *oldVer = nullptr;
-        for (auto i : m_versions) {
-            if (i->number() < min) {
-                min = i->number();
-                oldVer = i;
-            }
-        }
-        removeVersion(oldVer);
-    }
+
     return true;
 }
 
