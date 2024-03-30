@@ -111,7 +111,6 @@ Page {
 
                 Label {
                     visible: currentStatus == Units.DownloadStatus.Downloading
-                    Layout.preferredWidth: fontMetrics.width
                     text: progressColumn.leftStr
                 }
 
