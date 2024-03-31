@@ -28,6 +28,7 @@
 #include <QtQml>
 
 #include <QJsonDocument>
+#include <fcntl.h>
 
 ReleaseManager::ReleaseManager(QObject *parent)
     : QSortFilterProxyModel(parent)
@@ -265,10 +266,10 @@ void ReleaseManager::onStringDownloaded(const QString &text)
         QString type = "live";
         QDateTime releaseDate = QDateTime::fromString((obj["date"].toString()), "yyyy-MM-dd");
         int64_t size = obj["downloadSize"].toString().toLongLong();
-        int version;
+        float version;
         QString status = versionWithStatus;
 
-        version = versionWithStatus.toInt();
+        version = versionWithStatus.toFloat();
 
         mInfo() << this->metaObject()->className() << "Adding" << versionWithStatus << url << arch;
 
