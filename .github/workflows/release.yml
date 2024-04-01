@@ -1,8 +1,8 @@
 name: release
 
 on:
-  - workflow_dispatch
-  - release:
+  workflow_dispatch:
+  release:
       types: [ created ]
 
 env:
