@@ -27,10 +27,10 @@ set -x
 # Validate settings.
 [ "$TRACE" ] && set -x
 
-CONFIG=$@
+CONFIG=( "$@" )
 
-for line in $CONFIG; do
-  eval "$line"
+for line in "${CONFIG[@]}" ; do
+  export "$line"
 done
 
 # Define variables.
