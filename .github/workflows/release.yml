@@ -39,11 +39,12 @@ jobs:
           for i in `find build/src/app/AOSC\ Media\ Writer.app/ -name '*.dSYM'`; do rm -fr "$i"; done
           cd build/src/app/
           "$Qt6_DIR"/bin/macdeployqt AOSC\ Media\ Writer.app -dmg -always-overwrite -appstore-compliant
-          mv AOSC\ Media\ Writer.dmg ../../../FedoraMediaWriter-osx-${{ env.TAG_NAME }}.dmg
+          mv AOSC\ Media\ Writer.dmg ../../../AOSC\ Media\ Writer-osx-${{ env.TAG_NAME }}.dmg
 
       - name: Upload to GitHub (release)
+        if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
         run: |
-          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-osx-${{ env.TAG_NAME }}.dmg"
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="AOSC\ Media\ Writer-osx-${{ env.TAG_NAME }}.dmg"
 
   macOS-arm64:
     runs-on: macos-12
@@ -75,11 +76,12 @@ jobs:
           for i in `find build/src/app/AOSC\ Media\ Writer.app/ -name '*.dSYM'`; do rm -fr "$i"; done
           cd build/src/app/
           "$Qt6_DIR"/bin/macdeployqt AOSC\ Media\ Writer.app -dmg -always-overwrite -appstore-compliant
-          mv AOSC\ Media\ Writer.dmg ../../../FedoraMediaWriter-osx-arm64-${{ env.TAG_NAME }}.dmg
+          mv AOSC\ Media\ Writer.dmg ../../../AOSC\ Media\ Writer-osx-arm64-${{ env.TAG_NAME }}.dmg
 
       - name: Upload to GitHub (release)
+        if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
         run: |
-          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-osx-arm64-${{ env.TAG_NAME }}.dmg"
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="AOSC\ Media\ Writer-osx-arm64-${{ env.TAG_NAME }}.dmg"
 
   Windows-MSVC:
     runs-on: windows-2019
@@ -174,6 +176,7 @@ jobs:
           mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64-${{ env.TAG_NAME }}.exe"
 
       - name: pload to GitHub (release)
+        if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
