@@ -1,8 +1,9 @@
 name: release
 
 on:
-  release:
-    types: [ created ]
+  - workflow_dispatch
+  - release:
+      types: [ created ]
 
 env:
     QT_VERSION: '6.6.0'
@@ -33,12 +34,12 @@ jobs:
 
       - name: Bundle
         run: |
-          "$Qt6_DIR"/bin/macdeployqt build/src/app/FedoraMediaWriter.app -qmldir=src/app/qml -executable=build/src/app/FedoraMediaWriter.app/Contents/MacOS/helper -appstore-compliant
+          "$Qt6_DIR"/bin/macdeployqt build/src/app/AOSC\ Media\ Writer.app -qmldir=src/app/qml -executable=build/src/app/AOSC\ Media\ Writer.app/Contents/MacOS/helper -appstore-compliant
           # No idea why but macdeployqt deploys debug libs too, just remove them, maybe fix this sometimes
-          for i in `find build/src/app/FedoraMediaWriter.app/ -name '*.dSYM'`; do rm -fr "$i"; done
+          for i in `find build/src/app/AOSC\ Media\ Writer.app/ -name '*.dSYM'`; do rm -fr "$i"; done
           cd build/src/app/
-          "$Qt6_DIR"/bin/macdeployqt FedoraMediaWriter.app -dmg -always-overwrite -appstore-compliant
-          mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-osx-${{ env.TAG_NAME }}.dmg
+          "$Qt6_DIR"/bin/macdeployqt AOSC\ Media\ Writer.app -dmg -always-overwrite -appstore-compliant
+          mv AOSC\ Media\ Writer.dmg ../../../FedoraMediaWriter-osx-${{ env.TAG_NAME }}.dmg
 
       - name: Upload to GitHub (release)
         run: |
@@ -69,12 +70,12 @@ jobs:
 
       - name: Bundle
         run: |
-          "$Qt6_DIR"/bin/macdeployqt build/src/app/FedoraMediaWriter.app -qmldir=src/app/qml -executable=build/src/app/FedoraMediaWriter.app/Contents/MacOS/helper -appstore-compliant
+          "$Qt6_DIR"/bin/macdeployqt build/src/app/AOSC\ Media\ Writer.app -qmldir=src/app/qml -executable=build/src/app/AOSC\ Media\ Writer.app/Contents/MacOS/helper -appstore-compliant
           # No idea why but macdeployqt deploys debug libs too, just remove them, maybe fix this sometimes
-          for i in `find build/src/app/FedoraMediaWriter.app/ -name '*.dSYM'`; do rm -fr "$i"; done
+          for i in `find build/src/app/AOSC\ Media\ Writer.app/ -name '*.dSYM'`; do rm -fr "$i"; done
           cd build/src/app/
-          "$Qt6_DIR"/bin/macdeployqt FedoraMediaWriter.app -dmg -always-overwrite -appstore-compliant
-          mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-osx-arm64-${{ env.TAG_NAME }}.dmg
+          "$Qt6_DIR"/bin/macdeployqt AOSC\ Media\ Writer.app -dmg -always-overwrite -appstore-compliant
+          mv AOSC\ Media\ Writer.dmg ../../../FedoraMediaWriter-osx-arm64-${{ env.TAG_NAME }}.dmg
 
       - name: Upload to GitHub (release)
         run: |
