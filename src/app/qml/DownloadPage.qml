@@ -40,8 +40,12 @@ Page {
             Layout.fillHeight: true
             Layout.fillWidth: true
             fillMode: Image.PreserveAspectFit
+            sourceSize.width: parent.width
+            sourceSize.height: parent.height
+            smooth: true
+            antialiasing: true
         }
-        
+
         Heading {
             id: heading
             property string file: mainWindow.selectedOption == Units.MainSelect.Write ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : releases.selected.name + " " + releases.selected.version.number

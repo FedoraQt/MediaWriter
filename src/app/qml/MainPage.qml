@@ -36,8 +36,12 @@ Page {
             Layout.fillHeight: true
             Layout.fillWidth: true
             fillMode: Image.PreserveAspectFit
+            sourceSize.width: parent.width
+            sourceSize.height: parent.height
+            smooth: true
+            antialiasing: true
         }
-    
+
         Heading {
             Layout.alignment: Qt.AlignHCenter
             text: qsTr("Select Image Source")
