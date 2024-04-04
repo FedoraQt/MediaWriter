@@ -30,7 +30,6 @@ The main binary, `mediawriter`, will be written to `$PREFIX/bin` and the helper 
 
 #### Requirements
 
-* `adwaita-qt`
 * `udisks2` or `storaged`
 * `xz-libs`
 
