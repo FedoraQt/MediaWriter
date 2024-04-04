@@ -98,7 +98,7 @@ int main(int argc, char **argv)
 
     mDebug() << "Loading the QML source code";
 
-    engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/io/aosc/qml/main.qml")));
 
     mDebug() << "Starting the application";
     int status = app.exec();

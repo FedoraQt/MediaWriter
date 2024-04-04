@@ -92,7 +92,7 @@ ApplicationWindow {
             Button {
                 id: prevButton
                 visible: true
-                text: getPrevButtonText()
+                text: mainWindow.getPrevButtonText()
             }
         
             Item {
@@ -103,42 +103,39 @@ ApplicationWindow {
                 id: nextButton
                 visible: mainLayout.state != "downloadPage" 
                 enabled: mainLayout.state != "drivePage" 
-                text: getNextButtonText()
+                text: mainWindow.getNextButtonText()
             }
         }
         
         states: [
             State {
                 name: "mainPage"
-                when: selectedPage == Units.Page.MainPage
-                PropertyChanges { 
-                    target: mainWindow
-                    title: qsTr("AOSC Media Writer") 
+                when: mainWindow.selectedPage === Units.Page.MainPage
+                PropertyChanges {
+                    mainWindow.title: qsTr("AOSC Media Writer")
                 }
                 //When comming back from restore page, after successfull restoring a USB drive
                 PropertyChanges { 
-                    target: prevButton
-                    text: getPrevButtonText()
-                    onClicked: aboutDialog.show()
+                    prevButton.text: mainWindow.getPrevButtonText()
+                    prevButton.onClicked: aboutDialog.show()
                 }
                 PropertyChanges { 
-                    target: nextButton
-                    visible: true
-                    onClicked: {
-                        if (selectedOption == Units.MainSelect.Write) {
+                    nextButton.visible: true
+                    nextButton.onClicked: {
+                        if (mainWindow.selectedOption === Units.MainSelect.Write) {
                             if (releases.localFile.iso)
                                 releases.selectLocalFile()
-                            selectedPage = Units.Page.DrivePage 
-                        } else if (selectedOption == Units.MainSelect.Restore)
-                            selectedPage = Units.Page.RestorePage
+                            mainWindow.selectedPage = Units.Page.DrivePage 
+                        } else if (mainWindow.selectedOption === Units.MainSelect.Restore)
+                            mainWindow.selectedPage = Units.Page.RestorePage
                         else
-                            selectedPage = Units.Page.DrivePage 
+                            mainWindow.selectedPage = Units.Page.DrivePage 
                     }
                 }
                 StateChangeScript {
                     script: {
                         //reset of source on versionPage
-                        selectedOption = Units.MainSelect.Download
+                        mainWindow.selectedOption = Units.MainSelect.Download
                         releases.filterSource = 0
                         if (stackView.depth > 1)  {
                             while (stackView.depth != 1) {
@@ -150,17 +147,15 @@ ApplicationWindow {
             },
             State {
                 name: "drivePage"
-                when: selectedPage == Units.Page.DrivePage
+                when: mainWindow.selectedPage === Units.Page.DrivePage
                 PropertyChanges { 
-                    target: mainWindow
-                    title: qsTr("Select Drive") 
+                    mainWindow.title: qsTr("Select Drive") 
                 }
                 PropertyChanges {
-                    target: nextButton;
-                    visible: true
-                    onClicked: {
-                        selectedPage = Units.Page.DownloadPage 
-                        if (selectedOption != Units.MainSelect.Write) 
+                    nextButton.visible: true
+                    nextButton.onClicked: {
+                        mainWindow.selectedPage = Units.Page.DownloadPage 
+                        if (mainWindow.selectedOption !== Units.MainSelect.Write)
                             releases.variant.download()
                         if (drives.length) {
                             drives.selected.setImage(releases.variant)
@@ -169,38 +164,33 @@ ApplicationWindow {
                     }
                 }
                 PropertyChanges {
-                    target: prevButton
-                    visible: true
-                    onClicked: {
-                        if (selectedOption == Units.MainSelect.Write)
-                            selectedPage = Units.Page.MainPage
-                        else {
-                            selectedPage -= 1 
+                    prevButton.visible: true
+                    prevButton.onClicked: {
+                        mainWindow.selectedPage = Units.Page.MainPage
+                        if (selectedOption !== Units.MainSelect.Write) {
                             stackView.pop()
                         }
                     }
                 }
                 StateChangeScript { 
                     script: { 
-                        stackView.push("DrivePage.qml") 
-                        eraseVariant = false
+                        stackView.push("DrivePage.qml")
+                        mainWindow.eraseVariant = false
                     }
                 }
             },
             State {
                 name: "downloadPage"
-                when: selectedPage == Units.Page.DownloadPage
+                when: mainWindow.selectedPage === Units.Page.DownloadPage
                 PropertyChanges {  
-                    target: mainWindow
-                    title: releases.variant.statusString
+                    mainWindow.title: releases.variant.statusString
                 }
                 StateChangeScript {
                     script: { stackView.push("DownloadPage.qml") }
                 }
                 PropertyChanges {
-                    target: prevButton
-                    visible: true
-                    onClicked: {
+                    prevButton.visible: true
+                    prevButton.onClicked: {
                         if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying) {
                             cancelDialog.show()
                         } else {
@@ -211,8 +201,7 @@ ApplicationWindow {
                     }
                 }
                 PropertyChanges {
-                    target: nextButton
-                    onClicked: {
+                    nextButton.onClicked: {
                         if (releases.variant.status === Units.DownloadStatus.Finished) {
                             drives.lastRestoreable = drives.selected
                             drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
@@ -220,7 +209,7 @@ ApplicationWindow {
                             downloadManager.cancel()
                             selectedPage = Units.Page.MainPage
                         } else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length) || releases.variant.status === Units.DownloadStatus.Failed_Download || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length) || releases.variant.status === Units.DownloadStatus.Ready) {
-                            if (selectedOption != Units.MainSelect.Write)
+                            if (selectedOption !== Units.MainSelect.Write)
                                 releases.variant.download()
                             drives.selected.setImage(releases.variant)
                             drives.selected.write(releases.variant)
@@ -230,25 +219,22 @@ ApplicationWindow {
             },
             State {
                 name: "restorePage"
-                when: selectedPage == Units.Page.RestorePage
+                when: mainWindow.selectedPage === Units.Page.RestorePage
                 PropertyChanges { 
-                    target: mainWindow
-                    title: qsTr("Restore") 
+                    mainWindow.title: qsTr("Restore")
                 }
                 PropertyChanges {
-                    target: nextButton
-                    visible: true
-                    onClicked: {
-                        if (lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored)
-                            selectedPage = Units.Page.MainPage 
+                    nextButton.visible: true
+                    nextButton.onClicked: {
+                        if (lastRestoreable && lastRestoreable.restoreStatus === Units.RestoreStatus.Restored)
+                            selectedPage = Units.Page.MainPage
                         else
                             drives.lastRestoreable.restore() 
                     }
                 }
                 PropertyChanges {
-                    target: prevButton
-                    visible: true
-                    onClicked: selectedPage = Units.Page.MainPage 
+                    prevButton.visible: true
+                    prevButton.onClicked: selectedPage = Units.Page.MainPage
                 }
                 StateChangeScript { 
                     script: { stackView.push("RestorePage.qml") }
@@ -272,11 +258,11 @@ ApplicationWindow {
     
     function getNextButtonText() {
         if (mainLayout.state == "restorePage") {
-            if (lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored)
+            if (lastRestoreable && lastRestoreable.restoreStatus === Units.RestoreStatus.Restored)
                 return qsTr("Finish")
             return qsTr("Restore")
         } else if (mainLayout.state == "drivePage") {
-            if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
+            if (selectedOption === Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
                 return qsTr("Write")
             if (Qt.platform.os === "windows" || Qt.platform.os === "osx") 
                 return qsTr("Download && Write")
@@ -284,7 +270,7 @@ ApplicationWindow {
         } else if (mainLayout.state == "downloadPage") {
             if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
                 return qsTr("Cancel")
-            else if (releases.variant.status == Units.DownloadStatus.Ready)
+            else if (releases.variant.status === Units.DownloadStatus.Ready)
                 return qsTr("Write")
             else if (releases.variant.status === Units.DownloadStatus.Finished)
                 return qsTr("Finish")

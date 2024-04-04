@@ -33,7 +33,7 @@ ApplicationWindow {
     x: Screen.width / 2 - width / 2
     y: Screen.height / 2 - height / 2
     title: " "
-    
+
     ColumnLayout {
         id: mainColumn
         anchors.fill: parent
@@ -77,7 +77,7 @@ ApplicationWindow {
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/AOSC-Dev/MediaWriter/issues\">https://github.com/AOSC-Dev/MediaWriter/</a>")
                 textFormat: Text.RichText
-                onLinkActivated: Qt.openUrlExternally(link)
+                onLinkActivated: (link) => Qt.openUrlExternally(link)
                 opacity: 0.6
 
                 MouseArea {

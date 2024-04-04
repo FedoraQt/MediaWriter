@@ -48,7 +48,7 @@ Page {
 
         Heading {
             id: heading
-            property string file: mainWindow.selectedOption == Units.MainSelect.Write ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : releases.selected.name + " " + releases.selected.version.number
+            property string file: mainWindow.selectedOption === Units.MainSelect.Write ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : releases.selected.name + " " + releases.selected.version.number
             
             Layout.alignment: Qt.AlignHCenter
             text: {
@@ -62,7 +62,7 @@ Page {
                     qsTr("Preparing %1").arg(file)
                 else if (currentStatus === Units.DownloadStatus.Ready)
                     qsTr("Ready to write %1").arg(file)
-                else if (currentStatus == Units.DownloadStatus.Failed_Download)
+                else if (currentStatus === Units.DownloadStatus.Failed_Download)
                     qsTr("Failed to download %1").arg(file)
                 else
                     releases.variant.statusString
@@ -100,8 +100,8 @@ Page {
                 Label {
                     id: refLabel
                     text: {
-                        if ((currentStatus == Units.DownloadStatus.Failed_Verification ||
-                             currentStatus == Units.DownloadStatus.Failed) && !availableDrives)
+                        if ((currentStatus === Units.DownloadStatus.Failed_Verification ||
+                             currentStatus === Units.DownloadStatus.Failed) && !availableDrives)
                             qsTr("Your drive was unplugged during the process")
                         else
                             releases.variant.statusString
@@ -110,12 +110,12 @@ Page {
                 }
 
                 Label {
-                    visible: currentStatus == Units.DownloadStatus.Downloading
+                    visible: currentStatus === Units.DownloadStatus.Downloading
                     text: progressColumn.leftStr
                 }
 
                 Label {
-                    visible: currentStatus == Units.DownloadStatus.Downloading
+                    visible: currentStatus === Units.DownloadStatus.Downloading
                     text: progressColumn.rightStr
                 }
             }
@@ -193,7 +193,7 @@ Page {
                 id: messageFinished
                 enabled: true
                 visible: false
-                text: qsTr("Restart and boot from %1 to start using %2.").arg(drives.selected ? drives.selected.name : "N/A").arg(mainWindow.selectedOption == Units.MainSelect.Write ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : releases.selected.name)
+                text: qsTr("Restart and boot from %1 to start using %2.").arg(drives.selected ? drives.selected.name : "N/A").arg(mainWindow.selectedOption === Units.MainSelect.Write ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : releases.selected.name)
                 wrapMode: Label.Wrap
                 width: mainColumn.width
             }
@@ -224,60 +224,50 @@ Page {
             name: "download_verifying"
             when: currentStatus === Units.DownloadStatus.Download_Verifying
             PropertyChanges {
-                target: messageDownload
-                visible: true
+                messageDownload.visible: true
             }
             PropertyChanges {
-                target: progressBar;
-                value: releases.variant.progress.ratio
+                progressBar.value: releases.variant.progress.ratio
             }
         },
         State {
             name: "ready_no_drives"
             when: currentStatus === Units.DownloadStatus.Ready && !availableDrives
             PropertyChanges {
-                target: messageInsertDrive
-                visible: true
+                messageInsertDrive.visible: true
             }
         },
         State {
             name: "ready"
             when: currentStatus === Units.DownloadStatus.Ready && availableDrives
             PropertyChanges {
-                target: messageLoseData;
-                visible: true
+                messageLoseData.visible: true
             }
         },
         State {
             name: "writing"
             when: currentStatus === Units.DownloadStatus.Writing
             PropertyChanges {
-                target: messageDriveSize
-                enabled: false
+                messageDriveSize.enabled: false
             }
             PropertyChanges {
-                target: messageRestore;
-                visible: true
+                messageRestore.visible: true
             }
             PropertyChanges {
-                target: progressBar;
-                value: drives.selected.progress.ratio;
+                progressBar.value: drives.selected.progress.ratio;
             }
         },
         State {
             name: "write_verifying"
             when: currentStatus === Units.DownloadStatus.Write_Verifying
             PropertyChanges {
-                target: messageDriveSize
-                enabled: false
+                messageDriveSize.enabled: false
             }
             PropertyChanges {
-                target: messageRestore;
-                visible: true
+                messageRestore.visible: true
             }
             PropertyChanges {
-                target: progressBar;
-                value: drives.selected.progress.ratio;
+                progressBar.value: drives.selected.progress.ratio;
             }
         },
         State {
@@ -328,7 +318,7 @@ Page {
 
     onCurrentStatusChanged: {
         // Not sure it's necessary, but it doesn't hurt to be safe
-        if (mainWindow.selectedPage == Units.Page.DownloadPage) {
+        if (mainWindow.selectedPage === Units.Page.DownloadPage) {
             prevButton.visible = getPrevButtonState()
             nextButton.visible = getNextButtonState()
         }
@@ -336,7 +326,7 @@ Page {
 
     onAvailableDrivesChanged: {
         // Not sure it's necessary, but it doesn't hurt to be safe
-        if (mainWindow.selectedPage == Units.Page.DownloadPage) {
+        if (mainWindow.selectedPage === Units.Page.DownloadPage) {
             nextButton.visible = getNextButtonState()
         }
     }
@@ -344,17 +334,17 @@ Page {
     function getPrevButtonState() {
         // There will be only [Finish] button on the right side so [Cancel] button
         // is not necessary
-        return currentStatus != Units.DownloadStatus.Finished
+        return currentStatus !== Units.DownloadStatus.Finished
     }
 
     function getNextButtonState() {
         // This will be [Finish] button to successfully go to the main page
-        if (currentStatus == Units.DownloadStatus.Finished)
+        if (currentStatus === Units.DownloadStatus.Finished)
             return true
         // This will be [Retry] button to start the process again if there is a drive plugged in
-        else if (currentStatus == Units.DownloadStatus.Ready ||
-            currentStatus == Units.DownloadStatus.Failed_Verification ||
-            currentStatus == Units.DownloadStatus.Failed) {
+        else if (currentStatus === Units.DownloadStatus.Ready ||
+            currentStatus === Units.DownloadStatus.Failed_Verification ||
+            currentStatus === Units.DownloadStatus.Failed) {
             return availableDrives
         }
 

@@ -39,7 +39,7 @@ Page {
         
         ColumnLayout {
             id: versionCol
-            visible: selectedOption != Units.MainSelect.Write
+            visible: selectedOption !== Units.MainSelect.Write
             
             Heading {
                 text: qsTr("Version")
@@ -52,7 +52,7 @@ Page {
                 textRole: "name"
                 onCurrentIndexChanged: releases.selected.versionIndex = currentIndex
                 Component.onCompleted: {
-                    if (releases.selected.version.status != Units.Status.FINAL && releases.selected.versions.length > 1) {
+                    if (releases.selected.version.status !== Units.Status.FINAL && releases.selected.versions.length > 1) {
                         currentIndex++
                     }
                 }
@@ -61,7 +61,7 @@ Page {
         
         ColumnLayout {
             id: architectureCol
-            visible: selectedOption != Units.MainSelect.Write
+            visible: selectedOption !== Units.MainSelect.Write
             
             Heading {
                 text: qsTr("Hardware Architecture")
@@ -78,7 +78,7 @@ Page {
         
         ColumnLayout {
             id: selectFileColumn
-            visible: selectedOption == Units.MainSelect.Write
+            visible: selectedOption === Units.MainSelect.Write
             
             Heading {
                 text: qsTr("Selected file")
@@ -148,7 +148,7 @@ Page {
         }
         
         ColumnLayout {
-            visible: selectedOption != Units.MainSelect.Write
+            visible: selectedOption !== Units.MainSelect.Write
             Layout.bottomMargin: units.gridUnit * 5
             
             Heading {
@@ -163,7 +163,7 @@ Page {
         }
         
         Item {
-            visible: selectedOption == Units.MainSelect.Write
+            visible: selectedOption === Units.MainSelect.Write
             Layout.fillHeight: true
         }
     }
@@ -171,13 +171,13 @@ Page {
     states: [
         State {
             name: "Downloading"
-            when: selectedOption != Units.MainSelect.Write && selectedPage == Units.Page.DrivePage
+            when: selectedOption !== Units.MainSelect.Write && selectedPage === Units.Page.DrivePage
             PropertyChanges { target: nextButton; enabled: true }
             StateChangeScript { script: releases.setSelectedVariantIndex = 0 }
         },
         State {
             name: "WritingISO"
-            when: selectedOption == Units.MainSelect.Write && selectedPage == Units.Page.DrivePage
+            when: selectedOption === Units.MainSelect.Write && selectedPage === Units.Page.DrivePage
             PropertyChanges { target: nextButton; enabled: driveCombo.enabled && releases.localFile.iso }
         }
     ]

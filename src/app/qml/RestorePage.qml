@@ -113,46 +113,38 @@ Page {
     states: [
         State {
             name: "contains_live"
-            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus == Units.RestoreStatus.Contains_Live
+            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus === Units.RestoreStatus.Contains_Live
             PropertyChanges {
-                target: warningText;
-                visible: true
+                warningText.visible: true
             }
         },
         State {
             name: "restoring"
-            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus == Units.RestoreStatus.Restoring
+            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus === Units.RestoreStatus.Restoring
             PropertyChanges {
-                target: progress;
-                visible: true
+                progress.visible: true
             }
             PropertyChanges {
-                target: prevButton;
-                visible: false
+                prevButton.visible: false
             }
             PropertyChanges {
-                target: nextButton;
-                visible: false
+                nextButton.visible: false
             }
         },
         State {
             name: "restored"
-            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus == Units.RestoreStatus.Restored
+            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus === Units.RestoreStatus.Restored
             PropertyChanges {
-                target: mainWindow;
-                title: qsTr("Restoring finished")
+                mainWindow.title: qsTr("Restoring finished")
             }
             PropertyChanges {
-                target: restoredText;
-                visible: true
+                restoredText.visible: true
             }
             PropertyChanges {
-                target: nextButton;
-                enabled: true
+                nextButton.enabled: true
             }
             PropertyChanges {
-                target: prevButton;
-                visible: false
+                prevButton.visible: false
             }
             StateChangeScript {
                 script: drives.lastRestoreable = null
@@ -160,22 +152,19 @@ Page {
         },
         State {
             name: "restore_error"
-            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus == Units.RestoreStatus.Restore_Error
+            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus === Units.RestoreStatus.Restore_Error
             PropertyChanges {
-                target: errorText;
-                visible: true
+                errorText.visible: true
             }
             PropertyChanges {
-                target: prevButton;
-                enabled: true
+                prevButton.enabled: true
             }
         },
         State {
             name: "Clean"
-            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus == Units.RestoreStatus.Clean
+            when: mainWindow.lastRestoreable && mainWindow.lastRestoreable.restoreStatus === Units.RestoreStatus.Clean
             PropertyChanges {
-                target: prevButton;
-                enabled: true
+                prevButton.enabled: true
             }
         }
     ]

@@ -1,4 +1,4 @@
-
+qt_standard_project_setup(REQUIRES 6.2)
 include_directories(
     ${CMAKE_SOURCE_DIR}/src/lib
 )
@@ -30,15 +30,30 @@ if (WIN32)
     set (MEDIAWRITER_SRCS ${MEDIAWRITER_SRCS} windrivemanager.cpp)
 endif()
 
-qt6_add_resources(MEDIAWRITER_SRCS assets.qrc qml.qrc ${CMAKE_SOURCE_DIR}/src/translations/translations.qrc)
+qt_add_resources(MEDIAWRITER_SRCS assets.qrc ${CMAKE_SOURCE_DIR}/src/translations/translations.qrc)
 
 if (WIN32)
     qt6_add_resources(MEDIAWRITER_SRCS windowsicon.qrc)
 endif()
 
 if (NOT APPLE)
-    add_executable(mediawriter ${MEDIAWRITER_SRCS})
+    qt_add_executable(mediawriter ${MEDIAWRITER_SRCS})
 endif()
+
+qt_add_qml_module(mediawriter
+    URI io.aosc
+    RESOURCE_PREFIX /
+    QML_FILES
+    qml/AboutDialog.qml
+    qml/CancelDialog.qml
+    qml/DownloadPage.qml
+    qml/DrivePage.qml
+    qml/Heading.qml
+    qml/main.qml
+    qml/MainPage.qml
+    qml/RestorePage.qml
+    qml/Units.qml
+)
 
 if (WIN32)
     # NOTE: QProcess::start() can not start a new process with UAC level
@@ -77,6 +92,7 @@ if (APPLE)
 endif()
 
 target_link_libraries(mediawriter
+    PRIVATE
     Qt6::Core
     Qt6::Network
     Qt6::Svg # Needed for macdeployqt to pick svg plugin
@@ -87,16 +103,17 @@ target_link_libraries(mediawriter
 
 if (UNIX AND NOT APPLE)
     target_link_libraries(mediawriter 
-    Qt6::DBus
-)
+        PRIVATE
+        Qt6::DBus
+    )
 endif()
 
 if (WIN32)
-    target_link_libraries(mediawriter dbghelp)
+    target_link_libraries(mediawriter PRIVATE dbghelp)
 endif()
 
 if (APPLE)
-    target_link_libraries(mediawriter "-framework Foundation" "-framework DiskArbitration")
+    target_link_libraries(mediawriter PRIVATE "-framework Foundation" "-framework DiskArbitration")
 endif()
 
 

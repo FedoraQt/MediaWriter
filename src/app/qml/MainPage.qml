@@ -22,7 +22,6 @@ import QtQuick.Controls 6.2
 import QtQuick.Window 6.2
 import QtQuick.Layouts 6.2
 import QtQml 6.2
-import QtQuick.Dialogs 6.2
 
 Page {
     id: mainPage
