@@ -75,22 +75,11 @@ Page {
         
         ColumnLayout {
             id: progressColumn
-            property double leftSize: releases.variant.progress.to - releases.variant.progress.value
-            property string rightStr: leftSize <= 0 ? "" :
-                                                      (leftSize < 1024) ? qsTr(" B left)") :
-                                                                          (leftSize < (1024 * 1024)) ? qsTr(" KB left)") :
-                                                                                                       (leftSize < (1024 * 1024 * 1024)) ? qsTr(" MB left)") :
-                                                                                                                                           qsTr(" GB left)")
-
-            property string leftStr: leftSize <= 0 ? "" :
-                                                     (leftSize < 1024) ? qsTr(" (%1").arg(leftSize) :
-                                                                         (leftSize < (1024 * 1024)) ? qsTr(" (%1").arg((leftSize / 1024).toFixed(1)) :
-                                                                                                      (leftSize < (1024 * 1024 * 1024)) ? qsTr(" (%1").arg((leftSize / 1024 / 1024).toFixed(1)) :
-                                                                                                                                          qsTr(" (%1").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
+            property string progressStr: releases.variant.progress.formatSize
 
             TextMetrics {
                 id: fontMetrics
-                text: progressColumn.leftStr.replace(/[1-9]/g, '0')
+                text: progressColumn.progressStr.replace(/[1-9]/g, '0')
             }
 
             RowLayout {
@@ -111,12 +100,7 @@ Page {
 
                 Label {
                     visible: currentStatus === Units.DownloadStatus.Downloading
-                    text: progressColumn.leftStr
-                }
-
-                Label {
-                    visible: currentStatus === Units.DownloadStatus.Downloading
-                    text: progressColumn.rightStr
+                    text: progressColumn.progressStr
                 }
             }
 

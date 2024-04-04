@@ -44,6 +44,7 @@ class Progress : public QObject
     Q_PROPERTY(qreal to READ to NOTIFY toChanged)
     Q_PROPERTY(qreal value READ value NOTIFY valueChanged)
     Q_PROPERTY(qreal ratio READ ratio NOTIFY valueChanged)
+    Q_PROPERTY(QString formatSize READ formatSize NOTIFY valueChanged)
 public:
     Progress(QObject *parent = nullptr, qreal from = 0.0, qreal to = 1.0);
 
@@ -55,6 +56,8 @@ public:
     void setTo(qreal v);
     void setValue(qreal v);
     void setValue(qreal v, qreal to);
+
+    QString formatSize() const;
 
 signals:
     void valueChanged();
