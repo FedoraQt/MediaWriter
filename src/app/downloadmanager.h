@@ -27,6 +27,7 @@
 #include <QNetworkRequest>
 #include <QObject>
 #include <QTimer>
+#include <memory>
 
 #include "utilities.h"
 
@@ -173,7 +174,7 @@ private:
     DownloadManager();
     static DownloadManager *_self;
 
-    Download *m_current{nullptr};
+    std::unique_ptr<Download> m_current{};
     QStringList m_mirrorCache{};
 
     QNetworkAccessManager m_manager;

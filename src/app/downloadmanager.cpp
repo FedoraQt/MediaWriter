@@ -28,6 +28,7 @@
 #include <QStandardPaths>
 #include <QStorageInfo>
 #include <QSysInfo>
+#include <memory>
 #include <qdir.h>
 #include <qurl.h>
 
@@ -93,7 +94,7 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QString 
         m_current->deleteLater();
     }
 
-    m_current = new Download(this, receiver, downloadPath, progress);
+    m_current = std::unique_ptr<Download>(new Download(this, receiver, downloadPath, progress));
 
     if (QFile::exists(downloadPath + ".part")) {
         mInfo() << this->metaObject()->className() << "The file already exists on" << downloadPath + ".part";
