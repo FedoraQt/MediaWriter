@@ -36,28 +36,12 @@
 #include "units.h"
 #include "versionchecker.h"
 
-#ifdef QT_STATIC
-Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin);
-
-Q_IMPORT_PLUGIN(QtQuick2Plugin);
-Q_IMPORT_PLUGIN(QtQuick2WindowPlugin);
-Q_IMPORT_PLUGIN(QtQuick2DialogsPlugin);
-Q_IMPORT_PLUGIN(QtQuick2DialogsPrivatePlugin);
-Q_IMPORT_PLUGIN(QtQuickControls1Plugin);
-Q_IMPORT_PLUGIN(QtQuickLayoutsPlugin);
-Q_IMPORT_PLUGIN(QmlFolderListModelPlugin);
-Q_IMPORT_PLUGIN(QmlSettingsPlugin);
-#endif
-
 int main(int argc, char **argv)
 {
     MessageHandler::install();
     CrashHandler::install();
 
 #ifdef __linux
-    if (QGuiApplication::platformName() == QStringLiteral("xcb")) {
-        qputenv("GDK_BACKEND", "x11");
-    }
     // For some reason threaded renderer makes all the animations slow for me
     // so as a fallback force non-threaded renderer
     if (qEnvironmentVariableIsEmpty("QSG_RENDER_LOOP")) {
