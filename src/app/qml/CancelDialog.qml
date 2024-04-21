@@ -85,7 +85,7 @@ ApplicationWindow {
             Button {
                 id: continueButton
                 onClicked: cancelDialog.close()
-                text: qsTr("Continue")
+                text: qsTr("C&ontinue")
             }
             
             Button {
@@ -108,13 +108,13 @@ ApplicationWindow {
                 }
                 text: {
                     if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
-                        qsTr("Cancel Download")
+                        qsTr("&Cancel Download")
                     else if (releases.variant.status == Units.DownloadStatus.Writing)
-                        qsTr("Cancel Writing")
+                        qsTr("&Cancel Writing")
                     else if (releases.variant.status == Units.DownloadStatus.Write_Verifying)
-                        qsTr("Cancel Verification")
+                        qsTr("&Cancel Verification")
                     else
-                        qsTr("Cancel")
+                        qsTr("&Cancel")
                 }  
             }
         }

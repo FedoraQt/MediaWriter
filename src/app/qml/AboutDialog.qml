@@ -92,7 +92,7 @@ ApplicationWindow {
             Button {
                 id: closeButton
                 onClicked: aboutDialog.close()
-                text: qsTr("Close")
+                text: qsTr("&Close")
             }
         }
     }

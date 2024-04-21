@@ -92,7 +92,6 @@ ApplicationWindow {
             Button {
                 id: prevButton
                 visible: true
-                text: getPrevButtonText()
             }
         
             Item {
@@ -102,8 +101,7 @@ ApplicationWindow {
             Button {
                 id: nextButton
                 visible: mainLayout.state != "downloadPage" 
-                enabled: mainLayout.state != "drivePage" 
-                text: getNextButtonText()
+                enabled: mainLayout.state != "drivePage"
             }
         }
         
@@ -118,7 +116,6 @@ ApplicationWindow {
                 //When comming back from restore page, after successfull restoring a USB drive
                 PropertyChanges { 
                     target: prevButton
-                    text: getPrevButtonText()
                     onClicked: aboutDialog.show()
                 }
                 PropertyChanges { 
@@ -151,9 +148,20 @@ ApplicationWindow {
             State {
                 name: "versionPage"
                 when: selectedPage == Units.Page.VersionPage
-                PropertyChanges { target: mainWindow; title: qsTr("Select Fedora Version") }
-                PropertyChanges { target: nextButton; visible: true; onClicked: selectedPage += 1 } 
-                PropertyChanges { target: prevButton; visible: true; onClicked: selectedPage -= 1 }
+                PropertyChanges {
+                    target: mainWindow
+                    title: qsTr("Select Fedora Version")
+                }
+                PropertyChanges {
+                    target: nextButton
+                    visible: true
+                    onClicked: selectedPage += 1
+                }
+                PropertyChanges {
+                    target: prevButton
+                    visible: true
+                    onClicked: selectedPage -= 1
+                }
                 StateChangeScript {
                     script: {
                         //state was pushing same page when returing from drivePage
@@ -170,7 +178,7 @@ ApplicationWindow {
                     title: qsTr("Select Drive") 
                 }
                 PropertyChanges {
-                    target: nextButton;
+                    target: nextButton
                     visible: true
                     onClicked: {
                         selectedPage = Units.Page.DownloadPage 
@@ -269,6 +277,11 @@ ApplicationWindow {
                 }
             }
         ]
+
+        onStateChanged: {
+            nextButton.text = getNextButtonText()
+            prevButton.text = getPrevButtonText()
+        }
     }
     
     Units {
@@ -282,38 +295,43 @@ ApplicationWindow {
     CancelDialog {
         id: cancelDialog
     }
-    
-    
+
     function getNextButtonText() {
+        var text = ""
         if (mainLayout.state == "restorePage") {
             if (lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored)
-                return qsTr("Finish")
-            return qsTr("Restore")
+                text = qsTr("Finish")
+            text = qsTr("Restore")
         } else if (mainLayout.state == "drivePage") {
             if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
-                return qsTr("Write")
+                text = qsTr("Write")
             if (Qt.platform.os === "windows" || Qt.platform.os === "osx") 
-                return qsTr("Download && Write")
-            return qsTr("Download & Write") 
+                text = qsTr("Download && Write")
+            text = qsTr("Download & Write")
         } else if (mainLayout.state == "downloadPage") {
             if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
-                return qsTr("Cancel")
+                text = qsTr("Cancel")
             else if (releases.variant.status == Units.DownloadStatus.Ready)
-                return qsTr("Write")
+                text = qsTr("Write")
             else if (releases.variant.status === Units.DownloadStatus.Finished)
-                return qsTr("Finish")
+                text = qsTr("Finish")
             else
-                return qsTr("Retry")
+                text = qsTr("Retry")
         }
-        return qsTr("Next")
+        else
+            text = qsTr("Next")
+        return "&" + text
     }
     
     function getPrevButtonText() {
+        var text = ""
         if (mainLayout.state == "mainPage") 
-            return qsTr("About")
+            text = qsTr("About")
         else if (mainLayout.state == "downloadPage")
-            return qsTr("Cancel")
-        return qsTr("Previous")
+            text = qsTr("Cancel")
+        else
+            text = qsTr("Previous")
+        return "&" + text
     }
 }
 
