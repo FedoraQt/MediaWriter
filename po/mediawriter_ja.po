@@ -1,19 +1,20 @@
 # Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>, 2018. #zanata
 # Hajime Taira <htaira@pantora.net>, 2022.
+# miyako kanaguri <miyako@mailfence.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-12 21:31+0100\n"
-"PO-Revision-Date: 2022-05-25 07:18+0000\n"
-"Last-Translator: Hajime Taira <htaira@pantora.net>\n"
-"Language-Team: Japanese <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/ja/>\n"
+"PO-Revision-Date: 2024-04-24 05:36+0000\n"
+"Last-Translator: miyako kanaguri <miyako@mailfence.com>\n"
+"Language-Team: Japanese <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12.2\n"
+"X-Generator: Weblate 5.4\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -22,9 +23,7 @@ msgid "About Fedora Media Writer"
 msgstr "Fedora Media Writerについて"
 
 #: ../src/app/qml/AboutDialog.qml:59
-#, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "バージョン %1"
@@ -35,17 +34,12 @@ msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Fedora Media Writerは新しいリリースを現在確認中です"
 
 #: ../src/app/qml/AboutDialog.qml:72
-#, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "バグや意見があれば %1 に報告してください"
 
 #: ../src/app/qml/AboutDialog.qml:95
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "閉じる"
@@ -136,9 +130,7 @@ msgid "Connection timed out"
 msgstr "接続がタイムアウトしました"
 
 #: ../src/app/qml/DownloadPage.qml:52
-#, fuzzy, qt-format
-#| msgctxt "DownloadPage|"
-#| msgid "%1 Sucessfuly Written"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr "%1 の書き込みに成功しました"
@@ -162,20 +154,16 @@ msgid "Preparing %1"
 msgstr "準備中: %1"
 
 #: ../src/app/qml/DownloadPage.qml:60
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "書き込みの準備ができています"
+msgstr "%1を書き込む準備ができました"
 
 #: ../src/app/qml/DownloadPage.qml:62
-#, fuzzy, qt-format
-#| msgctxt "DownloadPage|"
-#| msgid "Failed download"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "ダウンロードに失敗しました"
+msgstr "%1 のダウンロードに失敗しました。"
 
 #: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
@@ -207,7 +195,7 @@ msgstr " (%1"
 #: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "処理中にドライブが取り外されました"
 
 #: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
@@ -215,17 +203,15 @@ msgid "Downloads are saved to the downloads folder."
 msgstr "ダウンロードフォルダにダウンロード済みのファイルが保存されます。"
 
 #: ../src/app/qml/DownloadPage.qml:143
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "もし書き込みをすれば、%1 のデータは消去されます。"
+msgstr "書き込むと、%1 のデータは削除されます。"
 
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "USBドライブを接続してください。"
 
 #: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
@@ -327,28 +313,19 @@ msgid "USB Drive"
 msgstr "USBドライブ"
 
 #: ../src/app/qml/DrivePage.qml:135
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr "ポータブルデバイスが接続されていません。"
+msgstr "ポータブルドライブが接続されていません"
 
 #: ../src/app/qml/DrivePage.qml:155
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "ダウンロード中"
+msgstr "ダウンロード"
 
 #: ../src/app/qml/DrivePage.qml:160
-#, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "ダウンロードしたイメージを削除する"
+msgstr "書き込み後に削除する"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -486,12 +463,9 @@ msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
 #: ../src/app/releasemanager.cpp:432
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr "Fedora Media Writer について"
+msgstr "Fedora アトミックデスクトップ"
 
 #: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
@@ -566,20 +540,14 @@ msgid "Preparing"
 msgstr "準備中"
 
 #: ../src/app/releasemanager.h:376
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "ダウンロード中"
 
 #: ../src/app/releasemanager.h:377
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr "ダウンロードのチェック"
+msgstr "ダウンロードをチェック中"
 
 #: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
@@ -604,12 +572,9 @@ msgid "Checking the written data"
 msgstr "書き込まれたデータを検証中です"
 
 #: ../src/app/releasemanager.h:382
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Finished!"
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
-msgstr "終わりました!"
+msgstr "完了しました！"
 
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
@@ -617,12 +582,9 @@ msgid "The written data is corrupted"
 msgstr "書き込まれたデータが破損しています"
 
 #: ../src/app/releasemanager.h:384
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr "ダウンロード中"
+msgstr "ダウンロードに失敗しました"
 
 #: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
@@ -714,12 +676,9 @@ msgid "Official Editions"
 msgstr "Official Editions"
 
 #: ../src/app/qml/VersionPage.qml:59
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr "Fedora Media Writer について"
+msgstr "アトミックデスクトップ"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
@@ -752,7 +711,7 @@ msgstr "%1 の書き込みが完了しました。"
 #: ../src/helper/win/writejob.cpp:271
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr ""
+msgstr "解凍を開始できませんでした。"
 
 #: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
 #: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
@@ -769,7 +728,7 @@ msgstr "ダウンロードされたファイルを保存できません。"
 #: ../src/helper/win/writejob.cpp:315
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
-msgstr ""
+msgstr "ファイルを解凍するのに必要な空き容量がありません。"
 
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:320
@@ -784,13 +743,13 @@ msgstr "ダウンロードしたイメージが壊れています"
 #: ../src/helper/win/writejob.cpp:323
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
-msgstr ""
+msgstr "圧縮オプションがサポートされていません。"
 
 #: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:326
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
-msgstr ""
+msgstr "解凍時に不明なエラーが発生しました。"
 
 #: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
 #: ../src/helper/win/writejob.cpp:361
@@ -805,13 +764,13 @@ msgstr "ダウンロードしたファイルが読み込みできません。"
 #: ../src/helper/win/writejob.cpp:406
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr ""
+msgstr "ドライブに不具合がある可能性があります。"
 
 #: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
 #: ../src/helper/win/writejob.cpp:411
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr ""
+msgstr "メディアの確認中に予期しないエラーが検出されました。"
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
@@ -821,28 +780,28 @@ msgstr ""
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "書き込み先を開くことができませんでした"
 
 #: ../src/helper/win/writejob.cpp:74
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for writing"
-msgstr ""
+msgstr "書き込み先のドライブにアクセスできません"
 
 #: ../src/helper/win/writejob.cpp:98
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr ""
+msgstr "ドライブをロックできません"
 
 #: ../src/helper/win/writejob.cpp:134
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't remove the drive %1:"
-msgstr ""
+msgstr "%1の取り外しに失敗しました:"
 
 #: ../src/helper/win/writejob.cpp:209
 msgctxt "WriteJob|"
 msgid "Couldn't unlock the drive"
-msgstr ""
+msgstr "ドライブのロックを解除できませんでした"
 
 #: ../src/app/qml/main.qml:116
 #, fuzzy
