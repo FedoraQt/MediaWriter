@@ -6,20 +6,21 @@
 # Geert Warrink <geert.warrink@onsnet.nu>, 2016. #zanata
 # Geert Warrink <geert.warrink@onsnet.nu>, 2017. #zanata
 # Geert Warrink <geert.warrink@onsnet.nu>, 2019. #zanata
+# Lenn Steenbergen <ltjsteenbergen@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-12 21:31+0100\n"
-"PO-Revision-Date: 2021-07-11 17:15+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Dutch <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/nl/>\n"
+"PO-Revision-Date: 2024-04-26 12:36+0000\n"
+"Last-Translator: Lenn Steenbergen <ltjsteenbergen@gmail.com>\n"
+"Language-Team: Dutch <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.1\n"
+"X-Generator: Weblate 5.4\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -47,9 +48,7 @@ msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Fedora Media Writer kijkt nu of er nieuwe vrijgaves zijn"
 
 #: ../src/app/qml/AboutDialog.qml:72
-#, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "Rapporteer bugs of geef je suggesties op %1"
@@ -65,20 +64,17 @@ msgstr "Sluiten"
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "Download annuleren?"
 
 #: ../src/app/qml/CancelDialog.qml:58
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Schrijven"
+msgstr "Schrijven annuleren?"
 
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "Verificatie annuleren?"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
@@ -86,49 +82,45 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"Het downloaden en schrijven zal geannuleerd worden. Het proces kan later "
+"hervat worden."
 
 #: ../src/app/qml/CancelDialog.qml:69
+#, fuzzy
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
+"Het schrijven zal worden geannuleerd en uw schijf zal gerestaureerd moeten "
+"worden."
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "Het proces kan veilig worden geannuleerd."
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "Ga verder"
 
 #: ../src/app/qml/CancelDialog.qml:111
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "Downloaden"
+msgstr "Download annuleren"
 
 #: ../src/app/qml/CancelDialog.qml:113
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Schrijven"
+msgstr "Schrijven annuleren"
 
 #: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "Verificatie annuleren"
 
 #: ../src/app/qml/CancelDialog.qml:117
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Annuleren"
@@ -154,10 +146,10 @@ msgid "Connection timed out"
 msgstr "Verbinding time-out"
 
 #: ../src/app/qml/DownloadPage.qml:52
-#, qt-format
+#, fuzzy, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr ""
+msgstr "%1 Schrijven voltooid"
 
 #: ../src/app/qml/DownloadPage.qml:54
 #, fuzzy, qt-format
@@ -165,7 +157,7 @@ msgstr ""
 #| msgid "Writing"
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "Schrijven"
+msgstr "Schrijven %1"
 
 #: ../src/app/qml/DownloadPage.qml:56
 #, fuzzy, qt-format
@@ -173,7 +165,7 @@ msgstr "Schrijven"
 #| msgid "Downloading"
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "Downloaden"
+msgstr "Downloaden %1"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, fuzzy, qt-format
@@ -181,7 +173,7 @@ msgstr "Downloaden"
 #| msgid "Preparing"
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "Voorbereiden"
+msgstr "Voorbereiden %1"
 
 #: ../src/app/qml/DownloadPage.qml:60
 #, fuzzy, qt-format
@@ -189,7 +181,7 @@ msgstr "Voorbereiden"
 #| msgid "Ready to write"
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "Klaar om te schrijven"
+msgstr "Klaar om te schrijven %1"
 
 #: ../src/app/qml/DownloadPage.qml:62
 #, fuzzy, qt-format
