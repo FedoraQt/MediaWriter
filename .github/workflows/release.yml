@@ -173,14 +173,14 @@ jobs:
           echo "LICENSE.LGPL-2.txt" >> build/app/release/uninstall.log
 
           makensis -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
-          mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64-${{ env.TAG_NAME }}.exe"
+          mv dist/win/FMW-setup.exe ./"AOSCMediaWriter-win64-${{ env.TAG_NAME }}.exe"
 
       - name: pload to GitHub (release)
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: FedoraMediaWriter-win64-${{ env.TAG_NAME }}.exe
+          file: AOSCMediaWriter-win64-${{ env.TAG_NAME }}.exe
           file_glob: true
           tag: ${{ github.ref }}
           overwrite: true
