@@ -108,7 +108,8 @@ public:
     Q_INVOKABLE void selectLocalFile(const QString &path = QString());
     ReleaseVariant *localFile() const;
 
-    bool updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
+    bool
+    updateUrl(const QString &release, int version, const QString &status, const QString &type, const QString &category, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
 
     QStringList architectures() const;
     int filterArchitecture() const;
@@ -228,7 +229,7 @@ public:
     Q_ENUMS(Source)
     Q_INVOKABLE QString sourceString();
 
-    Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots);
+    Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, const QString &subvariant, Release::Source source, const QString &icon, const QStringList &screenshots);
     void setLocalFile(const QString &path);
     bool updateUrl(int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size);
     ReleaseManager *manager();
@@ -237,6 +238,7 @@ public:
     QString name() const;
     QString summary() const;
     QString description() const;
+    QString subvariant() const;
     Release::Source source() const;
     bool isLocal() const;
     QString icon() const;
@@ -262,6 +264,7 @@ private:
     QString m_name{};
     QString m_summary{};
     QStringList m_description{};
+    QString m_subvariant{};
     Release::Source m_source{LOCAL};
     QString m_icon{};
     QStringList m_screenshots{};
