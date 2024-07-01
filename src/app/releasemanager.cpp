@@ -28,6 +28,8 @@
 
 #include <QJsonDocument>
 
+using namespace Qt::Literals::StringLiterals;
+
 ReleaseManager::ReleaseManager(QObject *parent)
     : QSortFilterProxyModel(parent)
     , m_sourceModel(new ReleaseListModel(this))
@@ -176,7 +178,16 @@ ReleaseVariant *ReleaseManager::localFile() const
     return nullptr;
 }
 
-bool ReleaseManager::updateUrl(const QString &release, int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size)
+bool ReleaseManager::updateUrl(const QString &release,
+                               int version,
+                               const QString &status,
+                               const QString &type,
+                               const QString &category,
+                               const QDateTime &releaseDate,
+                               const QString &architecture,
+                               const QString &url,
+                               const QString &sha256,
+                               int64_t size)
 {
     if (!ReleaseArchitecture::isKnown(architecture)) {
         mWarning() << "Architecture" << architecture << "is not known!";
@@ -184,8 +195,14 @@ bool ReleaseManager::updateUrl(const QString &release, int version, const QStrin
     }
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = get(i);
-        if (r->name().toLower().contains(release))
+        if (r->name().toLower().contains(release) || r->subvariant().toLower().contains(release)) {
+            // Special case for Sway and Budgie
+            if (release == "sway"_L1 || release == "budgie"_L1) {
+                if (r->source() == Release::EMERGING && (category != "sericea"_L1 && category != "onyx"_L1))
+                    continue;
+            }
             return r->updateUrl(version, status, type, releaseDate, architecture, url, sha256, size);
+        }
     }
     return false;
 }
@@ -296,7 +313,7 @@ void ReleaseManager::onStringDownloaded(const QString &text)
         mDebug() << this->metaObject()->className() << "Adding" << release << versionWithStatus << arch;
 
         if (!release.isEmpty() && !url.isEmpty() && !arch.isEmpty())
-            updateUrl(release, version, status, type, releaseDate, arch, url, sha256, size);
+            updateUrl(release, version, status, type, category, releaseDate, arch, url, sha256, size);
     }
 
     m_beingUpdated = false;
@@ -388,7 +405,7 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
         if (obj.contains("icon"))
             icon = obj["icon"].toString();
 
-        m_releases.append(new Release(manager(), m_releases.count(), name, summary, description, source, icon, screenshots));
+        m_releases.append(new Release(manager(), m_releases.count(), name, summary, description, subvariant, source, icon, screenshots));
     }
 
     custom = new Release(manager(),
@@ -396,6 +413,7 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
                          tr("Custom image"),
                          QT_TRANSLATE_NOOP("Release", "Pick a file from your drive(s)"),
                          {QT_TRANSLATE_NOOP("Release", "<p>Here you can choose a OS image from your hard drive to be written to your flash disk</p><p>Currently it is only supported to write raw disk images (.iso or .bin)</p>")},
+                         "Other"_L1,
                          Release::LOCAL,
                          "qrc:/logos/folder",
                          {});
@@ -440,12 +458,13 @@ int Release::index() const
     return m_index;
 }
 
-Release::Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, Release::Source source, const QString &icon, const QStringList &screenshots)
+Release::Release(ReleaseManager *parent, int index, const QString &name, const QString &summary, const QStringList &description, const QString &subvariant, Release::Source source, const QString &icon, const QStringList &screenshots)
     : QObject(parent)
     , m_index(index)
     , m_name(name)
     , m_summary(summary)
     , m_description(description)
+    , m_subvariant(subvariant)
     , m_source(source)
     , m_icon(icon)
     , m_screenshots(screenshots)
@@ -529,6 +548,11 @@ QString Release::description() const
         result.append(tr(i.toUtf8()).replace("\%(rel)s ", "").replace("<br />", ""));
     }
     return result;
+}
+
+QString Release::subvariant() const
+{
+    return m_subvariant;
 }
 
 Release::Source Release::source() const
