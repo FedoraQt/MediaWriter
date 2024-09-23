@@ -4,13 +4,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # "#-#-#-#-#  mediawriter.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 # Matjaž Jeran <matjaz.jeran@amis.net>, 2023.
+# Martin Srebotnjak <miles@filmsi.net>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-12 21:31+0100\n"
-"PO-Revision-Date: 2023-05-04 13:20+0000\n"
-"Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
+"PO-Revision-Date: 2024-09-22 11:56+0000\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/sl/>\n"
 "Language: sl\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 4.15.2\n"
+"X-Generator: Weblate 5.7.2\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
 msgctxt "AboutDialog|"
@@ -106,9 +107,6 @@ msgid "Cancel Verification"
 msgstr "Prekini verifikacijo"
 
 #: ../src/app/qml/CancelDialog.qml:117
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Prekliči"
@@ -465,7 +463,7 @@ msgstr "Fedora Labs"
 #: ../src/app/releasemanager.cpp:432
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr ""
+msgstr "Namizja Atomic Fedora"
 
 #: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
@@ -475,7 +473,7 @@ msgstr "Ostalo"
 #: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Intel/AMD 64bit"
+msgstr "64-bitni Intel/AMD"
 
 #: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
@@ -487,7 +485,7 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Intel/AMD 32bit"
+msgstr "32-bitni Intel/AMD"
 
 #: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
@@ -599,19 +597,19 @@ msgstr "Napaka"
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
-msgstr "%1 Alpha"
+msgstr "%1 alfa"
 
 #: ../src/app/releasemanager.cpp:708
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
-msgstr "%1 Beta"
+msgstr "%1 beta"
 
 #: ../src/app/releasemanager.cpp:710
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr "%1 Kandidat za izdajo"
+msgstr "Kandidat za izdajo %1"
 
 #: ../src/app/qml/RestorePage.qml:37
 #, qt-format
@@ -682,7 +680,7 @@ msgstr "Uradne izdaje"
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr ""
+msgstr "Namizja Atomic"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
@@ -770,7 +768,7 @@ msgstr "Nepričakovana napaka med preverjanjem medija."
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "Para vtičnic ni možno dodeliti"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
@@ -831,12 +829,12 @@ msgstr "Piši"
 #: ../src/app/qml/main.qml:296
 msgctxt "main|"
 msgid "Download && Write"
-msgstr "Prenesi sem && piši"
+msgstr "Prenesi in zapiši"
 
 #: ../src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "Prenesi sem & Piši"
+msgstr "Prenesi in zapiši"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 msgctxt "main|"
@@ -908,7 +906,7 @@ msgstr "Pisanje slik Fedore na vaše prenosljive pogone"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
-msgstr "fmw;usb;iso;bootable;"
+msgstr "fmw;usb;iso;bootable;zagon;zagonski;razdelek;"
 
 #~ msgctxt "Release|"
 #~ msgid "Emerging Fedora Editions"

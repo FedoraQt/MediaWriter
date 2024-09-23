@@ -7,12 +7,13 @@
 # Geert Warrink <geert.warrink@onsnet.nu>, 2017. #zanata
 # Geert Warrink <geert.warrink@onsnet.nu>, 2019. #zanata
 # Lenn Steenbergen <ltjsteenbergen@gmail.com>, 2024.
+# Jonah Bruechert <jbb@kaidan.im>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-12 21:31+0100\n"
-"PO-Revision-Date: 2024-04-26 12:36+0000\n"
-"Last-Translator: Lenn Steenbergen <ltjsteenbergen@gmail.com>\n"
+"PO-Revision-Date: 2024-09-22 15:01+0000\n"
+"Last-Translator: Jonah Bruechert <jbb@kaidan.im>\n"
 "Language-Team: Dutch <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/nl/>\n"
 "Language: nl\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.7.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
@@ -184,64 +185,47 @@ msgid "Ready to write %1"
 msgstr "Klaar om te schrijven %1"
 
 #: ../src/app/qml/DownloadPage.qml:62
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "De download controleren"
+msgstr "Downloaden van %1 mislukt"
 
 #: ../src/app/qml/DownloadPage.qml:76
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr "(%1 B over)"
+msgstr " B over)"
 
 #: ../src/app/qml/DownloadPage.qml:77
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr "(%1 KB over)"
+msgstr " KB over)"
 
 #: ../src/app/qml/DownloadPage.qml:78
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr "(%1 MB over)"
+msgstr " MB over)"
 
 #: ../src/app/qml/DownloadPage.qml:79
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr "(%1 GB over)"
+msgstr " GB over)"
 
 #: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
 #: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "Uw schijf is losgekoppeld tijdens het proces"
 
 #: ../src/app/qml/DownloadPage.qml:135
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "Het bestand wordt opgeslagen in je Downloads map."
+msgstr "Downloads worden opgeslagen in de downloadmap."
 
 #: ../src/app/qml/DownloadPage.qml:143
 #, fuzzy, qt-format
@@ -254,15 +238,9 @@ msgstr "Met het schrijven zul je alle data op %1 kwijt raken."
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "Plaats een USB-stick."
 
 #: ../src/app/qml/DownloadPage.qml:159
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using Fedora Media Writer; this will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -270,7 +248,7 @@ msgid ""
 "from your drive."
 msgstr ""
 "Je drive wordt verkleind naar een kleinere capaciteit. Je kunt het met "
-"gebruik van Fedora Media Writer naar de normale grootte veranderen; dit zal "
+"gebruik van Fedora Media Writer naar de normale grootte veranderen. Dit zal "
 "de installatiemedia van je drive verwijderen."
 
 #: ../src/app/qml/DownloadPage.qml:167
@@ -325,7 +303,7 @@ msgstr ""
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "Herstart en start op vanaf %1 om %2 te gebruiken."
 
 #: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
@@ -333,33 +311,24 @@ msgid "This drive is not large enough."
 msgstr "Dit station is niet groot genoeg."
 
 #: ../src/app/qml/DrivePage.qml:36
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "Schrijf naar schijf"
+msgstr "Opties voor schrijven"
 
 #: ../src/app/qml/DrivePage.qml:45
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "Versie %1"
+msgstr "Versie"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "Hardware-architectuur"
 
 #: ../src/app/qml/DrivePage.qml:84
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "Geselecteerd:"
+msgstr "Geselecteerd bestand"
 
 #: ../src/app/qml/DrivePage.qml:91
 #, fuzzy
@@ -370,12 +339,9 @@ msgid "None"
 msgstr "Geen"
 
 #: ../src/app/qml/DrivePage.qml:99
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "Geselecteerd:"
+msgstr "Selecteer..."
 
 #: ../src/app/qml/DrivePage.qml:116
 #, fuzzy
@@ -407,20 +373,14 @@ msgid "There are no portable drives connected"
 msgstr "Er zijn geen draagbare drives aangesloten"
 
 #: ../src/app/qml/DrivePage.qml:155
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "Downloaden"
+msgstr "Download"
 
 #: ../src/app/qml/DrivePage.qml:160
-#, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "Verwijder je gedownloade image"
+msgstr "Download verwijderen na schrijven"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -495,15 +455,12 @@ msgstr "Schrijven van %1 is gelukt"
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Imagebron selecteren"
 
 #: ../src/app/qml/MainPage.qml:57
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Download mislukte"
+msgstr "Automatisch downloaden"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
@@ -511,12 +468,10 @@ msgid "Select .iso file"
 msgstr ""
 
 #: ../src/app/qml/MainPage.qml:76
-#, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
+#, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "%1 herstellen?"
+msgstr "<b>%1</b> herstellen?"
 
 #: ../src/app/portalfiledialog.cpp:143
 #, fuzzy
@@ -527,12 +482,9 @@ msgid "Image files"
 msgstr "Imagebestanden"
 
 #: ../src/app/portalfiledialog.cpp:153
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "Alle bestanden (*)"
+msgstr "Alle bestanden"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
@@ -566,12 +518,9 @@ msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
 #: ../src/app/releasemanager.cpp:432
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr "Fedora Labs"
+msgstr "Fedora Atomic Desktops"
 
 #: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
@@ -579,12 +528,9 @@ msgid "Other"
 msgstr "Anders"
 
 #: ../src/app/releasemanager.cpp:1074
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Intel 64bit"
+msgstr "Intel/AMD 64bit"
 
 #: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
@@ -592,12 +538,9 @@ msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "ISO formaat image voor Intel, AMD en andere compatibele PC's (64-bit)"
 
 #: ../src/app/releasemanager.cpp:1075
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Intel 32bit"
+msgstr "Intel/AMD 32bit"
 
 #: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
@@ -808,17 +751,12 @@ msgid "Your drive was successfully restored!"
 msgstr "Je drive is succesvol hersteld!"
 
 #: ../src/app/qml/RestorePage.qml:94
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"Helaas, tijdens het proces is er een fout opgetreden.<br>Probeer de drive te "
+"Helaas, tijdens het proces is er een fout opgetreden. Probeer de drive te "
 "herstellen met gebruik van je systeemgereedschappen."
 
 #: ../src/app/qml/RestorePage.qml:143
@@ -832,12 +770,9 @@ msgid "Select Fedora Release"
 msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:48
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "Geselecteerd:"
+msgstr "Kies uit:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
@@ -845,12 +780,9 @@ msgid "Official Editions"
 msgstr ""
 
 #: ../src/app/qml/VersionPage.qml:59
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr "Fedora Labs"
+msgstr "Atomic Desktops"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
@@ -976,20 +908,14 @@ msgid "Fedora Media Writer"
 msgstr "Fedora mediaschrijver"
 
 #: ../src/app/qml/main.qml:154
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Fedora Spins"
+msgstr "Selecteer Fedora versie"
 
 #: ../src/app/qml/main.qml:170
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "Geselecteerd:"
+msgstr "Selecteer Schijf"
 
 #: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
@@ -997,36 +923,24 @@ msgid "Restore"
 msgstr "Herstellen"
 
 #: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "main|"
 msgid "Finish"
-msgstr "Klaar!"
+msgstr "Afwerken"
 
 #: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "main|"
 msgid "Write"
-msgstr "Schrijven %1"
+msgstr "Schrijven"
 
 #: ../src/app/qml/main.qml:296
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download && Write"
-msgstr "Download mislukte"
+msgstr "Downloaden && Schrijven"
 
 #: ../src/app/qml/main.qml:297
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "main|"
 msgid "Download & Write"
-msgstr "Download mislukte"
+msgstr "Downloaden & Schrijven"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 #, fuzzy
