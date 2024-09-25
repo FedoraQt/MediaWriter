@@ -1,5 +1,6 @@
 /*
  * Fedora Media Writer
+ * Copyright (C) 2024 Jan Grulich <jgrulich@redhat.com>
  * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
@@ -18,81 +19,64 @@
  */
 
 import QtQuick 6.6
-import QtQuick.Controls 6.6
-import QtQuick.Window 6.6
+import QtQuick.Controls 6.6 as QQC2
 import QtQuick.Layouts 6.6
-import QtQml 6.6
-import QtQuick.Dialogs 6.6
 
 Page {
     id: mainPage
-    
-    ColumnLayout {
-        anchors.fill: parent
-        spacing: units.gridUnit
-        
-        Image {
-            source: "qrc:/mainPageImage"
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            fillMode: Image.PreserveAspectFit
-            sourceSize.width: parent.width
-            sourceSize.height: parent.height
-            smooth: true
-            antialiasing: true
+
+    imageSource: "qrc:/mainPageImage"
+    text: qsTr("Select Image Source")
+
+    QQC2.RadioButton {
+        checked: selectedOption == Units.MainSelect.Download
+        text: qsTr("Download automatically")
+        onClicked: {
+            selectedOption = Units.MainSelect.Download
+        }
+    }
+
+    QQC2.RadioButton {
+        text: qsTr("Select .iso file")
+        onClicked: {
+            selectedOption = Units.MainSelect.Write
+            releases.selectLocalFile("")
+        }
+    }
+
+    QQC2.RadioButton {
+        id: restoreRadio
+        visible: drives.lastRestoreable
+        text: drives.lastRestoreable ? qsTr("Restore <b>%1</b>").arg(drives.lastRestoreable.name) : ""
+        onClicked: {
+            selectedOption = Units.MainSelect.Restore
         }
 
-        Heading {
-            Layout.alignment: Qt.AlignHCenter
-            text: qsTr("Select Image Source")
-            level: 5
+        Connections {
+            target: drives
+            function onLastRestoreableChanged() {
+                if (drives.lastRestoreable != null && !restoreRadio.visible)
+                    restoreRadio.visible = true
+                if (!drives.lastRestoreable)
+                    restoreRadio.visible = false
+            }
         }
-        
-        ButtonGroup {
-            id: radioGroup 
-        }
+    }
 
-        ColumnLayout {
-            id: radioColumn
-            Layout.bottomMargin: drives.lastRestoreable ? 0 : restoreRadio.height + 5
-            
-            RadioButton {
-                checked: mainWindow.selectedOption == Units.MainSelect.Download
-                text: qsTr("Download automatically")
-                onClicked: {
-                    selectedOption = Units.MainSelect.Download
-                }
-                ButtonGroup.group: radioGroup
-            }
-    
-            RadioButton {
-                text: qsTr("Select .iso file")
-                onClicked: {
-                    selectedOption = Units.MainSelect.Write
-                    releases.selectLocalFile("")
-                }
-                ButtonGroup.group: radioGroup
-            }
-            
-            RadioButton {
-                id: restoreRadio
-                visible: drives.lastRestoreable
-                text: drives.lastRestoreable ? qsTr("Restore <b>%1</b>").arg(drives.lastRestoreable.name) : ""
-                onClicked: {
-                    selectedOption = Units.MainSelect.Restore
-                }
-                ButtonGroup.group: radioGroup
-                
-                Connections {
-                    target: drives
-                    function onLastRestoreableChanged() {
-                        if (drives.lastRestoreable != null && !restoreRadio.visible)
-                            restoreRadio.visible = true
-                        if (!drives.lastRestoreable)
-                            restoreRadio.visible = false
-                    }
-                }
-            }
-        }
+    previousButtonText: qsTr("About")
+
+    onPreviousButtonClicked: {
+        aboutDialog.show()
+    }
+
+    onNextButtonClicked: {
+        if (selectedOption == Units.MainSelect.Write) {
+            if (releases.localFile.iso)
+                releases.selectLocalFile()
+            selectedPage = Units.Page.DrivePage
+        } else if (selectedOption == Units.MainSelect.Restore)
+            selectedPage = Units.Page.RestorePage
+        else
+            selectedPage = Units.Page.VersionPage
     }
 }

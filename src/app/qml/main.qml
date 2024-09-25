@@ -19,9 +19,6 @@
 
 import QtQuick 6.6
 import QtQuick.Controls 6.6
-import QtQuick.Window 6.6
-import QtQuick.Layouts 6.6
-import QtQml 6.6
 
 ApplicationWindow {
     id: mainWindow
@@ -36,74 +33,42 @@ ApplicationWindow {
     property int selectedOption: Units.MainSelect.Download
     property QtObject lastRestoreable
     property bool eraseVariant: false
-
-    ColumnLayout {
-        id: mainLayout
-        anchors.fill: parent
-        
-        anchors.leftMargin: units.gridUnit * 3
-        anchors.rightMargin: units.gridUnit * 3
-        anchors.topMargin: units.gridUnit * 2
-        anchors.bottomMargin: units.gridUnit * 2
     
-        StackView {
-            id: stackView
-            initialItem: "MainPage.qml"
-            
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.leftMargin: parent.width / 8
-            Layout.rightMargin: parent.width / 8
-            Layout.bottomMargin: units.gridUnit * 2
-            
-            pushEnter: Transition {
-                XAnimator {
-                    from: mainWindow.width
-                    to: 0
-                    duration: 250
-                }
-            }
-            pushExit: Transition {
-                XAnimator {
-                    from: 0
-                    to: -mainWindow.width
-                    duration: 250
-                }
-            }
-            popEnter: Transition {
-              XAnimator {
-                    from: -mainWindow.width
-                    to: 0
-                    duration: 250
-                }
-            }
-            popExit: Transition {
-                XAnimator {
-                    from: 0
-                    to: mainWindow.width
-                    duration: 250
-                }
+    StackView {
+        id: stackView
+        initialItem: "MainPage.qml"
+
+        anchors {
+            fill: parent
+            margins: units.gridUnit * 2
+        }
+
+        pushEnter: Transition {
+            XAnimator {
+                from: mainWindow.width
+                to: 0
+                duration: 250
             }
         }
-        
-        RowLayout {
-            Layout.alignment: Qt.AlignBottom
-            
-            Button {
-                id: prevButton
-                visible: true
-                text: getPrevButtonText()
+        pushExit: Transition {
+            XAnimator {
+                from: 0
+                to: -mainWindow.width
+                duration: 250
             }
-        
-            Item {
-                Layout.fillWidth: true
+        }
+        popEnter: Transition {
+            XAnimator {
+                from: -mainWindow.width
+                to: 0
+                duration: 250
             }
-            
-            Button {
-                id: nextButton
-                visible: mainLayout.state != "downloadPage" 
-                enabled: mainLayout.state != "drivePage" 
-                text: getNextButtonText()
+        }
+        popExit: Transition {
+            XAnimator {
+                from: 0
+                to: mainWindow.width
+                duration: 250
             }
         }
         
@@ -115,26 +80,7 @@ ApplicationWindow {
                     target: mainWindow
                     title: qsTr("Fedora Media Writer") 
                 }
-                //When comming back from restore page, after successfull restoring a USB drive
-                PropertyChanges { 
-                    target: prevButton
-                    text: getPrevButtonText()
-                    onClicked: aboutDialog.show()
-                }
-                PropertyChanges { 
-                    target: nextButton
-                    visible: true
-                    onClicked: {
-                        if (selectedOption == Units.MainSelect.Write) {
-                            if (releases.localFile.iso)
-                                releases.selectLocalFile()
-                            selectedPage = Units.Page.DrivePage 
-                        } else if (selectedOption == Units.MainSelect.Restore)
-                            selectedPage = Units.Page.RestorePage
-                        else
-                            selectedPage = Units.Page.VersionPage 
-                    }
-                }
+
                 StateChangeScript {
                     script: {
                         //reset of source on versionPage
@@ -152,8 +98,6 @@ ApplicationWindow {
                 name: "versionPage"
                 when: selectedPage == Units.Page.VersionPage
                 PropertyChanges { target: mainWindow; title: qsTr("Select Fedora Version") }
-                PropertyChanges { target: nextButton; visible: true; onClicked: selectedPage += 1 } 
-                PropertyChanges { target: prevButton; visible: true; onClicked: selectedPage -= 1 }
                 StateChangeScript {
                     script: {
                         //state was pushing same page when returing from drivePage
@@ -169,31 +113,6 @@ ApplicationWindow {
                     target: mainWindow
                     title: qsTr("Select Drive") 
                 }
-                PropertyChanges {
-                    target: nextButton;
-                    visible: true
-                    onClicked: {
-                        selectedPage = Units.Page.DownloadPage 
-                        if (selectedOption != Units.MainSelect.Write) 
-                            releases.variant.download()
-                        if (drives.length) {
-                            drives.selected.setImage(releases.variant)
-                            drives.selected.write(releases.variant)
-                        }
-                    }
-                }
-                PropertyChanges {
-                    target: prevButton
-                    visible: true
-                    onClicked: {
-                        if (selectedOption == Units.MainSelect.Write)
-                            selectedPage = Units.Page.MainPage
-                        else {
-                            selectedPage -= 1 
-                            stackView.pop()
-                        }
-                    }
-                }
                 StateChangeScript { 
                     script: { 
                         stackView.push("DrivePage.qml") 
@@ -204,73 +123,36 @@ ApplicationWindow {
             State {
                 name: "downloadPage"
                 when: selectedPage == Units.Page.DownloadPage
-                PropertyChanges {  
+                PropertyChanges {
                     target: mainWindow
                     title: releases.variant.statusString
                 }
                 StateChangeScript {
                     script: { stackView.push("DownloadPage.qml") }
                 }
-                PropertyChanges {
-                    target: prevButton
-                    visible: true
-                    onClicked: {
-                        if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying) {
-                            cancelDialog.show()
-                        } else {
-                            releases.variant.resetStatus()
-                            downloadManager.cancel()
-                            mainWindow.selectedPage = Units.Page.MainPage
-                        }
-                    }
-                }
-                PropertyChanges {
-                    target: nextButton
-                    onClicked: {
-                        if (releases.variant.status === Units.DownloadStatus.Finished) {
-                            drives.lastRestoreable = drives.selected
-                            drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
-                            releases.variant.resetStatus()
-                            downloadManager.cancel()
-                            selectedPage = Units.Page.MainPage
-                        } else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length) || releases.variant.status === Units.DownloadStatus.Failed_Download || (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length) || releases.variant.status === Units.DownloadStatus.Ready) {
-                            if (selectedOption != Units.MainSelect.Write)
-                                releases.variant.download()
-                            drives.selected.setImage(releases.variant)
-                            drives.selected.write(releases.variant)
-                        }
-                    }
-                }
             },
             State {
                 name: "restorePage"
                 when: selectedPage == Units.Page.RestorePage
-                PropertyChanges { 
+                PropertyChanges {
                     target: mainWindow
-                    title: qsTr("Restore") 
+                    title: qsTr("Restore")
                 }
-                PropertyChanges {
-                    target: nextButton
-                    visible: true
-                    onClicked: {
-                        if (lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored)
-                            selectedPage = Units.Page.MainPage 
-                        else
-                            drives.lastRestoreable.restore() 
-                    }
-                }
-                PropertyChanges {
-                    target: prevButton
-                    visible: true
-                    onClicked: selectedPage = Units.Page.MainPage 
-                }
-                StateChangeScript { 
+                StateChangeScript {
                     script: { stackView.push("RestorePage.qml") }
                 }
             }
         ]
     }
     
+    Connections {
+        target: drives
+        function onLastRestoreableChanged() {
+            if (!drives.selected)
+                selectedPage = Units.Page.MainPage
+        }
+    }
+
     Units {
         id: units
     }
@@ -281,39 +163,6 @@ ApplicationWindow {
     
     CancelDialog {
         id: cancelDialog
-    }
-    
-    
-    function getNextButtonText() {
-        if (mainLayout.state == "restorePage") {
-            if (lastRestoreable && lastRestoreable.restoreStatus == Units.RestoreStatus.Restored)
-                return qsTr("Finish")
-            return qsTr("Restore")
-        } else if (mainLayout.state == "drivePage") {
-            if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
-                return qsTr("Write")
-            if (Qt.platform.os === "windows" || Qt.platform.os === "osx") 
-                return qsTr("Download && Write")
-            return qsTr("Download & Write") 
-        } else if (mainLayout.state == "downloadPage") {
-            if (releases.variant.status === Units.DownloadStatus.Write_Verifying || releases.variant.status === Units.DownloadStatus.Writing || releases.variant.status === Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
-                return qsTr("Cancel")
-            else if (releases.variant.status == Units.DownloadStatus.Ready)
-                return qsTr("Write")
-            else if (releases.variant.status === Units.DownloadStatus.Finished)
-                return qsTr("Finish")
-            else
-                return qsTr("Retry")
-        }
-        return qsTr("Next")
-    }
-    
-    function getPrevButtonText() {
-        if (mainLayout.state == "mainPage") 
-            return qsTr("About")
-        else if (mainLayout.state == "downloadPage")
-            return qsTr("Cancel")
-        return qsTr("Previous")
     }
 }
 
