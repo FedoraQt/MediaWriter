@@ -1,5 +1,6 @@
 /*
  * Fedora Media Writer
+ * Copyright (C) 2024 Jan Grulich <jgrulich@redhat.com>
  * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
@@ -18,73 +19,48 @@
  */
 
 import QtQuick 6.6
-import QtQuick.Controls 6.6
+import QtQuick.Controls 6.6 as QQC2
 import QtQuick.Layouts 6.6
-import QtQml 6.6
-
 
 Page {
     id: versionPage
     property int prevSource: 0
 
-    ColumnLayout {
-        anchors.fill: parent
+    text: qsTr("Select Fedora Release")
 
-        Heading {
-            Layout.alignment: Qt.AlignHCenter
-            text: qsTr("Select Fedora Release")
-            level: 5
-        }
+    QQC2.Label {
+        text: qsTr("Select from:")
+    }
 
-        ButtonGroup {
-            id: radioGroup
-        }
+    QQC2.RadioButton {
+        checked: true
+        text: qsTr("Official Editions")
+        onClicked: changeFilter(Units.Source.Product)
+    }
 
-        ColumnLayout {
-            id: radioColumn
-            Layout.alignment: Qt.AlignTop
+    QQC2.RadioButton {
+        text: qsTr("Atomic Desktops")
+        onClicked: changeFilter(Units.Source.Emerging)
+    }
 
-            Label {
-                text: qsTr("Select from:")
-            }
+    QQC2.RadioButton {
+        text: qsTr("Spins")
+        onClicked: changeFilter(Units.Source.Spins)
+    }
 
-            RadioButton {
-                checked: true
-                text: qsTr("Official Editions")
-                onClicked: changeFilter(Units.Source.Product)
-                ButtonGroup.group: radioGroup
-            }
+    QQC2.RadioButton {
+        text: qsTr("Labs")
+        onClicked: changeFilter(Units.Source.Labs)
+    }
 
-            RadioButton {
-                text: qsTr("Atomic Desktops")
-                onClicked: changeFilter(Units.Source.Emerging)
-                ButtonGroup.group: radioGroup
-            }
-
-            RadioButton {
-                text: qsTr("Spins")
-                onClicked: changeFilter(Units.Source.Spins)
-                ButtonGroup.group: radioGroup
-            }
-
-            RadioButton {
-                text: qsTr("Labs")
-                onClicked: changeFilter(Units.Source.Labs)
-                ButtonGroup.group: radioGroup
-            }
-
-            ComboBox {
-                id: selectFromComboBox
-                Layout.alignment: Qt.AlignHCenter
-                Layout.fillWidth: true
-                Layout.topMargin: units.gridUnit / 2
-                textRole: "name"
-                valueRole: "sourceIndex"
-                model: releases
-                onCurrentValueChanged: updateSelectedIndex()
-
-            }
-        }
+    QQC2.ComboBox {
+        id: selectFromComboBox
+        Layout.fillWidth: true
+        Layout.topMargin: units.gridUnit / 2
+        textRole: "name"
+        valueRole: "sourceIndex"
+        model: releases
+        onCurrentValueChanged: updateSelectedIndex()
     }
 
     function changeFilter(filter) {
@@ -102,4 +78,7 @@ Page {
             releases.selectedIndex = parseInt(selectFromComboBox.currentValue)
         }
     }
+
+    onPreviousButtonClicked: selectedPage -= 1
+    onNextButtonClicked: selectedPage += 1
 }
