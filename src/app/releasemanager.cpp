@@ -293,6 +293,11 @@ void ReleaseManager::onStringDownloaded(const QString &text)
         release.replace(QRegularExpression("_kde$"), "");
         release.replace("_", " ");
 
+        // KDE Mobile spin uses same subvariant as KDE Desktop
+        if ((release == QLatin1String("kde")) && url.toLower().contains(QLatin1String("fedora-kde-mobile-live"))) {
+            release = QLatin1String("kde_mobile");
+        }
+
         if (!re.match(versionWithStatus).hasMatch())
             continue;
 
