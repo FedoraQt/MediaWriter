@@ -35,7 +35,7 @@ The main binary, `mediawriter`, will be written to `$PREFIX/bin` and the helper 
 
 ### Windows
 
-Building FMW in Windows is just the matter of running `cmake` and `make` - as long as you have all dependencies in your include path. Only MinGW (both 32b and 64b variants) works at this moment.
+Building FMW in Windows is just the matter of running `cmake` and `make` - as long as you have all dependencies in your include path.
 
 To create a standalone package, use the `windeployqt` tool, included in your Qt installation. You will probably have to include a bunch of not included DLLs.
 

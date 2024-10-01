@@ -1,22 +1,20 @@
 # Fedora Media Writer on Windows
 
-![Fedora Media Writer on macOS](/dist/screenshots/win_main.png)
+![Fedora Media Writer on Windows](/dist/screenshots/win_main.png)
 
 ## Running
 
-Fedora Media Writer is a regular Windows application, you don't need any special tools or libraries to be able to run it on your computer.
+Fedora Media Writer is a regular Windows application. See dependencies section for required libraries.
 
 ### System configuration
 
-The application has been developed for and tested on Windows 10 and Windows 11. Also Qt 6.4 is supported only on Windows 10 and 11.
+The application has been developed for and tested on Windows 10 and Windows 11. Also Qt 6 is supported only on Windows 10 and 11.
 
 You need to have about 200MB of free memory (RAM) available. It will take about 70MB of space on your drive.
 
 ### Usage
 
-Download the .exe installer from the [Releases](../../releases) section of this page or [getfedora.org](https://getfedora.org), then open it.
-
-The application download from both mentioned sources should be signed. It should also not triggered any system warning screens.
+Download the .exe installer from the [Releases](../../releases) section of this page, then open it.
 
 ### Known issues 
 
@@ -30,7 +28,8 @@ You can build Fedora Media Writer yourself. It has just a few dependencies and b
 
 ### Dependencies
 
-* `Qt6` (`qtbase`, `qtdeclarative`, `qtsvg` and `qtquickcontrols2`)
+* `Qt6` (`qtbase`, `qtdeclarative`, `qtsvg` and `qtquickcontrols2`) - already part of the installer
+* `Microsoft Visual C++ Redistributable` for C++ (MSVC) runtime libraries
 
 ### Steps
 
@@ -44,10 +43,3 @@ make
 ### Crosscompilation
 
 There is also the [build.sh](/dist/win/build.sh) script included that I use for building a the installer for distribution on this site. It should do everything automatically if you're in Fedora. There are instructions on how to use it inside at the top of the file
-
-
-
-
-
-
-0
