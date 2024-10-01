@@ -18,23 +18,14 @@
  */
 
 #include <QApplication>
-#include <QDebug>
-#include <QElapsedTimer>
-#include <QLoggingCategory>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <QQuickStyle>
-#include <QScreen>
-#include <QStandardPaths>
 #include <QTranslator>
-#include <QtPlugin>
 
 #include "crashhandler.h"
 #include "drivemanager.h"
 #include "portalfiledialog.h"
 #include "releasemanager.h"
-#include "units.h"
-#include "versionchecker.h"
 
 int main(int argc, char **argv)
 {
@@ -59,7 +50,7 @@ int main(int argc, char **argv)
     mDebug() << "Application constructed";
 
     QTranslator translator;
-    if (translator.load(QLocale(QLocale().language(), QLocale().country()), QLatin1String(), QLatin1String(), ":/translations"))
+    if (translator.load(QLocale(), QLatin1String(), QLatin1String(), ":/translations"))
         app.installTranslator(&translator);
 
     QGuiApplication::setDesktopFileName("org.fedoraproject.MediaWriter.desktop");
@@ -72,13 +63,6 @@ int main(int argc, char **argv)
     engine.rootContext()->setContextProperty("portalFileDialog", new PortalFileDialog(&app));
     engine.rootContext()->setContextProperty("mediawriterVersion", MEDIAWRITER_VERSION);
     engine.rootContext()->setContextProperty("releases", new ReleaseManager());
-    engine.rootContext()->setContextProperty("units", Units::instance());
-    engine.rootContext()->setContextProperty("versionChecker", new VersionChecker());
-#if (defined(__linux) || defined(_WIN32))
-    engine.rootContext()->setContextProperty("platformSupportsDelayedWriting", true);
-#else
-    engine.rootContext()->setContextProperty("platformSupportsDelayedWriting", false);
-#endif
 
     mDebug() << "Loading the QML source code";
 

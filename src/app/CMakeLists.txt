@@ -12,9 +12,7 @@ set(MEDIAWRITER_SRCS
     notifications.cpp
     portalfiledialog.cpp
     releasemanager.cpp
-    units.cpp
     utilities.cpp
-    versionchecker.cpp
 )
 
 if (UNIX AND NOT APPLE)
