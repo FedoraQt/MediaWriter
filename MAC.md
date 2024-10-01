@@ -16,7 +16,7 @@ Resource-wise, every Intel-based Mac computer should be able to run Fedora Media
 
 ### Usage
 
-Download the .dmg file from the [Releases](../../releases) section of this page for the latest or [getfedora.org](https://getfedora.org/workstation/download/), then drag-and-drop it to the Applications folder open it from there. The files downloaded from this page are not signed, which means you can get a prompt saying you won't be able to open them.
+Download the .dmg file from the [Releases](../../releases) section of this page for the latest, then drag-and-drop it to the Applications folder open it from there. The files downloaded from this page are not signed, which means you can get a prompt saying you won't be able to open them.
 To avoid this problem, control-click the "Fedora Media Writer" application and use the "Open" option.
 
 ![Move the icon to the applications folder and open from there](/dist/screenshots/mac_open.png)
