@@ -63,6 +63,12 @@ Page {
         }
     }
 
+    // HACK: enforces all the items above to move up and make smaller
+    // space between the image and the heading
+    Item {
+        Layout.fillHeight: true
+    }
+
     previousButtonText: qsTr("About")
 
     onPreviousButtonClicked: {

@@ -25,70 +25,59 @@ import QtQuick.Layouts 6.6
 Page {  
     id: restorePage
 
-    Column {
+    text: qsTr("Restore Drive <b>%1</b>").arg(lastRestoreable.name)
+    textLevel: 1
+
+    QQC2.Label {
+        id: warningText
+        visible: lastRestoreable.restoreStatus == Units.RestoreStatus.Contains_Live
+        Layout.alignment: Qt.AlignHCenter
+        Layout.fillWidth: true
+        text: qsTr("<p align=\"justify\"> To reclaim all space available on the drive, it has to be restored to its factory settings. The live system and all saved data will be deleted. </p> <p align=\"justify\"> You don't need to restore the drive if you want to write another live system to it.
+        </p> <p align=\"justify\"> Do you want to restore it to factory settings? </p>" )
+        textFormat: Text.RichText
+        wrapMode: QQC2.Label.Wrap
+    }
+
+    ColumnLayout {
+        id: progress
+        visible: lastRestoreable.restoreStatus == Units.RestoreStatus.Restoring
+
+        Layout.alignment: Qt.AlignHCenter
+        Layout.fillWidth: true
+
         QQC2.Label {
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-            text: qsTr("Restore Drive <b>%1</b>").arg(lastRestoreable.name)
-            wrapMode: QQC2.Label.Wrap
-            width: mainWindow.width - (units.gridUnit * 4)
+            Layout.alignment: Qt.AlignHCenter
+            Layout.fillWidth: true
             horizontalAlignment: QQC2.Label.AlignHCenter
+            wrapMode: QQC2.Label.Wrap
+            text: qsTr("<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
+        }
+
+        QQC2.ProgressBar {
+            id: progressIndicator
+            Layout.alignment: Qt.AlignHCenter
+            Layout.fillWidth: true
+            indeterminate: true
         }
     }
 
-    Column {
-        QQC2.Label {
-            id: warningText
-            visible: lastRestoreable.restoreStatus == Units.RestoreStatus.Contains_Live
-            Layout.alignment: Qt.AlignHCenter
-            text: qsTr("<p align=\"justify\"> To reclaim all space available on the drive, it has to be restored to its factory settings. The live system and all saved data will be deleted. </p> <p align=\"justify\"> You don't need to restore the drive if you want to write another live system to it.
-            </p> <p align=\"justify\"> Do you want to restore it to factory settings? </p>" )
-            textFormat: Text.RichText
-            horizontalAlignment: Text.AlignHCenter
-            wrapMode: QQC2.Label.Wrap
-            width: mainWindow.width - (units.gridUnit * 4)
-        }
+    QQC2.Label {
+        id: restoredText
+        visible: lastRestoreable.restoreStatus == Units.RestoreStatus.Restored
+        Layout.alignment: Qt.AlignHCenter
+        Layout.fillWidth: true
+        text: qsTr("Your drive was successfully restored!")
+        wrapMode: QQC2.Label.Wrap
+    }
 
-        ColumnLayout {
-            id: progress
-            visible: lastRestoreable.restoreStatus == Units.RestoreStatus.Restoring
-
-            Column{
-                QQC2.Label {
-                    Layout.alignment: Qt.AlignHCenter
-                    horizontalAlignment: QQC2.Label.AlignHCenter
-                    wrapMode: QQC2.Label.Wrap
-                    width: warningText.width
-                    text: qsTr("<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
-                }
-            }
-
-            QQC2.ProgressBar {
-                id: progressIndicator
-                width: units.gridUnit * 14
-                Layout.alignment: Qt.AlignHCenter
-                indeterminate: true
-            }
-        }
-
-        QQC2.Label {
-            id: restoredText
-            visible: lastRestoreable.restoreStatus == Units.RestoreStatus.Restored
-            Layout.alignment: Qt.AlignHCenter
-            horizontalAlignment: Text.AlignHCenter
-            text: qsTr("Your drive was successfully restored!")
-            wrapMode: QQC2.Label.Wrap
-            width: mainWindow.width - (units.gridUnit * 4)
-        }
-
-        QQC2.Label {
-            id: errorText
-            visible: lastRestoreable.restoreStatus == Units.RestoreStatus.Restore_Error
-            Layout.alignment: Qt.AlignHCenter
-            horizontalAlignment: Text.AlignHCenter
-            text: qsTr("Unfortunately, an error occurred during the process. Please try restoring the drive using your system tools.")
-            wrapMode: QQC2.Label.Wrap
-            width: mainWindow.width - (units.gridUnit * 4)
-        }
+    QQC2.Label {
+        id: errorText
+        visible: lastRestoreable.restoreStatus == Units.RestoreStatus.Restore_Error
+        Layout.alignment: Qt.AlignHCenter
+        Layout.fillWidth: true
+        text: qsTr("Unfortunately, an error occurred during the process. Please try restoring the drive using your system tools.")
+        wrapMode: QQC2.Label.Wrap
     }
     
     Component.onCompleted: {

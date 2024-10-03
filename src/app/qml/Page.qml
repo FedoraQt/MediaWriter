@@ -48,38 +48,30 @@ QQC2.Page {
     signal previousButtonClicked()
     signal nextButtonClicked()
 
-    Image {
-        id: image
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: parent.top
-        }
-        width: visible ? 280 : 0
-        height: visible ? 210 : 0
-        source: ""
-        fillMode: Image.PreserveAspectFit
-        sourceSize.width: parent.width
-        sourceSize.height: parent.height
-        smooth: true
-        antialiasing: true
-        visible: source != ""
-    }
-
     ColumnLayout {
         id: mainLayout
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-            top: image.bottom
-            topMargin: units.gridUnit
-        }
+        anchors.fill: parent
         spacing: units.gridUnit
+
+        Image {
+            id: image
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            Layout.maximumWidth: 280
+            Layout.maximumHeight: 210
+            source: ""
+            fillMode: Image.PreserveAspectFit
+            sourceSize.width: parent.width
+            sourceSize.height: parent.height
+            smooth: true
+            antialiasing: true
+            visible: source != ""
+        }
 
         Heading {
             id: heading
-            Layout.alignment: Qt.AlignHCenter
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
             level: 5
             visible: text
         }
