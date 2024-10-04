@@ -63,14 +63,14 @@ QString DownloadManager::userAgent()
  */
 QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &url, const QString &folder, Progress *progress)
 {
-    mDebug() << this->metaObject()->className() << "Going to download" << url;
+    // mDebug() << this->metaObject()->className() << "Going to download" << url;
     QString bareFileName = QString("%1/%2").arg(folder).arg(url.fileName());
 
     QDir dir;
     dir.mkpath(folder);
 
     if (QFile::exists(bareFileName)) {
-        mDebug() << this->metaObject()->className() << "The file already exists on" << bareFileName;
+        // mDebug() << this->metaObject()->className() << "The file already exists on" << bareFileName;
         return bareFileName;
     }
 
@@ -133,7 +133,7 @@ void DownloadManager::cancel()
     if (m_current) {
         m_current->deleteLater();
         m_current = nullptr;
-        mDebug() << this->metaObject()->className() << "Cancelling";
+        // mDebug() << this->metaObject()->className() << "Cancelling";
     }
 }
 
@@ -149,7 +149,7 @@ void DownloadManager::onStringDownloaded(const QString &text)
     if (!m_current)
         return;
 
-    mDebug() << this->metaObject()->className() << "Received a list of mirrors";
+    // mDebug() << this->metaObject()->className() << "Received a list of mirrors";
 
     QStringList mirrors;
     for (const QString &i : text.split("\n")) {
@@ -199,7 +199,7 @@ void DownloadManager::onDownloadError(const QString &message)
 
 DownloadManager::DownloadManager()
 {
-    mDebug() << this->metaObject()->className() << "User-Agent:" << userAgent();
+    // mDebug() << this->metaObject()->className() << "User-Agent:" << userAgent();
     QNetworkProxyFactory::setUseSystemConfiguration(true);
 }
 
@@ -235,7 +235,7 @@ void Download::handleNewReply(QNetworkReply *reply)
         m_receiver->onDownloadError(tr("Unable to fetch the requested image."));
         return;
     }
-    mDebug() << this->metaObject()->className() << "Trying to download from a mirror:" << reply->url();
+    // mDebug() << this->metaObject()->className() << "Trying to download from a mirror:" << reply->url();
 
     if (m_reply)
         m_reply->deleteLater();
@@ -275,14 +275,14 @@ bool Download::hasCatchedUp()
 void Download::start()
 {
     if (m_catchingUp) {
-        mDebug() << this->metaObject()->className() << "Will need to precompute the hash of the previously downloaded part";
+        // mDebug() << this->metaObject()->className() << "Will need to precompute the hash of the previously downloaded part";
         // first precompute the SHA hash of the already downloaded part
         m_file->open(QIODevice::ReadOnly);
         m_previousSize = 0;
 
         QTimer::singleShot(0, this, SLOT(catchUp()));
     } else if (!m_path.isEmpty()) {
-        mDebug() << this->metaObject()->className() << "Creating a new empty file";
+        // mDebug() << this->metaObject()->className() << "Creating a new empty file";
         m_file->open(QIODevice::WriteOnly);
     }
 }
@@ -299,7 +299,7 @@ void Download::catchUp()
     if (!m_file->atEnd()) {
         QTimer::singleShot(0, this, SLOT(catchUp()));
     } else {
-        mDebug() << this->metaObject()->className() << "Finished computing the hash of the downloaded part";
+        // mDebug() << this->metaObject()->className() << "Finished computing the hash of the downloaded part";
         m_file->close();
         m_file->open(QIODevice::Append);
         m_catchingUp = false;
@@ -372,7 +372,7 @@ void Download::onFinished()
 {
     m_timer.stop();
     if (m_reply->error() != 0) {
-        mDebug() << this->metaObject()->className() << "An error occurred at the end:" << m_reply->errorString();
+        // mDebug() << this->metaObject()->className() << "An error occurred at the end:" << m_reply->errorString();
         if (m_file && m_file->size() == 0) {
             m_file->remove();
         }
@@ -381,7 +381,7 @@ void Download::onFinished()
             onReadyRead();
             qApp->eventDispatcher()->processEvents(QEventLoop::ExcludeSocketNotifiers);
         }
-        mDebug() << this->metaObject()->className() << "Finished successfully";
+        // mDebug() << this->metaObject()->className() << "Finished successfully";
         if (m_file) {
             m_file->close();
             m_receiver->onFileDownloaded(m_file->fileName(), m_hash.result().toHex());
