@@ -28,7 +28,7 @@ class RestoreJob : public QObject
 {
     Q_OBJECT
 public:
-    explicit RestoreJob(const QString &where);
+    explicit RestoreJob(const QString &where, QObject *parent);
 
 signals:
 
@@ -36,8 +36,8 @@ private slots:
     void work();
 
 private:
-    QTextStream out { stdout };
-    QTextStream err { stderr };
+    QTextStream out{stdout};
+    QTextStream err{stderr};
 
     QProcess m_diskpart;
     int m_where;

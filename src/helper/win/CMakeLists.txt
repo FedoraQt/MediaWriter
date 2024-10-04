@@ -26,6 +26,7 @@ remove_definitions(-std=c++17)
 target_link_libraries(helper
     Qt6::Core
     isomd5
+    libwmi
     ${LIBLZMA_LIBRARIES}
 )
 
