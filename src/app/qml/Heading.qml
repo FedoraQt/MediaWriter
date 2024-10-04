@@ -23,7 +23,7 @@ import QtQml 6.6
 Label {
     id: mainLabel
     property int level: 0
-    font.bold: true
+    font.bold: level > 1
     
     font.pointSize: referenceLabel.font.pointSize + level
     property list<QtObject> children: [
