@@ -1,5 +1,6 @@
 /*
  * Fedora Media Writer
+ * Copyright (C) 2024 Jan Grulich <jgrulich@redhat.com>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -20,58 +21,47 @@
 #ifndef WRITEJOB_H
 #define WRITEJOB_H
 
-#include <QObject>
-#include <QTextStream>
-#include <QProcess>
+#include <libwindisk/windisk.h>
 
 #include <QFileSystemWatcher>
+#include <QObject>
+#include <QTextStream>
 
 #include <windows.h>
 
 #ifndef MEDIAWRITER_LZMA_LIMIT
 // 256MB memory limit for the decompressor
-# define MEDIAWRITER_LZMA_LIMIT (1024*1024*256)
+#define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
 #endif
 
 class WriteJob : public QObject
 {
     Q_OBJECT
 public:
-    explicit WriteJob(const QString &what, const QString &where);
+    explicit WriteJob(const QString &image, const QString &driveNumber, QObject *parent);
 
     static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
     int onMediaCheckAdvanced(long long offset, long long total);
 
 private:
-    HANDLE openDrive(int physicalDriveNumber);
-    bool lockDrive(HANDLE drive);
-    bool removeMountPoints(uint diskNumber);
-    // bool dismountDrive(HANDLE drive, int diskNumber);
-    bool cleanDrive(uint diskNumber);
-
-    bool writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, uint size);
-
-    void unlockDrive(HANDLE drive);
-
+    bool check();
+    bool write();
+    bool writeCompressed(HANDLE driveHandle);
+    bool writePlain(HANDLE driveHandle);
 
 private slots:
-    void work();
     void onFileChanged(const QString &path);
+    void work();
 
-    bool write();
-    bool writeCompressed(HANDLE drive);
-    bool writePlain(HANDLE drive);
-    bool check();
 private:
-    QString what;
-    uint where;
+    QString m_image;
+    std::unique_ptr<WinDiskManagement> m_diskManagement;
+    std::unique_ptr<WinDisk> m_disk;
 
-    QTextStream out { stdout };
-    QTextStream err { stderr };
+    QTextStream m_out{stdout};
+    QTextStream m_err{stderr};
 
-    QFileSystemWatcher watcher { };
-
-    const int BLOCK_SIZE { 512 * 128 };
+    QFileSystemWatcher m_watcher;
 };
 
 #endif // WRITEJOB_H

@@ -1,6 +1,6 @@
 /*
  * Fedora Media Writer
- * Copyright (C) 2022 Jan Grulich <jgrulich@redhat.com>
+ * Copyright (C) 2022-2024 Jan Grulich <jgrulich@redhat.com>
  * Copyright (C) 2011-2022 Pete Batard <pete@akeo.ie>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
@@ -22,23 +22,16 @@
 #include "windrivemanager.h"
 #include "notifications.h"
 
-#include <QDebug>
 #include <QStringList>
 #include <QTimer>
 
-#include <windows.h>
-#define INITGUID
-#include <guiddef.h>
+#include <dbt.h>
 
-#include <cmath>
-#include <cstring>
-
-const int maxPartitionCount = 16;
-
-DEFINE_GUID(PARTITION_MICROSOFT_DATA, 0xEBD0A0A2, 0xB9E5, 0x4433, 0x87, 0xC0, 0x68, 0xB6, 0xB7, 0x26, 0x99, 0xC7);
+#pragma comment(lib, "wbemuuid.lib")
 
 WinDriveProvider::WinDriveProvider(DriveManager *parent)
     : DriveProvider(parent)
+    , m_diskManagement(std::make_unique<WinDiskManagement>(this))
 {
     mDebug() << this->metaObject()->className() << "construction";
     QTimer::singleShot(0, this, &WinDriveProvider::checkDrives);
@@ -46,238 +39,75 @@ WinDriveProvider::WinDriveProvider(DriveManager *parent)
 
 void WinDriveProvider::checkDrives()
 {
-    static bool firstRun = true;
+    mDebug() << this->metaObject()->className() << "Looking for the drives";
 
-    if (firstRun)
-        mDebug() << this->metaObject()->className() << "Looking for the drives for the first time";
-
-    for (int i = 0; i < 64; i++) {
-        bool present = describeDrive(i, firstRun);
-        if (!present && m_drives.contains(i)) {
-            emit driveRemoved(m_drives[i]);
-            m_drives[i]->deleteLater();
-            m_drives.remove(i);
+    for (const WinDrive *drive : m_drives) {
+        // Ignore device change events when we are restoring or writting and schedule
+        // re-check once we are done
+        if (drive->busy()) {
+            // Skip this round
+            QTimer::singleShot(2500, this, &WinDriveProvider::checkDrives);
+            return;
         }
     }
 
-    if (firstRun)
-        mDebug() << this->metaObject()->className() << "Finished looking for the drives for the first time";
-    firstRun = false;
-    QTimer::singleShot(2500, this, &WinDriveProvider::checkDrives);
-}
-
-QString getPhysicalName(int driveNumber)
-{
-    return QString("\\\\.\\PhysicalDrive%0").arg(driveNumber);
-}
-
-HANDLE getPhysicalHandle(int driveNumber)
-{
-    HANDLE physicalHandle = INVALID_HANDLE_VALUE;
-    QString physicalPath = getPhysicalName(driveNumber);
-    physicalHandle = CreateFileA(physicalPath.toStdString().c_str(), GENERIC_READ, FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-    return physicalHandle;
-}
-
-bool WinDriveProvider::isMountable(int driveNumber)
-{
-    mDebug() << this->metaObject()->className() << "Checking whether " << getPhysicalName(driveNumber) << " is mountable";
-
-    HANDLE physicalHandle = getPhysicalHandle(driveNumber);
-    if (physicalHandle == INVALID_HANDLE_VALUE) {
-        mDebug() << this->metaObject()->className() << "Could not get physical handle for drive " << getPhysicalName(driveNumber);
-        return false;
-    }
-
-    DWORD size;
-    BYTE geometry[256];
-    bool ret = DeviceIoControl(physicalHandle, IOCTL_DISK_GET_DRIVE_GEOMETRY_EX, NULL, 0, geometry, sizeof(geometry), &size, NULL);
-    if (!ret || size <= 0) {
-        mDebug() << this->metaObject()->className() << "Could not get geometry for drive " << getPhysicalName(driveNumber);
-        CloseHandle(physicalHandle);
-        return false;
-    }
-
-    PDISK_GEOMETRY_EX diskGeometry = (PDISK_GEOMETRY_EX)(void *)geometry;
-    // Drive info
-    LONGLONG diskSize;
-    DWORD sectorSize;
-    DWORD sectorsPerTrack;
-    DWORD firstDataSector;
-    MEDIA_TYPE mediaType;
-
-    diskSize = diskGeometry->DiskSize.QuadPart;
-    sectorSize = diskGeometry->Geometry.BytesPerSector;
-    firstDataSector = MAXDWORD;
-    if (sectorSize < 512) {
-        mDebug() << this->metaObject()->className() << "Warning: Drive " << getPhysicalName(driveNumber) << " reports a sector size of " << sectorSize << " - Correcting to 512 bytes.";
-        sectorSize = 512;
-    }
-    sectorsPerTrack = diskGeometry->Geometry.SectorsPerTrack;
-    mediaType = diskGeometry->Geometry.MediaType;
-
-    BYTE layout[4096] = {0};
-    ret = DeviceIoControl(physicalHandle, IOCTL_DISK_GET_DRIVE_LAYOUT_EX, NULL, 0, layout, sizeof(layout), &size, NULL);
-    if (!ret || size <= 0) {
-        mDebug() << this->metaObject()->className() << "Could not get layout for drive " << getPhysicalName(driveNumber);
-        CloseHandle(physicalHandle);
-        return false;
-    }
-
-    PDRIVE_LAYOUT_INFORMATION_EX driveLayout = (PDRIVE_LAYOUT_INFORMATION_EX)(void *)layout;
-
-    switch (driveLayout->PartitionStyle) {
-    case PARTITION_STYLE_MBR:
-        mDebug() << this->metaObject()->className() << "MBR partition style";
-        for (int i = 0; i < driveLayout->PartitionCount; i++) {
-            if (driveLayout->PartitionEntry[i].Mbr.PartitionType != PARTITION_ENTRY_UNUSED) {
-                QVector<uint8_t> mbrMountable = {0x01, 0x04, 0x06, 0x07, 0x0b, 0x0c, 0x0e};
-                BYTE partType = driveLayout->PartitionEntry[i].Mbr.PartitionType;
-                mDebug() << this->metaObject()->className() << "Partition type: " << partType;
-                if (!mbrMountable.contains(partType)) {
-                    CloseHandle(physicalHandle);
-                    mDebug() << this->metaObject()->className() << getPhysicalName(driveNumber) << " is not mountable";
-                    return false;
+    QMap<int, WinDrive *> drives;
+    auto usbDeviceList = m_diskManagement->getUSBDeviceList();
+    for (const quint32 index : usbDeviceList) {
+        bool mountable = true;
+        auto partitionList = m_diskManagement->getDevicePartitions(index);
+        if (partitionList.isEmpty()) {
+            mountable = false;
+        } else {
+            for (auto it = partitionList.constBegin(); it != partitionList.constEnd(); it++) {
+                if (!it.value()) {
+                    mountable = false;
+                    break;
                 }
             }
         }
-        break;
-    case PARTITION_STYLE_GPT:
-        mDebug() << this->metaObject()->className() << "GPT partition style";
-        for (int i = 0; i < driveLayout->PartitionCount; i++) {
-            if (memcmp(&driveLayout->PartitionEntry[i].Gpt.PartitionType, &PARTITION_MICROSOFT_DATA, sizeof(GUID)) != 0) {
-                CloseHandle(physicalHandle);
-                mDebug() << this->metaObject()->className() << getPhysicalName(driveNumber) << " is not mountable";
-                return false;
-            }
+
+        auto diskDrive = m_diskManagement->getDiskDriveInformation(index);
+        if (diskDrive->name().isEmpty() || !diskDrive->size() || diskDrive->serialNumber().isEmpty()) {
+            continue;
         }
-        break;
-    default:
-        mDebug() << this->metaObject()->className() << "Partition type: RAW";
-        break;
+        WinDrive *currentDrive = new WinDrive(this, diskDrive->name(), diskDrive->size(), !mountable, diskDrive->index(), diskDrive->serialNumber());
+        drives[diskDrive->index()] = currentDrive;
     }
 
-    mDebug() << this->metaObject()->className() << getPhysicalName(driveNumber) << " is mountable";
+    // Update our list of drives and notify about added and removed drives
+    QList<int> driveIndexes = m_drives.keys();
+    for (auto it = drives.constBegin(); it != drives.constEnd(); it++) {
+        if (m_drives.contains(it.key()) && *m_drives[it.key()] == *it.value()) {
+            mDebug() << "Drive " << it.key() << " already exists";
+            it.value()->deleteLater();
+            driveIndexes.removeAll(it.key());
+            continue;
+        }
 
-    CloseHandle(physicalHandle);
-    return true;
-}
+        if (m_drives.contains(it.key())) {
+            mDebug() << "Replacing old drive in the list on index " << it.key();
+            emit driveRemoved(m_drives[it.key()]);
+            m_drives[it.key()]->deleteLater();
+            m_drives.remove(it.key());
+        }
 
-bool WinDriveProvider::describeDrive(int nDriveNumber, bool verbose)
-{
-    BOOL removable;
-    QString productVendor;
-    QString productId;
-    QString serialNumber;
-    uint64_t deviceBytes;
-    STORAGE_BUS_TYPE storageBus;
+        mDebug() << "Adding new drive to the list with index " << it.key();
+        m_drives[it.key()] = it.value();
+        emit driveConnected(it.value());
 
-    BOOL bResult = FALSE; // results flag
-    // DWORD dwRet = NO_ERROR;
-
-    // Format physical drive path (may be '\\.\PhysicalDrive0', '\\.\PhysicalDrive1' and so on).
-    QString strDrivePath = getPhysicalName(nDriveNumber);
-
-    // Get a handle to physical drive
-    HANDLE hDevice = ::CreateFile(strDrivePath.toStdWString().c_str(), 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
-
-    if (hDevice == INVALID_HANDLE_VALUE)
-        return false; //::GetLastError();
-
-    if (verbose)
-        mDebug() << this->metaObject()->className() << strDrivePath << "is present";
-
-    // Set the input data structure
-    STORAGE_PROPERTY_QUERY storagePropertyQuery;
-    ZeroMemory(&storagePropertyQuery, sizeof(STORAGE_PROPERTY_QUERY));
-    storagePropertyQuery.PropertyId = StorageDeviceProperty;
-    storagePropertyQuery.QueryType = PropertyStandardQuery;
-
-    // Get the necessary output buffer size
-    STORAGE_DESCRIPTOR_HEADER storageDescriptorHeader;
-    ZeroMemory(&storageDescriptorHeader, sizeof(STORAGE_DESCRIPTOR_HEADER));
-    DWORD dwBytesReturned = 0;
-    if (verbose)
-        mDebug() << this->metaObject()->className() << strDrivePath << "IOCTL_STORAGE_QUERY_PROPERTY";
-    if (!::DeviceIoControl(hDevice, IOCTL_STORAGE_QUERY_PROPERTY, &storagePropertyQuery, sizeof(STORAGE_PROPERTY_QUERY), &storageDescriptorHeader, sizeof(STORAGE_DESCRIPTOR_HEADER), &dwBytesReturned, NULL)) {
-        // dwRet = ::GetLastError();
-        ::CloseHandle(hDevice);
-        return false; // dwRet;
+        driveIndexes.removeAll(it.key());
     }
 
-    // Alloc the output buffer
-    const DWORD dwOutBufferSize = storageDescriptorHeader.Size;
-    BYTE *pOutBuffer = new BYTE[dwOutBufferSize];
-    ZeroMemory(pOutBuffer, dwOutBufferSize);
-
-    if (verbose)
-        mDebug() << this->metaObject()->className() << strDrivePath << "IOCTL_STORAGE_QUERY_PROPERTY with a bigger buffer";
-    // Get the storage device descriptor
-    if (!(bResult = ::DeviceIoControl(hDevice, IOCTL_STORAGE_QUERY_PROPERTY, &storagePropertyQuery, sizeof(STORAGE_PROPERTY_QUERY), pOutBuffer, dwOutBufferSize, &dwBytesReturned, NULL))) {
-        // dwRet = ::GetLastError();
-        delete[] pOutBuffer;
-        ::CloseHandle(hDevice);
-        return false; // dwRet;
+    // Remove our previously stored drives that were not present in the last check
+    for (int index : driveIndexes) {
+        mDebug() << "Removing old drive with index" << index;
+        emit driveRemoved(m_drives[index]);
+        m_drives[index]->deleteLater();
+        m_drives.remove(index);
     }
 
-    // Now, the output buffer points to a STORAGE_DEVICE_DESCRIPTOR structure
-    // followed by additional info like vendor ID, product ID, serial number, and so on.
-    STORAGE_DEVICE_DESCRIPTOR *pDeviceDescriptor = (STORAGE_DEVICE_DESCRIPTOR *)pOutBuffer;
-    removable = pDeviceDescriptor->RemovableMedia;
-    if (pDeviceDescriptor->ProductIdOffset != 0)
-        productId = QString((char *)pOutBuffer + pDeviceDescriptor->ProductIdOffset).trimmed();
-    if (pDeviceDescriptor->VendorIdOffset != 0)
-        productVendor = QString((char *)pOutBuffer + pDeviceDescriptor->VendorIdOffset).trimmed();
-    if (pDeviceDescriptor->SerialNumberOffset != 0)
-        serialNumber = QString((char *)pOutBuffer + pDeviceDescriptor->SerialNumberOffset).trimmed();
-    storageBus = pDeviceDescriptor->BusType;
-
-    if (verbose)
-        mDebug() << this->metaObject()->className() << strDrivePath << "detected:" << productVendor << productId << (removable ? ", removable" : ", nonremovable") << (storageBus == BusTypeUsb ? "USB" : "notUSB");
-
-    if (!removable && storageBus != BusTypeUsb)
-        return false;
-
-    DISK_GEOMETRY pdg;
-    DWORD junk = 0; // discard results
-
-    if (verbose)
-        mDebug() << this->metaObject()->className() << strDrivePath << "IOCTL_DISK_GET_DRIVE_GEOMETRY";
-    bResult = DeviceIoControl(hDevice, // device to be queried
-                              IOCTL_DISK_GET_DRIVE_GEOMETRY, // operation to perform
-                              NULL,
-                              0, // no input buffer
-                              &pdg,
-                              sizeof(pdg), // output buffer
-                              &junk, // # bytes returned
-                              (LPOVERLAPPED)NULL); // synchronous I/O
-
-    if (!bResult || pdg.MediaType == Unknown)
-        return false;
-
-    deviceBytes = pdg.Cylinders.QuadPart * pdg.TracksPerCylinder * pdg.SectorsPerTrack * pdg.BytesPerSector;
-
-    // Do cleanup and return
-    if (verbose)
-        mDebug() << this->metaObject()->className() << strDrivePath << "cleanup, adding to the list";
-    delete[] pOutBuffer;
-    ::CloseHandle(hDevice);
-
-    WinDrive *currentDrive = new WinDrive(this, productVendor + " " + productId, deviceBytes, !isMountable(nDriveNumber), nDriveNumber, serialNumber);
-    if (m_drives.contains(nDriveNumber) && *m_drives[nDriveNumber] == *currentDrive) {
-        currentDrive->deleteLater();
-        return true;
-    }
-
-    if (m_drives.contains(nDriveNumber)) {
-        emit driveRemoved(m_drives[nDriveNumber]);
-        m_drives[nDriveNumber]->deleteLater();
-    }
-
-    m_drives[nDriveNumber] = currentDrive;
-    emit driveConnected(currentDrive);
-
-    return true;
+    QTimer::singleShot(2500, this, &WinDriveProvider::checkDrives);
 }
 
 WinDrive::WinDrive(WinDriveProvider *parent, const QString &name, uint64_t size, bool containsLive, int device, const QString &serialNumber)
@@ -290,7 +120,7 @@ WinDrive::WinDrive(WinDriveProvider *parent, const QString &name, uint64_t size,
 WinDrive::~WinDrive()
 {
     if (m_child)
-        m_child->kill();
+        m_child->terminate();
 }
 
 bool WinDrive::write(ReleaseVariant *data)
@@ -339,7 +169,7 @@ void WinDrive::cancel()
 {
     Drive::cancel();
     if (m_child) {
-        m_child->kill();
+        m_child->terminate();
         m_child->deleteLater();
         m_child = nullptr;
     }
@@ -379,6 +209,11 @@ void WinDrive::restore()
     m_child->start(QIODevice::ReadOnly);
 }
 
+bool WinDrive::busy() const
+{
+    return (m_child && m_child->state() == QProcess::Running);
+}
+
 QString WinDrive::serialNumber() const
 {
     return m_serialNo;
@@ -402,8 +237,11 @@ void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
     if (exitCode == 0) {
         m_image->setStatus(ReleaseVariant::FINISHED);
         Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
-    } else {
+    } else if (exitCode == 1) {
         m_image->setErrorString(m_child->readAllStandardError().trimmed());
+        m_image->setStatus(ReleaseVariant::FAILED);
+    } else if (exitCode == 2) {
+        m_image->setErrorString(tr("Writing has been cancelled"));
         m_image->setStatus(ReleaseVariant::FAILED);
     }
 
@@ -413,16 +251,18 @@ void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 
 void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
-    if (!m_child)
+    if (!m_child) {
         return;
+    }
 
     mCritical() << "Process finished" << exitCode << exitStatus;
     mCritical() << m_child->readAllStandardError();
 
-    if (exitCode == 0)
+    if (exitCode == 0) {
         m_restoreStatus = RESTORED;
-    else
+    } else {
         m_restoreStatus = RESTORE_ERROR;
+    }
     emit restoreStatusChanged();
 
     m_child->deleteLater();
@@ -431,14 +271,16 @@ void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
 
 void WinDrive::onReadyRead()
 {
-    if (!m_child)
+    if (!m_child) {
         return;
+    }
 
     m_progress->setTo(m_image->size());
     m_progress->setValue(NAN);
 
-    if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
+    if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING) {
         m_image->setStatus(ReleaseVariant::WRITING);
+    }
 
     while (m_child->bytesAvailable() > 0) {
         QString line = m_child->readLine().trimmed();
@@ -455,12 +297,13 @@ void WinDrive::onReadyRead()
             Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
         } else {
             bool ok;
-            qreal bytes = line.toLongLong(&ok);
+            qint64 bytes = line.toLongLong(&ok);
             if (ok) {
-                if (bytes < 0)
+                if (bytes < 0) {
                     m_progress->setValue(NAN);
-                else
+                } else {
                     m_progress->setValue(bytes);
+                }
             }
         }
     }
