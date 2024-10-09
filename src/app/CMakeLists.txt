@@ -55,7 +55,7 @@ if (WIN32)
     # HACK: we need to remove -std=c++11 definition for manifest file, otherwise
     # it will complain about undefined option "s" (as first letter from -Std=c++11)
     remove_definitions(-std=c++11)
-    target_sources(mediawriter PRIVATE data/windows.rc)
+    # target_sources(mediawriter PRIVATE data/windows.rc)
 endif()
 
 if (APPLE)
@@ -90,7 +90,7 @@ if (UNIX AND NOT APPLE)
 endif()
 
 if (WIN32)
-    target_link_libraries(mediawriter dbghelp)
+    target_link_libraries(mediawriter dbghelp libwmi)
 endif()
 
 if (APPLE)
