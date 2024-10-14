@@ -9,55 +9,59 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-03-12 21:31+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-10-13 13:47+0000\n"
+"Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
+"Language-Team: Romanian <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/ro/>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Weblate 5.7.2\n"
 
 #: ../src/app/qml/AboutDialog.qml:50
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr ""
+msgstr "Despre Fedora Media Writer"
 
 #: ../src/app/qml/AboutDialog.qml:59
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
-msgstr ""
+msgstr "Versiunea %1"
 
 #: ../src/app/qml/AboutDialog.qml:66
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr ""
+msgstr "Fedora Media Writer verifică dacă există versiuni noi"
 
 #: ../src/app/qml/AboutDialog.qml:72
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr ""
+msgstr "Raportați erorile sau sugestiile dvs. la %1"
 
 #: ../src/app/qml/AboutDialog.qml:95
 msgctxt "AboutDialog|"
 msgid "Close"
-msgstr ""
+msgstr "Închide"
 
 #: ../src/app/qml/CancelDialog.qml:56
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "Anulați descărcarea?"
 
 #: ../src/app/qml/CancelDialog.qml:58
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr ""
+msgstr "Anulați scrierea?"
 
 #: ../src/app/qml/CancelDialog.qml:60
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "Anulați verificarea?"
 
 #: ../src/app/qml/CancelDialog.qml:67
 msgctxt "CancelDialog|"
@@ -65,6 +69,8 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"Descărcarea și scrierea datelor pe suport vor fi întrerupte. Acest proces "
+"poate fi reluat oricând ulterior."
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
@@ -72,140 +78,142 @@ msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
+"Procesul de scriere va fi întrerupt, iar unitatea va trebui să fie "
+"restaurată ulterior."
 
 #: ../src/app/qml/CancelDialog.qml:71
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "Această operație poate fi anulată în siguranță."
 
 #: ../src/app/qml/CancelDialog.qml:88
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "Continuare"
 
 #: ../src/app/qml/CancelDialog.qml:111
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr ""
+msgstr "Anulează descărcarea"
 
 #: ../src/app/qml/CancelDialog.qml:113
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr ""
+msgstr "Anulează scrierea"
 
 #: ../src/app/qml/CancelDialog.qml:115
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "Anulează verificarea"
 
 #: ../src/app/qml/CancelDialog.qml:117
 msgctxt "CancelDialog|"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulează"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr ""
+msgstr "Nu se poate prelua imaginea solicitată."
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr ""
+msgstr "Ați rămas fără spațiu în dosarul Descărcări."
 
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
-msgstr ""
+msgstr "Nu se poate scrie în fișierul descărcat."
 
 #: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
-msgstr ""
+msgstr "Timpul de conectare a expirat"
 
 #: ../src/app/qml/DownloadPage.qml:52
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr ""
+msgstr "%1 scris cu succes"
 
 #: ../src/app/qml/DownloadPage.qml:54
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr ""
+msgstr "Se scrie %1"
 
 #: ../src/app/qml/DownloadPage.qml:56
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr ""
+msgstr "Se descarcă %1"
 
 #: ../src/app/qml/DownloadPage.qml:58
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr ""
+msgstr "Se pregătește %1"
 
 #: ../src/app/qml/DownloadPage.qml:60
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr ""
+msgstr "Pregătit pentru scriere %1"
 
 #: ../src/app/qml/DownloadPage.qml:62
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr ""
+msgstr "Descărcarea fișierului %1 a eșuat"
 
 #: ../src/app/qml/DownloadPage.qml:76
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr ""
+msgstr " o rămași)"
 
 #: ../src/app/qml/DownloadPage.qml:77
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr ""
+msgstr " Ko rămași)"
 
 #: ../src/app/qml/DownloadPage.qml:78
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr ""
+msgstr " Mo rămași)"
 
 #: ../src/app/qml/DownloadPage.qml:79
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr ""
+msgstr " Go rămași)"
 
 #: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
 #: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:101
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "Unitatea dvs. a fost deconectată în timpul procesului"
 
 #: ../src/app/qml/DownloadPage.qml:135
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr ""
+msgstr "Descărcările sunt salvate în dosarul «Descărcări»."
 
 #: ../src/app/qml/DownloadPage.qml:143
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr ""
+msgstr "Prin scriere, veți pierde toate datele de pe %1."
 
 #: ../src/app/qml/DownloadPage.qml:151
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "Introduceți o unitate USB."
 
 #: ../src/app/qml/DownloadPage.qml:159
 msgctxt "DownloadPage|"
@@ -214,16 +222,19 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
+"Unitatea dvs. va fi redimensionată la o capacitate mai mică. O puteți "
+"redimensiona înapoi la normal utilizând Fedora Media Writer. Acest lucru va "
+"elimina suportul de instalare din unitate."
 
 #: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "Selected:"
-msgstr ""
+msgstr "Selectat:"
 
 #: ../src/app/qml/DownloadPage.qml:167
 msgctxt "DownloadPage|"
 msgid "None"
-msgstr ""
+msgstr "Niciunul"
 
 #: ../src/app/qml/DownloadPage.qml:175
 #, qt-format
@@ -233,6 +244,10 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
+"Placa sau dispozitivul dvs. nu este încă acceptat de Fedora Media Writer. "
+"Consultați <a href=%1>această pagină</a> pentru mai multe informații despre "
+"compatibilitatea sa cu Fedora și despre cum să creați medii de pornire "
+"pentru aceasta."
 
 #: ../src/app/qml/DownloadPage.qml:184
 #, qt-format
@@ -241,187 +256,190 @@ msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
+"Dimensiunea unității selectate este %1. Este posibil să fi selectat "
+"accidental o unitate externă!"
 
 #: ../src/app/qml/DownloadPage.qml:193
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "Reporniți și porniți de la %1 pentru a începe să utilizați %2."
 
 #: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
-msgstr ""
+msgstr "Această unitate nu este suficient de mare."
 
 #: ../src/app/qml/DrivePage.qml:36
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr ""
+msgstr "Opțiuni de scriere"
 
 #: ../src/app/qml/DrivePage.qml:45
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr ""
+msgstr "Versiunea"
 
 #: ../src/app/qml/DrivePage.qml:67
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "Arhitectura hardware"
 
 #: ../src/app/qml/DrivePage.qml:84
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr ""
+msgstr "Fișier selectat"
 
 #: ../src/app/qml/DrivePage.qml:91
 msgctxt "DrivePage|"
 msgid "None"
-msgstr ""
+msgstr "Niciunul"
 
 #: ../src/app/qml/DrivePage.qml:99
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr ""
+msgstr "Selectați..."
 
 #: ../src/app/qml/DrivePage.qml:116
 msgctxt "DrivePage|"
 msgid "Image files"
-msgstr ""
+msgstr "Fișiere de imagine"
 
 #: ../src/app/qml/DrivePage.qml:116
 msgctxt "DrivePage|"
 msgid "All files (*)"
-msgstr ""
+msgstr "Toate fișierele (*.*)"
 
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "Unitate USB"
 
 #: ../src/app/qml/DrivePage.qml:135
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr ""
+msgstr "Nu există unități amovibile conectate"
 
 #: ../src/app/qml/DrivePage.qml:155
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr ""
+msgstr "Descarcă"
 
 #: ../src/app/qml/DrivePage.qml:160
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr ""
+msgstr "Șterge descărcarea după scriere"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr ""
+msgstr "Unitatea a fost extrasă în timp ce se scria pe ea."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
+msgstr "Nu s-a putut găsi binarul ajutător. Verificați instalarea."
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr ""
+msgstr "A fost oprită înainte de terminarea scrierii."
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "Operație finalizată!"
 
 #: ../src/app/linuxdrivemanager.cpp:327
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Scrierea %1 a fost efectuată cu succes"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
 msgid "Error"
-msgstr ""
+msgstr "Eroare"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "Scrierea %1 a eșuat"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr ""
+"UDisks2 pare să fie indisponibil sau inaccesibil pe sistemul dumneavoastră."
 
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
+msgstr "Nu s-a putut găsi binarul ajutător. Verificați instalarea."
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
 msgid "Error"
-msgstr ""
+msgstr "Eroare"
 
 #: ../src/app/macdrivemanager.cpp:187
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "Scrierea %1 a eșuat"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "Operație finalizată!"
 
 #: ../src/app/macdrivemanager.cpp:190
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Scrierea %1 a fost efectuată cu succes"
 
 #: ../src/app/qml/MainPage.qml:43
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Selectați sursa imaginii"
 
 #: ../src/app/qml/MainPage.qml:57
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr ""
+msgstr "Descarcă automat"
 
 #: ../src/app/qml/MainPage.qml:65
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "Selectează fișierul .iso"
 
 #: ../src/app/qml/MainPage.qml:76
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr ""
+msgstr "Restaurare <b>%1</b>"
 
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr ""
+msgstr "Fișiere de imagine"
 
 #: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr ""
+msgstr "Toate fișierele"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "Deschide fișierul"
 
 #: ../src/app/releasemanager.cpp:397
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
-msgstr ""
+msgstr "Alegeți un fișier din unitatea (unitățile) dvs."
 
 #: ../src/app/releasemanager.cpp:398
 msgctxt "Release|"
@@ -430,166 +448,177 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
+"<p>Aici puteți alege o imagine a sistemului de operare de pe discul dur "
+"pentru a fi scrisă pe unitatea USB</p><p>În prezent este posibilă doar "
+"scrierea de imagini de disc brute (.iso sau .bin)</p>"
 
 #: ../src/app/releasemanager.cpp:428
 msgctxt "Release|"
 msgid "Fedora Spins"
-msgstr ""
+msgstr "Fedora Spins"
 
 #: ../src/app/releasemanager.cpp:430
 msgctxt "Release|"
 msgid "Fedora Labs"
-msgstr ""
+msgstr "Fedora Labs"
 
 #: ../src/app/releasemanager.cpp:432
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr ""
+msgstr "Fedora Atomic Desktops"
 
 #: ../src/app/releasemanager.cpp:434
 msgctxt "Release|"
 msgid "Other"
-msgstr ""
+msgstr "Alta"
 
 #: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr ""
+msgstr "Intel/AMD pe 64 de biți"
 
 #: ../src/app/releasemanager.cpp:1074
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
+"Imagine în format ISO pentru Intel, AMD și alte PC-uri compatibile (64 de "
+"biți)"
 
 #: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr ""
+msgstr "Intel/AMD pe 32 de biți"
 
 #: ../src/app/releasemanager.cpp:1075
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
+"Imagine în format ISO pentru Intel, AMD și alte PC-uri compatibile (32 de "
+"biți)"
 
 #: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
-msgstr ""
+msgstr "ARM v7"
 
 #: ../src/app/releasemanager.cpp:1076
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
+"Imagine brută comprimată LZMA pentru mașini ARM v7-A precum Raspberry Pi 2 "
+"și 3"
 
 #: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
-msgstr ""
+msgstr "AArch64"
 
 #: ../src/app/releasemanager.cpp:1077
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr ""
+msgstr "Imagine brută comprimată LZMA pentru mașini AArch64"
 
 #: ../src/app/releasemanager.cpp:396
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
-msgstr ""
+msgstr "Imagine personalizată"
 
 #: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
-msgstr ""
+msgstr "Imaginea descărcată este coruptă"
 
 #: ../src/app/releasemanager.cpp:949
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
-msgstr ""
+msgstr "Fișierul descărcat nu poate fi citit."
 
 #: ../src/app/releasemanager.cpp:960
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr ""
+msgstr "Nu s-a putut redenumi fișierul temporar."
 
 #: ../src/app/releasemanager.h:375
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
-msgstr ""
+msgstr "Se pregătește"
 
 #: ../src/app/releasemanager.h:376
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
-msgstr ""
+msgstr "Se descarcă"
 
 #: ../src/app/releasemanager.h:377
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr ""
+msgstr "Se verifică fișierul descărcat"
 
 #: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
-msgstr ""
+msgstr "Pregătit pentru scriere"
 
 #: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
+"Fișierul de imagine a fost salvat în dosarul «Descărcări». Scrierea nu este "
+"posibilă"
 
 #: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "Writing"
-msgstr ""
+msgstr "Se scrie"
 
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
-msgstr ""
+msgstr "Se verifică datele scrise"
 
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
-msgstr ""
+msgstr "Operație finalizată!"
 
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
-msgstr ""
+msgstr "Datele scrise sunt corupte"
 
 #: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr ""
+msgstr "Descărcarea a eșuat"
 
 #: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
 msgid "Error"
-msgstr ""
+msgstr "Eroare"
 
 #: ../src/app/releasemanager.cpp:706
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
-msgstr ""
+msgstr "%1 alpha"
 
 #: ../src/app/releasemanager.cpp:708
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
-msgstr ""
+msgstr "%1 beta"
 
 #: ../src/app/releasemanager.cpp:710
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr ""
+msgstr "%1 candidata pentru lansare"
 
 #: ../src/app/qml/RestorePage.qml:37
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "Restaurează unitatea <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:49
 msgctxt "RestorePage|"
@@ -601,6 +630,12 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
+"<p align=\"justify\"> Pentru a recupera tot spațiul disponibil pe unitate, "
+"aceasta trebuie să fie restaurată la valorile din fabrică. Sistemul activ și "
+"toate datele salvate vor fi șterse. </p> <p align=\"justify\"> Nu trebuie să "
+"restaurați unitatea dacă doriți să scrieți un alt sistem activ pe aceasta. \n"
+"                </p> <p align=\"justify\"> Doriți să o restaurați la "
+"valorile din fabrică? </p>"
 
 #: ../src/app/qml/RestorePage.qml:67
 msgctxt "RestorePage|"
@@ -608,11 +643,13 @@ msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
+"<p align=\"justify\">Vă rugăm să așteptați în timp ce Fedora Media Writer vă "
+"restaurează unitatea amovibilă.</p>"
 
 #: ../src/app/qml/RestorePage.qml:84
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr ""
+msgstr "Unitatea a fost restaurată cu succes!"
 
 #: ../src/app/qml/RestorePage.qml:94
 msgctxt "RestorePage|"
@@ -620,63 +657,65 @@ msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
+"Din păcate, a apărut o eroare în timpul procesului. Vă rugăm să încercați să "
+"restaurați unitatea utilizând instrumentele din sistem."
 
 #: ../src/app/qml/RestorePage.qml:143
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "Restaurare finalizată"
 
 #: ../src/app/qml/VersionPage.qml:35
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Selectați versiunea Fedora"
 
 #: ../src/app/qml/VersionPage.qml:48
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr ""
+msgstr "Selectați dintre:"
 
 #: ../src/app/qml/VersionPage.qml:53
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Ediții oficiale"
 
 #: ../src/app/qml/VersionPage.qml:59
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr ""
+msgstr "Atomic Desktops"
 
 #: ../src/app/qml/VersionPage.qml:65
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr ""
+msgstr "Spins"
 
 #: ../src/app/qml/VersionPage.qml:71
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Labs"
 
 #: ../src/app/windrivemanager.cpp:319
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
+msgstr "Nu s-a putut găsi binarul ajutător. Verificați instalarea."
 
 #: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "Operație finalizată!"
 
 #: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Scrierea %1 a fost efectuată cu succes"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:271
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr ""
+msgstr "Decomprimarea a eșuat."
 
 #: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
 #: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
@@ -684,157 +723,157 @@ msgstr ""
 #: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
-msgstr ""
+msgstr "Nu se poate scrie în unitatea de destinație"
 
 #: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:315
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
-msgstr ""
+msgstr "Nu există suficientă memorie pentru a decomprima fișierul."
 
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:320
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
-msgstr ""
+msgstr "Fișierul comprimat descărcat este corupt."
 
 #: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:323
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
-msgstr ""
+msgstr "Opțiuni de comprimare neacceptate."
 
 #: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:326
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
-msgstr ""
+msgstr "Eroare de decomprimare necunoscută."
 
 #: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
 #: ../src/helper/win/writejob.cpp:361
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
-msgstr ""
+msgstr "Imaginea sursă nu poate fi citită"
 
 #: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
 #: ../src/helper/win/writejob.cpp:406
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr ""
+msgstr "Unitatea dvs. este probabil deteriorată."
 
 #: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
 #: ../src/helper/win/writejob.cpp:411
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr ""
+msgstr "A apărut o eroare neașteptată în timpul verificării suportului media."
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "Nu s-a putut aloca perechea de socluri"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "Nu se poate deschide destinația pentru scriere"
 
 #: ../src/helper/win/writejob.cpp:74
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for writing"
-msgstr ""
+msgstr "Nu s-a putut deschide unitatea pentru scriere"
 
 #: ../src/helper/win/writejob.cpp:98
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr ""
+msgstr "Nu s-a putut bloca unitatea"
 
 #: ../src/helper/win/writejob.cpp:134
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't remove the drive %1:"
-msgstr ""
+msgstr "Nu s-a putut demonta unitatea %1:"
 
 #: ../src/helper/win/writejob.cpp:209
 msgctxt "WriteJob|"
 msgid "Couldn't unlock the drive"
-msgstr ""
+msgstr "Nu s-a putut debloca unitatea"
 
 #: ../src/app/qml/main.qml:116
 msgctxt "main|"
 msgid "Fedora Media Writer"
-msgstr ""
+msgstr "Fedora Media Writer"
 
 #: ../src/app/qml/main.qml:154
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr ""
+msgstr "Selectați versiunea Fedora"
 
 #: ../src/app/qml/main.qml:170
 msgctxt "main|"
 msgid "Select Drive"
-msgstr ""
+msgstr "Selectați unitatea"
 
 #: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
 msgctxt "main|"
 msgid "Restore"
-msgstr ""
+msgstr "Restaurare"
 
 #: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
 msgctxt "main|"
 msgid "Finish"
-msgstr ""
+msgstr "Finalizare"
 
 #: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
 msgctxt "main|"
 msgid "Write"
-msgstr ""
+msgstr "Scriere"
 
 #: ../src/app/qml/main.qml:296
 msgctxt "main|"
 msgid "Download && Write"
-msgstr ""
+msgstr "Descărcare și scriere"
 
 #: ../src/app/qml/main.qml:297
 msgctxt "main|"
 msgid "Download & Write"
-msgstr ""
+msgstr "Descărcare și scriere"
 
 #: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
 msgctxt "main|"
 msgid "Cancel"
-msgstr ""
+msgstr "Anulare"
 
 #: ../src/app/qml/main.qml:306
 msgctxt "main|"
 msgid "Retry"
-msgstr ""
+msgstr "Reîncercați"
 
 #: ../src/app/qml/main.qml:308
 msgctxt "main|"
 msgid "Next"
-msgstr ""
+msgstr "Înainte"
 
 #: ../src/app/qml/main.qml:313
 msgctxt "main|"
 msgid "About"
-msgstr ""
+msgstr "Despre"
 
 #: ../src/app/qml/main.qml:316
 msgctxt "main|"
 msgid "Previous"
-msgstr ""
+msgstr "Înapoi"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
 msgid "Fedora Media Writer"
-msgstr ""
+msgstr "Fedora Media Writer"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
-msgstr ""
+msgstr "Un instrument pentru a crea o unitate USB live cu o ediție a Fedora"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -846,6 +885,13 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
+"Un instrument pentru a crea o unitate USB live ce poate fi pornită cu o "
+"ediție a Fedora. Fedora Media Writer nu numai că poate scrie o imagine pe "
+"unitatea dvs. de memorie flash, dar o poate și descărca pentru dvs. Oferă "
+"ediții oficiale (Server, Workstation), Fedora spins (KDE Plasma Desktop, "
+"Xfce Desktop, Cinnamon Desktop,...) și Fedora Labs (Design Suite, Security "
+"Lab,...). Acesta oferă informații de bază despre fiecare dintre ele pentru a "
+"vă ajuta să faceți alegerea corectă."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -853,11 +899,14 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
+"Fedora Media Writer poate scrie și alte ISO-uri apte de-a fi pornite, "
+"încărcate de pe discul dvs. local, dar rețineți că a fost testat doar cu "
+"imagini Fedora."
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
-msgstr ""
+msgstr "Scrie imagini Fedora pe unitățile dvs. amovibile"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;"
