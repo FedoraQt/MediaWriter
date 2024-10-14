@@ -182,12 +182,22 @@ Page {
     }
 
     onNextButtonClicked: {
-        selectedPage = Units.Page.DownloadPage
         if (selectedOption != Units.MainSelect.Write)
             releases.variant.download()
-        if (drives.length) {
-            drives.selected.setImage(releases.variant)
-            drives.selected.write(releases.variant)
+
+        if (!drives.length) {
+            selectedPage = Units.Page.DownloadPage
+            return;
         }
+
+        // Better check for > 33GB as the device size is not exactly 32GB for "32GB" USB drive
+        if (drives.selected.size > 33000000000) {
+            deviceWarningDialog.show();
+            return
+        }
+
+        selectedPage = Units.Page.DownloadPage
+        drives.selected.setImage(releases.variant)
+        drives.selected.write(releases.variant)
     }
 }
