@@ -164,5 +164,9 @@ ApplicationWindow {
     CancelDialog {
         id: cancelDialog
     }
+
+    DeviceWarningDialog {
+        id: deviceWarningDialog
+    }
 }
 
