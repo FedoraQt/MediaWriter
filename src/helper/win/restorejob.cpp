@@ -22,8 +22,8 @@
 #include <QTextStream>
 #include <QTimer>
 
-RestoreJob::RestoreJob(const QString &where)
-    : QObject(nullptr)
+RestoreJob::RestoreJob(const QString &where, QObject *parent)
+    : QObject(parent)
 {
     bool ok = false;
     m_where = where.toInt(&ok);
@@ -33,7 +33,8 @@ RestoreJob::RestoreJob(const QString &where)
         QTimer::singleShot(0, this, &RestoreJob::work);
 }
 
-void RestoreJob::work() {
+void RestoreJob::work()
+{
     m_diskpart.setProgram("diskpart.exe");
     m_diskpart.setProcessChannelMode(QProcess::ForwardedChannels);
 
@@ -50,8 +51,7 @@ void RestoreJob::work() {
 
     if (m_diskpart.waitForFinished()) {
         qApp->exit(0);
-    }
-    else {
+    } else {
         err << m_diskpart.readAllStandardError();
         err.flush();
         qApp->exit(1);
