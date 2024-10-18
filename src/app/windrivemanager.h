@@ -21,27 +21,28 @@
 #define WINDRIVEMANAGER_H
 
 #include "drivemanager.h"
+#include "libwindisk/windisk.h"
 
+#include <QAbstractNativeEventFilter>
 #include <QProcess>
 
 class WinDriveProvider;
 class WinDrive;
 
-class WinDriveProvider : public DriveProvider
+class WinDriveProvider : public DriveProvider, public QAbstractNativeEventFilter
 {
     Q_OBJECT
 public:
     WinDriveProvider(DriveManager *parent);
 
+    bool nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result) override;
+
 public slots:
     void checkDrives();
 
 private:
-    QSet<int> findPhysicalDrive(char driveLetter);
-    bool describeDrive(int driveNumber, bool verbose);
-    bool isMountable(int driveNumber);
-
     QMap<int, WinDrive *> m_drives;
+    std::unique_ptr<WinDiskManagement> m_diskManagement;
 };
 
 class WinDrive : public Drive
@@ -55,6 +56,7 @@ public:
     Q_INVOKABLE virtual void cancel() override;
     Q_INVOKABLE virtual void restore() override;
 
+    bool busy() const;
     QString serialNumber() const;
 
     bool operator==(const WinDrive &o) const;
