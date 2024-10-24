@@ -26,6 +26,7 @@ target_sources(helper PRIVATE helper.exe.rc)
 target_link_libraries(helper
     Qt6::Core
     isomd5
+    libwindisk
     ${LIBLZMA_LIBRARIES}
 )
 

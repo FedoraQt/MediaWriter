@@ -1,5 +1,6 @@
 /*
  * Fedora Media Writer
+ * Copyright (C) 2024 Jan Grulich <jgrulich@redhat.com>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -18,27 +19,28 @@
  */
 
 #include <QCoreApplication>
+#include <QLocale>
 #include <QTextStream>
 #include <QTranslator>
-#include <QLocale>
 
 #include "restorejob.h"
 #include "writejob.h"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     QCoreApplication app(argc, argv);
 
     QTranslator translator;
-    if (translator.load(QLocale(QLocale().language(), QLocale().country()), QLatin1String(), QLatin1String(), ":/translations"))
-        app.installTranslator(&translator);   
+    if (translator.load(QLocale(), QLatin1String(), QLatin1String(), ":/translations")) {
+        app.installTranslator(&translator);
+    }
 
-    if (app.arguments().count() == 3 && app.arguments()[1] == "restore") {
-        new RestoreJob(app.arguments()[2]);
-    }
-    else if (app.arguments().count() == 4 && app.arguments()[1] == "write") {
-        new WriteJob(app.arguments()[2], app.arguments()[3]);
-    }
-    else {
+    const QStringList args = app.arguments();
+    if (args.count() == 3 && args[1] == "restore") {
+        new RestoreJob(args[2], &app);
+    } else if (args.count() == 4 && args[1] == "write") {
+        new WriteJob(args[2], args[3], &app);
+    } else {
         QTextStream err(stderr);
         err << "Helper: Wrong arguments entered\n";
         return 1;
