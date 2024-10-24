@@ -3,7 +3,7 @@ name: pr-check
 on: [pull_request]
 
 env:
-    QT_VERSION: '6.6.3'
+    QT_VERSION: '6.8.0'
 
 jobs:
   Linux:
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
           cache: true
@@ -26,14 +26,14 @@ jobs:
           make -j5
 
   Flatpak:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     container:
-      image: docker.io/bilelmoussaoui/flatpak-github-actions:kde-6.6
+      image: docker.io/bilelmoussaoui/flatpak-github-actions:kde-6.7
       options: --privileged
     steps:
       - uses: actions/checkout@v4
 
-      - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
+      - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
         with:
           bundle: "org.fedoraproject.MediaWriter.flatpak"
           manifest-path: "dist/flatpak/org.fedoraproject.MediaWriter.json"
@@ -51,7 +51,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
           modules: qtimageformats
@@ -85,7 +85,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
           modules: qtimageformats
@@ -114,7 +114,7 @@ jobs:
           path: FedoraMediaWriter-osx-arm64.dmg
 
   Windows-MSVC:
-    runs-on: windows-2019
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v4
 
@@ -125,10 +125,10 @@ jobs:
           choco install dos2unix
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
-          arch: win64_msvc2019_64
+          arch: win64_msvc2022_64
           cache: true
           cache-key-prefix: ${{ github.job }}-qt
 
@@ -139,7 +139,7 @@ jobs:
         shell: bash
         if: ${{ !steps.cache-qt.outputs.cache-hit }}
         run: |
-          eval "$(./dist/win/make-vs2019-env.bat)"
+          eval "$(./dist/win/make-vs2022-env.bat)"
           git clone https://git.tukaani.org/xz.git
           cd xz
           git checkout v5.4.5
@@ -155,7 +155,7 @@ jobs:
       - name: Build MediaWriter
         shell: bash
         run: |
-          eval "$(./dist/win/make-vs2019-env.bat)"
+          eval "$(./dist/win/make-vs2022-env.bat)"
           mkdir build
           cd build
           cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt6_DIR" ..

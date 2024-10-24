@@ -5,7 +5,7 @@ on:
     types: [ created ]
 
 env:
-    QT_VERSION: '6.6.3'
+    QT_VERSION: '6.8.0'
 
 jobs:
   macOS:
@@ -17,7 +17,7 @@ jobs:
         run: echo "TAG_NAME=$(bash ./dist/get-tag-name.sh)" >> $GITHUB_ENV
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
           modules: qtimageformats
@@ -53,7 +53,7 @@ jobs:
         run: echo "TAG_NAME=$(bash ./dist/get-tag-name.sh)" >> $GITHUB_ENV
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
           modules: qtimageformats
@@ -81,7 +81,7 @@ jobs:
           bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-osx-arm64-${{ env.TAG_NAME }}.dmg"
 
   Windows-MSVC:
-    runs-on: windows-2019
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v4
 
@@ -95,10 +95,10 @@ jobs:
           choco install dos2unix
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
-          arch: win64_msvc2019_64
+          arch: win64_msvc2022_64
           cache: true
           cache-key-prefix: ${{ github.job }}-qt
 
@@ -109,7 +109,7 @@ jobs:
         shell: bash
         if: ${{ !steps.cache-qt.outputs.cache-hit }}
         run: |
-          eval "$(./dist/win/make-vs2019-env.bat)"
+          eval "$(./dist/win/make-vs2022-env.bat)"
           git clone https://git.tukaani.org/xz.git
           cd xz
           git checkout v5.4.5
@@ -125,7 +125,7 @@ jobs:
       - name: Build MediaWriter
         shell: bash
         run: |
-          eval "$(./dist/win/make-vs2019-env.bat)"
+          eval "$(./dist/win/make-vs2022-env.bat)"
           mkdir build
           cd build
           cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt6_DIR" ..
