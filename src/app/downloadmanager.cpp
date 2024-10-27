@@ -86,7 +86,7 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QString 
     m_mirrorCache.clear();
 
     QString s;
-    s.push_back("https://mirrors.qvq.net.cn/anthon/aosc-os/");
+    s.push_back("https://releases.aosc.io/");
     s.push_back(url);
     m_mirrorCache << s;
 
