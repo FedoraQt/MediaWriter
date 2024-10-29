@@ -1,5 +1,6 @@
 /*
  * Fedora Media Writer
+ * Copyright (C) 2024 Jan Grulich <jgrulich@redhat.com>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -20,6 +21,8 @@
 #ifndef RESTOREJOB_H
 #define RESTOREJOB_H
 
+#include <libwindisk/windisk.h>
+
 #include <QObject>
 #include <QProcess>
 #include <QTextStream>
@@ -28,7 +31,7 @@ class RestoreJob : public QObject
 {
     Q_OBJECT
 public:
-    explicit RestoreJob(const QString &where);
+    explicit RestoreJob(const QString &where, QObject *parent);
 
 signals:
 
@@ -36,11 +39,11 @@ private slots:
     void work();
 
 private:
-    QTextStream out { stdout };
-    QTextStream err { stderr };
+    QTextStream m_out{stdout};
+    QTextStream m_err{stderr};
 
-    QProcess m_diskpart;
-    int m_where;
+    std::unique_ptr<WinDiskManagement> m_diskManagement;
+    std::unique_ptr<WinDisk> m_disk;
 };
 
 #endif // RESTOREJOB_H

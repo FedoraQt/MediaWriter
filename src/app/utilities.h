@@ -78,7 +78,7 @@ public:
 
     bool testing{false};
     bool verbose{false};
-#ifdef QT_NO_DEBUG
+#if defined(QT_NO_DEBUG) && !defined(_WIN32)
     bool logging{false};
 #else
     bool logging{true};

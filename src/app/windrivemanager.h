@@ -21,6 +21,7 @@
 #define WINDRIVEMANAGER_H
 
 #include "drivemanager.h"
+#include "libwindisk/windisk.h"
 
 #include <QProcess>
 
@@ -37,11 +38,8 @@ public slots:
     void checkDrives();
 
 private:
-    QSet<int> findPhysicalDrive(char driveLetter);
-    bool describeDrive(int driveNumber, bool verbose);
-    bool isMountable(int driveNumber);
-
     QMap<int, WinDrive *> m_drives;
+    std::unique_ptr<WinDiskManagement> m_diskManagement;
 };
 
 class WinDrive : public Drive
@@ -55,6 +53,7 @@ public:
     Q_INVOKABLE virtual void cancel() override;
     Q_INVOKABLE virtual void restore() override;
 
+    bool busy() const;
     QString serialNumber() const;
 
     bool operator==(const WinDrive &o) const;

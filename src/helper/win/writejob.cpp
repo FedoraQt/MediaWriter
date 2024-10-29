@@ -1,5 +1,6 @@
 /*
  * Fedora Media Writer
+ * Copyright (C) 2024 Jan Grulich <jgrulich@redhat.com>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -20,397 +21,528 @@
 #include "writejob.h"
 
 #include <QCoreApplication>
-#include <QTimer>
-#include <QTextStream>
-#include <QProcess>
 #include <QFile>
-#include <QThread>
+#include <QFileSystemModel>
+#include <QLocale>
+#include <QProcess>
 #include <QRegularExpression>
-#include <QDebug>
+#include <QThread>
+#include <QTimer>
 
 #include <io.h>
-#include <windows.h>
 
 #include <lzma.h>
 
 #include "isomd5/libcheckisomd5.h"
 
-
-WriteJob::WriteJob(const QString &what, const QString &where)
-    : QObject(nullptr), what(what)
+static QString getLastError()
 {
-    bool ok = false;
-    this->where = where.toInt(&ok);
+    TCHAR message[256];
+    FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
+    return QString::fromWCharArray(message).trimmed();
+}
 
-    if (what.endsWith(".part")) {
-        connect(&watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
-        watcher.addPath(what);
-    }
-    else {
+WriteJob::WriteJob(const QString &image, const QString &driveNumber, QObject *parent)
+    : QObject(parent)
+    , m_image(image)
+{
+    const int wmiDriveNumber = driveNumber.toInt();
+
+    m_diskManagement = std::make_unique<WinDiskManagement>(this, true);
+    m_disk = m_diskManagement->getDiskDriveInformation(wmiDriveNumber);
+
+    if (m_image.endsWith(".part")) {
+        connect(&m_watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
+        m_watcher.addPath(m_image);
+    } else {
         QTimer::singleShot(0, this, &WriteJob::work);
     }
 }
 
-int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total) {
-    return ((WriteJob*)data)->onMediaCheckAdvanced(offset, total);
+int WriteJob::staticOnMediaCheckAdvanced(void *data, long long offset, long long total)
+{
+    return ((WriteJob *)data)->onMediaCheckAdvanced(offset, total);
 }
 
-int WriteJob::onMediaCheckAdvanced(long long offset, long long total) {
+int WriteJob::onMediaCheckAdvanced(long long offset, long long total)
+{
     Q_UNUSED(total);
-    out << offset << "\n";
-    out.flush();
+    m_out << offset << "\n";
+    m_out.flush();
     return 0;
 }
 
-HANDLE WriteJob::openDrive(int physicalDriveNumber) {
-    HANDLE hVol;
-    QString drivePath = QString("\\\\.\\PhysicalDrive%0").arg(physicalDriveNumber);
-
-    hVol = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0);
-
-    if( hVol == INVALID_HANDLE_VALUE ) {
-        TCHAR message[256];
-        FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-        err << tr("Couldn't open the drive for writing") << " (" << QString::fromWCharArray(message).trimmed() << ")\n";
-        err.flush();
-        return hVol;
-    }
-
-    return hVol;
-}
-
-bool WriteJob::lockDrive(HANDLE drive) {
-    int attempts = 0;
-    DWORD status;
-
-    while (true) {
-        if (!DeviceIoControl(drive, FSCTL_LOCK_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
-            attempts++;
-        }
-        else {
-            return true;
-        }
-
-        if (attempts == 10) {
-            TCHAR message[256];
-            FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-
-            err << tr("Couldn't lock the drive") << " (" << QString::fromWCharArray(message).trimmed() << ")\n";
-            err.flush();
+void WriteJob::work()
+{
+    // FIXME: Give this 3 tries
+    // It would be good to know why it fails sometimes
+    for (int attempts = 1; attempts <= 3; attempts++) {
+        if (write()) {
             break;
         }
 
-        QThread::sleep(2);
-    }
-
-    return false;
-}
-
-bool WriteJob::removeMountPoints(uint diskNumber) {
-    DWORD drives = ::GetLogicalDrives();
-
-    for (char i = 0; i < 26; i++) {
-        if (drives & (1 << i)) {
-            char currentDrive = 'A' + i;
-            QString drivePath = QString("\\\\.\\%1:").arg(currentDrive);
-
-            HANDLE hDevice = ::CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
-
-            DWORD bytesReturned;
-            VOLUME_DISK_EXTENTS vde; // TODO FIXME: handle ERROR_MORE_DATA (this is an extending structure)
-            BOOL bResult = DeviceIoControl(hDevice, IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS, NULL, 0, &vde, sizeof(vde), &bytesReturned, NULL);
-
-            if (bResult) {
-                for (uint j = 0; j < vde.NumberOfDiskExtents; j++) {
-                    if (vde.Extents[j].DiskNumber == diskNumber) {
-                        QString volumePath = QString("%1:\\").arg(currentDrive);
-
-                        CloseHandle(hDevice);
-                        hDevice = nullptr;
-
-                        if (!DeleteVolumeMountPointA(volumePath.toStdString().c_str())) {
-                            TCHAR message[256];
-                            FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-                            err << tr("Couldn't remove the drive %1:").arg(currentDrive) << " (" << QString::fromWCharArray(message).trimmed() << "\n";
-                            err.flush();
-                            return false;
-                        }
-
-                        break;
-                    }
-                }
-            }
-            if (hDevice)
-                CloseHandle(hDevice);
-        }
-    }
-
-    return true;
-}
-
-bool WriteJob::cleanDrive(uint driveNumber) {
-    QProcess diskpart;
-    diskpart.setProgram("diskpart.exe");
-    diskpart.setProcessChannelMode(QProcess::ForwardedChannels);
-
-    diskpart.start(QIODevice::ReadWrite);
-
-    diskpart.write(qPrintable(QString("select disk %0\r\n").arg(driveNumber)));
-    diskpart.write("clean\r\n");
-    // for some reason this works (tm)
-    diskpart.write("create part pri\r\n");
-    diskpart.write("clean\r\n");
-    diskpart.write("exit\r\n");
-
-    diskpart.waitForFinished();
-
-    if (diskpart.exitCode() == 0) {
-        // as advised in the diskpart documentation
-        QThread::sleep(15);
-
-        return true;
-    }
-
-    return false;
-}
-
-bool WriteJob::writeBlock(HANDLE drive, OVERLAPPED *overlap, char *data, uint size) {
-    DWORD bytesWritten;
-
-    if (!WriteFile(drive, data, size, &bytesWritten, overlap)) {
-        DWORD Errorcode = GetLastError();
-        if (Errorcode == ERROR_IO_PENDING) {
-            WaitForSingleObject(overlap->hEvent, INFINITE);
-        }
-        else {
-            TCHAR message[256];
-            FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-            err << tr("Destination drive is not writable") << " (" << QString::fromWCharArray(message).trimmed() << ")\n";
-            err.flush();
-            return false;
-        }
-    }
-
-    if (bytesWritten != size) {
-        err << tr("Destination drive is not writable") << "\n";
-        err.flush();
-        return false;
-    }
-
-    return true;
-}
-
-
-void WriteJob::unlockDrive(HANDLE drive) {
-    DWORD status;
-    if (!DeviceIoControl(drive, FSCTL_UNLOCK_VOLUME, NULL, 0, NULL, 0, &status, NULL)) {
-        TCHAR message[256];
-        FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(), MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), message, 255, NULL);
-        err << tr("Couldn't unlock the drive") << " (" << QString::fromWCharArray(message).trimmed() << ")\n";
-        err.flush();
-    }
-}
-
-void WriteJob::work() {
-    if (!write()) {
-        out << "0\n";
-        out.flush();
-        QThread::sleep(5);
-        if (!write())
+        if (attempts == 3) {
+            qApp->exit(1);
             return;
+        }
+
+        m_diskManagement->logMessage(QtDebugMsg, QStringLiteral("Re-trying to write the image from scratch"));
     }
 
-    if (!check())
+    if (!check()) {
+        qApp->exit(1);
         return;
+    }
 
     qApp->exit(0);
 }
 
-void WriteJob::onFileChanged(const QString &path) {
+void WriteJob::onFileChanged(const QString &path)
+{
     if (QFile::exists(path))
         return;
     QRegularExpression reg("[.]part$");
-    what = what.replace(reg, "");
-
-    out << "WRITE\n";
-    out.flush();
+    m_image = m_image.replace(reg, "");
 
     work();
 }
 
-bool WriteJob::write() {
-    removeMountPoints(where);
-    cleanDrive(where);
+bool WriteJob::write()
+{
+    m_out << "WRITE\n";
+    m_out.flush();
 
-    HANDLE drive = openDrive(where);
-    if (!lockDrive(drive)) {
-        qApp->exit(1);
+    m_diskManagement->logMessage(QtDebugMsg, "Preparing device for image writing");
+
+    /*
+     * Device preparation part
+     */
+
+    if (!m_diskManagement->removeDriveLetters(m_disk->index())) {
+        m_err << tr("Couldn't remove drive mountpoints") << "\n";
+        m_err.flush();
         return false;
     }
 
-    if (what.endsWith(".xz"))
-        return writeCompressed(drive);
-    else
-        return writePlain(drive);
+    // This doesn't need to be fatal and we can try to continue
+    if (!m_diskManagement->clearPartitions(m_disk->index())) {
+        m_err << tr("Failed to remove partitions from the drive") << "\n";
+        m_err.flush();
+    }
+
+    m_diskManagement->refreshDiskDrive(m_disk->path());
+
+    HANDLE drive;
+    const QString drivePath = QString("\\\\.\\PhysicalDrive%0").arg(m_disk->index());
+
+    drive = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    if (drive == INVALID_HANDLE_VALUE) {
+        m_err << tr("Failed to open the drive for formatting") << "\n";
+        m_err.flush();
+        return false;
+    }
+
+    if (!m_diskManagement->lockDrive(drive, 10)) {
+        m_err << tr("Couldn't lock the drive") << "\n";
+        m_err.flush();
+        return false;
+    }
+
+    m_diskManagement->refreshPartitionLayout(drive);
+
+    HANDLE logicalHandle = NULL;
+    const QString logicalVolumePath = m_diskManagement->getLogicalName(m_disk->index(), false);
+    if (!logicalVolumePath.isEmpty()) {
+        m_diskManagement->logMessage(QtDebugMsg, "Trying to lock and unmount logical volume");
+        logicalHandle = CreateFile(logicalVolumePath.toStdWString().c_str(), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+        if (logicalHandle == INVALID_HANDLE_VALUE) {
+            m_err << tr("Couldn't open the logical handle") << "\n";
+            m_err.flush();
+            return false;
+        }
+
+        if (!m_diskManagement->lockDrive(logicalHandle, 10)) {
+            m_err << tr("Couldn't lock the logical drive") << "\n";
+            m_err.flush();
+            return false;
+        }
+
+        // This doesn't need to be fatal and we can try to continue
+        if (!m_diskManagement->unmountVolume(logicalHandle)) {
+            m_err << tr("Couldn't unmount drive") << "\n";
+            m_err.flush();
+        }
+    }
+
+    // ALT: is this needed?
+    // if (!m_diskManagement->clearPartitionTable(drive, m_disk->size(), m_disk->sectorSize())) {
+    //     m_err << tr("Failed to clear the partition table on the drive") << "\n";
+    //     m_err.flush();
+    //     return false;
+    // }
+
+    // ALT: is this needed?
+    // if (!m_diskManagement->clearDiskDrive(drive)) {
+    //     m_err << tr("Failed to set the drive to RAW partition style") << "\n";
+    //     m_err.flush();
+    //     return false;
+    // }
+
+    // ALT: Do we need to reopen the drive?
+    // m_diskManagement->unlockDrive(drive);
+    // CloseHandle(drive);
+
+    // // FIXME: isn't this too much? We used to have this even before as
+    // // apparently it was suggested after diskpart operations
+    QThread::sleep(15);
+
+    // m_diskManagement->refreshPartitionLayout(drive);
+
+    /*
+     * Writing part
+     */
+
+    // m_diskManagement->logMessage(QtDebugMsg, "Opening and locking device handle for writing process");
+
+    // ALT: For unbuffered writing
+    // drive = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_FLAG_NO_BUFFERING | FILE_FLAG_WRITE_THROUGH, NULL);
+
+    // ALT: Do we need to reopen the drive?
+    // drive = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    // if (drive == INVALID_HANDLE_VALUE) {
+    //     m_err << tr("Couldn't open the drive for writing") << "\n";
+    //     m_err.flush();
+    //     return false;
+    // }
+
+    // m_diskManagement->disableIOBoundaryChecks(drive);
+
+    // if (!m_diskManagement->lockDrive(drive, 10)) {
+    //     m_err << tr("Couldn't lock the drive") << "\n";
+    //     m_err.flush();
+    //     return false;
+    // }
+
+    bool result;
+    if (m_image.endsWith(".xz")) {
+        result = writeCompressed(drive);
+    } else {
+        result = writePlain(drive);
+    }
+
+    if (logicalHandle && logicalHandle != INVALID_HANDLE_VALUE) {
+        m_diskManagement->unlockDrive(logicalHandle);
+        CloseHandle(logicalHandle);
+    }
+
+    m_diskManagement->unlockDrive(drive);
+    CloseHandle(drive);
+
+    m_diskManagement->refreshPartitionLayout(drive);
+
+    return result;
 }
 
-bool WriteJob::writeCompressed(HANDLE drive) {
+bool WriteJob::writeCompressed(HANDLE driveHandle)
+{
+    m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("Starting to write compressed data"));
+
+    const qint64 blockSize = m_disk->sectorSize() * 512;
+
+    QFile isoFile(m_image);
+    isoFile.open(QIODevice::ReadOnly);
+    if (!isoFile.isOpen()) {
+        m_err << tr("Source image is not readable");
+        m_err.flush();
+        return false;
+    }
+    auto isoCleanup = qScopeGuard([&isoFile] {
+        isoFile.close();
+    });
+
+    uint8_t *outBuffer = NULL;
+    // ALT: For unbuffered writing
+    // buffer = static_cast<uint8_t *>(_mm_malloc(blockSize, sectorSize));
+    outBuffer = static_cast<uint8_t *>(malloc(blockSize));
+    if (!outBuffer) {
+        m_err << tr("Failed to allocate the buffer") << "\n";
+        m_err.flush();
+        return false;
+    }
+    auto bufferCleanup = qScopeGuard([outBuffer] {
+        if (outBuffer) {
+            // ALT: For unbuffered writing
+            // _mm_free(buffer);
+            free(outBuffer);
+        }
+    });
+
     qint64 totalRead = 0;
 
     lzma_stream strm = LZMA_STREAM_INIT;
     lzma_ret ret;
 
-    uint8_t *inBuffer = new uint8_t[BLOCK_SIZE];
-    uint8_t *outBuffer = new uint8_t[BLOCK_SIZE];
+    uint8_t *inBuffer = new uint8_t[blockSize];
+    auto inBufferCleanup = qScopeGuard([inBuffer] {
+        delete[] inBuffer;
+    });
 
-    QFile file(what);
+    QFile file(m_image);
     file.open(QIODevice::ReadOnly);
 
     ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
     if (ret != LZMA_OK) {
-        err << tr("Failed to start decompressing.");
+        m_err << tr("Failed to start decompressing.") << "\n";
         return false;
     }
 
     strm.next_in = inBuffer;
     strm.avail_in = 0;
     strm.next_out = outBuffer;
-    strm.avail_out = BLOCK_SIZE;
+    strm.avail_out = blockSize;
 
-    OVERLAPPED osWrite;
-    memset(&osWrite, 0, sizeof(osWrite));
-    osWrite.hEvent = 0;
-
+    const qint64 sectorSize = m_disk->sectorSize();
     while (true) {
         if (strm.avail_in == 0) {
-            qint64 len = file.read((char*) inBuffer, BLOCK_SIZE);
+            qint64 len = file.read((char *)inBuffer, blockSize);
             totalRead += len;
 
             strm.next_in = inBuffer;
             strm.avail_in = len;
 
-            out << totalRead << "\n";
-            out.flush();
+            m_out << totalRead << "\n";
+            m_out.flush();
         }
 
         ret = lzma_code(&strm, strm.avail_in == 0 ? LZMA_FINISH : LZMA_RUN);
         if (ret == LZMA_STREAM_END) {
-            if (!writeBlock(drive, &osWrite, (char *) outBuffer, BLOCK_SIZE - strm.avail_out)) {
+            qint64 writtenBytes = 0;
+            qint64 readBytes = blockSize - strm.avail_out;
+            readBytes = ((readBytes + sectorSize - 1) / sectorSize) * sectorSize;
+            // ALT: Qt for writing
+            // writtenBytes = drive.write(reinterpret_cast<char *>(outBuffer), readBytes);
+            writtenBytes = m_diskManagement->writeFileWithRetry(driveHandle, reinterpret_cast<char *>(outBuffer), readBytes, 3);
+            if (writtenBytes <= 0) {
+                m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("Destination drive is not writable: %1").arg(getLastError()));
+                m_err << tr("Destination drive is not writable") << ": " << getLastError() << "\n";
+                m_err.flush();
                 qApp->exit(1);
-                CloseHandle(drive);
                 return false;
             }
 
-            if (osWrite.Offset + BLOCK_SIZE < osWrite.Offset)
-                osWrite.OffsetHigh++;
-            osWrite.Offset += BLOCK_SIZE;
-
-            CloseHandle(drive);
+            if (writtenBytes != readBytes) {
+                m_err << tr("The last block was not fully written") << "\n";
+                m_err.flush();
+                return false;
+            }
 
             return true;
         }
+
         if (ret != LZMA_OK) {
             switch (ret) {
             case LZMA_MEM_ERROR:
-                err << tr("There is not enough memory to decompress the file.");
+                m_err << tr("There is not enough memory to decompress the file.") << "\n";
                 break;
             case LZMA_FORMAT_ERROR:
             case LZMA_DATA_ERROR:
             case LZMA_BUF_ERROR:
-                err << tr("The downloaded compressed file is corrupted.");
+                m_err << tr("The downloaded compressed file is corrupted.") << "\n";
                 break;
             case LZMA_OPTIONS_ERROR:
-                err << tr("Unsupported compression options.");
+                m_err << tr("Unsupported compression options.") << "\n";
                 break;
             default:
-                err << tr("Unknown decompression error.");
+                m_err << tr("Unknown decompression error.") << "\n";
                 break;
             }
             qApp->exit(4);
-            CloseHandle(drive);
             return false;
         }
 
         if (strm.avail_out == 0) {
-            if (!writeBlock(drive, &osWrite, (char *) outBuffer, BLOCK_SIZE - strm.avail_out)) {
+            qint64 writtenBytes = 0;
+            // ALT: Qt for writing
+            // writtenBytes = drive.write(reinterpret_cast<char *>(outBuffer), sectorSize);
+            writtenBytes = m_diskManagement->writeFileWithRetry(driveHandle, reinterpret_cast<char *>(outBuffer), sectorSize, 3);
+            if (writtenBytes <= 0) {
+                m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("Destination drive is not writable: %1").arg(getLastError()));
+                m_err << tr("Destination drive is not writable") << ": " << getLastError() << "\n";
+                m_err.flush();
                 qApp->exit(1);
-                CloseHandle(drive);
                 return false;
             }
 
-            if (osWrite.Offset + BLOCK_SIZE < osWrite.Offset)
-                osWrite.OffsetHigh++;
-            osWrite.Offset += BLOCK_SIZE;
+            if (writtenBytes != sectorSize) {
+                m_err << tr("The last block was not fully written") << "\n";
+                m_err.flush();
+                qApp->exit(1);
+                return false;
+            }
 
-            strm.next_out = outBuffer;
-            strm.avail_out = BLOCK_SIZE;
+            strm.next_out = static_cast<uint8_t *>(outBuffer);
+            strm.avail_out = blockSize;
         }
     }
+    return false;
 }
 
-bool WriteJob::writePlain(HANDLE drive) {
-    OVERLAPPED osWrite;
-    memset(&osWrite, 0, sizeof(osWrite));
-    osWrite.hEvent = 0;
+static QString calculcateSizeString(quint64 bytes)
+{
+    const quint64 kb = 1024;
+    const quint64 mb = 1024 * kb;
+    const quint64 gb = 1024 * mb;
+    const quint64 tb = 1024 * gb;
 
-    uint64_t cnt = 0;
-    QByteArray buffer;
-    QFile isoFile(what);
-    isoFile.open(QIODevice::ReadOnly);
-    if (!isoFile.isOpen()) {
-        err << tr("Source image is not readable");
-        err.flush();
-        qApp->exit(1);
-        return false;
+    if (bytes >= tb) {
+        return QFileSystemModel::tr("%1 TB").arg(QLocale().toString(qreal(bytes) / tb, 'f', 3));
+    } else if (bytes >= gb) {
+        return QFileSystemModel::tr("%1 GB").arg(QLocale().toString(qreal(bytes) / gb, 'f', 2));
+    } else if (bytes >= mb) {
+        return QFileSystemModel::tr("%1 MB").arg(QLocale().toString(qreal(bytes) / mb, 'f', 1));
+    } else if (bytes >= kb) {
+        return QFileSystemModel::tr("%1 KB").arg(QLocale().toString(bytes / kb));
     }
 
+    return QFileSystemModel::tr("%1 byte(s)").arg(QLocale().toString(bytes));
+}
+
+bool WriteJob::writePlain(HANDLE driveHandle)
+{
+    m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("Starting to write plain data"));
+
+    qint64 sectorSize = m_disk->sectorSize();
+    const qint64 blockSize = sectorSize * 128;
+
+    QFile isoFile(m_image);
+    isoFile.open(QIODevice::ReadOnly);
+    if (!isoFile.isOpen()) {
+        m_err << tr("Source image is not readable") << "\n";
+        m_err.flush();
+        return false;
+    }
+    const qint64 imageSize = isoFile.size();
+    auto isoCleanup = qScopeGuard([&isoFile] {
+        isoFile.close();
+    });
+
+    char *buffer = NULL;
+    // ALT: For unbuffered writing
+    // buffer = static_cast<char *>(_mm_malloc(blockSize, sectorSize));
+    buffer = static_cast<char *>(malloc(blockSize));
+    if (!buffer) {
+        m_err << tr("Failed to allocate the buffer") << "\n";
+        m_err.flush();
+        return false;
+    }
+    auto bufferCleanup = qScopeGuard([buffer] {
+        if (buffer) {
+            // ALT: For unbuffered writing
+            // _mm_free(buffer);
+            free(buffer);
+        }
+    });
+
+    OVERLAPPED osWrite = {};
+    osWrite.hEvent = 0;
+
+    qint64 totalBytes = 0;
+    qint64 readBytes;
+    qint64 writtenBytes;
     while (true) {
-        buffer = isoFile.read(BLOCK_SIZE);
-        if (!writeBlock(drive, &osWrite, buffer.data(), buffer.size())) {
-            qApp->exit(1);
+        if ((readBytes = isoFile.read(buffer, blockSize)) <= 0) {
+            m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("Failed to read %1").arg(blockSize));
+            break;
+        }
+
+        // ALT: For unbuffered writing
+        // readBytes = ((readBytes + sectorSize - 1) / sectorSize) * sectorSize;
+
+        writtenBytes = m_diskManagement->writeFileAsync(driveHandle, buffer, readBytes, &osWrite);
+        if (writtenBytes <= 0) {
+            m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("Destination drive is not writable: %1").arg(getLastError()));
+            m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("Wrote %1 out of %2").arg(calculcateSizeString(totalBytes)).arg(calculcateSizeString(imageSize)));
+            m_err << tr("Destination drive is not writable") << ": " << getLastError() << "\n";
+            m_err << tr("Wrote %1 out of %2").arg(calculcateSizeString(totalBytes)).arg(calculcateSizeString(imageSize)) << "\n";
+            m_err.flush();
             return false;
         }
 
-        if (osWrite.Offset + BLOCK_SIZE < osWrite.Offset)
-            osWrite.OffsetHigh++;
-        osWrite.Offset += BLOCK_SIZE;
-        cnt += buffer.size();
-        out << cnt << "\n";
-        out.flush();
+        if (writtenBytes != readBytes) {
+            m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("The last block was not fully written: %1").arg(getLastError()));
+            m_err << tr("The last block was not fully written") << "\n";
+            m_err.flush();
+            return false;
+        }
 
-        if (buffer.size() != BLOCK_SIZE || isoFile.atEnd())
+        if (osWrite.Offset + blockSize < osWrite.Offset) {
+            osWrite.OffsetHigh++;
+        }
+        osWrite.Offset += blockSize;
+
+        totalBytes += readBytes;
+        m_out << totalBytes << "\n";
+        m_out.flush();
+
+        if (readBytes != blockSize || isoFile.atEnd()) {
             break;
+        }
     }
 
-    CloseHandle(drive);
+    if (readBytes < 0) {
+        m_err << tr("Failed to read the image file: ") << isoFile.errorString() << "\n";
+        m_err.flush();
+        return false;
+    }
+
+    if (totalBytes != imageSize) {
+        m_err << tr("Failed to write entire image. Total written: %1 out of %2").arg(calculcateSizeString(totalBytes)).arg(calculcateSizeString(imageSize)) << "\n";
+        m_err.flush();
+        return false;
+    }
+
+    FlushFileBuffers(driveHandle);
 
     return true;
 }
 
-bool WriteJob::check() {
-    out << "CHECK\n";
-    out.flush();
+bool WriteJob::check()
+{
+    m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("Starting verification of written data"));
 
-    HANDLE drive = openDrive(where);
+    m_out << "CHECK\n";
+    m_out.flush();
+
+    const QString drivePath = QString("\\\\.\\PhysicalDrive%0").arg(m_disk->index());
+    HANDLE drive = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
+    if (drive == INVALID_HANDLE_VALUE) {
+        m_err << tr("Couldn't open the drive for data verification for %1:").arg(drivePath) << " (" << getLastError() << ")\n";
+        m_err.flush();
+        qApp->exit(1);
+        return false;
+    }
+    auto driveloseGuard = qScopeGuard([&drive] {
+        CloseHandle(drive);
+    });
 
     switch (mediaCheckFD(_open_osfhandle(reinterpret_cast<intptr_t>(drive), 0), &WriteJob::staticOnMediaCheckAdvanced, this)) {
     case ISOMD5SUM_CHECK_NOT_FOUND:
     case ISOMD5SUM_CHECK_PASSED:
-        out << "DONE\n";
-        out.flush();
-        err << "OK\n";
-        err.flush();
-        qApp->exit(0);
-        break;
+        m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("Check passed"));
+        m_out << "DONE\n";
+        m_out.flush();
+        m_err << "OK\n";
+        m_err.flush();
+        return true;
     case ISOMD5SUM_CHECK_FAILED:
-        err << tr("Your drive is probably damaged.") << "\n";
-        err.flush();
-        qApp->exit(1);
+        m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("Check failed"));
+        m_err << tr("Your drive is probably damaged.") << "\n";
+        m_err.flush();
         return false;
     default:
-        err << tr("Unexpected error occurred during media check.") << "\n";
-        err.flush();
-        qApp->exit(1);
+        m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("Check unexpected error"));
+        m_err << tr("Unexpected error occurred during media check.") << "\n";
+        m_err.flush();
         return false;
     }
 
