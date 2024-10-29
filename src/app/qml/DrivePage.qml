@@ -190,14 +190,6 @@ Page {
             return;
         }
 
-        // Better check for > 33GB as the device size is not exactly 32GB for "32GB" USB drive
-        if (drives.selected.size > 33000000000) {
-            deviceWarningDialog.show();
-            return
-        }
-
-        selectedPage = Units.Page.DownloadPage
-        drives.selected.setImage(releases.variant)
-        drives.selected.write(releases.variant)
+        deviceWarningDialog.show();
     }
 }
