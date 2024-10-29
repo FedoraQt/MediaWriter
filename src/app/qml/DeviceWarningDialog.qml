@@ -51,7 +51,7 @@ ApplicationWindow {
 
         Label {
             Layout.fillWidth: true
-            text: qsTr("The device you have selected appears to be larger than 32GB. Are you sure you want to completely erase all the data on it?")
+            text: qsTr("The entire device (all of %1) will be erased and the selected image will be written to it. Do you want to continue?").arg(formatSize(drives.selected.size))
             wrapMode: Label.Wrap
         }
 
@@ -85,6 +85,22 @@ ApplicationWindow {
                     return qsTr("Download & Write")
                 }
             }
+        }
+    }
+
+    function formatSize(bytes) {
+        const kb = 1024;
+        const mb = kb * 1024;
+        const gb = mb * 1024;
+
+        if (bytes >= gb) {
+            return (bytes / gb).toFixed(2) + " " + qsTr("GB");
+        } else if (bytes >= mb) {
+            return (bytes / mb).toFixed(2) + " " + qsTr("MB");
+        } else if (bytes >= kb) {
+            return (bytes / kb).toFixed(2) + " " + qsTr("KB");
+        } else {
+            return bytes + " " + qsTr("Bytes");
         }
     }
 }
