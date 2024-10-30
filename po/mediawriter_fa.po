@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-12 21:31+0100\n"
+"POT-Creation-Date: 2024-10-30 08:29+0100\n"
 "PO-Revision-Date: 2022-05-18 10:18+0000\n"
 "Last-Translator: Pikhosh <pikhosh@gmail.com>\n"
 "Language-Team: Persian <https://translate.fedoraproject.org/projects/fedora-"
@@ -16,18 +16,18 @@ msgstr ""
 "X-Generator: Weblate 4.12.2\n"
 "X-Qt-Contexts: true\n"
 
-#: ../src/app/qml/AboutDialog.qml:50
+#: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
 msgstr "درباره Fedora Media Writer"
 
-#: ../src/app/qml/AboutDialog.qml:59
+#: ../src/app/qml/AboutDialog.qml:58
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "نسخه %1"
 
-#: ../src/app/qml/AboutDialog.qml:66
+#: ../src/app/qml/AboutDialog.qml:65
 #, fuzzy
 #| msgctxt "ImageList|"
 #| msgid "Fedora Media Writer is now checking for new releases"
@@ -35,7 +35,7 @@ msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Fedora Media Writer در حال بررسی برای نسخه جدید تر است"
 
-#: ../src/app/qml/AboutDialog.qml:72
+#: ../src/app/qml/AboutDialog.qml:71
 #, fuzzy, qt-format
 #| msgctxt "ImageList|"
 #| msgid "Please report bugs or your suggestions on %1"
@@ -43,72 +43,132 @@ msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
 msgstr "لطفا، مشکلات یا پیشنهادات خود را در %1 اعلام کنید"
 
-#: ../src/app/qml/AboutDialog.qml:95
+#: ../src/app/qml/AboutDialog.qml:94
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "بستن"
 
-#: ../src/app/qml/CancelDialog.qml:56
+#: ../src/app/qml/CancelDialog.qml:55
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
 msgstr "لغو دانلود؟"
 
-#: ../src/app/qml/CancelDialog.qml:58
+#: ../src/app/qml/CancelDialog.qml:57
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
 msgstr "لغو نوشتن؟"
 
-#: ../src/app/qml/CancelDialog.qml:60
+#: ../src/app/qml/CancelDialog.qml:59
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
 msgstr "لغو تایید صحت؟"
 
-#: ../src/app/qml/CancelDialog.qml:67
+#: ../src/app/qml/CancelDialog.qml:66
 msgctxt "CancelDialog|"
 msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:69
+#: ../src/app/qml/CancelDialog.qml:68
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
 
-#: ../src/app/qml/CancelDialog.qml:71
+#: ../src/app/qml/CancelDialog.qml:70
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
 msgstr "این عملیات برای لغو ایمن است."
 
-#: ../src/app/qml/CancelDialog.qml:88
+#: ../src/app/qml/CancelDialog.qml:87
 msgctxt "CancelDialog|"
 msgid "Continue"
 msgstr "ادامه"
 
-#: ../src/app/qml/CancelDialog.qml:111
+#: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
 msgstr "لغو دانلود"
 
-#: ../src/app/qml/CancelDialog.qml:113
+#: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
 msgstr "لغو نوشتن"
 
-#: ../src/app/qml/CancelDialog.qml:115
+#: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
 msgstr "لغو تایید صحت"
 
-#: ../src/app/qml/CancelDialog.qml:117
+#: ../src/app/qml/CancelDialog.qml:116
 #, fuzzy
 #| msgctxt "main|"
 #| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "لغو"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:54
+#, qt-format
+msgctxt "DeviceWarningDialog|"
+msgid ""
+"The entire device (all of %1) will be erased and the selected image will be "
+"written to it. Do you want to continue?"
+msgstr ""
+
+#: ../src/app/qml/DeviceWarningDialog.qml:69
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Cancel"
+msgctxt "DeviceWarningDialog|"
+msgid "Cancel"
+msgstr "لغو"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:82
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Write"
+msgctxt "DeviceWarningDialog|"
+msgid "Write"
+msgstr "نوشتن"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:84
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Download && Write"
+msgctxt "DeviceWarningDialog|"
+msgid "Download && Write"
+msgstr "دانلود و نوشتن"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:85
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Download & Write"
+msgctxt "DeviceWarningDialog|"
+msgid "Download & Write"
+msgstr "دانلود و نوشتن"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:97
+msgctxt "DeviceWarningDialog|"
+msgid "GB"
+msgstr ""
+
+#: ../src/app/qml/DeviceWarningDialog.qml:99
+msgctxt "DeviceWarningDialog|"
+msgid "MB"
+msgstr ""
+
+#: ../src/app/qml/DeviceWarningDialog.qml:101
+msgctxt "DeviceWarningDialog|"
+msgid "KB"
+msgstr ""
+
+#: ../src/app/qml/DeviceWarningDialog.qml:103
+msgctxt "DeviceWarningDialog|"
+msgid "Bytes"
+msgstr ""
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -130,7 +190,7 @@ msgctxt "Download|"
 msgid "Connection timed out"
 msgstr "ارتباط منقضی شد"
 
-#: ../src/app/qml/DownloadPage.qml:52
+#: ../src/app/qml/DownloadPage.qml:36
 #, fuzzy, qt-format
 #| msgctxt "DownloadPage|"
 #| msgid "%1 Sucessfuly Written"
@@ -138,25 +198,25 @@ msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
 msgstr "%1 با موفقیت نوشته شد"
 
-#: ../src/app/qml/DownloadPage.qml:54
+#: ../src/app/qml/DownloadPage.qml:38
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
 msgstr "در حال نوشتن %1"
 
-#: ../src/app/qml/DownloadPage.qml:56
+#: ../src/app/qml/DownloadPage.qml:40
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
 msgstr "در حال دانلود %1"
 
-#: ../src/app/qml/DownloadPage.qml:58
+#: ../src/app/qml/DownloadPage.qml:42
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
 msgstr "در حال آماده سازی %1"
 
-#: ../src/app/qml/DownloadPage.qml:60
+#: ../src/app/qml/DownloadPage.qml:44
 #, fuzzy, qt-format
 #| msgctxt "ReleaseVariant|"
 #| msgid "Ready to write"
@@ -164,61 +224,61 @@ msgctxt "DownloadPage|"
 msgid "Ready to write %1"
 msgstr "آماده برای نوشتن"
 
-#: ../src/app/qml/DownloadPage.qml:62
+#: ../src/app/qml/DownloadPage.qml:46
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:76
+#: ../src/app/qml/DownloadPage.qml:54
 msgctxt "DownloadPage|"
 msgid " B left)"
 msgstr " بایت مانده)"
 
-#: ../src/app/qml/DownloadPage.qml:77
+#: ../src/app/qml/DownloadPage.qml:55
 msgctxt "DownloadPage|"
 msgid " KB left)"
 msgstr " کیلوبایت مانده)"
 
-#: ../src/app/qml/DownloadPage.qml:78
+#: ../src/app/qml/DownloadPage.qml:56
 msgctxt "DownloadPage|"
 msgid " MB left)"
 msgstr " مگابایت مانده)"
 
-#: ../src/app/qml/DownloadPage.qml:79
+#: ../src/app/qml/DownloadPage.qml:57
 msgctxt "DownloadPage|"
 msgid " GB left)"
 msgstr " گیگابایت مانده)"
 
-#: ../src/app/qml/DownloadPage.qml:82 ../src/app/qml/DownloadPage.qml:83
-#: ../src/app/qml/DownloadPage.qml:84 ../src/app/qml/DownloadPage.qml:85
+#: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:61
+#: ../src/app/qml/DownloadPage.qml:62 ../src/app/qml/DownloadPage.qml:63
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:101
+#: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:135
+#: ../src/app/qml/DownloadPage.qml:106
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
 msgstr "دانلود ها در پوشه Downloads ذخیره می شوند."
 
-#: ../src/app/qml/DownloadPage.qml:143
+#: ../src/app/qml/DownloadPage.qml:116
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
 msgstr "پس از نوشتن، شما تمام داده های روی %1 را از دست خواهید داد."
 
-#: ../src/app/qml/DownloadPage.qml:151
+#: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
 msgstr ""
 
-#: ../src/app/qml/DownloadPage.qml:159
+#: ../src/app/qml/DownloadPage.qml:133
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -229,17 +289,17 @@ msgstr ""
 "با استفاده از Fedora Media Writer آن را به حالت قبلی تغییر اندازه بدهید. این "
 "کار رسانه نصب را از درایو شما حذف خواهد کرد."
 
-#: ../src/app/qml/DownloadPage.qml:167
+#: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "انتخاب شده:"
 
-#: ../src/app/qml/DownloadPage.qml:167
+#: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "هیچ"
 
-#: ../src/app/qml/DownloadPage.qml:175
+#: ../src/app/qml/DownloadPage.qml:149
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -251,7 +311,7 @@ msgstr ""
 "href=%1>این صفحه</a> را برای اطلاعات بیشتر درباره سازگاری آن با فدورا و نحوه "
 "ایجاد یک مدیا قابل بوت برای آن بررسی کنید."
 
-#: ../src/app/qml/DownloadPage.qml:184
+#: ../src/app/qml/DownloadPage.qml:160
 #, qt-format
 msgctxt "DownloadPage|"
 msgid ""
@@ -261,76 +321,129 @@ msgstr ""
 "اندازه درایو انتخاب شده %1 می باشد. ممکن است که تصادفا یک درایو خارجی را "
 "انتخاب کرده باشید!"
 
-#: ../src/app/qml/DownloadPage.qml:193
+#: ../src/app/qml/DownloadPage.qml:168
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr "برای شروع به استفاده از %2 ری استارت کنید و از %1 بوت کنید."
+
+#: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Cancel"
+msgctxt "DownloadPage|"
+msgid "Cancel"
+msgstr "لغو"
+
+#: ../src/app/qml/DownloadPage.qml:270
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Write"
+msgctxt "DownloadPage|"
+msgid "Write"
+msgstr "نوشتن"
+
+#: ../src/app/qml/DownloadPage.qml:272
+msgctxt "DownloadPage|"
+msgid "Finish"
+msgstr "اتمام"
+
+#: ../src/app/qml/DownloadPage.qml:274
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Retry"
+msgctxt "DownloadPage|"
+msgid "Retry"
+msgstr "تلاش مجدد"
 
 #: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
 msgstr "این درایو به اندازه کافی بزرگ نیست."
 
-#: ../src/app/qml/DrivePage.qml:36
+#: ../src/app/qml/DrivePage.qml:30
 msgctxt "DrivePage|"
 msgid "Write Options"
 msgstr "گزینه های نوشتن"
 
-#: ../src/app/qml/DrivePage.qml:45
+#: ../src/app/qml/DrivePage.qml:37
 msgctxt "DrivePage|"
 msgid "Version"
 msgstr "نسخه"
 
-#: ../src/app/qml/DrivePage.qml:67
+#: ../src/app/qml/DrivePage.qml:59
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
 msgstr "معماری سخت افزار"
 
-#: ../src/app/qml/DrivePage.qml:84
+#: ../src/app/qml/DrivePage.qml:76
 msgctxt "DrivePage|"
 msgid "Selected file"
 msgstr "فایل انتخاب شده"
 
-#: ../src/app/qml/DrivePage.qml:91
+#: ../src/app/qml/DrivePage.qml:83
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "هیچ"
 
-#: ../src/app/qml/DrivePage.qml:99
+#: ../src/app/qml/DrivePage.qml:91
 msgctxt "DrivePage|"
 msgid "Select..."
 msgstr "انتخاب..."
 
-#: ../src/app/qml/DrivePage.qml:116
+#: ../src/app/qml/DrivePage.qml:108
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr "فایل های ایمیج"
 
-#: ../src/app/qml/DrivePage.qml:116
+#: ../src/app/qml/DrivePage.qml:108
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "تمام فایل ها (*)"
 
-#: ../src/app/qml/DrivePage.qml:127
+#: ../src/app/qml/DrivePage.qml:119
 msgctxt "DrivePage|"
 msgid "USB Drive"
 msgstr "درایو USB"
 
-#: ../src/app/qml/DrivePage.qml:135
+#: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "هیچ درایو قابل حملی متصل نیست"
 
-#: ../src/app/qml/DrivePage.qml:155
+#: ../src/app/qml/DrivePage.qml:146
 msgctxt "DrivePage|"
 msgid "Download"
 msgstr "دانلود"
 
-#: ../src/app/qml/DrivePage.qml:160
+#: ../src/app/qml/DrivePage.qml:151
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
 msgstr "حذف دانلود پس از نوشتن"
+
+#: ../src/app/qml/DrivePage.qml:169
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Write"
+msgctxt "DrivePage|"
+msgid "Write"
+msgstr "نوشتن"
+
+#: ../src/app/qml/DrivePage.qml:171
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Download && Write"
+msgctxt "DrivePage|"
+msgid "Download && Write"
+msgstr "دانلود و نوشتن"
+
+#: ../src/app/qml/DrivePage.qml:172
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Download & Write"
+msgctxt "DrivePage|"
+msgid "Download & Write"
+msgstr "دانلود و نوشتن"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -401,26 +514,50 @@ msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
 msgstr "نوشتن %1 موفق بود"
 
-#: ../src/app/qml/MainPage.qml:43
+#: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
 msgid "Select Image Source"
 msgstr "انتخاب منبع ایمیج"
 
-#: ../src/app/qml/MainPage.qml:57
+#: ../src/app/qml/MainPage.qml:33
 msgctxt "MainPage|"
 msgid "Download automatically"
 msgstr "دانلود خودکار"
 
-#: ../src/app/qml/MainPage.qml:65
+#: ../src/app/qml/MainPage.qml:40
 msgctxt "MainPage|"
 msgid "Select .iso file"
 msgstr "انتخاب فایل .iso"
 
-#: ../src/app/qml/MainPage.qml:76
+#: ../src/app/qml/MainPage.qml:50
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
 msgstr "بازیابی <b>%1</b>"
+
+#: ../src/app/qml/MainPage.qml:72
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "About"
+msgctxt "MainPage|"
+msgid "About"
+msgstr "درباره"
+
+#: ../src/app/qml/Page.qml:95
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Previous"
+msgctxt "Page|"
+msgid "Previous"
+msgstr "قبلی"
+
+#: ../src/app/qml/Page.qml:105
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Next"
+msgctxt "Page|"
+msgid "Next"
+msgstr "بعدی"
 
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
@@ -437,12 +574,42 @@ msgctxt "PortalFileDialog|"
 msgid "Open File"
 msgstr "باز کردن فایل"
 
-#: ../src/app/releasemanager.cpp:397
+#: ../src/helper/win/writejob.cpp:398
+#, qt-format
+msgctxt "QFileSystemModel|"
+msgid "%1 TB"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:400
+#, qt-format
+msgctxt "QFileSystemModel|"
+msgid "%1 GB"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:402
+#, qt-format
+msgctxt "QFileSystemModel|"
+msgid "%1 MB"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:404
+#, qt-format
+msgctxt "QFileSystemModel|"
+msgid "%1 KB"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:407
+#, qt-format
+msgctxt "QFileSystemModel|"
+msgid "%1 byte(s)"
+msgstr ""
+
+#: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "یک فایل از درایو(های) خود انتخاب کنید"
 
-#: ../src/app/releasemanager.cpp:398
+#: ../src/app/releasemanager.cpp:420
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
@@ -450,169 +617,219 @@ msgid ""
 "iso or .bin)</p>"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:428
+#: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:430
+#: ../src/app/releasemanager.cpp:453
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:432
+#: ../src/app/releasemanager.cpp:455
 #, fuzzy
 #| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
 msgstr "Fedora Media Writer"
 
-#: ../src/app/releasemanager.cpp:434
+#: ../src/app/releasemanager.cpp:457
 msgctxt "Release|"
 msgid "Other"
 msgstr "سایر"
 
-#: ../src/app/releasemanager.cpp:1074
+#: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1074
+#: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1075
+#: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1075
+#: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1076
+#: ../src/app/releasemanager.cpp:1105
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1076
+#: ../src/app/releasemanager.cpp:1105
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:1077
+#: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:396
+#: ../src/app/releasemanager.cpp:418
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "ایمیج سفارشی"
 
-#: ../src/app/releasemanager.cpp:933 ../src/app/releasemanager.cpp:945
+#: ../src/app/releasemanager.cpp:962 ../src/app/releasemanager.cpp:974
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:949
+#: ../src/app/releasemanager.cpp:978
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "فایل دانلود شده قابل خواندن نیست."
 
-#: ../src/app/releasemanager.cpp:960
+#: ../src/app/releasemanager.cpp:989
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "ناتوان در تغییر نام فایل موقت."
 
-#: ../src/app/releasemanager.h:375
+#: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "آماده سازی"
 
-#: ../src/app/releasemanager.h:376
+#: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "در حال دانلود"
 
-#: ../src/app/releasemanager.h:377
+#: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "بررسی دانلود"
 
-#: ../src/app/releasemanager.h:378
+#: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
 msgstr "آماده برای نوشتن"
 
-#: ../src/app/releasemanager.h:379
+#: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr "فایل ایمیج در پوشه Downloads شما ذخیره شده. نوشتن امکان پذیر نیست"
 
-#: ../src/app/releasemanager.h:380
+#: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "در حال نوشتن"
 
-#: ../src/app/releasemanager.h:381
+#: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "بررسی داده های نوشته شده"
 
-#: ../src/app/releasemanager.h:382
+#: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
 msgstr "به پایان رسید!"
 
-#: ../src/app/releasemanager.h:383
+#: ../src/app/releasemanager.h:386
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
 msgstr ""
 
-#: ../src/app/releasemanager.h:384
+#: ../src/app/releasemanager.h:387
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "دانلود ناموفق"
 
-#: ../src/app/releasemanager.h:385
+#: ../src/app/releasemanager.h:388
 msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "خطا"
 
-#: ../src/app/releasemanager.cpp:706
+#: ../src/app/releasemanager.cpp:735
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 آلفا"
 
-#: ../src/app/releasemanager.cpp:708
+#: ../src/app/releasemanager.cpp:737
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 بتا"
 
-#: ../src/app/releasemanager.cpp:710
+#: ../src/app/releasemanager.cpp:739
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:37
+#: ../src/helper/win/restorejob.cpp:60
+msgctxt "RestoreJob|"
+msgid "Couldn't remove drive mountpoints"
+msgstr ""
+
+#: ../src/helper/win/restorejob.cpp:71
+msgctxt "RestoreJob|"
+msgid "Failed to remove partitions from the drive"
+msgstr ""
+
+#: ../src/helper/win/restorejob.cpp:80
+msgctxt "RestoreJob|"
+msgid "Failed to open the drive for formatting"
+msgstr ""
+
+#: ../src/helper/win/restorejob.cpp:95
+msgctxt "RestoreJob|"
+msgid "Couldn't lock the drive"
+msgstr ""
+
+#: ../src/helper/win/restorejob.cpp:112
+msgctxt "RestoreJob|"
+msgid "Failed to clear the partition table on the drive"
+msgstr ""
+
+#: ../src/helper/win/restorejob.cpp:123
+msgctxt "RestoreJob|"
+msgid "Failed to set the drive to RAW partition style"
+msgstr ""
+
+#: ../src/helper/win/restorejob.cpp:134
+msgctxt "RestoreJob|"
+msgid "Failed to create a GPT partition on the drive"
+msgstr ""
+
+#: ../src/helper/win/restorejob.cpp:150
+msgctxt "RestoreJob|"
+msgid "Failed to get GUID volume path on the drive"
+msgstr ""
+
+#: ../src/helper/win/restorejob.cpp:165
+msgctxt "RestoreJob|"
+msgid "Failed to mount the new partition"
+msgstr ""
+
+#: ../src/helper/win/restorejob.cpp:176
+msgctxt "RestoreJob|"
+msgid "Failed to format the partition to exFAT"
+msgstr ""
+
+#: ../src/app/qml/RestorePage.qml:28
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
 msgstr "بازیابی درایو <b>%1</b>"
 
-#: ../src/app/qml/RestorePage.qml:49
+#: ../src/app/qml/RestorePage.qml:36
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -623,80 +840,104 @@ msgid ""
 "factory settings? </p>"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:67
+#: ../src/app/qml/RestorePage.qml:54
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:84
+#: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:94
+#: ../src/app/qml/RestorePage.qml:79
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
 
-#: ../src/app/qml/RestorePage.qml:143
+#: ../src/app/qml/RestorePage.qml:93
 msgctxt "RestorePage|"
 msgid "Restoring finished"
 msgstr ""
 
-#: ../src/app/qml/VersionPage.qml:35
+#: ../src/app/qml/RestorePage.qml:111
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Finish"
+msgctxt "RestorePage|"
+msgid "Finish"
+msgstr "اتمام"
+
+#: ../src/app/qml/RestorePage.qml:111
+#, fuzzy
+#| msgctxt "main|"
+#| msgid "Restore"
+msgctxt "RestorePage|"
+msgid "Restore"
+msgstr "بازیابی"
+
+#: ../src/app/qml/VersionPage.qml:29
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
 msgstr ""
 
-#: ../src/app/qml/VersionPage.qml:48
+#: ../src/app/qml/VersionPage.qml:32
 msgctxt "VersionPage|"
 msgid "Select from:"
 msgstr "انتخاب از:"
 
-#: ../src/app/qml/VersionPage.qml:53
+#: ../src/app/qml/VersionPage.qml:37
 msgctxt "VersionPage|"
 msgid "Official Editions"
 msgstr "ویرایش های رسمی"
 
-#: ../src/app/qml/VersionPage.qml:59
+#: ../src/app/qml/VersionPage.qml:42
 #, fuzzy
 #| msgid "Fedora Media Writer"
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
 msgstr "Fedora Media Writer"
 
-#: ../src/app/qml/VersionPage.qml:65
+#: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
 msgid "Spins"
 msgstr ""
 
-#: ../src/app/qml/VersionPage.qml:71
+#: ../src/app/qml/VersionPage.qml:52
 msgctxt "VersionPage|"
 msgid "Labs"
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:319
+#: ../src/app/windrivemanager.cpp:149
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 
-#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
+#: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 msgctxt "WinDrive|"
 msgid "Finished!"
 msgstr "به پایان رسید!"
 
-#: ../src/app/windrivemanager.cpp:404 ../src/app/windrivemanager.cpp:455
+#: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
 msgstr "نوشتن %1 موفق بود"
 
+#: ../src/app/windrivemanager.cpp:244
+#, fuzzy
+#| msgctxt "LinuxDrive|"
+#| msgid "Writing %1 failed"
+msgctxt "WinDrive|"
+msgid "Writing has been cancelled"
+msgstr "نوشتن %1 ناموفق بود"
+
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
-#: ../src/helper/win/writejob.cpp:271
+#: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
 msgstr ""
@@ -704,7 +945,8 @@ msgstr ""
 #: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
 #: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
-#: ../src/helper/win/writejob.cpp:188 ../src/helper/win/writejob.cpp:195
+#: ../src/helper/win/writejob.cpp:327 ../src/helper/win/writejob.cpp:370
+#: ../src/helper/win/writejob.cpp:465
 #, fuzzy
 #| msgctxt "Download|"
 #| msgid "The download file is not writable."
@@ -713,13 +955,13 @@ msgid "Destination drive is not writable"
 msgstr "فایل دانلود قابل نوشتن نمی باشد."
 
 #: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
-#: ../src/helper/win/writejob.cpp:315
+#: ../src/helper/win/writejob.cpp:345
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
 msgstr ""
 
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
-#: ../src/helper/win/writejob.cpp:320
+#: ../src/helper/win/writejob.cpp:350
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "The downloaded file is not readable."
@@ -728,19 +970,19 @@ msgid "The downloaded compressed file is corrupted."
 msgstr "فایل دانلود شده قابل خواندن نیست."
 
 #: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
-#: ../src/helper/win/writejob.cpp:323
+#: ../src/helper/win/writejob.cpp:353
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
 msgstr ""
 
 #: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
-#: ../src/helper/win/writejob.cpp:326
+#: ../src/helper/win/writejob.cpp:356
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
 msgstr ""
 
 #: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
-#: ../src/helper/win/writejob.cpp:361
+#: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 #, fuzzy
 #| msgctxt "ReleaseVariant|"
 #| msgid "The downloaded file is not readable."
@@ -749,13 +991,13 @@ msgid "Source image is not readable"
 msgstr "فایل دانلود شده قابل خواندن نیست."
 
 #: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
-#: ../src/helper/win/writejob.cpp:406
+#: ../src/helper/win/writejob.cpp:539
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
 msgstr ""
 
 #: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
-#: ../src/helper/win/writejob.cpp:411
+#: ../src/helper/win/writejob.cpp:544
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
 msgstr ""
@@ -770,91 +1012,97 @@ msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
 msgstr ""
 
-#: ../src/helper/win/writejob.cpp:74
+#: ../src/helper/win/writejob.cpp:122
 msgctxt "WriteJob|"
-msgid "Couldn't open the drive for writing"
+msgid "Couldn't remove drive mountpoints"
 msgstr ""
 
-#: ../src/helper/win/writejob.cpp:98
+#: ../src/helper/win/writejob.cpp:129
+msgctxt "WriteJob|"
+msgid "Failed to remove partitions from the drive"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:140
+msgctxt "WriteJob|"
+msgid "Failed to open the drive for formatting"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
 msgstr ""
 
-#: ../src/helper/win/writejob.cpp:134
+#: ../src/helper/win/writejob.cpp:159
+msgctxt "WriteJob|"
+msgid "Couldn't open the logical handle"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:165
+msgctxt "WriteJob|"
+msgid "Couldn't lock the logical drive"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:172
+msgctxt "WriteJob|"
+msgid "Couldn't unmount drive"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
+msgctxt "WriteJob|"
+msgid "Failed to allocate the buffer"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
+#: ../src/helper/win/writejob.cpp:473
+msgctxt "WriteJob|"
+msgid "The last block was not fully written"
+msgstr ""
+
+#: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
-msgid "Couldn't remove the drive %1:"
+msgid "Wrote %1 out of %2"
 msgstr ""
 
-#: ../src/helper/win/writejob.cpp:209
+#: ../src/helper/win/writejob.cpp:493
+#, fuzzy
+#| msgctxt "ReleaseVariant|"
+#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
-msgid "Couldn't unlock the drive"
+msgid "Failed to read the image file: "
+msgstr "ناتوان در تغییر نام فایل موقت."
+
+#: ../src/helper/win/writejob.cpp:499
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr ""
 
-#: ../src/app/qml/main.qml:116
+#: ../src/helper/win/writejob.cpp:519
+#, qt-format
+msgctxt "WriteJob|"
+msgid "Couldn't open the drive for data verification for %1:"
+msgstr ""
+
+#: ../src/app/qml/main.qml:81
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr ""
 
-#: ../src/app/qml/main.qml:154
+#: ../src/app/qml/main.qml:100
 msgctxt "main|"
 msgid "Select Fedora Version"
 msgstr "انتخاب نسخه فدورا"
 
-#: ../src/app/qml/main.qml:170
+#: ../src/app/qml/main.qml:114
 msgctxt "main|"
 msgid "Select Drive"
 msgstr "انتخاب درایو"
 
-#: ../src/app/qml/main.qml:250 ../src/app/qml/main.qml:291
+#: ../src/app/qml/main.qml:139
 msgctxt "main|"
 msgid "Restore"
 msgstr "بازیابی"
-
-#: ../src/app/qml/main.qml:290 ../src/app/qml/main.qml:304
-msgctxt "main|"
-msgid "Finish"
-msgstr "اتمام"
-
-#: ../src/app/qml/main.qml:294 ../src/app/qml/main.qml:302
-msgctxt "main|"
-msgid "Write"
-msgstr "نوشتن"
-
-#: ../src/app/qml/main.qml:296
-msgctxt "main|"
-msgid "Download && Write"
-msgstr "دانلود و نوشتن"
-
-#: ../src/app/qml/main.qml:297
-msgctxt "main|"
-msgid "Download & Write"
-msgstr "دانلود و نوشتن"
-
-#: ../src/app/qml/main.qml:300 ../src/app/qml/main.qml:315
-msgctxt "main|"
-msgid "Cancel"
-msgstr "لغو"
-
-#: ../src/app/qml/main.qml:306
-msgctxt "main|"
-msgid "Retry"
-msgstr "تلاش مجدد"
-
-#: ../src/app/qml/main.qml:308
-msgctxt "main|"
-msgid "Next"
-msgstr "بعدی"
-
-#: ../src/app/qml/main.qml:313
-msgctxt "main|"
-msgid "About"
-msgstr "درباره"
-
-#: ../src/app/qml/main.qml:316
-msgctxt "main|"
-msgid "Previous"
-msgstr "قبلی"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
@@ -903,6 +1151,10 @@ msgstr "ایمیج فدورا را روی درایو های قابل حمل خو
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
 
+#~ msgctxt "main|"
+#~ msgid "Cancel"
+#~ msgstr "لغو"
+
 #~ msgctxt "VersionPage|"
 #~ msgid "Emerging Editions"
 #~ msgstr "ویرایش های نوظهور"
@@ -926,10 +1178,6 @@ msgstr ""
 #~ msgctxt "DownloadPage|"
 #~ msgid "Writing"
 #~ msgstr "نوشتن"
-
-#~ msgctxt "DownloadPage|"
-#~ msgid "Finish"
-#~ msgstr "اتمام"
 
 #, fuzzy
 #~| msgctxt "DownloadPage|"
