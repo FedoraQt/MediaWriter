@@ -13,8 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
 "PO-Revision-Date: 2024-10-31 15:11+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/pl/>\n"
 "Language: pl\n"
@@ -123,6 +122,8 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Cała zawartość urządzenia (całość %1) zostanie usunięta, a wybrany obraz "
+"zostanie na nim zapisany. Kontynuować?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 msgctxt "DeviceWarningDialog|"
@@ -517,17 +518,11 @@ msgid "About"
 msgstr "O programie"
 
 #: ../src/app/qml/Page.qml:95
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Previous"
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Wstecz"
 
 #: ../src/app/qml/Page.qml:105
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Next"
 msgctxt "Page|"
 msgid "Next"
 msgstr "Dalej"
@@ -551,31 +546,31 @@ msgstr "Otwarcie pliku"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 TB"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 KB"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 B"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -755,28 +750,19 @@ msgid "%1 Release Candidate"
 msgstr "%1 RC"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Nie można usunąć dysku %1:"
+msgstr "Nie można usunąć punktów montowania dysku"
 
 #: ../src/helper/win/restorejob.cpp:71
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Weryfikacja się nie powiodła, brak dysków"
+msgstr "Usunięcie partycji z dysków się nie powiodło"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Nie można otworzyć dysku do zapisania"
+msgstr "Otwarcie dysku do sformatowania się nie powiodło"
 
 #: ../src/helper/win/restorejob.cpp:95
 msgctxt "RestoreJob|"
@@ -786,32 +772,32 @@ msgstr "Nie można zablokować dysku"
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Wyczyszczenie tablicy partycji na dysku się nie powiodło"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Ustawienie dysku na surowy styl partycji się nie powiodło"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Utworzenie partycji GPT na dysku się nie powiodło"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Uzyskanie ścieżki do woluminu GUID na dysku się nie powiodło"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Zamontowanie nowej partycji się nie powiodło"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Sformatowanie partycji na exFAT się nie powiodło"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -923,12 +909,9 @@ msgid "Writing %1 was successful"
 msgstr "Pomyślnie zapisano %1"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "Zapisanie %1 się nie powiodło"
+msgstr "Anulowano zapisywanie"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
@@ -998,28 +981,19 @@ msgid "Unable to open destination for writing"
 msgstr "Nie można otworzyć miejsca docelowego do zapisania"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Nie można usunąć dysku %1:"
+msgstr "Nie można usunąć punktów montowania dysku"
 
 #: ../src/helper/win/writejob.cpp:129
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Weryfikacja się nie powiodła, brak dysków"
+msgstr "Usunięcie partycji z dysku się nie powiodło"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Nie można otworzyć dysku do zapisania"
+msgstr "Otwarcie dysku do sformatowania się nie powiodło"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1027,70 +1001,53 @@ msgid "Couldn't lock the drive"
 msgstr "Nie można zablokować dysku"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "Nie można otworzyć dysku do zapisania"
+msgstr "Nie można otworzyć logicznego uchwytu"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Nie można zablokować dysku"
+msgstr "Nie można zablokować dysku logicznego"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "Nie można odblokować dysku"
+msgstr "Nie można odmontować dysku"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "Nie można przydzielić pary gniazd"
+msgstr "Przydzielenie bufora się nie powiodło"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Ostatni blok nie został w pełni zapisany"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Zapisano %1 z %2"
 
 #: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Nie można zmienić nazwy pliku tymczasowego."
+msgstr "Odczytanie pliku obrazu się nie powiodło: "
 
 #: ../src/helper/win/writejob.cpp:499
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Zapisanie całego obrazu się nie powiodło. Razem zapisano: %1 z %2"
 
 #: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "Nie można otworzyć dysku do zapisania"
+msgstr "Nie można otworzyć dysku do weryfikacji danych dla %1:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
