@@ -13,17 +13,17 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-03-20 04:35+0000\n"
+"PO-Revision-Date: 2024-11-02 07:11+0000\n"
 "Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
 "memory@weblate.org>\n"
-"Language-Team: Swedish <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/sv/>\n"
+"Language-Team: Swedish <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.8.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -46,9 +46,7 @@ msgstr "Fedora Mediaskrivare letar nu efter nya utgåvor"
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr ""
-"Rapportera fel eller dina förslag till %1\n"
-"Rapportera synpunkter på översättningen till <tp-sv@listor.tp-sv.se>"
+msgstr "Rapportera fel eller dina förslag på %1"
 
 #: ../src/app/qml/AboutDialog.qml:94
 msgctxt "AboutDialog|"
@@ -124,58 +122,48 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Hela enheten (hela %1) kommer att raderas och den valda avbilden kommer att "
+"skrivas till den. Vill du fortsätta?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
-#, fuzzy
-#| msgctxt "CancelDialog|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
 msgstr "Avbryt"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
 msgstr "Skriv"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
-msgstr "Ladda ner && Skriv"
+msgstr "Ladda ner && skriv"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
-msgstr "Ladda ner & Skriv"
+msgstr "Ladda ner & skriv"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:99
 msgctxt "DeviceWarningDialog|"
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:101
 msgctxt "DeviceWarningDialog|"
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "byte"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -331,17 +319,11 @@ msgid "Restart and boot from %1 to start using %2."
 msgstr "Starta om och starta upp från %1 för att börja använda%2."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
-#, fuzzy
-#| msgctxt "CancelDialog|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
 msgstr "Avbryt"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DownloadPage|"
 msgid "Write"
 msgstr "Skriv"
@@ -352,9 +334,6 @@ msgid "Finish"
 msgstr "Slutför"
 
 #: ../src/app/qml/DownloadPage.qml:274
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Retry"
 msgctxt "DownloadPage|"
 msgid "Retry"
 msgstr "Försök igen"
@@ -425,28 +404,19 @@ msgid "Delete download after writing"
 msgstr "Ta bort den nedladdade avbilden efter skrivning"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DrivePage|"
 msgid "Write"
 msgstr "Skriv"
 
 #: ../src/app/qml/DrivePage.qml:171
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DrivePage|"
 msgid "Download && Write"
-msgstr "Ladda ner && Skriv"
+msgstr "Ladda ner && skriv"
 
 #: ../src/app/qml/DrivePage.qml:172
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DrivePage|"
 msgid "Download & Write"
-msgstr "Ladda ner & Skriv"
+msgstr "Ladda ner & skriv"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -540,25 +510,16 @@ msgid "Restore <b>%1</b>"
 msgstr "Återställ <b>%1</b>"
 
 #: ../src/app/qml/MainPage.qml:72
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "About"
 msgctxt "MainPage|"
 msgid "About"
 msgstr "Om"
 
 #: ../src/app/qml/Page.qml:95
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Previous"
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Föregående"
 
 #: ../src/app/qml/Page.qml:105
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Next"
 msgctxt "Page|"
 msgid "Next"
 msgstr "Nästa"
@@ -582,31 +543,31 @@ msgstr "Öppna fil"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 TB"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 KB"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 byte(ar)"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -783,66 +744,54 @@ msgid "%1 Release Candidate"
 msgstr "%1 utgåvekandidat"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Kunde inte ta bort enheten %1:"
+msgstr "Kunde inte ta bort monteringspunkterna för enheten"
 
 #: ../src/helper/win/restorejob.cpp:71
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Misslyckad verifiering inga enheter"
+msgstr "Misslyckad att ta bort partitioner från disken"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Kunde inte öppna enheten för skrivning"
+msgstr "Misslyckades att öppna enheten för formatering"
 
 #: ../src/helper/win/restorejob.cpp:95
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
-msgstr "Kunde inte låsa enheten"
+msgstr "Kunde inte låsa disken"
 
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Misslyckades med att rensa partitionstabellen på disken"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Misslyckades att ställa in disken till RÅ-partitionsstil"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Misslyckades att skapa en GPT-partition på disken"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Misslyckades att hämta GUID volymsökväg på disken"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Misslyckades att montera den nya partitionen"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Misslyckades att formatera partitionen till exFAT"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -896,17 +845,11 @@ msgid "Restoring finished"
 msgstr "Återställningen slutförd"
 
 #: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Finish"
 msgctxt "RestorePage|"
 msgid "Finish"
 msgstr "Slutför"
 
 #: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Återställ"
@@ -934,7 +877,7 @@ msgstr "Atomiska skrivbord"
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr "Spins"
+msgstr "Spinn"
 
 #: ../src/app/qml/VersionPage.qml:52
 msgctxt "VersionPage|"
@@ -958,12 +901,9 @@ msgid "Writing %1 was successful"
 msgstr "Att skriva %1 lyckades"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "Att skriva %1 misslyckades"
+msgstr "Skrivning har avbrutits"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
@@ -1033,28 +973,19 @@ msgid "Unable to open destination for writing"
 msgstr "Kunde inte öppna destinationen för att skriva"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Kunde inte ta bort enheten %1:"
+msgstr "Kunde inte ta bort disk monteringspunkter"
 
 #: ../src/helper/win/writejob.cpp:129
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Misslyckad verifiering inga enheter"
+msgstr "Misslyckad med att ta bort partitioner från disken"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Kunde inte öppna enheten för skrivning"
+msgstr "Misslyckades att öppna disken för formatering"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1062,70 +993,53 @@ msgid "Couldn't lock the drive"
 msgstr "Kunde inte låsa enheten"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "Kunde inte öppna enheten för skrivning"
+msgstr "Kunde inte öppna det logiska handtaget"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Kunde inte låsa enheten"
+msgstr "Kunde inte låsa den logiska enheten"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "Kunde inte låsa upp enheten"
+msgstr "Kunde inte avmontera disken"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "kan inte skapa uttagspar"
+msgstr "Misslyckades att allokera bufferten"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Det sista blocket var inte helt skrivet"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Skrev %1 av totalt %2"
 
 #: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Kan inte byta namn på temporärfilen."
+msgstr "Misslyckades att läsa avbildsfilen: "
 
 #: ../src/helper/win/writejob.cpp:499
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Misslyckades att skriva hela avbilden. Totalt skrivet: %1 av totalt %2"
 
 #: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "Kunde inte öppna enheten för skrivning"
+msgstr "Kunde inte öppna enheten för dataverifiering av %1:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"

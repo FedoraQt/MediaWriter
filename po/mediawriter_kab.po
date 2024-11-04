@@ -4,27 +4,29 @@
 # This file is distributed under the same license as the PACKAGE package.
 # "#-#-#-#-#  mediawriter.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 # ButterflyOfFire <butterflyoffire@users.noreply.translate.fedoraproject.org>, 2024.
+# Rachida SA <rgebbid@gmail.com>, 2024.
+# Aksel Azwaw <akselyan@users.noreply.translate.fedoraproject.org>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-10-30 20:38+0000\n"
-"Last-Translator: ButterflyOfFire <butterflyoffire@users.noreply.translate."
-"fedoraproject.org>\n"
-"Language-Team: Kabyle <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/kab/>\n"
+"PO-Revision-Date: 2024-11-03 14:38+0000\n"
+"Last-Translator: Aksel Azwaw <akselyan@users.noreply.translate.fedoraproject."
+"org>\n"
+"Language-Team: Kabyle <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/kab/>\n"
 "Language: kab\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.8.2\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr ""
+msgstr "Ɣef Fedora Media Writer"
 
 #: ../src/app/qml/AboutDialog.qml:58
 #, qt-format
@@ -35,13 +37,13 @@ msgstr "Lqem wis %1"
 #: ../src/app/qml/AboutDialog.qml:65
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr ""
+msgstr "Fedora Media Writer la yessenqad ileqman s imaynuten"
 
 #: ../src/app/qml/AboutDialog.qml:71
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr ""
+msgstr "Ttxil-k mmel ibugen neɣ mudd isumar ɣef %1"
 
 #: ../src/app/qml/AboutDialog.qml:94
 msgctxt "AboutDialog|"
@@ -51,17 +53,17 @@ msgstr "Mdel"
 #: ../src/app/qml/CancelDialog.qml:55
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "Sefsex asader ?"
 
 #: ../src/app/qml/CancelDialog.qml:57
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr ""
+msgstr "Sefsex tira?"
 
 #: ../src/app/qml/CancelDialog.qml:59
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "Sefsex asenqed?"
 
 #: ../src/app/qml/CancelDialog.qml:66
 msgctxt "CancelDialog|"
@@ -69,18 +71,20 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"Ad yettwaḥbes usader d tira n yimidyaten. Tzemreḍ ad tkemmleḍ asesfer melmi "
+"i tebɣiḍ ticki."
 
 #: ../src/app/qml/CancelDialog.qml:68
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr ""
+msgstr "Asesfer n tira ad yettwaseḥbes, anuḍaf-ik ilaq ad d-yettwarr ticki."
 
 #: ../src/app/qml/CancelDialog.qml:70
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "Asefsex n temhelt-a d aɣellsan."
 
 #: ../src/app/qml/CancelDialog.qml:87
 msgctxt "CancelDialog|"
@@ -90,17 +94,17 @@ msgstr "Kemmel"
 #: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr ""
+msgstr "Sefsex asader"
 
 #: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr ""
+msgstr "Sefsex tira"
 
 #: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "Sefsex asenqed"
 
 #: ../src/app/qml/CancelDialog.qml:116
 msgctxt "CancelDialog|"
@@ -114,84 +118,74 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Agbur ummid n unuḍaf (%1) ad yettwasfeḍ akked tugna i yettwafernen ad "
+"tettwaru fell-as. Tebɣiḍ ad tkemmleḍ?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
-#, fuzzy
-#| msgctxt "CancelDialog|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
 msgstr "Sefsex"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
 msgstr "Aru"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
-msgstr "Asider"
+msgstr "Sader && Aru"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
-#, fuzzy
-#| msgctxt "DrivePage|"
-#| msgid "Download"
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
-msgstr "Sider"
+msgstr "Sader & Aru"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "GAṬ"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:99
 msgctxt "DeviceWarningDialog|"
 msgid "MB"
-msgstr ""
+msgstr "MAṬ"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:101
 msgctxt "DeviceWarningDialog|"
 msgid "KB"
-msgstr ""
+msgstr "KAṬ"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "Ibiten"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr ""
+msgstr "D awezɣi ad d-tettwarr tugna i yettwassutren."
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr ""
+msgstr "Dayen ulac ɣer-k tallunt deg ukaram n yisadaren."
 
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
-msgstr ""
+msgstr "Afaylu n usader d awezɣi tira fell-as."
 
 #: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
-msgstr ""
+msgstr "Akud n tuqqna ifukk"
 
 #: ../src/app/qml/DownloadPage.qml:36
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr ""
+msgstr "%1 yettwaru akken iwata"
 
 #: ../src/app/qml/DownloadPage.qml:38
 #, qt-format
@@ -215,33 +209,33 @@ msgstr "Asewjed n %1"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr ""
+msgstr "Twejdeḍ ad taruḍ %1"
 
 #: ../src/app/qml/DownloadPage.qml:46
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr ""
+msgstr "Yecceḍ usader n %1"
 
 #: ../src/app/qml/DownloadPage.qml:54
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr ""
+msgstr " B i d-yeqqimen)"
 
 #: ../src/app/qml/DownloadPage.qml:55
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr ""
+msgstr " KAṬ i d-yeqqimen)"
 
 #: ../src/app/qml/DownloadPage.qml:56
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr ""
+msgstr " MAṬ i d-yeqqimen)"
 
 #: ../src/app/qml/DownloadPage.qml:57
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr ""
+msgstr " GAṬ i d-yeqqimen)"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:61
 #: ../src/app/qml/DownloadPage.qml:62 ../src/app/qml/DownloadPage.qml:63
@@ -253,23 +247,23 @@ msgstr " (%1"
 #: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "Anuḍaf yekkes-d lawan n usesfer"
 
 #: ../src/app/qml/DownloadPage.qml:106
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr ""
+msgstr "Isadaren ttwaskelsen deg ukaram n yisadaren."
 
 #: ../src/app/qml/DownloadPage.qml:116
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr ""
+msgstr "S tira, ad tesruḥeḍ akk isefka ɣef %1."
 
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "Ttxil err anuḍaf USB."
 
 #: ../src/app/qml/DownloadPage.qml:133
 msgctxt "DownloadPage|"
@@ -278,6 +272,9 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
+"Anuḍaf ad temsawi teɣzi-s akken ad tuɣal d tameẓẓyant. Tzemreḍ ad t-terreḍ "
+"ɣer tamagnut s useqdec n Fedora Media Writer. Aya ad yekkes asbeddi n umidya "
+"seg unuḍaf."
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
@@ -297,6 +294,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
+"Tafelwit neɣ ibenk-ik ur tettusefrak ara sɣur Fedora Media Writer akka tura. "
+"Ttxil-k sefqed <a href=%1>asebter-a</a> i wugar n telɣut ɣef umṣada n Fedora "
+"akked wamek ara as-ternuḍ amidya ara yeddun fell-as."
 
 #: ../src/app/qml/DownloadPage.qml:160
 #, qt-format
@@ -305,54 +305,44 @@ msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
+"Teɣzi n unuḍaf i yettwafernen d %1. Yezmer tferneḍ anuḍaf azɣaray war ma "
+"tfaqqeḍ!"
 
 #: ../src/app/qml/DownloadPage.qml:168
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "Ales tanekkra syen sker seg %1 i beddu n useqdec n %2."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
-#, fuzzy
-#| msgctxt "CancelDialog|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
 msgstr "Sefsex"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DownloadPage|"
 msgid "Write"
 msgstr "Aru"
 
 #: ../src/app/qml/DownloadPage.qml:272
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "Ifukk!"
+msgstr "Fakk"
 
 #: ../src/app/qml/DownloadPage.qml:274
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Retry"
 msgctxt "DownloadPage|"
 msgid "Retry"
-msgstr "Ɛreḍ tikelt nniḍen"
+msgstr "Ɛreḍ tikkelt niḍen"
 
 #: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
-msgstr ""
+msgstr "Anuḍaf-a ur meqqer ara aṭas."
 
 #: ../src/app/qml/DrivePage.qml:30
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr ""
+msgstr "Tixtiṛiyin n tira"
 
 #: ../src/app/qml/DrivePage.qml:37
 msgctxt "DrivePage|"
@@ -362,12 +352,12 @@ msgstr "Lqem"
 #: ../src/app/qml/DrivePage.qml:59
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "Tasegda n warrum"
 
 #: ../src/app/qml/DrivePage.qml:76
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr ""
+msgstr "Fren afaylu"
 
 #: ../src/app/qml/DrivePage.qml:83
 msgctxt "DrivePage|"
@@ -382,7 +372,7 @@ msgstr "Fren..."
 #: ../src/app/qml/DrivePage.qml:108
 msgctxt "DrivePage|"
 msgid "Image files"
-msgstr ""
+msgstr "Ifuyla n tugna"
 
 #: ../src/app/qml/DrivePage.qml:108
 msgctxt "DrivePage|"
@@ -392,61 +382,52 @@ msgstr "Akk ifuyla (*)"
 #: ../src/app/qml/DrivePage.qml:119
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "Anuḍaf USB"
 
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr ""
+msgstr "Ulac inuḍaf n ufus i yeqqnen"
 
 #: ../src/app/qml/DrivePage.qml:146
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "Sider"
+msgstr "Sader"
 
 #: ../src/app/qml/DrivePage.qml:151
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr ""
+msgstr "Kkes asader seld tira"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DrivePage|"
 msgid "Write"
 msgstr "Aru"
 
 #: ../src/app/qml/DrivePage.qml:171
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download && Write"
-msgstr "Asider"
+msgstr "Asader && Aru"
 
 #: ../src/app/qml/DrivePage.qml:172
-#, fuzzy
-#| msgctxt "DrivePage|"
-#| msgid "Download"
 msgctxt "DrivePage|"
 msgid "Download & Write"
-msgstr "Sider"
+msgstr "Sader & Aru"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr ""
+msgstr "Anuḍaf yettwakkes-d lawan n tira."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
+msgstr "Yegguma ad yettwaf ufaylu amalal. Senqed tuqqna-k."
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr ""
+msgstr "Yettwaḥbes send ad tfakk tira."
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
@@ -457,7 +438,7 @@ msgstr "Ifukk!"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Tira n %1 tedda akken iwata"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
@@ -468,17 +449,17 @@ msgstr "Tuccḍa"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "Tira ɣef %1 tecceḍ"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
-msgstr ""
+msgstr "UDisks2 yettban ulac-it neɣ ulac anekcum ɣur-s ɣef unagraw-ik."
 
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
+msgstr "Yegguma ad yettwaf ufaylu amalal. Senqed tuqqna-k."
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
@@ -489,7 +470,7 @@ msgstr "Tuccḍa"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "Tira n %1 tecceḍ"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
@@ -500,49 +481,40 @@ msgstr "Ifukk!"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Tira n %1 tedda akken iwata"
 
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Fren aɣbalu n tugna"
 
 #: ../src/app/qml/MainPage.qml:33
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Asider awurman"
+msgstr "Asader awurman"
 
 #: ../src/app/qml/MainPage.qml:40
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "Fren afaylu .iso"
 
 #: ../src/app/qml/MainPage.qml:50
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr ""
+msgstr "Err-d <b>%1</b>"
 
 #: ../src/app/qml/MainPage.qml:72
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "About"
 msgctxt "MainPage|"
 msgid "About"
 msgstr "Ɣef"
 
 #: ../src/app/qml/Page.qml:95
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Previous"
 msgctxt "Page|"
 msgid "Previous"
-msgstr "Uzwir"
+msgstr "Udfir"
 
 #: ../src/app/qml/Page.qml:105
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Next"
 msgctxt "Page|"
 msgid "Next"
 msgstr "Uḍfir"
@@ -550,7 +522,7 @@ msgstr "Uḍfir"
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr ""
+msgstr "Ifuyla n tugniwin"
 
 #: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
@@ -566,36 +538,36 @@ msgstr "Ldi afaylu"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 TAṬ"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GAṬ"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MAṬ"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 KAṬ"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 yibiten"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
-msgstr ""
+msgstr "Fren afaylu seg yinuḍaf-ik"
 
 #: ../src/app/releasemanager.cpp:420
 msgctxt "Release|"
@@ -604,26 +576,29 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
+"<p>Dagi tzemreḍ ad tferneḍ tugna OS seg unuḍaf aqquran ara yettwarun ɣef "
+"uḍebsi USB</p><p>Akka tura yessefrak kan i tira n tugniwin n uḍebsi arewway ("
+".iso or .bin)</p>"
 
 #: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
 msgid "Fedora Spins"
-msgstr ""
+msgstr "Fedora Spins"
 
 #: ../src/app/releasemanager.cpp:453
 msgctxt "Release|"
 msgid "Fedora Labs"
-msgstr ""
+msgstr "Tibzimin n Fedora"
 
 #: ../src/app/releasemanager.cpp:455
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr ""
+msgstr "Tinariyin aṭumik n Fedora"
 
 #: ../src/app/releasemanager.cpp:457
 msgctxt "Release|"
 msgid "Other"
-msgstr "Ayen nniḍen"
+msgstr "Ayen niḍen"
 
 #: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
@@ -633,7 +608,7 @@ msgstr "Intel/AMD 64bit"
 #: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr ""
+msgstr "Tugna n umasal ISO i Intel, AMD akked yiselkimen imṣadanen (64-bit)"
 
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
@@ -643,7 +618,7 @@ msgstr "Intel/AMD 32bit"
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr ""
+msgstr "Tugna n umasal ISO i Intel, AMD akked yiselkimen imṣadanen (32-bit)"
 
 #: ../src/app/releasemanager.cpp:1105
 msgctxt "ReleaseArchitecture|"
@@ -655,6 +630,7 @@ msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
+"Tugna tarewwayt s umasal LZMA i tmacinin ARM v7-A am Raspberry Pi 2 akked 3"
 
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
@@ -664,27 +640,27 @@ msgstr "AArch64"
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr ""
+msgstr "Tugna tarewwayt s umasal LZMA i tmacinin AArch64"
 
 #: ../src/app/releasemanager.cpp:418
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
-msgstr ""
+msgstr "Tugna tudmawan"
 
 #: ../src/app/releasemanager.cpp:962 ../src/app/releasemanager.cpp:974
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
-msgstr ""
+msgstr "Tugna i d-yettwasadren terreẓ"
 
 #: ../src/app/releasemanager.cpp:978
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
-msgstr ""
+msgstr "Afaylu i d-yettwasadren ur yettwaɣray ara."
 
 #: ../src/app/releasemanager.cpp:989
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr ""
+msgstr "D awezɣi abeddel n yisem i ufaylu askudan."
 
 #: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
@@ -699,17 +675,17 @@ msgstr "Asider"
 #: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr ""
+msgstr "Asenqed n usader"
 
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
-msgstr ""
+msgstr "Yewjed i tira"
 
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr ""
+msgstr "Afaylu n yugniwin yettwasekles deg ufaylu n yisadaren. Tira d awezɣi"
 
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
@@ -719,7 +695,7 @@ msgstr "Tira"
 #: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
-msgstr ""
+msgstr "Asenqed n yisefka yettwuran"
 
 #: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
@@ -729,12 +705,12 @@ msgstr "Ifukk!"
 #: ../src/app/releasemanager.h:386
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
-msgstr ""
+msgstr "Isefka yettwuran rrẓen"
 
 #: ../src/app/releasemanager.h:387
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr ""
+msgstr "Asader yecceḍ"
 
 #: ../src/app/releasemanager.h:388
 msgctxt "ReleaseVariant|"
@@ -757,63 +733,63 @@ msgstr "%1 Biṭa"
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr ""
+msgstr "%1 lqem ara d-yeffɣen"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr ""
+msgstr "Ugint ad ttwakksent tenqiḍin n userkeb n unuḍaf"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Tecceḍ tukksa n yiḥricen seg unuḍaf"
 
 #: ../src/helper/win/restorejob.cpp:80
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr ""
+msgstr "Yecceḍ ulday n unuḍaf i umsal"
 
 #: ../src/helper/win/restorejob.cpp:95
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
-msgstr ""
+msgstr "Yegguma ad isekkeṛ unuḍaf"
 
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Yecceḍ usfaḍ n tfelwit n yiḥricen ɣef unuḍaf"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Yecceḍ asbadu n unuḍaf i uɣanib n uḥric RAW"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Tecceḍ tmerna n uḥric GPT ɣef unuḍaf"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Yecceḍ wawway n ubrid n ubleɣ GUID ɣef unuḍaf"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Yecceḍ userkeb n uḥric amaynut"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Yecceḍ umsal n uḥric i exFAT"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "Err-d anuḍaf <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
 msgctxt "RestorePage|"
@@ -825,6 +801,13 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
+"<p align=\"justify\"> Akken ad tizmireḍ ad talseḍ aseqdec akk tallunt n "
+"unuḍaf i tikkelt niḍen, yessefk ad t-terreḍ ɣer waddad-is n lluzin. Anagraw "
+"live akked meṛṛa isefka i yettwaskelsen ad ttwakksen. </p> <p align=\"justify"
+"\"> Ur tesriḍ ara ad d-terreḍ anuḍaf ma yella tebɣiḍ ad taruḍ fell-as "
+"anagraw live niḍen.  \n"
+"                </p> <p align=\"justify\"> Tebɣiḍ ad t-id-terreḍ ɣer waddad-"
+"is amezwaru? </p>"
 
 #: ../src/app/qml/RestorePage.qml:54
 msgctxt "RestorePage|"
@@ -832,11 +815,13 @@ msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
+"<p align=\"justify\">Ttxil-k rǧu alamma yerra-d Fedora Media Writer anuḍaf-"
+"ik n ufus.</p>"
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr ""
+msgstr "Anuḍaf-ik yettwarr-d akken iwata!"
 
 #: ../src/app/qml/RestorePage.qml:79
 msgctxt "RestorePage|"
@@ -844,59 +829,58 @@ msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
+"Nesḥassef, teḍra-d tuccḍa lawan n ukala. Ttxil-k, ɛerḍ ad d-terreḍ anuḍaf s "
+"useqdec n yifecka n unagraw."
 
 #: ../src/app/qml/RestorePage.qml:93
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "Tiririt tfukk"
 
 #: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "RestorePage|"
 msgid "Finish"
-msgstr "Ifukk!"
+msgstr "Ifukk"
 
 #: ../src/app/qml/RestorePage.qml:111
 msgctxt "RestorePage|"
 msgid "Restore"
-msgstr ""
+msgstr "Err-d"
 
 #: ../src/app/qml/VersionPage.qml:29
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Fren lqem n Fedora"
 
 #: ../src/app/qml/VersionPage.qml:32
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr ""
+msgstr "Fren seg:"
 
 #: ../src/app/qml/VersionPage.qml:37
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Tiẓrigin tunṣibin"
 
 #: ../src/app/qml/VersionPage.qml:42
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr ""
+msgstr "Tinariyin aṭumik"
 
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr ""
+msgstr "Spins"
 
 #: ../src/app/qml/VersionPage.qml:52
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Tibzimin"
 
 #: ../src/app/windrivemanager.cpp:149
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
+msgstr "Yegguma ad d-yaf afaylu amalal. Senqed asbeddi-ik."
 
 #: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 msgctxt "WinDrive|"
@@ -907,18 +891,18 @@ msgstr "Ifukk!"
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Tira n %1 tedda akken iwata"
 
 #: ../src/app/windrivemanager.cpp:244
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr ""
+msgstr "Tira tettwasefsax"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr ""
+msgstr "Yecceḍ beddu n usefruri.."
 
 #: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
 #: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
@@ -927,160 +911,161 @@ msgstr ""
 #: ../src/helper/win/writejob.cpp:465
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
-msgstr ""
+msgstr "Tira ɣef unuḍaf d awezɣi"
 
 #: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
-msgstr ""
+msgstr "Ulac ddeqs n tkatut i usefruri n ufaylu."
 
 #: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:350
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
-msgstr ""
+msgstr "Afaylu ussid i d-yettwasadren yerreẓ."
 
 #: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:353
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
-msgstr ""
+msgstr "Tixtiṛiyin n tussda ur yettwasefraken ara."
 
 #: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:356
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
-msgstr ""
+msgstr "Tuccḍa n tussda d tarussint."
 
 #: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
-msgstr ""
+msgstr "Tugna n uɣbalu ur tettwaɣray ara"
 
 #: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
 #: ../src/helper/win/writejob.cpp:539
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr ""
+msgstr "Yezmer anuḍaf-ik yerreẓ."
 
 #: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
 #: ../src/helper/win/writejob.cpp:544
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr ""
+msgstr "Tella-d tuccḍa ur nettuṛaǧu ara lawan n usenqed n umidya."
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "D awezɣi aḥerri n tyuga n socket"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "D awezɣi alday tanila i tira"
 
 #: ../src/helper/win/writejob.cpp:122
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr ""
+msgstr "D awezɣi tukksa n tenqiḍin n userkeb n unuḍaf"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Tecceḍ tukksa n yiḥricen seg unuḍaf"
 
 #: ../src/helper/win/writejob.cpp:140
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr ""
+msgstr "Yecceḍ ulday n unuḍaf i umsal"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr ""
+msgstr "Ur yezmir ara ad isekkeṛ anuḍaf"
 
 #: ../src/helper/win/writejob.cpp:159
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr ""
+msgstr "Yugi ad yeldi unuḍaf ameẓẓul"
 
 #: ../src/helper/win/writejob.cpp:165
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr ""
+msgstr "Yugi ad isekkeṛ unuḍaf ameẓẓul"
 
 #: ../src/helper/win/writejob.cpp:172
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr ""
+msgstr "Yugi ad yekkes userkeb n unuḍaf"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr ""
+msgstr "Yecceḍ uḥerri n tkatut n uḥraz"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Iḥder aneggaru ur yesmid ara s tira"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Yettwaru %1 ɣef %2"
 
 #: ../src/helper/win/writejob.cpp:493
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr ""
+msgstr "Tecceḍ tɣuri n ufaylu n tugniwin: "
 
 #: ../src/helper/win/writejob.cpp:499
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Tecceḍ usmad n tira n tugna. Asemday yettwarun: %1 ɣef %2"
 
 #: ../src/helper/win/writejob.cpp:519
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr ""
+msgstr "Yegguma ad yeldi unuḍaf i usenqed n yisefka i %1:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
 msgid "Fedora Media Writer"
-msgstr ""
+msgstr "Fedora Media Writer"
 
 #: ../src/app/qml/main.qml:100
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr ""
+msgstr "Fren lqem n Fedora"
 
 #: ../src/app/qml/main.qml:114
 msgctxt "main|"
 msgid "Select Drive"
-msgstr ""
+msgstr "Fren anuḍaf"
 
 #: ../src/app/qml/main.qml:139
 msgctxt "main|"
 msgid "Restore"
-msgstr ""
+msgstr "Err-d"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
 msgid "Fedora Media Writer"
-msgstr ""
+msgstr "Fedora Media Writer"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
 msgstr ""
+"Afecku i tmerna n unuḍaf USB live yesεan yiwet n teẓrigt si tid n Fedora"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -1092,6 +1077,12 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
+"Afecku i tmerna n unuḍaf USB live s yiwet teẓrigt seg tid n Fedora. Mačči "
+"kan d tira i yettaru Fedora Media Writer tugna i unuḍaf-ik USB, yezmer daɣen "
+"ad tt-id-yessader. Yettakk-d tiẓrigin tunṣibin (Aqeddac, Workstation), "
+"Fedora spins (Tanarit n KDE Plasma, Tnarit Xfce, Tanarit Cinnamon,...), "
+"akked tebzimin n Fedora(Design Suite, Tibzimin n tɣellist,...). Yettmuddu-d "
+"talɣut tagejdant ɣef yal yiwen seg-sen ara k-yallen deg ufran igerrzen."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -1099,14 +1090,16 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
+"Fedora Media Writer yezmer daɣen ad yaru ISOs niḍen i d-yettwasulin seg "
+"uḍebsi-k adigan, maca err deg lbal-ik yettwasekyed kan akked tugniwin."
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
-msgstr ""
+msgstr "Aru tugniwin n Fedora ɣef yinuḍaf n ufus"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;"
 
 #~ msgctxt "main|"
 #~ msgid "Cancel"

@@ -9,10 +9,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-10-13 13:47+0000\n"
+"PO-Revision-Date: 2024-10-31 23:11+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
-"Language-Team: Romanian <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/ro/>\n"
+"Language-Team: Romanian <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/ro/>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -118,35 +118,25 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Întregul dispozitiv (tot %1) va fi șters și imaginea selectată va fi scrisă "
+"pe acesta. Doriți să continuați?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
-#, fuzzy
-#| msgctxt "CancelDialog|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
 msgstr "Anulează"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
 msgstr "Scriere"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
 msgstr "Descărcare și scriere"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
 msgstr "Descărcare și scriere"
@@ -154,22 +144,22 @@ msgstr "Descărcare și scriere"
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "Go"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:99
 msgctxt "DeviceWarningDialog|"
 msgid "MB"
-msgstr ""
+msgstr "Mo"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:101
 msgctxt "DeviceWarningDialog|"
 msgid "KB"
-msgstr ""
+msgstr "Ko"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "octeți"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -326,33 +316,21 @@ msgid "Restart and boot from %1 to start using %2."
 msgstr "Reporniți și porniți de la %1 pentru a începe să utilizați %2."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
-#, fuzzy
-#| msgctxt "CancelDialog|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
 msgstr "Anulează"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DownloadPage|"
 msgid "Write"
 msgstr "Scriere"
 
 #: ../src/app/qml/DownloadPage.qml:272
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Finish"
 msgctxt "DownloadPage|"
 msgid "Finish"
 msgstr "Finalizare"
 
 #: ../src/app/qml/DownloadPage.qml:274
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Retry"
 msgctxt "DownloadPage|"
 msgid "Retry"
 msgstr "Reîncercați"
@@ -423,25 +401,16 @@ msgid "Delete download after writing"
 msgstr "Șterge descărcarea după scriere"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DrivePage|"
 msgid "Write"
 msgstr "Scriere"
 
 #: ../src/app/qml/DrivePage.qml:171
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DrivePage|"
 msgid "Download && Write"
 msgstr "Descărcare și scriere"
 
 #: ../src/app/qml/DrivePage.qml:172
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DrivePage|"
 msgid "Download & Write"
 msgstr "Descărcare și scriere"
@@ -538,25 +507,16 @@ msgid "Restore <b>%1</b>"
 msgstr "Restaurare <b>%1</b>"
 
 #: ../src/app/qml/MainPage.qml:72
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "About"
 msgctxt "MainPage|"
 msgid "About"
 msgstr "Despre"
 
 #: ../src/app/qml/Page.qml:95
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Previous"
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Înapoi"
 
 #: ../src/app/qml/Page.qml:105
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Next"
 msgctxt "Page|"
 msgid "Next"
 msgstr "Înainte"
@@ -580,31 +540,31 @@ msgstr "Deschide fișierul"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 To"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 Go"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 Mo"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 Ko"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 octet(octeți)"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -785,30 +745,21 @@ msgid "%1 Release Candidate"
 msgstr "%1 candidata pentru lansare"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Nu s-a putut demonta unitatea %1:"
+msgstr "Nu s-au putut elimina punctele de montare ale unității"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Eliminarea partițiilor de pe unitate a eșuat"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Nu s-a putut deschide unitatea pentru scriere"
+msgstr "Nu s-a putut deschide unitatea pentru formatare"
 
 #: ../src/helper/win/restorejob.cpp:95
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
 msgstr "Nu s-a putut bloca unitatea"
@@ -816,32 +767,32 @@ msgstr "Nu s-a putut bloca unitatea"
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Ștergerea tabelului de partiții de pe unitate a eșuat"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Configurarea unității în stilul de partiție RAW a eșuat"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Crearea unei partiții GPT pe unitate a eșuat"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Obținerea rutei volumului GUID de pe unitate a eșuat"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Montarea noii partiții a eșuat"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Formatarea partiției în exFAT a eșuat"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -895,17 +846,11 @@ msgid "Restoring finished"
 msgstr "Restaurare finalizată"
 
 #: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Finish"
 msgctxt "RestorePage|"
 msgid "Finish"
 msgstr "Finalizare"
 
 #: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Restaurare"
@@ -957,12 +902,9 @@ msgid "Writing %1 was successful"
 msgstr "Scrierea %1 a fost efectuată cu succes"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "Scrierea %1 a eșuat"
+msgstr "Scrierea a fost anulată"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
@@ -1032,25 +974,19 @@ msgid "Unable to open destination for writing"
 msgstr "Nu se poate deschide destinația pentru scriere"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Nu s-a putut demonta unitatea %1:"
+msgstr "Nu s-au putut elimina punctele de montare ale unității"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Eliminarea partițiilor de pe unitate a eșuat"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Nu s-a putut deschide unitatea pentru scriere"
+msgstr "Nu s-a putut deschide unitatea pentru formatare"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1058,70 +994,53 @@ msgid "Couldn't lock the drive"
 msgstr "Nu s-a putut bloca unitatea"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "Nu s-a putut deschide unitatea pentru scriere"
+msgstr "Nu s-a putut deschide descriptorul logic"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Nu s-a putut bloca unitatea"
+msgstr "Nu s-a putut bloca unitatea logică"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "Nu s-a putut debloca unitatea"
+msgstr "Nu s-a putut demonta unitatea"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "Nu s-a putut aloca perechea de socluri"
+msgstr "Nu s-a putut aloca memoria tanpon"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Ultimul bloc nu a fost scris complet"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "S-a scris %1 din %2"
 
 #: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Nu s-a putut redenumi fișierul temporar."
+msgstr "Citirea fișierului de imagine a eșuat: "
 
 #: ../src/helper/win/writejob.cpp:499
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Scrierea imaginii complete a eșuat. Total scris: %1 din %2"
 
 #: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "Nu s-a putut deschide unitatea pentru scriere"
+msgstr "Nu s-a putut deschide unitatea pentru verificarea datelor pentru %1:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
