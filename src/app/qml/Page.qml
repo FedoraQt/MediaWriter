@@ -72,8 +72,13 @@ QQC2.Page {
         Heading {
             id: heading
             Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+            Layout.preferredWidth: mainLayout.width
+            horizontalAlignment: Text.AlignHCenter
+            elide: Text.ElideRight
             level: 5
+            maximumLineCount: 2
             visible: text
+            wrapMode:Text.WordWrap
         }
 
         ColumnLayout {
