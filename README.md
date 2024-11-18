@@ -12,7 +12,7 @@ This overwrites the drive's partition layout though so it also provides a way to
 
 If you experience any problem with the application, like crashes or errors when writing to your drives, please open an issue here on Github.
 
-Please don't forget to attach the FedoraMediaWriter.log file that will appear in your Documents folder ($HOME/Documents on Linux and Mac, C:\Users\<user>\Documents). It contains some non-sensitive information about your system and the log of all events happening during the runtime.
+Please don't forget to attach the `FedoraMediaWriter.log` file that will appear in your Documents folder (`$HOME/Documents` on Linux and Mac, `%USERPROFILE%\Documents` on Windows). It contains some non-sensitive information about your system and the log of all events happening during the runtime.
 
 ## Building
 
