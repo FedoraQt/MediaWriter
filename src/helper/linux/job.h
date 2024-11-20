@@ -18,40 +18,44 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef WRITEJOB_H
-#define WRITEJOB_H
+#ifndef JOB_H
+#define JOB_H
 
-#include "job.h"
+#include <QDBusObjectPath>
+#include <QDBusUnixFileDescriptor>
+#include <QObject>
+#include <QTextStream>
 
-#include <QFile>
-#include <QFileSystemWatcher>
-#include <QProcess>
+#include <fcntl.h>
+#include <unistd.h>
 
-#ifndef MEDIAWRITER_LZMA_LIMIT
-// 256MB memory limit for the decompressor
-#define MEDIAWRITER_LZMA_LIMIT (1024 * 1024 * 256)
-#endif
+#include <memory>
+#include <tuple>
 
-class WriteJob : public Job
+typedef QHash<QString, QVariant> Properties;
+typedef QHash<QString, Properties> InterfacesAndProperties;
+typedef QHash<QDBusObjectPath, InterfacesAndProperties> DBusIntrospection;
+
+class Job : public QObject
 {
     Q_OBJECT
 public:
-    explicit WriteJob(const QString &what, const QString &where);
+    explicit Job(const QString &where);
+    Job(const QString &what, const QString &where);
 
-    static int staticOnMediaCheckAdvanced(void *data, long long offset, long long total);
-    int onMediaCheckAdvanced(long long offset, long long total);
-
-    bool write(int fd);
-    bool writeCompressed(int fd);
-    bool writePlain(int fd);
-    bool check(int fd);
+    QDBusUnixFileDescriptor getDescriptor();
 
 public slots:
-    void work() override;
-    void onFileChanged(const QString &path);
+    virtual void work() = 0;
 
-private:
-    QFileSystemWatcher watcher{};
+protected:
+    QString what;
+    QString where;
+    QTextStream out{stdout};
+    QTextStream err{stderr};
+    QDBusUnixFileDescriptor fd{-1};
 };
 
-#endif // WRITEJOB_H
+std::tuple<std::unique_ptr<char[]>, char *, std::size_t> pageAlignedBuffer(std::size_t pages = 1024);
+
+#endif // JOB_H

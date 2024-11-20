@@ -1,5 +1,6 @@
 /*
  * Fedora Media Writer
+ * Copyright (C) 2024 Jan Grulich <jgrulich@redhat.com>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -20,24 +21,19 @@
 #include "restorejob.h"
 
 #include <QCoreApplication>
-#include <QTextStream>
 #include <QThread>
 #include <QTimer>
 
+#include <QDBusArgument>
 #include <QDBusInterface>
-#include <QDBusUnixFileDescriptor>
-#include <QtDBus>
+#include <QDBusMessage>
+#include <QDBusReply>
 
-typedef QHash<QString, QVariant> Properties;
-typedef QHash<QString, Properties> InterfacesAndProperties;
-typedef QHash<QDBusObjectPath, InterfacesAndProperties> DBusIntrospection;
-Q_DECLARE_METATYPE(Properties)
-Q_DECLARE_METATYPE(InterfacesAndProperties)
-Q_DECLARE_METATYPE(DBusIntrospection)
+#include <stdio.h>
+#include <sys/types.h>
 
 RestoreJob::RestoreJob(const QString &where)
-    : QObject(nullptr)
-    , where(where)
+    : Job(where)
 {
     QTimer::singleShot(0, this, SLOT(work()));
 }
@@ -65,7 +61,70 @@ void RestoreJob::work()
         }
     }
 
-    QDBusReply<void> formatReply = device.call("Format", "dos", Properties());
+    // Wipe out first and last 128 blocks with zeroes
+    fd = getDescriptor();
+    if (fd.fileDescriptor() < 0) {
+        err << tr("Failed to open device for writing");
+        err.flush();
+        qApp->exit(1);
+    }
+
+    auto bufferOwner = pageAlignedBuffer();
+    char *buffer = std::get<1>(bufferOwner);
+    qint64 size = std::get<2>(bufferOwner);
+
+    memset(buffer, '\0', size);
+
+    // Overwrite first 128 blocks with zeroes
+    for (int i = 0; i < 128; i++) {
+        qint64 written = ::write(fd.fileDescriptor(), buffer, size);
+        if (written != size) {
+            err << tr("Destination drive is not writable");
+            err.flush();
+            qApp->exit(1);
+        }
+    }
+
+    // Rewind the filepointer to the last 128 blocks
+    off_t filesize = lseek(fd.fileDescriptor(), 0, SEEK_END);
+    if (filesize == static_cast<off_t>(-1)) {
+        err << tr("Failed to get file size");
+        err.flush();
+        qApp->exit(1);
+    }
+
+    off_t offset = filesize - (128 * size);
+    if (offset < 0) {
+        err << tr("File size is smaller than 128 blocks");
+        err.flush();
+        qApp->exit(1);
+    }
+
+    // Move the file pointer to the calculated offset
+    if (lseek(fd.fileDescriptor(), offset, SEEK_SET) == static_cast<off_t>(-1)) {
+        err << tr("Failed to move file pointer to the end region");
+        err.flush();
+        qApp->exit(1);
+    }
+
+    // Overwrite last 128 blocks with zeroes
+    for (int i = 0; i < 128; i++) {
+        qint64 written = ::write(fd.fileDescriptor(), buffer, size);
+        if (written != size) {
+            err << tr("Destination drive is not writable");
+            err.flush();
+            qApp->exit(1);
+        }
+    }
+
+    // Ensure data is flushed to disk
+    if (::fsync(fd.fileDescriptor()) == -1) {
+        err << tr("Failed to sync data to disk");
+        err.flush();
+        qApp->exit(1);
+    }
+
+    QDBusReply<void> formatReply = device.call("Format", "gpt", Properties());
     if (!formatReply.isValid() && formatReply.error().type() != QDBusError::NoReply) {
         err << formatReply.error().message() << "\n";
         err.flush();

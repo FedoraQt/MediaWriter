@@ -8,6 +8,7 @@ include_directories(
 
 set(HELPER_SRCS
     main.cpp
+    job.cpp
     restorejob.cpp
     writejob.cpp
 )
