@@ -1,5 +1,6 @@
 /*
  * Fedora Media Writer
+ * Copyright (C) 2024 Jan Grulich <jgrulich@redhat.com>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -20,22 +21,16 @@
 #ifndef RESTOREJOB_H
 #define RESTOREJOB_H
 
-#include <QObject>
-#include <QTextStream>
+#include "job.h"
 
-class RestoreJob : public QObject
+class RestoreJob : public Job
 {
     Q_OBJECT
 public:
     explicit RestoreJob(const QString &where);
+
 public slots:
-    void work();
-
-private:
-    QTextStream out{stdout};
-    QTextStream err{stderr};
-
-    QString where;
+    void work() override;
 };
 
 #endif // RESTOREJOB_H
