@@ -51,7 +51,7 @@ int main(int argc, char **argv)
     mDebug() << "Application constructed";
 
     QTranslator translator;
-    if (translator.load(QLocale(), QLatin1String(), QLatin1String(), ":/translations"))
+    if (translator.load(QLocale(QLocale::system().language()), QLatin1String(), QLatin1String(), ":/translations"))
         app.installTranslator(&translator);
 
     QGuiApplication::setDesktopFileName("org.fedoraproject.MediaWriter.desktop");
