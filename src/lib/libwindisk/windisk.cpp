@@ -188,7 +188,7 @@ QVector<quint32> WinDiskManagement::getUSBDeviceList()
         }
         pDiskObject->Release();
 
-        if (mediaType != QStringLiteral("Removable Media")) {
+        if (mediaType != QStringLiteral("Removable Media") && mediaType != QStringLiteral("External hard disk media")) {
             logMessage(QtDebugMsg, QStringLiteral("Device with index %1 is not removable").arg(index));
             continue;
         }
