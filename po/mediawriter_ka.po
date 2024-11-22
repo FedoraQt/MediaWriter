@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-03-14 08:36+0000\n"
+"PO-Revision-Date: 2024-11-22 05:38+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
-"Language-Team: Georgian <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/ka/>\n"
+"Language-Team: Georgian <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.8.2\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
@@ -116,6 +116,8 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"მთელი მოწყობილობა (%1) წაიშლება და ზედ ჩაიწერება მონიშნული დისკის ასლის "
+"ფაილი. გნებავთ გაგრძელება?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 #, fuzzy
@@ -152,7 +154,7 @@ msgstr "გადმოწერა & ჩაწერა"
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "გბ"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:99
 msgctxt "DeviceWarningDialog|"
@@ -162,7 +164,7 @@ msgstr ""
 #: ../src/app/qml/DeviceWarningDialog.qml:101
 msgctxt "DeviceWarningDialog|"
 msgid "KB"
-msgstr ""
+msgstr "კბ"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
@@ -572,31 +574,31 @@ msgstr "ფაილის გახსნა"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 ტბ"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 გბ"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 მბ"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 კბ"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 ბაიტი"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -774,25 +776,19 @@ msgid "%1 Release Candidate"
 msgstr "%1 რელიზის კანდიდატი"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "დისკის (%1) წაშლის შეცდომა:"
+msgstr "დისკის მიმაგრების წერტილის წაშლა შეუძლებელია"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "დისკიდან დანაყოფების წაშლა ჩავარდა"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "დისკის ჩასაწერად გახსნის შეცდომა"
+msgstr "დისკის დასაფორმატებლად გახსნის შეცდომა"
 
 #: ../src/helper/win/restorejob.cpp:95
 #, fuzzy
@@ -805,32 +801,32 @@ msgstr "დისკის ჩაკეტვის შეცდომა"
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "დისკზე დანაყოფების ცხრილის გასუფთავების შეცდომა"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "დისკის RAW დანაყოფის სტილის დაყენება ჩავარდა"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "დისკზე GPT დანაყოფის შექმნა ჩავარდა"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "დისკზე GUID ტომის ბილიკის შექმნა ჩავარდა"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "ახალი დანაყოფის მიმაგრება ჩავარდა"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "დანაყოფის exFAT-ზე დაფორმატება ჩავარდა"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -946,12 +942,9 @@ msgid "Writing %1 was successful"
 msgstr "%1-ის ჩაწერა წარმატებით დასრულდა"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "%1-ის ჩაწერის შეცდომა"
+msgstr "ჩაწერა გაუქმდა"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
@@ -1021,25 +1014,19 @@ msgid "Unable to open destination for writing"
 msgstr "სამიზნე ფაილის ჩასაწერად გახსნის შეცდომა"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "დისკის (%1) წაშლის შეცდომა:"
+msgstr "დისკის მიმაგრების წერტილის წაშლა შეუძლებელია"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "დისკიდან დანაყოფების წაშლა ჩავარდა"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "დისკის ჩასაწერად გახსნის შეცდომა"
+msgstr "დისკის დასაფორმატებლად გახსნის შეცდომა"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1047,70 +1034,53 @@ msgid "Couldn't lock the drive"
 msgstr "დისკის ჩაკეტვის შეცდომა"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "დისკის ჩასაწერად გახსნის შეცდომა"
+msgstr "ლოგიკური დამმუშავებლის გახსნის შეცდომა"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "დისკის ჩაკეტვის შეცდომა"
+msgstr "ლოგიკური დისკის ჩაკეტვის შეცდომა"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "დისკის განბლოკვის შეცდომა"
+msgstr "დისკის მოხსნის შეცდომა"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "სოკეტების წყვილის გამოყოფის შეცდომა"
+msgstr "ბუფერის გამოყოფა შეუძლებელია"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "ბოლო ბლოკი ბოლომდე არ ჩაწერილა"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "ჩაწერილია %1 %2-დან"
 
 #: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "დროებითი ფაილისთვის სახელის გადარქმევის შეცდომა."
+msgstr "ჩავარდა წაკითხვა დისკის ასლის ფაილისთვის: "
 
 #: ../src/helper/win/writejob.cpp:499
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "მთელი დისკის ასლის ფაილის ჩაწერა შეუძლებელია. სულ ჩაწერილია %1 %2-დან"
 
 #: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "დისკის ჩასაწერად გახსნის შეცდომა"
+msgstr "დისკის გახსნის შეცდომა მონაცემების შესამოწმებლად %1-სთვის:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
