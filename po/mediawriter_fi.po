@@ -10,12 +10,13 @@
 # Jan Kuparinen <copper_fin@hotmail.com>, 2021, 2022, 2024.
 # Lumiukko Lumiukko <lokalisoija@luukku.com>, 2021.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024.
+# Ricky Tigg <ricky.tigg@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-11-03 14:38+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"PO-Revision-Date: 2024-11-22 05:38+0000\n"
+"Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
 "Language-Team: Finnish <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/fi/>\n"
 "Language: fi\n"
@@ -121,6 +122,8 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Koko laite (kaikki %1) tyhjennetään ja valittu kuva kirjoitetaan siihen. "
+"Haluatko jatkaa?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 msgctxt "DeviceWarningDialog|"
@@ -744,28 +747,19 @@ msgid "%1 Release Candidate"
 msgstr "%1 Julkaisukandidaatti"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Asemaa ei voitu poistaa %1:"
+msgstr "Aseman liitoskohtia ei voitu poistaa"
 
 #: ../src/helper/win/restorejob.cpp:71
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Epäonnistunut vahvistus ei levyjä"
+msgstr "Osioiden poistaminen asemasta epäonnistui"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Aseman avaaminen kirjoitusta varten ei onnistunut"
+msgstr "Aseman avaaminen alustusta varten epäonnistui"
 
 #: ../src/helper/win/restorejob.cpp:95
 msgctxt "RestoreJob|"
@@ -775,32 +769,32 @@ msgstr "Aseman lukitseminen ei onnistunut"
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Aseman osiotaulukon tyhjennys epäonnistui"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Aseman asettaminen RAW-ositotyyliin epäonnistui"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "GPT-osion luominen asemalle epäonnistui"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "GUID-taltiopolun saaminen asemalle epäonnistui"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Uuden osion liitäminen epäonnistui"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Osion alustaminen exFAT-muotoon epäonnistui"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -983,28 +977,19 @@ msgid "Unable to open destination for writing"
 msgstr "Kohdetta ei voi avata kirjoittamista varten"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Asemaa ei voitu poistaa %1:"
+msgstr "Aseman liitoskohtia ei voitu poistaa"
 
 #: ../src/helper/win/writejob.cpp:129
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Epäonnistunut vahvistus ei levyjä"
+msgstr "Osioiden poistaminen asemasta epäonnistui"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Aseman avaaminen kirjoitusta varten ei onnistunut"
+msgstr "Aseman avaaminen alustusta varten epäonnistui"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1012,70 +997,53 @@ msgid "Couldn't lock the drive"
 msgstr "Aseman lukitseminen ei onnistunut"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "Aseman avaaminen kirjoitusta varten ei onnistunut"
+msgstr "Loogista kahvaa ei voitu avata"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Aseman lukitseminen ei onnistunut"
+msgstr "Loogista asemaa ei voitu lukita"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "Aseman lukituksen avaaminen ei onnistunut"
+msgstr "Asemaa ei voitu irrottaa"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "pistokeparia ei voida allokoida"
+msgstr "Puskurin allokointi epäonnistui"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Viimeistä lohkoa ei kirjoitettu kokonaan"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Kirjoitti %1/%2"
 
 #: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Väliaikaista tiedostoa ei voitu uudelleennimetä."
+msgstr "Kuvatiedoston lukeminen epäonnistui: "
 
 #: ../src/helper/win/writejob.cpp:499
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Koko kuvan kirjoittaminen epäonnistui. Kirjoitettu yhteensä: %1/%2"
 
 #: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "Aseman avaaminen kirjoitusta varten ei onnistunut"
+msgstr "Asemaa ei voitu avata %1:n tietojen tarkistamista varten:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
