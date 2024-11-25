@@ -3,16 +3,19 @@ name: pr-check
 on: [pull_request]
 
 env:
-    QT_VERSION: '6.6.3'
+    QT_VERSION: '6.8.0'
 
 jobs:
   Linux:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-
+      - name: Install liblzma
+        run: |
+          sudo apt update
+          sudo apt install liblzma-dev
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
           cache: true
@@ -26,7 +29,7 @@ jobs:
           make -j5
 
   Flatpak:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     container:
       image: docker.io/bilelmoussaoui/flatpak-github-actions:kde-6.6
       options: --privileged
@@ -39,19 +42,19 @@ jobs:
           manifest-path: "dist/flatpak/org.fedoraproject.MediaWriter.json"
           cache-key: flatpak-builder-${{ github.sha }}
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: org.fedoraproject.MediaWriter.flatpak
           path: org.fedoraproject.MediaWriter.flatpak
 
 
   macOS:
-    runs-on: macos-12
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
           modules: qtimageformats
@@ -67,25 +70,25 @@ jobs:
 
       - name: Bundle
         run: |
-          "$Qt6_DIR"/bin/macdeployqt build/src/app/FedoraMediaWriter.app -qmldir=src/app/qml -executable=build/src/app/FedoraMediaWriter.app/Contents/MacOS/helper -appstore-compliant
+          "$QT_ROOT_DIR"/bin/macdeployqt build/src/app/FedoraMediaWriter.app -qmldir=src/app/qml -executable=build/src/app/FedoraMediaWriter.app/Contents/MacOS/helper -appstore-compliant
           # No idea why but macdeployqt deploys debug libs too, just remove them, maybe fix this sometimes
           for i in `find build/src/app/FedoraMediaWriter.app/ -name '*.dSYM'`; do rm -fr "$i"; done
           cd build/src/app/
-          "$Qt6_DIR"/bin/macdeployqt FedoraMediaWriter.app -dmg -always-overwrite -appstore-compliant
+          "$QT_ROOT_DIR"/bin/macdeployqt FedoraMediaWriter.app -dmg -always-overwrite -appstore-compliant
           mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-osx.dmg
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: FedoraMediaWriter-osx.dmg
           path: FedoraMediaWriter-osx.dmg
 
   macOS-arm64:
-    runs-on: macos-12
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
           modules: qtimageformats
@@ -101,22 +104,23 @@ jobs:
 
       - name: Bundle
         run: |
-          "$Qt6_DIR"/bin/macdeployqt build/src/app/FedoraMediaWriter.app -qmldir=src/app/qml -executable=build/src/app/FedoraMediaWriter.app/Contents/MacOS/helper -appstore-compliant
+          "$QT_ROOT_DIR"/bin/macdeployqt build/src/app/FedoraMediaWriter.app -qmldir=src/app/qml -executable=build/src/app/FedoraMediaWriter.app/Contents/MacOS/helper -appstore-compliant
           # No idea why but macdeployqt deploys debug libs too, just remove them, maybe fix this sometimes
           for i in `find build/src/app/FedoraMediaWriter.app/ -name '*.dSYM'`; do rm -fr "$i"; done
           cd build/src/app/
-          "$Qt6_DIR"/bin/macdeployqt FedoraMediaWriter.app -dmg -always-overwrite -appstore-compliant
+          "$QT_ROOT_DIR"/bin/macdeployqt FedoraMediaWriter.app -dmg -always-overwrite -appstore-compliant
           mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-osx-arm64.dmg
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: FedoraMediaWriter-osx-arm64.dmg
           path: FedoraMediaWriter-osx-arm64.dmg
 
   Windows-MSVC:
-    runs-on: windows-2019
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v4
+      - uses: ilammy/msvc-dev-cmd@v1
 
       - name: Install dependencies
         shell: bash
@@ -125,21 +129,21 @@ jobs:
           choco install dos2unix
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
-          arch: win64_msvc2019_64
+          arch: win64_msvc2022_64
           cache: true
           cache-key-prefix: ${{ github.job }}-qt
 
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
+        uses: microsoft/setup-msbuild@v2
 
       - name: Build xz-utils
         shell: bash
         if: ${{ !steps.cache-qt.outputs.cache-hit }}
         run: |
-          eval "$(./dist/win/make-vs2019-env.bat)"
+          # eval "$(./dist/win/make-vs2022-env.bat)"
           git clone https://git.tukaani.org/xz.git
           cd xz
           git checkout v5.4.5
@@ -148,17 +152,17 @@ jobs:
           sed -i 's/PACKAGE_URL/"https:\/\/tukaani.org\/xz\/"/' src/common/common_w32res.rc
           mkdir build
           cd build
-          cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt6_DIR" -DBUILD_SHARED_LIBS=ON ..
+          cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$QT_ROOT_DIR" -DBUILD_SHARED_LIBS=ON ..
           cmake --build .
           cmake --install .
 
       - name: Build MediaWriter
         shell: bash
         run: |
-          eval "$(./dist/win/make-vs2019-env.bat)"
+          # eval "$(./dist/win/make-vs2022-env.bat)"
           mkdir build
           cd build
-          cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$Qt6_DIR" ..
+          cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$QT_ROOT_DIR" ..
           cmake --build .
           cmake --install .
 
@@ -169,8 +173,8 @@ jobs:
           cd build/app/release
           mv ../../src/app/helper.exe .
           mv ../../src/app/mediawriter.exe .
-          cp $Qt6_DIR/bin/liblzma.dll .
-          $Qt6_DIR/bin/windeployqt.exe mediawriter.exe helper.exe liblzma.dll --verbose 2 --qmldir ../../.. --compiler-runtime --release
+          cp $QT_ROOT_DIR/bin/liblzma.dll .
+          $QT_ROOT_DIR/bin/windeployqt.exe mediawriter.exe helper.exe liblzma.dll --verbose 2 --qmldir ../../.. --compiler-runtime --release
           find . -type d -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | grep -v "^.$" > uninstall.log
           find . -type f -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | sort >> uninstall.log
 
@@ -202,7 +206,7 @@ jobs:
           makensis -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
           mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64.exe"
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: FedoraMediaWriter-win64.exe
           path: FedoraMediaWriter-win64.exe
