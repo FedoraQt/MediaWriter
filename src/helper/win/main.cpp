@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     QCoreApplication app(argc, argv);
 
     QTranslator translator;
-    if (translator.load(QLocale(), QLatin1String(), QLatin1String(), ":/translations")) {
+    if (translator.load(QLocale(QLocale::system().language(), QLocale::system().script(), QLocale::system().territory()), QLatin1String(), QLatin1String(), ":/translations")) {
         app.installTranslator(&translator);
     }
 
