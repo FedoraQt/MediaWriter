@@ -37,12 +37,25 @@ DEFINE_GUID(PARTITION_BASIC_DATA_GUID, 0xebd0a0a2, 0xb9e5, 0x4433, 0x87, 0xc0, 0
 WinDiskManagement::WinDiskManagement(QObject *parent, bool isHelper)
     : QObject(parent)
 {
+    HRESULT res = S_OK;
+
     if (isHelper) {
         QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/FedoraMediaWriter-helper.log";
         m_debugFile = _fsopen(debugFileName.toStdString().c_str(), "w", _SH_DENYWR);
+
+        // Looks that for the app itself CoInitializeEx will be called by the platform plugin, but not
+        // for the helper. This should be same arguments to CoInitializeEx used for the platform plugin.
+        // Call CoInitializeEx will not fail in case it was already called, but it will fail if it was
+        // called with different flags, therefore try to use same flags, but in case it changes for some
+        // reason check whether the result is not RPC_E_CHANGED_MODE, in which was we should not fail.
+        res = CoInitializeEx(NULL, COINIT(COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE));
+        if (FAILED(res) && res != RPC_E_CHANGED_MODE) {
+            _com_error err(res);
+            logMessage(QtWarningMsg, QStringLiteral("Failed to initialize COM library. Error = %1").arg(err.ErrorMessage()));
+            return;
+        }
     }
 
-    HRESULT res = S_OK;
     // This needs to be initialized before any RPC communication occurs
     // Currently when used in WinDriveManager we are good.
     res = CoInitializeSecurity(NULL, -1, NULL, NULL, RPC_C_AUTHN_LEVEL_DEFAULT, RPC_C_IMP_LEVEL_IMPERSONATE, NULL, EOAC_NONE, 0);
