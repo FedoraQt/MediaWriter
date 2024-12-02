@@ -7,20 +7,21 @@
 # scootergrisen <scootergrisen@gmail.com>, 2018. #zanata, 2021.
 # scootergrisen <scootergrisen@gmail.com>, 2019. #zanata, 2021.
 # scootergrisen <scootergrisen@gmail.com>, 2020. #zanata, 2021.
+# Casper Da <fedora.stupor815@simplelogin.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2021-07-11 17:14+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Danish <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/da/>\n"
+"PO-Revision-Date: 2024-12-02 17:38+0000\n"
+"Last-Translator: Casper Da <fedora.stupor815@simplelogin.com>\n"
+"Language-Team: Danish <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7.1\n"
+"X-Generator: Weblate 5.8.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -103,7 +104,7 @@ msgstr ""
 #: ../src/app/qml/CancelDialog.qml:87
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "Fortsæt"
 
 #: ../src/app/qml/CancelDialog.qml:110
 #, fuzzy
@@ -151,12 +152,9 @@ msgid "Cancel"
 msgstr "Annuller"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
-msgstr "Skriv %1"
+msgstr "Skriv"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
 #, fuzzy
@@ -221,12 +219,10 @@ msgid "%1 Successfully Written"
 msgstr ""
 
 #: ../src/app/qml/DownloadPage.qml:38
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "Skriver"
+msgstr "Skriver %1"
 
 #: ../src/app/qml/DownloadPage.qml:40
 #, fuzzy, qt-format
@@ -323,7 +319,7 @@ msgstr "Ved skrivning vil du miste alle dataene på %1."
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "Indsæt venligst et USB-drev."
 
 #: ../src/app/qml/DownloadPage.qml:133
 #, fuzzy
@@ -497,7 +493,7 @@ msgstr "Alle filer (*)"
 #: ../src/app/qml/DrivePage.qml:119
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "USB-drev"
 
 #: ../src/app/qml/DrivePage.qml:127
 #, fuzzy
@@ -621,7 +617,7 @@ msgstr "Skrivning af %1 lykkedes"
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Vælg billedkilde"
 
 #: ../src/app/qml/MainPage.qml:33
 #, fuzzy
@@ -634,7 +630,7 @@ msgstr "Download mislykkedes"
 #: ../src/app/qml/MainPage.qml:40
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "Vælg .iso-fil"
 
 #: ../src/app/qml/MainPage.qml:50
 #, fuzzy, qt-format
@@ -647,12 +643,12 @@ msgstr "Gendan %1?"
 #: ../src/app/qml/MainPage.qml:72
 msgctxt "MainPage|"
 msgid "About"
-msgstr ""
+msgstr "Om"
 
 #: ../src/app/qml/Page.qml:95
 msgctxt "Page|"
 msgid "Previous"
-msgstr ""
+msgstr "Forrige"
 
 #: ../src/app/qml/Page.qml:105
 msgctxt "Page|"
@@ -678,7 +674,7 @@ msgstr "Alle filer (*)"
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "Åbn fil"
 
 #: ../src/helper/win/writejob.cpp:398
 #, qt-format
@@ -974,7 +970,7 @@ msgstr ""
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "Gendan drev <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
 #, fuzzy
@@ -1077,7 +1073,7 @@ msgstr "Gendan"
 #: ../src/app/qml/VersionPage.qml:29
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Vælg Fedora-udgave"
 
 #: ../src/app/qml/VersionPage.qml:32
 #, fuzzy
@@ -1090,7 +1086,7 @@ msgstr "Valgt:"
 #: ../src/app/qml/VersionPage.qml:37
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Officielle udgaver"
 
 #: ../src/app/qml/VersionPage.qml:42
 #, fuzzy
@@ -1272,7 +1268,7 @@ msgstr ""
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Skrev %1 ud af %2"
 
 #: ../src/helper/win/writejob.cpp:493
 #, fuzzy
