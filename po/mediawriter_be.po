@@ -5,13 +5,15 @@
 # "#-#-#-#-#  mediawriter.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 # Yahor Haurylenka <k1llo2810@gmail.com>, 2023.
 # Makar Razin <makarrazin14@gmail.com>, 2024.
+# Yauhen Bugamol <bugamol@users.noreply.translate.fedoraproject.org>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-01-10 22:36+0000\n"
-"Last-Translator: Makar Razin <makarrazin14@gmail.com>\n"
+"PO-Revision-Date: 2024-12-05 22:38+0000\n"
+"Last-Translator: Yauhen Bugamol <bugamol@users.noreply.translate."
+"fedoraproject.org>\n"
 "Language-Team: Belarusian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/be/>\n"
 "Language: be\n"
@@ -20,12 +22,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.3.1\n"
+"X-Generator: Weblate 5.8.4\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr "Аб Fedora Media Writer"
+msgstr "Пра Fedora Media Writer"
 
 #: ../src/app/qml/AboutDialog.qml:58
 #, qt-format
@@ -42,7 +44,7 @@ msgstr "Fedora Media Writer правярае наяўнасць новых вы�
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr "Калі ласка, паведамляйце аб памылках або аб вашых прапановах на %1"
+msgstr "Паведамляйце пра памылкі і рабіце прапановы на %1"
 
 #: ../src/app/qml/AboutDialog.qml:94
 msgctxt "AboutDialog|"
@@ -52,7 +54,7 @@ msgstr "Закрыць"
 #: ../src/app/qml/CancelDialog.qml:55
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr "Скасаваць спампоўку?"
+msgstr "Скасаваць спампоўванне?"
 
 #: ../src/app/qml/CancelDialog.qml:57
 msgctxt "CancelDialog|"
@@ -62,7 +64,7 @@ msgstr "Скасаваць запіс?"
 #: ../src/app/qml/CancelDialog.qml:59
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr "Адмяніць праверку?"
+msgstr "Скасаваць праверку?"
 
 #: ../src/app/qml/CancelDialog.qml:66
 msgctxt "CancelDialog|"
@@ -70,16 +72,15 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
-"Спампоўка і запіс мультымедыя будуць спынены. Гэты працэс можна аднавіць у "
-"любы час пазней."
+"Спампоўванне і запіс носьбіта будуць спынены. Выкананне дзеяння можна будзе "
+"ў любы час узнавіць."
 
 #: ../src/app/qml/CancelDialog.qml:68
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr ""
-"Працэс запісу будзе спынены, і пасля гэтага ваш дыск трэба будзе аднавіць."
+msgstr "Запіс будзе перарваны, пасля чаго спатрэбіцца аднавіць дыск."
 
 #: ../src/app/qml/CancelDialog.qml:70
 msgctxt "CancelDialog|"
@@ -94,7 +95,7 @@ msgstr "Працягнуць"
 #: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "Скасаваць спампоўку"
+msgstr "Скасаваць спампоўванне"
 
 #: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
@@ -104,15 +105,12 @@ msgstr "Скасаваць запіс"
 #: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr "Адмяніць праверку"
+msgstr "Скасаваць праверку"
 
 #: ../src/app/qml/CancelDialog.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
-msgstr "Адмена"
+msgstr "Скасаваць"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -121,35 +119,25 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Прылада будзе цалкам сцёрта (усе %1), затым на яе будзе запісаны выбраны "
+"вобраз. Сапраўды працягнуць?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
-msgstr "Адмена"
+msgstr "Скасаваць"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
 msgstr "Запісаць"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
 msgstr "Спампаваць і запісаць"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
 msgstr "Спампаваць і запісаць"
@@ -157,22 +145,22 @@ msgstr "Спампаваць і запісаць"
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "ГБ"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:99
 msgctxt "DeviceWarningDialog|"
 msgid "MB"
-msgstr ""
+msgstr "МБ"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:101
 msgctxt "DeviceWarningDialog|"
 msgid "KB"
-msgstr ""
+msgstr "КБ"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "Байт"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -182,7 +170,7 @@ msgstr "Немагчыма атрымаць запытаны вобраз."
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr "У вас скончылася месца ў папцы \"Спампоўкі\"."
+msgstr "Скончылася месца ў папцы «Спампоўкі»."
 
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
@@ -192,7 +180,7 @@ msgstr "Файл спампоўкі недаступны для запісу."
 #: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
-msgstr "Тайм-аўт падлучэння"
+msgstr "Скончыўся тэрмін чакання злучэння"
 
 #: ../src/app/qml/DownloadPage.qml:36
 #, qt-format
@@ -260,12 +248,12 @@ msgstr " (%1"
 #: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr "Ваш дыск быў адключаны падчас працэсу"
+msgstr "Дыск быў адключаны падчас выканання дзеяння"
 
 #: ../src/app/qml/DownloadPage.qml:106
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "Спампоўкі захоўваюцца ў папку спамповак."
+msgstr "Спампаваныя файлы захоўваюцца ў папку «Спампоўкі»."
 
 #: ../src/app/qml/DownloadPage.qml:116
 #, qt-format
@@ -276,7 +264,7 @@ msgstr "Запіс прывядзе да страты ўсіх даных на %
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr "Калі ласка, устаўце USB дыск."
+msgstr "Устаўце USB-дыск."
 
 #: ../src/app/qml/DownloadPage.qml:133
 msgctxt "DownloadPage|"
@@ -285,14 +273,14 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"Памер вашага дыска будзе зменены да меншага аб'ёму. Вы можаце вярнуць яго "
-"памер з дапамогай Fedora Media Writer. Гэта прывядзе да выдалення "
-"ўсталявальных файлаў з вашага дыска."
+"Ёмістасць дыска будзе паменшана. Вярнуць звычайную ёмістасць можна з "
+"дапамогай Fedora Media Writer. У выніку праграма выдаліць з дыска "
+"ўсталявальны носьбіт."
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
 msgid "Selected:"
-msgstr "Выбранае:"
+msgstr "Выбрана:"
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
@@ -307,9 +295,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"Fedora Media Writer пакуль не падтрымлівае вашу плату ці прыладу. Праверце "
-"<a href=%1>гэтую старонку</a> для атрымання дадатковай інфармацыі аб іх "
-"сумяшчальнасці з Fedora і аб тым, як стварыць для іх загрузачны носьбіт."
+"Fedora Media Writer пакуль не падтрымлівае вашу плату або прыладу. Каб "
+"даведацца больш пра сумяшчальнасць з Fedora і спосабы стварэння загрузачнага "
+"носьбіта, азнаёмцеся з інфармацыяй на <a href=%1>гэтай старонцы</a>."
 
 #: ../src/app/qml/DownloadPage.qml:160
 #, qt-format
@@ -324,37 +312,24 @@ msgstr "Памер выбранага дыска %1. Магчыма, вы вып
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr ""
-"Перазапусціце камп'ютар і загрузіце сістэму з %1, каб пачаць выкарыстоўваць "
-"%2."
+"Перазапусціце камп'ютар і загрузіце сістэму з %1, каб пачаць выкарыстанне %2."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
-msgstr "Адмена"
+msgstr "Скасаваць"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DownloadPage|"
 msgid "Write"
 msgstr "Запісаць"
 
 #: ../src/app/qml/DownloadPage.qml:272
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Finish"
 msgctxt "DownloadPage|"
 msgid "Finish"
 msgstr "Гатова"
 
 #: ../src/app/qml/DownloadPage.qml:274
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Retry"
 msgctxt "DownloadPage|"
 msgid "Retry"
 msgstr "Паўтарыць"
@@ -362,7 +337,7 @@ msgstr "Паўтарыць"
 #: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
-msgstr "На гэтым дыску недастаткова месца."
+msgstr "Гэты дыск занадта малы."
 
 #: ../src/app/qml/DrivePage.qml:30
 msgctxt "DrivePage|"
@@ -397,7 +372,7 @@ msgstr "Выбраць..."
 #: ../src/app/qml/DrivePage.qml:108
 msgctxt "DrivePage|"
 msgid "Image files"
-msgstr "Файлы образаў"
+msgstr "Файлы вобразаў"
 
 #: ../src/app/qml/DrivePage.qml:108
 msgctxt "DrivePage|"
@@ -407,43 +382,34 @@ msgstr "Усе файлы (*)"
 #: ../src/app/qml/DrivePage.qml:119
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr "USB дыск"
+msgstr "USB-дыск"
 
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr "Няма падлучаных пераносных накапляльнікаў"
+msgstr "Няма падлучаных пераносных носьбітаў"
 
 #: ../src/app/qml/DrivePage.qml:146
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "Спампаваць"
+msgstr "Спампаваны файл"
 
 #: ../src/app/qml/DrivePage.qml:151
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "Выдаліць спампоўку пасля запісу"
+msgstr "Выдаліць спампаваны файл пасля запісу"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DrivePage|"
 msgid "Write"
 msgstr "Запісаць"
 
 #: ../src/app/qml/DrivePage.qml:171
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DrivePage|"
 msgid "Download && Write"
 msgstr "Спампаваць і запісаць"
 
 #: ../src/app/qml/DrivePage.qml:172
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DrivePage|"
 msgid "Download & Write"
 msgstr "Спампаваць і запісаць"
@@ -451,7 +417,7 @@ msgstr "Спампаваць і запісаць"
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr "Дыск быў выдалены падчас запісу."
+msgstr "Дыск быў выняты падчас запісу."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
@@ -472,7 +438,7 @@ msgstr "Гатова!"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr "Паспяховы запіс %1"
+msgstr "Запіс %1 паспяхова завершаны"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
@@ -483,12 +449,12 @@ msgstr "Памылка"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr "Памылка запісу %1"
+msgstr "Не ўдалося запісаць %1"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
-msgstr "Здаецца, UDisks2 адсутнічае, ці да яго няма доступу на вашай сістэме."
+msgstr "Пэўна, у сістэме адсутнічае UDisks2 або да яго няма доступу."
 
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
@@ -504,7 +470,7 @@ msgstr "Памылка"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr "Памылка запісу %1"
+msgstr "Не ўдалося запісаць %1"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
@@ -515,12 +481,12 @@ msgstr "Гатова!"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr "Паспяховы запіс %1"
+msgstr "Запіс %1 паспяхова завершаны"
 
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr "Абярыце крыніцу вобразу"
+msgstr "Выберыце крыніцу вобразу"
 
 #: ../src/app/qml/MainPage.qml:33
 msgctxt "MainPage|"
@@ -539,25 +505,16 @@ msgid "Restore <b>%1</b>"
 msgstr "Аднавіць <b>%1</b>"
 
 #: ../src/app/qml/MainPage.qml:72
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "About"
 msgctxt "MainPage|"
 msgid "About"
 msgstr "Аб праграме"
 
 #: ../src/app/qml/Page.qml:95
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Previous"
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Назад"
 
 #: ../src/app/qml/Page.qml:105
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Next"
 msgctxt "Page|"
 msgid "Next"
 msgstr "Далей"
@@ -581,31 +538,31 @@ msgstr "Адкрыць файл"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 ТБ"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 ГБ"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 МБ"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 КБ"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 Байт"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -636,7 +593,7 @@ msgstr "Fedora Labs"
 #: ../src/app/releasemanager.cpp:455
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr ""
+msgstr "Fedora Atomic Desktops"
 
 #: ../src/app/releasemanager.cpp:457
 msgctxt "Release|"
@@ -698,7 +655,7 @@ msgstr "Іншы вобраз"
 #: ../src/app/releasemanager.cpp:962 ../src/app/releasemanager.cpp:974
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
-msgstr "Загружаны вобраз пашкоджаны"
+msgstr "Спампаваны вобраз пашкоджаны"
 
 #: ../src/app/releasemanager.cpp:978
 msgctxt "ReleaseVariant|"
@@ -718,12 +675,12 @@ msgstr "Падрыхтоўка"
 #: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
-msgstr "Спампоўка"
+msgstr "Спампоўванне"
 
 #: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr "Праверка спампоўкі"
+msgstr "Праверка спампаванага файла"
 
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
@@ -733,7 +690,7 @@ msgstr "Гатова да запісу"
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr "Файл вобраза захаваны ў вашу папку для спамповак. Запіс немагчымы"
+msgstr "Файл вобраза захаваны ў папку «Спампоўкі». Запіс немагчымы"
 
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
@@ -758,7 +715,7 @@ msgstr "Запісаныя даныя пашкоджаны"
 #: ../src/app/releasemanager.h:387
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr "Памылка спампоўкі"
+msgstr "Не ўдалося спампаваць"
 
 #: ../src/app/releasemanager.h:388
 msgctxt "ReleaseVariant|"
@@ -781,72 +738,63 @@ msgstr "%1 Beta"
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr "Кандыдат на выпуск %1"
+msgstr "%1 Release Candidate"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Не атрымалася выдаліць дыск %1:"
+msgstr "Не ўдалося выдаліць пункт мантавання дыска"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Не ўдалося выдаліць з дыска раздзелы"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Не атрымалася адкрыць дыск для запісу"
+msgstr "Не ўдалося адкрыць дыск для фарматавання"
 
 #: ../src/helper/win/restorejob.cpp:95
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
-msgstr "Не атрымалася заблакаваць дыск"
+msgstr "Не ўдалося заблакаваць дыск"
 
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Не ўдалося ачысціць табліцу раздзелаў на дыску"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Не ўдалося задаць дыску стыль раздзела RAW"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Не ўдалося стварыць на дыску раздзел GPT"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Не ўдалося атрымаць шлях GUID тома на дыску"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Не ўдалося прымантаваць новы раздзел"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Не ўдалося адфарматаваць раздзел у exFAT"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr "Аднавіць дыск <b>%1</b>"
+msgstr "Аднаўленне дыска <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
 msgctxt "RestorePage|"
@@ -860,9 +808,9 @@ msgid ""
 msgstr ""
 "<p align=\"justify\"> Каб вярнуць усю наяўную на дыску прастору, трэба "
 "аднавіць завадскія налады дыска. Будуць выдалены live-сістэма і ўсе "
-"захаваныя дадзеныя. </p> <p align=\"justify\"> Не трэба аднаўляць дыск, калі "
-"вы хочаце запісаць на яго яшчэ адну live-сістэму.\n"
-"                      </p> <p align=\"justify\"> Хочаце аднавіць завадскія "
+"захаваныя даныя. </p> <p align=\"justify\"> Не трэба аднаўляць дыск, калі вы "
+"хочаце запісаць на яго яшчэ адну live-сістэму.\n"
+"                      </p> <p align=\"justify\"> Сапраўды аднавіць завадскія "
 "налады? </p>"
 
 #: ../src/app/qml/RestorePage.qml:54
@@ -877,7 +825,7 @@ msgstr ""
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr "Ваш дыск паспяхова адноўлены!"
+msgstr "Дыск паспяхова адноўлены!"
 
 #: ../src/app/qml/RestorePage.qml:79
 msgctxt "RestorePage|"
@@ -885,7 +833,7 @@ msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"Нажаль, падчас гэтага працэсу адбылася памылка. Паспрабуйце аднавіць дыск "
+"На жаль, падчас выканання дзеяння ўзнікла памылка. Паспрабуйце аднавіць дыск "
 "сродкамі сістэмы."
 
 #: ../src/app/qml/RestorePage.qml:93
@@ -894,17 +842,11 @@ msgid "Restoring finished"
 msgstr "Аднаўленне завершана"
 
 #: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Finish"
 msgctxt "RestorePage|"
 msgid "Finish"
 msgstr "Гатова"
 
 #: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Аднавіць"
@@ -927,12 +869,12 @@ msgstr "Афіцыйныя рэдакцыі"
 #: ../src/app/qml/VersionPage.qml:42
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr ""
+msgstr "Atomic Desktops"
 
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr "Зборкі"
+msgstr "Spins"
 
 #: ../src/app/qml/VersionPage.qml:52
 msgctxt "VersionPage|"
@@ -942,7 +884,7 @@ msgstr "Labs"
 #: ../src/app/windrivemanager.cpp:149
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "Не ўдалося знайсці дапаможны бінарны файл. Праверце ўсталяванне."
+msgstr "Не ўдалося знайсці выконвальны файл helper. Праверце ўсталяванне."
 
 #: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 msgctxt "WinDrive|"
@@ -953,15 +895,12 @@ msgstr "Гатова!"
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr "Паспяховы запіс %1"
+msgstr "Запіс %1 паспяхова завершаны"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "Памылка запісу %1"
+msgstr "Запіс скасаваны"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
@@ -994,7 +933,7 @@ msgstr "Спампаваны сціснуты файл пашкоджаны."
 #: ../src/helper/win/writejob.cpp:353
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
-msgstr "Параметры сціску не падтрымліваюцца."
+msgstr "Параметры сціскання не падтрымліваюцца."
 
 #: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:356
@@ -1012,115 +951,92 @@ msgstr "Зыходны вобраз не чытаецца"
 #: ../src/helper/win/writejob.cpp:539
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr "Ваш дыск, магчыма, пашкоджаны."
+msgstr "Магчыма, ваш дыск пашкоджаны."
 
 #: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
 #: ../src/helper/win/writejob.cpp:544
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr "Падчас праверкі носьбіта адбылася непрадбачаная памылка."
+msgstr "Падчас праверкі носьбіта ўзнікла непрадбачаная памылка."
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr "Не ўдалося стварыць пару сокетаў"
+msgstr "Немагчыма размеркаваць пару сокетаў"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr "Не ўдалося адкрыць месца прызначэння для запісу"
+msgstr "Немагчыма адкрыць месца прызначэння для запісу"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Не атрымалася выдаліць дыск %1:"
+msgstr "Не ўдалося выдаліць пункт мантавання дыска"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Не ўдалося выдаліць з дыска раздзелы"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Не атрымалася адкрыць дыск для запісу"
+msgstr "Не ўдалося адкрыць дыск для фарматавання"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr "Не атрымалася заблакаваць дыск"
+msgstr "Не ўдалося заблакаваць дыск"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "Не атрымалася адкрыць дыск для запісу"
+msgstr "Не ўдалося адкрыць лагічны дэскрыптар"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Не атрымалася заблакаваць дыск"
+msgstr "Не ўдалося заблакаваць лагічны дыск"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "Не ўдалося разблакаваць дыск"
+msgstr "Не ўдалося адмантаваць дыск"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "Не ўдалося стварыць пару сокетаў"
+msgstr "Не ўдалося размеркаваць буфер"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Апошні блок запісаны не цалкам"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Запісана %1 з %2"
 
 #: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Немагчыма перайменаваць часовы файл."
+msgstr "Не ўдалося прычытаць файл вобраза: "
 
 #: ../src/helper/win/writejob.cpp:499
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Не ўдалося запісаць вобраз цалкам. Запісана: %1 з %2"
 
 #: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "Не атрымалася адкрыць дыск для запісу"
+msgstr "Не ўдалося адкрыць дыск для праверкі даных %1:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
@@ -1130,17 +1046,17 @@ msgstr "Fedora Media Writer"
 #: ../src/app/qml/main.qml:100
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Выбраць версію Fedora"
+msgstr "Выбар версіі Fedora"
 
 #: ../src/app/qml/main.qml:114
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "Выбраць дыск"
+msgstr "Выбар дыска"
 
 #: ../src/app/qml/main.qml:139
 msgctxt "main|"
 msgid "Restore"
-msgstr "Аднавіць"
+msgstr "Аднаўленне"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
@@ -1152,7 +1068,7 @@ msgstr "Fedora Media Writer"
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
-msgstr "Інструмент для стварэння Live USB-дыска з Fedora"
+msgstr "Інструмент для стварэння носьбітаў Live USB з пэўным выпускам Fedora"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -1164,12 +1080,12 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
-"Інструмент для стварэння загрузных Live USB-дыскаў з версіяй Fedora. Fedora "
-"Media Writer можа не толькі запісаць вобраз на флэш-накпляльнік, але і "
-"спампаваць яго. Прапануюцца афіцыйныя версіі (Server, Workstation), Fedora "
-"Spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop, ...) і Fedora "
-"Labs (Design Suite, Security Lab, ...). Прадастаўляецца асноўная інфармацыя "
-"па кожным з іх, якая дапамагае зрабіць правільны выбар."
+"Інструмент для стварэння загрузачных дыскаў Live USB з пэўным выпускам "
+"Fedora. Fedora Media Writer можа не толькі запісаць вобраз на флэш-"
+"накапляльнік, але і спампаваць яго. Прапануюцца афіцыйныя выпускі (Server, "
+"Workstation), Fedora Spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+"Desktop, ...) і Fedora Labs (Design Suite, Security Lab, ...). Падаюцца "
+"асноўныя звесткі пра кожны з іх, каб дапамагчы зрабіць правільны выбар."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -1177,8 +1093,8 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
-"Fedora Media Writer можа запісаць і іншыя загрузныя ISO-файлы, якія бяруцца "
-"з вашага лакальнага дыска, але майце на ўвазе, што ён правераны толькі з "
+"Fedora Media Writer можа запісваць любыя загрузачныя вобразы ISO з "
+"лакальнага дыска, але майце на ўвазе, што праграма правяралася толькі з "
 "вобразамі Fedora."
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
@@ -1187,7 +1103,7 @@ msgstr "Запіс вобразаў Fedora на пераносныя дыскі"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
-msgstr "fmw;usb;iso;bootable;"
+msgstr "fmw;usb;iso;bootable;загрузачны;дыск;"
 
 #~ msgctxt "main|"
 #~ msgid "Cancel"
