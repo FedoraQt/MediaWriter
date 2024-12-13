@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-11-04 11:58+0000\n"
+"PO-Revision-Date: 2024-12-13 23:38+0000\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/sl/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 5.8.2\n"
+"X-Generator: Weblate 5.8.4\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
@@ -125,9 +125,6 @@ msgid "Cancel"
 msgstr "Prekliči"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
 msgstr "Piši"
@@ -320,9 +317,6 @@ msgid "Cancel"
 msgstr "Prekliči"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DownloadPage|"
 msgid "Write"
 msgstr "Piši"
@@ -403,9 +397,6 @@ msgid "Delete download after writing"
 msgstr "Zbriši prenos po pisanju"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DrivePage|"
 msgid "Write"
 msgstr "Piši"
@@ -759,15 +750,12 @@ msgstr "Ni bilo mogoča odstraniti pogona %1:"
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "S pogona ni možno odstraniti razdelkov"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Ni bilo mogoče odpreti pogona za pisanje"
+msgstr "Ni bilo mogoče odpreti pogona za formatiranje"
 
 #: ../src/helper/win/restorejob.cpp:95
 msgctxt "RestoreJob|"
@@ -1011,20 +999,14 @@ msgid "Couldn't lock the drive"
 msgstr "Ni bilo mogoče zakleniti pogona"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "Ni bilo mogoče odpreti pogona za pisanje"
+msgstr "Ni bilo mogoče odpreti logične ročice"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Ni bilo mogoče zakleniti pogona"
+msgstr "Ni bilo mogoče zakleniti logičnega pogona"
 
 #: ../src/helper/win/writejob.cpp:172
 #, fuzzy
@@ -1052,7 +1034,7 @@ msgstr "Zadnji blok ni bil v celoti zapisan"
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Zapisanih %1 od %2"
 
 #: ../src/helper/win/writejob.cpp:493
 #, fuzzy
