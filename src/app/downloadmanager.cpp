@@ -137,6 +137,14 @@ void DownloadManager::cancel()
     }
 }
 
+void DownloadManager::stopDownload()
+{
+    if (m_current) {
+        m_current->deleteLater();
+        mDebug() << this->metaObject()->className() << "Stopping";
+    }
+}
+
 bool DownloadManager::isDownloaded(const QUrl &url) const
 {
     const QString filePath = QString("%1/%2").arg(DownloadManager::dir()).arg(url.fileName());
