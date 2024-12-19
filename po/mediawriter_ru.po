@@ -10,21 +10,22 @@
 # V I <xasertop@gmail.com>, 2022.
 # Vi <xasertop@gmail.com>, 2023.
 # Makar Razin <makarrazin14@gmail.com>, 2024.
+# Dmitry Kiryanov <kagaminep@yandex.ru>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-01-10 22:36+0000\n"
-"Last-Translator: Makar Razin <makarrazin14@gmail.com>\n"
-"Language-Team: Russian <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/ru/>\n"
+"PO-Revision-Date: 2024-12-19 19:38+0000\n"
+"Last-Translator: Dmitry Kiryanov <kagaminep@yandex.ru>\n"
+"Language-Team: Russian <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.3.1\n"
+"X-Generator: Weblate 5.9.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -126,6 +127,8 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Устройство (включая %1) будет полностью очищено, а выбранный образ будет "
+"записан. Хотите продолжить?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 #, fuzzy
@@ -162,22 +165,22 @@ msgstr "Загрузить и записать"
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "ГБ"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:99
 msgctxt "DeviceWarningDialog|"
 msgid "MB"
-msgstr ""
+msgstr "МБ"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:101
 msgctxt "DeviceWarningDialog|"
 msgid "KB"
-msgstr ""
+msgstr "КБ"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "Байты"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -587,31 +590,31 @@ msgstr "Открыть файл"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 ТБ"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 ГБ"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 МБ"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 КБ"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 байт(ов)"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -827,32 +830,32 @@ msgstr "Не удалось заблокировать диск"
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Не удалось очистить таблицу разделов на диске"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Не удалось установить для диска стиль раздела RAW"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Не удалось создать GPT-раздел на диске"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Не удалось получить GUID пути тома на диске"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Не удалось смонтировать новый раздел"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Не удалось отформатировать раздел в exFAT"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -1110,13 +1113,13 @@ msgstr "Не удалось создать пару сокетов"
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Последний блок был записан не полностью"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Записано %1 из %2"
 
 #: ../src/helper/win/writejob.cpp:493
 #, fuzzy
@@ -1130,7 +1133,7 @@ msgstr "Не удаётся переименовать временный фай
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Не удалось записать весь образ. По итогу записано: %1 из %2"
 
 #: ../src/helper/win/writejob.cpp:519
 #, fuzzy, qt-format
