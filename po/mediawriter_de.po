@@ -16,20 +16,21 @@
 # Lukas Iselor <lukas.iselor@tutanota.com>, 2022.
 # Joachim Philipp <joachim.philipp@gmail.com>, 2022.
 # Jonah Bruechert <jbb@kaidan.im>, 2024.
+# ezberlin ezberlin <ismail.shaban.berlin@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-09-22 15:01+0000\n"
-"Last-Translator: Jonah Bruechert <jbb@kaidan.im>\n"
-"Language-Team: German <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/de/>\n"
+"PO-Revision-Date: 2024-12-27 22:38+0000\n"
+"Last-Translator: ezberlin ezberlin <ismail.shaban.berlin@gmail.com>\n"
+"Language-Team: German <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.9.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -132,6 +133,8 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Das gesamte Gerät (alles aus %1) wird gelöscht und das ausgesuchte Image "
+"wirde auf es geschrieben. Wollen Sie fortfahren?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 #, fuzzy
@@ -150,40 +153,34 @@ msgid "Write"
 msgstr "Schreiben"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
-msgstr "Herunterladen && schreiben"
+msgstr "Herunterladen && Schreiben"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
-msgstr "Herunterladen & schreiben"
+msgstr "Herunterladen & Schreiben"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:99
 msgctxt "DeviceWarningDialog|"
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:101
 msgctxt "DeviceWarningDialog|"
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "Bytes"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -444,20 +441,14 @@ msgid "Write"
 msgstr "Schreiben"
 
 #: ../src/app/qml/DrivePage.qml:171
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DrivePage|"
 msgid "Download && Write"
-msgstr "Herunterladen && schreiben"
+msgstr "Herunterladen && Schreiben"
 
 #: ../src/app/qml/DrivePage.qml:172
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DrivePage|"
 msgid "Download & Write"
-msgstr "Herunterladen & schreiben"
+msgstr "Herunterladen & Schreiben"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -596,31 +587,31 @@ msgstr "Datei öffnen"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 TB"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 KB"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 Byte(s)"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -797,28 +788,19 @@ msgid "%1 Release Candidate"
 msgstr "%1 Release-Kandidat"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Das Laufwerk %1 konnte nicht entfernt werden:"
+msgstr "Die Einhängepunkte konnten nicht entfernt werden"
 
 #: ../src/helper/win/restorejob.cpp:71
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Überprüfung fehlgeschlagen: Keine Laufwerke"
+msgstr "Fehler beim Entfernen von Partitionen"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Speichermedium konnte nicht für den Schreibzugriff geöffnet werden"
+msgstr "Fehler beim Öffnen für den Formatierungszugriff"
 
 #: ../src/helper/win/restorejob.cpp:95
 #, fuzzy
@@ -831,32 +813,32 @@ msgstr "Speichermedium konnte nicht gesperrt werden"
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Fehler beim Reinigen der Partitionstabelle auf dem Gerät"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Fehler beim Setzen des Gerätes auf den RAW-Partitionsstil"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Fehler beim Erstellen einer GPT-Partition auf dem Gerät"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Fehler beim Erhalten des GUID-Speicherkartenpfades auf dem Drive"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Fehler beim Starten der neuen Partition"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Fehler beim Formatieren der Partition zu exFAT"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -974,12 +956,9 @@ msgid "Writing %1 was successful"
 msgstr "Schreiben von %1 war erfolgreich"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "Schreiben von %1 fehlgeschlagen"
+msgstr "Schreiben wurde abgebrochen"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
@@ -1050,28 +1029,19 @@ msgid "Unable to open destination for writing"
 msgstr "Ziel kann nicht zum Schreiben geöffnet werden"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Das Laufwerk %1 konnte nicht entfernt werden:"
+msgstr "Die Einhängepunkte des Laufwerkes konnten nicht entfernt werden"
 
 #: ../src/helper/win/writejob.cpp:129
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Überprüfung fehlgeschlagen: Keine Laufwerke"
+msgstr "Fehler beim Entfernen von Partitionen vom Laufwerk"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Speichermedium konnte nicht für den Schreibzugriff geöffnet werden"
+msgstr "Fehler beim Öffnen des Speichermediums für den Formatierungszugriff"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1079,12 +1049,9 @@ msgid "Couldn't lock the drive"
 msgstr "Speichermedium konnte nicht gesperrt werden"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "Speichermedium konnte nicht für den Schreibzugriff geöffnet werden"
+msgstr "Logikhandle konnte nicht geöffnet werden"
 
 #: ../src/helper/win/writejob.cpp:165
 #, fuzzy
@@ -1095,12 +1062,9 @@ msgid "Couldn't lock the logical drive"
 msgstr "Speichermedium konnte nicht gesperrt werden"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "Sperre des Mediums konnte nicht aufgehoben werden"
+msgstr "Medium konnte nicht entfernt werden"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
 #, fuzzy
