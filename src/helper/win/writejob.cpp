@@ -475,10 +475,9 @@ bool WriteJob::writePlain(HANDLE driveHandle)
             return false;
         }
 
-        if (osWrite.Offset + blockSize < osWrite.Offset) {
-            osWrite.OffsetHigh++;
-        }
-        osWrite.Offset += blockSize;
+        uint64_t newOffset = (static_cast<uint64_t>(osWrite.OffsetHigh) << 32) + osWrite.Offset + readBytes;
+        osWrite.Offset = static_cast<DWORD>(newOffset & 0xFFFFFFFF);
+        osWrite.OffsetHigh = static_cast<DWORD>(newOffset >> 32);
 
         totalBytes += readBytes;
         m_out << totalBytes << "\n";
