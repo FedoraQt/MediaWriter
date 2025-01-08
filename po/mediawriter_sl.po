@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # "#-#-#-#-#  mediawriter.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 # Matjaž Jeran <matjaz.jeran@amis.net>, 2023.
-# Martin Srebotnjak <miles@filmsi.net>, 2024.
+# Martin Srebotnjak <miles@filmsi.net>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-12-13 23:38+0000\n"
+"PO-Revision-Date: 2025-01-08 23:38+0000\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/sl/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 5.8.4\n"
+"X-Generator: Weblate 5.9.2\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
@@ -118,6 +118,8 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Celotna naprava (celoten %1) bo izbrisana in izbrana slika bo zapisana "
+"nanjo. Ali želite nadaljevati?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 msgctxt "DeviceWarningDialog|"
@@ -740,12 +742,9 @@ msgid "%1 Release Candidate"
 msgstr "Kandidat za izdajo %1"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Ni bilo mogoča odstraniti pogona %1:"
+msgstr "Ni bilo mogoče odstraniti priklopnih točk pogona"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
@@ -765,17 +764,17 @@ msgstr "Ni bilo mogoče zakleniti pogona"
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Čiščenje tabele razdelkov na pogonu je spodletelo"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Nastavljanje pogona na slog razdelkov RAW je spodletelo"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Ustvarjanje razdelka GPT na pogonu je spodletelo"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
@@ -785,12 +784,12 @@ msgstr ""
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Priklop novega razdelka je spodletel"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Formatiranje razdelka v exFAT je spodletelo"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -973,25 +972,19 @@ msgid "Unable to open destination for writing"
 msgstr "Ni bilo mogoče odpreti cilja za pisanje"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Ni bilo mogoča odstraniti pogona %1:"
+msgstr "Ni bilo mogoče odstraniti priklopnih točk pogona"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Odstranjevanje razdelkov s pogona je spodletelo"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Ni bilo mogoče odpreti pogona za pisanje"
+msgstr "Ni bilo mogoče odpreti pogona za formatiranje"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1009,20 +1002,14 @@ msgid "Couldn't lock the logical drive"
 msgstr "Ni bilo mogoče zakleniti logičnega pogona"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "Ni bilo mogoče odkleniti pogona"
+msgstr "Ni bilo mogoče odklopiti pogona"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "Para vtičnic ni možno dodeliti"
+msgstr "Medpomnilnika ni možno dodeliti"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
@@ -1037,18 +1024,15 @@ msgid "Wrote %1 out of %2"
 msgstr "Zapisanih %1 od %2"
 
 #: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Ni mogoče preimenovati začasne datoteke."
+msgstr "Datoteke slike ni možno prebrati: "
 
 #: ../src/helper/win/writejob.cpp:499
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Zapis celotne slike je spodletel. Skupaj zapisano %1 od %2"
 
 #: ../src/helper/win/writejob.cpp:519
 #, qt-format
