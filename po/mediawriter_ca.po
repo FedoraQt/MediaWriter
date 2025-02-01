@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2025-02-01 09:44+0000\n"
+"PO-Revision-Date: 2025-02-01 12:13+0000\n"
 "Last-Translator: David Medina <dmedinacpnl@gmail.com>\n"
 "Language-Team: Catalan <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/ca/>\n"
@@ -134,48 +134,39 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
-msgstr "Escriu %1"
+msgstr "Escriu"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
-msgstr "Baixada fallida"
+msgstr "Baixa i escriu"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
-msgstr "Baixada fallida"
+msgstr "Baixa i escriu"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:99
 msgctxt "DeviceWarningDialog|"
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:101
 msgctxt "DeviceWarningDialog|"
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "Bytes"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -201,99 +192,74 @@ msgstr "Expiració de temps de connexió"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr ""
+msgstr "%1 escrit correctament"
 
 #: ../src/app/qml/DownloadPage.qml:38
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "Escriptura"
+msgstr "S'escriu %1"
 
 #: ../src/app/qml/DownloadPage.qml:40
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "Baixada"
+msgstr "Es baixa %1"
 
 #: ../src/app/qml/DownloadPage.qml:42
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "Preparació"
+msgstr "Es prepara %1"
 
 #: ../src/app/qml/DownloadPage.qml:44
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "Preparat per escriure"
+msgstr "A punt per escriure %1"
 
 #: ../src/app/qml/DownloadPage.qml:46
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "Comprovació de la baixada"
+msgstr "Ha fallat baixar %1"
 
 #: ../src/app/qml/DownloadPage.qml:54
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr "(queden %1 B)"
+msgstr " B restants)"
 
 #: ../src/app/qml/DownloadPage.qml:55
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr "(queden %1 KB)"
+msgstr " KB restants)"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr "(queden %1 MB)"
+msgstr " MB restants)"
 
 #: ../src/app/qml/DownloadPage.qml:57
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr "(queden %1 GB)"
+msgstr " GB restants)"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:61
 #: ../src/app/qml/DownloadPage.qml:62 ../src/app/qml/DownloadPage.qml:63
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "La unitat s'ha desconnectat durant el procés"
 
 #: ../src/app/qml/DownloadPage.qml:106
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "Es desarà el fitxer a la vostra carpeta de Baixades."
+msgstr "Les baixades es desen a la carpeta de baixades."
 
 #: ../src/app/qml/DownloadPage.qml:116
 #, fuzzy, qt-format
@@ -480,55 +446,37 @@ msgstr "Tots els fitxers (*)"
 #: ../src/app/qml/DrivePage.qml:119
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "Unitat USB"
 
 #: ../src/app/qml/DrivePage.qml:127
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "No hi ha connectada cap unitat compatible"
 
 #: ../src/app/qml/DrivePage.qml:146
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "Baixada"
+msgstr "Baixa"
 
 #: ../src/app/qml/DrivePage.qml:151
-#, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "Suprimeix de la imatge baixada"
+msgstr "Suprimeix la baixada després d'escriure-la"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "DrivePage|"
 msgid "Write"
-msgstr "Escriu %1"
+msgstr "Escriu"
 
 #: ../src/app/qml/DrivePage.qml:171
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "DrivePage|"
 msgid "Download && Write"
-msgstr "Baixada fallida"
+msgstr "Baixa i escriu"
 
 #: ../src/app/qml/DrivePage.qml:172
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "DrivePage|"
 msgid "Download & Write"
-msgstr "Baixada fallida"
+msgstr "Baixa i escriu"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -607,64 +555,53 @@ msgstr "Escriptura reeixida de %1"
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Seleccioneu una font d'imatge"
 
 #: ../src/app/qml/MainPage.qml:33
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Baixada fallida"
+msgstr "Baixada automàtica"
 
 #: ../src/app/qml/MainPage.qml:40
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "Seleccioneu un fitxer .iso"
 
 #: ../src/app/qml/MainPage.qml:50
-#, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
+#, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "Volau restaurar %1?"
+msgstr "Restaura <b>%1</b>"
 
 #: ../src/app/qml/MainPage.qml:72
 msgctxt "MainPage|"
 msgid "About"
-msgstr ""
+msgstr "Quant a"
 
 #: ../src/app/qml/Page.qml:95
 msgctxt "Page|"
 msgid "Previous"
-msgstr ""
+msgstr "Anterior"
 
 #: ../src/app/qml/Page.qml:105
 msgctxt "Page|"
 msgid "Next"
-msgstr ""
+msgstr "Següent"
 
 #: ../src/app/portalfiledialog.cpp:143
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr "Fitxers d'imatges"
+msgstr "Fitxers d'imatge"
 
 #: ../src/app/portalfiledialog.cpp:153
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "Tots els fitxers (*)"
+msgstr "Tots els fitxers"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "Obre un fitxer"
 
 #: ../src/helper/win/writejob.cpp:398
 #, qt-format
@@ -912,77 +849,55 @@ msgstr "No es pot extraure la unitat %1:"
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Ha fallat suprimir les particions de la unitat"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "No s'ha pogut obrir la unitat per a l'escriptura"
+msgstr "No s'ha pogut obrir la unitat per formatar-la"
 
 #: ../src/helper/win/restorejob.cpp:95
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
-msgstr "No s'ha pogut bloquejar la unitat"
+msgstr "Ha fallat blocar la unitat"
 
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Ha fallat esborrar la taula de particions de la unitat"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Ha fallat configurar la unitat a l'estil de partició RAW"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Ha fallat crear una partició GPT a la unitat"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "No s'ha pogut obtenir el camí del volum GUID a la unitat"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "No s'ha pogut muntar la partició nova"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Ha fallat formatar la partició a exFAT"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "Restaura la unitat <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -992,73 +907,47 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">\n"
-"                                                Per a reclamar tot l'espai "
-"disponible en la unitat, ha de ser restaurat als ajusts de fàbrica.\n"
-"                                                S'eliminarà el sistema "
-"autònom i totes les dades desades.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                No cal que restaureu la "
-"unitat si hi voleu escriure un altre sistema autònom.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Voleu continuar?\n"
-"                                            </p>"
+"<p align=\"justify\"> Per recuperar tot l'espai disponible a la unitat, s'ha "
+"de restaurar a la configuració de fàbrica. El sistema autònom i totes les "
+"dades desades se suprimiran. </p> <p align=\"justify\"> No cal que restaureu "
+"la unitat si voleu escriure-hi un altre sistema autònom. \n"
+"                </p> <p align=\"justify\"> Voleu restaurar-la a la "
+"configuració de fàbrica? </p>"
 
 #: ../src/app/qml/RestorePage.qml:54
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
-"<p align=\"justify\">Si us plau, espereu mentre Fedora Media Writer restaura "
-"la vostra unitat portàtil.</p>"
+"<p align=\"justify\">Si us plau, espereu mentre el Fedora Media Writer "
+"restaura la unitat portàtil.</p>"
 
 #: ../src/app/qml/RestorePage.qml:70
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr "La vostra unitat ha estat restaurada amb èxit!"
+msgstr "La unitat s'ha restaurat correctament!"
 
 #: ../src/app/qml/RestorePage.qml:79
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"Desafortunadament, s'ha produït un error en el procés.<br>Si us plau, proveu "
-"amb la restauració de la unitat mitjançant les eines del sistema."
+"Malauradament, hi ha hagut un error durant el procés. Proveu de restaurar la "
+"unitat amb les eines del sistema."
 
 #: ../src/app/qml/RestorePage.qml:93
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "S'ha acabat la restauració"
 
 #: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "RestorePage|"
 msgid "Finish"
-msgstr "Ha acabat!"
+msgstr "Acaba"
 
 #: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Restaura"
@@ -1066,28 +955,22 @@ msgstr "Restaura"
 #: ../src/app/qml/VersionPage.qml:29
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Seleccioneu la versió de Fedora"
 
 #: ../src/app/qml/VersionPage.qml:32
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "Selecció:"
+msgstr "Opcions de selecció:"
 
 #: ../src/app/qml/VersionPage.qml:37
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Edicions oficials"
 
 #: ../src/app/qml/VersionPage.qml:42
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr "Fedora Labs"
+msgstr "Escriptoris atòmics"
 
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
