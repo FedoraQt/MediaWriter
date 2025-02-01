@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2025-02-01 12:13+0000\n"
+"PO-Revision-Date: 2025-02-01 14:11+0000\n"
 "Last-Translator: David Medina <dmedinacpnl@gmail.com>\n"
 "Language-Team: Catalan <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/ca/>\n"
@@ -981,7 +981,7 @@ msgstr "Variants"
 #: ../src/app/qml/VersionPage.qml:52
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Laboratoris"
 
 #: ../src/app/windrivemanager.cpp:149
 msgctxt "WinDrive|"
@@ -993,21 +993,18 @@ msgstr ""
 #: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "Acabat!"
 
 #: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "S'ha escrit %1 correctament"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "Escriptura fallida de %1"
+msgstr "S'ha cancel·lat l'escriptura"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
@@ -1069,36 +1066,27 @@ msgstr "S'ha produït un error inesperat durant la comprovació del mitjà."
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "No es pot assignar el parell de sòcols"
 
 #: ../src/helper/mac/writejob.cpp:131
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr "No s'ha pogut obrir la unitat per a l'escriptura"
+msgstr "No es pot obrir la destinació per escriure-hi"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "No es pot extraure la unitat %1:"
+msgstr "No s'han pogut suprimir els punts de muntatge de la unitat"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "No s'han pogut suprimir les particions de la unitat"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "No s'ha pogut obrir la unitat per a l'escriptura"
+msgstr "No s'ha pogut obrir la unitat per formatar-la"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1106,90 +1094,68 @@ msgid "Couldn't lock the drive"
 msgstr "No s'ha pogut bloquejar la unitat"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "No s'ha pogut obrir la unitat per a l'escriptura"
+msgstr "No s'ha pogut obrir la nansa lògica"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "No s'ha pogut bloquejar la unitat"
+msgstr "No s'ha pogut blocar la unitat lògica"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "No s'ha pogut desbloquejar la unitat"
+msgstr "No s'ha pogut desmuntar la unitat"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr ""
+msgstr "No s'ha pogut assignar la memòria intermèdia"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "L'últim bloc no estava completament escrit"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "S'ha escrit %1 de %2"
 
 #: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "No es pot reanomenar el fitxer temporal."
+msgstr "Ha fallat llegir el fitxer d'imatge: "
 
 #: ../src/helper/win/writejob.cpp:499
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Ha fallat escriure la imatge sencera. Total d'escrit: %1 de %2"
 
 #: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "No s'ha pogut obrir la unitat per a l'escriptura"
+msgstr "No s'ha pogut obrir la unitat per a la verificació de dades per a %1:"
 
 #: ../src/app/qml/main.qml:81
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
 
 #: ../src/app/qml/main.qml:100
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Fedora Spins"
+msgstr "Seleccioneu la versió de Fedora"
 
 #: ../src/app/qml/main.qml:114
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "Selecció:"
+msgstr "Seleccioneu la unitat"
 
 #: ../src/app/qml/main.qml:139
 msgctxt "main|"
@@ -1243,7 +1209,7 @@ msgstr "Escriviu imatges de Fedora a les vostres unitats portàtils"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;arrencada;"
 
 #, fuzzy
 #~| msgctxt "DownloadDialog|"
