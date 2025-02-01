@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2025-02-01 22:16+0000\n"
+"PO-Revision-Date: 2025-02-02 07:18+0000\n"
 "Last-Translator: Jonáš Loskot <fedoraproject.org@alius.cz>\n"
 "Language-Team: Czech <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/cs/>\n"
@@ -34,7 +34,7 @@ msgstr ""
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr "O Fedora Media Writer"
+msgstr "O aplikaci Fedora Media Writer"
 
 #: ../src/app/qml/AboutDialog.qml:58
 #, qt-format
@@ -51,7 +51,7 @@ msgstr "Fedora Media Writer nyní hledá nově vydané verze"
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr "Prosíme, hlašte chyby nebo pište své návrhy na %1"
+msgstr "Hlaste prosím chyby nebo pište své návrhy na %1"
 
 #: ../src/app/qml/AboutDialog.qml:94
 msgctxt "AboutDialog|"
@@ -61,17 +61,17 @@ msgstr "Zavřít"
 #: ../src/app/qml/CancelDialog.qml:55
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr "Přerušit Stahování?"
+msgstr "Přerušit stahování?"
 
 #: ../src/app/qml/CancelDialog.qml:57
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Přerušit Zápis?"
+msgstr "Přerušit zápis?"
 
 #: ../src/app/qml/CancelDialog.qml:59
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr "Přerušit Ověřování?"
+msgstr "Přerušit ověřování?"
 
 #: ../src/app/qml/CancelDialog.qml:66
 msgctxt "CancelDialog|"
@@ -126,7 +126,7 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
-"Celé zařízení (všech %1) bude smazáno a bude na něj zapsaný vybraný obraz. "
+"Celé zařízení (všech %1) bude smazáno a bude na něj zapsán vybraný obraz. "
 "Chcete pokračovat?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
@@ -137,7 +137,7 @@ msgstr "Storno"
 #: ../src/app/qml/DeviceWarningDialog.qml:82
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
-msgstr "Zápis"
+msgstr "Zapsat"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
 msgctxt "DeviceWarningDialog|"
@@ -193,7 +193,7 @@ msgstr "Čas k připojení vypršel"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr "%1 Úspěšně Zapsán"
+msgstr "Obraz %1 úspěšně zapsán"
 
 #: ../src/app/qml/DownloadPage.qml:38
 #, qt-format
@@ -350,7 +350,7 @@ msgstr "Tento disk není dostatečně velký."
 #: ../src/app/qml/DrivePage.qml:30
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "Možnosti Zápisu"
+msgstr "Možnosti zápisu"
 
 #: ../src/app/qml/DrivePage.qml:37
 msgctxt "DrivePage|"
@@ -360,7 +360,7 @@ msgstr "Verze"
 #: ../src/app/qml/DrivePage.qml:59
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr "Hardwarová Architektura"
+msgstr "Hardwarová architektura"
 
 #: ../src/app/qml/DrivePage.qml:76
 msgctxt "DrivePage|"
@@ -504,7 +504,7 @@ msgstr "Stáhnout automaticky"
 #: ../src/app/qml/MainPage.qml:40
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr "Vyberte .iso soubor"
+msgstr "Vybrat soubor .iso"
 
 #: ../src/app/qml/MainPage.qml:50
 #, qt-format
@@ -743,7 +743,7 @@ msgstr "%1 Beta"
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr "%1 Release Candidate"
+msgstr "%1 kandidát na vydání"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
@@ -858,7 +858,7 @@ msgstr "Obnovit"
 #: ../src/app/qml/VersionPage.qml:29
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr "Vyberte Verzi Fedory"
+msgstr "Vyberte vydání Fedory"
 
 #: ../src/app/qml/VersionPage.qml:32
 msgctxt "VersionPage|"
@@ -868,7 +868,7 @@ msgstr "Vyberte:"
 #: ../src/app/qml/VersionPage.qml:37
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr "Oficiální Edice"
+msgstr "Oficiální edice"
 
 #: ../src/app/qml/VersionPage.qml:42
 msgctxt "VersionPage|"
@@ -984,12 +984,9 @@ msgid "Failed to remove partitions from the drive"
 msgstr "Nepodařilo se odstranit oddíly z disku"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Disk nelze otevřít pro psaní"
+msgstr "Nepodařilo se otevřít disk pro formátování"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -997,70 +994,53 @@ msgid "Couldn't lock the drive"
 msgstr "Disk nelze zamknout"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "Disk nelze otevřít pro psaní"
+msgstr "Nepodařilo se otevřít logickou akci"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Disk nelze zamknout"
+msgstr "Nepodařilo se zamknout logický disk"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "Disk nelze odemknout"
+msgstr "Nepodařilo se odpojit disk"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "nedaří se vytvořit dvojici soketů"
+msgstr "Nepodařilo se alokovat vyrovnávací paměť"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Poslední blok nebyl kompletně zapsán"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Zapsáno %1 z %2"
 
 #: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Nepovedlo se přejmenovat dočasný soubor."
+msgstr "Nepodařilo se přečíst soubor s obrazem: "
 
 #: ../src/helper/win/writejob.cpp:499
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Nepodařilo se zapsat celý obraz. Celkem zapsáno: %1 z %2"
 
 #: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "Disk nelze otevřít pro psaní"
+msgstr "Nepodařilo se otevřít disk pro ověření dat pro %1:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
@@ -1070,12 +1050,12 @@ msgstr "Fedora Media Writer"
 #: ../src/app/qml/main.qml:100
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Vyberte Verzi Fedory"
+msgstr "Vyberte verzi Fedory"
 
 #: ../src/app/qml/main.qml:114
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "Vybrat Disk"
+msgstr "Vybrat disk"
 
 #: ../src/app/qml/main.qml:139
 msgctxt "main|"
