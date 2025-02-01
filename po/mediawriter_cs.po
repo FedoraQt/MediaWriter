@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2025-02-01 22:15+0000\n"
+"PO-Revision-Date: 2025-02-01 22:16+0000\n"
 "Last-Translator: Jonáš Loskot <fedoraproject.org@alius.cz>\n"
 "Language-Team: Czech <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/cs/>\n"
@@ -773,7 +773,7 @@ msgstr "Chyba při odstraňování tabulky oddílů na disku"
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Nepodařilo se nastavit disk na styl oddílů RAW"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
@@ -783,17 +783,17 @@ msgstr "Chyba při vytváření GPT oddílu na disku"
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Nepodařilo se získat cestu úložiště GUID na disku"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Nepodařilo se připojit nový oddíl"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Nepodařilo se naformátovat oddíl na exFAT"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -908,12 +908,9 @@ msgid "Writing %1 was successful"
 msgstr "Zapisování %1 bylo úspěšné"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "Zapisování %1 bylo neúspěšné"
+msgstr "Zápis byl zrušen"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
@@ -983,12 +980,9 @@ msgid "Unable to open destination for writing"
 msgstr "Nelze otevřít cíl pro zápis"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Nepodařilo se odpojit disk %1:"
+msgstr "Nepodařilo se odstranit přípojné body disku"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
