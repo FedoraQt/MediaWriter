@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2025-02-01 14:11+0000\n"
+"PO-Revision-Date: 2025-02-03 11:08+0000\n"
 "Last-Translator: David Medina <dmedinacpnl@gmail.com>\n"
 "Language-Team: Catalan <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/ca/>\n"
@@ -71,6 +71,8 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"La baixada i l'escriptura s'interrompran. Aquest procés es pot reprendre en "
+"qualsevol moment."
 
 #: ../src/app/qml/CancelDialog.qml:68
 msgctxt "CancelDialog|"
@@ -78,42 +80,34 @@ msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
+"El procés d'escriptura s'avortarà i la unitat s'haurà de restaurar després."
 
 #: ../src/app/qml/CancelDialog.qml:70
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "Aquesta operació es pot cancel·lar amb seguretat."
 
 #: ../src/app/qml/CancelDialog.qml:87
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "Continua"
 
 #: ../src/app/qml/CancelDialog.qml:110
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "Baixada"
+msgstr "Cancel·la la baixada"
 
 #: ../src/app/qml/CancelDialog.qml:112
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Escriptura"
+msgstr "Cancel·la l'escriptura"
 
 #: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "Cancel·la la verificació"
 
 #: ../src/app/qml/CancelDialog.qml:116
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -125,11 +119,10 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"S'esborrarà tot el dispositiu (tot el que hi ha a %1) i s'hi escriurà la "
+"imatge seleccionada. Voleu continuar?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -263,75 +256,51 @@ msgid "Downloads are saved to the downloads folder."
 msgstr "Les baixades es desen a la carpeta de baixades."
 
 #: ../src/app/qml/DownloadPage.qml:116
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "Amb l'escriptura, perdreu totes les dades en %1."
+msgstr "Amb l'escriptura, perdreu totes les dades que hi ha a %1."
 
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "Si us plau, inseriu una unitat USB."
 
 #: ../src/app/qml/DownloadPage.qml:133
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using Fedora Media Writer; this will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"La vostra unitat es redimensionarà a una capacitat menor. Podeu tornar-la a "
-"redimensionar a la mida normal amb Fedora Media Writer; això eliminarà els "
-"mitjans d'instal·lació de la vostra unitat."
+"La vostra unitat es canviarà de mida a una capacitat més petita. La podeu "
+"tornar a la mida a la normal amb el Fedora Media Writer. Això suprimirà el "
+"suport d'instal·lació de la vostra unitat."
 
 #: ../src/app/qml/DownloadPage.qml:141
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
-msgstr "Selecció:"
+msgstr "Seleccionat:"
 
 #: ../src/app/qml/DownloadPage.qml:141
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Cap"
 
 #: ../src/app/qml/DownloadPage.qml:149
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your board or device is not supported by Fedora Media Writer yet. Please "
-#| "check <a href=%1>this page</a> for more information about its "
-#| "compatibility with Fedora and how to create bootable media for it."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"La vostra placa o el vostre dispositiu encara no són compatibles amb Fedora "
-"Media Writer. Comproveu <a href=%1>aquesta pàgina</a> per obtenir més "
-"informació sobre la seva compatibilitat amb Fedora i com crear mitjans "
-"d'arrencada."
+"El Fedora Media Writer encara no admet la vostra placa base o dispositiu. Si "
+"us plau, comproveu <a href=%1>aquesta pàgina</a> per obtenir més informació "
+"sobre la compatibilitat amb Fedora i com crear-hi suports d'arrencada."
 
 #: ../src/app/qml/DownloadPage.qml:160
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
@@ -344,31 +313,22 @@ msgstr ""
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "Reinicieu i arrenqueu des de %1 per començar a usar %2."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
 msgstr "Cancel·la"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "DownloadPage|"
 msgid "Write"
-msgstr "Escriu %1"
+msgstr "Escriu"
 
 #: ../src/app/qml/DownloadPage.qml:272
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "Ha acabat!"
+msgstr "Acaba"
 
 #: ../src/app/qml/DownloadPage.qml:274
 #, fuzzy
