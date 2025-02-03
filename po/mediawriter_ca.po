@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2025-02-03 11:08+0000\n"
+"PO-Revision-Date: 2025-02-04 03:31+0000\n"
 "Last-Translator: David Medina <dmedinacpnl@gmail.com>\n"
 "Language-Team: Catalan <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/ca/>\n"
@@ -341,62 +341,41 @@ msgid "This drive is not large enough."
 msgstr "La unitat no és prou gran."
 
 #: ../src/app/qml/DrivePage.qml:30
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "Escriu al disc"
+msgstr "Opcions d'escriptura"
 
 #: ../src/app/qml/DrivePage.qml:37
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "Versió %1"
+msgstr "Versió"
 
 #: ../src/app/qml/DrivePage.qml:59
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "Arquitectura del maquinari"
 
 #: ../src/app/qml/DrivePage.qml:76
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "Selecció:"
+msgstr "Fitxer seleccionat"
 
 #: ../src/app/qml/DrivePage.qml:83
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "Cap"
 
 #: ../src/app/qml/DrivePage.qml:91
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "Selecció:"
+msgstr "Seleccioneu..."
 
 #: ../src/app/qml/DrivePage.qml:108
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr "Fitxers d'imatges"
 
 #: ../src/app/qml/DrivePage.qml:108
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "Tots els fitxers (*)"
@@ -565,31 +544,31 @@ msgstr "Obre un fitxer"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 TB"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 KB"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 byte/s"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -610,20 +589,17 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
 msgid "Fedora Spins"
-msgstr "Fedora Spins"
+msgstr "Variants de Fedora"
 
 #: ../src/app/releasemanager.cpp:453
 msgctxt "Release|"
 msgid "Fedora Labs"
-msgstr "Fedora Labs"
+msgstr "Laboratoris de Fedora"
 
 #: ../src/app/releasemanager.cpp:455
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr "Fedora Labs"
+msgstr "Escriptoris atòmics de Fedora"
 
 #: ../src/app/releasemanager.cpp:457
 msgctxt "Release|"
@@ -631,12 +607,9 @@ msgid "Other"
 msgstr "Altres"
 
 #: ../src/app/releasemanager.cpp:1103
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "64 bits d'Intel"
+msgstr "Intel / AMD 64 bits"
 
 #: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
@@ -646,12 +619,9 @@ msgstr ""
 "(64 bits)"
 
 #: ../src/app/releasemanager.cpp:1104
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "32 bits d'Intel"
+msgstr "Intel / AMD 32 bits"
 
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
@@ -676,12 +646,12 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
-msgstr ""
+msgstr "AArch64"
 
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr ""
+msgstr "Imatge en brut comprimida amb LZMA per a màquines AArch64"
 
 #: ../src/app/releasemanager.cpp:418
 msgctxt "ReleaseListModel|"
@@ -704,28 +674,19 @@ msgid "Unable to rename the temporary file."
 msgstr "No es pot reanomenar el fitxer temporal."
 
 #: ../src/app/releasemanager.h:378
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
-msgstr "Preparació"
+msgstr "Es prepara"
 
 #: ../src/app/releasemanager.h:379
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
-msgstr "Baixada"
+msgstr "Es baixa"
 
 #: ../src/app/releasemanager.h:380
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr "Comprovació de la baixada"
+msgstr "Es comprova la baixada"
 
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
@@ -736,24 +697,18 @@ msgstr "Preparat per escriure"
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
-"S'ha desat el fitxer de la imatge a la vostra carpeta de baixades. No és "
-"possible l'escriptura."
+"S'ha desat el fitxer de la imatge a la carpeta de baixades. No és possible "
+"l'escriptura."
 
 #: ../src/app/releasemanager.h:383
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
-msgstr "Escriptura"
+msgstr "S'escriu"
 
 #: ../src/app/releasemanager.h:384
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
-msgstr "Comprovació de les dades escrites"
+msgstr "Es comproven les dades escrites"
 
 #: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
@@ -766,12 +721,9 @@ msgid "The written data is corrupted"
 msgstr "Les dades escrites estan malmeses"
 
 #: ../src/app/releasemanager.h:387
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr "Baixada fallida"
+msgstr "Ha fallat la baixada"
 
 #: ../src/app/releasemanager.h:388
 msgctxt "ReleaseVariant|"
@@ -797,12 +749,9 @@ msgid "%1 Release Candidate"
 msgstr "versió candidata de %1"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "No es pot extraure la unitat %1:"
+msgstr "No s'han pogut suprimir els punts de muntatge de la unitat"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
