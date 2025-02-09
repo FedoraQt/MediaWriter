@@ -11,7 +11,7 @@
 # Roman Spirgi <bigant@fedoraproject.org>, 2017. #zanata
 # Thomas Eichhorn <tomislav@posteo.de>, 2017. #zanata, 2022.
 # Thomas Eichhorn <tomislav@posteo.de>, 2019. #zanata, 2022.
-# Ettore Atalan <atalanttore@googlemail.com>, 2021, 2022.
+# Ettore Atalan <atalanttore@googlemail.com>, 2021, 2022, 2025.
 # Philipp Trulson <philipp@trulson.de>, 2022.
 # Lukas Iselor <lukas.iselor@tutanota.com>, 2022.
 # Joachim Philipp <joachim.philipp@gmail.com>, 2022.
@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-12-27 22:38+0000\n"
-"Last-Translator: ezberlin ezberlin <ismail.shaban.berlin@gmail.com>\n"
+"PO-Revision-Date: 2025-02-09 23:42+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/de/>\n"
 "Language: de\n"
@@ -119,9 +119,6 @@ msgid "Cancel Verification"
 msgstr "Überprüfung abbrechen"
 
 #: ../src/app/qml/CancelDialog.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -137,17 +134,11 @@ msgstr ""
 "wirde auf es geschrieben. Wollen Sie fortfahren?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
 msgstr "Abbrechen"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
 msgstr "Schreiben"
@@ -339,17 +330,11 @@ msgid "Restart and boot from %1 to start using %2."
 msgstr "Neustarten und von Laufwerk %1 starten um %2 zu benutzen."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
 msgstr "Abbrechen"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DownloadPage|"
 msgid "Write"
 msgstr "Schreiben"
@@ -360,9 +345,6 @@ msgid "Finish"
 msgstr "Fertig"
 
 #: ../src/app/qml/DownloadPage.qml:274
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Retry"
 msgctxt "DownloadPage|"
 msgid "Retry"
 msgstr "Erneut versuchen"
@@ -433,9 +415,6 @@ msgid "Delete download after writing"
 msgstr "Download nach Schreibvorgang löschen"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DrivePage|"
 msgid "Write"
 msgstr "Schreiben"
@@ -545,25 +524,16 @@ msgid "Restore <b>%1</b>"
 msgstr "<b>%1</b> wiederherstellen"
 
 #: ../src/app/qml/MainPage.qml:72
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "About"
 msgctxt "MainPage|"
 msgid "About"
 msgstr "Über"
 
 #: ../src/app/qml/Page.qml:95
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Previous"
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Zurück"
 
 #: ../src/app/qml/Page.qml:105
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Next"
 msgctxt "Page|"
 msgid "Next"
 msgstr "Weiter"
@@ -803,9 +773,6 @@ msgid "Failed to open the drive for formatting"
 msgstr "Fehler beim Öffnen für den Formatierungszugriff"
 
 #: ../src/helper/win/restorejob.cpp:95
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
 msgstr "Speichermedium konnte nicht gesperrt werden"
@@ -893,17 +860,11 @@ msgid "Restoring finished"
 msgstr "Wiederherstellung abgeschlossen"
 
 #: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Finish"
 msgctxt "RestorePage|"
 msgid "Finish"
 msgstr "Fertig"
 
 #: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Wiederherstellen"
@@ -1010,7 +971,7 @@ msgstr "Quell-Abbild ist nicht lesbar"
 #: ../src/helper/win/writejob.cpp:539
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr "Ihr Speichermedium ist vermutlich beschädigt."
+msgstr "Ihr Laufwerk ist vermutlich beschädigt."
 
 #: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
 #: ../src/helper/win/writejob.cpp:544
@@ -1054,12 +1015,9 @@ msgid "Couldn't open the logical handle"
 msgstr "Logikhandle konnte nicht geöffnet werden"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Speichermedium konnte nicht gesperrt werden"
+msgstr "Logisches Laufwerk konnte nicht gesperrt werden"
 
 #: ../src/helper/win/writejob.cpp:172
 msgctxt "WriteJob|"
@@ -1067,46 +1025,40 @@ msgid "Couldn't unmount drive"
 msgstr "Medium konnte nicht entfernt werden"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "Verbundene Sockets konnten nicht zugeordnet werden"
+msgstr "Puffer konnte nicht zugewiesen werden"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Der letzte Block wurde nicht vollständig geschrieben"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "%1 von %2 geschrieben"
 
 #: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Die temporäre Datei konnte nicht umbenannt werden."
+msgstr "Abbilddatei konnte nicht gelesen werden: "
 
 #: ../src/helper/win/writejob.cpp:499
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr ""
+"Fehler beim Schreiben des gesamten Abbilds. Insgesamt geschrieben: %1 von %2"
 
 #: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "Speichermedium konnte nicht für den Schreibzugriff geöffnet werden"
+msgstr ""
+"Das Laufwerk konnte nicht zur Datenverifizierung für %1 geöffnet werden:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
