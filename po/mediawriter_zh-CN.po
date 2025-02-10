@@ -1,21 +1,21 @@
 # #-#-#-#-#  appstream_zh-CN.po  #-#-#-#-#
 # Tong Hui <tonghuix@fedoraproject.org>, 2016. #zanata
-# Charles Lee <lchopn@gmail.com>, 2017. #zanata, 2021.
+# Charles Lee <lchopn@gmail.com>, 2017. #zanata, 2021, 2025.
 # #-#-#-#-#  desktop_zh-CN.po  #-#-#-#-#
 # Tong Hui <tonghuix@fedoraproject.org>, 2016. #zanata
 # #-#-#-#-#  mediawriter_zh-CN.po  #-#-#-#-#
 # Tian Shixiong <tiansworld@fedoraproject.org>, 2016. #zanata
 # Tong Hui <tonghuix@fedoraproject.org>, 2016. #zanata
-# Charles Lee <lchopn@gmail.com>, 2017. #zanata, 2021.
+# Charles Lee <lchopn@gmail.com>, 2017. #zanata, 2021, 2025.
 # lexuge <LEXUGEyky@outlook.com>, 2017. #zanata
-# Pany <geekpany@gmail.com>, 2022.
-# yangyangdaji <1504305527@qq.com>, 2022.
+# Pany <geekpany@gmail.com>, 2022, 2025.
+# yangyangdaji <1504305527@qq.com>, 2022, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2022-08-13 16:19+0000\n"
-"Last-Translator: yangyangdaji <1504305527@qq.com>\n"
+"PO-Revision-Date: 2025-02-10 09:32+0000\n"
+"Last-Translator: Charles Lee <lchopn@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
 "projects/fedora-media-writer/mediawriter/zh_CN/>\n"
 "Language: zh-CN\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Weblate 5.9.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -285,9 +285,8 @@ msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
-msgstr ""
-"你的驱动器将被调整至较小容量。你也可以使用 Fedora Media Writer 将其调整回其正"
-"常容量，但这也将从驱动器上抹除安装介质。"
+msgstr "你的驱动器将被调整至较小容量。你也可以使用 Fedora Media Writer "
+"将其调整回其正常容量，但这也将从驱动器上抹除安装介质。"
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
@@ -612,8 +611,7 @@ msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
-msgstr ""
-"<p>在这里你可以从硬盘上选择一个想要写入优盘的操作系统镜像</p><p>当前只支持写"
+msgstr "<p>在这里你可以从硬盘上选择一个想要写入优盘的操作系统镜像</p><p>当前只支持写"
 "入原始磁盘镜像（.iso 或 .bin 文件）</p>"
 
 #: ../src/app/releasemanager.cpp:451
@@ -852,8 +850,8 @@ msgid ""
 "factory settings? </p>"
 msgstr ""
 "<p align=\"justify\"> 为了使用全部可用空间，该驱动器必须恢复到出厂设置。Live "
-"系统及所有存储数据都会被删除。</p><p align=\"justify\">如果你只是希望写入其"
-"他 live 系统，便不需要重置。\n"
+"系统及所有存储数据都会被删除。</p><p align=\"justify\""
+">如果你只是希望写入其他 live 系统，便不需要重置。\n"
 "                </p><p align=\"justify\">要恢复到出厂设置吗？</p>"
 
 #: ../src/app/qml/RestorePage.qml:54
@@ -1157,19 +1155,18 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
-"一个为各种 Fedora 版本制作可启动 Live USB 设备的工具。Fedora Media Writer 不"
-"仅能将镜像写入优盘中，还能为你下载镜像。它提供官方版（Server、Workstation）、"
-"Fedora 定制版（KDE Plasma 桌面、Xfce 桌面、Cinnamon 桌面等）以及 Fedora 实验"
-"室（设计套件、安全实验室等）。它还提供各版本的基本信息来帮助你做选择。"
+"一个为各种 Fedora 版本制作可启动 Live USB 设备的工具。Fedora Media Writer "
+"不仅能将镜像写入优盘中，还能为你下载镜像。它提供官方版（Server、Workstation）"
+"、Fedora 定制版（KDE Plasma 桌面、Xfce 桌面、Cinnamon 桌面等）以及 Fedora "
+"实验室（设计套件、安全实验室等）。它还提供各版本的基本信息来帮助你做选择。"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
 msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
-msgstr ""
-"Fedora Media Writer 也可以从你本地磁盘载入可启动的 ISO 文件，但请注意这个工具"
-"只测试过 Fedora 镜像。"
+msgstr "Fedora Media Writer 也可以从你本地磁盘载入可启动的 ISO 文件，"
+"但请注意这个工具只测试过 Fedora 镜像。"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"

@@ -7,13 +7,13 @@
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2016. #zanata
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2017. #zanata
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2018. #zanata
-# Yi-Jyun Pan <pan93412@gmail.com>, 2022.
-# yangyangdaji <1504305527@qq.com>, 2022, 2023.
+# Yi-Jyun Pan <pan93412@gmail.com>, 2022, 2025.
+# yangyangdaji <1504305527@qq.com>, 2022, 2023, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2023-06-30 23:20+0000\n"
+"PO-Revision-Date: 2025-02-10 09:32+0000\n"
 "Last-Translator: yangyangdaji <1504305527@qq.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/"
 "projects/fedora-media-writer/mediawriter/zh_TW/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.9.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -284,9 +284,8 @@ msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
-msgstr ""
-"您的裝置將調整成較小的容量。您可以利用 Fedora 媒體寫入器調整回正常大小。這個"
-"動作會從您的裝置中移除安裝媒體。"
+msgstr "您的裝置將調整成較小的容量。您可以利用 Fedora "
+"媒體寫入器調整回正常大小。這個動作會從您的裝置中移除安裝媒體。"
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
@@ -306,8 +305,8 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"Fedora 媒體寫入器尚未支援您的主機板或裝置。請查看<a href=%1>此頁面</a>瞭解更"
-"多其與 Fedora 的相容性資訊，以及製作可開機媒體的方法。"
+"Fedora 媒體寫入器尚未支援您的主機板或裝置。請查看<a href=%1>此頁面</"
+"a>瞭解更多其與 Fedora 的相容性資訊，以及製作可開機媒體的方法。"
 
 #: ../src/app/qml/DownloadPage.qml:160
 #, qt-format
@@ -612,8 +611,8 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
-"<p>此處您可以從您的硬碟機選擇要寫入至快閃式磁碟中的作業系統映像檔</p><p>目前"
-"僅支援寫入原生磁碟映像檔 (.iso 或 .bin)</p>"
+"<p>此處您可以從您的硬碟機選擇要寫入至快閃式磁碟中的作業系統映像檔</"
+"p><p>目前僅支援寫入原生磁碟映像檔 (.iso 或 .bin)</p>"
 
 #: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
@@ -857,8 +856,7 @@ msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
-msgstr ""
-"<p align=\"justify\">請稍候，Fedora 媒體寫入器正在還原您的卸除式裝置時。</p>"
+msgstr "<p align=\"justify\">請稍候，Fedora 媒體寫入器正在還原您的卸除式裝置時。</p>"
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
@@ -1151,19 +1149,18 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
-"為各種 Fedora 版本製作可開機 Live USB 裝置的工具。Fedora 媒體寫入器不只能將映"
-"像檔寫入您的快閃裝置中，它還能替您下載映像檔。它提供官方版（Server、"
-"Workstation）、Fedora Spins（KDE Plasma 桌面、Xfce 桌面、Cinnamon 桌面……"
-"等）、和 Fedora Labs（設計套組、安全實驗室……等）。它提供各版本的基本資訊來幫"
-"助您作選擇。"
+"為各種 Fedora 版本製作可開機 Live USB 裝置的工具。Fedora "
+"媒體寫入器不只能將映像檔寫入您的快閃裝置中，它還能替您下載映像檔。它提供官方"
+"版（Server、Workstation）、Fedora Spins（KDE Plasma 桌面、Xfce 桌面、"
+"Cinnamon 桌面……等）、和 Fedora "
+"Labs（設計套組、安全實驗室……等）。它提供各版本的基本資訊來幫助您作選擇。"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
 msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
-msgstr ""
-"Fedora 媒體寫入器也能寫入您本地端磁碟上的其他可開機 ISO 檔，但請謹記只有 "
+msgstr "Fedora 媒體寫入器也能寫入您本地端磁碟上的其他可開機 ISO 檔，但請謹記只有 "
 "Fedora 映像檔有經過測試。"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
