@@ -1,22 +1,21 @@
 # Ooyama Yosiyuki <qqke6wd9k@apricot.ocn.ne.jp>, 2018. #zanata
-# Hajime Taira <htaira@pantora.net>, 2022.
+# Hajime Taira <htaira@pantora.net>, 2022, 2025.
 # miyako kanaguri <miyako@mailfence.com>, 2024.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-04-24 05:36+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
-"Language-Team: Japanese <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/ja/>\n"
+"PO-Revision-Date: 2025-02-10 09:32+0000\n"
+"Last-Translator: Hajime Taira <htaira@pantora.net>\n"
+"Language-Team: Japanese <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.4\n"
+"X-Generator: Weblate 5.9.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -66,8 +65,7 @@ msgctxt "CancelDialog|"
 msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
-msgstr ""
-"ダウンロードとメディアの書き込みが中断されました。処理を後日継続することがで"
+msgstr "ダウンロードとメディアの書き込みが中断されました。処理を後日継続することがで"
 "きます。"
 
 #: ../src/app/qml/CancelDialog.qml:68
@@ -75,8 +73,7 @@ msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr ""
-"書き込みプロセスが中止されたので、あとでメディアを修復する必要があります。"
+msgstr "書き込みプロセスが中止されたので、あとでメディアを修復する必要があります。"
 
 #: ../src/app/qml/CancelDialog.qml:70
 msgctxt "CancelDialog|"
@@ -279,9 +276,9 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"メディアのサイズが変更されて容量が小さくなります。 Fedora Media Writerを使用"
-"して、サイズを通常に戻すことができます。 これによりメディアからインストールメ"
-"ディアが削除されます。"
+"メディアのサイズが変更されて容量が小さくなります。 Fedora Media "
+"Writerを使用して、サイズを通常に戻すことができます。 "
+"これによりメディアからインストールメディアが削除されます。"
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
@@ -301,9 +298,10 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"お使いの環境もしくはお使いのデバイスはFedora Media Writerでサポートされており"
-"ません。Fedoraとブートメディアの作成に関する要件について詳しくは<a href=%1>こ"
-"ちらのページ</a>をご確認ください。"
+"お使いの環境もしくはお使いのデバイスはFedora Media "
+"Writerでサポートされておりません。"
+"Fedoraとブートメディアの作成に関する要件について詳しくは<a "
+"href=%1>こちらのページ</a>をご確認ください。"
 
 #: ../src/app/qml/DownloadPage.qml:160
 #, qt-format
@@ -311,9 +309,8 @@ msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
-msgstr ""
-"選択したメディアのサイズは %1 です。 間違えて外付けドライブを選択した可能性が"
-"あります!"
+msgstr "選択したメディアのサイズは %1 です。 "
+"間違えて外付けドライブを選択した可能性があります!"
 
 #: ../src/app/qml/DownloadPage.qml:168
 #, qt-format
@@ -447,9 +444,8 @@ msgstr "書き込み中にメディアが取り外されました。"
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
-"ヘルパーバイナリーが見つかりませんでした。インストール環境を確認してくださ"
-"い。"
+msgstr "ヘルパーバイナリーが見つかりませんでした。インストール環境を確認してください"
+"。"
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
@@ -486,9 +482,8 @@ msgstr "UDisks2はシステムから使用できないか、アクセスでき�
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
-"ヘルパーバイナリーが見つかりませんでした。インストール環境を確認してくださ"
-"い。"
+msgstr "ヘルパーバイナリーが見つかりませんでした。インストール環境を確認してください"
+"。"
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
@@ -667,8 +662,7 @@ msgstr "ARM v7"
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr ""
-"LZMA圧縮RAWイメージはRaspberry Pi2/Pi3などのARM v7-Aマシン向けイメージです"
+msgstr "LZMA圧縮RAWイメージはRaspberry Pi2/Pi3などのARM v7-Aマシン向けイメージです"
 
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
@@ -723,8 +717,7 @@ msgstr "書き込みの準備ができています"
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr ""
-"イメージファイルがダウンロードフォルダに保存されました。書き込みは行っていま"
+msgstr "イメージファイルがダウンロードフォルダに保存されました。書き込みは行っていま"
 "せん。"
 
 #: ../src/app/releasemanager.h:383
@@ -850,21 +843,23 @@ msgid ""
 "                </p> <p align=\"justify\"> Do you want to restore it to "
 "factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">メディアで使用可能なすべての領域の再利用を行なうには、"
-"ディアを工場出荷時の設定に復元する必要があります。 Liveブートで保存されたすべ"
-"てのデータが削除されます。</p> <p align = \"justify\">別のLiveイメージをメ"
-"ディアに書き込む場合は、メディアを復元する必要はありません。 \n"
-"                </p> <p align=\"justify\">メディアを工場出荷時の状態に戻しま"
-"すか？</p>"
+"<p align=\"justify\""
+">メディアで使用可能なすべての領域の再利用を行なうには、ディアを工場出荷時の設"
+"定に復元する必要があります。 "
+"Liveブートで保存されたすべてのデータが削除されます。</p> <p align = "
+"\"justify\""
+">別のLiveイメージをメディアに書き込む場合は、メディアを復元する必要はありませ"
+"ん。 \n"
+"                </p> <p align=\"justify\""
+">メディアを工場出荷時の状態に戻しますか？</p>"
 
 #: ../src/app/qml/RestorePage.qml:54
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
-msgstr ""
-"<p align=\"justify\">Fedora Media Writerがポータブルドライブを復元するまでお"
-"待ちください。</p>"
+msgstr "<p align=\"justify\">Fedora Media "
+"Writerがポータブルドライブを復元するまでお待ちください。</p>"
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
@@ -876,9 +871,8 @@ msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
-msgstr ""
-"残念ながら、処理中にエラーが発生しました。 システムツールを使用してドライブを"
-"復元できるか試みてください。"
+msgstr "残念ながら、処理中にエラーが発生しました。 "
+"システムツールを使用してドライブを復元できるか試みてください。"
 
 #: ../src/app/qml/RestorePage.qml:93
 msgctxt "RestorePage|"
@@ -934,8 +928,7 @@ msgstr "Labs"
 #: ../src/app/windrivemanager.cpp:149
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
-"ヘルパーバイナリが見つかりませんでした。 インストール環境を確認してください。"
+msgstr "ヘルパーバイナリが見つかりませんでした。 インストール環境を確認してください。"
 
 #: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 msgctxt "WinDrive|"
@@ -1169,12 +1162,14 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
-"このツールではFedoraのさまざまなエディションのLive USBメディアを作成すること"
-"ができます。Fedora Media Writerはイメージの書き込みだけではなくイメージのダウ"
-"ンロードも行なうことができます。オフィシャルイメージ(Server, Workstation)およ"
-"びFedora Spin(KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktopなど)や、"
-"Fedora Labs(Design Suite, Security Labなど)に対応しています。確かな選択が行え"
-"るように、それぞれについての基本的な情報を提供します。"
+"このツールではFedoraのさまざまなエディションのLive "
+"USBメディアを作成することができます。Fedora Media "
+"Writerはイメージの書き込みだけではなくイメージのダウンロードも行なうことがで"
+"きます。オフィシャルイメージ(Server, Workstation)およびFedora Spin(KDE "
+"Plasma Desktop, Xfce Desktop, Cinnamon Desktopなど)や、Fedora Labs(Design "
+"Suite, Security "
+"Labなど)に対応しています。確かな選択が行えるように、それぞれについての基本的"
+"な情報を提供します。"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -1182,9 +1177,10 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
-"Fedora Media Writerはローカルディスクから読み込まれた他の起動可能なISOイメー"
-"ジを書き込むこともできますが、このツールはFedoraイメージでのみテストされてい"
-"ることに注意してください。"
+"Fedora Media "
+"Writerはローカルディスクから読み込まれた他の起動可能なISOイメージを書き込むこ"
+"ともできますが、このツールはFedoraイメージでのみテストされていることに注意し"
+"てください。"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
