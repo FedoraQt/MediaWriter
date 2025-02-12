@@ -46,7 +46,7 @@ ApplicationWindow {
         Heading {
             level: 2
             Layout.fillWidth: true
-            text: "Erase confirmation"
+            text: qsTr("Erase confirmation")
         }
 
         Label {
