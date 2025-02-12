@@ -25,8 +25,8 @@ msgstr ""
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
 "PO-Revision-Date: 2025-02-10 09:32+0000\n"
 "Last-Translator: grimst <grimaitres@gmail.com>\n"
-"Language-Team: French <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/fr/>\n"
+"Language-Team: French <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -124,6 +124,14 @@ msgstr "Annuler la vérification"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Annuler"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:49
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Easy Administration"
+msgctxt "DeviceWarningDialog|"
+msgid "Erase confirmation"
+msgstr "Administration facile"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -327,7 +335,8 @@ msgstr ""
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr "Redémarrez votre appareil en utilisant %1 pour commencer à utiliser %2."
+msgstr ""
+"Redémarrez votre appareil en utilisant %1 pour commencer à utiliser %2."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
 msgctxt "DownloadPage|"
@@ -1089,7 +1098,8 @@ msgstr "Fedora Media Writer"
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
-msgstr "Un outil pour créer un lecteur USB live contenant une édition de Fedora"
+msgstr ""
+"Un outil pour créer un lecteur USB live contenant une édition de Fedora"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -1442,10 +1452,6 @@ msgstr "fmw;usb;iso;bootable;"
 #~ "système chevronnés, ayant l’expérience de tous les systèmes "
 #~ "d’exploitation, d’utiliser les toutes dernières technologies disponibles "
 #~ "dans la communauté open source."
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "Administration facile"
 
 #~ msgctxt "Release|"
 #~ msgid ""

@@ -17,8 +17,8 @@ msgstr ""
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
 "PO-Revision-Date: 2025-02-10 09:32+0000\n"
 "Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
-"Language-Team: Finnish <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/fi/>\n"
+"Language-Team: Finnish <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -114,6 +114,14 @@ msgstr "Peruuta varmistaminen"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Peru"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:49
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Easy Administration"
+msgctxt "DeviceWarningDialog|"
+msgid "Erase confirmation"
+msgstr "Helppo ylläpito"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -638,7 +646,8 @@ msgstr "ARM v7"
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr "LZMA-pakattu raakalevykuva ARM v7-A -koneille kuten Raspberry Pi 2 ja 3"
+msgstr ""
+"LZMA-pakattu raakalevykuva ARM v7-A -koneille kuten Raspberry Pi 2 ja 3"
 
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
@@ -825,8 +834,8 @@ msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
-"<p align=\"justify\">Odota hetki kun Fedora Media Writer palauttaa "
-"levysi.</p>"
+"<p align=\"justify\">Odota hetki kun Fedora Media Writer palauttaa levysi.</"
+"p>"
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
@@ -1415,10 +1424,6 @@ msgstr "fmw;usb;iso;bootable;"
 #~ "käyttöjärjestelmä, joka mahdollistaa kokeneiden järjestelmän "
 #~ "ylläpitäjien, joilla on kokemusta mistä tahansa käyttöjärjestelmästä, "
 #~ "käyttää viimeisimpiä avoimen lähdekoodin teknologioita."
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "Helppo ylläpito"
 
 #~ msgctxt "Release|"
 #~ msgid ""

@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
 "PO-Revision-Date: 2025-02-10 09:32+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Croatian <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/hr/>\n"
+"Language-Team: Croatian <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -113,6 +113,14 @@ msgstr "Prekini provjeru"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Odustani"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:49
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Easy Administration"
+msgctxt "DeviceWarningDialog|"
+msgid "Erase confirmation"
+msgstr "Jednostavna administracija"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -656,7 +664,8 @@ msgstr "Intel/AMD 64bitni"
 #: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr "Slika ISO formata za Intel, AMD i ostale kompatibilne PC-ove (64-bitne)"
+msgstr ""
+"Slika ISO formata za Intel, AMD i ostale kompatibilne PC-ove (64-bitne)"
 
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
@@ -666,7 +675,8 @@ msgstr "Intel/AMD 32bitni"
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr "Slika ISO formata za Intel, AMD i ostale kompatibilne PC-ove (32-bitne)"
+msgstr ""
+"Slika ISO formata za Intel, AMD i ostale kompatibilne PC-ove (32-bitne)"
 
 #: ../src/app/releasemanager.cpp:1105
 msgctxt "ReleaseArchitecture|"
@@ -1171,10 +1181,10 @@ msgid ""
 msgstr ""
 "Alat stvaranja pokretljivog USB uređaja za izdanja Fedore. Fedora zapisnik "
 "medija uz zapisivanje slika na vaš usb uređaj može i preuzimati slike "
-"umjesto vas. Nudi službena izdanja (Server, Workstation), Fedora spinove ("
-"KDE Plasma radnu površinu, Xfce radnu površinu, Cinnamon radnu površinu,...) "
-"i Fedora labos (Paket za dizajn, Sigurnosni labos,...). Omogućuje osnovne "
-"informacije o svakom izdanju kako bi vam olakšao odabir."
+"umjesto vas. Nudi službena izdanja (Server, Workstation), Fedora spinove "
+"(KDE Plasma radnu površinu, Xfce radnu površinu, Cinnamon radnu "
+"površinu,...) i Fedora labos (Paket za dizajn, Sigurnosni labos,...). "
+"Omogućuje osnovne informacije o svakom izdanju kako bi vam olakšao odabir."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -1504,10 +1514,6 @@ msgstr "fmw;usb;iso;pokretljivo;"
 #~ "ciklusa, koji podržava zajednica i omogućuje iskusnim administratorima "
 #~ "sustava koji imaju iskustvo sa bilo kojim OS-om da koriste najnovije "
 #~ "tehnologije temeljene na poslužitelju dostupne u zajednici otvorenog kôda."
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "Jednostavna administracija"
 
 #~ msgctxt "Release|"
 #~ msgid ""
