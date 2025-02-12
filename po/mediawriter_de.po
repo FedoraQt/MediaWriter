@@ -23,8 +23,8 @@ msgstr ""
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
 "PO-Revision-Date: 2025-02-10 09:32+0000\n"
 "Last-Translator: Jonah Bruechert <jbb@kaidan.im>\n"
-"Language-Team: German <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/de/>\n"
+"Language-Team: German <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -122,6 +122,14 @@ msgstr "Überprüfung abbrechen"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Abbrechen"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:49
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Easy Administration"
+msgctxt "DeviceWarningDialog|"
+msgid "Erase confirmation"
+msgstr "Einfache Administration"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -1107,9 +1115,9 @@ msgstr ""
 "Ein Werkzeug, um einen bootfähigen Live-USB-Datenträger mit einer Ausgabe "
 "von Fedora zu erzeugen. Fedora Media Writer kann nicht nur ein Abbild auf "
 "einen Flash-Datenträger schreiben, sondern auch für Sie herunterladen. Es "
-"werden offizielle Ausgaben angeboten (Server, Workstation), Fedora Spins ("
-"KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop …) und Fedora Labs ("
-"Design Suite, Security Lab …). Grundlegende Informationen zu jeder Ausgabe "
+"werden offizielle Ausgaben angeboten (Server, Workstation), Fedora Spins "
+"(KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop …) und Fedora Labs "
+"(Design Suite, Security Lab …). Grundlegende Informationen zu jeder Ausgabe "
 "werden angezeigt, um Ihnen bei der Auswahl zu helfen."
 
 #. (itstool) path: description/p
@@ -1369,10 +1377,6 @@ msgstr "fmw;usb;iso;bootable;"
 #~ msgctxt "Release|"
 #~ msgid "Systems Engineer"
 #~ msgstr "Systemingenieur"
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "Einfache Administration"
 
 #~ msgctxt "Release|"
 #~ msgid "Database Services"

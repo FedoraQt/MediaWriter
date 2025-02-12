@@ -115,6 +115,14 @@ msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Скасувати"
 
+#: ../src/app/qml/DeviceWarningDialog.qml:49
+#, fuzzy
+#| msgctxt "Release|"
+#| msgid "Easy Administration"
+msgctxt "DeviceWarningDialog|"
+msgid "Erase confirmation"
+msgstr "Просте адміністрування"
+
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
 msgctxt "DeviceWarningDialog|"
@@ -589,8 +597,8 @@ msgid ""
 msgstr ""
 "<p>Тут ви можете вибрати образ операційної системи, що зберігається на диску "
 "вашого комп’ютера, для наступного запису на флешку.</p><p>У поточній версії "
-"передбачено підтримку запису лише простих образів дисків (у форматі .iso або "
-".bin)</p>"
+"передбачено підтримку запису лише простих образів дисків (у форматі .iso "
+"або .bin)</p>"
 
 #: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
@@ -818,9 +826,9 @@ msgid ""
 msgstr ""
 "<p align=\"justify\">  Щоб отримати у розпорядження увесь можливий простір "
 "для зберігання даних на диску, слід відновити його стан до початкового. При "
-"цьому портативну систему та усі збережені дані буде вилучено.</p> <p align="
-"\"justify\">Немає потреби відновлювати носій, якщо ви хочете записати на "
-"нього іншу портативну систему. </p>\n"
+"цьому портативну систему та усі збережені дані буде вилучено.</p> <p "
+"align=\"justify\">Немає потреби відновлювати носій, якщо ви хочете записати "
+"на нього іншу портативну систему. </p>\n"
 "                                            <p align=\"justify\"> Хочете "
 "відновити початкові параметри носія?</p>"
 
@@ -1097,8 +1105,8 @@ msgstr ""
 "системи Fedora на носіях USB. Fedora Media Writer може не лише записувати "
 "образи на вашу флешку, але отримувати ці образи з інтернету. Програма "
 "запропонує вам офіційні випуски (Server, Workstation), Fedora spins (KDE "
-"Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...) та випуски Fedora Labs ("
-"Design Suite, Security Lab,...). Вона надає основну інформацію щодо кожного "
+"Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...) та випуски Fedora Labs "
+"(Design Suite, Security Lab,...). Вона надає основну інформацію щодо кожного "
 "з образів, що допоможе вам зробити правильний вибір."
 
 #. (itstool) path: description/p
@@ -1434,10 +1442,6 @@ msgstr ""
 #~ "адміністраторам з досвідом роботи із будь-якою операційною системою "
 #~ "скористатися найсвіжішими здобутками заснованих на серверах технологій, "
 #~ "які тільки доступні у середовищі із відкритим кодом."
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "Просте адміністрування"
 
 #~ msgctxt "Release|"
 #~ msgid ""
