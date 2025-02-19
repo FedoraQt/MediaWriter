@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2025-02-16 09:38+0000\n"
+"PO-Revision-Date: 2025-02-19 03:24+0000\n"
 "Last-Translator: 김인수 <simmon@nplob.com>\n"
 "Language-Team: Korean <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/ko/>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.10\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -191,7 +191,7 @@ msgstr "%1를 성공적으로 작성됨"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "%1 쓰기"
+msgstr "%1 작성 중"
 
 #: ../src/app/qml/DownloadPage.qml:40
 #, qt-format
@@ -272,8 +272,8 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"당신의 드라이브가 더 작은 공간으로 크기가 조정 될 것입니다. 페도라 미디어 작"
-"성기를 사용하여 정상적으로 되돌려 크기를 재조절 할 수 있습니다. 이는 당신의 "
+"당신의 드라이브가 더 작은 공간으로 크기로 조정됩니다. 페도라 미디어 작성기를 "
+"사용하여 정상적으로 되돌려 크기를 재조정 할 수 있습니다. 이는 당신의 "
 "드라이브에서 설치 미디어가 제거됩니다."
 
 #: ../src/app/qml/DownloadPage.qml:141
@@ -438,7 +438,7 @@ msgstr "완료됨!"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr "작성 %1이 성공적으로 완료되었습니다"
+msgstr "작성 %1가 성공적으로 완료되었습니다"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
@@ -663,7 +663,7 @@ msgstr "임시 파일 명칭을 변경할 수 없음."
 #: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
-msgstr "준비중"
+msgstr "준비 중"
 
 #: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
@@ -737,7 +737,7 @@ msgstr "%1 출시 후보"
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "드라이브 마운트 지점을 제거할 수 없음"
+msgstr "드라이브 적재지점을 제거 할 수 없음"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
@@ -909,7 +909,7 @@ msgstr "압축 해제를 실패함."
 #: ../src/helper/win/writejob.cpp:465
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
-msgstr "대상 드라이브에 작성할 수 없음"
+msgstr "대상 드라이브에 작성 할 수 없음"
 
 #: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
@@ -956,7 +956,7 @@ msgstr "미디어 확인중 예기치 못한 오류가 발생하였습니다."
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr "소켓 쌍을 할당할 수 없음"
+msgstr "소켓 쌍을 할당 할 수 없음"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
@@ -966,12 +966,12 @@ msgstr "작성을 위해 대상을 열 수 없음"
 #: ../src/helper/win/writejob.cpp:122
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "드라이브 마운트 지점을 제거할 수 없음"
+msgstr "드라이브 적재지점을 제거 할 수 없음"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "드라이브에서 파티션을 제거할 수 없음"
+msgstr "드라이브에서 파티션을 제거 할 수 없음"
 
 #: ../src/helper/win/writejob.cpp:140
 msgctxt "WriteJob|"
@@ -996,7 +996,7 @@ msgstr "논리 드라이브를 잠글 수 없음"
 #: ../src/helper/win/writejob.cpp:172
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "드라이브를 마운트 해제할 수 없음"
+msgstr "드라이브를 적재를 해제 할 수 없음"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
 msgctxt "WriteJob|"
