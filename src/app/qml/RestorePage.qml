@@ -33,8 +33,7 @@ Page {
         visible: lastRestoreable.restoreStatus == Units.RestoreStatus.Contains_Live
         Layout.alignment: Qt.AlignHCenter
         Layout.fillWidth: true
-        text: qsTr("<p align=\"justify\"> To reclaim all space available on the drive, it has to be restored to its factory settings. The live system and all saved data will be deleted. </p> <p align=\"justify\"> You don't need to restore the drive if you want to write another live system to it.
-        </p> <p align=\"justify\"> Do you want to restore it to factory settings? </p>" )
+        text: qsTr("<p align=\"justify\"> To reclaim all space available on the drive, it has to be restored to its factory settings. The live system and all saved data will be deleted.</p> <p align=\"justify\"> You don't need to restore the drive if you want to write another live system to it.</p> <p align=\"justify\"> Do you want to restore it to factory settings? </p>" )
         textFormat: Text.RichText
         wrapMode: QQC2.Label.Wrap
     }
