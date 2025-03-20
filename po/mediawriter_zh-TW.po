@@ -10,13 +10,13 @@
 # Yi-Jyun Pan <pan93412@gmail.com>, 2022, 2025.
 # yangyangdaji <1504305527@qq.com>, 2022, 2023, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025.
+# hsu zangmen <chzang55@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
 "PO-Revision-Date: 2025-03-20 03:54+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
+"Last-Translator: hsu zangmen <chzang55@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/"
 "projects/fedora-media-writer/mediawriter/zh_TW/>\n"
 "Language: zh-TW\n"
@@ -116,7 +116,7 @@ msgstr "取消"
 #: ../src/app/qml/DeviceWarningDialog.qml:49
 msgctxt "DeviceWarningDialog|"
 msgid "Erase confirmation"
-msgstr ""
+msgstr "清除確認"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -124,7 +124,8 @@ msgctxt "DeviceWarningDialog|"
 msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
-msgstr ""
+msgstr "整個裝置 (%1 的所有內容) 將會被清除，而選取的映像檔將會寫入其中。 "
+"您要繼續嗎？"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 msgctxt "DeviceWarningDialog|"
@@ -511,17 +512,11 @@ msgid "About"
 msgstr "關於"
 
 #: ../src/app/qml/Page.qml:95
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Previous"
 msgctxt "Page|"
 msgid "Previous"
 msgstr "上一步"
 
 #: ../src/app/qml/Page.qml:105
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Next"
 msgctxt "Page|"
 msgid "Next"
 msgstr "下一步"
@@ -545,31 +540,31 @@ msgstr "開啟檔案"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 TB"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 KB"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 位元組"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -594,15 +589,12 @@ msgstr "Fedora Spins"
 #: ../src/app/releasemanager.cpp:453
 msgctxt "Release|"
 msgid "Fedora Labs"
-msgstr "Fedora Labs"
+msgstr "Fedora 實驗室"
 
 #: ../src/app/releasemanager.cpp:455
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr "Fedora Labs 實驗室"
+msgstr "Fedora 原子桌面"
 
 #: ../src/app/releasemanager.cpp:457
 msgctxt "Release|"
@@ -744,25 +736,19 @@ msgid "%1 Release Candidate"
 msgstr "%1 發行候選 (RC)"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "無法移除裝置 %1："
+msgstr "無法移除磁碟機掛載點"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "無法從磁碟機中刪除分割區"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "無法開啟裝置以供寫入"
+msgstr "開啟磁碟機格式化失敗"
 
 #: ../src/helper/win/restorejob.cpp:95
 msgctxt "RestoreJob|"
@@ -772,32 +758,32 @@ msgstr "無法上鎖該裝置"
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "清除磁碟機上的磁碟分割表失敗"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "未能將磁碟機設定為 RAW 磁碟分割樣式"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "在磁碟機上建立 GPT 磁碟分割失敗"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "取得磁碟機上 GUID 磁碟區路徑失敗"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "掛載新磁碟分割失敗"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "將磁碟分割格式化為 exFAT 失敗"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -871,12 +857,9 @@ msgid "Official Editions"
 msgstr "官方版本"
 
 #: ../src/app/qml/VersionPage.qml:42
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr "Fedora Labs 實驗室"
+msgstr "原子桌面"
 
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
@@ -905,12 +888,9 @@ msgid "Writing %1 was successful"
 msgstr "%1 寫入成功"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "%1 寫入失敗"
+msgstr "寫入已取消"
 
 #: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
@@ -980,25 +960,19 @@ msgid "Unable to open destination for writing"
 msgstr "無法打開寫入目標"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "無法移除裝置 %1："
+msgstr "無法移除磁碟機掛載點"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "從磁碟機移除磁碟分割失敗"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "無法開啟裝置以供寫入"
+msgstr "開啟磁碟機格式化失敗"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1006,70 +980,53 @@ msgid "Couldn't lock the drive"
 msgstr "無法上鎖該裝置"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
 msgstr "無法開啟裝置以供寫入"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "無法上鎖該裝置"
+msgstr "無法鎖定邏輯磁碟機"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "無法解除該裝置的鎖定"
+msgstr "無法卸載硬碟機"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "無法分配套接字對"
+msgstr "分配緩衝區失敗"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "最後一個區塊未完全寫入"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "從 %2 寫入 %1"
 
 #: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "無法重新命名暫存檔案。"
+msgstr "讀取映像檔失敗： "
 
 #: ../src/helper/win/writejob.cpp:499
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "寫入整個映像檔失敗。 寫入總數：%1 出 %2"
 
 #: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "無法開啟裝置以供寫入"
+msgstr "無法為 %1 開啟磁碟機進行資料驗證："
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
