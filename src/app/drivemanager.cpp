@@ -268,8 +268,8 @@ QString Drive::readableSize() const
         sizeStr = QString("%1 GB").arg(m_size / 1000000000.0, 0, 'f', 1);
     } else if (m_size < (1000000000000000UL)) {
         sizeStr = QString("%1 TB").arg(m_size / 1000000000000.0, 0, 'f', 1);
-    } else { // better be ready for exabyte images and drives
-        sizeStr = QString("%1 EB").arg(m_size / 1000000000000000.0, 0, 'f', 1);
+    } else { // better be ready for petabyte images and drives
+        sizeStr = QString("%1 PB").arg(m_size / 1000000000000000.0, 0, 'f', 1);
     }
     return sizeStr;
 }
