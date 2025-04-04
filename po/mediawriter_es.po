@@ -19,9 +19,8 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2025-04-03 17:10+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
+"PO-Revision-Date: 2025-04-04 17:53+0000\n"
+"Last-Translator: Javier Francisco <fserrador@gmail.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/es/>\n"
 "Language: es\n"
@@ -122,12 +121,9 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:49
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Easy Administration"
 msgctxt "DeviceWarningDialog|"
 msgid "Erase confirmation"
-msgstr "Administración sencilla"
+msgstr "Eliminar confirmación"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -136,38 +132,28 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"La unidad completa (todo de %1) será eliminado y la imagen seleccionada será "
+"escrita a ella. ¿Desea continuar?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
 msgstr "Cancelar"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
 msgstr "Escribir"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
-msgstr "Descargar y Escribir"
+msgstr "Descargar y Guardar"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
-msgstr "Descargar y Escribir"
+msgstr "Descargar y Guardar"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
@@ -187,22 +173,22 @@ msgstr "KB"
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr "bytes"
+msgstr "Bytes"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr "No se puede recuperar la imagen solicitada."
+msgstr "No es capaz de recuperar la imagen solicitada."
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr "Se ha quedado sin espacio en su directorio de descargas."
+msgstr "Se ha quedado sin espacio en su carpeta Descargas."
 
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
-msgstr "No se puede escribir en el archivo de descarga."
+msgstr "El archivo descargado no es escribible."
 
 #: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
@@ -243,7 +229,7 @@ msgstr "Listo para escribir %1"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "Descarga fallida de %1"
+msgstr "Ha fallado al descargar %1"
 
 #: ../src/app/qml/DownloadPage.qml:54
 msgctxt "DownloadPage|"
@@ -343,17 +329,11 @@ msgid "Restart and boot from %1 to start using %2."
 msgstr "Reiniciar y arrancar desde %1 para empezar a usar %2."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
 msgstr "Cancelar"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DownloadPage|"
 msgid "Write"
 msgstr "Escribir"
@@ -404,7 +384,7 @@ msgstr "Ninguno"
 #: ../src/app/qml/DrivePage.qml:91
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "Seleccionado..."
+msgstr "Seleccionar…"
 
 #: ../src/app/qml/DrivePage.qml:108
 msgctxt "DrivePage|"
@@ -597,31 +577,31 @@ msgstr "Abrir Archivo"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 TB"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 KB"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 byte(s)"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -670,17 +650,17 @@ msgstr "Intel/AMD 64 bits"
 #: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr "Imagen en formato ISO para Intel, AMD y compatibles (64 bits)"
+msgstr "Imagen en formato ISO para Intel, AMD y compatibles (64-bit)"
 
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Intel/AMD 32 bits"
+msgstr "Intel/AMD 32-bit"
 
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr "Imagen en formato ISO para Intel, AMD y compatibles (32 bits)"
+msgstr "Imagen en formato ISO para Intel, AMD y compatibles (32-bit)"
 
 #: ../src/app/releasemanager.cpp:1105
 msgctxt "ReleaseArchitecture|"
@@ -800,66 +780,54 @@ msgid "%1 Release Candidate"
 msgstr "%1 RC (candidata a lanzamiento)"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "No se pudo quitar la unidad %1:"
+msgstr "No pudo retirar la unidad del punto de montaje"
 
 #: ../src/helper/win/restorejob.cpp:71
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Verificación fallada no hay discos"
+msgstr "No pudo retirar las particiones desde la unidad"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "No se pudo abrir la unidad en modo de escritura"
+msgstr "No fue capaz de abrir la unidad para dar formato"
 
 #: ../src/helper/win/restorejob.cpp:95
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
-msgstr "No se pudo bloquear la unidad"
+msgstr "No pudo bloquear la unidad"
 
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "No pudo vaciar la tabla de partición en la unidad"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "No fue capaz de establecer la unidad a estilo de partición cruda"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "No pudo crear una partición GPT en la unidad"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "No pudo obtener la ruta del volumen GUID en la unidad"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "No pudo montar la partición nueva"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "No pudo dar formato exFAT a la partición"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -951,7 +919,7 @@ msgstr "Escritorios Atomic"
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr "Spins"
+msgstr "Giros"
 
 #: ../src/app/qml/VersionPage.qml:52
 msgctxt "VersionPage|"
@@ -1046,7 +1014,7 @@ msgstr ""
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr "no es posible crear un par de socket"
+msgstr "no es posible crear una pareja de zócalo"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
@@ -1054,109 +1022,85 @@ msgid "Unable to open destination for writing"
 msgstr "No es posible abrir el destino para escritura"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "No se pudo quitar la unidad %1:"
+msgstr "No pudo quitar el punto de montaje de la unidad"
 
 #: ../src/helper/win/writejob.cpp:129
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Verificación fallada no hay discos"
+msgstr "Incorrecto al retirar particiones desde la unidad"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "No se pudo abrir la unidad en modo de escritura"
+msgstr "Incorrecto al abrir la unidad para dar formato"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr "No se pudo bloquear la unidad"
+msgstr "No pudo bloquear la unidad"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "No se pudo abrir la unidad en modo de escritura"
+msgstr "No pudo abrir el manipulador lógico"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "No se pudo bloquear la unidad"
+msgstr "No pudo bloquear la unidad lógica"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "No se pudo desbloquear la unidad"
+msgstr "No pudo desbloquear la unidad"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "no es posible crear un par de socket"
+msgstr "No fue capaz de asignar el tampón"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "El último bloque no fue escrito completamente"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Escribió %1 fuera de %2"
 
 #: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "No se pudo renombrar el archivo temporal."
+msgstr "No fue capaz de leer el archivo de imagen: "
 
 #: ../src/helper/win/writejob.cpp:499
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr ""
+"No fue capaz de escribir la imagen entera. Total escrito: %1 de un total de "
+"%2"
 
 #: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "No se pudo abrir la unidad en modo de escritura"
+msgstr "No pudo abrir la unidad para verificación de datos para %1:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
 msgid "Fedora Media Writer"
-msgstr "Fedora Media Writer"
+msgstr "Escritor de Medios Fedora"
 
 #: ../src/app/qml/main.qml:100
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Seleccionar Version de Fedora"
+msgstr "Seleccionar Versión de Fedora"
 
 #: ../src/app/qml/main.qml:114
 msgctxt "main|"
