@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-04-14 09:10+0000\n"
+"PO-Revision-Date: 2025-04-14 10:54+0000\n"
 "Last-Translator: 김인수 <simmon@nplob.com>\n"
 "Language-Team: Korean <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/ko/>\n"
@@ -735,12 +735,9 @@ msgid "%1 Release Candidate"
 msgstr "%1 출시 후보"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to open the drive for formatting"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "초기화 중에 드라이브를 여는 데 실패함"
+msgstr "작성을 위해 장치를 여는 데 실패함"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
 msgctxt "RestoreJob|"
@@ -748,30 +745,24 @@ msgid "Destination drive is not writable"
 msgstr "대상 드라이브에 작성 할 수 없음"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Failed to read the image file: "
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "이미지 파일을 읽을 수 없음: "
+msgstr "이미지 파일을 가져 올 수 없음"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "파일 크기는 128 블록보다 작습니다"
 
 #: ../src/helper/linux/restorejob.cpp:105
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to remove partitions from the drive"
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "드라이브에서 파티션 제거에 실패함"
+msgstr "파일 지시자를 종료 지역으로 이동하는 데 실패함"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "자료를 디스크로 동기화 하는 데 실패함"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
@@ -841,7 +832,7 @@ msgstr ""
 "<p align=\"justify\"> 드라이브에 사용 가능한 모든 공간을 회수하려면, 공장 "
 "초기화로 복원해야 합니다. 라이브 시스템 및 저장된 모든 자료가 삭제됩니다. </"
 "p> <p align=“justify”> 다른 실시간 시스템을 드라이브에 작성하려는 경우 "
-"드라이브를 복원 할 필요가 없습니다. </p> <p align=“justify”> 공장 초기화("
+"드라이브를 복원 할 필요가 없습니다. </p> <p align=\"justify\"> 공장 초기화("
 "초기 설정)로 복원할까요? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
