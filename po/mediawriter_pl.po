@@ -14,8 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
 "PO-Revision-Date: 2025-04-15 16:13+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/pl/>\n"
 "Language: pl\n"
@@ -757,12 +756,9 @@ msgid "%1 Release Candidate"
 msgstr "%1 RC"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to open the drive for formatting"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "Otwarcie dysku do sformatowania się nie powiodło"
+msgstr "Otwarcie urządzenia do zapisu się nie powiodło"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
 msgctxt "RestoreJob|"
@@ -770,30 +766,24 @@ msgid "Destination drive is not writable"
 msgstr "Dysk docelowy nie jest zapisywalny"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Failed to read the image file: "
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "Odczytanie pliku obrazu się nie powiodło: "
+msgstr "Uzyskanie rozmiaru pliku się nie powiodło"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "Rozmiar pliku jest mniejszy niż 128 bloków"
 
 #: ../src/helper/linux/restorejob.cpp:105
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to remove partitions from the drive"
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "Usunięcie partycji z dysków się nie powiodło"
+msgstr "Przeniesienie wskaźnika pliku do regionu końcowego się nie powiodło"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "Zsynchronizowanie danych na dysku się nie powiodło"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
@@ -852,15 +842,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Przywrócenie dysku <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid ""
-#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
-#| "to be restored to its factory settings. The live system and all saved "
-#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
-#| "restore the drive if you want to write another live system to it. \n"
-#| "                </p> <p align=\"justify\"> Do you want to restore it to "
-#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -871,10 +852,9 @@ msgid ""
 msgstr ""
 "<p align=\"justify\"> Aby odzyskać całe dostępne miejsce, należy przywrócić "
 "dysk do ustawień fabrycznych. System Live i wszystkie zapisane na nim dane "
-"zostaną usunięte. </p> <p align=\"justify\"> Nie trzeba przywracać dysku, "
-"jeśli ma być na nim zapisany inny system Live. \n"
-"                </p> <p align=\"justify\"> Przywrócić go do ustawień "
-"fabrycznych? </p>"
+"zostaną usunięte.</p> <p align=\"justify\"> Nie trzeba przywracać dysku, "
+"jeśli ma być na nim zapisany inny system Live.</p> <p align=\"justify\"> "
+"Przywrócić go do ustawień fabrycznych? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
