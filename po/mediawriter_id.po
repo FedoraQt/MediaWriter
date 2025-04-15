@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-04-02 06:07+0000\n"
-"Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
+"PO-Revision-Date: 2025-04-15 11:53+0000\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/id/>\n"
 "Language: id\n"
@@ -746,51 +746,39 @@ msgid "%1 Release Candidate"
 msgstr "%1 Kandidat Rilis"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to open the drive for formatting"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "Gagal membuka drive untuk memformat"
+msgstr "Gagal membuka peranti untuk menulis"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Destination drive is not writable"
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
 msgstr "Drive tujuan tidak dapat ditulisi"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Failed to read the image file: "
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "Gagal membaca file image: "
+msgstr "Gagal mendapatkan ukuran berkas"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "Ukuran berkas kurang dari 128 blok"
 
 #: ../src/helper/linux/restorejob.cpp:105
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to remove partitions from the drive"
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "Gagal menghapus partisi dari drive"
+msgstr "Gagal memindah pointer berkas ke wilayah akhir"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "Gagal menyelaraskan data ke disk"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Tidak dapat menghapus mountpoint drive"
+msgstr "Tak bisa menghapus titik kait drive"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
@@ -844,15 +832,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Pulihkan Drive <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid ""
-#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
-#| "to be restored to its factory settings. The live system and all saved "
-#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
-#| "restore the drive if you want to write another live system to it. \n"
-#| "                </p> <p align=\"justify\"> Do you want to restore it to "
-#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -864,9 +843,8 @@ msgstr ""
 "<p align=\"justify\"> Untuk memperoleh kembali semua ruang yang tersedia "
 "pada drive, itu mesti dipulihkan ke setelan pabrik. Sistem live dan semua "
 "data yang disimpan akan dihapus.</p><p align=\"justify\"> Anda tidak perlu "
-"memulihkan drive bila Anda hendak menulis sistem live lain ke sana.\n"
-"                 </p><p align=\"justify\"> Apakah Anda hendak memulihkan ke "
-"setelan pabrik?</p>"
+"memulihkan drive bila Anda hendak menulis sistem live lain ke sana.</p><p "
+"align=\"justify\"> Apakah Anda hendak memulihkan ke setelan pabrik?</p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
