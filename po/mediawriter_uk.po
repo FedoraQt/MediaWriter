@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-02-13 11:13+0000\n"
+"PO-Revision-Date: 2025-04-15 11:53+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/uk/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.10.4\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -756,46 +756,34 @@ msgid "%1 Release Candidate"
 msgstr "%1 RC"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to open the drive for formatting"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "Не вдалося відкрити диск для форматування"
+msgstr "Не вдалося відкрити пристрій для запису"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Destination drive is not writable"
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
 msgstr "Непридатний до запису диск призначення"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Failed to read the image file: "
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "Не вдалося прочитати файл образу: "
+msgstr "Не вдалося отримати розмір файла"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "Розмір файла є меншим за 128 блоків"
 
 #: ../src/helper/linux/restorejob.cpp:105
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to remove partitions from the drive"
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "Не вдалося вилучити розділи на диску"
+msgstr "Не вдалося пересунути вказівник файла на кінцеву ділянку"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "Не вдалося синхронізувати дані на диск"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
@@ -854,15 +842,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Відновити носій <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid ""
-#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
-#| "to be restored to its factory settings. The live system and all saved "
-#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
-#| "restore the drive if you want to write another live system to it. \n"
-#| "                </p> <p align=\"justify\"> Do you want to restore it to "
-#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -871,13 +850,12 @@ msgid ""
 "you want to write another live system to it.</p> <p align=\"justify\"> Do "
 "you want to restore it to factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">  Щоб отримати у розпорядження увесь можливий простір "
+"<p align=\"justify\"> Щоб отримати у розпорядження увесь можливий простір "
 "для зберігання даних на диску, слід відновити його стан до початкового. При "
-"цьому портативну систему та усі збережені дані буде вилучено.</p> <p "
-"align=\"justify\">Немає потреби відновлювати носій, якщо ви хочете записати "
-"на нього іншу портативну систему. </p>\n"
-"                                            <p align=\"justify\"> Хочете "
-"відновити початкові параметри носія?</p>"
+"цьому портативну систему та усі збережені дані буде вилучено.</p> <p align="
+"\"justify\">Немає потреби відновлювати носій, якщо ви хочете записати на "
+"нього іншу портативну систему. </p> <p align=\"justify\"> Хочете відновити "
+"початкові параметри носія?</p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
