@@ -60,7 +60,7 @@ Var UninstLog
 
 RequestExecutionLevel admin ;Require admin rights on NT6+ (When UAC is turned on)
 
-InstallDir "$PROGRAMFILES\${APPNAME}"
+InstallDir "$PROGRAMFILES64\${APPNAME}"
 
 # rtf or txt file - remember if it is txt, it must be in the DOS text format (\r\n)
 LicenseData "../../build/app/release/LICENSE.GPL-2.txt"
