@@ -11,16 +11,16 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-02-10 09:32+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
-"Language-Team: Slovak <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/sk/>\n"
+"PO-Revision-Date: 2025-04-17 18:27+0000\n"
+"Last-Translator: Ondrej Sulek <feonsu@gmail.com>\n"
+"Language-Team: Slovak <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.11\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -112,12 +112,9 @@ msgid "Cancel"
 msgstr "Zrušiť"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:49
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Easy Administration"
 msgctxt "DeviceWarningDialog|"
 msgid "Erase confirmation"
-msgstr "Jednoduchá správa"
+msgstr "Potvrdenie vymazania"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -126,35 +123,25 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Celé zariadenie (všetko z %1) bude vymazané a vybraný obraz bude naň "
+"zapísaný. Chcete pokračovať?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
-#, fuzzy
-#| msgctxt "CancelDialog|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
 msgstr "Zrušiť"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
 msgstr "Zapísať"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
 msgstr "Stiahnuť a zapísať"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
 msgstr "Stiahnuť a zapísať"
@@ -162,22 +149,22 @@ msgstr "Stiahnuť a zapísať"
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:99
 msgctxt "DeviceWarningDialog|"
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:101
 msgctxt "DeviceWarningDialog|"
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "Bajtov"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -331,33 +318,21 @@ msgid "Restart and boot from %1 to start using %2."
 msgstr "Reštartujte a spustite systém z %1 pokiaľ chcete začať používať %2."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
-#, fuzzy
-#| msgctxt "CancelDialog|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
 msgstr "Zrušiť"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DownloadPage|"
 msgid "Write"
 msgstr "Zapísať"
 
 #: ../src/app/qml/DownloadPage.qml:272
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "Dokončené!"
+msgstr "Dokončiť"
 
 #: ../src/app/qml/DownloadPage.qml:274
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Retry"
 msgctxt "DownloadPage|"
 msgid "Retry"
 msgstr "Opakovať"
@@ -428,25 +403,16 @@ msgid "Delete download after writing"
 msgstr "Vymazať stiahnutý obraz po zápise"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DrivePage|"
 msgid "Write"
 msgstr "Zapísať"
 
 #: ../src/app/qml/DrivePage.qml:171
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DrivePage|"
 msgid "Download && Write"
 msgstr "Stiahnuť a zapísať"
 
 #: ../src/app/qml/DrivePage.qml:172
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DrivePage|"
 msgid "Download & Write"
 msgstr "Stiahnuť a zapísať"
@@ -542,25 +508,16 @@ msgid "Restore <b>%1</b>"
 msgstr "Obnoviť <b>%1</b>"
 
 #: ../src/app/qml/MainPage.qml:72
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "About"
 msgctxt "MainPage|"
 msgid "About"
 msgstr "O aplikácii"
 
 #: ../src/app/qml/Page.qml:100
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Previous"
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Späť"
 
 #: ../src/app/qml/Page.qml:110
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Next"
 msgctxt "Page|"
 msgid "Next"
 msgstr "Ďalej"
@@ -584,31 +541,31 @@ msgstr "Otvoriť súbor"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 TB"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 KB"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 bajtov"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -784,69 +741,51 @@ msgid "%1 Release Candidate"
 msgstr "%1 RC"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "Nepodarilo sa otvoriť disk na zápis"
+msgstr "Nepodarilo sa otvoriť zariadenie na zápis"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Destination drive is not writable"
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
 msgstr "Na cieľový disk nie je možné zapisovať"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "Nepodarilo sa premenovať dočasný súbor."
+msgstr "Nepodarilo sa získať veľkosť súboru"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "Veľkosť súboru je menšia ako 128 blokov"
 
 #: ../src/helper/linux/restorejob.cpp:105
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr ""
+msgstr "Nepodarilo sa presunúť ukazovateľ súboru na koncovú oblasť"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "Nepodarilo sa synchronizovať údaje na disk"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Nepodarilo sa odpojiť disk %1:"
+msgstr "Nepodarilo sa odstrániť prípojné body disku"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Nepodarilo sa odstrániť oddiely z disku"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Nepodarilo sa otvoriť disk na zápis"
+msgstr "Nepodarilo sa otvoriť disk na formátovanie"
 
 #: ../src/helper/win/restorejob.cpp:95
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
 msgstr "Nepodarilo sa zamknúť disk"
@@ -854,32 +793,32 @@ msgstr "Nepodarilo sa zamknúť disk"
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Nepodarilo sa vymazať tabuľku oddielov na disku"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Nepodarilo sa nastaviť disk na štýl oddielu RAW"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Nepodarilo sa vytvoriť GPT oddiel na disku"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Nepodarilo sa získať GUID cestu k zväzku na disku"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Nepodarilo sa pripojiť nový oddiel"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Nepodarilo sa naformátovať oddiel na exFAT"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -888,15 +827,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Obnoviť disk <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid ""
-#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
-#| "to be restored to its factory settings. The live system and all saved "
-#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
-#| "restore the drive if you want to write another live system to it. \n"
-#| "                </p> <p align=\"justify\"> Do you want to restore it to "
-#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -907,10 +837,9 @@ msgid ""
 msgstr ""
 "<p align=\"justify\"> Pre získanie všetkého dostupného miesta na disku je ho "
 "potrebné obnoviť do výrobných nastavení. Live systém a všetky uložené dáta "
-"budú vymazané. </p> <p align=\"justify\"> Ak chcete na disk zapísať iný live "
-"systém, tak disk nemusíte obnovovať. \n"
-"                </p> <p align=\"justify\"> Chcete obnoviť disk do výrobných "
-"nastavení? </p>"
+"budú vymazané.  </p> <p align=\"justify\"> Ak chcete na disk zapísať iný "
+"live systém, tak disk nemusíte obnovovať.</p> <p align=\"justify\"> Chcete "
+"obnoviť disk do výrobných nastavení? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
@@ -941,17 +870,11 @@ msgid "Restoring finished"
 msgstr "Obnova dokončená"
 
 #: ../src/app/qml/RestorePage.qml:110
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Finish"
 msgctxt "RestorePage|"
 msgid "Finish"
 msgstr "Dokončiť"
 
 #: ../src/app/qml/RestorePage.qml:110
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Obnoviť"
@@ -1003,12 +926,9 @@ msgid "Writing %1 was successful"
 msgstr "Zapisovanie %1 bolo úspešné"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "Zapisovanie %1 zlyhalo"
+msgstr "Zapisovanie bolo zrušené"
 
 #: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
@@ -1078,25 +998,19 @@ msgid "Unable to open destination for writing"
 msgstr "Nepodarilo sa otvoriť cieľ pre zápis"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Nepodarilo sa odpojiť disk %1:"
+msgstr "Nepodarilo sa odstrániť prípojné body disku"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Nepodarilo sa odstrániť oddiely z disku"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Nepodarilo sa otvoriť disk na zápis"
+msgstr "Nepodarilo sa otvoriť disk na formátovanie"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1104,70 +1018,53 @@ msgid "Couldn't lock the drive"
 msgstr "Nepodarilo sa zamknúť disk"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "Nepodarilo sa otvoriť disk na zápis"
+msgstr "Nepodarilo sa otvoriť logickú akciu"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Nepodarilo sa zamknúť disk"
+msgstr "Nepodarilo sa zamknúť logický disk"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "Nepodarilo sa odomknúť disk"
+msgstr "Nepodarilo sa odpojiť disk"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "Nepodarilo sa prideliť dvojicu soketov"
+msgstr "Nepodarilo sa alokovať vyrovnávaciu pamäť"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Posledný blok nebol úplne zapísaný"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Zapísané %1 z %2"
 
 #: ../src/helper/win/writejob.cpp:492
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Nepodarilo sa premenovať dočasný súbor."
+msgstr "Nepodarilo sa prečítať súbor obrazu: "
 
 #: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Nepodarilo sa zapísať celý obraz. Celkom zapísané: %1 z %2"
 
 #: ../src/helper/win/writejob.cpp:518
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "Nepodarilo sa otvoriť disk na zápis"
+msgstr "Nepodarilo sa otvoriť disk na overenie údajov pre %1:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
