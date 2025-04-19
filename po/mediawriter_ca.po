@@ -7,20 +7,21 @@
 # Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2017. #zanata
 # David Medina <dmedinacpnl@gmail.com>, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025.
+# naly zzwd <xeanhort007@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-02-16 09:38+0000\n"
-"Last-Translator: David Medina <dmedinacpnl@gmail.com>\n"
-"Language-Team: Catalan <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/ca/>\n"
+"PO-Revision-Date: 2025-04-19 13:33+0000\n"
+"Last-Translator: naly zzwd <xeanhort007@gmail.com>\n"
+"Language-Team: Catalan <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.11\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -37,7 +38,7 @@ msgstr "Versió %1"
 #: ../src/app/qml/AboutDialog.qml:65
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Fedora Media Writer ara comprova si té llançaments nous"
+msgstr "Fedora Media Writer ara està comprovant si hi ha llançaments nous"
 
 #: ../src/app/qml/AboutDialog.qml:71
 #, qt-format
@@ -145,7 +146,7 @@ msgstr "Baixa i escriu"
 #: ../src/app/qml/DeviceWarningDialog.qml:85
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
-msgstr "Baixa i escriu"
+msgstr "Baixa i Escriu"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
@@ -221,7 +222,7 @@ msgstr "A punt per escriure %1"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "Ha fallat baixar %1"
+msgstr "No s'ha pogut descarregar %1"
 
 #: ../src/app/qml/DownloadPage.qml:54
 msgctxt "DownloadPage|"
@@ -413,7 +414,7 @@ msgstr "Escriu"
 #: ../src/app/qml/DrivePage.qml:171
 msgctxt "DrivePage|"
 msgid "Download && Write"
-msgstr "Baixa i escriu"
+msgstr "Baixa i Escriu"
 
 #: ../src/app/qml/DrivePage.qml:172
 msgctxt "DrivePage|"
@@ -533,7 +534,7 @@ msgstr "Següent"
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr "Fitxers d'imatge"
+msgstr "Fitxers d'imatges"
 
 #: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
@@ -703,7 +704,7 @@ msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
 "S'ha desat el fitxer de la imatge a la carpeta de baixades. No és possible "
-"l'escriptura."
+"l'escriptura"
 
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
@@ -713,7 +714,7 @@ msgstr "S'escriu"
 #: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
-msgstr "Es comproven les dades escrites"
+msgstr "Comprovant les dades escrites"
 
 #: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
@@ -728,7 +729,7 @@ msgstr "Les dades escrites estan malmeses"
 #: ../src/app/releasemanager.h:387
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr "Ha fallat la baixada"
+msgstr "Baixada fallida"
 
 #: ../src/app/releasemanager.h:388
 msgctxt "ReleaseVariant|"
@@ -754,12 +755,9 @@ msgid "%1 Release Candidate"
 msgstr "versió candidata de %1"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to open the drive for formatting"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "No s'ha pogut obrir la unitat per formatar-la"
+msgstr "No s'ha pogut obrir el dispositiu per a escriure-hi"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
 #, fuzzy
@@ -770,30 +768,24 @@ msgid "Destination drive is not writable"
 msgstr "La unitat de destí no és d'escriptura"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Failed to read the image file: "
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "Ha fallat llegir el fitxer d'imatge: "
+msgstr "No s'ha pogut obtenir la mida del fitxer"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "La mida del fitxer és inferior a 128 blocs"
 
 #: ../src/helper/linux/restorejob.cpp:105
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to remove partitions from the drive"
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "Ha fallat suprimir les particions de la unitat"
+msgstr "No s'ha pogut moure el punter del fitxer a l'última regió"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "No s'han pogut sincronitzar les dades amb el disc"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
@@ -852,15 +844,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Restaura la unitat <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid ""
-#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
-#| "to be restored to its factory settings. The live system and all saved "
-#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
-#| "restore the drive if you want to write another live system to it. \n"
-#| "                </p> <p align=\"justify\"> Do you want to restore it to "
-#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -870,11 +853,11 @@ msgid ""
 "you want to restore it to factory settings? </p>"
 msgstr ""
 "<p align=\"justify\"> Per recuperar tot l'espai disponible a la unitat, s'ha "
-"de restaurar a la configuració de fàbrica. El sistema autònom i totes les "
-"dades desades se suprimiran. </p> <p align=\"justify\"> No cal que restaureu "
-"la unitat si voleu escriure-hi un altre sistema autònom. \n"
-"                </p> <p align=\"justify\"> Voleu restaurar-la a la "
-"configuració de fàbrica? </p>"
+"de restaurar a la configuració de fàbrica. El sistema autònom (live) i totes "
+"les dades desades se suprimiran.</p> <p align=\"justify\"> No cal que "
+"restaureu la unitat si voleu escriure-hi un altre sistema autònom (live).</"
+"p> <p align=\"justify\"> Voleu restaurar-la a la configuració de fàbrica? "
+"</p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
@@ -954,7 +937,7 @@ msgstr ""
 #: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr "Acabat!"
+msgstr "Ha acabat!"
 
 #: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 #, qt-format
