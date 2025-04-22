@@ -29,14 +29,14 @@ jobs:
           make -j5
 
   Flatpak:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     container:
-      image: docker.io/bilelmoussaoui/flatpak-github-actions:kde-6.6
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.8
       options: --privileged
     steps:
       - uses: actions/checkout@v4
 
-      - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
+      - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
         with:
           bundle: "org.fedoraproject.MediaWriter.flatpak"
           manifest-path: "dist/flatpak/org.fedoraproject.MediaWriter.json"

@@ -1,18 +1,23 @@
 {
     "id": "org.fedoraproject.MediaWriter",
     "runtime": "org.kde.Platform",
-    "runtime-version": "6.6",
+    "runtime-version": "6.8",
     "sdk": "org.kde.Sdk",
     "command": "mediawriter",
     "finish-args": [
-        "--socket=x11",
-        "--socket=wayland",
         "--device=all",
         "--filesystem=host",
+        "--socket=fallback-x11",
+        "--socket=wayland",
         "--share=network",
         "--share=ipc",
-        "--talk-name=org.freedesktop.Notifications",
-        "--system-talk-name=org.freedesktop.UDisks2"
+        "--system-talk-name=org.freedesktop.UDisks2",
+        "--talk-name=org.freedesktop.Notifications"
+    ],
+    "cleanup": [
+        "/include",
+        "/lib/cmake",
+        "/lib/pkgconfig"
     ],
     "modules": [
         {
