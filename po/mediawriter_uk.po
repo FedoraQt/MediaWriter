@@ -1,17 +1,17 @@
 # #-#-#-#-#  appstream_uk.po  #-#-#-#-#
-# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2021, 2022, 2024.
+# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2021, 2022, 2024, 2025.
 # #-#-#-#-#  desktop_uk.po  #-#-#-#-#
-# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2021, 2022, 2024.
+# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2021, 2022, 2024, 2025.
 # #-#-#-#-#  mediawriter_uk.po  #-#-#-#-#
-# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2021, 2022, 2024.
-# Yuri Chornoivan <yurchor@ukr.net>, 2017. #zanata, 2021, 2022, 2024.
-# Yuri Chornoivan <yurchor@ukr.net>, 2019. #zanata, 2021, 2022, 2024.
+# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2021, 2022, 2024, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2017. #zanata, 2021, 2022, 2024, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2019. #zanata, 2021, 2022, 2024, 2025.
 # Andrii Serbovets <serbovets.translation@gmail.com>, 2021.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-10-31 15:00+0000\n"
+"POT-Creation-Date: 2025-04-14 10:13+0200\n"
+"PO-Revision-Date: 2025-04-15 11:53+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/uk/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.10.4\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -114,6 +114,11 @@ msgstr "Скасувати перевірку"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Скасувати"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:49
+msgctxt "DeviceWarningDialog|"
+msgid "Erase confirmation"
+msgstr "Підтвердження витирання"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -520,12 +525,12 @@ msgctxt "MainPage|"
 msgid "About"
 msgstr "Відомості"
 
-#: ../src/app/qml/Page.qml:95
+#: ../src/app/qml/Page.qml:100
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Назад"
 
-#: ../src/app/qml/Page.qml:105
+#: ../src/app/qml/Page.qml:110
 msgctxt "Page|"
 msgid "Next"
 msgstr "Далі"
@@ -750,6 +755,36 @@ msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "%1 RC"
 
+#: ../src/helper/linux/restorejob.cpp:67
+msgctxt "RestoreJob|"
+msgid "Failed to open device for writing"
+msgstr "Не вдалося відкрити пристрій для запису"
+
+#: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
+msgctxt "RestoreJob|"
+msgid "Destination drive is not writable"
+msgstr "Непридатний до запису диск призначення"
+
+#: ../src/helper/linux/restorejob.cpp:91
+msgctxt "RestoreJob|"
+msgid "Failed to get file size"
+msgstr "Не вдалося отримати розмір файла"
+
+#: ../src/helper/linux/restorejob.cpp:98
+msgctxt "RestoreJob|"
+msgid "File size is smaller than 128 blocks"
+msgstr "Розмір файла є меншим за 128 блоків"
+
+#: ../src/helper/linux/restorejob.cpp:105
+msgctxt "RestoreJob|"
+msgid "Failed to move file pointer to the end region"
+msgstr "Не вдалося пересунути вказівник файла на кінцеву ділянку"
+
+#: ../src/helper/linux/restorejob.cpp:122
+msgctxt "RestoreJob|"
+msgid "Failed to sync data to disk"
+msgstr "Не вдалося синхронізувати дані на диск"
+
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
@@ -811,20 +846,18 @@ msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
 "be restored to its factory settings. The live system and all saved data will "
-"be deleted. </p> <p align=\"justify\"> You don't need to restore the drive "
-"if you want to write another live system to it. \n"
-"                </p> <p align=\"justify\"> Do you want to restore it to "
-"factory settings? </p>"
+"be deleted.</p> <p align=\"justify\"> You don't need to restore the drive if "
+"you want to write another live system to it.</p> <p align=\"justify\"> Do "
+"you want to restore it to factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">  Щоб отримати у розпорядження увесь можливий простір "
+"<p align=\"justify\"> Щоб отримати у розпорядження увесь можливий простір "
 "для зберігання даних на диску, слід відновити його стан до початкового. При "
-"цьому портативну систему та усі збережені дані буде вилучено.</p> <p "
-"align=\"justify\">Немає потреби відновлювати носій, якщо ви хочете записати "
-"на нього іншу портативну систему. </p>\n"
-"                                            <p align=\"justify\"> Хочете "
-"відновити початкові параметри носія?</p>"
+"цьому портативну систему та усі збережені дані буде вилучено.</p> <p align="
+"\"justify\">Немає потреби відновлювати носій, якщо ви хочете записати на "
+"нього іншу портативну систему. </p> <p align=\"justify\"> Хочете відновити "
+"початкові параметри носія?</p>"
 
-#: ../src/app/qml/RestorePage.qml:54
+#: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
@@ -833,12 +866,12 @@ msgstr ""
 "<p align=\"justify\">Будь ласка, зачекайте, доки Fedora Media Writer "
 "відновити вміст вашого портативного диска.</p>"
 
-#: ../src/app/qml/RestorePage.qml:70
+#: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "Вміст вашого диска успішно відновлено!"
 
-#: ../src/app/qml/RestorePage.qml:79
+#: ../src/app/qml/RestorePage.qml:78
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
@@ -847,17 +880,17 @@ msgstr ""
 "На жаль, під час виконання дій сталася помилка. Будь ласка, спробуйте "
 "відновити ваш диск за допомогою інших інструментів системи."
 
-#: ../src/app/qml/RestorePage.qml:93
+#: ../src/app/qml/RestorePage.qml:92
 msgctxt "RestorePage|"
 msgid "Restoring finished"
 msgstr "Відновлення завершено"
 
-#: ../src/app/qml/RestorePage.qml:111
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Finish"
 msgstr "Завершити"
 
-#: ../src/app/qml/RestorePage.qml:111
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Відновити"
@@ -915,14 +948,14 @@ msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
 msgstr "Запис скасовано"
 
-#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
 msgstr "Не вдалося розпочати розпаковування."
 
-#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
-#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/linux/writejob.cpp:105 ../src/helper/linux/writejob.cpp:135
+#: ../src/helper/linux/writejob.cpp:173 ../src/helper/mac/writejob.cpp:185
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:327 ../src/helper/win/writejob.cpp:370
 #: ../src/helper/win/writejob.cpp:465
@@ -930,44 +963,44 @@ msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
 msgstr "Непридатний до запису диск призначення"
 
-#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/linux/writejob.cpp:114 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
 msgstr "Недостатньо пам’яті для розпаковування файла."
 
-#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/linux/writejob.cpp:119 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:350
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "Отриманий стиснений файл виявився пошкодженим."
 
-#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/linux/writejob.cpp:122 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:353
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
 msgstr "Непідтримувані параметри стискання."
 
-#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/linux/writejob.cpp:125 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:356
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
 msgstr "Невідома помилка під час спроби розпакувати."
 
-#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/linux/writejob.cpp:151 ../src/helper/linux/writejob.cpp:166
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
 msgstr "Непридатний до читання образ джерела"
 
-#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
-#: ../src/helper/win/writejob.cpp:539
+#: ../src/helper/linux/writejob.cpp:203 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:538
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
 msgstr "Ймовірно, флешка непрацездатна."
 
-#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
-#: ../src/helper/win/writejob.cpp:544
+#: ../src/helper/linux/writejob.cpp:208 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:543
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
 msgstr "Під час перевірки носія даних сталася неочікувана помилка."
@@ -1034,18 +1067,18 @@ msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
 msgstr "Записано %1 з %2"
 
-#: ../src/helper/win/writejob.cpp:493
+#: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
 msgstr "Не вдалося прочитати файл образу: "
 
-#: ../src/helper/win/writejob.cpp:499
+#: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "Не вдалося записати увесь образ. Загалом записано: %1 з %2"
 
-#: ../src/helper/win/writejob.cpp:519
+#: ../src/helper/win/writejob.cpp:518
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
@@ -1434,10 +1467,6 @@ msgstr ""
 #~ "адміністраторам з досвідом роботи із будь-якою операційною системою "
 #~ "скористатися найсвіжішими здобутками заснованих на серверах технологій, "
 #~ "які тільки доступні у середовищі із відкритим кодом."
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "Просте адміністрування"
 
 #~ msgctxt "Release|"
 #~ msgid ""

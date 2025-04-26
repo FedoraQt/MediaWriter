@@ -3,17 +3,18 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # "#-#-#-#-#  mediawriter.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-# ButterflyOfFire <butterflyoffire@users.noreply.translate.fedoraproject.org>, 2024.
+# ButterflyOfFire <butterflyoffire@users.noreply.translate.fedoraproject.org>, 2024, 2025.
 # Rachida SA <rgebbid@gmail.com>, 2024.
-# Aksel Azwaw <akselyan@users.noreply.translate.fedoraproject.org>, 2024.
+# Aksel Azwaw <akselyan@users.noreply.translate.fedoraproject.org>, 2024, 2025.
+# Starlight_shine <starlight@users.noreply.translate.fedoraproject.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-12-10 09:48+0000\n"
-"Last-Translator: ButterflyOfFire <butterflyoffire@users.noreply.translate."
-"fedoraproject.org>\n"
+"POT-Creation-Date: 2025-04-14 10:13+0200\n"
+"PO-Revision-Date: 2025-04-17 18:27+0000\n"
+"Last-Translator: ButterflyOfFire "
+"<butterflyoffire@users.noreply.translate.fedoraproject.org>\n"
 "Language-Team: Kabyle <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/kab/>\n"
 "Language: kab\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.8.4\n"
+"X-Generator: Weblate 5.11\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
@@ -110,6 +111,11 @@ msgstr "Sefsex asenqed"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Sefsex"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:49
+msgctxt "DeviceWarningDialog|"
+msgid "Erase confirmation"
+msgstr "Asentem n tukksa"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -509,12 +515,12 @@ msgctxt "MainPage|"
 msgid "About"
 msgstr "Ɣef"
 
-#: ../src/app/qml/Page.qml:95
+#: ../src/app/qml/Page.qml:100
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Udfir"
 
-#: ../src/app/qml/Page.qml:105
+#: ../src/app/qml/Page.qml:110
 msgctxt "Page|"
 msgid "Next"
 msgstr "Uḍfir"
@@ -577,8 +583,8 @@ msgid ""
 "iso or .bin)</p>"
 msgstr ""
 "<p>Dagi tzemreḍ ad tferneḍ tugna OS seg unuḍaf aqquran ara yettwarun ɣef "
-"uḍebsi USB</p><p>Akka tura yessefrak kan i tira n tugniwin n uḍebsi arewway ("
-".iso or .bin)</p>"
+"uḍebsi USB</p><p>Akka tura yessefrak kan i tira n tugniwin n uḍebsi arewway "
+"(.iso or .bin)</p>"
 
 #: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
@@ -735,6 +741,45 @@ msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "%1 lqem ara d-yeffɣen"
 
+#: ../src/helper/linux/restorejob.cpp:67
+#, fuzzy
+#| msgctxt "RestoreJob|"
+#| msgid "Failed to open the drive for formatting"
+msgctxt "RestoreJob|"
+msgid "Failed to open device for writing"
+msgstr "Yecceḍ ulday n unuḍaf i umsal"
+
+#: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
+#, fuzzy
+#| msgctxt "WriteJob|"
+#| msgid "Destination drive is not writable"
+msgctxt "RestoreJob|"
+msgid "Destination drive is not writable"
+msgstr "Tira ɣef unuḍaf d awezɣi"
+
+#: ../src/helper/linux/restorejob.cpp:91
+msgctxt "RestoreJob|"
+msgid "Failed to get file size"
+msgstr "Ur yessaweḍ ara ad d-yawi tiddi n ufaylu"
+
+#: ../src/helper/linux/restorejob.cpp:98
+msgctxt "RestoreJob|"
+msgid "File size is smaller than 128 blocks"
+msgstr ""
+
+#: ../src/helper/linux/restorejob.cpp:105
+#, fuzzy
+#| msgctxt "RestoreJob|"
+#| msgid "Failed to remove partitions from the drive"
+msgctxt "RestoreJob|"
+msgid "Failed to move file pointer to the end region"
+msgstr "Tecceḍ tukksa n yiḥricen seg unuḍaf"
+
+#: ../src/helper/linux/restorejob.cpp:122
+msgctxt "RestoreJob|"
+msgid "Failed to sync data to disk"
+msgstr ""
+
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
@@ -796,20 +841,18 @@ msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
 "be restored to its factory settings. The live system and all saved data will "
-"be deleted. </p> <p align=\"justify\"> You don't need to restore the drive "
-"if you want to write another live system to it. \n"
-"                </p> <p align=\"justify\"> Do you want to restore it to "
-"factory settings? </p>"
+"be deleted.</p> <p align=\"justify\"> You don't need to restore the drive if "
+"you want to write another live system to it.</p> <p align=\"justify\"> Do "
+"you want to restore it to factory settings? </p>"
 msgstr ""
 "<p align=\"justify\"> Akken ad tizmireḍ ad talseḍ aseqdec akk tallunt n "
 "unuḍaf i tikkelt niḍen, yessefk ad t-terreḍ ɣer waddad-is n lluzin. Anagraw "
-"live akked meṛṛa isefka i yettwaskelsen ad ttwakksen. </p> <p align=\"justify"
-"\"> Ur tesriḍ ara ad d-terreḍ anuḍaf ma yella tebɣiḍ ad taruḍ fell-as "
-"anagraw live niḍen.  \n"
-"                </p> <p align=\"justify\"> Tebɣiḍ ad t-id-terreḍ ɣer waddad-"
-"is amezwaru? </p>"
+"live akked meṛṛa isefka i yettwaskelsen ad ttwakksen. </p> <p align="
+"\"justify\"> Ur tesriḍ ara ad d-terreḍ anuḍaf ma yella tebɣiḍ ad taruḍ fell-"
+"as anagraw live niḍen. </p> <p align=\"justify\"> Tebɣiḍ ad t-id-terreḍ ɣer "
+"waddad-is amezwaru? </p>"
 
-#: ../src/app/qml/RestorePage.qml:54
+#: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
@@ -818,12 +861,12 @@ msgstr ""
 "<p align=\"justify\">Ttxil-k rǧu alamma yerra-d Fedora Media Writer anuḍaf-"
 "ik n ufus.</p>"
 
-#: ../src/app/qml/RestorePage.qml:70
+#: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "Anuḍaf-ik yettwarr-d akken iwata!"
 
-#: ../src/app/qml/RestorePage.qml:79
+#: ../src/app/qml/RestorePage.qml:78
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
@@ -832,17 +875,17 @@ msgstr ""
 "Nesḥassef, teḍra-d tuccḍa lawan n ukala. Ttxil-k, ɛerḍ ad d-terreḍ anuḍaf s "
 "useqdec n yifecka n unagraw."
 
-#: ../src/app/qml/RestorePage.qml:93
+#: ../src/app/qml/RestorePage.qml:92
 msgctxt "RestorePage|"
 msgid "Restoring finished"
 msgstr "Tiririt tfukk"
 
-#: ../src/app/qml/RestorePage.qml:111
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Finish"
 msgstr "Ifukk"
 
-#: ../src/app/qml/RestorePage.qml:111
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Err-d"
@@ -898,14 +941,14 @@ msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
 msgstr "Tira tettwasefsax"
 
-#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
 msgstr "Yecceḍ beddu n usefruri.."
 
-#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
-#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/linux/writejob.cpp:105 ../src/helper/linux/writejob.cpp:135
+#: ../src/helper/linux/writejob.cpp:173 ../src/helper/mac/writejob.cpp:185
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:327 ../src/helper/win/writejob.cpp:370
 #: ../src/helper/win/writejob.cpp:465
@@ -913,44 +956,44 @@ msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
 msgstr "Tira ɣef unuḍaf d awezɣi"
 
-#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/linux/writejob.cpp:114 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
 msgstr "Ulac ddeqs n tkatut i usefruri n ufaylu."
 
-#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/linux/writejob.cpp:119 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:350
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "Afaylu ussid i d-yettwasadren yerreẓ."
 
-#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/linux/writejob.cpp:122 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:353
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
 msgstr "Tixtiṛiyin n tussda ur yettwasefraken ara."
 
-#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/linux/writejob.cpp:125 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:356
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
 msgstr "Tuccḍa n tussda d tarussint."
 
-#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/linux/writejob.cpp:151 ../src/helper/linux/writejob.cpp:166
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
 msgstr "Tugna n uɣbalu ur tettwaɣray ara"
 
-#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
-#: ../src/helper/win/writejob.cpp:539
+#: ../src/helper/linux/writejob.cpp:203 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:538
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
 msgstr "Yezmer anuḍaf-ik yerreẓ."
 
-#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
-#: ../src/helper/win/writejob.cpp:544
+#: ../src/helper/linux/writejob.cpp:208 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:543
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
 msgstr "Tella-d tuccḍa ur nettuṛaǧu ara lawan n usenqed n umidya."
@@ -1017,18 +1060,18 @@ msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
 msgstr "Yettwaru %1 ɣef %2"
 
-#: ../src/helper/win/writejob.cpp:493
+#: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
 msgstr "Tecceḍ tɣuri n ufaylu n tugniwin: "
 
-#: ../src/helper/win/writejob.cpp:499
+#: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "Tecceḍ usmad n tira n tugna. Asemday yettwarun: %1 ɣef %2"
 
-#: ../src/helper/win/writejob.cpp:519
+#: ../src/helper/win/writejob.cpp:518
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"

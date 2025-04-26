@@ -3,14 +3,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # "#-#-#-#-#  mediawriter.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-# Matjaž Jeran <matjaz.jeran@amis.net>, 2023.
+# Matjaž Jeran <matjaz.jeran@amis.net>, 2023, 2025.
 # Martin Srebotnjak <miles@filmsi.net>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2025-01-08 23:38+0000\n"
+"POT-Creation-Date: 2025-04-14 10:13+0200\n"
+"PO-Revision-Date: 2025-02-22 12:03+0000\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/sl/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.10\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
@@ -110,6 +110,11 @@ msgstr "Prekini verifikacijo"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Prekliči"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:49
+msgctxt "DeviceWarningDialog|"
+msgid "Erase confirmation"
+msgstr "Potrditev brisanja"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -510,12 +515,12 @@ msgctxt "MainPage|"
 msgid "About"
 msgstr "O programu"
 
-#: ../src/app/qml/Page.qml:95
+#: ../src/app/qml/Page.qml:100
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Prejšnji"
 
-#: ../src/app/qml/Page.qml:105
+#: ../src/app/qml/Page.qml:110
 msgctxt "Page|"
 msgid "Next"
 msgstr "Naslednji"
@@ -741,6 +746,48 @@ msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "Kandidat za izdajo %1"
 
+#: ../src/helper/linux/restorejob.cpp:67
+#, fuzzy
+#| msgctxt "RestoreJob|"
+#| msgid "Failed to open the drive for formatting"
+msgctxt "RestoreJob|"
+msgid "Failed to open device for writing"
+msgstr "Ni bilo mogoče odpreti pogona za formatiranje"
+
+#: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
+#, fuzzy
+#| msgctxt "WriteJob|"
+#| msgid "Destination drive is not writable"
+msgctxt "RestoreJob|"
+msgid "Destination drive is not writable"
+msgstr "Ciljni pogon ni zapisljiv"
+
+#: ../src/helper/linux/restorejob.cpp:91
+#, fuzzy
+#| msgctxt "WriteJob|"
+#| msgid "Failed to read the image file: "
+msgctxt "RestoreJob|"
+msgid "Failed to get file size"
+msgstr "Datoteke slike ni možno prebrati: "
+
+#: ../src/helper/linux/restorejob.cpp:98
+msgctxt "RestoreJob|"
+msgid "File size is smaller than 128 blocks"
+msgstr ""
+
+#: ../src/helper/linux/restorejob.cpp:105
+#, fuzzy
+#| msgctxt "RestoreJob|"
+#| msgid "Failed to remove partitions from the drive"
+msgctxt "RestoreJob|"
+msgid "Failed to move file pointer to the end region"
+msgstr "S pogona ni možno odstraniti razdelkov"
+
+#: ../src/helper/linux/restorejob.cpp:122
+msgctxt "RestoreJob|"
+msgid "Failed to sync data to disk"
+msgstr ""
+
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
@@ -779,7 +826,7 @@ msgstr "Ustvarjanje razdelka GPT na pogonu je spodletelo"
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Pridobivanje poti nosilca GUID na pogonu je spodletelo"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
@@ -798,14 +845,22 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Obnovi pogon <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
+#, fuzzy
+#| msgctxt "RestorePage|"
+#| msgid ""
+#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
+#| "to be restored to its factory settings. The live system and all saved "
+#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
+#| "restore the drive if you want to write another live system to it. \n"
+#| "                </p> <p align=\"justify\"> Do you want to restore it to "
+#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
 "be restored to its factory settings. The live system and all saved data will "
-"be deleted. </p> <p align=\"justify\"> You don't need to restore the drive "
-"if you want to write another live system to it. \n"
-"                </p> <p align=\"justify\"> Do you want to restore it to "
-"factory settings? </p>"
+"be deleted.</p> <p align=\"justify\"> You don't need to restore the drive if "
+"you want to write another live system to it.</p> <p align=\"justify\"> Do "
+"you want to restore it to factory settings? </p>"
 msgstr ""
 "<p align=\"justify\"> Da bi pridobili nazaj ves razpoložljivi prostor na "
 "pogonu, ga je treba obnoviti s tovarniškimi nastavitvami. Živi sistem in vsi "
@@ -814,7 +869,7 @@ msgstr ""
 "                </p> <p align=\"justify\"> Ali ga želite obnoviti s "
 "tovarniškimi nastavitvami? </p>"
 
-#: ../src/app/qml/RestorePage.qml:54
+#: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
@@ -823,12 +878,12 @@ msgstr ""
 "<p align=\"justify\">Počakajte, da Fedora Media Writer obnovi vaš prenosni "
 "pogon.</p>"
 
-#: ../src/app/qml/RestorePage.qml:70
+#: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "Vaš pogon je bi uspešno obnovljen!"
 
-#: ../src/app/qml/RestorePage.qml:79
+#: ../src/app/qml/RestorePage.qml:78
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
@@ -837,17 +892,17 @@ msgstr ""
 "Na žalost se je med postopkom pojavila napaka. Poskusite obnoviti pogon z "
 "vašimi sistemskimi orodji."
 
-#: ../src/app/qml/RestorePage.qml:93
+#: ../src/app/qml/RestorePage.qml:92
 msgctxt "RestorePage|"
 msgid "Restoring finished"
 msgstr "Obnova končana"
 
-#: ../src/app/qml/RestorePage.qml:111
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Finish"
 msgstr "Dokončaj"
 
-#: ../src/app/qml/RestorePage.qml:111
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Obnovi"
@@ -904,14 +959,14 @@ msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
 msgstr "Pisanje je bilo preklicano"
 
-#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
 msgstr "Neuspel začetek razpakiranja."
 
-#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
-#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/linux/writejob.cpp:105 ../src/helper/linux/writejob.cpp:135
+#: ../src/helper/linux/writejob.cpp:173 ../src/helper/mac/writejob.cpp:185
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:327 ../src/helper/win/writejob.cpp:370
 #: ../src/helper/win/writejob.cpp:465
@@ -919,44 +974,44 @@ msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
 msgstr "Ciljni pogon ni zapisljiv"
 
-#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/linux/writejob.cpp:114 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
 msgstr "Ni dovolj pomnilnika za razpakiranje datoteke."
 
-#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/linux/writejob.cpp:119 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:350
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "Prenesena stisnjena datoteka je pokvarjena."
 
-#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/linux/writejob.cpp:122 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:353
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
 msgstr "Nepodprte možnosti stiskanja."
 
-#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/linux/writejob.cpp:125 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:356
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
 msgstr "Neznana napaka razpakiranja."
 
-#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/linux/writejob.cpp:151 ../src/helper/linux/writejob.cpp:166
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
 msgstr "Izvirna slika ni berljiva"
 
-#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
-#: ../src/helper/win/writejob.cpp:539
+#: ../src/helper/linux/writejob.cpp:203 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:538
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
 msgstr "Vaš pogon je verjetno poškodovan."
 
-#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
-#: ../src/helper/win/writejob.cpp:544
+#: ../src/helper/linux/writejob.cpp:208 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:543
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
 msgstr "Nepričakovana napaka med preverjanjem medija."
@@ -1023,18 +1078,18 @@ msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
 msgstr "Zapisanih %1 od %2"
 
-#: ../src/helper/win/writejob.cpp:493
+#: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
 msgstr "Datoteke slike ni možno prebrati: "
 
-#: ../src/helper/win/writejob.cpp:499
+#: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "Zapis celotne slike je spodletel. Skupaj zapisano %1 od %2"
 
-#: ../src/helper/win/writejob.cpp:519
+#: ../src/helper/win/writejob.cpp:518
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"

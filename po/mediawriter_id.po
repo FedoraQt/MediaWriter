@@ -1,18 +1,18 @@
 # #-#-#-#-#  appstream_id.po  #-#-#-#-#
-# Andika Triwidada <andika@gmail.com>, 2017. #zanata, 2021, 2022, 2024.
+# Andika Triwidada <andika@gmail.com>, 2017. #zanata, 2021, 2022, 2024, 2025.
 # #-#-#-#-#  desktop_id.po  #-#-#-#-#
-# Andika Triwidada <andika@gmail.com>, 2017. #zanata, 2021, 2022, 2024.
+# Andika Triwidada <andika@gmail.com>, 2017. #zanata, 2021, 2022, 2024, 2025.
 # #-#-#-#-#  mediawriter_id.po  #-#-#-#-#
-# Andika Triwidada <andika@gmail.com>, 2017. #zanata, 2021, 2022, 2024.
-# Andika Triwidada <andika@gmail.com>, 2018. #zanata, 2021, 2022, 2024.
-# Andika Triwidada <andika@gmail.com>, 2019. #zanata, 2021, 2022, 2024.
-# Arif Budiman <arifpedia@gmail.com>, 2024.
+# Andika Triwidada <andika@gmail.com>, 2017. #zanata, 2021, 2022, 2024, 2025.
+# Andika Triwidada <andika@gmail.com>, 2018. #zanata, 2021, 2022, 2024, 2025.
+# Andika Triwidada <andika@gmail.com>, 2019. #zanata, 2021, 2022, 2024, 2025.
+# Arif Budiman <arifpedia@gmail.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-10-31 15:00+0000\n"
-"Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
+"POT-Creation-Date: 2025-04-14 10:13+0200\n"
+"PO-Revision-Date: 2025-04-15 11:53+0000\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/id/>\n"
 "Language: id\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.7.2\n"
+"X-Generator: Weblate 5.10.4\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -112,6 +112,11 @@ msgstr "Batalkan Verifikasi"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Batal"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:49
+msgctxt "DeviceWarningDialog|"
+msgid "Erase confirmation"
+msgstr "Konfirmasi hapus"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -513,12 +518,12 @@ msgctxt "MainPage|"
 msgid "About"
 msgstr "Tentang"
 
-#: ../src/app/qml/Page.qml:95
+#: ../src/app/qml/Page.qml:100
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Sebelumnya"
 
-#: ../src/app/qml/Page.qml:105
+#: ../src/app/qml/Page.qml:110
 msgctxt "Page|"
 msgid "Next"
 msgstr "Berikutnya"
@@ -740,10 +745,40 @@ msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "%1 Kandidat Rilis"
 
+#: ../src/helper/linux/restorejob.cpp:67
+msgctxt "RestoreJob|"
+msgid "Failed to open device for writing"
+msgstr "Gagal membuka peranti untuk menulis"
+
+#: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
+msgctxt "RestoreJob|"
+msgid "Destination drive is not writable"
+msgstr "Drive tujuan tidak dapat ditulisi"
+
+#: ../src/helper/linux/restorejob.cpp:91
+msgctxt "RestoreJob|"
+msgid "Failed to get file size"
+msgstr "Gagal mendapatkan ukuran berkas"
+
+#: ../src/helper/linux/restorejob.cpp:98
+msgctxt "RestoreJob|"
+msgid "File size is smaller than 128 blocks"
+msgstr "Ukuran berkas kurang dari 128 blok"
+
+#: ../src/helper/linux/restorejob.cpp:105
+msgctxt "RestoreJob|"
+msgid "Failed to move file pointer to the end region"
+msgstr "Gagal memindah pointer berkas ke wilayah akhir"
+
+#: ../src/helper/linux/restorejob.cpp:122
+msgctxt "RestoreJob|"
+msgid "Failed to sync data to disk"
+msgstr "Gagal menyelaraskan data ke disk"
+
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Tidak dapat menghapus mountpoint drive"
+msgstr "Tak bisa menghapus titik kait drive"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
@@ -801,19 +836,17 @@ msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
 "be restored to its factory settings. The live system and all saved data will "
-"be deleted. </p> <p align=\"justify\"> You don't need to restore the drive "
-"if you want to write another live system to it. \n"
-"                </p> <p align=\"justify\"> Do you want to restore it to "
-"factory settings? </p>"
+"be deleted.</p> <p align=\"justify\"> You don't need to restore the drive if "
+"you want to write another live system to it.</p> <p align=\"justify\"> Do "
+"you want to restore it to factory settings? </p>"
 msgstr ""
 "<p align=\"justify\"> Untuk memperoleh kembali semua ruang yang tersedia "
 "pada drive, itu mesti dipulihkan ke setelan pabrik. Sistem live dan semua "
 "data yang disimpan akan dihapus.</p><p align=\"justify\"> Anda tidak perlu "
-"memulihkan drive bila Anda hendak menulis sistem live lain ke sana.\n"
-"                 </p><p align=\"justify\"> Apakah Anda hendak memulihkan ke "
-"setelan pabrik?</p>"
+"memulihkan drive bila Anda hendak menulis sistem live lain ke sana.</p><p "
+"align=\"justify\"> Apakah Anda hendak memulihkan ke setelan pabrik?</p>"
 
-#: ../src/app/qml/RestorePage.qml:54
+#: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
@@ -822,12 +855,12 @@ msgstr ""
 "<p align=\"justify\">Harap tunggu ketika Fedora Media Writer memulihkan "
 "drive portabel Anda.</p>"
 
-#: ../src/app/qml/RestorePage.qml:70
+#: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "Drive Anda sukses dipulihkan!"
 
-#: ../src/app/qml/RestorePage.qml:79
+#: ../src/app/qml/RestorePage.qml:78
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
@@ -836,17 +869,17 @@ msgstr ""
 "Sayang sekali, terjadi suatu kesalahan selama proses. Harap coba pulihkan "
 "drive memakai perkakas sistem Anda."
 
-#: ../src/app/qml/RestorePage.qml:93
+#: ../src/app/qml/RestorePage.qml:92
 msgctxt "RestorePage|"
 msgid "Restoring finished"
 msgstr "Pemulihan selesai"
 
-#: ../src/app/qml/RestorePage.qml:111
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Finish"
 msgstr "Selesai"
 
-#: ../src/app/qml/RestorePage.qml:111
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Pulihkan"
@@ -902,14 +935,14 @@ msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
 msgstr "Penulisan telah dibatalkan"
 
-#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
 msgstr "Gagal memulai dekompresi."
 
-#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
-#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/linux/writejob.cpp:105 ../src/helper/linux/writejob.cpp:135
+#: ../src/helper/linux/writejob.cpp:173 ../src/helper/mac/writejob.cpp:185
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:327 ../src/helper/win/writejob.cpp:370
 #: ../src/helper/win/writejob.cpp:465
@@ -917,44 +950,44 @@ msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
 msgstr "Drive tujuan tidak dapat ditulisi"
 
-#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/linux/writejob.cpp:114 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
 msgstr "Tidak ada cukup memori untuk mendekompresi berkas."
 
-#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/linux/writejob.cpp:119 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:350
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "Berkas terkompresi yang diunduh rusak."
 
-#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/linux/writejob.cpp:122 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:353
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
 msgstr "Opsi kompresi tidak didukung."
 
-#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/linux/writejob.cpp:125 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:356
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
 msgstr "Kesalahan dekompresi yang tidak dikenal."
 
-#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/linux/writejob.cpp:151 ../src/helper/linux/writejob.cpp:166
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
 msgstr "Image sumber tidak dapat dibaca"
 
-#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
-#: ../src/helper/win/writejob.cpp:539
+#: ../src/helper/linux/writejob.cpp:203 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:538
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
 msgstr "Drive Anda mungkin rusak."
 
-#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
-#: ../src/helper/win/writejob.cpp:544
+#: ../src/helper/linux/writejob.cpp:208 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:543
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
 msgstr "Kesalahan yang tidak diharapkan terjadi selama pemeriksaan media."
@@ -1021,18 +1054,18 @@ msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
 msgstr "Menulis %1 dari %2"
 
-#: ../src/helper/win/writejob.cpp:493
+#: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
 msgstr "Gagal membaca file image: "
 
-#: ../src/helper/win/writejob.cpp:499
+#: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "Gagal menulis seluruh image. Total yang ditulis: %1 dari %2"
 
-#: ../src/helper/win/writejob.cpp:519
+#: ../src/helper/win/writejob.cpp:518
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"

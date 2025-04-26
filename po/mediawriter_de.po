@@ -11,26 +11,26 @@
 # Roman Spirgi <bigant@fedoraproject.org>, 2017. #zanata
 # Thomas Eichhorn <tomislav@posteo.de>, 2017. #zanata, 2022.
 # Thomas Eichhorn <tomislav@posteo.de>, 2019. #zanata, 2022.
-# Ettore Atalan <atalanttore@googlemail.com>, 2021, 2022.
-# Philipp Trulson <philipp@trulson.de>, 2022.
-# Lukas Iselor <lukas.iselor@tutanota.com>, 2022.
-# Joachim Philipp <joachim.philipp@gmail.com>, 2022.
-# Jonah Bruechert <jbb@kaidan.im>, 2024.
-# ezberlin ezberlin <ismail.shaban.berlin@gmail.com>, 2024.
+# Ettore Atalan <atalanttore@googlemail.com>, 2021, 2022, 2025.
+# Philipp Trulson <philipp@trulson.de>, 2022, 2025.
+# Lukas Iselor <lukas.iselor@tutanota.com>, 2022, 2025.
+# Joachim Philipp <joachim.philipp@gmail.com>, 2022, 2025.
+# Jonah Bruechert <jbb@kaidan.im>, 2024, 2025.
+# ezberlin ezberlin <ismail.shaban.berlin@gmail.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-12-27 22:38+0000\n"
-"Last-Translator: ezberlin ezberlin <ismail.shaban.berlin@gmail.com>\n"
-"Language-Team: German <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/de/>\n"
+"POT-Creation-Date: 2025-04-14 10:13+0200\n"
+"PO-Revision-Date: 2025-03-31 07:19+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"Language-Team: German <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.10.4\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -119,12 +119,14 @@ msgid "Cancel Verification"
 msgstr "Überprüfung abbrechen"
 
 #: ../src/app/qml/CancelDialog.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Abbrechen"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:49
+msgctxt "DeviceWarningDialog|"
+msgid "Erase confirmation"
+msgstr "Löschbestätigung"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -137,17 +139,11 @@ msgstr ""
 "wirde auf es geschrieben. Wollen Sie fortfahren?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
 msgstr "Abbrechen"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
 msgstr "Schreiben"
@@ -339,17 +335,11 @@ msgid "Restart and boot from %1 to start using %2."
 msgstr "Neustarten und von Laufwerk %1 starten um %2 zu benutzen."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
 msgstr "Abbrechen"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DownloadPage|"
 msgid "Write"
 msgstr "Schreiben"
@@ -360,9 +350,6 @@ msgid "Finish"
 msgstr "Fertig"
 
 #: ../src/app/qml/DownloadPage.qml:274
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Retry"
 msgctxt "DownloadPage|"
 msgid "Retry"
 msgstr "Erneut versuchen"
@@ -433,9 +420,6 @@ msgid "Delete download after writing"
 msgstr "Download nach Schreibvorgang löschen"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DrivePage|"
 msgid "Write"
 msgstr "Schreiben"
@@ -545,25 +529,16 @@ msgid "Restore <b>%1</b>"
 msgstr "<b>%1</b> wiederherstellen"
 
 #: ../src/app/qml/MainPage.qml:72
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "About"
 msgctxt "MainPage|"
 msgid "About"
 msgstr "Über"
 
-#: ../src/app/qml/Page.qml:95
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Previous"
+#: ../src/app/qml/Page.qml:100
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Zurück"
 
-#: ../src/app/qml/Page.qml:105
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Next"
+#: ../src/app/qml/Page.qml:110
 msgctxt "Page|"
 msgid "Next"
 msgstr "Weiter"
@@ -787,6 +762,48 @@ msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "%1 Release-Kandidat"
 
+#: ../src/helper/linux/restorejob.cpp:67
+#, fuzzy
+#| msgctxt "RestoreJob|"
+#| msgid "Failed to open the drive for formatting"
+msgctxt "RestoreJob|"
+msgid "Failed to open device for writing"
+msgstr "Fehler beim Öffnen für den Formatierungszugriff"
+
+#: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
+#, fuzzy
+#| msgctxt "WriteJob|"
+#| msgid "Destination drive is not writable"
+msgctxt "RestoreJob|"
+msgid "Destination drive is not writable"
+msgstr "Ziel-Laufwerk ist nicht beschreibar"
+
+#: ../src/helper/linux/restorejob.cpp:91
+#, fuzzy
+#| msgctxt "WriteJob|"
+#| msgid "Failed to read the image file: "
+msgctxt "RestoreJob|"
+msgid "Failed to get file size"
+msgstr "Abbilddatei konnte nicht gelesen werden: "
+
+#: ../src/helper/linux/restorejob.cpp:98
+msgctxt "RestoreJob|"
+msgid "File size is smaller than 128 blocks"
+msgstr ""
+
+#: ../src/helper/linux/restorejob.cpp:105
+#, fuzzy
+#| msgctxt "RestoreJob|"
+#| msgid "Failed to remove partitions from the drive"
+msgctxt "RestoreJob|"
+msgid "Failed to move file pointer to the end region"
+msgstr "Fehler beim Entfernen von Partitionen"
+
+#: ../src/helper/linux/restorejob.cpp:122
+msgctxt "RestoreJob|"
+msgid "Failed to sync data to disk"
+msgstr ""
+
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
@@ -803,9 +820,6 @@ msgid "Failed to open the drive for formatting"
 msgstr "Fehler beim Öffnen für den Formatierungszugriff"
 
 #: ../src/helper/win/restorejob.cpp:95
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
 msgstr "Speichermedium konnte nicht gesperrt werden"
@@ -847,14 +861,22 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Laufwerk <b>%1</b> wiederherstellen"
 
 #: ../src/app/qml/RestorePage.qml:36
+#, fuzzy
+#| msgctxt "RestorePage|"
+#| msgid ""
+#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
+#| "to be restored to its factory settings. The live system and all saved "
+#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
+#| "restore the drive if you want to write another live system to it. \n"
+#| "                </p> <p align=\"justify\"> Do you want to restore it to "
+#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
 "be restored to its factory settings. The live system and all saved data will "
-"be deleted. </p> <p align=\"justify\"> You don't need to restore the drive "
-"if you want to write another live system to it. \n"
-"                </p> <p align=\"justify\"> Do you want to restore it to "
-"factory settings? </p>"
+"be deleted.</p> <p align=\"justify\"> You don't need to restore the drive if "
+"you want to write another live system to it.</p> <p align=\"justify\"> Do "
+"you want to restore it to factory settings? </p>"
 msgstr ""
 "<p align=\"justify\"> Um sämtlichen verfügbaren Platz auf dem Laufwerk zu "
 "nutzen, muss es auf den Lieferzustand zurückgesetzt werden. Das Live-System "
@@ -864,7 +886,7 @@ msgstr ""
 "                </p> <p align=\"justify\"> Wollen Sie das Gerät auf den "
 "Lieferzustand zurücksetzen? </p>"
 
-#: ../src/app/qml/RestorePage.qml:54
+#: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
@@ -873,12 +895,12 @@ msgstr ""
 "<p align=\"justify\">Bitte warten Sie, während Fedora Media Writer Ihr "
 "tragbares Laufwerk wiederherstellt.</p>"
 
-#: ../src/app/qml/RestorePage.qml:70
+#: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "Das Laufwerk wurde erfolgreich wiederhergestellt!"
 
-#: ../src/app/qml/RestorePage.qml:79
+#: ../src/app/qml/RestorePage.qml:78
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
@@ -887,23 +909,17 @@ msgstr ""
 "Leider ist während des Vorgangs ein Fehler aufgetreten. Versuchen Sie bitte "
 "mithilfe der Systemwerkzeuge das Laufwerk wiederherzustellen."
 
-#: ../src/app/qml/RestorePage.qml:93
+#: ../src/app/qml/RestorePage.qml:92
 msgctxt "RestorePage|"
 msgid "Restoring finished"
 msgstr "Wiederherstellung abgeschlossen"
 
-#: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Finish"
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Finish"
 msgstr "Fertig"
 
-#: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Wiederherstellen"
@@ -960,14 +976,14 @@ msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
 msgstr "Schreiben wurde abgebrochen"
 
-#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
 msgstr "Starten der Dekomprimierung fehlgeschlagen."
 
-#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
-#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/linux/writejob.cpp:105 ../src/helper/linux/writejob.cpp:135
+#: ../src/helper/linux/writejob.cpp:173 ../src/helper/mac/writejob.cpp:185
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:327 ../src/helper/win/writejob.cpp:370
 #: ../src/helper/win/writejob.cpp:465
@@ -975,45 +991,45 @@ msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
 msgstr "Ziel-Laufwerk ist nicht beschreibar"
 
-#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/linux/writejob.cpp:114 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
 msgstr ""
 "Es ist nicht genügend Speicher vorhanden um die Datei zu dekomprimieren."
 
-#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/linux/writejob.cpp:119 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:350
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "Die heruntergeladene komprimierte Datei ist beschädigt."
 
-#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/linux/writejob.cpp:122 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:353
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
 msgstr "Nicht unterstützte Dekompressionsoption."
 
-#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/linux/writejob.cpp:125 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:356
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
 msgstr "Unbekannter Fehler beim Dekomprimieren."
 
-#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/linux/writejob.cpp:151 ../src/helper/linux/writejob.cpp:166
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
 msgstr "Quell-Abbild ist nicht lesbar"
 
-#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
-#: ../src/helper/win/writejob.cpp:539
+#: ../src/helper/linux/writejob.cpp:203 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:538
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr "Ihr Speichermedium ist vermutlich beschädigt."
+msgstr "Ihr Laufwerk ist vermutlich beschädigt."
 
-#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
-#: ../src/helper/win/writejob.cpp:544
+#: ../src/helper/linux/writejob.cpp:208 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:543
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
 msgstr "Unerwarteter Fehler beim Überprüfen des Mediums."
@@ -1054,12 +1070,9 @@ msgid "Couldn't open the logical handle"
 msgstr "Logikhandle konnte nicht geöffnet werden"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Speichermedium konnte nicht gesperrt werden"
+msgstr "Logisches Laufwerk konnte nicht gesperrt werden"
 
 #: ../src/helper/win/writejob.cpp:172
 msgctxt "WriteJob|"
@@ -1067,46 +1080,40 @@ msgid "Couldn't unmount drive"
 msgstr "Medium konnte nicht entfernt werden"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "Verbundene Sockets konnten nicht zugeordnet werden"
+msgstr "Puffer konnte nicht zugewiesen werden"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Der letzte Block wurde nicht vollständig geschrieben"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "%1 von %2 geschrieben"
 
-#: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
+#: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Die temporäre Datei konnte nicht umbenannt werden."
+msgstr "Abbilddatei konnte nicht gelesen werden: "
 
-#: ../src/helper/win/writejob.cpp:499
+#: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr ""
+"Fehler beim Schreiben des gesamten Abbilds. Insgesamt geschrieben: %1 von %2"
 
-#: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#: ../src/helper/win/writejob.cpp:518
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "Speichermedium konnte nicht für den Schreibzugriff geöffnet werden"
+msgstr ""
+"Das Laufwerk konnte nicht zur Datenverifizierung für %1 geöffnet werden:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
@@ -1417,10 +1424,6 @@ msgstr "fmw;usb;iso;bootable;"
 #~ msgctxt "Release|"
 #~ msgid "Systems Engineer"
 #~ msgstr "Systemingenieur"
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "Einfache Administration"
 
 #~ msgctxt "Release|"
 #~ msgid "Database Services"

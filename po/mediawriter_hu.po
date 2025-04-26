@@ -10,15 +10,17 @@
 # Zoltan Hoppar <zoltanh721@fedoraproject.org>, 2017. #zanata
 # Meskó Balázs <meskobalazs@gmail.com>, 2019. #zanata
 # Dankaházi (ifj.) István <dankahazi.istvan@gmail.com>, 2021, 2023.
-# Balázs Meskó <meskobalazs@mailbox.org>, 2021, 2023.
-# Hoppár Zoltán <hopparz@gmail.com>, 2022.
-# "Dankaházi (ifj.) István" <dankahazi.istvan@gmail.com>, 2023.
+# Balázs Meskó <meskobalazs@mailbox.org>, 2021, 2023, 2025.
+# Hoppár Zoltán <hopparz@gmail.com>, 2022, 2025.
+# "Dankaházi (ifj.) István" <dankahazi.istvan@gmail.com>, 2023, 2025.
+# Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2023-06-22 09:20+0000\n"
-"Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
+"POT-Creation-Date: 2025-04-14 10:13+0200\n"
+"PO-Revision-Date: 2025-02-19 17:44+0000\n"
+"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
+"memory@weblate.org>\n"
 "Language-Team: Hungarian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/hu/>\n"
 "Language: hu\n"
@@ -26,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.10\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -114,12 +116,14 @@ msgid "Cancel Verification"
 msgstr "Ellenőrzés megszakítása"
 
 #: ../src/app/qml/CancelDialog.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Mégse"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:49
+msgctxt "DeviceWarningDialog|"
+msgid "Erase confirmation"
+msgstr "Törlés megerősítése"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -128,58 +132,48 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Az egész eszköz (a(z) %1 mindegyike) törölve lesz, és a kiválasztott "
+"lemezkép lesz ráírva. Folytatja?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
 msgstr "Mégse"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
 msgstr "Kiírás"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
-msgstr "Letöltés és írás"
+msgstr "Letöltés és kiírás"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
-msgstr "Letöltés és írás"
+msgstr "Letöltés és kiírás"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:99
 msgctxt "DeviceWarningDialog|"
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:101
 msgctxt "DeviceWarningDialog|"
 msgid "KB"
-msgstr ""
+msgstr "kB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "bájt"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -336,33 +330,21 @@ msgstr ""
 "Indítson újra és bootoljon be %1 eszközéről %2 használatának megkezdéséhez."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
 msgstr "Mégse"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DownloadPage|"
 msgid "Write"
 msgstr "Kiírás"
 
 #: ../src/app/qml/DownloadPage.qml:272
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "Művelet befejezve!"
+msgstr "Befejezés"
 
 #: ../src/app/qml/DownloadPage.qml:274
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Retry"
 msgctxt "DownloadPage|"
 msgid "Retry"
 msgstr "Újra"
@@ -433,28 +415,19 @@ msgid "Delete download after writing"
 msgstr "Letöltés törlése a kiírása után"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DrivePage|"
 msgid "Write"
 msgstr "Kiírás"
 
 #: ../src/app/qml/DrivePage.qml:171
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DrivePage|"
 msgid "Download && Write"
-msgstr "Letöltés és írás"
+msgstr "Letöltés és kiírás"
 
 #: ../src/app/qml/DrivePage.qml:172
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DrivePage|"
 msgid "Download & Write"
-msgstr "Letöltés és írás"
+msgstr "Letöltés és kiírás"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -548,25 +521,16 @@ msgid "Restore <b>%1</b>"
 msgstr "A(z) <b>%1</b> helyreállítása"
 
 #: ../src/app/qml/MainPage.qml:72
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "About"
 msgctxt "MainPage|"
 msgid "About"
 msgstr "Névjegy"
 
-#: ../src/app/qml/Page.qml:95
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Previous"
+#: ../src/app/qml/Page.qml:100
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Előző"
 
-#: ../src/app/qml/Page.qml:105
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Next"
+#: ../src/app/qml/Page.qml:110
 msgctxt "Page|"
 msgid "Next"
 msgstr "Következő"
@@ -590,31 +554,31 @@ msgstr "Fájl megnyitása"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 TB"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 kB"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 bájt"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -643,12 +607,9 @@ msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
 #: ../src/app/releasemanager.cpp:455
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora i3 Desktop"
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr "Fedora i3 asztal"
+msgstr "Fedora Atomic asztali környezetek"
 
 #: ../src/app/releasemanager.cpp:457
 msgctxt "Release|"
@@ -792,31 +753,64 @@ msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "%1 kiadásra jelölt változat"
 
-#: ../src/helper/win/restorejob.cpp:60
+#: ../src/helper/linux/restorejob.cpp:67
+#, fuzzy
+#| msgctxt "RestoreJob|"
+#| msgid "Failed to open the drive for formatting"
+msgctxt "RestoreJob|"
+msgid "Failed to open device for writing"
+msgstr "A meghajtó formázásra történő megnyitása sikertelen"
+
+#: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
 #, fuzzy
 #| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
+#| msgid "Destination drive is not writable"
+msgctxt "RestoreJob|"
+msgid "Destination drive is not writable"
+msgstr "A céleszköz írásvédett"
+
+#: ../src/helper/linux/restorejob.cpp:91
+#, fuzzy
+#| msgctxt "WriteJob|"
+#| msgid "Failed to read the image file: "
+msgctxt "RestoreJob|"
+msgid "Failed to get file size"
+msgstr "A képfájl olvasása sikertelen: "
+
+#: ../src/helper/linux/restorejob.cpp:98
+msgctxt "RestoreJob|"
+msgid "File size is smaller than 128 blocks"
+msgstr ""
+
+#: ../src/helper/linux/restorejob.cpp:105
+#, fuzzy
+#| msgctxt "RestoreJob|"
+#| msgid "Failed to remove partitions from the drive"
+msgctxt "RestoreJob|"
+msgid "Failed to move file pointer to the end region"
+msgstr "A partíciók eltávolítása a meghajtóról sikertelen"
+
+#: ../src/helper/linux/restorejob.cpp:122
+msgctxt "RestoreJob|"
+msgid "Failed to sync data to disk"
+msgstr ""
+
+#: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "A(z) %1 meghajtó nem távolítható el:"
+msgstr "A csatolási pontok nem távolíthatók el"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "A partíciók eltávolítása a meghajtóról sikertelen"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "A meghajtó írásra történő megnyitása nem sikerült"
+msgstr "A meghajtó formázásra történő megnyitása sikertelen"
 
 #: ../src/helper/win/restorejob.cpp:95
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
 msgstr "A meghajtó nem zárolható"
@@ -824,32 +818,32 @@ msgstr "A meghajtó nem zárolható"
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "A partíciós tábla törlése a meghajtóról sikertelen"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "A meghajtó RAW partíciós stílusra állítása sikertelen"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "A GPT partíció létrehozása a meghajtón sikertelen"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "A GUID kötetvonalának lekérése a meghajtón sikertelen"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Az új partíció csatolása sikertelen"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "A partíció exFAT formátumra formázása sikertelen"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -858,14 +852,22 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Meghajtó helyreállítása: <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
+#, fuzzy
+#| msgctxt "RestorePage|"
+#| msgid ""
+#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
+#| "to be restored to its factory settings. The live system and all saved "
+#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
+#| "restore the drive if you want to write another live system to it. \n"
+#| "                </p> <p align=\"justify\"> Do you want to restore it to "
+#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
 "be restored to its factory settings. The live system and all saved data will "
-"be deleted. </p> <p align=\"justify\"> You don't need to restore the drive "
-"if you want to write another live system to it. \n"
-"                </p> <p align=\"justify\"> Do you want to restore it to "
-"factory settings? </p>"
+"be deleted.</p> <p align=\"justify\"> You don't need to restore the drive if "
+"you want to write another live system to it.</p> <p align=\"justify\"> Do "
+"you want to restore it to factory settings? </p>"
 msgstr ""
 "<p align=\"justify\">A meghajtón lévő összes elérhető hely visszaállításához "
 "a gyári állapotára  kell helyreállítani. A live rendszer és az összes "
@@ -874,7 +876,7 @@ msgstr ""
 "                </p> <p align=\"justify\">Helyreállítja a gyári "
 "beállításokat?</p>"
 
-#: ../src/app/qml/RestorePage.qml:54
+#: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
@@ -883,12 +885,12 @@ msgstr ""
 "<p align=\"justify\">Várjon amíg a Fedora médiaíró helyreállítja a "
 "hordozható meghajtót.</p>"
 
-#: ../src/app/qml/RestorePage.qml:70
+#: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "A meghajtó sikeresen helyreállítva!"
 
-#: ../src/app/qml/RestorePage.qml:79
+#: ../src/app/qml/RestorePage.qml:78
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
@@ -897,23 +899,17 @@ msgstr ""
 "Sajnos hiba történt a feldolgozás során. <br>Próbálja meg helyreállítani az "
 "eszközt a rendszereszközökkel."
 
-#: ../src/app/qml/RestorePage.qml:93
+#: ../src/app/qml/RestorePage.qml:92
 msgctxt "RestorePage|"
 msgid "Restoring finished"
 msgstr "A helyreállítás elkészült"
 
-#: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Finish"
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Finish"
 msgstr "Befejezés"
 
-#: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Helyreállítás"
@@ -934,12 +930,9 @@ msgid "Official Editions"
 msgstr "Hivatalos kiadások"
 
 #: ../src/app/qml/VersionPage.qml:42
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora i3 Desktop"
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr "Fedora i3 asztal"
+msgstr "Atomic asztali környezetek"
 
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
@@ -968,21 +961,18 @@ msgid "Writing %1 was successful"
 msgstr "A(z) %1 kiírása sikeres volt"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "A(z) %1 kiírása sikertelen"
+msgstr "Az kiírása megszakítva"
 
-#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
 msgstr "A kibontást nem sikerült elindítani."
 
-#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
-#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/linux/writejob.cpp:105 ../src/helper/linux/writejob.cpp:135
+#: ../src/helper/linux/writejob.cpp:173 ../src/helper/mac/writejob.cpp:185
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:327 ../src/helper/win/writejob.cpp:370
 #: ../src/helper/win/writejob.cpp:465
@@ -990,44 +980,44 @@ msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
 msgstr "A céleszköz írásvédett"
 
-#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/linux/writejob.cpp:114 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
 msgstr "Nincs elegendő memória a fájl kibontásához."
 
-#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/linux/writejob.cpp:119 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:350
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "A letöltött tömörített fájl sérült."
 
-#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/linux/writejob.cpp:122 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:353
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
 msgstr "Nem támogatott tömörítési beállítások."
 
-#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/linux/writejob.cpp:125 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:356
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
 msgstr "Ismeretlen kibontási hiba."
 
-#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/linux/writejob.cpp:151 ../src/helper/linux/writejob.cpp:166
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
 msgstr "A forrás lemezkép olvashatatlan"
 
-#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
-#: ../src/helper/win/writejob.cpp:539
+#: ../src/helper/linux/writejob.cpp:203 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:538
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
 msgstr "Az eszköz valószínüleg sérült."
 
-#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
-#: ../src/helper/win/writejob.cpp:544
+#: ../src/helper/linux/writejob.cpp:208 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:543
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
 msgstr "Váratlan hiba történt a média ellenőrzése során."
@@ -1043,25 +1033,19 @@ msgid "Unable to open destination for writing"
 msgstr "A cél nem nyitható meg írásra"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "A(z) %1 meghajtó nem távolítható el:"
+msgstr "A csatolási pontok nem távolíthatók el"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "A partíciók eltávolítása a meghajtóról sikertelen"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "A meghajtó írásra történő megnyitása nem sikerült"
+msgstr "A meghajtó formázásra történő megnyitása sikertelen"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1069,70 +1053,53 @@ msgid "Couldn't lock the drive"
 msgstr "A meghajtó nem zárolható"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "A meghajtó írásra történő megnyitása nem sikerült"
+msgstr "A meghajtó logikai kezelője nem nyitható meg"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "A meghajtó nem zárolható"
+msgstr "A logikai meghajtó nem zárolható"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "A meghajtó felszabadítása nem sikerült"
+msgstr "A meghajtó bontása nem sikerült"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "Nem osztható ki foglalatpár"
+msgstr "A puffer lefoglalása sikertelen"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Az utolsó blokk nem lett teljesen kiírva"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "%1 kiírva / %2"
 
-#: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
+#: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Az átmeneti fájl átnevezése nem lehetséges."
+msgstr "A képfájl olvasása sikertelen: "
 
-#: ../src/helper/win/writejob.cpp:499
+#: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "A teljes képírása sikertelen. Összesen kiírva: %1 / %2"
 
-#: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#: ../src/helper/win/writejob.cpp:518
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "A meghajtó írásra történő megnyitása nem sikerült"
+msgstr "A meghajtó nem nyitható meg a(z) %1 adatellenőrzésére:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
@@ -1482,10 +1449,6 @@ msgstr "fmw;usb;iso;bootolható;"
 #~ "operációs rendszer, amely lehetővé teszi, hogy a (bármilyen OS "
 #~ "használatában) tapasztalt rendszergazdák a nyílt forráskódú közösségben "
 #~ "elérhető legfrissebb kiszolgáló-alapú technológiákat használják."
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "Könnyű adminisztráció"
 
 #~ msgctxt "Release|"
 #~ msgid "Server Roles"

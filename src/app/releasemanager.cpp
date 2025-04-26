@@ -290,18 +290,14 @@ void ReleaseManager::onStringDownloaded(const QString &text)
         if (QStringList{"cloud", "cloud_base", "atomic", "everything", "minimal", "docker", "docker_base"}.contains(release))
             continue;
 
-        release.replace(QRegularExpression("_kde$"), "");
-        release.replace("_", " ");
-
-        // KDE Mobile spin uses same subvariant as KDE Desktop
-        if ((release == QLatin1String("kde")) && url.toLower().contains(QLatin1String("fedora-kde-mobile-live"))) {
-            release = QLatin1String("kde_mobile");
-        }
-
-        if (!re.match(versionWithStatus).hasMatch())
+        // Filter out non-ISO or OSTree boot images
+        if (!url.endsWith("iso") || url.contains("-osb-") || url.contains("-provisioner-"))
             continue;
 
         if (release.contains("workstation") && !url.contains("Live") && !url.contains("armhfp"))
+            continue;
+
+        if (!re.match(versionWithStatus).hasMatch())
             continue;
 
         if (release.contains("server")) {

@@ -1,12 +1,12 @@
 # Andrea Young Oak Li <youli@redhat.com>, 2016. #zanata
-# simmon <simmon@nplob.com>, 2021.
-# 김인수 <simmon@nplob.com>, 2022, 2023, 2024.
-# Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024.
+# 김인수 <simmon@nplob.com>, 2021, 2022, 2023, 2024, 2025.
+# Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024, 2025.
+# Hyeonho Kang <hyeonho2010@naver.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2024-11-30 13:38+0000\n"
+"POT-Creation-Date: 2025-04-14 10:13+0200\n"
+"PO-Revision-Date: 2025-04-14 10:54+0000\n"
 "Last-Translator: 김인수 <simmon@nplob.com>\n"
 "Language-Team: Korean <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/ko/>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.8.2\n"
+"X-Generator: Weblate 5.10.4\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -32,13 +32,13 @@ msgstr "버전 %1"
 #: ../src/app/qml/AboutDialog.qml:65
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "페도라 미디어 작성기는 현재 새로운 출시를 점검 중입니다"
+msgstr "페도라 미디어 작성기가 새로운 출시를 확인하고 있습니다"
 
 #: ../src/app/qml/AboutDialog.qml:71
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr "%1에 결점이나 의견을 보고해 주세요"
+msgstr "%1에 오류나 제안을 보고해 주세요"
 
 #: ../src/app/qml/AboutDialog.qml:94
 msgctxt "AboutDialog|"
@@ -48,7 +48,7 @@ msgstr "닫기"
 #: ../src/app/qml/CancelDialog.qml:55
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr "내려 받기를 취소할까요?"
+msgstr "내려받기를 취소할까요?"
 
 #: ../src/app/qml/CancelDialog.qml:57
 msgctxt "CancelDialog|"
@@ -66,20 +66,20 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
-"내려 받기와 미디어 쓰기가 중지됩니다. 이와 같은 처리는 다음에 언제든지 다시 "
-"진행 할 수 있습니다."
+"내려받기와 미디어 쓰기가 중지됩니다. 이와 같은 처리는 다음에 언제든지 다시 진"
+"행 할 수 있습니다."
 
 #: ../src/app/qml/CancelDialog.qml:68
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr "쓰기 진행이 중지되면 자신의 드라이브는 이전으로 복구됩니다."
+msgstr "작성 작업이 중단되고 나중에 드라이브를 복원해야 합니다."
 
 #: ../src/app/qml/CancelDialog.qml:70
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr "이와 같은 동작은 취소 되어도 안전합니다."
+msgstr "이 작업은 취소해도 안전합니다."
 
 #: ../src/app/qml/CancelDialog.qml:87
 msgctxt "CancelDialog|"
@@ -89,22 +89,27 @@ msgstr "진행"
 #: ../src/app/qml/CancelDialog.qml:110
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "내려받기를 취소합니다"
+msgstr "내려받기 취소"
 
 #: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "작성하기를 취소합니다"
+msgstr "작성 취소"
 
 #: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr "검증을 취소합니다"
+msgstr "검증 취소"
 
 #: ../src/app/qml/CancelDialog.qml:116
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "취소"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:49
+msgctxt "DeviceWarningDialog|"
+msgid "Erase confirmation"
+msgstr "지우기 확인"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -112,8 +117,9 @@ msgctxt "DeviceWarningDialog|"
 msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
-msgstr "전체 장치 (%1의 모두)는 지워지고 선택한 이미지는 해당 장치에 작성됩니다. "
-"계속할까요?"
+msgstr ""
+"전체 장치 (%1의 전체)는 지워지고 선택한 이미지는 해당 장치에 작성됩니다. 계속"
+"할까요?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 msgctxt "DeviceWarningDialog|"
@@ -123,7 +129,7 @@ msgstr "취소"
 #: ../src/app/qml/DeviceWarningDialog.qml:82
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
-msgstr "쓰기"
+msgstr "작성"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
 msgctxt "DeviceWarningDialog|"
@@ -158,12 +164,12 @@ msgstr "바이트"
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr "요청된 이미지를 가져올 수 없습니다."
+msgstr "요청하신 이미지를 가져올 수 없습니다."
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr "내려받기 폴더에 공간이 부족합니다."
+msgstr "내려받을( Download) 폴더 공간이 부족합니다."
 
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
@@ -185,13 +191,13 @@ msgstr "%1를 성공적으로 작성됨"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "%1 쓰기"
+msgstr "%1 작성 중"
 
 #: ../src/app/qml/DownloadPage.qml:40
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "%1 내려받기 중"
+msgstr "%1 내려받는 중"
 
 #: ../src/app/qml/DownloadPage.qml:42
 #, qt-format
@@ -241,12 +247,12 @@ msgstr " (%1"
 #: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr "당신의 드라이브가 처리 진행 할 때에 분리되었습니다"
+msgstr "작업 중 드라이브가 분리됨"
 
 #: ../src/app/qml/DownloadPage.qml:106
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "내려받기는 다운로드 폴더에 저장됩니다."
+msgstr "내려받기는 내려받기 폴더에 저장됩니다."
 
 #: ../src/app/qml/DownloadPage.qml:116
 #, qt-format
@@ -266,9 +272,9 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"당신의 드라이브가 더 작은 공간으로 크기가 조정 될 것입니다. 페도라 미디어 작"
-"성기를 사용 할 때에 정상적으로 크기가 재 조정 될 것입니다. 당신의 드라이브에"
-"서 설치 미디어를 제거 할 것입니다."
+"당신의 드라이브가 더 작은 공간으로 크기로 조정됩니다. 페도라 미디어 작성기를 "
+"사용하여 정상적으로 되돌려 크기를 재조정 할 수 있습니다. 이는 당신의 드라이브"
+"에서 설치 미디어가 제거됩니다."
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
@@ -288,9 +294,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"보드 또는 장치가 아직 페도라 미디어 작성기를 지원하지 않습니다. 페도라의 호환"
-"성과 이 부팅 미디어 생성 방법에 대해서 보다 더 자세히 <a href=%1>이 부분</a>"
-"을 확인해 주세요."
+"보드 또는 장치가 아직 페도라 미디어 작성기를 지원하지 않습니다. 페도라와의 호"
+"환성과 미디어 생성 방법에 대한 정보를 위해 <a href=%1>이 부분</a>을 확인해 주"
+"세요."
 
 #: ../src/app/qml/DownloadPage.qml:160
 #, qt-format
@@ -299,8 +305,8 @@ msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
-"선택된 드라이버 크기가 %1입니다. 사고로 외부(외장) 드라이브를 선택 할 수 도 "
-"있습니다!"
+"선택된 드라이브의 크기가 %1입니다. 실수로 외장 드라이브를 선택했을 수 있습니"
+"다!"
 
 #: ../src/app/qml/DownloadPage.qml:168
 #, qt-format
@@ -316,27 +322,27 @@ msgstr "취소"
 #: ../src/app/qml/DownloadPage.qml:270
 msgctxt "DownloadPage|"
 msgid "Write"
-msgstr "쓰기"
+msgstr "작성"
 
 #: ../src/app/qml/DownloadPage.qml:272
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "종료"
+msgstr "완료"
 
 #: ../src/app/qml/DownloadPage.qml:274
 msgctxt "DownloadPage|"
 msgid "Retry"
-msgstr "다시 시도"
+msgstr "재시도"
 
 #: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
-msgstr "이 드라이버는 공간이 충분하지 않습니다."
+msgstr "이 드라이브는 공간이 충분하지 않습니다."
 
 #: ../src/app/qml/DrivePage.qml:30
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "쓰기 옵션"
+msgstr "작성 옵션"
 
 #: ../src/app/qml/DrivePage.qml:37
 msgctxt "DrivePage|"
@@ -396,7 +402,7 @@ msgstr "작성 후에 내려받은 이미지를 삭제합니다"
 #: ../src/app/qml/DrivePage.qml:169
 msgctxt "DrivePage|"
 msgid "Write"
-msgstr "쓰기"
+msgstr "작성"
 
 #: ../src/app/qml/DrivePage.qml:171
 msgctxt "DrivePage|"
@@ -421,18 +427,18 @@ msgstr "도우미 바이너리를 찾을 수 없습니다. 설치 상태를 점�
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr "쓰기가 완료되기 전에 중지되었습니다."
+msgstr "작성이 완료되기 전에 중지되었습니다."
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
 msgid "Finished!"
-msgstr "종료됨!"
+msgstr "완료됨!"
 
 #: ../src/app/linuxdrivemanager.cpp:327
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr "작성 %1이 성공적으로 완료되었습니다"
+msgstr "작성 %1가 성공적으로 완료되었습니다"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
@@ -443,12 +449,12 @@ msgstr "오류"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr "쓰기 %1이 실패함"
+msgstr "작성 %1이 실패함"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
-msgstr "UDisk2는 시스템에 사용 할 수 없거나 접근 할 수 없는 것으로 보입니다."
+msgstr "시스템에서 UDisks2를 사용할 수 없거나 접근할 수 없는 것 같습니다."
 
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
@@ -464,7 +470,7 @@ msgstr "오류"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr "쓰기%1가 실패함"
+msgstr "작성%1가 실패함"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
@@ -475,12 +481,12 @@ msgstr "완료됨!"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr "쓰기 %1가 성공했습니다"
+msgstr "작성 %1가 성공했습니다"
 
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr "선택 이미지 원천"
+msgstr "이미지 원본 선택"
 
 #: ../src/app/qml/MainPage.qml:33
 msgctxt "MainPage|"
@@ -503,12 +509,12 @@ msgctxt "MainPage|"
 msgid "About"
 msgstr "정보"
 
-#: ../src/app/qml/Page.qml:95
+#: ../src/app/qml/Page.qml:100
 msgctxt "Page|"
 msgid "Previous"
 msgstr "이전"
 
-#: ../src/app/qml/Page.qml:105
+#: ../src/app/qml/Page.qml:110
 msgctxt "Page|"
 msgid "Next"
 msgstr "다음"
@@ -561,7 +567,7 @@ msgstr "%1 byte(s)"
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
-msgstr "드라이버에서 파일 선택"
+msgstr "드라이브에서 파일 선택"
 
 #: ../src/app/releasemanager.cpp:420
 msgctxt "Release|"
@@ -570,9 +576,8 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
-"<p>여기 하드디스크에서 USB 저장장치에 작성 할 수 있도록 OS 이미지를 선택 할 "
-"수 있습니다.</p><p>현재 단순 디스크 이미지만(.iso 또는 .bin)을 지원합니다. </"
-"p>"
+"<p>여기에서 하드 드라이브에서 플래시 디스크에 기록할 OS 이미지를 선택할 수 있"
+"습니다</p><p>현재 원시 디스크 이미지(.iso 또는 .bin)만 지원됩니다</p>"
 
 #: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
@@ -602,7 +607,7 @@ msgstr "인텔/AMD 64비트"
 #: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr "인텔, AMD와 다른 호환 PC (64비트)를 위한 ISO 형식의 이미지"
+msgstr "Intel, AMD 및 기타 호환되는 PC용 ISO 포맷 이미지 (64비트)"
 
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
@@ -612,7 +617,7 @@ msgstr "인텔/AMD 32비트"
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr "인텔, AMD와 다른 호환 PC (32비트)를 위한 ISO 형식의 이미지"
+msgstr "Intel, AMD 및 기타 호환되는 PC용 ISO 포맷 이미지 (32비트)"
 
 #: ../src/app/releasemanager.cpp:1105
 msgctxt "ReleaseArchitecture|"
@@ -623,8 +628,7 @@ msgstr "ARM v7"
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
-msgstr ""
-"라즈베리 파이 2와 3같은 암(arm) v7-A 장비를 위한 LZMA-압축된 단순 이미지"
+msgstr "라즈베리 파이 2 및 3과 같은 ARM v7-A 머신을 위한 LZMA 압축 원시 이미지"
 
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
@@ -634,7 +638,7 @@ msgstr "AArch64"
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "AArch64 장비를 위한 LZMA-압축된 이미지"
+msgstr "AArch64 머신용 LZMA 압축 원시 이미지"
 
 #: ../src/app/releasemanager.cpp:418
 msgctxt "ReleaseListModel|"
@@ -649,12 +653,12 @@ msgstr "내려받은 이미지가 손상되었습니다"
 #: ../src/app/releasemanager.cpp:978
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
-msgstr "내려받은 파일을 읽을 수가 없습니다."
+msgstr "내려받은 파일을 읽을 수 없습니다."
 
 #: ../src/app/releasemanager.cpp:989
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr "임시 파일 명칭을 변경 할 수 없음."
+msgstr "임시 파일 명칭을 변경할 수 없음."
 
 #: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
@@ -680,12 +684,12 @@ msgstr "작성 준비"
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
-"이미지 파일은 내려받기 폴더에 저장되어 있습니다. 쓰기는 실행 할 수 없습니다"
+"이미지 파일이 자신의 내려받기 폴더에 저장되었습니다. 작성 할 수 없습니다"
 
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "Writing"
-msgstr "쓰기"
+msgstr "작성"
 
 #: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
@@ -695,17 +699,17 @@ msgstr "작성된 자료 확인 중"
 #: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
-msgstr "종료됨!"
+msgstr "완료됨!"
 
 #: ../src/app/releasemanager.h:386
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
-msgstr "작성된 자료가 손상되었습니다"
+msgstr "작성된 자료가 손상됨"
 
 #: ../src/app/releasemanager.h:387
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr "내려받기 실패"
+msgstr "내려받기 실패함"
 
 #: ../src/app/releasemanager.h:388
 msgctxt "ReleaseVariant|"
@@ -730,10 +734,40 @@ msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "%1 출시 후보"
 
+#: ../src/helper/linux/restorejob.cpp:67
+msgctxt "RestoreJob|"
+msgid "Failed to open device for writing"
+msgstr "작성을 위해 장치를 여는 데 실패함"
+
+#: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
+msgctxt "RestoreJob|"
+msgid "Destination drive is not writable"
+msgstr "대상 드라이브에 작성 할 수 없음"
+
+#: ../src/helper/linux/restorejob.cpp:91
+msgctxt "RestoreJob|"
+msgid "Failed to get file size"
+msgstr "이미지 파일을 가져 올 수 없음"
+
+#: ../src/helper/linux/restorejob.cpp:98
+msgctxt "RestoreJob|"
+msgid "File size is smaller than 128 blocks"
+msgstr "파일 크기는 128 블록보다 작습니다"
+
+#: ../src/helper/linux/restorejob.cpp:105
+msgctxt "RestoreJob|"
+msgid "Failed to move file pointer to the end region"
+msgstr "파일 지시자를 종료 지역으로 이동하는 데 실패함"
+
+#: ../src/helper/linux/restorejob.cpp:122
+msgctxt "RestoreJob|"
+msgid "Failed to sync data to disk"
+msgstr "자료를 디스크로 동기화 하는 데 실패함"
+
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "드라이브 적재점을 제거 할 수 없습니다"
+msgstr "드라이브 적재지점을 제거 할 수 없음"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
@@ -791,51 +825,50 @@ msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
 "be restored to its factory settings. The live system and all saved data will "
-"be deleted. </p> <p align=\"justify\"> You don't need to restore the drive "
-"if you want to write another live system to it. \n"
-"                </p> <p align=\"justify\"> Do you want to restore it to "
-"factory settings? </p>"
+"be deleted.</p> <p align=\"justify\"> You don't need to restore the drive if "
+"you want to write another live system to it.</p> <p align=\"justify\"> Do "
+"you want to restore it to factory settings? </p>"
 msgstr ""
-"<p align=\"justify\"> 드라이브에서 사용 할 수 있는 모든 공간을 확보 할 때에, "
-"공장 설정 값으로 복구됩니다. 실시간 시스템과 모든 저장된 자료는 삭제 됩니다. "
-"</p> <p align=\"justify\"> 만약 이를 위해 다른 라이브 시스템에 쓰기를 원하는 "
-"경우 복구 할 필요가 없습니다.\n"
-"                </p> <p align=\"justify\"> 공장 설정 값으로 복구 할까요? </p>"
+"<p align=\"justify\"> 드라이브에 사용 가능한 모든 공간을 회수하려면, 공장 "
+"초기화로 복원해야 합니다. 라이브 시스템 및 저장된 모든 자료가 삭제됩니다. </"
+"p> <p align=“justify”> 다른 실시간 시스템을 드라이브에 작성하려는 경우 "
+"드라이브를 복원 할 필요가 없습니다. </p> <p align=\"justify\"> 공장 초기화("
+"초기 설정)로 복원할까요? </p>"
 
-#: ../src/app/qml/RestorePage.qml:54
+#: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
-"<p align=\"justify\">페도라 미디어 작성기가 이동식 드라이브를 복구 할 때에 기"
+"<p align=\"justify\">페도라 미디어 작성기가 이동식 드라이브를 복구할때까지 기"
 "다려 주세요.</p>"
 
-#: ../src/app/qml/RestorePage.qml:70
+#: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "드라이브가 성공적으로 복구되었습니다!"
 
-#: ../src/app/qml/RestorePage.qml:79
+#: ../src/app/qml/RestorePage.qml:78
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"안타깝게도, 처리 중에 오류가 발생했습니다. 시스템 도구를 사용하여 드라이브 복"
-"구를 시도해주세요."
+"안타깝게도, 작업 중에 오류가 발생했습니다. 시스템 도구를 사용하여 드라이브 복"
+"구를 시도하세요."
 
-#: ../src/app/qml/RestorePage.qml:93
+#: ../src/app/qml/RestorePage.qml:92
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr "복구하기가 종료됨"
+msgstr "복구가 완료됨"
 
-#: ../src/app/qml/RestorePage.qml:111
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Finish"
-msgstr "종료"
+msgstr "완료"
 
-#: ../src/app/qml/RestorePage.qml:111
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "복구"
@@ -843,12 +876,12 @@ msgstr "복구"
 #: ../src/app/qml/VersionPage.qml:29
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr "페도라 출시를 선택합니다"
+msgstr "페도라 출시 선택"
 
 #: ../src/app/qml/VersionPage.qml:32
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "다음에서 선택합니다:"
+msgstr "다음에서 선택:"
 
 #: ../src/app/qml/VersionPage.qml:37
 msgctxt "VersionPage|"
@@ -878,75 +911,75 @@ msgstr "도우미 바이너리를 찾을 수 없습니다. 설치를 점검해�
 #: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr "종료됨!"
+msgstr "완료됨!"
 
 #: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr "작성 %1이 성공하였습니다"
+msgstr "작성 %1 성공"
 
 #: ../src/app/windrivemanager.cpp:244
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "작성하기가 취소되었습니다"
+msgstr "작성이 취소됨"
 
-#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr "압축 해제 시작에 실패."
+msgstr "압축 해제를 실패함."
 
-#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
-#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/linux/writejob.cpp:105 ../src/helper/linux/writejob.cpp:135
+#: ../src/helper/linux/writejob.cpp:173 ../src/helper/mac/writejob.cpp:185
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:327 ../src/helper/win/writejob.cpp:370
 #: ../src/helper/win/writejob.cpp:465
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
-msgstr "대상 드라이브를 작성 할 수 없습니다"
+msgstr "대상 드라이브에 작성 할 수 없음"
 
-#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/linux/writejob.cpp:114 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
-msgstr "파일을 압축해제 할 때에 충분한 메모리가 없습니다."
+msgstr "파일의 압축을 풀 메모리가 부족합니다."
 
-#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/linux/writejob.cpp:119 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:350
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "내려받은 압축 파일이 손상되었습니다."
 
-#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/linux/writejob.cpp:122 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:353
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
-msgstr "미지원 압축 선택."
+msgstr "미지원 압축 옵션."
 
-#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/linux/writejob.cpp:125 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:356
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
-msgstr "알지 못하는 압축해제 오류."
+msgstr "알 수 없는 압축 해제 오류."
 
-#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/linux/writejob.cpp:151 ../src/helper/linux/writejob.cpp:166
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
-msgstr "원천 이미지를 읽을 수 없습니다"
+msgstr "원천 이미지를 읽을 수 없음"
 
-#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
-#: ../src/helper/win/writejob.cpp:539
+#: ../src/helper/linux/writejob.cpp:203 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:538
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr "드라이브가 아마도 손상되었을 수 있습니다."
+msgstr "드라이브가 손상되었을 수 있습니다."
 
-#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
-#: ../src/helper/win/writejob.cpp:544
+#: ../src/helper/linux/writejob.cpp:208 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:543
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr "미디어 점검시에 예상하지 못한 오류가 발생되었습니다."
+msgstr "미디어 확인중 예기치 못한 오류가 발생하였습니다."
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
@@ -956,42 +989,42 @@ msgstr "소켓 쌍을 할당 할 수 없음"
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr "쓰기를 위해 대상을 열 수 없습니다"
+msgstr "작성을 위해 대상을 열 수 없음"
 
 #: ../src/helper/win/writejob.cpp:122
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "드라이브 적재점을 제거 할 수 없습니다"
+msgstr "드라이브 적재지점을 제거 할 수 없음"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "드라이브에서 파티션 제거하는 데 실패함"
+msgstr "드라이브에서 파티션을 제거 할 수 없음"
 
 #: ../src/helper/win/writejob.cpp:140
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "초기화 중에 위해 드라이브를 여는 데 실패함"
+msgstr "초기화를 위해 드라이브를 열 수 없음"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr "드라이브를 잠글 수 없습니다"
+msgstr "드라이브를 잠글 수 없음"
 
 #: ../src/helper/win/writejob.cpp:159
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "논리 핸들을 열 수 없습니다"
+msgstr "논리 핸들을 열 수 없음"
 
 #: ../src/helper/win/writejob.cpp:165
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "논리 드라이브를 잠글 수 없습니다"
+msgstr "논리 드라이브를 잠글 수 없음"
 
 #: ../src/helper/win/writejob.cpp:172
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "드라이브를 적재를 해제 할 수 없습니다"
+msgstr "드라이브를 적재를 해제 할 수 없음"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
 msgctxt "WriteJob|"
@@ -1002,7 +1035,7 @@ msgstr "버퍼 할당에 실패함"
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr "마지막 블록이 완전히 작성되지 않았습니다"
+msgstr "마지막 블록이 완전히 작성되지 않음"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
@@ -1010,22 +1043,22 @@ msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
 msgstr "%2중 %1을 작성함"
 
-#: ../src/helper/win/writejob.cpp:493
+#: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
 msgstr "이미지 파일을 읽을 수 없음: "
 
-#: ../src/helper/win/writejob.cpp:499
+#: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr "전체 이미지를 작성하는 데 실패함. 총 작성: %2중 %1"
+msgstr "전체 이미지를 작성할 수 없음. 총 작성: %2중 %1"
 
-#: ../src/helper/win/writejob.cpp:519
+#: ../src/helper/win/writejob.cpp:518
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "%1용 자료 검증을 위한 드라이브를 열 수 없습니다:"
+msgstr "%1의 데이터 확인을 위해 드라이브를 열 수 없음:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
@@ -1035,12 +1068,12 @@ msgstr "페도라 미디어 작성기"
 #: ../src/app/qml/main.qml:100
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "페도라 버전을 선택합니다"
+msgstr "페도라 버전 선택"
 
 #: ../src/app/qml/main.qml:114
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "선택된 드라이브"
+msgstr "드라이브 선택"
 
 #: ../src/app/qml/main.qml:139
 msgctxt "main|"
@@ -1057,7 +1090,7 @@ msgstr "페도라 미디어 작성기"
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
-msgstr "페도라 배포판을 실시간 USB 드라이브를 생성하는 도구"
+msgstr "페도라 배포판으로 실시간 USB 드라이브를 생성하는 도구"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -1070,11 +1103,11 @@ msgid ""
 "about each of them to help you make the right choice."
 msgstr ""
 "페도라 배포판으로 부팅 가능한 라이브 USB 드라이브를 생성하는 도구입니다. 페도"
-"라 미디어 작성기는 사용자의 플래시 드라이브에 이미지를 쓸 수 있을 뿐만 아니"
-"라, 이를 내려 받을 수도 있습니다. 공식 배포판(서버, 웍스테이션), 페도라 스핀"
-"(KDE 플래즈마 데스크탑, Xfce 데스크탑, 시나몬 데스크탑,...), 그리고 페도라 "
-"Labs(디자인 제품군, 보안 랩,...) 등이 있습니다. 사용자에게 맞는 선택을 할 수 "
-"있도록 각 제품에 대한 기본 정보가 제공됩니다."
+"라 미디어 작성기는 사용자의 플래시 드라이브에 이미지를 쓸 수도 있으며 사용자 "
+"대신에 그것을 내려 받을 수도 있습니다. 공식 배포판(서버, 웍스테이션), 페로라 "
+"스핀 (KDE 플래즈마 데스크탑, Xfce 데스크탑, 시나몬 데스크탑,...), 그리고 페도"
+"라 랩(디자인 제품군, 보안 랩,...) 등이 있습니다. 사용자에게 알맞는 선택을 할 "
+"수 있도록 각 제품에 대한 기본 정보가 제공됩니다."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -1082,8 +1115,8 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
-"페도라 미디어 작성기는 또한 사용자의 로컬 디스크에서 적재된 다른 부팅 가능한 "
-"ISO에도 쓸 수 있지만, 페도라 이미지만 시험 되었으니 유의하기 바랍니다."
+"페도라 미디어 작성기는 사용자의 로컬 디스크에서 적재된 다른 부팅 가능한 ISO에"
+"도 쓸 수 있지만, 페도라 이미지만 시험되었으니 유의하시기 바랍니다."
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
@@ -1396,10 +1429,6 @@ msgstr "fmw;usb;iso;부팅가능;"
 #~ "페도라 서버는 짧은 생명 주기와 커뮤니티-지원을 바탕으로 한 서버 운영체제"
 #~ "로, 시스템 관리자뿐만 아니라 다른 운영체제를 사용했던 사용자들에게 오픈 소"
 #~ "스 환경에서 가장 최신의 기술들을 제공합니다."
-
-#~ msgctxt "Release|"
-#~ msgid "Easy Administration"
-#~ msgstr "쉬운 관리"
 
 #~ msgctxt "Release|"
 #~ msgid ""

@@ -1,15 +1,17 @@
 # Mohammed Tayeh <mohamed94@fedoraproject.org>, 2016. #zanata
 # Ahmed M. Farrag <a.m.farrag@gmail.com>, 2022.
-# Mostafa Gamal <mostafa.2c6@gmail.com>, 2022.
-# Amro Hatem <amro_hatem_1@outlook.com>, 2023.
-# Eyad Mahmoud <eyadmahm0ud@users.noreply.translate.fedoraproject.org>, 2023.
+# Mostafa Gamal <mostafa.2c6@gmail.com>, 2022, 2025.
+# Amro Hatem <amro_hatem_1@outlook.com>, 2023, 2025.
+# Eyad Mahmoud <eyadmahm0ud@users.noreply.translate.fedoraproject.org>, 2023, 2025.
+# joo es <johndevand@tutanota.com>, 2025.
+# Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025.
+# "Ahmed M. Farrag" <a.m.farrag@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-30 08:29+0100\n"
-"PO-Revision-Date: 2023-12-26 19:02+0000\n"
-"Last-Translator: Eyad Mahmoud <eyadmahm0ud@users.noreply.translate."
-"fedoraproject.org>\n"
+"POT-Creation-Date: 2025-04-14 10:13+0200\n"
+"PO-Revision-Date: 2025-03-28 00:29+0000\n"
+"Last-Translator: joo es <johndevand@tutanota.com>\n"
 "Language-Team: Arabic <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/ar/>\n"
 "Language: ar\n"
@@ -18,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.3\n"
+"X-Generator: Weblate 5.10.4\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -104,12 +106,14 @@ msgid "Cancel Verification"
 msgstr "إلغاء التحقق"
 
 #: ../src/app/qml/CancelDialog.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
-msgstr "إلغاء"
+msgstr "ألغِ"
+
+#: ../src/app/qml/DeviceWarningDialog.qml:49
+msgctxt "DeviceWarningDialog|"
+msgid "Erase confirmation"
+msgstr "تأكيد المسح"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -118,43 +122,34 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"سيتم مسح الجهاز بالكامل (كل ما فيه %1) وسيتم كتابة الصورة المحددة عليه. هل "
+"تريد الاستمرار؟"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
-msgstr "إلغاء"
+msgstr "ألغِ"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
-msgstr "كتابة"
+msgstr "اكتب"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
-msgstr "تنزيل وكتابة"
+msgstr "نزّل && اكتب"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
-msgstr "تنزيل وكتابة"
+msgstr "نزّل & اكتب"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:97
+#, fuzzy
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:99
 msgctxt "DeviceWarningDialog|"
@@ -169,7 +164,7 @@ msgstr ""
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "بايتات"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -323,20 +318,14 @@ msgid "Restart and boot from %1 to start using %2."
 msgstr "إعادة التشغيل والإقلاع من %1 لبدء استخدام %2."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
-msgstr "إلغاء"
+msgstr "ألغِ"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DownloadPage|"
 msgid "Write"
-msgstr "كتابة"
+msgstr "اكتب"
 
 #: ../src/app/qml/DownloadPage.qml:272
 msgctxt "DownloadPage|"
@@ -344,12 +333,9 @@ msgid "Finish"
 msgstr "إنهاء"
 
 #: ../src/app/qml/DownloadPage.qml:274
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Retry"
 msgctxt "DownloadPage|"
 msgid "Retry"
-msgstr "إعادة المحاولة"
+msgstr "أعد المحاولة"
 
 #: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
@@ -417,28 +403,19 @@ msgid "Delete download after writing"
 msgstr "حذف الصورة القرص التي سيتم تنزيلها بعد الكتابة"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DrivePage|"
 msgid "Write"
-msgstr "كتابة"
+msgstr "اكتب"
 
 #: ../src/app/qml/DrivePage.qml:171
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DrivePage|"
 msgid "Download && Write"
-msgstr "تنزيل وكتابة"
+msgstr "نزّل && اكتب"
 
 #: ../src/app/qml/DrivePage.qml:172
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DrivePage|"
 msgid "Download & Write"
-msgstr "تنزيل وكتابة"
+msgstr "نزّل & اكتب"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -531,25 +508,16 @@ msgid "Restore <b>%1</b>"
 msgstr "استعادة <b>%1</b>"
 
 #: ../src/app/qml/MainPage.qml:72
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "About"
 msgctxt "MainPage|"
 msgid "About"
-msgstr "لمحة"
+msgstr "حول"
 
-#: ../src/app/qml/Page.qml:95
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Previous"
+#: ../src/app/qml/Page.qml:100
 msgctxt "Page|"
 msgid "Previous"
 msgstr "السابق"
 
-#: ../src/app/qml/Page.qml:105
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Next"
+#: ../src/app/qml/Page.qml:110
 msgctxt "Page|"
 msgid "Next"
 msgstr "التالي"
@@ -597,7 +565,7 @@ msgstr ""
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 بايت/ات"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -625,11 +593,9 @@ msgid "Fedora Labs"
 msgstr "مختبرات فيدورا"
 
 #: ../src/app/releasemanager.cpp:455
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr "Fedora Media Writer"
+msgstr "أجهزة سطح المكتب فيدورا الذرية"
 
 #: ../src/app/releasemanager.cpp:457
 msgctxt "Release|"
@@ -770,34 +736,64 @@ msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
 msgstr "%1 مرشح للإصدار"
 
-#: ../src/helper/win/restorejob.cpp:60
+#: ../src/helper/linux/restorejob.cpp:67
+#, fuzzy
+#| msgctxt "RestoreJob|"
+#| msgid "Failed to open the drive for formatting"
+msgctxt "RestoreJob|"
+msgid "Failed to open device for writing"
+msgstr "فشل فتح محرك الأقراص للتنسيق"
+
+#: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
 #, fuzzy
 #| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
+#| msgid "Destination drive is not writable"
+msgctxt "RestoreJob|"
+msgid "Destination drive is not writable"
+msgstr "محرك الأقراص غير قابل للكتابة"
+
+#: ../src/helper/linux/restorejob.cpp:91
+#, fuzzy
+#| msgctxt "WriteJob|"
+#| msgid "Failed to read the image file: "
+msgctxt "RestoreJob|"
+msgid "Failed to get file size"
+msgstr "فشل في قراءة ملف الصورة: "
+
+#: ../src/helper/linux/restorejob.cpp:98
+msgctxt "RestoreJob|"
+msgid "File size is smaller than 128 blocks"
+msgstr ""
+
+#: ../src/helper/linux/restorejob.cpp:105
+#, fuzzy
+#| msgctxt "RestoreJob|"
+#| msgid "Failed to remove partitions from the drive"
+msgctxt "RestoreJob|"
+msgid "Failed to move file pointer to the end region"
+msgstr "فشل في إزالة الأقسام من محرك الأقراص"
+
+#: ../src/helper/linux/restorejob.cpp:122
+msgctxt "RestoreJob|"
+msgid "Failed to sync data to disk"
+msgstr ""
+
+#: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "تعذر إزالة محرك الأقراص %1:"
+msgstr "تعذر إزالة نقاط ضمّ محرك الأقراص"
 
 #: ../src/helper/win/restorejob.cpp:71
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "فشل التحقق لعدم وجود قرص"
+msgstr "فشل في إزالة الأقسام من محرك الأقراص"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "تعذر فتح محرك الأقراص للكتابة"
+msgstr "فشل فتح محرك الأقراص للتنسيق"
 
 #: ../src/helper/win/restorejob.cpp:95
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
 msgstr "تعذر قفل محرك الأقراص"
@@ -805,32 +801,32 @@ msgstr "تعذر قفل محرك الأقراص"
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "فشل في مسح جدول الأقسام على محرك الأقراص"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "فشل في ضبط محرك الأقراص على نمط التقسيم RAW"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "فشل إنشاء قسم GPT على محرك الأقراص"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "فشل في الحصول على مسار وحدة تخزين GUID على محرك الأقراص"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "فشل في ضمّ القسم الجديد"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "فشل تهيئة القسم إلى exFAT"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -839,14 +835,22 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "استعادة محرك الأقراص <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
+#, fuzzy
+#| msgctxt "RestorePage|"
+#| msgid ""
+#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
+#| "to be restored to its factory settings. The live system and all saved "
+#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
+#| "restore the drive if you want to write another live system to it. \n"
+#| "                </p> <p align=\"justify\"> Do you want to restore it to "
+#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
 "be restored to its factory settings. The live system and all saved data will "
-"be deleted. </p> <p align=\"justify\"> You don't need to restore the drive "
-"if you want to write another live system to it. \n"
-"                </p> <p align=\"justify\"> Do you want to restore it to "
-"factory settings? </p>"
+"be deleted.</p> <p align=\"justify\"> You don't need to restore the drive if "
+"you want to write another live system to it.</p> <p align=\"justify\"> Do "
+"you want to restore it to factory settings? </p>"
 msgstr ""
 "<p align=\"justify\">يضطر استعادة كامل المساحة المتوفرة على محرك الأقراص إلى "
 "تهيئته. سيتم حذف نظام الإقلاع المباشر وجميع البيانات المحفوظة.\n"
@@ -854,7 +858,7 @@ msgstr ""
 "نظام آخر عليه.</p><p align=\"justify\">هل يجب استعادته إلى إعدادات المصنع؟</"
 "p>"
 
-#: ../src/app/qml/RestorePage.qml:54
+#: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
@@ -863,12 +867,12 @@ msgstr ""
 "<p align=\"justify\">الرجاء الانتظار ريثما يستعيد كاتب وسائط فيدورا محرك "
 "أقراصك المحمول.</p>"
 
-#: ../src/app/qml/RestorePage.qml:70
+#: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
 msgstr "تمت استعادة قرصك بنجاح!"
 
-#: ../src/app/qml/RestorePage.qml:79
+#: ../src/app/qml/RestorePage.qml:78
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
@@ -877,26 +881,20 @@ msgstr ""
 "للأسف، وقع خطأ ما أثناء العملية. الرجاء محاولة استعادة محرك الأقراص باستخدام "
 "أدوات النظام."
 
-#: ../src/app/qml/RestorePage.qml:93
+#: ../src/app/qml/RestorePage.qml:92
 msgctxt "RestorePage|"
 msgid "Restoring finished"
 msgstr "اكتملت الاستعادة"
 
-#: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Finish"
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Finish"
-msgstr "إنهاء"
+msgstr "أنهِ"
 
-#: ../src/app/qml/RestorePage.qml:111
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
+#: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Restore"
-msgstr "استعادة"
+msgstr "استعد"
 
 #: ../src/app/qml/VersionPage.qml:29
 msgctxt "VersionPage|"
@@ -914,11 +912,9 @@ msgid "Official Editions"
 msgstr "الإصدارات الرسمية"
 
 #: ../src/app/qml/VersionPage.qml:42
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr "Fedora Media Writer"
+msgstr "أجهزة سطح المكتب الذرية"
 
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
@@ -947,21 +943,18 @@ msgid "Writing %1 was successful"
 msgstr "كتابة %1 كانت ناجحة"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "فشلت كتابة %1"
+msgstr "أُلغيت الكتابة"
 
-#: ../src/helper/linux/writejob.cpp:143 ../src/helper/mac/writejob.cpp:225
+#: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
 msgstr "فشل بدء فك الضغط."
 
-#: ../src/helper/linux/writejob.cpp:168 ../src/helper/linux/writejob.cpp:198
-#: ../src/helper/linux/writejob.cpp:236 ../src/helper/mac/writejob.cpp:185
+#: ../src/helper/linux/writejob.cpp:105 ../src/helper/linux/writejob.cpp:135
+#: ../src/helper/linux/writejob.cpp:173 ../src/helper/mac/writejob.cpp:185
 #: ../src/helper/mac/writejob.cpp:250 ../src/helper/mac/writejob.cpp:280
 #: ../src/helper/win/writejob.cpp:327 ../src/helper/win/writejob.cpp:370
 #: ../src/helper/win/writejob.cpp:465
@@ -969,44 +962,44 @@ msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
 msgstr "محرك الأقراص غير قابل للكتابة"
 
-#: ../src/helper/linux/writejob.cpp:177 ../src/helper/mac/writejob.cpp:259
+#: ../src/helper/linux/writejob.cpp:114 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
 msgstr "لا توجد مساحة كافية لفك ضغط الملف."
 
-#: ../src/helper/linux/writejob.cpp:182 ../src/helper/mac/writejob.cpp:264
+#: ../src/helper/linux/writejob.cpp:119 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:350
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
 msgstr "الملف المضغوط الذي تم تنزيله تالف."
 
-#: ../src/helper/linux/writejob.cpp:185 ../src/helper/mac/writejob.cpp:267
+#: ../src/helper/linux/writejob.cpp:122 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:353
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
 msgstr "خيارات فك الضغط غير مدعومة."
 
-#: ../src/helper/linux/writejob.cpp:188 ../src/helper/mac/writejob.cpp:270
+#: ../src/helper/linux/writejob.cpp:125 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:356
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
 msgstr "خطأ غير معروف خلال فك الضغط."
 
-#: ../src/helper/linux/writejob.cpp:214 ../src/helper/linux/writejob.cpp:229
+#: ../src/helper/linux/writejob.cpp:151 ../src/helper/linux/writejob.cpp:166
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
 msgstr "صورة القرص المصدر غير قابل للقراءة"
 
-#: ../src/helper/linux/writejob.cpp:266 ../src/helper/mac/writejob.cpp:304
-#: ../src/helper/win/writejob.cpp:539
+#: ../src/helper/linux/writejob.cpp:203 ../src/helper/mac/writejob.cpp:304
+#: ../src/helper/win/writejob.cpp:538
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
 msgstr "ربما محرك أقراصك تالف."
 
-#: ../src/helper/linux/writejob.cpp:271 ../src/helper/mac/writejob.cpp:309
-#: ../src/helper/win/writejob.cpp:544
+#: ../src/helper/linux/writejob.cpp:208 ../src/helper/mac/writejob.cpp:309
+#: ../src/helper/win/writejob.cpp:543
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
 msgstr "حدث خطأ غير متوقع خلال التحقق من الوسائط."
@@ -1022,28 +1015,19 @@ msgid "Unable to open destination for writing"
 msgstr "تعذر فتح الوجهة للكتابة"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "تعذر إزالة محرك الأقراص %1:"
+msgstr "تعذر إزالة نقاط ضمّ محرك الأقراص"
 
 #: ../src/helper/win/writejob.cpp:129
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "فشل التحقق لعدم وجود قرص"
+msgstr "فشل في إزالة الأقسام من محرك الأقراص"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "تعذر فتح محرك الأقراص للكتابة"
+msgstr "فشل فتح محرك الأقراص للتنسيق"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1051,70 +1035,53 @@ msgid "Couldn't lock the drive"
 msgstr "تعذر قفل محرك الأقراص"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "تعذر فتح محرك الأقراص للكتابة"
+msgstr "تعذر فتح المقبض المنطقي"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "تعذر قفل محرك الأقراص"
+msgstr "تعذر قفل محرك الأقراص المنطقي"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "تعذر فك قفل محرك الأقراص"
+msgstr "تعذر فك ضمّ محرك الأقراص"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "تعذر تخصيص زوج من المقابس"
+msgstr "فشل في تخصيص المخزن المؤقت"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "لم يتم كتابة الكُتلة الأخيرة بالكامل"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "كتبت %1 من %2"
 
-#: ../src/helper/win/writejob.cpp:493
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
+#: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "تعذر إعادة تسمية الملف المؤقت."
+msgstr "فشل في قراءة ملف الصورة: "
 
-#: ../src/helper/win/writejob.cpp:499
+#: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "فشل كتابة الصورة بالكامل. إجمالي ما كُتب: %1 من %2"
 
-#: ../src/helper/win/writejob.cpp:519
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#: ../src/helper/win/writejob.cpp:518
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "تعذر فتح محرك الأقراص للكتابة"
+msgstr "تعذر فتح محرك الأقراص للتحقق من البيانات لـ %1:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
