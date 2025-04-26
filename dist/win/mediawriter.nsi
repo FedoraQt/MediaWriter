@@ -2,31 +2,44 @@
 ManifestDPIAware true
 XPStyle on
 
-# If you change the names "app.exe", "logo.ico", or "license.rtf" you should do a search and replace - they
-# show up in a few places.
+# If you change the names "app.exe", "logo.ico", or "license.rtf" you should do a search and replace
+# they show up in a few places.
 # All the other settings can be tweaked by editing the !defines at the top of this script
-!define APPNAME "Fedora Media Writer"
-!define COMPANYNAME "Fedora Project"
-!define DESCRIPTION "Tool to write Fedora images to flash drives"
+
+!define APPNAME           "Fedora Media Writer"
+!define /date CURRENTYEAR "%Y"
+!define COMPANYNAME       "Fedora Project"
+!define COPYRIGHT         "${COMPANYNAME} ${CURRENTYEAR}"
+!define DESCRIPTION       "Tool to write Fedora images to flash drives"
+!define FULLVERSION       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}.0"
+
+Name "${APPNAME} ${FULLVERSION}"
+
 # These three must be defined from command line
 #!define VERSIONMAJOR
 #!define VERSIONMINOR
 #!define VERSIONBUILD
 # These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
 # It is possible to use "mailto:" links in here to open the email client
-!define HELPURL "https://github.com/FedoraQt/MediaWriter" # "Support Information" link
-!define UPDATEURL "https://getfedora.org" # "Product Updates" link
-!define ABOUTURL "https://getfedora.org" # "Publisher" link
+
+!define HELPURL   "https://github.com/FedoraQt/MediaWriter" # "Support Information" link
+!define UPDATEURL "https://getfedora.org"                   # "Product Updates" link
+!define ABOUTURL  "https://getfedora.org"                   # "Publisher" link
+
 # This is the size (in kB) of all the files copied into "Program Files"
 #!define INSTALLSIZE
 
-VIProductVersion "0.5.50.0"
-VIAddVersionKey "ProductName" "${APPNAME}"
-VIAddVersionKey "Comments" "${DESCRIPTION}"
-VIAddVersionKey "CompanyName" "${COMPANYNAME}"
-VIAddVersionKey "LegalCopyright" "${COMPANYNAME}"
-VIAddVersionKey "FileDescription" "${APPNAME}"
-VIAddVersionKey "FileVersion" "0.5.50"
+VIProductVersion "${FULLVERSION}"
+VIFileVersion    "${FULLVERSION}"
+
+VIAddVersionKey  "ProductName"     "${APPNAME}"
+VIAddVersionKey  "ProductVersion"  "${FULLVERSION}"
+VIAddVersionKey  "Comments"        "${DESCRIPTION}"
+VIAddVersionKey  "CompanyName"     "${COMPANYNAME}"
+VIAddVersionKey  "LegalCopyright"  "${COPYRIGHT}"
+VIAddVersionKey  "LegalTrademarks" "${COPYRIGHT}"
+VIAddVersionKey  "FileDescription" "${APPNAME} installer"
+VIAddVersionKey  "FileVersion"     "${FULLVERSION}"
 
 ;Set the name of the uninstall log
 !define UninstLog "uninstall.log"
@@ -75,8 +88,8 @@ Icon "../../src/app/data/icons/mediawriter.ico"
 !insertmacro MUI_PAGE_LICENSE "../../build/app/release/LICENSE.GPL-2.txt"
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
-!define MUI_FINISHPAGE_NOAUTOCLOSE
-!define MUI_FINISHPAGE_RUN $INSTDIR\mediawriter.exe
+!define      MUI_FINISHPAGE_NOAUTOCLOSE
+!define      MUI_FINISHPAGE_RUN $INSTDIR\mediawriter.exe
 !insertmacro MUI_PAGE_FINISH
 
 !insertmacro MUI_UNPAGE_CONFIRM
@@ -165,7 +178,7 @@ LangString AdmingRightsRequired ${LANG_HUNGARIAN}            "Admin rights requi
 LangString AdmingRightsRequired ${LANG_ICELANDIC}            "Admin rights required!"
 LangString AdmingRightsRequired ${LANG_INDONESIAN}           "Admin rights required!"
 LangString AdmingRightsRequired ${LANG_IRISH}                "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_ITALIAN}              "Sono necessari i dirtti di admin!"
+LangString AdmingRightsRequired ${LANG_ITALIAN}              "Sono necessari i diritti di amministratore!"
 LangString AdmingRightsRequired ${LANG_JAPANESE}             "Admin rights required!"
 LangString AdmingRightsRequired ${LANG_KOREAN}               "Admin rights required!"
 LangString AdmingRightsRequired ${LANG_KURDISH}              "Admin rights required!"
@@ -301,23 +314,23 @@ section "install"
         createShortCut "$SMPROGRAMS\${APPNAME}.lnk" "$INSTDIR\mediawriter.exe" "" "$INSTDIR\mediawriter.ico"
 
         # Registry information for add/remove programs
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName" "${APPNAME}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "InstallLocation" "$\"$INSTDIR$\""
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayIcon" "$\"$INSTDIR\mediawriter.ico$\""
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "Publisher" "${COMPANYNAME}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "HelpLink" "${HELPURL}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLUpdateInfo" "${UPDATEURL}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLInfoAbout" "${ABOUTURL}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayVersion" "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}"
-        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMajor" ${VERSIONMAJOR}
-        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMinor" ${VERSIONMINOR}
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "DisplayName"          "${APPNAME}"
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "UninstallString"      "$\"$INSTDIR\uninstall.exe$\""
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S"
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "InstallLocation"      "$\"$INSTDIR$\""
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "DisplayIcon"          "$\"$INSTDIR\mediawriter.ico$\""
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "Publisher"            "${COMPANYNAME}"
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "HelpLink"             "${HELPURL}"
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "URLUpdateInfo"        "${UPDATEURL}"
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "URLInfoAbout"         "${ABOUTURL}"
+        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "DisplayVersion"       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}"
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMajor"         ${VERSIONMAJOR}
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMinor"         ${VERSIONMINOR}
         # There is no option for modifying or repairing the install
-        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoModify" 1
-        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoRepair" 1
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoModify"             1
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoRepair"             1
         # Set the INSTALLSIZE constant (!defined at the top of this script) so Add/Remove Programs can accurately report the size
-        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "EstimatedSize" ${INSTALLSIZE}
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "EstimatedSize"        ${INSTALLSIZE}
 sectionEnd
 
 # Uninstaller
@@ -344,7 +357,7 @@ sectionEnd
         Push $R0
         Push $R1
         Push $R2
-        SetFileAttributes "$INSTDIR\${UninstLog}" NORMAL
+        SetFileAttributes   "$INSTDIR\${UninstLog}" NORMAL
         FileOpen $UninstLog "$INSTDIR\${UninstLog}" r
         StrCpy $R1 -1
 
