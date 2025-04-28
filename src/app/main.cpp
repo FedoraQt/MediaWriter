@@ -57,7 +57,7 @@ int main(int argc, char **argv)
         app.installTranslator(&translator);
     }
 
-    QGuiApplication::setDesktopFileName("org.fedoraproject.MediaWriter.desktop");
+    QGuiApplication::setDesktopFileName("org.fedoraproject.MediaWriter");
 
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;
