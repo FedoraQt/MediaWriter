@@ -2,31 +2,44 @@
 ManifestDPIAware true
 XPStyle on
 
-# If you change the names "app.exe", "logo.ico", or "license.rtf" you should do a search and replace - they
-# show up in a few places.
+# If you change the names "app.exe", "logo.ico", or "license.rtf" you should do a search and replace
+# they show up in a few places.
 # All the other settings can be tweaked by editing the !defines at the top of this script
-!define APPNAME "Fedora Media Writer"
-!define COMPANYNAME "Fedora Project"
-!define DESCRIPTION "Tool to write Fedora images to flash drives"
+
+!define APPNAME           "Fedora Media Writer"
+!define /date CURRENTYEAR "%Y"
+!define COMPANYNAME       "Fedora Project"
+!define COPYRIGHT         "${COMPANYNAME} ${CURRENTYEAR}"
+!define DESCRIPTION       "Tool to write Fedora images to flash drives"
+!define FULLVERSION       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}.0"
+
+Name "${APPNAME} ${FULLVERSION}"
+
 # These three must be defined from command line
 #!define VERSIONMAJOR
 #!define VERSIONMINOR
 #!define VERSIONBUILD
 # These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
 # It is possible to use "mailto:" links in here to open the email client
-!define HELPURL "https://github.com/FedoraQt/MediaWriter" # "Support Information" link
-!define UPDATEURL "https://getfedora.org" # "Product Updates" link
-!define ABOUTURL "https://getfedora.org" # "Publisher" link
+
+!define HELPURL   "https://github.com/FedoraQt/MediaWriter" # "Support Information" link
+!define UPDATEURL "https://getfedora.org"                   # "Product Updates" link
+!define ABOUTURL  "https://getfedora.org"                   # "Publisher" link
+
 # This is the size (in kB) of all the files copied into "Program Files"
 #!define INSTALLSIZE
 
-VIProductVersion "0.5.50.0"
-VIAddVersionKey "ProductName" "${APPNAME}"
-VIAddVersionKey "Comments" "${DESCRIPTION}"
-VIAddVersionKey "CompanyName" "${COMPANYNAME}"
-VIAddVersionKey "LegalCopyright" "${COMPANYNAME}"
-VIAddVersionKey "FileDescription" "${APPNAME}"
-VIAddVersionKey "FileVersion" "0.5.50"
+VIProductVersion "${FULLVERSION}"
+VIFileVersion    "${FULLVERSION}"
+
+VIAddVersionKey "ProductName"     "${APPNAME}"
+VIAddVersionKey "ProductVersion"  "${FULLVERSION}"
+VIAddVersionKey "Comments"        "${DESCRIPTION}"
+VIAddVersionKey "CompanyName"     "${COMPANYNAME}"
+VIAddVersionKey "LegalCopyright"  "${COPYRIGHT}"
+VIAddVersionKey "LegalTrademarks" "${COPYRIGHT}"
+VIAddVersionKey "FileDescription" "${APPNAME} installer"
+VIAddVersionKey "FileVersion"     "${FULLVERSION}"
 
 ;Set the name of the uninstall log
 !define UninstLog "uninstall.log"
@@ -82,7 +95,7 @@ Icon "../../src/app/data/icons/mediawriter.ico"
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
 
-!insertmacro MUI_LANGUAGE "English" ;first language is the default language
+!insertmacro MUI_LANGUAGE "English"       ;first language is the default language
 !insertmacro MUI_LANGUAGE "Afrikaans"
 !insertmacro MUI_LANGUAGE "Albanian"
 !insertmacro MUI_LANGUAGE "Arabic"
@@ -139,62 +152,62 @@ Icon "../../src/app/data/icons/mediawriter.ico"
 !insertmacro MUI_LANGUAGE "Ukrainian"
 !insertmacro MUI_LANGUAGE "Uzbek"
 
-LangString UninstallProgram ${LANG_ENGLISH}              "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_AFRIKAANS}            "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ALBANIAN}             "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ARABIC}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_BELARUSIAN}           "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_BOSNIAN}              "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_BRETON}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_BULGARIAN}            "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_CATALAN}              "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_CROATIAN}             "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_CZECH}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_DANISH}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_DUTCH}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ESPERANTO}            "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ESTONIAN}             "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_FARSI}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_FINNISH}              "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_FRENCH}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_GALICIAN}             "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_GERMAN}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_GREEK}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_HEBREW}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_HUNGARIAN}            "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ICELANDIC}            "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_INDONESIAN}           "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_IRISH}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ITALIAN}              "Vuoi disinstallaree ${APPNAME}?"
-LangString UninstallProgram ${LANG_JAPANESE}             "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_KOREAN}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_KURDISH}              "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_LATVIAN}              "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_LITHUANIAN}           "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_LUXEMBOURGISH}        "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_MACEDONIAN}           "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_MALAY}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_MONGOLIAN}            "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_NORWEGIAN}            "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_NORWEGIANNYNORSK}     "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_POLISh}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_PORTUGUESE}           "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_PORTUGUESEBR}         "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ROMANIAN}             "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_RUSSIAN}              "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SERBIAN}              "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SERBIANLATIN}         "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SIMPCHINESE}          "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SLOVAK}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SLOVENIAN}            "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SPANISH}              "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SPANISHINTERNATIONAL} "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SWEDISH}              "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_THAI}                 "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_TRADCHINESE}          "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_TURKISH}              "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_UKRAINIAN}            "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_UZBEK}                "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_ENGLISH}                  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_AFRIKAANS}                "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_ALBANIAN}                 "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_ARABIC}                   "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_BELARUSIAN}               "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_BOSNIAN}                  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_BRETON}                   "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_BULGARIAN}                "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_CATALAN}                  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_CROATIAN}                 "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_CZECH}                    "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_DANISH}                   "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_DUTCH}                    "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_ESPERANTO}                "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_ESTONIAN}                 "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_FARSI}                    "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_FINNISH}                  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_FRENCH}                   "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_GALICIAN}                 "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_GERMAN}                   "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_GREEK}                    "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_HEBREW}                   "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_HUNGARIAN}                "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_ICELANDIC}                "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_INDONESIAN}               "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_IRISH}                    "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_ITALIAN}                  "Vuoi disinstallaree ${APPNAME}?"
+LangString UninstallProgram ${LANG_JAPANESE}                 "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_KOREAN}                   "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_KURDISH}                  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_LATVIAN}                  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_LITHUANIAN}               "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_LUXEMBOURGISH}            "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_MACEDONIAN}               "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_MALAY}                    "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_MONGOLIAN}                "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_NORWEGIAN}                "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_NORWEGIANNYNORSK}         "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_POLISh}                   "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_PORTUGUESE}               "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_PORTUGUESEBR}             "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_ROMANIAN}                 "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_RUSSIAN}                  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_SERBIAN}                  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_SERBIANLATIN}             "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_SIMPCHINESE}              "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_SLOVAK}                   "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_SLOVENIAN}                "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_SPANISH}                  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_SPANISHINTERNATIONAL}     "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_SWEDISH}                  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_THAI}                     "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_TRADCHINESE}              "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_TURKISH}                  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_UKRAINIAN}                "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_UZBEK}                    "Do you want to uninstall ${APPNAME}?"
 
 LangString AdmingRightsRequired ${LANG_ENGLISH}              "Administrator rights required!"
 LangString AdmingRightsRequired ${LANG_AFRIKAANS}            "Admin rights required!"
@@ -222,7 +235,7 @@ LangString AdmingRightsRequired ${LANG_HUNGARIAN}            "Admin rights requi
 LangString AdmingRightsRequired ${LANG_ICELANDIC}            "Admin rights required!"
 LangString AdmingRightsRequired ${LANG_INDONESIAN}           "Admin rights required!"
 LangString AdmingRightsRequired ${LANG_IRISH}                "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_ITALIAN}              "Sono necessari i dirtti di admin!"
+LangString AdmingRightsRequired ${LANG_ITALIAN}              "Sono necessari i diritti di amministratore!"
 LangString AdmingRightsRequired ${LANG_JAPANESE}             "Admin rights required!"
 LangString AdmingRightsRequired ${LANG_KOREAN}               "Admin rights required!"
 LangString AdmingRightsRequired ${LANG_KURDISH}              "Admin rights required!"
@@ -301,23 +314,23 @@ section "install"
         createShortCut "$SMPROGRAMS\${APPNAME}.lnk" "$INSTDIR\mediawriter.exe" "" "$INSTDIR\mediawriter.ico"
 
         # Registry information for add/remove programs
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName" "${APPNAME}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "InstallLocation" "$\"$INSTDIR$\""
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayIcon" "$\"$INSTDIR\mediawriter.ico$\""
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "Publisher" "${COMPANYNAME}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "HelpLink" "${HELPURL}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLUpdateInfo" "${UPDATEURL}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLInfoAbout" "${ABOUTURL}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayVersion" "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}"
-        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMajor" ${VERSIONMAJOR}
-        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMinor" ${VERSIONMINOR}
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName"          "${APPNAME}"
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "UninstallString"      "$\"$INSTDIR\uninstall.exe$\""
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S"
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "InstallLocation"      "$\"$INSTDIR$\""
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayIcon"          "$\"$INSTDIR\mediawriter.ico$\""
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "Publisher"            "${COMPANYNAME}"
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "HelpLink"             "${HELPURL}"
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLUpdateInfo"        "${UPDATEURL}"
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLInfoAbout"         "${ABOUTURL}"
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayVersion"       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}"
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMajor"         ${VERSIONMAJOR}
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMinor"         ${VERSIONMINOR}
         # There is no option for modifying or repairing the install
-        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoModify" 1
-        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoRepair" 1
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoModify"             1
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoRepair"             1
         # Set the INSTALLSIZE constant (!defined at the top of this script) so Add/Remove Programs can accurately report the size
-        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "EstimatedSize" ${INSTALLSIZE}
+        WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "EstimatedSize"        ${INSTALLSIZE}
 sectionEnd
 
 # Uninstaller
