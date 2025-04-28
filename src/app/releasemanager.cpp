@@ -190,7 +190,7 @@ bool ReleaseManager::updateUrl(const QString &release,
                                int64_t size)
 {
     if (!ReleaseArchitecture::isKnown(architecture)) {
-        mWarning() << "Architecture" << architecture << "is not known!";
+        mDebug() << "Architecture" << architecture << "is not known!";
         return false;
     }
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
