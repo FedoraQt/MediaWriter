@@ -13,7 +13,8 @@ XPStyle on
 !define DESCRIPTION       "Tool to write Fedora images to flash drives"
 !define FULLVERSION       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}.0"
 
-Name "${APPNAME} ${FULLVERSION}"
+Name    "${APPNAME}"
+Caption "${APPNAME} ${FULLVERSION}"
 
 # These three must be defined from command line
 #!define VERSIONMAJOR
@@ -265,7 +266,7 @@ LangString AdmingRightsRequired ${LANG_TRADCHINESE}          "Admin rights requi
 LangString AdmingRightsRequired ${LANG_TURKISH}              "Admin rights required!"
 LangString AdmingRightsRequired ${LANG_UKRAINIAN}            "Admin rights required!"
 LangString AdmingRightsRequired ${LANG_UZBEK}                "Admin rights required!"
-\
+
 !macro VerifyUserIsAdmin
 UserInfo::GetAccountType
 pop $0
