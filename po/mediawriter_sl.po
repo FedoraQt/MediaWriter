@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-02-22 12:03+0000\n"
+"PO-Revision-Date: 2025-05-05 22:35+0000\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/sl/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 5.10\n"
+"X-Generator: Weblate 5.11.3\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
@@ -747,46 +747,34 @@ msgid "%1 Release Candidate"
 msgstr "Kandidat za izdajo %1"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to open the drive for formatting"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "Ni bilo mogoče odpreti pogona za formatiranje"
+msgstr "Ni bilo mogoče odpreti naprave za pisanje"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Destination drive is not writable"
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
 msgstr "Ciljni pogon ni zapisljiv"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Failed to read the image file: "
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "Datoteke slike ni možno prebrati: "
+msgstr "Velikosti datoteke ni možno pridobiti"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "Datoteka ima manj kot 128 blokov"
 
 #: ../src/helper/linux/restorejob.cpp:105
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to remove partitions from the drive"
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "S pogona ni možno odstraniti razdelkov"
+msgstr "Kazalca datoteke ni možno pomakniti na končno območje"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "Usklajevanje podatkov na disk je spodletelo"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
@@ -845,15 +833,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Obnovi pogon <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid ""
-#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
-#| "to be restored to its factory settings. The live system and all saved "
-#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
-#| "restore the drive if you want to write another live system to it. \n"
-#| "                </p> <p align=\"justify\"> Do you want to restore it to "
-#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -864,10 +843,9 @@ msgid ""
 msgstr ""
 "<p align=\"justify\"> Da bi pridobili nazaj ves razpoložljivi prostor na "
 "pogonu, ga je treba obnoviti s tovarniškimi nastavitvami. Živi sistem in vsi "
-"shranjeni podatki bodo zbrisani. </p> <p align=\"justify\"> Ni potrebno "
-"obnavljati pogona, če želite nanj napisati drugi živi sistem. \n"
-"                </p> <p align=\"justify\"> Ali ga želite obnoviti s "
-"tovarniškimi nastavitvami? </p>"
+"shranjeni podatki bodo izbrisani.</p> <p align=\"justify\"> Ni potrebno "
+"obnavljati pogona, če želite nanj napisati drugi živi sistem.</p> <p align="
+"\"justify\"> Ali ga želite obnoviti s tovarniškimi nastavitvami? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
