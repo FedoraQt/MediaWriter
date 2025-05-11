@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-05-11 16:43+0000\n"
+"PO-Revision-Date: 2025-05-11 17:58+0000\n"
 "Last-Translator: gossypium "
 "<gossypium@users.noreply.translate.fedoraproject.org>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
@@ -126,7 +126,7 @@ msgstr "Cancelar"
 #: ../src/app/qml/DeviceWarningDialog.qml:49
 msgctxt "DeviceWarningDialog|"
 msgid "Erase confirmation"
-msgstr "Eliminar confirmación"
+msgstr "Confirmación para borrar"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -135,8 +135,8 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
-"La unidad completa (todo de %1) será eliminado y la imagen seleccionada será "
-"escrita a ella. ¿Desea continuar?"
+"La unidad completa (todos los %1) será eliminada y la imagen seleccionada "
+"será escrita en ella. ¿Desea continuar?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 msgctxt "DeviceWarningDialog|"
@@ -181,7 +181,7 @@ msgstr "Bytes"
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr "No es capaz de recuperar la imagen solicitada."
+msgstr "No se ha podido buscar la imagen solicitada."
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
@@ -232,7 +232,7 @@ msgstr "Listo para escribir %1"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "Ha fallado al descargar %1"
+msgstr "Error al descargar %1"
 
 #: ../src/app/qml/DownloadPage.qml:54
 msgctxt "DownloadPage|"
@@ -264,7 +264,7 @@ msgstr " (%1"
 #: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr "Su unidad de almacenamiento fue desenchufada durante el proceso"
+msgstr "Su unidad se ha desconectado durante el proceso"
 
 #: ../src/app/qml/DownloadPage.qml:106
 msgctxt "DownloadPage|"
@@ -280,7 +280,7 @@ msgstr "Perderá todos los datos en %1 al escribir."
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr "Por favor inserte una unidad USB de almacenamiento."
+msgstr "Por favor, inserte una unidad USB."
 
 #: ../src/app/qml/DownloadPage.qml:133
 msgctxt "DownloadPage|"
@@ -290,8 +290,8 @@ msgid ""
 "from your drive."
 msgstr ""
 "Se cambiará el tamaño de la unidad a uno menor. Puede volver a dejarlo como "
-"estaba con Fedora Media Writer. Este proceso eliminara el sistema de "
-"instalación de la unidad."
+"estaba con Fedora Media Writer. Esto eliminará el medio de instalación de su "
+"unidad."
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
@@ -329,7 +329,7 @@ msgstr ""
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr "Reiniciar y arrancar desde %1 para empezar a usar %2."
+msgstr "Reinicie y arranque desde %1 para empezar a usar %2."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
 msgctxt "DownloadPage|"
@@ -354,12 +354,12 @@ msgstr "Reintentar"
 #: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
-msgstr "La unidad no es suficientemente grande."
+msgstr "Esta unidad no es lo suficientemente grande."
 
 #: ../src/app/qml/DrivePage.qml:30
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "Opciones de Escritura"
+msgstr "Opciones para escribir"
 
 #: ../src/app/qml/DrivePage.qml:37
 msgctxt "DrivePage|"
@@ -369,7 +369,7 @@ msgstr "Versión"
 #: ../src/app/qml/DrivePage.qml:59
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr "Arquitectura del Hardware"
+msgstr "Arquitectura del hardware"
 
 #: ../src/app/qml/DrivePage.qml:76
 msgctxt "DrivePage|"
@@ -399,7 +399,7 @@ msgstr "Todos los archivos (*)"
 #: ../src/app/qml/DrivePage.qml:119
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr "Dispositivo USB"
+msgstr "Unidad USB"
 
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
@@ -424,17 +424,17 @@ msgstr "Escribir"
 #: ../src/app/qml/DrivePage.qml:171
 msgctxt "DrivePage|"
 msgid "Download && Write"
-msgstr "Descargar y Escribir"
+msgstr "Descargar y escribir"
 
 #: ../src/app/qml/DrivePage.qml:172
 msgctxt "DrivePage|"
 msgid "Download & Write"
-msgstr "Descargar y Escribir"
+msgstr "Descargar y escribir"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr "Se retiró la unidad mientras se estaba escribiendo."
+msgstr "La unidad fue retirada mientras estaba siendo escrita."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
@@ -468,19 +468,17 @@ msgstr "Error"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr "Falló la escritura de %1"
+msgstr "La escritura de %1 falló"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
-msgstr "Parece que UDisks2 no está disponible o inaccesible en su sistema."
+msgstr "Parece que UDisks2 no está disponible o es inaccesible en su sistema."
 
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr ""
-"No se pudo encontrar el ejecutable específico del sistema. Compruebe su "
-"instalación."
+msgstr "No fue posible encontrar el binario auxiliar. Compruebe su instalación."
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
@@ -491,7 +489,7 @@ msgstr "Error"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr "Falló la escritura de %1"
+msgstr "La escritura de %1 falló"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
@@ -507,7 +505,7 @@ msgstr "La escritura de %1 finalizó correctamente"
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr "Seleccionar Fuente de la Imagen"
+msgstr "Seleccionar la fuente de la imagen"
 
 #: ../src/app/qml/MainPage.qml:33
 msgctxt "MainPage|"
@@ -588,7 +586,7 @@ msgstr "%1 byte(s)"
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
-msgstr "Seleccione un archivo desde disco"
+msgstr "Escoja un archivo de alguna de sus unidades"
 
 #: ../src/app/releasemanager.cpp:420
 msgctxt "Release|"
@@ -629,7 +627,7 @@ msgstr "Intel/AMD 64 bits"
 #: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr "Imagen en formato ISO para Intel, AMD y compatibles (64-bit)"
+msgstr "Imagen en formato ISO para Intel, AMD y otros PC compatibles (64-bit)"
 
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
@@ -639,7 +637,7 @@ msgstr "Intel/AMD 32-bit"
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr "Imagen en formato ISO para Intel, AMD y compatibles (32-bit)"
+msgstr "Imagen en formato ISO para Intel, AMD y otros PC compatibles (32-bit)"
 
 #: ../src/app/releasemanager.cpp:1105
 msgctxt "ReleaseArchitecture|"
