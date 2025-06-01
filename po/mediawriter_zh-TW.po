@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-04-02 06:07+0000\n"
+"PO-Revision-Date: 2025-06-01 02:49+0000\n"
 "Last-Translator: hsu zangmen <chzang55@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/"
 "projects/fedora-media-writer/mediawriter/zh_TW/>\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.11.4\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -737,46 +737,34 @@ msgid "%1 Release Candidate"
 msgstr "%1 發行候選 (RC)"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to open the drive for formatting"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "開啟磁碟機格式化失敗"
+msgstr "開啟裝置進行寫入失敗"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Destination drive is not writable"
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
-msgstr "目標裝置無法寫入"
+msgstr "目的地磁碟機不可寫入"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Failed to read the image file: "
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "讀取映像檔失敗： "
+msgstr "取得檔案大小失敗"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "檔案大小必須小於 128 區塊"
 
 #: ../src/helper/linux/restorejob.cpp:105
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to remove partitions from the drive"
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "無法從磁碟機中刪除分割區"
+msgstr "將檔案指標移至結束區域失敗"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "同步資料到磁碟失敗"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
@@ -835,15 +823,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "還原磁碟機 <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid ""
-#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
-#| "to be restored to its factory settings. The live system and all saved "
-#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
-#| "restore the drive if you want to write another live system to it. \n"
-#| "                </p> <p align=\"justify\"> Do you want to restore it to "
-#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -855,7 +834,8 @@ msgstr ""
 "<p align=\"justify\">若要取得磁碟機可用的所有空間，其得還原至出廠設定。Live "
 "系統和所有儲存資料都將刪除。</p> <p align=\"justify\">若您想寫入另一個 Live "
 "系統，則無需還原磁碟機。 \n"
-"                </p> <p align=\"justify\">是否要還原至出廠設定呢？</p>"
+"\n"
+" </p> <p align=\"justify\">是否要還原至出廠設定呢？</p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
