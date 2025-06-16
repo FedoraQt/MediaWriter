@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-06-16 02:38+0000\n"
+"PO-Revision-Date: 2025-06-16 06:01+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/de/>\n"
@@ -696,12 +696,12 @@ msgstr "Vorbereiten"
 #: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
-msgstr "Herunterladen"
+msgstr "Wird heruntergeladen"
 
 #: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr "Download überprüfen"
+msgstr "Heruntergeladene Dateien überprüfen"
 
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
@@ -771,33 +771,27 @@ msgstr "Gerät konnte nicht zum Schreiben geöffnet werden"
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
-msgstr "Ziel-Laufwerk ist nicht beschreibar"
+msgstr "Ziellaufwerk ist nicht beschreibbar"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Failed to read the image file: "
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "Abbilddatei konnte nicht gelesen werden: "
+msgstr "Dateigröße konnte nicht ermittelt werden"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "Dateigröße ist kleiner als 128 Blöcke"
 
 #: ../src/helper/linux/restorejob.cpp:105
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to remove partitions from the drive"
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "Fehler beim Entfernen von Partitionen"
+msgstr "Der Dateizeiger konnte nicht in den Endbereich verschoben werden"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "Synchronisierung der Daten mit der Festplatte fehlgeschlagen"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
@@ -856,15 +850,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Laufwerk <b>%1</b> wiederherstellen"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid ""
-#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
-#| "to be restored to its factory settings. The live system and all saved "
-#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
-#| "restore the drive if you want to write another live system to it. \n"
-#| "                </p> <p align=\"justify\"> Do you want to restore it to "
-#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -877,9 +862,8 @@ msgstr ""
 "nutzen, muss es auf den Lieferzustand zurückgesetzt werden. Das Live-System "
 "und alle gespeicherten Daten werden gelöscht. </p> <p align=\"justify\"> Sie "
 "müssen das Laufwerk nicht wiederherstellen, wenn Sie ein anderes Live-System "
-"darauf installieren wollen. \n"
-"                </p> <p align=\"justify\"> Wollen Sie das Gerät auf den "
-"Lieferzustand zurücksetzen? </p>"
+"darauf schreiben wollen. </p> <p align=\"justify\"> Möchten Sie das Gerät in "
+"den Lieferzustand zurücksetzen? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
@@ -984,7 +968,7 @@ msgstr "Starten der Dekomprimierung fehlgeschlagen."
 #: ../src/helper/win/writejob.cpp:465
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
-msgstr "Ziel-Laufwerk ist nicht beschreibar"
+msgstr "Ziellaufwerk ist nicht beschreibbar"
 
 #: ../src/helper/linux/writejob.cpp:114 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
