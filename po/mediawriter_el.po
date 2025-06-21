@@ -10,9 +10,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-06-21 08:24+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
+"PO-Revision-Date: 2025-06-21 13:29+0000\n"
+"Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: Greek <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/el/>\n"
 "Language: el\n"
@@ -215,7 +214,7 @@ msgstr "Προετοιμασία του %1"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr ""
+msgstr "Έτοιμο για εγγραφή του %1"
 
 #: ../src/app/qml/DownloadPage.qml:46
 #, qt-format
@@ -253,18 +252,18 @@ msgstr " (απομένουν %1"
 #: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "Η μονάδα σας αποσυνδέθηκε κατά τη διάρκεια της διαδικασίας"
 
 #: ../src/app/qml/DownloadPage.qml:106
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr ""
+msgstr "Οι λήψεις αποθηκεύονται στον φάκελο λήψεων."
 
 #: ../src/app/qml/DownloadPage.qml:116
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr ""
+msgstr "Με την εγγραφή, θα χάσετε όλα τα δεδομένα στο %1."
 
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
@@ -278,16 +277,19 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
+"Το μέγεθος της μονάδας σας θα αλλάξει σε μικρότερη χωρητικότητα. Μπορείτε να "
+"επαναφέρετε το κανονικό της μέγεθος με το Fedora Media Writer. Αυτή η "
+"διαδικασία θα καταργήσει το μέσο εγκατάστασης από τη μονάδα σας."
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
 msgid "Selected:"
-msgstr ""
+msgstr "Επιλεγμένο:"
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
 msgid "None"
-msgstr ""
+msgstr "Κανένα"
 
 #: ../src/app/qml/DownloadPage.qml:149
 #, qt-format
@@ -297,6 +299,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
+"Το Fedora Media Writer δεν υποστηρίζει ακόμα την πλακέτα ή τη μονάδα σας. "
+"Δείτε <a href=%1>αυτήν τη σελίδα</a> για περισσότερες πληροφορίες σχετικά με "
+"τη συμβατότητά της με το Fedora και τον τρόπο δημιουργίας μέσων εκκίνησης."
 
 #: ../src/app/qml/DownloadPage.qml:160
 #, qt-format
@@ -364,7 +369,7 @@ msgstr "Επιλεγμένο αρχείο"
 #: ../src/app/qml/DrivePage.qml:83
 msgctxt "DrivePage|"
 msgid "None"
-msgstr "Κανένας"
+msgstr "Κανένα"
 
 #: ../src/app/qml/DrivePage.qml:91
 msgctxt "DrivePage|"
@@ -419,17 +424,19 @@ msgstr "Λήψη και εγγραφή"
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr ""
+msgstr "Η μονάδα αφαιρέθηκε ενώ γινόταν εγγραφή σε αυτή."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
+"Δεν ήταν δυνατή η εύρεση του εκτελέσιμου αρχείου για το βοηθητικό εργαλείο. "
+"Ελέγξτε την εγκατάστασή σας."
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr ""
+msgstr "Έγινε διακοπή πριν από την ολοκλήρωση της εγγραφής."
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
@@ -440,7 +447,7 @@ msgstr "Ολοκληρώθηκε!"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Επιτυχής εγγραφή του %1"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
@@ -451,17 +458,20 @@ msgstr "Σφάλμα"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "Αποτυχία εγγραφής του %1"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr ""
+"Το UDisks2 φαίνεται ότι δεν είναι διαθέσιμο ή προσβάσιμο στο σύστημά σας."
 
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
+"Δεν ήταν δυνατή η εύρεση του εκτελέσιμου αρχείου για το βοηθητικό εργαλείο. "
+"Ελέγξτε την εγκατάστασή σας."
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
@@ -472,7 +482,7 @@ msgstr "Σφάλμα"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "Αποτυχία εγγραφής του %1"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
@@ -483,12 +493,12 @@ msgstr "Ολοκληρώθηκε!"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Επιτυχής εγγραφή του %1"
 
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Επιλογή πηγής ειδώλου"
 
 #: ../src/app/qml/MainPage.qml:33
 msgctxt "MainPage|"
@@ -564,7 +574,7 @@ msgstr "%1 KB"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 byte"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -578,6 +588,9 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
+"<p>Εδώ μπορείτε να επιλέξετε ένα είδωλο λειτουργικού συστήματος από τον "
+"σκληρό σας δίσκο για εγγραφή στη μονάδα flash σας</p><p>Προς το παρόν, "
+"υποστηρίζεται η εγγραφή μόνο ακατέργαστων ειδώλων δίσκου (.iso ή .bin)</p>"
 
 #: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
@@ -597,7 +610,7 @@ msgstr "Εκδόσεις Fedora Atomic"
 #: ../src/app/releasemanager.cpp:457
 msgctxt "Release|"
 msgid "Other"
-msgstr ""
+msgstr "Άλλο"
 
 #: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
@@ -633,6 +646,8 @@ msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
+"Ακατέργαστο είδωλο με συμπίεση LZMA για συσκευές ARM v7-A, όπως τα Raspberry "
+"Pi 2 και 3"
 
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
@@ -642,7 +657,7 @@ msgstr "AArch64"
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr ""
+msgstr "Ακατέργαστο είδωλο με συμπίεση LZMA για συσκευές AArch64"
 
 #: ../src/app/releasemanager.cpp:418
 msgctxt "ReleaseListModel|"
@@ -657,12 +672,12 @@ msgstr "Το ληφθέν είδωλο είναι κατεστραμμένο"
 #: ../src/app/releasemanager.cpp:978
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
-msgstr ""
+msgstr "Δεν είναι δυνατή η ανάγνωση του αρχείου λήψης."
 
 #: ../src/app/releasemanager.cpp:989
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr ""
+msgstr "Δεν είναι δυνατή η μετονομασία του προσωρινού αρχείου."
 
 #: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
@@ -682,22 +697,24 @@ msgstr "Γίνεται έλεγχος της λήψης"
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
-msgstr ""
+msgstr "Έτοιμο για εγγραφή"
 
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
+"Το αρχείο ειδώλου αποθηκεύτηκε στον φάκελο λήψεών σας. Δεν είναι δυνατή η "
+"εγγραφή"
 
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "Writing"
-msgstr ""
+msgstr "Εγγραφή"
 
 #: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
-msgstr ""
+msgstr "Έλεγχος των εγγεγραμμένων δεδομένων"
 
 #: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
@@ -735,72 +752,72 @@ msgstr "%1 Beta"
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr ""
+msgstr "%1 Release Candidate"
 
 #: ../src/helper/linux/restorejob.cpp:67
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr ""
+msgstr "Αποτυχία ανοίγματος συσκευής για εγγραφή"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
-msgstr ""
+msgstr "Δεν είναι δυνατή η εγγραφή στη μονάδα προορισμού"
 
 #: ../src/helper/linux/restorejob.cpp:91
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr ""
+msgstr "Αποτυχία προσδιορισμού μεγέθους του αρχείου"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "Το μέγεθος αρχείου είναι μικρότερο από 128 μπλοκ"
 
 #: ../src/helper/linux/restorejob.cpp:105
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr ""
+msgstr "Αποτυχία μετακίνησης του δείκτη αρχείου στην περιοχή τέλους"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "Αποτυχία συγχρονισμού δεδομένων με τον δίσκο"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η αφαίρεση των σημείων προσάρτησης μονάδας"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Αποτυχία κατάργησης διαμερισμάτων από τη μονάδα"
 
 #: ../src/helper/win/restorejob.cpp:80
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr ""
+msgstr "Αποτυχία ανοίγματος της μονάδας για διαμόρφωση"
 
 #: ../src/helper/win/restorejob.cpp:95
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
-msgstr ""
+msgstr "Δεν ήταν δυνατό το κλείδωμα της μονάδας"
 
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Αποτυχία απαλοιφής του πίνακα διαμερισμάτων της μονάδας"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Αποτυχία ορισμού της μονάδας στη μορφή διαμερισμάτων RAW"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Αποτυχία δημιουργίας διαμερίσματος GPT στη μονάδα"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
@@ -815,13 +832,13 @@ msgstr "Αποτυχία προσάρτησης του νέου διαμερίσ
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Αποτυχία διαμόρφωσης του διαμερίσματος σε exFAT"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "Ανάκτηση μονάδας <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
 msgctxt "RestorePage|"
@@ -843,7 +860,7 @@ msgstr ""
 #: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr ""
+msgstr "Έγινε επιτυχής ανάκτηση της μονάδας σας!"
 
 #: ../src/app/qml/RestorePage.qml:78
 msgctxt "RestorePage|"
@@ -851,6 +868,8 @@ msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
+"Δυστυχώς, προέκυψε ένα σφάλμα κατά τη διάρκεια της διαδικασίας. Δοκιμάστε να "
+"ανακτήσετε τη μονάδα με τα εργαλεία του συστήματός σας."
 
 #: ../src/app/qml/RestorePage.qml:92
 msgctxt "RestorePage|"
@@ -870,7 +889,7 @@ msgstr "Ανάκτηση"
 #: ../src/app/qml/VersionPage.qml:29
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Επιλογή έκδοσης Fedora"
 
 #: ../src/app/qml/VersionPage.qml:32
 msgctxt "VersionPage|"
@@ -885,17 +904,17 @@ msgstr "Επίσημες εκδόσεις"
 #: ../src/app/qml/VersionPage.qml:42
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr ""
+msgstr "Εκδόσεις Atomic Desktop"
 
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr ""
+msgstr "Παραλλαγές (Spins)"
 
 #: ../src/app/qml/VersionPage.qml:52
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Εκδόσεις Labs"
 
 #: ../src/app/windrivemanager.cpp:149
 msgctxt "WinDrive|"
@@ -961,13 +980,13 @@ msgstr "Άγνωστο σφάλμα αποσυμπίεσης."
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
-msgstr ""
+msgstr "Δεν είναι δυνατή η ανάγνωση του αρχικού ειδώλου"
 
 #: ../src/helper/linux/writejob.cpp:203 ../src/helper/mac/writejob.cpp:304
 #: ../src/helper/win/writejob.cpp:538
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr ""
+msgstr "Η μονάδα σας ενδέχεται να έχει κάποια βλάβη."
 
 #: ../src/helper/linux/writejob.cpp:208 ../src/helper/mac/writejob.cpp:309
 #: ../src/helper/win/writejob.cpp:543
@@ -1029,18 +1048,18 @@ msgstr ""
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Δεν έγινε πλήρης εγγραφή του τελευταίου μπλοκ"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Έγινε εγγραφή %1 από %2"
 
 #: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr ""
+msgstr "Αποτυχία ανάγνωσης του αρχείου ειδώλου: "
 
 #: ../src/helper/win/writejob.cpp:498
 #, qt-format
@@ -1062,12 +1081,12 @@ msgstr "Fedora Media Writer"
 #: ../src/app/qml/main.qml:100
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr ""
+msgstr "Επιλογή έκδοσης Fedora"
 
 #: ../src/app/qml/main.qml:114
 msgctxt "main|"
 msgid "Select Drive"
-msgstr ""
+msgstr "Επιλογή μονάδας"
 
 #: ../src/app/qml/main.qml:139
 msgctxt "main|"
@@ -1085,6 +1104,7 @@ msgstr "Fedora Media Writer"
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
 msgstr ""
+"Ένα εργαλείο για τη δημιουργία μιας live μονάδας USB με μια έκδοση του Fedora"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -1106,7 +1126,7 @@ msgstr ""
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
-msgstr ""
+msgstr "Κάντε εγγραφή ειδώλων του Fedora στις φορητές μονάδες σας"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
