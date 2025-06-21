@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-06-16 16:11+0000\n"
+"PO-Revision-Date: 2025-06-21 08:24+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: Greek <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/el/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11.4\n"
+"X-Generator: Weblate 5.12.2\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
@@ -78,6 +78,8 @@ msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
+"Η διαδικασία εγγραφής θα ακυρωθεί και έπειτα, θα χρειαστεί να επαναφέρετε τη "
+"μονάδα σας."
 
 #: ../src/app/qml/CancelDialog.qml:70
 msgctxt "CancelDialog|"
@@ -162,12 +164,12 @@ msgstr "KB"
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "byte"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr ""
+msgstr "Δεν είναι δυνατή η λήψη του ζητούμενου ειδώλου."
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
@@ -177,36 +179,36 @@ msgstr "Δεν έχετε χώρο στον φάκελο λήψεών σας."
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
-msgstr ""
+msgstr "Δεν είναι δυνατή η εγγραφή του αρχείου λήψης."
 
 #: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
-msgstr ""
+msgstr "Το χρονικό όριο σύνδεσης έληξε"
 
 #: ../src/app/qml/DownloadPage.qml:36
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr ""
+msgstr "Επιτυχής εγγραφή του %1"
 
 #: ../src/app/qml/DownloadPage.qml:38
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr ""
+msgstr "Εγγραφή του %1"
 
 #: ../src/app/qml/DownloadPage.qml:40
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr ""
+msgstr "Λήψη του %1"
 
 #: ../src/app/qml/DownloadPage.qml:42
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr ""
+msgstr "Προετοιμασία του %1"
 
 #: ../src/app/qml/DownloadPage.qml:44
 #, qt-format
@@ -223,29 +225,29 @@ msgstr "Αποτυχία λήψης του %1"
 #: ../src/app/qml/DownloadPage.qml:54
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr ""
+msgstr " B)"
 
 #: ../src/app/qml/DownloadPage.qml:55
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr ""
+msgstr " KB)"
 
 #: ../src/app/qml/DownloadPage.qml:56
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr ""
+msgstr " MB)"
 
 #: ../src/app/qml/DownloadPage.qml:57
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr ""
+msgstr " GB)"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:61
 #: ../src/app/qml/DownloadPage.qml:62 ../src/app/qml/DownloadPage.qml:63
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (απομένουν %1"
 
 #: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
@@ -266,7 +268,7 @@ msgstr ""
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "Εισαγάγετε μια μονάδα USB."
 
 #: ../src/app/qml/DownloadPage.qml:133
 msgctxt "DownloadPage|"
@@ -302,12 +304,16 @@ msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
+"Το μέγεθος της επιλεγμένης μονάδας είναι %1. Ενδέχεται να έχετε επιλέξει "
+"έναν εξωτερικό δίσκο κατά λάθος!"
 
 #: ../src/app/qml/DownloadPage.qml:168
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr ""
+"Επανεκκινήστε τη συσκευή σας και κάντε εκκίνηση από το %1 για να ξεκινήσετε "
+"τη χρήση του %2."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
 msgctxt "DownloadPage|"
