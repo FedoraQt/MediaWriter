@@ -11,12 +11,13 @@
 # Lumiukko Lumiukko <lokalisoija@luukku.com>, 2021, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024, 2025.
 # Ricky Tigg <ricky.tigg@gmail.com>, 2024, 2025.
+# Ville-Pekka Vainio <vpvainio@iki.fi>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-04-23 22:49+0000\n"
-"Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
+"PO-Revision-Date: 2025-06-21 17:38+0000\n"
+"Last-Translator: Ville-Pekka Vainio <vpvainio@iki.fi>\n"
 "Language-Team: Finnish <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/fi/>\n"
 "Language: fi\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11\n"
+"X-Generator: Weblate 5.12.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -62,12 +63,12 @@ msgstr "Perutaanko lataus?"
 #: ../src/app/qml/CancelDialog.qml:57
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Lopeta kirjoittaminen?"
+msgstr "Perutaanko kirjoittaminen?"
 
 #: ../src/app/qml/CancelDialog.qml:59
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr "Peruuta varmistaminen?"
+msgstr "Perutaanko varmistaminen?"
 
 #: ../src/app/qml/CancelDialog.qml:66
 msgctxt "CancelDialog|"
@@ -103,12 +104,12 @@ msgstr "Peru lataus"
 #: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Lopeta kirjoittaminen"
+msgstr "Peru kirjoittaminen"
 
 #: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr "Peruuta varmistaminen"
+msgstr "Peru varmistaminen"
 
 #: ../src/app/qml/CancelDialog.qml:116
 msgctxt "CancelDialog|"
@@ -127,8 +128,8 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
-"Koko laite (kaikki %1) tyhjennetään ja valittu kuva kirjoitetaan siihen. "
-"Haluatko jatkaa?"
+"Koko laite (kaikki tiedot laitteella %1) tyhjennetään ja valittu levykuva "
+"kirjoitetaan siihen. Haluatko jatkaa?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 msgctxt "DeviceWarningDialog|"
@@ -224,7 +225,7 @@ msgstr "Valmis kirjoittamaan %1"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "Kohteen %1 lataus epäonnistui"
+msgstr "Tiedoston %1 lataus epäonnistui"
 
 #: ../src/app/qml/DownloadPage.qml:54
 msgctxt "DownloadPage|"
@@ -256,18 +257,18 @@ msgstr " (%1"
 #: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr "Asemasi irroitettiin pois prosessin aikana"
+msgstr "Asemasi irrotettiin prosessin aikana"
 
 #: ../src/app/qml/DownloadPage.qml:106
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "Lataukset tallennetaan downloads-kansioon."
+msgstr "Lataukset tallennetaan Lataukset-kansioon."
 
 #: ../src/app/qml/DownloadPage.qml:116
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "Kirjoittamalla kaikki aseman %1 tiedot menetetään."
+msgstr "Kirjoittaminen tuhoaa kaikki aseman %1 tiedot."
 
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
@@ -282,7 +283,8 @@ msgid ""
 "from your drive."
 msgstr ""
 "Asemasi kapasiteetti muutetaan pienemmäksi. Voit palauttaa sen normaalin "
-"koon Fedora Media Writeria käyttäen; se poistaa asennusmedian asemalta."
+"koon Fedora Media Writeria käyttäen. Koon palauttaminen poistaa "
+"asennusmedian asemalta."
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
@@ -302,10 +304,10 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"Alustasi tai laitteesi ei ole tuettu Fedora Media Writerin toimesta. "
-"Tarkista <a href=%1>tämä sivu</a> saadaksesi lisätietoja laitteesi "
-"yhteensopivuudesta Fedoran kanssa, ja kuinka luoda käynnistettävä media "
-"sille."
+"Alustasi tai laitteesi ei ole tuettu Fedora Media Writerin toimesta. Katso "
+"<a href=%1>tämä sivu</a> saadaksesi lisätietoja laitteesi yhteensopivuudesta "
+"Fedoran kanssa sekä siitä, kuinka voit luoda käynnistettävä median "
+"laitettasi varten."
 
 #: ../src/app/qml/DownloadPage.qml:160
 #, qt-format
@@ -313,15 +315,15 @@ msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
-msgstr ""
-"Valitun levyn koko on %1. Saatoit mahdollisesti valita vahingossa erillisen "
-"aseman!"
+msgstr "Valitun levyn koko on %1. Saatoit valita vahingossa ulkoisen aseman!"
 
 #: ../src/app/qml/DownloadPage.qml:168
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr "Käynnistä %1 uudelleen ja aloita %2:n käyttö."
+msgstr ""
+"Aloita käyttöjärjestelmän %2 käyttö käynnistämällä järjestelmä uudelleen "
+"asemalta %1."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
 msgctxt "DownloadPage|"
@@ -426,7 +428,7 @@ msgstr "Lataa & kirjoita"
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr "Asema poistettiin kun siihen kirjoitettiin."
+msgstr "Asema poistettiin kirjoituksen aikana."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
@@ -447,7 +449,7 @@ msgstr "Valmis!"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr "Kohteen %1 kirjoittaminen onnistui"
+msgstr "Levykuvan %1 kirjoittaminen onnistui"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
@@ -458,7 +460,7 @@ msgstr "Virhe"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr "Kohteen %1 kirjoittaminen epäonnistui"
+msgstr "Levykuvan %1 kirjoittaminen epäonnistui"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
@@ -481,7 +483,7 @@ msgstr "Virhe"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr "Kohteen %1 kirjoittaminen epäonnistui"
+msgstr "Levykuvan %1 kirjoittaminen epäonnistui"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
@@ -492,7 +494,7 @@ msgstr "Valmis!"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr "Kohteen %1 kirjoittaminen onnistui"
+msgstr "Levykuvan %1 kirjoittaminen onnistui"
 
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
@@ -518,7 +520,7 @@ msgstr "Palauta <b>%1</b>"
 #: ../src/app/qml/MainPage.qml:72
 msgctxt "MainPage|"
 msgid "About"
-msgstr "Aiheesta"
+msgstr "Tietoja"
 
 #: ../src/app/qml/Page.qml:100
 msgctxt "Page|"
@@ -749,7 +751,7 @@ msgstr "%1 beetaversio"
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr "%1 Julkaisukandidaatti"
+msgstr "%1 julkaisukandidaatti"
 
 #: ../src/helper/linux/restorejob.cpp:67
 msgctxt "RestoreJob|"
