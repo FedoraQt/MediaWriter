@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-06-21 17:38+0000\n"
+"PO-Revision-Date: 2025-06-21 17:46+0000\n"
 "Last-Translator: Ville-Pekka Vainio <vpvainio@iki.fi>\n"
 "Language-Team: Finnish <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/fi/>\n"
@@ -766,7 +766,7 @@ msgstr "Kohdeasema ei ole kirjoitettava"
 #: ../src/helper/linux/restorejob.cpp:91
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "Tiedoston koon saaminen epäonnistui"
+msgstr "Tiedoston koon lukeminen epäonnistui"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
@@ -801,7 +801,7 @@ msgstr "Aseman avaaminen alustusta varten epäonnistui"
 #: ../src/helper/win/restorejob.cpp:95
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
-msgstr "Aseman lukitseminen ei onnistunut"
+msgstr "Aseman lukitseminen epäonnistui"
 
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
@@ -866,7 +866,7 @@ msgstr ""
 #: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr "Asemasi palautettiin onnistuneesti!"
+msgstr "Asemasi palautus onnistui!"
 
 #: ../src/app/qml/RestorePage.qml:78
 msgctxt "RestorePage|"
@@ -874,7 +874,7 @@ msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"Valitettavasti, prosessin aikana tapahtui virhe. Kokeile levyn palauttamista "
+"Valitettavasti prosessin aikana tapahtui virhe. Kokeile levyn palauttamista "
 "järjestelmäsi työkaluja käyttäen."
 
 #: ../src/app/qml/RestorePage.qml:92
@@ -936,7 +936,7 @@ msgstr "Valmis!"
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr "Kohteen %1 kirjoittaminen onnistui"
+msgstr "Levykuvan %1 kirjoittaminen onnistui"
 
 #: ../src/app/windrivemanager.cpp:244
 msgctxt "WinDrive|"
@@ -956,7 +956,7 @@ msgstr "Purkamisen käynnistäminen epäonnistui."
 #: ../src/helper/win/writejob.cpp:465
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
-msgstr "Kohdelevy ei ole kirjoitettava"
+msgstr "Kohdelevylle ei voi kirjoittaa"
 
 #: ../src/helper/linux/writejob.cpp:114 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
@@ -1003,7 +1003,7 @@ msgstr "Median tarkistamisen aikana tapahtui odottamaton virhe."
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr "pistokeparia ei voida allokoida"
+msgstr "pistokeparia ei voida varata"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
@@ -1028,7 +1028,7 @@ msgstr "Aseman avaaminen alustusta varten epäonnistui"
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr "Aseman lukitseminen ei onnistunut"
+msgstr "Aseman lukitseminen epäonnistui"
 
 #: ../src/helper/win/writejob.cpp:159
 msgctxt "WriteJob|"
@@ -1048,7 +1048,7 @@ msgstr "Asemaa ei voitu irrottaa"
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "Puskurin allokointi epäonnistui"
+msgstr "Puskurin varaaminen epäonnistui"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
@@ -1060,24 +1060,24 @@ msgstr "Viimeistä lohkoa ei kirjoitettu kokonaan"
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr "Kirjoitti %1/%2"
+msgstr "Kirjoitettu %1/%2"
 
 #: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Kuvatiedoston lukeminen epäonnistui: "
+msgstr "Levykuvatiedoston lukeminen epäonnistui: "
 
 #: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr "Koko kuvan kirjoittaminen epäonnistui. Kirjoitettu yhteensä: %1/%2"
+msgstr "Koko levykuvan kirjoittaminen epäonnistui. Kirjoitettu yhteensä: %1/%2"
 
 #: ../src/helper/win/writejob.cpp:518
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "Asemaa ei voitu avata %1:n tietojen tarkistamista varten:"
+msgstr "Asemaa %1 ei voitu avata tietojen tarkistamista varten:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
@@ -1124,9 +1124,9 @@ msgstr ""
 "Työkalu, jolla voi luoda USB-muistista käynnistettävän asennusmedian "
 "Fedoralle. Luontityökalu osaa ladata levykuvan ja kirjoittaa sen USB-"
 "muistille. Tarjolla ovat viralliset versiot (Server ja Workstation), Fedoran "
-"Spinit (mm. KDE Plasma, Xfce, Cinnamon -työpöydät) sekä Fedora Lab -"
-"julkaisut (mm. Design Suite, Security Lab). Se antaa jokaisesta niistä "
-"perustiedot, auttaaksesi sinua valitsemaan."
+"Spinit (mm. KDE Plasma-, Xfce- ja Cinnamon -työpöydät) sekä Fedora Lab -"
+"julkaisut (mm. Design Suite, Security Lab). Työkalu antaa jokaisesta niistä "
+"perustiedot ja auttaa sinua valitsemaan sopivimman."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
