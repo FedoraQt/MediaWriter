@@ -62,9 +62,9 @@ Var UninstLog
     !system "chmod +x tempinstaller.exe" = 0
     !system "tempinstaller.exe" = 2
     !if "${CERTPASS}" != ""
-        !system 'osslsigncode sign -pkcs12 "${CERTPATH}/authenticode.pfx" -readpass "${CERTPASS}" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "/c/uninstall.unsigned.exe" -out "/c/uninstall.exe" ' = 0
+        !system 'osslsigncode sign -pkcs12 "${CERTPATH}/authenticode.pfx" -readpass "${CERTPASS}" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "\c\uninstall.unsigned.exe" -out "\c\uninstall.exe" ' = 0
     !else
-        !system 'mv "/c/uninstall.unsigned.exe" "/c/uninstall.exe"' = 0
+        !system 'mv "\c\uninstall.unsigned.exe" "\c\uninstall.exe"' = 0
     !endif
 
     outFile "FMW-setup.exe"
@@ -77,16 +77,16 @@ RequestExecutionLevel admin ;Require admin rights on NT6+ (When UAC is turned on
 InstallDir "$PROGRAMFILES64\${APPNAME}"
 
 # rtf or txt file - remember if it is txt, it must be in the DOS text format (\r\n)
-LicenseData "../../build/app/release/LICENSE.GPL-2.txt"
+LicenseData "..\..\build\app\release\LICENSE.GPL-2.txt"
 # This will be in the installer/uninstaller's title bar
 Name "${APPNAME}"
-Icon "../../src/app/data/icons/mediawriter.ico"
+Icon "..\..\src\app\data\icons\mediawriter.ico"
 
 !include LogicLib.nsh
 
-!define MUI_ICON ../../src/app/data/icons/mediawriter.ico
+!define MUI_ICON ..\..\src\app\data\icons\mediawriter.ico
 
-!insertmacro MUI_PAGE_LICENSE "../../build/app/release/LICENSE.GPL-2.txt"
+!insertmacro MUI_PAGE_LICENSE "..\..\build\app\release\LICENSE.GPL-2.txt"
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !define      MUI_FINISHPAGE_NOAUTOCLOSE
@@ -308,7 +308,7 @@ section "install"
             File "..\..\src\app\data\icons\mediawriter.ico"
 
             ; this packages the signed uninstaller
-            File c:\uninstall.exe
+            File "c:\uninstall.exe"
         !endif
 
         # Start Menu
