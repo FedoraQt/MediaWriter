@@ -6,6 +6,11 @@ XPStyle on
 # they show up in a few places.
 # All the other settings can be tweaked by editing the !defines at the top of this script
 
+# These three must be defined from command line
+#!define VERSIONMAJOR
+#!define VERSIONMINOR
+#!define VERSIONBUILD
+
 !define APPNAME           "Fedora Media Writer"
 !define /date CURRENTYEAR "%Y"
 !define COMPANYNAME       "Fedora Project"
@@ -16,13 +21,8 @@ XPStyle on
 Name    "${APPNAME}"
 Caption "${APPNAME} ${FULLVERSION}"
 
-# These three must be defined from command line
-#!define VERSIONMAJOR
-#!define VERSIONMINOR
-#!define VERSIONBUILD
 # These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
 # It is possible to use "mailto:" links in here to open the email client
-
 !define HELPURL   "https://github.com/FedoraQt/MediaWriter" # "Support Information" link
 !define UPDATEURL "https://getfedora.org"                   # "Product Updates" link
 !define ABOUTURL  "https://getfedora.org"                   # "Publisher" link
@@ -304,27 +304,27 @@ section "install"
             SetOutPath $INSTDIR
 
             # Files added here should be removed by the uninstaller (see section "uninstall")
-            File /r "../../build/app/release/*"
-            File "../../src/app/data/icons/mediawriter.ico"
+            File /r "..\..\build\app\release\*.*"
+            File "..\..\src\app\data\icons\mediawriter.ico"
 
             ; this packages the signed uninstaller
-            File ../../build/wineprefix/drive_c/uninstall.exe
+            File ..\..\build\wineprefix/drive_c\uninstall.exe
         !endif
 
         # Start Menu
         createShortCut "$SMPROGRAMS\${APPNAME}.lnk" "$INSTDIR\mediawriter.exe" "" "$INSTDIR\mediawriter.ico"
 
         # Registry information for add/remove programs
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "DisplayName"          "${APPNAME}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "UninstallString"      "$\"$INSTDIR\uninstall.exe$\""
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "InstallLocation"      "$\"$INSTDIR$\""
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "DisplayIcon"          "$\"$INSTDIR\mediawriter.ico$\""
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "Publisher"            "${COMPANYNAME}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "HelpLink"             "${HELPURL}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "URLUpdateInfo"        "${UPDATEURL}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "URLInfoAbout"         "${ABOUTURL}"
-        WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"   "DisplayVersion"       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}"
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName"          "${APPNAME}"
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "UninstallString"      "$\"$INSTDIR\uninstall.exe$\""
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S"
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "InstallLocation"      "$\"$INSTDIR$\""
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayIcon"          "$\"$INSTDIR\mediawriter.ico$\""
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "Publisher"            "${COMPANYNAME}"
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "HelpLink"             "${HELPURL}"
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLUpdateInfo"        "${UPDATEURL}"
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "URLInfoAbout"         "${ABOUTURL}"
+        WriteRegStr HKLM   "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayVersion"       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}"
         WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMajor"         ${VERSIONMAJOR}
         WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMinor"         ${VERSIONMINOR}
         # There is no option for modifying or repairing the install

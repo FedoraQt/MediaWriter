@@ -6,6 +6,11 @@ XPStyle on
 # they show up in a few places.
 # All the other settings can be tweaked by editing the !defines at the top of this script
 
+# These three must be defined from command line
+#!define VERSIONMAJOR
+#!define VERSIONMINOR
+#!define VERSIONBUILD
+
 !define APPNAME           "Fedora Media Writer"
 !define /date CURRENTYEAR "%Y"
 !define COMPANYNAME       "Fedora Project"
@@ -16,13 +21,8 @@ XPStyle on
 Name    "${APPNAME}"
 Caption "${APPNAME} ${FULLVERSION}"
 
-# These three must be defined from command line
-#!define VERSIONMAJOR
-#!define VERSIONMINOR
-#!define VERSIONBUILD
 # These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
 # It is possible to use "mailto:" links in here to open the email client
-
 !define HELPURL   "https://github.com/FedoraQt/MediaWriter" # "Support Information" link
 !define UPDATEURL "https://getfedora.org"                   # "Product Updates" link
 !define ABOUTURL  "https://getfedora.org"                   # "Publisher" link
@@ -33,14 +33,14 @@ Caption "${APPNAME} ${FULLVERSION}"
 VIProductVersion "${FULLVERSION}"
 VIFileVersion    "${FULLVERSION}"
 
-VIAddVersionKey "ProductName"     "${APPNAME}"
-VIAddVersionKey "ProductVersion"  "${FULLVERSION}"
-VIAddVersionKey "Comments"        "${DESCRIPTION}"
-VIAddVersionKey "CompanyName"     "${COMPANYNAME}"
-VIAddVersionKey "LegalCopyright"  "${COPYRIGHT}"
-VIAddVersionKey "LegalTrademarks" "${COPYRIGHT}"
-VIAddVersionKey "FileDescription" "${APPNAME} installer"
-VIAddVersionKey "FileVersion"     "${FULLVERSION}"
+VIAddVersionKey  "ProductName"     "${APPNAME}"
+VIAddVersionKey  "ProductVersion"  "${FULLVERSION}"
+VIAddVersionKey  "Comments"        "${DESCRIPTION}"
+VIAddVersionKey  "CompanyName"     "${COMPANYNAME}"
+VIAddVersionKey  "LegalCopyright"  "${COPYRIGHT}"
+VIAddVersionKey  "LegalTrademarks" "${COPYRIGHT}"
+VIAddVersionKey  "FileDescription" "${APPNAME} installer"
+VIAddVersionKey  "FileVersion"     "${FULLVERSION}"
 
 ;Set the name of the uninstall log
 !define UninstLog "uninstall.log"
@@ -60,7 +60,7 @@ Var UninstLog
 
     ; Run the temporary installer and then sign the unsigned binary that has been created
     !system "chmod +x tempinstaller.exe" = 0
-    !system "tempinstaller.exe" = 2
+    !system "./tempinstaller.exe" = 2
     !if "${CERTPASS}" != ""
         !system 'osslsigncode sign -pkcs12 "${CERTPATH}/authenticode.pfx" -readpass "${CERTPASS}" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "/c/uninstall.unsigned.exe" -out "/c/uninstall.exe" ' = 0
     !else
@@ -89,8 +89,8 @@ Icon "../../src/app/data/icons/mediawriter.ico"
 !insertmacro MUI_PAGE_LICENSE "../../build/app/release/LICENSE.GPL-2.txt"
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
-!define MUI_FINISHPAGE_NOAUTOCLOSE
-!define MUI_FINISHPAGE_RUN $INSTDIR\mediawriter.exe
+!define      MUI_FINISHPAGE_NOAUTOCLOSE
+!define      MUI_FINISHPAGE_RUN $INSTDIR\mediawriter.exe
 !insertmacro MUI_PAGE_FINISH
 
 !insertmacro MUI_UNPAGE_CONFIRM
@@ -358,7 +358,7 @@ sectionEnd
         Push $R0
         Push $R1
         Push $R2
-        SetFileAttributes "$INSTDIR\${UninstLog}" NORMAL
+        SetFileAttributes   "$INSTDIR\${UninstLog}" NORMAL
         FileOpen $UninstLog "$INSTDIR\${UninstLog}" r
         StrCpy $R1 -1
 
