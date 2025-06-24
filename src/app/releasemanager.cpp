@@ -197,8 +197,8 @@ bool ReleaseManager::updateUrl(const QString &release,
         Release *r = get(i);
         if (r->name().toLower().contains(release) || r->subvariant().toLower().contains(release)) {
             // Special case for Sway and Budgie
-            if (release == "sway"_L1 || release == "budgie"_L1) {
-                if (r->source() == Release::EMERGING && (category != "sericea"_L1 && category != "onyx"_L1))
+            if (release == "sway"_L1 || release == "budgie"_L1 || release == "cosmic"_L1) {
+                if (r->source() == Release::EMERGING && (category != "sericea"_L1 && category != "onyx"_L1 && category != "cosmic-atomic"_L1))
                     continue;
             }
             return r->updateUrl(version, status, type, releaseDate, architecture, url, sha256, size);
