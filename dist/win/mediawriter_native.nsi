@@ -6,6 +6,11 @@ XPStyle on
 # they show up in a few places.
 # All the other settings can be tweaked by editing the !defines at the top of this script
 
+# These three must be defined from command line
+#!define VERSIONMAJOR
+#!define VERSIONMINOR
+#!define VERSIONBUILD
+
 !define APPNAME           "Fedora Media Writer"
 !define /date CURRENTYEAR "%Y"
 !define COMPANYNAME       "Fedora Project"
@@ -16,10 +21,6 @@ XPStyle on
 Name    "${APPNAME}"
 Caption "${APPNAME} ${FULLVERSION}"
 
-# These three must be defined from command line
-#!define VERSIONMAJOR
-#!define VERSIONMINOR
-#!define VERSIONBUILD
 # These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
 # It is possible to use "mailto:" links in here to open the email client
 
