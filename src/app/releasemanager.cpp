@@ -287,7 +287,7 @@ void ReleaseManager::onStringDownloaded(const QString &text)
         int version;
         QString status;
 
-        if (QStringList{"cloud", "cloud_base", "atomic", "everything", "minimal", "docker", "docker_base"}.contains(release))
+        if (QStringList{"cloud", "cloud_base", "everything", "minimal", "docker", "docker_base"}.contains(release))
             continue;
 
         // Filter out non-ISO or OSTree boot images
