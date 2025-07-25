@@ -11,9 +11,9 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-03-25 02:08+0000\n"
-"Last-Translator: Yauhen Bugamol <bugamol@users.noreply.translate."
-"fedoraproject.org>\n"
+"PO-Revision-Date: 2025-07-25 20:43+0000\n"
+"Last-Translator: Yauhen Bugamol "
+"<bugamol@users.noreply.translate.fedoraproject.org>\n"
 "Language-Team: Belarusian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/be/>\n"
 "Language: be\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.12.2\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
@@ -746,12 +746,9 @@ msgid "%1 Release Candidate"
 msgstr "%1 Release Candidate"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to open the drive for formatting"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "Не ўдалося адкрыць дыск для фарматавання"
+msgstr "Не ўдалося адкрыць прыладу для запісу"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
 #, fuzzy
@@ -762,30 +759,24 @@ msgid "Destination drive is not writable"
 msgstr "Дыск прызначэння недаступны для запісу"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Failed to read the image file: "
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "Не ўдалося прычытаць файл вобраза: "
+msgstr "Не ўдалося атрымаць памер файла"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "Памер файла менш за 128 блокаў"
 
 #: ../src/helper/linux/restorejob.cpp:105
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to remove partitions from the drive"
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "Не ўдалося выдаліць з дыска раздзелы"
+msgstr "Не ўдалося перамясціць указальнік файла ў канец вобласці"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "Не ўдалося сінхранізаваць даныя з дыскам"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
@@ -844,15 +835,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Аднаўленне дыска <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid ""
-#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
-#| "to be restored to its factory settings. The live system and all saved "
-#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
-#| "restore the drive if you want to write another live system to it. \n"
-#| "                </p> <p align=\"justify\"> Do you want to restore it to "
-#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -863,10 +845,9 @@ msgid ""
 msgstr ""
 "<p align=\"justify\"> Каб вярнуць усю наяўную на дыску прастору, трэба "
 "аднавіць завадскія налады дыска. Будуць выдалены live-сістэма і ўсе "
-"захаваныя даныя. </p> <p align=\"justify\"> Не трэба аднаўляць дыск, калі вы "
-"хочаце запісаць на яго яшчэ адну live-сістэму.\n"
-"                      </p> <p align=\"justify\"> Сапраўды аднавіць завадскія "
-"налады? </p>"
+"захаваныя даныя.</p> <p align=\"justify\"> Не трэба аднаўляць дыск, калі вы "
+"хочаце запісаць на яго яшчэ адну live-сістэму. </p> <p align=\"justify\"> "
+"Сапраўды аднавіць завадскія налады? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
