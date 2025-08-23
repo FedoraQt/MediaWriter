@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-05-12 02:52+0000\n"
+"PO-Revision-Date: 2025-08-23 17:08+0000\n"
 "Last-Translator: gossypium "
 "<gossypium@users.noreply.translate.fedoraproject.org>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11.3\n"
+"X-Generator: Weblate 5.13\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -69,7 +69,7 @@ msgstr "¿Cancelar descarga?"
 #: ../src/app/qml/CancelDialog.qml:57
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "¿Cancelar escritura?"
+msgstr "¿Cancelar grabación?"
 
 #: ../src/app/qml/CancelDialog.qml:59
 msgctxt "CancelDialog|"
@@ -82,8 +82,8 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
-"Se cancelará la descarga y la escritura. Este proceso se puede reanudar "
-"luego."
+"Se cancelará la descarga y la grabación. Este proceso se puede reanudar más "
+"tarde."
 
 #: ../src/app/qml/CancelDialog.qml:68
 msgctxt "CancelDialog|"
@@ -91,7 +91,8 @@ msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
-"El proceso de escritura se cancelará y su unidad deberá ser restaurada luego."
+"El proceso de grabación será cancelado y su unidad deberá ser restaurada "
+"luego."
 
 #: ../src/app/qml/CancelDialog.qml:70
 msgctxt "CancelDialog|"
@@ -111,7 +112,7 @@ msgstr "Cancelar descarga"
 #: ../src/app/qml/CancelDialog.qml:112
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Cancelar escritura"
+msgstr "Cancelar grabación"
 
 #: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
@@ -136,7 +137,7 @@ msgid ""
 "written to it. Do you want to continue?"
 msgstr ""
 "La unidad completa (todos los %1) será eliminada y la imagen seleccionada "
-"será escrita en ella. ¿Desea continuar?"
+"será grabada en ella. ¿Desea continuar?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 msgctxt "DeviceWarningDialog|"
@@ -146,17 +147,17 @@ msgstr "Cancelar"
 #: ../src/app/qml/DeviceWarningDialog.qml:82
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
-msgstr "Escribir"
+msgstr "Grabar"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
-msgstr "Descargar y Guardar"
+msgstr "Descargar && grabar"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
-msgstr "Descargar y Guardar"
+msgstr "Descargar & grabar"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
@@ -191,7 +192,7 @@ msgstr "Se ha quedado sin espacio en su carpeta Descargas."
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
-msgstr "El archivo descargado no es escribible."
+msgstr "El archivo descargado no es grabable."
 
 #: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
@@ -202,13 +203,13 @@ msgstr "Conexión caducada"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr "%1 Escrito con éxito"
+msgstr "%1 grabado con éxito"
 
 #: ../src/app/qml/DownloadPage.qml:38
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "Escribiendo %1"
+msgstr "Grabando %1"
 
 #: ../src/app/qml/DownloadPage.qml:40
 #, qt-format
@@ -226,7 +227,7 @@ msgstr "Preparando %1"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "Listo para escribir %1"
+msgstr "Listo para grabar %1"
 
 #: ../src/app/qml/DownloadPage.qml:46
 #, qt-format
@@ -275,7 +276,7 @@ msgstr "Las descargas se guardan en su directorio de descargas."
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "Perderá todos los datos en %1 al escribir."
+msgstr "Perderá todos los datos en %1 al grabar."
 
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
@@ -339,7 +340,7 @@ msgstr "Cancelar"
 #: ../src/app/qml/DownloadPage.qml:270
 msgctxt "DownloadPage|"
 msgid "Write"
-msgstr "Escribir"
+msgstr "Grabar"
 
 #: ../src/app/qml/DownloadPage.qml:272
 msgctxt "DownloadPage|"
@@ -359,7 +360,7 @@ msgstr "Esta unidad no es lo suficientemente grande."
 #: ../src/app/qml/DrivePage.qml:30
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "Opciones para escribir"
+msgstr "Opciones para grabar"
 
 #: ../src/app/qml/DrivePage.qml:37
 msgctxt "DrivePage|"
@@ -414,27 +415,27 @@ msgstr "Descargar"
 #: ../src/app/qml/DrivePage.qml:151
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "Borrar la descarga tras escribir"
+msgstr "Borrar la descarga tras grabar"
 
 #: ../src/app/qml/DrivePage.qml:169
 msgctxt "DrivePage|"
 msgid "Write"
-msgstr "Escribir"
+msgstr "Grabar"
 
 #: ../src/app/qml/DrivePage.qml:171
 msgctxt "DrivePage|"
 msgid "Download && Write"
-msgstr "Descargar y escribir"
+msgstr "Descargar && grabar"
 
 #: ../src/app/qml/DrivePage.qml:172
 msgctxt "DrivePage|"
 msgid "Download & Write"
-msgstr "Descargar y escribir"
+msgstr "Descargar & grabar"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr "La unidad fue retirada mientras estaba siendo escrita."
+msgstr "La unidad fue retirada mientras estaba siendo grabada."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
@@ -446,7 +447,7 @@ msgstr ""
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr "Detenida antes de finalizar la escritura."
+msgstr "Detenida antes de finalizar la grabación."
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
@@ -457,7 +458,7 @@ msgstr "¡Terminado!"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr "La escritura de %1 finalizó correctamente"
+msgstr "La grabación de %1 finalizó correctamente"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
@@ -468,7 +469,7 @@ msgstr "Error"
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr "La escritura de %1 falló"
+msgstr "La grabación de %1 falló"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
@@ -489,7 +490,7 @@ msgstr "Error"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr "La escritura de %1 falló"
+msgstr "La grabación de %1 falló"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
@@ -500,7 +501,7 @@ msgstr "¡Terminado!"
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr "La escritura de %1 finalizó correctamente"
+msgstr "La grabación de %1 finalizó correctamente"
 
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
@@ -699,19 +700,19 @@ msgstr "Comprobando la descarga"
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
-msgstr "Listo para escribir"
+msgstr "Listo para grabar"
 
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
-"Se ha descargado la imagen a su directorio de descargas. La escritura no es "
+"Se ha descargado la imagen a su directorio de descargas. La grabación no es "
 "posible"
 
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "Writing"
-msgstr "Escribiendo"
+msgstr "Grabando"
 
 #: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
@@ -759,12 +760,12 @@ msgstr "%1 RC (candidata a lanzamiento)"
 #: ../src/helper/linux/restorejob.cpp:67
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "No fue capaz de abrir la unidad para escritura"
+msgstr "No fue posible abrir la unidad para grabar"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
-msgstr "No se puede escribir en la unidad de destino"
+msgstr "La unidad de destino no es grabable"
 
 #: ../src/helper/linux/restorejob.cpp:91
 msgctxt "RestoreJob|"
@@ -851,11 +852,11 @@ msgid ""
 "you want to write another live system to it.</p> <p align=\"justify\"> Do "
 "you want to restore it to factory settings? </p>"
 msgstr ""
-"<p align=\"justify\"> Para reclamar todo el espacio disponible en el disco "
-"debe ser restaurado a los ajustes de fábrica. Se borrarán tanto el sistema "
-"vivo como todos los datos almacenados. </p> <p align=\"justify\"> No "
-"necesita restaurar el disco si quiere escribir otro sistema vivo en él.</p> "
-"<p align=\"justify\"> ¿Desea restaurarlo a los ajustes de fábrica? </p>"
+"<p align=\"justify\"> Para reclamar todo el espacio disponible en el disco, "
+"este debe ser restaurado a los ajustes de fábrica. Se borrarán tanto el "
+"sistema vivo como todos los datos almacenados. </p> <p align=\"justify\"> No "
+"necesita restaurar el disco si quiere grabar otro sistema vivo en él.</p> <p "
+"align=\"justify\"> ¿Desea restaurarlo a los ajustes de fábrica? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
@@ -863,8 +864,8 @@ msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
-"<p align=\"justify\">Por favor espere mientras Fedora Media Writer restaura "
-"su disco portátil.</p>"
+"<p align=\"justify\">Por favor, espere mientras Fedora Media Writer restaura "
+"su unidad portátil.</p>"
 
 #: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
@@ -941,18 +942,18 @@ msgstr "¡Fin!"
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr "La escritura de %1 finalizó correctamente"
+msgstr "La grabación de %1 finalizó correctamente"
 
 #: ../src/app/windrivemanager.cpp:244
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "La escritura ha sido cancelada"
+msgstr "La grabación ha sido cancelada"
 
 #: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr "Error al descomprimir."
+msgstr "Error al iniciar la descompresión."
 
 #: ../src/helper/linux/writejob.cpp:105 ../src/helper/linux/writejob.cpp:135
 #: ../src/helper/linux/writejob.cpp:173 ../src/helper/mac/writejob.cpp:185
@@ -961,7 +962,7 @@ msgstr "Error al descomprimir."
 #: ../src/helper/win/writejob.cpp:465
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
-msgstr "No se puede escribir en la unidad de destino"
+msgstr "La unidad de destino no es grabable"
 
 #: ../src/helper/linux/writejob.cpp:114 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
@@ -973,7 +974,7 @@ msgstr "No hay memoria suficiente para descomprimir el archivo."
 #: ../src/helper/win/writejob.cpp:350
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
-msgstr "Hay errores en el archivo comprimido de la descarga."
+msgstr "El archivo comprimido descargado está corrupto."
 
 #: ../src/helper/linux/writejob.cpp:122 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:353
@@ -1010,12 +1011,12 @@ msgstr ""
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr "no es posible crear una pareja de zócalo"
+msgstr "No es posible crear una pareja de sockets"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr "No es posible abrir el destino para escritura"
+msgstr "No es posible abrir el destino para grabar"
 
 #: ../src/helper/win/writejob.cpp:122
 msgctxt "WriteJob|"
@@ -1061,13 +1062,13 @@ msgstr "No fue capaz de asignar el tampón"
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr "El último bloque no fue escrito completamente"
+msgstr "El último bloque no fue grabado completamente"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr "Escribió %1 fuera de %2"
+msgstr "Grabado %1 de %2"
 
 #: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
@@ -1078,9 +1079,7 @@ msgstr "No fue capaz de leer el archivo de imagen: "
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
-"No fue capaz de escribir la imagen entera. Total escrito: %1 de un total de "
-"%2"
+msgstr "Error al grabar la imagen completa. Total grabado: %1 de %2"
 
 #: ../src/helper/win/writejob.cpp:518
 #, qt-format
