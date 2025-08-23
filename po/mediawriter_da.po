@@ -9,59 +9,46 @@
 # scootergrisen <scootergrisen@gmail.com>, 2020. #zanata, 2021, 2025.
 # Casper Da <fedora.stupor815@simplelogin.com>, 2024, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024, 2025.
+# Danni Lundgren <fedoraproject.footsie399@passmail.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-02-10 09:32+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
-"Language-Team: Danish <https://translate.fedoraproject.org/projects/fedora-"
-"media-writer/mediawriter/da/>\n"
+"PO-Revision-Date: 2025-08-23 17:08+0000\n"
+"Last-Translator: Danni Lundgren <fedoraproject.footsie399@passmail.com>\n"
+"Language-Team: Danish <https://translate.fedoraproject.org/projects/"
+"fedora-media-writer/mediawriter/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.13\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
 msgstr "Om Fedora-medieskriver"
 
 #: ../src/app/qml/AboutDialog.qml:58
-#, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Version %1"
 
 #: ../src/app/qml/AboutDialog.qml:65
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "Fedora Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
 msgstr "Fedora-medieskriver søger nu efter nye udgivelser"
 
 #: ../src/app/qml/AboutDialog.qml:71
-#, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr "Rapportér venligst fejl og forslag på %1"
+msgstr "Rapportér venligst fejl og dine forslag på %1"
 
 #: ../src/app/qml/AboutDialog.qml:94
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Luk"
@@ -69,20 +56,17 @@ msgstr "Luk"
 #: ../src/app/qml/CancelDialog.qml:55
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "Annullér download?"
 
 #: ../src/app/qml/CancelDialog.qml:57
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Skriver"
+msgstr "Anullér skrivning?"
 
 #: ../src/app/qml/CancelDialog.qml:59
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "Annullér verificering?"
 
 #: ../src/app/qml/CancelDialog.qml:66
 msgctxt "CancelDialog|"
@@ -90,18 +74,20 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"Download og medieskrivning vil blive afbrudt. Denne proces kan blive "
+"genoptaget på ethvert tidspunkt senere."
 
 #: ../src/app/qml/CancelDialog.qml:68
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr ""
+msgstr "Skriveprocessen vil blive afbrudt og dit drev skal gendannes derefter."
 
 #: ../src/app/qml/CancelDialog.qml:70
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "Denne handling er sikker at annullére."
 
 #: ../src/app/qml/CancelDialog.qml:87
 msgctxt "CancelDialog|"
@@ -109,25 +95,19 @@ msgid "Continue"
 msgstr "Fortsæt"
 
 #: ../src/app/qml/CancelDialog.qml:110
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "Downloader"
+msgstr "Annullér download"
 
 #: ../src/app/qml/CancelDialog.qml:112
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Skriver"
+msgstr "Annullér skrivning"
 
 #: ../src/app/qml/CancelDialog.qml:114
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "Annullér verifikation"
 
 #: ../src/app/qml/CancelDialog.qml:116
 msgctxt "CancelDialog|"
@@ -135,12 +115,9 @@ msgid "Cancel"
 msgstr "Annuller"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:49
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Easy Administration"
 msgctxt "DeviceWarningDialog|"
 msgid "Erase confirmation"
-msgstr "Nem administration"
+msgstr "Bekræftelse af rensning"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -149,14 +126,13 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Hele enheden (alt på %1) vil blive renset og det valgte aftryk vil blive "
+"skrevet til den. Ønsker du at fortsætte?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
-msgstr "Annuller"
+msgstr "Annullér"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
 msgctxt "DeviceWarningDialog|"
@@ -164,40 +140,34 @@ msgid "Write"
 msgstr "Skriv"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
-msgstr "Download mislykkedes"
+msgstr "Download && skriv"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
-msgstr "Download mislykkedes"
+msgstr "Download & skriv"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:99
 msgctxt "DeviceWarningDialog|"
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:101
 msgctxt "DeviceWarningDialog|"
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "Byte"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -223,7 +193,7 @@ msgstr "Forbindelsen fik timeout"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr ""
+msgstr "%1 Succesfuldt skrevet"
 
 #: ../src/app/qml/DownloadPage.qml:38
 #, qt-format
@@ -232,96 +202,71 @@ msgid "Writing %1"
 msgstr "Skriver %1"
 
 #: ../src/app/qml/DownloadPage.qml:40
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "Downloader"
+msgstr "Downloader %1"
 
 #: ../src/app/qml/DownloadPage.qml:42
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "Forbereder"
+msgstr "Forbereder %1"
 
 #: ../src/app/qml/DownloadPage.qml:44
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "Klar til at skrive"
+msgstr "Klar til at skrive %1"
 
 #: ../src/app/qml/DownloadPage.qml:46
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "Tjekker det downloadede"
+msgstr "Download af %1 mislykkedes"
 
 #: ../src/app/qml/DownloadPage.qml:54
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr "(%1 B tilbage)"
+msgstr " B tilbage)"
 
 #: ../src/app/qml/DownloadPage.qml:55
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr "(%1 KB tilbage)"
+msgstr " KB tilbage)"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr "(%1 MB tilbage)"
+msgstr " MB tilbage)"
 
 #: ../src/app/qml/DownloadPage.qml:57
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr "(%1 GB tilbage)"
+msgstr " GB tilbage)"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:61
 #: ../src/app/qml/DownloadPage.qml:62 ../src/app/qml/DownloadPage.qml:63
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "Dit drev blev frakoblet under processen"
 
 #: ../src/app/qml/DownloadPage.qml:106
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "Filen gemmes i din Downloads-mappe."
+msgstr "Downloads bliver gemt i Downloads-mappen."
 
 #: ../src/app/qml/DownloadPage.qml:116
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "Ved skrivning vil du miste alle dataene på %1."
+msgstr "Ved skrivning vil du miste alle data på %1."
 
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
@@ -329,12 +274,6 @@ msgid "Please insert an USB drive."
 msgstr "Indsæt venligst et USB-drev."
 
 #: ../src/app/qml/DownloadPage.qml:133
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using Fedora Media Writer; this will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
@@ -342,32 +281,21 @@ msgid ""
 "from your drive."
 msgstr ""
 "Dit drev ændres til en mindre kapacitet. Du kan ændre kapaciteten tilbage "
-"til normal med Fedora-medieskriver; det vil fjerne installationsmediet fra "
+"til normal med Fedora-medieskriver. Dette vil fjerne installationsmediet fra "
 "dit drev."
 
 #: ../src/app/qml/DownloadPage.qml:141
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Valgt:"
 
 #: ../src/app/qml/DownloadPage.qml:141
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Ingen"
 
 #: ../src/app/qml/DownloadPage.qml:149
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your board or device is not supported by Fedora Media Writer yet. Please "
-#| "check <a href=%1>this page</a> for more information about its "
-#| "compatibility with Fedora and how to create bootable media for it."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
@@ -376,15 +304,11 @@ msgid ""
 msgstr ""
 "Dit bundkort eller din enhed understøttes endnu ikke af Fedora-medieskriver. "
 "Tjek venligst <a href=%1>denne side</a> for mere information om dens "
-"kompatibilitet med Fedora og hvordan bruger det til at oprette et medie der "
-"kan startes fra."
+"kompatibilitet med Fedora og hvordan du bruger det til at oprette et medie "
+"der kan startes fra."
 
 #: ../src/app/qml/DownloadPage.qml:160
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
@@ -397,36 +321,24 @@ msgstr ""
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "Genstart og boot fra %1 for at komme i gang med at bruge %2."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
-msgstr "Annuller"
+msgstr "Annullér"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "DownloadPage|"
 msgid "Write"
-msgstr "Skriv %1"
+msgstr "Skriv"
 
 #: ../src/app/qml/DownloadPage.qml:272
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "Færdig!"
+msgstr "Færdig"
 
 #: ../src/app/qml/DownloadPage.qml:274
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
 msgctxt "DownloadPage|"
 msgid "Retry"
 msgstr "Prøv igen"
@@ -437,62 +349,41 @@ msgid "This drive is not large enough."
 msgstr "Drevet er ikke stort nok."
 
 #: ../src/app/qml/DrivePage.qml:30
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "Skriv til disk"
+msgstr "Skriveindstillinger"
 
 #: ../src/app/qml/DrivePage.qml:37
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "Version %1"
+msgstr "Version"
 
 #: ../src/app/qml/DrivePage.qml:59
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "Hardware-arkitektur"
 
 #: ../src/app/qml/DrivePage.qml:76
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "Valgt:"
+msgstr "Valgte fil"
 
 #: ../src/app/qml/DrivePage.qml:83
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "Ingen"
 
 #: ../src/app/qml/DrivePage.qml:91
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "Valgt:"
+msgstr "Vælg..."
 
 #: ../src/app/qml/DrivePage.qml:108
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "DrivePage|"
 msgid "Image files"
 msgstr "Aftryksfiler"
 
 #: ../src/app/qml/DrivePage.qml:108
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "Alle filer (*)"
@@ -503,52 +394,34 @@ msgid "USB Drive"
 msgstr "USB-drev"
 
 #: ../src/app/qml/DrivePage.qml:127
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
 msgstr "Der er ikke tilsluttet nogen flytbare drev"
 
 #: ../src/app/qml/DrivePage.qml:146
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "Downloader"
+msgstr "Download"
 
 #: ../src/app/qml/DrivePage.qml:151
-#, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "Slet det downloadede aftryk"
+msgstr "Slet downloadet aftryk efter skrivning"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "DrivePage|"
 msgid "Write"
-msgstr "Skriv %1"
+msgstr "Skriv"
 
 #: ../src/app/qml/DrivePage.qml:171
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "DrivePage|"
 msgid "Download && Write"
-msgstr "Download mislykkedes"
+msgstr "Download && skriv"
 
 #: ../src/app/qml/DrivePage.qml:172
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "DrivePage|"
 msgid "Download & Write"
-msgstr "Download mislykkedes"
+msgstr "Download & skriv"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
@@ -624,15 +497,12 @@ msgstr "Skrivning af %1 lykkedes"
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr "Vælg billedkilde"
+msgstr "Vælg aftrykskilde"
 
 #: ../src/app/qml/MainPage.qml:33
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Download mislykkedes"
+msgstr "Download automatisk"
 
 #: ../src/app/qml/MainPage.qml:40
 msgctxt "MainPage|"
@@ -640,12 +510,10 @@ msgid "Select .iso file"
 msgstr "Vælg .iso-fil"
 
 #: ../src/app/qml/MainPage.qml:50
-#, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
+#, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "Gendan %1?"
+msgstr "Gendan <b>%1</b>"
 
 #: ../src/app/qml/MainPage.qml:72
 msgctxt "MainPage|"
@@ -663,20 +531,14 @@ msgid "Next"
 msgstr "Næste"
 
 #: ../src/app/portalfiledialog.cpp:143
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "PortalFileDialog|"
 msgid "Image files"
 msgstr "Aftryksfiler"
 
 #: ../src/app/portalfiledialog.cpp:153
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "Alle filer (*)"
+msgstr "Alle filer"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
@@ -687,31 +549,31 @@ msgstr "Åbn fil"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 TB"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 KB"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 byte"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -740,12 +602,9 @@ msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
 #: ../src/app/releasemanager.cpp:455
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr "Fedora Labs"
+msgstr "Fedora Atomic Desktops"
 
 #: ../src/app/releasemanager.cpp:457
 msgctxt "Release|"
@@ -753,12 +612,9 @@ msgid "Other"
 msgstr "Andre"
 
 #: ../src/app/releasemanager.cpp:1103
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Intel 64-bit"
+msgstr "Intel/AMD 64-bit"
 
 #: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
@@ -767,12 +623,9 @@ msgstr ""
 "ISO-formateret aftryk til Intel, AMD og andre kompatible PC'er (64-bit)"
 
 #: ../src/app/releasemanager.cpp:1104
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Intel 32-bit"
+msgstr "Intel/AMD 32-bit"
 
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
@@ -824,25 +677,16 @@ msgid "Unable to rename the temporary file."
 msgstr "Kan ikke omdøbe den midlertidige fil."
 
 #: ../src/app/releasemanager.h:378
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Forbereder"
 
 #: ../src/app/releasemanager.h:379
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "Downloader"
 
 #: ../src/app/releasemanager.h:380
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
 msgstr "Tjekker det downloadede"
@@ -858,17 +702,11 @@ msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr "Aftryksfil blev gemt i din Downloads-mappe. Skrivning er ikke muligt"
 
 #: ../src/app/releasemanager.h:383
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
 msgstr "Skriver"
 
 #: ../src/app/releasemanager.h:384
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "Tjekker den skrevne data"
@@ -884,9 +722,6 @@ msgid "The written data is corrupted"
 msgstr "Den skrevne data er ødelagt"
 
 #: ../src/app/releasemanager.h:387
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
 msgstr "Download mislykkedes"
@@ -915,69 +750,51 @@ msgid "%1 Release Candidate"
 msgstr "%1 Release Candidate"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "Kunne ikke åbne drevet til skrivning"
+msgstr "Åbning af enhed til skrivning mislykkedes"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Destination drive is not writable"
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
-msgstr "Destinationsdrevet er skrivebeskyttet"
+msgstr "Destinationsdrevet er skrivbart"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "Kan ikke omdøbe den midlertidige fil."
+msgstr "Registrering af filstørrelse mislykkedes"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "Filstørrelsen er mindre end 128 blokke"
 
 #: ../src/helper/linux/restorejob.cpp:105
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr ""
+msgstr "Flytning af filmarkøren til slutregionen mislykkedes"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "Synkronisering af data til disk mislykkedes"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Kunne ikke fjerne drevet %1:"
+msgstr "Kunne ikke fjerne drev-monteringspunkter"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Fjernelse af partitioner på disk mislykkedes"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Kunne ikke åbne drevet til skrivning"
+msgstr "Åbning af drev til formatering mislykkedes"
 
 #: ../src/helper/win/restorejob.cpp:95
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
 msgstr "Kunne ikke låse drevet"
@@ -985,32 +802,32 @@ msgstr "Kunne ikke låse drevet"
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Rydning af partitionstabellen på drevet mislykkedes"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Indstilling af drev til RAW-partitionsstil mislykkedes"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Oprettelse af GPT-partition på drevet mislykkedes"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Registrering af GUID-volumensti på drevet mislykkedes"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Montéring af den nye partition mislykkedes"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Formatering af partitionen til exFAT mislykkedes"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -1019,22 +836,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Gendan drev <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -1043,27 +844,13 @@ msgid ""
 "you want to write another live system to it.</p> <p align=\"justify\"> Do "
 "you want to restore it to factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">\n"
-"                                                For at genvinde al "
-"tilgængelig plads på dit drev, er det blevet gendannet til sine "
-"fabriksindstillinger.\n"
-"                                                Live-systemet og alle gemte "
-"data vil blive slettet.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Du behøver ikke at gendanne "
-"drevet hvis du vil skrive et andet live-system til det.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Vil du fortsætte?\n"
-"                                            </p>"
+"<p align=\"justify\"> For at genskabe alt plads tilgængelig på drevet, skal "
+"det gendannes til dets fabriksindstillinger. Live-systemet og alle gemte "
+"data vil blive slettet.</p><p align=\"justify\"> Du behøver ikke gendanne "
+"drevet, hvis du ønsker at skrive et andet live-system til det.</p><p align="
+"\"justify\">Ønsker du at gendanne det til fabriksindstillinger?</p>"
 
 #: ../src/app/qml/RestorePage.qml:53
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
@@ -1073,44 +860,30 @@ msgstr ""
 "flytbare drev.</p>"
 
 #: ../src/app/qml/RestorePage.qml:69
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr "Det lykkedes at gendanne dit drev!"
+msgstr "Dit drev blev succesfuldt gendannet!"
 
 #: ../src/app/qml/RestorePage.qml:78
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"Der opstod desværre en fejl under processen.<br>Prøv venligst at gendanne "
+"Der opstod desværre en fejl under processen. Prøv venligst at gendanne "
 "drevet med dine systemværktøjer."
 
 #: ../src/app/qml/RestorePage.qml:92
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "Gendannelse fuldført"
 
 #: ../src/app/qml/RestorePage.qml:110
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "RestorePage|"
 msgid "Finish"
-msgstr "Færdig!"
+msgstr "Færdig"
 
 #: ../src/app/qml/RestorePage.qml:110
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Gendan"
@@ -1121,12 +894,9 @@ msgid "Select Fedora Release"
 msgstr "Vælg Fedora-udgave"
 
 #: ../src/app/qml/VersionPage.qml:32
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "Valgt:"
+msgstr "Vælg fra:"
 
 #: ../src/app/qml/VersionPage.qml:37
 msgctxt "VersionPage|"
@@ -1134,17 +904,11 @@ msgid "Official Editions"
 msgstr "Officielle udgaver"
 
 #: ../src/app/qml/VersionPage.qml:42
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr "Fedora Labs"
+msgstr "Atomic Desktops"
 
 #: ../src/app/qml/VersionPage.qml:47
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "spins"
 msgctxt "VersionPage|"
 msgid "Spins"
 msgstr "spins"
@@ -1152,7 +916,7 @@ msgstr "spins"
 #: ../src/app/qml/VersionPage.qml:52
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Labs"
 
 #: ../src/app/windrivemanager.cpp:149
 msgctxt "WinDrive|"
@@ -1171,18 +935,15 @@ msgid "Writing %1 was successful"
 msgstr "Skrivning af %1 lykkedes"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "Skrivning af %1 mislykkedes"
+msgstr "Skrivning er blevet annulleret"
 
 #: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr "Kunne ikke starte udpakning."
+msgstr "Start af udpakning mislykkedes."
 
 #: ../src/helper/linux/writejob.cpp:105 ../src/helper/linux/writejob.cpp:135
 #: ../src/helper/linux/writejob.cpp:173 ../src/helper/mac/writejob.cpp:185
@@ -1221,7 +982,7 @@ msgstr "Ukendt fejl under udpakning."
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
-msgstr "Kan ikke læse kildeaftryk"
+msgstr "Kildeaftryk er ikke læsbart"
 
 #: ../src/helper/linux/writejob.cpp:203 ../src/helper/mac/writejob.cpp:304
 #: ../src/helper/win/writejob.cpp:538
@@ -1246,25 +1007,19 @@ msgid "Unable to open destination for writing"
 msgstr "Kunne ikke åbne distination for at skrive"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Kunne ikke fjerne drevet %1:"
+msgstr "Kunne ikke fjerne drev-monteringspunkter"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Fjernelse af partitionener på drevet mislykkedes"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Kunne ikke åbne drevet til skrivning"
+msgstr "Åbning af drevet til formatering mislykkedes"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1272,42 +1027,30 @@ msgid "Couldn't lock the drive"
 msgstr "Kunne ikke låse drevet"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "Kunne ikke åbne drevet til skrivning"
+msgstr "Kunne ikke åbne det logiske håndtag"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Kunne ikke låse drevet"
+msgstr "Kunne ikke låse det logiske drev"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "Kunne ikke låse drevet op"
+msgstr "Kunne ikke demontere drev"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "Kan ikke allokere sokkelpar"
+msgstr "Allokering af bufferen mislykkedes"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Den sidste blok blev ikke fuldstændigt skrevet"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
@@ -1316,49 +1059,36 @@ msgid "Wrote %1 out of %2"
 msgstr "Skrev %1 ud af %2"
 
 #: ../src/helper/win/writejob.cpp:492
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Kan ikke omdøbe den midlertidige fil."
+msgstr "Læsning af aftryksfil mislykkedes: "
 
 #: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Skrivning af hele aftrykket mislykkedes. Skrev i alt: %1 ud af %2"
 
 #: ../src/helper/win/writejob.cpp:518
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "Kunne ikke åbne drevet til skrivning"
+msgstr "Kunne ikke åbne drevet til dataverificering af %1:"
 
 #: ../src/app/qml/main.qml:81
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "main|"
 msgid "Fedora Media Writer"
 msgstr "Fedora-medieskriver"
 
 #: ../src/app/qml/main.qml:100
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Workstation"
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Fedora Workstation"
+msgstr "Vælg Fedora-version"
 
 #: ../src/app/qml/main.qml:114
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "Valgt:"
+msgstr "Vælg drev"
 
 #: ../src/app/qml/main.qml:139
 msgctxt "main|"
@@ -1410,7 +1140,7 @@ msgstr "Skriv Fedora-aftryk på dine flytbare drev"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;"
 
 #, fuzzy
 #~| msgctxt "DownloadDialog|"
