@@ -17,9 +17,10 @@ XPStyle on
 !define COPYRIGHT         "${COMPANYNAME} ${CURRENTYEAR}"
 !define DESCRIPTION       "Tool to write Fedora images to flash drives"
 !define FULLVERSION       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}.0"
+!define SHORTVERSION      "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}"
 
 Name    "${APPNAME}"
-Caption "${APPNAME} ${FULLVERSION}"
+Caption "${APPNAME} ${SHORTVERSION}"
 
 # These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
 # It is possible to use "mailto:" links in here to open the email client
