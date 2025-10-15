@@ -8,23 +8,23 @@ The process of running Fedora Media Writer on a Mac computer is the same as ever
 
 ### System configuration
 
-The application has been developed and tested on macOS Monterey. We recommend you to use the latest release possible.
+The application has been developed and tested on macOS Tahoe (26). We recommend you to use the latest release possible.
 
-Oldest supported release is OS X 10.15.
-
-Resource-wise, every Intel-based Mac computer should be able to run Fedora Media Writer.
+Oldest supported release is macOS 13.
 
 ### Usage
 
-Download the .dmg file from the [Releases](../../releases) section of this page for the latest, then drag-and-drop it to the Applications folder open it from there. The files downloaded from this page are not signed, which means you can get a prompt saying you won't be able to open them.
-To avoid this problem, control-click the "Fedora Media Writer" application and use the "Open" option.
+Download the .dmg file from the [Releases](../../releases) section of this page for the latest, then drag-and-drop it to the Applications folder open it from there. 
+The files downloaded from this page are not signed, which means you can get a prompt saying you won't be able to open them. In order to be able to
+run our pre-built binaries you have to run `xattr -c FedoraMediaWriter-macos-x.x.x.dmg` to get rid of the warning about uknown source.
 
 ![Move the icon to the applications folder and open from there](/dist/screenshots/mac_open.png)
 
 
 ### Known issues 
 
-There is currently no known issue.
+There is a known issue in progress bar on macOS 26 in Qt 6.9.3.
+Fedora Media Writer issue: https://github.com/FedoraQt/MediaWriter/issues/897
 
 ## Building
 
