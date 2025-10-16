@@ -5,7 +5,7 @@ on:
     types: [ created ]
 
 env:
-    QT_VERSION: '6.9.0'
+    QT_VERSION: '6.9.3'
 
 jobs:
   macOS:
@@ -39,7 +39,7 @@ jobs:
           set -eo pipefail
           mkdir build
           cd build
-          cmake .. -DCMAKE_OSX_ARCHITECTURES="${{ matrix.arch }}" -DCMAKE_BUILD_TYPE=Release
+          cmake .. -DCMAKE_BUILD_TYPE=Release
           cmake --build . --parallel
 
       - name: Bundle
@@ -50,20 +50,20 @@ jobs:
           for i in `find build/src/app/FedoraMediaWriter.app/ -name '*.dSYM'`; do rm -fr "$i"; done
           cd build/src/app/
           "$QT_ROOT_DIR"/bin/macdeployqt FedoraMediaWriter.app -dmg -always-overwrite
-          mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-osx${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
+          mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
 
       - name: Upload artifact (for direct download from workflow)
         uses: actions/upload-artifact@v4
         with:
           # Use the dmg_arch_suffix for the artifact name
-          name: FedoraMediaWriter-osx${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
-          path: FedoraMediaWriter-osx${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
+          name: FedoraMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
+          path: FedoraMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
 
       - name: Upload to GitHub (release)
         run: |
           set -eo pipefail
           # Pass the full filename including the architecture suffix
-          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-osx${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg"
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg"
 
   Windows-MSVC:
     runs-on: windows-2022
