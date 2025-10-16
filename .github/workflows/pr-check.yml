@@ -3,7 +3,7 @@ name: pr-check
 on: [pull_request]
 
 env:
-    QT_VERSION: '6.9.0'
+    QT_VERSION: '6.9.3'
 
 jobs:
   Linux:
@@ -53,7 +53,7 @@ jobs:
         arch: [x86_64, arm64]
         include:
           - arch: x86_64
-            runner: macos-15
+            runner: macos-15-intel
             dmg_suffix: ""
           - arch: arm64
             runner: macos-15
@@ -75,7 +75,7 @@ jobs:
           set -eo pipefail
           mkdir build
           cd build
-          cmake .. -DCMAKE_OSX_ARCHITECTURES="${{ matrix.arch }}" -DCMAKE_BUILD_TYPE=Release
+          cmake .. -DCMAKE_BUILD_TYPE=Release
           cmake --build . --parallel
 
       - name: Bundle
@@ -86,12 +86,12 @@ jobs:
           for i in `find build/src/app/FedoraMediaWriter.app/ -name '*.dSYM'`; do rm -fr "$i"; done
           cd build/src/app/
           "$QT_ROOT_DIR"/bin/macdeployqt FedoraMediaWriter.app -dmg -always-overwrite
-          mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-osx${{ matrix.dmg_suffix }}.dmg
+          mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-macos${{ matrix.dmg_suffix }}.dmg
 
       - uses: actions/upload-artifact@v4
         with:
-          name: FedoraMediaWriter-osx${{ matrix.dmg_suffix }}.dmg
-          path: FedoraMediaWriter-osx${{ matrix.dmg_suffix }}.dmg
+          name: FedoraMediaWriter-macos${{ matrix.dmg_suffix }}.dmg
+          path: FedoraMediaWriter-macos${{ matrix.dmg_suffix }}.dmg
 
   Windows-MSVC:
     runs-on: windows-2022
