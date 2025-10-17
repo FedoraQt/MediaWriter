@@ -94,16 +94,26 @@ jobs:
           path: FedoraMediaWriter-macos${{ matrix.dmg_suffix }}.dmg
 
   Windows-MSVC:
-    runs-on: windows-2022
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ilammy/msvc-dev-cmd@v1
-
+        with:
+          fetch-depth: 1
       - name: Install dependencies
         shell: bash
         run: |
           choco install nsis
           choco install dos2unix
+          choco install cmake
+
+      - name: Set up CPM cache
+        id: cache-cpm
+        uses: actions/cache@v4
+        with:
+          path: ~/cpm-cache
+          key: ${{ runner.os }}-cpm-${{ hashFiles('CMakeLists.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-cpm-
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
@@ -118,9 +128,8 @@ jobs:
 
       - name: Build xz-utils
         shell: bash
-        if: ${{ !steps.cache-qt.outputs.cache-hit }}
         run: |
-          # eval "$(./dist/win/make-vs2022-env.bat)"
+          eval "$(./dist/win/make-vs2022-env.bat)"
           git clone https://git.tukaani.org/xz.git
           cd xz
           git checkout v5.4.5
@@ -129,19 +138,23 @@ jobs:
           sed -i 's/PACKAGE_URL/"https:\/\/tukaani.org\/xz\/"/' src/common/common_w32res.rc
           mkdir build
           cd build
-          cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$QT_ROOT_DIR" -DBUILD_SHARED_LIBS=ON ..
-          cmake --build .
-          cmake --install .
+          export CPM_SOURCE_CACHE=~/cpm-cache
+          export CMAKE_PREFIX_PATH="$QT_ROOT_DIR"/lib/cmake
+          "/c/Program Files/CMake/bin/cmake.exe" .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$QT_ROOT_DIR" -DBUILD_SHARED_LIBS=ON
+          "/c/Program Files/CMake/bin/cmake.exe" --build . --config Release
+          "/c/Program Files/CMake/bin/cmake.exe" --install . --config Release
 
       - name: Build MediaWriter
         shell: bash
         run: |
-          # eval "$(./dist/win/make-vs2022-env.bat)"
+          eval "$(./dist/win/make-vs2022-env.bat)"
           mkdir build
           cd build
-          cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$QT_ROOT_DIR" ..
-          cmake --build .
-          cmake --install .
+          export CPM_SOURCE_CACHE=~/cpm-cache
+          export CMAKE_PREFIX_PATH="$QT_ROOT_DIR"/lib/cmake
+          "/c/Program Files/CMake/bin/cmake.exe" .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$QT_ROOT_DIR"
+          "/c/Program Files/CMake/bin/cmake.exe" --build . --config Release
+          "/c/Program Files/CMake/bin/cmake.exe" --install . --config Release
 
       - name: Windeployqt
         shell: bash
@@ -180,7 +193,7 @@ jobs:
           echo "LICENSE.GPL-2.txt" >> build/app/release/uninstall.log
           echo "LICENSE.LGPL-2.txt" >> build/app/release/uninstall.log
 
-          makensis -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
+          "/c/Program Files (x86)/NSIS/makensis.exe" -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
           mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64.exe"
 
       - uses: actions/upload-artifact@v4
