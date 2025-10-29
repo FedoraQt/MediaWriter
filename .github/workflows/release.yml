@@ -150,7 +150,7 @@ jobs:
         run: |
           VERSION_STRIPPED=$(sed "s/-.*//" <<< "${{ env.TAG_NAME }}")
           if [[ "$VERSION_STRIPPED" == "" ]]; then
-              VERSION_STRIPPED=5.2.50
+              VERSION_STRIPPED=5.2.9
           fi
           VERSION_MAJOR=$(cut -d. -f1 <<< "${VERSION_STRIPPED}")
           VERSION_MINOR=$(cut -d. -f2 <<< "${VERSION_STRIPPED}")
