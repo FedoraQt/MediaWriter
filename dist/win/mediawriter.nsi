@@ -1,4 +1,9 @@
 !include "MUI2.nsh"
+!include LogicLib.nsh
+!include nsDialogs.nsh
+
+!addplugindir "plugins"
+
 ManifestDPIAware true
 XPStyle on
 
@@ -17,6 +22,10 @@ XPStyle on
 !define COPYRIGHT         "${COMPANYNAME} ${CURRENTYEAR}"
 !define DESCRIPTION       "Tool to write Fedora images to flash drives"
 !define FULLVERSION       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}.0"
+
+# VC++ Redistributable configuration
+!define VCREDIST_FILE     "vc_redist.x64.exe"
+!define VCREDIST_URL      "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 Name    "${APPNAME}"
 Caption "${APPNAME} ${FULLVERSION}"
@@ -154,119 +163,7 @@ Icon "../../src/app/data/icons/mediawriter.ico"
 !insertmacro MUI_LANGUAGE "Ukrainian"
 !insertmacro MUI_LANGUAGE "Uzbek"
 
-LangString UninstallProgram ${LANG_ENGLISH}                  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_AFRIKAANS}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ALBANIAN}                 "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ARABIC}                   "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_BELARUSIAN}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_BOSNIAN}                  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_BRETON}                   "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_BULGARIAN}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_CATALAN}                  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_CROATIAN}                 "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_CZECH}                    "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_DANISH}                   "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_DUTCH}                    "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ESPERANTO}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ESTONIAN}                 "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_FARSI}                    "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_FINNISH}                  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_FRENCH}                   "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_GALICIAN}                 "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_GERMAN}                   "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_GREEK}                    "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_HEBREW}                   "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_HUNGARIAN}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ICELANDIC}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_INDONESIAN}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_IRISH}                    "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ITALIAN}                  "Vuoi disinstallaree ${APPNAME}?"
-LangString UninstallProgram ${LANG_JAPANESE}                 "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_KOREAN}                   "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_KURDISH}                  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_LATVIAN}                  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_LITHUANIAN}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_LUXEMBOURGISH}            "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_MACEDONIAN}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_MALAY}                    "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_MONGOLIAN}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_NORWEGIAN}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_NORWEGIANNYNORSK}         "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_POLISh}                   "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_PORTUGUESE}               "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_PORTUGUESEBR}             "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ROMANIAN}                 "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_RUSSIAN}                  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SERBIAN}                  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SERBIANLATIN}             "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SIMPCHINESE}              "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SLOVAK}                   "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SLOVENIAN}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SPANISH}                  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SPANISHINTERNATIONAL}     "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SWEDISH}                  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_THAI}                     "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_TRADCHINESE}              "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_TURKISH}                  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_UKRAINIAN}                "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_UZBEK}                    "Do you want to uninstall ${APPNAME}?"
-
-LangString AdmingRightsRequired ${LANG_ENGLISH}              "Administrator rights required!"
-LangString AdmingRightsRequired ${LANG_AFRIKAANS}            "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_ALBANIAN}             "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_ARABIC}               "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_BELARUSIAN}           "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_BOSNIAN}              "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_BRETON}               "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_BULGARIAN}            "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_CATALAN}              "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_CROATIAN}             "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_CZECH}                "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_DANISH}               "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_DUTCH}                "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_ESPERANTO}            "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_ESTONIAN}             "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_FARSI}                "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_FINNISH}              "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_FRENCH}               "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_GALICIAN}             "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_GERMAN}               "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_GREEK}                "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_HEBREW}               "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_HUNGARIAN}            "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_ICELANDIC}            "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_INDONESIAN}           "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_IRISH}                "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_ITALIAN}              "Sono necessari i diritti di amministratore!"
-LangString AdmingRightsRequired ${LANG_JAPANESE}             "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_KOREAN}               "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_KURDISH}              "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_LATVIAN}              "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_LITHUANIAN}           "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_LUXEMBOURGISH}        "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_MACEDONIAN}           "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_MALAY}                "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_MONGOLIAN}            "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_NORWEGIAN}            "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_NORWEGIANNYNORSK}     "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_POLISh}               "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_PORTUGUESE}           "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_PORTUGUESEBR}         "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_ROMANIAN}             "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_RUSSIAN}              "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_SERBIAN}              "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_SERBIANLATIN}         "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_SIMPCHINESE}          "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_SLOVAK}               "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_SLOVENIAN}            "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_SPANISH}              "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_SPANISHINTERNATIONAL} "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_SWEDISH}              "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_THAI}                 "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_TRADCHINESE}          "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_TURKISH}              "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_UKRAINIAN}            "Admin rights required!"
-LangString AdmingRightsRequired ${LANG_UZBEK}                "Admin rights required!"
+!include "languages.nsh"
 
 !macro VerifyUserIsAdmin
 UserInfo::GetAccountType
@@ -291,6 +188,53 @@ function .onInit
 
     setShellVarContext all
     !insertmacro VerifyUserIsAdmin
+    
+    ; Check if VC++ Redistributable 2015-2022 is already installed
+    DetailPrint "Checking for Visual C++ 2015-2022 Redistributable..."
+    
+    ClearErrors
+    ReadRegDWORD $0 HKLM "SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" "Installed"
+    StrCmp $0 "1" vcredist_already_installed
+    
+    ; Also check alternative registry location (WOW6432Node)
+    ClearErrors
+    ReadRegDWORD $0 HKLM "SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" "Installed"
+    StrCmp $0 "1" vcredist_already_installed
+    
+    ; VC++ not installed - ask user if they want to download and install it
+    MessageBox MB_YESNO|MB_ICONQUESTION "$(VCRedistNotInstalled)" IDNO skip_vcredist_init
+    
+    ; User chose to install - download the redistributable
+    DetailPrint "$(VCRedistDownloading)"
+    inetc::get /CAPTION "Downloading VC++ Redistributable" /POPUP "" "${VCREDIST_URL}" "$TEMP\vc_redist.exe" /END
+    
+    Pop $0
+    StrCmp $0 "OK" vcredist_download_ok
+        MessageBox MB_OK|MB_ICONEXCLAMATION "$(VCRedistDownloadFailed)"
+        Goto vcredist_init_done
+    
+    vcredist_download_ok:
+    ; Install VC++ Redistributable
+    DetailPrint "$(VCRedistInstalling)"
+    ExecWait '"$TEMP\vc_redist.exe" /install /norestart' $1
+
+    Delete "$TEMP\vc_redist.exe"
+
+    ${If} $1 == 0
+        DetailPrint "VC++ Redistributable installation completed successfully"
+    ${Else}
+        DetailPrint "VC++ Redistributable installation returned code: $1"
+    ${EndIf}
+    Goto vcredist_init_done
+    
+    vcredist_already_installed:
+    DetailPrint "Visual C++ Redistributable already installed. Skipping..."
+    Goto vcredist_init_done
+    
+    skip_vcredist_init:
+    MessageBox MB_OK|MB_ICONINFORMATION "$(VCRedistSkipped)"
+    
+    vcredist_init_done:
 functionEnd
 
 section "install"

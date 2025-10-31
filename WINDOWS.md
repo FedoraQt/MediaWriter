@@ -29,7 +29,7 @@ You can build Fedora Media Writer yourself. It has just a few dependencies and b
 ### Dependencies
 
 * `Qt6` (`qtbase`, `qtdeclarative`, `qtsvg` and `qtquickcontrols2`) - already part of the installer
-* `Microsoft Visual C++ Redistributable` for C++ (MSVC) runtime libraries
+* `Microsoft Visual C++ Redistributable` for C++ (MSVC) runtime libraries - the installer will prompt you to install this if it's not already on your system
 
 ### Steps
 
@@ -42,4 +42,8 @@ make
 
 ### Crosscompilation
 
-There is also the [build.sh](/dist/win/build.sh) script included that I use for building a the installer for distribution on this site. It should do everything automatically if you're in Fedora. There are instructions on how to use it inside at the top of the file
+There is also the [build.sh](/dist/win/build.sh) script included that I use for building a the installer for distribution on this site. It should do everything automatically if you're in Fedora. There are instructions on how to use it inside at the top of the file.
+
+#### Visual C++ Redistributable Installation
+
+The installer handles the [Microsoft Visual C++ Redistributable (2015-2022)](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) installation on-demand, which is required for the application to run.
