@@ -207,6 +207,27 @@ fi
 popd >/dev/null
 popd >/dev/null
 
+echo "=== Downloading VC++ Redistributable for bundling"
+VCREDIST_URL="https://aka.ms/vs/17/release/vc_redist.x64.exe"
+VCREDIST_FILE="$SCRIPTDIR/vc_redist.x64.exe"
+
+if [ ! -f "$VCREDIST_FILE" ]; then
+    echo "Downloading Visual C++ Redistributable..."
+    curl -L -o "$VCREDIST_FILE" "$VCREDIST_URL"
+    if [ $? -ne 0 ]; then
+        echo "Warning: Failed to download VC++ Redistributable."
+        echo "You can manually download it from: $VCREDIST_URL"
+        echo "Place it at: $VCREDIST_FILE"
+        echo ""
+        echo "Continuing build without bundled VC++ Redistributable..."
+    else
+        echo "VC++ Redistributable downloaded successfully ($(du -h "$VCREDIST_FILE" | cut -f1))"
+    fi
+else
+    echo "VC++ Redistributable already exists at $VCREDIST_FILE ($(du -h "$VCREDIST_FILE" | cut -f1))"
+    echo "Using existing file. Delete it to re-download the latest version."
+fi
+
 echo "=== Composing installer"
 unix2dos < "$ROOTPATH/LICENSE.GPL-2" > "$BUILDPATH/app/release/LICENSE.GPL-2.txt"
 unix2dos < "$ROOTPATH/LICENSE.LGPL-2" > "$BUILDPATH/app/release/LICENSE.LGPL-2.txt"

@@ -1,4 +1,7 @@
 !include "MUI2.nsh"
+!include LogicLib.nsh
+!include nsDialogs.nsh
+!include WinMessages.nsh
 ManifestDPIAware true
 XPStyle on
 
@@ -17,6 +20,10 @@ XPStyle on
 !define COPYRIGHT         "${COMPANYNAME} ${CURRENTYEAR}"
 !define DESCRIPTION       "Tool to write Fedora images to flash drives"
 !define FULLVERSION       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}.0"
+
+# VC++ Redistributable configuration
+!define VCREDIST_FILE     "vc_redist.x64.exe"
+!define VCREDIST_URL      "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 Name    "${APPNAME}"
 Caption "${APPNAME} ${FULLVERSION}"
@@ -86,6 +93,10 @@ Icon "../../src/app/data/icons/mediawriter.ico"
 !include LogicLib.nsh
 
 !define MUI_ICON ../../src/app/data/icons/mediawriter.ico
+
+# VC++ Redistributable configuration
+!define VCREDIST_FILE "vc_redist.x64.exe"
+!define VCREDIST_URL "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 !insertmacro MUI_PAGE_LICENSE "../../build/app/release/LICENSE.GPL-2.txt"
 !insertmacro MUI_PAGE_DIRECTORY
@@ -268,6 +279,12 @@ LangString AdmingRightsRequired ${LANG_TURKISH}              "Admin rights requi
 LangString AdmingRightsRequired ${LANG_UKRAINIAN}            "Admin rights required!"
 LangString AdmingRightsRequired ${LANG_UZBEK}                "Admin rights required!"
 
+LangString VCRedistNotInstalled ${LANG_ENGLISH}             "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistDownloading ${LANG_ENGLISH}              "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_ENGLISH}               "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloadFailed ${LANG_ENGLISH}           "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_ENGLISH}                  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+
 !macro VerifyUserIsAdmin
 UserInfo::GetAccountType
 pop $0
@@ -277,6 +294,44 @@ ${If} $0 != "admin" ;Require admin rights on NT4+
         quit
 ${EndIf}
 !macroend
+
+; Function to detect if VC++ Redistributable 2015-2022 is installed
+; Returns: 1 if installed, 0 if not installed (in $R0)
+Function CheckVCRedist
+    Push $0
+    Push $1
+    
+    ; Default to not installed
+    StrCpy $R0 "0"
+    
+    ClearErrors
+    ; Check the primary registry location for x64 VC++ 2015-2022
+    ReadRegStr $0 HKLM "SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" "Installed"
+    ${If} $0 == "1"
+        StrCpy $R0 "1"
+        Goto vcredist_check_done
+    ${EndIf}
+    
+    ClearErrors
+    ; Check alternative registry location
+    ReadRegStr $0 HKLM "SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" "Installed"
+    ${If} $0 == "1"
+        StrCpy $R0 "1"
+        Goto vcredist_check_done
+    ${EndIf}
+    
+    ClearErrors
+    ; Check older registry location
+    ReadRegDWORD $1 HKLM "SOFTWARE\Microsoft\DevDiv\VC\Servicing\14.0\RuntimeMinimum" "Install"
+    ${If} $1 == "1"
+        StrCpy $R0 "1"
+        Goto vcredist_check_done
+    ${EndIf}
+    
+    vcredist_check_done:
+    Pop $1
+    Pop $0
+FunctionEnd
 
 function .onInit
     !ifdef INNER
@@ -291,6 +346,35 @@ function .onInit
 
     setShellVarContext all
     !insertmacro VerifyUserIsAdmin
+    
+    ; Prompt user about VC++ Redistributable BEFORE main installation
+    MessageBox MB_YESNO|MB_ICONQUESTION "$(VCRedistNotInstalled)" IDYES install_vcredist_init IDNO skip_vcredist_init
+    
+    install_vcredist_init:
+        InitPluginsDir
+        DetailPrint "$(VCRedistInstalling)"
+        
+        ; Extract bundled VC++ Redistributable to temp directory
+        File /oname=$TEMP\vcredist_bundled.exe "${VCREDIST_FILE}"
+        
+        ; Install VC++ Redistributable with passive UI (shows progress, no interaction)
+        ExecWait '"$TEMP\vcredist_bundled.exe" /install /passive /norestart' $0
+        
+        ; Clean up
+        Delete "$TEMP\vcredist_bundled.exe"
+        
+        ${If} $0 == 0
+            DetailPrint "VC++ Redistributable installation completed successfully"
+        ${Else}
+            DetailPrint "VC++ Redistributable installation returned code: $0"
+            MessageBox MB_OK|MB_ICONINFORMATION "VC++ Redistributable installation completed (code: $0)"
+        ${EndIf}
+        Goto vcredist_init_done
+    
+    skip_vcredist_init:
+        MessageBox MB_OK|MB_ICONINFORMATION "$(VCRedistSkipped)"
+    
+    vcredist_init_done:
 functionEnd
 
 section "install"
