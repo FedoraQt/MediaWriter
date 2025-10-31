@@ -1,4 +1,7 @@
 !include "MUI2.nsh"
+!include LogicLib.nsh
+!include nsDialogs.nsh
+!include WinMessages.nsh
 ManifestDPIAware true
 XPStyle on
 
@@ -18,6 +21,10 @@ XPStyle on
 !define DESCRIPTION       "Tool to write Fedora images to flash drives"
 !define FULLVERSION       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}.0"
 !define SHORTVERSION      "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}"
+
+# VC++ Redistributable configuration
+!define VCREDIST_FILE     "vc_redist.x64.exe"
+!define VCREDIST_URL      "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 Name    "${APPNAME}"
 Caption "${APPNAME} ${SHORTVERSION}"
@@ -87,6 +94,10 @@ Icon "../../src/app/data/icons/mediawriter.ico"
 !include LogicLib.nsh
 
 !define MUI_ICON ../../src/app/data/icons/mediawriter.ico
+
+# VC++ Redistributable configuration
+!define VCREDIST_FILE "vc_redist.x64.exe"
+!define VCREDIST_URL "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 !insertmacro MUI_PAGE_LICENSE "../../build/app/release/LICENSE.GPL-2.txt"
 !insertmacro MUI_PAGE_DIRECTORY
@@ -269,6 +280,12 @@ LangString AdmingRightsRequired ${LANG_TURKISH}              "Admin rights requi
 LangString AdmingRightsRequired ${LANG_UKRAINIAN}            "Admin rights required!"
 LangString AdmingRightsRequired ${LANG_UZBEK}                "Admin rights required!"
 
+LangString VCRedistNotInstalled ${LANG_ENGLISH}             "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistDownloading ${LANG_ENGLISH}              "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_ENGLISH}               "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloadFailed ${LANG_ENGLISH}           "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_ENGLISH}                  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+
 !macro VerifyUserIsAdmin
 UserInfo::GetAccountType
 pop $0
@@ -278,6 +295,29 @@ ${If} $0 != "admin" ;Require admin rights on NT4+
         quit
 ${EndIf}
 !macroend
+
+; Function to detect if VC++ Redistributable 2015-2022 is installed
+; Returns: 1 if installed, 0 if not installed (in $R0)
+Function CheckVCRedist
+    Push $0
+    ClearErrors
+    
+    ReadRegStr $0 HKLM "SOFTWARE\Microsoft\DevDiv\VC\Servicing\14.0\RuntimeMinimum" "Install"
+    
+    ${If} ${Errors}
+        ClearErrors
+        ReadRegStr $0 HKLM "SOFTWARE\WOW6432Node\Microsoft\DevDiv\VC\Servicing\14.0\RuntimeMinimum" "Install"
+    ${EndIf}
+    
+    ${If} $0 == "1"
+        StrCpy $R0 "1" ; Nainstalováno
+    ${Else}
+        StrCpy $R0 "0" ; Chybí
+    ${EndIf}
+
+    Pop $0
+    Return
+FunctionEnd
 
 function .onInit
     !ifdef INNER
@@ -312,6 +352,35 @@ section "install"
             ; this packages the signed uninstaller
             File ../../build/wineprefix/drive_c/uninstall.exe
         !endif
+        
+        ; Check and prompt user to install VC++ Redistributable if needed
+        Call CheckVCRedist
+        ${If} $R0 == "0" 
+            MessageBox MB_YESNO|MB_ICONQUESTION "$(VCRedistNotInstalled)" IDYES download_vcredist IDNO skip_vcredist
+            
+            download_vcredist:
+                SetOutPath "$TEMP" 
+                
+                DetailPrint "$(VCRedistDownloading)"
+                NSISdl::download /TIMEOUT=30000 "${VCREDIST_URL}" "$TEMP\${VCREDIST_FILE}"
+                Pop $0
+                
+                ${If} $0 == "success"
+                    DetailPrint "$(VCRedistInstalling)"
+                    ExecWait '"$TEMP\${VCREDIST_FILE}" /install /passive /norestart' $1
+                    
+                    Delete "$TEMP\${VCREDIST_FILE}"
+                    Goto vcredist_done
+                ${Else}
+                    MessageBox MB_OK|MB_ICONEXCLAMATION "$(VCRedistDownloadFailed)"
+                    Goto vcredist_done
+                ${EndIf}
+                
+            skip_vcredist:
+                MessageBox MB_OK|MB_ICONEXCLAMATION "$(VCRedistSkipped)"
+                
+            vcredist_done:
+        ${EndIf}
 
         # Start Menu
         createShortCut "$SMPROGRAMS\${APPNAME}.lnk" "$INSTDIR\mediawriter.exe" "" "$INSTDIR\mediawriter.ico"
