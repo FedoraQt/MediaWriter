@@ -12,12 +12,13 @@
 # Oğuz Ersen <oguzersen@protonmail.com>, 2021.
 # Oğuz Ersen <oguz@ersen.moe>, 2022, 2024, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025.
+# Emir SARI <emir_sari@icloud.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-10-05 06:08+0000\n"
-"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
+"PO-Revision-Date: 2025-11-26 16:58+0000\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/tr/>\n"
 "Language: tr\n"
@@ -25,13 +26,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Weblate 5.13.3\n"
+"X-Generator: Weblate 5.14.3\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr "Fedora Ortam Yazıcı Hakkında"
+msgstr "Fedora Ortam Yazıcısı Hakkında"
 
 #: ../src/app/qml/AboutDialog.qml:58
 #, qt-format
@@ -42,7 +43,7 @@ msgstr "Sürüm %1"
 #: ../src/app/qml/AboutDialog.qml:65
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Fedora Ortam Yazıcı şimdi yeni sürümleri denetliyor"
+msgstr "Fedora Ortam Yazıcısı yeni sürümleri denetleniyor…"
 
 #: ../src/app/qml/AboutDialog.qml:71
 #, qt-format
@@ -58,17 +59,17 @@ msgstr "Kapat"
 #: ../src/app/qml/CancelDialog.qml:55
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr "İndirme İptal Edilsin Mi?"
+msgstr "İndirme iptal edilsin mi?"
 
 #: ../src/app/qml/CancelDialog.qml:57
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Yazma İptal Edilsin Mi?"
+msgstr "Yazma iptal edilsin mi?"
 
 #: ../src/app/qml/CancelDialog.qml:59
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr "Doğrulama İptal Edilsin Mi?"
+msgstr "Doğrulama iptal edilsin mi?"
 
 #: ../src/app/qml/CancelDialog.qml:66
 msgctxt "CancelDialog|"
@@ -120,7 +121,7 @@ msgstr "İptal"
 #: ../src/app/qml/DeviceWarningDialog.qml:49
 msgctxt "DeviceWarningDialog|"
 msgid "Erase confirmation"
-msgstr "Silme onayı"
+msgstr "Silme Onayı"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -129,8 +130,8 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
-"Tüm aygıt (%1 tamamı) silinecek ve seçilen görüntü aygıta yazılacak. Devam "
-"etmek istiyor musunuz?"
+"Aygıtın tümü (%1 tamamı) silinecek ve seçilen kalıp aygıta yazılacak. "
+"Sürdürmek istiyor musunuz?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 msgctxt "DeviceWarningDialog|"
@@ -175,7 +176,7 @@ msgstr "Bayt"
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr "İstenen görüntü alınamıyor."
+msgstr "İstenen kalıp getirilemiyor."
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
@@ -196,31 +197,31 @@ msgstr "Bağlantı zaman aşımına uğradı"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr "%1 Başarıyla Yazıldı"
+msgstr "%1 başarıyla yazıldı"
 
 #: ../src/app/qml/DownloadPage.qml:38
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "%1 Yazılıyor"
+msgstr "%1 yazılıyor"
 
 #: ../src/app/qml/DownloadPage.qml:40
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "%1 İndiriliyor"
+msgstr "%1 indiriliyor"
 
 #: ../src/app/qml/DownloadPage.qml:42
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "%1 Hazırlanıyor"
+msgstr "%1 hazırlanıyor"
 
 #: ../src/app/qml/DownloadPage.qml:44
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "%1 yazmaya hazır"
+msgstr "%1 yazılmaya hazır"
 
 #: ../src/app/qml/DownloadPage.qml:46
 #, qt-format
@@ -274,7 +275,7 @@ msgstr "Yazarak, %1 içindeki tüm veriyi yitireceksiniz."
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr "Lütfen USB sürücü takın."
+msgstr "Lütfen bir USB sürücü takın."
 
 #: ../src/app/qml/DownloadPage.qml:133
 msgctxt "DownloadPage|"
@@ -284,18 +285,18 @@ msgid ""
 "from your drive."
 msgstr ""
 "Sürücünüz daha küçük bir kapasiteye boyutlandırılacak. Olağan boyutuna "
-"döndürmek için Fedora Ortam Yazıcı'yı kullanabilirsiniz. Bu, kurulum "
+"döndürmek için Fedora Ortam Yazıcısı’nı kullanabilirsiniz. Bu, kurulum "
 "ortamını sürücüden kaldıracaktır."
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
 msgid "Selected:"
-msgstr "Seçilen:"
+msgstr "Seçili:"
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
 msgid "None"
-msgstr "Hiçbiri"
+msgstr "Yok"
 
 #: ../src/app/qml/DownloadPage.qml:149
 #, qt-format
@@ -305,9 +306,10 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"Kartınız veya aygıtınız henüz Fedora Ortam Yazıcı tarafından desteklenmiyor. "
-"Fedora ile uyumluluğu ve nasıl önyüklenebilir ortam oluşturulacağıyla ilgili "
-"daha çok bilgi için lütfen <a href=%1>bu sayfaya</a> göz atın."
+"Kartınız veya aygıtınız henüz Fedora Ortam Yazıcısı tarafından "
+"desteklenmiyor. Fedora ile uyumluluğu ve nasıl önyüklenebilir ortam "
+"oluşturulacağıyla ilgili daha çok bilgi için lütfen <a href=%1>bu sayfaya</"
+"a> bir göz atın."
 
 #: ../src/app/qml/DownloadPage.qml:160
 #, qt-format
@@ -316,13 +318,14 @@ msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
-"Seçilen sürücünün boyutu %1. Yanlışlıkla dış sürücü seçmiş olabilirsiniz!"
+"Seçilen sürücünün boyutu %1. Yanlışlıkla bir dış sürücü seçmiş olabilirsiniz!"
 
 #: ../src/app/qml/DownloadPage.qml:168
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr "%2 kullanmaya başlamak için yeniden başlatın ve %1'den önyükleyin."
+msgstr ""
+"%2 kullanmaya başlamak için yeniden başlatın ve %1 aygıtından önyükleyin."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
 msgctxt "DownloadPage|"
@@ -362,7 +365,7 @@ msgstr "Sürüm"
 #: ../src/app/qml/DrivePage.qml:59
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr "Donanım Mimarisi"
+msgstr "Donanım Mimarîsi"
 
 #: ../src/app/qml/DrivePage.qml:76
 msgctxt "DrivePage|"
@@ -372,17 +375,17 @@ msgstr "Seçilen dosya"
 #: ../src/app/qml/DrivePage.qml:83
 msgctxt "DrivePage|"
 msgid "None"
-msgstr "Hiçbiri"
+msgstr "Yok"
 
 #: ../src/app/qml/DrivePage.qml:91
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "Seç..."
+msgstr "Seç…"
 
 #: ../src/app/qml/DrivePage.qml:108
 msgctxt "DrivePage|"
 msgid "Image files"
-msgstr "Görüntü dosyaları"
+msgstr "Kalıp dosyaları"
 
 #: ../src/app/qml/DrivePage.qml:108
 msgctxt "DrivePage|"
@@ -427,12 +430,12 @@ msgstr "İndir ve Yaz"
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr "Sürücüye yazılırken, sürücü çıkarıldı."
+msgstr "Sürücü, üzerine yazılırken çıkarıldı."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "Yardımcı ikili dosyası bulunamadı. Kurulumunuzu denetleyin."
+msgstr "Yardımcı ikili dosya bulunamadı. Kurulumunuzu denetleyin."
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
@@ -469,7 +472,7 @@ msgstr "UDisks2, sisteminizde kullanılamaz veya erişilemez gibi görünüyor."
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "Yardımcı ikili dosyası bulunamadı. Kurulumunuzu denetleyin."
+msgstr "Yardımcı ikili dosya bulunamadı. Kurulumunuzu denetleyin."
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
@@ -496,7 +499,7 @@ msgstr "%1 yazımı başarılı"
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr "Görüntü Kaynağını Seç"
+msgstr "Kalıp Kaynağını Seçin"
 
 #: ../src/app/qml/MainPage.qml:33
 msgctxt "MainPage|"
@@ -532,7 +535,7 @@ msgstr "Sonraki"
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr "Görüntü dosyaları"
+msgstr "Kalıp dosyaları"
 
 #: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
@@ -577,7 +580,7 @@ msgstr "%1 bayt"
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
-msgstr "Sürücülerinizden dosya seçin"
+msgstr "Sürücülerinizden bir dosya seçin"
 
 #: ../src/app/releasemanager.cpp:420
 msgctxt "Release|"
@@ -586,19 +589,19 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
-"<p>Burada sabit sürücünüzden flaş diskinize yazılacak bir İS görüntüsü "
-"seçebilirsiniz</p><p>Şimdilik yalnızca ham disk (.iso veya .bin) "
-"görüntülerin yazımı desteklenmektedir. </p>"
+"<p>Burada, sabit sürücünüzden flaş diskinize yazılacak bir işletim sistemi "
+"kalıbı seçebilirsiniz.</p><p>Şimdilik yalnızca ham disk (.iso veya .bin) "
+"kalıplarının yazımı desteklenmektedir. </p>"
 
 #: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
 msgid "Fedora Spins"
-msgstr "Fedora Spinleri"
+msgstr "Fedora Spin’leri"
 
 #: ../src/app/releasemanager.cpp:453
 msgctxt "Release|"
 msgid "Fedora Labs"
-msgstr "Fedora Labları"
+msgstr "Fedora Laboratuvarları"
 
 #: ../src/app/releasemanager.cpp:455
 msgctxt "Release|"
@@ -613,22 +616,24 @@ msgstr "Diğer"
 #: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Intel/AMD 64bit"
+msgstr "Intel/AMD 64 bit"
 
 #: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
-msgstr "Intel, AMD ve diğer uyumlu PC'ler için ISO biçimi (64-bit)"
+msgstr ""
+"Intel, AMD ve diğer uyumlu kişisel bilgisayarlar için ISO biçimi (64 bit)"
 
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Intel/AMD 32bit"
+msgstr "Intel/AMD 32 bit"
 
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
-msgstr "Intel, AMD ve diğer uyumlu PC'ler için ISO biçimi (32-bit)"
+msgstr ""
+"Intel, AMD ve diğer uyumlu kişisel bilgisayarlar için ISO biçimi (32 bit)"
 
 #: ../src/app/releasemanager.cpp:1105
 msgctxt "ReleaseArchitecture|"
@@ -641,7 +646,7 @@ msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
 "Raspberry Pi 2 ve 3 gibi ARM v7-A makineler için LZMA ile sıkıştırılmış ham "
-"görüntü"
+"kalıp"
 
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
@@ -651,17 +656,17 @@ msgstr "AArch64"
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "AArch64 makineleri için LZMA sıkıştırılmış ham görüntü"
+msgstr "AArch64 makineleri için LZMA sıkıştırılmış ham kalıp"
 
 #: ../src/app/releasemanager.cpp:418
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
-msgstr "Özel görüntü"
+msgstr "Özel kalıp"
 
 #: ../src/app/releasemanager.cpp:962 ../src/app/releasemanager.cpp:974
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
-msgstr "İndirilen görüntü bozulmuş"
+msgstr "İndirilen kalıp bozulmuş"
 
 #: ../src/app/releasemanager.cpp:978
 msgctxt "ReleaseVariant|"
@@ -696,7 +701,7 @@ msgstr "Yazmaya hazır"
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr "Görüntü dosyası indirilenler klasörünüze kaydedildi. Yazım olası değil"
+msgstr "Kalıp dosyası indirilenler klasörünüze kaydedildi. Yazma olanaklı değil"
 
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
@@ -716,7 +721,7 @@ msgstr "Bitti!"
 #: ../src/app/releasemanager.h:386
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
-msgstr "Yazılı veri bozulmuş"
+msgstr "Yazılan veri bozulmuş"
 
 #: ../src/app/releasemanager.h:387
 msgctxt "ReleaseVariant|"
@@ -732,7 +737,7 @@ msgstr "Hata"
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
-msgstr "%1 Alpha"
+msgstr "%1 Alfa"
 
 #: ../src/app/releasemanager.cpp:737
 #, qt-format
@@ -749,7 +754,7 @@ msgstr "%1 Sürüm Adayı"
 #: ../src/helper/linux/restorejob.cpp:67
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "Aygıtı yazma için açılamadı"
+msgstr "Aygıt, yazma için açılamadı"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
 msgctxt "RestoreJob|"
@@ -769,7 +774,7 @@ msgstr "Dosya boyutu 128 bloktan küçük"
 #: ../src/helper/linux/restorejob.cpp:105
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "Dosya göstergeci son bölgeye taşınamadı"
+msgstr "Dosya işaretçisi son bölgeye taşınamadı"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
@@ -784,12 +789,12 @@ msgstr "Sürücü bağlama noktaları kaldırılamadı"
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Sürücüden bölümler kaldırılamadı"
+msgstr "Sürücüden bölüntüler kaldırılamadı"
 
 #: ../src/helper/win/restorejob.cpp:80
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Sürücü biçimlendirme için açılamadı"
+msgstr "Sürücü, biçimlendirme için açılamadı"
 
 #: ../src/helper/win/restorejob.cpp:95
 msgctxt "RestoreJob|"
@@ -819,12 +824,12 @@ msgstr "Sürücüde GUID birim yolu alınamadı"
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr "Yeni bölüm bağlanamadı"
+msgstr "Yeni bölüntü bağlanamadı"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr "Bölüm exFAT olarak biçimlendirilemedi"
+msgstr "Bölüntü exFAT olarak biçimlendirilemedi"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -853,8 +858,8 @@ msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
-"<p align=\"justify\">Fedora Ortam Yazıcı taşınabilir sürücünüzü sıfırlarken "
-"lütfen bekleyin.</p>"
+"<p align=\"justify\">Fedora Ortam Yazıcısı taşınabilir sürücünüzü "
+"sıfırlarken lütfen bekleyin.</p>"
 
 #: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
@@ -888,37 +893,37 @@ msgstr "Sıfırla"
 #: ../src/app/qml/VersionPage.qml:29
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr "Fedora Sürümü Seç"
+msgstr "Fedora Yayımı Seçin"
 
 #: ../src/app/qml/VersionPage.qml:32
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "Şuradan seç:"
+msgstr "Şunların arasından seçim yapın:"
 
 #: ../src/app/qml/VersionPage.qml:37
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr "Resmi Sürümler"
+msgstr "Resmî sürümler"
 
 #: ../src/app/qml/VersionPage.qml:42
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr "Atomik Masaüstleri"
+msgstr "Atomik masaüstleri"
 
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr "Spinler"
+msgstr "Spin’ler"
 
 #: ../src/app/qml/VersionPage.qml:52
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr "Lablar"
+msgstr "Laboratuvarlar"
 
 #: ../src/app/windrivemanager.cpp:149
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "Yardımcı ikili dosyası bulunamadı. Kurulumunuzu denetleyin."
+msgstr "Yardımcı ikili dosya bulunamadı. Kurulumunuzu denetleyin."
 
 #: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 msgctxt "WinDrive|"
@@ -940,7 +945,7 @@ msgstr "Yazma işlemi iptal edildi"
 #: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr "Açmaya başlama başarısız."
+msgstr "Sıkıştırılmış paketi açmaya başlanamadı."
 
 #: ../src/helper/linux/writejob.cpp:105 ../src/helper/linux/writejob.cpp:135
 #: ../src/helper/linux/writejob.cpp:173 ../src/helper/mac/writejob.cpp:185
@@ -979,7 +984,7 @@ msgstr "Bilinmeyen açma hatası."
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
-msgstr "Kaynak görüntü okunabilir değil"
+msgstr "Kaynak kalıp okunabilir değil"
 
 #: ../src/helper/linux/writejob.cpp:203 ../src/helper/mac/writejob.cpp:304
 #: ../src/helper/win/writejob.cpp:538
@@ -991,7 +996,7 @@ msgstr "Sürücünüz büyük olasılıkla hasar görmüş."
 #: ../src/helper/win/writejob.cpp:543
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr "Ortam denetimi sırasında beklenmedik hata oluştu."
+msgstr "Ortam denetimi sırasında beklenmedik bir hata oluştu."
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
@@ -1011,7 +1016,7 @@ msgstr "Sürücü bağlama noktaları kaldırılamadı"
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Sürücüden bölümler kaldırılamadı"
+msgstr "Sürücüden bölüntüler kaldırılamadı"
 
 #: ../src/helper/win/writejob.cpp:140
 msgctxt "WriteJob|"
@@ -1021,7 +1026,7 @@ msgstr "Sürücü biçimlendirme için açılamadı"
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr "Sürücü kilitlenemiyor"
+msgstr "Sürücü kilitlenemedi"
 
 #: ../src/helper/win/writejob.cpp:159
 msgctxt "WriteJob|"
@@ -1058,13 +1063,13 @@ msgstr "%1 / %2 yazıldı"
 #: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Görüntü dosyası okunamadı: "
+msgstr "Kalıp dosyası okunamadı: "
 
 #: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr "Görüntünün tamamı yazılamadı. Toplam yazılan: %1 / %2"
+msgstr "Kalıbın tamamı yazılamadı. Toplam yazılan: %1 / %2"
 
 #: ../src/helper/win/writejob.cpp:518
 #, qt-format
@@ -1075,17 +1080,17 @@ msgstr "%1 veri doğrulaması için sürücü açılamadı:"
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
 msgid "Fedora Media Writer"
-msgstr "Fedora Ortam Yazıcı"
+msgstr "Fedora Ortam Yazıcısı"
 
 #: ../src/app/qml/main.qml:100
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Fedora Sürümü Seç"
+msgstr "Fedora Sürümü Seçin"
 
 #: ../src/app/qml/main.qml:114
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "Sürücü Seç"
+msgstr "Sürücü Seçin"
 
 #: ../src/app/qml/main.qml:139
 msgctxt "main|"
@@ -1097,12 +1102,13 @@ msgstr "Sıfırla"
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
 msgid "Fedora Media Writer"
-msgstr "Fedora Ortam Yazıcı"
+msgstr "Fedora Ortam Yazıcısı"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
-msgstr "Fedora sürümünü içeren canlı USB aygıtı yaratmanızı sağlayan araç"
+msgstr ""
+"Bir Fedora edisyonu içeren canlı bir USB sürücüsü oluşturmak için bir araç"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -1114,13 +1120,13 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
-"Bir Fedora sürümünü içeren canlı USB aygıtı yaratmanızı sağlayan bu araçla "
-"yalnızca görüntünün aygıtınıza yazılmasını değil aynı zamanda sizin için "
-"indirilmesini de sağlayabilirsiniz. Resmi sürümlerin (Sunucu, Masaüstü) yanı "
-"sıra Fedora seçkilerini (KDE Plasma Masaüstü, Xfce masaüstü, Cinnamon "
-"Masaüstü...) ve Fedora Lab'larını (Tasarım paketi, güvenlik paketi...) da "
-"indirebilir ve doğru seçimi yapmanızı sağlayacak temel bilgileri "
-"bulabilirsiniz."
+"Bir Fedora edisyonu içeren, önyüklenebilir canlı bir USB sürücü oluşturmak "
+"için bir araç. Fedora Ortam Yazıcısı, flaş sürücünüze bir kalıp yazmakla "
+"kalmaz, aynı zamanda onu sizin için indirebilir. Resmî edisyonları "
+"(Server, Workstation), Fedora Spin’lerini "
+"(KDE Plasma Masaüstü, Xfce Masaüstü, Cinnamon Masaüstü, …) ve Fedora "
+"Laboratuvarlarını (Design Suite, Security Lab, …) sunar. Doğru seçimi "
+"yapmanıza yardımcı olmak için her biri hakkındaki temel bilgileri de sağlar."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -1128,13 +1134,13 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
-"Fedora Ortam Yazıcı aygıtınızda yer alan önyüklenebilen diğer ISO "
-"görüntülerinin yazılmasında da kullanılabilir ama aracın yalnızca Fedora "
-"görüntüleri ile denendiğini lütfen aklınızda bulundurun."
+"Fedora Ortam Yazıcısı, yerel diskinizden yüklenen diğer önyüklenebilir ISO’"
+"ları da yazabilir; ancak bunun yalnızca Fedora kalıplarıyla sınandığını "
+"aklınızdan çıkarmayın."
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
-msgstr "Fedora görüntülerini taşınabilir aygıtlarınıza yazın"
+msgstr "Taşınabilir sürücülerinize Fedora kalıplarını yazın"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
