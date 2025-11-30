@@ -10,9 +10,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-11-29 08:48+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
+"PO-Revision-Date: 2025-11-30 04:10+0000\n"
+"Last-Translator: Khoa Le <inctenone@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/vi/>\n"
 "Language: vi\n"
@@ -243,7 +242,7 @@ msgstr " GB còn lại)"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:61
 #: ../src/app/qml/DownloadPage.qml:62 ../src/app/qml/DownloadPage.qml:63
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
 msgstr " (%1"
@@ -985,113 +984,113 @@ msgstr "Đã xảy ra lỗi bất ngờ trong quá trình kiểm tra thiết b�
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "Không thể cấp phát cặp socket"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "Không thể mở thiết bị đích để ghi dữ liệu"
 
 #: ../src/helper/win/writejob.cpp:122
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr ""
+msgstr "Không thể gỡ bỏ điểm gắn kết của ổ đĩa"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Không thể xóa các phân vùng trên ổ đĩa"
 
 #: ../src/helper/win/writejob.cpp:140
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr ""
+msgstr "Không thể mở ổ đĩa để định dạng"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr ""
+msgstr "Không thể khóa ổ đĩa"
 
 #: ../src/helper/win/writejob.cpp:159
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr ""
+msgstr "Không thể mở bộ xử lý logic"
 
 #: ../src/helper/win/writejob.cpp:165
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr ""
+msgstr "Không thể khóa ổ đĩa logic"
 
 #: ../src/helper/win/writejob.cpp:172
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr ""
+msgstr "Không thể tháo ổ đĩa"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr ""
+msgstr "Không thể cấp phát bộ đệm"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Khối dữ liệu cuối cùng chưa được ghi đầy đủ"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Đã ghi %1 trên tổng số %2"
 
 #: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr ""
+msgstr "Không thể đọc tệp ảnh: "
 
 #: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Ghi toàn bộ ảnh thất bại. Tổng số đã ghi: %1 trên %2"
 
 #: ../src/helper/win/writejob.cpp:518
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr ""
+msgstr "Không thể mở ổ đĩa để kiểm tra dữ liệu cho %1:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
 msgid "Fedora Media Writer"
-msgstr ""
+msgstr "Fedora Media Writer"
 
 #: ../src/app/qml/main.qml:100
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr ""
+msgstr "Chọn Phiên bản Fedora"
 
 #: ../src/app/qml/main.qml:114
 msgctxt "main|"
 msgid "Select Drive"
-msgstr ""
+msgstr "Chọn Ổ đĩa"
 
 #: ../src/app/qml/main.qml:139
 msgctxt "main|"
 msgid "Restore"
-msgstr ""
+msgstr "Khôi phục"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
 msgid "Fedora Media Writer"
-msgstr ""
+msgstr "Fedora Media Writer"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
-msgstr ""
+msgstr "Công cụ để tạo USB cài đặt trực tiếp với một phiên bản của Fedora"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -1103,6 +1102,13 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
+"Một công cụ để tạo USB khởi động trực tiếp với một phiên bản của Fedora. "
+"Không chỉ giúp ghi ảnh hệ điều hành vào USB của bạn, Fedora Media Writer còn "
+"có thể tải ảnh đó về giúp bạn. Công cụ cung cấp các phiên bản chính thức "
+"(Server, Workstation), các bản Fedora spins "
+"(KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...) và Fedora Labs "
+"(Design Suite, Security Lab,...). Nó cũng cung cấp thông tin cơ bản về từng "
+"phiên bản để giúp bạn lựa chọn phù hợp."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -1110,11 +1116,14 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
+"Fedora Media Writer cũng có thể ghi các file ISO khởi động khác từ ổ đĩa cục "
+"bộ của bạn, nhưng lưu ý rằng công cụ chỉ được kiểm tra và đảm bảo hoạt động "
+"tốt với các bản Fedora."
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
-msgstr ""
+msgstr "Ghi các ảnh Fedora lên thiết bị lưu trữ di động của bạn"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;"
