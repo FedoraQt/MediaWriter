@@ -1,6 +1,6 @@
 # Fedora Media Writer on Windows
 
-![Fedora Media Writer on Windows](/dist/screenshots/win_main.png)
+![Fedora Media Writer on Windows](/dist/screenshots/windows_main.png)
 
 ## Running
 
