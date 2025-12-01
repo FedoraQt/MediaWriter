@@ -18,9 +18,6 @@ Download the .dmg file from the [Releases](../../releases) section of this page 
 The files downloaded from this page are not signed, which means you can get a prompt saying you won't be able to open them. In order to be able to
 run our pre-built binaries you have to run `xattr -c FedoraMediaWriter-macos-x.x.x.dmg` to get rid of the warning about uknown source.
 
-![Move the icon to the applications folder and open from there](/dist/screenshots/mac_open.png)
-
-
 ### Known issues 
 
 There is a known issue in progress bar on macOS 26 in Qt 6.9.3.
