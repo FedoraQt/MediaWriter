@@ -29,7 +29,7 @@ You can build Fedora Media Writer yourself. It has just a few dependencies and b
 ### Dependencies
 
 * `Qt6` (`qtbase`, `qtdeclarative`, `qtsvg` and `qtquickcontrols2`) - already part of the installer
-* `Microsoft Visual C++ Redistributable` for C++ (MSVC) runtime libraries
+* `Microsoft Visual C++ Redistributable` for C++ (MSVC) runtime libraries - the installer will prompt you to install this if it's not already on your system
 
 ### Steps
 
@@ -42,4 +42,35 @@ make
 
 ### Crosscompilation
 
-There is also the [build.sh](/dist/win/build.sh) script included that I use for building a the installer for distribution on this site. It should do everything automatically if you're in Fedora. There are instructions on how to use it inside at the top of the file
+There is also the [build.sh](/dist/win/build.sh) script included that I use for building a the installer for distribution on this site. It should do everything automatically if you're in Fedora. There are instructions on how to use it inside at the top of the file.
+
+#### Visual C++ Redistributable Installation
+
+The installer handles the [Microsoft Visual C++ Redistributable (2015-2022)](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) installation on-demand, which is required for the application to run.
+
+**How it works:**
+1. During installation, the installer checks if VC++ Redistributable is already installed
+2. If not installed, it prompts the user with a Yes/No dialog:
+   ```
+   Microsoft Visual C++ Redistributable is not installed on your system.
+   
+   It is required for Fedora Media Writer to run properly.
+   
+   Would you like to download and install it now? (approximately 25 MB)
+   ```
+3. If the user chooses **"Yes"**:
+   - Downloads `vc_redist.x64.exe` from Microsoft's official servers
+   - Installs it automatically with a progress bar (`/passive` mode)
+   - Cleans up the downloaded file
+4. If the user chooses **"No"**:
+   - Shows a message with a direct download link for manual installation later
+
+**Benefits:**
+- Smaller installer size (no bundled redistributable)
+- Only downloads when needed
+- Always gets the latest version from Microsoft
+- Requires internet connection during installation if VC++ is not already installed
+
+**Manual installation:**
+If you prefer to install it separately or if the download fails, you can download it manually from:
+https://aka.ms/vs/17/release/vc_redist.x64.exe
