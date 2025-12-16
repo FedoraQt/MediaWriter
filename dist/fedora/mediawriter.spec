@@ -51,12 +51,12 @@ like flash drives or memory cards.
 %cmake_install
 
 %check
-appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.fedoraproject.MediaWriter.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.fedoraproject.MediaWriter.metainfo.xml
 
 %files
 %{_bindir}/%{name}
 %{_libexecdir}/%{name}/
-%{_datadir}/metainfo/org.fedoraproject.MediaWriter.appdata.xml
+%{_datadir}/metainfo/org.fedoraproject.MediaWriter.metainfo.xml
 %{_datadir}/applications/org.fedoraproject.MediaWriter.desktop
 %{_datadir}/icons/hicolor/16x16/apps/org.fedoraproject.MediaWriter.png
 %{_datadir}/icons/hicolor/22x22/apps/org.fedoraproject.MediaWriter.png
