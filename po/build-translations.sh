@@ -22,7 +22,7 @@ for i in `ls mediawriter_*.po`; do
     msgfmt $i -o "${LANGCODE}.mo"
 done
 
-itstool -i as-metainfo.its -j ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in -o ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml *.mo
+itstool -i as-metainfo.its -j ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in -o ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml *.mo
 
 rm -f *.mo
 
