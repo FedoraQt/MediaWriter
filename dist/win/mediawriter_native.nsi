@@ -11,11 +11,11 @@ XPStyle on
 #!define VERSIONMINOR
 #!define VERSIONBUILD
 
-!define APPNAME           "Fedora Media Writer"
+!define APPNAME           "Bazzite Media Writer"
 !define /date CURRENTYEAR "%Y"
-!define COMPANYNAME       "Fedora Project"
+!define COMPANYNAME       "Universal Blue"
 !define COPYRIGHT         "${COMPANYNAME} ${CURRENTYEAR}"
-!define DESCRIPTION       "Tool to write Fedora images to flash drives"
+!define DESCRIPTION       "Tool to write Bazzite images to flash drives"
 !define SHORTVERSION      "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}"
 !define FULLVERSION       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}.0"
 
@@ -25,9 +25,9 @@ Caption "${APPNAME} ${SHORTVERSION}"
 # These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
 # It is possible to use "mailto:" links in here to open the email client
 
-!define HELPURL   "https://github.com/FedoraQt/MediaWriter" # "Support Information" link
-!define UPDATEURL "https://getfedora.org"                   # "Product Updates" link
-!define ABOUTURL  "https://getfedora.org"                   # "Publisher" link
+!define HELPURL   "https://github.com/ublue-os/bazzite" # "Support Information" link
+!define UPDATEURL "https://universal-blue.org"           # "Product Updates" link
+!define ABOUTURL  "https://universal-blue.org"           # "Publisher" link
 
 # This is the size (in kB) of all the files copied into "Program Files"
 #!define INSTALLSIZE
@@ -64,7 +64,7 @@ Var UninstLog
     !system "chmod +x tempinstaller.exe" = 0
     !system "tempinstaller.exe" = 2
     !if "${CERTPASS}" != ""
-        !system 'osslsigncode sign -pkcs12 "${CERTPATH}/authenticode.pfx" -readpass "${CERTPASS}" -h sha256 -n "Fedora Media Writer" -i https://getfedora.org -t http://timestamp.comodoca.com/authenticode -in "/c/uninstall.unsigned.exe" -out "/c/uninstall.exe" ' = 0
+        !system 'osslsigncode sign -pkcs12 "${CERTPATH}/authenticode.pfx" -readpass "${CERTPASS}" -h sha256 -n "Bazzite Media Writer" -i https://universal-blue.org -t http://timestamp.comodoca.com/authenticode -in "/c/uninstall.unsigned.exe" -out "/c/uninstall.exe" ' = 0
     !else
         !system 'mv "/c/uninstall.unsigned.exe" "/c/uninstall.exe"' = 0
     !endif

@@ -50,7 +50,7 @@ Page {
             Layout.fillWidth: true
             horizontalAlignment: QQC2.Label.AlignHCenter
             wrapMode: QQC2.Label.Wrap
-            text: qsTr("<p align=\"justify\">Please wait while Fedora Media Writer restores your portable drive.</p>")
+            text: qsTr("<p align=\"justify\">Please wait while Bazzite Media Writer restores your portable drive.</p>")
         }
 
         QQC2.ProgressBar {

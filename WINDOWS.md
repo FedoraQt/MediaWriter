@@ -1,10 +1,10 @@
-# Fedora Media Writer on Windows
+# Bazzite Media Writer on Windows
 
-![Fedora Media Writer on Windows](/dist/screenshots/windows_main.png)
+![Bazzite Media Writer on Windows](/dist/screenshots/windows_main.png)
 
 ## Running
 
-Fedora Media Writer is a regular Windows application. See dependencies section for required libraries.
+Bazzite Media Writer is a regular Windows application. See dependencies section for required libraries.
 
 ### System configuration
 
@@ -24,7 +24,7 @@ There are several issues or things that are known to need to be improved in the 
 
 ## Building
 
-You can build Fedora Media Writer yourself. It has just a few dependencies and building it is a matter of just running two commands.
+You can build Bazzite Media Writer yourself. It has just a few dependencies and building it is a matter of just running two commands.
 
 ### Dependencies
 
@@ -33,7 +33,7 @@ You can build Fedora Media Writer yourself. It has just a few dependencies and b
 
 ### Steps
 
-You can use Qt Creator to build and work with the application. If not using that, the process is basically just these two commands you need to run inside the Fedora Media Writer source code directory:
+You can use Qt Creator to build and work with the application. If not using that, the process is basically just these two commands you need to run inside the Bazzite Media Writer source code directory:
 
 ```
 cmake
@@ -42,4 +42,4 @@ make
 
 ### Crosscompilation
 
-There is also the [build.sh](/dist/win/build.sh) script included that I use for building a the installer for distribution on this site. It should do everything automatically if you're in Fedora. There are instructions on how to use it inside at the top of the file
+There is also the [build.sh](/dist/win/build.sh) script included that I use for building the installer for distribution. There are instructions on how to use it inside at the top of the file

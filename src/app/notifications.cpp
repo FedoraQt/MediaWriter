@@ -30,7 +30,7 @@
 void Notifications::notify(const QString &title, const QString &body)
 {
     QDBusInterface notifications("org.freedesktop.Notifications", "/org/freedesktop/Notifications", "org.freedesktop.Notifications", QDBusConnection::sessionBus());
-    auto reply = notifications.call("Notify", "Fedora Media Writer", 0U, "org.fedoraproject.MediaWriter", title, body, QStringList{}, QVariantMap{}, -1);
+    auto reply = notifications.call("Notify", "Bazzite Media Writer", 0U, "org.bazzite.MediaWriter", title, body, QStringList{}, QVariantMap{}, -1);
     if (reply.type() == QDBusMessage::ErrorMessage)
         mWarning() << "Couldn't send a notification:" << reply.errorName() << "-" << reply.errorMessage();
 }

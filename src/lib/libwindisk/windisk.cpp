@@ -40,7 +40,7 @@ WinDiskManagement::WinDiskManagement(QObject *parent, bool isHelper)
     HRESULT res = S_OK;
 
     if (isHelper) {
-        QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/FedoraMediaWriter-helper.log";
+        QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/BazziteMediaWriter-helper.log";
         m_debugFile = _fsopen(debugFileName.toStdString().c_str(), "w", _SH_DENYWR);
 
         // Looks that for the app itself CoInitializeEx will be called by the platform plugin, but not

@@ -63,9 +63,9 @@ if (APPLE)
     set(ICON_PATH ${CMAKE_CURRENT_SOURCE_DIR}/data/icons/mediawriter.icns)
     add_executable(mediawriter MACOSX_BUNDLE ${MEDIAWRITER_SRCS} ${ICON_PATH})
     set_target_properties(mediawriter PROPERTIES
-      OUTPUT_NAME FedoraMediaWriter
+      OUTPUT_NAME BazziteMediaWriter
       MACOSX_BUNDLE TRUE
-      MACOSX_BUNDLE_BUNDLE_NAME FedoraMediaWriter
+      MACOSX_BUNDLE_BUNDLE_NAME BazziteMediaWriter
       MACOSX_BUNDLE_BUNDLE_VERSION ${MEDIAWRITER_VERSION}
       MACOSX_BUNDLE_SHORT_VERSION_STRING ${MEDIAWRITER_VERSION}
       MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/data/Info.plist
@@ -104,6 +104,6 @@ install(TARGETS mediawriter
 
 if (UNIX AND NOT APPLE)
     install(DIRECTORY data/icons/hicolor/ DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/icons/hicolor)
-    install(FILES data/org.fedoraproject.MediaWriter.desktop DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/applications)
-    install(FILES data/org.fedoraproject.MediaWriter.metainfo.xml DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/metainfo)
+    install(FILES data/org.bazzite.MediaWriter.desktop DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/applications)
+    install(FILES data/org.bazzite.MediaWriter.metainfo.xml DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/metainfo)
 endif()

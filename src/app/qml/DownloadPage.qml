@@ -130,7 +130,7 @@ Page {
             id: messageRestore
             visible: currentStatus === Units.DownloadStatus.Write_Verifying ||
                      currentStatus === Units.DownloadStatus.Writing
-            text: qsTr("Your drive will be resized to a smaller capacity. You may resize it back to normal by using Fedora Media Writer. This will remove installation media from your drive.")
+            text: qsTr("Your drive will be resized to a smaller capacity. You may resize it back to normal by using Bazzite Media Writer. This will remove installation media from your drive.")
             width: infoColumn.width
             wrapMode: QQC2.Label.Wrap
         }
@@ -146,7 +146,7 @@ Page {
         QQC2.Label {
             id: messageArmBoard
             visible: false //boardCombo.otherSelected
-            text: qsTr("Your board or device is not supported by Fedora Media Writer yet. Please check <a href=%1>this page</a> for more information about its compatibility with Fedora and how to create bootable media for it.").arg("https://fedoraproject.org/wiki/Architectures/ARM")
+            text: qsTr("Your board or device is not supported by Bazzite Media Writer yet. Please check <a href=%1>this page</a> for more information about its compatibility with Bazzite and how to create bootable media for it.").arg("https://universal-blue.org")
             width: infoColumn.width
             wrapMode: QQC2.Label.Wrap
         }

@@ -126,7 +126,7 @@ void Options::parse(QStringList argv)
     }
 
     if (options.logging) {
-        QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/FedoraMediaWriter.log";
+        QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/BazziteMediaWriter.log";
         debugFile = fopen(debugFileName.toStdString().c_str(), "w");
         if (!debugFile) {
             debugFile = stderr;
@@ -178,4 +178,4 @@ void MessageHandler::install()
     qInstallMessageHandler(myMessageOutput); // Install the handler
 }
 
-QLoggingCategory MessageHandler::category{"org.fedoraproject.MediaWriter"};
+QLoggingCategory MessageHandler::category{"org.bazzite.MediaWriter"};

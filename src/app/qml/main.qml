@@ -78,7 +78,7 @@ ApplicationWindow {
                 when: selectedPage == Units.Page.MainPage
                 PropertyChanges { 
                     target: mainWindow
-                    title: qsTr("Fedora Media Writer") 
+                    title: qsTr("Bazzite Media Writer") 
                 }
 
                 StateChangeScript {
@@ -97,7 +97,7 @@ ApplicationWindow {
             State {
                 name: "versionPage"
                 when: selectedPage == Units.Page.VersionPage
-                PropertyChanges { target: mainWindow; title: qsTr("Select Fedora Version") }
+                PropertyChanges { target: mainWindow; title: qsTr("Select Bazzite Version") }
                 StateChangeScript {
                     script: {
                         //state was pushing same page when returing from drivePage

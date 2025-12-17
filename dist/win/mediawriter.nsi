@@ -11,11 +11,11 @@ XPStyle on
 #!define VERSIONMINOR
 #!define VERSIONBUILD
 
-!define APPNAME           "Fedora Media Writer"
+!define APPNAME           "Bazzite Media Writer"
 !define /date CURRENTYEAR "%Y"
-!define COMPANYNAME       "Fedora Project"
+!define COMPANYNAME       "Universal Blue"
 !define COPYRIGHT         "${COMPANYNAME} ${CURRENTYEAR}"
-!define DESCRIPTION       "Tool to write Fedora images to flash drives"
+!define DESCRIPTION       "Tool to write Bazzite images to flash drives"
 !define FULLVERSION       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}.0"
 !define SHORTVERSION      "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}"
 
@@ -25,9 +25,9 @@ Caption "${APPNAME} ${SHORTVERSION}"
 # These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
 # It is possible to use "mailto:" links in here to open the email client
 
-!define HELPURL   "https://github.com/FedoraQt/MediaWriter" # "Support Information" link
-!define UPDATEURL "https://getfedora.org"                   # "Product Updates" link
-!define ABOUTURL  "https://getfedora.org"                   # "Publisher" link
+!define HELPURL   "https://github.com/ublue-os/bazzite" # "Support Information" link
+!define UPDATEURL "https://universal-blue.org"           # "Product Updates" link
+!define ABOUTURL  "https://universal-blue.org"           # "Publisher" link
 
 # This is the size (in kB) of all the files copied into "Program Files"
 #!define INSTALLSIZE

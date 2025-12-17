@@ -46,7 +46,7 @@ QString DownloadManager::dir()
 
 QString DownloadManager::userAgent()
 {
-    QString ret = QString("FedoraMediaWriter/%1 (").arg(MEDIAWRITER_VERSION);
+    QString ret = QString("BazziteMediaWriter/%1 (").arg(MEDIAWRITER_VERSION);
     ret.append(QString("%1").arg(QSysInfo::prettyProductName().replace(QRegularExpression("[()]"), "")));
     ret.append(QString("; %1").arg(QSysInfo::buildAbi()));
     ret.append(QString("; %1").arg(QLocale(QLocale().language()).name()));
@@ -84,6 +84,8 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &ur
     connect(m_current, &QObject::destroyed, [&]() {
         m_current = nullptr;
     });
+    // TODO: Update with Bazzite mirror service if available
+    // fetchPageAsync(this, "https://mirrors.bazzite.gg/mirrorlist?path=" + url.path());
     fetchPageAsync(this, "https://mirrors.fedoraproject.org/mirrorlist?path=" + url.path());
 
     return bareFileName + ".part";

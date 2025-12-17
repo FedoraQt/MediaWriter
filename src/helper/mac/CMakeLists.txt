@@ -21,6 +21,6 @@ target_link_libraries(helper
     ${LIBLZMA_LIBRARIES}
 )
 
-set_target_properties(helper PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/src/app/FedoraMediaWriter.app/Contents/MacOS/")
+set_target_properties(helper PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/src/app/BazziteMediaWriter.app/Contents/MacOS/")
 
 install(TARGETS helper DESTINATION ${CMAKE_INSTALL_FULL_LIBEXECDIR}/mediawriter)

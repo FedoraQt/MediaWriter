@@ -41,8 +41,8 @@ int main(int argc, char **argv)
     }
 #endif
 
-    QApplication::setOrganizationDomain("fedoraproject.org");
-    QApplication::setOrganizationName("fedoraproject.org");
+    QApplication::setOrganizationDomain("bazzite.gg");
+    QApplication::setOrganizationName("bazzite.gg");
     QApplication::setApplicationName("MediaWriter");
 
     QApplication app(argc, argv);
@@ -57,7 +57,7 @@ int main(int argc, char **argv)
         app.installTranslator(&translator);
     }
 
-    QGuiApplication::setDesktopFileName("org.fedoraproject.MediaWriter");
+    QGuiApplication::setDesktopFileName("org.bazzite.MediaWriter");
 
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;

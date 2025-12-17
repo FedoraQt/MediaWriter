@@ -26,7 +26,7 @@ Page {
     id: versionPage
     property int prevSource: 0
 
-    text: qsTr("Select Fedora Release")
+    text: qsTr("Select Bazzite Release")
 
     QQC2.Label {
         text: qsTr("Select from:")
