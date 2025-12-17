@@ -55,7 +55,8 @@ jobs:
           git checkout main -- releases.json
           
           # Create a simple index page
-          cat > index.html << 'EOF'
+          TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+          cat > index.html << EOF
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,14 +66,14 @@ jobs:
 <body>
     <h1>Bazzite ISO Releases</h1>
     <p>Latest releases metadata: <a href="releases.json">releases.json</a></p>
-    <p>Last updated: $(date -u '+%Y-%m-%d %H:%M:%S UTC')</p>
+    <p>Last updated: ${TIMESTAMP}</p>
     <p>Use with Bazzite Media Writer</p>
 </body>
 </html>
 EOF
           
           # Add timestamp
-          date -u '+%Y-%m-%d %H:%M:%S UTC' > last-updated.txt
+          echo "${TIMESTAMP}" > last-updated.txt
           
           # Commit and push
           git add releases.json index.html last-updated.txt
