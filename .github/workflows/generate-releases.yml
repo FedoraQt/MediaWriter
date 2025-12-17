@@ -40,6 +40,9 @@ jobs:
       
       - name: Commit and push to gh-pages
         run: |
+          # Save the generated JSON to temp location
+          cp releases.json /tmp/releases.json
+          
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
@@ -52,8 +55,8 @@ jobs:
             git rm -rf .
           fi
           
-          # Copy the generated JSON
-          git checkout main -- releases.json
+          # Copy the generated JSON from temp
+          cp /tmp/releases.json releases.json
           
           # Create a simple index page
           TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
