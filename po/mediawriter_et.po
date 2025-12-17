@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-12-17 03:04+0000\n"
+"PO-Revision-Date: 2025-12-17 15:02+0000\n"
 "Last-Translator: Priit Jõerüüt "
 "<jrtkbfdr@users.noreply.translate.fedoraproject.org>\n"
 "Language-Team: Estonian <https://translate.fedoraproject.org/projects/fedora-"
@@ -70,6 +70,8 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"Allalaadimine ja andmekandjale kirjutamine katkeb. Seda tegevust saad igal "
+"ajal hiljem jätkata."
 
 #: ../src/app/qml/CancelDialog.qml:68
 msgctxt "CancelDialog|"
@@ -77,11 +79,12 @@ msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
+"Andmekandjale kirjutamine katkeb. ning pead andmekandja hiljem taastama."
 
 #: ../src/app/qml/CancelDialog.qml:70
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "Seda tegevust võid julgelt katkestada."
 
 #: ../src/app/qml/CancelDialog.qml:87
 msgctxt "CancelDialog|"
@@ -111,7 +114,7 @@ msgstr "Katkesta"
 #: ../src/app/qml/DeviceWarningDialog.qml:49
 msgctxt "DeviceWarningDialog|"
 msgid "Erase confirmation"
-msgstr ""
+msgstr "Kinnita kustutamine"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -120,6 +123,8 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Kogu seadme sisu (%1 täies mahus) kustutatakse ja valitud tõmmis "
+"kirjutatakse selle asemele. Kas sa soovid jätkata?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 msgctxt "DeviceWarningDialog|"
@@ -129,22 +134,22 @@ msgstr "Katkesta"
 #: ../src/app/qml/DeviceWarningDialog.qml:82
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
-msgstr ""
+msgstr "Kirjuta"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
-msgstr ""
+msgstr "Laadi alla && kirjuta"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
-msgstr ""
+msgstr "Laadi alla & kirjuta"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:97
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:99
 msgctxt "DeviceWarningDialog|"
@@ -154,62 +159,62 @@ msgstr "MB"
 #: ../src/app/qml/DeviceWarningDialog.qml:101
 msgctxt "DeviceWarningDialog|"
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "baiti"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr ""
+msgstr "Soovitud kettatõmmise laadimine ei õnnestu."
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr ""
+msgstr "Sinu arvuti allalaadimiste kaust on täis saanud."
 
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
-msgstr ""
+msgstr "Allalaaditud fail pole kirjutatav."
 
 #: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
-msgstr ""
+msgstr "Ühendus aegus"
 
 #: ../src/app/qml/DownloadPage.qml:36
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr ""
+msgstr "Kettatõmmise kirjutamine õnnestus: %1"
 
 #: ../src/app/qml/DownloadPage.qml:38
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr ""
+msgstr "Kirjutan: %1"
 
 #: ../src/app/qml/DownloadPage.qml:40
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr ""
+msgstr "Laadin alla: %1"
 
 #: ../src/app/qml/DownloadPage.qml:42
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr ""
+msgstr "Valmistan ette: %1"
 
 #: ../src/app/qml/DownloadPage.qml:44
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr ""
+msgstr "Valmis kirjutamiseks: %1"
 
 #: ../src/app/qml/DownloadPage.qml:46
 #, qt-format
@@ -220,50 +225,50 @@ msgstr "Allalaadimine ei õnnestunud: %1"
 #: ../src/app/qml/DownloadPage.qml:54
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr ""
+msgstr " B jäänud)"
 
 #: ../src/app/qml/DownloadPage.qml:55
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr ""
+msgstr " KB jäänud)"
 
 #: ../src/app/qml/DownloadPage.qml:56
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr ""
+msgstr " MB jäänud)"
 
 #: ../src/app/qml/DownloadPage.qml:57
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr ""
+msgstr " GB jäänud)"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:61
 #: ../src/app/qml/DownloadPage.qml:62 ../src/app/qml/DownloadPage.qml:63
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "Toimingu ajal on andmekandja lahti ühendatud"
 
 #: ../src/app/qml/DownloadPage.qml:106
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr ""
+msgstr "Allalaaditud failid salvestatakse allalaadimiste kausta."
 
 #: ../src/app/qml/DownloadPage.qml:116
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr ""
+msgstr "Kirjutamisega kaovad kõik andmed andmekandjalt „%1“."
 
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "Palun ühenda USB-seade."
 
 #: ../src/app/qml/DownloadPage.qml:133
 msgctxt "DownloadPage|"
@@ -314,12 +319,12 @@ msgstr "Katkesta"
 #: ../src/app/qml/DownloadPage.qml:270
 msgctxt "DownloadPage|"
 msgid "Write"
-msgstr ""
+msgstr "Kirjuta"
 
 #: ../src/app/qml/DownloadPage.qml:272
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr ""
+msgstr "Lõpeta"
 
 #: ../src/app/qml/DownloadPage.qml:274
 msgctxt "DownloadPage|"
@@ -329,7 +334,7 @@ msgstr "Proovi uuesti"
 #: ../src/app/drivemanager.cpp:317
 msgctxt "Drive|"
 msgid "This drive is not large enough."
-msgstr ""
+msgstr "Antud andmekandja pole piisavalt mahukas."
 
 #: ../src/app/qml/DrivePage.qml:30
 msgctxt "DrivePage|"
@@ -344,12 +349,12 @@ msgstr "Versioon"
 #: ../src/app/qml/DrivePage.qml:59
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "Riistvara arhitektuur"
 
 #: ../src/app/qml/DrivePage.qml:76
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr ""
+msgstr "Valitud fail"
 
 #: ../src/app/qml/DrivePage.qml:83
 msgctxt "DrivePage|"
@@ -364,7 +369,7 @@ msgstr "Vali..."
 #: ../src/app/qml/DrivePage.qml:108
 msgctxt "DrivePage|"
 msgid "Image files"
-msgstr ""
+msgstr "Kettatõmmiste failid"
 
 #: ../src/app/qml/DrivePage.qml:108
 msgctxt "DrivePage|"
@@ -374,84 +379,87 @@ msgstr "Kõik failid (*)"
 #: ../src/app/qml/DrivePage.qml:119
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "Mälupulk"
 
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr ""
+msgstr "Ühtegi teisaldatavat andmekandjat pole ühendatud"
 
 #: ../src/app/qml/DrivePage.qml:146
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr ""
+msgstr "Laadi alla"
 
 #: ../src/app/qml/DrivePage.qml:151
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr ""
+msgstr "Peale kirjutamist kustuta allalaaditud failid"
 
 #: ../src/app/qml/DrivePage.qml:169
 msgctxt "DrivePage|"
 msgid "Write"
-msgstr ""
+msgstr "Kirjuta"
 
 #: ../src/app/qml/DrivePage.qml:171
 msgctxt "DrivePage|"
 msgid "Download && Write"
-msgstr ""
+msgstr "Laadi alla && kirjuta"
 
 #: ../src/app/qml/DrivePage.qml:172
 msgctxt "DrivePage|"
 msgid "Download & Write"
-msgstr ""
+msgstr "Laadi alla & kirjuta"
 
 #: ../src/app/linuxdrivemanager.cpp:199
 msgctxt "LinuxDrive|"
 msgid "The drive was removed while it was written to."
-msgstr ""
+msgstr "Andmekandja eemaldati kirjutamise ajal."
 
 #: ../src/app/linuxdrivemanager.cpp:224
 msgctxt "LinuxDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
+"Abiteegi käivitusfaili ei leidunud. Palun kontrolli paigalduse korrektsust."
 
 #: ../src/app/linuxdrivemanager.cpp:259
 msgctxt "LinuxDrive|"
 msgid "Stopped before writing has finished."
-msgstr ""
+msgstr "Kettatõmmise kirjutamine lõppes enne lõpetamist."
 
 #: ../src/app/linuxdrivemanager.cpp:327
 msgctxt "LinuxDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "Valmis!"
 
 #: ../src/app/linuxdrivemanager.cpp:327
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Kettatõmmise kirjutamine õnnestus: %1"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 msgctxt "LinuxDrive|"
 msgid "Error"
-msgstr ""
+msgstr "Viga"
 
 #: ../src/app/linuxdrivemanager.cpp:349
 #, qt-format
 msgctxt "LinuxDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "Kettatõmmise kirjutamine ei õnnestunud: %1"
 
 #: ../src/app/linuxdrivemanager.cpp:121
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
 msgstr ""
+"UDisks2 tundub olema sellest süsteemist puudu või mittekasutatavas olekus."
 
 #: ../src/app/macdrivemanager.cpp:104
 msgctxt "MacDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
+"Abiteegi käivitusfaili ei leidunud. Palun kontrolli paigalduse korrektsust."
 
 #: ../src/app/macdrivemanager.cpp:187
 msgctxt "MacDrive|"
@@ -462,104 +470,104 @@ msgstr ""
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 failed"
-msgstr ""
+msgstr "Kettatõmmise kirjutamine ei õnnestunud: %1"
 
 #: ../src/app/macdrivemanager.cpp:190
 msgctxt "MacDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "Valmis!"
 
 #: ../src/app/macdrivemanager.cpp:190
 #, qt-format
 msgctxt "MacDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Kettatõmmise kirjutamine õnnestus: %1"
 
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Vali kettatõmmise allikas"
 
 #: ../src/app/qml/MainPage.qml:33
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr ""
+msgstr "Laadi alla automaatselt"
 
 #: ../src/app/qml/MainPage.qml:40
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "Vali .iso fail"
 
 #: ../src/app/qml/MainPage.qml:50
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr ""
+msgstr "Taasta <b>%1</b>"
 
 #: ../src/app/qml/MainPage.qml:72
 msgctxt "MainPage|"
 msgid "About"
-msgstr ""
+msgstr "Rakenduse teave"
 
 #: ../src/app/qml/Page.qml:100
 msgctxt "Page|"
 msgid "Previous"
-msgstr ""
+msgstr "Tagasi"
 
 #: ../src/app/qml/Page.qml:110
 msgctxt "Page|"
 msgid "Next"
-msgstr ""
+msgstr "Edasi"
 
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr ""
+msgstr "Kettatõmmiste failid"
 
 #: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr ""
+msgstr "Kõik failid"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "Ava fail"
 
 #: ../src/helper/win/writejob.cpp:398
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 TB"
 
 #: ../src/helper/win/writejob.cpp:400
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #: ../src/helper/win/writejob.cpp:402
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 KB"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 bait(i)"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
-msgstr ""
+msgstr "Vali fail oma arvuti kettalt"
 
 #: ../src/app/releasemanager.cpp:420
 msgctxt "Release|"
@@ -568,6 +576,9 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images (."
 "iso or .bin)</p>"
 msgstr ""
+"<p>Siinkohal saad valida oma mälupulgale kirjutatava operatsioonisüsteemi "
+"kettatõmmise</p><p>Hetkel on toetatud vaid otsevormingus tõmmised („raw disk "
+"images“ .iso või .bin)</p>"
 
 #: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
@@ -587,32 +598,36 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:457
 msgctxt "Release|"
 msgid "Other"
-msgstr ""
+msgstr "Muud"
 
 #: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr ""
+msgstr "Intel/AMD 64-bitine"
 
 #: ../src/app/releasemanager.cpp:1103
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
+"ISO vormingus kettatõmmis Inteli, AMD ja muude ühilduvate 64-bitiste "
+"arvutite jaoks"
 
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr ""
+msgstr "Intel/AMD 32-bitine"
 
 #: ../src/app/releasemanager.cpp:1104
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
+"ISO vormingus kettatõmmis Inteli, AMD ja muude ühilduvate 32-bitiste "
+"arvutite jaoks"
 
 #: ../src/app/releasemanager.cpp:1105
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
-msgstr ""
+msgstr "ARM v7"
 
 #: ../src/app/releasemanager.cpp:1105
 msgctxt "ReleaseArchitecture|"
@@ -623,7 +638,7 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
-msgstr ""
+msgstr "AArch64"
 
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
@@ -633,7 +648,7 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:418
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
-msgstr ""
+msgstr "Sinu valitud kettatõmmis"
 
 #: ../src/app/releasemanager.cpp:962 ../src/app/releasemanager.cpp:974
 msgctxt "ReleaseVariant|"
@@ -653,22 +668,22 @@ msgstr ""
 #: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
-msgstr ""
+msgstr "Ettevalmistamisel"
 
 #: ../src/app/releasemanager.h:379
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
-msgstr ""
+msgstr "Allalaadimisel"
 
 #: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr ""
+msgstr "Kontrollin allalaaditud andmeid"
 
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
 msgid "Ready to write"
-msgstr ""
+msgstr "Kirjutamiseks valmis"
 
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
@@ -678,7 +693,7 @@ msgstr ""
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
 msgid "Writing"
-msgstr ""
+msgstr "Kirjutamisel"
 
 #: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
@@ -688,7 +703,7 @@ msgstr ""
 #: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
 msgid "Finished!"
-msgstr ""
+msgstr "Valmis!"
 
 #: ../src/app/releasemanager.h:386
 msgctxt "ReleaseVariant|"
@@ -698,7 +713,7 @@ msgstr ""
 #: ../src/app/releasemanager.h:387
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr ""
+msgstr "Allalaadimine ei õnnestunud"
 
 #: ../src/app/releasemanager.h:388
 msgctxt "ReleaseVariant|"
@@ -709,19 +724,19 @@ msgstr ""
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
-msgstr ""
+msgstr "%1 - alfaversioon"
 
 #: ../src/app/releasemanager.cpp:737
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
-msgstr ""
+msgstr "%1 - beetaversioon"
 
 #: ../src/app/releasemanager.cpp:739
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr ""
+msgstr "%1 - kandidaatversioon"
 
 #: ../src/helper/linux/restorejob.cpp:67
 msgctxt "RestoreJob|"
@@ -807,7 +822,7 @@ msgstr ""
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "Taasta ketas: <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
 msgctxt "RestorePage|"
@@ -841,32 +856,32 @@ msgstr ""
 #: ../src/app/qml/RestorePage.qml:92
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "Taastamine on valmis"
 
 #: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Finish"
-msgstr ""
+msgstr "Lõpeta"
 
 #: ../src/app/qml/RestorePage.qml:110
 msgctxt "RestorePage|"
 msgid "Restore"
-msgstr ""
+msgstr "Taasta"
 
 #: ../src/app/qml/VersionPage.qml:29
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Vali Fedora variatsioon"
 
 #: ../src/app/qml/VersionPage.qml:32
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr ""
+msgstr "Vali allikast:"
 
 #: ../src/app/qml/VersionPage.qml:37
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Ametlikud versioonid"
 
 #: ../src/app/qml/VersionPage.qml:42
 msgctxt "VersionPage|"
@@ -891,7 +906,7 @@ msgstr ""
 #: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 msgctxt "WinDrive|"
 msgid "Finished!"
-msgstr ""
+msgstr "Valmis!"
 
 #: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 #, qt-format
@@ -935,13 +950,13 @@ msgstr ""
 #: ../src/helper/win/writejob.cpp:353
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
-msgstr ""
+msgstr "Mittetoetatud pakkimise valikud."
 
 #: ../src/helper/linux/writejob.cpp:125 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:356
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
-msgstr ""
+msgstr "Tundmatu viga lahtipakkimisel."
 
 #: ../src/helper/linux/writejob.cpp:151 ../src/helper/linux/writejob.cpp:166
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
@@ -1004,7 +1019,7 @@ msgstr ""
 #: ../src/helper/win/writejob.cpp:172
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr ""
+msgstr "Ketta lahtihaakimine ei õnnestunud"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
 msgctxt "WriteJob|"
@@ -1048,17 +1063,17 @@ msgstr ""
 #: ../src/app/qml/main.qml:100
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr ""
+msgstr "Vali Fedora versioon"
 
 #: ../src/app/qml/main.qml:114
 msgctxt "main|"
 msgid "Select Drive"
-msgstr ""
+msgstr "Vali ketas"
 
 #: ../src/app/qml/main.qml:139
 msgctxt "main|"
 msgid "Restore"
-msgstr ""
+msgstr "Taasta"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: application/name
@@ -1097,3 +1112,5 @@ msgstr ""
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
 msgstr ""
+"fmw;usb;iso;bootable;väline;ketas;usb-"
+"pulk;käivitamine;kirjutamine;buutimine;buuditav;"
