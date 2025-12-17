@@ -34,6 +34,7 @@ jobs:
           python scripts/generate-releases.py \
             --base-url https://download.bazzite.gg/ \
             --version 43 \
+            --input-file scripts/iso-list.txt \
             --output releases.json \
             --pretty
       
