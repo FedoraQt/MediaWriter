@@ -56,28 +56,27 @@ jobs:
           
           # Create a simple index page
           TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-          cat > index.html << EOF
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Bazzite Releases</title>
-    <meta charset="utf-8">
-</head>
-<body>
-    <h1>Bazzite ISO Releases</h1>
-    <p>Latest releases metadata: <a href="releases.json">releases.json</a></p>
-    <p>Last updated: ${TIMESTAMP}</p>
-    <p>Use with Bazzite Media Writer</p>
-</body>
-</html>
-EOF
+          echo '<!DOCTYPE html>' > index.html
+          echo '<html>' >> index.html
+          echo '<head>' >> index.html
+          echo '    <title>Bazzite Releases</title>' >> index.html
+          echo '    <meta charset="utf-8">' >> index.html
+          echo '</head>' >> index.html
+          echo '<body>' >> index.html
+          echo '    <h1>Bazzite ISO Releases</h1>' >> index.html
+          echo '    <p>Latest releases metadata: <a href="releases.json">releases.json</a></p>' >> index.html
+          echo "    <p>Last updated: ${TIMESTAMP}</p>" >> index.html
+          echo '    <p>Use with Bazzite Media Writer</p>' >> index.html
+          echo '</body>' >> index.html
+          echo '</html>' >> index.html
           
           # Add timestamp
           echo "${TIMESTAMP}" > last-updated.txt
           
           # Commit and push
           git add releases.json index.html last-updated.txt
-          git commit -m "Update releases.json - $(date -u '+%Y-%m-%d %H:%M:%S UTC')" || echo "No changes to commit"
+          COMMIT_TIME=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+          git commit -m "Update releases.json - ${COMMIT_TIME}" || echo "No changes to commit"
           git push origin gh-pages
       
       - name: Upload artifact
