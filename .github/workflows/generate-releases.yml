@@ -1,0 +1,87 @@
+name: Generate Bazzite Releases JSON
+
+on:
+  workflow_dispatch: # Manual trigger
+  schedule:
+    - cron: '0 6 * * *' # Daily at 6 AM UTC
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/generate-releases.py'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+      
+      - name: Generate releases JSON
+        run: |
+          python scripts/generate-releases.py \
+            --base-url https://download.bazzite.gg/ \
+            --version 43 \
+            --output releases.json \
+            --pretty
+      
+      - name: Commit and push to gh-pages
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Create or checkout gh-pages branch
+          if git ls-remote --heads origin gh-pages | grep gh-pages; then
+            git fetch origin gh-pages
+            git checkout gh-pages
+          else
+            git checkout --orphan gh-pages
+            git rm -rf .
+          fi
+          
+          # Copy the generated JSON
+          git checkout main -- releases.json
+          
+          # Create a simple index page
+          cat > index.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bazzite Releases</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Bazzite ISO Releases</h1>
+    <p>Latest releases metadata: <a href="releases.json">releases.json</a></p>
+    <p>Last updated: $(date -u '+%Y-%m-%d %H:%M:%S UTC')</p>
+    <p>Use with Bazzite Media Writer</p>
+</body>
+</html>
+EOF
+          
+          # Add timestamp
+          date -u '+%Y-%m-%d %H:%M:%S UTC' > last-updated.txt
+          
+          # Commit and push
+          git add releases.json index.html last-updated.txt
+          git commit -m "Update releases.json - $(date -u '+%Y-%m-%d %H:%M:%S UTC')" || echo "No changes to commit"
+          git push origin gh-pages
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: releases-json
+          path: releases.json
+          retention-days: 30

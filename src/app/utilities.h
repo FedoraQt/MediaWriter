@@ -83,7 +83,8 @@ public:
 #else
     bool logging{true};
 #endif
-    QString releasesUrl{"https://fedoraproject.org/releases.json"};
+    // Point to GitHub Pages hosted releases.json - auto-updated daily
+    QString releasesUrl{"https://raw.githubusercontent.com/xXJSONDeruloXx/MediaWriter/gh-pages/releases.json"};
     bool noUserAgent{false}; // disables sending the custom Fedora Media Writer user agent header
 };
 
