@@ -10,9 +10,9 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-12-17 15:02+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
+"PO-Revision-Date: 2025-12-18 16:58+0000\n"
+"Last-Translator: Priit Jõerüüt "
+"<jrtkbfdr@users.noreply.translate.fedoraproject.org>\n"
 "Language-Team: Estonian <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/et/>\n"
 "Language: et\n"
@@ -123,7 +123,7 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
-"Kogu seadme sisu (%1 täies mahus) kustutatakse ja valitud tõmmis "
+"Kogu seadme sisu (%1 täies mahus) kustutatakse ja valitud kettatõmmis "
 "kirjutatakse selle asemele. Kas sa soovid jätkata?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
@@ -304,12 +304,15 @@ msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
+"Valitud ketta suurus on %1. On võimalik, et juhuslikult valisid välisketta!"
 
 #: ../src/app/qml/DownloadPage.qml:168
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr ""
+"Alustamaks %2 operatsioonisüsteemi kasutamist käivita arvuti uuesti kasuta "
+"alglaadimiseks %1."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
 msgctxt "DownloadPage|"
@@ -577,8 +580,8 @@ msgid ""
 "iso or .bin)</p>"
 msgstr ""
 "<p>Siinkohal saad valida oma mälupulgale kirjutatava operatsioonisüsteemi "
-"kettatõmmise</p><p>Hetkel on toetatud vaid otsevormingus tõmmised („raw disk "
-"images“ .iso või .bin)</p>"
+"kettatõmmise</p><p>Hetkel on toetatud vaid otsevormingus kettatõmmised („raw "
+"disk images“ .iso või .bin)</p>"
 
 #: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
@@ -634,6 +637,8 @@ msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
+"LZMA-pakkimisega otsevormingus kettatõmmis („raw disk image“) ARM v7-A "
+"masinate jaoks (nt Raspberry Pi 2 ja 3)"
 
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
@@ -644,6 +649,8 @@ msgstr "AArch64"
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr ""
+"LZMA-pakkimisega otsevormingus kettatõmmis („raw disk image“) AArch64 "
+"masinate jaoks"
 
 #: ../src/app/releasemanager.cpp:418
 msgctxt "ReleaseListModel|"
@@ -653,17 +660,17 @@ msgstr "Sinu valitud kettatõmmis"
 #: ../src/app/releasemanager.cpp:962 ../src/app/releasemanager.cpp:974
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
-msgstr ""
+msgstr "Allalaaditud kettatõmmis on vigane"
 
 #: ../src/app/releasemanager.cpp:978
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
-msgstr ""
+msgstr "Allalaaditud fail pole loetav."
 
 #: ../src/app/releasemanager.cpp:989
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr ""
+msgstr "Ajutise faili nime muutmine ei õnnestu."
 
 #: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
@@ -689,6 +696,8 @@ msgstr "Kirjutamiseks valmis"
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
+"Kettatõmmis salvestati sinu allalaadimiste kausta. Kirjutamine aga pole "
+"hetkel võimalik"
 
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
@@ -698,7 +707,7 @@ msgstr "Kirjutamisel"
 #: ../src/app/releasemanager.h:384
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
-msgstr ""
+msgstr "Kontrollin kirjutatud andmeid"
 
 #: ../src/app/releasemanager.h:385
 msgctxt "ReleaseVariant|"
@@ -708,7 +717,7 @@ msgstr "Valmis!"
 #: ../src/app/releasemanager.h:386
 msgctxt "ReleaseVariant|"
 msgid "The written data is corrupted"
-msgstr ""
+msgstr "Kirjutatud andmed on vigased"
 
 #: ../src/app/releasemanager.h:387
 msgctxt "ReleaseVariant|"
@@ -741,82 +750,82 @@ msgstr "%1 - kandidaatversioon"
 #: ../src/helper/linux/restorejob.cpp:67
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr ""
+msgstr "Seadme avamine kirjutamiseks ei õnnestunud"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
-msgstr ""
+msgstr "Sihtandmekandja pole kirjutatav"
 
 #: ../src/helper/linux/restorejob.cpp:91
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr ""
+msgstr "Faili suuruse tuvastamine ei õnnestunud"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "Faili suurus on alla 128 ploki"
 
 #: ../src/helper/linux/restorejob.cpp:105
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr ""
+msgstr "Failiviida tõstmine andmete lõpuossa polnud võimalik"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "Andmete sünkroonimine andmekandjale ei õnnestunud"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr ""
+msgstr "Ketta/andmekandja haakepunktide eemaldamine ei õnnestunud"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Ketta/andmekandja partitsioonide eemaldamine ei õnnestunud"
 
 #: ../src/helper/win/restorejob.cpp:80
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr ""
+msgstr "Ketta/andmekandja avamine vorminduseks ei õnnestunud"
 
 #: ../src/helper/win/restorejob.cpp:95
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
-msgstr ""
+msgstr "Ketta/andmekandja lukustamine polnud võimalik"
 
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Ketta/andmekandja partitsioonitabeli kustutamine ei õnnestunud"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Ketta/andmekandja partitsioonitüübiks RAW määramine ei õnnestunud"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "GPT partitsiooni lisamine kettale/andmekandjale ei õnnestunud"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Ketta/andmekandja köite asukoha GUID tuvastamine ei õnnestunud"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Uue partitsiooni haakimine ei õnnestunud"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Partitsiooni vormindamine exFAT failisüseemiga ei õnnestunud"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -844,7 +853,7 @@ msgstr ""
 #: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr ""
+msgstr "Sinu ketta/andmekandja taastamine õnnestus!"
 
 #: ../src/app/qml/RestorePage.qml:78
 msgctxt "RestorePage|"
@@ -852,6 +861,8 @@ msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
+"Kahjuks tekkis selle tegevuse ajal viga. Järgnevaks palun proovi ketta/"
+"andmekandja taastamist süsteemitarvikute abil."
 
 #: ../src/app/qml/RestorePage.qml:92
 msgctxt "RestorePage|"
@@ -902,6 +913,7 @@ msgstr ""
 msgctxt "WinDrive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
+"Abiteegi käivitusfaili ei leidunud. Palun kontrolli paigalduse korrektsust."
 
 #: ../src/app/windrivemanager.cpp:239 ../src/app/windrivemanager.cpp:297
 msgctxt "WinDrive|"
@@ -912,18 +924,18 @@ msgstr "Valmis!"
 #, qt-format
 msgctxt "WinDrive|"
 msgid "Writing %1 was successful"
-msgstr ""
+msgstr "Kettatõmmise kirjutamine õnnestus: %1"
 
 #: ../src/app/windrivemanager.cpp:244
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr ""
+msgstr "Kirjutamine on katkestatud"
 
 #: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr ""
+msgstr "Lahtipakkimise alustamine ei õnnestunud."
 
 #: ../src/helper/linux/writejob.cpp:105 ../src/helper/linux/writejob.cpp:135
 #: ../src/helper/linux/writejob.cpp:173 ../src/helper/mac/writejob.cpp:185
@@ -932,19 +944,19 @@ msgstr ""
 #: ../src/helper/win/writejob.cpp:465
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
-msgstr ""
+msgstr "Sihtandmekandja pole kirjutatav"
 
 #: ../src/helper/linux/writejob.cpp:114 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:345
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
-msgstr ""
+msgstr "Faili lahtipakkimiseks pole piisavalt mälu."
 
 #: ../src/helper/linux/writejob.cpp:119 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:350
 msgctxt "WriteJob|"
 msgid "The downloaded compressed file is corrupted."
-msgstr ""
+msgstr "Allalaaditud pakitud fail on vigane."
 
 #: ../src/helper/linux/writejob.cpp:122 ../src/helper/mac/writejob.cpp:267
 #: ../src/helper/win/writejob.cpp:353
@@ -962,39 +974,39 @@ msgstr "Tundmatu viga lahtipakkimisel."
 #: ../src/helper/win/writejob.cpp:255 ../src/helper/win/writejob.cpp:420
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
-msgstr ""
+msgstr "Kettatõmmis pole loetav"
 
 #: ../src/helper/linux/writejob.cpp:203 ../src/helper/mac/writejob.cpp:304
 #: ../src/helper/win/writejob.cpp:538
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr ""
+msgstr "Sinu ketas/andmekandja on ilmselt vigane."
 
 #: ../src/helper/linux/writejob.cpp:208 ../src/helper/mac/writejob.cpp:309
 #: ../src/helper/win/writejob.cpp:543
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr ""
+msgstr "Meediumi kontrollimisel tekkis ootamatu viga."
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "Soklipaari eraldamine polnud võimalik"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "Sihtmeediumi avamine kirjutamiseks polnud võimalik"
 
 #: ../src/helper/win/writejob.cpp:122
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr ""
+msgstr "Ketta/andmekandja haakepunktide eemaldamine polnud võimalik"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Kettalt/andmekandjalt partitsioonide eemaldamine ei õnnestunud"
 
 #: ../src/helper/win/writejob.cpp:140
 msgctxt "WriteJob|"
@@ -1009,12 +1021,12 @@ msgstr ""
 #: ../src/helper/win/writejob.cpp:159
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr ""
+msgstr "Loogilise ohjuri avamine polnud võimalik"
 
 #: ../src/helper/win/writejob.cpp:165
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr ""
+msgstr "Loogilise ketta lukustamine polnud võimalik"
 
 #: ../src/helper/win/writejob.cpp:172
 msgctxt "WriteJob|"
@@ -1024,36 +1036,36 @@ msgstr "Ketta lahtihaakimine ei õnnestunud"
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr ""
+msgstr "Puhvri eraldamine ei õnnestunud"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Viimane plokk jäi tervikuna kirjutamata"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Andmemahust kirjutasin %1 / %2"
 
 #: ../src/helper/win/writejob.cpp:492
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr ""
+msgstr "Kettatõmmise faili lugemine ei õnnestunud: "
 
 #: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Terve kettatõmmise kirjutamine ei õnnestunud. Kokku kirjutatud: %1 / %2"
 
 #: ../src/helper/win/writejob.cpp:518
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr ""
+msgstr "%1 ketta/andmekandja avamine andmete kontrolliks polnud võimalik:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
@@ -1086,6 +1098,8 @@ msgstr ""
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
 msgid "A tool to create a live USB drive with an edition of Fedora"
 msgstr ""
+"Tarvik, mis võimaldab kirjutada mälupulgale või muule välisele andmekandjale "
+"sinu valitud Fedora versiooni"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
@@ -1108,6 +1122,7 @@ msgstr ""
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
 msgstr ""
+"Kirjuta Fedora kettatõmmiseid oma mälupulkadele ja muudele andmekandjatele"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
 msgid "fmw;usb;iso;bootable;"
