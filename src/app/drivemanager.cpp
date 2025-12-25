@@ -157,12 +157,26 @@ void DriveManager::onDriveConnected(Drive *d)
     endInsertRows();
     emit drivesChanged();
 
-    if (m_provider->initialized()) {
-        m_selectedIndex = position;
-        emit selectedChanged();
-    } else {
-        m_selectedIndex = 0;
-        emit selectedChanged();
+    // Fix for issue #825: Only change selection if the currently selected drive
+    // is not being written to or restored
+    bool currentDriveActive = false;
+    Drive *currentDrive = selected();
+    if (currentDrive && currentDrive->progress()) {
+        qreal progress = currentDrive->progress()->value();
+        qreal driveSize = currentDrive->size();
+        // Check if there's an active write or restore operation
+        currentDriveActive = (progress > 0 && progress < driveSize);
+    }
+
+    // Only auto-select the new drive if no operation is in progress
+    if (!currentDriveActive) {
+        if (m_provider->initialized()) {
+            m_selectedIndex = position;
+            emit selectedChanged();
+        } else {
+            m_selectedIndex = 0;
+            emit selectedChanged();
+        }
     }
 
     if (d->restoreStatus() == Drive::CONTAINS_LIVE) {
