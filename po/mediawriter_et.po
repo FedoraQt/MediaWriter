@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-12-18 16:58+0000\n"
+"PO-Revision-Date: 2025-12-25 19:17+0000\n"
 "Last-Translator: Priit Jõerüüt "
 "<jrtkbfdr@users.noreply.translate.fedoraproject.org>\n"
 "Language-Team: Estonian <https://translate.fedoraproject.org/projects/fedora-"
@@ -20,12 +20,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr ""
+msgstr "Rakenduse teave: Fedora Meediumisalvesti"
 
 #: ../src/app/qml/AboutDialog.qml:58
 #, qt-format
@@ -36,7 +36,7 @@ msgstr "Versioon %1"
 #: ../src/app/qml/AboutDialog.qml:65
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr ""
+msgstr "Fedora Meediumisalvesti kontrollib uue versiooni olemasolu"
 
 #: ../src/app/qml/AboutDialog.qml:71
 #, qt-format
@@ -277,6 +277,9 @@ msgid ""
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
+"Sinu kasutatav andmakandja vormindatakse nüüd mahult väiksemaks. Fedora "
+"Meediumisalvesti abil saad ta alati tagasi standardmõõtu vormindada. Sellega "
+"eemaldatakse ka paigaldusmeedium."
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
@@ -296,6 +299,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
+"Fedora Meediumisalvesti veel ei toeta seda emaplaati või seadet. Lisateavet "
+"tema ühilduvuse kohta Fedoraga ja kuidas alglaaditavat meediumi luua <a "
+"href=%1>leiad sellelt lehelt</a>."
 
 #: ../src/app/qml/DownloadPage.qml:160
 #, qt-format
@@ -586,17 +592,17 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
 msgid "Fedora Spins"
-msgstr ""
+msgstr "Fedora kõrvalversioonid (Fedora Spins)"
 
 #: ../src/app/releasemanager.cpp:453
 msgctxt "Release|"
 msgid "Fedora Labs"
-msgstr ""
+msgstr "Fedora katselised versioonid (Fedora Labs)"
 
 #: ../src/app/releasemanager.cpp:455
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr ""
+msgstr "Fedora Atomic-töölauad"
 
 #: ../src/app/releasemanager.cpp:457
 msgctxt "Release|"
@@ -842,6 +848,12 @@ msgid ""
 "you want to write another live system to it.</p> <p align=\"justify\"> Do "
 "you want to restore it to factory settings? </p>"
 msgstr ""
+"<p align=\"justify\"> Kogu ketta andmeruumi kasutamiseks pead taastama "
+"tootja seadistused. Kogu andmekandjal paiknev reaalajas toimiv süsteem koos "
+"oma andmetega kustutatakse.</p> <p align=\"justify\"> Kui tahad "
+"andmekandjale mõne uue süsteemi kirjutada ja andmeruumi jagub, siis seda ei "
+"pea tegema.</p> <p align=\"justify\"> Kas sa tahad andmekandja tootja "
+"seadistused taastada? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
@@ -849,6 +861,8 @@ msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
+"<p align=\"justify\">Palun oota, kuni Fedora Meediumisalvesti taastab sinu "
+"andmekandjat.</p>"
 
 #: ../src/app/qml/RestorePage.qml:69
 msgctxt "RestorePage|"
@@ -897,17 +911,17 @@ msgstr "Ametlikud versioonid"
 #: ../src/app/qml/VersionPage.qml:42
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr ""
+msgstr "Atomic-töölauad"
 
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr ""
+msgstr "Kõrvalversioonid (Spins)"
 
 #: ../src/app/qml/VersionPage.qml:52
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Katselised versioonid (Labs)"
 
 #: ../src/app/windrivemanager.cpp:149
 msgctxt "WinDrive|"
@@ -1011,12 +1025,12 @@ msgstr "Kettalt/andmekandjalt partitsioonide eemaldamine ei õnnestunud"
 #: ../src/helper/win/writejob.cpp:140
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr ""
+msgstr "Ketast ei õnnestunud vormindamiseks avada"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr ""
+msgstr "Ketta lukustamine ei õnnestunud"
 
 #: ../src/helper/win/writejob.cpp:159
 msgctxt "WriteJob|"
@@ -1070,7 +1084,7 @@ msgstr "%1 ketta/andmekandja avamine andmete kontrolliks polnud võimalik:"
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
 msgid "Fedora Media Writer"
-msgstr ""
+msgstr "Fedora Meediumisalvesti"
 
 #: ../src/app/qml/main.qml:100
 msgctxt "main|"
@@ -1092,7 +1106,7 @@ msgstr "Taasta"
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
 msgid "Fedora Media Writer"
-msgstr ""
+msgstr "Fedora Meediumisalvesti"
 
 #. (itstool) path: application/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
@@ -1111,6 +1125,13 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
+"Tarvik, mille abil saad soovitud Fedora versioonist luua USB-mälupulki või "
+"muid andmekandjaid. Fedora Meediumisalvesti oskab kettatõmmist kirjutada "
+"välisele andmekandjale ning seda ka eelnevalt alla laadida. Valikus on "
+"ametlikud versioonid (Server, Tööjaam), Fedora kõrvalversioonid (Fedora "
+"spins: KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...) ja katselised "
+"versioonid (Fedora Labs: Design Suite, Security Lab,...). Protsessi käigus "
+"leiad neist igaühe kohta ka piisavalt teavet, mis aitab sul õige valiku teha."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
@@ -1118,6 +1139,9 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
+"Fedora Meediumisalvesti oskab kirjutada ka muid sinu kohalikust andmeruumist "
+"laaditud ISO-faile, aga palun arvesta, et seda on testitud vaid Fedora "
+"kettatõmmistega."
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
 msgid "Write Fedora images to your portable drives"
