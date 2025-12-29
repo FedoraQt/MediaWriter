@@ -5,12 +5,13 @@
 # #-#-#-#-#  mediawriter_he.po  #-#-#-#-#
 # Niv Baehr <bloop93@gmail.com>, 2016. #zanata
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2018. #zanata, 2021, 2022, 2023, 2024, 2025.
+# "Omer I.S." <omeritzicschwartz@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-02-10 09:32+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-12-29 11:58+0000\n"
+"Last-Translator: \"Omer I.S.\" <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/he/>\n"
 "Language: he\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 2 : 1;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.15.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -110,7 +111,7 @@ msgstr "ביטול"
 #: ../src/app/qml/DeviceWarningDialog.qml:49
 msgctxt "DeviceWarningDialog|"
 msgid "Erase confirmation"
-msgstr ""
+msgstr "אישור מחיקה"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -746,12 +747,9 @@ msgid "Destination drive is not writable"
 msgstr "כונן היעד אינו נגיש לכתיבה"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Failed to read the image file: "
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "קריאת קובץ הדמות נכשלה: "
+msgstr "נכשלה קבלת מידע גודל הקובץ"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
@@ -828,15 +826,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "שחזור הכונן <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid ""
-#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
-#| "to be restored to its factory settings. The live system and all saved "
-#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
-#| "restore the drive if you want to write another live system to it. \n"
-#| "                </p> <p align=\"justify\"> Do you want to restore it to "
-#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -846,10 +835,9 @@ msgid ""
 "you want to restore it to factory settings? </p>"
 msgstr ""
 "<p align=\"justify\"> להשבת כל המקום הזמין בכונן, יש לשחזרו להגדרות היצרן. "
-"המערכת החיה וכל הנתונים השמורים יימחקו. </p> <p align=\"justify\"> אין צורך "
-"לשחזר את הכונן כדי לכתוב אליו מערכת חיה נוספת.\n"
-"                                            </p> <p align=\"justify\"> לשחזר "
-"אותו להגדרות היצרן? </p>"
+"המערכת החיה וכל הנתונים השמורים יימחקו. </p> <p align=\"justify\">אין צורך "
+"לשחזר את הכונן כדי לכתוב אליו מערכת חיה נוספת.</p> <p align=\"justify\"> "
+"לשחזר אותו להגדרות היצרן? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
