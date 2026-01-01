@@ -31,7 +31,6 @@ ApplicationWindow {
     property int selectedPage: Units.Page.MainPage
     property int selectedVersion: Units.Source.Product
     property int selectedOption: Units.MainSelect.Download
-    property QtObject lastRestoreable
     property bool eraseVariant: false
     
     StackView {
@@ -143,14 +142,6 @@ ApplicationWindow {
                 }
             }
         ]
-    }
-    
-    Connections {
-        target: drives
-        function onLastRestoreableChanged() {
-            if (!drives.selected)
-                selectedPage = Units.Page.MainPage
-        }
     }
 
     Units {

@@ -22,6 +22,7 @@
 
 #include <QAbstractListModel>
 #include <QDebug>
+#include <QVariantList>
 
 #include "releasemanager.h"
 
@@ -40,7 +41,7 @@ class UdisksDrive;
  * @property length count of the drives
  * @property selected the selected drive
  * @property selectedIndex the index of the selected drive
- * @property lastRestoreable the most recently connected restoreable drive
+ * @property restoreableCount count of drives containing live USB
  */
 class DriveManager : public QAbstractListModel
 {
@@ -51,7 +52,8 @@ class DriveManager : public QAbstractListModel
     Q_PROPERTY(bool isBroken READ isBackendBroken NOTIFY isBackendBrokenChanged)
     Q_PROPERTY(QString errorString READ errorString NOTIFY isBackendBrokenChanged)
 
-    Q_PROPERTY(Drive *lastRestoreable READ lastRestoreable WRITE setLastRestoreable NOTIFY restoreableDriveChanged)
+    Q_PROPERTY(int restoreableCount READ restoreableCount NOTIFY restoreableDrivesChanged)
+    Q_PROPERTY(QVariantList restoreableDrives READ restoreableDrives NOTIFY restoreableDrivesChanged)
 public:
     static DriveManager *instance();
 
@@ -66,31 +68,33 @@ public:
 
     int length() const;
 
-    Drive *lastRestoreable();
+    int restoreableCount() const;
+    QVariantList restoreableDrives() const;
+    Q_INVOKABLE Drive *restoreableDriveAt(int index) const;
 
     bool isBackendBroken();
     QString errorString();
-
-    void setLastRestoreable(Drive *d);
 
 private slots:
     void onDriveConnected(Drive *d);
     void onDriveRemoved(Drive *d);
     void onBackendBroken(const QString &message);
+    void onDriveRestoreStatusChanged();
 
 signals:
     void drivesChanged();
     void selectedChanged();
-    void restoreableDriveChanged();
+    void restoreableDrivesChanged();
     void isBackendBrokenChanged();
 
 private:
     explicit DriveManager(QObject *parent = 0);
+    void updateRestoreableDrives();
 
     static DriveManager *_self;
     QList<Drive *> m_drives{};
+    QList<Drive *> m_restoreableDrives{};
     int m_selectedIndex{0};
-    Drive *m_lastRestoreable{nullptr};
     DriveProvider *m_provider{nullptr};
     QString m_errorString{};
 };

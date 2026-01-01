@@ -122,10 +122,27 @@ int DriveManager::length() const
     return m_drives.count();
 }
 
-Drive *DriveManager::lastRestoreable()
+int DriveManager::restoreableCount() const
 {
-    return m_lastRestoreable;
+    return m_restoreableDrives.count();
 }
+
+QVariantList DriveManager::restoreableDrives() const
+{
+    QVariantList list;
+    for (auto d : m_restoreableDrives) {
+        list.append(QVariant::fromValue(d));
+    }
+    return list;
+}
+
+Drive *DriveManager::restoreableDriveAt(int index) const
+{
+    if (index >= 0 && index < m_restoreableDrives.count())
+        return m_restoreableDrives[index];
+    return nullptr;
+}
+
 bool DriveManager::isBackendBroken()
 {
     return !m_errorString.isEmpty();
@@ -134,14 +151,6 @@ bool DriveManager::isBackendBroken()
 QString DriveManager::errorString()
 {
     return m_errorString;
-}
-
-void DriveManager::setLastRestoreable(Drive *d)
-{
-    if (m_lastRestoreable != d) {
-        m_lastRestoreable = d;
-        emit restoreableDriveChanged();
-    }
 }
 
 void DriveManager::onDriveConnected(Drive *d)
@@ -165,13 +174,11 @@ void DriveManager::onDriveConnected(Drive *d)
         emit selectedChanged();
     }
 
-    if (d->restoreStatus() == Drive::CONTAINS_LIVE) {
-        setLastRestoreable(d);
-        connect(d, &Drive::restoreStatusChanged, [=]() {
-            if (d && d == m_lastRestoreable && d->restoreStatus() != Drive::CONTAINS_LIVE)
-                setLastRestoreable(nullptr);
-        });
-    }
+    // Connect to restoreStatus changes for updating the restorable list
+    connect(d, &Drive::restoreStatusChanged, this, &DriveManager::onDriveRestoreStatusChanged);
+
+    // Update restorable drives list
+    updateRestoreableDrives();
 }
 
 void DriveManager::onDriveRemoved(Drive *d)
@@ -186,17 +193,36 @@ void DriveManager::onDriveRemoved(Drive *d)
             m_selectedIndex = 0;
         }
         emit selectedChanged();
-
-        if (d == m_lastRestoreable) {
-            setLastRestoreable(nullptr);
-        }
     }
+
+    // Update restorable drives list
+    updateRestoreableDrives();
 }
 
 void DriveManager::onBackendBroken(const QString &message)
 {
     m_errorString = message;
     emit isBackendBrokenChanged();
+}
+
+void DriveManager::onDriveRestoreStatusChanged()
+{
+    updateRestoreableDrives();
+}
+
+void DriveManager::updateRestoreableDrives()
+{
+    QList<Drive *> newList;
+    for (auto d : m_drives) {
+        if (d->restoreStatus() == Drive::CONTAINS_LIVE) {
+            newList.append(d);
+        }
+    }
+
+    if (newList != m_restoreableDrives) {
+        m_restoreableDrives = newList;
+        emit restoreableDrivesChanged();
+    }
 }
 
 DriveProvider *DriveProvider::create(DriveManager *parent)
