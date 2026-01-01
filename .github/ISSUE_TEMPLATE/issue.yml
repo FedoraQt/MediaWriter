@@ -1,0 +1,56 @@
+name: Issue 🐞
+description: Report an issue or feature request
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before opening an issue, please search for the behaviour in the existing issues.
+
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Issue description
+      description: What is the issue or feature request?
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      description: "Which operating system are you on? Please provide the version as well. If you are on a Mac, please specify Apple silicon or Intel."
+      placeholder: "macOS Ventura 13.4 (Arm), Windows 11"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install
+    attributes:
+      label: Installation Method
+      description: "How did you install Fedora Media Writer?"
+      options:
+        - "Installer from website/GitHub releases"
+        - "Brew (macOS)"
+        - "Chocolatey (Windows)"
+        - "Flathub (Linux)"
+        - "Other"
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce the issue
+      description: What steps do we need to take to reproduce this issue?
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: If applicable, provide relevant log output.
+      render: shell
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context or screenshots here.
