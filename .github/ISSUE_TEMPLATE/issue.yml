@@ -24,18 +24,6 @@ body:
     validations:
       required: true
 
-  - type: dropdown
-    id: install
-    attributes:
-      label: Installation Method
-      description: "How did you install Fedora Media Writer?"
-      options:
-        - "Installer from website/GitHub releases"
-        - "Brew (macOS)"
-        - "Chocolatey (Windows)"
-        - "Flathub (Linux)"
-        - "Other"
-
   - type: textarea
     id: steps
     attributes:
