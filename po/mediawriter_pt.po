@@ -5,7 +5,7 @@
 # #-#-#-#-#  mediawriter_pt.po  #-#-#-#-#
 # Joao Almeida <intjalmeida@gmail.com>, 2017. #zanata
 # Manuela Silva <mmsrs@sky.com>, 2019. #zanata
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2021, 2022, 2025.
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2021, 2022, 2025, 2026.
 # "Geraldo S. Simião Kutz" <geraldo.simiao.kutz@gmail.com>, 2024, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024, 2025.
 # NotMy Name <first.thunder@protonmail.com>, 2024, 2025.
@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-14 10:13+0200\n"
-"PO-Revision-Date: 2025-02-10 09:32+0000\n"
-"Last-Translator: \"Geraldo S. Simião Kutz\" <geraldo.simiao.kutz@gmail.com>\n"
+"PO-Revision-Date: 2026-01-04 21:58+0000\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/pt/>\n"
 "Language: pt\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.15.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -117,12 +117,9 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:49
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Easy Administration"
 msgctxt "DeviceWarningDialog|"
 msgid "Erase confirmation"
-msgstr "Fácil administração"
+msgstr "Confirmar eliminação"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -140,9 +137,6 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
 msgstr "Gravar"
@@ -337,9 +331,6 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DownloadPage|"
 msgid "Write"
 msgstr "Gravar"
@@ -420,9 +411,6 @@ msgid "Delete download after writing"
 msgstr "Eliminar a transferência depois de gravar"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DrivePage|"
 msgid "Write"
 msgstr "Gravar"
@@ -540,9 +528,6 @@ msgid "Previous"
 msgstr "Anterior"
 
 #: ../src/app/qml/Page.qml:110
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Next"
 msgctxt "Page|"
 msgid "Next"
 msgstr "Seguinte"
@@ -578,19 +563,19 @@ msgstr "%1 GB"
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #: ../src/helper/win/writejob.cpp:404
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 KB"
 
 #: ../src/helper/win/writejob.cpp:407
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 byte(s)"
 
 #: ../src/app/releasemanager.cpp:419
 msgctxt "Release|"
@@ -769,69 +754,51 @@ msgid "%1 Release Candidate"
 msgstr "%1 Candidato a lançamento"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "Não foi possível abrir a unidade para gravação"
+msgstr "Falha ao abrir o dispositivo para gravação"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Destination drive is not writable"
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
 msgstr "A unidade de destino não é gravável"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "Não é possível renomear o ficheiro temporário."
+msgstr "Falha ao obter o tamanho do ficheiro"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "O tamanho do ficheiro é inferior a 128 blocos"
 
 #: ../src/helper/linux/restorejob.cpp:105
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr ""
+msgstr "Falha ao mover o ponteiro do ficheiro para a região final"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "Falha ao sincronizar dados para o disco"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Não foi possível remover a unidade %1:"
+msgstr "Não foi possível remover os pontos de montagem da unidade"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Falha ao remover partições da unidade"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Não foi possível abrir a unidade para gravação"
+msgstr "Falha ao abrir a unidade para formatação"
 
 #: ../src/helper/win/restorejob.cpp:95
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
 msgstr "Não foi possível bloquear a unidade"
@@ -839,32 +806,32 @@ msgstr "Não foi possível bloquear a unidade"
 #: ../src/helper/win/restorejob.cpp:112
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Não foi possível limpar a tabela de partições na unidade"
 
 #: ../src/helper/win/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Falha ao definir a unidade para o estilo de partição RAW"
 
 #: ../src/helper/win/restorejob.cpp:134
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Falha ao criar uma partição GPT na unidade"
 
 #: ../src/helper/win/restorejob.cpp:150
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Falha ao obter o caminho do volume GUID na unidade"
 
 #: ../src/helper/win/restorejob.cpp:165
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Falha ao montar a nova partição"
 
 #: ../src/helper/win/restorejob.cpp:176
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Falha ao formatar a partição para exFAT"
 
 #: ../src/app/qml/RestorePage.qml:28
 #, qt-format
@@ -873,15 +840,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Restaurar unidade <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid ""
-#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
-#| "to be restored to its factory settings. The live system and all saved "
-#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
-#| "restore the drive if you want to write another live system to it. \n"
-#| "                </p> <p align=\"justify\"> Do you want to restore it to "
-#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -890,13 +848,12 @@ msgid ""
 "you want to write another live system to it.</p> <p align=\"justify\"> Do "
 "you want to restore it to factory settings? </p>"
 msgstr ""
-"<p align=\"justify\"> Para recuperar todo o espaço disponível na unidade, a "
-"mesma deve ser restaurada para as definições de fábrica. O sistema ativo e "
-"todos os dados guardados serão eliminados. </p><p align=\"justify\"> Não "
-"precisa de restaurar a unidade se quiser gravar outro sistema ativo na "
-"mesma.\n"
-"                 </p> <p align=\"justify\"> Quer restaurá-la para as "
-"definições de fábrica? </p>"
+"<p align=\"justify\"> Para recuperar todo o espaço disponível na unidade, é "
+"necessário restaurá-la para as definições de fábrica. O sistema \"live\" e "
+"todos os dados guardados serão eliminados.</p> <p align=\"justify\"> Não é "
+"necessário restaurar a unidade se pretender gravar outro sistema \"live\" "
+"nessa unidade.</p> <p align=\"justify\"> Deseja restaurá-la para as "
+"configurações de fábrica? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
@@ -927,17 +884,11 @@ msgid "Restoring finished"
 msgstr "Restauro concluído"
 
 #: ../src/app/qml/RestorePage.qml:110
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Finish"
 msgctxt "RestorePage|"
 msgid "Finish"
 msgstr "Concluído"
 
 #: ../src/app/qml/RestorePage.qml:110
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Restaurar"
@@ -990,12 +941,9 @@ msgid "Writing %1 was successful"
 msgstr "A gravação %1 foi bem sucedida"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "Erro ao gravar %1"
+msgstr "A gravação foi cancelada"
 
 #: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
@@ -1065,25 +1013,19 @@ msgid "Unable to open destination for writing"
 msgstr "Não foi possível abrir o destino para gravação"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Não foi possível remover a unidade %1:"
+msgstr "Não foi possível remover os pontos de montagem da unidade"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Falha ao remover partições da unidade"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Não foi possível abrir a unidade para gravação"
+msgstr "Falha ao abrir a unidade para formatação"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1091,70 +1033,53 @@ msgid "Couldn't lock the drive"
 msgstr "Não foi possível bloquear a unidade"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "Não foi possível abrir a unidade para gravação"
+msgstr "Não foi possível abrir o identificador lógico"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Não foi possível bloquear a unidade"
+msgstr "Não foi possível bloquear a unidade lógica"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "Não foi possível desbloquear a unidade"
+msgstr "Não foi possível desmontar a unidade"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "Não foi possível atribuir par de sockets"
+msgstr "Falha ao alocar o buffer"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "O último bloco não foi totalmente gravado"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Gravou %1 de %2"
 
 #: ../src/helper/win/writejob.cpp:492
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Não é possível renomear o ficheiro temporário."
+msgstr "Falha ao ler o ficheiro de imagem: "
 
 #: ../src/helper/win/writejob.cpp:498
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Falha ao gravar a imagem completa. Total gravado: %1 de %2"
 
 #: ../src/helper/win/writejob.cpp:518
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "Não foi possível abrir a unidade para gravação"
+msgstr "Não foi possível abrir a unidade para verificação de dados para %1:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
