@@ -22,6 +22,7 @@
 
 #include <QAbstractListModel>
 #include <QDebug>
+#include <QSortFilterProxyModel>
 
 #include "releasemanager.h"
 
@@ -29,6 +30,7 @@ class DriveManager;
 class DriveProvider;
 class Drive;
 class UdisksDrive;
+class RestoreableDriveManager;
 
 /**
  * @brief The DriveManager class
@@ -194,6 +196,49 @@ protected:
     RestoreStatus m_restoreStatus{CLEAN};
     QString m_error{};
     bool m_delayedWrite{false};
+};
+
+/**
+ * @brief The RestoreableDriveManager class
+ *
+ * A proxy model that filters drives to only show those containing live USB systems.
+ *
+ * @property selected the currently selected drive
+ * @property selectedIndex the index of the currently selected drive
+ * @property length count of the filtered (restoreable) drives
+ */
+class RestoreableDriveManager : public QSortFilterProxyModel
+{
+    Q_OBJECT
+    Q_PROPERTY(Drive *selected READ selected NOTIFY selectedChanged)
+    Q_PROPERTY(int selectedIndex READ selectedIndex WRITE setSelectedIndex NOTIFY selectedChanged)
+    Q_PROPERTY(int length READ length NOTIFY lengthChanged)
+public:
+    explicit RestoreableDriveManager(QObject *parent = nullptr);
+
+    bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
+
+    QHash<int, QByteArray> roleNames() const override;
+    Q_INVOKABLE QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+
+    Drive *selected() const;
+    int selectedIndex() const;
+    void setSelectedIndex(int index);
+
+    int length() const;
+
+signals:
+    void selectedChanged();
+    void lengthChanged();
+
+private slots:
+    void onSourceModelChanged();
+    void onDriveRestoreStatusChanged();
+
+private:
+    void connectToDrives();
+
+    int m_selectedIndex{0};
 };
 
 #endif // DRIVEMANAGER_H
