@@ -205,7 +205,7 @@ function .onInit
     
     ; User chose to install - download the redistributable
     DetailPrint "$(VCRedistDownloading)"
-    inetc::get /CAPTION "Downloading VC++ Redistributable" /POPUP "" "${VCREDIST_URL}" "$TEMP\vc_redist.exe" /END
+    NScurl::http GET "${VCREDIST_URL}" "$TEMP\vc_redist.exe" /CANCEL /INSIST /RESUME /END
     
     Pop $0
     StrCmp $0 "OK" vcredist_download_ok

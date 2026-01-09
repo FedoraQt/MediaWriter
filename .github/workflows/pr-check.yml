@@ -198,10 +198,10 @@ jobs:
           echo "LICENSE.LGPL-2.txt" >> build/app/release/uninstall.log
 
           mkdir -p dist/win/plugins
-          curl -L -o inetc.zip "https://github.com/DigitalMediaServer/NSIS-INetC-plugin/releases/download/v1.0.5.7/INetC.zip"
-          unzip -o inetc.zip -d inetc_temp
-          cp inetc_temp/x86-unicode/INetC.dll "dist/win/plugins/"
-          rm -rf inetc.zip inetc_temp
+          curl -L -o NScurl.zip "https://github.com/negrutiu/nsis-nscurl/releases/download/v25.11.11.274/NScurl.zip"
+          unzip -o NScurl.zip -d NScurl_temp
+          cp NScurl_temp/Plugins/x86-unicode/NScurl.dll "dist/win/plugins/"
+          rm -rf NScurl.zip NScurl_temp
 
           "/c/Program Files (x86)/NSIS/makensis.exe" -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
           mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64.exe"

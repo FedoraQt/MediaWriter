@@ -208,16 +208,11 @@ popd >/dev/null
 popd >/dev/null
 
 echo "=== Setting up NSIS plugins"
-NSIS_PLUGINS_DIR="/usr/share/nsis/Plugins"
-if [ -d "$NSIS_PLUGINS_DIR" ]; then
-    if [ ! -f "$NSIS_PLUGINS_DIR/INetC.dll" ]; then
-        echo "Installing INetC.dll to $NSIS_PLUGINS_DIR/"
-        cp "$NSIS_PLUGINS_DIR/x86-unicode/INetC.dll" "$SCRIPTDIR/plugins/" 2>/dev/null || \
-            echo "Warning: Could not install INetC.dll to system plugins"
-    else
-        echo "INetC.dll already installed in $NSIS_PLUGINS_DIR/"
-    fi
-fi
+mkdir -p "$SCRIPTDIR/plugins"
+curl -L -o NScurl.zip "https://github.com/negrutiu/nsis-nscurl/releases/download/v25.11.11.274/NScurl.zip"
+unzip -o NScurl.zip -d NScurl_temp
+cp NScurl_temp/Plugins/x86-unicode/NScurl.dll "$SCRIPTDIR/plugins/"
+rm -rf NScurl.zip NScurl_temp
 
 echo "=== Composing installer"
 unix2dos < "$ROOTPATH/LICENSE.GPL-2" > "$BUILDPATH/app/release/LICENSE.GPL-2.txt"
