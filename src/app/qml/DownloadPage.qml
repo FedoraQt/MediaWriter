@@ -42,8 +42,8 @@ Page {
             qsTr("Preparing %1").arg(file)
         else if (currentStatus === Units.DownloadStatus.Ready)
             qsTr("Ready to write %1").arg(file)
-        else if (currentStatus === Units.DownloadStatus.Stopped)
-            qsTr("%1 has been stopped").arg(file)
+        else if (currentStatus === Units.DownloadStatus.Paused)
+            qsTr("%1 has been paused").arg(file)
         else if (currentStatus == Units.DownloadStatus.Failed_Download)
             qsTr("Failed to download %1").arg(file)
         else
@@ -80,12 +80,12 @@ Page {
         }
 
         QQC2.Label {
-            visible: currentStatus == Units.DownloadStatus.Downloading || currentStatus == Units.DownloadStatus.Stopped
+            visible: currentStatus == Units.DownloadStatus.Downloading || currentStatus == Units.DownloadStatus.Paused
             text: downloadPage.leftStr
         }
 
         QQC2.Label {
-            visible: currentStatus == Units.DownloadStatus.Downloading || currentStatus == Units.DownloadStatus.Stopped
+            visible: currentStatus == Units.DownloadStatus.Downloading || currentStatus == Units.DownloadStatus.Paused
             text: downloadPage.rightStr
         }
     }
@@ -139,10 +139,10 @@ Page {
 
         QQC2.Label {
             id: messageContinueDownload
-            visible: currentStatus === Units.DownloadStatus.Stopped
-            text: qsTr("Download has been stopped.")
-            wrapMode: Label.Wrap
-            width: mainColumn.width
+            visible: currentStatus === Units.DownloadStatus.Paused
+            text: qsTr("Download has been paused.")
+            wrapMode: QQC2.Label.Wrap
+            width: infoColumn.width
         }
 
         QQC2.Label {
@@ -240,8 +240,8 @@ Page {
             }
         }, 
         State {
-            name: "stopped"
-            when: currentStatus === Units.DownloadStatus.Stopped
+            name: "paused"
+            when: currentStatus === Units.DownloadStatus.Paused
             PropertyChanges {
                 target: progressBar;
                 value: releases.variant.progress.ratio
@@ -255,20 +255,15 @@ Page {
 
     previousButtonVisible: currentStatus != Units.DownloadStatus.Finished
     previousButtonText: {
-        if (releases.variant.status === Units.DownloadStatus.Downloading)
-            return qsTr("Pause")
-        else
-            return qsTr("Cancel")
+        return qsTr("Cancel")
     }
     onPreviousButtonClicked: {
         if (releases.variant.status === Units.DownloadStatus.Write_Verifying ||
             releases.variant.status === Units.DownloadStatus.Writing ||
-            releases.variant.status === Units.DownloadStatus.Stopped ||
+            releases.variant.status === Units.DownloadStatus.Paused ||
+            releases.variant.status === Units.DownloadStatus.Downloading ||
             releases.variant.status === Units.DownloadStatus.Download_Verifying) {
             cancelDialog.show()
-        } else if (releases.variant.status === Units.DownloadStatus.Downloading) {
-            downloadManager.cancel()
-            releases.variant.setStatus(Units.DownloadStatus.Stopped)
         } else {
             releases.variant.resetStatus()
             downloadManager.cancel()
@@ -279,7 +274,9 @@ Page {
     nextButtonVisible: {
         // This will be [Finish] or [Resume] button to finish download or resume download 
         if (currentStatus == Units.DownloadStatus.Finished || 
-            currentStatus == Units.DownloadStatus.Stopped)
+            currentStatus == Units.DownloadStatus.Paused || 
+            currentStatus == Units.DownloadStatus.Downloading ||
+            currentStatus == Units.DownloadStatus.Download_Verifying)
             return true
         // This will be [Retry] button to start the process again if there is a drive plugged in
         else if (currentStatus == Units.DownloadStatus.Ready ||
@@ -291,14 +288,15 @@ Page {
     }
     nextButtonText: {
         if (releases.variant.status === Units.DownloadStatus.Write_Verifying ||
-            releases.variant.status === Units.DownloadStatus.Writing ||
-            releases.variant.status === Units.DownloadStatus.Downloading ||
-            releases.variant.status === Units.DownloadStatus.Download_Verifying)
+            releases.variant.status === Units.DownloadStatus.Writing)
             return qsTr("Cancel")
         else if (releases.variant.status == Units.DownloadStatus.Ready)
             return qsTr("Write")
-        else if (releases.variant.status === Units.DownloadStatus.Stopped)
+        else if (releases.variant.status === Units.DownloadStatus.Paused)
             return qsTr("Resume")
+        else if (releases.variant.status === Units.DownloadStatus.Downloading ||
+                releases.variant.status === Units.DownloadStatus.Download_Verifying)
+            return qsTr("Pause")
         else if (releases.variant.status === Units.DownloadStatus.Finished)
             return qsTr("Finish")
         else
@@ -319,13 +317,17 @@ Page {
                 releases.variant.download()
             drives.selected.setImage(releases.variant)
             drives.selected.write(releases.variant)
-        } else if (releases.variant.status === Units.DownloadStatus.Stopped) {
+        } else if (releases.variant.status === Units.DownloadStatus.Paused) {
             if (selectedOption != Units.MainSelect.Write) 
                 releases.variant.download()
             if (drives.length) {
                 drives.selected.setImage(releases.variant)
                 drives.selected.write(releases.variant)
             }
+        } else if (releases.variant.status === Units.DownloadStatus.Downloading || 
+                   releases.variant.status === Units.DownloadStatus.Download_Verifying) {
+            downloadManager.cancel()
+            releases.variant.setStatus(Units.DownloadStatus.Paused)
         }
     }
 }

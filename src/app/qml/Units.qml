@@ -58,7 +58,7 @@ QtObject {
         Downloading,
         Download_Verifying,
         Ready,
-        Stopped,
+        Paused,
         Writing_Not_Possible,
         Writing,
         Write_Verifying,
