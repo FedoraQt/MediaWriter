@@ -210,6 +210,8 @@ bool LinuxDrive::write(ReleaseVariant *data)
     if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED || m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
         m_image->setStatus(ReleaseVariant::WRITING);
 
+    m_isBusy = true; // Set busy state
+
     if (!m_process)
         m_process = new QProcess(this);
 
@@ -270,6 +272,8 @@ void LinuxDrive::cancel()
 void LinuxDrive::restore()
 {
     mDebug() << this->metaObject()->className() << "Will now restore" << this->m_device;
+
+    m_isBusy = true; // Set busy state
 
     if (!m_process)
         m_process = new QProcess(this);
@@ -339,6 +343,7 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status)
     mDebug() << this->metaObject()->className() << "Helper process finished with status" << status;
 
     setDelayedWrite(false);
+    m_isBusy = false; // Operation complete
 
     if (!m_process)
         return;
@@ -363,6 +368,8 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status)
 void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status)
 {
     mDebug() << this->metaObject()->className() << "Helper process finished with status" << status;
+
+    m_isBusy = false; // Operation complete
 
     if (exitCode != 0) {
         if (m_process)

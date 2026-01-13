@@ -157,26 +157,18 @@ void DriveManager::onDriveConnected(Drive *d)
     endInsertRows();
     emit drivesChanged();
 
-    // Fix for issue #825: Only change selection if the currently selected drive
-    // is not being written to or restored
-    bool currentDriveActive = false;
-    Drive *currentDrive = selected();
-    if (currentDrive && currentDrive->progress()) {
-        qreal progress = currentDrive->progress()->value();
-        qreal driveSize = currentDrive->size();
-        // Check if there's an active write or restore operation
-        currentDriveActive = (progress > 0 && progress < driveSize);
+    // Fix for issue #825: Only change selection if the currently selected drive is not busy
+    if (selected() && selected()->isBusy()) {
+        return;
     }
 
-    // Only auto-select the new drive if no operation is in progress
-    if (!currentDriveActive) {
-        if (m_provider->initialized()) {
-            m_selectedIndex = position;
-            emit selectedChanged();
-        } else {
-            m_selectedIndex = 0;
-            emit selectedChanged();
-        }
+    // Standard logic: Select the new drive if not busy
+    if (m_provider->initialized()) {
+        m_selectedIndex = position;
+        emit selectedChanged();
+    } else {
+        m_selectedIndex = 0;
+        emit selectedChanged();
     }
 
     if (d->restoreStatus() == Drive::CONTAINS_LIVE) {
@@ -303,6 +295,11 @@ bool Drive::delayedWrite() const
     return m_delayedWrite;
 }
 
+bool Drive::isBusy() const
+{
+    return m_isBusy;
+}
+
 void Drive::setDelayedWrite(const bool &o)
 {
     if (m_delayedWrite != o) {
@@ -343,6 +340,7 @@ void Drive::cancel()
     m_error = QString();
     m_restoreStatus = CLEAN;
     emit restoreStatusChanged();
+    m_isBusy = false;
 }
 
 bool Drive::operator==(const Drive &o) const

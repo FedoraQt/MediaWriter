@@ -87,6 +87,8 @@ bool MacDrive::write(ReleaseVariant *data)
     if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED || m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
         m_image->setStatus(ReleaseVariant::WRITING);
 
+    m_isBusy = true; // Set busy state
+
     if (m_child) {
         // TODO some handling of an already present process
         m_child->deleteLater();
@@ -138,6 +140,8 @@ void MacDrive::restore()
     if (m_child)
         m_child->deleteLater();
 
+    m_isBusy = true; // Set busy state
+
     m_child = new QProcess(this);
 
     m_restoreStatus = RESTORING;
@@ -172,6 +176,7 @@ void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
     Q_UNUSED(exitStatus)
 
     setDelayedWrite(false);
+    m_isBusy = false; // Operation complete
 
     if (!m_child)
         return;
@@ -196,6 +201,8 @@ void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
     if (!m_child)
         return;
+
+    m_isBusy = false; // Operation complete
 
     mCritical() << "Process finished" << exitCode << exitStatus;
     mCritical() << m_child->readAllStandardError();

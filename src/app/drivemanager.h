@@ -169,6 +169,7 @@ public:
     virtual qreal size() const;
     virtual RestoreStatus restoreStatus();
     virtual bool delayedWrite() const;
+    virtual bool isBusy() const;
 
     virtual void setDelayedWrite(const bool &o);
 
@@ -194,6 +195,7 @@ protected:
     RestoreStatus m_restoreStatus{CLEAN};
     QString m_error{};
     bool m_delayedWrite{false};
+    bool m_isBusy{false};
 };
 
 #endif // DRIVEMANAGER_H

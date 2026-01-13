@@ -129,6 +129,8 @@ bool WinDrive::write(ReleaseVariant *data)
     if (!Drive::write(data))
         return false;
 
+    m_isBusy = true; // Set busy state
+
     if (m_child) {
         // TODO some handling of an already present process
         m_child->deleteLater();
@@ -181,6 +183,8 @@ void WinDrive::restore()
     if (m_child)
         m_child->deleteLater();
 
+    m_isBusy = true; // Set busy state
+
     m_child = new QProcess(this);
 
     m_restoreStatus = RESTORING;
@@ -227,6 +231,7 @@ bool WinDrive::operator==(const WinDrive &o) const
 void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
     setDelayedWrite(false);
+    m_isBusy = false; // Operation complete
 
     if (!m_child)
         return;
@@ -254,6 +259,8 @@ void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
     if (!m_child) {
         return;
     }
+
+    m_isBusy = false; // Operation complete
 
     mCritical() << "Process finished" << exitCode << exitStatus;
     mCritical() << m_child->readAllStandardError();
