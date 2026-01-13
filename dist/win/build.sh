@@ -207,6 +207,13 @@ fi
 popd >/dev/null
 popd >/dev/null
 
+echo "=== Setting up NSIS plugins"
+mkdir -p "$SCRIPTDIR/plugins"
+curl -L -o NScurl.zip "https://github.com/negrutiu/nsis-nscurl/releases/download/v25.11.11.274/NScurl.zip"
+unzip -o NScurl.zip -d NScurl_temp
+cp NScurl_temp/Plugins/x86-unicode/NScurl.dll "$SCRIPTDIR/plugins/"
+rm -rf NScurl.zip NScurl_temp
+
 echo "=== Composing installer"
 unix2dos < "$ROOTPATH/LICENSE.GPL-2" > "$BUILDPATH/app/release/LICENSE.GPL-2.txt"
 unix2dos < "$ROOTPATH/LICENSE.LGPL-2" > "$BUILDPATH/app/release/LICENSE.LGPL-2.txt"
