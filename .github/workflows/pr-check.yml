@@ -3,7 +3,7 @@ name: pr-check
 on: [pull_request]
 
 env:
-    QT_VERSION: '6.9.3'
+    QT_VERSION: '6.10.1'
 
 jobs:
   Linux:
@@ -31,7 +31,7 @@ jobs:
   Flatpak:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.8
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.10
       options: --privileged
     steps:
       - uses: actions/checkout@v4
