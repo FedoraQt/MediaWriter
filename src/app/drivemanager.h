@@ -22,6 +22,7 @@
 
 #include <QAbstractListModel>
 #include <QDebug>
+#include <QProcess>
 
 #include "releasemanager.h"
 
@@ -195,7 +196,7 @@ protected:
     RestoreStatus m_restoreStatus{CLEAN};
     QString m_error{};
     bool m_delayedWrite{false};
-    bool m_isBusy{false};
+    QProcess *m_process{nullptr};
 };
 
 #endif // DRIVEMANAGER_H

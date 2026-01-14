@@ -297,7 +297,7 @@ bool Drive::delayedWrite() const
 
 bool Drive::isBusy() const
 {
-    return m_isBusy;
+    return m_process && m_process->state() != QProcess::NotRunning;
 }
 
 void Drive::setDelayedWrite(const bool &o)
@@ -340,7 +340,6 @@ void Drive::cancel()
     m_error = QString();
     m_restoreStatus = CLEAN;
     emit restoreStatusChanged();
-    m_isBusy = false;
 }
 
 bool Drive::operator==(const Drive &o) const

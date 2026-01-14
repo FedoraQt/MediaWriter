@@ -66,7 +66,6 @@ private slots:
 private:
     int m_device;
     QString m_serialNo;
-    QProcess *m_child{nullptr};
 };
 
 #endif // WINDRIVEMANAGER_H

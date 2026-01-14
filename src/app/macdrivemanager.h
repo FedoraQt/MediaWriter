@@ -60,7 +60,6 @@ private slots:
 
 private:
     QString m_bsdDevice;
-    QProcess *m_child{nullptr};
 };
 
 #endif // MACDRIVEMANAGER_H

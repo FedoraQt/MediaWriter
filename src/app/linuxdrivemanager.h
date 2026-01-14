@@ -76,8 +76,6 @@ private slots:
 
 private:
     QString m_device;
-
-    QProcess *m_process{nullptr};
 };
 
 #endif // LINUXDRIVEMANAGER_H
