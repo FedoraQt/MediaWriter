@@ -183,6 +183,21 @@ jobs:
           "/c/Program Files (x86)/NSIS/makensis.exe" -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
           mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64-${{ env.TAG_NAME }}.exe"
 
+      - name: Portable
+        shell: bash
+        run: |
+          # Remove uninstall.log as it's only needed for the installer
+          rm -f build/app/release/uninstall.log
+
+          mkdir -p FedoraMediaWriter-portable
+          cp -r build/app/release/* FedoraMediaWriter-portable/
+
+          7z a -tzip "FedoraMediaWriter-win64-portable-${{ env.TAG_NAME }}.zip" ./FedoraMediaWriter-portable/*
+
+      - name: Upload Portable to GitHub (release)
+        run: |
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-win64-portable-${{ env.TAG_NAME }}.zip"
+
       - name: Upload to GitHub (release)
         run: |
           bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-win64-${{ env.TAG_NAME }}.exe"
