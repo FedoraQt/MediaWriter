@@ -87,14 +87,11 @@ bool MacDrive::write(ReleaseVariant *data)
     if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED || m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
         m_image->setStatus(ReleaseVariant::WRITING);
 
-    if (m_process) {
-        // TODO some handling of an already present process
-        m_process->deleteLater();
-    }
-    m_process = new QProcess(this);
-    connect(m_process, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
-    connect(m_process, &QProcess::readyRead, this, &MacDrive::onReadyRead);
-    connect(qApp, &QCoreApplication::aboutToQuit, m_process, &QProcess::terminate);
+    // Create new process using unique_ptr
+    m_process.reset(new QProcess(this));
+    connect(m_process.get(), static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
+    connect(m_process.get(), &QProcess::readyRead, this, &MacDrive::onReadyRead);
+    connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
 
     if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
         m_process->setProgram(QString("%1/../../../../helper/mac/helper.app/Contents/MacOS/helper").arg(qApp->applicationDirPath()));
@@ -125,20 +122,16 @@ bool MacDrive::write(ReleaseVariant *data)
 void MacDrive::cancel()
 {
     Drive::cancel();
-    if (m_process) {
-        m_process->kill();
-        m_process->deleteLater();
-        m_process = nullptr;
-    }
+    // Reset the unique_ptr, which automatically invokes DriveOperationDeleter
+    m_process.reset();
 }
 
 void MacDrive::restore()
 {
     mCritical() << "starting to restore";
-    if (m_process)
-        m_process->deleteLater();
 
-    m_process = new QProcess(this);
+    // Create new process using unique_ptr
+    m_process.reset(new QProcess(this));
 
     m_restoreStatus = RESTORING;
     emit restoreStatusChanged();
@@ -159,8 +152,8 @@ void MacDrive::restore()
 
     m_process->setProcessChannelMode(QProcess::ForwardedChannels);
 
-    connect(m_process, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onRestoreFinished);
-    connect(qApp, &QCoreApplication::aboutToQuit, m_process, &QProcess::terminate);
+    connect(m_process.get(), static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onRestoreFinished);
+    connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
 
     mCritical() << "The command is" << m_process->program() << args;
 
@@ -206,8 +199,7 @@ void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
         m_restoreStatus = RESTORE_ERROR;
     emit restoreStatusChanged();
 
-    m_process->deleteLater();
-    m_process = nullptr;
+    // Process cleanup handled automatically by unique_ptr deleter
 }
 
 void MacDrive::onReadyRead()

@@ -23,6 +23,7 @@
 #include <QAbstractListModel>
 #include <QDebug>
 #include <QProcess>
+#include <memory>
 
 #include "releasemanager.h"
 
@@ -30,6 +31,34 @@ class DriveManager;
 class DriveProvider;
 class Drive;
 class UdisksDrive;
+
+/**
+ * @brief Custom deleter for QProcess to ensure proper cleanup
+ * 
+ * Handles platform-specific process termination before deletion
+ */
+struct DriveOperationDeleter {
+    void operator()(QProcess *process) {
+        if (!process) {
+            return;
+        }
+
+        if (process->state() != QProcess::NotRunning) {
+#ifdef Q_OS_WIN
+            process->kill();
+            process->waitForFinished();
+#else
+            process->terminate();
+            if (!process->waitForFinished(3000)) {
+                process->kill();
+                process->waitForFinished();
+            }
+#endif
+        }
+
+        delete process;
+    }
+};
 
 /**
  * @brief The DriveManager class
@@ -196,7 +225,7 @@ protected:
     RestoreStatus m_restoreStatus{CLEAN};
     QString m_error{};
     bool m_delayedWrite{false};
-    QProcess *m_process{nullptr};
+    std::unique_ptr<QProcess, DriveOperationDeleter> m_process;
 };
 
 #endif // DRIVEMANAGER_H

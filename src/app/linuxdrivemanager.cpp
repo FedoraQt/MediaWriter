@@ -210,8 +210,8 @@ bool LinuxDrive::write(ReleaseVariant *data)
     if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED || m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
         m_image->setStatus(ReleaseVariant::WRITING);
 
-    if (!m_process)
-        m_process = new QProcess(this);
+    // Create new process using unique_ptr
+    m_process.reset(new QProcess(this));
 
     QStringList args;
     if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper")) {
@@ -235,11 +235,11 @@ bool LinuxDrive::write(ReleaseVariant *data)
     mDebug() << this->metaObject()->className() << "Helper command will be" << args;
     m_process->setArguments(args);
 
-    connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
-    connect(m_process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onFinished(int, QProcess::ExitStatus)));
+    connect(m_process.get(), &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
+    connect(m_process.get(), SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onFinished(int, QProcess::ExitStatus)));
     // TODO check if this is actually necessary - it should work just fine even without it
-    connect(m_process, &QProcess::errorOccurred, this, &LinuxDrive::onErrorOccurred);
-    connect(qApp, &QCoreApplication::aboutToQuit, m_process, &QProcess::terminate);
+    connect(m_process.get(), &QProcess::errorOccurred, this, &LinuxDrive::onErrorOccurred);
+    connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
 
     m_process->start(QIODevice::ReadOnly);
 
@@ -250,7 +250,7 @@ void LinuxDrive::cancel()
 {
     Drive::cancel();
     static bool beingCancelled = false;
-    if (m_process != nullptr && !beingCancelled) {
+    if (m_process && !beingCancelled) {
         beingCancelled = true;
         if (m_image) {
             if (m_image->status() == ReleaseVariant::WRITE_VERIFYING) {
@@ -260,9 +260,8 @@ void LinuxDrive::cancel()
                 m_image->setStatus(ReleaseVariant::FAILED);
             }
         }
-        m_process->kill();
-        m_process->deleteLater();
-        m_process = nullptr;
+        // Reset the unique_ptr, which automatically invokes DriveOperationDeleter
+        m_process.reset();
         beingCancelled = false;
     }
 }
@@ -271,8 +270,8 @@ void LinuxDrive::restore()
 {
     mDebug() << this->metaObject()->className() << "Will now restore" << this->m_device;
 
-    if (!m_process)
-        m_process = new QProcess(this);
+    // Create new process using unique_ptr
+    m_process.reset(new QProcess(this));
 
     m_restoreStatus = RESTORING;
     emit restoreStatusChanged();
@@ -294,9 +293,9 @@ void LinuxDrive::restore()
     mDebug() << this->metaObject()->className() << "Helper command will be" << args;
     m_process->setArguments(args);
 
-    connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
-    connect(m_process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int, QProcess::ExitStatus)));
-    connect(qApp, &QCoreApplication::aboutToQuit, m_process, &QProcess::terminate);
+    connect(m_process.get(), &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
+    connect(m_process.get(), SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int, QProcess::ExitStatus)));
+    connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
 
     m_process->start(QIODevice::ReadOnly);
 }
@@ -353,11 +352,8 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status)
         }
     }
 
-    if (m_process) {
-        m_process->deleteLater();
-        m_process = nullptr;
-        m_image = nullptr;
-    }
+    // Process cleanup handled automatically by unique_ptr deleter
+    m_image = nullptr;
 }
 
 void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status)
@@ -373,10 +369,7 @@ void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status)
     } else {
         m_restoreStatus = RESTORED;
     }
-    if (m_process) {
-        m_process->deleteLater();
-        m_process = nullptr;
-    }
+    // Process cleanup handled automatically by unique_ptr deleter
     emit restoreStatusChanged();
 }
 
@@ -389,8 +382,7 @@ void LinuxDrive::onErrorOccurred(QProcess::ProcessError e)
     QString errorMessage = m_process->errorString();
     mWarning() << "Restoring failed:" << errorMessage;
     m_image->setErrorString(errorMessage);
-    m_process->deleteLater();
-    m_process = nullptr;
+    // Process cleanup handled automatically by unique_ptr deleter
     m_image->setStatus(ReleaseVariant::FAILED);
     m_image = nullptr;
 }

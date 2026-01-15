@@ -119,8 +119,7 @@ WinDrive::WinDrive(WinDriveProvider *parent, const QString &name, uint64_t size,
 
 WinDrive::~WinDrive()
 {
-    if (m_process)
-        m_process->terminate();
+    // Process cleanup is handled automatically by std::unique_ptr with DriveOperationDeleter
 }
 
 bool WinDrive::write(ReleaseVariant *data)
@@ -129,14 +128,11 @@ bool WinDrive::write(ReleaseVariant *data)
     if (!Drive::write(data))
         return false;
 
-    if (m_process) {
-        // TODO some handling of an already present process
-        m_process->deleteLater();
-    }
-    m_process = new QProcess(this);
-    connect(m_process, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &WinDrive::onFinished);
-    connect(m_process, &QProcess::readyRead, this, &WinDrive::onReadyRead);
-    connect(qApp, &QCoreApplication::aboutToQuit, m_process, &QProcess::terminate);
+    // Create new process using unique_ptr
+    m_process.reset(new QProcess(this));
+    connect(m_process.get(), static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &WinDrive::onFinished);
+    connect(m_process.get(), &QProcess::readyRead, this, &WinDrive::onReadyRead);
+    connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
 
     if (data->status() != ReleaseVariant::DOWNLOADING)
         m_image->setStatus(ReleaseVariant::WRITING);
@@ -168,20 +164,16 @@ bool WinDrive::write(ReleaseVariant *data)
 void WinDrive::cancel()
 {
     Drive::cancel();
-    if (m_process) {
-        m_process->terminate();
-        m_process->deleteLater();
-        m_process = nullptr;
-    }
+    // Reset the unique_ptr, which automatically invokes DriveOperationDeleter
+    m_process.reset();
 }
 
 void WinDrive::restore()
 {
     mDebug() << this->metaObject()->className() << "Preparing to restore disk" << m_device;
-    if (m_process)
-        m_process->deleteLater();
-
-    m_process = new QProcess(this);
+    
+    // Create new process using unique_ptr
+    m_process.reset(new QProcess(this));
 
     m_restoreStatus = RESTORING;
     emit restoreStatusChanged();
@@ -200,9 +192,9 @@ void WinDrive::restore()
     args << QString("%1").arg(m_device);
     m_process->setArguments(args);
 
-    // connect(m_process, &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
-    connect(m_process, SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int, QProcess::ExitStatus)));
-    connect(qApp, &QCoreApplication::aboutToQuit, m_process, &QProcess::terminate);
+    // connect(m_process.get(), &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
+    connect(m_process.get(), SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int, QProcess::ExitStatus)));
+    connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
 
     mDebug() << this->metaObject()->className() << "Starting" << m_process->program() << args;
 
@@ -245,8 +237,7 @@ void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
         m_image->setStatus(ReleaseVariant::FAILED);
     }
 
-    m_process->deleteLater();
-    m_process = nullptr;
+    // Process cleanup handled automatically by unique_ptr deleter
 }
 
 void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
@@ -265,8 +256,7 @@ void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
     }
     emit restoreStatusChanged();
 
-    m_process->deleteLater();
-    m_process = nullptr;
+    // Process cleanup handled automatically by unique_ptr deleter
 }
 
 void WinDrive::onReadyRead()
