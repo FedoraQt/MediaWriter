@@ -5,5 +5,6 @@ lupdate-qt6 ../src/app/qml.qrc ../src/app/*.cpp ../src/app/*.h ../src/helper/lin
 lconvert-qt6 -of po -o app.pot mediawriter.ts
 xgettext ../src/app/data/org.fedoraproject.MediaWriter.desktop -o desktop.pot
 itstool -i as-metainfo.its -o appstream.pot ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in
+./extract-nsis-strings.py ../dist/win/languages.nsh nsis.pot
 msgcat *.pot > mediawriter.pot
-rm app.pot appstream.pot desktop.pot
+rm app.pot appstream.pot desktop.pot nsis.pot
