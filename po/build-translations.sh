@@ -43,3 +43,6 @@ popd
 
 rm -rf desktop-file
 
+####### NSIS installer translations
+./generate-nsis-translations.py ../dist/win/languages.nsh . ../dist/win/languages.nsh
+
