@@ -162,7 +162,6 @@ void DriveManager::onDriveConnected(Drive *d)
         return;
     }
 
-    // Standard logic: Select the new drive if not busy
     if (m_provider->initialized()) {
         m_selectedIndex = position;
         emit selectedChanged();
@@ -340,6 +339,7 @@ void Drive::cancel()
     m_error = QString();
     m_restoreStatus = CLEAN;
     emit restoreStatusChanged();
+    m_process.reset();
 }
 
 bool Drive::operator==(const Drive &o) const

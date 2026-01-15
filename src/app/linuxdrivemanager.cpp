@@ -260,8 +260,6 @@ void LinuxDrive::cancel()
                 m_image->setStatus(ReleaseVariant::FAILED);
             }
         }
-        // Reset the unique_ptr, which automatically invokes DriveOperationDeleter
-        m_process.reset();
         beingCancelled = false;
     }
 }
@@ -270,7 +268,6 @@ void LinuxDrive::restore()
 {
     mDebug() << this->metaObject()->className() << "Will now restore" << this->m_device;
 
-    // Create new process using unique_ptr
     m_process.reset(new QProcess(this));
 
     m_restoreStatus = RESTORING;
@@ -352,7 +349,7 @@ void LinuxDrive::onFinished(int exitCode, QProcess::ExitStatus status)
         }
     }
 
-    // Process cleanup handled automatically by unique_ptr deleter
+    m_process.reset();
     m_image = nullptr;
 }
 
@@ -369,7 +366,7 @@ void LinuxDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus status)
     } else {
         m_restoreStatus = RESTORED;
     }
-    // Process cleanup handled automatically by unique_ptr deleter
+    m_process.reset();
     emit restoreStatusChanged();
 }
 
@@ -382,7 +379,7 @@ void LinuxDrive::onErrorOccurred(QProcess::ProcessError e)
     QString errorMessage = m_process->errorString();
     mWarning() << "Restoring failed:" << errorMessage;
     m_image->setErrorString(errorMessage);
-    // Process cleanup handled automatically by unique_ptr deleter
+    m_process.reset();
     m_image->setStatus(ReleaseVariant::FAILED);
     m_image = nullptr;
 }

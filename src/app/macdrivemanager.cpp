@@ -122,15 +122,12 @@ bool MacDrive::write(ReleaseVariant *data)
 void MacDrive::cancel()
 {
     Drive::cancel();
-    // Reset the unique_ptr, which automatically invokes DriveOperationDeleter
-    m_process.reset();
 }
 
 void MacDrive::restore()
 {
     mCritical() << "starting to restore";
 
-    // Create new process using unique_ptr
     m_process.reset(new QProcess(this));
 
     m_restoreStatus = RESTORING;
@@ -198,8 +195,6 @@ void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
     else
         m_restoreStatus = RESTORE_ERROR;
     emit restoreStatusChanged();
-
-    // Process cleanup handled automatically by unique_ptr deleter
 }
 
 void MacDrive::onReadyRead()

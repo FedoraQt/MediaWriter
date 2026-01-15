@@ -117,11 +117,6 @@ WinDrive::WinDrive(WinDriveProvider *parent, const QString &name, uint64_t size,
 {
 }
 
-WinDrive::~WinDrive()
-{
-    // Process cleanup is handled automatically by std::unique_ptr with DriveOperationDeleter
-}
-
 bool WinDrive::write(ReleaseVariant *data)
 {
     mDebug() << this->metaObject()->className() << "Preparing to write" << data->fullName() << "to drive" << m_device;
@@ -164,15 +159,12 @@ bool WinDrive::write(ReleaseVariant *data)
 void WinDrive::cancel()
 {
     Drive::cancel();
-    // Reset the unique_ptr, which automatically invokes DriveOperationDeleter
-    m_process.reset();
 }
 
 void WinDrive::restore()
 {
     mDebug() << this->metaObject()->className() << "Preparing to restore disk" << m_device;
     
-    // Create new process using unique_ptr
     m_process.reset(new QProcess(this));
 
     m_restoreStatus = RESTORING;
@@ -236,8 +228,6 @@ void WinDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
         m_image->setErrorString(tr("Writing has been cancelled"));
         m_image->setStatus(ReleaseVariant::FAILED);
     }
-
-    // Process cleanup handled automatically by unique_ptr deleter
 }
 
 void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
@@ -255,8 +245,6 @@ void WinDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
         m_restoreStatus = RESTORE_ERROR;
     }
     emit restoreStatusChanged();
-
-    // Process cleanup handled automatically by unique_ptr deleter
 }
 
 void WinDrive::onReadyRead()
