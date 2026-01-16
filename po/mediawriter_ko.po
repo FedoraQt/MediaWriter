@@ -6,11 +6,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-14 10:13+0200\n"
+"POT-Creation-Date: 2026-01-15 12:24+0100\n"
 "PO-Revision-Date: 2025-10-26 08:45+0000\n"
 "Last-Translator: 김인수 <simmon@nplob.com>\n"
-"Language-Team: Korean <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/ko/>\n"
+"Language-Team: Korean <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +66,8 @@ msgctxt "CancelDialog|"
 msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
-msgstr "내려받기와 미디어 쓰기가 중지됩니다. 이 작업은 다음에 언제든지 다시 진행 할 "
+msgstr ""
+"내려받기와 미디어 쓰기가 중지됩니다. 이 작업은 다음에 언제든지 다시 진행 할 "
 "수 있습니다."
 
 #: ../src/app/qml/CancelDialog.qml:68
@@ -117,7 +118,8 @@ msgctxt "DeviceWarningDialog|"
 msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
-msgstr "장치(%1) 전체가 지워지고 선택한 이미지가 해당 장치에 작성됩니다. 계속할까요?"
+msgstr ""
+"장치(%1) 전체가 지워지고 선택한 이미지가 해당 장치에 작성됩니다. 계속할까요?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 msgctxt "DeviceWarningDialog|"
@@ -507,12 +509,12 @@ msgctxt "MainPage|"
 msgid "About"
 msgstr "정보"
 
-#: ../src/app/qml/Page.qml:100
+#: ../src/app/qml/Page.qml:99
 msgctxt "Page|"
 msgid "Previous"
 msgstr "이전"
 
-#: ../src/app/qml/Page.qml:110
+#: ../src/app/qml/Page.qml:109
 msgctxt "Page|"
 msgid "Next"
 msgstr "다음"
@@ -562,98 +564,98 @@ msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
 msgstr "%1 바이트"
 
-#: ../src/app/releasemanager.cpp:419
+#: ../src/app/releasemanager.cpp:415
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "드라이브에서 파일 선택"
 
-#: ../src/app/releasemanager.cpp:420
+#: ../src/app/releasemanager.cpp:416
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
-"flash disk</p><p>Currently it is only supported to write raw disk images (."
-"iso or .bin)</p>"
+"flash disk</p><p>Currently it is only supported to write raw disk images "
+"(.iso or .bin)</p>"
 msgstr ""
 "<p>드라이브에서 이동식 디스크에 작성할 OS 이미지를 선택할 수 있습니다</p><p>"
 "현재 원시 디스크 이미지(.iso 또는 .bin)만 지원됩니다</p>"
 
-#: ../src/app/releasemanager.cpp:451
+#: ../src/app/releasemanager.cpp:447
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "페도라 스핀"
 
-#: ../src/app/releasemanager.cpp:453
+#: ../src/app/releasemanager.cpp:449
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "페도라 랩"
 
-#: ../src/app/releasemanager.cpp:455
+#: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
 msgstr "페도라 아토믹 데스크탑"
 
-#: ../src/app/releasemanager.cpp:457
+#: ../src/app/releasemanager.cpp:453
 msgctxt "Release|"
 msgid "Other"
 msgstr "기타"
 
-#: ../src/app/releasemanager.cpp:1103
+#: ../src/app/releasemanager.cpp:1099
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr "인텔/AMD 64비트"
 
-#: ../src/app/releasemanager.cpp:1103
+#: ../src/app/releasemanager.cpp:1099
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "Intel, AMD 및 기타 호환 PC용 ISO 포맷 이미지 (64비트)"
 
-#: ../src/app/releasemanager.cpp:1104
+#: ../src/app/releasemanager.cpp:1100
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr "인텔/AMD 32비트"
 
-#: ../src/app/releasemanager.cpp:1104
+#: ../src/app/releasemanager.cpp:1100
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "Intel, AMD 및 기타 호환 PC용 ISO 포맷 이미지 (32비트)"
 
-#: ../src/app/releasemanager.cpp:1105
+#: ../src/app/releasemanager.cpp:1101
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:1105
+#: ../src/app/releasemanager.cpp:1101
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr "Raspberry Pi 2 및 3 등의 ARM v7-A 머신을 위한 LZMA 압축 원시 이미지"
 
-#: ../src/app/releasemanager.cpp:1106
+#: ../src/app/releasemanager.cpp:1102
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1106
+#: ../src/app/releasemanager.cpp:1102
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "AArch64 장치용 LZMA 압축 원시 이미지"
 
-#: ../src/app/releasemanager.cpp:418
+#: ../src/app/releasemanager.cpp:414
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "사용자 정의 이미지"
 
-#: ../src/app/releasemanager.cpp:962 ../src/app/releasemanager.cpp:974
+#: ../src/app/releasemanager.cpp:958 ../src/app/releasemanager.cpp:970
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "내려받은 이미지가 손상되었습니다"
 
-#: ../src/app/releasemanager.cpp:978
+#: ../src/app/releasemanager.cpp:974
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "내려받은 파일을 읽을 수 없습니다."
 
-#: ../src/app/releasemanager.cpp:989
+#: ../src/app/releasemanager.cpp:985
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "임시 파일 명칭을 변경할 수 없습니다."
@@ -713,19 +715,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "오류"
 
-#: ../src/app/releasemanager.cpp:735
+#: ../src/app/releasemanager.cpp:731
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 알파"
 
-#: ../src/app/releasemanager.cpp:737
+#: ../src/app/releasemanager.cpp:733
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 베타"
 
-#: ../src/app/releasemanager.cpp:739
+#: ../src/app/releasemanager.cpp:735
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -829,8 +831,8 @@ msgstr ""
 "<p align=\"justify\">드라이브에 사용 가능한 모든 공간을 회수하려면, 공장 초기"
 "화로 복원해야 합니다. 라이브 시스템 및 저장된 모든 자료가 삭제됩니다. </p> "
 "<p align=\"justify\">다른 라이브 시스템을 드라이브에 작성하려는 경우 드라이브"
-"를 복원 할 필요가 없습니다.</p> <p align=\"justify\">초기 설정으로 복원할까요"
-"? </p>"
+"를 복원 할 필요가 없습니다.</p> <p align=\"justify\">초기 설정으로 복원할까"
+"요? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
@@ -1077,20 +1079,13 @@ msgctxt "main|"
 msgid "Restore"
 msgstr "복구"
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
-#. (itstool) path: application/name
-#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
-msgid "Fedora Media Writer"
-msgstr "페도라 미디어 작성기"
-
-#. (itstool) path: application/summary
-#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
+#. (itstool) path: component/summary
+#: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "A tool to create a live USB drive with an edition of Fedora"
 msgstr "페도라 배포판으로 실시간 USB 드라이브를 생성하는 도구"
 
 #. (itstool) path: description/p
-#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
+#: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:12
 msgid ""
 "A tool to create a bootable live USB drive with an edition of Fedora. Not "
 "only can Fedora Media Writer write an image to your flash drive, it can also "
@@ -1107,7 +1102,7 @@ msgstr ""
 "할 수 있도록 각 제품에 대한 기본 정보가 제공됩니다."
 
 #. (itstool) path: description/p
-#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
+#: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:13
 msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
@@ -1115,13 +1110,65 @@ msgstr ""
 "페도라 미디어 작성기는 사용자의 로컬 디스크의 다른 부팅 가능한 ISO에서도 쓸 "
 "수 있지만, 페도라 이미지만 시험되었으니 유의하시기 바랍니다."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
-msgid "Write Fedora images to your portable drives"
-msgstr "사용자의 이동식 드라이브에 페도라 이미지를 작성합니다"
+#: NSIS:AdminRightsRequired
+msgctxt "NSIS:AdminRightsRequired"
+msgid "Administrator rights required!"
+msgstr ""
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
-msgid "fmw;usb;iso;bootable;"
-msgstr "fmw;usb;iso;bootable;"
+#: NSIS:UninstallProgram
+msgctxt "NSIS:UninstallProgram"
+msgid "Do you want to uninstall ${APPNAME}?"
+msgstr ""
+
+#: NSIS:VCRedistDownloadFailed
+msgctxt "NSIS:VCRedistDownloadFailed"
+msgid ""
+"Failed to download Visual C++ Redistributable.\n"
+"\n"
+"Please check your internet connection and try again,\n"
+"or download it manually from:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
+msgstr ""
+
+#: NSIS:VCRedistDownloading
+msgctxt "NSIS:VCRedistDownloading"
+msgid "Downloading Microsoft Visual C++ Redistributable..."
+msgstr ""
+
+#: NSIS:VCRedistInstalling
+msgctxt "NSIS:VCRedistInstalling"
+msgid "Installing Microsoft Visual C++ Redistributable..."
+msgstr ""
+
+#: NSIS:VCRedistNotInstalled
+msgctxt "NSIS:VCRedistNotInstalled"
+msgid ""
+"Microsoft Visual C++ Redistributable is not installed on your system.\n"
+"\n"
+"It is required for ${APPNAME} to run properly.\n"
+"\n"
+"Would you like to download and install it now? (approximately 25 MB)"
+msgstr ""
+
+#: NSIS:VCRedistSkipped
+msgctxt "NSIS:VCRedistSkipped"
+msgid ""
+"You have chosen to skip the Visual C++ Redistributable installation.\n"
+"\n"
+"${APPNAME} may not work correctly without it.\n"
+"\n"
+"You can download it manually from:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
+msgstr ""
+
+#~ msgid "Fedora Media Writer"
+#~ msgstr "페도라 미디어 작성기"
+
+#~ msgid "Write Fedora images to your portable drives"
+#~ msgstr "사용자의 이동식 드라이브에 페도라 이미지를 작성합니다"
+
+#~ msgid "fmw;usb;iso;bootable;"
+#~ msgstr "fmw;usb;iso;bootable;"
 
 #~ msgctxt "main|"
 #~ msgid "Cancel"
@@ -2192,11 +2239,11 @@ msgstr "fmw;usb;iso;bootable;"
 #~ msgstr "스핀"
 
 #~ msgid ""
-#~ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-lxde."
-#~ "jpg"
+#~ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-"
+#~ "lxde.jpg"
 #~ msgstr ""
-#~ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-lxde."
-#~ "jpg"
+#~ "https://spins.fedoraproject.org/static/images/screenshots/screenshot-"
+#~ "lxde.jpg"
 
 #~ msgctxt "[9].category"
 #~ msgid "spins"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-14 10:13+0200\n"
+"POT-Creation-Date: 2026-01-15 12:24+0100\n"
 "PO-Revision-Date: 2025-11-30 04:10+0000\n"
 "Last-Translator: Khoa Le <inctenone@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.fedoraproject.org/projects/"
@@ -77,7 +77,8 @@ msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr "Quá trình ghi sẽ bị hủy và ổ đĩa của bạn sẽ phải được khôi phục sau đó."
+msgstr ""
+"Quá trình ghi sẽ bị hủy và ổ đĩa của bạn sẽ phải được khôi phục sau đó."
 
 #: ../src/app/qml/CancelDialog.qml:70
 msgctxt "CancelDialog|"
@@ -510,12 +511,12 @@ msgctxt "MainPage|"
 msgid "About"
 msgstr "Thông tin"
 
-#: ../src/app/qml/Page.qml:100
+#: ../src/app/qml/Page.qml:99
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Quay lại"
 
-#: ../src/app/qml/Page.qml:110
+#: ../src/app/qml/Page.qml:109
 msgctxt "Page|"
 msgid "Next"
 msgstr "Tiếp tục"
@@ -565,98 +566,98 @@ msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
 msgstr "%1 byte"
 
-#: ../src/app/releasemanager.cpp:419
+#: ../src/app/releasemanager.cpp:415
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "Chọn tệp từ ổ đĩa"
 
-#: ../src/app/releasemanager.cpp:420
+#: ../src/app/releasemanager.cpp:416
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
-"flash disk</p><p>Currently it is only supported to write raw disk images (."
-"iso or .bin)</p>"
+"flash disk</p><p>Currently it is only supported to write raw disk images "
+"(.iso or .bin)</p>"
 msgstr ""
 "<p>Tại đây, bạn chọn ảnh OS từ ổ đĩa cứng để ghi vào ổ flash.</p><p>Hiện "
 "tại, chỉ hỗ trợ ghi ảnh đĩa thô (.iso hoặc .bin).</p>"
 
-#: ../src/app/releasemanager.cpp:451
+#: ../src/app/releasemanager.cpp:447
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Phiên bản Fedora"
 
-#: ../src/app/releasemanager.cpp:453
+#: ../src/app/releasemanager.cpp:449
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Phòng thí nghiệm Fedora"
 
-#: ../src/app/releasemanager.cpp:455
+#: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
 msgstr "Fedora Desktop Nguyên tử"
 
-#: ../src/app/releasemanager.cpp:457
+#: ../src/app/releasemanager.cpp:453
 msgctxt "Release|"
 msgid "Other"
 msgstr "Khác"
 
-#: ../src/app/releasemanager.cpp:1103
+#: ../src/app/releasemanager.cpp:1099
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr "Intel/AMD 64bit"
 
-#: ../src/app/releasemanager.cpp:1103
+#: ../src/app/releasemanager.cpp:1099
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "Ảnh ISO cho PC Intel, AMD và tương thích (64-bit)"
 
-#: ../src/app/releasemanager.cpp:1104
+#: ../src/app/releasemanager.cpp:1100
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr "Intel/AMD 32bit"
 
-#: ../src/app/releasemanager.cpp:1104
+#: ../src/app/releasemanager.cpp:1100
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "Ảnh ISO cho PC Intel, AMD và tương thích (32-bit)"
 
-#: ../src/app/releasemanager.cpp:1105
+#: ../src/app/releasemanager.cpp:1101
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:1105
+#: ../src/app/releasemanager.cpp:1101
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr "Ảnh thô nén LZMA cho máy ARM v7-A, như Raspberry Pi 2 và 3"
 
-#: ../src/app/releasemanager.cpp:1106
+#: ../src/app/releasemanager.cpp:1102
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1106
+#: ../src/app/releasemanager.cpp:1102
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "Ảnh thô nén LZMA cho máy AArch64"
 
-#: ../src/app/releasemanager.cpp:418
+#: ../src/app/releasemanager.cpp:414
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "Ảnh tùy chỉnh"
 
-#: ../src/app/releasemanager.cpp:962 ../src/app/releasemanager.cpp:974
+#: ../src/app/releasemanager.cpp:958 ../src/app/releasemanager.cpp:970
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "Ảnh tải về bị hỏng"
 
-#: ../src/app/releasemanager.cpp:978
+#: ../src/app/releasemanager.cpp:974
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "Tệp tải về không đọc được."
 
-#: ../src/app/releasemanager.cpp:989
+#: ../src/app/releasemanager.cpp:985
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "Không thể đổi tên tệp tạm thời."
@@ -716,19 +717,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "Lỗi"
 
-#: ../src/app/releasemanager.cpp:735
+#: ../src/app/releasemanager.cpp:731
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../src/app/releasemanager.cpp:737
+#: ../src/app/releasemanager.cpp:733
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:739
+#: ../src/app/releasemanager.cpp:735
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -1080,20 +1081,13 @@ msgctxt "main|"
 msgid "Restore"
 msgstr "Khôi phục"
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
-#. (itstool) path: application/name
-#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
-msgid "Fedora Media Writer"
-msgstr "Fedora Media Writer"
-
-#. (itstool) path: application/summary
-#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
+#. (itstool) path: component/summary
+#: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "A tool to create a live USB drive with an edition of Fedora"
 msgstr "Công cụ để tạo USB cài đặt trực tiếp với một phiên bản của Fedora"
 
 #. (itstool) path: description/p
-#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
+#: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:12
 msgid ""
 "A tool to create a bootable live USB drive with an edition of Fedora. Not "
 "only can Fedora Media Writer write an image to your flash drive, it can also "
@@ -1105,13 +1099,13 @@ msgstr ""
 "Một công cụ để tạo USB khởi động trực tiếp với một phiên bản của Fedora. "
 "Không chỉ giúp ghi ảnh hệ điều hành vào USB của bạn, Fedora Media Writer còn "
 "có thể tải ảnh đó về giúp bạn. Công cụ cung cấp các phiên bản chính thức "
-"(Server, Workstation), các bản Fedora spins "
-"(KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...) và Fedora Labs "
-"(Design Suite, Security Lab,...). Nó cũng cung cấp thông tin cơ bản về từng "
-"phiên bản để giúp bạn lựa chọn phù hợp."
+"(Server, Workstation), các bản Fedora spins (KDE Plasma Desktop, Xfce "
+"Desktop, Cinnamon Desktop,...) và Fedora Labs (Design Suite, Security "
+"Lab,...). Nó cũng cung cấp thông tin cơ bản về từng phiên bản để giúp bạn "
+"lựa chọn phù hợp."
 
 #. (itstool) path: description/p
-#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
+#: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:13
 msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
@@ -1120,10 +1114,62 @@ msgstr ""
 "bộ của bạn, nhưng lưu ý rằng công cụ chỉ được kiểm tra và đảm bảo hoạt động "
 "tốt với các bản Fedora."
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
-msgid "Write Fedora images to your portable drives"
-msgstr "Ghi các ảnh Fedora lên thiết bị lưu trữ di động của bạn"
+#: NSIS:AdminRightsRequired
+msgctxt "NSIS:AdminRightsRequired"
+msgid "Administrator rights required!"
+msgstr ""
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
-msgid "fmw;usb;iso;bootable;"
-msgstr "fmw;usb;iso;bootable;"
+#: NSIS:UninstallProgram
+msgctxt "NSIS:UninstallProgram"
+msgid "Do you want to uninstall ${APPNAME}?"
+msgstr ""
+
+#: NSIS:VCRedistDownloadFailed
+msgctxt "NSIS:VCRedistDownloadFailed"
+msgid ""
+"Failed to download Visual C++ Redistributable.\n"
+"\n"
+"Please check your internet connection and try again,\n"
+"or download it manually from:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
+msgstr ""
+
+#: NSIS:VCRedistDownloading
+msgctxt "NSIS:VCRedistDownloading"
+msgid "Downloading Microsoft Visual C++ Redistributable..."
+msgstr ""
+
+#: NSIS:VCRedistInstalling
+msgctxt "NSIS:VCRedistInstalling"
+msgid "Installing Microsoft Visual C++ Redistributable..."
+msgstr ""
+
+#: NSIS:VCRedistNotInstalled
+msgctxt "NSIS:VCRedistNotInstalled"
+msgid ""
+"Microsoft Visual C++ Redistributable is not installed on your system.\n"
+"\n"
+"It is required for ${APPNAME} to run properly.\n"
+"\n"
+"Would you like to download and install it now? (approximately 25 MB)"
+msgstr ""
+
+#: NSIS:VCRedistSkipped
+msgctxt "NSIS:VCRedistSkipped"
+msgid ""
+"You have chosen to skip the Visual C++ Redistributable installation.\n"
+"\n"
+"${APPNAME} may not work correctly without it.\n"
+"\n"
+"You can download it manually from:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
+msgstr ""
+
+#~ msgid "Fedora Media Writer"
+#~ msgstr "Fedora Media Writer"
+
+#~ msgid "Write Fedora images to your portable drives"
+#~ msgstr "Ghi các ảnh Fedora lên thiết bị lưu trữ di động của bạn"
+
+#~ msgid "fmw;usb;iso;bootable;"
+#~ msgstr "fmw;usb;iso;bootable;"

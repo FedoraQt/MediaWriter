@@ -6,11 +6,11 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-14 10:13+0200\n"
+"POT-Creation-Date: 2026-01-15 12:24+0100\n"
 "PO-Revision-Date: 2025-07-25 20:43+0000\n"
 "Last-Translator: Hiroto Yamanaka <bhyg756@protonmail.com>\n"
-"Language-Team: Japanese <https://translate.fedoraproject.org/projects/"
-"fedora-media-writer/mediawriter/ja/>\n"
+"Language-Team: Japanese <https://translate.fedoraproject.org/projects/fedora-"
+"media-writer/mediawriter/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +66,8 @@ msgctxt "CancelDialog|"
 msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
-msgstr "ダウンロードとメディアへの書き込みは中断されます。処理は後ほど継続できます。"
+msgstr ""
+"ダウンロードとメディアへの書き込みは中断されます。処理は後ほど継続できます。"
 
 #: ../src/app/qml/CancelDialog.qml:68
 msgctxt "CancelDialog|"
@@ -117,8 +118,9 @@ msgctxt "DeviceWarningDialog|"
 msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
-msgstr "デバイス全体（%1 "
-"のすべて）が消去され、選択されたイメージが書き込まれます。続行しますか？"
+msgstr ""
+"デバイス全体（%1 のすべて）が消去され、選択されたイメージが書き込まれます。続"
+"行しますか？"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
 #, fuzzy
@@ -305,9 +307,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"お使いの環境またはデバイスはFedora Media "
-"Writerでサポートされていません。Fedoraとブートメディアの作成に関する要件につ"
-"いて、詳しくは<a href=%1>こちらのページ</a>をご確認ください。"
+"お使いの環境またはデバイスはFedora Media Writerでサポートされていません。"
+"Fedoraとブートメディアの作成に関する要件について、詳しくは<a href=%1>こちらの"
+"ページ</a>をご確認ください。"
 
 #: ../src/app/qml/DownloadPage.qml:160
 #, qt-format
@@ -315,8 +317,9 @@ msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
-msgstr "選択したメディアのサイズは %1 です。 "
-"誤って外付けドライブを選択した可能性があります!"
+msgstr ""
+"選択したメディアのサイズは %1 です。 誤って外付けドライブを選択した可能性があ"
+"ります!"
 
 #: ../src/app/qml/DownloadPage.qml:168
 #, qt-format
@@ -544,7 +547,7 @@ msgctxt "MainPage|"
 msgid "About"
 msgstr "このアプリケーションについて"
 
-#: ../src/app/qml/Page.qml:100
+#: ../src/app/qml/Page.qml:99
 #, fuzzy
 #| msgctxt "main|"
 #| msgid "Previous"
@@ -552,7 +555,7 @@ msgctxt "Page|"
 msgid "Previous"
 msgstr "前へ"
 
-#: ../src/app/qml/Page.qml:110
+#: ../src/app/qml/Page.qml:109
 #, fuzzy
 #| msgctxt "main|"
 #| msgid "Next"
@@ -605,100 +608,100 @@ msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
 msgstr ""
 
-#: ../src/app/releasemanager.cpp:419
+#: ../src/app/releasemanager.cpp:415
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
 msgstr "記録デバイスからファイルを選択"
 
-#: ../src/app/releasemanager.cpp:420
+#: ../src/app/releasemanager.cpp:416
 msgctxt "Release|"
 msgid ""
 "<p>Here you can choose a OS image from your hard drive to be written to your "
-"flash disk</p><p>Currently it is only supported to write raw disk images (."
-"iso or .bin)</p>"
+"flash disk</p><p>Currently it is only supported to write raw disk images "
+"(.iso or .bin)</p>"
 msgstr ""
 "<p>ハードディスク上のOSイメージを選択頂き、USBメモリーもしくはSDカードに書き"
-"込むことができます。</p><p>現在のところ無圧縮のディスクイメージ(.isoもしくは."
-"bin)をサポートしています</p>"
+"込むことができます。</p><p>現在のところ無圧縮のディスクイメージ(.isoもしく"
+"は.bin)をサポートしています</p>"
 
-#: ../src/app/releasemanager.cpp:451
+#: ../src/app/releasemanager.cpp:447
 msgctxt "Release|"
 msgid "Fedora Spins"
 msgstr "Fedora Spins"
 
-#: ../src/app/releasemanager.cpp:453
+#: ../src/app/releasemanager.cpp:449
 msgctxt "Release|"
 msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
-#: ../src/app/releasemanager.cpp:455
+#: ../src/app/releasemanager.cpp:451
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
 msgstr "Fedora アトミックデスクトップ"
 
-#: ../src/app/releasemanager.cpp:457
+#: ../src/app/releasemanager.cpp:453
 msgctxt "Release|"
 msgid "Other"
 msgstr "その他"
 
-#: ../src/app/releasemanager.cpp:1103
+#: ../src/app/releasemanager.cpp:1099
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
 msgstr "Intel/AMD 64bit"
 
-#: ../src/app/releasemanager.cpp:1103
+#: ../src/app/releasemanager.cpp:1099
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr "Intel/AMDおよび互換PC(64bit)向けのISO形式イメージ"
 
-#: ../src/app/releasemanager.cpp:1104
+#: ../src/app/releasemanager.cpp:1100
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
 msgstr "Intel/AMD 32bit"
 
-#: ../src/app/releasemanager.cpp:1104
+#: ../src/app/releasemanager.cpp:1100
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr "Intel/AMDおよびその他の互換性PC用のISO形式イメージ(32ビット)"
 
-#: ../src/app/releasemanager.cpp:1105
+#: ../src/app/releasemanager.cpp:1101
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
 msgstr "ARM v7"
 
-#: ../src/app/releasemanager.cpp:1105
+#: ../src/app/releasemanager.cpp:1101
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
 "LZMA圧縮RAWイメージはRaspberry Pi2/Pi3などのARM v7-Aマシン向けイメージです"
 
-#: ../src/app/releasemanager.cpp:1106
+#: ../src/app/releasemanager.cpp:1102
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
 msgstr "AArch64"
 
-#: ../src/app/releasemanager.cpp:1106
+#: ../src/app/releasemanager.cpp:1102
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
 msgstr "LZMA圧縮されたRAWイメージはAArch64向けのものです"
 
-#: ../src/app/releasemanager.cpp:418
+#: ../src/app/releasemanager.cpp:414
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
 msgstr "カスタムイメージ"
 
-#: ../src/app/releasemanager.cpp:962 ../src/app/releasemanager.cpp:974
+#: ../src/app/releasemanager.cpp:958 ../src/app/releasemanager.cpp:970
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
 msgstr "ダウンロードしたイメージが壊れています"
 
-#: ../src/app/releasemanager.cpp:978
+#: ../src/app/releasemanager.cpp:974
 msgctxt "ReleaseVariant|"
 msgid "The downloaded file is not readable."
 msgstr "ダウンロードしたファイルが読み込みできません。"
 
-#: ../src/app/releasemanager.cpp:989
+#: ../src/app/releasemanager.cpp:985
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
 msgstr "一時的作業ファイルをリネームできません。"
@@ -760,19 +763,19 @@ msgctxt "ReleaseVariant|"
 msgid "Error"
 msgstr "エラー"
 
-#: ../src/app/releasemanager.cpp:735
+#: ../src/app/releasemanager.cpp:731
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Alpha"
 msgstr "%1 Alpha"
 
-#: ../src/app/releasemanager.cpp:737
+#: ../src/app/releasemanager.cpp:733
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Beta"
 msgstr "%1 Beta"
 
-#: ../src/app/releasemanager.cpp:739
+#: ../src/app/releasemanager.cpp:735
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
@@ -1194,23 +1197,13 @@ msgctxt "main|"
 msgid "Restore"
 msgstr "復元する"
 
-#. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
-#. (itstool) path: application/name
-#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:8
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:4
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
-msgid "Fedora Media Writer"
-msgstr "Fedora Media Writer について"
-
-#. (itstool) path: application/summary
-#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:9
+#. (itstool) path: component/summary
+#: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "A tool to create a live USB drive with an edition of Fedora"
 msgstr "Fedoraの特定のエディションのLive USBドライブを作成できるツールです"
 
 #. (itstool) path: description/p
-#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:11
+#: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:12
 msgid ""
 "A tool to create a bootable live USB drive with an edition of Fedora. Not "
 "only can Fedora Media Writer write an image to your flash drive, it can also "
@@ -1227,7 +1220,7 @@ msgstr ""
 "るように、それぞれについての基本的な情報を提供します。"
 
 #. (itstool) path: description/p
-#: ../src/app/data/org.fedoraproject.MediaWriter.appdata.xml.in:12
+#: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:13
 msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
@@ -1236,13 +1229,68 @@ msgstr ""
 "ジを書き込むこともできますが、このツールはFedoraイメージでのみテストされてい"
 "ることに注意してください。"
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:43
-msgid "Write Fedora images to your portable drives"
-msgstr "Fedoraイメージをお使いのポータブルメディアに書き込みます"
+#: NSIS:AdminRightsRequired
+msgctxt "NSIS:AdminRightsRequired"
+msgid "Administrator rights required!"
+msgstr ""
 
-#: ../src/app/data/org.fedoraproject.MediaWriter.desktop:87
-msgid "fmw;usb;iso;bootable;"
-msgstr "fmw;usb;iso;bootable;"
+#: NSIS:UninstallProgram
+msgctxt "NSIS:UninstallProgram"
+msgid "Do you want to uninstall ${APPNAME}?"
+msgstr ""
+
+#: NSIS:VCRedistDownloadFailed
+msgctxt "NSIS:VCRedistDownloadFailed"
+msgid ""
+"Failed to download Visual C++ Redistributable.\n"
+"\n"
+"Please check your internet connection and try again,\n"
+"or download it manually from:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
+msgstr ""
+
+#: NSIS:VCRedistDownloading
+msgctxt "NSIS:VCRedistDownloading"
+msgid "Downloading Microsoft Visual C++ Redistributable..."
+msgstr ""
+
+#: NSIS:VCRedistInstalling
+msgctxt "NSIS:VCRedistInstalling"
+msgid "Installing Microsoft Visual C++ Redistributable..."
+msgstr ""
+
+#: NSIS:VCRedistNotInstalled
+msgctxt "NSIS:VCRedistNotInstalled"
+msgid ""
+"Microsoft Visual C++ Redistributable is not installed on your system.\n"
+"\n"
+"It is required for ${APPNAME} to run properly.\n"
+"\n"
+"Would you like to download and install it now? (approximately 25 MB)"
+msgstr ""
+
+#: NSIS:VCRedistSkipped
+msgctxt "NSIS:VCRedistSkipped"
+msgid ""
+"You have chosen to skip the Visual C++ Redistributable installation.\n"
+"\n"
+"${APPNAME} may not work correctly without it.\n"
+"\n"
+"You can download it manually from:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
+msgstr ""
+
+#, fuzzy
+#~| msgctxt "ImageList|"
+#~| msgid "About Fedora Media Writer"
+#~ msgid "Fedora Media Writer"
+#~ msgstr "Fedora Media Writer について"
+
+#~ msgid "Write Fedora images to your portable drives"
+#~ msgstr "Fedoraイメージをお使いのポータブルメディアに書き込みます"
+
+#~ msgid "fmw;usb;iso;bootable;"
+#~ msgstr "fmw;usb;iso;bootable;"
 
 #, fuzzy
 #~| msgctxt "DownloadDialog|"
