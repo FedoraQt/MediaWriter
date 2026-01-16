@@ -1,7 +1,12 @@
 !include "MUI2.nsh"
 !include "nsDialogs.nsh"
+!include "FileFunc.nsh"
 
 !addplugindir "plugins"
+
+; Make parameter functions available in uninstaller
+!insertmacro GetParameters
+!insertmacro GetOptions
 
 ManifestDPIAware true
 XPStyle on
@@ -239,7 +244,10 @@ functionEnd
 
 section "install"
         ; Uninstall previous version when installing to same directory
-        ExecWait '"$INSTDIR\uninstall.exe" /S _?=$INSTDIR'
+        IfFileExists "$INSTDIR\uninstall.exe" 0 skip_uninstall
+                DetailPrint "$(UninstallPreviousVersion)"
+                ExecWait '"$INSTDIR\uninstall.exe" /S /UPGRADE _?=$INSTDIR'
+        skip_uninstall:
 
         # Files for the install directory - to build the installer, these should be in the same directory as the install script (this file)
         SetOutPath $INSTDIR
@@ -284,10 +292,30 @@ sectionEnd
     function un.onInit
         SetShellVarContext all
 
-        #Verify the uninstaller - last chance to back out
+        ; Check if running in silent mode
+        ${GetParameters} $R0
+        ${GetOptions} $R0 "/S" $R1
+        IfErrors not_silent
+
+        ; Silent mode - check if it's an upgrade
+        ${GetOptions} $R0 "/UPGRADE" $R1
+        IfErrors silent_not_upgrade
+
+        ; Silent upgrade - just show detail message and continue
+        DetailPrint "$(UninstallPreviousVersion)"
+        Goto skip_confirmation
+
+        silent_not_upgrade:
+        ; Silent uninstall (not upgrade) - just continue
+        Goto skip_confirmation
+
+        not_silent:
+        ; Interactive mode - verify with user
         MessageBox MB_OKCANCEL "$(UninstallProgram)" IDOK next
                 Abort
         next:
+
+        skip_confirmation:
         !insertmacro VerifyUserIsAdmin
     functionEnd
 
