@@ -51,7 +51,7 @@ ApplicationWindow {
             Heading {
                 level: 2
                 text: {
-                    if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                    if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying || releases.variant.status === Units.DownloadStatus.Paused)
                         qsTr("Cancel Download?")
                     else if (releases.variant.status == Units.DownloadStatus.Writing) 
                         qsTr("Cancel Writing?")
@@ -62,7 +62,7 @@ ApplicationWindow {
             
             Label {
                 text: {
-                    if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                    if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying || releases.variant.status === Units.DownloadStatus.Paused)
                         qsTr("Download and media writing will be aborted. This process can be resumed any time later.")
                     else if (releases.variant.status == Units.DownloadStatus.Writing) 
                         qsTr("Writing process will be aborted and your drive will have to be restored afterwards.")
