@@ -202,7 +202,7 @@ bool LinuxDrive::write(ReleaseVariant *data)
     if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED || m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
         m_image->setStatus(ReleaseVariant::WRITING);
 
-    m_process = std::make_unique<QProcess>(this);
+    m_process.reset(new QProcess(this));
 
     QStringList args;
     if (QFile::exists(qApp->applicationDirPath() + "/../helper/linux/helper")) {
@@ -240,7 +240,7 @@ void LinuxDrive::restore()
 {
     mDebug() << this->metaObject()->className() << "Will now restore" << this->m_device;
 
-    m_process = std::make_unique<QProcess>(this);
+    m_process.reset(new QProcess(this));
 
     m_restoreStatus = RESTORING;
     emit restoreStatusChanged();

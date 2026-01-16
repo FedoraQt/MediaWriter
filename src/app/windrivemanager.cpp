@@ -122,7 +122,7 @@ bool WinDrive::write(ReleaseVariant *data)
     if (!Drive::write(data))
         return false;
 
-    m_process = std::make_unique<QProcess>(this);
+    m_process.reset(new QProcess(this));
     connect(m_process.get(), static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &WinDrive::onFinished);
     connect(m_process.get(), &QProcess::readyRead, this, &WinDrive::onReadyRead);
     connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
@@ -158,7 +158,7 @@ void WinDrive::restore()
 {
     mDebug() << this->metaObject()->className() << "Preparing to restore disk" << m_device;
 
-    m_process = std::make_unique<QProcess>(this);
+    m_process.reset(new QProcess(this));
 
     m_restoreStatus = RESTORING;
     emit restoreStatusChanged();
