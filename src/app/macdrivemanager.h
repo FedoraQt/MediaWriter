@@ -51,7 +51,6 @@ public:
     MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive, const QString &bsdDevice);
 
     Q_INVOKABLE virtual bool write(ReleaseVariant *data) override;
-    Q_INVOKABLE virtual void cancel() override;
     Q_INVOKABLE virtual void restore() override;
 private slots:
     void onFinished(int exitCode, QProcess::ExitStatus exitStatus);

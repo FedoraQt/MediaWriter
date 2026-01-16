@@ -99,7 +99,6 @@ void WinDriveProvider::checkDrives()
         driveIndexes.removeAll(it.key());
     }
 
-    // Remove our previously stored drives that were not present in the last check
     for (int index : driveIndexes) {
         mDebug() << "Removing old drive with index" << index;
         emit driveRemoved(m_drives[index]);
@@ -123,8 +122,7 @@ bool WinDrive::write(ReleaseVariant *data)
     if (!Drive::write(data))
         return false;
 
-    // Create new process using unique_ptr
-    m_process.reset(new QProcess(this));
+    m_process = std::make_unique<QProcess>(this);
     connect(m_process.get(), static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &WinDrive::onFinished);
     connect(m_process.get(), &QProcess::readyRead, this, &WinDrive::onReadyRead);
     connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
@@ -156,16 +154,11 @@ bool WinDrive::write(ReleaseVariant *data)
     return true;
 }
 
-void WinDrive::cancel()
-{
-    Drive::cancel();
-}
-
 void WinDrive::restore()
 {
     mDebug() << this->metaObject()->className() << "Preparing to restore disk" << m_device;
-    
-    m_process.reset(new QProcess(this));
+
+    m_process = std::make_unique<QProcess>(this);
 
     m_restoreStatus = RESTORING;
     emit restoreStatusChanged();
@@ -184,7 +177,6 @@ void WinDrive::restore()
     args << QString("%1").arg(m_device);
     m_process->setArguments(args);
 
-    // connect(m_process.get(), &QProcess::readyRead, this, &LinuxDrive::onReadyRead);
     connect(m_process.get(), SIGNAL(finished(int, QProcess::ExitStatus)), this, SLOT(onRestoreFinished(int, QProcess::ExitStatus)));
     connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
 

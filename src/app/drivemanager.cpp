@@ -157,7 +157,6 @@ void DriveManager::onDriveConnected(Drive *d)
     endInsertRows();
     emit drivesChanged();
 
-    // Fix for issue #825: Only change selection if the currently selected drive is not busy
     if (selected() && selected()->isBusy()) {
         return;
     }

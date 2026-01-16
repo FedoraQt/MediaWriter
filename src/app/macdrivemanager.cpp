@@ -87,8 +87,7 @@ bool MacDrive::write(ReleaseVariant *data)
     if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED || m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
         m_image->setStatus(ReleaseVariant::WRITING);
 
-    // Create new process using unique_ptr
-    m_process.reset(new QProcess(this));
+    m_process = std::make_unique<QProcess>(this);
     connect(m_process.get(), static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
     connect(m_process.get(), &QProcess::readyRead, this, &MacDrive::onReadyRead);
     connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
@@ -119,16 +118,11 @@ bool MacDrive::write(ReleaseVariant *data)
     return true;
 }
 
-void MacDrive::cancel()
-{
-    Drive::cancel();
-}
-
 void MacDrive::restore()
 {
     mCritical() << "starting to restore";
 
-    m_process.reset(new QProcess(this));
+    m_process = std::make_unique<QProcess>(this);
 
     m_restoreStatus = RESTORING;
     emit restoreStatusChanged();
