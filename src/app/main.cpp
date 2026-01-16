@@ -64,6 +64,7 @@ int main(int argc, char **argv)
 
     engine.rootContext()->setContextProperty("downloadManager", DownloadManager::instance());
     engine.rootContext()->setContextProperty("drives", DriveManager::instance());
+    engine.rootContext()->setContextProperty("restoreableDrives", new RestoreableDriveManager());
     engine.rootContext()->setContextProperty("portalFileDialog", new PortalFileDialog(&app));
     engine.rootContext()->setContextProperty("mediawriterVersion", MEDIAWRITER_VERSION);
     engine.rootContext()->setContextProperty("releases", new ReleaseManager());

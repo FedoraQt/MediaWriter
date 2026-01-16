@@ -343,3 +343,178 @@ void Drive::setRestoreStatus(Drive::RestoreStatus o)
         emit restoreStatusChanged();
     }
 }
+
+RestoreableDriveManager::RestoreableDriveManager(QObject *parent)
+    : QSortFilterProxyModel(parent)
+{
+    setSourceModel(DriveManager::instance());
+
+    connect(DriveManager::instance(), &DriveManager::drivesChanged, this, &RestoreableDriveManager::onSourceModelChanged);
+
+    // Connect to existing drives
+    connectToDrives();
+
+    if (rowCount() > 0) {
+        m_selectedIndex = 0;
+    }
+}
+
+void RestoreableDriveManager::connectToDrives()
+{
+    DriveManager *dm = DriveManager::instance();
+    for (int i = 0; i < dm->rowCount(); i++) {
+        QModelIndex idx = dm->index(i, 0);
+        Drive *drive = qvariant_cast<Drive *>(dm->data(idx, Qt::UserRole + 1));
+        if (drive) {
+            // Use unique connection to avoid duplicates
+            connect(drive, &Drive::restoreStatusChanged, this, &RestoreableDriveManager::onDriveRestoreStatusChanged, Qt::UniqueConnection);
+        }
+    }
+}
+
+void RestoreableDriveManager::onDriveRestoreStatusChanged()
+{
+    // Store the previously selected drive
+    Drive *previouslySelected = selected();
+
+    // Invalidate filter to update which drives are shown
+    invalidateFilter();
+    emit lengthChanged();
+
+    // Check if the previously selected drive is still in the filtered list
+    if (previouslySelected) {
+        bool stillInList = false;
+        for (int i = 0; i < rowCount(); i++) {
+            QModelIndex idx = index(i, 0);
+            Drive *drive = qvariant_cast<Drive *>(data(idx, Qt::UserRole + 1));
+            if (drive == previouslySelected) {
+                stillInList = true;
+                if (m_selectedIndex != i) {
+                    m_selectedIndex = i;
+                    emit selectedChanged();
+                }
+                break;
+            }
+        }
+
+        // If the previously selected drive is no longer in the list, select a new one
+        if (!stillInList) {
+            if (rowCount() > 0) {
+                m_selectedIndex = 0;
+            } else {
+                m_selectedIndex = -1;
+            }
+            emit selectedChanged();
+        }
+    } else {
+        // No previous selection - select first drive if available
+        if (rowCount() > 0) {
+            m_selectedIndex = 0;
+            emit selectedChanged();
+        }
+    }
+}
+
+bool RestoreableDriveManager::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
+{
+    Q_UNUSED(source_parent)
+
+    DriveManager *dm = DriveManager::instance();
+    if (source_row < 0 || source_row >= dm->rowCount())
+        return false;
+
+    QModelIndex idx = dm->index(source_row, 0);
+    Drive *drive = qvariant_cast<Drive *>(dm->data(idx, Qt::UserRole + 1));
+
+    if (drive && drive->restoreStatus() == Drive::CONTAINS_LIVE)
+        return true;
+
+    return false;
+}
+
+QHash<int, QByteArray> RestoreableDriveManager::roleNames() const
+{
+    QHash<int, QByteArray> ret;
+    ret.insert(Qt::UserRole + 1, "drive");
+    ret.insert(Qt::UserRole + 2, "display");
+    ret.insert(Qt::DisplayRole, "name");
+    return ret;
+}
+
+QVariant RestoreableDriveManager::data(const QModelIndex &index, int role) const
+{
+    if (!index.isValid())
+        return QVariant();
+
+    QModelIndex sourceIndex = mapToSource(index);
+    DriveManager *dm = DriveManager::instance();
+
+    if (role == Qt::UserRole + 1)
+        return dm->data(sourceIndex, Qt::UserRole + 1);
+    else if (role == Qt::UserRole + 2 || role == Qt::DisplayRole) {
+        Drive *drive = qvariant_cast<Drive *>(dm->data(sourceIndex, Qt::UserRole + 1));
+        if (drive)
+            return drive->name();
+    }
+
+    return QVariant();
+}
+
+Drive *RestoreableDriveManager::selected() const
+{
+    if (m_selectedIndex >= 0 && m_selectedIndex < rowCount()) {
+        QModelIndex idx = index(m_selectedIndex, 0);
+        return qvariant_cast<Drive *>(data(idx, Qt::UserRole + 1));
+    }
+    return nullptr;
+}
+
+int RestoreableDriveManager::selectedIndex() const
+{
+    return m_selectedIndex;
+}
+
+void RestoreableDriveManager::setSelectedIndex(int index)
+{
+    if (m_selectedIndex != index && index >= 0 && index < rowCount()) {
+        m_selectedIndex = index;
+        emit selectedChanged();
+    }
+}
+
+int RestoreableDriveManager::length() const
+{
+    return rowCount();
+}
+
+void RestoreableDriveManager::onSourceModelChanged()
+{
+    // Connect to any new drives
+    connectToDrives();
+
+    // Remember previous state
+    int previousCount = rowCount();
+    Drive *previousSelected = selected();
+
+    invalidateFilter();
+
+    int newCount = rowCount();
+
+    // Always emit length changed
+    emit lengthChanged();
+
+    // Reset selection if out of bounds
+    if (m_selectedIndex >= newCount) {
+        m_selectedIndex = newCount > 0 ? 0 : -1;
+    }
+
+    // If there are restoreable drives and nothing is selected, select the first one
+    if (m_selectedIndex < 0 && newCount > 0) {
+        m_selectedIndex = 0;
+    }
+
+    // Emit selectedChanged if the selected drive changed
+    if (selected() != previousSelected) {
+        emit selectedChanged();
+    }
+}
