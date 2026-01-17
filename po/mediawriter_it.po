@@ -12,7 +12,7 @@
 # Nathan <nathan95@live.it>, 2021, 2022, 2025.
 # Alessio <alciregi@posteo.net>, 2022, 2023, 2025.
 # Emanuele Petriglia <fedora@emanuelepetriglia.com>, 2022, 2025.
-# ROBERTO BORIOTTI <bovirus@gmail.com>, 2022, 2024, 2025.
+# ROBERTO BORIOTTI <bovirus@gmail.com>, 2022, 2024, 2025, 2026.
 # Salvatore Cocuzza <info@salvatorecocuzza.it>, 2024, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024, 2025.
 # Angelo Schirinzi <odi-3@users.noreply.translate.fedoraproject.org>, 2025.
@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
-"PO-Revision-Date: 2025-07-30 02:07+0000\n"
+"PO-Revision-Date: 2026-01-17 09:58+0000\n"
 "Last-Translator: ROBERTO BORIOTTI <bovirus@gmail.com>\n"
 "Language-Team: Italian <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/it/>\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12.2\n"
+"X-Generator: Weblate 5.15.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -1144,12 +1144,12 @@ msgstr ""
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "Sono richiesti i diritti di amministratore!"
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "Vuoi disinstallare ${APPNAME}?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1160,16 +1160,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Impossibile scaricare Visual C++ ridistribuibile.\n"
+"\n"
+"Controlla la connessione internet e riprova,\n"
+"oppure scarica Visual C++ manualmente da:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Download Microsoft Visual C++ ridistribuibile..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Installazione Microsoft Visual C++ ridistribuibile..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1180,6 +1185,11 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"Nel sistema non è installato Visual C++ ridistribuibile.\n"
+"\n"
+"Visual C++ è necessario affinché ${APPNAME} funzioni correttamente.\n"
+"\n"
+"Vuoi scaricare ed installare Visual C++? (circa 25 MB)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1191,6 +1201,12 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Hai scelto di ignorare l'installazione di Visual C++ ridistribuibile.\n"
+"\n"
+"${APPNAME} potrebbe non funzionare correttamente Visual C++.\n"
+"\n"
+"Puoi scaricare manualmente Visual C++ da:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgid "Fedora Media Writer"
 #~ msgstr "Fedora Media Writer"
