@@ -1,5 +1,5 @@
 # Andrea Young Oak Li <youli@redhat.com>, 2016. #zanata
-# 김인수 <simmon@nplob.com>, 2021, 2022, 2023, 2024, 2025.
+# 김인수 <simmon@nplob.com>, 2021, 2022, 2023, 2024, 2025, 2026.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024, 2025.
 # Hyeonho Kang <hyeonho2010@naver.com>, 2025.
 # Dohyeon Jeon <hotoras03@gmail.com>, 2025.
@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
-"PO-Revision-Date: 2025-10-26 08:45+0000\n"
+"PO-Revision-Date: 2026-01-17 09:58+0000\n"
 "Last-Translator: 김인수 <simmon@nplob.com>\n"
 "Language-Team: Korean <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/ko/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13.3\n"
+"X-Generator: Weblate 5.15.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -1113,12 +1113,12 @@ msgstr ""
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "관리자 권한이 필요합니다!"
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "${APPNAME} 제거할까요?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1129,16 +1129,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Visual C++ Redistributable를 내려받기에 실패함.\n"
+"\n"
+"인터넷 연결을 확인하고 다시 시도하거나,\n"
+"다음에서 수작업으로 내려받으세요:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "마이크로소프트 Visual C++ Redistributable 내려받기..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "마이크로소프트 Visual C++ Redistributable 내려받기..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1149,6 +1154,12 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"마이크로소프트 Visual C++ Redistributable는 당신의 시스템에 설치되지 "
+"않았습니다.\n"
+"\n"
+"적절하게 동작하려면 ${APPNAME} 이 필요합니다.\n"
+"\n"
+"내려받고 이를 설치할까요? (대략 25 MB)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1160,6 +1171,12 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Visual C++ Redistributable 설치를 건너뛰도록 선택했습니다.\n"
+"\n"
+"${APPNAME} 는 설치 없이 정확하게 동작하지 않을 수도 있습니다.\n"
+"\n"
+"다음에서 수동으로 이를 내려받을 수 있습니다:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgid "Fedora Media Writer"
 #~ msgstr "페도라 미디어 작성기"
