@@ -34,11 +34,12 @@ class UdisksDrive;
 
 /**
  * @brief Custom deleter for QProcess to ensure proper cleanup
- * 
+ *
  * Handles platform-specific process termination before deletion
  */
 struct DriveOperationDeleter {
-    void operator()(QProcess *process) {
+    void operator()(QProcess *process)
+    {
         if (!process) {
             return;
         }
