@@ -15,13 +15,13 @@
 # "Dankaházi (ifj.) István" <dankahazi.istvan@gmail.com>, 2023, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025, 2026.
 # Nimrod Turi <nimrodturi@gmail.com>, 2025.
+# Mate Babos <hunorjani17@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
 "PO-Revision-Date: 2026-01-19 18:58+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
+"Last-Translator: Mate Babos <hunorjani17@gmail.com>\n"
 "Language-Team: Hungarian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/hu/>\n"
 "Language: hu\n"
@@ -755,12 +755,9 @@ msgid "%1 Release Candidate"
 msgstr "%1 kiadásra jelölt változat"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to open the drive for formatting"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "A meghajtó formázásra történő megnyitása sikertelen"
+msgstr "A meghajtó írásra történő megnyitása sikertelen"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
 msgctxt "RestoreJob|"
@@ -768,25 +765,19 @@ msgid "Destination drive is not writable"
 msgstr "A céleszköz írásvédett"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Failed to read the image file: "
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "A képfájl olvasása sikertelen: "
+msgstr "Nem sikerült lekérni a fájl méretét"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "A fájl mérete kisebb mint 128 blokk"
 
 #: ../src/helper/linux/restorejob.cpp:105
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to remove partitions from the drive"
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "A partíciók eltávolítása a meghajtóról sikertelen"
+msgstr "Nem sikerült a fájlmutatót a fájl végére mozgatni"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
@@ -858,12 +849,11 @@ msgid ""
 "you want to write another live system to it.</p> <p align=\"justify\"> Do "
 "you want to restore it to factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">A meghajtón lévő összes elérhető hely visszaállításához "
-"a gyári állapotára  kell helyreállítani. A live rendszer és az összes "
-"mentett adat törlésre kerül.</p> <p align=\"justify\">Nem kell "
-"helyreállítania a meghajtót, ha másik live rendszert szeretne rá kiírni. \n"
-"                </p> <p align=\"justify\">Helyreállítja a gyári "
-"beállításokat?</p>"
+"<p align=\"justify\"> A meghajtón lévő összes elérhető hely "
+"visszaállításához a gyári állapotára kell helyreállítani. A live rendszer és "
+"az összes mentett adat törlésre kerül.</p> <p align=\"justify\"> Nem kell "
+"helyreállítania a meghajtót, ha másik live rendszert szeretne rá kiírni. </"
+"p> <p align=\"justify\"> Helyreállítja a gyári beállításokat? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
@@ -1147,12 +1137,12 @@ msgstr ""
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "Adminisztrátor jogosultság szükséges!"
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "El szeretné távolítani a(z) ${APPNAME} alkalmazást?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1163,16 +1153,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Nem sikerült letölteni a Visual C++ terjeszthetőt.\n"
+"\n"
+"Ellenőrizze az internetkapcsolatát és próbálja újra,\n"
+"vagy töltse le manuálisan innen:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Microsoft Visual C++ terjeszthető letöltése..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Microsoft Visual C++ terjeszthető telepítése..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1183,6 +1178,11 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"A Microsoft Visual C++ terjeszthető nincs telepítve a rendszerén.\n"
+"\n"
+"Ez kötelező a(z) ${APPNAME} alkalmazás megfelelő futásához.\n"
+"\n"
+"Szeretné most letölteni és telepíteni? (körülbelül 25 MB)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1194,6 +1194,13 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"A Microsoft Visual C++ terjeszthető telepítésének kihagyása mellett "
+"döntött.\n"
+"\n"
+"A(z) ${APPNAME} alkalmazás lehet, hogy nem fog jól működni nélküle.\n"
+"\n"
+"Letöltheti manuálisan innen:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgid "Fedora Media Writer"
 #~ msgstr "Fedora médiaíró"
