@@ -10,15 +10,15 @@
 # Emin Tufan Çetin <etcetin@gmail.com>, 2017. #zanata, 2022, 2025.
 # Serdar Sağlam <teknomobil@msn.com>, 2019. #zanata
 # Oğuz Ersen <oguzersen@protonmail.com>, 2021.
-# Oğuz Ersen <oguz@ersen.moe>, 2022, 2024, 2025.
+# Oğuz Ersen <oguz@ersen.moe>, 2022, 2024, 2025, 2026.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025.
 # Emir SARI <emir_sari@icloud.com>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
-"PO-Revision-Date: 2025-11-26 16:58+0000\n"
-"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
+"PO-Revision-Date: 2026-01-19 18:58+0000\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/tr/>\n"
 "Language: tr\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Weblate 5.14.3\n"
+"X-Generator: Weblate 5.15.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -1135,12 +1135,12 @@ msgstr ""
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "Yönetici hakları gerekli!"
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "${APPNAME} kaldırmak istiyor musunuz?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1151,16 +1151,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Visual C++ yeniden dağıtılabilir paketi indirilemedi.\n"
+"\n"
+"Lütfen internet bağlantınızı gözden geçirin ve tekrar deneyin,\n"
+"veya şu adresten elle indirin:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Microsoft Visual C++ Yeniden Dağıtılabilir Paketi İndiriliyor..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Microsoft Visual C++ Yeniden Dağıtılabilir Paketi Kuruluyor..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1171,6 +1176,12 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"Microsoft Visual C++ yeniden dağıtılabilir paketi sisteminizde kurulu "
+"değil.\n"
+"\n"
+"${APPNAME} programının düzgün çalışması için bu paket gereklidir.\n"
+"\n"
+"Şimdi indirip kurmak ister misiniz? (yaklaşık 25 MB)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1182,6 +1193,12 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Visual C++ yeniden dağıtılabilir paketinin kurulumunu atlamayı seçtiniz.\n"
+"\n"
+"${APPNAME} bu paket olmadan düzgün çalışmayabilir.\n"
+"\n"
+"Paketi şu adresten elle indirebilirsiniz:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgid "Fedora Media Writer"
 #~ msgstr "Fedora Ortam Yazıcısı"
