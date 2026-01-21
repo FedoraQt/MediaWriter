@@ -379,7 +379,7 @@ public:
                                       tr("Downloading"),
                                       tr("Checking the download"),
                                       tr("Ready to write"),
-                                      tr("Download has been paused"),
+                                      tr("Paused"),
                                       tr("Image file was saved to your downloads folder. Writing is not possible"),
                                       tr("Writing"),
                                       tr("Checking the written data"),

@@ -36,14 +36,12 @@ Page {
             qsTr("%1 Successfully Written").arg(file)
         else if (currentStatus === Units.DownloadStatus.Writing)
             qsTr("Writing %1").arg(file)
-        else if (currentStatus === Units.DownloadStatus.Downloading)
+        else if (currentStatus === Units.DownloadStatus.Downloading || currentStatus === Units.DownloadStatus.Paused)
             qsTr("Downloading %1").arg(file)
         else if (currentStatus === Units.DownloadStatus.Preparing)
             qsTr("Preparing %1").arg(file)
         else if (currentStatus === Units.DownloadStatus.Ready)
             qsTr("Ready to write %1").arg(file)
-        else if (currentStatus === Units.DownloadStatus.Paused)
-            qsTr("%1 has been paused").arg(file)
         else if (currentStatus == Units.DownloadStatus.Failed_Download)
             qsTr("Failed to download %1").arg(file)
         else
@@ -135,14 +133,6 @@ Page {
             text: qsTr("Your drive will be resized to a smaller capacity. You may resize it back to normal by using Fedora Media Writer. This will remove installation media from your drive.")
             width: infoColumn.width
             wrapMode: QQC2.Label.Wrap
-        }
-
-        QQC2.Label {
-            id: messageContinueDownload
-            visible: currentStatus === Units.DownloadStatus.Paused
-            text: qsTr("Download has been paused.")
-            wrapMode: QQC2.Label.Wrap
-            width: infoColumn.width
         }
 
         QQC2.Label {
@@ -246,10 +236,6 @@ Page {
                 target: progressBar;
                 value: releases.variant.progress.ratio
             }
-            PropertyChanges {
-                target: messageContinueDownload;
-                visible: true
-            }
         }
     ]    
 
@@ -272,11 +258,10 @@ Page {
     }
 
     nextButtonVisible: {
-        // This will be [Finish] or [Resume] button to finish download or resume download 
+        // This will be [Resume] or [Pause] button to finish download or resume download 
         if (currentStatus == Units.DownloadStatus.Finished || 
             currentStatus == Units.DownloadStatus.Paused || 
-            currentStatus == Units.DownloadStatus.Downloading ||
-            currentStatus == Units.DownloadStatus.Download_Verifying)
+            currentStatus == Units.DownloadStatus.Downloading)
             return true
         // This will be [Retry] button to start the process again if there is a drive plugged in
         else if (currentStatus == Units.DownloadStatus.Ready ||
@@ -294,8 +279,7 @@ Page {
             return qsTr("Write")
         else if (releases.variant.status === Units.DownloadStatus.Paused)
             return qsTr("Resume")
-        else if (releases.variant.status === Units.DownloadStatus.Downloading ||
-                releases.variant.status === Units.DownloadStatus.Download_Verifying)
+        else if (releases.variant.status === Units.DownloadStatus.Downloading)
             return qsTr("Pause")
         else if (releases.variant.status === Units.DownloadStatus.Finished)
             return qsTr("Finish")
@@ -324,8 +308,7 @@ Page {
                 drives.selected.setImage(releases.variant)
                 drives.selected.write(releases.variant)
             }
-        } else if (releases.variant.status === Units.DownloadStatus.Downloading || 
-                   releases.variant.status === Units.DownloadStatus.Download_Verifying) {
+        } else if (releases.variant.status === Units.DownloadStatus.Downloading) {
             downloadManager.cancel()
             releases.variant.setStatus(Units.DownloadStatus.Paused)
         }
