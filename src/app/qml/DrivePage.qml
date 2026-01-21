@@ -77,20 +77,19 @@ Page {
             text: qsTr("Selected file")
         }
 
-        // Simple drop area rectangle
         Rectangle {
             id: dropRect
             Layout.fillWidth: true
             Layout.preferredHeight: units.gridUnit * 5
-            
-            color: dropArea.containsDrag ? Qt.rgba(0.2, 0.5, 0.8, 0.1) : "transparent"
-            border.color: dropArea.containsDrag ? "#3498db" : "#bdc3c7"
+            border.color: "grey"
+            color: "transparent"
             border.width: 1
             radius: 4
             
             QQC2.Label {
                 anchors.centerIn: parent
                 horizontalAlignment: Text.AlignHCenter
+                wrapMode: Text.WordWrap
                 text: {
                     if (releases.localFile.iso)
                         return (String)(releases.localFile.iso).split("/").slice(-1)[0] + "\n" + qsTr("Click to change")
@@ -105,6 +104,7 @@ Page {
             MouseArea {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
+                enabled: !dropArea.containsDrag
                 onClicked: {
                     if (portalFileDialog.isAvailable)
                         portalFileDialog.open()
@@ -119,7 +119,10 @@ Page {
                 
                 onDropped: function(drop) {
                     if (drop.hasUrls && drop.urls.length > 0) {
-                        releases.selectLocalFile(drop.urls[0])
+                        var url = drop.urls[0].toString().toLowerCase()
+                        if (url.endsWith(".iso") || url.endsWith(".raw") || url.endsWith(".xz")) {
+                            releases.selectLocalFile(drop.urls[0])
+                        }
                     }
                 }
             }
