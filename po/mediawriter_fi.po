@@ -7,7 +7,7 @@
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2017. #zanata, 2021, 2022, 2023, 2024, 2025.
 # Toni Rantala <trantalafilo@gmail.com>, 2017. #zanata
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2018. #zanata, 2021, 2022, 2023, 2024, 2025.
-# Jan Kuparinen <copper_fin@hotmail.com>, 2021, 2022, 2024, 2025.
+# Jan Kuparinen <copper_fin@hotmail.com>, 2021, 2022, 2024, 2025, 2026.
 # Lumiukko Lumiukko <lokalisoija@luukku.com>, 2021, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024, 2025.
 # Ricky Tigg <ricky.tigg@gmail.com>, 2024, 2025.
@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
-"PO-Revision-Date: 2025-12-02 13:07+0000\n"
-"Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
+"PO-Revision-Date: 2026-01-22 17:58+0000\n"
+"Last-Translator: Jan Kuparinen <copper_fin@hotmail.com>\n"
 "Language-Team: Finnish <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/fi/>\n"
 "Language: fi\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14.3\n"
+"X-Generator: Weblate 5.15.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -1133,12 +1133,12 @@ msgstr ""
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "Vaaditaan järjestelmänvalvojan oikeudet!"
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "Haluatko poistaa ${APPNAME} -sovelluksen?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1149,16 +1149,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Visual C++ Redistributablen lataus epäonnistui.\n"
+"\n"
+"Tarkista internetyhteytesi ja yritä uudelleen,\n"
+"tai lataa se manuaalisesti osoitteesta:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Ladataan Microsoft Visual C++ Redistributable -tiedostoa..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Asennetaan Microsoft Visual C++ Redistributable -sovellusta..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1169,6 +1174,12 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"Microsoft Visual C++ Redistributable -sovellusta ei ole asennettu "
+"järjestelmääsi.\n"
+"\n"
+"Se vaaditaan, jotta ${APPNAME} toimii oikein.\n"
+"\n"
+"Haluatko ladata ja asentaa sen nyt? (noin 25 Mt)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1180,6 +1191,12 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Olet valinnut Visual C++ Redistributable -asennuksen ohittamisen.\n"
+"\n"
+"${APPNAME} ei välttämättä toimi oikein ilman sitä.\n"
+"\n"
+"Voit ladata sen manuaalisesti osoitteesta:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgid "Fedora Media Writer"
 #~ msgstr "Fedora Media Writer"
