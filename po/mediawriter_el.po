@@ -3,14 +3,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # "#-#-#-#-#  mediawriter.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-# Jim Spentzos <jimspentzos2000@gmail.com>, 2025.
+# Jim Spentzos <jimspentzos2000@gmail.com>, 2025, 2026.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
-"PO-Revision-Date: 2025-06-29 18:06+0000\n"
+"PO-Revision-Date: 2026-01-22 17:58+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: Greek <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/el/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12.2\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
 msgctxt "AboutDialog|"
@@ -1143,12 +1143,12 @@ msgstr ""
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "Απαιτούνται δικαιώματα διαχειριστή!"
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "Θέλετε να καταργήσετε την εγκατάσταση του ${APPNAME};"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1159,16 +1159,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Αποτυχία λήψης του Visual C++ Redistributable.\n"
+"\n"
+"Ελέγξτε τη σύνδεσή σας στο διαδίκτυο και δοκιμάστε ξανά,\n"
+"ή κάντε χειροκίνητα λήψη από εδώ:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Λήψη του Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Εγκατάσταση του Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1179,6 +1184,12 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"Το Microsoft Visual C++ Redistributable δεν είναι εγκατεστημένο στο σύστημά "
+"σας.\n"
+"\n"
+"Είναι απαραίτητο για την εύρυθμη λειτουργία του ${APPNAME}.\n"
+"\n"
+"Θέλετε να κάνετε λήψη και εγκατάσταση τώρα; (περίπου 25 MB)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1190,6 +1201,12 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Επιλέξατε να παραλείψετε την εγκατάσταση του Visual C++ Redistributable.\n"
+"\n"
+"Το ${APPNAME} ενδέχεται να μην λειτουργεί σωστά χωρίς αυτό.\n"
+"\n"
+"Μπορείτε να κάνετε χειροκίνητα λήψη από εδώ:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgid "Fedora Media Writer"
 #~ msgstr "Fedora Media Writer"
