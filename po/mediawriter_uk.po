@@ -1,19 +1,19 @@
 # #-#-#-#-#  appstream_uk.po  #-#-#-#-#
-# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2021, 2022, 2024, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2021, 2022, 2024, 2025, 2026.
 # #-#-#-#-#  desktop_uk.po  #-#-#-#-#
-# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2021, 2022, 2024, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2021, 2022, 2024, 2025, 2026.
 # #-#-#-#-#  mediawriter_uk.po  #-#-#-#-#
-# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2021, 2022, 2024, 2025.
-# Yuri Chornoivan <yurchor@ukr.net>, 2017. #zanata, 2021, 2022, 2024, 2025.
-# Yuri Chornoivan <yurchor@ukr.net>, 2019. #zanata, 2021, 2022, 2024, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2016. #zanata, 2021, 2022, 2024, 2025, 2026.
+# Yuri Chornoivan <yurchor@ukr.net>, 2017. #zanata, 2021, 2022, 2024, 2025, 2026.
+# Yuri Chornoivan <yurchor@ukr.net>, 2019. #zanata, 2021, 2022, 2024, 2025, 2026.
 # Andrii Serbovets <serbovets.translation@gmail.com>, 2021.
 # Artem Filatov <pan.vena@ukr.net>, 2025.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
-"PO-Revision-Date: 2025-12-08 07:57+0000\n"
-"Last-Translator: Artem Filatov <pan.vena@ukr.net>\n"
+"PO-Revision-Date: 2026-02-03 07:58+0000\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/uk/>\n"
 "Language: uk\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.14.3\n"
+"X-Generator: Weblate 5.15.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -1141,17 +1141,17 @@ msgstr ""
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "Потрібні права доступу адміністратора!"
 
 #: NSIS:UninstallPreviousVersion
 msgctxt "NSIS:UninstallPreviousVersion"
 msgid "Uninstalling previous version of ${APPNAME}..."
-msgstr ""
+msgstr "Встановлення попередньої версії ${APPNAME}..."
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "Хочете вилучити ${APPNAME}?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1162,16 +1162,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Не вдалося отримати Visual C++ Redistributable.\n"
+"\n"
+"Будь ласка, перевірте працездатність інтернет-з'єднання і повторіть спробу\n"
+"або отримайте пакунок вручну за такою адресою:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Отримання Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Встановлення Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1182,6 +1187,11 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"У вашій системі не встановлено Microsoft Visual C++ Redistributable.\n"
+"\n"
+"Цей пакунок потрібен для належної роботи ${APPNAME}.\n"
+"\n"
+"Хочете отримати і встановити цей пакунок зараз? (приблизно 25 МБ)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1193,6 +1203,12 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Ви не захотіли встановлювати Visual C++ Redistributable.\n"
+"\n"
+"Без цього пакунка ${APPNAME} може не працювати належним чином.\n"
+"\n"
+"Ви можете отримати пакунок вручну за такою адресою:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgid "Fedora Media Writer"
 #~ msgstr "Fedora Media Writer"
