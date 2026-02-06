@@ -373,12 +373,13 @@ class ReleaseVariant : public QObject, public DownloadReceiver
 public:
     enum Type { LIVE = 0, NETINSTALL, FULL, ATOMIC };
     Q_ENUMS(Type)
-    enum Status { PREPARING = 0, DOWNLOADING, DOWNLOAD_VERIFYING, READY, WRITING_NOT_POSSIBLE, WRITING, WRITE_VERIFYING, FINISHED, FAILED_VERIFICATION, FAILED_DOWNLOAD, FAILED };
+    enum Status { PREPARING = 0, DOWNLOADING, DOWNLOAD_VERIFYING, READY, PAUSED, WRITING_NOT_POSSIBLE, WRITING, WRITE_VERIFYING, FINISHED, FAILED_VERIFICATION, FAILED_DOWNLOAD, FAILED };
     Q_ENUMS(Status)
     const QStringList m_statusStrings{tr("Preparing"),
                                       tr("Downloading"),
                                       tr("Checking the download"),
                                       tr("Ready to write"),
+                                      tr("Paused"),
                                       tr("Image file was saved to your downloads folder. Writing is not possible"),
                                       tr("Writing"),
                                       tr("Checking the written data"),
@@ -414,7 +415,6 @@ public:
 
     Status status() const;
     QString statusString() const;
-    void setStatus(Status s);
     QString errorString() const;
     void setErrorString(const QString &o);
 
@@ -439,6 +439,7 @@ signals:
 public slots:
     void download();
     void resetStatus();
+    void setStatus(Status s);
 
 private:
     QString m_temporaryIso{};
