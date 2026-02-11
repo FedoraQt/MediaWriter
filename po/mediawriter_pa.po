@@ -6,12 +6,12 @@
 # A S Alam <aalam@fedoraproject.org>, 2017. #zanata
 # A S Alam <aalam@fedoraproject.org>, 2019. #zanata
 # A S Alam <amanpreet.alam@gmail.com>, 2022.
-# A S Alam <aalam@users.noreply.translate.fedoraproject.org>, 2023, 2024, 2025.
+# A S Alam <aalam@users.noreply.translate.fedoraproject.org>, 2023, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
-"PO-Revision-Date: 2025-10-16 17:54+0000\n"
+"PO-Revision-Date: 2026-02-11 11:58+0000\n"
 "Last-Translator: A S Alam <aalam@users.noreply.translate.fedoraproject.org>\n"
 "Language-Team: Punjabi <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/pa/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 5.13.3\n"
+"X-Generator: Weblate 5.15.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -757,12 +757,9 @@ msgid "File size is smaller than 128 blocks"
 msgstr "ਫ਼ਾਇਲ ਦਾ ਆਕਾਰ 128 ਬਲੌਕ ਤੋਂ ਘੱਟ ਹੈ"
 
 #: ../src/helper/linux/restorejob.cpp:105
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to remove partitions from the drive"
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "ਡਰਾਇਵ ਤੋਂ ਪਾਰਟੀਸ਼ਨਾਂ ਨੂੰ ਹਟਾਉਣ ਲਈ ਅਸਫ਼ਲ"
+msgstr "ਫ਼ਾਇਲ ਪੁਆਇੰਟਰ ਨੂੰ ਖੇਤਰ ਦੇ ਅੰਤ ਉੱਤੇ ਭੇਜਣ ਲਈ ਅਸਫ਼ਲ ਹੈ"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
@@ -1117,17 +1114,17 @@ msgstr ""
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "ਪਰਸ਼ਾਸ਼ਕੀ ਅਧਿਕਾਰ ਚਾਹੀਦੇ ਹਨ!"
 
 #: NSIS:UninstallPreviousVersion
 msgctxt "NSIS:UninstallPreviousVersion"
 msgid "Uninstalling previous version of ${APPNAME}..."
-msgstr ""
+msgstr "${APPNAME} ਦੇ ਪਿਛਲੇ ਵਰਜ਼ਨ ਨੂੰ ਅਣ-ਇੰਸਟਾਲ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "ਕੀ ਤੁਸੀਂ ${APPNAME} ਨੂੰ ਅਣ-ਇੰਸਟਾਲ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1138,16 +1135,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Visual C++ Redistributable ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ ਅਸਫ਼ਲ ਹੈ। \n"
+" \n"
+"ਆਪਣੇ ਇੰਟਰਨੈੱਟ ਕਨੈਕਸ਼ਨ ਦੀ ਜਾਂਚ ਕਰਕੇ ਫੇਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ, \n"
+"ਜਾਂ ਖੁਦ ਇੱਥੋ ਡਾਊਨਲੋਡ ਕਰੋ: \n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Microsoft Visual C++ Redistributable ਨੂੰ ਡਾਊਨਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Microsoft Visual C++ Redistributable ਨੂੰ ਇੰਸਟਾਲ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1158,6 +1160,11 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"ਤੁਹਾਡੇ ਸਿਸਟਮ ਉੱਤੇ Microsoft Visual C++ Redistributable ਇੰਸਟਾਲ ਨਹੀਂ ਹੈ। \n"
+" \n"
+"ਇਹ ${APPNAME} ਨੂੰ ਠੀਕ ਤਰ੍ਹਾਂ ਚੱਲਣ ਲਈ ਲੋੜੀਂਦਾ ਹੈ। \n"
+" \n"
+"ਕੀ ਤੁਸੀਂ ਇਸ ਨੂੰ ਹੁਣੇ ਡਾਊਨਲੋਡ ਕਰਕੇ ਇੰਸਟਾਲ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ? (ਲਗਭਗ 25MB)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1169,6 +1176,12 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"ਤੁਸੀਂ Visual C++ Redistributable ਦੀ ਇੰਸਟਾਲ ਨਾ ਕਰਨ ਦੀ ਚੋਣ ਕੀਤੀ ਹੈ। \n"
+" \n"
+"${APPNAME} ਸ਼ਾਇਦ ਇਸ ਤੋਂ ਬਿਨਾਂ ਠੀਕ ਤਰ੍ਹਾਂ ਕੰਮ ਨਾ ਕਰੇ। \n"
+" \n"
+"ਤੁਸੀਂ ਇਸ ਨੂੰ ਖੁਦ ਡਾਊਨਲੋਡ ਕਰ ਸਕਦੇ ਹੋ: \n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgid "Fedora Media Writer"
 #~ msgstr "ਫੇਡੋਰਾ ਮੀਡੀਆ ਰਾਇਟਰ"
