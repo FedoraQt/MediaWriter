@@ -17,13 +17,13 @@
 # Javier Francisco <fserrador@gmail.com>, 2025.
 # Pablo Alonso <tau0@tutanota.com>, 2025.
 # gossypium <gossypium@users.noreply.translate.fedoraproject.org>, 2025.
+# Houtarou <conan05@duck.com>, 2026.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
-"PO-Revision-Date: 2025-08-24 17:53+0000\n"
-"Last-Translator: gossypium "
-"<gossypium@users.noreply.translate.fedoraproject.org>\n"
+"PO-Revision-Date: 2026-02-24 00:58+0000\n"
+"Last-Translator: Houtarou <conan05@duck.com>\n"
 "Language-Team: Spanish <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/es/>\n"
 "Language: es\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.16\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -1144,17 +1144,17 @@ msgstr ""
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "¡Privilegios de administrator requeridos!"
 
 #: NSIS:UninstallPreviousVersion
 msgctxt "NSIS:UninstallPreviousVersion"
 msgid "Uninstalling previous version of ${APPNAME}..."
-msgstr ""
+msgstr "Desinstalando la versión anterior de ${APPNAME}..."
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "¿Quiere instalar ${APPNAME}?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1165,16 +1165,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Fallo al descargar Visual C++ Redistributable.\n"
+"\n"
+"Por favor, comprueba tu conexión a Internet e inténtalo de nuevo,\n"
+"o descárgalo manualmente desde:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Descargando Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Instalando Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1185,6 +1190,11 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"Microsoft Visual C++ Redistributable no está instalado en tu sistema.\n"
+"\n"
+"Es necesario para que ${APPNAME} funcione correctamente.\n"
+"\n"
+"¿Deseas descargarlo e instalarlo ahora? (aproximadamente 25 MB)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1196,6 +1206,12 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Has elegido omitir la instalación de Microsoft Visual C++ Redistributable.\n"
+"\n"
+"${APPNAME} puede no funcionar correctamente sin él.\n"
+"\n"
+"Puedes descargarlo manualmente desde:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgid "Fedora Media Writer"
 #~ msgstr "Fedora Media Writer"
