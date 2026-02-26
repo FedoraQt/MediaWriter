@@ -87,19 +87,15 @@ bool MacDrive::write(ReleaseVariant *data)
     if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED || m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
         m_image->setStatus(ReleaseVariant::WRITING);
 
-    if (m_child) {
-        // TODO some handling of an already present process
-        m_child->deleteLater();
-    }
-    m_child = new QProcess(this);
-    connect(m_child, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
-    connect(m_child, &QProcess::readyRead, this, &MacDrive::onReadyRead);
-    connect(qApp, &QCoreApplication::aboutToQuit, m_child, &QProcess::terminate);
+    m_process.reset(new QProcess(this));
+    connect(m_process.get(), static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
+    connect(m_process.get(), &QProcess::readyRead, this, &MacDrive::onReadyRead);
+    connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
 
     if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
-        m_child->setProgram(QString("%1/../../../../helper/mac/helper.app/Contents/MacOS/helper").arg(qApp->applicationDirPath()));
+        m_process->setProgram(QString("%1/../../../../helper/mac/helper.app/Contents/MacOS/helper").arg(qApp->applicationDirPath()));
     } else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
-        m_child->setProgram(QString("%1/helper").arg(qApp->applicationDirPath()));
+        m_process->setProgram(QString("%1/helper").arg(qApp->applicationDirPath()));
     } else {
         data->setErrorString(tr("Could not find the helper binary. Check your installation."));
         setDelayedWrite(false);
@@ -114,39 +110,27 @@ bool MacDrive::write(ReleaseVariant *data)
     }
     args.append(m_bsdDevice);
 
-    mCritical() << "The command is" << m_child->program() << args;
-    m_child->setArguments(args);
+    mCritical() << "The command is" << m_process->program() << args;
+    m_process->setArguments(args);
 
-    m_child->start();
+    m_process->start();
 
     return true;
-}
-
-void MacDrive::cancel()
-{
-    Drive::cancel();
-    if (m_child) {
-        m_child->kill();
-        m_child->deleteLater();
-        m_child = nullptr;
-    }
 }
 
 void MacDrive::restore()
 {
     mCritical() << "starting to restore";
-    if (m_child)
-        m_child->deleteLater();
 
-    m_child = new QProcess(this);
+    m_process.reset(new QProcess(this));
 
     m_restoreStatus = RESTORING;
     emit restoreStatusChanged();
 
     if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
-        m_child->setProgram(QString("%1/../../../../helper/mac/helper.app/Contents/MacOS/helper").arg(qApp->applicationDirPath()));
+        m_process->setProgram(QString("%1/../../../../helper/mac/helper.app/Contents/MacOS/helper").arg(qApp->applicationDirPath()));
     } else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
-        m_child->setProgram(QString("%1/helper").arg(qApp->applicationDirPath()));
+        m_process->setProgram(QString("%1/helper").arg(qApp->applicationDirPath()));
     } else {
         m_restoreStatus = RESTORE_ERROR;
         return;
@@ -155,16 +139,16 @@ void MacDrive::restore()
     QStringList args;
     args.append("restore");
     args.append(m_bsdDevice);
-    m_child->setArguments(args);
+    m_process->setArguments(args);
 
-    m_child->setProcessChannelMode(QProcess::ForwardedChannels);
+    m_process->setProcessChannelMode(QProcess::ForwardedChannels);
 
-    connect(m_child, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onRestoreFinished);
-    connect(qApp, &QCoreApplication::aboutToQuit, m_child, &QProcess::terminate);
+    connect(m_process.get(), static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onRestoreFinished);
+    connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
 
-    mCritical() << "The command is" << m_child->program() << args;
+    mCritical() << "The command is" << m_process->program() << args;
 
-    m_child->start();
+    m_process->start();
 }
 
 void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
@@ -173,11 +157,11 @@ void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 
     setDelayedWrite(false);
 
-    if (!m_child)
+    if (!m_process)
         return;
 
     if (exitCode != 0) {
-        QString output = m_child->readAllStandardError();
+        QString output = m_process->readAllStandardError();
         QRegularExpression re("^.+:.+: ");
         QStringList lines = output.split('\n');
         if (lines.length() > 0) {
@@ -194,25 +178,22 @@ void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 
 void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
-    if (!m_child)
+    if (!m_process)
         return;
 
     mCritical() << "Process finished" << exitCode << exitStatus;
-    mCritical() << m_child->readAllStandardError();
+    mCritical() << m_process->readAllStandardError();
 
     if (exitCode == 0)
         m_restoreStatus = RESTORED;
     else
         m_restoreStatus = RESTORE_ERROR;
     emit restoreStatusChanged();
-
-    m_child->deleteLater();
-    m_child = nullptr;
 }
 
 void MacDrive::onReadyRead()
 {
-    if (!m_child)
+    if (!m_process)
         return;
 
     if (m_image->status() == ReleaseVariant::WRITING) {
@@ -223,9 +204,9 @@ void MacDrive::onReadyRead()
     if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
         m_image->setStatus(ReleaseVariant::WRITING);
 
-    while (m_child->bytesAvailable() > 0) {
+    while (m_process->bytesAvailable() > 0) {
         bool ok;
-        int64_t bytes = m_child->readLine().trimmed().toULongLong(&ok);
+        int64_t bytes = m_process->readLine().trimmed().toULongLong(&ok);
         if (ok)
             m_progress->setValue(bytes);
     }

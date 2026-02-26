@@ -157,6 +157,10 @@ void DriveManager::onDriveConnected(Drive *d)
     endInsertRows();
     emit drivesChanged();
 
+    if (selected() && selected()->isBusy()) {
+        return;
+    }
+
     if (m_provider->initialized()) {
         m_selectedIndex = position;
         emit selectedChanged();
@@ -289,6 +293,11 @@ bool Drive::delayedWrite() const
     return m_delayedWrite;
 }
 
+bool Drive::isBusy() const
+{
+    return m_process && m_process->state() != QProcess::NotRunning;
+}
+
 void Drive::setDelayedWrite(const bool &o)
 {
     if (m_delayedWrite != o) {
@@ -329,6 +338,7 @@ void Drive::cancel()
     m_error = QString();
     m_restoreStatus = CLEAN;
     emit restoreStatusChanged();
+    m_process.reset();
 }
 
 bool Drive::operator==(const Drive &o) const
