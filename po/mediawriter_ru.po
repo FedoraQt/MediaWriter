@@ -13,13 +13,13 @@
 # Dmitry Kiryanov <kagaminep@yandex.ru>, 2024, 2025.
 # Vik <k3kelm4vw@mozmail.com>, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2026.
+# Owl Gale <cheelp@ya.ru>, 2026.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
 "PO-Revision-Date: 2026-03-08 00:58+0000\n"
-"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
-"memory@weblate.org>\n"
+"Last-Translator: Owl Gale <cheelp@ya.ru>\n"
 "Language-Team: Russian <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/ru/>\n"
 "Language: ru\n"
@@ -116,20 +116,14 @@ msgid "Cancel Verification"
 msgstr "Отменить проверку"
 
 #: ../src/app/qml/CancelDialog.qml:116
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Отмена"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:49
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Easy Administration"
 msgctxt "DeviceWarningDialog|"
 msgid "Erase confirmation"
-msgstr "Лёгкое администрирование"
+msgstr "Подтверждение очистки"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:54
 #, qt-format
@@ -142,33 +136,21 @@ msgstr ""
 "записан. Хотите продолжить?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:69
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
 msgstr "Отмена"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:82
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
 msgstr "Записать"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:84
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
 msgstr "Загрузить и записать"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:85
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
 msgstr "Загрузить и записать"
@@ -191,7 +173,7 @@ msgstr "КБ"
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr "Байты"
+msgstr "Байт"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -350,17 +332,11 @@ msgstr ""
 "%2."
 
 #: ../src/app/qml/DownloadPage.qml:237 ../src/app/qml/DownloadPage.qml:268
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
 msgstr "Отмена"
 
 #: ../src/app/qml/DownloadPage.qml:270
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DownloadPage|"
 msgid "Write"
 msgstr "Записать"
@@ -371,9 +347,6 @@ msgid "Finish"
 msgstr "Готово"
 
 #: ../src/app/qml/DownloadPage.qml:274
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Retry"
 msgctxt "DownloadPage|"
 msgid "Retry"
 msgstr "Повторить"
@@ -444,17 +417,11 @@ msgid "Delete download after writing"
 msgstr "Удалить загруженный образ после записи"
 
 #: ../src/app/qml/DrivePage.qml:169
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Write"
 msgctxt "DrivePage|"
 msgid "Write"
 msgstr "Записать"
 
 #: ../src/app/qml/DrivePage.qml:171
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download && Write"
 msgctxt "DrivePage|"
 msgid "Download && Write"
 msgstr "Загрузить и записать"
@@ -556,9 +523,6 @@ msgid "Restore <b>%1</b>"
 msgstr "Восстановить <b>%1</b>"
 
 #: ../src/app/qml/MainPage.qml:72
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "About"
 msgctxt "MainPage|"
 msgid "About"
 msgstr "О программе"
@@ -645,12 +609,9 @@ msgid "Fedora Labs"
 msgstr "Fedora Labs"
 
 #: ../src/app/releasemanager.cpp:451
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora i3 Desktop"
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr "Fedora i3 Desktop"
+msgstr "Сборки Atomic Fedora"
 
 #: ../src/app/releasemanager.cpp:453
 msgctxt "Release|"
@@ -798,12 +759,9 @@ msgid "%1 Release Candidate"
 msgstr "Кандидат на выпуск %1"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "Не удалось открыть диск для записи"
+msgstr "Не удалось открыть устройство для записи"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
 msgctxt "RestoreJob|"
@@ -811,54 +769,39 @@ msgid "Destination drive is not writable"
 msgstr "Целевой диск недоступен для записи"
 
 #: ../src/helper/linux/restorejob.cpp:91
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "Не удаётся переименовать временный файл."
+msgstr "Не удалось получить размер файла"
 
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "Размер файла меньше 128 блоков"
 
 #: ../src/helper/linux/restorejob.cpp:105
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "Не удалось проверить - нет дисков"
+msgstr "Не удалось переместить указатель файла в конечную область"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "Не удалось синхронизировать данные на диск"
 
 #: ../src/helper/win/restorejob.cpp:60
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Не удалось удалить диск %1:"
+msgstr "Не удалось удалить точки монтирования диска"
 
 #: ../src/helper/win/restorejob.cpp:71
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Не удалось проверить - нет дисков"
+msgstr "Не удалось удалить разделы на диске"
 
 #: ../src/helper/win/restorejob.cpp:80
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Не удалось открыть диск для записи"
+msgstr "Не удалось открыть диск для форматирования"
 
 #: ../src/helper/win/restorejob.cpp:95
 msgctxt "RestoreJob|"
@@ -902,15 +845,6 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Восстановить диск <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:36
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid ""
-#| "<p align=\"justify\"> To reclaim all space available on the drive, it has "
-#| "to be restored to its factory settings. The live system and all saved "
-#| "data will be deleted. </p> <p align=\"justify\"> You don't need to "
-#| "restore the drive if you want to write another live system to it. \n"
-#| "                </p> <p align=\"justify\"> Do you want to restore it to "
-#| "factory settings? </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -919,12 +853,11 @@ msgid ""
 "you want to write another live system to it.</p> <p align=\"justify\"> Do "
 "you want to restore it to factory settings? </p>"
 msgstr ""
-"<p align=\"justify\"> Чтобы вернуть всё имеющееся на диске пространство, "
-"нужно восстановить заводские настройки диска. Будут удалены live-система и "
-"все сохранённые данные. </p> <p align=\"justify\"> Не нужно восстанавливать "
-"диск, если вы хотите записать на него ещё одну live-систему.\n"
-"                     </p> <p align=\"justify\"> Хотите восстановить "
-"заводские настройки? </p>"
+"<p align=\"justify\"> Чтобы освободить все доступное пространство на диске, "
+"необходимо восстановить его заводские настройки. Live-система и все "
+"сохраненные данные будут удалены.</p> <p align=\"justify\"> Вам не нужно "
+"восстанавливать диск, если вы хотите записать на него другую Live-систему.</"
+"p> <p align=\"justify\"> Вы хотите восстановить заводские настройки? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
@@ -980,17 +913,14 @@ msgid "Official Editions"
 msgstr "Официальные редакции"
 
 #: ../src/app/qml/VersionPage.qml:42
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora i3 Desktop"
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr "Fedora i3 Desktop"
+msgstr "Сборки Atomic"
 
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr "Сборки"
+msgstr "Spins"
 
 #: ../src/app/qml/VersionPage.qml:52
 msgctxt "VersionPage|"
@@ -1014,12 +944,9 @@ msgid "Writing %1 was successful"
 msgstr "Успешная запись %1"
 
 #: ../src/app/windrivemanager.cpp:244
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
 msgctxt "WinDrive|"
 msgid "Writing has been cancelled"
-msgstr "Ошибка записи %1"
+msgstr "Запись отменена"
 
 #: ../src/helper/linux/writejob.cpp:80 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:295
@@ -1089,28 +1016,19 @@ msgid "Unable to open destination for writing"
 msgstr "Не удалось открыть место назначения для записи"
 
 #: ../src/helper/win/writejob.cpp:122
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Не удалось удалить диск %1:"
+msgstr "Не удалось удалить точки монтирования диска"
 
 #: ../src/helper/win/writejob.cpp:129
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid "Failed verification no drives"
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Не удалось проверить - нет дисков"
+msgstr "Не удалось удалить разделы на диске"
 
 #: ../src/helper/win/writejob.cpp:140
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Не удалось открыть диск для записи"
+msgstr "Не удалось открыть диск для форматирования"
 
 #: ../src/helper/win/writejob.cpp:146
 msgctxt "WriteJob|"
@@ -1118,17 +1036,14 @@ msgid "Couldn't lock the drive"
 msgstr "Не удалось заблокировать диск"
 
 #: ../src/helper/win/writejob.cpp:159
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "Не удалось открыть диск для записи"
+msgstr "Не удалось открыть логический дескриптор"
 
 #: ../src/helper/win/writejob.cpp:165
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Не удалось заблокировать диск"
+msgstr "Не удалось заблокировать логический диск"
 
 #: ../src/helper/win/writejob.cpp:172
 msgctxt "WriteJob|"
@@ -1136,12 +1051,9 @@ msgid "Couldn't unmount drive"
 msgstr "Не удалось разблокировать диск"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Unable to allocate socket pair"
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr "Не удалось создать пару сокетов"
+msgstr "Не удалось выделить буфер"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
@@ -1156,12 +1068,9 @@ msgid "Wrote %1 out of %2"
 msgstr "Записано %1 из %2"
 
 #: ../src/helper/win/writejob.cpp:492
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Не удаётся переименовать временный файл."
+msgstr "Не удалось прочитать файл образа: "
 
 #: ../src/helper/win/writejob.cpp:498
 #, qt-format
@@ -1170,12 +1079,10 @@ msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "Не удалось записать весь образ. По итогу записано: %1 из %2"
 
 #: ../src/helper/win/writejob.cpp:518
-#, fuzzy, qt-format
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
+#, qt-format
 msgctxt "WriteJob|"
 msgid "Couldn't open the drive for data verification for %1:"
-msgstr "Не удалось открыть диск для записи"
+msgstr "Не удалось открыть диск для проверки данных для %1:"
 
 #: ../src/app/qml/main.qml:81
 msgctxt "main|"
@@ -1232,17 +1139,17 @@ msgstr ""
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "Требуются права администратора!"
 
 #: NSIS:UninstallPreviousVersion
 msgctxt "NSIS:UninstallPreviousVersion"
 msgid "Uninstalling previous version of ${APPNAME}..."
-msgstr ""
+msgstr "Удаление предыдущей версии ${APPNAME}..."
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "Вы хотите удалить ${APPNAME}?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1253,16 +1160,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Не удалось загрузить Visual C++ Redistributable.\n"
+"\n"
+"Проверьте подключение к интернету и повторите попытку позже,\n"
+"или загрузите его вручную из:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Загрузка Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Установка Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1273,6 +1185,11 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"Microsoft Visual C++ Redistributable не установлен на вашей системе.\n"
+"\n"
+"Он необходим для правильной работы ${APPNAME}.\n"
+"\n"
+"Хотите загрузить и установить его сейчас? (примерно 25 МБ)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1284,6 +1201,12 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Вы решили пропустить установку Visual C++ Redistributable.\n"
+"\n"
+"Без него ${APPNAME} может не работать должным образом.\n"
+"\n"
+"Вы можете загрузить его вручную из:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgid "Fedora Media Writer"
 #~ msgstr "Fedora Media Writer"
