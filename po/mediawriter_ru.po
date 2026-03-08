@@ -12,12 +12,14 @@
 # Makar Razin <makarrazin14@gmail.com>, 2024, 2025.
 # Dmitry Kiryanov <kagaminep@yandex.ru>, 2024, 2025.
 # Vik <k3kelm4vw@mozmail.com>, 2025.
+# Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2026.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
-"PO-Revision-Date: 2025-02-10 09:32+0000\n"
-"Last-Translator: Dmitry Kiryanov <kagaminep@yandex.ru>\n"
+"PO-Revision-Date: 2026-03-08 00:58+0000\n"
+"Last-Translator: Weblate Translation Memory <noreply-mt-weblate-translation-"
+"memory@weblate.org>\n"
 "Language-Team: Russian <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/ru/>\n"
 "Language: ru\n"
@@ -26,7 +28,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.16.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -458,9 +460,6 @@ msgid "Download && Write"
 msgstr "Загрузить и записать"
 
 #: ../src/app/qml/DrivePage.qml:172
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Download & Write"
 msgctxt "DrivePage|"
 msgid "Download & Write"
 msgstr "Загрузить и записать"
@@ -565,17 +564,11 @@ msgid "About"
 msgstr "О программе"
 
 #: ../src/app/qml/Page.qml:99
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Previous"
 msgctxt "Page|"
 msgid "Previous"
 msgstr "Назад"
 
 #: ../src/app/qml/Page.qml:109
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Next"
 msgctxt "Page|"
 msgid "Next"
 msgstr "Далее"
@@ -813,9 +806,6 @@ msgid "Failed to open device for writing"
 msgstr "Не удалось открыть диск для записи"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Destination drive is not writable"
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
 msgstr "Целевой диск недоступен для записи"
@@ -871,9 +861,6 @@ msgid "Failed to open the drive for formatting"
 msgstr "Не удалось открыть диск для записи"
 
 #: ../src/helper/win/restorejob.cpp:95
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
 msgstr "Не удалось заблокировать диск"
@@ -968,17 +955,11 @@ msgid "Restoring finished"
 msgstr "Восстановление завершено"
 
 #: ../src/app/qml/RestorePage.qml:110
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Finish"
 msgctxt "RestorePage|"
 msgid "Finish"
 msgstr "Готово"
 
 #: ../src/app/qml/RestorePage.qml:110
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
 msgctxt "RestorePage|"
 msgid "Restore"
 msgstr "Восстановить"
@@ -1145,17 +1126,11 @@ msgid "Couldn't open the logical handle"
 msgstr "Не удалось открыть диск для записи"
 
 #: ../src/helper/win/writejob.cpp:165
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
 msgstr "Не удалось заблокировать диск"
 
 #: ../src/helper/win/writejob.cpp:172
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
 msgstr "Не удалось разблокировать диск"
