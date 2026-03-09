@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
-"PO-Revision-Date: 2026-03-08 00:58+0000\n"
+"PO-Revision-Date: 2026-03-09 09:58+0000\n"
 "Last-Translator: Marija Grineviciute <marijagrine@protonmail.com>\n"
 "Language-Team: Lithuanian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/lt/>\n"
@@ -742,7 +742,7 @@ msgstr "%1 Beta"
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr ""
+msgstr "%1 leidimo kandidatas"
 
 #: ../src/helper/linux/restorejob.cpp:67
 msgctxt "RestoreJob|"
@@ -767,7 +767,7 @@ msgstr "Failo dydis mažesnis nei 128 blokai"
 #: ../src/helper/linux/restorejob.cpp:105
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr ""
+msgstr "Nepavyko perkelti failo rodyklės į regiono pabaigą"
 
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
@@ -777,7 +777,7 @@ msgstr "Nepavyko sinchronizuoti duomenų diske"
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr ""
+msgstr "Nepavyko pašalinti diskų prijungimo taškų"
 
 #: ../src/helper/win/restorejob.cpp:71
 msgctxt "RestoreJob|"
@@ -842,10 +842,10 @@ msgid ""
 "you want to restore it to factory settings? </p>"
 msgstr ""
 "<p align=\"justify\"> Norint atgauti visą laisvą vietą diske, reikia atkurti "
-"disko gamyklinius nustatymus. Esama sistema ir visi išsaugoti duomenys bus "
-"ištrinti.</p> <p align=\"justify\"> Jei norite įrašyti kitą sistemą į diską, "
-"jo atkurti nereikia.</p> <p align=\"justify\"> Ar norite atkurti gamyklinius "
-"nustatymus? </p>"
+"disko gamyklinius nustatymus. Veikiančioji sistema ir visi išsaugoti "
+"duomenys bus ištrinti.</p> <p align=\"justify\"> Jei norite įrašyti kitą "
+"veikiančiąją sistemą į diską, jo atkurti nereikia.</p> <p align=\"justify\"> "
+"Ar norite atkurti gamyklinius nustatymus? </p>"
 
 #: ../src/app/qml/RestorePage.qml:53
 msgctxt "RestorePage|"
@@ -994,19 +994,20 @@ msgid "Unexpected error occurred during media check."
 msgstr "Medijos tikrinimo metu įvyko netikėta klaida."
 
 #: ../src/helper/mac/writejob.cpp:86
+#, fuzzy
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "Negalima paskirti prievadų poros"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "Negalima atidaryti paskirties vietos įrašymui"
 
 #: ../src/helper/win/writejob.cpp:122
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr ""
+msgstr "Nepavyko pašalinti diskų prijungimo taškų"
 
 #: ../src/helper/win/writejob.cpp:129
 msgctxt "WriteJob|"
@@ -1026,28 +1027,28 @@ msgstr "Nepavyko užrakinti disko"
 #: ../src/helper/win/writejob.cpp:159
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr ""
+msgstr "Nepavyko atidaryti loginio identifikatoriaus"
 
 #: ../src/helper/win/writejob.cpp:165
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr ""
+msgstr "Nepavyko užrakinti loginio disko"
 
 #: ../src/helper/win/writejob.cpp:172
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr ""
+msgstr "Nepavyko atjungti disko"
 
 #: ../src/helper/win/writejob.cpp:268 ../src/helper/win/writejob.cpp:434
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr ""
+msgstr "Nepavyko paskirti buferio"
 
 #: ../src/helper/win/writejob.cpp:334 ../src/helper/win/writejob.cpp:377
 #: ../src/helper/win/writejob.cpp:473
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Paskutinis blokas nebuvo pilnai įrašytas"
 
 #: ../src/helper/win/writejob.cpp:466
 #, qt-format
@@ -1095,7 +1096,7 @@ msgstr "Atkurti"
 #. (itstool) path: component/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "A tool to create a live USB drive with an edition of Fedora"
-msgstr ""
+msgstr "Įrankis, skirtas kurti veikiantįjį USB diską su Fedoros versija"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:12
@@ -1107,6 +1108,13 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
+"Tai įrankis, skirtas sukurti paleidžiamąją veikiančiąją USB atmintinę "
+"(diską) su Fedoros versija. Fedoros diegimo programa gali ne tik įrašyti "
+"atvaizdį į jūsų atmintuką, bet ir atsiųsti jį. Čia rasite oficialias "
+"versijas (Server, Workstation), Fedoros dizainus (KDE Plasma, Xfce, Cinnamon "
+"ir kitus darbalaukius) ir Fedoros laboratorijas (Dizaino programų komplektą, "
+"Saugumo laboratoriją ir t. t.). Jame pateikiama esminė informacija apie "
+"kiekvieną iš jų, kad galėtumėte pasirinkti, kas jums reikalinga."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:13
@@ -1114,6 +1122,9 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
+"Su Fedoros diegimo programa taip pat galima įrašyti kitus ISO, įkeltus iš "
+"vietinio disko, tačiau turėkite galvoje, kad jie yra išbandyti tik su "
+"Fedoros atvaizdžiais."
 
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
