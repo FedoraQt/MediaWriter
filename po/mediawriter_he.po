@@ -5,12 +5,12 @@
 # #-#-#-#-#  mediawriter_he.po  #-#-#-#-#
 # Niv Baehr <bloop93@gmail.com>, 2016. #zanata
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2018. #zanata, 2021, 2022, 2023, 2024, 2025.
-# "Omer I.S." <omeritzicschwartz@gmail.com>, 2025.
+# "Omer I.S." <omeritzicschwartz@gmail.com>, 2025, 2026.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
-"PO-Revision-Date: 2025-12-29 11:58+0000\n"
+"PO-Revision-Date: 2026-03-09 09:58+0000\n"
 "Last-Translator: \"Omer I.S.\" <omeritzicschwartz@gmail.com>\n"
 "Language-Team: Hebrew <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/he/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 2 : 1;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.16.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -731,20 +731,14 @@ msgid "%1 Release Candidate"
 msgstr "%1 מועמדות להוצא לאור"
 
 #: ../src/helper/linux/restorejob.cpp:67
-#, fuzzy
-#| msgctxt "RestoreJob|"
-#| msgid "Failed to open the drive for formatting"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "פתיחת הכונן לפרמוט נכשלה"
+msgstr "נכשלה פתיחת ההתקן לכתיבה"
 
 #: ../src/helper/linux/restorejob.cpp:82 ../src/helper/linux/restorejob.cpp:114
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Destination drive is not writable"
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
-msgstr "כונן היעד אינו נגיש לכתיבה"
+msgstr "כונן היעד אינו ניתן לכתיבה"
 
 #: ../src/helper/linux/restorejob.cpp:91
 msgctxt "RestoreJob|"
@@ -754,7 +748,7 @@ msgstr "נכשלה קבלת מידע גודל הקובץ"
 #: ../src/helper/linux/restorejob.cpp:98
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "גודל הקובץ קטן מ־128 מקטעים"
 
 #: ../src/helper/linux/restorejob.cpp:105
 #, fuzzy
@@ -767,7 +761,7 @@ msgstr "הסרת המחיצות מהכונן נכשלה"
 #: ../src/helper/linux/restorejob.cpp:122
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "נכשל סנכרון הנתונים לכונן"
 
 #: ../src/helper/win/restorejob.cpp:60
 msgctxt "RestoreJob|"
@@ -1120,17 +1114,17 @@ msgstr ""
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "נדרשות הרשאות ניהול!"
 
 #: NSIS:UninstallPreviousVersion
 msgctxt "NSIS:UninstallPreviousVersion"
 msgid "Uninstalling previous version of ${APPNAME}..."
-msgstr ""
+msgstr "מוסרת הגרסה הקודמת של ${APPNAME}..."
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "להסיר את ${APPNAME}?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1141,16 +1135,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"נכשלה הורדת Visual C++ Redistributable. \n"
+" \n"
+"נא לבדוק את החיבור לאינטרנט ולנסות שוב, \n"
+"או להוריד ידנית מהכתובת: \n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "מתצעת הורדת Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "מתבצעת התקנת Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
