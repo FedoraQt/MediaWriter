@@ -46,18 +46,23 @@ Page {
 
     QQC2.RadioButton {
         id: restoreRadio
-        visible: drives.lastRestoreable
-        text: drives.lastRestoreable ? qsTr("Restore <b>%1</b>").arg(drives.lastRestoreable.name) : ""
+        visible: drives.restoreableCount
+        text: {
+            if (drives.restoreableCount === 1)
+                return qsTr("Restore <b>%1</b>").arg(drives.restoreableDriveAt(0).name)
+            else
+                return qsTr("Restore a USB drive (%1 available)").arg(drives.restoreableCount)
+        }
         onClicked: {
             selectedOption = Units.MainSelect.Restore
         }
 
         Connections {
             target: drives
-            function onLastRestoreableChanged() {
-                if (drives.lastRestoreable != null && !restoreRadio.visible)
+            function onRestoreableDrivesChanged() {
+                if (drives.restoreableCount && !restoreRadio.visible)
                     restoreRadio.visible = true
-                if (!drives.lastRestoreable)
+                if (!drives.restoreableCount)
                     restoreRadio.visible = false
             }
         }
