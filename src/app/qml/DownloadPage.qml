@@ -36,7 +36,7 @@ Page {
             qsTr("%1 Successfully Written").arg(file)
         else if (currentStatus === Units.DownloadStatus.Writing)
             qsTr("Writing %1").arg(file)
-        else if (currentStatus === Units.DownloadStatus.Downloading)
+        else if (currentStatus === Units.DownloadStatus.Downloading || currentStatus === Units.DownloadStatus.Paused)
             qsTr("Downloading %1").arg(file)
         else if (currentStatus === Units.DownloadStatus.Preparing)
             qsTr("Preparing %1").arg(file)
@@ -78,12 +78,12 @@ Page {
         }
 
         QQC2.Label {
-            visible: currentStatus == Units.DownloadStatus.Downloading
+            visible: currentStatus == Units.DownloadStatus.Downloading || currentStatus == Units.DownloadStatus.Paused
             text: downloadPage.leftStr
         }
 
         QQC2.Label {
-            visible: currentStatus == Units.DownloadStatus.Downloading
+            visible: currentStatus == Units.DownloadStatus.Downloading || currentStatus == Units.DownloadStatus.Paused
             text: downloadPage.rightStr
         }
     }
@@ -228,16 +228,25 @@ Page {
                         releases.variant
                 }   
             }
+        }, 
+        State {
+            name: "paused"
+            when: currentStatus === Units.DownloadStatus.Paused
+            PropertyChanges {
+                target: progressBar;
+                value: releases.variant.progress.ratio
+            }
         }
     ]    
 
-    // There will be only [Finish] button on the right side so [Cancel] button
-    // is not necessary
     previousButtonVisible: currentStatus != Units.DownloadStatus.Finished
-    previousButtonText: qsTr("Cancel")
+    previousButtonText: {
+        return qsTr("Cancel")
+    }
     onPreviousButtonClicked: {
         if (releases.variant.status === Units.DownloadStatus.Write_Verifying ||
             releases.variant.status === Units.DownloadStatus.Writing ||
+            releases.variant.status === Units.DownloadStatus.Paused ||
             releases.variant.status === Units.DownloadStatus.Downloading ||
             releases.variant.status === Units.DownloadStatus.Download_Verifying) {
             cancelDialog.show()
@@ -249,7 +258,10 @@ Page {
     }
 
     nextButtonVisible: {
-        if (currentStatus == Units.DownloadStatus.Finished)
+        // This will be [Resume] or [Pause] button to finish download or resume download 
+        if (currentStatus == Units.DownloadStatus.Finished || 
+            currentStatus == Units.DownloadStatus.Paused || 
+            currentStatus == Units.DownloadStatus.Downloading)
             return true
         // This will be [Retry] button to start the process again if there is a drive plugged in
         else if (currentStatus == Units.DownloadStatus.Ready ||
@@ -260,14 +272,15 @@ Page {
         return false
     }
     nextButtonText: {
-
         if (releases.variant.status === Units.DownloadStatus.Write_Verifying ||
-            releases.variant.status === Units.DownloadStatus.Writing ||
-            releases.variant.status === Units.DownloadStatus.Downloading ||
-            releases.variant.status === Units.DownloadStatus.Download_Verifying)
+            releases.variant.status === Units.DownloadStatus.Writing)
             return qsTr("Cancel")
         else if (releases.variant.status == Units.DownloadStatus.Ready)
             return qsTr("Write")
+        else if (releases.variant.status === Units.DownloadStatus.Paused)
+            return qsTr("Resume")
+        else if (releases.variant.status === Units.DownloadStatus.Downloading)
+            return qsTr("Pause")
         else if (releases.variant.status === Units.DownloadStatus.Finished)
             return qsTr("Finish")
         else
@@ -288,6 +301,16 @@ Page {
                 releases.variant.download()
             drives.selected.setImage(releases.variant)
             drives.selected.write(releases.variant)
+        } else if (releases.variant.status === Units.DownloadStatus.Paused) {
+            if (selectedOption != Units.MainSelect.Write) 
+                releases.variant.download()
+            if (drives.length) {
+                drives.selected.setImage(releases.variant)
+                drives.selected.write(releases.variant)
+            }
+        } else if (releases.variant.status === Units.DownloadStatus.Downloading) {
+            downloadManager.cancel()
+            releases.variant.setStatus(Units.DownloadStatus.Paused)
         }
     }
 }
