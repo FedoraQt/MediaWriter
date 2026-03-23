@@ -124,6 +124,9 @@ void RestoreJob::work()
         qApp->exit(1);
     }
 
+    // Close the file descriptor before handing off to UDisks2 to avoid conflicts
+    fd = QDBusUnixFileDescriptor();
+
     QDBusReply<void> formatReply = device.call("Format", "gpt", Properties());
     if (!formatReply.isValid() && formatReply.error().type() != QDBusError::NoReply) {
         err << formatReply.error().message() << "\n";
