@@ -246,9 +246,11 @@ QMap<quint32, bool> WinDiskManagement::getDevicePartitions(quint32 index)
         }
 
         VARIANT var;
-        bool mountable = false;
         qint32 partitionIndex = -1;
         QString partitionPath;
+        wchar_t driveLetter = L'\0';
+        QString gptType;
+        quint32 mbrType = 0;
 
         if ((pPartitionObject->Get(_bstr_t(L"PartitionNumber"), 0, &var, 0, 0)) == WBEM_S_NO_ERROR) {
             if (var.vt == VT_I4) {
@@ -266,11 +268,23 @@ QMap<quint32, bool> WinDiskManagement::getDevicePartitions(quint32 index)
             VariantClear(&var);
         }
 
-        wchar_t driveLetter;
         if ((pPartitionObject->Get(_bstr_t(L"DriveLetter"), 0, &var, 0, 0)) == WBEM_S_NO_ERROR) {
             if (var.vt == VT_I2) {
                 driveLetter = static_cast<wchar_t>(var.iVal);
-                mountable = driveLetter != L'\0';
+            }
+            VariantClear(&var);
+        }
+
+        if ((pPartitionObject->Get(_bstr_t(L"GptType"), 0, &var, 0, 0)) == WBEM_S_NO_ERROR) {
+            if (var.vt == VT_BSTR) {
+                gptType = QString::fromWCharArray(var.bstrVal).toUpper();
+            }
+            VariantClear(&var);
+        }
+
+        if ((pPartitionObject->Get(_bstr_t(L"MbrType"), 0, &var, 0, 0)) == WBEM_S_NO_ERROR) {
+            if (var.vt == VT_UI1 || var.vt == VT_I1) {
+                mbrType = var.bVal;
             }
             VariantClear(&var);
         }
@@ -278,10 +292,34 @@ QMap<quint32, bool> WinDiskManagement::getDevicePartitions(quint32 index)
         pPartitionObject->Release();
 
         if (partitionIndex != -1) {
+            // A partition is Windows-native (mountable) if:
+            // - Windows assigned it a drive letter, OR
+            // - Its GPT type is Microsoft Basic Data or Microsoft Reserved
+            //   (may be unmounted but is still a Windows partition), OR
+            // - Its MBR type is a standard Windows filesystem type.
+            // Partitions with EFI, Linux, or other foreign types indicate a live image.
+            bool mountable = false;
+            if (driveLetter != L'\0') {
+                mountable = true;
+            } else if (!gptType.isEmpty()) {
+                // {EBD0A0A2-B9E5-4433-87C0-68B6B72699C7} = Microsoft Basic Data (NTFS/FAT/exFAT)
+                // {E3C9E316-0B5C-4DB8-817D-F92DF00215AE} = Microsoft Reserved
+                mountable = (gptType == QStringLiteral("{EBD0A0A2-B9E5-4433-87C0-68B6B72699C7}") || gptType == QStringLiteral("{E3C9E316-0B5C-4DB8-817D-F92DF00215AE}"));
+            } else if (mbrType != 0) {
+                // FAT12 (0x01), FAT16 (0x04/0x06/0x0E), Extended (0x05/0x0F),
+                // NTFS (0x07), FAT32 (0x0B/0x0C)
+                mountable = (mbrType == 0x01 || mbrType == 0x04 || mbrType == 0x05 || mbrType == 0x06 || mbrType == 0x07 || mbrType == 0x0B || mbrType == 0x0C || mbrType == 0x0E || mbrType == 0x0F);
+            }
+
             if (mountable) {
-                logMessage(QtDebugMsg, QStringLiteral("Found partition with index %1 mounted to %2").arg(partitionIndex).arg(QString::fromWCharArray(&driveLetter, 1)));
+                logMessage(QtDebugMsg,
+                           QStringLiteral("Found native partition %1 (letter: %2, gptType: %3, mbrType: 0x%4)")
+                               .arg(partitionIndex)
+                               .arg(driveLetter ? QString::fromWCharArray(&driveLetter, 1) : QStringLiteral("-"))
+                               .arg(gptType)
+                               .arg(mbrType, 2, 16, QChar('0')));
             } else {
-                logMessage(QtDebugMsg, QStringLiteral("Found unmounted partition with index %1").arg(partitionIndex));
+                logMessage(QtDebugMsg, QStringLiteral("Found foreign partition %1 (gptType: %2, mbrType: 0x%3) - live image indicator").arg(partitionIndex).arg(gptType).arg(mbrType, 2, 16, QChar('0')));
             }
             result.insert(static_cast<quint32>(partitionIndex), mountable);
         }
