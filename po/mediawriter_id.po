@@ -6,13 +6,13 @@
 # Andika Triwidada <andika@gmail.com>, 2017. #zanata, 2021, 2022, 2024, 2025.
 # Andika Triwidada <andika@gmail.com>, 2018. #zanata, 2021, 2022, 2024, 2025.
 # Andika Triwidada <andika@gmail.com>, 2019. #zanata, 2021, 2022, 2024, 2025.
-# Arif Budiman <arifpedia@gmail.com>, 2024, 2025.
+# Arif Budiman <arifpedia@gmail.com>, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-15 12:24+0100\n"
-"PO-Revision-Date: 2025-04-15 11:53+0000\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"PO-Revision-Date: 2026-03-23 13:16+0000\n"
+"Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/id/>\n"
 "Language: id\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.16.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:49
@@ -511,7 +511,7 @@ msgstr "Pilih berkas .iso"
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "Pulihkan<b> %1</b>"
+msgstr "Pulihkan <b>%1</b>"
 
 #: ../src/app/qml/MainPage.qml:72
 msgctxt "MainPage|"
@@ -1126,17 +1126,17 @@ msgstr ""
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "Diperlukan hak administrator!"
 
 #: NSIS:UninstallPreviousVersion
 msgctxt "NSIS:UninstallPreviousVersion"
 msgid "Uninstalling previous version of ${APPNAME}..."
-msgstr ""
+msgstr "Sedang menghapus instalasi versi sebelumnya dari ${APPNAME}..."
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "Apakah Anda ingin menghapus instalasi ${APPNAME}?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1147,16 +1147,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Gagal mengunduh Visual C++ Redistributable.\n"
+"\n"
+"Silakan periksa koneksi internet Anda dan coba lagi,\n"
+"atau unduh secara manual dari:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Mengunduh Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Sedang menginstal Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1167,6 +1172,11 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"Microsoft Visual C++ Redistributable belum terinstal di sistem Anda.\n"
+"\n"
+"Komponen ini diperlukan agar ${APPNAME} dapat berjalan dengan baik.\n"
+"\n"
+"Apakah Anda ingin mengunduh dan menginstalnya sekarang? (sekitar 25 MB)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1178,6 +1188,13 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Anda telah memilih untuk melewatkan penginstalan Visual C++ "
+"Redistributable.\n"
+"\n"
+"${APPNAME} mungkin tidak akan berfungsi dengan baik tanpa paket tersebut.\n"
+"\n"
+"Anda dapat mengunduhnya secara manual dari:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgid "Fedora Media Writer"
 #~ msgstr "Fedora Media Writer"
