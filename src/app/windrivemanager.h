@@ -25,9 +25,6 @@
 
 #include <QProcess>
 
-class WinDriveProvider;
-class WinDrive;
-
 class WinDriveProvider : public DriveProvider
 {
     Q_OBJECT
@@ -38,32 +35,8 @@ public slots:
     void checkDrives();
 
 private:
-    QMap<int, WinDrive *> m_drives;
+    QMap<int, Drive *> m_drives;
     std::unique_ptr<WinDiskManagement> m_diskManagement;
-};
-
-class WinDrive : public Drive
-{
-    Q_OBJECT
-public:
-    WinDrive(WinDriveProvider *parent, const QString &name, uint64_t size, bool containsLive, int device, const QString &serialNumber);
-
-    Q_INVOKABLE virtual bool write(ReleaseVariant *data) override;
-    Q_INVOKABLE virtual void restore() override;
-
-    bool busy() const;
-    QString serialNumber() const;
-
-    bool operator==(const WinDrive &o) const;
-
-private slots:
-    void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
-    void onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus);
-    void onReadyRead();
-
-private:
-    int m_device;
-    QString m_serialNo;
 };
 
 #endif // WINDRIVEMANAGER_H

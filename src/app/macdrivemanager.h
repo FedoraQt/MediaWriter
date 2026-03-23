@@ -41,24 +41,7 @@ public:
 
 private:
     static MacDriveProvider *_self;
-    QMap<QString, MacDrive *> m_devices;
-};
-
-class MacDrive : public Drive
-{
-    Q_OBJECT
-public:
-    MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive, const QString &bsdDevice);
-
-    Q_INVOKABLE virtual bool write(ReleaseVariant *data) override;
-    Q_INVOKABLE virtual void restore() override;
-private slots:
-    void onFinished(int exitCode, QProcess::ExitStatus exitStatus);
-    void onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus);
-    void onReadyRead();
-
-private:
-    QString m_bsdDevice;
+    QMap<QString, Drive *> m_devices;
 };
 
 #endif // MACDRIVEMANAGER_H

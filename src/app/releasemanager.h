@@ -130,11 +130,11 @@ public:
     void onStringDownloaded(const QString &text) override;
     virtual void onDownloadError(const QString &message) override;
 
-public slots:
+public Q_SLOTS:
     void fetchReleases();
     void variantChangedFilter();
 
-signals:
+Q_SIGNALS:
     void beingUpdatedChanged();
     void frontPageChanged();
     void filterTextChanged();
@@ -254,7 +254,7 @@ public:
     int selectedVersionIndex() const;
     void setSelectedVersionIndex(int o);
 
-signals:
+Q_SIGNALS:
     void versionsChanged();
     void selectedVersionChanged();
     void prereleaseChanged();
@@ -322,7 +322,7 @@ public:
     int selectedVariantIndex() const;
     void setSelectedVariantIndex(int o);
 
-signals:
+Q_SIGNALS:
     void variantsChanged();
     void selectedVariantChanged();
     void statusChanged();
@@ -427,7 +427,7 @@ public:
 
     Q_INVOKABLE bool erase();
 
-signals:
+Q_SIGNALS:
     void isoChanged();
     void statusChanged();
     void errorStringChanged();
@@ -436,7 +436,7 @@ signals:
     void realSizeChanged();
     void shaHashChanged();
 
-public slots:
+public Q_SLOTS:
     void download();
     void resetStatus();
 

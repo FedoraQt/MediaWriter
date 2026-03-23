@@ -1,5 +1,6 @@
 /*
  * Fedora Media Writer
+ * Copyright (C) 2026 Jan Grulich <jgrulich@redhat.com
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -21,9 +22,7 @@
 #define DRIVEMANAGER_H
 
 #include <QAbstractListModel>
-#include <QDebug>
 #include <QProcess>
-#include <memory>
 
 #include "releasemanager.h"
 
@@ -31,6 +30,7 @@ class DriveManager;
 class DriveProvider;
 class Drive;
 class UdisksDrive;
+class Progress;
 
 /**
  * @brief Custom deleter for QProcess to ensure proper cleanup
@@ -38,27 +38,7 @@ class UdisksDrive;
  * Handles platform-specific process termination before deletion
  */
 struct DriveOperationDeleter {
-    void operator()(QProcess *process)
-    {
-        if (!process) {
-            return;
-        }
-
-        if (process->state() != QProcess::NotRunning) {
-#ifdef Q_OS_WIN
-            process->kill();
-            process->waitForFinished();
-#else
-            process->terminate();
-            if (!process->waitForFinished(3000)) {
-                process->kill();
-                process->waitForFinished();
-            }
-#endif
-        }
-
-        delete process;
-    }
+    void operator()(QProcess *process);
 };
 
 /**
@@ -81,10 +61,12 @@ class DriveManager : public QAbstractListModel
     Q_PROPERTY(int selectedIndex READ selectedIndex WRITE setSelectedIndex NOTIFY selectedChanged)
     Q_PROPERTY(bool isBroken READ isBackendBroken NOTIFY isBackendBrokenChanged)
     Q_PROPERTY(QString errorString READ errorString NOTIFY isBackendBrokenChanged)
-
     Q_PROPERTY(Drive *lastRestoreable READ lastRestoreable WRITE setLastRestoreable NOTIFY restoreableDriveChanged)
+
 public:
     static DriveManager *instance();
+
+    enum DriveMangerRole { DriveRole = Qt::UserRole + 1, DriveNameRole };
 
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
     QHash<int, QByteArray> roleNames() const override;
@@ -104,12 +86,12 @@ public:
 
     void setLastRestoreable(Drive *d);
 
-private slots:
+private Q_SLOTS:
     void onDriveConnected(Drive *d);
     void onDriveRemoved(Drive *d);
     void onBackendBroken(const QString &message);
 
-signals:
+Q_SIGNALS:
     void drivesChanged();
     void selectedChanged();
     void restoreableDriveChanged();
@@ -144,9 +126,9 @@ public:
 
     bool initialized() const;
 
-signals:
-    void driveConnected(Drive *d);
-    void driveRemoved(Drive *d);
+Q_SIGNALS:
+    void driveConnected(Drive *drive);
+    void driveRemoved(Drive *drive);
     void backendBroken(const QString &message);
 
     void initializedChanged();
@@ -154,7 +136,7 @@ signals:
 protected:
     DriveProvider(DriveManager *parent);
 
-    bool m_initialized{true};
+    bool m_initialized{false};
 };
 
 /**
@@ -178,7 +160,6 @@ class Drive : public QObject
     Q_PROPERTY(QString readableSize READ readableSize CONSTANT)
     Q_PROPERTY(qreal size READ size CONSTANT)
     Q_PROPERTY(RestoreStatus restoreStatus READ restoreStatus NOTIFY restoreStatusChanged)
-    Q_PROPERTY(bool delayedWrite READ delayedWrite WRITE setDelayedWrite NOTIFY delayedWriteChanged)
 public:
     enum RestoreStatus {
         CLEAN = 0,
@@ -189,43 +170,49 @@ public:
     };
     Q_ENUMS(RestoreStatus)
 
-    Drive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive = false);
+    Drive(DriveProvider *parent, const QString &deviceName, const QString &deviceIdentifier, const QString &serialNumber, uint64_t size, bool containsLive = false);
+    ~Drive();
 
     Progress *progress() const;
 
-    virtual void updateDrive(const QString &name, uint64_t size, bool containsLive = false);
+    void updateDrive(const QString &name, uint64_t size, bool containsLive = false);
 
-    virtual QString name() const;
-    virtual QString readableSize() const;
-    virtual qreal size() const;
-    virtual RestoreStatus restoreStatus();
-    virtual bool delayedWrite() const;
-    virtual bool isBusy() const;
+    QString name() const;
+    QString identifier() const;
+    QString serialNumber() const;
+    QString readableSize() const;
+    qreal size() const;
+    RestoreStatus restoreStatus();
+    bool isBusy() const;
 
-    virtual void setDelayedWrite(const bool &o);
+    Q_INVOKABLE void setImage(ReleaseVariant *data);
+    Q_INVOKABLE bool write(ReleaseVariant *data);
+    Q_INVOKABLE void cancel();
+    Q_INVOKABLE void restore();
 
-    Q_INVOKABLE virtual void setImage(ReleaseVariant *data);
-    Q_INVOKABLE virtual bool write(ReleaseVariant *data);
-    Q_INVOKABLE virtual void cancel();
-    Q_INVOKABLE virtual void restore() = 0;
+    bool operator==(const Drive &drive) const;
 
-    bool operator==(const Drive &o) const;
+public Q_SLOTS:
+    void setRestoreStatus(RestoreStatus status);
 
-public slots:
-    void setRestoreStatus(RestoreStatus o);
+private Q_SLOTS:
+    void onReadyRead();
+    void onFinished(int exitCode, QProcess::ExitStatus status);
+    void onRestoreFinished(int exitCode, QProcess::ExitStatus status);
+    void onErrorOccurred(QProcess::ProcessError error);
 
-signals:
+Q_SIGNALS:
     void restoreStatusChanged();
-    void delayedWriteChanged();
 
 protected:
     ReleaseVariant *m_image{nullptr};
     Progress *m_progress{nullptr};
-    QString m_name{};
+    QString m_deviceName;
+    QString m_deviceIdentifier;
+    QString m_serialNumber;
     uint64_t m_size{0};
     RestoreStatus m_restoreStatus{CLEAN};
     QString m_error{};
-    bool m_delayedWrite{false};
     std::unique_ptr<QProcess, DriveOperationDeleter> m_process;
 };
 

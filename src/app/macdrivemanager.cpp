@@ -1,5 +1,6 @@
 /*
  * Fedora Media Writer
+ * Copyright (C) 2026 Jan Grulich <jgrulich@redhat.com
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -19,7 +20,6 @@
 
 #include "macdrivemanager.h"
 #include "macdrivearbiter.h"
-#include "notifications.h"
 
 #include <QDebug>
 #include <QDir>
@@ -53,9 +53,9 @@ void MacDriveProvider::addDrive(const QString &bsdName, const QString &vendor, c
 {
     mDebug() << this->metaObject()->className() << "drive added" << bsdName << vendor << model << size << restoreable;
     removeDrive(bsdName);
-    MacDrive *drive = new MacDrive(this, QString("%1 %2").arg(vendor).arg(model), size, restoreable, bsdName);
+    Drive *drive = new Drive(this, QString("%1 %2").arg(vendor).arg(model), bsdName, QString(), size, restoreable);
     m_devices[bsdName] = drive;
-    emit driveConnected(drive);
+    Q_EMIT driveConnected(drive);
 }
 
 void MacDriveProvider::onDriveRemoved(const char *bsdName)
@@ -67,147 +67,8 @@ void MacDriveProvider::removeDrive(const QString &bsdName)
 {
     if (m_devices.contains(bsdName)) {
         mDebug() << this->metaObject()->className() << "drive removed" << bsdName;
-        emit driveRemoved(m_devices[bsdName]);
+        Q_EMIT driveRemoved(m_devices[bsdName]);
         m_devices[bsdName]->deleteLater();
         m_devices.remove(bsdName);
-    }
-}
-
-MacDrive::MacDrive(DriveProvider *parent, const QString &name, uint64_t size, bool containsLive, const QString &bsdDevice)
-    : Drive(parent, name, size, containsLive)
-    , m_bsdDevice(bsdDevice)
-{
-}
-
-bool MacDrive::write(ReleaseVariant *data)
-{
-    if (!Drive::write(data))
-        return false;
-
-    if (m_image->status() == ReleaseVariant::READY || m_image->status() == ReleaseVariant::FAILED || m_image->status() == ReleaseVariant::FAILED_VERIFICATION || m_image->status() == ReleaseVariant::FINISHED)
-        m_image->setStatus(ReleaseVariant::WRITING);
-
-    m_process.reset(new QProcess(this));
-    connect(m_process.get(), static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onFinished);
-    connect(m_process.get(), &QProcess::readyRead, this, &MacDrive::onReadyRead);
-    connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
-
-    if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
-        m_process->setProgram(QString("%1/../../../../helper/mac/helper.app/Contents/MacOS/helper").arg(qApp->applicationDirPath()));
-    } else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
-        m_process->setProgram(QString("%1/helper").arg(qApp->applicationDirPath()));
-    } else {
-        data->setErrorString(tr("Could not find the helper binary. Check your installation."));
-        setDelayedWrite(false);
-        return false;
-    }
-    QStringList args;
-    args.append("write");
-    if (data->status() == ReleaseVariant::WRITING) {
-        args.append(QString("%1").arg(data->iso()));
-    } else {
-        args.append(QString("%1").arg(data->temporaryPath()));
-    }
-    args.append(m_bsdDevice);
-
-    mCritical() << "The command is" << m_process->program() << args;
-    m_process->setArguments(args);
-
-    m_process->start();
-
-    return true;
-}
-
-void MacDrive::restore()
-{
-    mCritical() << "starting to restore";
-
-    m_process.reset(new QProcess(this));
-
-    m_restoreStatus = RESTORING;
-    emit restoreStatusChanged();
-
-    if (QFile::exists(qApp->applicationDirPath() + "/../../../../helper/mac/helper.app/Contents/MacOS/helper")) {
-        m_process->setProgram(QString("%1/../../../../helper/mac/helper.app/Contents/MacOS/helper").arg(qApp->applicationDirPath()));
-    } else if (QFile::exists(qApp->applicationDirPath() + "/helper")) {
-        m_process->setProgram(QString("%1/helper").arg(qApp->applicationDirPath()));
-    } else {
-        m_restoreStatus = RESTORE_ERROR;
-        return;
-    }
-
-    QStringList args;
-    args.append("restore");
-    args.append(m_bsdDevice);
-    m_process->setArguments(args);
-
-    m_process->setProcessChannelMode(QProcess::ForwardedChannels);
-
-    connect(m_process.get(), static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), this, &MacDrive::onRestoreFinished);
-    connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
-
-    mCritical() << "The command is" << m_process->program() << args;
-
-    m_process->start();
-}
-
-void MacDrive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
-{
-    Q_UNUSED(exitStatus)
-
-    setDelayedWrite(false);
-
-    if (!m_process)
-        return;
-
-    if (exitCode != 0) {
-        QString output = m_process->readAllStandardError();
-        QRegularExpression re("^.+:.+: ");
-        QStringList lines = output.split('\n');
-        if (lines.length() > 0) {
-            QString line = lines.first().replace(re, "");
-            m_image->setErrorString(line);
-        }
-        Notifications::notify(tr("Error"), tr("Writing %1 failed").arg(m_image->fullName()));
-        m_image->setStatus(ReleaseVariant::FAILED);
-    } else {
-        Notifications::notify(tr("Finished!"), tr("Writing %1 was successful").arg(m_image->fullName()));
-        m_image->setStatus(ReleaseVariant::FINISHED);
-    }
-}
-
-void MacDrive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)
-{
-    if (!m_process)
-        return;
-
-    mCritical() << "Process finished" << exitCode << exitStatus;
-    mCritical() << m_process->readAllStandardError();
-
-    if (exitCode == 0)
-        m_restoreStatus = RESTORED;
-    else
-        m_restoreStatus = RESTORE_ERROR;
-    emit restoreStatusChanged();
-}
-
-void MacDrive::onReadyRead()
-{
-    if (!m_process)
-        return;
-
-    if (m_image->status() == ReleaseVariant::WRITING) {
-        m_progress->setTo(m_image->size());
-        m_progress->setValue(0.0 / 0.0);
-    }
-
-    if (m_image->status() != ReleaseVariant::WRITE_VERIFYING && m_image->status() != ReleaseVariant::WRITING)
-        m_image->setStatus(ReleaseVariant::WRITING);
-
-    while (m_process->bytesAvailable() > 0) {
-        bool ok;
-        int64_t bytes = m_process->readLine().trimmed().toULongLong(&ok);
-        if (ok)
-            m_progress->setValue(bytes);
     }
 }
