@@ -44,8 +44,8 @@ public:
     int onMediaCheckAdvanced(long long offset, long long total);
 
 private:
-    bool check();
-    bool write();
+    bool check(HANDLE driveHandle);
+    bool write(HANDLE &driveHandle, HANDLE &logicalHandle);
     bool writeCompressed(HANDLE driveHandle);
     bool writePlain(HANDLE driveHandle);
 

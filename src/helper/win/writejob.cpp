@@ -74,14 +74,34 @@ int WriteJob::onMediaCheckAdvanced(long long offset, long long total)
 
 void WriteJob::work()
 {
-    // FIXME: Give this 3 tries
-    // It would be good to know why it fails sometimes
+    HANDLE driveHandle = INVALID_HANDLE_VALUE;
+    HANDLE logicalHandle = INVALID_HANDLE_VALUE;
+
     for (int attempts = 1; attempts <= 3; attempts++) {
-        if (write()) {
-            break;
+        // Close handles from any previous failed attempt
+        if (logicalHandle != INVALID_HANDLE_VALUE) {
+            m_diskManagement->unlockDrive(logicalHandle);
+            CloseHandle(logicalHandle);
+            logicalHandle = INVALID_HANDLE_VALUE;
+        }
+        if (driveHandle != INVALID_HANDLE_VALUE) {
+            m_diskManagement->unlockDrive(driveHandle);
+            CloseHandle(driveHandle);
+            driveHandle = INVALID_HANDLE_VALUE;
         }
 
+        if (write(driveHandle, logicalHandle))
+            break;
+
         if (attempts == 3) {
+            if (logicalHandle != INVALID_HANDLE_VALUE) {
+                m_diskManagement->unlockDrive(logicalHandle);
+                CloseHandle(logicalHandle);
+            }
+            if (driveHandle != INVALID_HANDLE_VALUE) {
+                m_diskManagement->unlockDrive(driveHandle);
+                CloseHandle(driveHandle);
+            }
             qApp->exit(1);
             return;
         }
@@ -89,7 +109,17 @@ void WriteJob::work()
         m_diskManagement->logMessage(QtDebugMsg, QStringLiteral("Re-trying to write the image from scratch"));
     }
 
-    if (!check()) {
+    const bool checkResult = check(driveHandle);
+
+    // Unlock and close handles only after verification is complete
+    if (logicalHandle != INVALID_HANDLE_VALUE) {
+        m_diskManagement->unlockDrive(logicalHandle);
+        CloseHandle(logicalHandle);
+    }
+    m_diskManagement->unlockDrive(driveHandle);
+    CloseHandle(driveHandle);
+
+    if (!checkResult) {
         qApp->exit(1);
         return;
     }
@@ -107,16 +137,12 @@ void WriteJob::onFileChanged(const QString &path)
     work();
 }
 
-bool WriteJob::write()
+bool WriteJob::write(HANDLE &driveHandle, HANDLE &logicalHandle)
 {
     m_out << "WRITE\n";
     m_out.flush();
 
     m_diskManagement->logMessage(QtDebugMsg, "Preparing device for image writing");
-
-    /*
-     * Device preparation part
-     */
 
     if (!m_diskManagement->removeDriveLetters(m_disk->index())) {
         m_err << tr("Couldn't remove drive mountpoints") << "\n";
@@ -132,25 +158,23 @@ bool WriteJob::write()
 
     m_diskManagement->refreshDiskDrive(m_disk->path());
 
-    HANDLE drive;
     const QString drivePath = QString("\\\\.\\PhysicalDrive%0").arg(m_disk->index());
-
-    drive = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-    if (drive == INVALID_HANDLE_VALUE) {
+    driveHandle = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    if (driveHandle == INVALID_HANDLE_VALUE) {
         m_err << tr("Failed to open the drive for formatting") << "\n";
         m_err.flush();
         return false;
     }
 
-    if (!m_diskManagement->lockDrive(drive, 10)) {
+    if (!m_diskManagement->lockDrive(driveHandle, 10)) {
         m_err << tr("Couldn't lock the drive") << "\n";
         m_err.flush();
         return false;
     }
 
-    m_diskManagement->refreshPartitionLayout(drive);
+    m_diskManagement->disableIOBoundaryChecks(driveHandle);
+    m_diskManagement->refreshPartitionLayout(driveHandle);
 
-    HANDLE logicalHandle = NULL;
     const QString logicalVolumePath = m_diskManagement->getLogicalName(m_disk->index(), false);
     if (!logicalVolumePath.isEmpty()) {
         m_diskManagement->logMessage(QtDebugMsg, "Trying to lock and unmount logical volume");
@@ -174,73 +198,11 @@ bool WriteJob::write()
         }
     }
 
-    // ALT: is this needed?
-    // if (!m_diskManagement->clearPartitionTable(drive, m_disk->size(), m_disk->sectorSize())) {
-    //     m_err << tr("Failed to clear the partition table on the drive") << "\n";
-    //     m_err.flush();
-    //     return false;
-    // }
-
-    // ALT: is this needed?
-    // if (!m_diskManagement->clearDiskDrive(drive)) {
-    //     m_err << tr("Failed to set the drive to RAW partition style") << "\n";
-    //     m_err.flush();
-    //     return false;
-    // }
-
-    // ALT: Do we need to reopen the drive?
-    // m_diskManagement->unlockDrive(drive);
-    // CloseHandle(drive);
-
-    // // FIXME: isn't this too much? We used to have this even before as
-    // // apparently it was suggested after diskpart operations
-    QThread::sleep(15);
-
-    // m_diskManagement->refreshPartitionLayout(drive);
-
-    /*
-     * Writing part
-     */
-
-    // m_diskManagement->logMessage(QtDebugMsg, "Opening and locking device handle for writing process");
-
-    // ALT: For unbuffered writing
-    // drive = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_FLAG_NO_BUFFERING | FILE_FLAG_WRITE_THROUGH, NULL);
-
-    // ALT: Do we need to reopen the drive?
-    // drive = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-    // if (drive == INVALID_HANDLE_VALUE) {
-    //     m_err << tr("Couldn't open the drive for writing") << "\n";
-    //     m_err.flush();
-    //     return false;
-    // }
-
-    // m_diskManagement->disableIOBoundaryChecks(drive);
-
-    // if (!m_diskManagement->lockDrive(drive, 10)) {
-    //     m_err << tr("Couldn't lock the drive") << "\n";
-    //     m_err.flush();
-    //     return false;
-    // }
-
-    bool result;
     if (m_image.endsWith(".xz")) {
-        result = writeCompressed(drive);
+        return writeCompressed(driveHandle);
     } else {
-        result = writePlain(drive);
+        return writePlain(driveHandle);
     }
-
-    if (logicalHandle && logicalHandle != INVALID_HANDLE_VALUE) {
-        m_diskManagement->unlockDrive(logicalHandle);
-        CloseHandle(logicalHandle);
-    }
-
-    m_diskManagement->unlockDrive(drive);
-    CloseHandle(drive);
-
-    m_diskManagement->refreshPartitionLayout(drive);
-
-    return result;
 }
 
 bool WriteJob::writeCompressed(HANDLE driveHandle)
@@ -505,26 +467,23 @@ bool WriteJob::writePlain(HANDLE driveHandle)
     return true;
 }
 
-bool WriteJob::check()
+bool WriteJob::check(HANDLE driveHandle)
 {
     m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("Starting verification of written data"));
 
     m_out << "CHECK\n";
     m_out.flush();
 
-    const QString drivePath = QString("\\\\.\\PhysicalDrive%0").arg(m_disk->index());
-    HANDLE drive = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
-    if (drive == INVALID_HANDLE_VALUE) {
-        m_err << tr("Couldn't open the drive for data verification for %1:").arg(drivePath) << " (" << getLastError() << ")\n";
+    // Seek back to the beginning of the drive before verifying
+    LARGE_INTEGER zero = {};
+    if (!SetFilePointerEx(driveHandle, zero, NULL, FILE_BEGIN)) {
+        m_err << tr("Couldn't seek to the beginning of the drive for verification") << " (" << getLastError() << ")\n";
         m_err.flush();
         qApp->exit(1);
         return false;
     }
-    auto driveloseGuard = qScopeGuard([&drive] {
-        CloseHandle(drive);
-    });
 
-    switch (mediaCheckFD(_open_osfhandle(reinterpret_cast<intptr_t>(drive), 0), &WriteJob::staticOnMediaCheckAdvanced, this)) {
+    switch (mediaCheckFD(_open_osfhandle(reinterpret_cast<intptr_t>(driveHandle), 0), &WriteJob::staticOnMediaCheckAdvanced, this)) {
     case ISOMD5SUM_CHECK_NOT_FOUND:
     case ISOMD5SUM_CHECK_PASSED:
         m_diskManagement->logMessage(QtCriticalMsg, QStringLiteral("Check passed"));
