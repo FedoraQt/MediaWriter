@@ -83,7 +83,7 @@ Release *ReleaseManager::get(int index) const
 void ReleaseManager::fetchReleases()
 {
     m_beingUpdated = true;
-    emit beingUpdatedChanged();
+    Q_EMIT beingUpdatedChanged();
 
     DownloadManager::instance()->fetchPageAsync(this, options.releasesUrl);
 }
@@ -92,7 +92,7 @@ void ReleaseManager::variantChangedFilter()
 {
     // TODO here we could add some filters to help signal/slot performance
     // TODO otherwise this can just go away and connections can be directly to the signal
-    emit variantChanged();
+    Q_EMIT variantChanged();
 }
 
 bool ReleaseManager::beingUpdated() const
@@ -109,7 +109,7 @@ void ReleaseManager::setFrontPage(bool o)
 {
     if (m_frontPage != o) {
         m_frontPage = o;
-        emit frontPageChanged();
+        Q_EMIT frontPageChanged();
         invalidateFilter();
     }
 }
@@ -123,7 +123,7 @@ void ReleaseManager::setFilterText(const QString &o)
 {
     if (m_filterText != o) {
         m_filterText = o;
-        emit filterTextChanged();
+        Q_EMIT filterTextChanged();
         invalidateFilter();
     }
 }
@@ -137,8 +137,8 @@ void ReleaseManager::setFilterSource(int source)
 {
     if (m_filterSource != source) {
         m_filterSource = source;
-        emit filterSourceChanged();
-        emit firstSourceChanged();
+        Q_EMIT filterSourceChanged();
+        Q_EMIT firstSourceChanged();
         invalidateFilter();
     }
 }
@@ -161,7 +161,7 @@ void ReleaseManager::selectLocalFile(const QString &path)
         if (r->source() == Release::LOCAL) {
             r->setLocalFile(path);
             setSelectedIndex(i);
-            emit localFileChanged();
+            Q_EMIT localFileChanged();
         }
     }
 }
@@ -216,7 +216,7 @@ void ReleaseManager::setFilterArchitecture(int o)
 {
     if (m_filterArchitecture != o && m_filterArchitecture >= 0 && m_filterArchitecture < ReleaseArchitecture::_ARCHCOUNT) {
         m_filterArchitecture = o;
-        emit filterArchitectureChanged();
+        Q_EMIT filterArchitectureChanged();
         for (int i = 0; i < m_sourceModel->rowCount(); i++) {
             Release *r = get(i);
             for (auto v : r->versionList()) {
@@ -250,7 +250,7 @@ void ReleaseManager::setSelectedIndex(int o)
 {
     if (m_selectedIndex != o) {
         m_selectedIndex = o;
-        emit selectedChanged();
+        Q_EMIT selectedChanged();
     }
 }
 
@@ -318,7 +318,7 @@ void ReleaseManager::onStringDownloaded(const QString &text)
     }
 
     m_beingUpdated = false;
-    emit beingUpdatedChanged();
+    Q_EMIT beingUpdatedChanged();
 }
 
 void ReleaseManager::onDownloadError(const QString &message)
@@ -491,8 +491,8 @@ void Release::setLocalFile(const QString &path)
     }
 
     m_versions.append(new ReleaseVersion(this, QUrl(path).toLocalFile(), info.size()));
-    emit versionsChanged();
-    emit selectedVersionChanged();
+    Q_EMIT versionsChanged();
+    Q_EMIT selectedVersionChanged();
 }
 
 bool Release::updateUrl(int version, const QString &status, const QString &type, const QDateTime &releaseDate, const QString &architecture, const QString &url, const QString &sha256, int64_t size)
@@ -607,17 +607,17 @@ void Release::addVersion(ReleaseVersion *version)
     for (int i = 0; i < m_versions.count(); i++) {
         if (m_versions[i]->number() < version->number()) {
             m_versions.insert(i, version);
-            emit versionsChanged();
+            Q_EMIT versionsChanged();
             if (version->status() != ReleaseVersion::FINAL && m_selectedVersion >= i) {
                 m_selectedVersion++;
             }
-            emit selectedVersionChanged();
+            Q_EMIT selectedVersionChanged();
             return;
         }
     }
     m_versions.append(version);
-    emit versionsChanged();
-    emit selectedVersionChanged();
+    Q_EMIT versionsChanged();
+    Q_EMIT selectedVersionChanged();
 }
 
 void Release::removeVersion(ReleaseVersion *version)
@@ -628,11 +628,11 @@ void Release::removeVersion(ReleaseVersion *version)
 
     if (m_selectedVersion == idx) {
         m_selectedVersion = 0;
-        emit selectedVersionChanged();
+        Q_EMIT selectedVersionChanged();
     }
     m_versions.removeAt(idx);
     version->deleteLater();
-    emit versionsChanged();
+    Q_EMIT versionsChanged();
 }
 
 ReleaseVersion *Release::selectedVersion() const
@@ -651,7 +651,7 @@ void Release::setSelectedVersionIndex(int o)
 {
     if (m_selectedVersion != o && m_selectedVersion >= 0 && m_selectedVersion < m_versions.count()) {
         m_selectedVersion = o;
-        emit selectedVersionChanged();
+        Q_EMIT selectedVersionChanged();
     }
 }
 
@@ -662,7 +662,7 @@ ReleaseVersion::ReleaseVersion(Release *parent, int number, ReleaseVersion::Stat
     , m_releaseDate(releaseDate)
 {
     if (status != FINAL)
-        emit parent->prereleaseChanged();
+        Q_EMIT parent->prereleaseChanged();
     connect(this, SIGNAL(selectedVariantChanged()), parent->manager(), SLOT(variantChangedFilter()));
 }
 
@@ -689,9 +689,9 @@ bool ReleaseVersion::updateUrl(const QString &status, const QString &type, const
     Status s = status == "alpha" ? ALPHA : status == "beta" ? BETA : FINAL;
     if (s <= m_status) {
         m_status = s;
-        emit statusChanged();
+        Q_EMIT statusChanged();
         if (s == FINAL)
-            emit release()->prereleaseChanged();
+            Q_EMIT release()->prereleaseChanged();
     } else {
         // return if it got downgraded in the meantime
         return false;
@@ -699,7 +699,7 @@ bool ReleaseVersion::updateUrl(const QString &status, const QString &type, const
     // update release date
     if (m_releaseDate != releaseDate && releaseDate.isValid()) {
         m_releaseDate = releaseDate;
-        emit releaseDateChanged();
+        Q_EMIT releaseDateChanged();
     }
     // determine what type of release it is
     ReleaseVariant::Type t = type == "atomic" ? ReleaseVariant::ATOMIC : type == "netinst" || type == "netinstall" ? ReleaseVariant::NETINSTALL : type == "full" ? ReleaseVariant::FULL : ReleaseVariant::LIVE;
@@ -754,7 +754,7 @@ void ReleaseVersion::setSelectedVariantIndex(int o)
 {
     if (m_selectedVariant != o && m_selectedVariant >= 0 && m_selectedVariant < m_variants.count()) {
         m_selectedVariant = o;
-        emit selectedVariantChanged();
+        Q_EMIT selectedVariantChanged();
     }
 }
 
@@ -771,9 +771,9 @@ QDateTime ReleaseVersion::releaseDate() const
 void ReleaseVersion::addVariant(ReleaseVariant *v)
 {
     m_variants.append(v);
-    emit variantsChanged();
+    Q_EMIT variantsChanged();
     if (m_variants.count() == 1)
-        emit selectedVariantChanged();
+        Q_EMIT selectedVariantChanged();
 }
 
 QQmlListProperty<ReleaseVariant> ReleaseVersion::variants()
@@ -817,18 +817,18 @@ bool ReleaseVariant::updateUrl(const QString &url, const QString &sha256, int64_
     if (!url.isEmpty() && m_url.toUtf8().trimmed() != url.toUtf8().trimmed()) {
         mWarning() << "Url" << m_url << "changed to" << url;
         m_url = url;
-        emit urlChanged();
+        Q_EMIT urlChanged();
         changed = true;
     }
     if (!sha256.isEmpty() && m_shaHash.trimmed() != sha256.trimmed()) {
         mWarning() << "SHA256 hash of" << url << "changed from" << m_shaHash << "to" << sha256;
         m_shaHash = sha256;
-        emit shaHashChanged();
+        Q_EMIT shaHashChanged();
         changed = true;
     }
     if (size != 0 && m_size != size) {
         m_size = size;
-        emit sizeChanged();
+        Q_EMIT sizeChanged();
         changed = true;
     }
     return changed;
@@ -928,7 +928,7 @@ void ReleaseVariant::setRealSize(qint64 o)
 {
     if (m_realSize != o) {
         m_realSize = o;
-        emit realSizeChanged();
+        Q_EMIT realSizeChanged();
     }
 }
 
@@ -989,14 +989,14 @@ void ReleaseVariant::onFileDownloaded(const QString &path, const QString &hash)
         }
 
         m_iso = finalFilename;
-        emit isoChanged();
+        Q_EMIT isoChanged();
 
         mDebug() << this->metaObject()->className() << "Image is ready";
         setStatus(READY);
 
         if (QFile(m_iso).size() != m_size) {
             m_size = QFile(m_iso).size();
-            emit sizeChanged();
+            Q_EMIT sizeChanged();
         }
     }
 }
@@ -1033,14 +1033,14 @@ void ReleaseVariant::download()
         if (!ret.endsWith(".part")) {
             m_temporaryIso = QString();
             m_iso = ret;
-            emit isoChanged();
+            Q_EMIT isoChanged();
 
             mDebug() << this->metaObject()->className() << m_iso << "is already downloaded";
             setStatus(READY);
 
             if (QFile(m_iso).size() != m_size) {
                 m_size = QFile(m_iso).size();
-                emit sizeChanged();
+                Q_EMIT sizeChanged();
             }
         } else {
             m_temporaryIso = ret;
@@ -1058,7 +1058,7 @@ void ReleaseVariant::resetStatus()
             m_progress->setValue(0.0);
     }
     setErrorString(QString());
-    emit statusChanged();
+    Q_EMIT statusChanged();
 }
 
 bool ReleaseVariant::erase()
@@ -1066,7 +1066,7 @@ bool ReleaseVariant::erase()
     if (QFile(m_iso).remove()) {
         mDebug() << this->metaObject()->className() << "Deleted" << m_iso;
         m_iso = QString();
-        emit isoChanged();
+        Q_EMIT isoChanged();
         return true;
     } else {
         mWarning() << this->metaObject()->className() << "An attempt to delete" << m_iso << "failed!";
@@ -1078,7 +1078,7 @@ void ReleaseVariant::setStatus(Status s)
 {
     if (m_status != s) {
         m_status = s;
-        emit statusChanged();
+        Q_EMIT statusChanged();
     }
 }
 
@@ -1091,7 +1091,7 @@ void ReleaseVariant::setErrorString(const QString &o)
 {
     if (m_error != o) {
         m_error = o;
-        emit errorStringChanged();
+        Q_EMIT errorStringChanged();
     }
 }
 

@@ -34,7 +34,6 @@ Q_DECLARE_METATYPE(InterfacesAndProperties)
 Q_DECLARE_METATYPE(DBusIntrospection)
 
 class LinuxDriveProvider;
-class LinuxDrive;
 
 class LinuxDriveProvider : public DriveProvider
 {
@@ -54,26 +53,7 @@ private:
 
 private:
     QDBusInterface *m_objManager{nullptr};
-    QHash<QDBusObjectPath, LinuxDrive *> m_drives;
-};
-
-class LinuxDrive : public Drive
-{
-    Q_OBJECT
-public:
-    LinuxDrive(LinuxDriveProvider *parent, QString device, QString name, uint64_t size, bool isoLayout);
-
-    Q_INVOKABLE virtual bool write(ReleaseVariant *data) override;
-    Q_INVOKABLE virtual void restore() override;
-
-private slots:
-    void onReadyRead();
-    void onFinished(int exitCode, QProcess::ExitStatus status);
-    void onRestoreFinished(int exitCode, QProcess::ExitStatus status);
-    void onErrorOccurred(QProcess::ProcessError e);
-
-private:
-    QString m_device;
+    QHash<QDBusObjectPath, Drive *> m_drives;
 };
 
 #endif // LINUXDRIVEMANAGER_H
