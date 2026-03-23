@@ -198,13 +198,16 @@ void DriveManager::onDriveConnected(Drive *drive)
         Q_EMIT selectedChanged();
     }
 
+    connect(drive, &Drive::restoreStatusChanged, this, [=]() {
+        if (drive->restoreStatus() == Drive::CONTAINS_LIVE) {
+            setLastRestoreable(drive);
+        } else if (drive == m_lastRestoreable) {
+            setLastRestoreable(nullptr);
+        }
+    });
+
     if (drive->restoreStatus() == Drive::CONTAINS_LIVE) {
         setLastRestoreable(drive);
-        connect(drive, &Drive::restoreStatusChanged, [=]() {
-            if (drive && drive == m_lastRestoreable && drive->restoreStatus() != Drive::CONTAINS_LIVE) {
-                setLastRestoreable(nullptr);
-            }
-        });
     }
 }
 
