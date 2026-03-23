@@ -23,6 +23,7 @@
 
 #include <QDebug>
 #include <QDir>
+#include <QProcess>
 
 MacDriveProvider *MacDriveProvider::_self = nullptr;
 
@@ -56,6 +57,24 @@ void MacDriveProvider::addDrive(const QString &bsdName, const QString &vendor, c
     Drive *drive = new Drive(this, QString("%1 %2").arg(vendor).arg(model), bsdName, QString(), size, restoreable);
     m_devices[bsdName] = drive;
     Q_EMIT driveConnected(drive);
+
+    if (restoreable)
+        return;
+
+    QProcess *diskUtil = new QProcess(this);
+    diskUtil->setProgram("diskutil");
+    diskUtil->setArguments({"list", "-plist", QString("/dev/%1").arg(bsdName)});
+    connect(diskUtil, &QProcess::finished, this, [this, bsdName, drive, diskUtil](int exitCode) {
+        diskUtil->deleteLater();
+        if (exitCode != 0 || !m_devices.contains(bsdName) || m_devices[bsdName] != drive)
+            return;
+        const QString output = QString::fromUtf8(diskUtil->readAllStandardOutput());
+        if (output.contains(QStringLiteral("<string>EFI</string>")) || output.contains(QStringLiteral("<string>0xEF</string>"))) {
+            mDebug() << this->metaObject()->className() << "drive" << bsdName << "contains a live image";
+            drive->setRestoreStatus(Drive::CONTAINS_LIVE);
+        }
+    });
+    diskUtil->start(QIODevice::ReadOnly);
 }
 
 void MacDriveProvider::onDriveRemoved(const char *bsdName)
