@@ -876,7 +876,9 @@ bool WinDiskManagement::clearPartitionTable(HANDLE driveHandle, quint64 driveSiz
 {
     logMessage(QtDebugMsg, QStringLiteral("Clearing partition table information"));
 
-    quint64 sectorsToClear = 128;
+    // 8192 sectors = 4 MB, enough to cover the full GPT header/entries (34 sectors)
+    // and backup GPT (33 sectors) with a large safety margin, matching Rufus's approach
+    quint64 sectorsToClear = 8192;
     LARGE_INTEGER filePointer;
 
     char *zeroBuffer = static_cast<char *>(calloc(sectorSize, sectorsToClear));
@@ -969,7 +971,7 @@ bool WinDiskManagement::createGPTPartition(HANDLE driveHandle, quint64 diskSize,
     // Disk size - GPT header/footer sectors ;
     partitionInfo.PartitionLength.QuadPart = diskSize - ((34 + 33) * sectorSize);
     partitionInfo.Gpt.PartitionType = PARTITION_BASIC_DATA_GUID;
-    partitionInfo.Gpt.PartitionId = createDisk.Gpt.DiskId;
+    CoCreateGuid(&partitionInfo.Gpt.PartitionId);
 
     ret = DeviceIoControl(driveHandle, IOCTL_DISK_SET_DRIVE_LAYOUT_EX, &driveLayout, sizeof(driveLayout), NULL, 0, NULL, NULL);
     if (!ret) {
