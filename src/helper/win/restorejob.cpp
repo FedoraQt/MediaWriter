@@ -97,6 +97,8 @@ void RestoreJob::work()
         qApp->exit(1);
     }
 
+    m_diskManagement->disableIOBoundaryChecks(drive);
+
     /*
      * 4) Refresh information about partition layout
      *    Uses DeviceIoControl(IOCTL_DISK_UPDATE_PROPERTIES) from WinAPI
@@ -136,15 +138,15 @@ void RestoreJob::work()
         qApp->exit(1);
     }
 
-    // FIXME: isn't this too much? We used to have this even before as
-    // apparently it was suggested after diskpart operations
-    QThread::sleep(15);
-
     /*
-     * 8) Get GUID name of the partition
+     * 8) Get GUID name of the partition - poll until it appears (up to 30 seconds)
      *    Uses WinAPI to go through volumes and to get the GUID name
      */
-    QString logicalName = m_diskManagement->getLogicalName(m_disk->index());
+    QString logicalName;
+    for (int i = 0; i < 60 && logicalName.isEmpty(); i++) {
+        QThread::msleep(500);
+        logicalName = m_diskManagement->getLogicalName(m_disk->index());
+    }
     if (logicalName.isEmpty()) {
         m_diskManagement->logMessage(QtCriticalMsg, "Failed to get GUID volume path on the drive");
         m_err << tr("Failed to get GUID volume path on the drive") << "\n";
