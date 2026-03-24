@@ -17,13 +17,13 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 6.6
-import QtQuick.Controls 6.6
-import QtQuick.Window 6.6
-import QtQuick.Layouts 6.6
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Window
+import QtQuick.Layouts
 
 ApplicationWindow {
-    id: cancelDialog
+    id: deviceWarningDialog
 
     minimumWidth: Math.max(360, units.gridUnit * 20)
     maximumWidth: Math.max(360, units.gridUnit * 20)
@@ -51,7 +51,7 @@ ApplicationWindow {
 
         Label {
             Layout.fillWidth: true
-            text: qsTr("The entire device (all of %1) will be erased and the selected image will be written to it. Do you want to continue?").arg(formatSize(drives.selected.size))
+            text: qsTr("The entire device (all of %1) will be erased and the selected image will be written to it. Do you want to continue?").arg(formatSize(drives.selected ? drives.selected.size : 0))
             wrapMode: Label.Wrap
         }
 
@@ -65,20 +65,23 @@ ApplicationWindow {
 
             Button {
                 id: cancelButton
-                onClicked: cancelDialog.close()
+                onClicked: deviceWarningDialog.close()
                 text: qsTr("Cancel")
             }
 
             Button {
                 id: continueButton
                 onClicked: {
-                    cancelDialog.close()
+                    deviceWarningDialog.close()
                     selectedPage = Units.Page.DownloadPage
-                    drives.selected.setImage(releases.variant)
-                    drives.selected.write(releases.variant)
+                    if (drives.selected) {
+                        drives.selected.setImage(releases.variant)
+                        drives.selected.write(releases.variant)
+                    }
                 }
                 text: {
-                    if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
+                    const variant = releases.selected && releases.selected.version ? releases.selected.version.variant : null
+                    if (selectedOption === Units.MainSelect.Write || (variant && downloadManager.isDownloaded(variant.url)))
                         return qsTr("Write")
                     if (Qt.platform.os === "windows" || Qt.platform.os === "osx")
                         return qsTr("Download && Write")

@@ -17,10 +17,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 6.6
-import QtQuick.Controls 6.6
-import QtQuick.Window 6.6
-import QtQuick.Layouts 6.6
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Window
+import QtQuick.Layouts
 
 ApplicationWindow {    
     id: aboutDialog
@@ -45,7 +45,6 @@ ApplicationWindow {
             spacing: units.gridUnit
             
             Heading {
-                Layout.alignment: Qt.AlignHCenter
                 text: qsTr("About Fedora Media Writer")
                 level: 3
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere

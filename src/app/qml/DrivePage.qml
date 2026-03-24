@@ -18,10 +18,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 6.6
-import QtQuick.Controls 6.6 as QQC2
-import QtQuick.Dialogs 6.6
-import QtQuick.Layouts 6.6
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Dialogs
+import QtQuick.Layouts
 
 Page {
     id: drivePage
@@ -153,16 +153,7 @@ Page {
         }
     }
     
-    states: [
-        State {
-            name: "Downloading"
-            when: selectedOption != Units.MainSelect.Write && selectedPage == Units.Page.DrivePage
-            StateChangeScript { script: releases.setSelectedVariantIndex = 0 }
-        }
-    ]
-
-    nextButtonEnabled: (selectedOption != Units.MainSelect.Write && selectedPage == Units.Page.DrivePage) ||
-                       (selectedOption == Units.MainSelect.Write && selectedPage == Units.Page.DrivePage)
+    nextButtonEnabled: selectedOption != Units.MainSelect.Write || releases.localFile.iso !== ""
 
     nextButtonText: {
         if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
@@ -176,7 +167,7 @@ Page {
         if (selectedOption == Units.MainSelect.Write)
             selectedPage = Units.Page.MainPage
         else {
-            selectedPage -= 1
+            selectedPage = Units.Page.VersionPage
             stackView.pop()
         }
     }

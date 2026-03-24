@@ -17,8 +17,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 6.6
-import QtQuick.Controls 6.6
+import QtQuick
+import QtQuick.Controls
 
 ApplicationWindow {
     id: mainWindow
@@ -125,7 +125,7 @@ ApplicationWindow {
                 when: selectedPage == Units.Page.DownloadPage
                 PropertyChanges {
                     target: mainWindow
-                    title: releases.variant.statusString
+                    title: releases.variant ? releases.variant.statusString : qsTr("Fedora Media Writer")
                 }
                 StateChangeScript {
                     script: { stackView.push("DownloadPage.qml") }
