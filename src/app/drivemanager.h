@@ -51,7 +51,6 @@ struct DriveOperationDeleter {
  * @property length count of the drives
  * @property selected the selected drive
  * @property selectedIndex the index of the selected drive
- * @property lastRestoreable the most recently connected restoreable drive
  */
 class DriveManager : public QAbstractListModel
 {
@@ -61,7 +60,7 @@ class DriveManager : public QAbstractListModel
     Q_PROPERTY(int selectedIndex READ selectedIndex WRITE setSelectedIndex NOTIFY selectedChanged)
     Q_PROPERTY(bool isBroken READ isBackendBroken NOTIFY isBackendBrokenChanged)
     Q_PROPERTY(QString errorString READ errorString NOTIFY isBackendBrokenChanged)
-    Q_PROPERTY(Drive *lastRestoreable READ lastRestoreable WRITE setLastRestoreable NOTIFY restoreableDriveChanged)
+    Q_PROPERTY(QVariantList restoreableDrives READ restoreableDrives NOTIFY restoreableDrivesChanged)
 
 public:
     static DriveManager *instance();
@@ -79,22 +78,24 @@ public:
 
     int length() const;
 
-    Drive *lastRestoreable();
+    QVariantList restoreableDrives() const;
 
     bool isBackendBroken();
     QString errorString();
 
-    void setLastRestoreable(Drive *d);
+private:
+    void addRestoreableDrive(Drive *drive);
+    void removeRestoreableDrive(Drive *drive);
 
 private Q_SLOTS:
-    void onDriveConnected(Drive *d);
-    void onDriveRemoved(Drive *d);
+    void onDriveConnected(Drive *drive);
+    void onDriveRemoved(Drive *drive);
     void onBackendBroken(const QString &message);
 
 Q_SIGNALS:
     void drivesChanged();
     void selectedChanged();
-    void restoreableDriveChanged();
+    void restoreableDrivesChanged();
     void isBackendBrokenChanged();
 
 private:
@@ -102,8 +103,8 @@ private:
 
     static DriveManager *_self;
     QList<Drive *> m_drives{};
+    QList<Drive *> m_restoreableDrives{};
     int m_selectedIndex{0};
-    Drive *m_lastRestoreable{nullptr};
     DriveProvider *m_provider{nullptr};
     QString m_errorString{};
 };

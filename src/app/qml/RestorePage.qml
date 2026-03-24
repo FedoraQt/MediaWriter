@@ -22,15 +22,49 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 
-Page {  
+Page {
     id: restorePage
 
-    text: qsTr("Restore Drive <b>%1</b>").arg(lastRestoreable.name)
+    property var selectedDrive: null
+    property var restoreableDrives: drives.restoreableDrives
+
+    onRestoreableDrivesChanged: {
+        if (restoreableDrives.length === 0 && !(selectedDrive && (selectedDrive.restoreStatus === Units.RestoreStatus.Restoring ||
+                                                                   selectedDrive.restoreStatus === Units.RestoreStatus.Restored ||
+                                                                   selectedDrive.restoreStatus === Units.RestoreStatus.Restore_Error))) {
+            selectedPage = Units.Page.MainPage
+        }
+    }
+
+    text: selectedDrive ? qsTr("Restore Drive <b>%1</b>").arg(selectedDrive.name) : qsTr("Restore Drive")
     textLevel: 1
+
+    ColumnLayout {
+        visible: drives.restoreableDrives.length > 1
+        Layout.fillWidth: true
+        Layout.bottomMargin: units.gridUnit
+
+        Heading {
+            text: qsTr("Select a drive to restore")
+        }
+
+        QQC2.ComboBox {
+            Layout.fillWidth: true
+            model: drives.restoreableDrives
+            textRole: "name"
+            onActivated: restorePage.selectedDrive = drives.restoreableDrives[currentIndex]
+        }
+    }
+
+    Component.onCompleted: {
+        if (drives.restoreableDrives.length > 0) {
+            selectedDrive = drives.restoreableDrives[0]
+        }
+    }
 
     QQC2.Label {
         id: warningText
-        visible: lastRestoreable.restoreStatus == Units.RestoreStatus.Contains_Live
+        visible: selectedDrive && selectedDrive.restoreStatus == Units.RestoreStatus.Contains_Live
         Layout.alignment: Qt.AlignHCenter
         Layout.fillWidth: true
         text: qsTr("<p align=\"justify\"> To reclaim all space available on the drive, it has to be restored to its factory settings. The live system and all saved data will be deleted.</p> <p align=\"justify\"> You don't need to restore the drive if you want to write another live system to it.</p> <p align=\"justify\"> Do you want to restore it to factory settings? </p>" )
@@ -40,7 +74,7 @@ Page {
 
     ColumnLayout {
         id: progress
-        visible: lastRestoreable.restoreStatus == Units.RestoreStatus.Restoring
+        visible: selectedDrive && selectedDrive.restoreStatus == Units.RestoreStatus.Restoring
 
         Layout.alignment: Qt.AlignHCenter
         Layout.fillWidth: true
@@ -57,13 +91,13 @@ Page {
             id: progressIndicator
             Layout.alignment: Qt.AlignHCenter
             Layout.fillWidth: true
-            value: lastRestoreable ? lastRestoreable.progress.ratio : 0
+            value: selectedDrive ? selectedDrive.progress.ratio : 0
         }
     }
 
     QQC2.Label {
         id: restoredText
-        visible: lastRestoreable.restoreStatus == Units.RestoreStatus.Restored
+        visible: selectedDrive && selectedDrive.restoreStatus == Units.RestoreStatus.Restored
         Layout.alignment: Qt.AlignHCenter
         Layout.fillWidth: true
         text: qsTr("Your drive was successfully restored!")
@@ -72,46 +106,44 @@ Page {
 
     QQC2.Label {
         id: errorText
-        visible: lastRestoreable.restoreStatus == Units.RestoreStatus.Restore_Error
+        visible: selectedDrive && selectedDrive.restoreStatus == Units.RestoreStatus.Restore_Error
         Layout.alignment: Qt.AlignHCenter
         Layout.fillWidth: true
         text: qsTr("Unfortunately, an error occurred during the process. Please try restoring the drive using your system tools.")
         wrapMode: QQC2.Label.Wrap
     }
-    
-    Component.onCompleted: {
-        lastRestoreable = drives.lastRestoreable
-    }
-    
+
     states: [
         State {
             name: "restored"
-            when: lastRestoreable.restoreStatus == Units.RestoreStatus.Restored
+            when: selectedDrive && selectedDrive.restoreStatus == Units.RestoreStatus.Restored
             PropertyChanges {
-                target: mainWindow;
+                target: mainWindow
                 title: qsTr("Restoring finished")
-            }
-            StateChangeScript {
-                script: drives.lastRestoreable = null
             }
         }
     ]
 
-    previousButtonVisible: lastRestoreable.restoreStatus != Units.RestoreStatus.Restored &&
-                           lastRestoreable.restoreStatus != Units.RestoreStatus.Restoring
+    previousButtonVisible: selectedDrive && selectedDrive.restoreStatus != Units.RestoreStatus.Restored &&
+                           selectedDrive.restoreStatus != Units.RestoreStatus.Restoring &&
+                           selectedDrive.restoreStatus != Units.RestoreStatus.Restore_Error
     onPreviousButtonClicked: {
         selectedPage = Units.Page.MainPage
     }
 
-    nextButtonEnabled: lastRestoreable.restoreStatus == Units.RestoreStatus.Restored ||
-                       lastRestoreable.restoreStatus == Units.RestoreStatus.Contains_Live
-    nextButtonVisible: lastRestoreable.restoreStatus != Units.RestoreStatus.Restoring
-    nextButtonText: lastRestoreable.restoreStatus == Units.RestoreStatus.Restored ? qsTr("Finish") : qsTr("Restore")
+    nextButtonEnabled: selectedDrive && (selectedDrive.restoreStatus == Units.RestoreStatus.Restored ||
+                                         selectedDrive.restoreStatus == Units.RestoreStatus.Restore_Error ||
+                                         selectedDrive.restoreStatus == Units.RestoreStatus.Contains_Live)
+    nextButtonVisible: selectedDrive && selectedDrive.restoreStatus != Units.RestoreStatus.Restoring
+    nextButtonText: selectedDrive && (selectedDrive.restoreStatus == Units.RestoreStatus.Restored ||
+                                      selectedDrive.restoreStatus == Units.RestoreStatus.Restore_Error) ? qsTr("Finish") : qsTr("Restore")
     onNextButtonClicked: {
-        if (lastRestoreable.restoreStatus == Units.RestoreStatus.Restored)
+        if (selectedDrive.restoreStatus == Units.RestoreStatus.Restored ||
+            selectedDrive.restoreStatus == Units.RestoreStatus.Restore_Error) {
             selectedPage = Units.Page.MainPage
-        else
-            drives.lastRestoreable.restore()
+        } else {
+            selectedDrive.restore()
+        }
     }
 
 }

@@ -149,9 +149,28 @@ int DriveManager::length() const
     return m_drives.count();
 }
 
-Drive *DriveManager::lastRestoreable()
+void DriveManager::addRestoreableDrive(Drive *drive)
 {
-    return m_lastRestoreable;
+    if (!m_restoreableDrives.contains(drive)) {
+        m_restoreableDrives.append(drive);
+        Q_EMIT restoreableDrivesChanged();
+    }
+}
+
+void DriveManager::removeRestoreableDrive(Drive *drive)
+{
+    if (m_restoreableDrives.removeOne(drive)) {
+        Q_EMIT restoreableDrivesChanged();
+    }
+}
+
+QVariantList DriveManager::restoreableDrives() const
+{
+    QVariantList list;
+    for (Drive *drive : m_restoreableDrives) {
+        list.append(QVariant::fromValue(drive));
+    }
+    return list;
 }
 bool DriveManager::isBackendBroken()
 {
@@ -161,14 +180,6 @@ bool DriveManager::isBackendBroken()
 QString DriveManager::errorString()
 {
     return m_errorString;
-}
-
-void DriveManager::setLastRestoreable(Drive *drive)
-{
-    if (m_lastRestoreable != drive) {
-        m_lastRestoreable = drive;
-        Q_EMIT restoreableDriveChanged();
-    }
 }
 
 void DriveManager::onDriveConnected(Drive *drive)
@@ -200,14 +211,14 @@ void DriveManager::onDriveConnected(Drive *drive)
 
     connect(drive, &Drive::restoreStatusChanged, this, [=]() {
         if (drive->restoreStatus() == Drive::CONTAINS_LIVE) {
-            setLastRestoreable(drive);
-        } else if (drive == m_lastRestoreable) {
-            setLastRestoreable(nullptr);
+            addRestoreableDrive(drive);
+        } else {
+            removeRestoreableDrive(drive);
         }
     });
 
     if (drive->restoreStatus() == Drive::CONTAINS_LIVE) {
-        setLastRestoreable(drive);
+        addRestoreableDrive(drive);
     }
 }
 
@@ -225,9 +236,7 @@ void DriveManager::onDriveRemoved(Drive *drive)
         }
         Q_EMIT selectedChanged();
 
-        if (drive == m_lastRestoreable) {
-            setLastRestoreable(nullptr);
-        }
+        removeRestoreableDrive(drive);
     }
 }
 
