@@ -5,7 +5,7 @@ on:
     types: [ created ]
 
 env:
-    QT_VERSION: '6.10.1'
+    QT_VERSION: '6.10.2'
 
 jobs:
   macOS:
@@ -14,14 +14,14 @@ jobs:
         arch: [x86_64, arm64]
         include:
           - arch: x86_64
-            runner: macos-15
+            runner: macos-15-intel
             dmg_arch_suffix: ""
           - arch: arm64
             runner: macos-15
             dmg_arch_suffix: "-arm64"
     runs-on: ${{ matrix.runner }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Set env (TAG_NAME)
         run: echo "TAG_NAME=$(bash ./dist/get-tag-name.sh)" >> $GITHUB_ENV
@@ -57,7 +57,7 @@ jobs:
           mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
 
       - name: Upload artifact (for direct download from workflow)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           # Use the dmg_arch_suffix for the artifact name
           name: FedoraMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
@@ -72,7 +72,7 @@ jobs:
   Windows-MSVC:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 1
 
