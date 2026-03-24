@@ -73,7 +73,12 @@ bool WriteJob::writeCompressed(int fd)
     std::size_t bufferSize = std::get<2>(outBufferOwner);
 
     QFile file(what);
-    file.open(QIODevice::ReadOnly);
+    if (!file.open(QIODevice::ReadOnly)) {
+        err << tr("Source image is not readable") << what;
+        err.flush();
+        qApp->exit(2);
+        return false;
+    }
 
     ret = lzma_stream_decoder(&strm, MEDIAWRITER_LZMA_LIMIT, LZMA_CONCATENATED);
     if (ret != LZMA_OK) {
@@ -145,9 +150,7 @@ bool WriteJob::writeCompressed(int fd)
 bool WriteJob::writePlain(int fd)
 {
     QFile inFile(what);
-    inFile.open(QIODevice::ReadOnly);
-
-    if (!inFile.isReadable()) {
+    if (!inFile.open(QIODevice::ReadOnly)) {
         err << tr("Source image is not readable") << what;
         err.flush();
         qApp->exit(2);

@@ -44,9 +44,10 @@ ReleaseManager::ReleaseManager(QObject *parent)
     qmlRegisterUncreatableType<Progress>("MediaWriter", 1, 0, "Progress", "");
 
     QFile releases(":/releases.json");
-    releases.open(QIODevice::ReadOnly);
-    onStringDownloaded(releases.readAll());
-    releases.close();
+    if (releases.open(QIODevice::ReadOnly)) {
+        onStringDownloaded(releases.readAll());
+        releases.close();
+    }
 
     connect(this, SIGNAL(selectedChanged()), this, SLOT(variantChangedFilter()));
     QTimer::singleShot(0, this, SLOT(fetchReleases()));
@@ -108,9 +109,10 @@ bool ReleaseManager::frontPage() const
 void ReleaseManager::setFrontPage(bool o)
 {
     if (m_frontPage != o) {
+        beginFilterChange();
         m_frontPage = o;
         Q_EMIT frontPageChanged();
-        invalidateFilter();
+        endFilterChange();
     }
 }
 
@@ -122,9 +124,10 @@ QString ReleaseManager::filterText() const
 void ReleaseManager::setFilterText(const QString &o)
 {
     if (m_filterText != o) {
+        beginFilterChange();
         m_filterText = o;
         Q_EMIT filterTextChanged();
-        invalidateFilter();
+        endFilterChange();
     }
 }
 
@@ -136,10 +139,11 @@ int ReleaseManager::filterSource() const
 void ReleaseManager::setFilterSource(int source)
 {
     if (m_filterSource != source) {
+        beginFilterChange();
         m_filterSource = source;
         Q_EMIT filterSourceChanged();
         Q_EMIT firstSourceChanged();
-        invalidateFilter();
+        endFilterChange();
     }
 }
 
@@ -215,6 +219,7 @@ int ReleaseManager::filterArchitecture() const
 void ReleaseManager::setFilterArchitecture(int o)
 {
     if (m_filterArchitecture != o && m_filterArchitecture >= 0 && m_filterArchitecture < ReleaseArchitecture::_ARCHCOUNT) {
+        beginFilterChange();
         m_filterArchitecture = o;
         Q_EMIT filterArchitectureChanged();
         for (int i = 0; i < m_sourceModel->rowCount(); i++) {
@@ -230,7 +235,7 @@ void ReleaseManager::setFilterArchitecture(int o)
                 }
             }
         }
-        invalidateFilter();
+        endFilterChange();
     }
 }
 
@@ -382,7 +387,9 @@ ReleaseListModel::ReleaseListModel(ReleaseManager *parent)
     : QAbstractListModel(parent)
 {
     QFile metadata(":/metadata.json");
-    metadata.open(QIODevice::ReadOnly);
+    if (!metadata.open(QIODevice::ReadOnly)) {
+        return;
+    }
 
     Release *custom = nullptr;
 

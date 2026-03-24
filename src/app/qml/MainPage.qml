@@ -18,9 +18,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 6.6
-import QtQuick.Controls 6.6 as QQC2
-import QtQuick.Layouts 6.6
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
 
 Page {
     id: mainPage
@@ -50,16 +50,6 @@ Page {
         text: drives.lastRestoreable ? qsTr("Restore <b>%1</b>").arg(drives.lastRestoreable.name) : ""
         onClicked: {
             selectedOption = Units.MainSelect.Restore
-        }
-
-        Connections {
-            target: drives
-            function onLastRestoreableChanged() {
-                if (drives.lastRestoreable != null && !restoreRadio.visible)
-                    restoreRadio.visible = true
-                if (!drives.lastRestoreable)
-                    restoreRadio.visible = false
-            }
         }
     }
 

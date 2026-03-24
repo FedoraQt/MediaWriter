@@ -17,10 +17,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 6.6
-import QtQuick.Controls 6.6
-import QtQuick.Window 6.6
-import QtQuick.Layouts 6.6
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Window
+import QtQuick.Layouts
 
 ApplicationWindow {
     id: cancelDialog
@@ -35,7 +35,14 @@ ApplicationWindow {
     y: Screen.height / 2 - height / 2
     title: " "
     
-    property QtObject drivesSelected: drives.selected
+    property QtObject drivesSelected
+    property int variantStatus: releases.variant ? releases.variant.status : 0
+
+    onVisibleChanged: {
+        if (visible) {
+            drivesSelected = drives.selected
+        }
+    }
     
     ColumnLayout {
         id: mainColumn
@@ -51,20 +58,20 @@ ApplicationWindow {
             Heading {
                 level: 2
                 text: {
-                    if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                    if (variantStatus === Units.DownloadStatus.Downloading || variantStatus === Units.DownloadStatus.Download_Verifying)
                         qsTr("Cancel Download?")
-                    else if (releases.variant.status == Units.DownloadStatus.Writing) 
+                    else if (variantStatus === Units.DownloadStatus.Writing)
                         qsTr("Cancel Writing?")
                     else
                         qsTr("Cancel Verification?")
-                } 
+                }
             }
-            
+
             Label {
                 text: {
-                    if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                    if (variantStatus === Units.DownloadStatus.Downloading || variantStatus === Units.DownloadStatus.Download_Verifying)
                         qsTr("Download and media writing will be aborted. This process can be resumed any time later.")
-                    else if (releases.variant.status == Units.DownloadStatus.Writing) 
+                    else if (variantStatus === Units.DownloadStatus.Writing)
                         qsTr("Writing process will be aborted and your drive will have to be restored afterwards.")
                     else
                         qsTr("This operation is safe to be cancelled.")
@@ -93,11 +100,10 @@ ApplicationWindow {
                     cancelDialog.close()
                     // Store release state locally as drives.selected.cancel() makes
                     // it go to failed state if we cancel the writing process
-                    var releaseState = releases.variant.status
                     if (drives.selected)
                         drives.selected.cancel()
-                    if (mainWindow.selectedPage == Units.Page.DownloadPage &&
-                        (releaseState === Units.DownloadStatus.Writing || releaseState === Units.DownloadStatus.Write_Verifying || releaseState === Units.DownloadStatus.Writing_Not_Possible)) {
+                    if (mainWindow.selectedPage === Units.Page.DownloadPage &&
+                        (variantStatus === Units.DownloadStatus.Writing || variantStatus === Units.DownloadStatus.Write_Verifying || variantStatus === Units.DownloadStatus.Writing_Not_Possible)) {
                         drives.lastRestoreable = drivesSelected
                         drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
                     }
@@ -106,11 +112,11 @@ ApplicationWindow {
                     selectedPage = Units.Page.MainPage
                 }
                 text: {
-                    if (releases.variant.status == Units.DownloadStatus.Downloading || releases.variant.status === Units.DownloadStatus.Download_Verifying)
+                    if (variantStatus === Units.DownloadStatus.Downloading || variantStatus === Units.DownloadStatus.Download_Verifying)
                         qsTr("Cancel Download")
-                    else if (releases.variant.status == Units.DownloadStatus.Writing)
+                    else if (variantStatus === Units.DownloadStatus.Writing)
                         qsTr("Cancel Writing")
-                    else if (releases.variant.status == Units.DownloadStatus.Write_Verifying)
+                    else if (variantStatus === Units.DownloadStatus.Write_Verifying)
                         qsTr("Cancel Verification")
                     else
                         qsTr("Cancel")

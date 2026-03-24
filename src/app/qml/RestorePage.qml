@@ -18,9 +18,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 6.6
-import QtQuick.Controls 6.6 as QQC2
-import QtQuick.Layouts 6.6
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
 
 Page {  
     id: restorePage
@@ -97,9 +97,8 @@ Page {
         }
     ]
 
-    previousButtonEnabled: lastRestoreable.restoreStatus != Units.RestoreStatus.Restored &&
+    previousButtonVisible: lastRestoreable.restoreStatus != Units.RestoreStatus.Restored &&
                            lastRestoreable.restoreStatus != Units.RestoreStatus.Restoring
-    previousButtonVisible: previousButtonEnabled
     onPreviousButtonClicked: {
         selectedPage = Units.Page.MainPage
     }

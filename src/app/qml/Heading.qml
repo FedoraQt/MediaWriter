@@ -17,8 +17,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick.Controls 6.6
-import QtQml 6.6
+import QtQuick.Controls
+import QtQml
 
 Label {
     id: mainLabel

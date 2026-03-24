@@ -18,9 +18,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-import QtQuick 6.6
-import QtQuick.Controls 6.6 as QQC2
-import QtQuick.Layouts 6.6
+import QtQuick
+import QtQuick.Controls as QQC2
+import QtQuick.Layouts
 
 Page {
     id: downloadPage
@@ -137,7 +137,7 @@ Page {
 
         QQC2.Label {
             id: messageSelectedImage
-            visible: releases.selected.isLocal
+            visible: releases.selected && releases.selected.isLocal
             text: "<font color=\"gray\">" + qsTr("Selected:") + "</font> " + (releases.variant.iso ? (((String)(releases.variant.iso)).split("/").slice(-1)[0]) : ("<font color=\"gray\">" + qsTr("None") + "</font>"))
             width: infoColumn.width
             wrapMode: QQC2.Label.Wrap
@@ -219,14 +219,12 @@ Page {
                 value: 100;
             }
             StateChangeScript {
-                script: { 
+                script: {
                     if (cancelDialog.visible)
                         cancelDialog.close()
                     if (mainWindow.eraseVariant)
                         releases.variant.erase()
-                    else
-                        releases.variant
-                }   
+                }
             }
         }
     ]    
@@ -260,30 +258,24 @@ Page {
         return false
     }
     nextButtonText: {
-
-        if (releases.variant.status === Units.DownloadStatus.Write_Verifying ||
-            releases.variant.status === Units.DownloadStatus.Writing ||
-            releases.variant.status === Units.DownloadStatus.Downloading ||
-            releases.variant.status === Units.DownloadStatus.Download_Verifying)
-            return qsTr("Cancel")
-        else if (releases.variant.status == Units.DownloadStatus.Ready)
+        if (currentStatus === Units.DownloadStatus.Ready)
             return qsTr("Write")
-        else if (releases.variant.status === Units.DownloadStatus.Finished)
+        else if (currentStatus === Units.DownloadStatus.Finished)
             return qsTr("Finish")
         else
             return qsTr("Retry")
     }
     onNextButtonClicked: {
-        if (releases.variant.status === Units.DownloadStatus.Finished) {
+        if (currentStatus === Units.DownloadStatus.Finished) {
             drives.lastRestoreable = drives.selected
             drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
             releases.variant.resetStatus()
             downloadManager.cancel()
             selectedPage = Units.Page.MainPage
-        } else if ((releases.variant.status === Units.DownloadStatus.Failed && drives.length) ||
-                   (releases.variant.status === Units.DownloadStatus.Failed_Verification && drives.length) ||
-                    releases.variant.status === Units.DownloadStatus.Failed_Download ||
-                    releases.variant.status === Units.DownloadStatus.Ready) {
+        } else if (currentStatus === Units.DownloadStatus.Failed ||
+                   currentStatus === Units.DownloadStatus.Failed_Verification ||
+                   currentStatus === Units.DownloadStatus.Failed_Download ||
+                   currentStatus === Units.DownloadStatus.Ready) {
             if (selectedOption != Units.MainSelect.Write)
                 releases.variant.download()
             drives.selected.setImage(releases.variant)
