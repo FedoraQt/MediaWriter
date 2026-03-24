@@ -46,7 +46,10 @@ int main(int argc, char **argv)
     QApplication::setApplicationName("MediaWriter");
 
     QApplication app(argc, argv);
-    options.parse(app.arguments());
+    const int parseResult = options.parse(app.arguments());
+    if (parseResult >= 0) {
+        return parseResult;
+    }
 
     mDebug() << "Application constructed";
 
