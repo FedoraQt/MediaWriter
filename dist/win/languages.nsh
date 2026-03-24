@@ -1,149 +1,92 @@
 LangString AdminRightsRequired ${LANG_ENGLISH}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_AFRIKAANS}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_ALBANIAN}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_ARABIC}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_ARABIC}  "يجب توفر صلاحيات المدير!"
 LangString AdminRightsRequired ${LANG_BELARUSIAN}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_BOSNIAN}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_BRETON}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_BULGARIAN}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_CATALAN}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_CATALAN}  "Calen drets d'administrador!"
 LangString AdminRightsRequired ${LANG_CROATIAN}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_CZECH}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_CZECH}  "Jsou vyžadována administrátorská práva!"
 LangString AdminRightsRequired ${LANG_DANISH}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_DUTCH}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_ESPERANTO}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_ESTONIAN}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_ESTONIAN}  "Vajalikud on peakasutaja õigused!"
 LangString AdminRightsRequired ${LANG_FARSI}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_FINNISH}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_FRENCH}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_FINNISH}  "Vaaditaan järjestelmänvalvojan oikeudet!"
+LangString AdminRightsRequired ${LANG_FRENCH}  "Privilèges d'administration requis !"
 LangString AdminRightsRequired ${LANG_GALICIAN}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_GERMAN}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_GREEK}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_HEBREW}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_HUNGARIAN}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_GERMAN}  "Administratorrechte erforderlich!"
+LangString AdminRightsRequired ${LANG_GREEK}  "Απαιτούνται δικαιώματα διαχειριστή!"
+LangString AdminRightsRequired ${LANG_HEBREW}  "נדרשות הרשאות ניהול!"
+LangString AdminRightsRequired ${LANG_HUNGARIAN}  "Adminisztrátor jogosultság szükséges!"
 LangString AdminRightsRequired ${LANG_ICELANDIC}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_INDONESIAN}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_INDONESIAN}  "Diperlukan hak administrator!"
 LangString AdminRightsRequired ${LANG_IRISH}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_ITALIAN}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_JAPANESE}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_KOREAN}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_ITALIAN}  "Sono richiesti i diritti di amministratore!"
+LangString AdminRightsRequired ${LANG_JAPANESE}  "管理者権限が必要です！"
+LangString AdminRightsRequired ${LANG_KOREAN}  "관리자 권한이 필요합니다!"
 LangString AdminRightsRequired ${LANG_KURDISH}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_LATVIAN}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_LITHUANIAN}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_LITHUANIAN}  "Reikalingos administratoriaus teisės!"
 LangString AdminRightsRequired ${LANG_LUXEMBOURGISH}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_MACEDONIAN}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_MALAY}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_MONGOLIAN}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_NORWEGIAN}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_NORWEGIANNYNORSK}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_POLISH}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_POLISH}  "Prawa administratora są wymagane!"
 LangString AdminRightsRequired ${LANG_PORTUGUESE}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_PORTUGUESEBR}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_ROMANIAN}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_RUSSIAN}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_PORTUGUESEBR}  "Privilégios de administrador exigidos!"
+LangString AdminRightsRequired ${LANG_ROMANIAN}  "Sunt necesare drepturi de administrator!"
+LangString AdminRightsRequired ${LANG_RUSSIAN}  "Требуются права администратора!"
 LangString AdminRightsRequired ${LANG_SERBIAN}  "Administrator rights required!"
 LangString AdminRightsRequired ${LANG_SERBIANLATIN}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_SIMPCHINESE}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_SLOVAK}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_SLOVENIAN}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_SPANISH}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_SIMPCHINESE}  "需要管理员权限！"
+LangString AdminRightsRequired ${LANG_SLOVAK}  "Vyžadujú sa administrátorské práva!"
+LangString AdminRightsRequired ${LANG_SLOVENIAN}  "Zahtevane so skrbniške pravice!"
+LangString AdminRightsRequired ${LANG_SPANISH}  "¡Privilegios de administrator requeridos!"
 LangString AdminRightsRequired ${LANG_SPANISHINTERNATIONAL}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_SWEDISH}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_SWEDISH}  "Administratörsrättigheter krävs!"
 LangString AdminRightsRequired ${LANG_THAI}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_TRADCHINESE}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_TURKISH}  "Administrator rights required!"
-LangString AdminRightsRequired ${LANG_UKRAINIAN}  "Administrator rights required!"
+LangString AdminRightsRequired ${LANG_TRADCHINESE}  "需要系統管理員權限！"
+LangString AdminRightsRequired ${LANG_TURKISH}  "Yönetici hakları gerekli!"
+LangString AdminRightsRequired ${LANG_UKRAINIAN}  "Потрібні права доступу адміністратора!"
 LangString AdminRightsRequired ${LANG_UZBEK}  "Administrator rights required!"
-
-LangString UninstallProgram ${LANG_ENGLISH}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_AFRIKAANS}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ALBANIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ARABIC}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_BELARUSIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_BOSNIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_BRETON}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_BULGARIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_CATALAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_CROATIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_CZECH}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_DANISH}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_DUTCH}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ESPERANTO}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ESTONIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_FARSI}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_FINNISH}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_FRENCH}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_GALICIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_GERMAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_GREEK}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_HEBREW}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_HUNGARIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ICELANDIC}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_INDONESIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_IRISH}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ITALIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_JAPANESE}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_KOREAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_KURDISH}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_LATVIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_LITHUANIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_LUXEMBOURGISH}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_MACEDONIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_MALAY}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_MONGOLIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_NORWEGIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_NORWEGIANNYNORSK}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_POLISH}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_PORTUGUESE}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_PORTUGUESEBR}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_ROMANIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_RUSSIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SERBIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SERBIANLATIN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SIMPCHINESE}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SLOVAK}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SLOVENIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SPANISH}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SPANISHINTERNATIONAL}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_SWEDISH}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_THAI}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_TRADCHINESE}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_TURKISH}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_UKRAINIAN}  "Do you want to uninstall ${APPNAME}?"
-LangString UninstallProgram ${LANG_UZBEK}  "Do you want to uninstall ${APPNAME}?"
 
 LangString UninstallPreviousVersion ${LANG_ENGLISH}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_AFRIKAANS}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_ALBANIAN}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_ARABIC}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_ARABIC}  "جارِ إلغاء تثبيت النسخة السابقة من ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_BELARUSIAN}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_BOSNIAN}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_BRETON}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_BULGARIAN}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_CATALAN}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_CATALAN}  "Desinstal·lant la versió anterior de ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_CROATIAN}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_CZECH}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_CZECH}  "Odinstalace předchozí verze aplikace ${APPNAME}…"
 LangString UninstallPreviousVersion ${LANG_DANISH}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_DUTCH}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_ESPERANTO}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_ESTONIAN}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_ESTONIAN}  "Eemaldan „${APPNAME}“ rakenduse eelmist versiooni..."
 LangString UninstallPreviousVersion ${LANG_FARSI}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_FINNISH}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_FRENCH}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_FINNISH}  "Poistetaan sovelluksen ${APPNAME} aiempaa versiota..."
+LangString UninstallPreviousVersion ${LANG_FRENCH}  "Désinstallation de la version précédente de ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_GALICIAN}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_GERMAN}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_GREEK}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_HEBREW}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_GERMAN}  "Vorherige Version von ${APPNAME} wird deinstalliert..."
+LangString UninstallPreviousVersion ${LANG_GREEK}  "Κατάργηση εγκατάστασης της προηγούμενης έκδοσης του ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_HEBREW}  "מוסרת הגרסה הקודמת של ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_HUNGARIAN}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_ICELANDIC}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_INDONESIAN}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_INDONESIAN}  "Sedang menghapus instalasi versi sebelumnya dari ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_IRISH}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_ITALIAN}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_JAPANESE}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_KOREAN}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_ITALIAN}  "Disinstallazione della versione precedente di ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_JAPANESE}  "${APPNAME} の以前のバージョンを削除中..."
+LangString UninstallPreviousVersion ${LANG_KOREAN}  "${APPNAME}의 이전 버전 제거하기..."
 LangString UninstallPreviousVersion ${LANG_KURDISH}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_LATVIAN}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_LITHUANIAN}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_LITHUANIAN}  "Išdiegiama ankstesnė ${APPNAME} versija..."
 LangString UninstallPreviousVersion ${LANG_LUXEMBOURGISH}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_MACEDONIAN}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_MALAY}  "Uninstalling previous version of ${APPNAME}..."
@@ -152,55 +95,164 @@ LangString UninstallPreviousVersion ${LANG_NORWEGIAN}  "Uninstalling previous ve
 LangString UninstallPreviousVersion ${LANG_NORWEGIANNYNORSK}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_POLISH}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_PORTUGUESE}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_PORTUGUESEBR}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_ROMANIAN}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_RUSSIAN}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_PORTUGUESEBR}  "Desinstalando a versão anterior de ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_ROMANIAN}  "Se dezinstalează versiunea anterioară a ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_RUSSIAN}  "Удаление предыдущей версии ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_SERBIAN}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_SERBIANLATIN}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_SIMPCHINESE}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_SLOVAK}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_SLOVENIAN}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_SPANISH}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_SLOVAK}  "Odinštalovanie predchádzajúcej verzie ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_SLOVENIAN}  "Odstranjevanje prejšnje različice ${APPNAME} ..."
+LangString UninstallPreviousVersion ${LANG_SPANISH}  "Desinstalando la versión anterior de ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_SPANISHINTERNATIONAL}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_SWEDISH}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_SWEDISH}  "Avinstallerar tidigare version av ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_THAI}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_TRADCHINESE}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_TURKISH}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_UKRAINIAN}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_TRADCHINESE}  "正在解除安裝 ${APPNAME} 的舊版本..."
+LangString UninstallPreviousVersion ${LANG_TURKISH}  "${APPNAME} önceki sürümünü kaldırılıyor..."
+LangString UninstallPreviousVersion ${LANG_UKRAINIAN}  "Встановлення попередньої версії ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_UZBEK}  "Uninstalling previous version of ${APPNAME}..."
+
+LangString UninstallProgram ${LANG_ENGLISH}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_AFRIKAANS}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_ALBANIAN}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_ARABIC}  "أتريد إلغاء تثبيت ${APPNAME}؟"
+LangString UninstallProgram ${LANG_BELARUSIAN}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_BOSNIAN}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_BRETON}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_BULGARIAN}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_CATALAN}  "Voleu desinstal·lar ${APPNAME}?"
+LangString UninstallProgram ${LANG_CROATIAN}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_CZECH}  "Chcete odinstalovat ${APPNAME}?"
+LangString UninstallProgram ${LANG_DANISH}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_DUTCH}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_ESPERANTO}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_ESTONIAN}  "Kas sa soovid eemaldada rakenduse ${APPNAME}?"
+LangString UninstallProgram ${LANG_FARSI}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_FINNISH}  "Haluatko poistaa ${APPNAME} -sovelluksen?"
+LangString UninstallProgram ${LANG_FRENCH}  "Voulez-vous désinstaller ${APPNAME} ?"
+LangString UninstallProgram ${LANG_GALICIAN}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_GERMAN}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_GREEK}  "Θέλετε να καταργήσετε την εγκατάσταση του ${APPNAME};"
+LangString UninstallProgram ${LANG_HEBREW}  "להסיר את ${APPNAME}?"
+LangString UninstallProgram ${LANG_HUNGARIAN}  "El szeretné távolítani a(z) ${APPNAME} alkalmazást?"
+LangString UninstallProgram ${LANG_ICELANDIC}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_INDONESIAN}  "Apakah Anda ingin menghapus instalasi ${APPNAME}?"
+LangString UninstallProgram ${LANG_IRISH}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_ITALIAN}  "Vuoi disinstallare ${APPNAME}?"
+LangString UninstallProgram ${LANG_JAPANESE}  "${APPNAME} をアンインストールしますか？"
+LangString UninstallProgram ${LANG_KOREAN}  "${APPNAME} 제거할까요?"
+LangString UninstallProgram ${LANG_KURDISH}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_LATVIAN}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_LITHUANIAN}  "Ar norite išdiegti ${APPNAME}?"
+LangString UninstallProgram ${LANG_LUXEMBOURGISH}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_MACEDONIAN}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_MALAY}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_MONGOLIAN}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_NORWEGIAN}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_NORWEGIANNYNORSK}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_POLISH}  "Czy chcesz odinstalować ${APPNAME}?"
+LangString UninstallProgram ${LANG_PORTUGUESE}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_PORTUGUESEBR}  "Deseja desinstalar ${APPNAME}?"
+LangString UninstallProgram ${LANG_ROMANIAN}  "Doriți să dezinstalați ${APPNAME}?"
+LangString UninstallProgram ${LANG_RUSSIAN}  "Вы хотите удалить ${APPNAME}?"
+LangString UninstallProgram ${LANG_SERBIAN}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_SERBIANLATIN}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_SIMPCHINESE}  "您想要卸载 ${APPNAME} 吗？"
+LangString UninstallProgram ${LANG_SLOVAK}  "Chcete odinštalovať ${APPNAME}?"
+LangString UninstallProgram ${LANG_SLOVENIAN}  "Ali želite odstraniti ${APPNAME}?"
+LangString UninstallProgram ${LANG_SPANISH}  "¿Quiere instalar ${APPNAME}?"
+LangString UninstallProgram ${LANG_SPANISHINTERNATIONAL}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_SWEDISH}  "Vill du avinstallera ${APPNAME}?"
+LangString UninstallProgram ${LANG_THAI}  "Do you want to uninstall ${APPNAME}?"
+LangString UninstallProgram ${LANG_TRADCHINESE}  "您想要解除安裝 ${APPNAME} 嗎？"
+LangString UninstallProgram ${LANG_TURKISH}  "${APPNAME} kaldırmak istiyor musunuz?"
+LangString UninstallProgram ${LANG_UKRAINIAN}  "Хочете вилучити ${APPNAME}?"
+LangString UninstallProgram ${LANG_UZBEK}  "Do you want to uninstall ${APPNAME}?"
 
 LangString VCRedistDownloadFailed ${LANG_ENGLISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_AFRIKAANS}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_ALBANIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_ARABIC}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_ARABIC}  "فشل تنزيل حزمة Visual C++ القابلة لإعادة التوزيع.
+
+يُرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى،
+أو تنزيلها يدويًا من:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_BELARUSIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_BOSNIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_BRETON}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_BULGARIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_CATALAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_CATALAN}  "No s'ha pogut descarregar el Visual C++ Redistributable.
+
+Comproveu la connexió a Internet i torneu-ho a intentar,
+o descarregar-lo manualment des de:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_CROATIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_CZECH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_CZECH}  "Nepodařilo se stáhnout Visual C++ Redistributable.
+
+Zkontrolujte prosím své připojení k internetu a zkuste to znovu,
+nebo si program ručně stáhněte z následující adresy:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_DANISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_DUTCH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_ESPERANTO}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_ESTONIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_ESTONIAN}  "V ajaliku komponendi (Visual C++ Redistributable) allalaadimine ei õnnestunud.
+
+Palun kontrolli, kas sinu arvuti/seadme internetiühendus toimib
+ja proovi siis uuesti või laadi käsitsi alla siit:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_FARSI}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_FINNISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_FRENCH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_FINNISH}  "Visual C++ Redistributablen lataus epäonnistui.
+
+Tarkista internetyhteytesi ja yritä uudelleen,
+tai lataa se manuaalisesti osoitteesta:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_FRENCH}  "Échec du téléchargement de Visual C++ Redistributable.
+
+Vérifiez votre connexion Internet et réessayez,
+ou téléchargez-le manuellement à l'adresse :
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_GALICIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_GERMAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_GREEK}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_HEBREW}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_HUNGARIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_GREEK}  "Αποτυχία λήψης του Visual C++ Redistributable.
+
+Ελέγξτε τη σύνδεσή σας στο διαδίκτυο και δοκιμάστε ξανά,
+ή κάντε χειροκίνητα λήψη από εδώ:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_HEBREW}  "נכשלה הורדת Visual C++ Redistributable. 
+ 
+נא לבדוק את החיבור לאינטרנט ולנסות שוב, 
+או להוריד ידנית מהכתובת: 
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_HUNGARIAN}  "Nem sikerült letölteni a Visual C++ terjeszthetőt.
+
+Ellenőrizze az internetkapcsolatát és próbálja újra,
+vagy töltse le manuálisan innen:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_ICELANDIC}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_INDONESIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_INDONESIAN}  "Gagal mengunduh Visual C++ Redistributable.
+
+Silakan periksa koneksi internet Anda dan coba lagi,
+atau unduh secara manual dari:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_IRISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_ITALIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_ITALIAN}  "Impossibile scaricare Visual C++ ridistribuibile.
+
+Controlla la connessione internet e riprova,
+oppure scarica Visual C++ manualmente da:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_JAPANESE}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_KOREAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_KOREAN}  "Visual C++ Redistributable를 내려받기에 실패함.
+
+인터넷 연결을 확인하고 다시 시도하거나,
+다음에서 수작업으로 내려받으세요:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_KURDISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_LATVIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_LITHUANIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_LITHUANIAN}  "Nepavyko atsiųsti Visual C++ Redistributable.
+
+Patikrinkite interneto ryšį ir bandykite iš naujo
+arba atsisiųskite patys iš:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_LUXEMBOURGISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_MACEDONIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_MALAY}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
@@ -209,55 +261,95 @@ LangString VCRedistDownloadFailed ${LANG_NORWEGIAN}  "Failed to download Visual 
 LangString VCRedistDownloadFailed ${LANG_NORWEGIANNYNORSK}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_POLISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_PORTUGUESE}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_PORTUGUESEBR}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_ROMANIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_RUSSIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_PORTUGUESEBR}  "Falha ao baixar Visual C++ Redistributable.
+
+Verifique sua conexão com a Internet e tente novamente,
+ou baixe-o manualmente de:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_ROMANIAN}  "Nu s-a putut descărca Visual C++ Redistributable.
+
+Verificați conexiunea la internet și încercați din nou,
+sau descărcați-l manual de la:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_RUSSIAN}  "Не удалось загрузить Visual C++ Redistributable.
+
+Проверьте подключение к интернету и повторите попытку позже,
+или загрузите его вручную из:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_SERBIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_SERBIANLATIN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_SIMPCHINESE}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_SLOVAK}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_SIMPCHINESE}  "无法下载 Visual C++ 可再发行组件包。
+
+请检查您的互联网连接并重试，
+或者从以下地址手动下载：
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_SLOVAK}  "Nepodarilo sa stiahnuť Visual C++ Redistributable.
+
+Skontrolujte svoje internetové pripojenie a skúste to znova,
+alebo si ho stiahnite manuálne z adresy:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_SLOVENIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_SPANISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_SPANISH}  "Fallo al descargar Visual C++ Redistributable.
+
+Por favor, comprueba tu conexión a Internet e inténtalo de nuevo,
+o descárgalo manualmente desde:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_SPANISHINTERNATIONAL}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_SWEDISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_SWEDISH}  "Misslyckades med att ladda ner Visual C++ Redistributable.
+
+Kontrollera din internetanslutning och försök igen.
+eller ladda ner det manuellt från:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_THAI}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_TRADCHINESE}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_TURKISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_UKRAINIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_TRADCHINESE}  "無法下載 Visual C++ Redistributable。
+
+請檢查您的網路連線並重試，
+或從以下位置手動下載：
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_TURKISH}  "Visual C++ yeniden dağıtılabilir paketi indirilemedi.
+
+Lütfen internet bağlantınızı gözden geçirin ve tekrar deneyin,
+veya şu adresten elle indirin:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_UKRAINIAN}  "Не вдалося отримати Visual C++ Redistributable.
+
+Будь ласка, перевірте працездатність інтернет-з'єднання і повторіть спробу
+або отримайте пакунок вручну за такою адресою:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistDownloadFailed ${LANG_UZBEK}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 LangString VCRedistDownloading ${LANG_ENGLISH}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_AFRIKAANS}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_ALBANIAN}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_ARABIC}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_ARABIC}  "جارٍ تنزيل Microsoft Visual C++ القابل لإعادة التوزيع..."
 LangString VCRedistDownloading ${LANG_BELARUSIAN}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_BOSNIAN}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_BRETON}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_BULGARIAN}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_CATALAN}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_CATALAN}  "Descarregant el Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_CROATIAN}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_CZECH}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_CZECH}  "Stahování Microsoft Visual C++ Redistributable…"
 LangString VCRedistDownloading ${LANG_DANISH}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_DUTCH}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_ESPERANTO}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_ESTONIAN}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_ESTONIAN}  "Laadin alla komponenti: Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_FARSI}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_FINNISH}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_FRENCH}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_FINNISH}  "Ladataan Microsoft Visual C++ Redistributable -tiedostoa..."
+LangString VCRedistDownloading ${LANG_FRENCH}  "Téléchargement de Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_GALICIAN}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_GERMAN}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_GREEK}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_HEBREW}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_HUNGARIAN}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_GERMAN}  "Microsoft Visual C++ Redistributable wird heruntergeladen..."
+LangString VCRedistDownloading ${LANG_GREEK}  "Λήψη του Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_HEBREW}  "מתצעת הורדת Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_HUNGARIAN}  "Microsoft Visual C++ terjeszthető letöltése..."
 LangString VCRedistDownloading ${LANG_ICELANDIC}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_INDONESIAN}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_INDONESIAN}  "Mengunduh Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_IRISH}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_ITALIAN}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_JAPANESE}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_KOREAN}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_ITALIAN}  "Download Microsoft Visual C++ ridistribuibile..."
+LangString VCRedistDownloading ${LANG_JAPANESE}  "ダウンロード中 Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_KOREAN}  "마이크로소프트 Visual C++ Redistributable 내려받기..."
 LangString VCRedistDownloading ${LANG_KURDISH}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_LATVIAN}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_LITHUANIAN}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_LITHUANIAN}  "Atsiunčiamas Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_LUXEMBOURGISH}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_MACEDONIAN}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_MALAY}  "Downloading Microsoft Visual C++ Redistributable..."
@@ -266,55 +358,55 @@ LangString VCRedistDownloading ${LANG_NORWEGIAN}  "Downloading Microsoft Visual 
 LangString VCRedistDownloading ${LANG_NORWEGIANNYNORSK}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_POLISH}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_PORTUGUESE}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_PORTUGUESEBR}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_ROMANIAN}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_RUSSIAN}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_PORTUGUESEBR}  "Baixando Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_ROMANIAN}  "Se descarcă Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_RUSSIAN}  "Загрузка Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_SERBIAN}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_SERBIANLATIN}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_SIMPCHINESE}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_SLOVAK}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_SIMPCHINESE}  "正在下载 Microsoft Visual C++ 可再发行组件包……"
+LangString VCRedistDownloading ${LANG_SLOVAK}  "Sťahovanie Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_SLOVENIAN}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_SPANISH}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_SPANISH}  "Descargando Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_SPANISHINTERNATIONAL}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_SWEDISH}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_SWEDISH}  "Laddar ner Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_THAI}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_TRADCHINESE}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_TURKISH}  "Downloading Microsoft Visual C++ Redistributable..."
-LangString VCRedistDownloading ${LANG_UKRAINIAN}  "Downloading Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_TRADCHINESE}  "正在下載 Microsoft Visual C++ Redistributable..."
+LangString VCRedistDownloading ${LANG_TURKISH}  "Microsoft Visual C++ Yeniden Dağıtılabilir Paketi İndiriliyor..."
+LangString VCRedistDownloading ${LANG_UKRAINIAN}  "Отримання Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_UZBEK}  "Downloading Microsoft Visual C++ Redistributable..."
 
 LangString VCRedistInstalling ${LANG_ENGLISH}  "Installing Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_AFRIKAANS}  "Installing Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_ALBANIAN}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_ARABIC}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_ARABIC}  "جارٍ تثبيت Microsoft Visual C++ القابل لإعادة التوزيع..."
 LangString VCRedistInstalling ${LANG_BELARUSIAN}  "Installing Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_BOSNIAN}  "Installing Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_BRETON}  "Installing Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_BULGARIAN}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_CATALAN}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_CATALAN}  "Instal·lant Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_CROATIAN}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_CZECH}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_CZECH}  "Instalace Microsoft Visual C++ Redistributable…"
 LangString VCRedistInstalling ${LANG_DANISH}  "Installing Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_DUTCH}  "Installing Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_ESPERANTO}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_ESTONIAN}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_ESTONIAN}  "Paigaldan komponenti: Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_FARSI}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_FINNISH}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_FRENCH}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_FINNISH}  "Asennetaan Microsoft Visual C++ Redistributable -sovellusta..."
+LangString VCRedistInstalling ${LANG_FRENCH}  "Installation de Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_GALICIAN}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_GERMAN}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_GREEK}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_HEBREW}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_HUNGARIAN}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_GERMAN}  "Microsoft Visual C++ Redistributable wird installiert..."
+LangString VCRedistInstalling ${LANG_GREEK}  "Εγκατάσταση του Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_HEBREW}  "מתבצעת התקנת Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_HUNGARIAN}  "Microsoft Visual C++ terjeszthető telepítése..."
 LangString VCRedistInstalling ${LANG_ICELANDIC}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_INDONESIAN}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_INDONESIAN}  "Sedang menginstal Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_IRISH}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_ITALIAN}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_JAPANESE}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_KOREAN}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_ITALIAN}  "Installazione Microsoft Visual C++ ridistribuibile..."
+LangString VCRedistInstalling ${LANG_JAPANESE}  "インストール中 Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_KOREAN}  "마이크로소프트 Visual C++ Redistributable 내려받기..."
 LangString VCRedistInstalling ${LANG_KURDISH}  "Installing Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_LATVIAN}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_LITHUANIAN}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_LITHUANIAN}  "Įdiegiamas Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_LUXEMBOURGISH}  "Installing Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_MACEDONIAN}  "Installing Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_MALAY}  "Installing Microsoft Visual C++ Redistributable..."
@@ -323,55 +415,107 @@ LangString VCRedistInstalling ${LANG_NORWEGIAN}  "Installing Microsoft Visual C+
 LangString VCRedistInstalling ${LANG_NORWEGIANNYNORSK}  "Installing Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_POLISH}  "Installing Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_PORTUGUESE}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_PORTUGUESEBR}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_ROMANIAN}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_RUSSIAN}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_PORTUGUESEBR}  "Instalando Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_ROMANIAN}  "Se instalează Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_RUSSIAN}  "Установка Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_SERBIAN}  "Installing Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_SERBIANLATIN}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_SIMPCHINESE}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_SLOVAK}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_SIMPCHINESE}  "正在安装 Microsoft Visual C++ 可再发行组件包……"
+LangString VCRedistInstalling ${LANG_SLOVAK}  "Inštalácia Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_SLOVENIAN}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_SPANISH}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_SPANISH}  "Instalando Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_SPANISHINTERNATIONAL}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_SWEDISH}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_SWEDISH}  "Installerar Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_THAI}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_TRADCHINESE}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_TURKISH}  "Installing Microsoft Visual C++ Redistributable..."
-LangString VCRedistInstalling ${LANG_UKRAINIAN}  "Installing Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_TRADCHINESE}  "正在安裝 Microsoft Visual C++ Redistributable..."
+LangString VCRedistInstalling ${LANG_TURKISH}  "Microsoft Visual C++ Yeniden Dağıtılabilir Paketi Kuruluyor..."
+LangString VCRedistInstalling ${LANG_UKRAINIAN}  "Встановлення Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_UZBEK}  "Installing Microsoft Visual C++ Redistributable..."
 
 LangString VCRedistNotInstalled ${LANG_ENGLISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_AFRIKAANS}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_ALBANIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_ARABIC}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_ARABIC}  "Microsoft Visual C++ Redistributable غير مثبَّت على نظامك.
+
+مطلوب لتشغيل ${APPNAME} بشكل صحيح.
+
+أترغب في تنزيله وتثبيته الآن؟ (حوالي 25 ميجابايت)"
 LangString VCRedistNotInstalled ${LANG_BELARUSIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_BOSNIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_BRETON}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_BULGARIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_CATALAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_CATALAN}  "El Microsoft Visual C++ Redistributable no està instal·lat al sistema.
+
+És necessari perquè ${APPNAME} s'executi correctament.
+
+Voleu descarregar-lo i instal·lar-lo ara? (aproximadament 25 MB)"
 LangString VCRedistNotInstalled ${LANG_CROATIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_CZECH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_CZECH}  "Ve vašem systému není nainstalován program Visual C++ Redistributable.
+
+Program je vyžadován, aby mohl ${APPNAME} správně fungovat.
+
+Chcete jej nyní stáhnout a nainstalovat? (zhruba 25 MB)"
 LangString VCRedistNotInstalled ${LANG_DANISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_DUTCH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_ESPERANTO}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_ESTONIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_ESTONIAN}  "Vajalik komponent (Microsoft Visual C++ Redistributable) pole sellesse arvutisse/süsteemi paigaldatud.
+
+Et ${APPNAME} toimiks korralikult, on ta kindlasti vajalik.
+
+Kas sa sooviksid ta kohe alla laadida ja paigaldada? (umbkaudne andmemaht 25 MB)"
 LangString VCRedistNotInstalled ${LANG_FARSI}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_FINNISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_FRENCH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_FINNISH}  "Microsoft Visual C++ Redistributable -sovellusta ei ole asennettu järjestelmääsi.
+
+Se vaaditaan, jotta ${APPNAME} toimii oikein.
+
+Haluatko ladata ja asentaa sen nyt? (noin 25 Mt)"
+LangString VCRedistNotInstalled ${LANG_FRENCH}  "Microsoft Visual C++ Redistributable n'est pas installé sur votre système.
+
+Ce package est nécessaire au bon fonctionnement de ${APPNAME}.
+
+Souhaitez-vous le télécharger et l'installer maintenant ? (environ 25 Mo)"
 LangString VCRedistNotInstalled ${LANG_GALICIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_GERMAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_GREEK}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_HEBREW}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_HUNGARIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_GREEK}  "Το Microsoft Visual C++ Redistributable δεν είναι εγκατεστημένο στο σύστημά σας.
+
+Είναι απαραίτητο για την εύρυθμη λειτουργία του ${APPNAME}.
+
+Θέλετε να κάνετε λήψη και εγκατάσταση τώρα; (περίπου 25 MB)"
+LangString VCRedistNotInstalled ${LANG_HEBREW}  "לא מותקנת במחשבך החבילה Microsoft Visual C++ Redistributable.
+
+היא נחוצה בשביל ש${APPNAME} יפעל כראוי.
+
+האם ברצונך להורידה ולהתקין אותה כעת? (בסביבות 25 מ״ב)"
+LangString VCRedistNotInstalled ${LANG_HUNGARIAN}  "A Microsoft Visual C++ terjeszthető nincs telepítve a rendszerén.
+
+Ez kötelező a(z) ${APPNAME} alkalmazás megfelelő futásához.
+
+Szeretné most letölteni és telepíteni? (körülbelül 25 MB)"
 LangString VCRedistNotInstalled ${LANG_ICELANDIC}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_INDONESIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_INDONESIAN}  "Microsoft Visual C++ Redistributable belum terinstal di sistem Anda.
+
+Komponen ini diperlukan agar ${APPNAME} dapat berjalan dengan baik.
+
+Apakah Anda ingin mengunduh dan menginstalnya sekarang? (sekitar 25 MB)"
 LangString VCRedistNotInstalled ${LANG_IRISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_ITALIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_ITALIAN}  "Nel sistema non è installato Visual C++ ridistribuibile.
+
+Visual C++ è necessario affinché ${APPNAME} funzioni correttamente.
+
+Vuoi scaricare ed installare Visual C++? (circa 25 MB)"
 LangString VCRedistNotInstalled ${LANG_JAPANESE}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_KOREAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_KOREAN}  "마이크로소프트 Visual C++ Redistributable는 당신의 시스템에 설치되지 않았습니다.
+
+적절하게 동작하려면 ${APPNAME} 이 필요합니다.
+
+내려받고 이를 설치할까요? (대략 25 MB)"
 LangString VCRedistNotInstalled ${LANG_KURDISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_LATVIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_LITHUANIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_LITHUANIAN}  "Microsoft Visual C++ Redistributable nėra įdiegtas jūsų sistemoje.
+
+Jis reikalingas tinkamam ${APPNAME} veikimui.
+
+Ar norite jį atsisiųsti ir įdiegti dabar? (apytiksliai 25 MB)"
 LangString VCRedistNotInstalled ${LANG_LUXEMBOURGISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_MACEDONIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_MALAY}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
@@ -380,55 +524,155 @@ LangString VCRedistNotInstalled ${LANG_NORWEGIAN}  "Microsoft Visual C++ Redistr
 LangString VCRedistNotInstalled ${LANG_NORWEGIANNYNORSK}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_POLISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_PORTUGUESE}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_PORTUGUESEBR}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_ROMANIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_RUSSIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_PORTUGUESEBR}  "Microsoft Visual C++ Redistributable não está instalado em seu sistema.
+
+Ele é obrigatório para que ${APPNAME} funcione corretamente.
+
+Você gostaria de baixá-lo e instalá-lo novamente? (aproximadamente 25 MB)"
+LangString VCRedistNotInstalled ${LANG_ROMANIAN}  "Microsoft Visual C++ Redistributable nu este instalat în sistemul dvs.
+
+Este necesar pentru ca ${APPNAME} să funcționeze corect.
+
+Doriți să îl descărcați și să îl instalați acum? (aproximativ 25 Mo)"
+LangString VCRedistNotInstalled ${LANG_RUSSIAN}  "Microsoft Visual C++ Redistributable не установлен на вашей системе.
+
+Он необходим для правильной работы ${APPNAME}.
+
+Хотите загрузить и установить его сейчас? (примерно 25 МБ)"
 LangString VCRedistNotInstalled ${LANG_SERBIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 LangString VCRedistNotInstalled ${LANG_SERBIANLATIN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_SIMPCHINESE}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_SLOVAK}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_SIMPCHINESE}  "Microsoft Visual C++ 可再发行组件包没有在您的系统上安装。
+
+${APPNAME} 需要它以正常工作。
+
+您想要现在下载并安装它吗？（大约 25MB）"
+LangString VCRedistNotInstalled ${LANG_SLOVAK}  "Microsoft Visual C++ Redistributable nie je vo vašom systéme nainštalovaný.
+
+Je potrebný na správne fungovanie ${APPNAME}.
+
+Chcete ho teraz stiahnuť a nainštalovať? (približne 25 MB)"
 LangString VCRedistNotInstalled ${LANG_SLOVENIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_SPANISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_SPANISH}  "Microsoft Visual C++ Redistributable no está instalado en tu sistema.
+
+Es necesario para que ${APPNAME} funcione correctamente.
+
+¿Deseas descargarlo e instalarlo ahora? (aproximadamente 25 MB)"
 LangString VCRedistNotInstalled ${LANG_SPANISHINTERNATIONAL}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_SWEDISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_SWEDISH}  "Microsoft Visual C++ Redistributable är inte installerat på ditt system.
+
+Det krävs för att ${APPNAME} ska fungera korrekt.
+
+Vill du ladda ner och installera det nu? (cirka 25 MB)"
 LangString VCRedistNotInstalled ${LANG_THAI}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_TRADCHINESE}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_TURKISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_UKRAINIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_TRADCHINESE}  "您的系統上未安裝 Microsoft Visual C++ Redistributable。
+
+${APPNAME} 需要它才能正常運作。
+
+您想要現在下載並安裝嗎？（約 25 MB）"
+LangString VCRedistNotInstalled ${LANG_TURKISH}  "Microsoft Visual C++ yeniden dağıtılabilir paketi sisteminizde kurulu değil.
+
+${APPNAME} programının düzgün çalışması için bu paket gereklidir.
+
+Şimdi indirip kurmak ister misiniz? (yaklaşık 25 MB)"
+LangString VCRedistNotInstalled ${LANG_UKRAINIAN}  "У вашій системі не встановлено Microsoft Visual C++ Redistributable.
+
+Цей пакунок потрібен для належної роботи ${APPNAME}.
+
+Хочете отримати і встановити цей пакунок зараз? (приблизно 25 МБ)"
 LangString VCRedistNotInstalled ${LANG_UZBEK}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
 
 LangString VCRedistSkipped ${LANG_ENGLISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_AFRIKAANS}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_ALBANIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_ARABIC}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_ARABIC}  "لقد اخترت تخطي تثبيت حزمة Visual C++ القابلة لإعادة التوزيع.
+
+قد لا يعمل ${APPNAME} بشكل صحيح بدونها.
+
+يمكنك تنزيلها يدويًا من:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_BELARUSIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_BOSNIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_BRETON}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_BULGARIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_CATALAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_CATALAN}  "Heu triat ometre la instal·lació del Visual C++ Redistributable.
+
+És possible que ${APPNAME} no funcioni correctament sense això.
+
+El podeu descarregar manualment des de:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_CROATIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_CZECH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_CZECH}  "Zvolili jste přeskočení instalace Visual C++ Redistributable.
+
+${APPNAME} bez něj nemusí správně fungovat.
+
+Můžete si jej stáhnout ručně z následující adresy:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_DANISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_DUTCH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_ESPERANTO}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_ESTONIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_ESTONIAN}  "Sa oled otsistanud vajaliku komponendi (Visual C++ Redistributable)paigaldamise vahele jätta.
+
+${APPNAME} ei pruugi tema olemasoluta korralikult toimida.
+
+Saad ta alati siit käsitsi alla laadida:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_FARSI}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_FINNISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_FRENCH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_FINNISH}  "Olet valinnut Visual C++ Redistributable -asennuksen ohittamisen.
+
+${APPNAME} ei välttämättä toimi oikein ilman sitä.
+
+Voit ladata sen manuaalisesti osoitteesta:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_FRENCH}  "Vous avez choisi d'ignorer l'installation de Visual C++ Redistributable.
+
+Il est possible que ${APPNAME} ne fonctionne pas correctement.
+
+Vous pouvez le télécharger manuellement à l'adresse :
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_GALICIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_GERMAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_GREEK}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_GREEK}  "Επιλέξατε να παραλείψετε την εγκατάσταση του Visual C++ Redistributable.
+
+Το ${APPNAME} ενδέχεται να μην λειτουργεί σωστά χωρίς αυτό.
+
+Μπορείτε να κάνετε χειροκίνητα λήψη από εδώ:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_HEBREW}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_HUNGARIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_HUNGARIAN}  "A Microsoft Visual C++ terjeszthető telepítésének kihagyása mellett döntött.
+
+A(z) ${APPNAME} alkalmazás lehet, hogy nem fog jól működni nélküle.
+
+Letöltheti manuálisan innen:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_ICELANDIC}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_INDONESIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_INDONESIAN}  "Anda telah memilih untuk melewatkan penginstalan Visual C++ Redistributable.
+
+${APPNAME} mungkin tidak akan berfungsi dengan baik tanpa paket tersebut.
+
+Anda dapat mengunduhnya secara manual dari:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_IRISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_ITALIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_ITALIAN}  "Hai scelto di ignorare l'installazione di Visual C++ ridistribuibile.
+
+${APPNAME} potrebbe non funzionare correttamente Visual C++.
+
+Puoi scaricare manualmente Visual C++ da:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_JAPANESE}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_KOREAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_KOREAN}  "Visual C++ Redistributable 설치를 건너뛰도록 선택했습니다.
+
+${APPNAME} 는 설치 없이 정확하게 동작하지 않을 수도 있습니다.
+
+다음에서 수동으로 이를 내려받을 수 있습니다:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_KURDISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_LATVIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_LITHUANIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_LITHUANIAN}  "Nusprendėte praleisti Visual C++ Redistributable įdiegimą.
+
+Be jo ${APPNAME} gali neveikti tinkamai.
+
+Galite atsisiųsti patys iš:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_LUXEMBOURGISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_MACEDONIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_MALAY}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
@@ -437,19 +681,69 @@ LangString VCRedistSkipped ${LANG_NORWEGIAN}  "You have chosen to skip the Visua
 LangString VCRedistSkipped ${LANG_NORWEGIANNYNORSK}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_POLISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_PORTUGUESE}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_PORTUGUESEBR}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_ROMANIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_RUSSIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_PORTUGUESEBR}  "Você escolheu ignorar a instalação de Visual C++ Redistributable.
+
+${APPNAME} pode não funcionar corretamente sem ele.
+
+Você pode baixá-lo manualmente de:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_ROMANIAN}  "Ați ales să omiteți instalarea Visual C++ Redistributable.
+
+${APPNAME} s-ar putea să nu funcționeze corect fără acesta.
+
+Îl puteți descărca manual de la:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_RUSSIAN}  "Вы решили пропустить установку Visual C++ Redistributable.
+
+Без него ${APPNAME} может не работать должным образом.
+
+Вы можете загрузить его вручную из:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_SERBIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_SERBIANLATIN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_SIMPCHINESE}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_SLOVAK}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_SIMPCHINESE}  "您已经选择了跳过 Visual C++ 可再发行组件包的安装。
+
+在缺少它的情况下 ${APPNAME} 可能不能正常工作。
+
+您可以从以下地址手动下载：
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_SLOVAK}  "Rozhodli ste sa preskočiť inštaláciu Visual C++ Redistributable.
+
+${APPNAME} nemusí bez neho fungovať správne.
+
+Môžete si ho stiahnuť manuálne z adresy:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_SLOVENIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_SPANISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_SPANISH}  "Has elegido omitir la instalación de Microsoft Visual C++ Redistributable.
+
+${APPNAME} puede no funcionar correctamente sin él.
+
+Puedes descargarlo manualmente desde:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_SPANISHINTERNATIONAL}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_SWEDISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_SWEDISH}  "Du har valt att hoppa över installationen av Visual C++ Redistributable.
+
+${APPNAME} kanske inte fungerar korrekt utan det.
+
+Du kan ladda ner det manuellt från:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_THAI}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_TRADCHINESE}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_TURKISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_UKRAINIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_TRADCHINESE}  "您選擇跳過 Visual C++ Redistributable 安裝。
+
+沒有它，${APPNAME} 可能無法正常運作。
+
+您可以從以下位置手動下載：
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_TURKISH}  "Visual C++ yeniden dağıtılabilir paketinin kurulumunu atlamayı seçtiniz.
+
+${APPNAME} bu paket olmadan düzgün çalışmayabilir.
+
+Paketi şu adresten elle indirebilirsiniz:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_UKRAINIAN}  "Ви не захотіли встановлювати Visual C++ Redistributable.
+
+Без цього пакунка ${APPNAME} може не працювати належним чином.
+
+Ви можете отримати пакунок вручну за такою адресою:
+https://aka.ms/vs/17/release/vc_redist.x64.exe"
 LangString VCRedistSkipped ${LANG_UZBEK}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
