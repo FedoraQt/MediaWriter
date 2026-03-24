@@ -101,11 +101,9 @@ void Progress::reset()
 // this is slowly getting out of hand
 // when adding an another option, please consider using a real argv parser
 
-void Options::parse(QStringList argv)
+int Options::parse(QStringList argv)
 {
     int index;
-    if (argv.contains("--testing"))
-        testing = true;
     if (argv.contains("--verbose") || argv.contains("-v")) {
         verbose = true;
         logging = false;
@@ -113,17 +111,21 @@ void Options::parse(QStringList argv)
     if (argv.contains("--logging") || argv.contains("-l"))
         logging = true;
     if ((index = argv.indexOf("--releasesUrl")) >= 0) {
-        if (index >= argv.length() - 1)
+        if (index >= argv.length() - 1) {
             printHelp();
-        else
+            return 1;
+        } else {
             releasesUrl = argv[index + 1];
+        }
     }
     if (argv.contains("--no-user-agent")) {
         noUserAgent = true;
     }
     if (argv.contains("--help")) {
         printHelp();
+        return 0;
     }
+    return -1;
 
     if (options.logging) {
         QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/FedoraMediaWriter.log";
@@ -137,7 +139,7 @@ void Options::parse(QStringList argv)
 void Options::printHelp()
 {
     QTextStream out(stdout);
-    out << "mediawriter [--testing] [--no-user-agent] [--releasesUrl <url>]\n";
+    out << "mediawriter [--no-user-agent] [--releasesUrl <url>]\n";
 }
 
 static void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)

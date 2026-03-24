@@ -73,10 +73,9 @@ private:
 class Options
 {
 public:
-    void parse(QStringList argv);
+    int parse(QStringList argv);
     void printHelp();
 
-    bool testing{false};
     bool verbose{false};
 #if defined(QT_NO_DEBUG) && !defined(_WIN32)
     bool logging{false};
