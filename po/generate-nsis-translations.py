@@ -143,8 +143,8 @@ def write_nsis_file(translations, output_file):
                 text = translations[string_id].get(nsis_lang, english_text)
 
                 # Escape for NSIS
-                text = text.replace('\\n', '$\\n')
-                text = text.replace('\\t', '$\\t')
+                text = text.replace('\n', '$\\n')
+                text = text.replace('\t', '$\\t')
                 # Escape unescaped double quotes, but leave existing NSIS escapes ($\\") intact
                 text = re.sub(r'(?<!\$\\)"', r'$\\\"', text)
 
