@@ -40,6 +40,9 @@ RestoreJob::RestoreJob(const QString &where)
 
 void RestoreJob::work()
 {
+    out << "0\n";
+    out.flush();
+
     QDBusInterface device("org.freedesktop.UDisks2", where, "org.freedesktop.UDisks2.Block", QDBusConnection::systemBus(), this);
     QString drivePath = qvariant_cast<QDBusObjectPath>(device.property("Drive")).path();
     QDBusInterface drive("org.freedesktop.UDisks2", drivePath, "org.freedesktop.UDisks2.Drive", QDBusConnection::systemBus(), this);
@@ -60,6 +63,9 @@ void RestoreJob::work()
             }
         }
     }
+
+    out << "15\n";
+    out.flush();
 
     // Wipe out first and last 128 blocks with zeroes
     fd = getDescriptor();
@@ -84,6 +90,9 @@ void RestoreJob::work()
             qApp->exit(1);
         }
     }
+
+    out << "35\n";
+    out.flush();
 
     // Rewind the filepointer to the last 128 blocks
     off_t filesize = lseek(fd.fileDescriptor(), 0, SEEK_END);
@@ -124,6 +133,9 @@ void RestoreJob::work()
         qApp->exit(1);
     }
 
+    out << "55\n";
+    out.flush();
+
     // Close the file descriptor before handing off to UDisks2 to avoid conflicts
     fd = QDBusUnixFileDescriptor();
 
@@ -134,6 +146,9 @@ void RestoreJob::work()
         qApp->exit(1);
         return;
     }
+
+    out << "75\n";
+    out.flush();
 
     QDBusInterface partitionTable("org.freedesktop.UDisks2", where, "org.freedesktop.UDisks2.PartitionTable", QDBusConnection::systemBus(), this);
     QDBusReply<QDBusObjectPath> partitionReply = partitionTable.call("CreatePartition", 1ULL, 0ULL, "", "", Properties());
@@ -152,6 +167,9 @@ void RestoreJob::work()
         qApp->exit(3);
         return;
     }
+
+    out << "100\n";
+    out.flush();
     err.flush();
 
     qApp->exit(0);

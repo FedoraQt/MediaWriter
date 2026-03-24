@@ -48,6 +48,10 @@ void RestoreJob::work()
      * 0) Refresh information about partitions
      *    Uses WMI query
      */
+    m_diskManagement->logMessage(QtDebugMsg, "Starting restore");
+    m_out << "0\n";
+    m_out.flush();
+
     m_diskManagement->refreshDiskDrive(m_disk->path());
 
     /*
@@ -61,6 +65,9 @@ void RestoreJob::work()
         m_err.flush();
         return;
     }
+
+    m_out << "10\n";
+    m_out.flush();
 
     /*
      * 2) Remove all the existing partitions
@@ -105,6 +112,9 @@ void RestoreJob::work()
      */
     m_diskManagement->refreshPartitionLayout(drive);
 
+    m_out << "30\n";
+    m_out.flush();
+
     /*
      * 5) Removes GPT/MBR records at the beginning and the end of the drive
      *    Writes zeroes to the beginning and the end of the drive
@@ -115,6 +125,9 @@ void RestoreJob::work()
         m_err.flush();
         qApp->exit(1);
     }
+
+    m_out << "45\n";
+    m_out.flush();
 
     /*
      * 6) Sets the drive to the RAW state
@@ -127,6 +140,9 @@ void RestoreJob::work()
         qApp->exit(1);
     }
 
+    m_out << "55\n";
+    m_out.flush();
+
     /*
      * 7) Created a new GPT partition on the drive
      *    Uses DeviceIoControl(IOCTL_DISK_CREATE_DISK) with DeviceIoControl(IOCTL_DISK_SET_DRIVE_LAYOUT_EX) from WinAPI
@@ -137,6 +153,9 @@ void RestoreJob::work()
         m_err.flush();
         qApp->exit(1);
     }
+
+    m_out << "70\n";
+    m_out.flush();
 
     /*
      * 8) Get GUID name of the partition - poll until it appears (up to 30 seconds)
@@ -155,6 +174,9 @@ void RestoreJob::work()
     }
 
     m_diskManagement->refreshDiskDrive(m_disk->path());
+
+    m_out << "85\n";
+    m_out.flush();
 
     /*
      * 9) Attempt to mount a volume using the GUID path we get above
@@ -179,6 +201,9 @@ void RestoreJob::work()
         m_err.flush();
         qApp->exit(1);
     }
+
+    m_out << "100\n";
+    m_out.flush();
 
     qApp->exit(0);
 }

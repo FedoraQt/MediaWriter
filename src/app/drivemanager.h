@@ -196,8 +196,9 @@ public Q_SLOTS:
     void setRestoreStatus(RestoreStatus status);
 
 private Q_SLOTS:
-    void onReadyRead();
-    void onFinished(int exitCode, QProcess::ExitStatus status);
+    void onWriteReadyRead();
+    void onRestoreReadyRead();
+    void onWriteFinished(int exitCode, QProcess::ExitStatus status);
     void onRestoreFinished(int exitCode, QProcess::ExitStatus status);
     void onErrorOccurred(QProcess::ProcessError error);
 
