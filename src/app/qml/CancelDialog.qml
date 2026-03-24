@@ -31,9 +31,12 @@ ApplicationWindow {
     maximumHeight: Math.max(180, units.gridUnit * 10)
 
     modality: Qt.ApplicationModal
-    x: Screen.width / 2 - width / 2
-    y: Screen.height / 2 - height / 2
     title: " "
+
+    Component.onCompleted: {
+        x = Screen.width / 2 - width / 2
+        y = Screen.height / 2 - height / 2
+    }
     
     property QtObject drivesSelected
     property int variantStatus: releases.variant ? releases.variant.status : 0
@@ -104,8 +107,7 @@ ApplicationWindow {
                         drives.selected.cancel()
                     if (mainWindow.selectedPage === Units.Page.DownloadPage &&
                         (variantStatus === Units.DownloadStatus.Writing || variantStatus === Units.DownloadStatus.Write_Verifying || variantStatus === Units.DownloadStatus.Writing_Not_Possible)) {
-                        drives.lastRestoreable = drivesSelected
-                        drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
+                        drivesSelected.setRestoreStatus(Units.RestoreStatus.Contains_Live)
                     }
                     releases.variant.resetStatus()
                     downloadManager.cancel()

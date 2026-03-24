@@ -267,8 +267,9 @@ Page {
     }
     onNextButtonClicked: {
         if (currentStatus === Units.DownloadStatus.Finished) {
-            drives.lastRestoreable = drives.selected
-            drives.lastRestoreable.setRestoreStatus(Units.RestoreStatus.Contains_Live)
+            if (drives.selected) {
+                drives.selected.setRestoreStatus(Units.RestoreStatus.Contains_Live)
+            }
             releases.variant.resetStatus()
             downloadManager.cancel()
             selectedPage = Units.Page.MainPage

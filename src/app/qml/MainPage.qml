@@ -46,8 +46,8 @@ Page {
 
     QQC2.RadioButton {
         id: restoreRadio
-        visible: drives.lastRestoreable
-        text: drives.lastRestoreable ? qsTr("Restore <b>%1</b>").arg(drives.lastRestoreable.name) : ""
+        visible: drives.restoreableDrives.length > 0
+        text: drives.restoreableDrives.length === 1 ? qsTr("Restore <b>%1</b>").arg(drives.restoreableDrives[0].name) : qsTr("Restore a USB drive (%1 available)").arg(drives.restoreableDrives.length)
         onClicked: {
             selectedOption = Units.MainSelect.Restore
         }
