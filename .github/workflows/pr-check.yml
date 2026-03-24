@@ -3,13 +3,13 @@ name: pr-check
 on: [pull_request]
 
 env:
-    QT_VERSION: '6.10.1'
+    QT_VERSION: '6.10.2'
 
 jobs:
   Linux:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install liblzma
         run: |
           sudo apt update
@@ -34,7 +34,7 @@ jobs:
       image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.10
       options: --privileged
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
         with:
@@ -42,7 +42,7 @@ jobs:
           manifest-path: "dist/flatpak/org.fedoraproject.MediaWriter.json"
           cache-key: flatpak-builder-${{ github.sha }}
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: org.fedoraproject.MediaWriter.flatpak
           path: org.fedoraproject.MediaWriter.flatpak
@@ -60,7 +60,7 @@ jobs:
             dmg_suffix: "-arm64"
     runs-on: ${{ matrix.runner }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
@@ -92,7 +92,7 @@ jobs:
           "$QT_ROOT_DIR"/bin/macdeployqt FedoraMediaWriter.app -dmg -always-overwrite
           mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-macos${{ matrix.dmg_suffix }}.dmg
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: FedoraMediaWriter-macos${{ matrix.dmg_suffix }}.dmg
           path: FedoraMediaWriter-macos${{ matrix.dmg_suffix }}.dmg
@@ -100,7 +100,7 @@ jobs:
   Windows-MSVC:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 1
       - name: Install dependencies
@@ -217,12 +217,12 @@ jobs:
 
           7z a -tzip "FedoraMediaWriter-win64-portable.zip" ./FedoraMediaWriter-portable/*
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: FedoraMediaWriter-win64-portable.zip
           path: FedoraMediaWriter-win64-portable.zip
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: FedoraMediaWriter-win64.exe
           path: FedoraMediaWriter-win64.exe
