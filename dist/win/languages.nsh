@@ -169,154 +169,62 @@ LangString UninstallProgram ${LANG_TURKISH}  "${APPNAME} kaldırmak istiyor musu
 LangString UninstallProgram ${LANG_UKRAINIAN}  "Хочете вилучити ${APPNAME}?"
 LangString UninstallProgram ${LANG_UZBEK}  "Do you want to uninstall ${APPNAME}?"
 
-LangString VCRedistDownloadFailed ${LANG_ENGLISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_AFRIKAANS}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_ALBANIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_ARABIC}  "فشل تنزيل حزمة Visual C++ القابلة لإعادة التوزيع.
-
-يُرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى،
-أو تنزيلها يدويًا من:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_BELARUSIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_BOSNIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_BRETON}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_BULGARIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_CATALAN}  "No s'ha pogut descarregar el Visual C++ Redistributable.
-
-Comproveu la connexió a Internet i torneu-ho a intentar,
-o descarregar-lo manualment des de:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_CROATIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_CZECH}  "Nepodařilo se stáhnout Visual C++ Redistributable.
-
-Zkontrolujte prosím své připojení k internetu a zkuste to znovu,
-nebo si program ručně stáhněte z následující adresy:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_DANISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_DUTCH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_ESPERANTO}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_ESTONIAN}  "V ajaliku komponendi (Visual C++ Redistributable) allalaadimine ei õnnestunud.
-
-Palun kontrolli, kas sinu arvuti/seadme internetiühendus toimib
-ja proovi siis uuesti või laadi käsitsi alla siit:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_FARSI}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_FINNISH}  "Visual C++ Redistributablen lataus epäonnistui.
-
-Tarkista internetyhteytesi ja yritä uudelleen,
-tai lataa se manuaalisesti osoitteesta:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_FRENCH}  "Échec du téléchargement de Visual C++ Redistributable.
-
-Vérifiez votre connexion Internet et réessayez,
-ou téléchargez-le manuellement à l'adresse :
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_GALICIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_GERMAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_GREEK}  "Αποτυχία λήψης του Visual C++ Redistributable.
-
-Ελέγξτε τη σύνδεσή σας στο διαδίκτυο και δοκιμάστε ξανά,
-ή κάντε χειροκίνητα λήψη από εδώ:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_HEBREW}  "נכשלה הורדת Visual C++ Redistributable. 
- 
-נא לבדוק את החיבור לאינטרנט ולנסות שוב, 
-או להוריד ידנית מהכתובת: 
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_HUNGARIAN}  "Nem sikerült letölteni a Visual C++ terjeszthetőt.
-
-Ellenőrizze az internetkapcsolatát és próbálja újra,
-vagy töltse le manuálisan innen:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_ICELANDIC}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_INDONESIAN}  "Gagal mengunduh Visual C++ Redistributable.
-
-Silakan periksa koneksi internet Anda dan coba lagi,
-atau unduh secara manual dari:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_IRISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_ITALIAN}  "Impossibile scaricare Visual C++ ridistribuibile.
-
-Controlla la connessione internet e riprova,
-oppure scarica Visual C++ manualmente da:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_JAPANESE}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_KOREAN}  "Visual C++ Redistributable를 내려받기에 실패함.
-
-인터넷 연결을 확인하고 다시 시도하거나,
-다음에서 수작업으로 내려받으세요:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_KURDISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_LATVIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_LITHUANIAN}  "Nepavyko atsiųsti Visual C++ Redistributable.
-
-Patikrinkite interneto ryšį ir bandykite iš naujo
-arba atsisiųskite patys iš:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_LUXEMBOURGISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_MACEDONIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_MALAY}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_MONGOLIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_NORWEGIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_NORWEGIANNYNORSK}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_POLISH}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_PORTUGUESE}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_PORTUGUESEBR}  "Falha ao baixar Visual C++ Redistributable.
-
-Verifique sua conexão com a Internet e tente novamente,
-ou baixe-o manualmente de:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_ROMANIAN}  "Nu s-a putut descărca Visual C++ Redistributable.
-
-Verificați conexiunea la internet și încercați din nou,
-sau descărcați-l manual de la:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_RUSSIAN}  "Не удалось загрузить Visual C++ Redistributable.
-
-Проверьте подключение к интернету и повторите попытку позже,
-или загрузите его вручную из:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_SERBIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_SERBIANLATIN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_SIMPCHINESE}  "无法下载 Visual C++ 可再发行组件包。
-
-请检查您的互联网连接并重试，
-或者从以下地址手动下载：
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_SLOVAK}  "Nepodarilo sa stiahnuť Visual C++ Redistributable.
-
-Skontrolujte svoje internetové pripojenie a skúste to znova,
-alebo si ho stiahnite manuálne z adresy:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_SLOVENIAN}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_SPANISH}  "Fallo al descargar Visual C++ Redistributable.
-
-Por favor, comprueba tu conexión a Internet e inténtalo de nuevo,
-o descárgalo manualmente desde:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_SPANISHINTERNATIONAL}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_SWEDISH}  "Misslyckades med att ladda ner Visual C++ Redistributable.
-
-Kontrollera din internetanslutning och försök igen.
-eller ladda ner det manuellt från:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_THAI}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_TRADCHINESE}  "無法下載 Visual C++ Redistributable。
-
-請檢查您的網路連線並重試，
-或從以下位置手動下載：
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_TURKISH}  "Visual C++ yeniden dağıtılabilir paketi indirilemedi.
-
-Lütfen internet bağlantınızı gözden geçirin ve tekrar deneyin,
-veya şu adresten elle indirin:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_UKRAINIAN}  "Не вдалося отримати Visual C++ Redistributable.
-
-Будь ласка, перевірте працездатність інтернет-з'єднання і повторіть спробу
-або отримайте пакунок вручну за такою адресою:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistDownloadFailed ${LANG_UZBEK}  "Failed to download Visual C++ Redistributable.$\n$\nPlease check your internet connection and try again,$\nor download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_ENGLISH}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_AFRIKAANS}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_ALBANIAN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_ARABIC}  "فشل تنزيل حزمة Visual C++ القابلة لإعادة التوزيع.$\n$\nيُرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى،$\nأو تنزيلها يدويًا من:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_BELARUSIAN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_BOSNIAN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_BRETON}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_BULGARIAN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_CATALAN}  "No s'ha pogut descarregar el Visual C++ Redistributable.$\n$\nComproveu la connexió a Internet i torneu-ho a intentar,$\no descarregar-lo manualment des de:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_CROATIAN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_CZECH}  "Nepodařilo se stáhnout Visual C++ Redistributable.$\n$\nZkontrolujte prosím své připojení k internetu a zkuste to znovu,$\nnebo si program ručně stáhněte z následující adresy:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_DANISH}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_DUTCH}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_ESPERANTO}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_ESTONIAN}  "V ajaliku komponendi (Visual C++ Redistributable) allalaadimine ei õnnestunud.$\n$\nPalun kontrolli, kas sinu arvuti/seadme internetiühendus toimib$\nja proovi siis uuesti või laadi käsitsi alla siit:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_FARSI}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_FINNISH}  "Visual C++ Redistributablen lataus epäonnistui.$\n$\nTarkista internetyhteytesi ja yritä uudelleen,$\ntai lataa se manuaalisesti osoitteesta:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_FRENCH}  "Échec du téléchargement de Visual C++ Redistributable.$\n$\nVérifiez votre connexion Internet et réessayez,$\nou téléchargez-le manuellement à l'adresse :$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_GALICIAN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_GERMAN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_GREEK}  "Αποτυχία λήψης του Visual C++ Redistributable.$\n$\nΕλέγξτε τη σύνδεσή σας στο διαδίκτυο και δοκιμάστε ξανά,$\nή κάντε χειροκίνητα λήψη από εδώ:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_HEBREW}  "נכשלה הורדת Visual C++ Redistributable. $\n $\nנא לבדוק את החיבור לאינטרנט ולנסות שוב, $\nאו להוריד ידנית מהכתובת: $\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_HUNGARIAN}  "Nem sikerült letölteni a Visual C++ terjeszthetőt.$\n$\nEllenőrizze az internetkapcsolatát és próbálja újra,$\nvagy töltse le manuálisan innen:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_ICELANDIC}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_INDONESIAN}  "Gagal mengunduh Visual C++ Redistributable.$\n$\nSilakan periksa koneksi internet Anda dan coba lagi,$\natau unduh secara manual dari:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_IRISH}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_ITALIAN}  "Impossibile scaricare Visual C++ ridistribuibile.$\n$\nControlla la connessione internet e riprova,$\noppure scarica Visual C++ manualmente da:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_JAPANESE}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_KOREAN}  "Visual C++ Redistributable를 내려받기에 실패함.$\n$\n인터넷 연결을 확인하고 다시 시도하거나,$\n다음에서 수작업으로 내려받으세요:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_KURDISH}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_LATVIAN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_LITHUANIAN}  "Nepavyko atsiųsti Visual C++ Redistributable.$\n$\nPatikrinkite interneto ryšį ir bandykite iš naujo$\narba atsisiųskite patys iš:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_LUXEMBOURGISH}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_MACEDONIAN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_MALAY}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_MONGOLIAN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_NORWEGIAN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_NORWEGIANNYNORSK}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_POLISH}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_PORTUGUESE}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_PORTUGUESEBR}  "Falha ao baixar Visual C++ Redistributable.$\n$\nVerifique sua conexão com a Internet e tente novamente,$\nou baixe-o manualmente de:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_ROMANIAN}  "Nu s-a putut descărca Visual C++ Redistributable.$\n$\nVerificați conexiunea la internet și încercați din nou,$\nsau descărcați-l manual de la:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_RUSSIAN}  "Не удалось загрузить Visual C++ Redistributable.$\n$\nПроверьте подключение к интернету и повторите попытку позже,$\nили загрузите его вручную из:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_SERBIAN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_SERBIANLATIN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_SIMPCHINESE}  "无法下载 Visual C++ 可再发行组件包。$\n$\n请检查您的互联网连接并重试，$\n或者从以下地址手动下载：$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_SLOVAK}  "Nepodarilo sa stiahnuť Visual C++ Redistributable.$\n$\nSkontrolujte svoje internetové pripojenie a skúste to znova,$\nalebo si ho stiahnite manuálne z adresy:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_SLOVENIAN}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_SPANISH}  "Fallo al descargar Visual C++ Redistributable.$\n$\nPor favor, comprueba tu conexión a Internet e inténtalo de nuevo,$\no descárgalo manualmente desde:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_SPANISHINTERNATIONAL}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_SWEDISH}  "Misslyckades med att ladda ner Visual C++ Redistributable.$\n$\nKontrollera din internetanslutning och försök igen.$\neller ladda ner det manuellt från:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_THAI}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_TRADCHINESE}  "無法下載 Visual C++ Redistributable。$\n$\n請檢查您的網路連線並重試，$\n或從以下位置手動下載：$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_TURKISH}  "Visual C++ yeniden dağıtılabilir paketi indirilemedi.$\n$\nLütfen internet bağlantınızı gözden geçirin ve tekrar deneyin,$\nveya şu adresten elle indirin:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_UKRAINIAN}  "Не вдалося отримати Visual C++ Redistributable.$\n$\nБудь ласка, перевірте працездатність інтернет-з'єднання і повторіть спробу$\nабо отримайте пакунок вручну за такою адресою:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistDownloadFailed ${LANG_UZBEK}  "Failed to download Visual C++ Redistributable.\n\nPlease check your internet connection and try again,\nor download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 LangString VCRedistDownloading ${LANG_ENGLISH}  "Downloading Microsoft Visual C++ Redistributable..."
 LangString VCRedistDownloading ${LANG_AFRIKAANS}  "Downloading Microsoft Visual C++ Redistributable..."
@@ -432,318 +340,116 @@ LangString VCRedistInstalling ${LANG_TURKISH}  "Microsoft Visual C++ Yeniden Da�
 LangString VCRedistInstalling ${LANG_UKRAINIAN}  "Встановлення Microsoft Visual C++ Redistributable..."
 LangString VCRedistInstalling ${LANG_UZBEK}  "Installing Microsoft Visual C++ Redistributable..."
 
-LangString VCRedistNotInstalled ${LANG_ENGLISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_AFRIKAANS}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_ALBANIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_ARABIC}  "Microsoft Visual C++ Redistributable غير مثبَّت على نظامك.
-
-مطلوب لتشغيل ${APPNAME} بشكل صحيح.
-
-أترغب في تنزيله وتثبيته الآن؟ (حوالي 25 ميجابايت)"
-LangString VCRedistNotInstalled ${LANG_BELARUSIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_BOSNIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_BRETON}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_BULGARIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_CATALAN}  "El Microsoft Visual C++ Redistributable no està instal·lat al sistema.
-
-És necessari perquè ${APPNAME} s'executi correctament.
-
-Voleu descarregar-lo i instal·lar-lo ara? (aproximadament 25 MB)"
-LangString VCRedistNotInstalled ${LANG_CROATIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_CZECH}  "Ve vašem systému není nainstalován program Visual C++ Redistributable.
-
-Program je vyžadován, aby mohl ${APPNAME} správně fungovat.
-
-Chcete jej nyní stáhnout a nainstalovat? (zhruba 25 MB)"
-LangString VCRedistNotInstalled ${LANG_DANISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_DUTCH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_ESPERANTO}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_ESTONIAN}  "Vajalik komponent (Microsoft Visual C++ Redistributable) pole sellesse arvutisse/süsteemi paigaldatud.
-
-Et ${APPNAME} toimiks korralikult, on ta kindlasti vajalik.
-
-Kas sa sooviksid ta kohe alla laadida ja paigaldada? (umbkaudne andmemaht 25 MB)"
-LangString VCRedistNotInstalled ${LANG_FARSI}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_FINNISH}  "Microsoft Visual C++ Redistributable -sovellusta ei ole asennettu järjestelmääsi.
-
-Se vaaditaan, jotta ${APPNAME} toimii oikein.
-
-Haluatko ladata ja asentaa sen nyt? (noin 25 Mt)"
-LangString VCRedistNotInstalled ${LANG_FRENCH}  "Microsoft Visual C++ Redistributable n'est pas installé sur votre système.
-
-Ce package est nécessaire au bon fonctionnement de ${APPNAME}.
-
-Souhaitez-vous le télécharger et l'installer maintenant ? (environ 25 Mo)"
-LangString VCRedistNotInstalled ${LANG_GALICIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_GERMAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_GREEK}  "Το Microsoft Visual C++ Redistributable δεν είναι εγκατεστημένο στο σύστημά σας.
-
-Είναι απαραίτητο για την εύρυθμη λειτουργία του ${APPNAME}.
-
-Θέλετε να κάνετε λήψη και εγκατάσταση τώρα; (περίπου 25 MB)"
-LangString VCRedistNotInstalled ${LANG_HEBREW}  "לא מותקנת במחשבך החבילה Microsoft Visual C++ Redistributable.
-
-היא נחוצה בשביל ש${APPNAME} יפעל כראוי.
-
-האם ברצונך להורידה ולהתקין אותה כעת? (בסביבות 25 מ״ב)"
-LangString VCRedistNotInstalled ${LANG_HUNGARIAN}  "A Microsoft Visual C++ terjeszthető nincs telepítve a rendszerén.
-
-Ez kötelező a(z) ${APPNAME} alkalmazás megfelelő futásához.
-
-Szeretné most letölteni és telepíteni? (körülbelül 25 MB)"
-LangString VCRedistNotInstalled ${LANG_ICELANDIC}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_INDONESIAN}  "Microsoft Visual C++ Redistributable belum terinstal di sistem Anda.
-
-Komponen ini diperlukan agar ${APPNAME} dapat berjalan dengan baik.
-
-Apakah Anda ingin mengunduh dan menginstalnya sekarang? (sekitar 25 MB)"
-LangString VCRedistNotInstalled ${LANG_IRISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_ITALIAN}  "Nel sistema non è installato Visual C++ ridistribuibile.
-
-Visual C++ è necessario affinché ${APPNAME} funzioni correttamente.
-
-Vuoi scaricare ed installare Visual C++? (circa 25 MB)"
-LangString VCRedistNotInstalled ${LANG_JAPANESE}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_KOREAN}  "마이크로소프트 Visual C++ Redistributable는 당신의 시스템에 설치되지 않았습니다.
-
-적절하게 동작하려면 ${APPNAME} 이 필요합니다.
-
-내려받고 이를 설치할까요? (대략 25 MB)"
-LangString VCRedistNotInstalled ${LANG_KURDISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_LATVIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_LITHUANIAN}  "Microsoft Visual C++ Redistributable nėra įdiegtas jūsų sistemoje.
-
-Jis reikalingas tinkamam ${APPNAME} veikimui.
-
-Ar norite jį atsisiųsti ir įdiegti dabar? (apytiksliai 25 MB)"
-LangString VCRedistNotInstalled ${LANG_LUXEMBOURGISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_MACEDONIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_MALAY}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_MONGOLIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_NORWEGIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_NORWEGIANNYNORSK}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_POLISH}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_PORTUGUESE}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_PORTUGUESEBR}  "Microsoft Visual C++ Redistributable não está instalado em seu sistema.
-
-Ele é obrigatório para que ${APPNAME} funcione corretamente.
-
-Você gostaria de baixá-lo e instalá-lo novamente? (aproximadamente 25 MB)"
-LangString VCRedistNotInstalled ${LANG_ROMANIAN}  "Microsoft Visual C++ Redistributable nu este instalat în sistemul dvs.
-
-Este necesar pentru ca ${APPNAME} să funcționeze corect.
-
-Doriți să îl descărcați și să îl instalați acum? (aproximativ 25 Mo)"
-LangString VCRedistNotInstalled ${LANG_RUSSIAN}  "Microsoft Visual C++ Redistributable не установлен на вашей системе.
-
-Он необходим для правильной работы ${APPNAME}.
-
-Хотите загрузить и установить его сейчас? (примерно 25 МБ)"
-LangString VCRedistNotInstalled ${LANG_SERBIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_SERBIANLATIN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_SIMPCHINESE}  "Microsoft Visual C++ 可再发行组件包没有在您的系统上安装。
-
-${APPNAME} 需要它以正常工作。
-
-您想要现在下载并安装它吗？（大约 25MB）"
-LangString VCRedistNotInstalled ${LANG_SLOVAK}  "Microsoft Visual C++ Redistributable nie je vo vašom systéme nainštalovaný.
-
-Je potrebný na správne fungovanie ${APPNAME}.
-
-Chcete ho teraz stiahnuť a nainštalovať? (približne 25 MB)"
-LangString VCRedistNotInstalled ${LANG_SLOVENIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_SPANISH}  "Microsoft Visual C++ Redistributable no está instalado en tu sistema.
-
-Es necesario para que ${APPNAME} funcione correctamente.
-
-¿Deseas descargarlo e instalarlo ahora? (aproximadamente 25 MB)"
-LangString VCRedistNotInstalled ${LANG_SPANISHINTERNATIONAL}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_SWEDISH}  "Microsoft Visual C++ Redistributable är inte installerat på ditt system.
-
-Det krävs för att ${APPNAME} ska fungera korrekt.
-
-Vill du ladda ner och installera det nu? (cirka 25 MB)"
-LangString VCRedistNotInstalled ${LANG_THAI}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-LangString VCRedistNotInstalled ${LANG_TRADCHINESE}  "您的系統上未安裝 Microsoft Visual C++ Redistributable。
-
-${APPNAME} 需要它才能正常運作。
-
-您想要現在下載並安裝嗎？（約 25 MB）"
-LangString VCRedistNotInstalled ${LANG_TURKISH}  "Microsoft Visual C++ yeniden dağıtılabilir paketi sisteminizde kurulu değil.
-
-${APPNAME} programının düzgün çalışması için bu paket gereklidir.
-
-Şimdi indirip kurmak ister misiniz? (yaklaşık 25 MB)"
-LangString VCRedistNotInstalled ${LANG_UKRAINIAN}  "У вашій системі не встановлено Microsoft Visual C++ Redistributable.
-
-Цей пакунок потрібен для належної роботи ${APPNAME}.
-
-Хочете отримати і встановити цей пакунок зараз? (приблизно 25 МБ)"
-LangString VCRedistNotInstalled ${LANG_UZBEK}  "Microsoft Visual C++ Redistributable is not installed on your system.$\n$\nIt is required for ${APPNAME} to run properly.$\n$\nWould you like to download and install it now? (approximately 25 MB)"
-
-LangString VCRedistSkipped ${LANG_ENGLISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_AFRIKAANS}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_ALBANIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_ARABIC}  "لقد اخترت تخطي تثبيت حزمة Visual C++ القابلة لإعادة التوزيع.
-
-قد لا يعمل ${APPNAME} بشكل صحيح بدونها.
-
-يمكنك تنزيلها يدويًا من:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_BELARUSIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_BOSNIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_BRETON}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_BULGARIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_CATALAN}  "Heu triat ometre la instal·lació del Visual C++ Redistributable.
-
-És possible que ${APPNAME} no funcioni correctament sense això.
-
-El podeu descarregar manualment des de:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_CROATIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_CZECH}  "Zvolili jste přeskočení instalace Visual C++ Redistributable.
-
-${APPNAME} bez něj nemusí správně fungovat.
-
-Můžete si jej stáhnout ručně z následující adresy:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_DANISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_DUTCH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_ESPERANTO}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_ESTONIAN}  "Sa oled otsistanud vajaliku komponendi (Visual C++ Redistributable)paigaldamise vahele jätta.
-
-${APPNAME} ei pruugi tema olemasoluta korralikult toimida.
-
-Saad ta alati siit käsitsi alla laadida:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_FARSI}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_FINNISH}  "Olet valinnut Visual C++ Redistributable -asennuksen ohittamisen.
-
-${APPNAME} ei välttämättä toimi oikein ilman sitä.
-
-Voit ladata sen manuaalisesti osoitteesta:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_FRENCH}  "Vous avez choisi d'ignorer l'installation de Visual C++ Redistributable.
-
-Il est possible que ${APPNAME} ne fonctionne pas correctement.
-
-Vous pouvez le télécharger manuellement à l'adresse :
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_GALICIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_GERMAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_GREEK}  "Επιλέξατε να παραλείψετε την εγκατάσταση του Visual C++ Redistributable.
-
-Το ${APPNAME} ενδέχεται να μην λειτουργεί σωστά χωρίς αυτό.
-
-Μπορείτε να κάνετε χειροκίνητα λήψη από εδώ:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_HEBREW}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_HUNGARIAN}  "A Microsoft Visual C++ terjeszthető telepítésének kihagyása mellett döntött.
-
-A(z) ${APPNAME} alkalmazás lehet, hogy nem fog jól működni nélküle.
-
-Letöltheti manuálisan innen:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_ICELANDIC}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_INDONESIAN}  "Anda telah memilih untuk melewatkan penginstalan Visual C++ Redistributable.
-
-${APPNAME} mungkin tidak akan berfungsi dengan baik tanpa paket tersebut.
-
-Anda dapat mengunduhnya secara manual dari:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_IRISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_ITALIAN}  "Hai scelto di ignorare l'installazione di Visual C++ ridistribuibile.
-
-${APPNAME} potrebbe non funzionare correttamente Visual C++.
-
-Puoi scaricare manualmente Visual C++ da:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_JAPANESE}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_KOREAN}  "Visual C++ Redistributable 설치를 건너뛰도록 선택했습니다.
-
-${APPNAME} 는 설치 없이 정확하게 동작하지 않을 수도 있습니다.
-
-다음에서 수동으로 이를 내려받을 수 있습니다:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_KURDISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_LATVIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_LITHUANIAN}  "Nusprendėte praleisti Visual C++ Redistributable įdiegimą.
-
-Be jo ${APPNAME} gali neveikti tinkamai.
-
-Galite atsisiųsti patys iš:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_LUXEMBOURGISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_MACEDONIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_MALAY}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_MONGOLIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_NORWEGIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_NORWEGIANNYNORSK}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_POLISH}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_PORTUGUESE}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_PORTUGUESEBR}  "Você escolheu ignorar a instalação de Visual C++ Redistributable.
-
-${APPNAME} pode não funcionar corretamente sem ele.
-
-Você pode baixá-lo manualmente de:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_ROMANIAN}  "Ați ales să omiteți instalarea Visual C++ Redistributable.
-
-${APPNAME} s-ar putea să nu funcționeze corect fără acesta.
-
-Îl puteți descărca manual de la:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_RUSSIAN}  "Вы решили пропустить установку Visual C++ Redistributable.
-
-Без него ${APPNAME} может не работать должным образом.
-
-Вы можете загрузить его вручную из:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_SERBIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_SERBIANLATIN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_SIMPCHINESE}  "您已经选择了跳过 Visual C++ 可再发行组件包的安装。
-
-在缺少它的情况下 ${APPNAME} 可能不能正常工作。
-
-您可以从以下地址手动下载：
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_SLOVAK}  "Rozhodli ste sa preskočiť inštaláciu Visual C++ Redistributable.
-
-${APPNAME} nemusí bez neho fungovať správne.
-
-Môžete si ho stiahnuť manuálne z adresy:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_SLOVENIAN}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_SPANISH}  "Has elegido omitir la instalación de Microsoft Visual C++ Redistributable.
-
-${APPNAME} puede no funcionar correctamente sin él.
-
-Puedes descargarlo manualmente desde:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_SPANISHINTERNATIONAL}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_SWEDISH}  "Du har valt att hoppa över installationen av Visual C++ Redistributable.
-
-${APPNAME} kanske inte fungerar korrekt utan det.
-
-Du kan ladda ner det manuellt från:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_THAI}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_TRADCHINESE}  "您選擇跳過 Visual C++ Redistributable 安裝。
-
-沒有它，${APPNAME} 可能無法正常運作。
-
-您可以從以下位置手動下載：
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_TURKISH}  "Visual C++ yeniden dağıtılabilir paketinin kurulumunu atlamayı seçtiniz.
-
-${APPNAME} bu paket olmadan düzgün çalışmayabilir.
-
-Paketi şu adresten elle indirebilirsiniz:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_UKRAINIAN}  "Ви не захотіли встановлювати Visual C++ Redistributable.
-
-Без цього пакунка ${APPNAME} може не працювати належним чином.
-
-Ви можете отримати пакунок вручну за такою адресою:
-https://aka.ms/vs/17/release/vc_redist.x64.exe"
-LangString VCRedistSkipped ${LANG_UZBEK}  "You have chosen to skip the Visual C++ Redistributable installation.$\n$\n${APPNAME} may not work correctly without it.$\n$\nYou can download it manually from:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistNotInstalled ${LANG_ENGLISH}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_AFRIKAANS}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_ALBANIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_ARABIC}  "Microsoft Visual C++ Redistributable غير مثبَّت على نظامك.$\n$\nمطلوب لتشغيل ${APPNAME} بشكل صحيح.$\n$\nأترغب في تنزيله وتثبيته الآن؟ (حوالي 25 ميجابايت)"
+LangString VCRedistNotInstalled ${LANG_BELARUSIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_BOSNIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_BRETON}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_BULGARIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_CATALAN}  "El Microsoft Visual C++ Redistributable no està instal·lat al sistema.$\n$\nÉs necessari perquè ${APPNAME} s'executi correctament.$\n$\nVoleu descarregar-lo i instal·lar-lo ara? (aproximadament 25 MB)"
+LangString VCRedistNotInstalled ${LANG_CROATIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_CZECH}  "Ve vašem systému není nainstalován program Visual C++ Redistributable.$\n$\nProgram je vyžadován, aby mohl ${APPNAME} správně fungovat.$\n$\nChcete jej nyní stáhnout a nainstalovat? (zhruba 25 MB)"
+LangString VCRedistNotInstalled ${LANG_DANISH}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_DUTCH}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_ESPERANTO}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_ESTONIAN}  "Vajalik komponent (Microsoft Visual C++ Redistributable) pole sellesse arvutisse/süsteemi paigaldatud.$\n$\nEt ${APPNAME} toimiks korralikult, on ta kindlasti vajalik.$\n$\nKas sa sooviksid ta kohe alla laadida ja paigaldada? (umbkaudne andmemaht 25 MB)"
+LangString VCRedistNotInstalled ${LANG_FARSI}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_FINNISH}  "Microsoft Visual C++ Redistributable -sovellusta ei ole asennettu järjestelmääsi.$\n$\nSe vaaditaan, jotta ${APPNAME} toimii oikein.$\n$\nHaluatko ladata ja asentaa sen nyt? (noin 25 Mt)"
+LangString VCRedistNotInstalled ${LANG_FRENCH}  "Microsoft Visual C++ Redistributable n'est pas installé sur votre système.$\n$\nCe package est nécessaire au bon fonctionnement de ${APPNAME}.$\n$\nSouhaitez-vous le télécharger et l'installer maintenant ? (environ 25 Mo)"
+LangString VCRedistNotInstalled ${LANG_GALICIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_GERMAN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_GREEK}  "Το Microsoft Visual C++ Redistributable δεν είναι εγκατεστημένο στο σύστημά σας.$\n$\nΕίναι απαραίτητο για την εύρυθμη λειτουργία του ${APPNAME}.$\n$\nΘέλετε να κάνετε λήψη και εγκατάσταση τώρα; (περίπου 25 MB)"
+LangString VCRedistNotInstalled ${LANG_HEBREW}  "לא מותקנת במחשבך החבילה Microsoft Visual C++ Redistributable.$\n$\nהיא נחוצה בשביל ש${APPNAME} יפעל כראוי.$\n$\nהאם ברצונך להורידה ולהתקין אותה כעת? (בסביבות 25 מ״ב)"
+LangString VCRedistNotInstalled ${LANG_HUNGARIAN}  "A Microsoft Visual C++ terjeszthető nincs telepítve a rendszerén.$\n$\nEz kötelező a(z) ${APPNAME} alkalmazás megfelelő futásához.$\n$\nSzeretné most letölteni és telepíteni? (körülbelül 25 MB)"
+LangString VCRedistNotInstalled ${LANG_ICELANDIC}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_INDONESIAN}  "Microsoft Visual C++ Redistributable belum terinstal di sistem Anda.$\n$\nKomponen ini diperlukan agar ${APPNAME} dapat berjalan dengan baik.$\n$\nApakah Anda ingin mengunduh dan menginstalnya sekarang? (sekitar 25 MB)"
+LangString VCRedistNotInstalled ${LANG_IRISH}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_ITALIAN}  "Nel sistema non è installato Visual C++ ridistribuibile.$\n$\nVisual C++ è necessario affinché ${APPNAME} funzioni correttamente.$\n$\nVuoi scaricare ed installare Visual C++? (circa 25 MB)"
+LangString VCRedistNotInstalled ${LANG_JAPANESE}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_KOREAN}  "마이크로소프트 Visual C++ Redistributable는 당신의 시스템에 설치되지 않았습니다.$\n$\n적절하게 동작하려면 ${APPNAME} 이 필요합니다.$\n$\n내려받고 이를 설치할까요? (대략 25 MB)"
+LangString VCRedistNotInstalled ${LANG_KURDISH}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_LATVIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_LITHUANIAN}  "Microsoft Visual C++ Redistributable nėra įdiegtas jūsų sistemoje.$\n$\nJis reikalingas tinkamam ${APPNAME} veikimui.$\n$\nAr norite jį atsisiųsti ir įdiegti dabar? (apytiksliai 25 MB)"
+LangString VCRedistNotInstalled ${LANG_LUXEMBOURGISH}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_MACEDONIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_MALAY}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_MONGOLIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_NORWEGIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_NORWEGIANNYNORSK}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_POLISH}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_PORTUGUESE}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_PORTUGUESEBR}  "Microsoft Visual C++ Redistributable não está instalado em seu sistema.$\n$\nEle é obrigatório para que ${APPNAME} funcione corretamente.$\n$\nVocê gostaria de baixá-lo e instalá-lo novamente? (aproximadamente 25 MB)"
+LangString VCRedistNotInstalled ${LANG_ROMANIAN}  "Microsoft Visual C++ Redistributable nu este instalat în sistemul dvs.$\n$\nEste necesar pentru ca ${APPNAME} să funcționeze corect.$\n$\nDoriți să îl descărcați și să îl instalați acum? (aproximativ 25 Mo)"
+LangString VCRedistNotInstalled ${LANG_RUSSIAN}  "Microsoft Visual C++ Redistributable не установлен на вашей системе.$\n$\nОн необходим для правильной работы ${APPNAME}.$\n$\nХотите загрузить и установить его сейчас? (примерно 25 МБ)"
+LangString VCRedistNotInstalled ${LANG_SERBIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_SERBIANLATIN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_SIMPCHINESE}  "Microsoft Visual C++ 可再发行组件包没有在您的系统上安装。$\n$\n${APPNAME} 需要它以正常工作。$\n$\n您想要现在下载并安装它吗？（大约 25MB）"
+LangString VCRedistNotInstalled ${LANG_SLOVAK}  "Microsoft Visual C++ Redistributable nie je vo vašom systéme nainštalovaný.$\n$\nJe potrebný na správne fungovanie ${APPNAME}.$\n$\nChcete ho teraz stiahnuť a nainštalovať? (približne 25 MB)"
+LangString VCRedistNotInstalled ${LANG_SLOVENIAN}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_SPANISH}  "Microsoft Visual C++ Redistributable no está instalado en tu sistema.$\n$\nEs necesario para que ${APPNAME} funcione correctamente.$\n$\n¿Deseas descargarlo e instalarlo ahora? (aproximadamente 25 MB)"
+LangString VCRedistNotInstalled ${LANG_SPANISHINTERNATIONAL}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_SWEDISH}  "Microsoft Visual C++ Redistributable är inte installerat på ditt system.$\n$\nDet krävs för att ${APPNAME} ska fungera korrekt.$\n$\nVill du ladda ner och installera det nu? (cirka 25 MB)"
+LangString VCRedistNotInstalled ${LANG_THAI}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+LangString VCRedistNotInstalled ${LANG_TRADCHINESE}  "您的系統上未安裝 Microsoft Visual C++ Redistributable。$\n$\n${APPNAME} 需要它才能正常運作。$\n$\n您想要現在下載並安裝嗎？（約 25 MB）"
+LangString VCRedistNotInstalled ${LANG_TURKISH}  "Microsoft Visual C++ yeniden dağıtılabilir paketi sisteminizde kurulu değil.$\n$\n${APPNAME} programının düzgün çalışması için bu paket gereklidir.$\n$\nŞimdi indirip kurmak ister misiniz? (yaklaşık 25 MB)"
+LangString VCRedistNotInstalled ${LANG_UKRAINIAN}  "У вашій системі не встановлено Microsoft Visual C++ Redistributable.$\n$\nЦей пакунок потрібен для належної роботи ${APPNAME}.$\n$\nХочете отримати і встановити цей пакунок зараз? (приблизно 25 МБ)"
+LangString VCRedistNotInstalled ${LANG_UZBEK}  "Microsoft Visual C++ Redistributable is not installed on your system.\n\nIt is required for ${APPNAME} to run properly.\n\nWould you like to download and install it now? (approximately 25 MB)"
+
+LangString VCRedistSkipped ${LANG_ENGLISH}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_AFRIKAANS}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_ALBANIAN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_ARABIC}  "لقد اخترت تخطي تثبيت حزمة Visual C++ القابلة لإعادة التوزيع.$\n$\nقد لا يعمل ${APPNAME} بشكل صحيح بدونها.$\n$\nيمكنك تنزيلها يدويًا من:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_BELARUSIAN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_BOSNIAN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_BRETON}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_BULGARIAN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_CATALAN}  "Heu triat ometre la instal·lació del Visual C++ Redistributable.$\n$\nÉs possible que ${APPNAME} no funcioni correctament sense això.$\n$\nEl podeu descarregar manualment des de:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_CROATIAN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_CZECH}  "Zvolili jste přeskočení instalace Visual C++ Redistributable.$\n$\n${APPNAME} bez něj nemusí správně fungovat.$\n$\nMůžete si jej stáhnout ručně z následující adresy:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_DANISH}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_DUTCH}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_ESPERANTO}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_ESTONIAN}  "Sa oled otsistanud vajaliku komponendi (Visual C++ Redistributable)paigaldamise vahele jätta.$\n$\n${APPNAME} ei pruugi tema olemasoluta korralikult toimida.$\n$\nSaad ta alati siit käsitsi alla laadida:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_FARSI}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_FINNISH}  "Olet valinnut Visual C++ Redistributable -asennuksen ohittamisen.$\n$\n${APPNAME} ei välttämättä toimi oikein ilman sitä.$\n$\nVoit ladata sen manuaalisesti osoitteesta:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_FRENCH}  "Vous avez choisi d'ignorer l'installation de Visual C++ Redistributable.$\n$\nIl est possible que ${APPNAME} ne fonctionne pas correctement.$\n$\nVous pouvez le télécharger manuellement à l'adresse :$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_GALICIAN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_GERMAN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_GREEK}  "Επιλέξατε να παραλείψετε την εγκατάσταση του Visual C++ Redistributable.$\n$\nΤο ${APPNAME} ενδέχεται να μην λειτουργεί σωστά χωρίς αυτό.$\n$\nΜπορείτε να κάνετε χειροκίνητα λήψη από εδώ:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_HEBREW}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_HUNGARIAN}  "A Microsoft Visual C++ terjeszthető telepítésének kihagyása mellett döntött.$\n$\nA(z) ${APPNAME} alkalmazás lehet, hogy nem fog jól működni nélküle.$\n$\nLetöltheti manuálisan innen:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_ICELANDIC}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_INDONESIAN}  "Anda telah memilih untuk melewatkan penginstalan Visual C++ Redistributable.$\n$\n${APPNAME} mungkin tidak akan berfungsi dengan baik tanpa paket tersebut.$\n$\nAnda dapat mengunduhnya secara manual dari:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_IRISH}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_ITALIAN}  "Hai scelto di ignorare l'installazione di Visual C++ ridistribuibile.$\n$\n${APPNAME} potrebbe non funzionare correttamente Visual C++.$\n$\nPuoi scaricare manualmente Visual C++ da:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_JAPANESE}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_KOREAN}  "Visual C++ Redistributable 설치를 건너뛰도록 선택했습니다.$\n$\n${APPNAME} 는 설치 없이 정확하게 동작하지 않을 수도 있습니다.$\n$\n다음에서 수동으로 이를 내려받을 수 있습니다:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_KURDISH}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_LATVIAN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_LITHUANIAN}  "Nusprendėte praleisti Visual C++ Redistributable įdiegimą.$\n$\nBe jo ${APPNAME} gali neveikti tinkamai.$\n$\nGalite atsisiųsti patys iš:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_LUXEMBOURGISH}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_MACEDONIAN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_MALAY}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_MONGOLIAN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_NORWEGIAN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_NORWEGIANNYNORSK}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_POLISH}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_PORTUGUESE}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_PORTUGUESEBR}  "Você escolheu ignorar a instalação de Visual C++ Redistributable.$\n$\n${APPNAME} pode não funcionar corretamente sem ele.$\n$\nVocê pode baixá-lo manualmente de:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_ROMANIAN}  "Ați ales să omiteți instalarea Visual C++ Redistributable.$\n$\n${APPNAME} s-ar putea să nu funcționeze corect fără acesta.$\n$\nÎl puteți descărca manual de la:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_RUSSIAN}  "Вы решили пропустить установку Visual C++ Redistributable.$\n$\nБез него ${APPNAME} может не работать должным образом.$\n$\nВы можете загрузить его вручную из:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_SERBIAN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_SERBIANLATIN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_SIMPCHINESE}  "您已经选择了跳过 Visual C++ 可再发行组件包的安装。$\n$\n在缺少它的情况下 ${APPNAME} 可能不能正常工作。$\n$\n您可以从以下地址手动下载：$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_SLOVAK}  "Rozhodli ste sa preskočiť inštaláciu Visual C++ Redistributable.$\n$\n${APPNAME} nemusí bez neho fungovať správne.$\n$\nMôžete si ho stiahnuť manuálne z adresy:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_SLOVENIAN}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_SPANISH}  "Has elegido omitir la instalación de Microsoft Visual C++ Redistributable.$\n$\n${APPNAME} puede no funcionar correctamente sin él.$\n$\nPuedes descargarlo manualmente desde:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_SPANISHINTERNATIONAL}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_SWEDISH}  "Du har valt att hoppa över installationen av Visual C++ Redistributable.$\n$\n${APPNAME} kanske inte fungerar korrekt utan det.$\n$\nDu kan ladda ner det manuellt från:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_THAI}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_TRADCHINESE}  "您選擇跳過 Visual C++ Redistributable 安裝。$\n$\n沒有它，${APPNAME} 可能無法正常運作。$\n$\n您可以從以下位置手動下載：$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_TURKISH}  "Visual C++ yeniden dağıtılabilir paketinin kurulumunu atlamayı seçtiniz.$\n$\n${APPNAME} bu paket olmadan düzgün çalışmayabilir.$\n$\nPaketi şu adresten elle indirebilirsiniz:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_UKRAINIAN}  "Ви не захотіли встановлювати Visual C++ Redistributable.$\n$\nБез цього пакунка ${APPNAME} може не працювати належним чином.$\n$\nВи можете отримати пакунок вручну за такою адресою:$\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
+LangString VCRedistSkipped ${LANG_UZBEK}  "You have chosen to skip the Visual C++ Redistributable installation.\n\n${APPNAME} may not work correctly without it.\n\nYou can download it manually from:\nhttps://aka.ms/vs/17/release/vc_redist.x64.exe"
