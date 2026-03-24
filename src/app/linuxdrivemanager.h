@@ -54,6 +54,7 @@ private:
 private:
     QDBusInterface *m_objManager{nullptr};
     QHash<QDBusObjectPath, Drive *> m_drives;
+    QHash<QString, QDBusObjectPath> m_driveToBlock;
 };
 
 #endif // LINUXDRIVEMANAGER_H
