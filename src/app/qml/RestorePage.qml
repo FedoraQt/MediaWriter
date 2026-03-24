@@ -57,7 +57,7 @@ Page {
             id: progressIndicator
             Layout.alignment: Qt.AlignHCenter
             Layout.fillWidth: true
-            indeterminate: true
+            value: lastRestoreable ? lastRestoreable.progress.ratio : 0
         }
     }
 

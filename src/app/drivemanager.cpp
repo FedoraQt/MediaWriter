@@ -406,8 +406,8 @@ bool Drive::write(ReleaseVariant *data)
     m_process->setArguments(args);
     mDebug() << this->metaObject()->className() << "Helper command:" << path << args;
 
-    connect(m_process.get(), &QProcess::readyRead, this, &Drive::onReadyRead);
-    connect(m_process.get(), &QProcess::finished, this, &Drive::onFinished);
+    connect(m_process.get(), &QProcess::readyRead, this, &Drive::onWriteReadyRead);
+    connect(m_process.get(), &QProcess::finished, this, &Drive::onWriteFinished);
     connect(m_process.get(), &QProcess::errorOccurred, this, &Drive::onErrorOccurred);
     connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
 
@@ -452,6 +452,10 @@ void Drive::restore()
     m_process->setArguments(args);
     mDebug() << this->metaObject()->className() << "Helper command:" << path << args;
 
+    m_progress->setValue(0);
+    m_progress->setTo(100);
+
+    connect(m_process.get(), &QProcess::readyRead, this, &Drive::onRestoreReadyRead);
     connect(m_process.get(), &QProcess::finished, this, &Drive::onRestoreFinished);
     connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
 
@@ -463,10 +467,11 @@ bool Drive::operator==(const Drive &drive) const
     return name() == drive.name() && size() == drive.size() && serialNumber() == drive.serialNumber();
 }
 
-void Drive::onReadyRead()
+void Drive::onWriteReadyRead()
 {
-    if (!m_process)
+    if (!m_process) {
         return;
+    }
 
     m_progress->setTo(m_image->size());
     m_progress->setValue(qQNaN());
@@ -501,7 +506,7 @@ void Drive::onReadyRead()
     }
 }
 
-void Drive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
+void Drive::onWriteFinished(int exitCode, QProcess::ExitStatus exitStatus)
 {
     Q_UNUSED(exitStatus)
 
@@ -528,6 +533,21 @@ void Drive::onFinished(int exitCode, QProcess::ExitStatus exitStatus)
 
     m_process.reset();
     m_image = nullptr;
+}
+
+void Drive::onRestoreReadyRead()
+{
+    if (!m_process) {
+        return;
+    }
+
+    while (m_process->bytesAvailable() > 0) {
+        bool ok;
+        const qint64 value = m_process->readLine().trimmed().toLongLong(&ok);
+        if (ok && value >= 0) {
+            m_progress->setValue(value);
+        }
+    }
 }
 
 void Drive::onRestoreFinished(int exitCode, QProcess::ExitStatus exitStatus)

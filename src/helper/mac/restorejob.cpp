@@ -34,13 +34,20 @@ RestoreJob::RestoreJob(const QString &where)
 
 void RestoreJob::work()
 {
+    QTextStream out(stdout);
+
+    out << "0\n";
+    out.flush();
+
     QProcess diskUtil;
     diskUtil.setProgram("diskutil");
     diskUtil.setArguments(QStringList() << "unmountDisk" << where);
     diskUtil.start();
     diskUtil.waitForFinished();
 
-    diskUtil.setProcessChannelMode(QProcess::ForwardedChannels);
+    out << "30\n";
+    out.flush();
+
     diskUtil.setArguments(QStringList() << "partitionDisk" << where << "1"
                                         << "MBR"
                                         << "ExFAT"
@@ -48,6 +55,9 @@ void RestoreJob::work()
                                         << "R");
     diskUtil.start();
     diskUtil.waitForFinished();
+
+    out << "100\n";
+    out.flush();
 
     qApp->exit();
 }
