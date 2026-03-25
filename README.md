@@ -1,68 +1,84 @@
 # Fedora Media Writer
 
-Fedora Media Writer is a tool that helps users put Fedora images on their portable drives such as flash disks.
+Fedora Media Writer is a tool that helps users write Fedora images onto USB flash drives. It can automatically download the required image and write it in a `dd`-like fashion using direct device access. Because this overwrites the drive's partition layout, it also provides a **Restore** feature to reformat the drive back to a standard single-partition layout when you are done.
 
-It is able to automatically download the required image for them and write them in a `dd`-like fashion, using either `dd` itself or some other way to access the drive directly.
-
-This overwrites the drive's partition layout though so it also provides a way to restore a single-partition layout with a FAT32 partition.
+Fedora Media Writer runs on Linux, Windows, and macOS.
 
 ![Fedora Media Writer running](/dist/screenshots/linux_main.png)
 
-## Troubleshooting
+## Table of Contents
 
-If you experience any problem with the application, like crashes or errors when writing to your drives, please open an issue here on Github.
-
-Please don't forget to attach the `FedoraMediaWriter.log` file that will appear in your Documents folder (`$HOME/Documents` on Linux and Mac, `%USERPROFILE%\Documents` on Windows). It contains some non-sensitive information about your system and the log of all events happening during the runtime.
+- [Building](#building)
+- [Translation](#translation)
+- [Troubleshooting](#troubleshooting)
+- [Security & Privacy](#security--privacy)
 
 ## Building
 
-You can build FMW using the default Qt `cmake` build system. The gist for all three platforms is written below. For a more thorough look into how the releases are composed, you can read our [GitHub Actions configuration](https://github.com/FedoraQt/MediaWriter/blob/master/.github/workflows/ccpp.yml).
+You can build Fedora Media Writer using the standard Qt `cmake` build system. For a detailed look at how releases are composed, see the [GitHub Actions configuration](https://github.com/FedoraQt/MediaWriter/blob/master/.github/workflows/ccpp.yml).
+
+### Requirements
+
+| Platform | Dependencies |
+|----------|-------------|
+| Linux    | `udisks2` or `storaged`, `xz-libs` |
+| Windows  | `xz-libs` |
+| macOS    | `xz-libs` |
 
 ### Linux
 
-You should specify the target directory using the `-DCMAKE_INSTALL_PREFIX` `cmake` option. The default prefix path is `/usr/local`
+Specify the install prefix using the `-DCMAKE_INSTALL_PREFIX` cmake option (default is `/usr/local`):
 
-It can be done like this:
+```
+cmake [OPTIONS] .
+```
 
-`cmake [OPTIONS] .`
-
-The main binary, `mediawriter`, will be written to `$PREFIX/bin` and the helper binary can be found on the path `$PREFIX/libexec/mediawriter/helper`.
-
-#### Requirements
-
-* `udisks2` or `storaged`
-* `xz-libs`
+The main binary `mediawriter` will be installed to `$PREFIX/bin` and the helper binary to `$PREFIX/libexec/mediawriter/helper`.
 
 ### Windows
 
-Building FMW in Windows is just the matter of running `cmake` and `make` - as long as you have all dependencies in your include path.
+Building on Windows is a matter of running `cmake` and `make`, as long as all dependencies are in your include path.
 
-To create a standalone package, use the `windeployqt` tool, included in your Qt installation. You will probably have to include a bunch of not included DLLs.
+To create a standalone package, use the `windeployqt` tool included with your Qt installation. You will likely need to bundle some additional DLLs manually.
 
-It is also possible to crosscompile the application using the `MinGW` compiler suite in Fedora (and probably some other distros).
-
-#### Requirements
-
-* `xz-libs`
+It is also possible to cross-compile using the `MinGW` compiler suite on Fedora and some other distributions.
 
 ### macOS
 
-Again, you can just run `cmake` and `make`.
-
-To release a standalone package, use `macdeployqt`, supplied with your Qt installation.
-
-#### Requirements
-
-* `xz-libs`
+Run `cmake` and `make` as usual. To create a standalone package, use the `macdeployqt` tool included with your Qt installation.
 
 ## Translation
 
-If you want to help with translating Fedora Media Writer, please visit our [Weblate project page](https://translate.fedoraproject.org/projects/fedora-media-writer/mediawriter/).
+If you want to help translate Fedora Media Writer, please visit our [Weblate project page](https://translate.fedoraproject.org/projects/fedora-media-writer/mediawriter/).
 
-Information about the individual Fedora flavors is retrieved from the websites and translated as a separate project.
+Information about the individual Fedora flavors is retrieved from the Fedora websites and translated as a separate project.
 
-## Other information
+## Troubleshooting
+
+If you experience any problem with the application, such as crashes or errors when writing to your drive, please open an issue here on GitHub.
+
+Please attach the `FedoraMediaWriter.log` file from your Documents folder (`$HOME/Documents` on Linux and macOS, `%USERPROFILE%\Documents` on Windows). It contains some non-sensitive information about your system and a log of all events during the session.
+
+### My flash drive stopped working after writing
+
+We understand how frustrating this can be, especially if it was a drive you relied on. We'd like to help explain what may have happened.
+
+Fedora Media Writer writes the Fedora image sequentially to your drive and then reads it back in full to verify the result — much like a large file copy, just at the raw device level. From the hardware's perspective, there is nothing unusual about this. There are no special commands involved that could instruct a drive to misbehave, and the application has no ability to damage the physical flash memory.
+
+Flash drives do have a limited number of write cycles before the memory naturally wears out, but that limit is typically in the tens of thousands for standard hardware. A single write-and-verify pass uses a tiny fraction of that budget, so ordinary use of Fedora Media Writer will not meaningfully shorten the life of a healthy drive.
+
+If your drive is no longer recognized, here are the most likely explanations:
+
+- **The drive is in an inconsistent state.** If the write process was interrupted, the drive's partition layout may be left in a state the operating system cannot recognize. This is recoverable — try using Fedora Media Writer's own **Restore** feature, or use *Disk Management* on Windows / `fdisk` or `gparted` on Linux to reformat it manually.
+- **The drive uses low-quality components.** Very cheap USB drives are often built with flash memory and controllers that cannot sustain the heat generated by continuous high-speed writing. Fedora Media Writer writes at full speed and then immediately reads the entire drive back to verify — this sustained workload can push such drives beyond what they were designed to handle.
+- **The drive was already near end of life.** Flash memory can fail suddenly once it reaches its limit. If the failure coincided with writing a Fedora image, it is very likely the drive would have failed just the same had you been copying any other large file at the time.
+
+If the drive shows up as read-only or containing no media, the flash memory controller has most likely detected an internal failure. This is a sign that the drive has reached the end of its life and will need to be replaced.
+
+For a more in-depth explanation of how flash drives fail and how to detect a faulty drive, the [Rufus FAQ](https://github.com/pbatard/rufus/wiki/FAQ) covers this topic in great detail.
+
+## Security & Privacy
 
 For details about cryptography, see [CRYPTOGRAPHY.md](CRYPTOGRAPHY.md).
 
-Some brief privacy information (regarding User-Agent strings) is in [PRIVACY.md](PRIVACY.md).
+For brief privacy information regarding User-Agent strings, see [PRIVACY.md](PRIVACY.md).
