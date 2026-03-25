@@ -125,7 +125,9 @@ int Options::parse(QStringList argv)
         printHelp();
         return 0;
     }
-    return -1;
+
+    if (options.verbose || options.logging)
+        MessageHandler::category.setEnabled(QtDebugMsg, true);
 
     if (options.logging) {
         QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/FedoraMediaWriter.log";
@@ -134,12 +136,14 @@ int Options::parse(QStringList argv)
             debugFile = stderr;
         }
     }
+
+    return -1;
 }
 
 void Options::printHelp()
 {
     QTextStream out(stdout);
-    out << "mediawriter [--no-user-agent] [--releasesUrl <url>]\n";
+    out << "mediawriter [--no-user-agent] [--releasesUrl <url>] [--logging|-l] [--verbose|-v]\n";
 }
 
 static void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg)
@@ -163,7 +167,7 @@ static void myMessageOutput(QtMsgType type, const QMessageLogContext &context, c
         fprintf(debugFile, "F");
     }
     if ((type == QtDebugMsg && (options.verbose || options.logging)) || type != QtDebugMsg) {
-        if (context.line > 0)
+        if (context.line > 0 && type >= QtWarningMsg)
             fprintf(debugFile, "@%lldms: %s (%s:%u)\n", timer.elapsed(), localMsg.constData(), context.file, context.line);
         else
             fprintf(debugFile, "@%lldms: %s\n", timer.elapsed(), localMsg.constData());
