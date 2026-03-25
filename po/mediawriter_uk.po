@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2026-02-03 07:58+0000\n"
+"PO-Revision-Date: 2026-03-25 15:58+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/uk/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.15.2\n"
+"X-Generator: Weblate 5.16.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:48
@@ -348,9 +348,6 @@ msgid "Retry"
 msgstr "Повторити"
 
 #: ../src/app/drivemanager.cpp:288
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "The drive was removed while it was written to."
 msgctxt "Drive|"
 msgid "The drive was removed while it was written to."
 msgstr "Диск було від’єднано до завершення запису."
@@ -361,9 +358,6 @@ msgid "This drive is not large enough."
 msgstr "На цьому диску недостатньо місця."
 
 #: ../src/app/drivemanager.cpp:397
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Could not find the helper binary. Check your installation."
 msgctxt "Drive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
@@ -371,41 +365,28 @@ msgstr ""
 "встановлено належним чином."
 
 #: ../src/app/drivemanager.cpp:435
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Stopped before writing has finished."
 msgctxt "Drive|"
 msgid "Stopped before writing has finished."
 msgstr "Зупинено до завершення запису."
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "Drive|"
 msgid "Finished!"
 msgstr "Завершено!"
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 was successful"
 msgstr "Успішно записано %1"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Error"
 msgctxt "Drive|"
 msgid "Error"
 msgstr "Помилка"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 failed"
 msgstr "Не вдалося записати %1"
@@ -515,7 +496,7 @@ msgstr "Відновити <b>%1</b>"
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore a USB drive (%1 available)"
-msgstr ""
+msgstr "Відновити диск USB (доступно %1)"
 
 #: ../src/app/qml/MainPage.qml:62
 msgctxt "MainPage|"
@@ -839,17 +820,14 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Відновити носій <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:39
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid "Restore Drive <b>%1</b>"
 msgctxt "RestorePage|"
 msgid "Restore Drive"
-msgstr "Відновити носій <b>%1</b>"
+msgstr "Відновити носій"
 
 #: ../src/app/qml/RestorePage.qml:48
 msgctxt "RestorePage|"
 msgid "Select a drive to restore"
-msgstr ""
+msgstr "Виберіть носій для відновлення"
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
@@ -1067,12 +1045,9 @@ msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "Не вдалося записати увесь образ. Загалом записано: %1 з %2"
 
 #: ../src/helper/win/writejob.cpp:480
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for data verification for %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
-msgstr "Не вдалося відкрити диск для перевірки даних %1:"
+msgstr "Не вдалося встановити позиціювання на початок носія для перевірки даних"
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
 msgctxt "main|"
@@ -1104,7 +1079,7 @@ msgstr "Fedora Media Writer"
 #. (itstool) path: component/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "Create a Fedora live USB drive"
-msgstr ""
+msgstr "Створити портативний носій Fedora на диску USB"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:16
@@ -1137,48 +1112,42 @@ msgstr ""
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:20
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:21
 msgid "fedora"
-msgstr ""
+msgstr "fedora"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:22
 msgid "usb"
-msgstr ""
+msgstr "usb"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
-#, fuzzy
-#| msgctxt "DeviceWarningDialog|"
-#| msgid "Write"
 msgid "writer"
-msgstr "Записати"
+msgstr "записувач"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:24
 msgid "live"
-msgstr ""
+msgstr "портативна"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:25
-#, fuzzy
-#| msgctxt "[4].category"
-#| msgid "spins"
 msgid "spin"
-msgstr "збірки"
+msgstr "збірка"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:26
 msgid "creator"
-msgstr ""
+msgstr "автор"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:27
 msgid "media"
-msgstr ""
+msgstr "носій"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:48
 msgid "Write Fedora images to your portable drives"
