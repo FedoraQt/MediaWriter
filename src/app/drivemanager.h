@@ -176,7 +176,8 @@ public:
 
     Progress *progress() const;
 
-    void updateDrive(const QString &name, uint64_t size, bool containsLive = false);
+    void updateDrive(const QString &name, uint64_t size);
+    void setLiveImage(bool containsLive);
 
     QString name() const;
     QString identifier() const;

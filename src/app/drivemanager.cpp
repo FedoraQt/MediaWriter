@@ -295,10 +295,14 @@ Progress *Drive::progress() const
     return m_progress;
 }
 
-void Drive::updateDrive(const QString &name, uint64_t size, bool containsLive)
+void Drive::updateDrive(const QString &name, uint64_t size)
 {
     m_deviceName = name;
     m_size = size;
+}
+
+void Drive::setLiveImage(bool containsLive)
+{
     // Only update status when we are not in the "restoration" process
     if (m_restoreStatus == CONTAINS_LIVE || m_restoreStatus == CLEAN)
         setRestoreStatus(containsLive ? CONTAINS_LIVE : CLEAN);
