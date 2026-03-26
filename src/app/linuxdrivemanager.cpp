@@ -70,7 +70,7 @@ QDBusObjectPath LinuxDriveProvider::handleObject(const QDBusObjectPath &object_p
             const QDBusObjectPath blockPath = m_driveToBlock.value(driveId.path());
             if (!blockPath.path().isEmpty() && m_drives.contains(blockPath)) {
                 mDebug() << this->metaObject()->className() << "Marking drive" << blockPath.path() << "as containing a live image";
-                m_drives[blockPath]->setRestoreStatus(Drive::CONTAINS_LIVE);
+                m_drives[blockPath]->setLiveImage(true);
             }
         }
         return QDBusObjectPath();
@@ -126,7 +126,8 @@ QDBusObjectPath LinuxDriveProvider::handleObject(const QDBusObjectPath &object_p
 
         if (m_drives.contains(object_path)) {
             mDebug() << this->metaObject()->className() << "Updating existing drive" << object_path.path();
-            m_drives[object_path]->updateDrive(name, size, isoLayout);
+            m_drives[object_path]->updateDrive(name, size);
+            m_drives[object_path]->setLiveImage(isoLayout);
             return object_path;
         }
 
