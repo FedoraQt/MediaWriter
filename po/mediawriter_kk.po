@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2026-02-12 16:58+0000\n"
+"PO-Revision-Date: 2026-03-27 09:58+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/kk/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.2\n"
+"X-Generator: Weblate 5.16.2\n"
 
 #: ../src/app/qml/AboutDialog.qml:48
 msgctxt "AboutDialog|"
@@ -338,12 +338,9 @@ msgid "Retry"
 msgstr "Қайталау"
 
 #: ../src/app/drivemanager.cpp:288
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "The drive was removed while it was written to."
 msgctxt "Drive|"
 msgid "The drive was removed while it was written to."
-msgstr "Диск жазу барысында ажыратылды."
+msgstr "Дискке жазу кезінде ол ажыратылып қалды."
 
 #: ../src/app/drivemanager.cpp:391
 msgctxt "Drive|"
@@ -351,49 +348,33 @@ msgid "This drive is not large enough."
 msgstr "Бұл дискінің көлемі жеткіліксіз."
 
 #: ../src/app/drivemanager.cpp:397
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Could not find the helper binary. Check your installation."
 msgctxt "Drive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "Көмекші бинарлық файл табылмады. Орнатылымды тексеріңіз."
+msgstr "Көмекші екілік файл табылмады. Орнатуды тексеріңіз."
 
 #: ../src/app/drivemanager.cpp:435
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Stopped before writing has finished."
 msgctxt "Drive|"
 msgid "Stopped before writing has finished."
 msgstr "Жазу аяқталмай тұрып тоқтатылды."
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "Drive|"
 msgid "Finished!"
 msgstr "Аяқталды!"
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 was successful"
 msgstr "%1 жазу сәтті аяқталды"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Error"
 msgctxt "Drive|"
 msgid "Error"
 msgstr "Қате"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 failed"
 msgstr "%1 жазу сәтсіз аяқталды"
@@ -503,12 +484,12 @@ msgstr "<b>%1</b> қалпына келтіру"
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore a USB drive (%1 available)"
-msgstr ""
+msgstr "USB дискіні қалпына келтіру (%1 қолжетімді)"
 
 #: ../src/app/qml/MainPage.qml:62
 msgctxt "MainPage|"
 msgid "About"
-msgstr "Туралы"
+msgstr "Осы туралы"
 
 #: ../src/app/qml/Page.qml:99
 msgctxt "Page|"
@@ -824,17 +805,14 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "<b>%1</b> дискісін қалпына келтіру"
 
 #: ../src/app/qml/RestorePage.qml:39
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid "Restore Drive <b>%1</b>"
 msgctxt "RestorePage|"
 msgid "Restore Drive"
-msgstr "<b>%1</b> дискісін қалпына келтіру"
+msgstr "Дискіні қалпына келтіру"
 
 #: ../src/app/qml/RestorePage.qml:48
 msgctxt "RestorePage|"
 msgid "Select a drive to restore"
-msgstr ""
+msgstr "Қалпына келтіру үшін дискіні таңдаңыз"
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
@@ -1052,12 +1030,9 @@ msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "Бейне толығымен жазылмады. Барлығы жазылғаны: %1 (%2 ішінен)"
 
 #: ../src/helper/win/writejob.cpp:480
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for data verification for %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
-msgstr "%1 үшін деректерді тексеруге дискіні ашу мүмкін болмады:"
+msgstr "Тексеру үшін дискінің басына өту мүмкін болмады"
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
 msgctxt "main|"
@@ -1083,16 +1058,13 @@ msgstr "Қалпына келтіру"
 #. (itstool) path: component/name
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:9
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:3
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Fedora Media Writer"
 msgid "Fedora Media Writer"
 msgstr "Fedora Media Writer"
 
 #. (itstool) path: component/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "Create a Fedora live USB drive"
-msgstr ""
+msgstr "Fedora live USB дискісін жасау"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:16
@@ -1125,53 +1097,50 @@ msgstr ""
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:20
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:21
 msgid "fedora"
-msgstr ""
+msgstr "fedora"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:22
 msgid "usb"
-msgstr ""
+msgstr "usb"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
-#, fuzzy
-#| msgctxt "DeviceWarningDialog|"
-#| msgid "Write"
 msgid "writer"
-msgstr "Жазу"
+msgstr "writer"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:24
 msgid "live"
-msgstr ""
+msgstr "live"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:25
 msgid "spin"
-msgstr ""
+msgstr "spin"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:26
 msgid "creator"
-msgstr ""
+msgstr "creator"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:27
 msgid "media"
-msgstr ""
+msgstr "media"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:48
 msgid "Write Fedora images to your portable drives"
-msgstr ""
+msgstr "Fedora бейнелерін портативті дискілерге жазу"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:98
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;жүктелетін;"
 
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
