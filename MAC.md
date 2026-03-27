@@ -16,7 +16,7 @@ Oldest supported release is macOS 13.
 
 Download the .dmg file from the [Releases](../../releases) section of this page for the latest, then drag-and-drop it to the Applications folder open it from there. 
 The files downloaded from this page are not signed, which means you can get a prompt saying you won't be able to open them. In order to be able to
-run our pre-built binaries you have to run `xattr -c FedoraMediaWriter-macos-x.x.x.dmg` to get rid of the warning about uknown source.
+run our pre-built binaries you have to run `xattr -d com.apple.quarantine FedoraMediaWriter-macos-x.x.x.dmg` to get rid of the warning about uknown source.
 
 ### Known issues 
 
