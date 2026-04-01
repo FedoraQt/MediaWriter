@@ -77,7 +77,7 @@ LangString UninstallPreviousVersion ${LANG_GALICIAN}  "Uninstalling previous ver
 LangString UninstallPreviousVersion ${LANG_GERMAN}  "Vorherige Version von ${APPNAME} wird deinstalliert..."
 LangString UninstallPreviousVersion ${LANG_GREEK}  "Κατάργηση εγκατάστασης της προηγούμενης έκδοσης του ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_HEBREW}  "מוסרת הגרסה הקודמת של ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_HUNGARIAN}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_HUNGARIAN}  "A(z) ${APPNAME} előző verziójának eltávolítása…"
 LangString UninstallPreviousVersion ${LANG_ICELANDIC}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_INDONESIAN}  "Sedang menghapus instalasi versi sebelumnya dari ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_IRISH}  "Uninstalling previous version of ${APPNAME}..."
