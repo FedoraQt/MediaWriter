@@ -10,7 +10,7 @@
 # Zoltan Hoppar <zoltanh721@fedoraproject.org>, 2017. #zanata
 # Meskó Balázs <meskobalazs@gmail.com>, 2019. #zanata
 # Dankaházi (ifj.) István <dankahazi.istvan@gmail.com>, 2021, 2023.
-# Balázs Meskó <meskobalazs@mailbox.org>, 2021, 2023, 2025.
+# Balázs Meskó <meskobalazs@mailbox.org>, 2021, 2023, 2025, 2026.
 # Hoppár Zoltán <hopparz@gmail.com>, 2022, 2025.
 # "Dankaházi (ifj.) István" <dankahazi.istvan@gmail.com>, 2023, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025, 2026.
@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2026-01-19 18:58+0000\n"
-"Last-Translator: Mate Babos <hunorjani17@gmail.com>\n"
+"PO-Revision-Date: 2026-04-01 08:58+0000\n"
+"Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/hu/>\n"
 "Language: hu\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.2\n"
+"X-Generator: Weblate 5.16.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:48
@@ -351,9 +351,6 @@ msgid "Retry"
 msgstr "Újra"
 
 #: ../src/app/drivemanager.cpp:288
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "The drive was removed while it was written to."
 msgctxt "Drive|"
 msgid "The drive was removed while it was written to."
 msgstr "A meghajtó eltávolításra került írás közben."
@@ -364,52 +361,36 @@ msgid "This drive is not large enough."
 msgstr "Ez a meghajtó nem elég nagy."
 
 #: ../src/app/drivemanager.cpp:397
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Could not find the helper binary. Check your installation."
 msgctxt "Drive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "A súgó állomány nem található. Ellenőrizze a telepítését."
+msgstr "A súgó binárisa nem található. Ellenőrizze a telepítését."
 
 #: ../src/app/drivemanager.cpp:435
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Stopped before writing has finished."
 msgctxt "Drive|"
 msgid "Stopped before writing has finished."
-msgstr "Leállítva mielőtt a kiírás befejeződött."
+msgstr "Leállítva a kiírás befejeződése előtt."
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "Drive|"
 msgid "Finished!"
 msgstr "Elkészült!"
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 was successful"
 msgstr "A(z) %1 kiírása sikeres volt"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Error"
 msgctxt "Drive|"
 msgid "Error"
 msgstr "Hiba"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 failed"
-msgstr "A(z) %1 kiírása sikertelen"
+msgstr "Nem sikerült a(z) %1 kiírása"
 
 #: ../src/app/qml/DrivePage.qml:30
 msgctxt "DrivePage|"
@@ -517,7 +498,7 @@ msgstr "A(z) <b>%1</b> helyreállítása"
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore a USB drive (%1 available)"
-msgstr ""
+msgstr "USB-meghajtó helyreállítása (%1 érhető el)"
 
 #: ../src/app/qml/MainPage.qml:62
 msgctxt "MainPage|"
@@ -839,17 +820,14 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Meghajtó helyreállítása: <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:39
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid "Restore Drive <b>%1</b>"
 msgctxt "RestorePage|"
 msgid "Restore Drive"
-msgstr "Meghajtó helyreállítása: <b>%1</b>"
+msgstr "Meghajtó helyreállítása"
 
 #: ../src/app/qml/RestorePage.qml:48
 msgctxt "RestorePage|"
 msgid "Select a drive to restore"
-msgstr ""
+msgstr "Válasszon egy helyreállítandó meghajtót"
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
@@ -1066,12 +1044,9 @@ msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "A teljes képírása sikertelen. Összesen kiírva: %1 / %2"
 
 #: ../src/helper/win/writejob.cpp:480
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for data verification for %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
-msgstr "A meghajtó nem nyitható meg a(z) %1 adatellenőrzésére:"
+msgstr "Nem sikerült a meghajtó elejéhez lépni az ellenőrzéshez"
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
 msgctxt "main|"
@@ -1103,7 +1078,7 @@ msgstr "Fedora médiaíró"
 #. (itstool) path: component/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "Create a Fedora live USB drive"
-msgstr ""
+msgstr "Fedora élő USB-meghajtó létrehozása"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:16
@@ -1136,45 +1111,42 @@ msgstr ""
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:20
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:21
 msgid "fedora"
-msgstr ""
+msgstr "fedora"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:22
 msgid "usb"
-msgstr ""
+msgstr "usb"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
-#, fuzzy
-#| msgctxt "DeviceWarningDialog|"
-#| msgid "Write"
 msgid "writer"
-msgstr "Kiírás"
+msgstr "író"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:24
 msgid "live"
-msgstr ""
+msgstr "élő"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:25
 msgid "spin"
-msgstr ""
+msgstr "spin"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:26
 msgid "creator"
-msgstr ""
+msgstr "készítő"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:27
 msgid "media"
-msgstr ""
+msgstr "média"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:48
 msgid "Write Fedora images to your portable drives"
@@ -1192,7 +1164,7 @@ msgstr "Adminisztrátor jogosultság szükséges!"
 #: NSIS:UninstallPreviousVersion
 msgctxt "NSIS:UninstallPreviousVersion"
 msgid "Uninstalling previous version of ${APPNAME}..."
-msgstr ""
+msgstr "A(z) ${APPNAME} előző verziójának eltávolítása…"
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
