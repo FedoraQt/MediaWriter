@@ -3,14 +3,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # "#-#-#-#-#  mediawriter.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-# Khoa Le <inctenone@gmail.com>, 2025.
+# Khoa Le <inctenone@gmail.com>, 2025, 2026.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2025-11-30 04:10+0000\n"
+"PO-Revision-Date: 2026-04-06 08:59+0000\n"
 "Last-Translator: Khoa Le <inctenone@gmail.com>\n"
 "Language-Team: Vietnamese <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/vi/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.14.3\n"
+"X-Generator: Weblate 5.16.2\n"
 
 #: ../src/app/qml/AboutDialog.qml:48
 msgctxt "AboutDialog|"
@@ -336,12 +336,9 @@ msgid "Retry"
 msgstr "Thử lại"
 
 #: ../src/app/drivemanager.cpp:288
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "The drive was removed while it was written to."
 msgctxt "Drive|"
 msgid "The drive was removed while it was written to."
-msgstr "Ổ đã bị rút khi đang ghi."
+msgstr "Ổ đĩa đã bị tháo ra trong khi đang được ghi dữ liệu."
 
 #: ../src/app/drivemanager.cpp:391
 msgctxt "Drive|"
@@ -349,49 +346,33 @@ msgid "This drive is not large enough."
 msgstr "Ổ này không đủ lớn."
 
 #: ../src/app/drivemanager.cpp:397
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Could not find the helper binary. Check your installation."
 msgctxt "Drive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr "Không tìm thấy tệp nhị phân trợ giúp. Kiểm tra cài đặt."
 
 #: ../src/app/drivemanager.cpp:435
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Stopped before writing has finished."
 msgctxt "Drive|"
 msgid "Stopped before writing has finished."
 msgstr "Dừng trước khi ghi xong."
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "Drive|"
 msgid "Finished!"
 msgstr "Đã xong!"
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 was successful"
 msgstr "Ghi %1 thành công"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Error"
 msgctxt "Drive|"
 msgid "Error"
 msgstr "Lỗi"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 failed"
 msgstr "Ghi %1 thất bại"
@@ -502,7 +483,7 @@ msgstr "Khôi phục <b>%1</b>"
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore a USB drive (%1 available)"
-msgstr ""
+msgstr "Khôi phục ổ USB (%1 khả dụng)"
 
 #: ../src/app/qml/MainPage.qml:62
 msgctxt "MainPage|"
@@ -820,17 +801,14 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Khôi phục Ổ đĩa <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:39
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid "Restore Drive <b>%1</b>"
 msgctxt "RestorePage|"
 msgid "Restore Drive"
-msgstr "Khôi phục Ổ đĩa <b>%1</b>"
+msgstr "Khôi phục ổ đĩa"
 
 #: ../src/app/qml/RestorePage.qml:48
 msgctxt "RestorePage|"
 msgid "Select a drive to restore"
-msgstr ""
+msgstr "Chọn ổ đĩa để khôi phục"
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
@@ -1047,12 +1025,9 @@ msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "Ghi toàn bộ ảnh thất bại. Tổng số đã ghi: %1 trên %2"
 
 #: ../src/helper/win/writejob.cpp:480
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for data verification for %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
-msgstr "Không thể mở ổ đĩa để kiểm tra dữ liệu cho %1:"
+msgstr "Không thể di chuyển đến đầu ổ đĩa để xác minh"
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
 msgctxt "main|"
@@ -1084,7 +1059,7 @@ msgstr "Fedora Media Writer"
 #. (itstool) path: component/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "Create a Fedora live USB drive"
-msgstr ""
+msgstr "Tạo USB Live Fedora"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:16
@@ -1117,45 +1092,42 @@ msgstr ""
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:20
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:21
 msgid "fedora"
-msgstr ""
+msgstr "fedora"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:22
 msgid "usb"
-msgstr ""
+msgstr "usb"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
-#, fuzzy
-#| msgctxt "DeviceWarningDialog|"
-#| msgid "Write"
 msgid "writer"
-msgstr "Viết"
+msgstr "tác giả"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:24
 msgid "live"
-msgstr ""
+msgstr "live"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:25
 msgid "spin"
-msgstr ""
+msgstr "spin"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:26
 msgid "creator"
-msgstr ""
+msgstr "người sáng tạo"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:27
 msgid "media"
-msgstr ""
+msgstr "phuơng tiện"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:48
 msgid "Write Fedora images to your portable drives"
@@ -1168,7 +1140,7 @@ msgstr "fmw;usb;iso;bootable;"
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "Yêu cầu quyền quản trị viên!"
 
 #: NSIS:UninstallPreviousVersion
 msgctxt "NSIS:UninstallPreviousVersion"
