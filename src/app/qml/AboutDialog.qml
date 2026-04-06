@@ -18,59 +18,61 @@
  */
 
 import QtQuick
-import QtQuick.Controls
-import QtQuick.Window
+import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 
-ApplicationWindow {    
+QQC2.Dialog {
     id: aboutDialog
-    minimumWidth: Math.max(420, units.gridUnit * 22)
-    maximumWidth: Math.max(420, units.gridUnit * 22)
-    minimumHeight: Math.max(240, units.gridUnit * 12)
-    maximumHeight: Math.max(240, units.gridUnit * 12)
-    modality: Qt.ApplicationModal
-    x: Screen.width / 2 - width / 2
-    y: Screen.height / 2 - height / 2
-    title: " "
-    
-    ColumnLayout {
+    parent: QQC2.Overlay.overlay
+    x: parent ? Math.round((parent.width - width) / 2) : 0
+    y: parent ? Math.round((parent.height - height) / 2) : 0
+    width: Math.max(420, units.gridUnit * 22)
+    height: Math.max(240, units.gridUnit * 12)
+    modal: true
+    focus: true
+    closePolicy: QQC2.Popup.CloseOnEscape
+    padding: units.gridUnit
+    header: Item {
+        visible: false
+        implicitWidth: 0
+        implicitHeight: 0
+    }
+
+    contentItem: ColumnLayout {
         id: mainColumn
-        anchors.fill: parent
-        anchors.margins: units.gridUnit 
         spacing: units.gridUnit
-        
+
         Column {
             leftPadding: units.gridUnit
             rightPadding: units.gridUnit
             spacing: units.gridUnit
-            
+
             Heading {
                 text: qsTr("About Fedora Media Writer")
                 level: 3
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 width: mainColumn.width - units.gridUnit * 2
             }
-        
-            Label {
+
+            QQC2.Label {
                 width: mainColumn.width - units.gridUnit * 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 text: qsTr("Version %1").arg(mediawriterVersion)
             }
-            
-            Label {
+
+            QQC2.Label {
                 width: mainColumn.width - units.gridUnit * 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 visible: releases.beingUpdated
                 text: qsTr("Fedora Media Writer is now checking for new releases")
             }
-            
-            Label {
+
+            QQC2.Label {
                 width: mainColumn.width - units.gridUnit * 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/FedoraQt/MediaWriter/issues\">https://github.com/FedoraQt/MediaWriter/</a>")
+                text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/FedoraQt/MediaWriter/issues\"><font color=\"#0b57d0\">https://github.com/FedoraQt/MediaWriter/</font></a>")
                 textFormat: Text.RichText
                 onLinkActivated: Qt.openUrlExternally(link)
-                opacity: 0.6
 
                 MouseArea {
                     anchors.fill: parent
@@ -82,12 +84,12 @@ ApplicationWindow {
         
         RowLayout {
             Layout.alignment: Qt.AlignBottom
-            
+
             Item {
                 Layout.fillWidth: true
             }
-            
-            Button {
+
+            QQC2.Button {
                 id: closeButton
                 onClicked: aboutDialog.close()
                 text: qsTr("Close")

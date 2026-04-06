@@ -18,32 +18,29 @@
  */
 
 import QtQuick
-import QtQuick.Controls
-import QtQuick.Window
+import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 
-ApplicationWindow {
+QQC2.Dialog {
     id: deviceWarningDialog
 
-    minimumWidth: Math.max(360, units.gridUnit * 20)
-    maximumWidth: Math.max(360, units.gridUnit * 20)
-    minimumHeight: Math.max(180, units.gridUnit * 10)
-    maximumHeight: Math.max(180, units.gridUnit * 10)
-
-    modality: Qt.ApplicationModal
-    title: " "
-
-    Component.onCompleted: {
-        x = Screen.width / 2 - width / 2
-        y = Screen.height / 2 - height / 2
+    parent: QQC2.Overlay.overlay
+    x: parent ? Math.round((parent.width - width) / 2) : 0
+    y: parent ? Math.round((parent.height - height) / 2) : 0
+    width: Math.max(360, units.gridUnit * 20)
+    height: Math.max(180, units.gridUnit * 10)
+    modal: true
+    focus: true
+    closePolicy: QQC2.Popup.CloseOnEscape
+    padding: units.gridUnit
+    header: Item {
+        visible: false
+        implicitWidth: 0
+        implicitHeight: 0
     }
 
-    ColumnLayout {
+    contentItem: ColumnLayout {
         id: mainColumn
-        anchors {
-            fill: parent
-            margins: units.gridUnit
-        }
         spacing: units.gridUnit
 
         Heading {
@@ -52,10 +49,10 @@ ApplicationWindow {
             text: qsTr("Erase confirmation")
         }
 
-        Label {
+        QQC2.Label {
             Layout.fillWidth: true
             text: qsTr("The entire device (all of %1) will be erased and the selected image will be written to it. Do you want to continue?").arg(formatSize(drives.selected ? drives.selected.size : 0))
-            wrapMode: Label.Wrap
+            wrapMode: QQC2.Label.Wrap
         }
 
         RowLayout {
@@ -66,13 +63,13 @@ ApplicationWindow {
                 Layout.fillWidth: true
             }
 
-            Button {
+            QQC2.Button {
                 id: cancelButton
                 onClicked: deviceWarningDialog.close()
                 text: qsTr("Cancel")
             }
 
-            Button {
+            QQC2.Button {
                 id: continueButton
                 onClicked: {
                     deviceWarningDialog.close()
@@ -110,4 +107,3 @@ ApplicationWindow {
         }
     }
 }
-

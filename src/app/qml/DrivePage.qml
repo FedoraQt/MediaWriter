@@ -181,6 +181,6 @@ Page {
             return;
         }
 
-        deviceWarningDialog.show();
+        deviceWarningDialog.open();
     }
 }
