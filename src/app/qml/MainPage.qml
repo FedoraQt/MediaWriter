@@ -62,7 +62,7 @@ Page {
     previousButtonText: qsTr("About")
 
     onPreviousButtonClicked: {
-        aboutDialog.show()
+        aboutDialog.open()
     }
 
     onNextButtonClicked: {

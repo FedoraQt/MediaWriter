@@ -238,7 +238,7 @@ Page {
             releases.variant.status === Units.DownloadStatus.Writing ||
             releases.variant.status === Units.DownloadStatus.Downloading ||
             releases.variant.status === Units.DownloadStatus.Download_Verifying) {
-            cancelDialog.show()
+            cancelDialog.open()
         } else {
             releases.variant.resetStatus()
             downloadManager.cancel()

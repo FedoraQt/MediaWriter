@@ -18,46 +18,29 @@
  */
 
 import QtQuick
-import QtQuick.Controls
-import QtQuick.Window
+import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 
-ApplicationWindow {
+ModalDialog {
     id: cancelDialog
 
-    minimumWidth: Math.max(360, units.gridUnit * 20)
-    maximumWidth: Math.max(360, units.gridUnit * 20)
-    minimumHeight: Math.max(180, units.gridUnit * 10)
-    maximumHeight: Math.max(180, units.gridUnit * 10)
+    width: Math.max(360, units.gridUnit * 20)
+    height: Math.max(180, units.gridUnit * 10)
 
-    modality: Qt.ApplicationModal
-    title: " "
-
-    Component.onCompleted: {
-        x = Screen.width / 2 - width / 2
-        y = Screen.height / 2 - height / 2
-    }
-    
     property QtObject drivesSelected
     property int variantStatus: releases.variant ? releases.variant.status : 0
 
-    onVisibleChanged: {
-        if (visible) {
-            drivesSelected = drives.selected
-        }
-    }
-    
-    ColumnLayout {
+    onOpened: drivesSelected = drives.selected
+
+    contentItem: ColumnLayout {
         id: mainColumn
-        anchors.fill: parent
-        anchors.margins: units.gridUnit 
         spacing: units.gridUnit
-        
+
         Column {
             leftPadding: units.gridUnit
             rightPadding: units.gridUnit
             spacing: units.gridUnit
-            
+
             Heading {
                 level: 2
                 text: {
@@ -70,7 +53,7 @@ ApplicationWindow {
                 }
             }
 
-            Label {
+            QQC2.Label {
                 text: {
                     if (variantStatus === Units.DownloadStatus.Downloading || variantStatus === Units.DownloadStatus.Download_Verifying)
                         qsTr("Download and media writing will be aborted. This process can be resumed any time later.")
@@ -78,26 +61,26 @@ ApplicationWindow {
                         qsTr("Writing process will be aborted and your drive will have to be restored afterwards.")
                     else
                         qsTr("This operation is safe to be cancelled.")
-                }   
-                wrapMode: Label.Wrap
+                }
+                wrapMode: QQC2.Label.Wrap
                 width: mainColumn.width - units.gridUnit * 2
             }
         }
-          
+
         RowLayout {
             Layout.alignment: Qt.AlignBottom
-            
+
             Item {
                 Layout.fillWidth: true
             }
-            
-            Button {
+
+            QQC2.Button {
                 id: continueButton
                 onClicked: cancelDialog.close()
                 text: qsTr("Continue")
             }
-            
-            Button {
+
+            QQC2.Button {
                 id: cancelButton
                 onClicked: {
                     cancelDialog.close()
@@ -122,9 +105,8 @@ ApplicationWindow {
                         qsTr("Cancel Verification")
                     else
                         qsTr("Cancel")
-                }  
+                }
             }
         }
     }
 }
-
