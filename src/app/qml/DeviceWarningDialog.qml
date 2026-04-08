@@ -21,23 +21,11 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 
-QQC2.Dialog {
+ModalDialog {
     id: deviceWarningDialog
 
-    parent: QQC2.Overlay.overlay
-    x: parent ? Math.round((parent.width - width) / 2) : 0
-    y: parent ? Math.round((parent.height - height) / 2) : 0
     width: Math.max(360, units.gridUnit * 20)
     height: Math.max(180, units.gridUnit * 10)
-    modal: true
-    focus: true
-    closePolicy: QQC2.Popup.CloseOnEscape
-    padding: units.gridUnit
-    header: Item {
-        visible: false
-        implicitWidth: 0
-        implicitHeight: 0
-    }
 
     contentItem: ColumnLayout {
         id: mainColumn

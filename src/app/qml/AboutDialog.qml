@@ -21,22 +21,11 @@ import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 
-QQC2.Dialog {
+ModalDialog {
     id: aboutDialog
-    parent: QQC2.Overlay.overlay
-    x: parent ? Math.round((parent.width - width) / 2) : 0
-    y: parent ? Math.round((parent.height - height) / 2) : 0
     width: Math.max(420, units.gridUnit * 22)
     height: Math.max(240, units.gridUnit * 12)
-    modal: true
-    focus: true
-    closePolicy: QQC2.Popup.CloseOnEscape
-    padding: units.gridUnit
-    header: Item {
-        visible: false
-        implicitWidth: 0
-        implicitHeight: 0
-    }
+    closePolicy: QQC2.Popup.CloseOnEscape | QQC2.Popup.CloseOnPressOutside
 
     contentItem: ColumnLayout {
         id: mainColumn
@@ -70,7 +59,7 @@ QQC2.Dialog {
             QQC2.Label {
                 width: mainColumn.width - units.gridUnit * 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/FedoraQt/MediaWriter/issues\"><font color=\"#0b57d0\">https://github.com/FedoraQt/MediaWriter/</font></a>")
+                text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/FedoraQt/MediaWriter/issues\"><font color=\"%1\">https://github.com/FedoraQt/MediaWriter/</font></a>").arg(palette.link)
                 textFormat: Text.RichText
                 onLinkActivated: Qt.openUrlExternally(link)
 
