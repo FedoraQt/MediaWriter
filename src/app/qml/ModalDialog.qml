@@ -29,9 +29,4 @@ QQC2.Dialog {
     focus: true
     closePolicy: QQC2.Popup.CloseOnEscape
     padding: units.gridUnit
-    header: Item {
-        visible: false
-        implicitWidth: 0
-        implicitHeight: 0
-    }
 }
