@@ -23,6 +23,11 @@ import QtQuick.Controls
 ApplicationWindow {
     id: mainWindow
     visible: true
+    background: Rectangle {
+        color: Qt.platform.os === "windows" && stackView.currentItem
+            ? stackView.currentItem.palette.window
+            : mainWindow.palette.window
+    }
     minimumWidth: Math.max(640, units.gridUnit * 32)
     maximumWidth: Math.max(640, units.gridUnit * 32)
     minimumHeight: Math.max(480, units.gridUnit * 25)
@@ -160,4 +165,3 @@ ApplicationWindow {
         id: deviceWarningDialog
     }
 }
-
