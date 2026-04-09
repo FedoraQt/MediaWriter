@@ -100,7 +100,7 @@ LangString UninstallPreviousVersion ${LANG_ROMANIAN}  "Se dezinstalează versiun
 LangString UninstallPreviousVersion ${LANG_RUSSIAN}  "Удаление предыдущей версии ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_SERBIAN}  "Uninstalling previous version of ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_SERBIANLATIN}  "Uninstalling previous version of ${APPNAME}..."
-LangString UninstallPreviousVersion ${LANG_SIMPCHINESE}  "Uninstalling previous version of ${APPNAME}..."
+LangString UninstallPreviousVersion ${LANG_SIMPCHINESE}  "正在卸载旧版本的 ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_SLOVAK}  "Odinštalovanie predchádzajúcej verzie ${APPNAME}..."
 LangString UninstallPreviousVersion ${LANG_SLOVENIAN}  "Odstranjevanje prejšnje različice ${APPNAME} ..."
 LangString UninstallPreviousVersion ${LANG_SPANISH}  "Desinstalando la versión anterior de ${APPNAME}..."
