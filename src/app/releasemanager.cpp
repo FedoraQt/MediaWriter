@@ -197,6 +197,16 @@ bool ReleaseManager::updateUrl(const QString &release,
         mDebug() << "Architecture" << architecture << "is not known!";
         return false;
     }
+
+    // Prefer exact subvariant match to avoid ambiguity with generic names like "atomic"
+    for (int i = 0; i < m_sourceModel->rowCount(); i++) {
+        Release *r = get(i);
+        if (r->subvariant().toLower() == release || r->subvariant().toLower() == category) {
+            return r->updateUrl(version, status, type, releaseDate, architecture, url, sha256, size);
+        }
+    }
+
+    // Fall back to fuzzy contains match
     for (int i = 0; i < m_sourceModel->rowCount(); i++) {
         Release *r = get(i);
         if (r->name().toLower().contains(release) || r->subvariant().toLower().contains(release)) {
