@@ -1,12 +1,12 @@
 # #-#-#-#-#  appstream_pl.po  #-#-#-#-#
-# Piotr Drąg <piotrdrag@gmail.com>, 2016. #zanata, 2021, 2022, 2024, 2025.
+# Piotr Drąg <piotrdrag@gmail.com>, 2016. #zanata, 2021, 2022, 2024, 2025, 2026.
 # #-#-#-#-#  desktop_pl.po  #-#-#-#-#
-# Piotr Drąg <piotrdrag@gmail.com>, 2016. #zanata, 2021, 2022, 2024, 2025.
+# Piotr Drąg <piotrdrag@gmail.com>, 2016. #zanata, 2021, 2022, 2024, 2025, 2026.
 # #-#-#-#-#  mediawriter_pl.po  #-#-#-#-#
-# Piotr Drąg <piotrdrag@gmail.com>, 2016. #zanata, 2021, 2022, 2024, 2025.
-# Piotr Drąg <piotrdrag@gmail.com>, 2017. #zanata, 2021, 2022, 2024, 2025.
-# Piotr Drąg <piotrdrag@gmail.com>, 2019. #zanata, 2021, 2022, 2024, 2025.
-# Piotr Drąg <piotrdrag@gmail.com>, 2020. #zanata, 2021, 2022, 2024, 2025.
+# Piotr Drąg <piotrdrag@gmail.com>, 2016. #zanata, 2021, 2022, 2024, 2025, 2026.
+# Piotr Drąg <piotrdrag@gmail.com>, 2017. #zanata, 2021, 2022, 2024, 2025, 2026.
+# Piotr Drąg <piotrdrag@gmail.com>, 2019. #zanata, 2021, 2022, 2024, 2025, 2026.
+# Piotr Drąg <piotrdrag@gmail.com>, 2020. #zanata, 2021, 2022, 2024, 2025, 2026.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2024, 2025.
 # Stan Ulbrych <stanulbrych@gmail.com>, 2025.
 # Nik Nikovsky <zejdzztegomaila@gmail.com>, 2026.
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2026-01-18 15:14+0000\n"
-"Last-Translator: Nik Nikovsky <zejdzztegomaila@gmail.com>\n"
+"PO-Revision-Date: 2026-04-12 13:10+0000\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/pl/>\n"
 "Language: pl\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.15.2\n"
+"X-Generator: Weblate 5.16.2\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:48
@@ -346,9 +346,6 @@ msgid "Retry"
 msgstr "Ponów"
 
 #: ../src/app/drivemanager.cpp:288
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "The drive was removed while it was written to."
 msgctxt "Drive|"
 msgid "The drive was removed while it was written to."
 msgstr "Dysk został wyjęty w trakcie zapisu."
@@ -359,9 +356,6 @@ msgid "This drive is not large enough."
 msgstr "Ten dysk jest za mały."
 
 #: ../src/app/drivemanager.cpp:397
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Could not find the helper binary. Check your installation."
 msgctxt "Drive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
@@ -369,41 +363,28 @@ msgstr ""
 "instalacji."
 
 #: ../src/app/drivemanager.cpp:435
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Stopped before writing has finished."
 msgctxt "Drive|"
 msgid "Stopped before writing has finished."
 msgstr "Zatrzymano przed ukończeniem zapisu."
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "Drive|"
 msgid "Finished!"
 msgstr "Ukończono."
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 was successful"
 msgstr "Pomyślnie zapisano %1"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Error"
 msgctxt "Drive|"
 msgid "Error"
 msgstr "Błąd"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 failed"
 msgstr "Zapisanie %1 się nie powiodło"
@@ -513,7 +494,7 @@ msgstr "Przywrócenie <b>%1</b>"
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore a USB drive (%1 available)"
-msgstr ""
+msgstr "Przywrócenie dysku USB (dostępne: %1)"
 
 #: ../src/app/qml/MainPage.qml:62
 msgctxt "MainPage|"
@@ -839,17 +820,14 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Przywrócenie dysku <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:39
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid "Restore Drive <b>%1</b>"
 msgctxt "RestorePage|"
 msgid "Restore Drive"
-msgstr "Przywrócenie dysku <b>%1</b>"
+msgstr "Przywrócenie dysku"
 
 #: ../src/app/qml/RestorePage.qml:48
 msgctxt "RestorePage|"
 msgid "Select a drive to restore"
-msgstr ""
+msgstr "Wybór dysku do przywrócenia"
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
@@ -1066,12 +1044,9 @@ msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "Zapisanie całego obrazu się nie powiodło. Razem zapisano: %1 z %2"
 
 #: ../src/helper/win/writejob.cpp:480
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for data verification for %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
-msgstr "Nie można otworzyć dysku do weryfikacji danych dla %1:"
+msgstr "Nie można przejść do początku dysku w celu weryfikacji"
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
 msgctxt "main|"
@@ -1103,7 +1078,7 @@ msgstr "Fedora Media Writer"
 #. (itstool) path: component/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "Create a Fedora live USB drive"
-msgstr ""
+msgstr "Utworzenie dysku USB typu Live z Fedorą"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:16
@@ -1133,48 +1108,42 @@ msgstr ""
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:20
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:21
 msgid "fedora"
-msgstr ""
+msgstr "fedora"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:22
 msgid "usb"
-msgstr ""
+msgstr "usb"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
-#, fuzzy
-#| msgctxt "DeviceWarningDialog|"
-#| msgid "Write"
 msgid "writer"
-msgstr "Zapisz"
+msgstr "writer"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:24
 msgid "live"
-msgstr ""
+msgstr "live"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:25
-#, fuzzy
-#| msgctxt "[4].category"
-#| msgid "spins"
 msgid "spin"
-msgstr "obrazy"
+msgstr "spin"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:26
 msgid "creator"
-msgstr ""
+msgstr "creator"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:27
 msgid "media"
-msgstr ""
+msgstr "media"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:48
 msgid "Write Fedora images to your portable drives"
@@ -1187,17 +1156,17 @@ msgstr "fmw;usb;iso;bootable;uruchamianie;zapisywanie;nośnik;media;live;"
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr "Prawa administratora są wymagane!"
+msgstr "Wymagane są uprawnienia administratora."
 
 #: NSIS:UninstallPreviousVersion
 msgctxt "NSIS:UninstallPreviousVersion"
 msgid "Uninstalling previous version of ${APPNAME}..."
-msgstr ""
+msgstr "Odinstalowywanie poprzedniej wersji programu ${APPNAME}..."
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr "Czy chcesz odinstalować ${APPNAME}?"
+msgstr "Odinstalować program ${APPNAME}?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1208,16 +1177,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Pobranie Visual C++ Redistributable się nie powiodło.\n"
+"\n"
+"Proszę sprawdzić połączenie z Internetem i spróbować ponownie\n"
+"lub pobrać ręcznie z:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Pobieranie Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Instalowanie Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1228,6 +1202,11 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"Microsoft Visual C++ Redistributable nie jest zainstalowane w systemie.\n"
+"\n"
+"Jest ono wymagane do poprawnego działania programu ${APPNAME}.\n"
+"\n"
+"Pobrać i zainstalować je teraz? (około 25 MB)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1239,6 +1218,12 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Wybrano pominięcie instalacji Visual C++ Redistributable.\n"
+"\n"
+"${APPNAME} może nie działać poprawnie bez tego.\n"
+"\n"
+"Można je pobrać ręcznie z:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgctxt "MacDrive|"
 #~ msgid "Could not find the helper binary. Check your installation."
