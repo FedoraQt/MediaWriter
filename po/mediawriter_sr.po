@@ -5,12 +5,13 @@
 # #-#-#-#-#  mediawriter_sr.po  #-#-#-#-#
 # Marko Kostic <marko.m.kostic@gmail.com>, 2017. #zanata
 # Marko Kostic <marko.m.kostic@gmail.com>, 2018. #zanata
+# "Марко Костић (Marko Kostić)" <marko.m.kostic@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2025-02-10 09:32+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-04-17 17:58+0000\n"
+"Last-Translator: \"Марко Костић (Marko Kostić)\" <marko.m.kostic@gmail.com>\n"
 "Language-Team: Serbian <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/sr/>\n"
 "Language: sr\n"
@@ -19,45 +20,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.9.2\n"
+"X-Generator: Weblate 5.17\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:48
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "About Fedora Media Writer"
 msgctxt "AboutDialog|"
 msgid "About Fedora Media Writer"
-msgstr "О Fedora Писачу Медија"
+msgstr "О програму Писац Федора медија"
 
 #: ../src/app/qml/AboutDialog.qml:57
-#, fuzzy, qt-format
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Version %1"
 msgstr "Издање %1"
 
 #: ../src/app/qml/AboutDialog.qml:64
-#, fuzzy
-#| msgctxt "ImageList|"
-#| msgid "Fedora Media Writer is now checking for new releases"
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Fedora Писач Медија сада тражи нова издања"
+msgstr "Писац Федора медија сада проверава да ли има нових издања"
 
 #: ../src/app/qml/AboutDialog.qml:70
-#, fuzzy, qt-format
-#| msgctxt "ImageList|"
-#| msgid "Please report bugs or your suggestions on %1"
+#, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr "Пријавите грешке или примедбе на адреси %1"
+msgstr "Пријавите грешке или ваше предлоге на %1"
 
 #: ../src/app/qml/AboutDialog.qml:93
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Close"
 msgctxt "AboutDialog|"
 msgid "Close"
 msgstr "Затвори"
@@ -65,20 +53,17 @@ msgstr "Затвори"
 #: ../src/app/qml/CancelDialog.qml:65
 msgctxt "CancelDialog|"
 msgid "Cancel Download?"
-msgstr ""
+msgstr "Прекинути преузимање?"
 
 #: ../src/app/qml/CancelDialog.qml:67
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing?"
-msgstr "Пишем"
+msgstr "Прекинути уписивање?"
 
 #: ../src/app/qml/CancelDialog.qml:69
 msgctxt "CancelDialog|"
 msgid "Cancel Verification?"
-msgstr ""
+msgstr "Прекинути проверу?"
 
 #: ../src/app/qml/CancelDialog.qml:76
 msgctxt "CancelDialog|"
@@ -86,6 +71,8 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
+"Преузимање и уписивање на медијум ће бити прекинути. Овај процес се може "
+"наставити касније."
 
 #: ../src/app/qml/CancelDialog.qml:78
 msgctxt "CancelDialog|"
@@ -93,42 +80,35 @@ msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
 msgstr ""
+"Процес уписивања ће бити прекинут и ваш уређај ће након тога морати да буде "
+"повраћен."
 
 #: ../src/app/qml/CancelDialog.qml:80
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr ""
+msgstr "Ову радњу је безбедно прекинути."
 
 #: ../src/app/qml/CancelDialog.qml:97
 msgctxt "CancelDialog|"
 msgid "Continue"
-msgstr ""
+msgstr "Настави"
 
 #: ../src/app/qml/CancelDialog.qml:118
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "CancelDialog|"
 msgid "Cancel Download"
-msgstr "Преузимам"
+msgstr "Откажи преузимање"
 
 #: ../src/app/qml/CancelDialog.qml:120
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "CancelDialog|"
 msgid "Cancel Writing"
-msgstr "Пишем"
+msgstr "Прекини уписивање"
 
 #: ../src/app/qml/CancelDialog.qml:122
 msgctxt "CancelDialog|"
 msgid "Cancel Verification"
-msgstr ""
+msgstr "Откажи потврду"
 
 #: ../src/app/qml/CancelDialog.qml:124
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "CancelDialog|"
 msgid "Cancel"
 msgstr "Откажи"
@@ -136,7 +116,7 @@ msgstr "Откажи"
 #: ../src/app/qml/DeviceWarningDialog.qml:52
 msgctxt "DeviceWarningDialog|"
 msgid "Erase confirmation"
-msgstr ""
+msgstr "Потврда брисања"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:57
 #, qt-format
@@ -145,58 +125,48 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Цео уређај (свих %1) ће бити обрисан и изабрани одраз ће бити уписан на "
+"њега. Желите ли да наставите?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:72
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "DeviceWarningDialog|"
 msgid "Cancel"
 msgstr "Откажи"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:88
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "DeviceWarningDialog|"
 msgid "Write"
-msgstr "Упиши %1"
+msgstr "Писање"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:90
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
-msgstr "Преузимање није успело"
+msgstr "Преузми и упиши"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:91
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
-msgstr "Преузимање није успело"
+msgstr "Преузми и упиши"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:105
 msgctxt "DeviceWarningDialog|"
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:107
 msgctxt "DeviceWarningDialog|"
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:109
 msgctxt "DeviceWarningDialog|"
 msgid "Bytes"
-msgstr ""
+msgstr "бајтови"
 
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
@@ -216,175 +186,127 @@ msgstr "Датотека за преузимање није уписива."
 #: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
-msgstr "Веза је истекла."
+msgstr "Веза је истекла"
 
 #: ../src/app/qml/DownloadPage.qml:36
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr ""
+msgstr "%1 је успешно уписан"
 
 #: ../src/app/qml/DownloadPage.qml:38
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Writing %1"
-msgstr "Пишем"
+msgstr "Уписујем %1"
 
 #: ../src/app/qml/DownloadPage.qml:40
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "Преузимам"
+msgstr "Преузимам %1"
 
 #: ../src/app/qml/DownloadPage.qml:42
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Preparing %1"
-msgstr "Припремам"
+msgstr "Припремам %1"
 
 #: ../src/app/qml/DownloadPage.qml:44
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Ready to write"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Ready to write %1"
-msgstr "Спреман за писање"
+msgstr "Спреман за уписивање %1"
 
 #: ../src/app/qml/DownloadPage.qml:46
-#, fuzzy, qt-format
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "Failed to download %1"
-msgstr "Проверавам преузето"
+msgstr "Није успело преузимање %1"
 
 #: ../src/app/qml/DownloadPage.qml:54
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 B left)"
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr "(%1 бајта преостало)"
+msgstr " B преостало)"
 
 #: ../src/app/qml/DownloadPage.qml:55
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 KB left)"
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr "(%1 килобајта преостало)"
+msgstr " KB преостало)"
 
 #: ../src/app/qml/DownloadPage.qml:56
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 MB left)"
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr "(%1 мегабајта преостало)"
+msgstr " MB преостало)"
 
 #: ../src/app/qml/DownloadPage.qml:57
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "(%1 GB left)"
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr "(%1 гигабајта преостало)"
+msgstr " GB преостало)"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:61
 #: ../src/app/qml/DownloadPage.qml:62 ../src/app/qml/DownloadPage.qml:63
 #, qt-format
 msgctxt "DownloadPage|"
 msgid " (%1"
-msgstr ""
+msgstr " (%1"
 
 #: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr ""
+msgstr "Ваш уређај је ископчан током процеса"
 
 #: ../src/app/qml/DownloadPage.qml:106
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "The file will be saved to your Downloads folder."
 msgctxt "DownloadPage|"
 msgid "Downloads are saved to the downloads folder."
-msgstr "Ова датотека ће бити сачувана у вашој фасцикли за преузимања."
+msgstr "Преузимања се чувају у фасцикли за преузимања."
 
 #: ../src/app/qml/DownloadPage.qml:116
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid "By writing, you will lose all of the data on %1."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "Писањем ћете изгубити све податке на уређају %1"
+msgstr "Уписивањем ћете изгубити све податке на %1."
 
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
 msgid "Please insert an USB drive."
-msgstr ""
+msgstr "Убаците УСБ уређај."
 
 #: ../src/app/qml/DownloadPage.qml:133
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using Fedora Media Writer; this will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive will be resized to a smaller capacity. You may resize it back to "
 "normal by using Fedora Media Writer. This will remove installation media "
 "from your drive."
 msgstr ""
-"Ваш уређај ће бити умањен. Можете га поново проширити на његову величину "
-"преко Fedora Media Writer алатке. Овим ћете уклонити инсталацију са вашег "
-"уређаја."
+"Величина вашег уређаја ће бити промењена на мањи капацитет. Можете му "
+"вратити нормалну величину коришћењем програма Fedora Media Writer. Ово ће "
+"уклонити инсталациони медијум са вашег уређаја."
 
 #: ../src/app/qml/DownloadPage.qml:141
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DownloadPage|"
 msgid "Selected:"
 msgstr "Изабрано:"
 
 #: ../src/app/qml/DownloadPage.qml:141
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DownloadPage|"
 msgid "None"
 msgstr "Ништа"
 
 #: ../src/app/qml/DownloadPage.qml:149
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "Your board or device is not supported by Fedora Media Writer yet. Please "
-#| "check <a href=%1>this page</a> for more information about its "
-#| "compatibility with Fedora and how to create bootable media for it."
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "Your board or device is not supported by Fedora Media Writer yet. Please "
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
-"Ваша плоча или уређај још није подржан од стране алатке Fedora Media Writer. "
-"Погледајте <a href=%1>ову страницу</a> за више података о усклађености ове "
-"алатке са Федором и о другим начинима стварања подизних медијума."
+"Ваша плоча или уређај још увек нису подржани у програму Fedora Media Writer. "
+"Погледајте <a href=%1>ову страницу</a> за више података о компатибилности са "
+"Федором и о томе како да направите подизни медијум за њега."
 
 #: ../src/app/qml/DownloadPage.qml:160
-#, fuzzy, qt-format
-#| msgctxt "DownloadDialog|"
-#| msgid ""
-#| "The selected drive's size is %1. It's possible you have selected an "
-#| "external drive by accident!"
+#, qt-format
 msgctxt "DownloadPage|"
 msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
@@ -398,46 +320,32 @@ msgstr ""
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
 msgstr ""
+"Поново покрените систем и подигните га са %1 да бисте почели да користите %2."
 
 #: ../src/app/qml/DownloadPage.qml:235
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Cancel"
 msgctxt "DownloadPage|"
 msgid "Cancel"
 msgstr "Откажи"
 
 #: ../src/app/qml/DownloadPage.qml:262
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "DownloadPage|"
 msgid "Write"
-msgstr "Упиши %1"
+msgstr "Упиши"
 
 #: ../src/app/qml/DownloadPage.qml:264
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr "Завршено!"
+msgstr "Доврши"
 
 #: ../src/app/qml/DownloadPage.qml:266
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Retry"
 msgctxt "DownloadPage|"
 msgid "Retry"
-msgstr "Поново покушај"
+msgstr "Покушај поново"
 
 #: ../src/app/drivemanager.cpp:288
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "The drive was removed while it was written to."
 msgctxt "Drive|"
 msgid "The drive was removed while it was written to."
-msgstr "Уређај је откачен док се писало на њему."
+msgstr "Уређај је уклоњен док се на њега уписивало."
 
 #: ../src/app/drivemanager.cpp:391
 msgctxt "Drive|"
@@ -445,111 +353,74 @@ msgid "This drive is not large enough."
 msgstr "Овај уређај није довољно велик."
 
 #: ../src/app/drivemanager.cpp:397
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Could not find the helper binary. Check your installation."
 msgctxt "Drive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
-"Нисам могао да нађем помоћну бинарну датотеку. Проверите вашу инсталацију."
+"Не могу да пронађем помоћну извршну датотеку. Проверите вашу инсталацију."
 
 #: ../src/app/drivemanager.cpp:435
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Stopped before writing has finished."
 msgctxt "Drive|"
 msgid "Stopped before writing has finished."
-msgstr "Заустављен пре него што је писање завршено."
+msgstr "Заустављено пре него што је уписивање завршено."
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "Drive|"
 msgid "Finished!"
-msgstr "Завршено!"
+msgstr "Готово!"
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 was successful"
-msgstr "Уписивање ставке %1 је успешно"
+msgstr "Уписивање на %1 је успело"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Error"
 msgctxt "Drive|"
 msgid "Error"
 msgstr "Грешка"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 failed"
-msgstr "Уписивање ставке %1 није успело"
+msgstr "Уписивање на %1 није успело"
 
 #: ../src/app/qml/DrivePage.qml:30
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write to Disk"
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "Упиши на диск"
+msgstr "Опције уписивања"
 
 #: ../src/app/qml/DrivePage.qml:37
-#, fuzzy
-#| msgctxt "ImageDetails|"
-#| msgid "Version %1"
 msgctxt "DrivePage|"
 msgid "Version"
-msgstr "Издање %1"
+msgstr "Издање"
 
 #: ../src/app/qml/DrivePage.qml:59
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr ""
+msgstr "Архитектура хардвера"
 
 #: ../src/app/qml/DrivePage.qml:76
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Selected file"
-msgstr "Изабрано:"
+msgstr "Изабрана датотека"
 
 #: ../src/app/qml/DrivePage.qml:83
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "None"
 msgctxt "DrivePage|"
 msgid "None"
 msgstr "Ништа"
 
 #: ../src/app/qml/DrivePage.qml:91
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "DrivePage|"
 msgid "Select..."
-msgstr "Изабрано:"
+msgstr "Изабери..."
 
 #: ../src/app/qml/DrivePage.qml:108
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "DrivePage|"
 msgid "Image files"
-msgstr "Датотеке са сликама"
+msgstr "Сликовне датотеке"
 
 #: ../src/app/qml/DrivePage.qml:108
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "DrivePage|"
 msgid "All files (*)"
 msgstr "Све датотеке (*)"
@@ -557,55 +428,37 @@ msgstr "Све датотеке (*)"
 #: ../src/app/qml/DrivePage.qml:119
 msgctxt "DrivePage|"
 msgid "USB Drive"
-msgstr ""
+msgstr "УСБ уређај"
 
 #: ../src/app/qml/DrivePage.qml:127
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "There are no portable drives connected"
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr "Ниједан преносиви уређај није закачен"
+msgstr "Нема прикључених преносних уређаја"
 
 #: ../src/app/qml/DrivePage.qml:146
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "DrivePage|"
 msgid "Download"
-msgstr "Преузимам"
+msgstr "Преузми"
 
 #: ../src/app/qml/DrivePage.qml:151
-#, fuzzy
-#| msgctxt "DeleteButton|"
-#| msgid "Delete the Downloaded Image"
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "Обриши преузету слику"
+msgstr "Обриши преузето након уписивања"
 
 #: ../src/app/qml/DrivePage.qml:160
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgctxt "DrivePage|"
 msgid "Write"
-msgstr "Упиши %1"
+msgstr "Упиши"
 
 #: ../src/app/qml/DrivePage.qml:162
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "DrivePage|"
 msgid "Download && Write"
-msgstr "Преузимање није успело"
+msgstr "Преузми и упиши"
 
 #: ../src/app/qml/DrivePage.qml:163
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "DrivePage|"
 msgid "Download & Write"
-msgstr "Преузимање није успело"
+msgstr "Преузми и упиши"
 
 #: ../src/app/linuxdrivemanager.cpp:137
 msgctxt "LinuxDriveProvider|"
@@ -615,100 +468,89 @@ msgstr "Изгледа да UDisks2 није доступан на вашем с
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr ""
+msgstr "Изаберите извор одраза"
 
 #: ../src/app/qml/MainPage.qml:33
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "MainPage|"
 msgid "Download automatically"
-msgstr "Преузимање није успело"
+msgstr "Преузми аутоматски"
 
 #: ../src/app/qml/MainPage.qml:40
 msgctxt "MainPage|"
 msgid "Select .iso file"
-msgstr ""
+msgstr "Изаберите .iso датотеку"
 
 #: ../src/app/qml/MainPage.qml:50
-#, fuzzy, qt-format
-#| msgctxt "RestoreDialog|"
-#| msgid "Restore %1?"
+#, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "Повратити %1?"
+msgstr "Поврати <b>%1</b>"
 
 #: ../src/app/qml/MainPage.qml:50
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore a USB drive (%1 available)"
-msgstr ""
+msgstr "Поврати УСБ уређај (доступно %1)"
 
 #: ../src/app/qml/MainPage.qml:62
 msgctxt "MainPage|"
 msgid "About"
-msgstr ""
+msgstr "O нама"
 
 #: ../src/app/qml/Page.qml:99
 msgctxt "Page|"
 msgid "Previous"
-msgstr ""
+msgstr "Претходни"
 
 #: ../src/app/qml/Page.qml:109
 msgctxt "Page|"
 msgid "Next"
-msgstr ""
+msgstr "Даље"
 
 #: ../src/app/portalfiledialog.cpp:143
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Image files"
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr "Датотеке са сликама"
+msgstr "Сликовне датотеке"
 
 #: ../src/app/portalfiledialog.cpp:153
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "All files (*)"
 msgctxt "PortalFileDialog|"
 msgid "All files"
-msgstr "Све датотеке (*)"
+msgstr "Све датотеке"
 
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr ""
+msgstr "Отвори датотеку"
 
 #: ../src/helper/win/writejob.cpp:360
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 TB"
 
 #: ../src/helper/win/writejob.cpp:362
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 GB"
 
 #: ../src/helper/win/writejob.cpp:364
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 MB"
 
 #: ../src/helper/win/writejob.cpp:366
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 KB"
 
 #: ../src/helper/win/writejob.cpp:369
 #, qt-format
 msgctxt "QFileSystemModel|"
 msgid "%1 byte(s)"
-msgstr ""
+msgstr "%1 бајтова"
 
 #: ../src/app/releasemanager.cpp:422
 msgctxt "Release|"
@@ -723,7 +565,7 @@ msgid ""
 "(.iso or .bin)</p>"
 msgstr ""
 "<p>Овде можете изабрати слику система са вашег хард диска да бисте је "
-"уписали на флеш уређај.</p><p>Тренутно је могуће само писање сирових слика "
+"уписали на флеш уређај</p><p>Тренутно је могуће само писање сирових слика "
 "система (.iso или .bin)</p>"
 
 #: ../src/app/releasemanager.cpp:454
@@ -737,12 +579,9 @@ msgid "Fedora Labs"
 msgstr "Fedora Лабораторије"
 
 #: ../src/app/releasemanager.cpp:458
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr "Fedora Лабораторије"
+msgstr "Fedora Atomic радне површи"
 
 #: ../src/app/releasemanager.cpp:460
 msgctxt "Release|"
@@ -750,33 +589,27 @@ msgid "Other"
 msgstr "Друго"
 
 #: ../src/app/releasemanager.cpp:1106
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 64bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Интел 64-бита"
+msgstr "Intel/AMD 64-бита"
 
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
-"ISO формат слике за Интелове, АМД-ове и друге подударне личне рачунаре (64-"
+"ИСО формат слике за Интелове, АМД-ове и друге подударне личне рачунаре (64-"
 "бита)"
 
 #: ../src/app/releasemanager.cpp:1107
-#, fuzzy
-#| msgctxt "ReleaseArchitecture|"
-#| msgid "Intel 32bit"
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Интел 32-бита"
+msgstr "Intel/AMD 32-бита"
 
 #: ../src/app/releasemanager.cpp:1107
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
-"ISO формат слике за Интелове, АМД-ове и друге подударне личне рачунаре (32-"
+"ИСО формат слике за Интелове, АМД-ове и друге подударне личне рачунаре (32-"
 "бита)"
 
 #: ../src/app/releasemanager.cpp:1108
@@ -795,12 +628,12 @@ msgstr ""
 #: ../src/app/releasemanager.cpp:1109
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
-msgstr ""
+msgstr "AArch64"
 
 #: ../src/app/releasemanager.cpp:1109
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr ""
+msgstr "LZMA-запакован сирови одраз за AArch64 машине"
 
 #: ../src/app/releasemanager.cpp:421
 msgctxt "ReleaseListModel|"
@@ -823,28 +656,19 @@ msgid "Unable to rename the temporary file."
 msgstr "Не могу да преименујем привремену датотеку."
 
 #: ../src/app/releasemanager.h:378
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Preparing"
 msgctxt "ReleaseVariant|"
 msgid "Preparing"
 msgstr "Припремам"
 
 #: ../src/app/releasemanager.h:379
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Downloading"
 msgctxt "ReleaseVariant|"
 msgid "Downloading"
 msgstr "Преузимам"
 
 #: ../src/app/releasemanager.h:380
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the download"
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr "Проверавам преузето"
+msgstr "Проверавам преузимање"
 
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
@@ -857,17 +681,11 @@ msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr "Слика је сачувана у вашу фасциклу са преузимањима. Писање није могуће"
 
 #: ../src/app/releasemanager.h:383
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Writing"
 msgctxt "ReleaseVariant|"
 msgid "Writing"
-msgstr "Пишем"
+msgstr "Писање"
 
 #: ../src/app/releasemanager.h:384
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Checking the written data"
 msgctxt "ReleaseVariant|"
 msgid "Checking the written data"
 msgstr "Проверавам уписане податке"
@@ -883,12 +701,9 @@ msgid "The written data is corrupted"
 msgstr "Уписани подаци су покварени"
 
 #: ../src/app/releasemanager.h:387
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Download failed"
 msgctxt "ReleaseVariant|"
 msgid "Download failed"
-msgstr "Преузимање није успело"
+msgstr "Преузимање неуспешно"
 
 #: ../src/app/releasemanager.h:388
 msgctxt "ReleaseVariant|"
@@ -914,69 +729,51 @@ msgid "%1 Release Candidate"
 msgstr "%1 Кандидат за објављивање"
 
 #: ../src/helper/linux/restorejob.cpp:73
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open device for writing"
-msgstr "Не могу да отворим уређај за писање"
+msgstr "Нисам успео да отворим уређај за уписивање"
 
 #: ../src/helper/linux/restorejob.cpp:88 ../src/helper/linux/restorejob.cpp:123
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Destination drive is not writable"
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
 msgstr "Одредишни уређај није уписив"
 
 #: ../src/helper/linux/restorejob.cpp:100
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "RestoreJob|"
 msgid "Failed to get file size"
-msgstr "Не могу да преименујем привремену датотеку."
+msgstr "Нисам успео да добавим величину датотеке"
 
 #: ../src/helper/linux/restorejob.cpp:107
 msgctxt "RestoreJob|"
 msgid "File size is smaller than 128 blocks"
-msgstr ""
+msgstr "Величина датотеке је мања од 128 блокова"
 
 #: ../src/helper/linux/restorejob.cpp:114
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr ""
+msgstr "Нисам успео да померим показивач датотеке на крајњу област"
 
 #: ../src/helper/linux/restorejob.cpp:131
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr ""
+msgstr "Нисам успео да усагласим податке са диском"
 
 #: ../src/helper/win/restorejob.cpp:64
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Не могу да уклоним уређај %1:"
+msgstr "Не могу да уклоним тачке качења уређаја"
 
 #: ../src/helper/win/restorejob.cpp:78
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Нисам успео да уклоним партиције са уређаја"
 
 #: ../src/helper/win/restorejob.cpp:87
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "RestoreJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Не могу да отворим уређај за писање"
+msgstr "Нисам успео да отворим уређај за форматирање"
 
 #: ../src/helper/win/restorejob.cpp:102
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
 msgstr "Не могу да закључам уређај"
@@ -984,69 +781,50 @@ msgstr "Не могу да закључам уређај"
 #: ../src/helper/win/restorejob.cpp:124
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr ""
+msgstr "Нисам успео да очистим партициону табелу на уређају"
 
 #: ../src/helper/win/restorejob.cpp:138
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr ""
+msgstr "Нисам успео да поставим уређај на RAW стил партиције"
 
 #: ../src/helper/win/restorejob.cpp:152
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr ""
+msgstr "Нисам успео да направим GPT партицију на уређају"
 
 #: ../src/helper/win/restorejob.cpp:171
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr ""
+msgstr "Нисам успео да добавим GUID путању волумена на уређају"
 
 #: ../src/helper/win/restorejob.cpp:189
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr ""
+msgstr "Нисам успео да закачим нову партицију"
 
 #: ../src/helper/win/restorejob.cpp:200
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr ""
+msgstr "Нисам успео да форматирам партицију у exFAT"
 
 #: ../src/app/qml/RestorePage.qml:39
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr ""
+msgstr "Поврати уређај <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:39
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
 msgctxt "RestorePage|"
 msgid "Restore Drive"
-msgstr "Поврати"
+msgstr "Поврати уређај"
 
 #: ../src/app/qml/RestorePage.qml:48
 msgctxt "RestorePage|"
 msgid "Select a drive to restore"
-msgstr ""
+msgstr "Изаберите уређај за повраћај"
 
 #: ../src/app/qml/RestorePage.qml:70
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">\n"
-#| "                                                To reclaim all space "
-#| "available on the drive, it has to be restored to its factory settings.\n"
-#| "                                                The live system and all "
-#| "saved data will be deleted.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                You don't need to restore "
-#| "the drive if you want to write another live system to it.\n"
-#| "                                            </p>\n"
-#| "                                            <p align=\"justify\">\n"
-#| "                                                Do you want to continue?\n"
-#| "                                            </p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\"> To reclaim all space available on the drive, it has to "
@@ -1055,113 +833,79 @@ msgid ""
 "you want to write another live system to it.</p> <p align=\"justify\"> Do "
 "you want to restore it to factory settings? </p>"
 msgstr ""
-"<p align=\"justify\">\n"
-"                                                Да бисте повратили сав "
-"доступан простор на уређају, он мора бити враћен на његова фабричка "
-"подешавања.\n"
-"                                                Живи систем и сви сачувани "
-"подаци ће бити обрисани.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Не морате враћати уређај на "
-"фабричка подешавања уколико желите уписати други живи систем на њега.\n"
-"                                            </p>\n"
-"                                            <p align=\"justify\">\n"
-"                                                Да ли желите да наставите?\n"
-"                                            </p>"
+"<p align=\"justify\"> Да бисте повратили сав доступан простор на уређају, он "
+"мора бити враћен на фабричка подешавања. Живи систем и сви сачувани подаци "
+"ће бити обрисани.</p> <p align=\"justify\"> Не морате да враћате уређај ако "
+"желите да на њега упишете други живи систем.</p> <p align=\"justify\"> Да ли "
+"желите да га вратите на фабричка подешавања? </p>"
 
 #: ../src/app/qml/RestorePage.qml:87
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
-#| "portable drive.</p>"
 msgctxt "RestorePage|"
 msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
-"<p align=\"justify\">Сачекајте док Fedora Писач Медија не врати ваш преносни "
-"уређај на фабричка подешавања.</p>"
+"<p align=\"justify\">Молимо сачекајте док Федорин писач медија обнавља ваш "
+"преносни уређај.</p>"
 
 #: ../src/app/qml/RestorePage.qml:103
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid "Your drive was successfully restored!"
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr "Ваш уређај је успешно враћен на фабричка подешавања!"
+msgstr "Ваш уређај је успешно повраћен!"
 
 #: ../src/app/qml/RestorePage.qml:112
-#, fuzzy
-#| msgctxt "RestoreDialog|"
-#| msgid ""
-#| "Unfortunately, an error occurred during the process.<br>Please try "
-#| "restoring the drive using your system tools."
 msgctxt "RestorePage|"
 msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
-"Нажалост, догодила се грешка приликом поступка враћања.<br>Пробајте враћање "
-"на фабричка подешавања уз помоћ системских алата."
+"Нажалост, дошло је до грешке током процеса. Покушајте да повратите уређај "
+"користећи системске алате."
 
 #: ../src/app/qml/RestorePage.qml:122
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "Повраћај је завршен"
 
 #: ../src/app/qml/RestorePage.qml:139
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "RestorePage|"
 msgid "Finish"
-msgstr "Завршено!"
+msgstr "Доврши"
 
 #: ../src/app/qml/RestorePage.qml:139
-#, fuzzy
-#| msgctxt "main|"
-#| msgid "Restore"
 msgctxt "RestorePage|"
 msgid "Restore"
-msgstr "Поврати"
+msgstr "Врати"
 
 #: ../src/app/qml/VersionPage.qml:29
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr ""
+msgstr "Изаберите издање Федоре"
 
 #: ../src/app/qml/VersionPage.qml:32
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "VersionPage|"
 msgid "Select from:"
-msgstr "Изабрано:"
+msgstr "Изаберите из:"
 
 #: ../src/app/qml/VersionPage.qml:37
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr ""
+msgstr "Званична издања"
 
 #: ../src/app/qml/VersionPage.qml:42
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Labs"
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr "Fedora Лабораторије"
+msgstr "Атомске радне површи"
 
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr ""
+msgstr "Спинови"
 
 #: ../src/app/qml/VersionPage.qml:52
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Лабови"
 
 #: ../src/helper/linux/writejob.cpp:77 ../src/helper/linux/writejob.cpp:154
 #: ../src/helper/linux/writejob.cpp:169 ../src/helper/win/writejob.cpp:217
@@ -1224,36 +968,27 @@ msgstr "Догодила се неочекивана грешка прилико
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "Није могуће доделити пар прикључница"
 
 #: ../src/helper/mac/writejob.cpp:131
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr "Не могу да отворим уређај за писање"
+msgstr "Није могуће отворити одредиште за уписивање"
 
 #: ../src/helper/win/writejob.cpp:148
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't remove the drive %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Не могу да уклоним уређај %1:"
+msgstr "Није могуће уклонити тачке монтирања уређаја"
 
 #: ../src/helper/win/writejob.cpp:155
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Није успело уклањање партиција са уређаја"
 
 #: ../src/helper/win/writejob.cpp:164
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr "Не могу да отворим уређај за писање"
+msgstr "Није успело отварање уређаја за форматирање"
 
 #: ../src/helper/win/writejob.cpp:170
 msgctxt "WriteJob|"
@@ -1261,90 +996,67 @@ msgid "Couldn't lock the drive"
 msgstr "Не могу да закључам уређај"
 
 #: ../src/helper/win/writejob.cpp:183
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr "Не могу да отворим уређај за писање"
+msgstr "Није могуће отворити логичку ручку"
 
 #: ../src/helper/win/writejob.cpp:189
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't lock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr "Не могу да закључам уређај"
+msgstr "Није могуће закључати логички уређај"
 
 #: ../src/helper/win/writejob.cpp:196
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't unlock the drive"
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr "Не могу да откључам уређај"
+msgstr "Нисам успео да откачим уређај"
 
 #: ../src/helper/win/writejob.cpp:230 ../src/helper/win/writejob.cpp:396
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr ""
+msgstr "Нисам успео да доделим међумеморију"
 
 #: ../src/helper/win/writejob.cpp:296 ../src/helper/win/writejob.cpp:339
 #: ../src/helper/win/writejob.cpp:435
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Последњи блок није у потпуности уписан"
 
 #: ../src/helper/win/writejob.cpp:428
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Уписано је %1 од %2"
 
 #: ../src/helper/win/writejob.cpp:454
-#, fuzzy
-#| msgctxt "ReleaseVariant|"
-#| msgid "Unable to rename the temporary file."
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr "Не могу да преименујем привремену датотеку."
+msgstr "Нисам успео да прочитам датотеку одраза: "
 
 #: ../src/helper/win/writejob.cpp:460
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Нисам успео да упишем читав одраз. Укупно уписано: %1 од %2"
 
 #: ../src/helper/win/writejob.cpp:480
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for writing"
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
-msgstr "Не могу да отворим уређај за писање"
+msgstr "Нисам успео да премотам на почетак уређаја ради провере"
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
-#, fuzzy
-#| msgid "Fedora Media Writer"
 msgctxt "main|"
 msgid "Fedora Media Writer"
-msgstr "Fedora Писач Медија"
+msgstr "Федорин писач медија"
 
 #: ../src/app/qml/main.qml:99
-#, fuzzy
-#| msgctxt "Release|"
-#| msgid "Fedora Spins"
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr "Fedora Спинови"
+msgstr "Изаберите издање Федоре"
 
 #: ../src/app/qml/main.qml:113
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Selected:"
 msgctxt "main|"
 msgid "Select Drive"
-msgstr "Изабрано:"
+msgstr "Изаберите уређај"
 
 #: ../src/app/qml/main.qml:138
 msgctxt "main|"
@@ -1361,7 +1073,7 @@ msgstr "Fedora Писач Медија"
 #. (itstool) path: component/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "Create a Fedora live USB drive"
-msgstr ""
+msgstr "Направите Федорин живи УСБ уређај"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:16
@@ -1392,45 +1104,42 @@ msgstr ""
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:20
 msgid "iso"
-msgstr ""
+msgstr "исо"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:21
 msgid "fedora"
-msgstr ""
+msgstr "федора"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:22
 msgid "usb"
-msgstr ""
+msgstr "усб"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
-#, fuzzy
-#| msgctxt "DownloadDialog|"
-#| msgid "Write %1"
 msgid "writer"
-msgstr "Упиши %1"
+msgstr "писач"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:24
 msgid "live"
-msgstr ""
+msgstr "живо"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:25
 msgid "spin"
-msgstr ""
+msgstr "обрт"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:26
 msgid "creator"
-msgstr ""
+msgstr "творац"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:27
 msgid "media"
-msgstr ""
+msgstr "медиј"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:48
 msgid "Write Fedora images to your portable drives"
@@ -1438,22 +1147,22 @@ msgstr "Пишите Fedora слике на ваше преносне уређа
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:98
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;фмв;усб;исо;подизни;"
 
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "Администраторска права су неопходна!"
 
 #: NSIS:UninstallPreviousVersion
 msgctxt "NSIS:UninstallPreviousVersion"
 msgid "Uninstalling previous version of ${APPNAME}..."
-msgstr ""
+msgstr "Уклањање претходног издања програма ${APPNAME}..."
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "Да ли желите да деинсталирате ${APPNAME}?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1464,16 +1173,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Преузимање пакета „Visual C++ Redistributable“ није успело.\n"
+"\n"
+"Проверите вашу интернет везу и покушајте поново,\n"
+"или га преузмите ручно са:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Преузимање пакета „Microsoft Visual C++ Redistributable“..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Инсталирање пакета „Microsoft Visual C++ Redistributable“..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1484,6 +1198,12 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"Пакет „Microsoft Visual C++ Redistributable“ није инсталиран на вашем "
+"систему.\n"
+"\n"
+"Он је неопходан да би ${APPNAME} радио исправно.\n"
+"\n"
+"Да ли желите да га преузмете и инсталирате сада? (приближно 25 MB)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1495,6 +1215,12 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Изабрали сте да прескочите инсталацију пакета „Visual C++ Redistributable“.\n"
+"\n"
+"${APPNAME} можда неће радити исправно без њега.\n"
+"\n"
+"Можете га преузети ручно са:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgctxt "MacDrive|"
 #~ msgid "Could not find the helper binary. Check your installation."
