@@ -28,6 +28,8 @@ Page {
     property int availableDrives: drives.length
     property int currentStatus: releases.variant.status
     property string file: mainWindow.selectedOption == Units.MainSelect.Write ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : releases.selected.name + " " + releases.selected.version.number
+    property double elapsedStart: 0
+    property int elapsedSeconds: 0
 
     imageSource: "qrc:/downloadPageImage"
     layoutSpacing: units.gridUnit
@@ -61,6 +63,42 @@ Page {
                                                                     (leftSize < (1024 * 1024)) ? qsTr(" (%1").arg((leftSize / 1024).toFixed(1)) :
                                                                                                 (leftSize < (1024 * 1024 * 1024)) ? qsTr(" (%1").arg((leftSize / 1024 / 1024).toFixed(1)) :
                                                                                                                                     qsTr(" (%1").arg((leftSize / 1024 / 1024 / 1024).toFixed(1))
+    function isTimedStatus(status) {
+        return status === Units.DownloadStatus.Downloading ||
+               status === Units.DownloadStatus.Writing
+    }
+
+    function updateElapsedTime() {
+        if (isTimedStatus(downloadPage.currentStatus))
+            elapsedSeconds = Math.floor((Date.now() - elapsedStart) / 1000)
+    }
+
+    function resetElapsedTime() {
+        if (!isTimedStatus(downloadPage.currentStatus)) {
+            elapsedTimer.stop()
+            elapsedSeconds = 0
+            return
+        }
+
+        elapsedStart = Date.now()
+        elapsedSeconds = 0
+        elapsedTimer.restart()
+    }
+
+    function formatElapsedTime(seconds) {
+        var hours = Math.floor(seconds / 3600)
+        var minutes = Math.floor((seconds % 3600) / 60)
+        var remainingSeconds = seconds % 60
+
+        if (hours > 0)
+            return qsTr("%1h %2m %3s").arg(hours).arg(minutes).arg(remainingSeconds)
+        if (minutes > 0)
+            return qsTr("%1m %2s").arg(minutes).arg(remainingSeconds)
+        return qsTr("%1s").arg(remainingSeconds)
+    }
+
+    onCurrentStatusChanged: resetElapsedTime()
+
     RowLayout {
         Layout.alignment: Qt.AlignHCenter
         spacing: 0
@@ -92,6 +130,23 @@ Page {
         id: progressBar
         Layout.fillWidth: true
         value: 0.0
+    }
+
+    QQC2.Label {
+        id: elapsedTimeLabel
+        Layout.alignment: Qt.AlignHCenter
+        visible: downloadPage.isTimedStatus(downloadPage.currentStatus)
+        text: downloadPage.currentStatus === Units.DownloadStatus.Downloading ?
+                  qsTr("Download time: %1").arg(downloadPage.formatElapsedTime(downloadPage.elapsedSeconds)) :
+                  qsTr("Writing time: %1").arg(downloadPage.formatElapsedTime(downloadPage.elapsedSeconds))
+
+        Timer {
+            id: elapsedTimer
+            interval: 1000
+            repeat: true
+            running: false
+            onTriggered: downloadPage.updateElapsedTime()
+        }
     }
 
     Column {
