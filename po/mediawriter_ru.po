@@ -1,9 +1,9 @@
 # #-#-#-#-#  appstream_ru.po  #-#-#-#-#
-# Igor Gorbounov <igor.gorbounov@gmail.com>, 2016. #zanata, 2022, 2025.
+# Igor Gorbounov <igor.gorbounov@gmail.com>, 2016. #zanata, 2022, 2025, 2026.
 # #-#-#-#-#  desktop_ru.po  #-#-#-#-#
-# Igor Gorbounov <igor.gorbounov@gmail.com>, 2016. #zanata, 2022, 2025.
+# Igor Gorbounov <igor.gorbounov@gmail.com>, 2016. #zanata, 2022, 2025, 2026.
 # #-#-#-#-#  mediawriter_ru.po  #-#-#-#-#
-# Igor Gorbounov <igor.gorbounov@gmail.com>, 2019. #zanata, 2022, 2025.
+# Igor Gorbounov <igor.gorbounov@gmail.com>, 2019. #zanata, 2022, 2025, 2026.
 # Alexey Rubtsov <rushills@gmail.com>, 2021, 2025.
 # David Antaryan <antaryand@yandex.ru>, 2021.
 # Igor Kuzmenkov <igor.kuzmenkov.05@mail.ru>, 2022.
@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2026-03-08 00:58+0000\n"
-"Last-Translator: Owl Gale <cheelp@ya.ru>\n"
+"PO-Revision-Date: 2026-05-07 17:59+0000\n"
+"Last-Translator: Igor Gorbounov <igor.gorbounov@gmail.com>\n"
 "Language-Team: Russian <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/ru/>\n"
 "Language: ru\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.16.2\n"
+"X-Generator: Weblate 5.17.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:48
@@ -352,9 +352,6 @@ msgid "Retry"
 msgstr "Повторить"
 
 #: ../src/app/drivemanager.cpp:288
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "The drive was removed while it was written to."
 msgctxt "Drive|"
 msgid "The drive was removed while it was written to."
 msgstr "Диск был удалён во время записи."
@@ -373,41 +370,28 @@ msgid "Could not find the helper binary. Check your installation."
 msgstr "Не удалось найти исполняемый файл helper. Проверьте установку."
 
 #: ../src/app/drivemanager.cpp:435
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Stopped before writing has finished."
 msgctxt "Drive|"
 msgid "Stopped before writing has finished."
 msgstr "Остановлено до завершения записи."
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "Drive|"
 msgid "Finished!"
-msgstr "Закончено!"
+msgstr "Завершено!"
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 was successful"
 msgstr "Успешная запись %1"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Error"
 msgctxt "Drive|"
 msgid "Error"
 msgstr "Ошибка"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 failed"
 msgstr "Ошибка записи %1"
@@ -518,7 +502,7 @@ msgstr "Восстановить <b>%1</b>"
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore a USB drive (%1 available)"
-msgstr ""
+msgstr "Восстановить USB накопитель (доступно %1)"
 
 #: ../src/app/qml/MainPage.qml:62
 msgctxt "MainPage|"
@@ -843,17 +827,14 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Восстановить диск <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:39
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid "Restore Drive <b>%1</b>"
 msgctxt "RestorePage|"
 msgid "Restore Drive"
-msgstr "Восстановить диск <b>%1</b>"
+msgstr "Восстановить диск"
 
 #: ../src/app/qml/RestorePage.qml:48
 msgctxt "RestorePage|"
 msgid "Select a drive to restore"
-msgstr ""
+msgstr "Выберите диск для восстановления"
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
@@ -1070,12 +1051,9 @@ msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "Не удалось записать весь образ. По итогу записано: %1 из %2"
 
 #: ../src/helper/win/writejob.cpp:480
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for data verification for %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
-msgstr "Не удалось открыть диск для проверки данных для %1:"
+msgstr "Не удалось перейти к началу диска для проверки"
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
 msgctxt "main|"
@@ -1107,7 +1085,7 @@ msgstr "Fedora Media Writer"
 #. (itstool) path: component/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "Create a Fedora live USB drive"
-msgstr ""
+msgstr "Создать загрузочный USB-накопитель с Fedora"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:16
@@ -1139,45 +1117,42 @@ msgstr ""
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:20
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:21
 msgid "fedora"
-msgstr ""
+msgstr "fedora"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:22
 msgid "usb"
-msgstr ""
+msgstr "usb"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
-#, fuzzy
-#| msgctxt "DeviceWarningDialog|"
-#| msgid "Write"
 msgid "writer"
-msgstr "Записать"
+msgstr "записывающее устройство"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:24
 msgid "live"
-msgstr ""
+msgstr "интерактивный"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:25
 msgid "spin"
-msgstr ""
+msgstr "сборка"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:26
 msgid "creator"
-msgstr ""
+msgstr "нструмент для создания"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:27
 msgid "media"
-msgstr ""
+msgstr "носитель"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:48
 msgid "Write Fedora images to your portable drives"
@@ -1185,7 +1160,7 @@ msgstr "Запись образов Fedora на переносные диски"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:98
 msgid "fmw;usb;iso;bootable;"
-msgstr "fmw;usb;iso;bootable;"
+msgstr "fmw;usb;iso;загрузочный;"
 
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
@@ -1200,7 +1175,7 @@ msgstr "Удаление предыдущей версии ${APPNAME}..."
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr "Вы хотите удалить ${APPNAME}?"
+msgstr "Хотите удалить ${APPNAME}?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1213,7 +1188,7 @@ msgid ""
 msgstr ""
 "Не удалось загрузить Visual C++ Redistributable.\n"
 "\n"
-"Проверьте подключение к интернету и повторите попытку позже,\n"
+"Проверьте подключение к интернету и повторите попытку,\n"
 "или загрузите его вручную из:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
