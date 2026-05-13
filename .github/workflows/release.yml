@@ -70,7 +70,7 @@ jobs:
           bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg"
 
   Windows-MSVC:
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v6
         with:

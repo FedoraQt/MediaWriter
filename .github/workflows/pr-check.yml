@@ -98,7 +98,7 @@ jobs:
           path: FedoraMediaWriter-macos${{ matrix.dmg_suffix }}.dmg
 
   Windows-MSVC:
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v6
         with:
