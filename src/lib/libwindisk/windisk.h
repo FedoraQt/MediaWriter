@@ -79,7 +79,14 @@ public:
     qint64 writeFileAsync(HANDLE driveHandle, char *buffer, qint64 numberOfBytesToWrite, OVERLAPPED *overlap);
 
 private:
+    // CIMV2/WinAPI fallbacks when ROOT\Microsoft\Windows\Storage is unavailable
+    std::unique_ptr<WinDisk> getDiskDriveInformationFallback(quint32 index);
+    QMap<quint32, bool> getDevicePartitionsFallback(quint32 index);
+    bool clearPartitionsFallback(qint32 index);
+    bool formatPartitionFallback(const QChar &driveLetter);
+
     bool m_wmiInitialized = false;
+    bool m_storageAvailable = false;
     IWbemLocator *m_IWbemLocator = NULL;
     IWbemServices *m_IWbemServices = NULL;
     IWbemServices *m_IWbemStorageServices = NULL;
