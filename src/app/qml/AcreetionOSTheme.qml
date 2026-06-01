@@ -2,69 +2,69 @@
  * AcreetionOS Media Writer
  * Copyright (C) 2026 Natalie Spiva <natalie@acreetionos.org>
  *
- * AcreetionOS brand theme — matches acreetionos.org styling
- * Supports light and dark mode, auto-detects system preference.
+ * Palette matches acreetionos.org CSS exactly:
+ *   Body:      #121212       Box:        #222222
+ *   Panel:     #1a1a1a        Border:     #333333
+ *   Text:      #e5e5e5        Muted:      #b2b2b2
+ *   Accent:    #2ecc71        Storm:      #61afef
+ *   Flasher:   #f39c12        Purple:     #9b59b6
+ *   Danger:    #e74c3c
  *
- * Primary:   #1793d1 (brand blue)
- * Accent:    #0d6efd (darker blue for hover/active)
+ * Based on Fedora Media Writer by the Fedora Project
  */
 
 import QtQuick
 import QtQuick.Controls
 
 QtObject {
-    // Detect dark mode from the system palette or Qt quick controls style
-    readonly property bool isDark: {
-        // Try Qt 6.5+ colorScheme API first
-        if (typeof Qt.application !== "undefined"
-            && typeof Qt.application.styleHints !== "undefined"
-            && typeof Qt.application.styleHints.colorScheme !== "undefined") {
-            return Qt.application.styleHints.colorScheme === Qt.Dark;
-        }
-        // Fallback: check palette luminance
-        var p = palette;
-        if (p && p.window) {
-            var c = p.window;
-            var lum = 0.299 * c.r + 0.587 * c.g + 0.114 * c.b;
-            return lum < 0.5;
-        }
-        return false;
-    }
+    // Detect dark mode — always true on AcreetionOS site
+    readonly property bool isDark: true
 
-    // Brand colours — same in both modes
-    readonly property color brandBlue:       "#1793d1"
-    readonly property color brandBlueHover:  "#1483c9"
-    readonly property color brandBluePressed:"#0f72b0"
+    // AcreetionOS brand colours from acreetionos.org :root
+    readonly property color green:          "#2ecc71"
+    readonly property color greenHover:     "#27ae60"
+    readonly property color greenPressed:   "#1e8449"
+    readonly property color greenDim:       "rgba(46,204,113,0.1)"
 
-    // Surfaces — switch between light and dark
-    readonly property color surface:         isDark ? "#1e1e1e" : "#f8f9fa"
-    readonly property color surfaceAlt:      isDark ? "#2d2d2d" : "#ffffff"
-    readonly property color surfaceDark:     isDark ? "#3d3d3d" : "#e9ecef"
-    readonly property color surfaceCard:     isDark ? "#252526" : "#ffffff"
+    readonly property color storm:          "#61afef"
+    readonly property color flasher:        "#f39c12"
+    readonly property color purple:         "#9b59b6"
+    readonly property color danger:         "#e74c3c"
 
-    // Text — switch between light and dark
-    readonly property color textPrimary:     isDark ? "#e0e0e0" : "#212529"
-    readonly property color textSecondary:   isDark ? "#a0a0a0" : "#6c757d"
-    readonly property color textOnAccent:    "#ffffff"
-
-    // Status
-    readonly property color success:         isDark ? "#2ea043" : "#28a745"
-    readonly property color warning:         isDark ? "#d29922" : "#ffc107"
-    readonly property color error:           isDark ? "#f85149" : "#dc3545"
+    // Surfaces — dark theme matching acreetionos.org
+    readonly property color surface:         "#121212"   // body-bg
+    readonly property color surfaceAlt:      "#1a1a1a"   // panel-bg
+    readonly property color surfaceCard:     "#222222"   // box-bg
+    readonly property color surfaceDark:     "#0d0d0d"
+    readonly property color surfaceHover:    "#2a2a2a"
 
     // Borders
-    readonly property color borderLight:     isDark ? "#3d3d3d" : "#dee2e6"
-    readonly property color borderFocus:     brandBlue
+    readonly property color border:          "#333333"
 
-    // Button backgrounds with state
+    // Text
+    readonly property color textPrimary:     "#e5e5e5"
+    readonly property color textSecondary:   "#b2b2b2"
+    readonly property color textOnAccent:    "#000000"   // black on green/orange
+
+    // Status
+    readonly property color success:         "#2ecc71"
+    readonly property color warning:         "#f39c12"
+    readonly property color error:           "#e74c3c"
+
+    // Accent
+    readonly property color accent:          green
+    readonly property color accentHover:     greenHover
+    readonly property color accentPressed:   greenPressed
+
+    // Button helper
     function buttonBackground(enabled, hovered, pressed) {
-        if (!enabled) return surfaceDark;
-        if (pressed) return brandBluePressed;
-        if (hovered) return brandBlueHover;
-        return brandBlue;
+        if (!enabled) return surfaceCard;
+        if (pressed) return greenPressed;
+        if (hovered) return greenHover;
+        return green;
     }
 
-    // Radio button indicator colours
-    readonly property color indicatorBorder: isDark ? "#888888" : "#6c757d"
-    readonly property color indicatorChecked: brandBlue
+    // Indicator (radio / checkbox)
+    readonly property color indicatorBorder:    "#555555"
+    readonly property color indicatorChecked:   green
 }

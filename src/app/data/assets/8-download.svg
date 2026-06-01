@@ -2,21 +2,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" width="280" height="210">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1793d1;stop-opacity:0.15" />
-      <stop offset="100%" style="stop-color:#1793d1;stop-opacity:0.05" />
+      <stop offset="0%" style="stop-color:#2ecc71;stop-opacity:0.1" />
+      <stop offset="50%" style="stop-color:#61afef;stop-opacity:0.04" />
+      <stop offset="100%" style="stop-color:#9b59b6;stop-opacity:0.06" />
     </linearGradient>
   </defs>
   <rect width="280" height="210" rx="16" fill="url(#bg)"/>
+  <!-- Stars -->
+  <circle cx="30" cy="25" r="1.5" fill="#61afef" opacity="0.6"/>
+  <circle cx="250" cy="40" r="1" fill="#9b59b6" opacity="0.5"/>
+  <circle cx="50" cy="180" r="1" fill="#61afef" opacity="0.3"/>
+  <circle cx="240" cy="175" r="1.5" fill="#2ecc71" opacity="0.3"/>
   <!-- USB drive -->
-  <rect x="90" y="72" width="100" height="60" rx="6" fill="#1793d1" opacity="0.85"/>
-  <rect x="110" y="84" width="60" height="36" rx="4" fill="white" opacity="0.9"/>
-  <text x="140" y="107" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1793d1">USB</text>
+  <rect x="90" y="72" width="100" height="60" rx="6" fill="#2ecc71" opacity="0.8"/>
+  <rect x="112" y="84" width="56" height="36" rx="4" fill="#121212"/>
+  <text x="140" y="107" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2ecc71">USB</text>
   <!-- Download arrow -->
-  <path d="M140,40 L140,68" stroke="#1793d1" stroke-width="3" stroke-linecap="round"/>
-  <path d="M128,56 L140,72 L152,56" stroke="#1793d1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <!-- Speed lines -->
-  <line x1="100" y1="36" x2="96" y2="28" stroke="#1793d1" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-  <line x1="114" y1="32" x2="112" y2="22" stroke="#1793d1" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
-  <line x1="166" y1="32" x2="168" y2="22" stroke="#1793d1" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
-  <line x1="180" y1="36" x2="184" y2="28" stroke="#1793d1" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+  <path d="M140,18 L140,68" stroke="#2ecc71" stroke-width="3" stroke-linecap="round"/>
+  <path d="M128,56 L140,72 L152,56" stroke="#2ecc71" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>

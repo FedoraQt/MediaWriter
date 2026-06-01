@@ -100,14 +100,14 @@ QQC2.Page {
                 text: qsTr("Previous")
                 onClicked: previousButtonClicked()
                 background: Rectangle {
-                    color: acreetionOSTheme.surfaceAlt
-                    border.color: acreetionOSTheme.brandBlue
+                    color: acreetionOSTheme.surfaceCard
+                    border.color: acreetionOSTheme.green
                     border.width: 1
                     radius: 4
                 }
                 contentItem: Text {
                     text: prevButton.text
-                    color: acreetionOSTheme.brandBlue
+                    color: acreetionOSTheme.green
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                 }
