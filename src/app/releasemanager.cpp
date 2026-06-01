@@ -355,10 +355,12 @@ void ReleaseManager::onStringDownloaded(const QString &text)
 
             int version = versionStr.split(".").first().toInt();
 
-            // Determine category: official product or community edition
-            // AcreetionOS XL and any future _spins go under Community Editions
+            // Official editions: Cinnamon, XL (XLibre)
+            // Community editions: everything else (KDE, Xfce, Gnome spins, etc.)
             QString category = "product";
-            if (release.contains("_xl") || release.contains("_spin") || release.contains("_community"))
+            if (release.contains("_kde") || release.contains("_xfce") || release.contains("_gnome")
+                || release.contains("_spin") || release.contains("_community") || release.contains("_lxqt")
+                || release.contains("_mate") || release.contains("_budgie") || release.contains("_sway"))
                 category = "spins";
 
             mDebug() << this->metaObject()->className() << "Adding (from dir)" << release << versionStr << arch << "category:" << category;
