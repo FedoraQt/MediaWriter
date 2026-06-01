@@ -28,10 +28,10 @@ ApplicationWindow {
     visible: true
     // AcreetionOS brand background — respects dark/light mode
     color: acreetionOSTheme.surface
-    minimumWidth: Math.max(640, units.gridUnit * 32)
-    maximumWidth: Math.max(640, units.gridUnit * 32)
-    minimumHeight: Math.max(480, units.gridUnit * 25)
-    maximumHeight: Math.max(480, units.gridUnit * 25)
+    minimumWidth: Math.max(640, units.gridUnit * 20)
+    maximumWidth: Screen.desktopAvailableWidth
+    minimumHeight: Math.max(480, units.gridUnit * 15)
+    maximumHeight: Screen.desktopAvailableHeight
 
     property int selectedPage: Units.Page.MainPage
     property int selectedVersion: Units.Source.Product
