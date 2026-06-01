@@ -28,7 +28,7 @@ Page {
     id: drivePage
     
     layoutSpacing: units.gridUnit
-    text: qsTr("Write Options")
+    text: qsTr("Flash Options")
         
     ColumnLayout {
         id: versionCol
@@ -149,25 +149,25 @@ Page {
         }
 
         QQC2.CheckBox {
-            text: qsTr("Delete download after writing")
+            text: qsTr("Delete download after flashing")
             onCheckedChanged: mainWindow.eraseVariant = !mainWindow.eraseVariant
         }
     }
 
     ColumnLayout {
         Heading {
-            text: qsTr("Write Method")
+            text: qsTr("Flash Method")
             level: 1
         }
 
         RowLayout {
             QQC2.RadioButton {
                 id: directWriteMethod
-                text: qsTr("Direct Write")
+                text: qsTr("Direct Flash")
                 checked: true
                 onCheckedChanged: if (checked) mainWindow.useVentoy = false
                 QQC2.ToolTip {
-                    text: qsTr("Write directly to the drive (dd-style)")
+                    text: qsTr("Flash directly to the drive (dd-style)")
                     visible: parent.hovered
                 }
                 contentItem: Text {
@@ -192,7 +192,7 @@ Page {
                 text: qsTr("Ventoy")
                 onCheckedChanged: if (checked) mainWindow.useVentoy = true
                 QQC2.ToolTip {
-                    text: qsTr("Install Ventoy — a bootable USB solution where you drop ISO files onto a partition")
+                    text: qsTr("Install Ventoy — multi-boot USB where you drop ISOs onto a partition")
                     visible: parent.hovered
                 }
                 contentItem: Text {
@@ -215,7 +215,6 @@ Page {
         }
     }
 
-    // Advanced options — collapsed by default, reveals GPT/MBR toggle for Ventoy
     ColumnLayout {
         Heading {
             text: qsTr("Advanced")
@@ -238,10 +237,10 @@ Page {
 
     nextButtonText: {
         if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
-            return qsTr("Write")
+            return qsTr("Flash")
         if (Qt.platform.os === "windows" || Qt.platform.os === "osx")
-            return qsTr("Download && Write")
-        return qsTr("Download & Write")
+            return qsTr("Download && Flash")
+        return qsTr("Download & Flash")
     }
 
     onPreviousButtonClicked: {

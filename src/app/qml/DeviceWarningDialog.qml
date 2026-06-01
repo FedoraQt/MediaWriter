@@ -77,10 +77,10 @@ ModalDialog {
                     if (mainWindow.useVentoy)
                         return qsTr("Install Ventoy")
                     if (selectedOption === Units.MainSelect.Write || (variant && downloadManager.isDownloaded(variant.url)))
-                        return qsTr("Write")
+                        return qsTr("Flash")
                     if (Qt.platform.os === "windows" || Qt.platform.os === "osx")
-                        return qsTr("Download && Write")
-                    return qsTr("Download & Write")
+                        return qsTr("Download && Flash")
+                    return qsTr("Download & Flash")
                 }
             }
         }
