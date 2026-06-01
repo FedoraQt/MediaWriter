@@ -1,10 +1,10 @@
-# Maintainer: Natalie <natalie@acreetionos.org>
-# Contributor: Jan Grulich <jgrulich@redhat.com>
+# Maintainer: Natalie Spiva <natalie@acreetionos.org>
+# Based on Fedora Media Writer by the Fedora Project
 
-pkgname=mediawriter
-pkgver=5.3.1
+pkgname=acreetionos-mediawriter
+pkgver=5.3.50.r1929.8576e3e
 pkgrel=1
-pkgdesc="AcreetionOS Media Writer - Write AcreetionOS Images to Portable Media"
+pkgdesc="AcreetionOS USB Flasher — Flash AcreetionOS images to USB drives"
 arch=('x86_64')
 url="https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter"
 license=('GPL2')
@@ -18,18 +18,25 @@ depends=(
 )
 makedepends=(
   'cmake'
+  'git'
+  'ninja'
 )
 optdepends=(
   'polkit: Authorization for writing to disks'
   'udisks2: Disk Management Service for disk installation'
+  'ventoy-bin: Install Ventoy bootable USB tool'
 )
-conflicts=('mediawriter-git')
-source=("${url}/archive/${pkgver}.tar.gz")
+source=("git+https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${srcdir}/AcreetionMediaWriter"
+  printf "5.3.50.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-  cd "${srcdir}/MediaWriter-${pkgver}"
-  cmake -B build \
+  cd "${srcdir}/AcreetionMediaWriter"
+  cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON
@@ -37,6 +44,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/MediaWriter-${pkgver}"
+  cd "${srcdir}/AcreetionMediaWriter"
   DESTDIR="${pkgdir}" cmake --install build
 }
