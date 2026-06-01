@@ -24,7 +24,7 @@ QtObject {
     readonly property color green:          "#2ecc71"
     readonly property color greenHover:     "#27ae60"
     readonly property color greenPressed:   "#1e8449"
-    readonly property color greenDim:       "rgba(46,204,113,0.1)"
+    readonly property color greenDim:       Qt.rgba(0.18, 0.80, 0.44, 0.1)
 
     readonly property color storm:          "#61afef"
     readonly property color flasher:        "#f39c12"
