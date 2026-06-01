@@ -1,6 +1,10 @@
 name: release
 
 on:
+  push:
+    tags:
+      - '[0-9]*.[0-9]*.[0-9]*'
+      - 'v[0-9]*.[0-9]*.[0-9]*'
   release:
     types: [ created ]
 
@@ -8,7 +12,207 @@ env:
     QT_VERSION: '6.10.2'
 
 jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Extract tag
+        id: tag
+        run: |
+          TAG=$(bash ./dist/get-tag-name.sh)
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+
+      - name: Create release (if not exists)
+        run: |
+          if ! gh release view "${{ steps.tag.outputs.tag }}" &>/dev/null; then
+            gh release create "${{ steps.tag.outputs.tag }}" \
+              --title "AcreetionOS Media Writer ${{ steps.tag.outputs.tag }}" \
+              --notes "Release ${{ steps.tag.outputs.tag }}
+
+          $(git log --oneline --no-merges $(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || git rev-list --max-parents=0 HEAD)..HEAD | sed 's/^/- /')" \
+              --prerelease
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  Linux:
+    needs: create-release
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set env (TAG_NAME)
+        run: echo "TAG_NAME=$(bash ./dist/get-tag-name.sh)" >> $GITHUB_ENV
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y liblzma-dev libfuse2
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: ${{env.QT_VERSION}}
+          cache: true
+          cache-key-prefix: ${{ github.job }}-qt
+
+      - name: Build
+        run: |
+          cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+          cmake --build build --parallel
+
+      - name: Create AppImage
+        run: |
+          set -eo pipefail
+          DESTDIR=$(pwd)/AppDir cmake --install build
+
+          wget -q https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
+          wget -q https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
+          wget -q https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/linuxdeploy-plugin-appimage-x86_64.AppImage
+          chmod +x linuxdeploy*.AppImage
+
+          export LDAI_OUTPUT="AcreetionOSMediaWriter-linux-x86_64-${{ env.TAG_NAME }}.AppImage"
+          ./linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --output appimage
+
+      - name: Create DEB
+        run: |
+          set -eo pipefail
+          TAG="${{ env.TAG_NAME }}"
+          VERSION_STRIPPED=$(sed "s/-.*//" <<< "$TAG")
+          if [[ "$VERSION_STRIPPED" == "" ]]; then
+            VERSION_STRIPPED=5.3.50
+          fi
+
+          DEB_DIR=deb-staging
+          DESTDIR=$(pwd)/$DEB_DIR cmake --install build
+
+          INSTALLED_SIZE=$(du -sk $DEB_DIR | cut -f1)
+
+          mkdir -p $DEB_DIR/DEBIAN
+          cat > $DEB_DIR/DEBIAN/control << DEBCTRL
+          Package: acreetionos-mediawriter
+          Version: ${VERSION_STRIPPED}
+          Architecture: amd64
+          Maintainer: Natalie Spiva <natalie@acreetionos.org>
+          Installed-Size: ${INSTALLED_SIZE}
+          Section: utils
+          Priority: optional
+          Homepage: https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter
+          Depends: libc6, liblzma5, libglib2.0-0, qml6-module-qtqml, qml6-module-qtqml-models, qml6-module-qtquick-controls, qml6-module-qtquick-layouts, qml6-module-qtquick-window, qml6-module-qtquick-dialogs, hicolor-icon-theme
+          Recommends: polkitd, udisks2
+          Description: AcreetionOS Media Writer - Write AcreetionOS images to portable drives
+           A tool to create a bootable live USB drive with an edition of AcreetionOS.
+           It can automatically download the required image and write it to a USB
+           flash drive. Also supports restoring the drive back to normal afterwards.
+           .
+           Based on Fedora Media Writer by the Fedora Project.
+          DEBCTRL
+
+          dpkg-deb --build $DEB_DIR "AcreetionOSMediaWriter-linux-x86_64-$TAG.deb"
+
+      - name: Upload AppImage to GitHub (release)
+        run: |
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="AcreetionOSMediaWriter-linux-x86_64-${{ env.TAG_NAME }}.AppImage"
+
+      - name: Upload DEB to GitHub (release)
+        run: |
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="AcreetionOSMediaWriter-linux-x86_64-${{ env.TAG_NAME }}.deb"
+
+  Flatpak:
+    needs: create-release
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.10
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set env (TAG_NAME)
+        run: echo "TAG_NAME=$(bash ./dist/get-tag-name.sh)" >> $GITHUB_ENV
+
+      - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
+        with:
+          bundle: "org.acreetionos.MediaWriter.flatpak"
+          manifest-path: "dist/flatpak/org.acreetionos.MediaWriter.json"
+          cache-key: flatpak-builder-${{ github.sha }}
+
+      - name: Upload to GitHub (release)
+        run: |
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="org.acreetionos.MediaWriter.flatpak"
+
+  RPM:
+    needs: create-release
+    runs-on: ubuntu-latest
+    container: fedora:41
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set env (TAG_NAME)
+        run: echo "TAG_NAME=$(bash ./dist/get-tag-name.sh)" >> $GITHUB_ENV
+
+      - name: Install build dependencies
+        run: |
+          dnf install -y cmake make gcc-c++ gettext \
+            qt6-qtbase-devel qt6-qtdeclarative-devel qt6-qtsvg-devel \
+            xz-devel desktop-file-utils rpm-build
+
+      - name: Build
+        run: |
+          cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+          cmake --build build --parallel
+
+      - name: Create RPM
+        run: |
+          set -eo pipefail
+          TAG="$TAG_NAME"
+          VERSION_STRIPPED=$(sed "s/-.*//" <<< "$TAG")
+          if [[ "$VERSION_STRIPPED" == "" ]]; then
+            VERSION_STRIPPED=5.3.50
+          fi
+
+          DESTDIR=$(pwd)/rpm-staging cmake --install build
+
+          mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+
+          cat > ~/rpmbuild/SPECS/acreetionos-mediawriter.spec << RPMSEC
+          Name:           acreetionos-mediawriter
+          Version:        ${VERSION_STRIPPED}
+          Release:        1
+          Summary:        AcreetionOS Media Writer
+          License:        GPL-2.0+
+          URL:            https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter
+
+          %description
+          A tool to write images of AcreetionOS media to portable drives
+          like flash drives or memory cards.
+
+          %install
+          :
+
+          %files
+          %{_bindir}/mediawriter
+          %{_libexecdir}/mediawriter/
+          %{_datadir}/applications/org.acreetionos.MediaWriter.desktop
+          %{_datadir}/metainfo/org.acreetionos.MediaWriter.metainfo.xml
+          %{_datadir}/icons/hicolor/*/apps/org.acreetionos.MediaWriter.png
+          RPMSEC
+
+          rpmbuild -bb \
+            --buildroot "$(pwd)/rpm-staging" \
+            --define "__spec_install_pre :" \
+            ~/rpmbuild/SPECS/acreetionos-mediawriter.spec
+
+          cp ~/rpmbuild/RPMS/x86_64/*.rpm "AcreetionOSMediaWriter-linux-x86_64-$TAG.rpm"
+
+      - name: Upload RPM to GitHub (release)
+        run: |
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="AcreetionOSMediaWriter-linux-x86_64-${{ env.TAG_NAME }}.rpm"
+
   macOS:
+    needs: create-release
     strategy:
       matrix:
         arch: [x86_64, arm64]
@@ -70,6 +274,7 @@ jobs:
           bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="AcreetionOSMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg"
 
   Windows-MSVC:
+    needs: create-release
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@v6
