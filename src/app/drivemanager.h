@@ -190,6 +190,7 @@ public:
 
     Q_INVOKABLE void setImage(ReleaseVariant *data);
     Q_INVOKABLE bool write(ReleaseVariant *data);
+    Q_INVOKABLE bool ventoyInstall(ReleaseVariant *data);
     Q_INVOKABLE void cancel();
     Q_INVOKABLE void restore();
 
@@ -201,8 +202,10 @@ public Q_SLOTS:
 private Q_SLOTS:
     void onWriteReadyRead();
     void onRestoreReadyRead();
+    void onVentoyReadyRead();
     void onWriteFinished(int exitCode, QProcess::ExitStatus status);
     void onRestoreFinished(int exitCode, QProcess::ExitStatus status);
+    void onVentoyFinished(int exitCode, QProcess::ExitStatus status);
     void onErrorOccurred(QProcess::ProcessError error);
 
 Q_SIGNALS:

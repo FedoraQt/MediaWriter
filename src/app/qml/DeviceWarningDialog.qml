@@ -65,11 +65,17 @@ ModalDialog {
                     selectedPage = Units.Page.DownloadPage
                     if (drives.selected) {
                         drives.selected.setImage(releases.variant)
-                        drives.selected.write(releases.variant)
+                        // Use Ventoy if selected, otherwise use direct write
+                        if (ventoyMethod.checked)
+                            drives.selected.ventoyInstall(releases.variant)
+                        else
+                            drives.selected.write(releases.variant)
                     }
                 }
                 text: {
                     const variant = releases.selected && releases.selected.version ? releases.selected.version.variant : null
+                    if (ventoyMethod.checked)
+                        return qsTr("Install Ventoy")
                     if (selectedOption === Units.MainSelect.Write || (variant && downloadManager.isDownloaded(variant.url)))
                         return qsTr("Write")
                     if (Qt.platform.os === "windows" || Qt.platform.os === "osx")

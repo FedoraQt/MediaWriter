@@ -24,6 +24,7 @@
 #include <QTranslator>
 
 #include "restorejob.h"
+#include "ventoyinstalljob.h"
 #include "writejob.h"
 
 int main(int argc, char *argv[])
@@ -39,6 +40,14 @@ int main(int argc, char *argv[])
         new RestoreJob(app.arguments()[2]);
     } else if (app.arguments().count() == 4 && app.arguments()[1] == "write") {
         new WriteJob(app.arguments()[2], app.arguments()[3]);
+    } else if (app.arguments().count() == 5 && app.arguments()[1] == "ventoy-install") {
+        // Usage: helper ventoy-install <device-identifier> <image-path> <gpt|mbr>
+        // Installs Ventoy (GPT or MBR) to the device and copies the ISO
+        new VentoyInstallJob(app.arguments()[2], app.arguments()[3], app.arguments()[4] == "gpt");
+    } else if (app.arguments().count() == 4 && app.arguments()[1] == "ventoy-install") {
+        // Usage: helper ventoy-install <device-identifier> <gpt|mbr>
+        // Just installs Ventoy (GPT or MBR) without copying an ISO
+        new VentoyInstallJob(app.arguments()[2], app.arguments()[3] == "gpt");
     } else {
         QTextStream err(stderr);
         err << "Helper: Wrong arguments entered";

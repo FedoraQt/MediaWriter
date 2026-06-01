@@ -99,6 +99,18 @@ QQC2.Page {
                 id: prevButton
                 text: qsTr("Previous")
                 onClicked: previousButtonClicked()
+                background: Rectangle {
+                    color: acreetionOSTheme.surface
+                    border.color: acreetionOSTheme.brandBlue
+                    border.width: 1
+                    radius: 4
+                }
+                contentItem: Text {
+                    text: prevButton.text
+                    color: acreetionOSTheme.brandBlue
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                }
             }
 
             Item {
@@ -109,6 +121,16 @@ QQC2.Page {
                 id: nextButton
                 text: qsTr("Next")
                 onClicked: nextButtonClicked();
+                background: Rectangle {
+                    color: nextButton.enabled ? acreetionOSTheme.accent : acreetionOSTheme.surfaceDark
+                    radius: 4
+                }
+                contentItem: Text {
+                    text: nextButton.text
+                    color: acreetionOSTheme.textOnAccent
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                }
             }
         }
     }

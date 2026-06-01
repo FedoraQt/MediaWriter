@@ -25,6 +25,8 @@ Label {
     id: mainLabel
     property int level: 0
     font.bold: level > 1
+    // AcreetionOS brand colour for headings
+    color: acreetionOSTheme.brandBlue
     
     font.pointSize: referenceLabel.font.pointSize + level
     property list<QtObject> children: [

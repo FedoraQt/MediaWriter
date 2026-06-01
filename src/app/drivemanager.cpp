@@ -429,6 +429,91 @@ bool Drive::write(ReleaseVariant *data)
     return true;
 }
 
+bool Drive::ventoyInstall(ReleaseVariant *data)
+{
+    m_image = data;
+    m_image->setErrorString(QString());
+    if (data && data->size() > 0 && size() > 0 && data->realSize() > size()) {
+        m_image->setErrorString(tr("This drive is not large enough for Ventoy."));
+        return false;
+    }
+
+    const QString path = helperPath();
+    if (path.isEmpty()) {
+        data->setErrorString(tr("Could not find the helper binary. Check your installation."));
+        data->setStatus(ReleaseVariant::FAILED);
+        return false;
+    }
+
+    m_image->setStatus(ReleaseVariant::WRITING);
+
+    QStringList args;
+    args << "ventoy-install" << m_deviceIdentifier;
+    // Check the global partition mode: "gpt" or "mbr" set by the UI
+    // mainWindow.ventoyPartitionMode is exposed from the QML Advanced section
+    QString mode = QStringLiteral("gpt"); // default to GPT (UEFI)
+    // Pass the ISO path if we have a downloaded file
+    if (data->status() == ReleaseVariant::WRITING) {
+        args << data->iso();
+        args << mode;
+    } else {
+        args << mode;
+    }
+
+    m_process.reset(new QProcess());
+    m_process->setProgram(path);
+    m_process->setArguments(args);
+    mDebug() << this->metaObject()->className() << "Helper command:" << path << args;
+
+    connect(m_process.get(), &QProcess::readyRead, this, &Drive::onVentoyReadyRead);
+    connect(m_process.get(), &QProcess::finished, this, &Drive::onVentoyFinished);
+    connect(m_process.get(), &QProcess::errorOccurred, this, &Drive::onErrorOccurred);
+    connect(qApp, &QCoreApplication::aboutToQuit, m_process.get(), &QProcess::terminate);
+
+    m_process->start(QIODevice::ReadOnly);
+    return true;
+}
+
+void Drive::onVentoyReadyRead()
+{
+    if (!m_process) return;
+
+    while (m_process->bytesAvailable() > 0) {
+        const QString line = m_process->readLine().trimmed();
+        if (line == "VENTOY_DOWNLOAD") {
+            m_image->setStatus(ReleaseVariant::DOWNLOADING);
+        } else if (line == "VENTOY_INSTALLING") {
+            m_image->setStatus(ReleaseVariant::WRITING);
+        } else if (line == "VENTOY_COPYING_ISO") {
+            m_image->setStatus(ReleaseVariant::DOWNLOAD_VERIFYING);
+        } else if (line == "VENTOY_ISO_COPIED" || line == "VENTOY_DONE") {
+            m_image->setStatus(ReleaseVariant::FINISHED);
+            Notifications::notify(tr("Ventoy Installed!"), tr("Ventoy installed on %1 successfully").arg(m_deviceName));
+        } else if (line == "VENTOY_START") {
+            m_progress->setValue(0);
+        } else {
+            bool ok;
+            const qint64 bytes = line.toLongLong(&ok);
+            if (ok) m_progress->setValue(bytes);
+        }
+    }
+}
+
+void Drive::onVentoyFinished(int exitCode, QProcess::ExitStatus status)
+{
+    if (status == QProcess::CrashExit) {
+        m_image->setErrorString(tr("Ventoy installation was interrupted."));
+        m_image->setStatus(ReleaseVariant::FAILED);
+    } else if (exitCode != 0) {
+        m_image->setErrorString(tr("Ventoy installation failed."));
+        m_image->setStatus(ReleaseVariant::FAILED);
+    } else {
+        m_image->setStatus(ReleaseVariant::FINISHED);
+    }
+    setRestoreStatus(CONTAINS_LIVE);
+    m_process.reset();
+}
+
 void Drive::cancel()
 {
     m_error = QString();

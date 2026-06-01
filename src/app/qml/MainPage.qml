@@ -35,6 +35,22 @@ Page {
         onClicked: {
             selectedOption = Units.MainSelect.Download
         }
+        contentItem: Text {
+            text: parent.text
+            color: acreetionOSTheme.textPrimary
+            verticalAlignment: Text.AlignVCenter
+            leftPadding: parent.indicator.width + parent.spacing
+        }
+        indicator: Rectangle {
+            implicitWidth: 20
+            implicitHeight: 20
+            x: parent.leftPadding
+            y: parent.height / 2 - height / 2
+            radius: 10
+            color: "transparent"
+            border.color: parent.checked ? acreetionOSTheme.accent : acreetionOSTheme.textSecondary
+            border.width: parent.checked ? 6 : 2
+        }
     }
 
     QQC2.RadioButton {
@@ -42,6 +58,22 @@ Page {
         onClicked: {
             selectedOption = Units.MainSelect.Write
             releases.selectLocalFile("")
+        }
+        contentItem: Text {
+            text: parent.text
+            color: acreetionOSTheme.textPrimary
+            verticalAlignment: Text.AlignVCenter
+            leftPadding: parent.indicator.width + parent.spacing
+        }
+        indicator: Rectangle {
+            implicitWidth: 20
+            implicitHeight: 20
+            x: parent.leftPadding
+            y: parent.height / 2 - height / 2
+            radius: 10
+            color: "transparent"
+            border.color: parent.checked ? acreetionOSTheme.accent : acreetionOSTheme.textSecondary
+            border.width: parent.checked ? 6 : 2
         }
     }
 
@@ -51,6 +83,22 @@ Page {
         text: drives.restoreableDrives.length === 1 ? qsTr("Restore <b>%1</b>").arg(drives.restoreableDrives[0].name) : qsTr("Restore a USB drive (%1 available)").arg(drives.restoreableDrives.length)
         onClicked: {
             selectedOption = Units.MainSelect.Restore
+        }
+        contentItem: Text {
+            text: parent.text
+            color: acreetionOSTheme.textPrimary
+            verticalAlignment: Text.AlignVCenter
+            leftPadding: parent.indicator.width + parent.spacing
+        }
+        indicator: Rectangle {
+            implicitWidth: 20
+            implicitHeight: 20
+            x: parent.leftPadding
+            y: parent.height / 2 - height / 2
+            radius: 10
+            color: "transparent"
+            border.color: parent.checked ? acreetionOSTheme.accent : acreetionOSTheme.textSecondary
+            border.width: parent.checked ? 6 : 2
         }
     }
 

@@ -25,9 +25,8 @@ import QtQuick.Window
 ApplicationWindow {
     id: mainWindow
     visible: true
-    // Use a solid white background to prevent transparency on Cinnamon and other DEs
-    // where the default QQC2 palette.window may have alpha
-    color: "white"
+    // AcreetionOS brand background — light surface colour
+    color: acreetionOSTheme.surface
     minimumWidth: Math.max(640, units.gridUnit * 32)
     maximumWidth: Math.max(640, units.gridUnit * 32)
     minimumHeight: Math.max(480, units.gridUnit * 25)
@@ -37,6 +36,7 @@ ApplicationWindow {
     property int selectedVersion: Units.Source.Product
     property int selectedOption: Units.MainSelect.Download
     property bool eraseVariant: false
+    property string ventoyPartitionMode: "gpt"
     
     StackView {
         id: stackView
@@ -151,6 +151,10 @@ ApplicationWindow {
 
     Units {
         id: units
+    }
+
+    AcreetionOSTheme {
+        id: acreetionOSTheme
     }
     
     AboutDialog {

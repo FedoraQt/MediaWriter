@@ -10,6 +10,7 @@ set(HELPER_SRCS
     main.cpp
     job.cpp
     restorejob.cpp
+    ventoyinstalljob.cpp
     writejob.cpp
 )
 

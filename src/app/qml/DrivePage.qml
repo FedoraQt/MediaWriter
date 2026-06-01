@@ -153,6 +153,84 @@ Page {
             onCheckedChanged: mainWindow.eraseVariant = !mainWindow.eraseVariant
         }
     }
+
+    ColumnLayout {
+        Heading {
+            text: qsTr("Write Method")
+            level: 1
+        }
+
+        QQC2.RowLayout {
+            QQC2.RadioButton {
+                id: directWriteMethod
+                text: qsTr("Direct Write")
+                checked: true
+                QQC2.ToolTip {
+                    text: qsTr("Write directly to the drive (dd-style)")
+                    visible: parent.hovered
+                }
+                contentItem: Text {
+                    text: parent.text
+                    color: acreetionOSTheme.textPrimary
+                    verticalAlignment: Text.AlignVCenter
+                    leftPadding: parent.indicator.width + parent.spacing
+                }
+                indicator: Rectangle {
+                    implicitWidth: 18
+                    implicitHeight: 18
+                    x: parent.leftPadding
+                    y: parent.height / 2 - height / 2
+                    radius: 9
+                    color: "transparent"
+                    border.color: parent.checked ? acreetionOSTheme.accent : acreetionOSTheme.textSecondary
+                    border.width: parent.checked ? 5 : 2
+                }
+            }
+            QQC2.RadioButton {
+                id: ventoyMethod
+                text: qsTr("Ventoy")
+                QQC2.ToolTip {
+                    text: qsTr("Install Ventoy — a bootable USB solution where you drop ISO files onto a partition")
+                    visible: parent.hovered
+                }
+                contentItem: Text {
+                    text: parent.text
+                    color: acreetionOSTheme.textPrimary
+                    verticalAlignment: Text.AlignVCenter
+                    leftPadding: parent.indicator.width + parent.spacing
+                }
+                indicator: Rectangle {
+                    implicitWidth: 18
+                    implicitHeight: 18
+                    x: parent.leftPadding
+                    y: parent.height / 2 - height / 2
+                    radius: 9
+                    color: "transparent"
+                    border.color: parent.checked ? acreetionOSTheme.accent : acreetionOSTheme.textSecondary
+                    border.width: parent.checked ? 5 : 2
+                }
+            }
+        }
+    }
+
+    // Advanced options — collapsed by default, reveals GPT/MBR toggle for Ventoy
+    ColumnLayout {
+        Heading {
+            text: qsTr("Advanced")
+            level: 1
+        }
+
+        QQC2.ComboBox {
+            id: partitionModeCombo
+            Layout.fillWidth: true
+            visible: ventoyMethod.checked
+            model: [qsTr("GPT (UEFI)"), qsTr("MBR (BIOS/Legacy)")]
+            onActivated: function(index) {
+                mainWindow.ventoyPartitionMode = index === 0 ? "gpt" : "mbr"
+            }
+            Component.onCompleted: currentIndex = 0
+        }
+    }
     
     nextButtonEnabled: selectedOption != Units.MainSelect.Write || releases.localFile.iso !== ""
 
