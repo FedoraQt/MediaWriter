@@ -160,7 +160,7 @@ Page {
             level: 1
         }
 
-        QQC2.RowLayout {
+        RowLayout {
             QQC2.RadioButton {
                 id: directWriteMethod
                 text: qsTr("Direct Write")
