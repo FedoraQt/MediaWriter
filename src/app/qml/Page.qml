@@ -99,17 +99,26 @@ QQC2.Page {
                 id: prevButton
                 text: qsTr("Previous")
                 onClicked: previousButtonClicked()
+                implicitWidth: Math.max(units.gridUnit * 6, textMetrics.width + units.gridUnit * 3)
+                implicitHeight: units.gridUnit * 2
                 background: Rectangle {
                     color: acreetionOSTheme.surfaceCard
                     border.color: acreetionOSTheme.green
                     border.width: 1
-                    radius: 4
+                    radius: 6
                 }
                 contentItem: Text {
+                    id: prevBtnText
                     text: prevButton.text
                     color: acreetionOSTheme.green
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: Math.round(units.gridUnit * 0.6)
+                }
+                TextMetrics {
+                    id: textMetrics
+                    text: qsTr("Previous")
+                    font.pixelSize: Math.round(units.gridUnit * 0.6)
                 }
             }
 
@@ -121,17 +130,24 @@ QQC2.Page {
                 id: nextButton
                 text: qsTr("Next")
                 onClicked: nextButtonClicked();
+                implicitWidth: Math.max(units.gridUnit * 6, nextMetrics.width + units.gridUnit * 3)
+                implicitHeight: units.gridUnit * 2
                 background: Rectangle {
                     color: nextButton.enabled ? acreetionOSTheme.buttonBackground(nextButton.enabled,
                         nextButton.hovered, nextButton.pressed) : acreetionOSTheme.surfaceDark
-                    radius: 4
+                    radius: 6
                 }
                 contentItem: Text {
                     text: nextButton.text
                     color: acreetionOSTheme.textOnAccent
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: Math.round(units.gridUnit * 0.5)
+                    font.pixelSize: Math.round(units.gridUnit * 0.6)
+                }
+                TextMetrics {
+                    id: nextMetrics
+                    text: qsTr("Next")
+                    font.pixelSize: Math.round(units.gridUnit * 0.6)
                 }
             }
         }
