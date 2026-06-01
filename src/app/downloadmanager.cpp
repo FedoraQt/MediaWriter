@@ -85,7 +85,12 @@ QString DownloadManager::downloadFile(DownloadReceiver *receiver, const QUrl &ur
     connect(m_current, &QObject::destroyed, [&]() {
         m_current = nullptr;
     });
-    fetchPageAsync(this, "https://mirrors.acreetionos.org/mirrorlist?path=" + url.path());
+    // AcreetionOS: Skip mirror infrastructure and download directly from the ISO URL
+    QNetworkRequest request;
+    request.setUrl(url);
+    if (!options.noUserAgent)
+        request.setHeader(QNetworkRequest::UserAgentHeader, userAgent());
+    m_current->handleNewReply(m_manager.get(request));
 
     return bareFileName + ".part";
 }
