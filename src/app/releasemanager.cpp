@@ -354,8 +354,15 @@ void ReleaseManager::onStringDownloaded(const QString &text)
                 continue;
 
             int version = versionStr.split(".").first().toInt();
-            mDebug() << this->metaObject()->className() << "Adding (from dir)" << release << versionStr << arch;
-            updateUrl(release, version, QString(), "live", "product", QDateTime(), arch, url, QString(), 0);
+
+            // Determine category: official product or community edition
+            // AcreetionOS XL and any future _spins go under Community Editions
+            QString category = "product";
+            if (release.contains("_xl") || release.contains("_spin") || release.contains("_community"))
+                category = "spins";
+
+            mDebug() << this->metaObject()->className() << "Adding (from dir)" << release << versionStr << arch << "category:" << category;
+            updateUrl(release, version, QString(), "live", category, QDateTime(), arch, url, QString(), 0);
         }
     }
 
@@ -488,11 +495,9 @@ QString Release::sourceString()
     case PRODUCT:
         return QString();
     case SPINS:
-        return tr("Community Spins");
     case LABS:
-        return tr("Community Labs");
     case EMERGING:
-        return tr("Atomic Desktops");
+        return tr("Community Editions");
     default:
         return tr("Other");
     }

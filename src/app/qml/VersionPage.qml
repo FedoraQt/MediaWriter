@@ -40,18 +40,19 @@ Page {
     }
 
     QQC2.RadioButton {
-        text: qsTr("Atomic Desktops")
-        onClicked: changeFilter(Units.Source.Emerging)
-    }
-
-    QQC2.RadioButton {
-        text: qsTr("Spins")
+        id: communityRadio
+        text: qsTr("Community Editions")
         onClicked: changeFilter(Units.Source.Spins)
     }
 
-    QQC2.RadioButton {
-        text: qsTr("Labs")
-        onClicked: changeFilter(Units.Source.Labs)
+    // Work-in-progress message when no community editions are available yet
+    QQC2.Label {
+        visible: communityRadio.checked && (!releases.length || releases.length === 0)
+        text: qsTr("Community Editions are a work in progress. Check back soon!")
+        color: acreetionOSTheme.warning
+        font.pixelSize: Math.round(units.gridUnit * 0.55)
+        wrapMode: Text.WordWrap
+        Layout.fillWidth: true
     }
 
     QQC2.ComboBox {
