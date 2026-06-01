@@ -190,7 +190,7 @@ public:
 
     Q_INVOKABLE void setImage(ReleaseVariant *data);
     Q_INVOKABLE bool write(ReleaseVariant *data);
-    Q_INVOKABLE bool ventoyInstall(ReleaseVariant *data);
+    Q_INVOKABLE bool ventoyInstall(ReleaseVariant *data, const QString &partitionMode = QStringLiteral("gpt"));
     Q_INVOKABLE void cancel();
     Q_INVOKABLE void restore();
 

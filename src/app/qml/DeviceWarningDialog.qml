@@ -66,15 +66,15 @@ ModalDialog {
                     if (drives.selected) {
                         drives.selected.setImage(releases.variant)
                         // Use Ventoy if selected, otherwise use direct write
-                        if (ventoyMethod.checked)
-                            drives.selected.ventoyInstall(releases.variant)
+                        if (mainWindow.useVentoy)
+                            drives.selected.ventoyInstall(releases.variant, mainWindow.ventoyPartitionMode)
                         else
                             drives.selected.write(releases.variant)
                     }
                 }
                 text: {
                     const variant = releases.selected && releases.selected.version ? releases.selected.version.variant : null
-                    if (ventoyMethod.checked)
+                    if (mainWindow.useVentoy)
                         return qsTr("Install Ventoy")
                     if (selectedOption === Units.MainSelect.Write || (variant && downloadManager.isDownloaded(variant.url)))
                         return qsTr("Write")

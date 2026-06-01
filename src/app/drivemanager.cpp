@@ -429,7 +429,7 @@ bool Drive::write(ReleaseVariant *data)
     return true;
 }
 
-bool Drive::ventoyInstall(ReleaseVariant *data)
+bool Drive::ventoyInstall(ReleaseVariant *data, const QString &partitionMode)
 {
     m_image = data;
     m_image->setErrorString(QString());
@@ -449,9 +449,8 @@ bool Drive::ventoyInstall(ReleaseVariant *data)
 
     QStringList args;
     args << "ventoy-install" << m_deviceIdentifier;
-    // Check the global partition mode: "gpt" or "mbr" set by the UI
-    // mainWindow.ventoyPartitionMode is exposed from the QML Advanced section
-    QString mode = QStringLiteral("gpt"); // default to GPT (UEFI)
+    // Partition mode: "gpt" for UEFI, "mbr" for BIOS/legacy
+    QString mode = partitionMode.isEmpty() ? QStringLiteral("gpt") : partitionMode;
     // Pass the ISO path if we have a downloaded file
     if (data->status() == ReleaseVariant::WRITING) {
         args << data->iso();

@@ -165,6 +165,7 @@ Page {
                 id: directWriteMethod
                 text: qsTr("Direct Write")
                 checked: true
+                onCheckedChanged: if (checked) mainWindow.useVentoy = false
                 QQC2.ToolTip {
                     text: qsTr("Write directly to the drive (dd-style)")
                     visible: parent.hovered
@@ -189,6 +190,7 @@ Page {
             QQC2.RadioButton {
                 id: ventoyMethod
                 text: qsTr("Ventoy")
+                onCheckedChanged: if (checked) mainWindow.useVentoy = true
                 QQC2.ToolTip {
                     text: qsTr("Install Ventoy — a bootable USB solution where you drop ISO files onto a partition")
                     visible: parent.hovered

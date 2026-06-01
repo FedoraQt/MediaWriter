@@ -37,6 +37,7 @@ ApplicationWindow {
     property int selectedOption: Units.MainSelect.Download
     property bool eraseVariant: false
     property string ventoyPartitionMode: "gpt"
+    property bool useVentoy: false  // set by DrivePage's write method toggle
     
     StackView {
         id: stackView
