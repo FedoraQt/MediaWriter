@@ -183,7 +183,7 @@ Page {
                     y: parent.height / 2 - height / 2
                     radius: 9
                     color: "transparent"
-                    border.color: parent.checked ? acreetionOSTheme.accent : acreetionOSTheme.textSecondary
+                    border.color: parent.checked ? acreetionOSTheme.indicatorChecked : acreetionOSTheme.indicatorBorder
                     border.width: parent.checked ? 5 : 2
                 }
             }
@@ -208,7 +208,7 @@ Page {
                     y: parent.height / 2 - height / 2
                     radius: 9
                     color: "transparent"
-                    border.color: parent.checked ? acreetionOSTheme.accent : acreetionOSTheme.textSecondary
+                    border.color: parent.checked ? acreetionOSTheme.indicatorChecked : acreetionOSTheme.indicatorBorder
                     border.width: parent.checked ? 5 : 2
                 }
             }

@@ -48,7 +48,7 @@ Page {
             y: parent.height / 2 - height / 2
             radius: 10
             color: "transparent"
-            border.color: parent.checked ? acreetionOSTheme.accent : acreetionOSTheme.textSecondary
+            border.color: parent.checked ? acreetionOSTheme.indicatorChecked : acreetionOSTheme.indicatorBorder
             border.width: parent.checked ? 6 : 2
         }
     }
@@ -72,7 +72,7 @@ Page {
             y: parent.height / 2 - height / 2
             radius: 10
             color: "transparent"
-            border.color: parent.checked ? acreetionOSTheme.accent : acreetionOSTheme.textSecondary
+            border.color: parent.checked ? acreetionOSTheme.indicatorChecked : acreetionOSTheme.indicatorBorder
             border.width: parent.checked ? 6 : 2
         }
     }
@@ -97,7 +97,7 @@ Page {
             y: parent.height / 2 - height / 2
             radius: 10
             color: "transparent"
-            border.color: parent.checked ? acreetionOSTheme.accent : acreetionOSTheme.textSecondary
+            border.color: parent.checked ? acreetionOSTheme.indicatorChecked : acreetionOSTheme.indicatorBorder
             border.width: parent.checked ? 6 : 2
         }
     }

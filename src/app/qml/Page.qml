@@ -100,7 +100,7 @@ QQC2.Page {
                 text: qsTr("Previous")
                 onClicked: previousButtonClicked()
                 background: Rectangle {
-                    color: acreetionOSTheme.surface
+                    color: acreetionOSTheme.surfaceAlt
                     border.color: acreetionOSTheme.brandBlue
                     border.width: 1
                     radius: 4
@@ -122,7 +122,8 @@ QQC2.Page {
                 text: qsTr("Next")
                 onClicked: nextButtonClicked();
                 background: Rectangle {
-                    color: nextButton.enabled ? acreetionOSTheme.accent : acreetionOSTheme.surfaceDark
+                    color: nextButton.enabled ? acreetionOSTheme.buttonBackground(nextButton.enabled,
+                        nextButton.hovered, nextButton.pressed) : acreetionOSTheme.surfaceDark
                     radius: 4
                 }
                 contentItem: Text {
@@ -130,6 +131,7 @@ QQC2.Page {
                     color: acreetionOSTheme.textOnAccent
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
+                    font.pixelSize: Math.round(units.gridUnit * 0.5)
                 }
             }
         }

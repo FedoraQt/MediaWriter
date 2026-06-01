@@ -20,12 +20,13 @@
 
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Controls.Basic
 import QtQuick.Window
 
 ApplicationWindow {
     id: mainWindow
     visible: true
-    // AcreetionOS brand background — light surface colour
+    // AcreetionOS brand background — respects dark/light mode
     color: acreetionOSTheme.surface
     minimumWidth: Math.max(640, units.gridUnit * 32)
     maximumWidth: Math.max(640, units.gridUnit * 32)

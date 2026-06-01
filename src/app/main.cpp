@@ -22,6 +22,7 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QStyleHints>
 #include <QTranslator>
 
 #include "crashhandler.h"
@@ -40,7 +41,15 @@ int main(int argc, char **argv)
     if (qEnvironmentVariableIsEmpty("QSG_RENDER_LOOP")) {
         qputenv("QSG_RENDER_LOOP", "basic");
     }
+
+    // Use GTK3 platform theme for native integration on Cinnamon/GNOME/etc
+    // and respect system dark mode preference
+    if (qEnvironmentVariableIsEmpty("QT_QPA_PLATFORMTHEME")) {
+        qputenv("QT_QPA_PLATFORMTHEME", "gtk3");
+    }
 #endif
+
+    // Respect system dark mode preference via GTK3 theme integration
 
     QApplication::setOrganizationDomain("acreetionos.org");
     QApplication::setOrganizationName("acreetionos.org");
