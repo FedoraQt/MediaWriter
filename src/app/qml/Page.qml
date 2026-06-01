@@ -57,10 +57,9 @@ QQC2.Page {
         Image {
             id: image
             Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            Layout.maximumWidth: 280
+            Layout.preferredHeight: Math.min(210, parent.height * 0.4)
             Layout.maximumHeight: 210
+            Layout.fillWidth: true
             source: ""
             fillMode: Image.PreserveAspectFit
             sourceSize.width: parent.width
@@ -86,14 +85,16 @@ QQC2.Page {
             Layout.alignment: Qt.AlignTop
             Layout.fillHeight: true
             Layout.fillWidth: true
+            Layout.minimumHeight: 0
             Layout.leftMargin: units.gridUnit * 4
             Layout.rightMargin: units.gridUnit * 4
+            clip: true
         }
 
         RowLayout {
             id: buttonRow
-
             Layout.alignment: Qt.AlignBottom
+            Layout.topMargin: units.gridUnit
 
             QQC2.Button {
                 id: prevButton
