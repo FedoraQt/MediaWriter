@@ -1,0 +1,40 @@
+Source: acreetionos-mediawriter
+Section: utils
+Priority: optional
+Maintainer: Natalie Spiva <natalie@acreetionos.org>
+Build-Depends: cmake (>= 3.17),
+               debhelper-compat (= 13),
+               qt6-base-dev (>= 6.6.0),
+               qt6-declarative-dev (>= 6.6.0),
+               qt6-svg-dev (>= 6.6.0),
+               qt6-tools-dev,
+               libxkbcommon-dev,
+               liblzma-dev,
+               libglib2.0-dev,
+               itstool,
+               intltool,
+               gettext
+Standards-Version: 4.7.0
+Homepage: https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter
+Rules-Requires-Root: no
+
+Package: acreetionos-mediawriter
+Architecture: linux-any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         qml6-module-qtqml,
+         qml6-module-qtqml-models,
+         qml6-module-qtquick-controls,
+         qml6-module-qtquick-layouts,
+         qml6-module-qtquick-window,
+         qml6-module-qtquick-dialogs,
+         qml6-module-qt5compat-graphicaleffects,
+         hicolor-icon-theme
+Recommends: polkit,
+            udisks2
+Description: AcreetionOS Media Writer - Write AcreetionOS images to portable drives
+ A tool to create a bootable live USB drive with an edition of AcreetionOS.
+ It can automatically download the required image and write it to a USB
+ flash drive. Also supports restoring the drive back to normal afterwards.
+ .
+ Based on Fedora Media Writer by the Fedora Project.
