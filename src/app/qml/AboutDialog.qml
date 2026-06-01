@@ -54,7 +54,7 @@ ModalDialog {
                 width: mainColumn.width - units.gridUnit * 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 text: qsTr("Based on Fedora Media Writer by the Fedora Project")
-                font.pixelSize: units.fontSize - 2
+                font.pixelSize: Math.round(units.gridUnit * 0.6)
                 color: palette.mid
             }
 
