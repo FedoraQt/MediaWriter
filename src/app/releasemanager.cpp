@@ -28,6 +28,7 @@
 #include <QtQml>
 
 #include <QJsonDocument>
+#include <QRegularExpression>
 
 using namespace Qt::Literals::StringLiterals;
 
@@ -284,53 +285,78 @@ ReleaseVariant *ReleaseManager::variant()
 
 void ReleaseManager::onStringDownloaded(const QString &text)
 {
-    mDebug() << this->metaObject()->className() << "Received a metadata json";
+    mDebug() << this->metaObject()->className() << "Received release data";
 
-    QRegularExpression re("(\\d+)\\s?(\\S+)?");
-    auto doc = QJsonDocument::fromJson(text.toUtf8());
+    // AcreetionOS fork: support two data sources
+    //   1. Static JSON (https://acreetionos.org/releases.json) — structured release metadata
+    //   2. HTML directory listing (https://ftp2.osuosl.org/pub/acreetionos/) — auto-discovers ISOs
+    //
+    // JSON takes precedence; if parsing fails we try the HTML fallback so that
+    // new ISO uploads are automatically picked up without updating the app.
 
-    for (auto i : doc.array()) {
-        QJsonObject obj = i.toObject();
-        QString arch = obj["arch"].toString().toLower();
-        QString url = obj["link"].toString();
-        QString category = obj["variant"].toString().toLower();
-        QString release = obj["subvariant"].toString().toLower();
-        QString versionWithStatus = obj["version"].toString().toLower();
-        QString sha256 = obj["sha256"].toString();
-        QString type = "live";
-        QDateTime releaseDate = QDateTime::fromString((obj["releaseDate"].toString()), "yyyy-MM-dd");
-        int64_t size = obj["size"].toString().toLongLong();
-        int version;
-        QString status;
+    QJsonParseError jsonError;
+    auto doc = QJsonDocument::fromJson(text.toUtf8(), &jsonError);
 
-        if (QStringList{"cloud", "cloud_base", "everything", "minimal", "docker", "docker_base"}.contains(release))
-            continue;
+    if (jsonError.error == QJsonParseError::NoError && doc.isArray()) {
+        QRegularExpression re("(\\d+)\\s?(\\S+)?");
+        for (auto i : doc.array()) {
+            QJsonObject obj = i.toObject();
+            QString arch = obj["arch"].toString().toLower();
+            QString url = obj["link"].toString();
+            QString category = obj["variant"].toString().toLower();
+            QString release = obj["subvariant"].toString().toLower();
+            QString versionWithStatus = obj["version"].toString().toLower();
+            QString sha256 = obj["sha256"].toString();
+            QString type = "live";
+            QDateTime releaseDate = QDateTime::fromString((obj["releaseDate"].toString()), "yyyy-MM-dd");
+            int64_t size = obj["size"].toString().toLongLong();
 
-        // Filter out non-ISO or OSTree boot images
-        if (!url.endsWith("iso") || url.contains("-osb-") || url.contains("-provisioner-"))
-            continue;
-
-        if (release.contains("workstation") && !url.contains("Live") && !url.contains("armhfp"))
-            continue;
-
-        if (!re.match(versionWithStatus).hasMatch())
-            continue;
-
-        if (release.contains("server")) {
-            // we want a DVD for x86 but we don't want it for ARM
-            if (!arch.contains("arm") && !url.contains("dvd"))
+            if (QStringList{"cloud", "cloud_base", "everything", "minimal", "docker", "docker_base"}.contains(release))
                 continue;
-            else if (arch.contains("arm") && url.contains("dvd"))
+            if (!url.endsWith("iso") || url.contains("-osb-") || url.contains("-provisioner-"))
                 continue;
+            if (!re.match(versionWithStatus).hasMatch())
+                continue;
+
+            int version = re.match(versionWithStatus).captured(1).toInt();
+            QString status = re.match(versionWithStatus).captured(2);
+
+            mDebug() << this->metaObject()->className() << "Adding" << release << versionWithStatus << arch;
+            if (!release.isEmpty() && !url.isEmpty() && !arch.isEmpty())
+                updateUrl(release, version, status, type, category, releaseDate, arch, url, sha256, size);
         }
+    } else {
+        // ---- HTML directory listing fallback (used with ftp2.osuosl.org) ----
+        // The OSUOSL FTP server returns Apache-style HTML directory listings.
+        // We extract every <a href="...iso"> link to dynamically discover ISOs.
+        // This means new releases are picked up automatically as soon as they
+        // are uploaded — no app update or JSON manifest needed.
 
-        version = re.match(versionWithStatus).captured(1).toInt();
-        status = re.match(versionWithStatus).captured(2);
+        QRegularExpression isoRe("<a\\s+href=\"([^\"]+\\.iso)\"[^>]*>([^<]+)</a>");
+        auto it = isoRe.globalMatch(text);
+        while (it.hasNext()) {
+            auto match = it.next();
+            QString filename = match.captured(1);
+            QString url = QStringLiteral("https://ftp2.osuosl.org/pub/acreetionos/%1").arg(filename);
 
-        mDebug() << this->metaObject()->className() << "Adding" << release << versionWithStatus << arch;
+            // Parse filename with pattern: Name-Version-Arch.iso
+            // e.g. "AcreetionOS-1.0-x86_64.iso" -> Name="acreetionos", Version="1.0", Arch="x86_64"
+            QRegularExpression fileRe("^(.+?)[-_]([\\d.]+)-([\\w_]+)\\.iso$");
+            auto fileMatch = fileRe.match(filename);
+            if (!fileMatch.hasMatch())
+                continue;
 
-        if (!release.isEmpty() && !url.isEmpty() && !arch.isEmpty())
-            updateUrl(release, version, status, type, category, releaseDate, arch, url, sha256, size);
+            QString release = fileMatch.captured(1).toLower();
+            QString versionStr = fileMatch.captured(2);
+            QString arch = fileMatch.captured(3).toLower();
+
+            if (release.isEmpty() || arch.isEmpty())
+                continue;
+
+            int version = versionStr.split(".").first().toInt();
+            mDebug() << this->metaObject()->className() << "Adding (from dir)" << release << versionStr << arch;
+            updateUrl(release, version, QString(), "live", "product", QDateTime(), arch, url, QString(), 0);
+        }
     }
 
     m_beingUpdated = false;

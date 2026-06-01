@@ -50,6 +50,7 @@ ModalDialog {
                 text: qsTr("Version %1").arg(mediawriterVersion)
             }
 
+            // AcreetionOS: Attribution line — required by the GPL and common courtesy
             QQC2.Label {
                 width: mainColumn.width - units.gridUnit * 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere

@@ -83,7 +83,9 @@ public:
 #else
     bool logging{true};
 #endif
-    QString releasesUrl{"https://acreetionos.org/releases.json"};
+    // AcreetionOS: Points to the OSUOSL FTP directory listing so ISOs are discovered
+    // dynamically. Falls back to parsing HTML. Override with --releasesUrl for JSON.
+    QString releasesUrl{"https://ftp2.osuosl.org/pub/acreetionos/"};
     bool noUserAgent{false}; // disables sending the custom AcreetionOS Media Writer user agent header
 };
 

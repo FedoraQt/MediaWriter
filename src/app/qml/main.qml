@@ -20,13 +20,14 @@
 
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Window
 
 ApplicationWindow {
     id: mainWindow
     visible: true
-    background: Rectangle {
-        color: mainWindow.palette.window
-    }
+    // Use a solid white background to prevent transparency on Cinnamon and other DEs
+    // where the default QQC2 palette.window may have alpha
+    color: "white"
     minimumWidth: Math.max(640, units.gridUnit * 32)
     maximumWidth: Math.max(640, units.gridUnit * 32)
     minimumHeight: Math.max(480, units.gridUnit * 25)
