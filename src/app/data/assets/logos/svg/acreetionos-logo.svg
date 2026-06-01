@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
-  <rect width="120" height="120" fill="#1793d1" rx="12"/>
-  <text x="60" y="76" text-anchor="middle" font-family="sans-serif" font-size="40" font-weight="bold" fill="white">AO</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225" width="400" height="225">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1793d1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d6efd;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="225" rx="20" fill="url(#bg)"/>
+  <text x="200" y="148" text-anchor="middle" font-family="sans-serif" font-size="90" font-weight="bold" fill="white">AO</text>
 </svg>
