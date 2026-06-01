@@ -1,5 +1,6 @@
 /*
- * Fedora Media Writer
+ * AcreetionOS Media Writer
+ * Copyright (C) 2026 Natalie <natalie@acreetionos.org>
  * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or

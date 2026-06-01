@@ -1,5 +1,6 @@
 /*
- * Fedora Media Writer
+ * AcreetionOS Media Writer
+ * Copyright (C) 2026 Natalie <natalie@acreetionos.org>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -130,7 +131,7 @@ int Options::parse(QStringList argv)
         MessageHandler::category.setEnabled(QtDebugMsg, true);
 
     if (options.logging) {
-        QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/FedoraMediaWriter.log";
+        QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/AcreetionOSMediaWriter.log";
         debugFile = fopen(debugFileName.toStdString().c_str(), "w");
         if (!debugFile) {
             debugFile = stderr;
@@ -184,4 +185,4 @@ void MessageHandler::install()
     qInstallMessageHandler(myMessageOutput); // Install the handler
 }
 
-QLoggingCategory MessageHandler::category{"org.fedoraproject.MediaWriter"};
+QLoggingCategory MessageHandler::category{"org.acreetionos.MediaWriter"};

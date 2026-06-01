@@ -1,5 +1,6 @@
 /*
- * Fedora Media Writer
+ * AcreetionOS Media Writer
+ * Copyright (C) 2026 Natalie <natalie@acreetionos.org>
  * Copyright (C) 2024 Jan Grulich <jgrulichredhat.com>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
@@ -41,9 +42,9 @@ int main(int argc, char **argv)
     }
 #endif
 
-    QApplication::setOrganizationDomain("fedoraproject.org");
-    QApplication::setOrganizationName("fedoraproject.org");
-    QApplication::setApplicationName("MediaWriter");
+    QApplication::setOrganizationDomain("acreetionos.org");
+    QApplication::setOrganizationName("acreetionos.org");
+    QApplication::setApplicationName("AcreetionMediaWriter");
 
     QApplication app(argc, argv);
     const int parseResult = options.parse(app.arguments());
@@ -60,7 +61,7 @@ int main(int argc, char **argv)
         app.installTranslator(&translator);
     }
 
-    QGuiApplication::setDesktopFileName("org.fedoraproject.MediaWriter");
+    QGuiApplication::setDesktopFileName("org.acreetionos.MediaWriter");
 
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;

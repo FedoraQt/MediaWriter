@@ -1,5 +1,5 @@
 /*
- * Fedora Media Writer
+ * AcreetionOS Media Writer
  * Copyright (C) 2024 Jan Grulich <jgrulich@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -40,7 +40,7 @@ WinDiskManagement::WinDiskManagement(QObject *parent, bool isHelper)
     HRESULT res = S_OK;
 
     if (isHelper) {
-        QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/FedoraMediaWriter-helper.log";
+        QString debugFileName = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/AcreetionOSMediaWriter-helper.log";
         m_debugFile = _fsopen(debugFileName.toStdString().c_str(), "w", _SH_DENYWR);
 
         // Looks that for the app itself CoInitializeEx will be called by the platform plugin, but not

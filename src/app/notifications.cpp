@@ -1,5 +1,6 @@
 /*
- * Fedora Media Writer
+ * AcreetionOS Media Writer
+ * Copyright (C) 2026 Natalie <natalie@acreetionos.org>
  * Copyright (C) 2017 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -30,7 +31,7 @@
 void Notifications::notify(const QString &title, const QString &body)
 {
     QDBusInterface notifications("org.freedesktop.Notifications", "/org/freedesktop/Notifications", "org.freedesktop.Notifications", QDBusConnection::sessionBus());
-    auto reply = notifications.call("Notify", "Fedora Media Writer", 0U, "org.fedoraproject.MediaWriter", title, body, QStringList{}, QVariantMap{}, -1);
+    auto reply = notifications.call("Notify", "AcreetionOS Media Writer", 0U, "org.acreetionos.MediaWriter", title, body, QStringList{}, QVariantMap{}, -1);
     if (reply.type() == QDBusMessage::ErrorMessage)
         mWarning() << "Couldn't send a notification:" << reply.errorName() << "-" << reply.errorMessage();
 }

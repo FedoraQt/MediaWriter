@@ -1,0 +1,42 @@
+# Maintainer: Natalie <natalie@acreetionos.org>
+# Contributor: Jan Grulich <jgrulich@redhat.com>
+
+pkgname=mediawriter
+pkgver=5.3.1
+pkgrel=1
+pkgdesc="AcreetionOS Media Writer - Write AcreetionOS Images to Portable Media"
+arch=('x86_64')
+url="https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter"
+license=('GPL2')
+depends=(
+  'qt6-base'
+  'qt6-declarative'
+  'qt6-svg'
+  'xz'
+  'glibc'
+  'hicolor-icon-theme'
+)
+makedepends=(
+  'cmake'
+)
+optdepends=(
+  'polkit: Authorization for writing to disks'
+  'udisks2: Disk Management Service for disk installation'
+)
+conflicts=('mediawriter-git')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+  cd "${srcdir}/MediaWriter-${pkgver}"
+  cmake -B build \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=ON
+  cmake --build build
+}
+
+package() {
+  cd "${srcdir}/MediaWriter-${pkgver}"
+  DESTDIR="${pkgdir}" cmake --install build
+}

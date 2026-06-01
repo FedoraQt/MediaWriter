@@ -1,5 +1,6 @@
 /*
- * Fedora Media Writer
+ * AcreetionOS Media Writer
+ * Copyright (C) 2026 Natalie <natalie@acreetionos.org>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -47,7 +48,7 @@ void stopArbiter() {
 
 DADissenterRef OnMountApproval(DADiskRef disk, void *context) {
     (void) disk; (void) context; // unused
-    return DADissenterCreate(kCFAllocatorDefault, kDAReturnExclusiveAccess, CFSTR("Fedora Media Writer"));
+    return DADissenterCreate(kCFAllocatorDefault, kDAReturnExclusiveAccess, CFSTR("AcreetionOS Media Writer"));
 }
 
 

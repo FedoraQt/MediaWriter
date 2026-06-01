@@ -49,25 +49,25 @@ jobs:
       - name: Bundle
         run: |
           set -eo pipefail
-          "$QT_ROOT_DIR"/bin/macdeployqt build/src/app/FedoraMediaWriter.app -qmldir=src/app/qml -executable=build/src/app/FedoraMediaWriter.app/Contents/MacOS/helper
+          "$QT_ROOT_DIR"/bin/macdeployqt build/src/app/AcreetionOSMediaWriter.app -qmldir=src/app/qml -executable=build/src/app/AcreetionOSMediaWriter.app/Contents/MacOS/helper
           # No idea why but macdeployqt deploys debug libs too, just remove them, maybe fix this sometimes
-          for i in `find build/src/app/FedoraMediaWriter.app/ -name '*.dSYM'`; do rm -fr "$i"; done
+          for i in `find build/src/app/AcreetionOSMediaWriter.app/ -name '*.dSYM'`; do rm -fr "$i"; done
           cd build/src/app/
-          "$QT_ROOT_DIR"/bin/macdeployqt FedoraMediaWriter.app -dmg -always-overwrite
-          mv FedoraMediaWriter.dmg ../../../FedoraMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
+          "$QT_ROOT_DIR"/bin/macdeployqt AcreetionOSMediaWriter.app -dmg -always-overwrite
+          mv AcreetionOSMediaWriter.dmg ../../../AcreetionOSMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg 2>/dev/null || mv "AcreetionOS Media Writer.dmg" ../../../AcreetionOSMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
 
       - name: Upload artifact (for direct download from workflow)
         uses: actions/upload-artifact@v6
         with:
           # Use the dmg_arch_suffix for the artifact name
-          name: FedoraMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
-          path: FedoraMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
+          name: AcreetionOSMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
+          path: AcreetionOSMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
 
       - name: Upload to GitHub (release)
         run: |
           set -eo pipefail
           # Pass the full filename including the architecture suffix
-          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg"
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="AcreetionOSMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg"
 
   Windows-MSVC:
     runs-on: windows-2022
@@ -181,7 +181,7 @@ jobs:
           rm -rf NScurl.zip NScurl_temp
 
           "/c/Program Files (x86)/NSIS/makensis.exe" -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
-          mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64-${{ env.TAG_NAME }}.exe"
+          mv dist/win/AMW-setup.exe ./"AcreetionOSMediaWriter-win64-${{ env.TAG_NAME }}.exe"
 
       - name: Portable
         shell: bash
@@ -189,22 +189,22 @@ jobs:
           # Remove uninstall.log as it's only needed for the installer
           rm -f build/app/release/uninstall.log
 
-          mkdir -p FedoraMediaWriter-portable
-          cp -r build/app/release/* FedoraMediaWriter-portable/
+          mkdir -p AcreetionOSMediaWriter-portable
+          cp -r build/app/release/* AcreetionOSMediaWriter-portable/
 
-          7z a -tzip "FedoraMediaWriter-win64-portable-${{ env.TAG_NAME }}.zip" ./FedoraMediaWriter-portable/*
+          7z a -tzip "AcreetionOSMediaWriter-win64-portable-${{ env.TAG_NAME }}.zip" ./AcreetionOSMediaWriter-portable/*
 
       - name: Upload Portable to GitHub (release)
         run: |
-          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-win64-portable-${{ env.TAG_NAME }}.zip"
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="AcreetionOSMediaWriter-win64-portable-${{ env.TAG_NAME }}.zip"
 
       - name: Upload to GitHub (release)
         run: |
-          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-win64-${{ env.TAG_NAME }}.exe"
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="AcreetionOSMediaWriter-win64-${{ env.TAG_NAME }}.exe"
 
       - name: Publish to WinGet
         uses: vedantmgoyal9/winget-releaser@main
         with:
-          identifier: Fedora.FedoraMediaWriter
+          identifier: AcreetionOS.AcreetionOSMediaWriter
           version: ${{ env.TAG_NAME }}
           token: ${{ secrets.WINGET_TOKEN }}

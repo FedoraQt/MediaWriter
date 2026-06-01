@@ -1,5 +1,6 @@
 /*
- * Fedora Media Writer
+ * AcreetionOS Media Writer
+ * Copyright (C) 2026 Natalie <natalie@acreetionos.org>
  * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
@@ -37,7 +38,7 @@ ModalDialog {
             spacing: units.gridUnit
 
             Heading {
-                text: qsTr("About Fedora Media Writer")
+                text: qsTr("About AcreetionOS Media Writer")
                 level: 3
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 width: mainColumn.width - units.gridUnit * 2
@@ -52,14 +53,22 @@ ModalDialog {
             QQC2.Label {
                 width: mainColumn.width - units.gridUnit * 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                visible: releases.beingUpdated
-                text: qsTr("Fedora Media Writer is now checking for new releases")
+                text: qsTr("Based on Fedora Media Writer by the Fedora Project")
+                font.pixelSize: units.fontSize - 2
+                color: palette.mid
             }
 
             QQC2.Label {
                 width: mainColumn.width - units.gridUnit * 2
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-                text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://github.com/FedoraQt/MediaWriter/issues\"><font color=\"%1\">https://github.com/FedoraQt/MediaWriter/</font></a>").arg(palette.link)
+                visible: releases.beingUpdated
+                text: qsTr("AcreetionOS Media Writer is now checking for new releases")
+            }
+
+            QQC2.Label {
+                width: mainColumn.width - units.gridUnit * 2
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                text: qsTr("Please report bugs or your suggestions on %1").arg("<a href=\"https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter/issues\"><font color=\"%1\">https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter/</font></a>").arg(palette.link)
                 textFormat: Text.RichText
                 onLinkActivated: Qt.openUrlExternally(link)
 

@@ -1,10 +1,10 @@
-# Fedora Media Writer on macOS
+# AcreetionOS Media Writer on macOS
 
-![Fedora Media Writer on macOS](/dist/screenshots/mac_main.png)
+![AcreetionOS Media Writer on macOS](/dist/screenshots/mac_main.png)
 
 ## Running
 
-The process of running Fedora Media Writer on a Mac computer is the same as every other Mac application.
+The process of running AcreetionOS Media Writer on a Mac computer is the same as every other Mac application.
 
 ### System configuration
 
@@ -21,11 +21,11 @@ run our pre-built binaries you have to run `xattr -d com.apple.quarantine Fedora
 ### Known issues 
 
 There is a known issue in progress bar on macOS 26 in Qt 6.9.3.
-Fedora Media Writer issue: https://github.com/FedoraQt/MediaWriter/issues/897
+AcreetionOS Media Writer issue: https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter/issues
 
 ## Building
 
-You can build Fedora Media Writer yourself. It has just a few dependencies and building it is a matter of just running a few commands.
+You can build AcreetionOS Media Writer yourself. It has just a few dependencies and building it is a matter of just running a few commands.
 
 ### Dependencies
 
@@ -33,7 +33,7 @@ You can build Fedora Media Writer yourself. It has just a few dependencies and b
 
 ### Steps
 
-You can use Qt Creator to build and work with the application. If not using that, the process is basically just these two commands you need to run inside the Fedora Media Writer source code directory:
+You can use Qt Creator to build and work with the application. If not using that, the process is basically just these two commands you need to run inside the AcreetionOS Media Writer source code directory:
 
 ```
 cmake

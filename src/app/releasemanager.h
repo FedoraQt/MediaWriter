@@ -1,5 +1,6 @@
 /*
- * Fedora Media Writer
+ * AcreetionOS Media Writer
+ * Copyright (C) 2026 Natalie <natalie@acreetionos.org>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -184,12 +185,12 @@ private:
 /**
  * @brief The Release class
  *
- * The class representing a fedora flavor, like for example Workstation or KDE Plasma Desktop spin.
+ * The class representing a release flavor, like for example Workstation or KDE Plasma Desktop spin.
  *
  * It can have multiple versions.
  *
  * @property index the index in the list
- * @property name the name of the release, like "Fedora Workstation"
+ * @property name the name of the release, 
  * @property summary the summary describing the release - displayed on the main screen
  * @property description the extensive description of the release - displayed on the detail screen
  * @property source one of the sources listed in the @ref Source enum

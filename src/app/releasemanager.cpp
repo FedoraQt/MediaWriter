@@ -1,5 +1,6 @@
 /*
- * Fedora Media Writer
+ * AcreetionOS Media Writer
+ * Copyright (C) 2026 Natalie <natalie@acreetionos.org>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -461,11 +462,11 @@ QString Release::sourceString()
     case PRODUCT:
         return QString();
     case SPINS:
-        return tr("Fedora Spins");
+        return tr("Community Spins");
     case LABS:
-        return tr("Fedora Labs");
+        return tr("Community Labs");
     case EMERGING:
-        return tr("Fedora Atomic Desktops");
+        return tr("Atomic Desktops");
     default:
         return tr("Other");
     }

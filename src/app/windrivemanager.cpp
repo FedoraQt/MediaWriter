@@ -1,5 +1,6 @@
 /*
- * Fedora Media Writer
+ * AcreetionOS Media Writer
+ * Copyright (C) 2026 Natalie <natalie@acreetionos.org>
  * Copyright (C) 2022-2026 Jan Grulich <jgrulich@redhat.com>
  * Copyright (C) 2011-2022 Pete Batard <pete@akeo.ie>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>

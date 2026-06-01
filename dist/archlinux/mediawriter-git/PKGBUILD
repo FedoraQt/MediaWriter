@@ -1,0 +1,49 @@
+# Maintainer: Natalie <natalie@acreetionos.org>
+
+pkgname=mediawriter-git
+_pkgname=mediawriter
+pkgver=5.3.50
+pkgrel=1
+pkgdesc="AcreetionOS Media Writer - Write AcreetionOS Images to Portable Media (development version)"
+arch=('x86_64')
+url="https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter"
+license=('GPL2')
+depends=(
+  'qt6-base'
+  'qt6-declarative'
+  'qt6-svg'
+  'xz'
+  'glibc'
+  'hicolor-icon-theme'
+)
+makedepends=(
+  'cmake'
+  'git'
+)
+optdepends=(
+  'polkit: Authorization for writing to disks'
+  'udisks2: Disk Management Service for disk installation'
+)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git+https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  git describe --tags --long --always | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  cmake -B build \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=ON
+  cmake --build build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}"
+  DESTDIR="${pkgdir}" cmake --install build
+}

@@ -1,5 +1,6 @@
 /*
- * Fedora Media Writer
+ * AcreetionOS Media Writer
+ * Copyright (C) 2026 Natalie <natalie@acreetionos.org>
  * Copyright (C) 2016 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or
@@ -82,8 +83,8 @@ public:
 #else
     bool logging{true};
 #endif
-    QString releasesUrl{"https://fedoraproject.org/releases.json"};
-    bool noUserAgent{false}; // disables sending the custom Fedora Media Writer user agent header
+    QString releasesUrl{"https://acreetionos.org/releases.json"};
+    bool noUserAgent{false}; // disables sending the custom AcreetionOS Media Writer user agent header
 };
 
 class MessageHandler

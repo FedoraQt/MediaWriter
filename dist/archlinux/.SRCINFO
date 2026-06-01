@@ -1,0 +1,21 @@
+pkgbase = mediawriter
+	pkgdesc = AcreetionOS Media Writer - Write AcreetionOS Images to Portable Media
+	pkgver = 5.3.1
+	pkgrel = 1
+	url = https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = xz
+	depends = glibc
+	depends = hicolor-icon-theme
+	optdepends = polkit: Authorization for writing to disks
+	optdepends = udisks2: Disk Management Service for disk installation
+	conflicts = mediawriter-git
+	source = https://github.com/FedoraQt/MediaWriter/archive/5.3.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = mediawriter

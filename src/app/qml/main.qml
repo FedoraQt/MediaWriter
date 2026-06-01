@@ -1,5 +1,6 @@
 /*
- * Fedora Media Writer
+ * AcreetionOS Media Writer
+ * Copyright (C) 2026 Natalie <natalie@acreetionos.org>
  * Copyright (C) 2021-2022 Evžen Gasta <evzen.ml@seznam.cz>
  *
  * This program is free software; you can redistribute it and/or
@@ -82,7 +83,7 @@ ApplicationWindow {
                 when: selectedPage == Units.Page.MainPage
                 PropertyChanges { 
                     target: mainWindow
-                    title: qsTr("Fedora Media Writer") 
+                    title: qsTr("AcreetionOS Media Writer") 
                 }
 
                 StateChangeScript {
@@ -101,7 +102,7 @@ ApplicationWindow {
             State {
                 name: "versionPage"
                 when: selectedPage == Units.Page.VersionPage
-                PropertyChanges { target: mainWindow; title: qsTr("Select Fedora Version") }
+                PropertyChanges { target: mainWindow; title: qsTr("Select Release") }
                 StateChangeScript {
                     script: {
                         //state was pushing same page when returing from drivePage
@@ -129,7 +130,7 @@ ApplicationWindow {
                 when: selectedPage == Units.Page.DownloadPage
                 PropertyChanges {
                     target: mainWindow
-                    title: releases.variant ? releases.variant.statusString : qsTr("Fedora Media Writer")
+                    title: releases.variant ? releases.variant.statusString : qsTr("AcreetionOS Media Writer")
                 }
                 StateChangeScript {
                     script: { stackView.push("DownloadPage.qml") }

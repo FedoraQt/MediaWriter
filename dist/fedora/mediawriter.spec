@@ -1,11 +1,10 @@
 Name:           mediawriter
 Version:        5.0.0
 Release:        1%{?dist}
-Summary:        Fedora Media Writer
+Summary:        AcreetionOS Media Writer
 
-License:        GPLv2+
-URL:            https://github.com/FedoraQt/MediaWriter
-Source0:        https://github.com/FedoraQt/MediaWriter/archive/MediaWriter-%{version}.tar.gz
+URL:            https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter
+Source0:        https://gitlab.acreetionos.org/natalie/AcreetionMediaWriter/-/archive/MediaWriter-%{version}.tar.gz
 
 Provides:       liveusb-creator = %{version}-%{release}
 Obsoletes:      liveusb-creator <= 3.95.4-2
@@ -36,7 +35,7 @@ Requires: udisks
 %endif
 
 %description
-A tool to write images of Fedora media to portable drives
+A tool to write images of AcreetionOS media to portable drives
 like flash drives or memory cards.
 
 %prep
@@ -51,22 +50,22 @@ like flash drives or memory cards.
 %cmake_install
 
 %check
-appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.fedoraproject.MediaWriter.metainfo.xml
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/org.acreetionos.MediaWriter.metainfo.xml
 
 %files
 %{_bindir}/%{name}
 %{_libexecdir}/%{name}/
-%{_datadir}/metainfo/org.fedoraproject.MediaWriter.metainfo.xml
-%{_datadir}/applications/org.fedoraproject.MediaWriter.desktop
-%{_datadir}/icons/hicolor/16x16/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/22x22/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/24x24/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/32x32/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/48x48/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/64x64/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/128x128/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/256x256/apps/org.fedoraproject.MediaWriter.png
-%{_datadir}/icons/hicolor/512x512/apps/org.fedoraproject.MediaWriter.png
+%{_datadir}/metainfo/org.acreetionos.MediaWriter.metainfo.xml
+%{_datadir}/applications/org.acreetionos.MediaWriter.desktop
+%{_datadir}/icons/hicolor/16x16/apps/org.acreetionos.MediaWriter.png
+%{_datadir}/icons/hicolor/22x22/apps/org.acreetionos.MediaWriter.png
+%{_datadir}/icons/hicolor/24x24/apps/org.acreetionos.MediaWriter.png
+%{_datadir}/icons/hicolor/32x32/apps/org.acreetionos.MediaWriter.png
+%{_datadir}/icons/hicolor/48x48/apps/org.acreetionos.MediaWriter.png
+%{_datadir}/icons/hicolor/64x64/apps/org.acreetionos.MediaWriter.png
+%{_datadir}/icons/hicolor/128x128/apps/org.acreetionos.MediaWriter.png
+%{_datadir}/icons/hicolor/256x256/apps/org.acreetionos.MediaWriter.png
+%{_datadir}/icons/hicolor/512x512/apps/org.acreetionos.MediaWriter.png
 
 %changelog
 * Mon May 09 06 2022 Jan Grulich <jgrulich@redhat.com> - 5.0.0-1
