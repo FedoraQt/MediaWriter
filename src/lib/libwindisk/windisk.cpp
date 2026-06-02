@@ -31,6 +31,7 @@
 #include <guiddef.h>
 // Define the partition GUID for a basic data partition (for GPT)
 DEFINE_GUID(PARTITION_BASIC_DATA_GUID, 0xebd0a0a2, 0xb9e5, 0x4433, 0x87, 0xc0, 0x68, 0xb6, 0xb7, 0x26, 0x99, 0xc7);
+DEFINE_GUID(PARTITION_MSFT_RESERVED_GUID, 0xe3c9e316, 0x0b5c, 0x4db8, 0x81, 0x7d, 0xf9, 0x2d, 0xf0, 0x02, 0x15, 0xae);
 
 #pragma comment(lib, "wbemuuid.lib")
 
@@ -82,8 +83,9 @@ WinDiskManagement::WinDiskManagement(QObject *parent, bool isHelper)
     res = m_IWbemLocator->ConnectServer(_bstr_t(L"ROOT\\Microsoft\\Windows\\Storage"), NULL, NULL, NULL, 0, NULL, NULL, &m_IWbemStorageServices);
     if (FAILED(res)) {
         _com_error err(res);
-        logMessage(QtWarningMsg, QStringLiteral("Could not connect to Window Storage. Error = %1").arg(QString::fromWCharArray(err.ErrorMessage())));
-        return;
+        logMessage(QtWarningMsg, QStringLiteral("Could not connect to Windows Storage. Error = %1. Will use CIMV2 fallback.").arg(QString::fromWCharArray(err.ErrorMessage())));
+    } else {
+        m_storageAvailable = true;
     }
 
     m_wmiInitialized = true;
@@ -226,6 +228,10 @@ QMap<quint32, bool> WinDiskManagement::getDevicePartitions(quint32 index)
         return result;
     }
 
+    if (!m_storageAvailable) {
+        return getDevicePartitionsFallback(index);
+    }
+
     HRESULT res = S_OK;
     IEnumWbemClassObject *pPartitionObjects = NULL;
     std::wstring partitionQuery = L"SELECT * FROM MSFT_Partition WHERE DiskNumber = " + std::to_wstring(index);
@@ -233,8 +239,9 @@ QMap<quint32, bool> WinDiskManagement::getDevicePartitions(quint32 index)
     res = m_IWbemStorageServices->ExecQuery(_bstr_t(L"WQL"), _bstr_t(partitionQuery.c_str()), WBEM_FLAG_FORWARD_ONLY | WBEM_FLAG_RETURN_IMMEDIATELY, NULL, &pPartitionObjects);
     if (FAILED(res)) {
         _com_error err(res);
-        logMessage(QtCriticalMsg, QStringLiteral("Query for disk partitions failed. Error = %1").arg(QString::fromWCharArray(err.ErrorMessage())));
-        return result;
+        logMessage(QtWarningMsg, QStringLiteral("MSFT_Partition query failed, trying CIMV2 fallback. Error = %1").arg(QString::fromWCharArray(err.ErrorMessage())));
+        m_storageAvailable = false;
+        return getDevicePartitionsFallback(index);
     }
 
     while (true) {
@@ -339,6 +346,10 @@ std::unique_ptr<WinDisk> WinDiskManagement::getDiskDriveInformation(quint32 inde
         return result;
     }
 
+    if (!m_storageAvailable) {
+        return getDiskDriveInformationFallback(index);
+    }
+
     HRESULT res = S_OK;
     IEnumWbemClassObject *pEnumDiskObjects = NULL;
 
@@ -346,8 +357,9 @@ std::unique_ptr<WinDisk> WinDiskManagement::getDiskDriveInformation(quint32 inde
     res = m_IWbemStorageServices->ExecQuery(_bstr_t(L"WQL"), _bstr_t(deviceQuery.c_str()), WBEM_FLAG_RETURN_IMMEDIATELY, NULL, &pEnumDiskObjects);
     if (FAILED(res)) {
         _com_error err(res);
-        logMessage(QtCriticalMsg, QStringLiteral("WMI query failed. Error = %1").arg(QString::fromWCharArray(err.ErrorMessage())));
-        return result;
+        logMessage(QtWarningMsg, QStringLiteral("MSFT_Disk query failed, trying CIMV2 fallback. Error = %1").arg(QString::fromWCharArray(err.ErrorMessage())));
+        m_storageAvailable = false;
+        return getDiskDriveInformationFallback(index);
     }
 
     while (true) {
@@ -432,6 +444,12 @@ std::unique_ptr<WinDisk> WinDiskManagement::getDiskDriveInformation(quint32 inde
     }
     pEnumDiskObjects->Release();
 
+    if (result->name().isEmpty() || !result->size() || result->serialNumber().isEmpty()) {
+        logMessage(QtWarningMsg, QStringLiteral("MSFT_Disk returned incomplete data, trying CIMV2 fallback"));
+        m_storageAvailable = false;
+        return getDiskDriveInformationFallback(index);
+    }
+
     return result;
 }
 
@@ -442,6 +460,10 @@ bool WinDiskManagement::clearPartitions(qint32 index)
     if (!m_wmiInitialized) {
         logMessage(QtWarningMsg, QStringLiteral("WMI interface is not initialized"));
         return false;
+    }
+
+    if (!m_storageAvailable) {
+        return clearPartitionsFallback(index);
     }
 
     HRESULT res = S_OK;
@@ -503,6 +525,10 @@ bool WinDiskManagement::formatPartition(const QChar &driveLetter)
     if (!m_wmiInitialized) {
         logMessage(QtCriticalMsg, QStringLiteral("WMI interface is not initialized"));
         return false;
+    }
+
+    if (!m_storageAvailable) {
+        return formatPartitionFallback(driveLetter);
     }
 
     HRESULT res = S_OK;
@@ -645,6 +671,11 @@ bool WinDiskManagement::refreshDiskDrive(const QString &diskPath)
     if (!m_wmiInitialized) {
         logMessage(QtCriticalMsg, QStringLiteral("WMI interface is not initialized"));
         return false;
+    }
+
+    if (!m_storageAvailable) {
+        logMessage(QtDebugMsg, QStringLiteral("Storage namespace unavailable, skipping MSFT_Disk refresh (callers use refreshPartitionLayout instead)"));
+        return true;
     }
 
     HRESULT res = S_OK;
@@ -1105,6 +1136,311 @@ bool WinDiskManagement::refreshPartitionLayout(HANDLE driveHandle)
     BOOL ret = DeviceIoControl(driveHandle, IOCTL_DISK_UPDATE_PROPERTIES, NULL, 0, NULL, 0, NULL, NULL);
     if (!ret) {
         logMessage(QtCriticalMsg, QStringLiteral("Couldn't update disk properties."));
+        return false;
+    }
+
+    return true;
+}
+
+/*
+ * CIMV2/WinAPI fallback implementations
+ */
+
+std::unique_ptr<WinDisk> WinDiskManagement::getDiskDriveInformationFallback(quint32 index)
+{
+    logMessage(QtDebugMsg, QStringLiteral("Using CIMV2 fallback (Win32_DiskDrive) for disk info on index %1").arg(index));
+
+    std::unique_ptr<WinDisk> result = std::make_unique<WinDisk>(index);
+
+    HRESULT res = S_OK;
+    IEnumWbemClassObject *pEnumDiskObjects = NULL;
+
+    std::wstring deviceQuery = L"SELECT * FROM Win32_DiskDrive WHERE Index = " + std::to_wstring(index);
+    res = m_IWbemServices->ExecQuery(_bstr_t(L"WQL"), _bstr_t(deviceQuery.c_str()), WBEM_FLAG_RETURN_IMMEDIATELY, NULL, &pEnumDiskObjects);
+    if (FAILED(res)) {
+        _com_error err(res);
+        logMessage(QtCriticalMsg, QStringLiteral("Win32_DiskDrive query failed. Error = %1").arg(QString::fromWCharArray(err.ErrorMessage())));
+        return result;
+    }
+
+    while (true) {
+        IWbemClassObject *pDiskObject = NULL;
+        ULONG uReturn = 0;
+        pEnumDiskObjects->Next(WBEM_INFINITE, 1, &pDiskObject, &uReturn);
+        if (uReturn == 0) {
+            break;
+        }
+
+        VARIANT var;
+        if ((pDiskObject->Get(_bstr_t(L"Model"), 0, &var, 0, 0)) == WBEM_S_NO_ERROR) {
+            if (var.vt == VT_BSTR) {
+                result->setName(QString::fromWCharArray(var.bstrVal));
+                logMessage(QtDebugMsg, QStringLiteral("Disk name: %1").arg(result->name()));
+            }
+            VariantClear(&var);
+        }
+
+        if ((pDiskObject->Get(_bstr_t(L"Size"), 0, &var, 0, 0)) == WBEM_S_NO_ERROR) {
+            if (var.vt == VT_BSTR) {
+                result->setSize(QString::fromWCharArray(var.bstrVal).toULongLong());
+            } else if (var.vt == VT_I4) {
+                result->setSize(var.intVal);
+            } else if (var.vt == VT_UI4) {
+                result->setSize(var.uintVal);
+            }
+            logMessage(QtDebugMsg, QStringLiteral("Size %1").arg(result->size()));
+            VariantClear(&var);
+        }
+
+        if ((pDiskObject->Get(_bstr_t(L"BytesPerSector"), 0, &var, 0, 0)) == WBEM_S_NO_ERROR) {
+            if (var.vt == VT_I4) {
+                result->setSectorSize(var.intVal);
+            } else if (var.vt == VT_UI4) {
+                result->setSectorSize(var.uintVal);
+            }
+            logMessage(QtDebugMsg, QStringLiteral("Sector size %1").arg(result->sectorSize()));
+            VariantClear(&var);
+        }
+
+        if ((pDiskObject->Get(_bstr_t(L"SerialNumber"), 0, &var, 0, 0)) == WBEM_S_NO_ERROR) {
+            if (var.vt == VT_BSTR) {
+                result->setSerialNumber(QString::fromWCharArray(var.bstrVal));
+                logMessage(QtDebugMsg, QStringLiteral("Serial number %1").arg(result->serialNumber()));
+            }
+            VariantClear(&var);
+        }
+
+        if (result->serialNumber().isEmpty() && (pDiskObject->Get(_bstr_t(L"PNPDeviceID"), 0, &var, 0, 0)) == WBEM_S_NO_ERROR) {
+            if (var.vt == VT_BSTR) {
+                result->setSerialNumber(QString::fromWCharArray(var.bstrVal));
+                logMessage(QtDebugMsg, QStringLiteral("Using PNPDeviceID as serial number %1").arg(result->serialNumber()));
+            }
+            VariantClear(&var);
+        }
+        pDiskObject->Release();
+    }
+    pEnumDiskObjects->Release();
+
+    return result;
+}
+
+QMap<quint32, bool> WinDiskManagement::getDevicePartitionsFallback(quint32 index)
+{
+    logMessage(QtDebugMsg, QStringLiteral("Using WinAPI fallback (IOCTL_DISK_GET_DRIVE_LAYOUT_EX) for partitions on index %1").arg(index));
+
+    QMap<quint32, bool> result;
+
+    const QString drivePath = QStringLiteral("\\\\.\\PhysicalDrive%1").arg(index);
+    HANDLE driveHandle = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
+    if (driveHandle == INVALID_HANDLE_VALUE) {
+        logMessage(QtCriticalMsg, QStringLiteral("Failed to open drive for partition enumeration"));
+        return result;
+    }
+
+    auto handleCleanup = qScopeGuard([driveHandle] {
+        CloseHandle(driveHandle);
+    });
+
+    BYTE layoutBuffer[4096] = {0};
+    DRIVE_LAYOUT_INFORMATION_EX *layout = reinterpret_cast<DRIVE_LAYOUT_INFORMATION_EX *>(layoutBuffer);
+    DWORD bytesReturned = 0;
+
+    if (!DeviceIoControl(driveHandle, IOCTL_DISK_GET_DRIVE_LAYOUT_EX, NULL, 0, layoutBuffer, sizeof(layoutBuffer), &bytesReturned, NULL)) {
+        logMessage(QtCriticalMsg, QStringLiteral("IOCTL_DISK_GET_DRIVE_LAYOUT_EX failed: %1").arg(getLastError()));
+        return result;
+    }
+
+    for (DWORD i = 0; i < layout->PartitionCount; i++) {
+        const PARTITION_INFORMATION_EX &part = layout->PartitionEntry[i];
+
+        if (part.PartitionLength.QuadPart == 0) {
+            continue;
+        }
+
+        bool mountable = false;
+        if (layout->PartitionStyle == PARTITION_STYLE_GPT) {
+            mountable = (IsEqualGUID(part.Gpt.PartitionType, PARTITION_BASIC_DATA_GUID) || IsEqualGUID(part.Gpt.PartitionType, PARTITION_MSFT_RESERVED_GUID));
+            if (mountable) {
+                logMessage(QtDebugMsg, QStringLiteral("Found native GPT partition %1").arg(part.PartitionNumber));
+            } else {
+                logMessage(QtDebugMsg, QStringLiteral("Found foreign GPT partition %1 - live image indicator").arg(part.PartitionNumber));
+            }
+        } else if (layout->PartitionStyle == PARTITION_STYLE_MBR) {
+            BYTE mbrType = part.Mbr.PartitionType;
+            mountable = (mbrType == 0x01 || mbrType == 0x04 || mbrType == 0x05 || mbrType == 0x06 || mbrType == 0x07 || mbrType == 0x0B || mbrType == 0x0C || mbrType == 0x0E || mbrType == 0x0F);
+            if (mountable) {
+                logMessage(QtDebugMsg, QStringLiteral("Found native MBR partition %1 (type: 0x%2)").arg(part.PartitionNumber).arg(mbrType, 2, 16, QChar('0')));
+            } else {
+                logMessage(QtDebugMsg, QStringLiteral("Found foreign MBR partition %1 (type: 0x%2) - live image indicator").arg(part.PartitionNumber).arg(mbrType, 2, 16, QChar('0')));
+            }
+        }
+
+        result.insert(part.PartitionNumber, mountable);
+    }
+
+    return result;
+}
+
+bool WinDiskManagement::clearPartitionsFallback(qint32 index)
+{
+    logMessage(QtDebugMsg, QStringLiteral("Using WinAPI fallback to clear partitions on disk with index %1").arg(index));
+
+    const QString drivePath = QStringLiteral("\\\\.\\PhysicalDrive%1").arg(index);
+    HANDLE driveHandle = CreateFile(drivePath.toStdWString().c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
+    if (driveHandle == INVALID_HANDLE_VALUE) {
+        logMessage(QtCriticalMsg, QStringLiteral("Failed to open drive for clearing partitions"));
+        return false;
+    }
+
+    auto cleanup = qScopeGuard([driveHandle] {
+        CloseHandle(driveHandle);
+    });
+
+    if (!clearDiskDrive(driveHandle)) {
+        logMessage(QtCriticalMsg, QStringLiteral("Failed to clear disk drive"));
+        return false;
+    }
+
+    if (!refreshPartitionLayout(driveHandle)) {
+        logMessage(QtWarningMsg, QStringLiteral("Failed to refresh partition layout after clearing"));
+    }
+
+    logMessage(QtDebugMsg, QStringLiteral("Partitions cleared successfully via WinAPI fallback."));
+    return true;
+}
+
+bool WinDiskManagement::formatPartitionFallback(const QChar &driveLetter)
+{
+    logMessage(QtDebugMsg, QStringLiteral("Using CIMV2 fallback (Win32_Volume) to format drive letter %1:").arg(driveLetter));
+
+    HRESULT res = S_OK;
+    IEnumWbemClassObject *pVolumeObjects = NULL;
+    std::wstring query = L"SELECT * FROM Win32_Volume WHERE DriveLetter='";
+    query.push_back(driveLetter.toUpper().unicode());
+    query.push_back(L':');
+    query.push_back(L'\'');
+
+    res = m_IWbemServices->ExecQuery(_bstr_t(L"WQL"), _bstr_t(query.c_str()), WBEM_FLAG_FORWARD_ONLY | WBEM_FLAG_RETURN_IMMEDIATELY, NULL, &pVolumeObjects);
+    if (FAILED(res)) {
+        _com_error err(res);
+        logMessage(QtCriticalMsg, QStringLiteral("Win32_Volume query failed. Error = %1").arg(QString::fromWCharArray(err.ErrorMessage())));
+        return false;
+    }
+
+    bool volumeFound = false;
+    while (true) {
+        IWbemClassObject *pVolumeObject = NULL;
+        ULONG uReturnVolume = 0;
+        pVolumeObjects->Next(WBEM_INFINITE, 1, &pVolumeObject, &uReturnVolume);
+        if (uReturnVolume == 0) {
+            logMessage(QtWarningMsg, QStringLiteral("No volume object"));
+            break;
+        }
+
+        QString volumePath;
+        VARIANT volumePathVar;
+        VariantInit(&volumePathVar);
+        res = pVolumeObject->Get(L"__PATH", 0, &volumePathVar, NULL, NULL);
+        if (SUCCEEDED(res)) {
+            volumePath = QString::fromWCharArray(volumePathVar.bstrVal);
+            VariantClear(&volumePathVar);
+        }
+        pVolumeObject->Release();
+
+        IWbemClassObject *pClass = NULL;
+        IWbemClassObject *pInParamsDefinition = NULL;
+        IWbemClassObject *pInParams = NULL;
+        IWbemClassObject *pOutParams = NULL;
+
+        auto cleanup = qScopeGuard([=] {
+            if (pOutParams) {
+                pOutParams->Release();
+            }
+            if (pInParams) {
+                pInParams->Release();
+            }
+            if (pInParamsDefinition) {
+                pInParamsDefinition->Release();
+            }
+            if (pClass) {
+                pClass->Release();
+            }
+        });
+
+        res = m_IWbemServices->GetObject(_bstr_t(L"Win32_Volume"), 0, NULL, &pClass, NULL);
+        if (FAILED(res)) {
+            _com_error err(res);
+            logMessage(QtCriticalMsg, QStringLiteral("Failed to get Win32_Volume object. Error = %1").arg(QString::fromWCharArray(err.ErrorMessage())));
+            return false;
+        }
+
+        res = pClass->GetMethod(_bstr_t(L"Format"), 0, &pInParamsDefinition, NULL);
+        if (FAILED(res)) {
+            _com_error err(res);
+            logMessage(QtCriticalMsg, QStringLiteral("Failed to get 'Format' method on Win32_Volume. Error = %1").arg(QString::fromWCharArray(err.ErrorMessage())));
+            return false;
+        }
+
+        res = pInParamsDefinition->SpawnInstance(0, &pInParams);
+        if (FAILED(res)) {
+            _com_error err(res);
+            logMessage(QtCriticalMsg, QStringLiteral("WMI spawn instance failed. Error = %1").arg(QString::fromWCharArray(err.ErrorMessage())));
+            return false;
+        }
+
+        VARIANT var;
+        VariantInit(&var);
+        var.vt = VT_BSTR;
+        var.bstrVal = _bstr_t(L"exFAT");
+        res = pInParams->Put(L"FileSystem", 0, &var, 0);
+        VariantClear(&var);
+
+        if (FAILED(res)) {
+            _com_error err(res);
+            logMessage(QtCriticalMsg, QStringLiteral("Failed to set 'FileSystem' parameter. Error = %1").arg(QString::fromWCharArray(err.ErrorMessage())));
+            return false;
+        }
+
+        var.vt = VT_BOOL;
+        var.boolVal = VARIANT_TRUE;
+        res = pInParams->Put(L"QuickFormat", 0, &var, 0);
+        VariantClear(&var);
+
+        if (FAILED(res)) {
+            logMessage(QtCriticalMsg, QStringLiteral("Failed to set 'QuickFormat' parameter."));
+            return false;
+        }
+
+        volumeFound = true;
+        res = m_IWbemServices->ExecMethod(_bstr_t(volumePath.toStdWString().c_str()), _bstr_t(L"Format"), 0, NULL, pInParams, &pOutParams, NULL);
+        if (FAILED(res)) {
+            _com_error err(res);
+            logMessage(QtCriticalMsg, QStringLiteral("Failed to format the volume. Error = %1").arg(QString::fromWCharArray(err.ErrorMessage())));
+        }
+
+        if (pOutParams) {
+            VARIANT returnValueVar;
+            VariantInit(&returnValueVar);
+            pOutParams->Get(L"ReturnValue", 0, &returnValueVar, NULL, NULL);
+            if (returnValueVar.vt == VT_I4 && returnValueVar.intVal != 0) {
+                logMessage(QtCriticalMsg, QStringLiteral("Failed to format the volume. Error code: %1").arg(QString::number(returnValueVar.intVal, 16)));
+                VariantClear(&returnValueVar);
+                return false;
+            } else {
+                logMessage(QtDebugMsg, QStringLiteral("Volume successfully formatted to exFAT via CIMV2 fallback."));
+                volumeFound = true;
+            }
+            pOutParams->Release();
+        }
+
+        if (volumeFound) {
+            break;
+        }
+    }
+    pVolumeObjects->Release();
+
+    if (!volumeFound) {
+        logMessage(QtWarningMsg, QStringLiteral("No volumes found for the partition."));
         return false;
     }
 
