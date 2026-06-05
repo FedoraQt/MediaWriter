@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2026-05-07 17:59+0000\n"
+"PO-Revision-Date: 2026-06-05 08:02+0000\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <https://translate.fedoraproject.org/projects/"
 "fedora-media-writer/mediawriter/sl/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 5.17.1\n"
+"X-Generator: Weblate 2026.6.1\n"
 
 #: ../src/app/qml/AboutDialog.qml:48
 msgctxt "AboutDialog|"
@@ -350,13 +350,10 @@ msgid "This drive is not large enough."
 msgstr "Ta pogon ni dovolj velik."
 
 #: ../src/app/drivemanager.cpp:397
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Could not find the helper binary. Check your installation."
 msgctxt "Drive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
-"Ni bilo mogoče najti izvajalno obliko pomočnika. Preverite vašo namestitev."
+"Ni bilo možno najti izvajalne datoteke pomočnika. Preverite vašo namestitev."
 
 #: ../src/app/drivemanager.cpp:435
 msgctxt "Drive|"
@@ -678,7 +675,7 @@ msgstr "Pripravljeno za pisanje"
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
 msgstr ""
-"Datoteka slike OS je bila shranjena v vašo mapo prenosov. Pisanje ni mogoče"
+"Datoteka slike OS je bila shranjena v vašo mapo prenosov. Pisanje ni možno"
 
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
@@ -1039,12 +1036,9 @@ msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "Zapis celotne slike je spodletel. Skupaj zapisano %1 od %2"
 
 #: ../src/helper/win/writejob.cpp:480
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for data verification for %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
-msgstr "Ni bilo mogoče odpreti pogona za preverjanje podatkov za %1:"
+msgstr "Ni se bilo možno postaviti na začetek pogona za preverjanje"
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
 msgctxt "main|"
@@ -1122,11 +1116,8 @@ msgstr "usb"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
-#, fuzzy
-#| msgctxt "DeviceWarningDialog|"
-#| msgid "Write"
 msgid "writer"
-msgstr "Piši"
+msgstr "writer"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:24
