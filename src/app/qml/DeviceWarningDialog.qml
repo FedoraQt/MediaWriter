@@ -71,9 +71,9 @@ ModalDialog {
                     const variant = releases.selected && releases.selected.version ? releases.selected.version.variant : null
                     if (selectedOption === Units.MainSelect.Write || (variant && downloadManager.isDownloaded(variant.url)))
                         return qsTr("Write")
-                    if (Qt.platform.os === "windows" || Qt.platform.os === "osx")
-                        return qsTr("Download && Write")
-                    return qsTr("Download & Write")
+                    if (!drives.length)
+                        return qsTr("Download")
+                    return qsTr("Download && Write")
                 }
             }
         }
