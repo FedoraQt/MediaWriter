@@ -158,6 +158,8 @@ Page {
     nextButtonText: {
         if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
             return qsTr("Write")
+        if (!drives.length)
+            return qsTr("Download")
         return qsTr("Download && Write")
     }
 
