@@ -158,9 +158,7 @@ Page {
     nextButtonText: {
         if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
             return qsTr("Write")
-        if (Qt.platform.os === "windows" || Qt.platform.os === "osx")
-            return qsTr("Download && Write")
-        return qsTr("Download & Write")
+        return qsTr("Download && Write")
     }
 
     onPreviousButtonClicked: {
