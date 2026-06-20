@@ -12,12 +12,13 @@
 # yangyangdaji <1504305527@qq.com>, 2022, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2026.
 # 耗子 <haozi@loli.email>, 2026.
+# Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>, 2026.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2026-04-02 06:59+0000\n"
-"Last-Translator: 耗子 <haozi@loli.email>\n"
+"PO-Revision-Date: 2026-06-20 09:12+0000\n"
+"Last-Translator: Jean-Baptiste Holcroft <jean-baptiste@holcroft.fr>\n"
 "Language-Team: Chinese (Simplified) <https://translate.fedoraproject.org/"
 "projects/fedora-media-writer/mediawriter/zh_CN/>\n"
 "Language: zh-CN\n"
@@ -25,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.16.2\n"
+"X-Generator: Weblate 2026.6.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:48
@@ -338,6 +339,7 @@ msgid "Retry"
 msgstr "重试"
 
 #: ../src/app/drivemanager.cpp:288
+#, fuzzy
 msgctxt "Drive|"
 msgid "The drive was removed while it was written to."
 msgstr "此驱动器在写入过程中被移除。"
@@ -348,33 +350,37 @@ msgid "This drive is not large enough."
 msgstr "此驱动器容量不足。"
 
 #: ../src/app/drivemanager.cpp:397
+#, fuzzy
 msgctxt "Drive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "找不到辅助程序二进制文件。请检查您的安装。"
+msgstr "找不到 helper 二进制文件，请检查是否已安装。"
 
 #: ../src/app/drivemanager.cpp:435
+#, fuzzy
 msgctxt "Drive|"
 msgid "Stopped before writing has finished."
-msgstr "在写入完成前已停止。"
+msgstr "在写入完成前已被停止。"
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
+#, fuzzy
 msgctxt "Drive|"
 msgid "Finished!"
 msgstr "完成！"
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, qt-format
+#, fuzzy, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 was successful"
 msgstr "成功写入 %1"
 
 #: ../src/app/drivemanager.cpp:536
+#, fuzzy
 msgctxt "Drive|"
 msgid "Error"
 msgstr "错误"
 
 #: ../src/app/drivemanager.cpp:536
-#, qt-format
+#, fuzzy, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 failed"
 msgstr "写入 %1 失败"
@@ -484,7 +490,7 @@ msgstr "重置 <b>%1</b>"
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore a USB drive (%1 available)"
-msgstr "恢复 USB 驱动器（%1 可用）"
+msgstr ""
 
 #: ../src/app/qml/MainPage.qml:62
 msgctxt "MainPage|"
@@ -802,14 +808,15 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "重置驱动器 <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:39
+#, fuzzy
 msgctxt "RestorePage|"
 msgid "Restore Drive"
-msgstr "恢复驱动器"
+msgstr "重置驱动器 <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:48
 msgctxt "RestorePage|"
 msgid "Select a drive to restore"
-msgstr "选择要恢复的驱动器"
+msgstr ""
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
@@ -1021,9 +1028,10 @@ msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "无法写入完整的镜像。总写入：%2 中的 %1"
 
 #: ../src/helper/win/writejob.cpp:480
+#, fuzzy
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
-msgstr "无法定位到驱动器起始位置以进行验证"
+msgstr "无法打开驱动器来为 %1 做数据校验："
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
 msgctxt "main|"
@@ -1055,7 +1063,7 @@ msgstr "Fedora Media Writer"
 #. (itstool) path: component/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "Create a Fedora live USB drive"
-msgstr "创建 Fedora 立付 USB 驱动器"
+msgstr ""
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:16
@@ -1084,42 +1092,43 @@ msgstr ""
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:20
 msgid "iso"
-msgstr "iso"
+msgstr ""
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:21
 msgid "fedora"
-msgstr "fedora"
+msgstr ""
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:22
 msgid "usb"
-msgstr "usb"
+msgstr ""
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
+#, fuzzy
 msgid "writer"
-msgstr "写入工具"
+msgstr "写入"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:24
 msgid "live"
-msgstr "立付"
+msgstr ""
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:25
 msgid "spin"
-msgstr "定制版"
+msgstr ""
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:26
 msgid "creator"
-msgstr "创建工具"
+msgstr ""
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:27
 msgid "media"
-msgstr "介质"
+msgstr ""
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:48
 msgid "Write Fedora images to your portable drives"
@@ -1137,7 +1146,7 @@ msgstr "需要管理员权限！"
 #: NSIS:UninstallPreviousVersion
 msgctxt "NSIS:UninstallPreviousVersion"
 msgid "Uninstalling previous version of ${APPNAME}..."
-msgstr "正在卸载旧版本的 ${APPNAME}..."
+msgstr ""
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
