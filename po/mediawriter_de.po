@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2026-02-08 17:51+0000\n"
+"PO-Revision-Date: 2026-06-01 04:01+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/de/>\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.2\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:48
@@ -356,12 +356,9 @@ msgid "Retry"
 msgstr "Erneut versuchen"
 
 #: ../src/app/drivemanager.cpp:288
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "The drive was removed while it was written to."
 msgctxt "Drive|"
 msgid "The drive was removed while it was written to."
-msgstr "Das Laufwerk wurde während des Schreibvorganges entfernt."
+msgstr "Das Laufwerk wurde entfernt, während darauf geschrieben wurde."
 
 #: ../src/app/drivemanager.cpp:391
 msgctxt "Drive|"
@@ -386,36 +383,26 @@ msgid "Stopped before writing has finished."
 msgstr "Angehalten, bevor der Schreibvorgang abgeschlossen wurde."
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "Drive|"
 msgid "Finished!"
 msgstr "Abgeschlossen!"
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 was successful"
 msgstr "Schreiben von %1 war erfolgreich"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Error"
 msgctxt "Drive|"
 msgid "Error"
 msgstr "Fehler"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 failed"
-msgstr "Schreiben von %1 fehlgeschlagen"
+msgstr "Schreiben von %1 ist fehlgeschlagen"
 
 #: ../src/app/qml/DrivePage.qml:30
 msgctxt "DrivePage|"
@@ -524,7 +511,7 @@ msgstr "<b>%1</b> wiederherstellen"
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore a USB drive (%1 available)"
-msgstr ""
+msgstr "USB-Laufwerk wiederherstellen (%1 verfügbar)"
 
 #: ../src/app/qml/MainPage.qml:62
 msgctxt "MainPage|"
@@ -847,17 +834,14 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "Laufwerk <b>%1</b> wiederherstellen"
 
 #: ../src/app/qml/RestorePage.qml:39
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid "Restore Drive <b>%1</b>"
 msgctxt "RestorePage|"
 msgid "Restore Drive"
-msgstr "Laufwerk <b>%1</b> wiederherstellen"
+msgstr "Laufwerk wiederherstellen"
 
 #: ../src/app/qml/RestorePage.qml:48
 msgctxt "RestorePage|"
 msgid "Select a drive to restore"
-msgstr ""
+msgstr "Laufwerk für die Wiederherstellung auswählen"
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
@@ -1077,13 +1061,11 @@ msgstr ""
 "Fehler beim Schreiben des gesamten Abbilds. Insgesamt geschrieben: %1 von %2"
 
 #: ../src/helper/win/writejob.cpp:480
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for data verification for %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
 msgstr ""
-"Das Laufwerk konnte nicht zur Datenverifizierung für %1 geöffnet werden:"
+"Es war nicht möglich, zur Verifizierung am Anfang des Laufwerks zu "
+"positionieren"
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
 msgctxt "main|"
@@ -1115,7 +1097,7 @@ msgstr "Fedora Media Writer"
 #. (itstool) path: component/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "Create a Fedora live USB drive"
-msgstr ""
+msgstr "Fedora-Live-USB-Laufwerk erstellen"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:16
@@ -1148,45 +1130,42 @@ msgstr ""
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:20
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:21
 msgid "fedora"
-msgstr ""
+msgstr "fedora"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:22
 msgid "usb"
-msgstr ""
+msgstr "usb"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
-#, fuzzy
-#| msgctxt "DeviceWarningDialog|"
-#| msgid "Write"
 msgid "writer"
-msgstr "Schreiben"
+msgstr "schreiber"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:24
 msgid "live"
-msgstr ""
+msgstr "live"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:25
 msgid "spin"
-msgstr ""
+msgstr "drehen"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:26
 msgid "creator"
-msgstr ""
+msgstr "ersteller"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:27
 msgid "media"
-msgstr ""
+msgstr "medium"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:48
 msgid "Write Fedora images to your portable drives"
@@ -1209,7 +1188,7 @@ msgstr "Vorherige Version von ${APPNAME} wird deinstalliert..."
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "Möchten Sie ${APPNAME}? deinstallieren?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"

@@ -6,12 +6,13 @@
 # Niv Baehr <bloop93@gmail.com>, 2016. #zanata
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2018. #zanata, 2021, 2022, 2023, 2024, 2025.
 # "Omer I.S." <omeritzicschwartz@gmail.com>, 2025, 2026.
+# Menachem M A <alfenmen@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2026-03-17 00:58+0000\n"
-"Last-Translator: \"Omer I.S.\" <omeritzicschwartz@gmail.com>\n"
+"PO-Revision-Date: 2026-06-17 12:10+0000\n"
+"Last-Translator: Menachem M A <alfenmen@gmail.com>\n"
 "Language-Team: Hebrew <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/he/>\n"
 "Language: he\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 2 : 1;\n"
-"X-Generator: Weblate 5.16.2\n"
+"X-Generator: Weblate 2026.6.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:48
@@ -69,7 +70,7 @@ msgctxt "CancelDialog|"
 msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
-msgstr "ההורדה והכתיבה של המדיה יבוטלו. אפשר להמשיך בתהליך הזה בכלל עת."
+msgstr "ההורדה והכתיבה של המדיה יבוטלו. אפשר להמשיך בתהליך זה בכל עת."
 
 #: ../src/app/qml/CancelDialog.qml:78
 msgctxt "CancelDialog|"
@@ -828,7 +829,7 @@ msgstr "שחזור הכונן <b>%1</b>"
 #: ../src/app/qml/RestorePage.qml:48
 msgctxt "RestorePage|"
 msgid "Select a drive to restore"
-msgstr ""
+msgstr "בחירת כונן לשיחזור"
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
@@ -1084,7 +1085,7 @@ msgstr "כותב המדיה של Fedora"
 #. (itstool) path: component/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "Create a Fedora live USB drive"
-msgstr ""
+msgstr "צרו כונן USB עם התקנה חיה של פדורה"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:16
@@ -1114,17 +1115,17 @@ msgstr ""
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:20
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:21
 msgid "fedora"
-msgstr ""
+msgstr "פדורה"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:22
 msgid "usb"
-msgstr ""
+msgstr "usb"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
@@ -1137,7 +1138,7 @@ msgstr "כתיבה"
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:24
 msgid "live"
-msgstr ""
+msgstr "התקנה חיה"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:25
@@ -1147,12 +1148,12 @@ msgstr ""
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:26
 msgid "creator"
-msgstr ""
+msgstr "יוצר"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:27
 msgid "media"
-msgstr ""
+msgstr "מדיה"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:48
 msgid "Write Fedora images to your portable drives"
@@ -1227,6 +1228,12 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"בחרת לדלג על התקנת חבילת ההפצה של Visual C++.\n"
+"\n"
+"${APPNAME} עלול שלא לפעול כראוי בלעדיה.\n"
+"\n"
+"אפשר להוריד אותה בנפרד מ:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgctxt "MacDrive|"
 #~ msgid "Could not find the helper binary. Check your installation."

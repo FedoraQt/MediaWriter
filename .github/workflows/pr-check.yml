@@ -134,7 +134,7 @@ jobs:
         shell: bash
         run: |
           eval "$(./dist/win/make-vs2022-env.bat)"
-          git clone https://git.tukaani.org/xz.git
+          git clone https://github.com/tukaani-project/xz.git
           cd xz
           git checkout v5.4.5
           sed -i 's/#include "config.h"//' src/common/common_w32res.rc
