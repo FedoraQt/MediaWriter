@@ -3,7 +3,7 @@
 # #-#-#-#-#  desktop_de.po  #-#-#-#-#
 # Tobias Weise <tobias.weise@web.de>, 2016. #zanata
 # #-#-#-#-#  mediawriter_de.po  #-#-#-#-#
-# Mario Blättermann <mario.blaettermann@gmail.com>, 2016. #zanata, 2025.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2016. #zanata, 2025, 2026.
 # Roman Spirgi <bigant@fedoraproject.org>, 2016. #zanata
 # Tobias Weise <tobias.weise@web.de>, 2016. #zanata
 # Florian H. <postfuerflo@gmail.com>, 2017. #zanata
@@ -22,8 +22,8 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2026-06-01 04:01+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2026-07-01 20:17+0000\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/de/>\n"
 "Language: de\n"
@@ -31,7 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.5\n"
+"X-Generator: Weblate 2026.6.1\n"
 "X-Qt-Contexts: true\n"
 
 #: ../src/app/qml/AboutDialog.qml:48
@@ -366,18 +366,12 @@ msgid "This drive is not large enough."
 msgstr "Das Laufwerk ist nicht ausreichend groß."
 
 #: ../src/app/drivemanager.cpp:397
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Could not find the helper binary. Check your installation."
 msgctxt "Drive|"
 msgid "Could not find the helper binary. Check your installation."
 msgstr ""
 "Die Hilfe konnte nicht gefunden werden. Überprüfen Sie Ihre Installation."
 
 #: ../src/app/drivemanager.cpp:435
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Stopped before writing has finished."
 msgctxt "Drive|"
 msgid "Stopped before writing has finished."
 msgstr "Angehalten, bevor der Schreibvorgang abgeschlossen wurde."
@@ -586,8 +580,8 @@ msgid ""
 "(.iso or .bin)</p>"
 msgstr ""
 "<p> Hier können Sie eine System-Abbilddatei von ihrer Festplatte auswählen, "
-"die dann auf den USB-Stick geschrieben werden soll</p><p>Zur Zeit werden nur "
-"Raw-Abbilddateien (.iso oder .bin) unterstützt</p>"
+"die dann auf den USB-Stick geschrieben werden soll.</p><p>Zur Zeit werden "
+"nur Raw-Abbilddateien (.iso oder .bin) unterstützt.</p>"
 
 #: ../src/app/releasemanager.cpp:454
 msgctxt "Release|"
@@ -1199,6 +1193,11 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Das Herunterladen des Visual C++ Redistributable ist fehlgeschlagen.\n"
+"\n"
+"Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut,\n"
+"oder laden Sie es manuell von folgender Adresse herunter:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
@@ -1219,6 +1218,12 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"Microsoft Visual C++ Redistributable ist nicht auf Ihrem System "
+"installiert.\n"
+"\n"
+"Es wird für den ordnungsgemäßen Betrieb von ${APPNAME} benötigt.\n"
+"\n"
+"Möchten Sie es jetzt herunterladen und installieren? (ca. 25 MB)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1230,6 +1235,13 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Sie haben sich entschieden, die Installation der Visual C++ Redistributable "
+"zu überspringen.\n"
+"\n"
+"${APPNAME} funktioniert ohne es möglicherweise nicht ordnungsgemäß.\n"
+"\n"
+"Sie können es manuell hier herunterladen:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgctxt "MacDrive|"
 #~ msgid "Could not find the helper binary. Check your installation."
