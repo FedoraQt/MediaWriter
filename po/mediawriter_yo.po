@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2026-07-04 17:17+0000\n"
+"PO-Revision-Date: 2026-07-05 21:17+0000\n"
 "Last-Translator: Basil Cat <catice567@gmail.com>\n"
 "Language-Team: Yoruba <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/yo/>\n"
@@ -34,7 +34,7 @@ msgstr "Ẹ̀yà %1"
 #: ../src/app/qml/AboutDialog.qml:64
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Agbéwòránkalẹ̀ Fedora ti ń wá ẹ̀yà tuntun kó lè gbé kalẹ̀"
+msgstr "Agbéwòránkálẹ̀ Fedora ti ń wá ẹ̀yà tuntun kó lè gbé kalẹ̀"
 
 #: ../src/app/qml/AboutDialog.qml:70
 #, qt-format
@@ -200,7 +200,7 @@ msgstr "A ti ń gbé àwòrán%1 kálẹ̀"
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Downloading %1"
-msgstr "A ti ń gbé %1 kálẹ̀"
+msgstr "A ti ń gbà %1 sílẹ̀"
 
 #: ../src/app/qml/DownloadPage.qml:42
 #, qt-format
@@ -228,7 +228,7 @@ msgstr " .Àgbo ló kù"
 #: ../src/app/qml/DownloadPage.qml:55
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr " Àgbẹ̀kan ló kù."
+msgstr " Àgbẹ̀kan ló kù)"
 
 #: ../src/app/qml/DownloadPage.qml:56
 msgctxt "DownloadPage|"
@@ -314,7 +314,7 @@ msgstr ""
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr "Tún un bẹ̀rẹ̀, kó sí rorò láti orí %1 ko lè bẹ̀rẹ̀ sí lò %2."
+msgstr "Tún un pa ko tan, kó sí rorò láti orí %1 ko lè bẹ̀rẹ̀ sí lò %2."
 
 #: ../src/app/qml/DownloadPage.qml:235
 msgctxt "DownloadPage|"
@@ -477,7 +477,7 @@ msgstr "Lọ mú fáílì àwòrán ìgbékálẹ̀"
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "Dá<b>%1</b>padà"
+msgstr "Dá <b>%1</b>padà"
 
 #: ../src/app/qml/MainPage.qml:50
 #, qt-format
@@ -557,9 +557,9 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images "
 "(.iso or .bin)</p>"
 msgstr ""
-"<p>Níbi o lè mú àwòrán àmẹ̀rọṣẹ́ kan láti ẹ̀rọ ìpamọ́ ìbílẹ̀ ẹ̀ ka lé tún gbé kálẹ̀ "
-"sórí ẹ̀rọ ìpamọ́ USB ẹ̀ </p><p> Nísìnsiyi o lè kan gbé àwọn àwòràn ìgbékálẹ̀ "
-"lásán kálẹ̀(.iso àbí .bin)</p>"
+"<p>Níbi lo lè mú àwòrán àmẹ̀rọṣẹ́ kan láti ẹ̀rọ ìpamọ́ ìbílẹ̀ ẹ̀ ka lé tún gbé "
+"kálẹ̀ sórí ẹ̀rọ ìpamọ́ USB ẹ̀ </p><p> Nísìnsiyi o lè kan gbé àwọn àwòràn "
+"ìgbékálẹ̀ lásán kálẹ̀(.iso àbí .bin)</p>"
 
 #: ../src/app/releasemanager.cpp:454
 msgctxt "Release|"
@@ -827,8 +827,8 @@ msgid ""
 "you want to restore it to factory settings? </p>"
 msgstr ""
 "<p align=\"justify\"> Láti gbà gbogbo áàye tó wà lórí ẹ̀rọ-ìpamọ́ yìí, a ní "
-"láti mú padà sí ipò tó wà nú tẹ́lẹ̀. Ètò-àmẹ̀rọṣẹ́ alágbéka àti gbogbo nkan tó "
-"wà lẹ́rọ ìpamọ́ yìí la máa pa rẹ́.</p> <p align=\"justify\"> O ò ní láti mú ẹ̀rọ-"
+"láti mú padà sí ipò tó wànú tẹ́lẹ̀. Ètò-àmẹ̀rọṣẹ́ alágbéka àti gbogbo nkan tó wà "
+"lẹ́rọ ìpamọ́ yìí la máa pa rẹ́.</p> <p align=\"justify\"> O ò ní láti mú ẹ̀rọ-"
 "ìpamọ́ padà ti o tún fẹ́ gbé àwòrán ètò-àmẹ̀rọṣẹ́ míì kálẹ̀.</p> <p "
 "align=\"justify\"> Ṣo fẹ́ mú padà sí ipò tó wànú tẹ́lẹ̀?</p>"
 
@@ -944,29 +944,29 @@ msgstr "Àwọn aṣayàn ìfúnpọ̀ àìtẹ́yìn."
 #: ../src/helper/win/writejob.cpp:318
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
-msgstr ""
+msgstr "Aṣiṣe ìtúsílẹ̀ wà nígbà ta fẹ́ tú fáìlì sílẹ̀."
 
 #: ../src/helper/linux/writejob.cpp:206 ../src/helper/mac/writejob.cpp:304
 #: ../src/helper/win/writejob.cpp:497
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr ""
+msgstr "Bóyá ẹ̀rọ ìpamọ́ ìbílẹ̀ ẹ̀ ti fọ́."
 
 #: ../src/helper/linux/writejob.cpp:211 ../src/helper/mac/writejob.cpp:309
 #: ../src/helper/win/writejob.cpp:502
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr ""
+msgstr "Aṣiṣe àìròtẹ́lẹ̀ wà nígbà ta ń wò àwòrán ìgbékálẹ̀ ẹ̀."
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "A ò lè mọ̀ ipasẹ̀ ayélujára kejìkejì"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "A ò lè ṣí ẹ̀rọ ìpamọ́ ẹ̀ ka lé tún gbé àwòrán kálẹ̀"
 
 #: ../src/helper/win/writejob.cpp:148
 msgctxt "WriteJob|"
@@ -976,97 +976,97 @@ msgstr "A ò lè yọ àwọn ìdò ẹ̀rọ kúrò"
 #: ../src/helper/win/writejob.cpp:155
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "A ò lè yọ àwọn àpín ẹ̀rọ yìí kúrò"
 
 #: ../src/helper/win/writejob.cpp:164
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr ""
+msgstr "A ò lè ṣí ẹ̀rọ-ìpamọ́ ka lè yọ gbogbo nkan kúrò pátápátá"
 
 #: ../src/helper/win/writejob.cpp:170
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr ""
+msgstr "A ò lè tì ẹ̀rọ-ìpamọ́ náà"
 
 #: ../src/helper/win/writejob.cpp:183
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr ""
+msgstr "A ò lè mọ̀ ìdámọ̀ afára"
 
 #: ../src/helper/win/writejob.cpp:189
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr ""
+msgstr "A ò lè wò ẹ̀rọ ìpamọ́ ẹ̀"
 
 #: ../src/helper/win/writejob.cpp:196
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr ""
+msgstr "A ò lè yọ ẹ̀rọ ìpamọ́ ẹ̀ kúrò"
 
 #: ../src/helper/win/writejob.cpp:230 ../src/helper/win/writejob.cpp:396
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr ""
+msgstr "Kò sí ààyè nínú ọkàn-ẹ̀rọ ẹ̀ ta lè lò fún iṣẹ́ yìí"
 
 #: ../src/helper/win/writejob.cpp:296 ../src/helper/win/writejob.cpp:339
 #: ../src/helper/win/writejob.cpp:435
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "A ò tíì kọ́ àwòrán tán"
 
 #: ../src/helper/win/writejob.cpp:428
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "A ti gbé%1 láti %2 kálẹ̀"
 
 #: ../src/helper/win/writejob.cpp:454
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr ""
+msgstr "A ò lè kà àwòrán ìgbékálẹ̀: · "
 
 #: ../src/helper/win/writejob.cpp:460
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "A ò lè gbé gbogbo àwòrán kálẹ̀. A ti kan gbé %1 lára %2 kálẹ̀"
 
 #: ../src/helper/win/writejob.cpp:480
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
-msgstr ""
+msgstr "A ò lè wò ibi ìbẹ̀rẹ̀ ẹ̀rọ ka lè tún jẹ́rìísí"
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
 msgctxt "main|"
 msgid "Fedora Media Writer"
-msgstr ""
+msgstr "Àgbéwòránkálẹ̀ Fedora"
 
 #: ../src/app/qml/main.qml:99
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr ""
+msgstr "Mú lára ẹ̀yà ìtúsílẹ̀ Fedora"
 
 #: ../src/app/qml/main.qml:113
 msgctxt "main|"
 msgid "Select Drive"
-msgstr ""
+msgstr "Yàn ẹ̀rọ ìpamọ́ kan"
 
 #: ../src/app/qml/main.qml:138
 msgctxt "main|"
 msgid "Restore"
-msgstr ""
+msgstr "Mú padà"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: component/name
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:9
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:3
 msgid "Fedora Media Writer"
-msgstr ""
+msgstr "Àgbéwòránkálẹ̀ Fedora"
 
 #. (itstool) path: component/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "Create a Fedora live USB drive"
-msgstr ""
+msgstr "Gbé Fedora kálẹ̀ sí ẹ̀rọ USB ẹ̀"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:16
@@ -1078,6 +1078,12 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
+"Ohun èlò to lè lò ṣe ètò-amẹ̀rọṣẹ́ alágbéká pẹ̀lú Onírúurú Fedora kan. Kíì ṣe "
+"ìgbékálẹ̀ sí USB níkan ti Agbéwòránkálẹ̀ Fedora lè ṣe, ó lè tún gbà àwòrán "
+"ìgbékálẹ̀ sílẹ̀ fún ẹ̀. Ó lè yàn lára àwọn Onírúurú Ìfọwọ́sí(Server, Workstation)"
+", àwọn ìfarahàn Fedora(KDE Plasma Desktop, Xfce Desktop, Cinnamon "
+"Desktop,...) àti àwọn àkójọpọ̀ àmúṣẹ́ Fedora(Design Suite, Security Lab,...). "
+"Ó ń fún ẹ̀ ni ìmọ̀ràn díẹ̀ nípa wọ́n lọ́kọ̀ọ̀kàn ko lè tún yàn dáàdáà fúnra ẹ̀."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:17
@@ -1085,69 +1091,72 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
+"Agbéwòránkálẹ̀ Fedora lè tún ṣiṣẹ́ pẹ̀lú àwọn àwòrán ìgbékálẹ̀ míì to ti lè yàn "
+"láti ẹ̀rọ ìpamọ́ ìbílẹ̀, ṣùgbọ́n jọ, rántí pé a kan dán àwọn àwòrán Fedora wò kó "
+"lè ṣiṣẹ́ dáàdáà pẹ̀lú wọ́n."
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:20
 msgid "iso"
-msgstr ""
+msgstr "àwòrán ìgbékálẹ̀"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:21
 msgid "fedora"
-msgstr ""
+msgstr "fedora"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:22
 msgid "usb"
-msgstr ""
+msgstr "Ẹ̀rọ usb"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
 msgid "writer"
-msgstr ""
+msgstr "Olùgbéwòránkálẹ̀"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:24
 msgid "live"
-msgstr ""
+msgstr "Ètò-àmẹ̀rọṣẹ́ alágbéká"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:25
 msgid "spin"
-msgstr ""
+msgstr "Ìfarahàn"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:26
 msgid "creator"
-msgstr ""
+msgstr "olùdá"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:27
 msgid "media"
-msgstr ""
+msgstr "àwòrán ìgbékálẹ̀"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:48
 msgid "Write Fedora images to your portable drives"
-msgstr ""
+msgstr "Gbé àwọn àwòrán Fedora kálẹ̀ ko lè lò lórí àwọn ẹ̀rọ ìpamọ́ alágbéká ẹ̀"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:98
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;tí a lè kó sì roro;"
 
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "A ti fún ẹ̀ ni ẹ̀tọ́ alákósò!"
 
 #: NSIS:UninstallPreviousVersion
 msgctxt "NSIS:UninstallPreviousVersion"
 msgid "Uninstalling previous version of ${APPNAME}..."
-msgstr ""
+msgstr "A ti ń yọ ẹ̀yà tẹ́lẹ̀ ti${APPNAME} kúrò..."
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "Ṣo fẹ́ yọ ${APPNAME} kúrò?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1158,16 +1167,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"A ò lè gbà Visual C++ Redistributable sílẹ̀ .\n"
+"\n"
+"Jọ wò ipò ayélujára ẹ̀ ko tún gbìyànjú.\n"
+"Àbí, o lé gbà sílẹ̀ fúnra ẹ̀ láti:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "A ti ń gbà Microsoft Visual C++ Redistributable sílẹ̀..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "A ti ń gbé Microsoft Visual C++ Redistributable kálẹ̀..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1178,6 +1192,11 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"Microsoft Visual C++ kò wà lórí ètò-àmẹ̀rọṣẹ́ ẹ̀.\n"
+"\n"
+"Ó yẹ kó wà kí ${APPNAME} ṣiṣẹ́ dáàdáà.\n"
+"\n"
+"Ṣo fẹ́ gbà sílẹ̀ ko lè gbé kálẹ̀(Ó súnmọ́ àgberuku 25)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1189,3 +1208,9 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"O ti ní pé o ò fẹ́ gbé Visual C++ Redistributable sílẹ̀.\n"
+"\n"
+"Láìsí ẹ̀, ${APPNAME} kò lè ṣiṣẹ́ dáàdáà.\n"
+"\n"
+"O lè gbà sílẹ̀ fúnra ẹ̀ láti:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
