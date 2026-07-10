@@ -130,7 +130,7 @@ Page {
             id: messageRestore
             visible: currentStatus === Units.DownloadStatus.Write_Verifying ||
                      currentStatus === Units.DownloadStatus.Writing
-            text: qsTr("Your drive will be resized to a smaller capacity. You may resize it back to normal by using Fedora Media Writer. This will remove installation media from your drive.")
+            text: qsTr("Your drive is being resized to a smaller capacity. You may resize it back to normal by running Fedora Media Writer again and selecting the Restore option.")
             width: infoColumn.width
             wrapMode: QQC2.Label.Wrap
         }
