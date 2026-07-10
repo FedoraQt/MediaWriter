@@ -21,6 +21,7 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QStyleHints>
 #include <QTranslator>
 
 #include "crashhandler.h"
@@ -46,6 +47,7 @@ int main(int argc, char **argv)
     QApplication::setApplicationName("MediaWriter");
 
     QApplication app(argc, argv);
+    app.styleHints()->setTabFocusBehavior(Qt::TabFocusAllControls);
     const int parseResult = options.parse(app.arguments());
     if (parseResult >= 0) {
         return parseResult;
