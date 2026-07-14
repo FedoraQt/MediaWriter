@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2016 Jiri Eischmann <eischmann@redhat.com> -->
-
 <component type="desktop-application">
+	<!-- Copyright 2016 Jiri Eischmann <eischmann@redhat.com> -->
 	<id>org.fedoraproject.MediaWriter.desktop</id>
 	<launchable type="desktop-id">org.fedoraproject.MediaWriter.desktop</launchable>
 	<project_license>GPL-2.0+</project_license>
@@ -32,7 +31,9 @@
 		<screenshot type="default"><image type="source">https://github.com/FedoraQt/MediaWriter/raw/main/dist/screenshots/linux_main.png</image></screenshot>
 	    <screenshot><image type="source">https://github.com/FedoraQt/MediaWriter/raw/main/dist/screenshots/linux_select_release.png</image></screenshot>
 	</screenshots>
-	<developer_name>Jan Grulich</developer_name>
+	<developer id="org.fedoraproject">
+		<name>Jan Grulich</name>
+	</developer>
 	<update_contact>jgrulich@redhat.com</update_contact>
 	<content_rating type="oars-1.1"/>
 	<releases>
