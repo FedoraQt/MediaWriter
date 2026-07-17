@@ -44,6 +44,10 @@ QQC2.Page {
     property alias previousButtonEnabled: prevButton.enabled
     property alias nextButtonEnabled: nextButton.enabled
 
+    // Button.Shortcut
+    property string previousButtonShortcut: "Alt+P"
+    property string nextButtonShortcut: "Alt+N"
+
     // Button.Clicked
     signal previousButtonClicked()
     signal nextButtonClicked()
@@ -96,8 +100,13 @@ QQC2.Page {
 
             QQC2.Button {
                 id: prevButton
-                text: qsTr("Previous")
+                text: mainWindow.mnemonic(qsTr("<u>P</u>revious"))
                 onClicked: previousButtonClicked()
+                Shortcut {
+                    sequence: previousButtonShortcut
+                    enabled: previousButtonShortcut !== "" && prevButton.visible && prevButton.enabled
+                    onActivated: previousButtonClicked()
+                }
             }
 
             Item {
@@ -106,8 +115,13 @@ QQC2.Page {
 
             QQC2.Button {
                 id: nextButton
-                text: qsTr("Next")
+                text: mainWindow.mnemonic(qsTr("<u>N</u>ext"))
                 onClicked: nextButtonClicked();
+                Shortcut {
+                    sequence: nextButtonShortcut
+                    enabled: nextButtonShortcut !== "" && nextButton.visible && nextButton.enabled
+                    onActivated: nextButtonClicked()
+                }
             }
         }
     }

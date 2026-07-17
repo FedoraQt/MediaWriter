@@ -88,12 +88,17 @@ Page {
             QQC2.Button {
                 id: selectFileButton
                 Layout.alignment: Qt.AlignRight
-                text: qsTr("Select...")
+                text: mainWindow.mnemonic(qsTr("<u>S</u>elect..."))
                 onClicked: {
                     if (portalFileDialog.isAvailable)
                         portalFileDialog.open()
                     else
                         fileDialog.open()
+                }
+                Shortcut {
+                    sequence: "Alt+S"
+                    enabled: drivePage.visible && selectFileButton.visible
+                    onActivated: selectFileButton.clicked()
                 }
 
                 Connections {
@@ -148,19 +153,31 @@ Page {
         }
 
         QQC2.CheckBox {
-            text: qsTr("Delete download after writing")
+            id: deleteDownloadCheckBox
+            text: mainWindow.mnemonic(qsTr("De<u>l</u>ete download after writing"))
             onCheckedChanged: mainWindow.eraseVariant = !mainWindow.eraseVariant
+            Shortcut {
+                sequence: "Alt+L"
+                enabled: drivePage.visible && deleteDownloadCheckBox.visible
+                onActivated: deleteDownloadCheckBox.toggle()
+            }
         }
     }
     
+    nextButtonShortcut: {
+        if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
+            return "Alt+W"
+        return "Alt+D"
+    }
+
     nextButtonEnabled: selectedOption != Units.MainSelect.Write || releases.localFile.iso !== ""
 
     nextButtonText: {
         if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
-            return qsTr("Write")
+            return mainWindow.mnemonic(qsTr("<u>W</u>rite"))
         if (!drives.length)
-            return qsTr("Download")
-        return qsTr("Download && Write")
+            return mainWindow.mnemonic(qsTr("<u>D</u>ownload"))
+        return mainWindow.mnemonic(qsTr("<u>D</u>ownload && Write"))
     }
 
     onPreviousButtonClicked: {

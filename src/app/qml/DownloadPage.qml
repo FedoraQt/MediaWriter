@@ -232,7 +232,16 @@ Page {
     // There will be only [Finish] button on the right side so [Cancel] button
     // is not necessary
     previousButtonVisible: currentStatus != Units.DownloadStatus.Finished
-    previousButtonText: qsTr("Cancel")
+    previousButtonText: mainWindow.mnemonic(qsTr("<u>C</u>ancel"))
+    previousButtonShortcut: "Alt+C"
+    nextButtonShortcut: {
+        if (currentStatus === Units.DownloadStatus.Ready)
+            return "Alt+W"
+        else if (currentStatus === Units.DownloadStatus.Finished)
+            return "Alt+F"
+        else
+            return "Alt+R"
+    }
     onPreviousButtonClicked: {
         if (releases.variant.status === Units.DownloadStatus.Write_Verifying ||
             releases.variant.status === Units.DownloadStatus.Writing ||
@@ -259,11 +268,11 @@ Page {
     }
     nextButtonText: {
         if (currentStatus === Units.DownloadStatus.Ready)
-            return qsTr("Write")
+            return mainWindow.mnemonic(qsTr("<u>W</u>rite"))
         else if (currentStatus === Units.DownloadStatus.Finished)
-            return qsTr("Finish")
+            return mainWindow.mnemonic(qsTr("<u>F</u>inish"))
         else
-            return qsTr("Retry")
+            return mainWindow.mnemonic(qsTr("<u>R</u>etry"))
     }
     onNextButtonClicked: {
         if (currentStatus === Units.DownloadStatus.Finished) {

@@ -77,7 +77,12 @@ ModalDialog {
             QQC2.Button {
                 id: continueButton
                 onClicked: cancelDialog.close()
-                text: qsTr("Continue")
+                text: mainWindow.mnemonic(qsTr("C<u>o</u>ntinue"))
+                Shortcut {
+                    sequence: "Alt+O"
+                    enabled: cancelDialog.visible
+                    onActivated: cancelDialog.close()
+                }
             }
 
             QQC2.Button {
@@ -98,13 +103,27 @@ ModalDialog {
                 }
                 text: {
                     if (variantStatus === Units.DownloadStatus.Downloading || variantStatus === Units.DownloadStatus.Download_Verifying)
-                        qsTr("Cancel Download")
+                        mainWindow.mnemonic(qsTr("Cancel <u>D</u>ownload"))
                     else if (variantStatus === Units.DownloadStatus.Writing)
-                        qsTr("Cancel Writing")
+                        mainWindow.mnemonic(qsTr("Cancel <u>W</u>riting"))
                     else if (variantStatus === Units.DownloadStatus.Write_Verifying)
-                        qsTr("Cancel Verification")
+                        mainWindow.mnemonic(qsTr("Cancel <u>V</u>erification"))
                     else
-                        qsTr("Cancel")
+                        mainWindow.mnemonic(qsTr("<u>C</u>ancel"))
+                }
+                Shortcut {
+                    sequence: {
+                        if (variantStatus === Units.DownloadStatus.Downloading || variantStatus === Units.DownloadStatus.Download_Verifying)
+                            return "Alt+D"
+                        else if (variantStatus === Units.DownloadStatus.Writing)
+                            return "Alt+W"
+                        else if (variantStatus === Units.DownloadStatus.Write_Verifying)
+                            return "Alt+V"
+                        else
+                            return "Alt+C"
+                    }
+                    enabled: cancelDialog.visible
+                    onActivated: cancelButton.clicked()
                 }
             }
         }

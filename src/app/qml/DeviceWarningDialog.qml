@@ -54,7 +54,12 @@ ModalDialog {
             QQC2.Button {
                 id: cancelButton
                 onClicked: deviceWarningDialog.close()
-                text: qsTr("Cancel")
+                text: mainWindow.mnemonic(qsTr("<u>C</u>ancel"))
+                Shortcut {
+                    sequence: "Alt+C"
+                    enabled: deviceWarningDialog.visible
+                    onActivated: deviceWarningDialog.close()
+                }
             }
 
             QQC2.Button {
@@ -70,10 +75,20 @@ ModalDialog {
                 text: {
                     const variant = releases.selected && releases.selected.version ? releases.selected.version.variant : null
                     if (selectedOption === Units.MainSelect.Write || (variant && downloadManager.isDownloaded(variant.url)))
-                        return qsTr("Write")
+                        return mainWindow.mnemonic(qsTr("<u>W</u>rite"))
                     if (!drives.length)
-                        return qsTr("Download")
-                    return qsTr("Download && Write")
+                        return mainWindow.mnemonic(qsTr("<u>D</u>ownload"))
+                    return mainWindow.mnemonic(qsTr("<u>D</u>ownload && Write"))
+                }
+                Shortcut {
+                    sequence: {
+                        const variant = releases.selected && releases.selected.version ? releases.selected.version.variant : null
+                        if (selectedOption === Units.MainSelect.Write || (variant && downloadManager.isDownloaded(variant.url)))
+                            return "Alt+W"
+                        return "Alt+D"
+                    }
+                    enabled: deviceWarningDialog.visible
+                    onActivated: continueButton.clicked()
                 }
             }
         }

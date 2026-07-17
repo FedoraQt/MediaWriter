@@ -124,6 +124,9 @@ Page {
         }
     ]
 
+    nextButtonShortcut: selectedDrive && (selectedDrive.restoreStatus == Units.RestoreStatus.Restored ||
+                                          selectedDrive.restoreStatus == Units.RestoreStatus.Restore_Error) ? "Alt+F" : "Alt+R"
+
     previousButtonVisible: selectedDrive && selectedDrive.restoreStatus != Units.RestoreStatus.Restored &&
                            selectedDrive.restoreStatus != Units.RestoreStatus.Restoring &&
                            selectedDrive.restoreStatus != Units.RestoreStatus.Restore_Error
@@ -135,8 +138,8 @@ Page {
                                          selectedDrive.restoreStatus == Units.RestoreStatus.Restore_Error ||
                                          selectedDrive.restoreStatus == Units.RestoreStatus.Contains_Live)
     nextButtonVisible: selectedDrive && selectedDrive.restoreStatus != Units.RestoreStatus.Restoring
-    nextButtonText: selectedDrive && (selectedDrive.restoreStatus == Units.RestoreStatus.Restored ||
-                                      selectedDrive.restoreStatus == Units.RestoreStatus.Restore_Error) ? qsTr("Finish") : qsTr("Restore")
+    nextButtonText: mainWindow.mnemonic(selectedDrive && (selectedDrive.restoreStatus == Units.RestoreStatus.Restored ||
+                                      selectedDrive.restoreStatus == Units.RestoreStatus.Restore_Error) ? qsTr("<u>F</u>inish") : qsTr("<u>R</u>estore"))
     onNextButtonClicked: {
         if (selectedDrive.restoreStatus == Units.RestoreStatus.Restored ||
             selectedDrive.restoreStatus == Units.RestoreStatus.Restore_Error) {
