@@ -81,7 +81,12 @@ ModalDialog {
             QQC2.Button {
                 id: closeButton
                 onClicked: aboutDialog.close()
-                text: qsTr("Close")
+                text: mainWindow.mnemonic(qsTr("<u>C</u>lose"))
+                Shortcut {
+                    sequence: "Alt+C"
+                    enabled: aboutDialog.visible
+                    onActivated: aboutDialog.close()
+                }
             }
         }
     }

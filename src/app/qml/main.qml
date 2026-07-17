@@ -37,6 +37,11 @@ ApplicationWindow {
     property int selectedVersion: Units.Source.Product
     property int selectedOption: Units.MainSelect.Download
     property bool eraseVariant: false
+    property bool altPressed mnemonicFilter.altPressed
+
+    function mnemonic(text) {
+        return altPressed ? text : text.replace(/<\/?u>/g, "")
+    }
     
     StackView {
         id: stackView

@@ -29,27 +29,53 @@ Page {
     text: qsTr("Select Image Source")
 
     QQC2.RadioButton {
+        id: downloadRadio
         checked: selectedOption == Units.MainSelect.Download
-        text: qsTr("Download automatically")
+        text: mainWindow.mnemonic(qsTr("<u>D</u>ownload automatically"))
         onClicked: {
             selectedOption = Units.MainSelect.Download
+        }
+        Shortcut {
+            sequence: "Alt+D"
+            enabled: mainPage.visible
+            onActivated: {
+                downloadRadio.checked = true
+                downloadRadio.clicked()
+            }
         }
     }
 
     QQC2.RadioButton {
-        text: qsTr("Select .iso file")
+        id: adoptIsoRadio
+        text: mainWindow.mnemonic(qsTr("<u>S</u>elect .iso file"))
         onClicked: {
             selectedOption = Units.MainSelect.Write
             releases.selectLocalFile("")
+        }
+        Shortcut {
+            sequence: "Alt+S"
+            enabled: mainPage.visible
+            onActivated: {
+                adoptIsoRadio.checked = true
+                adoptIsoRadio.clicked()
+            }
         }
     }
 
     QQC2.RadioButton {
         id: restoreRadio
         visible: drives.restoreableDrives.length > 0
-        text: drives.restoreableDrives.length === 1 ? qsTr("Restore <b>%1</b>").arg(drives.restoreableDrives[0].name) : qsTr("Restore a USB drive (%1 available)").arg(drives.restoreableDrives.length)
+        text: mainWindow.mnemonic(drives.restoreableDrives.length === 1 ? qsTr("<u>R</u>estore <b>%1</b>").arg(drives.restoreableDrives[0].name) : qsTr("<u>R</u>estore a USB drive (%1 available)").arg(drives.restoreableDrives.length))
         onClicked: {
             selectedOption = Units.MainSelect.Restore
+        }
+        Shortcut {
+            sequence: "Alt+R"
+            enabled: mainPage.visible && restoreRadio.visible
+            onActivated: {
+                restoreRadio.checked = true
+                restoreRadio.clicked()
+            }
         }
     }
 
@@ -59,7 +85,8 @@ Page {
         Layout.fillHeight: true
     }
 
-    previousButtonText: qsTr("About")
+    previousButtonText: mainWindow.mnemonic(qsTr("<u>A</u>bout"))
+    previousButtonShortcut: "Alt+A"
 
     onPreviousButtonClicked: {
         aboutDialog.open()

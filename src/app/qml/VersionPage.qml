@@ -33,24 +33,60 @@ Page {
     }
 
     QQC2.RadioButton {
+        id: officialRadio
         checked: true
-        text: qsTr("Official Editions")
+        text: mainWindow.mnemonic(qsTr("<u>O</u>fficial Editions"))
         onClicked: changeFilter(Units.Source.Product)
+        Shortcut {
+            sequence: "Alt+O"
+            enabled: versionPage.visible
+            onActivated: {
+                officialRadio.checked = true
+                officialRadio.clicked()
+            }
+        }
     }
 
     QQC2.RadioButton {
-        text: qsTr("Atomic Desktops")
+        id: atomicosRadio
+        text: mainWindow.mnemonic(qsTr("<u>A</u>tomic Desktops"))
         onClicked: changeFilter(Units.Source.Emerging)
+        Shortcut {
+            sequence: "Alt+A"
+            enabled: versionPage.visible
+            onActivated: {
+                atomicosRadio.checked = true
+                atomicosRadio.clicked()
+            }
+        }
     }
 
     QQC2.RadioButton {
-        text: qsTr("Spins")
+        id: fedospinRadio
+        text: mainWindow.mnemonic(qsTr("<u>S</u>pins"))
         onClicked: changeFilter(Units.Source.Spins)
+        Shortcut {
+            sequence: "Alt+S"
+            enabled: versionPage.visible
+            onActivated: {
+                fedospinRadio.checked = true
+                fedospinRadio.clicked()
+            }
+        }
     }
 
     QQC2.RadioButton {
-        text: qsTr("Labs")
+        id: fedolabsRadio
+        text: mainWindow.mnemonic(qsTr("<u>L</u>abs"))
         onClicked: changeFilter(Units.Source.Labs)
+        Shortcut {
+            sequence: "Alt+L"
+            enabled: versionPage.visible
+            onActivated: {
+                fedolabsRadio.checked = true
+                fedolabsRadio.clicked()
+            }
+        }
     }
 
     QQC2.ComboBox {
