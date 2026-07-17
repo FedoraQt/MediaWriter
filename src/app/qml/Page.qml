@@ -33,8 +33,8 @@ QQC2.Page {
     property alias layoutSpacing: layout.spacing
 
     // Button.Text
-    property alias previousButtonText: prevButton.text
-    property alias nextButtonText: nextButton.text
+    property alias previousButtonText: prevButton.mnemonicText
+    property alias nextButtonText: nextButton.mnemonicText
 
     // Button.Visible
     property alias previousButtonVisible: prevButton.visible
@@ -94,9 +94,9 @@ QQC2.Page {
 
             Layout.alignment: Qt.AlignBottom
 
-            QQC2.Button {
+            MnemonicButton {
                 id: prevButton
-                text: qsTr("Previous")
+                mnemonicText: qsTr("<u>P</u>revious")
                 onClicked: previousButtonClicked()
             }
 
@@ -104,10 +104,10 @@ QQC2.Page {
                 Layout.fillWidth: true
             }
 
-            QQC2.Button {
+            MnemonicButton {
                 id: nextButton
-                text: qsTr("Next")
-                onClicked: nextButtonClicked();
+                mnemonicText: qsTr("<u>N</u>ext")
+                onClicked: nextButtonClicked()
             }
         }
     }

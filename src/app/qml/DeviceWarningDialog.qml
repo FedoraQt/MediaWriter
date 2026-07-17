@@ -51,14 +51,16 @@ ModalDialog {
                 Layout.fillWidth: true
             }
 
-            QQC2.Button {
+            MnemonicButton {
                 id: cancelButton
+                mnemonicText: qsTr("<u>C</u>ancel")
+                shortcutActive: deviceWarningDialog.visible
                 onClicked: deviceWarningDialog.close()
-                text: qsTr("Cancel")
             }
 
-            QQC2.Button {
+            MnemonicButton {
                 id: continueButton
+                shortcutActive: deviceWarningDialog.visible
                 onClicked: {
                     deviceWarningDialog.close()
                     selectedPage = Units.Page.DownloadPage
@@ -67,13 +69,13 @@ ModalDialog {
                         drives.selected.write(releases.variant)
                     }
                 }
-                text: {
+                mnemonicText: {
                     const variant = releases.selected && releases.selected.version ? releases.selected.version.variant : null
                     if (selectedOption === Units.MainSelect.Write || (variant && downloadManager.isDownloaded(variant.url)))
-                        return qsTr("Write")
+                        return qsTr("<u>W</u>rite")
                     if (!drives.length)
-                        return qsTr("Download")
-                    return qsTr("Download && Write")
+                        return qsTr("<u>D</u>ownload")
+                    return qsTr("<u>D</u>ownload && Write")
                 }
             }
         }

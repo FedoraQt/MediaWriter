@@ -78,10 +78,11 @@ ModalDialog {
                 Layout.fillWidth: true
             }
 
-            QQC2.Button {
+            MnemonicButton {
                 id: closeButton
+                mnemonicText: qsTr("<u>C</u>lose")
+                shortcutActive: aboutDialog.visible
                 onClicked: aboutDialog.close()
-                text: qsTr("Close")
             }
         }
     }

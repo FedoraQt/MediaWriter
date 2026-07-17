@@ -28,26 +28,28 @@ Page {
     imageSource: "qrc:/mainPageImage"
     text: qsTr("Select Image Source")
 
-    QQC2.RadioButton {
+    MnemonicRadioButton {
+        id: downloadRadio
         checked: selectedOption == Units.MainSelect.Download
-        text: qsTr("Download automatically")
+        mnemonicText: qsTr("<u>D</u>ownload automatically")
         onClicked: {
             selectedOption = Units.MainSelect.Download
         }
     }
 
-    QQC2.RadioButton {
-        text: qsTr("Select .iso file")
+    MnemonicRadioButton {
+        id: adoptIsoRadio
+        mnemonicText: qsTr("<u>S</u>elect .iso file")
         onClicked: {
             selectedOption = Units.MainSelect.Write
             releases.selectLocalFile("")
         }
     }
 
-    QQC2.RadioButton {
+    MnemonicRadioButton {
         id: restoreRadio
         visible: drives.restoreableDrives.length > 0
-        text: drives.restoreableDrives.length === 1 ? qsTr("Restore <b>%1</b>").arg(drives.restoreableDrives[0].name) : qsTr("Restore a USB drive (%1 available)").arg(drives.restoreableDrives.length)
+        mnemonicText: drives.restoreableDrives.length === 1 ? qsTr("<u>R</u>estore <b>%1</b>").arg(drives.restoreableDrives[0].name) : qsTr("<u>R</u>estore a USB drive (%1 available)").arg(drives.restoreableDrives.length)
         onClicked: {
             selectedOption = Units.MainSelect.Restore
         }
@@ -59,7 +61,7 @@ Page {
         Layout.fillHeight: true
     }
 
-    previousButtonText: qsTr("About")
+    previousButtonText: qsTr("<u>A</u>bout")
 
     onPreviousButtonClicked: {
         aboutDialog.open()
