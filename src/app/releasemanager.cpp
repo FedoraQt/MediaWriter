@@ -296,13 +296,13 @@ void ReleaseManager::onStringDownloaded(const QString &text)
         QString release = obj["subvariant"].toString().toLower();
         QString versionWithStatus = obj["version"].toString().toLower();
         QString sha256 = obj["sha256"].toString();
-        QString type = "live";
+        QString type = url.contains("netinst") ? "netinstall" : "live";
         QDateTime releaseDate = QDateTime::fromString((obj["releaseDate"].toString()), "yyyy-MM-dd");
         int64_t size = obj["size"].toString().toLongLong();
         int version;
         QString status;
 
-        if (QStringList{"cloud", "cloud_base", "everything", "minimal", "docker", "docker_base"}.contains(release))
+        if (QStringList{"cloud", "cloud_base", "minimal", "docker", "docker_base"}.contains(release))
             continue;
 
         // Filter out non-ISO or OSTree boot images
