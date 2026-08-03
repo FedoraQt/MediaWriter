@@ -2,7 +2,10 @@
 
 set OLDPATH=%PATH%
 
-call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64 > NUL:
+set VCARCH=%1
+if "%VCARCH%"=="" set VCARCH=x64
+
+call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" %VCARCH% > NUL:
 
 echo export INCLUDE='%INCLUDE%'
 echo export LIB='%LIB%'

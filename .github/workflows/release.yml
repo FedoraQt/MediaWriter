@@ -70,7 +70,23 @@ jobs:
           bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg"
 
   Windows-MSVC:
-    runs-on: windows-2022
+    strategy:
+      matrix:
+        arch: [x64, arm64]
+        include:
+          - arch: x64
+            runner: windows-2022
+            qt_arch: win64_msvc2022_64
+            vcvars_arch: x64
+            artifact_arch: win64
+            vcredist_arch: x64
+          - arch: arm64
+            runner: windows-11-arm
+            qt_arch: win64_msvc2022_arm64
+            vcvars_arch: arm64
+            artifact_arch: winarm64
+            vcredist_arch: arm64
+    runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -91,17 +107,17 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/cpm-cache
-          key: ${{ runner.os }}-cpm-${{ hashFiles('CMakeLists.txt') }}
+          key: ${{ runner.os }}-${{ matrix.arch }}-cpm-${{ hashFiles('CMakeLists.txt') }}
           restore-keys: |
-            ${{ runner.os }}-cpm-
+            ${{ runner.os }}-${{ matrix.arch }}-cpm-
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
-          arch: win64_msvc2022_64
+          arch: ${{ matrix.qt_arch }}
           cache: true
-          cache-key-prefix: ${{ github.job }}-qt
+          cache-key-prefix: ${{ github.job }}-${{ matrix.arch }}-qt
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v2
@@ -110,7 +126,7 @@ jobs:
         shell: bash
         if: ${{ !steps.cache-qt.outputs.cache-hit }}
         run: |
-          eval "$(./dist/win/make-vs2022-env.bat)"
+          eval "$(./dist/win/make-vs2022-env.bat ${{ matrix.vcvars_arch }})"
           git clone https://github.com/tukaani-project/xz.git
           cd xz
           git checkout v5.4.5
@@ -128,7 +144,7 @@ jobs:
       - name: Build MediaWriter
         shell: bash
         run: |
-          eval "$(./dist/win/make-vs2022-env.bat)"
+          eval "$(./dist/win/make-vs2022-env.bat ${{ matrix.vcvars_arch }})"
           mkdir build
           cd build
           export CPM_SOURCE_CACHE=~/cpm-cache
@@ -180,8 +196,8 @@ jobs:
           cp NScurl_temp/Plugins/x86-unicode/NScurl.dll "dist/win/plugins/"
           rm -rf NScurl.zip NScurl_temp
 
-          "/c/Program Files (x86)/NSIS/makensis.exe" -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
-          mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64-${{ env.TAG_NAME }}.exe"
+          "/c/Program Files (x86)/NSIS/makensis.exe" -DCERTPATH="" -DCERTPASS="" -DVCREDIST_ARCH=${{ matrix.vcredist_arch }} dist/win/mediawriter_native.tmp.nsi
+          mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-${{ matrix.artifact_arch }}-${{ env.TAG_NAME }}.exe"
 
       - name: Portable
         shell: bash
@@ -192,17 +208,18 @@ jobs:
           mkdir -p FedoraMediaWriter-portable
           cp -r build/app/release/* FedoraMediaWriter-portable/
 
-          7z a -tzip "FedoraMediaWriter-win64-portable-${{ env.TAG_NAME }}.zip" ./FedoraMediaWriter-portable/*
+          7z a -tzip "FedoraMediaWriter-${{ matrix.artifact_arch }}-portable-${{ env.TAG_NAME }}.zip" ./FedoraMediaWriter-portable/*
 
       - name: Upload Portable to GitHub (release)
         run: |
-          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-win64-portable-${{ env.TAG_NAME }}.zip"
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-${{ matrix.artifact_arch }}-portable-${{ env.TAG_NAME }}.zip"
 
       - name: Upload to GitHub (release)
         run: |
-          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-win64-${{ env.TAG_NAME }}.exe"
+          bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-${{ matrix.artifact_arch }}-${{ env.TAG_NAME }}.exe"
 
       - name: Publish to WinGet
+        if: matrix.arch == 'x64'
         uses: vedantmgoyal9/winget-releaser@main
         with:
           identifier: Fedora.FedoraMediaWriter

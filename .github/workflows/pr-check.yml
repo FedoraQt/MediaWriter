@@ -98,7 +98,23 @@ jobs:
           path: FedoraMediaWriter-macos${{ matrix.dmg_suffix }}.dmg
 
   Windows-MSVC:
-    runs-on: windows-2022
+    strategy:
+      matrix:
+        arch: [x64, arm64]
+        include:
+          - arch: x64
+            runner: windows-2022
+            qt_arch: win64_msvc2022_64
+            vcvars_arch: x64
+            artifact_arch: win64
+            vcredist_arch: x64
+          - arch: arm64
+            runner: windows-11-arm
+            qt_arch: win64_msvc2022_arm64
+            vcvars_arch: arm64
+            artifact_arch: winarm64
+            vcredist_arch: arm64
+    runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -115,17 +131,17 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/cpm-cache
-          key: ${{ runner.os }}-cpm-${{ hashFiles('CMakeLists.txt') }}
+          key: ${{ runner.os }}-${{ matrix.arch }}-cpm-${{ hashFiles('CMakeLists.txt') }}
           restore-keys: |
-            ${{ runner.os }}-cpm-
+            ${{ runner.os }}-${{ matrix.arch }}-cpm-
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
           version: ${{env.QT_VERSION}}
-          arch: win64_msvc2022_64
+          arch: ${{ matrix.qt_arch }}
           cache: true
-          cache-key-prefix: ${{ github.job }}-qt
+          cache-key-prefix: ${{ github.job }}-${{ matrix.arch }}-qt
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v2
@@ -133,7 +149,7 @@ jobs:
       - name: Build xz-utils
         shell: bash
         run: |
-          eval "$(./dist/win/make-vs2022-env.bat)"
+          eval "$(./dist/win/make-vs2022-env.bat ${{ matrix.vcvars_arch }})"
           git clone https://github.com/tukaani-project/xz.git
           cd xz
           git checkout v5.4.5
@@ -151,7 +167,7 @@ jobs:
       - name: Build MediaWriter
         shell: bash
         run: |
-          eval "$(./dist/win/make-vs2022-env.bat)"
+          eval "$(./dist/win/make-vs2022-env.bat ${{ matrix.vcvars_arch }})"
           mkdir build
           cd build
           export CPM_SOURCE_CACHE=~/cpm-cache
@@ -203,8 +219,8 @@ jobs:
           cp NScurl_temp/Plugins/x86-unicode/NScurl.dll "dist/win/plugins/"
           rm -rf NScurl.zip NScurl_temp
 
-          "/c/Program Files (x86)/NSIS/makensis.exe" -DCERTPATH="" -DCERTPASS="" dist/win/mediawriter_native.tmp.nsi
-          mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-win64.exe"
+          "/c/Program Files (x86)/NSIS/makensis.exe" -DCERTPATH="" -DCERTPASS="" -DVCREDIST_ARCH=${{ matrix.vcredist_arch }} dist/win/mediawriter_native.tmp.nsi
+          mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-${{ matrix.artifact_arch }}.exe"
 
       - name: Portable
         shell: bash
@@ -215,14 +231,14 @@ jobs:
           mkdir -p FedoraMediaWriter-portable
           cp -r build/app/release/* FedoraMediaWriter-portable/
 
-          7z a -tzip "FedoraMediaWriter-win64-portable.zip" ./FedoraMediaWriter-portable/*
+          7z a -tzip "FedoraMediaWriter-${{ matrix.artifact_arch }}-portable.zip" ./FedoraMediaWriter-portable/*
 
       - uses: actions/upload-artifact@v6
         with:
-          name: FedoraMediaWriter-win64-portable.zip
-          path: FedoraMediaWriter-win64-portable.zip
+          name: FedoraMediaWriter-${{ matrix.artifact_arch }}-portable.zip
+          path: FedoraMediaWriter-${{ matrix.artifact_arch }}-portable.zip
 
       - uses: actions/upload-artifact@v6
         with:
-          name: FedoraMediaWriter-win64.exe
-          path: FedoraMediaWriter-win64.exe
+          name: FedoraMediaWriter-${{ matrix.artifact_arch }}.exe
+          path: FedoraMediaWriter-${{ matrix.artifact_arch }}.exe

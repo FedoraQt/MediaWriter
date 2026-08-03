@@ -29,8 +29,11 @@ XPStyle on
 !define FULLVERSION       "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}.0"
 
 # VC++ Redistributable configuration
-!define VCREDIST_FILE     "vc_redist.x64.exe"
-!define VCREDIST_URL      "https://aka.ms/vs/17/release/vc_redist.x64.exe"
+!ifndef VCREDIST_ARCH
+    !define VCREDIST_ARCH "x64"
+!endif
+!define VCREDIST_FILE     "vc_redist.${VCREDIST_ARCH}.exe"
+!define VCREDIST_URL      "https://aka.ms/vs/17/release/vc_redist.${VCREDIST_ARCH}.exe"
 
 Name    "${APPNAME}"
 Caption "${APPNAME} ${SHORTVERSION}"
@@ -198,12 +201,12 @@ function .onInit
     DetailPrint "Checking for Visual C++ 2015-2022 Redistributable..."
     
     ClearErrors
-    ReadRegDWORD $0 HKLM "SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" "Installed"
+    ReadRegDWORD $0 HKLM "SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\${VCREDIST_ARCH}" "Installed"
     StrCmp $0 "1" vcredist_already_installed
-    
+
     ; Also check alternative registry location (WOW6432Node)
     ClearErrors
-    ReadRegDWORD $0 HKLM "SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\VC\Runtimes\x64" "Installed"
+    ReadRegDWORD $0 HKLM "SOFTWARE\WOW6432Node\Microsoft\VisualStudio\14.0\VC\Runtimes\${VCREDIST_ARCH}" "Installed"
     StrCmp $0 "1" vcredist_already_installed
     
     ; VC++ not installed - ask user if they want to download and install it
