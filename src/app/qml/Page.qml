@@ -96,7 +96,7 @@ QQC2.Page {
 
             MnemonicButton {
                 id: prevButton
-                mnemonicText: qsTr("<u>P</u>revious")
+                mnemonicText: qsTr("&Previous")
                 onClicked: previousButtonClicked()
             }
 
@@ -106,7 +106,7 @@ QQC2.Page {
 
             MnemonicButton {
                 id: nextButton
-                mnemonicText: qsTr("<u>N</u>ext")
+                mnemonicText: qsTr("&Next")
                 onClicked: nextButtonClicked()
             }
         }

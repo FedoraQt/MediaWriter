@@ -23,21 +23,16 @@ import QtQuick.Controls as QQC2
 QQC2.Button {
     id: control
 
-    property string mnemonicText: ""
-    property string shortcutSequence: {
-        var text = mnemonicText.match(/<u>(.)<\/u>/i)
-        return text ? "Alt+" + text[1].toUpperCase() : ""
-    }
-    property bool shortcutActive: true
+    property alias mnemonicText: handler.mnemonicText
+    property alias shortcutActive: handler.shortcutActive
 
-    text: mainWindow.mnemonic(mnemonicText)
+    signal mnemonicActivated()
 
-    Shortcut {
-        sequence: control.shortcutSequence
-        enabled: control.shortcutSequence !== ""
-                 && control.shortcutActive
-                 && control.visible
-                 && control.enabled
-        onActivated: control.clicked()
+    text: handler.displayText
+    onMnemonicActivated: control.clicked()
+
+    MnemonicHandler {
+        id: handler
+        target: control
     }
 }

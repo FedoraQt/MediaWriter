@@ -35,25 +35,25 @@ Page {
     MnemonicRadioButton {
         id: officialRadio
         checked: true
-        mnemonicText: qsTr("<u>O</u>fficial Editions")
+        mnemonicText: qsTr("&Official Editions")
         onClicked: changeFilter(Units.Source.Product)
     }
 
     MnemonicRadioButton {
         id: atomicosRadio
-        mnemonicText: qsTr("<u>A</u>tomic Desktops")
+        mnemonicText: qsTr("&Atomic Desktops")
         onClicked: changeFilter(Units.Source.Emerging)
     }
 
     MnemonicRadioButton {
         id: fedospinRadio
-        mnemonicText: qsTr("<u>S</u>pins")
+        mnemonicText: qsTr("&Spins")
         onClicked: changeFilter(Units.Source.Spins)
     }
 
     MnemonicRadioButton {
         id: fedolabsRadio
-        mnemonicText: qsTr("<u>L</u>abs")
+        mnemonicText: qsTr("&Labs")
         onClicked: changeFilter(Units.Source.Labs)
     }
 

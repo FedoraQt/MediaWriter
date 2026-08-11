@@ -232,7 +232,7 @@ Page {
     // There will be only [Finish] button on the right side so [Cancel] button
     // is not necessary
     previousButtonVisible: currentStatus != Units.DownloadStatus.Finished
-    previousButtonText: qsTr("<u>C</u>ancel")
+    previousButtonText: qsTr("&Cancel")
     onPreviousButtonClicked: {
         if (releases.variant.status === Units.DownloadStatus.Write_Verifying ||
             releases.variant.status === Units.DownloadStatus.Writing ||
@@ -259,11 +259,11 @@ Page {
     }
     nextButtonText: {
         if (currentStatus === Units.DownloadStatus.Ready)
-            return qsTr("<u>W</u>rite")
+            return qsTr("&Write")
         else if (currentStatus === Units.DownloadStatus.Finished)
-            return qsTr("<u>F</u>inish")
+            return qsTr("&Finish")
         else
-            return qsTr("<u>R</u>etry")
+            return qsTr("&Retry")
     }
     onNextButtonClicked: {
         if (currentStatus === Units.DownloadStatus.Finished) {

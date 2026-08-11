@@ -31,7 +31,7 @@ Page {
     MnemonicRadioButton {
         id: downloadRadio
         checked: selectedOption == Units.MainSelect.Download
-        mnemonicText: qsTr("<u>D</u>ownload automatically")
+        mnemonicText: qsTr("&Download automatically")
         onClicked: {
             selectedOption = Units.MainSelect.Download
         }
@@ -39,7 +39,7 @@ Page {
 
     MnemonicRadioButton {
         id: adoptIsoRadio
-        mnemonicText: qsTr("<u>S</u>elect .iso file")
+        mnemonicText: qsTr("&Select .iso file")
         onClicked: {
             selectedOption = Units.MainSelect.Write
             releases.selectLocalFile("")
@@ -49,7 +49,7 @@ Page {
     MnemonicRadioButton {
         id: restoreRadio
         visible: drives.restoreableDrives.length > 0
-        mnemonicText: drives.restoreableDrives.length === 1 ? qsTr("<u>R</u>estore <b>%1</b>").arg(drives.restoreableDrives[0].name) : qsTr("<u>R</u>estore a USB drive (%1 available)").arg(drives.restoreableDrives.length)
+        mnemonicText: drives.restoreableDrives.length === 1 ? qsTr("&Restore <b>%1</b>").arg(drives.restoreableDrives[0].name) : qsTr("&Restore a USB drive (%1 available)").arg(drives.restoreableDrives.length)
         onClicked: {
             selectedOption = Units.MainSelect.Restore
         }
@@ -61,7 +61,7 @@ Page {
         Layout.fillHeight: true
     }
 
-    previousButtonText: qsTr("<u>A</u>bout")
+    previousButtonText: qsTr("&About")
 
     onPreviousButtonClicked: {
         aboutDialog.open()

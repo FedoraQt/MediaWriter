@@ -76,7 +76,7 @@ ModalDialog {
 
             MnemonicButton {
                 id: continueButton
-                mnemonicText: qsTr("C<u>o</u>ntinue")
+                mnemonicText: qsTr("C&ontinue")
                 shortcutActive: cancelDialog.visible
                 onClicked: cancelDialog.close()
             }
@@ -100,13 +100,13 @@ ModalDialog {
                 }
                 mnemonicText: {
                     if (variantStatus === Units.DownloadStatus.Downloading || variantStatus === Units.DownloadStatus.Download_Verifying)
-                        qsTr("Cancel <u>D</u>ownload")
+                        qsTr("Cancel &Download")
                     else if (variantStatus === Units.DownloadStatus.Writing)
-                        qsTr("Cancel <u>W</u>riting")
+                        qsTr("Cancel &Writing")
                     else if (variantStatus === Units.DownloadStatus.Write_Verifying)
-                        qsTr("Cancel <u>V</u>erification")
+                        qsTr("Cancel &Verification")
                     else
-                        qsTr("<u>C</u>ancel")
+                        qsTr("&Cancel")
                 }
             }
         }

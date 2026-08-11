@@ -40,7 +40,9 @@ ApplicationWindow {
     property bool altPressed: mnemonicFilter.altPressed
 
     function mnemonic(text) {
-        return altPressed ? text : text.replace(/<\/?u>/g, "")
+        if (altPressed)
+            return text.replace(/&(\w)/, "<u>$1</u>")
+        return text.replace(/&(\w)/, "$1")
     }
     
     StackView {

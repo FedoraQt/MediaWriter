@@ -18,21 +18,27 @@
  */
 
 import QtQuick
-import QtQuick.Controls as QQC2
 
-QQC2.CheckBox {
-    id: control
+Item {
+    id: handler
 
-    property alias mnemonicText: handler.mnemonicText
-    property alias shortcutActive: handler.shortcutActive
+    property string mnemonicText: ""
+    property string shortcutSequence: {
+        var match = mnemonicText.match(/&(\w)/)
+        return match ? "Alt+" + match[1].toUpperCase() : ""
+    }
+    property bool shortcutActive: true
+    property var target: null
 
-    signal mnemonicActivated()
+    readonly property string displayText: mainWindow.mnemonic(mnemonicText)
 
-    text: handler.displayText
-    onMnemonicActivated: control.toggle()
-
-    MnemonicHandler {
-        id: handler
-        target: control
+    Shortcut {
+        sequence: handler.shortcutSequence
+        enabled: handler.shortcutSequence !== ""
+                 && handler.shortcutActive
+                 && handler.target
+                 && handler.target.visible
+                 && handler.target.enabled
+        onActivated: handler.target.mnemonicActivated()
     }
 }

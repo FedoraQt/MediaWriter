@@ -23,24 +23,19 @@ import QtQuick.Controls as QQC2
 QQC2.RadioButton {
     id: control
 
-    property string mnemonicText: ""
-    property string shortcutSequence: {
-        var text = mnemonicText.match(/<u>(.)<\/u>/i)
-        return text ? "Alt+" + text[1].toUpperCase() : ""
+    property alias mnemonicText: handler.mnemonicText
+    property alias shortcutActive: handler.shortcutActive
+
+    signal mnemonicActivated()
+
+    text: handler.displayText
+    onMnemonicActivated: {
+        control.checked = true
+        control.clicked()
     }
-    property bool shortcutActive: true
 
-    text: mainWindow.mnemonic(mnemonicText)
-
-    Shortcut {
-        sequence: control.shortcutSequence
-        enabled: control.shortcutSequence !== ""
-                 && control.shortcutActive
-                 && control.visible
-                 && control.enabled
-        onActivated: {
-            control.checked = true
-            control.clicked()
-        }
+    MnemonicHandler {
+        id: handler
+        target: control
     }
 }

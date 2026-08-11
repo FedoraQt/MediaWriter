@@ -53,7 +53,7 @@ ModalDialog {
 
             MnemonicButton {
                 id: cancelButton
-                mnemonicText: qsTr("<u>C</u>ancel")
+                mnemonicText: qsTr("&Cancel")
                 shortcutActive: deviceWarningDialog.visible
                 onClicked: deviceWarningDialog.close()
             }
@@ -72,10 +72,10 @@ ModalDialog {
                 mnemonicText: {
                     const variant = releases.selected && releases.selected.version ? releases.selected.version.variant : null
                     if (selectedOption === Units.MainSelect.Write || (variant && downloadManager.isDownloaded(variant.url)))
-                        return qsTr("<u>W</u>rite")
+                        return qsTr("&Write")
                     if (!drives.length)
-                        return qsTr("<u>D</u>ownload")
-                    return qsTr("<u>D</u>ownload && Write")
+                        return qsTr("&Download")
+                    return qsTr("&Download && Write")
                 }
             }
         }

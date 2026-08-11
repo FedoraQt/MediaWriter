@@ -88,7 +88,7 @@ Page {
             MnemonicButton {
                 id: selectFileButton
                 Layout.alignment: Qt.AlignRight
-                mnemonicText: qsTr("<u>S</u>elect...")
+                mnemonicText: qsTr("&Select...")
                 onClicked: {
                     if (portalFileDialog.isAvailable)
                         portalFileDialog.open()
@@ -149,7 +149,7 @@ Page {
 
         MnemonicCheckBox {
             id: deleteDownloadCheckBox
-            mnemonicText: qsTr("De<u>l</u>ete download after writing")
+            mnemonicText: qsTr("De&lete download after writing")
             onCheckedChanged: mainWindow.eraseVariant = !mainWindow.eraseVariant
         }
     }
@@ -158,10 +158,10 @@ Page {
 
     nextButtonText: {
         if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
-            return qsTr("<u>W</u>rite")
+            return qsTr("&Write")
         if (!drives.length)
-            return qsTr("<u>D</u>ownload")
-        return qsTr("<u>D</u>ownload && Write")
+            return qsTr("&Download")
+        return qsTr("&Download && Write")
     }
 
     onPreviousButtonClicked: {

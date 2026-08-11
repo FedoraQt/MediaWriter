@@ -80,7 +80,7 @@ ModalDialog {
 
             MnemonicButton {
                 id: closeButton
-                mnemonicText: qsTr("<u>C</u>lose")
+                mnemonicText: qsTr("&Close")
                 shortcutActive: aboutDialog.visible
                 onClicked: aboutDialog.close()
             }
