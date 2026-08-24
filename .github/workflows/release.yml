@@ -3,6 +3,8 @@ name: release
 on:
   release:
     types: [ created ]
+  pull_request:
+    branches: [ main ]
 
 env:
     QT_VERSION: '6.10.2'
@@ -67,6 +69,7 @@ jobs:
           path: FedoraMediaWriter-macos${{ matrix.dmg_arch_suffix }}-${{ env.TAG_NAME }}.dmg
 
       - name: Upload to GitHub (release)
+        if: github.event_name == 'release'
         run: |
           set -eo pipefail
           # Pass the full filename including the architecture suffix
@@ -267,15 +270,17 @@ jobs:
           7z a -tzip "FedoraMediaWriter-${{ matrix.artifact_arch }}-portable-${{ env.TAG_NAME }}.zip" ./FedoraMediaWriter-portable/*
 
       - name: Upload Portable to GitHub (release)
+        if: github.event_name == 'release'
         run: |
           bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-${{ matrix.artifact_arch }}-portable-${{ env.TAG_NAME }}.zip"
 
       - name: Upload to GitHub (release)
+        if: github.event_name == 'release'
         run: |
           bash dist/upload-to-github.sh github_api_token=${{ secrets.GITHUB_TOKEN }} tag="${{ env.TAG_NAME }}" filename="FedoraMediaWriter-${{ matrix.artifact_arch }}-${{ env.TAG_NAME }}.exe"
 
       - name: Publish to WinGet
-        if: matrix.arch == 'x64'
+        if: github.event_name == 'release' && matrix.arch == 'x64'
         uses: vedantmgoyal9/winget-releaser@main
         with:
           identifier: Fedora.FedoraMediaWriter
