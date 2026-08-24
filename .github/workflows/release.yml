@@ -6,6 +6,9 @@ on:
 
 env:
     QT_VERSION: '6.10.2'
+    SIGNPATH_ORGANIZATION_ID: '67c40f6a-03ed-4cf0-9212-f72cb0308cc2'
+    SIGNPATH_PROJECT_SLUG: 'MediaWriter'
+    SIGNPATH_SIGNING_POLICY_SLUG: 'test-signing'
 
 jobs:
   macOS:
@@ -165,6 +168,34 @@ jobs:
           find . -type d -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | grep -v "^.$" > uninstall.log
           find . -type f -not -path '*/\.*' | sed 's/^\.\///g' | sed 's@\/@\\@g' | sort >> uninstall.log
 
+      - name: Upload unsigned portable executables for signing
+        id: upload-pe
+        uses: actions/upload-artifact@v6
+        with:
+          name: unsigned-pe-${{ matrix.artifact_arch }}
+          path: |
+            build/app/release/mediawriter.exe
+            build/app/release/helper.exe
+
+      - name: Sign unsigned portable executables
+        id: sign-pe
+        uses: signpath/github-action-submit-signing-request@v2
+        with:
+          api-token: "${{ secrets.SIGNPATH_API_TOKEN }}"
+          organization-id: "${{ env.SIGNPATH_ORGANIZATION_ID }}"
+          project-slug: "${{ env.SIGNPATH_PROJECT_SLUG }}"
+          signing-policy-slug: "${{ env.SIGNPATH_SIGNING_POLICY_SLUG }}"
+          artifact-configuration-slug: "portable-executables"
+          github-artifact-id: "${{ steps.upload-pe.outputs.artifact-id }}"
+          wait-for-completion: true
+          output-artifact-directory: "signed-pe"
+
+      - name: Replace portable executables with signed versions
+        shell: bash
+        run: |
+          cp signed-pe/mediawriter.exe build/app/release/mediawriter.exe
+          cp signed-pe/helper.exe build/app/release/helper.exe
+
       - name: Installer
         shell: bash
         run: |
@@ -198,6 +229,31 @@ jobs:
 
           "/c/Program Files (x86)/NSIS/makensis.exe" -DCERTPATH="" -DCERTPASS="" -DVCREDIST_ARCH=${{ matrix.vcredist_arch }} dist/win/mediawriter_native.tmp.nsi
           mv dist/win/FMW-setup.exe ./"FedoraMediaWriter-${{ matrix.artifact_arch }}-${{ env.TAG_NAME }}.exe"
+
+      - name: Upload unsigned installer executables for signing
+        id: upload-ie
+        uses: actions/upload-artifact@v6
+        with:
+          name: unsigned-installer-${{ matrix.artifact_arch }}
+          path: FedoraMediaWriter-${{ matrix.artifact_arch }}-${{ env.TAG_NAME }}.exe
+
+      - name: Sign unsigned installer executables
+        id: sign-ie
+        uses: signpath/github-action-submit-signing-request@v2
+        with:
+          api-token: "${{ secrets.SIGNPATH_API_TOKEN }}"
+          organization-id: "${{ env.SIGNPATH_ORGANIZATION_ID }}"
+          project-slug: "${{ env.SIGNPATH_PROJECT_SLUG }}"
+          signing-policy-slug: "${{ env.SIGNPATH_SIGNING_POLICY_SLUG }}"
+          artifact-configuration-slug: "installer-executables"
+          github-artifact-id: "${{ steps.upload-ie.outputs.artifact-id }}"
+          wait-for-completion: true
+          output-artifact-directory: "signed-ie"
+
+      - name: Replace installer executables with signed versions
+        shell: bash
+        run: |
+          cp "signed-ie/FedoraMediaWriter-${{ matrix.artifact_arch }}-${{ env.TAG_NAME }}.exe" "./FedoraMediaWriter-${{ matrix.artifact_arch }}-${{ env.TAG_NAME }}.exe"
 
       - name: Portable
         shell: bash
