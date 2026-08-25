@@ -63,6 +63,7 @@ int main(int argc, char **argv)
     }
 
     QGuiApplication::setDesktopFileName("org.fedoraproject.MediaWriter");
+    QGuiApplication::setWindowIcon(QIcon::fromTheme("org.fedoraproject.MediaWriter"));
 
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;
