@@ -15,12 +15,13 @@ Fedora Media Writer runs on Linux, Windows, and macOS.
 
 ## Building
 
-You can build Fedora Media Writer using the standard Qt `cmake` build system. For a detailed look at how releases are composed, see the [GitHub Actions configuration](https://github.com/FedoraQt/MediaWriter/blob/master/.github/workflows/ccpp.yml).
+You can build Fedora Media Writer using the standard Qt `cmake` build system. For a detailed look at how releases are composed, see the [GitHub Actions configuration](https://github.com/FedoraQt/MediaWriter/blob/main/.github/workflows/pr-check.yml).
 
 ### Requirements
 
 | Platform | Dependencies |
 |----------|-------------|
+| **All**  | Qt (>=6.10.2) |
 | Linux    | `udisks2` or `storaged`, `xz-libs` |
 | Windows  | `xz-libs` |
 | macOS    | `xz-libs` |
