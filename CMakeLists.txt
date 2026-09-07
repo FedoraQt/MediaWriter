@@ -1,10 +1,10 @@
+cmake_minimum_required(VERSION 3.17)
+
 if(APPLE)
     set(CMAKE_OSX_DEPLOYMENT_TARGET "13.0" CACHE STRING "Minimum OS X deployment version")
 endif()
 
 project(MediaWriter)
-
-cmake_minimum_required(VERSION 3.17)
 
 set(MEDIAWRITER_MAJOR_VERSION "5")
 set(MEDIAWRITER_MINOR_VERSION "3")
