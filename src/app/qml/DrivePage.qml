@@ -85,10 +85,10 @@ Page {
                 elide: QQC2.Label.ElideRight
             }
 
-            QQC2.Button {
+            MnemonicButton {
                 id: selectFileButton
                 Layout.alignment: Qt.AlignRight
-                text: qsTr("Select...")
+                mnemonicText: qsTr("&Select...")
                 onClicked: {
                     if (portalFileDialog.isAvailable)
                         portalFileDialog.open()
@@ -147,8 +147,9 @@ Page {
             level: 1
         }
 
-        QQC2.CheckBox {
-            text: qsTr("Delete download after writing")
+        MnemonicCheckBox {
+            id: deleteDownloadCheckBox
+            mnemonicText: qsTr("De&lete download after writing")
             onCheckedChanged: mainWindow.eraseVariant = !mainWindow.eraseVariant
         }
     }
@@ -157,10 +158,10 @@ Page {
 
     nextButtonText: {
         if (selectedOption == Units.MainSelect.Write || downloadManager.isDownloaded(releases.selected.version.variant.url))
-            return qsTr("Write")
+            return qsTr("&Write")
         if (!drives.length)
-            return qsTr("Download")
-        return qsTr("Download && Write")
+            return qsTr("&Download")
+        return qsTr("&Download && Write")
     }
 
     onPreviousButtonClicked: {
