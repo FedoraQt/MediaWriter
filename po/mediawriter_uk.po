@@ -276,11 +276,16 @@ msgid "Please insert an USB drive."
 msgstr "Будь ласка, вставте USB-носій."
 
 #: ../src/app/qml/DownloadPage.qml:133
+#, fuzzy
+#| msgctxt "DownloadPage|"
+#| msgid ""
+#| "Your drive will be resized to a smaller capacity. You may resize it back "
+#| "to normal by using Fedora Media Writer. This will remove installation "
+#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
-"Your drive will be resized to a smaller capacity. You may resize it back to "
-"normal by using Fedora Media Writer. This will remove installation media "
-"from your drive."
+"Your drive is being resized to a smaller capacity. You may resize it back to "
+"normal by running Fedora Media Writer again and selecting the Restore option."
 msgstr ""
 "Місткість вашого диска буде зменшено. Ви можете відновити параметри "
 "місткості до нормальних за допомогою Fedora Media Writer. У результаті "
@@ -1047,7 +1052,8 @@ msgstr "Не вдалося записати увесь образ. Загало
 #: ../src/helper/win/writejob.cpp:480
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
-msgstr "Не вдалося встановити позиціювання на початок носія для перевірки даних"
+msgstr ""
+"Не вдалося встановити позиціювання на початок носія для перевірки даних"
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
 msgctxt "main|"
