@@ -8,6 +8,7 @@ set(MEDIAWRITER_SRCS
     downloadmanager.cpp
     drivemanager.cpp
     main.cpp
+    mnemonicfilter.cpp
     notifications.cpp
     portalfiledialog.cpp
     releasemanager.cpp
