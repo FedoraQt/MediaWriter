@@ -26,6 +26,7 @@
 
 #include "crashhandler.h"
 #include "drivemanager.h"
+#include "mnemonicfilter.h"
 #include "portalfiledialog.h"
 #include "releasemanager.h"
 
@@ -68,8 +69,12 @@ int main(int argc, char **argv)
     mDebug() << "Injecting QML context properties";
     QQmlApplicationEngine engine;
 
+    auto *mnemonicFilter = new MnemonicFilter(&app);
+    app.installEventFilter(mnemonicFilter);
+
     engine.rootContext()->setContextProperty("downloadManager", DownloadManager::instance());
     engine.rootContext()->setContextProperty("drives", DriveManager::instance());
+    engine.rootContext()->setContextProperty("mnemonicFilter", mnemonicFilter);
     engine.rootContext()->setContextProperty("portalFileDialog", new PortalFileDialog(&app));
     engine.rootContext()->setContextProperty("mediawriterVersion", MEDIAWRITER_VERSION);
     engine.rootContext()->setContextProperty("releases", new ReleaseManager());
