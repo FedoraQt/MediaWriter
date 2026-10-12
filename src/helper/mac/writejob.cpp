@@ -59,7 +59,16 @@ WriteJob::WriteJob(const QString &what, const QString &where)
 {
     connect(&watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
     if (what.endsWith(".part")) {
-        watcher.addPath(what);
+        QTimer::singleShot(0, this, [this]() {
+            const bool watching = watcher.addPath(this->what);
+            if (!QFile::exists(this->what)) {
+                onFileChanged(this->what);
+            } else if (!watching) {
+                err << tr("Unable to watch the downloaded image.") << "\n";
+                err.flush();
+                qApp->exit(4);
+            }
+        });
     } else {
         QTimer::singleShot(0, this, &WriteJob::work);
     }
@@ -154,10 +163,16 @@ void WriteJob::work()
 
 void WriteJob::onFileChanged(const QString &path)
 {
-    if (QFile::exists(path))
+    if (!what.endsWith(".part") || QFile::exists(path))
         return;
 
+    watcher.removePath(path);
     what.replace(QRegularExpression("[.]part$"), "");
+
+    if (!QFile::exists(what)) {
+        qApp->exit(4);
+        return;
+    }
 
     work();
 }
