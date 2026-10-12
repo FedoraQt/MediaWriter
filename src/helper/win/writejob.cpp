@@ -53,7 +53,16 @@ WriteJob::WriteJob(const QString &image, const QString &driveNumber, QObject *pa
 
     if (m_image.endsWith(".part")) {
         connect(&m_watcher, &QFileSystemWatcher::fileChanged, this, &WriteJob::onFileChanged);
-        m_watcher.addPath(m_image);
+        QTimer::singleShot(0, this, [this]() {
+            const bool watching = m_watcher.addPath(m_image);
+            if (!QFile::exists(m_image)) {
+                onFileChanged(m_image);
+            } else if (!watching) {
+                m_err << tr("Unable to watch the downloaded image.") << "\n";
+                m_err.flush();
+                qApp->exit(4);
+            }
+        });
     } else {
         QTimer::singleShot(0, this, &WriteJob::work);
     }
@@ -129,10 +138,17 @@ void WriteJob::work()
 
 void WriteJob::onFileChanged(const QString &path)
 {
-    if (QFile::exists(path))
+    if (!m_image.endsWith(".part") || QFile::exists(path))
         return;
+
+    m_watcher.removePath(path);
     QRegularExpression reg("[.]part$");
     m_image = m_image.replace(reg, "");
+
+    if (!QFile::exists(m_image)) {
+        qApp->exit(4);
+        return;
+    }
 
     work();
 }

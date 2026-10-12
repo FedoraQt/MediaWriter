@@ -224,7 +224,14 @@ void WriteJob::work()
         return;
 
     if (what.endsWith(".part")) {
-        watcher.addPath(what);
+        const bool watching = watcher.addPath(what);
+        if (!QFile::exists(what)) {
+            onFileChanged(what);
+        } else if (!watching) {
+            err << tr("Unable to watch the downloaded image.") << "\n";
+            err.flush();
+            qApp->exit(4);
+        }
     } else {
         if (!write(fd.fileDescriptor()))
             return;
@@ -235,9 +242,10 @@ void WriteJob::work()
 
 void WriteJob::onFileChanged(const QString &path)
 {
-    if (QFile::exists(path))
+    if (!what.endsWith(".part") || QFile::exists(path))
         return;
 
+    watcher.removePath(path);
     what.replace(QRegularExpression(".part$"), "");
 
     if (!QFile::exists(what)) {

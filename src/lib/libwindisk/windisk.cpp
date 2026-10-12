@@ -23,6 +23,7 @@
 
 #include <comdef.h>
 #include <dbt.h>
+#include <share.h>
 
 #include <QStandardPaths>
 #include <QThread>

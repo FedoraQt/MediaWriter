@@ -43,6 +43,8 @@ DriveManager *DriveManager::_self = nullptr;
 
 void DriveOperationDeleter::operator()(QProcess *process)
 {
+    process->disconnect();
+
     if (process->state() != QProcess::NotRunning) {
 #ifdef Q_OS_WIN
         process->kill();
@@ -389,6 +391,11 @@ static QString helperPath()
 
 bool Drive::write(ReleaseVariant *data)
 {
+    if (m_process) {
+        mWarning() << "Cannot start writing while a helper process still exists" << m_process.get();
+        return false;
+    }
+
     m_image = data;
     m_image->setErrorString(QString());
     if (data && data->size() > 0 && size() > 0 && data->realSize() > size()) {
@@ -449,6 +456,11 @@ void Drive::cancel()
 
 void Drive::restore()
 {
+    if (m_process) {
+        mWarning() << "Cannot start restoring while a helper process still exists" << m_process.get();
+        return;
+    }
+
     const QString path = helperPath();
     if (path.isEmpty()) {
         setRestoreStatus(RESTORE_ERROR);
