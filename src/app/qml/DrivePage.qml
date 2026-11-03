@@ -71,44 +71,74 @@ Page {
     ColumnLayout {
         id: selectFileColumn
         visible: selectedOption == Units.MainSelect.Write
+        Layout.fillWidth: true
 
         Heading {
             text: qsTr("Selected file")
         }
 
-        RowLayout {
-            id: fileCol
-
+        Rectangle {
+            id: dropRect
+            Layout.fillWidth: true
+            Layout.preferredHeight: units.gridUnit * 5
+            border.color: "grey"
+            color: "transparent"
+            border.width: 1
+            radius: 4
+            
             QQC2.Label {
-                text: releases.localFile.iso ? (String)(releases.localFile.iso).split("/").slice(-1)[0] : ("<font color=\"gray\">" + qsTr("None") + "</font>")
-                Layout.fillWidth: true
-                elide: QQC2.Label.ElideRight
+                anchors.centerIn: parent
+                horizontalAlignment: Text.AlignHCenter
+                wrapMode: Text.WordWrap
+                text: {
+                    if (releases.localFile.iso)
+                        return (String)(releases.localFile.iso).split("/").slice(-1)[0] + "\n" + qsTr("Click to change")
+                    else if (dropArea.containsDrag)
+                        return qsTr("Drop to select")
+                    else
+                        return qsTr("Drop image file here or click to browse")
+                }
+                opacity: releases.localFile.iso ? 1.0 : 0.6
             }
-
-            QQC2.Button {
-                id: selectFileButton
-                Layout.alignment: Qt.AlignRight
-                text: qsTr("Select...")
+            
+            MouseArea {
+                anchors.fill: parent
+                cursorShape: Qt.PointingHandCursor
+                enabled: !dropArea.containsDrag
                 onClicked: {
                     if (portalFileDialog.isAvailable)
                         portalFileDialog.open()
                     else
                         fileDialog.open()
                 }
-
-                Connections {
-                    target: portalFileDialog
-                    function onFileSelected(fileName) {
-                        releases.selectLocalFile(fileName)
+            }
+            
+            DropArea {
+                id: dropArea
+                anchors.fill: parent
+                
+                onDropped: function(drop) {
+                    if (drop.hasUrls && drop.urls.length > 0) {
+                        var url = drop.urls[0].toString().toLowerCase()
+                        if (url.endsWith(".iso") || url.endsWith(".raw") || url.endsWith(".xz")) {
+                            releases.selectLocalFile(drop.urls[0])
+                        }
                     }
                 }
-
-                FileDialog {
-                    id: fileDialog
-                    nameFilters: [ qsTr("Image files") + " (*.iso *.raw *.xz)", qsTr("All files (*)")]
-                    onAccepted: {
-                        releases.selectLocalFile(currentFile)
-                    }
+            }
+            
+            Connections {
+                target: portalFileDialog
+                function onFileSelected(fileName) {
+                    releases.selectLocalFile(fileName)
+                }
+            }
+            
+            FileDialog {
+                id: fileDialog
+                nameFilters: [ qsTr("Image files") + " (*.iso *.raw *.xz)", qsTr("All files (*)")]
+                onAccepted: {
+                    releases.selectLocalFile(currentFile)
                 }
             }
         }
