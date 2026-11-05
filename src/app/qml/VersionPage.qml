@@ -32,24 +32,28 @@ Page {
         text: qsTr("Select from:")
     }
 
-    QQC2.RadioButton {
+    MnemonicRadioButton {
+        id: officialRadio
         checked: true
-        text: qsTr("Official Editions")
+        mnemonicText: qsTr("&Official Editions")
         onClicked: changeFilter(Units.Source.Product)
     }
 
-    QQC2.RadioButton {
-        text: qsTr("Atomic Desktops")
+    MnemonicRadioButton {
+        id: atomicosRadio
+        mnemonicText: qsTr("&Atomic Desktops")
         onClicked: changeFilter(Units.Source.Emerging)
     }
 
-    QQC2.RadioButton {
-        text: qsTr("Spins")
+    MnemonicRadioButton {
+        id: fedospinRadio
+        mnemonicText: qsTr("&Spins")
         onClicked: changeFilter(Units.Source.Spins)
     }
 
-    QQC2.RadioButton {
-        text: qsTr("Labs")
+    MnemonicRadioButton {
+        id: fedolabsRadio
+        mnemonicText: qsTr("&Labs")
         onClicked: changeFilter(Units.Source.Labs)
     }
 

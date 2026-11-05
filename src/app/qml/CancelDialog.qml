@@ -74,14 +74,16 @@ ModalDialog {
                 Layout.fillWidth: true
             }
 
-            QQC2.Button {
+            MnemonicButton {
                 id: continueButton
+                mnemonicText: qsTr("C&ontinue")
+                shortcutActive: cancelDialog.visible
                 onClicked: cancelDialog.close()
-                text: qsTr("Continue")
             }
 
-            QQC2.Button {
+            MnemonicButton {
                 id: cancelButton
+                shortcutActive: cancelDialog.visible
                 onClicked: {
                     cancelDialog.close()
                     // Store release state locally as drives.selected.cancel() makes
@@ -96,15 +98,15 @@ ModalDialog {
                     downloadManager.cancel()
                     selectedPage = Units.Page.MainPage
                 }
-                text: {
+                mnemonicText: {
                     if (variantStatus === Units.DownloadStatus.Downloading || variantStatus === Units.DownloadStatus.Download_Verifying)
-                        qsTr("Cancel Download")
+                        qsTr("Cancel &Download")
                     else if (variantStatus === Units.DownloadStatus.Writing)
-                        qsTr("Cancel Writing")
+                        qsTr("Cancel &Writing")
                     else if (variantStatus === Units.DownloadStatus.Write_Verifying)
-                        qsTr("Cancel Verification")
+                        qsTr("Cancel &Verification")
                     else
-                        qsTr("Cancel")
+                        qsTr("&Cancel")
                 }
             }
         }
