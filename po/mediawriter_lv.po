@@ -7,13 +7,14 @@
 # ℂ𝕠𝕠𝕠𝕝 ​​ <coool@mail.ee>, 2025.
 # Janis Dauksta <jdauksta@outlook.com>, 2025.
 # Weblate Translation Memory <noreply-mt-weblate-translation-memory@weblate.org>, 2025.
+# Rihards Prieditis <rprieditis@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2025-12-04 17:36+0000\n"
-"Last-Translator: Janis Dauksta <jdauksta@outlook.com>\n"
+"PO-Revision-Date: 2026-11-21 16:29+0000\n"
+"Last-Translator: Rihards Prieditis <rprieditis@gmail.com>\n"
 "Language-Team: Latvian <https://translate.fedoraproject.org/projects/fedora-"
 "media-writer/mediawriter/lv/>\n"
 "Language: lv\n"
@@ -22,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= "
 "19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\n"
-"X-Generator: Weblate 5.14.3\n"
+"X-Generator: Weblate 2026.11.2\n"
 
 #: ../src/app/qml/AboutDialog.qml:48
 msgctxt "AboutDialog|"
@@ -38,13 +39,13 @@ msgstr "Versija %1"
 #: ../src/app/qml/AboutDialog.qml:64
 msgctxt "AboutDialog|"
 msgid "Fedora Media Writer is now checking for new releases"
-msgstr "Fedora Media Writer meklē jaunas versijas"
+msgstr "Fedora Media Writer pārbauda, vai ir jauni laidieni"
 
 #: ../src/app/qml/AboutDialog.qml:70
 #, qt-format
 msgctxt "AboutDialog|"
 msgid "Please report bugs or your suggestions on %1"
-msgstr "Lūdzu rakstiet par kļūmēm vai ieteikumiem %1"
+msgstr "Lūdzu, ziņojiet par kļūdām vai iesniedziet ieteikumus vietnē %1"
 
 #: ../src/app/qml/AboutDialog.qml:93
 msgctxt "AboutDialog|"
@@ -72,20 +73,20 @@ msgid ""
 "Download and media writing will be aborted. This process can be resumed any "
 "time later."
 msgstr ""
-"Lejupielādēšana un mediju ierakstīšana tiks atcelta. Šis proces var būt "
-"atsākams jebkurā brīdī."
+"Lejupielāde un datu nesēja ierakstīšana tiks pārtraukta. Šo procesu var "
+"atsākt jebkurā laikā vēlāk."
 
 #: ../src/app/qml/CancelDialog.qml:78
 msgctxt "CancelDialog|"
 msgid ""
 "Writing process will be aborted and your drive will have to be restored "
 "afterwards."
-msgstr ""
+msgstr "Ierakstīšana tiks pārtraukta, un pēc tam datu nesējs būs jāatjauno."
 
 #: ../src/app/qml/CancelDialog.qml:80
 msgctxt "CancelDialog|"
 msgid "This operation is safe to be cancelled."
-msgstr "Operāciju ir droši atcelt."
+msgstr "Šo darbību var droši atcelt."
 
 #: ../src/app/qml/CancelDialog.qml:97
 msgctxt "CancelDialog|"
@@ -124,6 +125,8 @@ msgid ""
 "The entire device (all of %1) will be erased and the selected image will be "
 "written to it. Do you want to continue?"
 msgstr ""
+"Visa ierīce (viss %1) tiks izdzēsta, un tajā tiks ierakstīts izvēlētais "
+"tēls. Vai turpināt?"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:72
 msgctxt "DeviceWarningDialog|"
@@ -138,12 +141,12 @@ msgstr "Ierakstīt"
 #: ../src/app/qml/DeviceWarningDialog.qml:90
 msgctxt "DeviceWarningDialog|"
 msgid "Download && Write"
-msgstr ""
+msgstr "Lejupielādēt un ierakstīt"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:91
 msgctxt "DeviceWarningDialog|"
 msgid "Download & Write"
-msgstr ""
+msgstr "Lejupielādēt un ierakstīt"
 
 #: ../src/app/qml/DeviceWarningDialog.qml:103
 msgctxt "DeviceWarningDialog|"
@@ -168,28 +171,28 @@ msgstr "Baiti"
 #: ../src/app/downloadmanager.cpp:235
 msgctxt "Download|"
 msgid "Unable to fetch the requested image."
-msgstr ""
+msgstr "Neizdevās iegūt pieprasīto tēlu."
 
 #: ../src/app/downloadmanager.cpp:335
 msgctxt "Download|"
 msgid "You ran out of space in your Downloads folder."
-msgstr ""
+msgstr "Lejupielāžu mapē beidzās vieta."
 
 #: ../src/app/downloadmanager.cpp:337
 msgctxt "Download|"
 msgid "The download file is not writable."
-msgstr ""
+msgstr "Lejupielādes fails nav ierakstāms."
 
 #: ../src/app/downloadmanager.cpp:425
 msgctxt "Download|"
 msgid "Connection timed out"
-msgstr ""
+msgstr "Savienojumam iestājās noildze"
 
 #: ../src/app/qml/DownloadPage.qml:36
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "%1 Successfully Written"
-msgstr "%1 Sekmīgi Ierakstīti"
+msgstr "%1 sekmīgi ierakstīts"
 
 #: ../src/app/qml/DownloadPage.qml:38
 #, qt-format
@@ -224,22 +227,22 @@ msgstr "Neizdevās lejupielādēt %1"
 #: ../src/app/qml/DownloadPage.qml:54
 msgctxt "DownloadPage|"
 msgid " B left)"
-msgstr " B atlika)"
+msgstr " B vēl)"
 
 #: ../src/app/qml/DownloadPage.qml:55
 msgctxt "DownloadPage|"
 msgid " KB left)"
-msgstr " KB atlika)"
+msgstr " KB vēl)"
 
 #: ../src/app/qml/DownloadPage.qml:56
 msgctxt "DownloadPage|"
 msgid " MB left)"
-msgstr " MB atlika)"
+msgstr " MB vēl)"
 
 #: ../src/app/qml/DownloadPage.qml:57
 msgctxt "DownloadPage|"
 msgid " GB left)"
-msgstr " GB atlika)"
+msgstr " GB vēl)"
 
 #: ../src/app/qml/DownloadPage.qml:60 ../src/app/qml/DownloadPage.qml:61
 #: ../src/app/qml/DownloadPage.qml:62 ../src/app/qml/DownloadPage.qml:63
@@ -251,7 +254,7 @@ msgstr " (%1"
 #: ../src/app/qml/DownloadPage.qml:73
 msgctxt "DownloadPage|"
 msgid "Your drive was unplugged during the process"
-msgstr "Jūsu datu nesējs tika atsprausts procesa laikā"
+msgstr "Procesa laikā datu nesējs tika atvienots"
 
 #: ../src/app/qml/DownloadPage.qml:106
 msgctxt "DownloadPage|"
@@ -262,7 +265,7 @@ msgstr "Lejupielādes tiek saglabātas lejupielāžu mapē."
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "By writing, you will lose all of the data on %1."
-msgstr "Ierakstot, Jūs zaudēsiet visus datus uz %1."
+msgstr "Ierakstot tiks zaudēti visi dati ierīcē %1."
 
 #: ../src/app/qml/DownloadPage.qml:124
 msgctxt "DownloadPage|"
@@ -270,20 +273,13 @@ msgid "Please insert an USB drive."
 msgstr "Lūdzu, ievietojiet USB datu nesēju."
 
 #: ../src/app/qml/DownloadPage.qml:133
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using Fedora Media Writer. This will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive is being resized to a smaller capacity. You may resize it back to "
 "normal by running Fedora Media Writer again and selecting the Restore option."
 msgstr ""
-"Jūsu datu nesēja izmērs tiks mainīts uz mazāku izmēru. Jūs varēsiet atgriest "
-"atpakaļ uz oriģinālo izmēru izmantojot Fedora Media Writer. Šis izdzēsīs "
-"instalācijas failus no datu nesēja."
+"Datu nesēja ietilpība tiek samazināta. Sākotnējo ietilpību var atjaunot, "
+"vēlreiz palaižot Fedora Media Writer un izvēloties opciju „Atjaunot”."
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
@@ -303,6 +299,9 @@ msgid ""
 "check <a href=%1>this page</a> for more information about its compatibility "
 "with Fedora and how to create bootable media for it."
 msgstr ""
+"Fedora Media Writer vēl neatbalsta jūsu plati vai ierīci. Lūdzu, skatiet <a "
+"href=%1>šo lapu</a>, lai uzzinātu vairāk par tās saderību ar Fedoru un to, "
+"kā tai izveidot palaižamu datu nesēju."
 
 #: ../src/app/qml/DownloadPage.qml:160
 #, qt-format
@@ -311,12 +310,13 @@ msgid ""
 "The selected drive's size is %1. It's possible you have selected an external "
 "drive by accident!"
 msgstr ""
+"Izvēlētā datu nesēja izmērs ir %1. Iespējams, nejauši izvēlēts ārējais disks!"
 
 #: ../src/app/qml/DownloadPage.qml:168
 #, qt-format
 msgctxt "DownloadPage|"
 msgid "Restart and boot from %1 to start using %2."
-msgstr ""
+msgstr "Pārstartējiet datoru un palaidiet to no %1, lai sāktu lietot %2."
 
 #: ../src/app/qml/DownloadPage.qml:235
 msgctxt "DownloadPage|"
@@ -331,7 +331,7 @@ msgstr "Ierakstīt"
 #: ../src/app/qml/DownloadPage.qml:264
 msgctxt "DownloadPage|"
 msgid "Finish"
-msgstr ""
+msgstr "Pabeigt"
 
 #: ../src/app/qml/DownloadPage.qml:266
 msgctxt "DownloadPage|"
@@ -339,9 +339,6 @@ msgid "Retry"
 msgstr "Mēģināt vēlreiz"
 
 #: ../src/app/drivemanager.cpp:288
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "The drive was removed while it was written to."
 msgctxt "Drive|"
 msgid "The drive was removed while it was written to."
 msgstr "Datu nesējs ierakstīšanas laikā tika izņemts."
@@ -352,57 +349,41 @@ msgid "This drive is not large enough."
 msgstr "Datu nesēja izmērs ir nepietiekams."
 
 #: ../src/app/drivemanager.cpp:397
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Could not find the helper binary. Check your installation."
 msgctxt "Drive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "Nevarēja atrast palīga binārus. Pārbaudiet Jūsu instalāciju."
+msgstr "Nevarēja atrast palīgprogrammu. Pārbaudiet instalāciju."
 
 #: ../src/app/drivemanager.cpp:435
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Stopped before writing has finished."
 msgctxt "Drive|"
 msgid "Stopped before writing has finished."
-msgstr "Pārtraukts pirms rakstīšana tika pabeigta."
+msgstr "Apturēts pirms ierakstīšanas beigām."
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "Drive|"
 msgid "Finished!"
 msgstr "Pabeigts!"
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 was successful"
-msgstr "Ierakstīt %1 izdevās"
+msgstr "%1 ierakstīšana izdevās"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Error"
 msgctxt "Drive|"
 msgid "Error"
 msgstr "Kļūda"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 failed"
-msgstr "Ierakstīt %1 neizdevās"
+msgstr "%1 ierakstīšana neizdevās"
 
 #: ../src/app/qml/DrivePage.qml:30
 msgctxt "DrivePage|"
 msgid "Write Options"
-msgstr "Ierakstīšanas Opcijas"
+msgstr "Ierakstīšanas opcijas"
 
 #: ../src/app/qml/DrivePage.qml:37
 msgctxt "DrivePage|"
@@ -412,7 +393,7 @@ msgstr "Versija"
 #: ../src/app/qml/DrivePage.qml:59
 msgctxt "DrivePage|"
 msgid "Hardware Architecture"
-msgstr "Sistēmas Arhitektūra"
+msgstr "Aparatūras arhitektūra"
 
 #: ../src/app/qml/DrivePage.qml:76
 msgctxt "DrivePage|"
@@ -432,7 +413,7 @@ msgstr "Izvēlēties..."
 #: ../src/app/qml/DrivePage.qml:108
 msgctxt "DrivePage|"
 msgid "Image files"
-msgstr "Attēla faili"
+msgstr "Tēlu faili"
 
 #: ../src/app/qml/DrivePage.qml:108
 msgctxt "DrivePage|"
@@ -447,7 +428,7 @@ msgstr "USB datu nesējs"
 #: ../src/app/qml/DrivePage.qml:127
 msgctxt "DrivePage|"
 msgid "There are no portable drives connected"
-msgstr "Pārnēsājamie datu nesēji nav pieslēgti"
+msgstr "Nav pievienots neviens pārnēsājams datu nesējs"
 
 #: ../src/app/qml/DrivePage.qml:146
 msgctxt "DrivePage|"
@@ -457,7 +438,7 @@ msgstr "Lejupielādēt"
 #: ../src/app/qml/DrivePage.qml:151
 msgctxt "DrivePage|"
 msgid "Delete download after writing"
-msgstr "Izdzēst pēc ierakstīšanas"
+msgstr "Pēc ierakstīšanas dzēst lejupielādi"
 
 #: ../src/app/qml/DrivePage.qml:160
 msgctxt "DrivePage|"
@@ -467,22 +448,22 @@ msgstr "Ierakstīt"
 #: ../src/app/qml/DrivePage.qml:162
 msgctxt "DrivePage|"
 msgid "Download && Write"
-msgstr ""
+msgstr "Lejupielādēt un ierakstīt"
 
 #: ../src/app/qml/DrivePage.qml:163
 msgctxt "DrivePage|"
 msgid "Download & Write"
-msgstr ""
+msgstr "Lejupielādēt un ierakstīt"
 
 #: ../src/app/linuxdrivemanager.cpp:137
 msgctxt "LinuxDriveProvider|"
 msgid "UDisks2 seems to be unavailable or unaccessible on your system."
-msgstr "UDisks2 šķietami nav pieejams, vai nav pieejams uz Jūsu sistēmas."
+msgstr "UDisks2 jūsu sistēmā šķiet nepieejams vai tam nevar piekļūt."
 
 #: ../src/app/qml/MainPage.qml:29
 msgctxt "MainPage|"
 msgid "Select Image Source"
-msgstr "Izvēlieties Attēla Avotu"
+msgstr "Izvēlieties tēla avotu"
 
 #: ../src/app/qml/MainPage.qml:33
 msgctxt "MainPage|"
@@ -498,13 +479,13 @@ msgstr "Izvēlēties .iso failu"
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore <b>%1</b>"
-msgstr "Restaurēt <b>%1</b>"
+msgstr "Atjaunot <b>%1</b>"
 
 #: ../src/app/qml/MainPage.qml:50
 #, qt-format
 msgctxt "MainPage|"
 msgid "Restore a USB drive (%1 available)"
-msgstr ""
+msgstr "Atjaunot USB datu nesēju (pieejams %1)"
 
 #: ../src/app/qml/MainPage.qml:62
 msgctxt "MainPage|"
@@ -524,7 +505,7 @@ msgstr "Nākamais"
 #: ../src/app/portalfiledialog.cpp:143
 msgctxt "PortalFileDialog|"
 msgid "Image files"
-msgstr "Attēla faili"
+msgstr "Tēlu faili"
 
 #: ../src/app/portalfiledialog.cpp:153
 msgctxt "PortalFileDialog|"
@@ -534,7 +515,7 @@ msgstr "Visi faili"
 #: ../src/app/portalfiledialog.cpp:162
 msgctxt "PortalFileDialog|"
 msgid "Open File"
-msgstr "Atvērt Failu"
+msgstr "Atvērt failu"
 
 #: ../src/helper/win/writejob.cpp:360
 #, qt-format
@@ -569,7 +550,7 @@ msgstr "%1 baits(-i)"
 #: ../src/app/releasemanager.cpp:422
 msgctxt "Release|"
 msgid "Pick a file from your drive(s)"
-msgstr "Izvēlieties failu no Jūsu datu nesēja(-iem)"
+msgstr "Izvēlieties failu no sava datu nesēja(-iem)"
 
 #: ../src/app/releasemanager.cpp:423
 msgctxt "Release|"
@@ -578,9 +559,9 @@ msgid ""
 "flash disk</p><p>Currently it is only supported to write raw disk images "
 "(.iso or .bin)</p>"
 msgstr ""
-"<p>Šeit Jūs variet izvēlēties OS attēlu no Jūsu cietā diska, lai tiktu "
-"ierakstīts uz zibatmiņas</p><p>Pašlaik ir tikai atbalstīts ierakstīt tiešos "
-"(raw) disku attēlus (.iso vai .bin)</p>"
+"<p>Šeit varat izvēlēties OS tēlu no cietā diska, ko ierakstīt zibatmiņā</p>"
+"<p>Pašlaik atbalstīta tikai neapstrādātu disku tēlu (.iso vai .bin) "
+"ierakstīšana</p>"
 
 #: ../src/app/releasemanager.cpp:454
 msgctxt "Release|"
@@ -590,12 +571,12 @@ msgstr "Fedora Spins"
 #: ../src/app/releasemanager.cpp:456
 msgctxt "Release|"
 msgid "Fedora Labs"
-msgstr ""
+msgstr "Fedora Labs"
 
 #: ../src/app/releasemanager.cpp:458
 msgctxt "Release|"
 msgid "Fedora Atomic Desktops"
-msgstr ""
+msgstr "Fedora Atomic Desktops"
 
 #: ../src/app/releasemanager.cpp:460
 msgctxt "Release|"
@@ -605,59 +586,59 @@ msgstr "Citi"
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 64bit"
-msgstr "Intel/AMD 64bitu"
+msgstr "Intel/AMD 64 bitu"
 
 #: ../src/app/releasemanager.cpp:1106
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (64-bit)"
 msgstr ""
-"ISO formāta attēls priekš Intel, AMD un citiem atbalstošiem Personīgajiem "
-"Datoriem (64-bitu)"
+"ISO formāta tēls Intel, AMD un citiem saderīgiem personālajiem datoriem (64 "
+"bitu)"
 
 #: ../src/app/releasemanager.cpp:1107
 msgctxt "ReleaseArchitecture|"
 msgid "Intel/AMD 32bit"
-msgstr "Intel/AMD 32bitu"
+msgstr "Intel/AMD 32 bitu"
 
 #: ../src/app/releasemanager.cpp:1107
 msgctxt "ReleaseArchitecture|"
 msgid "ISO format image for Intel, AMD and other compatible PCs (32-bit)"
 msgstr ""
-"ISO formāta attēls priekš Intel, AMD un citiem atbalstošiem Personīgajiem "
-"Datoriem (32-bitu)"
+"ISO formāta tēls Intel, AMD un citiem saderīgiem personālajiem datoriem (32 "
+"bitu)"
 
 #: ../src/app/releasemanager.cpp:1108
 msgctxt "ReleaseArchitecture|"
 msgid "ARM v7"
-msgstr ""
+msgstr "ARM v7"
 
 #: ../src/app/releasemanager.cpp:1108
 msgctxt "ReleaseArchitecture|"
 msgid ""
 "LZMA-compressed raw image for ARM v7-A machines like the Raspberry Pi 2 and 3"
 msgstr ""
-"LZMA-saspiestais tiešais (raw) attēls priekš ARM v7-A iekārtām kā Raspberry "
+"Ar LZMA saspiests neapstrādāts tēls ARM v7-A iekārtām, piemēram, Raspberry "
 "Pi 2 un 3"
 
 #: ../src/app/releasemanager.cpp:1109
 msgctxt "ReleaseArchitecture|"
 msgid "AArch64"
-msgstr ""
+msgstr "AArch64"
 
 #: ../src/app/releasemanager.cpp:1109
 msgctxt "ReleaseArchitecture|"
 msgid "LZMA-compressed raw image for AArch64 machines"
-msgstr "LZMA-saspiestais tiešais (raw) attēls priekš AArch64 iekārtām"
+msgstr "Ar LZMA saspiests neapstrādāts tēls AArch64 iekārtām"
 
 #: ../src/app/releasemanager.cpp:421
 msgctxt "ReleaseListModel|"
 msgid "Custom image"
-msgstr "Pielāgots attēls"
+msgstr "Pielāgots tēls"
 
 #: ../src/app/releasemanager.cpp:965 ../src/app/releasemanager.cpp:977
 msgctxt "ReleaseVariant|"
 msgid "The downloaded image is corrupted"
-msgstr "Lejupielādētais attēls ir bojāts"
+msgstr "Lejupielādētais tēls ir bojāts"
 
 #: ../src/app/releasemanager.cpp:981
 msgctxt "ReleaseVariant|"
@@ -667,7 +648,7 @@ msgstr "Lejupielādētais fails nav nolasāms."
 #: ../src/app/releasemanager.cpp:992
 msgctxt "ReleaseVariant|"
 msgid "Unable to rename the temporary file."
-msgstr "Nevarēja pārdēvēt īslaicīgo failu."
+msgstr "Nevarēja pārdēvēt pagaidu failu."
 
 #: ../src/app/releasemanager.h:378
 msgctxt "ReleaseVariant|"
@@ -682,7 +663,7 @@ msgstr "Lejupielādē"
 #: ../src/app/releasemanager.h:380
 msgctxt "ReleaseVariant|"
 msgid "Checking the download"
-msgstr "Pārbauda lejupielādēto"
+msgstr "Pārbauda lejupielādi"
 
 #: ../src/app/releasemanager.h:381
 msgctxt "ReleaseVariant|"
@@ -692,8 +673,7 @@ msgstr "Gatavs ierakstīšanai"
 #: ../src/app/releasemanager.h:382
 msgctxt "ReleaseVariant|"
 msgid "Image file was saved to your downloads folder. Writing is not possible"
-msgstr ""
-"Attēla fails tika saglabāts lejupielāžu mapē. Rakstīšana nebija iespējama"
+msgstr "Tēla fails tika saglabāts lejupielāžu mapē. Ierakstīšana nav iespējama"
 
 #: ../src/app/releasemanager.h:383
 msgctxt "ReleaseVariant|"
@@ -741,7 +721,7 @@ msgstr "%1 Beta"
 #, qt-format
 msgctxt "ReleaseVersion|"
 msgid "%1 Release Candidate"
-msgstr "%1 Izlaiduma Kandidāts"
+msgstr "%1 laidiena kandidāts"
 
 #: ../src/helper/linux/restorejob.cpp:73
 msgctxt "RestoreJob|"
@@ -751,7 +731,7 @@ msgstr "Neizdevās atvērt ierīci ierakstīšanai"
 #: ../src/helper/linux/restorejob.cpp:88 ../src/helper/linux/restorejob.cpp:123
 msgctxt "RestoreJob|"
 msgid "Destination drive is not writable"
-msgstr "Gala datu nesējs nav ierakstāms"
+msgstr "Mērķa datu nesējs nav ierakstāms"
 
 #: ../src/helper/linux/restorejob.cpp:100
 msgctxt "RestoreJob|"
@@ -766,22 +746,22 @@ msgstr "Faila izmērs ir mazāks par 128 blokiem"
 #: ../src/helper/linux/restorejob.cpp:114
 msgctxt "RestoreJob|"
 msgid "Failed to move file pointer to the end region"
-msgstr "Neizdevās pārvietot faila rādītāju uz beigām"
+msgstr "Neizdevās pārvietot faila rādītāju uz beigu apgabalu"
 
 #: ../src/helper/linux/restorejob.cpp:131
 msgctxt "RestoreJob|"
 msgid "Failed to sync data to disk"
-msgstr "Neizdevās sinhronizēt datus uz datu nesēja"
+msgstr "Neizdevās sinhronizēt datus ar disku"
 
 #: ../src/helper/win/restorejob.cpp:64
 msgctxt "RestoreJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr "Nevarēja atvienot datu nesēja savienojumu punktus"
+msgstr "Nevarēja noņemt datu nesēja montēšanas punktus"
 
 #: ../src/helper/win/restorejob.cpp:78
 msgctxt "RestoreJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr "Neizdevās atvienot partīcijas no datu nesēja"
+msgstr "Neizdevās noņemt nodalījumus no datu nesēja"
 
 #: ../src/helper/win/restorejob.cpp:87
 msgctxt "RestoreJob|"
@@ -791,56 +771,53 @@ msgstr "Neizdevās atvērt datu nesēju formatēšanai"
 #: ../src/helper/win/restorejob.cpp:102
 msgctxt "RestoreJob|"
 msgid "Couldn't lock the drive"
-msgstr "Neizdevās aizslēgt datu nesēju"
+msgstr "Nevarēja bloķēt datu nesēju"
 
 #: ../src/helper/win/restorejob.cpp:124
 msgctxt "RestoreJob|"
 msgid "Failed to clear the partition table on the drive"
-msgstr "Neizdevās notīrīt partīciju tabulu uz datu nesēja"
+msgstr "Neizdevās notīrīt datu nesēja nodalījumu tabulu"
 
 #: ../src/helper/win/restorejob.cpp:138
 msgctxt "RestoreJob|"
 msgid "Failed to set the drive to RAW partition style"
-msgstr "Neizdevās uzstādīt datu nesēju uz RAW partīciju stilu"
+msgstr "Neizdevās iestatīt datu nesējam RAW nodalījumu stilu"
 
 #: ../src/helper/win/restorejob.cpp:152
 msgctxt "RestoreJob|"
 msgid "Failed to create a GPT partition on the drive"
-msgstr "Neizdevās izveidot GPT partīciju uz datu nesēja"
+msgstr "Neizdevās izveidot GPT nodalījumu datu nesējā"
 
 #: ../src/helper/win/restorejob.cpp:171
 msgctxt "RestoreJob|"
 msgid "Failed to get GUID volume path on the drive"
-msgstr "Neizdevās iegūt GUID sējuma ceļu uz datu nesēja"
+msgstr "Neizdevās iegūt datu nesēja GUID sējuma ceļu"
 
 #: ../src/helper/win/restorejob.cpp:189
 msgctxt "RestoreJob|"
 msgid "Failed to mount the new partition"
-msgstr "Neizdevās piemontēt jauno partīciju"
+msgstr "Neizdevās montēt jauno nodalījumu"
 
 #: ../src/helper/win/restorejob.cpp:200
 msgctxt "RestoreJob|"
 msgid "Failed to format the partition to exFAT"
-msgstr "Neizdevās formatēt partīciju uz exFAT"
+msgstr "Neizdevās formatēt nodalījumu kā exFAT"
 
 #: ../src/app/qml/RestorePage.qml:39
 #, qt-format
 msgctxt "RestorePage|"
 msgid "Restore Drive <b>%1</b>"
-msgstr "Restaurēt Datu Nesēju <b>%1</b>"
+msgstr "Atjaunot datu nesēju <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:39
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid "Restore Drive <b>%1</b>"
 msgctxt "RestorePage|"
 msgid "Restore Drive"
-msgstr "Restaurēt Datu Nesēju <b>%1</b>"
+msgstr "Atjaunot datu nesēju"
 
 #: ../src/app/qml/RestorePage.qml:48
 msgctxt "RestorePage|"
 msgid "Select a drive to restore"
-msgstr ""
+msgstr "Izvēlieties atjaunojamo datu nesēju"
 
 #: ../src/app/qml/RestorePage.qml:70
 msgctxt "RestorePage|"
@@ -851,6 +828,11 @@ msgid ""
 "you want to write another live system to it.</p> <p align=\"justify\"> Do "
 "you want to restore it to factory settings? </p>"
 msgstr ""
+"<p align=\"justify\"> Lai atgūtu visu datu nesējā pieejamo vietu, tas "
+"jāatjauno uz rūpnīcas iestatījumiem. Live sistēma un visi saglabātie dati "
+"tiks izdzēsti.</p> <p align=\"justify\"> Datu nesējs nav jāatjauno, ja "
+"vēlaties tajā ierakstīt citu Live sistēmu.</p> <p align=\"justify\"> Vai "
+"atjaunot to uz rūpnīcas iestatījumiem? </p>"
 
 #: ../src/app/qml/RestorePage.qml:87
 msgctxt "RestorePage|"
@@ -858,11 +840,13 @@ msgid ""
 "<p align=\"justify\">Please wait while Fedora Media Writer restores your "
 "portable drive.</p>"
 msgstr ""
+"<p align=\"justify\">Lūdzu, uzgaidiet, kamēr Fedora Media Writer atjauno "
+"jūsu pārnēsājamo datu nesēju.</p>"
 
 #: ../src/app/qml/RestorePage.qml:103
 msgctxt "RestorePage|"
 msgid "Your drive was successfully restored!"
-msgstr ""
+msgstr "Datu nesējs sekmīgi atjaunots!"
 
 #: ../src/app/qml/RestorePage.qml:112
 msgctxt "RestorePage|"
@@ -870,11 +854,13 @@ msgid ""
 "Unfortunately, an error occurred during the process. Please try restoring "
 "the drive using your system tools."
 msgstr ""
+"Diemžēl procesa laikā radās kļūda. Lūdzu, mēģiniet atjaunot datu nesēju ar "
+"sistēmas rīkiem."
 
 #: ../src/app/qml/RestorePage.qml:122
 msgctxt "RestorePage|"
 msgid "Restoring finished"
-msgstr ""
+msgstr "Atjaunošana pabeigta"
 
 #: ../src/app/qml/RestorePage.qml:139
 msgctxt "RestorePage|"
@@ -884,12 +870,12 @@ msgstr "Pabeigt"
 #: ../src/app/qml/RestorePage.qml:139
 msgctxt "RestorePage|"
 msgid "Restore"
-msgstr "Restaurēt"
+msgstr "Atjaunot"
 
 #: ../src/app/qml/VersionPage.qml:29
 msgctxt "VersionPage|"
 msgid "Select Fedora Release"
-msgstr "Izvēlieties Fedora Izlaidumu"
+msgstr "Izvēlieties Fedora laidienu"
 
 #: ../src/app/qml/VersionPage.qml:32
 msgctxt "VersionPage|"
@@ -899,35 +885,35 @@ msgstr "Izvēlieties no:"
 #: ../src/app/qml/VersionPage.qml:37
 msgctxt "VersionPage|"
 msgid "Official Editions"
-msgstr "Oficiālām versijām"
+msgstr "Oficiālie izdevumi"
 
 #: ../src/app/qml/VersionPage.qml:42
 msgctxt "VersionPage|"
 msgid "Atomic Desktops"
-msgstr ""
+msgstr "Atomic Desktops"
 
 #: ../src/app/qml/VersionPage.qml:47
 msgctxt "VersionPage|"
 msgid "Spins"
-msgstr ""
+msgstr "Spins"
 
 #: ../src/app/qml/VersionPage.qml:52
 msgctxt "VersionPage|"
 msgid "Labs"
-msgstr ""
+msgstr "Labs"
 
 #: ../src/helper/linux/writejob.cpp:77 ../src/helper/linux/writejob.cpp:154
 #: ../src/helper/linux/writejob.cpp:169 ../src/helper/win/writejob.cpp:217
 #: ../src/helper/win/writejob.cpp:382
 msgctxt "WriteJob|"
 msgid "Source image is not readable"
-msgstr "Avota attēls nav lasāms"
+msgstr "Avota tēls nav nolasāms"
 
 #: ../src/helper/linux/writejob.cpp:85 ../src/helper/mac/writejob.cpp:225
 #: ../src/helper/win/writejob.cpp:257
 msgctxt "WriteJob|"
 msgid "Failed to start decompressing."
-msgstr ""
+msgstr "Neizdevās sākt atspiešanu."
 
 #: ../src/helper/linux/writejob.cpp:110 ../src/helper/linux/writejob.cpp:140
 #: ../src/helper/linux/writejob.cpp:176 ../src/helper/mac/writejob.cpp:185
@@ -936,13 +922,13 @@ msgstr ""
 #: ../src/helper/win/writejob.cpp:427
 msgctxt "WriteJob|"
 msgid "Destination drive is not writable"
-msgstr ""
+msgstr "Mērķa datu nesējs nav ierakstāms"
 
 #: ../src/helper/linux/writejob.cpp:119 ../src/helper/mac/writejob.cpp:259
 #: ../src/helper/win/writejob.cpp:307
 msgctxt "WriteJob|"
 msgid "There is not enough memory to decompress the file."
-msgstr ""
+msgstr "Nepietiek atmiņas faila atspiešanai."
 
 #: ../src/helper/linux/writejob.cpp:124 ../src/helper/mac/writejob.cpp:264
 #: ../src/helper/win/writejob.cpp:312
@@ -954,138 +940,135 @@ msgstr "Lejupielādētais saspiestais fails ir bojāts."
 #: ../src/helper/win/writejob.cpp:315
 msgctxt "WriteJob|"
 msgid "Unsupported compression options."
-msgstr ""
+msgstr "Neatbalstītas saspiešanas opcijas."
 
 #: ../src/helper/linux/writejob.cpp:130 ../src/helper/mac/writejob.cpp:270
 #: ../src/helper/win/writejob.cpp:318
 msgctxt "WriteJob|"
 msgid "Unknown decompression error."
-msgstr ""
+msgstr "Nezināma atspiešanas kļūda."
 
 #: ../src/helper/linux/writejob.cpp:206 ../src/helper/mac/writejob.cpp:304
 #: ../src/helper/win/writejob.cpp:497
 msgctxt "WriteJob|"
 msgid "Your drive is probably damaged."
-msgstr "Jūsu datu nesējs ir iespējams bojāts."
+msgstr "Jūsu datu nesējs, iespējams, ir bojāts."
 
 #: ../src/helper/linux/writejob.cpp:211 ../src/helper/mac/writejob.cpp:309
 #: ../src/helper/win/writejob.cpp:502
 msgctxt "WriteJob|"
 msgid "Unexpected error occurred during media check."
-msgstr "Nesagaidīta kļūme medija pārbaudes laikā."
+msgstr "Datu nesēja pārbaudes laikā radās neparedzēta kļūda."
 
 #: ../src/helper/mac/writejob.cpp:86
 msgctxt "WriteJob|"
 msgid "Unable to allocate socket pair"
-msgstr ""
+msgstr "Nevarēja piešķirt ligzdu pāri"
 
 #: ../src/helper/mac/writejob.cpp:131
 msgctxt "WriteJob|"
 msgid "Unable to open destination for writing"
-msgstr ""
+msgstr "Nevarēja atvērt mērķi ierakstīšanai"
 
 #: ../src/helper/win/writejob.cpp:148
 msgctxt "WriteJob|"
 msgid "Couldn't remove drive mountpoints"
-msgstr ""
+msgstr "Nevarēja noņemt datu nesēja montēšanas punktus"
 
 #: ../src/helper/win/writejob.cpp:155
 msgctxt "WriteJob|"
 msgid "Failed to remove partitions from the drive"
-msgstr ""
+msgstr "Neizdevās noņemt nodalījumus no datu nesēja"
 
 #: ../src/helper/win/writejob.cpp:164
 msgctxt "WriteJob|"
 msgid "Failed to open the drive for formatting"
-msgstr ""
+msgstr "Neizdevās atvērt datu nesēju formatēšanai"
 
 #: ../src/helper/win/writejob.cpp:170
 msgctxt "WriteJob|"
 msgid "Couldn't lock the drive"
-msgstr ""
+msgstr "Nevarēja bloķēt datu nesēju"
 
 #: ../src/helper/win/writejob.cpp:183
 msgctxt "WriteJob|"
 msgid "Couldn't open the logical handle"
-msgstr ""
+msgstr "Nevarēja atvērt loģisko deskriptoru"
 
 #: ../src/helper/win/writejob.cpp:189
 msgctxt "WriteJob|"
 msgid "Couldn't lock the logical drive"
-msgstr ""
+msgstr "Nevarēja bloķēt loģisko disku"
 
 #: ../src/helper/win/writejob.cpp:196
 msgctxt "WriteJob|"
 msgid "Couldn't unmount drive"
-msgstr ""
+msgstr "Nevarēja atmontēt datu nesēju"
 
 #: ../src/helper/win/writejob.cpp:230 ../src/helper/win/writejob.cpp:396
 msgctxt "WriteJob|"
 msgid "Failed to allocate the buffer"
-msgstr ""
+msgstr "Neizdevās piešķirt buferi"
 
 #: ../src/helper/win/writejob.cpp:296 ../src/helper/win/writejob.cpp:339
 #: ../src/helper/win/writejob.cpp:435
 msgctxt "WriteJob|"
 msgid "The last block was not fully written"
-msgstr ""
+msgstr "Pēdējais bloks netika pilnībā ierakstīts"
 
 #: ../src/helper/win/writejob.cpp:428
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Wrote %1 out of %2"
-msgstr ""
+msgstr "Ierakstīts %1 no %2"
 
 #: ../src/helper/win/writejob.cpp:454
 msgctxt "WriteJob|"
 msgid "Failed to read the image file: "
-msgstr ""
+msgstr "Neizdevās nolasīt tēla failu: "
 
 #: ../src/helper/win/writejob.cpp:460
 #, qt-format
 msgctxt "WriteJob|"
 msgid "Failed to write entire image. Total written: %1 out of %2"
-msgstr ""
+msgstr "Neizdevās ierakstīt visu tēlu. Kopā ierakstīts: %1 no %2"
 
 #: ../src/helper/win/writejob.cpp:480
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
-msgstr ""
+msgstr "Pārbaudei nevarēja pārvietoties uz datu nesēja sākumu"
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
 msgctxt "main|"
 msgid "Fedora Media Writer"
-msgstr ""
+msgstr "Fedora Media Writer"
 
 #: ../src/app/qml/main.qml:99
 msgctxt "main|"
 msgid "Select Fedora Version"
-msgstr ""
+msgstr "Izvēlieties Fedora versiju"
 
 #: ../src/app/qml/main.qml:113
 msgctxt "main|"
 msgid "Select Drive"
-msgstr ""
+msgstr "Izvēlieties datu nesēju"
 
 #: ../src/app/qml/main.qml:138
 msgctxt "main|"
 msgid "Restore"
-msgstr ""
+msgstr "Atjaunot"
 
 #. #-#-#-#-#  appstream.pot (PACKAGE VERSION)  #-#-#-#-#
 #. (itstool) path: component/name
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:9
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:3
-#, fuzzy
-#| msgctxt "AboutDialog|"
-#| msgid "About Fedora Media Writer"
 msgid "Fedora Media Writer"
-msgstr "Par Fedora Media Writer"
+msgstr "Fedora Media Writer"
 
 #. (itstool) path: component/summary
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:10
 msgid "Create a Fedora live USB drive"
-msgstr ""
+msgstr "Izveidojiet Fedora Live USB datu nesēju"
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:16
@@ -1097,6 +1080,12 @@ msgid ""
 "Fedora Labs (Design Suite, Security Lab,...). It provides basic information "
 "about each of them to help you make the right choice."
 msgstr ""
+"Rīks palaižama Live USB datu nesēja izveidei ar kādu no Fedora izdevumiem. "
+"Fedora Media Writer var ne tikai ierakstīt tēlu zibatmiņā, bet arī to jums "
+"lejupielādēt. Tas piedāvā oficiālos izdevumus (Server, Workstation), Fedora "
+"Spins (KDE Plasma Desktop, Xfce Desktop, Cinnamon Desktop,...) un Fedora "
+"Labs (Design Suite, Security Lab,...). Par katru no tiem tas sniedz "
+"pamatinformāciju, lai palīdzētu jums izdarīt pareizo izvēli."
 
 #. (itstool) path: description/p
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:17
@@ -1104,72 +1093,71 @@ msgid ""
 "Fedora Media Writer can also write other bootable ISOs loaded from your "
 "local disk, but keep in mind that it's only tested with Fedora images."
 msgstr ""
+"Fedora Media Writer var ierakstīt arī citus palaižamus ISO no lokālā diska, "
+"taču ņemiet vērā, ka tas ir testēts tikai ar Fedora tēliem."
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:20
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:21
 msgid "fedora"
-msgstr ""
+msgstr "fedora"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:22
 msgid "usb"
-msgstr ""
+msgstr "usb"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
-#, fuzzy
-#| msgctxt "DeviceWarningDialog|"
-#| msgid "Write"
 msgid "writer"
-msgstr "Ierakstīt"
+msgstr "ierakstītājs"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:24
 msgid "live"
-msgstr ""
+msgstr "live"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:25
 msgid "spin"
-msgstr ""
+msgstr "spin"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:26
 msgid "creator"
-msgstr ""
+msgstr "veidotājs"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:27
 msgid "media"
-msgstr ""
+msgstr "datu nesējs"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:48
 msgid "Write Fedora images to your portable drives"
-msgstr ""
+msgstr "Ierakstiet Fedora tēlus pārnēsājamos datu nesējos"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:98
 msgid "fmw;usb;iso;bootable;"
-msgstr ""
+msgstr "fmw;usb;iso;bootable;palaižams;zibatmiņa;"
 
 #: NSIS:AdminRightsRequired
 msgctxt "NSIS:AdminRightsRequired"
 msgid "Administrator rights required!"
-msgstr ""
+msgstr "Nepieciešamas administratora tiesības!"
 
 #: NSIS:UninstallPreviousVersion
 msgctxt "NSIS:UninstallPreviousVersion"
 msgid "Uninstalling previous version of ${APPNAME}..."
-msgstr ""
+msgstr "Atinstalē iepriekšējo ${APPNAME} versiju..."
 
 #: NSIS:UninstallProgram
 msgctxt "NSIS:UninstallProgram"
 msgid "Do you want to uninstall ${APPNAME}?"
-msgstr ""
+msgstr "Vai atinstalēt ${APPNAME}?"
 
 #: NSIS:VCRedistDownloadFailed
 msgctxt "NSIS:VCRedistDownloadFailed"
@@ -1180,16 +1168,21 @@ msgid ""
 "or download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Neizdevās lejupielādēt Visual C++ Redistributable.\n"
+"\n"
+"Lūdzu, pārbaudiet interneta savienojumu un mēģiniet vēlreiz\n"
+"vai lejupielādējiet to manuāli no:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #: NSIS:VCRedistDownloading
 msgctxt "NSIS:VCRedistDownloading"
 msgid "Downloading Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Lejupielādē Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistInstalling
 msgctxt "NSIS:VCRedistInstalling"
 msgid "Installing Microsoft Visual C++ Redistributable..."
-msgstr ""
+msgstr "Instalē Microsoft Visual C++ Redistributable..."
 
 #: NSIS:VCRedistNotInstalled
 msgctxt "NSIS:VCRedistNotInstalled"
@@ -1200,6 +1193,11 @@ msgid ""
 "\n"
 "Would you like to download and install it now? (approximately 25 MB)"
 msgstr ""
+"Jūsu sistēmā nav instalēts Microsoft Visual C++ Redistributable.\n"
+"\n"
+"Tas ir nepieciešams, lai ${APPNAME} darbotos pareizi.\n"
+"\n"
+"Vai vēlaties to lejupielādēt un instalēt tagad? (aptuveni 25 MB)"
 
 #: NSIS:VCRedistSkipped
 msgctxt "NSIS:VCRedistSkipped"
@@ -1211,6 +1209,12 @@ msgid ""
 "You can download it manually from:\n"
 "https://aka.ms/vs/17/release/vc_redist.x64.exe"
 msgstr ""
+"Jūs izvēlējāties izlaist Visual C++ Redistributable instalēšanu.\n"
+"\n"
+"${APPNAME} bez tā var nedarboties pareizi.\n"
+"\n"
+"To var lejupielādēt manuāli no:\n"
+"https://aka.ms/vs/17/release/vc_redist.x64.exe"
 
 #~ msgctxt "MacDrive|"
 #~ msgid "Could not find the helper binary. Check your installation."
