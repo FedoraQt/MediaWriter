@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-24 15:36+0100\n"
-"PO-Revision-Date: 2026-11-18 06:18+0000\n"
+"PO-Revision-Date: 2026-11-24 06:18+0000\n"
 "Last-Translator: hsu zangmen <chzang55@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://translate.fedoraproject.org/"
 "projects/fedora-media-writer/mediawriter/zh_TW/>\n"
@@ -274,19 +274,13 @@ msgid "Please insert an USB drive."
 msgstr "請插入 USB 驅動器。"
 
 #: ../src/app/qml/DownloadPage.qml:133
-#, fuzzy
-#| msgctxt "DownloadPage|"
-#| msgid ""
-#| "Your drive will be resized to a smaller capacity. You may resize it back "
-#| "to normal by using Fedora Media Writer. This will remove installation "
-#| "media from your drive."
 msgctxt "DownloadPage|"
 msgid ""
 "Your drive is being resized to a smaller capacity. You may resize it back to "
 "normal by running Fedora Media Writer again and selecting the Restore option."
 msgstr ""
-"您的裝置將調整成較小的容量。您可以利用 Fedora 媒體寫入器調整回正常大小。這個"
-"動作會從您的裝置中移除安裝媒體。"
+"您的磁碟正被調整為較小的容量。您可以再次執行 Fedora Media Writer 並選擇「還原"
+"」選項，將其恢復至原始容量。"
 
 #: ../src/app/qml/DownloadPage.qml:141
 msgctxt "DownloadPage|"
@@ -344,12 +338,9 @@ msgid "Retry"
 msgstr "重試"
 
 #: ../src/app/drivemanager.cpp:288
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "The drive was removed while it was written to."
 msgctxt "Drive|"
 msgid "The drive was removed while it was written to."
-msgstr "磁碟機在寫入過程中被移除。"
+msgstr "在寫入過程中，磁碟被移除了。"
 
 #: ../src/app/drivemanager.cpp:391
 msgctxt "Drive|"
@@ -357,52 +348,36 @@ msgid "This drive is not large enough."
 msgstr "此磁碟機空間不足。"
 
 #: ../src/app/drivemanager.cpp:397
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Could not find the helper binary. Check your installation."
 msgctxt "Drive|"
 msgid "Could not find the helper binary. Check your installation."
-msgstr "找不到 helper 二進位檔案。請檢查您的安裝是否完整。"
+msgstr "找不到輔助程式二進位檔。請檢查您的安裝設定。"
 
 #: ../src/app/drivemanager.cpp:435
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Stopped before writing has finished."
 msgctxt "Drive|"
 msgid "Stopped before writing has finished."
-msgstr "寫入完成前被停止。"
+msgstr "在寫入尚未完成之前便停止了。"
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Finished!"
 msgctxt "Drive|"
 msgid "Finished!"
-msgstr "完成！"
+msgstr "己完成！"
 
 #: ../src/app/drivemanager.cpp:503 ../src/app/drivemanager.cpp:530
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 was successful"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 was successful"
-msgstr "%1 寫入成功"
+msgstr "寫入 %1 已成功"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy
-#| msgctxt "LinuxDrive|"
-#| msgid "Error"
 msgctxt "Drive|"
 msgid "Error"
 msgstr "錯誤"
 
 #: ../src/app/drivemanager.cpp:536
-#, fuzzy, qt-format
-#| msgctxt "LinuxDrive|"
-#| msgid "Writing %1 failed"
+#, qt-format
 msgctxt "Drive|"
 msgid "Writing %1 failed"
-msgstr "%1 寫入失敗"
+msgstr "寫入 %1 失敗"
 
 #: ../src/app/qml/DrivePage.qml:30
 msgctxt "DrivePage|"
@@ -827,12 +802,9 @@ msgid "Restore Drive <b>%1</b>"
 msgstr "還原磁碟機 <b>%1</b>"
 
 #: ../src/app/qml/RestorePage.qml:39
-#, fuzzy
-#| msgctxt "RestorePage|"
-#| msgid "Restore Drive <b>%1</b>"
 msgctxt "RestorePage|"
 msgid "Restore Drive"
-msgstr "還原磁碟機 <b>%1</b>"
+msgstr "還原磁碟機"
 
 #: ../src/app/qml/RestorePage.qml:48
 msgctxt "RestorePage|"
@@ -1051,12 +1023,9 @@ msgid "Failed to write entire image. Total written: %1 out of %2"
 msgstr "寫入整個映像檔失敗。 寫入總數：%1 出 %2"
 
 #: ../src/helper/win/writejob.cpp:480
-#, fuzzy
-#| msgctxt "WriteJob|"
-#| msgid "Couldn't open the drive for data verification for %1:"
 msgctxt "WriteJob|"
 msgid "Couldn't seek to the beginning of the drive for verification"
-msgstr "無法為 %1 開啟磁碟機進行資料驗證："
+msgstr "無法尋至磁碟開頭以進行驗證"
 
 #: ../src/app/qml/main.qml:80 ../src/app/qml/main.qml:127
 msgctxt "main|"
@@ -1132,9 +1101,6 @@ msgstr "usb"
 
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:23
-#, fuzzy
-#| msgctxt "DeviceWarningDialog|"
-#| msgid "Write"
 msgid "writer"
 msgstr "寫入"
 
@@ -1156,7 +1122,7 @@ msgstr "創作者"
 #. (itstool) path: keywords/keyword
 #: ../src/app/data/org.fedoraproject.MediaWriter.metainfo.xml.in:27
 msgid "media"
-msgstr ""
+msgstr "媒體"
 
 #: ../src/app/data/org.fedoraproject.MediaWriter.desktop:48
 msgid "Write Fedora images to your portable drives"
